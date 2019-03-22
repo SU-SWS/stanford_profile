@@ -1,0 +1,103 @@
+name: Stanford Profile
+description: Jumpstart Website Profile
+version: 8.x-1.0-dev
+core: 8.x
+type: profile
+project: Jumpstart
+distribution:
+  name: Stanford Jumpstart
+
+dependencies:
+  # core
+  - block_content
+  - breakpoint
+  - ckeditor
+  - config
+  - contextual
+  - datetime
+  - dblog
+  - editor
+  - entity_reference
+  - field
+  - field_ui
+  - file
+  - help
+  - history
+  - image
+  - menu_link_content
+  - menu_ui
+  - node
+  - options
+  - path
+  - page_cache
+  - quickedit
+  - rdf
+  - responsive_image
+  - shortcut
+  - taxonomy
+  - text
+  - toolbar
+  - views
+  - views_ui
+
+  # contrib
+  - acquia_connector
+  - admin_toolbar
+  - admin_toolbar_links_access_filter
+  - admin_toolbar_tools
+  - block
+  - block_class
+  - chosen
+  - chosen_lib
+  - color_field
+  - components
+  - ctools
+  - datetime
+  - datetime_range
+  - default_content
+  - dynamic_page_cache
+  - editor
+  - editor_advanced_link
+  - entity_reference_exposed_filters
+  - entity_reference_revisions
+  - environment_indicator
+  - filter
+  - honeypot
+  - inline_form_errors
+  - link
+  - linkit
+  - menu_admin_per_menu
+  - menu_block
+  - metatag
+  - metatag_favicons
+  - nobots
+  - paragraphs
+  - pathauto
+  - redirect
+  - redirect_404
+  - role_delegation
+  - search
+  - simplesamlphp_auth
+  - stanford_media
+  - system
+  - token
+  - ui_patterns_ds
+  - ui_patterns_layouts
+  - ui_patterns_library
+  - ui_patterns_views
+  - update
+  - user
+  - views_block_filter_block
+
+  # Stanford functionality.
+  - nobots
+  - stanford_media
+  - stanford_date_formats
+  - stanford_image_styles
+  - stanford_paragraph_types
+  - stanford_search_api
+  - stanford_text_editor
+
+themes:
+  - stanford_basic
+  - seven
