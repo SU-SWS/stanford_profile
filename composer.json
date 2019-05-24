@@ -337,12 +337,6 @@
       "drush/drush": {
         "patches": "patches/contrib/drush-partial.patch"
       },
-      "drupal/core": {
-        "https://www.drupal.org/project/drupal/issues/564106": "https://www.drupal.org/files/issues/2018-06-27/views-more-link-token-replacement_564106_171.patch"
-      },
-      "drupal/config_ignore": {
-        "https://www.drupal.org/project/config_ignore/issues/2857247": "https://www.drupal.org/files/issues/2018-10-14/support-for-export-2857247-24.patch"
-      },
       "drupal/menu_block": {
         "https://www.drupal.org/project/menu_block/issues/2809699": "https://www.drupal.org/files/issues/2018-05-07/menu_block-label_configuration-2809699-77.patch"
       },
@@ -365,14 +359,8 @@
       "drupal/role_theme_switcher": {
         "https://www.drupal.org/project/role_theme_switcher/issues/2980351": "https://www.drupal.org/files/issues/2018-06-18/role_theme_switcher-admin_theme-2980351-3.patch"
       },
-      "drupal/config_update": {
-        "https://www.drupal.org/project/config_update/issues/2974637": "https://www.drupal.org/files/issues/2018-06-11/drush9-support-2974637-24.patch"
-      },
       "drupal/entity_reference_revisions": {
         "Prevent recursion and unwanted entity saves": "patches/contrib/entity_reference_revisions-recursion-fix.patch"
-      },
-      "drupal/config_import_de": {
-        "https://www.drupal.org/project/config_import_de/issues/2991762": "https://www.drupal.org/files/issues/2018-08-09/config_import_de-default-confg.patch"
       },
       "drupal/menu_link_weight": {
         "https://www.drupal.org/project/menu_link_weight/issues/2995896": "https://www.drupal.org/files/issues/2018-08-29/2995896-menu-admin-per-menu-support-fixes.patch"
@@ -400,9 +388,6 @@
       },
       "drupal/fakeobjects": {
         "https://www.drupal.org/project/fakeobjects/issues/3002953": "https://www.drupal.org/files/issues/2019-02-12/fakeobjects-missing_plugin-3002953.patch"
-      },
-      "simplesamlphp/simplesamlphp-module-aggregator2": {
-        "Add etag and last modified headers": "patches/aggregator-headers.patch"
       }
     },
     "composer-exit-on-patch-failure": true,
