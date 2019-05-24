@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media_entity_browser
+  module:
+    - stanford_media
+    - views
+name: image_browser
+label: 'Image Browser'
+display: iframe
+display_configuration:
+  width: 100%
+  height: '650'
+  link_text: Continue
+  auto_open: true
+selection_display: multi_step_display
+selection_display_configuration:
+  entity_type: media
+  display: rendered_entity
+  display_settings:
+    view_mode: full
+  select_text: Continue
+  selection_hidden: false
+  view: null
+  view_display: null
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  fd073316-c81a-4422-9bd6-df59e2d0c638:
+    settings:
+      view: media_entity_browser
+      view_display: image_browser
+      submit_text: Continue
+      auto_select: true
+    uuid: fd073316-c81a-4422-9bd6-df59e2d0c638
+    weight: -10
+    label: 'Media Library'
+    id: view
+  a605a231-49e3-420e-a098-c613124bfce2:
+    settings:
+      auto_select: false
+      upload_location: 'public://media'
+      dropzone_description: 'To embed a file, you must first upload it to the library. Drop file here to upload'
+      submit_text: 'Add to Library'
+      form_mode: media_browser
+      max_filesize: '25'
+    uuid: a605a231-49e3-420e-a098-c613124bfce2
+    weight: -9
+    label: 'Embed a File'
+    id: dropzonejs_media

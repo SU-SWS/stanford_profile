@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media_entity_browser
+  module:
+    - stanford_media
+    - views
+name: video_browser
+label: 'Video Browser'
+display: iframe
+display_configuration:
+  width: 100%
+  height: '650'
+  link_text: Continue
+  auto_open: true
+selection_display: multi_step_display
+selection_display_configuration:
+  entity_type: media
+  display: rendered_entity
+  display_settings:
+    view_mode: full
+  select_text: Continue
+  selection_hidden: false
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  22663d5c-deef-4eb2-80d7-6818fb17ccda:
+    settings:
+      view: media_entity_browser
+      view_display: video_browser
+      submit_text: Continue
+      auto_select: false
+    uuid: 22663d5c-deef-4eb2-80d7-6818fb17ccda
+    weight: 1
+    label: 'Media Library'
+    id: view
+  8f88db67-c14d-4031-bcd0-c84e4184d838:
+    settings:
+      submit_text: Add
+      form_mode: media_browser
+    uuid: 8f88db67-c14d-4031-bcd0-c84e4184d838
+    weight: 2
+    label: 'Add a Video'
+    id: embed_code

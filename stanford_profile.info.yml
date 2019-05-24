@@ -58,6 +58,7 @@ dependencies:
   - dynamic_page_cache
   - editor
   - editor_advanced_link
+  - editor_file
   - entity_reference_exposed_filters
   - entity_reference_revisions
   - environment_indicator
@@ -66,21 +67,26 @@ dependencies:
   - inline_form_errors
   - link
   - linkit
+  - markdown
   - menu_admin_per_menu
   - menu_block
   - metatag
   - metatag_favicons
   - nobots
+  - page_manager
   - paragraphs
+  - pathalogic
   - pathauto
   - redirect
   - redirect_404
   - role_delegation
   - search
-  - simplesamlphp_auth
+  - simplemde
+  # - simplesamlphp_auth
   - stanford_media
   - system
   - token
+  - token_filter
   - ui_patterns_ds
   - ui_patterns_layouts
   - ui_patterns_library
@@ -94,8 +100,7 @@ dependencies:
   - stanford_media
   - stanford_date_formats
   - stanford_image_styles
-  - stanford_paragraph_types
-  - stanford_search_api
+  # - stanford_search_api not working due to page_manager being a download
   - stanford_text_editor
 
 themes:

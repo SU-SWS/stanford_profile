@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_image_caption
+    - media.type.image
+  module:
+    - text
+third_party_settings: {  }
+id: media.image.field_media_image_caption
+field_name: field_media_image_caption
+entity_type: media
+bundle: image
+label: Caption/Credit
+description: 'Enter information about this image to credit owner or to provide additional context.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
