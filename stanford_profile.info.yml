@@ -41,44 +41,32 @@ dependencies:
   - views_ui
 
   # contrib
-  - acquia_connector
   - admin_toolbar
   - admin_toolbar_links_access_filter
   - admin_toolbar_tools
   - block
-  - block_class
   - chosen
   - chosen_lib
-  - color_field
   - components
   - ctools
   - datetime
-  - datetime_range
   - default_content
-  - dynamic_page_cache
   - editor
   - editor_advanced_link
-  - entity_reference_exposed_filters
-  - entity_reference_revisions
-  - environment_indicator
   - filter
   - honeypot
   - inline_form_errors
   - link
   - linkit
-  - menu_admin_per_menu
   - menu_block
   - metatag
   - metatag_favicons
-  - nobots
   - paragraphs
   - pathauto
   - redirect
   - redirect_404
   - role_delegation
   - search
-  - simplesamlphp_auth
-  - stanford_media
   - system
   - token
   - ui_patterns_ds
@@ -90,13 +78,11 @@ dependencies:
   - views_block_filter_block
 
   # Stanford functionality.
-  - nobots
   - stanford_media
   - stanford_date_formats
   - stanford_image_styles
-  - stanford_paragraph_types
-  - stanford_search_api
   - stanford_text_editor
+  - jumpstart_ui
 
 themes:
   - stanford_basic
