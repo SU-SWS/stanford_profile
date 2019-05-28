@@ -4,6 +4,10 @@
  * Install, update and uninstall functions for the profilename install profile.
  */
 
+use Drupal\user\Entity\User;
+use Drupal\user\RoleInterface;
+use Drupal\shortcut\Entity\Shortcut;
+
 /**
  * Implements hook_install().
  *
