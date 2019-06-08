@@ -4,12 +4,12 @@ version: 8.x-1.0-dev
 core: 8.x
 type: profile
 project: Jumpstart
-distribution:
-  name: Stanford Jumpstart
+
+base profile: standard
 
 dependencies:
   # core
-  - block_content
+  - drupal:block_content
   - breakpoint
   - ckeditor
   - config
@@ -22,6 +22,7 @@ dependencies:
   - file
   - help
   - history
+  - honeypot
   - image
   - menu_link_content
   - menu_ui
@@ -40,6 +41,7 @@ dependencies:
   - admin_toolbar
   - admin_toolbar_links_access_filter
   - admin_toolbar_tools
+  - profile_split_enable
 
   # Stanford functionality.
   - stanford_date_formats
@@ -49,6 +51,10 @@ dependencies:
   - stanford_paragraph_types
   - stanford_text_editor
   - jumpstart_ui
+
+# install can be turned off later
+install:
+  - nobots
 
 themes:
   - stanford_basic
