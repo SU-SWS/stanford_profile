@@ -7,9 +7,10 @@ project: Jumpstart
 
 base profile: standard
 
-dependencies:
+install:
   # core
-  - drupal:block_content
+  - drupal:action
+  - block_content
   - breakpoint
   - ckeditor
   - config
@@ -42,7 +43,17 @@ dependencies:
   - admin_toolbar_links_access_filter
   - admin_toolbar_tools
   - profile_split_enable
+  - allowed_formats
+  - chosen
+  - coffee
+  - default_content
+  - honeypot
+  - pathauto
+  - redirect
+  - webform
+  - xmlsitemap
 
+dependencies:
   # Stanford functionality.
   - stanford_date_formats
   - stanford_image_styles
@@ -59,3 +70,7 @@ install:
 themes:
   - stanford_basic
   - seven
+
+default_content:
+  node:
+    - 6052a904-ebf2-409e-ab3a-a687a01c813a
