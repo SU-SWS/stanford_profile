@@ -7,6 +7,7 @@ project: Jumpstart
 
 base profile: standard
 
+# install can be turned off later
 install:
   # core
   - drupal:action
@@ -39,33 +40,31 @@ install:
   - drupal:views
 
   # contrib
-  - drupal:admin_toolbar
-  - drupal:admin_toolbar_links_access_filter
-  - drupal:admin_toolbar_tools
-  - drupal:profile_split_enable
-  - drupal:allowed_formats
-  - drupal:chosen
-  - drupal:coffee
-  - drupal:default_content
-  - drupal:honeypot
-  - drupal:pathauto
-  - drupal:redirect
-  - drupal:webform
-  - drupal:xmlsitemap
+  - admin_toolbar:admin_toolbar
+  - admin_toolbar_links_access_filter:admin_toolbar_links_access_filter
+  - admin_toolbar_tools:admin_toolbar_tools
+  - config_split:config_split
+  - profile_split_enable:profile_split_enable
+  - allowed_formats:allowed_formats
+  - chosen:chosen
+  - coffee:coffee
+  - default_content
+  - honeypot:honeypot
+  - pathauto:pathauto
+  - redirect:redirect
+  - webform:webform
+  - xmlsitemap:xmlsitemap
+  - nobots:nobots
 
 dependencies:
   # Stanford functionality.
-  - stanford_date_formats
-  - stanford_image_styles
-  - stanford_media
-  - stanford_page
-  - stanford_paragraph_types
-  - stanford_text_editor
-  - jumpstart_ui
-
-# install can be turned off later
-install:
-  - nobots
+  - su-sws:stanford_date_formats
+  - su-sws:stanford_image_styles
+  - su-sws:stanford_media
+  - su-sws:stanford_page
+  - su-sws:stanford_paragraph_types
+  - su-sws:stanford_text_editor
+  - su-sws:jumpstart_ui
 
 themes:
   - stanford_basic
