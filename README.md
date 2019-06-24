@@ -1,2 +1,2 @@
-# stanford_profile
-A base d8 install profile
+# jack_dor_profile
+Sub Profile for DOR development
