@@ -1,0 +1,16 @@
+minimum_single: 0
+minimum_multiple: 0
+disable_search_threshold: 0
+minimum_width: 200
+jquery_selector: 'select:not([name*="[display_id]"])'
+search_contains: true
+disable_search: false
+allow_single_deselect: false
+placeholder_text_multiple: 'Choose some options'
+placeholder_text_single: 'Choose an option'
+no_results_text: 'No results match'
+disabled_themes: {  }
+chosen_include: 1
+dependencies:
+  module:
+    - chosen
