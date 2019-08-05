@@ -1,0 +1,20 @@
+uuid: 108d6fa8-edb6-45e2-8bcf-32f65c7afe4e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - stanford_basic
+id: stanford_basic_messages
+theme: stanford_basic
+region: help
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  provider: system
+  label_display: '0'
+visibility: {  }

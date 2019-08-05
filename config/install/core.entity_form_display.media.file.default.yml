@@ -1,0 +1,36 @@
+uuid: b22c5674-c1a0-4694-b296-1c208785d0fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.file.field_media_file
+    - media.type.file
+  module:
+    - file
+_core:
+  default_config_hash: IZZZH3ZmZ5xpeUW2scF9RPSnKb3qnEKu-cBMQQOuHQk
+id: media.file.default
+targetEntityType: media
+bundle: file
+mode: default
+content:
+  field_media_file:
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    weight: 26
+    region: content
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  status: true
+  uid: true

@@ -1,0 +1,14 @@
+uuid: 01b62f09-9368-4cb1-9755-306ec1932707
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.stanford_faculty
+  module:
+    - user
+id: user_remove_role_action.stanford_faculty
+label: 'Remove the Stanford Faculty role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: stanford_faculty

@@ -1,0 +1,17 @@
+uuid: 1d4a67db-c036-42c5-b335-a6ed0c4385c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - video_embed_media
+_core:
+  default_config_hash: Qy1NSajpE226cSdbHV6g-k_N148Xpc1PvmBeSIzQPyI
+id: video
+label: Video
+description: 'Use Video urls from YouTube for reusable media.'
+source: video_embed_field
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_video_embed_field
+field_map: {  }

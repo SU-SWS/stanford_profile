@@ -1,0 +1,37 @@
+uuid: 77b69a0c-cd0a-4916-8844-d0acc355dded
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.responsive_large
+    - image.style.responsive_medium
+    - image.style.responsive_small
+  module:
+    - stanford_media
+_core:
+  default_config_hash: 87YDNYUvaTv6bZRJVF4DsV7apqKNcQIY5xTHMC97ZjM
+id: full_responsive
+label: 'Full Responsive'
+image_style_mappings:
+  -
+    breakpoint_id: stanford_media.xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: responsive_large
+  -
+    breakpoint_id: stanford_media.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: responsive_medium
+  -
+    breakpoint_id: stanford_media.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: ''
+  -
+    breakpoint_id: stanford_media.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: responsive_small
+breakpoint_group: stanford_media
+fallback_image_style: responsive_large

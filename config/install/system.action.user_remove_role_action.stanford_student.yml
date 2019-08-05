@@ -1,0 +1,14 @@
+uuid: 1ee12405-eed9-46bf-9498-28d826a425c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.stanford_student
+  module:
+    - user
+id: user_remove_role_action.stanford_student
+label: 'Remove the Stanford Student role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: stanford_student
