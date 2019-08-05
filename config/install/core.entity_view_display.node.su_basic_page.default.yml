@@ -5,7 +5,43 @@ dependencies:
   config:
     - node.type.su_basic_page
   module:
+    - jumpstart_ui
+    - layout_builder
+    - layout_discovery
     - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings: {  }
+        components: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_pacman-left
+        layout_settings: {  }
+        components:
+          a321458c-7e01-4b46-a758-ccf30a92c7b8:
+            uuid: a321458c-7e01-4b46-a758-ccf30a92c7b8
+            region: content
+            configuration:
+              id: 'field_block:node:su_basic_page:title'
+              label: Title
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
 id: node.su_basic_page.default
 targetEntityType: node
 bundle: su_basic_page
