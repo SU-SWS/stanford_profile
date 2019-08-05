@@ -1,0 +1,19 @@
+uuid: 219690b7-c9eb-42a7-b7fd-a2bad54d1079
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.su_basic_page
+  module:
+    - user
+id: node.su_basic_page.default
+targetEntityType: node
+bundle: su_basic_page
+mode: default
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
