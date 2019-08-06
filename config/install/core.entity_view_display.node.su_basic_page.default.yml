@@ -3,8 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.su_basic_page.su_basic_page_components
     - node.type.su_basic_page
   module:
+    - entity_reference_revisions
     - jumpstart_ui
     - layout_builder
     - layout_discovery
@@ -41,6 +43,26 @@ third_party_settings:
                 entity: layout_builder.entity
             additional: {  }
             weight: 0
+          e115bc58-f4ab-45ab-b3d1-4b3f1d319404:
+            uuid: e115bc58-f4ab-45ab-b3d1-4b3f1d319404
+            region: content
+            configuration:
+              id: 'field_block:node:su_basic_page:su_basic_page_components'
+              label: Components
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
 id: node.su_basic_page.default
 targetEntityType: node
@@ -50,6 +72,15 @@ content:
   links:
     weight: 100
     settings: {  }
+    third_party_settings: {  }
+    region: content
+  su_basic_page_components:
+    type: entity_reference_revisions_entity_view
+    weight: 101
+    label: above
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
     region: content
 hidden: {  }

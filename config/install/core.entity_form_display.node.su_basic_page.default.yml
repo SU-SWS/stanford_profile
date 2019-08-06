@@ -3,8 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.su_basic_page.su_basic_page_components
     - node.type.su_basic_page
   module:
+    - paragraphs
     - path
 id: node.su_basic_page.default
 targetEntityType: node
@@ -44,6 +46,25 @@ content:
     weight: 16
     region: content
     third_party_settings: {  }
+  su_basic_page_components:
+    type: paragraphs
+    weight: 121
+    settings:
+      title: Component
+      title_plural: Components
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        collapse_edit_all: collapse_edit_all
+        add_above: add_above
+        duplicate: '0'
+    third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: -5
@@ -63,7 +84,7 @@ content:
     third_party_settings: {  }
   url_redirects:
     weight: 50
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden: {  }

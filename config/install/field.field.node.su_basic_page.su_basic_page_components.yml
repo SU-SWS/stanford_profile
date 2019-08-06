@@ -1,0 +1,25 @@
+uuid: 54d214c4-ef95-40f1-a06b-cc03378a639b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_basic_page_components
+    - node.type.su_basic_page
+  module:
+    - entity_reference_revisions
+id: node.su_basic_page.su_basic_page_components
+field_name: su_basic_page_components
+entity_type: node
+bundle: su_basic_page
+label: Components
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles: null
+field_type: entity_reference_revisions
