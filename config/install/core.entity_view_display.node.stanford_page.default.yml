@@ -3,24 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.su_basic_page.su_basic_page_components
-    - node.type.su_basic_page
+    - field.field.node.stanford_page.su_page_components
+    - node.type.stanford_page
   module:
     - entity_reference_revisions
     - jumpstart_ui
     - layout_builder
-    - layout_discovery
     - user
 third_party_settings:
   layout_builder:
     allow_custom: false
     enabled: true
     sections:
-      -
-        layout_id: layout_onecol
-        layout_settings: {  }
-        components: {  }
-        third_party_settings: {  }
       -
         layout_id: layout_pacman-left
         layout_settings: {  }
@@ -29,7 +23,7 @@ third_party_settings:
             uuid: a321458c-7e01-4b46-a758-ccf30a92c7b8
             region: content
             configuration:
-              id: 'field_block:node:su_basic_page:title'
+              id: 'field_block:node:stanford_page:title'
               label: Title
               provider: layout_builder
               label_display: '0'
@@ -47,7 +41,7 @@ third_party_settings:
             uuid: e115bc58-f4ab-45ab-b3d1-4b3f1d319404
             region: content
             configuration:
-              id: 'field_block:node:su_basic_page:su_basic_page_components'
+              id: 'field_block:node:stanford_page:su_page_components'
               label: Components
               provider: layout_builder
               label_display: '0'
@@ -64,9 +58,9 @@ third_party_settings:
             additional: {  }
             weight: 1
         third_party_settings: {  }
-id: node.su_basic_page.default
+id: node.stanford_page.default
 targetEntityType: node
-bundle: su_basic_page
+bundle: stanford_page
 mode: default
 content:
   links:
@@ -74,13 +68,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  su_basic_page_components:
-    type: entity_reference_revisions_entity_view
-    weight: 101
+  su_page_components:
+    weight: 102
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
     region: content
 hidden: {  }

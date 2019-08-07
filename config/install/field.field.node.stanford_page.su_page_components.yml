@@ -1,20 +1,20 @@
-uuid: 54d214c4-ef95-40f1-a06b-cc03378a639b
+uuid: fdbe5b0f-c6d6-4d9e-b2f5-5e55b661416b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_basic_page_components
-    - node.type.su_basic_page
+    - field.storage.node.su_page_components
+    - node.type.stanford_page
   module:
     - entity_reference_revisions
-id: node.su_basic_page.su_basic_page_components
-field_name: su_basic_page_components
+id: node.stanford_page.su_page_components
+field_name: su_page_components
 entity_type: node
-bundle: su_basic_page
+bundle: stanford_page
 label: Components
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

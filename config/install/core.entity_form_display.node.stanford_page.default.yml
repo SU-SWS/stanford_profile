@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.su_basic_page.su_basic_page_components
-    - node.type.su_basic_page
+    - field.field.node.stanford_page.su_page_components
+    - node.type.stanford_page
   module:
     - paragraphs
     - path
-id: node.su_basic_page.default
+id: node.stanford_page.default
 targetEntityType: node
-bundle: su_basic_page
+bundle: stanford_page
 mode: default
 content:
   created:
@@ -46,12 +46,11 @@ content:
     weight: 16
     region: content
     third_party_settings: {  }
-  su_basic_page_components:
-    type: paragraphs
-    weight: 121
+  su_page_components:
+    weight: 122
     settings:
-      title: Component
-      title_plural: Components
+      title: Paragraph
+      title_plural: Paragraphs
       edit_mode: open
       closed_mode: summary
       autocollapse: none
@@ -64,6 +63,7 @@ content:
         add_above: add_above
         duplicate: '0'
     third_party_settings: {  }
+    type: paragraphs
     region: content
   title:
     type: string_textfield
