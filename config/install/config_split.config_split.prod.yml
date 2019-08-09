@@ -1,0 +1,24 @@
+uuid: 1d313eef-d93a-453e-b98b-0f2e8bc00bc4
+langcode: en
+status: false
+dependencies: {  }
+id: prod
+label: 'Production Environment'
+description: ''
+folder: ../config/envs/prod
+module:
+  acsf: 0
+  acsf_duplication: 0
+  acsf_sj: 0
+  acsf_theme: 0
+  acsf_variables: 0
+  acquia_purge: 0
+  purge: 0
+  purge_drush: 0
+  purge_ui: 0
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

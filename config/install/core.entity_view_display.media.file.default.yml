@@ -1,0 +1,28 @@
+uuid: 24441fe0-069d-45de-a1f8-a98f7c66ff6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.file.field_media_file
+    - media.type.file
+  module:
+    - file
+_core:
+  default_config_hash: BZf-1W-t9DuoDU18y0NYGJhrFdAHS1LERKi296ZADps
+id: media.file.default
+targetEntityType: media
+bundle: file
+mode: default
+content:
+  field_media_file:
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: file_default
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

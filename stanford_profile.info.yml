@@ -5,7 +5,7 @@ core: 8.x
 type: profile
 project: Jumpstart
 
-base profile: standard
+base profile: minimal
 
 # install can be turned off later
 install:
@@ -23,8 +23,6 @@ install:
   - drupal:field_ui
   - drupal:file
   - drupal:help
-  - drupal:history
-  - drupal:honeypot
   - drupal:image
   - drupal:menu_link_content
   - drupal:menu_ui
@@ -32,7 +30,6 @@ install:
   - drupal:options
   - drupal:path
   - drupal:page_cache
-  - drupal:rdf
   - drupal:responsive_image
   - drupal:shortcut
   - drupal:taxonomy
@@ -44,32 +41,17 @@ install:
   - admin_toolbar_links_access_filter:admin_toolbar_links_access_filter
   - admin_toolbar_tools:admin_toolbar_tools
   - config_split:config_split
-  - profile_split_enable:profile_split_enable
   - allowed_formats:allowed_formats
   - chosen:chosen
-  - coffee:coffee
   - default_content
-  - honeypot:honeypot
   - pathauto:pathauto
   - redirect:redirect
-  - webform:webform
-  - xmlsitemap:xmlsitemap
   - nobots:nobots
 
 dependencies:
   # Stanford functionality.
-  - su-sws:stanford_date_formats
-  - su-sws:stanford_image_styles
-  - su-sws:stanford_media
-  - su-sws:stanford_page
-  - su-sws:stanford_paragraph_types
-  - su-sws:stanford_text_editor
-  - su-sws:jumpstart_ui
+  - stanford_media
 
 themes:
   - stanford_basic
   - seven
-
-default_content:
-  node:
-    - 6052a904-ebf2-409e-ab3a-a687a01c813a

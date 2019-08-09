@@ -1,0 +1,20 @@
+uuid: ed2af653-e454-4b66-8ff6-f021be2a6bde
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - stanford_basic
+id: stanford_basic_content
+theme: stanford_basic
+region: content
+weight: -1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

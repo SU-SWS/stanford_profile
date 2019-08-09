@@ -1,0 +1,14 @@
+uuid: 01abe2ff-b15a-4f53-ae26-0d6ed3dceb6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.stanford_staff
+  module:
+    - user
+id: user_remove_role_action.stanford_staff
+label: 'Remove the Stanford Staff role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: stanford_staff

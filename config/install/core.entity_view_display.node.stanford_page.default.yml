@@ -1,0 +1,80 @@
+uuid: 219690b7-c9eb-42a7-b7fd-a2bad54d1079
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.stanford_page.su_page_components
+    - node.type.stanford_page
+  module:
+    - entity_reference_revisions
+    - jumpstart_ui
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_pacman-left
+        layout_settings: {  }
+        components:
+          a321458c-7e01-4b46-a758-ccf30a92c7b8:
+            uuid: a321458c-7e01-4b46-a758-ccf30a92c7b8
+            region: content
+            configuration:
+              id: 'field_block:node:stanford_page:title'
+              label: Title
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 0
+          e115bc58-f4ab-45ab-b3d1-4b3f1d319404:
+            uuid: e115bc58-f4ab-45ab-b3d1-4b3f1d319404
+            region: content
+            configuration:
+              id: 'field_block:node:stanford_page:su_page_components'
+              label: Components
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 1
+        third_party_settings: {  }
+id: node.stanford_page.default
+targetEntityType: node
+bundle: stanford_page
+mode: default
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  su_page_components:
+    weight: 102
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }

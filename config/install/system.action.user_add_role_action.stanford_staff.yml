@@ -1,0 +1,14 @@
+uuid: 9c479976-da2c-489a-8651-71d3eb2d85d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.stanford_staff
+  module:
+    - user
+id: user_add_role_action.stanford_staff
+label: 'Add the Stanford Staff role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: stanford_staff
