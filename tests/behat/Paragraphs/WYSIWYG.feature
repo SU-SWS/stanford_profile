@@ -77,7 +77,7 @@ Feature: WYSIWYG Paragraph
     Then I switch to "entity_browser_iframe_media_browser" iframe
     Then I click "Embed a File"
     And I wait for AJAX to finish
-    Then I drop "images/logo.jpg" file into dropzone
+    Then I drop "../assets/images/logo.jpg" file into dropzone
     And I press "Add to Library"
     And I wait for AJAX to finish
     Then I press "Continue"
@@ -133,7 +133,7 @@ Feature: WYSIWYG Paragraph
     Then I switch to "entity_browser_iframe_media_browser" iframe
     Then I click "Embed a File"
     And I wait for AJAX to finish
-    Then I drop "documents/test.php" file into dropzone
+    Then I drop "../assets/documents/test.php" file into dropzone
     And I should see an ".dz-error.dz-complete" element
     Then I click the ".dropzonejs-remove-icon" element
     And I drop "documents/test.txt" file into dropzone
