@@ -11,7 +11,7 @@ Feature: WYSIWYG Paragraph
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
     And I press "Add WYSIWYG"
     And I wait for AJAX to finish
-    Then I fill in wysiwyg "Body" with "../asssets/documents/WYSIWYG.html"
+    Then I fill in wysiwyg "Body" with "../assets/documents/WYSIWYG.html"
     Then I press "Save"
     And I should be on "/test-wysiwyg-paragraph"
 
@@ -136,7 +136,7 @@ Feature: WYSIWYG Paragraph
     Then I drop "../assets/documents/test.php" file into dropzone
     And I should see an ".dz-error.dz-complete" element
     Then I click the ".dropzonejs-remove-icon" element
-    And I drop "../asssets/documents/test.txt" file into dropzone
+    And I drop "../assets/documents/test.txt" file into dropzone
     And I press "Add to Library"
     And I wait for AJAX to finish
     And I fill in "Name" with "Test TXT Document"
