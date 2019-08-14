@@ -11,7 +11,7 @@ Feature: WYSIWYG Paragraph
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
     And I press "Add WYSIWYG"
     And I wait for AJAX to finish
-    Then I fill in wysiwyg "Body" with "documents/WYSIWYG.html"
+    Then I fill in wysiwyg "Body" with "../asssets/documents/WYSIWYG.html"
     Then I press "Save"
     And I should be on "/test-wysiwyg-paragraph"
 
