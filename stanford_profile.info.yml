@@ -40,13 +40,14 @@ install:
   - admin_toolbar:admin_toolbar
   - admin_toolbar_links_access_filter:admin_toolbar_links_access_filter
   - admin_toolbar_tools:admin_toolbar_tools
-  - config_split:config_split
   - allowed_formats:allowed_formats
   - chosen:chosen
+  - config_readonly:config_readonly
+  - config_split:config_split
   - default_content
+  - nobots:nobots
   - pathauto:pathauto
   - redirect:redirect
-  - nobots:nobots
 
 dependencies:
   # Stanford functionality.

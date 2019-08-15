@@ -2,60 +2,6 @@
 .idea
 .idea/**
 bin/
-!vendor/
-!docroot/**
-docroot/sites/test.cardinalsites.loc
-docroot/sites/devdocs.cardinalsites.loc
-!docroot/vendor/**
-!docroot/**/vendor/**
-!composer.json
-!docroot/**/composer.json
-!composer.lock
-!docroot/**/composer.lock
-!docroot/modules/**
-.git
-
-# Ignore configuration files that may contain sensitive information.
-local.settings.php
-local.sites.php
-local.drushrc.php
-local.drush.yml
-local.site.yml
-local.aliases.drushrc.php
-local.services.yml
-tests/behat/local.yml
-box/local.config.yml
-*.local
-local.blt.yml
-blt/src/Commands/LocalCommand.php
-simplesamlphp/config/local*
-
-# Ignore drupal core.
-docroot/core
-
-# Ignore paths that contain user-generated content.
-docroot/sites/*/files
-/files-private
-docroot/sites/*/private
-docroot/sites/simpletest
-/artifacts
-keys
-drush/sites
-
-# Ignore contrib modules. These should be created during build process.
-docroot/modules/contrib
-docroot/modules/custom
-docroot/themes/contrib
-docroot/themes/custom
-docroot/profiles/contrib
-docroot/profiles/custom
-docroot/libraries
-drush/Commands
-
-# Ignore stanford contrib items.
-docroot/modules/stanford
-docroot/themes/stanford
-docroot/profiles/stanford
 
 # Ignore custom theme build artifacts
 node_modules
@@ -162,9 +108,5 @@ atlassian-ide-plugin.xml
 #NPM
 npm-debug.log
 
-# Drush 9 Checksums
-drush/sites/.checksums
-
 # Deprecation detector rules
 .rules
-
