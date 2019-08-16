@@ -1,0 +1,22 @@
+uuid: 2b2214b4-236c-48ea-acde-3bf4a052280a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_wysiwyg.su_wysiwyg_text
+    - paragraphs.paragraphs_type.stanford_wysiwyg
+  module:
+    - text
+id: paragraph.stanford_wysiwyg.default
+targetEntityType: paragraph
+bundle: stanford_wysiwyg
+mode: default
+content:
+  su_wysiwyg_text:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }
