@@ -2,6 +2,8 @@ uuid: f328ee7e-6315-4031-9a6a-28f1169b27e4
 langcode: en
 status: true
 dependencies:
+  config:
+    - field.field.user.user.su_display_name
   module:
     - path
     - user
@@ -31,6 +33,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  su_display_name:
+    weight: 31
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   timezone:
     weight: 6
     region: content
