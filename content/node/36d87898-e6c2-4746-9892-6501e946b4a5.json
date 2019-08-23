@@ -16,6 +16,16 @@
                 "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+            {
+                "href": "",
+                "lang": "en"
+            },
+            {
+                "href": "",
+                "lang": "en"
+            }
         ]
     },
     "nid": [
@@ -30,7 +40,7 @@
     ],
     "vid": [
         {
-            "value": 1
+            "value": 23
         }
     ],
     "langcode": [
@@ -46,7 +56,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "2019-08-05T22:34:23+00:00",
+            "value": "2019-08-23T05:47:47+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -63,7 +73,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "3295156b-3c0b-49a6-bc06-c3cab9b1150a"
+                        "value": "0401dba7-4738-410c-81ad-1472dfc82abd"
                     }
                 ]
             }
@@ -80,10 +90,46 @@
                 },
                 "uuid": [
                     {
-                        "value": "3295156b-3c0b-49a6-bc06-c3cab9b1150a"
+                        "value": "0401dba7-4738-410c-81ad-1472dfc82abd"
                     }
                 ],
                 "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_cards"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "3837ba6f-4927-446a-9cec-eb86fa01cd8d"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "51"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "62fa7ab6-0cac-49e2-970e-d162efef7ca5"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "52"
             }
         ]
     },
@@ -108,7 +154,7 @@
     ],
     "changed": [
         {
-            "value": "2019-08-05T22:34:23+00:00",
+            "value": "2019-08-23T05:47:47+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
