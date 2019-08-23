@@ -1,0 +1,173 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/programs?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/stanford_page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+            {
+                "href": "",
+                "lang": "en"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": 6
+        }
+    ],
+    "uuid": [
+        {
+            "value": "3f7b6edc-e7c3-49b4-b8f7-73132014a536"
+        }
+    ],
+    "vid": [
+        {
+            "value": 29
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "stanford_page"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "2019-08-23T05:59:28+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0401dba7-4738-410c-81ad-1472dfc82abd"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0401dba7-4738-410c-81ad-1472dfc82abd"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "74a7f585-f52b-4ec8-8ba3-643e9304f39b"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "66"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Programs",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-08-23T05:59:11+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2019-08-23T05:59:28+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "promote": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "path": [
+        {
+            "alias": "\/programs",
+            "pid": 6,
+            "langcode": "en",
+            "lang": "en"
+        }
+    ]
+}
