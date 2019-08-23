@@ -1,0 +1,111 @@
+uuid: 1bf4dd01-9efe-4344-adb4-6dec0df13a28
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.variant_2
+    - field.field.paragraph.stanford_card.su_card_body
+    - field.field.paragraph.stanford_card.su_card_btn_txt
+    - field.field.paragraph.stanford_card.su_card_cta_text
+    - field.field.paragraph.stanford_card.su_card_header
+    - field.field.paragraph.stanford_card.su_card_link
+    - field.field.paragraph.stanford_card.su_card_media
+    - field.field.paragraph.stanford_card.su_card_super_header
+    - paragraphs.paragraphs_type.stanford_card
+  module:
+    - ds
+    - jumpstart_ui
+    - layout_builder
+    - stanford_media
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_card
+      library: null
+      disable_css: false
+      entity_classes: no_classes
+      settings:
+        pattern:
+          field_templates: only_content
+          variant: postcard
+    regions:
+      card_image:
+        - su_card_media
+      card_super_headline:
+        - su_card_super_header
+      card_headline:
+        - su_card_header
+      card_body:
+        - su_card_body
+      card_link:
+        - su_card_link
+      card_cta_label:
+        - su_card_cta_text
+      card_button_label:
+        - su_card_btn_txt
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraph.stanford_card.variant_2
+targetEntityType: paragraph
+bundle: stanford_card
+mode: variant_2
+content:
+  su_card_body:
+    type: text_default
+    weight: 3
+    region: card_body
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  su_card_btn_txt:
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: card_button_label
+  su_card_cta_text:
+    weight: 5
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: card_cta_label
+  su_card_header:
+    type: string
+    weight: 2
+    region: card_headline
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_card_link:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: field_link_url_text_only
+    region: card_link
+  su_card_media:
+    type: media_image_formatter
+    weight: 0
+    region: card_image
+    label: hidden
+    settings:
+      image_style: null
+      link: 0
+      view_mode: default
+    third_party_settings: {  }
+  su_card_super_header:
+    type: string
+    weight: 1
+    region: card_super_headline
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,19 @@
+uuid: 973be024-775a-4579-9c40-29b1df8f13bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_card_cta_text
+    - paragraphs.paragraphs_type.stanford_card
+id: paragraph.stanford_card.su_card_cta_text
+field_name: su_card_cta_text
+entity_type: paragraph
+bundle: stanford_card
+label: 'Action Link Text'
+description: 'The label for the stylized link that shows up below the body text'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

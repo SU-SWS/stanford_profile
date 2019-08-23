@@ -1,0 +1,19 @@
+uuid: 72fad4a3-336b-4d4d-a2fe-be67a0d69e4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_card_btn_txt
+    - paragraphs.paragraphs_type.stanford_card
+id: paragraph.stanford_card.su_card_btn_txt
+field_name: su_card_btn_txt
+entity_type: paragraph
+bundle: stanford_card
+label: 'Button Text'
+description: 'Enter text here to have a button show up below the card body that goes to the value in the card link field.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

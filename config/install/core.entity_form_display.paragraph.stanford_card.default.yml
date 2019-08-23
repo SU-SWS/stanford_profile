@@ -1,0 +1,80 @@
+uuid: 9c91913c-ad23-448b-88f6-342a527dbee3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_card.su_card_body
+    - field.field.paragraph.stanford_card.su_card_btn_txt
+    - field.field.paragraph.stanford_card.su_card_cta_text
+    - field.field.paragraph.stanford_card.su_card_header
+    - field.field.paragraph.stanford_card.su_card_link
+    - field.field.paragraph.stanford_card.su_card_media
+    - field.field.paragraph.stanford_card.su_card_super_header
+    - paragraphs.paragraphs_type.stanford_card
+  module:
+    - link
+    - media_library
+    - text
+id: paragraph.stanford_card.default
+targetEntityType: paragraph
+bundle: stanford_card
+mode: default
+content:
+  su_card_body:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  su_card_btn_txt:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_card_cta_text:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_card_header:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_card_link:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_card_media:
+    weight: 0
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  su_card_super_header:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

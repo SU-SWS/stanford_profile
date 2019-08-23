@@ -1,0 +1,22 @@
+uuid: c2c7dac9-48e3-425a-883f-bc3034f31ef1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.file.field_media_file
+    - media.type.file
+_core:
+  default_config_hash: MoONd1Snx4wuAdOo3Xh0yr9kyIf_L5_ocp50YjG74dQ
+id: media.file.media_library
+targetEntityType: media
+bundle: file
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  field_media_file: true
+  name: true
+  path: true
+  status: true
+  uid: true

@@ -1,0 +1,27 @@
+uuid: c8d293e1-f675-4348-9f51-390e7317be73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_card_body
+    - paragraphs.paragraphs_type.stanford_card
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_minimal_html: stanford_minimal_html
+    stanford_html: '0'
+    plain_text: '0'
+id: paragraph.stanford_card.su_card_body
+field_name: su_card_body
+entity_type: paragraph
+bundle: stanford_card
+label: Body
+description: 'The main text of the card.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,23 @@
+uuid: cbd16a78-86d3-49fe-b2cd-9b0134749e3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_cards_per_row
+    - paragraphs.paragraphs_type.stanford_cards
+  module:
+    - options
+id: paragraph.stanford_cards.su_cards_per_row
+field_name: su_cards_per_row
+entity_type: paragraph
+bundle: stanford_cards
+label: 'Cards per row'
+description: 'The maximum number of cards per row when the screen width allows.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 2
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

@@ -1,22 +1,21 @@
-uuid: fdbe5b0f-c6d6-4d9e-b2f5-5e55b661416b
+uuid: 94efa2c0-57dd-4210-876f-b24376206c36
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_page_components
-    - node.type.stanford_page
+    - field.storage.paragraph.su_cards_items
+    - paragraphs.paragraphs_type.stanford_card
     - paragraphs.paragraphs_type.stanford_cards
-    - paragraphs.paragraphs_type.stanford_wysiwyg
   module:
     - entity_reference_revisions
-id: node.stanford_page.su_page_components
-field_name: su_page_components
-entity_type: node
-bundle: stanford_page
-label: Components
+id: paragraph.stanford_cards.su_cards_items
+field_name: su_cards_items
+entity_type: paragraph
+bundle: stanford_cards
+label: Cards
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -24,16 +23,15 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      stanford_cards: stanford_cards
-      stanford_wysiwyg: stanford_wysiwyg
+      stanford_card: stanford_card
     target_bundles_drag_drop:
       stanford_card:
+        enabled: true
         weight: 4
-        enabled: false
       stanford_cards:
-        enabled: true
         weight: 5
+        enabled: false
       stanford_wysiwyg:
-        enabled: true
         weight: 6
+        enabled: false
 field_type: entity_reference_revisions
