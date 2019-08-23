@@ -4,6 +4,12 @@
   "type": "drupal-custom-profile",
   "license": "GPL-2.0+",
   "minimum-stability": "dev",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
   "require": {
     "composer/installers": "^1.2",
     "drupal/address": "~1.2",
@@ -31,11 +37,12 @@
     "drupal/view_unpublished": "^1.0@alpha",
     "drupal/webform": "~5.0@beta",
     "drupal/xmlsitemap": "~1.0@alpha",
-
+    "ext-imagick": "*",
     "su-sws/stanford_basic": "dev-D8CORE-457",
     "su-sws/stanford_date_formats": "dev-8.x-1.x",
     "su-sws/stanford_image_styles": "dev-8.x-1.x",
     "su-sws/stanford_media": "dev-8.x-1.x",
+    "su-sws/stanford_page": "dev-8.x-2.x",
     "su-sws/stanford_paragraph_types": "dev-8.x-2.x",
     "su-sws/stanford_ssp": "dev-8.x-1.x",
     "su-sws/stanford_text_editor": "dev-8.x-1.x",
