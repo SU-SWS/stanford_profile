@@ -44,10 +44,20 @@ install:
   - chosen:chosen
   - config_readonly:config_readonly
   - config_split:config_split
-  - default_content
+  - default_content:default_content
   - nobots:nobots
   - pathauto:pathauto
   - redirect:redirect
+
+  # Stanford
+  - jumpstart_ui
+  - stanford_date_formats
+  - stanford_image_styles
+  - stanford_page
+  - stanford_paragraph_card
+  - stanford_paragraph_textarea
+  - stanford_paragraph_types
+  - stanford_paragraph_wysiwyg
 
 dependencies:
   # Stanford functionality.
