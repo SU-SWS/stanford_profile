@@ -6,10 +6,12 @@ dependencies:
     - field.field.node.stanford_page.layout_builder__layout
     - field.field.node.stanford_page.su_page_components
     - node.type.stanford_page
+    - system.menu.main
   module:
     - entity_reference_revisions
+    - jumpstart_ui
     - layout_builder
-    - layout_discovery
+    - menu_block
     - user
 third_party_settings:
   layout_builder:
@@ -17,9 +19,27 @@ third_party_settings:
     enabled: true
     sections:
       -
-        layout_id: layout_onecol
+        layout_id: layout_pacman-left
         layout_settings: {  }
         components:
+          509a28e8-06b5-4212-9a14-4f203d266afc:
+            uuid: 509a28e8-06b5-4212-9a14-4f203d266afc
+            region: header
+            configuration:
+              id: 'field_block:node:stanford_page:title'
+              label: Title
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 0
           8e68d132-9bf7-4530-b9c0-505657e97298:
             uuid: 8e68d132-9bf7-4530-b9c0-505657e97298
             region: content
@@ -37,22 +57,20 @@ third_party_settings:
                 third_party_settings: {  }
             additional: {  }
             weight: 1
-          509a28e8-06b5-4212-9a14-4f203d266afc:
-            uuid: 509a28e8-06b5-4212-9a14-4f203d266afc
-            region: content
+          9d43b640-4d77-425a-be90-27959923b8d7:
+            uuid: 9d43b640-4d77-425a-be90-27959923b8d7
+            region: sidebar
             configuration:
-              id: 'field_block:node:stanford_page:title'
-              label: Title
-              provider: layout_builder
+              id: 'menu_block:main'
+              label: 'Secondary Navigation'
+              provider: menu_block
               label_display: '0'
-              formatter:
-                label: hidden
-                type: string
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
+              level: 1
+              depth: 0
+              expand: 0
+              parent: 'main:'
+              suggestion: main
+              context_mapping: {  }
             additional: {  }
             weight: 0
         third_party_settings: {  }
