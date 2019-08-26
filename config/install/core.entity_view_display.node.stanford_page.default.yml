@@ -32,9 +32,9 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: hidden
-                type: string
+                type: entity_title_heading
                 settings:
-                  link_to_entity: false
+                  tag: h1
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
