@@ -1,12 +1,12 @@
-uuid: 24ad0c6b-a8b5-449c-a4c6-c33bd2bf82c4
+uuid: 94535d4c-e419-4542-99f0-13b84653e575
 langcode: en
 status: true
 dependencies:
   module:
-    - user
-id: user.su_display_name
-field_name: su_display_name
-entity_type: user
+    - paragraphs
+id: paragraph.su_banner_header
+field_name: su_banner_header
+entity_type: paragraph
 type: string
 settings:
   max_length: 255

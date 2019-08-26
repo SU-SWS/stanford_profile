@@ -1,0 +1,52 @@
+uuid: e1da4a34-ed4a-4a69-b93e-f4eea37b99d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_3_col_right_column
+    - paragraphs.paragraphs_type.3_column_centered
+    - paragraphs.paragraphs_type.stanford_card
+    - paragraphs.paragraphs_type.stanford_wysiwyg
+  module:
+    - entity_reference_revisions
+    - paragraph_blocks
+third_party_settings:
+  paragraph_blocks:
+    status: 1
+id: paragraph.3_column_centered.su_3_col_right_column
+field_name: su_3_col_right_column
+entity_type: paragraph
+bundle: 3_column_centered
+label: 'Right Column'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      stanford_card: stanford_card
+      stanford_wysiwyg: stanford_wysiwyg
+    target_bundles_drag_drop:
+      1_column_centered:
+        weight: 7
+        enabled: false
+      2_column_centered:
+        weight: 8
+        enabled: false
+      3_column_centered:
+        weight: 9
+        enabled: false
+      stanford_card:
+        enabled: true
+        weight: 10
+      stanford_cards:
+        weight: 11
+        enabled: false
+      stanford_wysiwyg:
+        enabled: true
+        weight: 12
+field_type: entity_reference_revisions

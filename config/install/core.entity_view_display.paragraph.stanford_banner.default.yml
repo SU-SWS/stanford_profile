@@ -1,0 +1,106 @@
+uuid: 13b9bb6d-7b5c-4966-a5c4-e7ad3c9e937d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_banner.su_banner_body
+    - field.field.paragraph.stanford_banner.su_banner_button
+    - field.field.paragraph.stanford_banner.su_banner_cta_link
+    - field.field.paragraph.stanford_banner.su_banner_header
+    - field.field.paragraph.stanford_banner.su_banner_image
+    - field.field.paragraph.stanford_banner.su_banner_sup_header
+    - paragraphs.paragraphs_type.stanford_banner
+  module:
+    - ds
+    - stanford_media
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_hero
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+          variant: default
+    regions:
+      hero_image:
+        - su_banner_image
+      hero_super_headline:
+        - su_banner_sup_header
+      hero_headline:
+        - su_banner_header
+      hero_body:
+        - su_banner_body
+      hero_cta_link:
+        - 'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link'
+      hero_cta_label:
+        - 'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link'
+      hero_button_link:
+        - 'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_button'
+      hero_button_label:
+        - 'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_button'
+    fields:
+      'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_button':
+        plugin_id: 'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_button'
+        weight: 7
+        label: hidden
+        formatter: default
+      'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link':
+        plugin_id: 'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link'
+        weight: 5
+        label: hidden
+        formatter: default
+      'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_button':
+        plugin_id: 'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_button'
+        weight: 6
+        label: hidden
+        formatter: default
+      'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link':
+        plugin_id: 'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link'
+        weight: 4
+        label: hidden
+        formatter: default
+id: paragraph.stanford_banner.default
+targetEntityType: paragraph
+bundle: stanford_banner
+mode: default
+content:
+  su_banner_body:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: hero_body
+  su_banner_header:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: hero_headline
+  su_banner_image:
+    type: media_responsive_image_formatter
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      image_style: stanford_hero_block_wide
+      link: 0
+    third_party_settings: {  }
+    region: hero_image
+  su_banner_sup_header:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: hero_super_headline
+hidden:
+  su_banner_button: true
+  su_banner_cta_link: true

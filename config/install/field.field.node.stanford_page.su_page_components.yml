@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.storage.node.su_page_components
     - node.type.stanford_page
-    - paragraphs.paragraphs_type.stanford_cards
-    - paragraphs.paragraphs_type.stanford_wysiwyg
   module:
     - entity_reference_revisions
+    - paragraph_blocks
+third_party_settings:
+  paragraph_blocks:
+    status: 1
 id: node.stanford_page.su_page_components
 field_name: su_page_components
 entity_type: node
@@ -22,18 +24,28 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
-    target_bundles:
-      stanford_cards: stanford_cards
-      stanford_wysiwyg: stanford_wysiwyg
+    negate: 1
+    target_bundles: null
     target_bundles_drag_drop:
       stanford_card:
         weight: 4
         enabled: false
       stanford_cards:
-        enabled: true
         weight: 5
+        enabled: false
       stanford_wysiwyg:
-        enabled: true
         weight: 6
+        enabled: false
+      1_column_centered:
+        weight: 8
+        enabled: false
+      1_column_full_width:
+        weight: 9
+        enabled: false
+      2_column_centered:
+        weight: 10
+        enabled: false
+      3_column_centered:
+        weight: 11
+        enabled: false
 field_type: entity_reference_revisions

@@ -1,0 +1,37 @@
+uuid: a5a14e45-ac84-45b0-bbaa-e51c531e3a0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.1_column_centered.su_1_col_components
+    - paragraphs.paragraphs_type.1_column_centered
+  module:
+    - paragraphs
+id: paragraph.1_column_centered.default
+targetEntityType: paragraph
+bundle: 1_column_centered
+mode: default
+content:
+  admin_title:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_1_col_components:
+    type: entity_reference_paragraphs
+    weight: -9
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

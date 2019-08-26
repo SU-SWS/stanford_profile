@@ -8,7 +8,6 @@ dependencies:
     - node.type.stanford_page
   module:
     - entity_reference_revisions
-    - jumpstart_ui
     - layout_builder
     - layout_discovery
     - user
@@ -18,7 +17,7 @@ third_party_settings:
     enabled: true
     sections:
       -
-        layout_id: layout_pacman-left
+        layout_id: layout_onecol
         layout_settings: {  }
         components:
           8e68d132-9bf7-4530-b9c0-505657e97298:
@@ -38,19 +37,9 @@ third_party_settings:
                 third_party_settings: {  }
             additional: {  }
             weight: 1
-          484d91cd-de8e-4920-a3fb-e952f49aef86:
-            uuid: 484d91cd-de8e-4920-a3fb-e952f49aef86
-            region: sidebar
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:stanford_page:links'
-            additional: {  }
-            weight: 0
           509a28e8-06b5-4212-9a14-4f203d266afc:
             uuid: 509a28e8-06b5-4212-9a14-4f203d266afc
-            region: header
+            region: content
             configuration:
               id: 'field_block:node:stanford_page:title'
               label: Title
@@ -66,11 +55,6 @@ third_party_settings:
                 entity: layout_builder.entity
             additional: {  }
             weight: 0
-        third_party_settings: {  }
-      -
-        layout_id: layout_onecol
-        layout_settings: {  }
-        components: {  }
         third_party_settings: {  }
 id: node.stanford_page.default
 targetEntityType: node

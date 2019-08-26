@@ -1,0 +1,36 @@
+uuid: f500d78c-168b-40ae-9c59-10380d3474b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.1_column_centered.su_1_col_components
+    - paragraphs.paragraphs_type.1_column_centered
+  module:
+    - ds
+    - entity_reference_revisions
+third_party_settings:
+  ds:
+    layout:
+      id: layout_basic
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - su_1_col_components
+id: paragraph.1_column_centered.default
+targetEntityType: paragraph
+bundle: 1_column_centered
+mode: default
+content:
+  su_1_col_components:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }
