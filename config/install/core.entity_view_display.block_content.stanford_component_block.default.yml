@@ -1,0 +1,24 @@
+uuid: 7fe89151-e6e1-4b3d-82ab-c05981d8fcae
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.stanford_component_block
+    - field.field.block_content.stanford_component_block.su_component
+  module:
+    - entity_reference_revisions
+id: block_content.stanford_component_block.default
+targetEntityType: block_content
+bundle: stanford_component_block
+mode: default
+content:
+  su_component:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

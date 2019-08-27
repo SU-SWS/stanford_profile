@@ -14,7 +14,6 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_card
   module:
     - ds
-    - jumpstart_ui
     - layout_builder
     - stanford_media
     - text
@@ -39,11 +38,17 @@ third_party_settings:
       card_body:
         - su_card_body
       card_link:
-        - su_card_link
+        - 'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_card_su_card_link'
       card_cta_label:
         - su_card_cta_text
       card_button_label:
         - su_card_btn_txt
+    fields:
+      'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_card_su_card_link':
+        plugin_id: 'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_card_su_card_link'
+        weight: 4
+        label: hidden
+        formatter: default
   layout_builder:
     allow_custom: false
     enabled: false
@@ -83,22 +88,15 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-  su_card_link:
-    weight: 4
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: field_link_url_text_only
-    region: card_link
   su_card_media:
-    type: media_image_formatter
+    type: media_responsive_image_formatter
     weight: 0
     region: card_image
     label: hidden
     settings:
-      image_style: null
-      link: 0
       view_mode: default
+      image_style: full_responsive
+      link: 0
     third_party_settings: {  }
   su_card_super_header:
     type: string
@@ -108,4 +106,5 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  su_card_link: true

@@ -7,7 +7,6 @@ dependencies:
     - node.type.stanford_page
   module:
     - entity_reference_revisions
-    - paragraph_blocks
 third_party_settings:
   paragraph_blocks:
     status: 1
@@ -27,25 +26,4 @@ settings:
     negate: 1
     target_bundles: null
     target_bundles_drag_drop:
-      stanford_card:
-        weight: 4
-        enabled: false
-      stanford_cards:
-        weight: 5
-        enabled: false
-      stanford_wysiwyg:
-        weight: 6
-        enabled: false
-      1_column_centered:
-        weight: 8
-        enabled: false
-      1_column_full_width:
-        weight: 9
-        enabled: false
-      2_column_centered:
-        weight: 10
-        enabled: false
-      3_column_centered:
-        weight: 11
-        enabled: false
 field_type: entity_reference_revisions

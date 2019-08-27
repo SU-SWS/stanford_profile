@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_page_attachments.
+ */
+function stanford_page_page_attachments(array &$page) {
+
+  // Uncomment to add a library to all pages. It is recommended that you don't
+  // just add a library to all pages but rather, conditionally require this
+  // library only where it is needed.
+  // See: https://www.drupal.org/node/2274843
+
+  $page['#attached']['library'][] = 'stanford_page/component';
+
+}
