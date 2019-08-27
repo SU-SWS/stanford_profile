@@ -1,0 +1,194 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/programs?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/stanford_page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+            {
+                "href": "",
+                "lang": "en"
+            },
+            {
+                "href": "",
+                "lang": "en"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": 15
+        }
+    ],
+    "uuid": [
+        {
+            "value": "9153cfe9-e078-4048-b5c6-1282815a73e4"
+        }
+    ],
+    "vid": [
+        {
+            "value": 65
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "stanford_page"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "2019-08-27T23:13:40+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0401dba7-4738-410c-81ad-1472dfc82abd"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0401dba7-4738-410c-81ad-1472dfc82abd"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "572fb79d-9b65-43c3-aff4-1ff37514ad41"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "161"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_card"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "18a7d9f1-59fe-4b56-b1d8-f18326c26810"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "162"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Programs",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-08-27T23:13:02+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2019-08-27T23:13:40+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "promote": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "path": [
+        {
+            "alias": "\/programs",
+            "pid": 15,
+            "langcode": "en",
+            "lang": "en"
+        }
+    ]
+}

@@ -1,0 +1,236 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/home?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/stanford_page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+            {
+                "href": "",
+                "lang": "en"
+            },
+            {
+                "href": "",
+                "lang": "en"
+            },
+            {
+                "href": "",
+                "lang": "en"
+            },
+            {
+                "href": "",
+                "lang": "en"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": 10
+        }
+    ],
+    "uuid": [
+        {
+            "value": "72f0069b-f1ec-4122-af73-6aa841faea90"
+        }
+    ],
+    "vid": [
+        {
+            "value": 57
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "stanford_page"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "2019-08-27T23:08:04+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0401dba7-4738-410c-81ad-1472dfc82abd"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0401dba7-4738-410c-81ad-1472dfc82abd"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_banner"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "5395f779-e884-4429-a533-a6712bd4eb32"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "149"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b7abb133-a21b-4a1a-a13c-f630aad2ce7e"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "150"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_card"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "689308ea-9c1e-4386-9909-075672c7bb5b"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "151"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fbbaaecc-80fc-494a-8bce-83638d1d668d"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "152"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "Home",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-08-27T21:16:24+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2019-08-27T23:08:04+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "promote": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "path": [
+        {
+            "alias": "\/home",
+            "pid": 10,
+            "langcode": "en",
+            "lang": "en"
+        }
+    ]
+}

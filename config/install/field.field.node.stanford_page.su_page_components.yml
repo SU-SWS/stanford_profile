@@ -7,9 +7,6 @@ dependencies:
     - node.type.stanford_page
   module:
     - entity_reference_revisions
-third_party_settings:
-  paragraph_blocks:
-    status: 1
 id: node.stanford_page.su_page_components
 field_name: su_page_components
 entity_type: node
@@ -26,4 +23,13 @@ settings:
     negate: 1
     target_bundles: null
     target_bundles_drag_drop:
+      stanford_banner:
+        weight: 4
+        enabled: false
+      stanford_card:
+        weight: 4
+        enabled: false
+      stanford_wysiwyg:
+        weight: 6
+        enabled: false
 field_type: entity_reference_revisions

@@ -1,0 +1,116 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_card"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_card\/su_card_media": [
+            {
+                "href": "http:\/\/default\/media\/2\/edit?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": 38
+        }
+    ],
+    "uuid": [
+        {
+            "value": "689308ea-9c1e-4386-9909-075672c7bb5b"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": 151
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "stanford_card"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-08-27T21:38:50+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "10"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "su_page_components"
+        }
+    ],
+    "behavior_settings": [
+        {
+            "value": []
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "su_card_body": [
+        {
+            "value": "<p>asdfasdf<\/p>\r\n",
+            "format": "stanford_minimal_html",
+            "processed": "<p>asdfasdf<\/p>"
+        }
+    ],
+    "su_card_header": [
+        {
+            "value": "Are fun"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_card\/su_card_media": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/media\/2\/edit?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/media\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "6fac3713-f499-4750-a7bc-32c16a59043a"
+                    }
+                ]
+            }
+        ]
+    },
+    "su_card_super_header": [
+        {
+            "value": "CARD"
+        }
+    ]
+}

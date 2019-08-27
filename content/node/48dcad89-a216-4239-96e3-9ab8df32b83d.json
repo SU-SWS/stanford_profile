@@ -1,0 +1,167 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/news?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/stanford_page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
+            {
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+            {
+                "href": "",
+                "lang": "en"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": 11
+        }
+    ],
+    "uuid": [
+        {
+            "value": "48dcad89-a216-4239-96e3-9ab8df32b83d"
+        }
+    ],
+    "vid": [
+        {
+            "value": 61
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "stanford_page"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "2019-08-27T23:11:26+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0401dba7-4738-410c-81ad-1472dfc82abd"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0401dba7-4738-410c-81ad-1472dfc82abd"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "303dc255-9225-4fdb-9244-2e29c697df17"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "157"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "title": [
+        {
+            "value": "News",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-08-27T22:50:09+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2019-08-27T23:11:26+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "promote": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": false,
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "path": [
+        {
+            "alias": "\/news",
+            "pid": 11,
+            "langcode": "en",
+            "lang": "en"
+        }
+    ]
+}
