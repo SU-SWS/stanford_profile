@@ -5,11 +5,17 @@
  */
 function stanford_page_page_attachments(array &$page) {
 
-  // Uncomment to add a library to all pages. It is recommended that you don't
-  // just add a library to all pages but rather, conditionally require this
-  // library only where it is needed.
-  // See: https://www.drupal.org/node/2274843
+  // Get the node from the route.
+  $node = \Drupal::routeMatch()->getParameter('node');
 
-  $page['#attached']['library'][] = 'stanford_page/component';
+  // Not a node.. Then just continue.
+  if (!$node) {
+    return;
+  }
+
+  // Check for our type and add library if a match.
+  if ($node->getType() == "stanford_page") {
+    $page['#attached']['library'][] = 'stanford_page/component';
+  }
 
 }
