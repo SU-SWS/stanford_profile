@@ -3,7 +3,7 @@
 /**
  * Implements hook_page_attachments.
  */
-function stanford_page_page_attachments(array &$page) {
+function stanford_profile_styles_page_attachments(array &$page) {
 
   // Get the node from the route.
   $node = \Drupal::routeMatch()->getParameter('node');
@@ -15,7 +15,7 @@ function stanford_page_page_attachments(array &$page) {
 
   // Check for our type and add library if a match.
   if ($node->getType() == "stanford_page") {
-    $page['#attached']['library'][] = 'stanford_page/component';
+    $page['#attached']['library'][] = 'stanford_profile_styles/stanford_page';
   }
 
 }
