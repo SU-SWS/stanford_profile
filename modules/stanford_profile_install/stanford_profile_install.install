@@ -1,0 +1,78 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the profilename install profile.
+ */
+
+use Drupal\user\Entity\User;
+use Drupal\user\RoleInterface;
+use Drupal\shortcut\Entity\Shortcut;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function stanford_profile_install_install() {
+
+  // Assign user 1 the "administrator" role.
+  $user = User::load(1);
+  $user->set('name', 'sws-developers');
+  $user->set('mail', 'sws-developers@lists.stanford.edu');
+  $user->addRole('administrator');
+  $user->save();
+
+  // Create Howard role.
+  User::create([
+    'name' => 'Howard',
+    'password' => user_password(),
+    'email' => 'sws-developers+howard@lists.stanford.edu',
+    'roles' => ['site_manager'],
+    'status' => 1,
+  ])->save();
+
+  // Create Lindsey role.
+  User::create([
+    'name' => 'Lindsey',
+    'password' => user_password(),
+    'email' => 'sws-developers+lindsey@lists.stanford.edu',
+    'roles' => ['contributor'],
+    'status' => 1,
+  ])->save();
+
+  // We install some menu links, so we have to rebuild the router, to ensure the
+  // menu links are valid.
+  \Drupal::service('router.builder')->rebuildIfNeeded();
+
+  // Allow authenticated users to use shortcuts.
+  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access shortcuts']);
+
+  // Populate the default shortcut set.
+  // $shortcut = Shortcut::create([
+  //   'shortcut_set' => 'default',
+  //   'title' => t('Add content'),
+  //   'weight' => -20,
+  //   'link' => ['uri' => 'internal:/node/add'],
+  // ]);
+  // $shortcut->save();
+  //
+  // $shortcut = Shortcut::create([
+  //   'shortcut_set' => 'default',
+  //   'title' => t('All content'),
+  //   'weight' => -19,
+  //   'link' => ['uri' => 'internal:/admin/content'],
+  // ]);
+  // $shortcut->save();
+
+  // Allow all users to use search.
+  user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, [
+    'access content',
+    'search content',
+  ]);
+  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, [
+    'access content',
+    'search content',
+  ]);
+}
