@@ -34,35 +34,6 @@ third_party_settings:
         - su_banner_header
       hero_body:
         - su_banner_body
-      hero_cta_link:
-        - 'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link'
-      hero_cta_label:
-        - 'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link'
-      hero_button_link:
-        - 'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_button'
-      hero_button_label:
-        - 'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_button'
-    fields:
-      'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_button':
-        plugin_id: 'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_button'
-        weight: 7
-        label: hidden
-        formatter: default
-      'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link':
-        plugin_id: 'jumpstart_ui_link_field_column_label:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link'
-        weight: 5
-        label: hidden
-        formatter: default
-      'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_button':
-        plugin_id: 'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_button'
-        weight: 6
-        label: hidden
-        formatter: default
-      'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link':
-        plugin_id: 'jumpstart_ui_link_field_column_uri:jumpstart_ui_paragraph_stanford_banner_su_banner_cta_link'
-        weight: 4
-        label: hidden
-        formatter: default
 id: paragraph.stanford_banner.default
 targetEntityType: paragraph
 bundle: stanford_banner

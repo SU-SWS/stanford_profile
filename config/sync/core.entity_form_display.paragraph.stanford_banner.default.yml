@@ -12,7 +12,6 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_banner
   module:
     - link
-    - media_library
     - text
 id: paragraph.stanford_banner.default
 targetEntityType: paragraph
@@ -58,13 +57,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
-  su_banner_image:
-    type: media_library_widget
-    weight: 1
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
     region: content
   su_banner_sup_header:
     weight: 2
