@@ -9,7 +9,7 @@ Feature: WYSIWYG Paragraph
     Given I am logged in as a user with the "administrator" role
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
-    Then I fill in wysiwyg "Body" with "../assets/documents/WYSIWYG.html"
+    Then I fill in wysiwyg "Body" with "../../assets/documents/WYSIWYG.html"
     Then I press "Save"
     And I should be on "/test-wysiwyg-paragraph"
 
@@ -74,7 +74,7 @@ Feature: WYSIWYG Paragraph
     Then I click "Embed a File"
     And I wait for AJAX to finish
     And I wait 1 seconds
-    Then I drop "../assets/images/logo.jpg" file into dropzone
+    Then I drop "../../assets/images/logo.jpg" file into dropzone
     And I press "Add to Library"
     And I wait for AJAX to finish
     And I wait 1 seconds
@@ -130,10 +130,10 @@ Feature: WYSIWYG Paragraph
     Then I click "Embed a File"
     And I wait for AJAX to finish
     And I wait 1 seconds
-    Then I drop "../assets/documents/test.php" file into dropzone
+    Then I drop "../../assets/documents/test.php" file into dropzone
     And I should see an ".dz-error.dz-complete" element
     Then I click the ".dropzonejs-remove-icon" element
-    And I drop "../assets/documents/test.txt" file into dropzone
+    And I drop "../../assets/documents/test.txt" file into dropzone
     And I press "Add to Library"
     And I wait for AJAX to finish
     And I wait 1 seconds
