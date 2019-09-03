@@ -9,8 +9,6 @@ Feature: WYSIWYG Paragraph
     Given I am logged in as a user with the "administrator" role
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
-    And I press "Add WYSIWYG"
-    And I wait for AJAX to finish
     Then I fill in wysiwyg "Body" with "../assets/documents/WYSIWYG.html"
     Then I press "Save"
     And I should be on "/test-wysiwyg-paragraph"
@@ -70,8 +68,6 @@ Feature: WYSIWYG Paragraph
     Given I am logged in as a user with the "administrator" role
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
-    And I press "Add WYSIWYG"
-    And I wait for AJAX to finish
     Then I click the "a[title='Embed Media']" element
     And I wait for AJAX to finish
     Then I switch to "entity_browser_iframe_media_browser" iframe
@@ -101,8 +97,6 @@ Feature: WYSIWYG Paragraph
     Given I am logged in as a user with the "administrator" role
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
-    And I press "Add WYSIWYG"
-    And I wait for AJAX to finish
     Then I click the "a[title='Embed Media']" element
     And I wait for AJAX to finish
     Then I switch to "entity_browser_iframe_media_browser" iframe
@@ -130,8 +124,6 @@ Feature: WYSIWYG Paragraph
     Given I am logged in as a user with the "administrator" role
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
-    And I press "Add WYSIWYG"
-    And I wait for AJAX to finish
     Then I click the "a[title='Embed Media']" element
     And I wait for AJAX to finish
     Then I switch to "entity_browser_iframe_media_browser" iframe
