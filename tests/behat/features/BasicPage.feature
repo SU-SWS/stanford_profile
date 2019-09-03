@@ -24,5 +24,6 @@ Feature: Basic Page
     Then I check "Provide a menu link"
     And I fill in "Menu link title" with "Another Behat Test Menu Item"
     And I select "-- Behat Test Page Menu Item" from "Parent item"
+    Then I press "Change parent (update list of weights)"
     And I press "Save"
     Then I should see "Another Behat Test Menu Item" in the "menu" region
