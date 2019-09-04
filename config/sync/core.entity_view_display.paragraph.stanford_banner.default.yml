@@ -5,13 +5,13 @@ dependencies:
   config:
     - field.field.paragraph.stanford_banner.su_banner_body
     - field.field.paragraph.stanford_banner.su_banner_button
-    - field.field.paragraph.stanford_banner.su_banner_cta_link
     - field.field.paragraph.stanford_banner.su_banner_header
     - field.field.paragraph.stanford_banner.su_banner_image
     - field.field.paragraph.stanford_banner.su_banner_sup_header
     - paragraphs.paragraphs_type.stanford_banner
   module:
     - ds
+    - link
     - stanford_media
     - text
 third_party_settings:
@@ -34,6 +34,7 @@ third_party_settings:
         - su_banner_header
       hero_body:
         - su_banner_body
+        - su_banner_button
 id: paragraph.stanford_banner.default
 targetEntityType: paragraph
 bundle: stanford_banner
@@ -46,6 +47,18 @@ content:
     third_party_settings: {  }
     type: text_default
     region: hero_body
+  su_banner_button:
+    type: link
+    weight: 4
+    region: hero_body
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
   su_banner_header:
     weight: 2
     label: hidden
@@ -72,6 +85,4 @@ content:
     third_party_settings: {  }
     type: string
     region: hero_super_headline
-hidden:
-  su_banner_button: true
-  su_banner_cta_link: true
+hidden: {  }

@@ -5,8 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.paragraph.variant_1
     - field.field.paragraph.stanford_card.su_card_body
-    - field.field.paragraph.stanford_card.su_card_btn_txt
-    - field.field.paragraph.stanford_card.su_card_cta_text
     - field.field.paragraph.stanford_card.su_card_header
     - field.field.paragraph.stanford_card.su_card_link
     - field.field.paragraph.stanford_card.su_card_media
@@ -15,6 +13,7 @@ dependencies:
   module:
     - ds
     - layout_builder
+    - link
     - stanford_media
     - text
 third_party_settings:
@@ -27,7 +26,7 @@ third_party_settings:
       settings:
         pattern:
           field_templates: only_content
-          variant: linked
+          variant: postcard
     regions:
       card_image:
         - su_card_media
@@ -37,10 +36,7 @@ third_party_settings:
         - su_card_header
       card_body:
         - su_card_body
-      card_cta_label:
-        - su_card_cta_text
-      card_button_label:
-        - su_card_btn_txt
+        - su_card_link
   layout_builder:
     allow_custom: false
     enabled: false
@@ -56,22 +52,6 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-  su_card_btn_txt:
-    weight: 6
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: card_button_label
-  su_card_cta_text:
-    weight: 5
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: card_cta_label
   su_card_header:
     type: string
     weight: 2
@@ -79,6 +59,18 @@ content:
     label: hidden
     settings:
       link_to_entity: false
+    third_party_settings: {  }
+  su_card_link:
+    type: link
+    weight: 4
+    region: card_body
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
     third_party_settings: {  }
   su_card_media:
     type: media_responsive_image_formatter
@@ -98,5 +90,4 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-hidden:
-  su_card_link: true
+hidden: {  }

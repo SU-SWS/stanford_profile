@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.paragraph.stanford_banner.su_banner_body
     - field.field.paragraph.stanford_banner.su_banner_button
-    - field.field.paragraph.stanford_banner.su_banner_cta_link
     - field.field.paragraph.stanford_banner.su_banner_header
     - field.field.paragraph.stanford_banner.su_banner_image
     - field.field.paragraph.stanford_banner.su_banner_sup_header
@@ -36,14 +35,6 @@ content:
     region: content
   su_banner_button:
     weight: 6
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-    region: content
-  su_banner_cta_link:
-    weight: 5
     settings:
       placeholder_url: ''
       placeholder_title: ''
