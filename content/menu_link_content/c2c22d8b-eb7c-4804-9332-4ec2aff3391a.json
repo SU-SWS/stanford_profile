@@ -5,7 +5,12 @@
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/menu_link_content\/menu_link_content"
-        }
+        },
+        "http:\/\/drupal.org\/rest\/relation\/menu_link_content\/menu_link_content\/menu_link_content_target_entity": [
+            {
+                "href": "http:\/\/default\/about?_format=hal_json"
+            }
+        ]
     },
     "id": [
         {
@@ -57,9 +62,10 @@
     ],
     "link": [
         {
-            "uri": "entity:node\/16",
-            "title": null,
-            "options": []
+            "uri": "entity:node\/8",
+            "title": "",
+            "options": [],
+            "target_uuid": "d21d84f0-22e7-4596-82cb-9209841a3276"
         }
     ],
     "external": [
@@ -84,7 +90,7 @@
     ],
     "changed": [
         {
-            "value": "2019-08-27T23:14:32+00:00",
+            "value": "2019-09-04T17:36:00+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
@@ -100,5 +106,24 @@
             "value": true,
             "lang": "en"
         }
-    ]
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/menu_link_content\/menu_link_content\/menu_link_content_target_entity": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/about?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/stanford_page"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "d21d84f0-22e7-4596-82cb-9209841a3276"
+                    }
+                ]
+            }
+        ]
+    }
 }

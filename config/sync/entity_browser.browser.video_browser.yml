@@ -11,12 +11,12 @@ _core:
   default_config_hash: FT-eFXc28GznTozqxyQPAZfegizc0CtNomtw1fH6s0c
 name: video_browser
 label: 'Video Browser'
-display: iframe
+display: modal
 display_configuration:
-  width: 100%
+  width: ''
   height: '650'
   link_text: Continue
-  auto_open: true
+  auto_open: false
 selection_display: multi_step_display
 selection_display_configuration:
   entity_type: media
