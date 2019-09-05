@@ -1,11 +1,11 @@
+@api
 Feature: Basic Page
   In order to verify that Basic Page is working
   As a user
   I should be create a basic page
 
-  @api
   Scenario: Create a simple basic page.
-    Given I am logged in as a user with the "Administrator" role
+    Given I am logged in as a user with the "Contributor" role
     And I am on "node/add/stanford_page"
     Then the response status code should be 200
     And I fill in "Title" with "Behat Test Page"

@@ -6,7 +6,7 @@ Feature: WYSIWYG Paragraph
 
   @javascript @api
   Scenario: Test Filtered HTML.
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged in as a user with the "contributor" role
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
     Then I fill in wysiwyg "Body" with "../../assets/documents/WYSIWYG.html"
