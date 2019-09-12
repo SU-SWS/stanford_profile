@@ -17,9 +17,11 @@ settings:
           items:
             - Bold
             - Italic
+            - Strike
             - JustifyLeft
             - JustifyCenter
             - JustifyRight
+            - HorizontalRule
             - '-'
             - Styles
             - Format
@@ -34,6 +36,8 @@ settings:
           items:
             - BulletedList
             - NumberedList
+            - Outdent
+            - Indent
             - Table
         -
           name: Media
@@ -53,7 +57,7 @@ settings:
       linkit_enabled: true
       linkit_profile: default
     stylescombo:
-      styles: "a.su-button|Button\r\na.su-button--big|Big Button\r\na.su-button--secondary|Secondary Button"
+      styles: "a.su-button|Button\r\na.su-button--big|Big Button\r\na.su-button--secondary|Secondary Button\r\np.su-intro-text|Intro Text\r\np.su-font-splash|Splash Font\r\np.su-quote-text|Quote Text\r\np.su-drop-cap|Drop Cap First Letter\r\np.su-related-text|Related Text\r\np.callout-text|Callout Text"
     language:
       language_list: un
 image_upload:
