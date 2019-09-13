@@ -4,9 +4,9 @@
             "href": ""
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_banner"
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_card"
         },
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_banner\/su_banner_image": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_card\/su_card_media": [
             {
                 "href": "http:\/\/default\/media\/2\/edit?_format=hal_json"
             }
@@ -14,17 +14,17 @@
     },
     "id": [
         {
-            "value": 40
+            "value": 50
         }
     ],
     "uuid": [
         {
-            "value": "5395f779-e884-4429-a533-a6712bd4eb32"
+            "value": "9954cc81-919b-4498-9151-bf930831fca7"
         }
     ],
     "revision_id": [
         {
-            "value": 176
+            "value": 178
         }
     ],
     "langcode": [
@@ -35,7 +35,7 @@
     ],
     "type": [
         {
-            "target_id": "stanford_banner"
+            "target_id": "stanford_card"
         }
     ],
     "status": [
@@ -46,7 +46,7 @@
     ],
     "created": [
         {
-            "value": "2019-08-27T22:50:37+00:00",
+            "value": "2019-09-13T20:03:47+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
@@ -77,27 +77,20 @@
             "lang": "en"
         }
     ],
-    "su_banner_body": [
+    "su_card_body": [
         {
-            "value": "<p>To edit this page push that big shiny red button below.<\/p>\r\n",
+            "value": "<p>This is a card component. Wow.<\/p>\r\n",
             "format": "stanford_minimal_html",
-            "processed": "<p>To edit this page push that big shiny red button below.<\/p>"
+            "processed": "<p>This is a card component. Wow.<\/p>"
         }
     ],
-    "su_banner_button": [
+    "su_card_header": [
         {
-            "uri": "internal:\/node\/10\/edit",
-            "title": "Edit Me",
-            "options": []
-        }
-    ],
-    "su_banner_header": [
-        {
-            "value": "Welcome to your site!"
+            "value": "A Very Fine Card"
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_banner\/su_banner_image": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_card\/su_card_media": [
             {
                 "_links": {
                     "self": {
@@ -115,9 +108,9 @@
             }
         ]
     },
-    "su_banner_sup_header": [
+    "su_card_super_header": [
         {
-            "value": "Stanford University"
+            "value": "My Card"
         }
     ]
 }

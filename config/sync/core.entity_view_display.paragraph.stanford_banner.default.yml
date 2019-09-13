@@ -34,7 +34,16 @@ third_party_settings:
         - su_banner_header
       hero_body:
         - su_banner_body
+      hero_button_link:
         - su_banner_button
+      hero_button_label:
+        - 'display_field_copy:paragraph-su_banner_button_title'
+    fields:
+      'display_field_copy:paragraph-su_banner_button_title':
+        plugin_id: 'display_field_copy:paragraph-su_banner_button_title'
+        weight: 5
+        label: hidden
+        formatter: link_title
 id: paragraph.stanford_banner.default
 targetEntityType: paragraph
 bundle: stanford_banner
@@ -50,14 +59,14 @@ content:
   su_banner_button:
     type: link
     weight: 4
-    region: hero_body
+    region: hero_button_link
     label: hidden
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      trim_length: null
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
     third_party_settings: {  }
   su_banner_header:
     weight: 2
