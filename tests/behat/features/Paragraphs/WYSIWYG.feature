@@ -70,6 +70,7 @@ Feature: WYSIWYG Paragraph
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
     Then I click the "a[title='Embed Media']" element
     And I wait for AJAX to finish
+    And I wait 1 seconds
     Then I switch to "entity_browser_iframe_media_browser" iframe
     Then I click "Embed a File"
     And I wait for AJAX to finish
