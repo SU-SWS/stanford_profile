@@ -1,0 +1,23 @@
+uuid: 3740fb8a-413e-42b8-90b8-4bd687d83f33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_banner_button
+    - paragraphs.paragraphs_type.stanford_banner
+  module:
+    - link
+id: paragraph.stanford_banner.su_banner_button
+field_name: su_banner_button
+entity_type: paragraph
+bundle: stanford_banner
+label: Button
+description: 'A call to action button that shows up below the main body content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

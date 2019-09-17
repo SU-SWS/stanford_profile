@@ -1,0 +1,21 @@
+uuid: 9fdde0b5-eedf-42d8-a175-5d84ff704755
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.su_card_header
+field_name: su_card_header
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

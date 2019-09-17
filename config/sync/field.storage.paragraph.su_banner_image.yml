@@ -1,0 +1,20 @@
+uuid: 2ba679ec-f37e-40b1-8a3b-eea96ff8bb50
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - paragraphs
+id: paragraph.su_banner_image
+field_name: su_banner_image
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

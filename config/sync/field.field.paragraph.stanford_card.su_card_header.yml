@@ -1,0 +1,19 @@
+uuid: a7dfc9d8-a62a-403b-a63e-c390dba39bea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_card_header
+    - paragraphs.paragraphs_type.stanford_card
+id: paragraph.stanford_card.su_card_header
+field_name: su_card_header
+entity_type: paragraph
+bundle: stanford_card
+label: Headline
+description: 'This is the mean headline of the card type. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

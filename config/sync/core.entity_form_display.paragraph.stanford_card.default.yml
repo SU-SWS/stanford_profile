@@ -1,0 +1,71 @@
+uuid: 9c91913c-ad23-448b-88f6-342a527dbee3
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_browser
+    - field.field.paragraph.stanford_card.su_card_body
+    - field.field.paragraph.stanford_card.su_card_header
+    - field.field.paragraph.stanford_card.su_card_link
+    - field.field.paragraph.stanford_card.su_card_media
+    - field.field.paragraph.stanford_card.su_card_super_header
+    - paragraphs.paragraphs_type.stanford_card
+  module:
+    - entity_browser
+    - link
+    - text
+id: paragraph.stanford_card.default
+targetEntityType: paragraph
+bundle: stanford_card
+mode: default
+content:
+  su_card_body:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  su_card_header:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_card_link:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_card_media:
+    type: entity_browser_entity_reference
+    weight: 0
+    region: content
+    settings:
+      entity_browser: image_browser
+      field_widget_display: rendered_entity
+      field_widget_display_settings:
+        view_mode: thumbnail
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_replace: false
+    third_party_settings: {  }
+  su_card_super_header:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

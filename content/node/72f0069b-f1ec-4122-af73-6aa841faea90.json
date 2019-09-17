@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/page-not-found?_format=hal_json"
+            "href": "http:\/\/default\/home?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/stanford_page"
@@ -21,22 +21,34 @@
             {
                 "href": "",
                 "lang": "en"
+            },
+            {
+                "href": "",
+                "lang": "en"
+            },
+            {
+                "href": "",
+                "lang": "en"
+            },
+            {
+                "href": "",
+                "lang": "en"
             }
         ]
     },
     "nid": [
         {
-            "value": 2
+            "value": 1
         }
     ],
     "uuid": [
         {
-            "value": "6d51339d-ff67-498d-98e9-d8228d36fd51"
+            "value": "72f0069b-f1ec-4122-af73-6aa841faea90"
         }
     ],
     "vid": [
         {
-            "value": 2
+            "value": 11
         }
     ],
     "langcode": [
@@ -52,7 +64,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "2019-08-22T20:36:42+00:00",
+            "value": "2019-09-13T20:06:01+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -69,7 +81,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "84d97a48-1452-4930-a345-e90efc2b5c74"
+                        "value": "b4562304-eac2-4dee-810d-62f0e4af0ee3"
                     }
                 ]
             }
@@ -86,7 +98,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "84d97a48-1452-4930-a345-e90efc2b5c74"
+                        "value": "b4562304-eac2-4dee-810d-62f0e4af0ee3"
                     }
                 ],
                 "lang": "en"
@@ -99,16 +111,67 @@
                         "href": ""
                     },
                     "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_banner"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "5395f779-e884-4429-a533-a6712bd4eb32"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "176"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "bf52b16d-03ef-41dc-b906-4a3a88c2e9ce"
+                        "value": "b7abb133-a21b-4a1a-a13c-f630aad2ce7e"
                     }
                 ],
                 "lang": "en",
-                "target_revision_id": "1"
+                "target_revision_id": "177"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_card"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "9954cc81-919b-4498-9151-bf930831fca7"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "178"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": ""
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "fbbaaecc-80fc-494a-8bce-83638d1d668d"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "179"
             }
         ]
     },
@@ -120,20 +183,20 @@
     ],
     "title": [
         {
-            "value": "Page Not Found",
+            "value": "Home",
             "lang": "en"
         }
     ],
     "created": [
         {
-            "value": "2019-08-22T20:22:16+00:00",
+            "value": "2019-08-27T21:16:24+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "changed": [
         {
-            "value": "2019-08-22T20:36:42+00:00",
+            "value": "2019-09-13T20:06:01+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
@@ -164,8 +227,8 @@
     ],
     "path": [
         {
-            "alias": "\/page-not-found",
-            "pid": 4,
+            "alias": "\/home",
+            "pid": 8,
             "langcode": "en",
             "lang": "en"
         }

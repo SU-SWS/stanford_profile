@@ -1,0 +1,123 @@
+{
+    "_links": {
+        "self": {
+            "href": ""
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_banner"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_banner\/su_banner_image": [
+            {
+                "href": "http:\/\/default\/media\/2\/edit?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": 40
+        }
+    ],
+    "uuid": [
+        {
+            "value": "5395f779-e884-4429-a533-a6712bd4eb32"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": 176
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "stanford_banner"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2019-08-27T22:50:37+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "parent_id": [
+        {
+            "value": "1"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "su_page_components"
+        }
+    ],
+    "behavior_settings": [
+        {
+            "value": []
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "su_banner_body": [
+        {
+            "value": "<p>To edit this page push that big shiny red button below.<\/p>\r\n",
+            "format": "stanford_minimal_html",
+            "processed": "<p>To edit this page push that big shiny red button below.<\/p>"
+        }
+    ],
+    "su_banner_button": [
+        {
+            "uri": "internal:\/node\/10\/edit",
+            "title": "Edit Me",
+            "options": []
+        }
+    ],
+    "su_banner_header": [
+        {
+            "value": "Welcome to your site!"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_banner\/su_banner_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/media\/2\/edit?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/media\/image"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "6fac3713-f499-4750-a7bc-32c16a59043a"
+                    }
+                ]
+            }
+        ]
+    },
+    "su_banner_sup_header": [
+        {
+            "value": "Stanford University"
+        }
+    ]
+}

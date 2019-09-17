@@ -1,0 +1,19 @@
+uuid: 4e834957-5648-4378-a13d-c5d464371d5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_banner_header
+    - paragraphs.paragraphs_type.stanford_banner
+id: paragraph.stanford_banner.su_banner_header
+field_name: su_banner_header
+entity_type: paragraph
+bundle: stanford_banner
+label: Headline
+description: 'The main headline. Show up large.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

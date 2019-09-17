@@ -1,0 +1,28 @@
+uuid: 9f5065a2-6ead-4704-9550-3ca8c2eddf4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_card_media
+    - media.type.image
+    - paragraphs.paragraphs_type.stanford_card
+id: paragraph.stanford_card.su_card_media
+field_name: su_card_media
+entity_type: paragraph
+bundle: stanford_card
+label: Image
+description: 'The main graphical element in the card. See: /patterns/card'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
