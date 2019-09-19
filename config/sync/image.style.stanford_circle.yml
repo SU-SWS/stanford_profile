@@ -1,0 +1,35 @@
+uuid: ff7acff1-4307-4c82-8610-e76db3b05b71
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+    - image_effects
+name: stanford_circle
+label: Circle
+effects:
+  0b2a1b5b-65aa-4c03-ad55-f0d64e9414d1:
+    uuid: 0b2a1b5b-65aa-4c03-ad55-f0d64e9414d1
+    id: focal_point_scale_and_crop
+    weight: -10
+    data:
+      width: 140
+      height: 140
+      crop_type: focal_point
+  716304f7-4bc8-4c20-b3da-a8f0e50ee7dd:
+    uuid: 716304f7-4bc8-4c20-b3da-a8f0e50ee7dd
+    id: image_effects_mask
+    weight: -8
+    data:
+      mask_image: modules/custom/stanford_image_styles/img/mask-image.png
+      mask_width: ''
+      mask_height: ''
+      placement: center-center
+      x_offset: ''
+      y_offset: ''
+  83015ef1-511a-465f-8385-cb64a345c3c8:
+    uuid: 83015ef1-511a-465f-8385-cb64a345c3c8
+    id: image_convert
+    weight: -9
+    data:
+      extension: png
