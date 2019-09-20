@@ -1,0 +1,16 @@
+uuid: b3e6e228-0d21-4c60-aee1-061149d51778
+langcode: en
+status: true
+dependencies: {  }
+id: stanford_basic_site_settings
+label: 'Site Settings'
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/config/system/basic-site-settings
+  weight: 0
+  description: ''

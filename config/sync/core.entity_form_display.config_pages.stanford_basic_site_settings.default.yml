@@ -1,0 +1,24 @@
+uuid: f709ac08-679e-4bd4-947f-e2bf337d5bd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.field.config_pages.stanford_basic_site_settings.su_site_url
+  module:
+    - link
+id: config_pages.stanford_basic_site_settings.default
+targetEntityType: config_pages
+bundle: stanford_basic_site_settings
+mode: default
+content:
+  su_site_url:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+hidden:
+  label: true
