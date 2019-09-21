@@ -8,7 +8,7 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
+                "href": "http:\/\/default\/user\/5?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
@@ -48,7 +48,7 @@
     ],
     "vid": [
         {
-            "value": 11
+            "value": 1
         }
     ],
     "langcode": [
@@ -64,7 +64,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "2019-09-13T20:06:01+00:00",
+            "value": "2019-09-21T04:53:51+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -73,7 +73,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/5?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -81,7 +81,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "b4562304-eac2-4dee-810d-62f0e4af0ee3"
+                        "value": "f9f4d4b2-4c1e-46ef-b408-3b3c4b676833"
                     }
                 ]
             }
@@ -98,7 +98,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "b4562304-eac2-4dee-810d-62f0e4af0ee3"
+                        "value": "22bd86e4-8de6-4288-88ea-d4accfd13e8e"
                     }
                 ],
                 "lang": "en"
@@ -120,7 +120,7 @@
                     }
                 ],
                 "lang": "en",
-                "target_revision_id": "176"
+                "target_revision_id": "6"
             },
             {
                 "_links": {
@@ -137,7 +137,7 @@
                     }
                 ],
                 "lang": "en",
-                "target_revision_id": "177"
+                "target_revision_id": "10"
             },
             {
                 "_links": {
@@ -154,7 +154,7 @@
                     }
                 ],
                 "lang": "en",
-                "target_revision_id": "178"
+                "target_revision_id": "8"
             },
             {
                 "_links": {
@@ -171,7 +171,7 @@
                     }
                 ],
                 "lang": "en",
-                "target_revision_id": "179"
+                "target_revision_id": "14"
             }
         ]
     },
@@ -196,7 +196,7 @@
     ],
     "changed": [
         {
-            "value": "2019-09-13T20:06:01+00:00",
+            "value": "2019-09-21T04:53:51+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
@@ -228,8 +228,14 @@
     "path": [
         {
             "alias": "\/home",
-            "pid": 8,
+            "pid": 9,
             "langcode": "en",
+            "lang": "en"
+        }
+    ],
+    "layout_selection": [
+        {
+            "target_id": "stanford_basic_page_full",
             "lang": "en"
         }
     ]

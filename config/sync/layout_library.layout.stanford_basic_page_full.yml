@@ -1,0 +1,42 @@
+uuid: 51edb252-7661-4e82-a88c-fd5f7bdb58ed
+langcode: en
+status: true
+dependencies: {  }
+id: stanford_basic_page_full
+label: 'Full Width'
+targetEntityType: node
+targetBundle: stanford_page
+layout:
+  -
+    layout_id: ds_1col
+    layout_settings:
+      wrappers:
+        ds_content: div
+      outer_wrapper: div
+      attributes: ''
+      link_attribute: ''
+      link_custom: ''
+      classes:
+        layout_class: {  }
+    components:
+      07be1698-dbf8-4987-88b7-272fb33ffbcf:
+        uuid: 07be1698-dbf8-4987-88b7-272fb33ffbcf
+        region: ds_content
+        configuration:
+          id: 'field_block:node:stanford_page:su_page_components'
+          label: Components
+          provider: layout_builder
+          label_display: '0'
+          formatter:
+            label: hidden
+            type: entity_reference_revisions_entity_view
+            settings:
+              view_mode: default
+            third_party_settings:
+              ds:
+                ds_limit: ''
+          context_mapping:
+            entity: layout_builder.entity
+        additional: {  }
+        weight: 0
+    third_party_settings: {  }

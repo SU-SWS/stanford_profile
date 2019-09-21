@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.stanford_page.layout_builder__layout
+    - field.field.node.stanford_page.layout_selection
     - field.field.node.stanford_page.su_page_components
     - node.type.stanford_page
   module:
@@ -17,6 +19,12 @@ content:
     type: datetime_timestamp
     weight: 10
     region: content
+    settings: {  }
+    third_party_settings: {  }
+  layout_selection:
+    type: options_select
+    region: content
+    weight: 123
     settings: {  }
     third_party_settings: {  }
   path:
