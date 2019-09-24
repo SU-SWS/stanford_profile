@@ -1,0 +1,23 @@
+uuid: 5a7b79c2-212b-4f8f-85fc-fb8d6eb0e4b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_url
+  module:
+    - link
+id: config_pages.stanford_basic_site_settings.su_site_url
+field_name: su_site_url
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Site URL'
+description: 'To redirect all traffic to a single url, input the stanford.edu url here.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link
