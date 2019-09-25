@@ -1,0 +1,21 @@
+uuid: 8543add2-08a8-4a6a-92df-4dad4922b58e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_selection
+    - node.type.stanford_page
+id: node.stanford_page.layout_selection
+field_name: layout_selection
+entity_type: node
+bundle: stanford_page
+label: Layout
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: layout_library
+  handler_settings: {  }
+field_type: entity_reference
