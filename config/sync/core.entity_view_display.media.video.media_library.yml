@@ -1,28 +1,30 @@
-uuid: ef31c27a-881d-42c0-8064-5e463d9b0d84
+uuid: df36e4db-54ab-4926-b1fd-2d7c35dfa07a
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.media_library
     - field.field.media.video.field_media_oembed_video
+    - image.style.medium
     - media.type.video
   module:
-    - media
-id: media.video.default
+    - image
+id: media.video.media_library
 targetEntityType: media
 bundle: video
-mode: default
+mode: media_library
 content:
-  field_media_oembed_video:
-    type: oembed
-    weight: 0
+  thumbnail:
+    type: image
     label: hidden
     settings:
-      max_width: 0
-      max_height: 0
+      image_style: medium
+      image_link: ''
+    weight: 0
     third_party_settings: {  }
     region: content
 hidden:
   created: true
+  field_media_oembed_video: true
   name: true
-  thumbnail: true
   uid: true

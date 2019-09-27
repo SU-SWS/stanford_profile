@@ -1,17 +1,20 @@
-uuid: 1d4a67db-c036-42c5-b335-a6ed0c4385c9
+uuid: 23d322c9-5a85-4b71-8a37-de6b7758ce6f
 langcode: en
 status: true
 dependencies:
   module:
-    - video_embed_media
-_core:
-  default_config_hash: Qy1NSajpE226cSdbHV6g-k_N148Xpc1PvmBeSIzQPyI
+    - crop
+third_party_settings:
+  crop:
+    image_field: null
 id: video
 label: Video
-description: 'Use Video urls from YouTube for reusable media.'
-source: video_embed_field
+description: 'Use Video urls for reusable media.'
+source: 'oembed:video'
 queue_thumbnail_downloads: false
 new_revision: false
 source_configuration:
-  source_field: field_media_video_embed_field
+  thumbnails_directory: 'public://oembed_thumbnails'
+  providers: {  }
+  source_field: field_media_oembed_video
 field_map: {  }
