@@ -22,7 +22,8 @@ third_party_settings:
     sections:
       -
         layout_id: layout_pacman-left
-        layout_settings: {  }
+        layout_settings:
+          label: ''
         components:
           b774addb-41e3-497c-b321-1eb3c5cb4656:
             uuid: b774addb-41e3-497c-b321-1eb3c5cb4656
@@ -72,7 +73,7 @@ third_party_settings:
               label_display: '0'
               follow: false
               follow_parent: child
-              level: 1
+              level: 2
               depth: 0
               expand: true
               parent: 'main:'

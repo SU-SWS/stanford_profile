@@ -1,32 +1,30 @@
-uuid: 771203ef-4487-4e25-b82d-c3c7f552e971
+uuid: eb4f35a2-0444-4be1-87ef-c61ab18f4946
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.media.media_library
+    - core.entity_view_mode.media.stanford_image_medium
     - field.field.media.image.field_media_image
     - image.style.medium
     - media.type.image
   module:
     - image
-_core:
-  default_config_hash: PaGXvzRcL9eII--JV4eCVfObjrNo0l-u1dB_WJtB9ig
-id: media.image.media_library
+id: media.image.stanford_image_medium
 targetEntityType: media
 bundle: image
-mode: media_library
+mode: stanford_image_medium
 content:
-  thumbnail:
-    type: image
-    weight: 0
-    region: content
+  field_media_image:
     label: hidden
+    type: image
     settings:
       image_style: medium
       image_link: ''
+    weight: 6
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
-  field_media_image: true
   name: true
+  thumbnail: true
   uid: true

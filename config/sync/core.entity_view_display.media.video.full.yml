@@ -1,18 +1,19 @@
-uuid: 6d912d62-44c1-488b-9672-5666ac334502
+uuid: a7e0e619-3a2c-4f63-a833-0dca727b9769
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.full
     - field.field.media.video.field_media_oembed_video
     - media.type.video
   module:
     - media
 _core:
-  default_config_hash: Lcpr93rB3W6kcI48KJ3MhzP4Kg3HObfdAS8RDpoIyTg
-id: media.video.default
+  default_config_hash: vqVUNXW5VQkzMmWbWehC_qWBkReYPc_i-In_6nmtn8o
+id: media.video.full
 targetEntityType: media
 bundle: video
-mode: default
+mode: full
 content:
   field_media_oembed_video:
     type: oembed

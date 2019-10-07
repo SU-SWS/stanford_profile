@@ -1,4 +1,4 @@
-uuid: 635f066e-cf82-458c-a86d-2d8cee9bc30f
+uuid: eea3c9ec-6b5a-4fd8-b41b-a71d9754cc0f
 langcode: en
 status: true
 dependencies:
@@ -12,16 +12,23 @@ bundle: video
 mode: media_library
 content:
   field_media_oembed_video:
-    type: string_textfield
-    weight: 0
-    region: content
+    weight: 26
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    type: string_textfield
+    region: content
+  name:
+    type: string_textfield
+    settings:
+      size: 60
+      placeholder: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
 hidden:
   created: true
-  name: true
   path: true
   status: true
   uid: true

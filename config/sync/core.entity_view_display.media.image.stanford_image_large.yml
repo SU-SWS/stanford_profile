@@ -1,0 +1,30 @@
+uuid: 0f442539-4f41-49ad-adbd-87aedad94824
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.stanford_image_large
+    - field.field.media.image.field_media_image
+    - image.style.large
+    - media.type.image
+  module:
+    - image
+id: media.image.stanford_image_large
+targetEntityType: media
+bundle: image
+mode: stanford_image_large
+content:
+  field_media_image:
+    label: hidden
+    type: image
+    settings:
+      image_style: large
+      image_link: ''
+    weight: 6
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

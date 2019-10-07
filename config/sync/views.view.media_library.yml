@@ -1,4 +1,4 @@
-uuid: f1928a23-a4df-406e-b86e-24903249b09a
+uuid: a089f774-a1be-46df-9c22-21a5be21df16
 langcode: en
 status: true
 dependencies:
@@ -14,7 +14,7 @@ dependencies:
     - media_library
     - user
 _core:
-  default_config_hash: 443PIaUPDC3eREVPCHzXzxn_vxs64-GC0tcBJdmqS38
+  default_config_hash: AWji7uYzNsxcFVzYkTki4iTCAT2cn2s7FLMu64brtQo
 id: media_library
 label: 'Media library'
 module: views
@@ -328,6 +328,45 @@ display:
           entity_type: media
           entity_field: bundle
           plugin_id: bundle
+        status_extra:
+          id: status_extra
+          table: media_field_data
+          field: status_extra
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: media
+          plugin_id: media_status
       sorts:
         created:
           id: created
@@ -398,6 +437,7 @@ display:
         - url
         - url.query_args
         - 'url.query_args:sort_by'
+        - user
         - user.permissions
       tags: {  }
   page:
@@ -703,6 +743,7 @@ display:
         - url
         - url.query_args
         - 'url.query_args:sort_by'
+        - user
         - user.permissions
       tags: {  }
   widget:

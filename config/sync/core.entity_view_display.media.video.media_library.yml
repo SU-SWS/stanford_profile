@@ -1,4 +1,4 @@
-uuid: df36e4db-54ab-4926-b1fd-2d7c35dfa07a
+uuid: a346d4e2-6482-4924-ad2b-d02195f321b6
 langcode: en
 status: true
 dependencies:
@@ -9,11 +9,21 @@ dependencies:
     - media.type.video
   module:
     - image
+    - media
 id: media.video.media_library
 targetEntityType: media
 bundle: video
 mode: media_library
 content:
+  field_media_oembed_video:
+    type: oembed
+    label: hidden
+    weight: 1
+    settings:
+      max_width: 0
+      max_height: 0
+    third_party_settings: {  }
+    region: content
   thumbnail:
     type: image
     label: hidden
@@ -25,6 +35,5 @@ content:
     region: content
 hidden:
   created: true
-  field_media_oembed_video: true
   name: true
   uid: true

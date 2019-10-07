@@ -4,6 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.full
+    - core.entity_view_mode.media.stanford_image_large
+    - core.entity_view_mode.media.stanford_image_medium
+    - core.entity_view_mode.media.stanford_image_stanford_circle
+    - core.entity_view_mode.media.thumbnail
   module:
     - editor
     - linkit
@@ -49,7 +53,7 @@ filters:
     status: true
     weight: -50
     settings:
-      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id class> <h3 id> <h4 id> <h5 id> <h6 id> <a class href hreflang data-entity-substitution data-entity-type data-entity-uuid title name> <div class> <p class> <table> <caption> <tbody class> <thead> <tfoot> <th scope class> <td class> <tr> <sup> <sub> <i class> <hr> <drupal-media data-entity-type data-entity-uuid data-align data-caption data-* alt>'
+      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id class> <h3 id> <h4 id> <h5 id> <h6 id> <a class href hreflang data-entity-substitution data-entity-type data-entity-uuid title name> <drupal-entity data-entity-type data-entity-uuid data-entity-embed-display data-entity-embed-display-settings data-align data-caption data-embed-button data-langcode alt title> <div class> <p class> <table> <caption> <tbody class> <thead> <tfoot> <th scope class> <td class> <tr> <sup> <sub> <i class> <hr> <drupal-media data-entity-type data-entity-uuid data-align data-caption data-* alt>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -84,4 +88,9 @@ filters:
     weight: -47
     settings:
       default_view_mode: full
-      allowed_view_modes: {  }
+      allowed_view_modes:
+        full: full
+        stanford_image_large: stanford_image_large
+        stanford_image_medium: stanford_image_medium
+        stanford_image_stanford_circle: stanford_image_stanford_circle
+        thumbnail: thumbnail

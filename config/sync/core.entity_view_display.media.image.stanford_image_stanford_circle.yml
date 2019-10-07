@@ -1,0 +1,30 @@
+uuid: 18208d8c-bb8c-42eb-877e-1393016b309f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.stanford_image_stanford_circle
+    - field.field.media.image.field_media_image
+    - image.style.stanford_circle
+    - media.type.image
+  module:
+    - image
+id: media.image.stanford_image_stanford_circle
+targetEntityType: media
+bundle: image
+mode: stanford_image_stanford_circle
+content:
+  field_media_image:
+    label: hidden
+    type: image
+    settings:
+      image_style: stanford_circle
+      image_link: ''
+    weight: 6
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true
