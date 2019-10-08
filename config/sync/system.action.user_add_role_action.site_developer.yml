@@ -1,0 +1,14 @@
+uuid: 9cbc70d1-576c-48e6-8dc2-2a6c432080f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.site_developer
+  module:
+    - user
+id: user_add_role_action.site_developer
+label: 'Add the Site Developer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: site_developer
