@@ -8,21 +8,49 @@ targetEntityType: node
 targetBundle: stanford_page
 layout:
   -
-    layout_id: ds_1col
+    layout_id: layout_onecol
     layout_settings:
       label: ''
-      wrappers:
-        ds_content: div
-      outer_wrapper: div
-      attributes: ''
-      link_attribute: ''
-      link_custom: ''
-      classes:
-        layout_class: {  }
     components:
-      07be1698-dbf8-4987-88b7-272fb33ffbcf:
-        uuid: 07be1698-dbf8-4987-88b7-272fb33ffbcf
-        region: ds_content
+      4fba82f7-8808-4c93-95d9-7ecdde2fb0b1:
+        uuid: 4fba82f7-8808-4c93-95d9-7ecdde2fb0b1
+        region: content
+        configuration:
+          id: 'field_block:node:stanford_page:su_page_banner'
+          label: Banner
+          provider: layout_builder
+          label_display: '0'
+          formatter:
+            label: hidden
+            type: entity_reference_revisions_entity_view
+            settings:
+              view_mode: default
+            third_party_settings: {  }
+          context_mapping:
+            entity: layout_builder.entity
+        additional: {  }
+        weight: 0
+      6ce9c0ce-a019-44f4-9225-4c2a1a9fbc6d:
+        uuid: 6ce9c0ce-a019-44f4-9225-4c2a1a9fbc6d
+        region: content
+        configuration:
+          id: 'field_block:node:stanford_page:title'
+          label: Title
+          provider: layout_builder
+          label_display: '0'
+          formatter:
+            label: hidden
+            type: entity_title_heading
+            settings:
+              tag: h1
+            third_party_settings: {  }
+          context_mapping:
+            entity: layout_builder.entity
+        additional: {  }
+        weight: 1
+      d23da6c4-a596-41c2-8185-cd712c160306:
+        uuid: d23da6c4-a596-41c2-8185-cd712c160306
+        region: content
         configuration:
           id: 'field_block:node:stanford_page:su_page_components'
           label: Components
@@ -39,5 +67,5 @@ layout:
           context_mapping:
             entity: layout_builder.entity
         additional: {  }
-        weight: 0
+        weight: 2
     third_party_settings: {  }
