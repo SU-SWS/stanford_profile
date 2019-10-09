@@ -100,7 +100,6 @@ Feature: WYSIWYG Paragraph
     Then I press "Save"
     Then I should be on "/test-wysiwyg-paragraph"
     And I should see 1 "iframe" element in the "content" region
-    And the element "iframe" should have the attribute "src" with the value "/media/oembed?url=https%3A//www.youtube.com/watch%3Fv%3DktCgVopf7D0&max_width=0&max_height=0&hash=7ts9g8O_-M6n42mMbtqHFMW2pxY3kYz_xIC9s1Bc5sg"
 
   @api @javascript
   Scenario: Test Embedded Document
