@@ -15,26 +15,26 @@ Feature: Roles
     Then I should see "Administrator"
 
   Scenario: Check I can log in as the Contributor role
-    Given I am logged in as user with the "Contributor" role
+    Given I am logged in as a user with the "Contributor" role
     And I am on "admin/content"
     Then I should get a "200" HTTP response
 
   Scenario: Check I can log in as the Site Editor role
-    Given I am logged in as user with the "Site Editor" role
+    Given I am logged in as a user with the "Site Editor" role
     And I am on "admin/content"
     Then I should get a "200" HTTP response
 
   Scenario: Check I can log in as the Site Manager role
-    Given I am logged in as user with the "Site Manager" role
+    Given I am logged in as a user with the "Site Manager" role
     And I am on "admin/content"
     Then I should get a "200" HTTP response
 
   Scenario: Check I can log in as the Site Builder role
-    Given I am logged in as user with the "Site Builder" role
+    Given I am logged in as a user with the "Site Builder" role
     And I am on "admin/content"
     Then I should get a "200" HTTP response
 
   Scenario: Check I can log in as the Site Developer role
-    Given I am logged in as user with the "Site Developer" role
+    Given I am logged in as a user with the "Site Developer" role
     And I am on "admin/content"
     Then I should get a "200" HTTP response
