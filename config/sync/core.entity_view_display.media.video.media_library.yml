@@ -9,21 +9,11 @@ dependencies:
     - media.type.video
   module:
     - image
-    - media
 id: media.video.media_library
 targetEntityType: media
 bundle: video
 mode: media_library
 content:
-  field_media_oembed_video:
-    type: oembed
-    label: hidden
-    weight: 1
-    settings:
-      max_width: 0
-      max_height: 0
-    third_party_settings: {  }
-    region: content
   thumbnail:
     type: image
     label: hidden
@@ -35,5 +25,6 @@ content:
     region: content
 hidden:
   created: true
+  field_media_oembed_video: true
   name: true
   uid: true
