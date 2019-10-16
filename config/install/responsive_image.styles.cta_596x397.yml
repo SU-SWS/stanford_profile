@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.cta_1x_507x338
+    - image.style.cta_1x_596x397
+    - image.style.cta_2x_1014x676
+    - image.style.cta_2x_1192x794
+  module:
+    - stanford_image_styles
+id: cta_596x397
+label: 'CTA - 596x397'
+image_style_mappings:
+  -
+    breakpoint_id: stanford_image_styles.2xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cta_1x_596x397
+  -
+    breakpoint_id: stanford_image_styles.2xl
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cta_2x_1192x794
+  -
+    breakpoint_id: stanford_image_styles.xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cta_1x_596x397
+  -
+    breakpoint_id: stanford_image_styles.xl
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cta_2x_1192x794
+  -
+    breakpoint_id: stanford_image_styles.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cta_1x_596x397
+  -
+    breakpoint_id: stanford_image_styles.lg
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cta_2x_1192x794
+  -
+    breakpoint_id: stanford_image_styles.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cta_1x_596x397
+  -
+    breakpoint_id: stanford_image_styles.md
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cta_2x_1192x794
+  -
+    breakpoint_id: stanford_image_styles.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cta_1x_596x397
+  -
+    breakpoint_id: stanford_image_styles.sm
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cta_2x_1192x794
+  -
+    breakpoint_id: stanford_image_styles.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: cta_1x_507x338
+  -
+    breakpoint_id: stanford_image_styles.xs
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: cta_2x_1014x676
+breakpoint_group: stanford_image_styles
+fallback_image_style: cta_2x_1014x676
