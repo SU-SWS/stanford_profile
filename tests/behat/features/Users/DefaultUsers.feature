@@ -7,8 +7,8 @@ Feature: Default Users
   Scenario: Check default users exist
     Given I am logged in as a user with the "Administrator" role
     And I am on "admin/people"
-    Then I should see "Iris"
-    Then I should see "Daphne"
-    Then I should see "Reza"
-    Then I should see "Lindsey"
-    Then I should see "Howard"
+    Then I should see "Alex"
+    Then I should see "Jamie"
+    Then I should see "Sam"
+    Then I should see "Morgan"
+    Then I should see "Kennedy"
