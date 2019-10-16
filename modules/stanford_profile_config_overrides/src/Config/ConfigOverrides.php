@@ -27,17 +27,39 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * {@inheritDoc}
    */
   public function loadOverrides($names) {
+    $overrides = [];
+
+    // Basic Site Settings - Redirect Settings.
     if (in_array('domain_301_redirect.settings', $names)) {
       $site_url = $this->configPages->getValue('stanford_basic_site_settings', 'su_site_url', 0, 'uri');
 
-      return [
-        'domain_301_redirect.settings' => [
+      $overrides['domain_301_redirect.settings'] =
+        [
           'enabled' => !empty($site_url),
           'domain' => str_replace('http://', 'https://', $site_url),
-        ],
-      ];
+        ];
     }
-    return [];
+
+    // Branding Options Settings.
+
+    // Override the system setting.
+    if (in_array('system.site', $names)) {
+      $site_name = $this->configPages->getValue('stanford_branding_options', 'su_site_name', 0, 'value');
+      if (!empty($site_name)) {
+        $overrides['system.site'] = [ 'name' => $site_name ];
+      }
+    }
+
+    // And override the theme override of the system setting.
+    if (in_array('stanford_basic.settings', $names)) {
+      $site_name = $this->configPages->getValue('stanford_branding_options', 'su_site_name', 0, 'value');
+      if (!empty($site_name)) {
+        $overrides['stanford_basic.settings'] = [ 'line1' => $site_name ];
+      }
+    }
+
+    // Pass em all back.
+    return $overrides;
   }
 
   /**
