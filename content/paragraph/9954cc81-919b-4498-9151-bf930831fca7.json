@@ -8,7 +8,7 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_card\/su_card_media": [
             {
-                "href": "http:\/\/default\/media\/2\/edit?_format=hal_json"
+                "href": "http:\/\/default\/media\/3\/edit?_format=hal_json"
             }
         ]
     },
@@ -77,16 +77,29 @@
             "lang": "en"
         }
     ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
     "su_card_body": [
         {
-            "value": "<p>This is a card component. Wow.<\/p>\r\n",
+            "value": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae dignissim felis. Nullam nulla leo, venenatis at feugiat sit amet, ultricies non lorem.<\/p>\r\n",
             "format": "stanford_minimal_html",
-            "processed": "<p>This is a card component. Wow.<\/p>"
+            "processed": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae dignissim felis. Nullam nulla leo, venenatis at feugiat sit amet, ultricies non lorem.<\/p>"
         }
     ],
     "su_card_header": [
         {
-            "value": "A Very Fine Card"
+            "value": "Nam scelerisque, urna vitae auctor efficitur, tortor nunc cursus tortor, ut blandit purus arcu quis sapien"
+        }
+    ],
+    "su_card_link": [
+        {
+            "uri": "internal:\/",
+            "title": "Button",
+            "options": []
         }
     ],
     "_embedded": {
@@ -94,7 +107,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/media\/2\/edit?_format=hal_json"
+                        "href": "http:\/\/default\/media\/3\/edit?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/media\/image"
@@ -102,7 +115,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "6fac3713-f499-4750-a7bc-32c16a59043a"
+                        "value": "66286339-4f00-4994-8c0d-921b519ea4e4"
                     }
                 ]
             }
@@ -110,7 +123,7 @@
     },
     "su_card_super_header": [
         {
-            "value": "My Card"
+            "value": "Vestibulum"
         }
     ]
 }
