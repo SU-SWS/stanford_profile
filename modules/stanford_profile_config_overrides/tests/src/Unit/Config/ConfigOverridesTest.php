@@ -81,11 +81,11 @@ class ConfigOverridesTest extends UnitTestCase {
         'name' => 'University',
         'mail' => 'no-reply@stanford.edu',
         'slogan' => '',
-        'page' => {
+        'page' => [
           '403' => '/node/3',
           '404' => '/node/2',
           'front' => '/node/1',
-        },
+        ],
       ],
     ];
     $this->assertArrayEquals($expected_array, $this->configOverrides->loadOverrides(['system.site']));
