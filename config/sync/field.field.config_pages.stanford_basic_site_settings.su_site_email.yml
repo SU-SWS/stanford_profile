@@ -1,0 +1,19 @@
+uuid: 6cc1261d-a3f8-4af5-bf51-85a7e60c1011
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_email
+id: config_pages.stanford_basic_site_settings.su_site_email
+field_name: su_site_email
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Site Email Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email
