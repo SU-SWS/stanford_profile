@@ -1,0 +1,14 @@
+uuid: 2dd12f05-f793-468c-b126-13a7807ac317
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.site_editor
+  module:
+    - user
+id: user_add_role_action.site_editor
+label: 'Add the Site Editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: site_editor

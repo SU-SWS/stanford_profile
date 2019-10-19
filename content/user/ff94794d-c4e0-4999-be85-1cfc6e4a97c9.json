@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/user\/4?_format=hal_json"
+            "href": "http:\/\/default\/user\/6?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -9,12 +9,12 @@
     },
     "uid": [
         {
-            "value": 4
+            "value": 6
         }
     ],
     "uuid": [
         {
-            "value": "34d77ae2-6d5b-4763-94cd-f87fb3a44adc"
+            "value": "ff94794d-c4e0-4999-be85-1cfc6e4a97c9"
         }
     ],
     "langcode": [
@@ -28,14 +28,19 @@
             "value": "en"
         }
     ],
+    "preferred_admin_langcode": [
+        {
+            "value": "en"
+        }
+    ],
     "name": [
         {
-            "value": "Morgan"
+            "value": "Jamie"
         }
     ],
     "mail": [
         {
-            "value": "sws-developers+morgan@lists.stanford.edu"
+            "value": "sws-developers+jamie@lists.stanford.edu"
         }
     ],
     "timezone": [
@@ -50,32 +55,37 @@
     ],
     "created": [
         {
-            "value": "2019-09-04T17:05:59+00:00",
+            "value": "2019-10-08T23:24:16+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "changed": [
         {
-            "value": "2019-09-04T23:31:10+00:00",
+            "value": "2019-10-08T23:25:07+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "access": [
         {
-            "value": "2019-09-05T15:59:39+00:00",
+            "value": "1970-01-01T00:00:00+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "login": [
         {
-            "value": "2019-09-04T23:48:17+00:00",
+            "value": "1970-01-01T00:00:00+00:00",
             "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "init": [
+        {
+            "value": "sws-developers+jamie@lists.stanford.edu"
         }
     ],
     "roles": [
         {
-            "target_id": "site_manager"
+            "target_id": "site_builder"
         }
     ],
     "default_langcode": [
@@ -86,7 +96,7 @@
     ],
     "su_display_name": [
         {
-            "value": "Morgan",
+            "value": "Jamie",
             "lang": "en"
         }
     ]
