@@ -14,5 +14,7 @@ Feature: System Site Config
     Then I am on the homepage
     And I should see "Foo Bar Site"
     Then I am on "/admin/config/system/basic-site-settings"
-    And I press "Clear values"
-    And I press "Clear it Now!"
+    And I fill in "Site Name" with ""
+    And I press "Save"
+    Then I am on the homepage
+    And I should not see "Foo Bar Site"
