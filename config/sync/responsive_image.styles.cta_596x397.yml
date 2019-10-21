@@ -1,83 +1,76 @@
+uuid: 57f0cda1-80b1-428b-b767-4928e408879d
 langcode: en
 status: true
 dependencies:
   config:
-    - image.style.breakpoint_2xl_1x
-    - image.style.breakpoint_2xl_2x
-    - image.style.breakpoint_lg_1x
-    - image.style.breakpoint_lg_2x
-    - image.style.breakpoint_md_1x
-    - image.style.breakpoint_md_2x
-    - image.style.breakpoint_sm_1x
-    - image.style.breakpoint_sm_2x
-    - image.style.breakpoint_xl_1x
-    - image.style.breakpoint_xl_2x
+    - image.style.cta_1x_507x338
+    - image.style.cta_1x_596x397
+    - image.style.cta_2x_1014x676
+    - image.style.cta_2x_1192x794
   module:
     - stanford_image_styles
-_core:
-  default_config_hash: B0tXkjUZrA5gFY6X39MInsKCbjqw1oZHH9cYDwyQkhI
-id: stanford_hero_block_wide
-label: 'Stanford Hero Block - Wide'
+id: cta_596x397
+label: 'CTA - 596x397'
 image_style_mappings:
   -
     breakpoint_id: stanford_image_styles.2xl
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: breakpoint_2xl_1x
+    image_mapping: cta_1x_596x397
   -
     breakpoint_id: stanford_image_styles.2xl
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: breakpoint_2xl_2x
+    image_mapping: cta_2x_1192x794
   -
     breakpoint_id: stanford_image_styles.xl
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: breakpoint_2xl_1x
+    image_mapping: cta_1x_596x397
   -
     breakpoint_id: stanford_image_styles.xl
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: breakpoint_2xl_2x
+    image_mapping: cta_2x_1192x794
   -
     breakpoint_id: stanford_image_styles.lg
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: breakpoint_xl_1x
+    image_mapping: cta_1x_596x397
   -
     breakpoint_id: stanford_image_styles.lg
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: breakpoint_xl_2x
+    image_mapping: cta_2x_1192x794
   -
     breakpoint_id: stanford_image_styles.md
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: breakpoint_lg_1x
+    image_mapping: cta_1x_596x397
   -
     breakpoint_id: stanford_image_styles.md
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: breakpoint_lg_2x
+    image_mapping: cta_2x_1192x794
   -
     breakpoint_id: stanford_image_styles.sm
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: breakpoint_md_1x
+    image_mapping: cta_1x_596x397
   -
     breakpoint_id: stanford_image_styles.sm
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: breakpoint_md_2x
+    image_mapping: cta_2x_1192x794
   -
     breakpoint_id: stanford_image_styles.xs
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: breakpoint_sm_1x
+    image_mapping: cta_1x_507x338
   -
     breakpoint_id: stanford_image_styles.xs
     multiplier: 2x
     image_mapping_type: image_style
-    image_mapping: breakpoint_sm_2x
+    image_mapping: cta_2x_1014x676
 breakpoint_group: stanford_image_styles
-fallback_image_style: breakpoint_2xl_2x
+fallback_image_style: cta_2x_1014x676
