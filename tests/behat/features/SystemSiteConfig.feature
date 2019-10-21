@@ -1,0 +1,18 @@
+@api
+Feature: System Site Config
+  In order to verify that Configuration is overridden
+  As a user
+  I should be able to change site settings.
+
+  Scenario: Set basic site settings
+    Given I am logged in as a user with the "site_manager" role
+    And I am on the homepage
+    Then I should not see "Foo Bar Site"
+    And I am on "/admin/config/system/basic-site-settings"
+    Then I fill in "Site Name" with "Foo Bar Site"
+    And I press "Save"
+    Then I am on the homepage
+    And I should see "Foo Bar Site"
+    Then I am on "/admin/config/system/basic-site-settings"
+    And I press "Clear values"
+    And I press "Clear it Now!"
