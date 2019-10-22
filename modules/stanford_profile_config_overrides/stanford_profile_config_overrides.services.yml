@@ -1,6 +1,0 @@
-services:
-  stanford_profile_config_overrides.config_overrider:
-    class: Drupal\stanford_profile_config_overrides\Config\ConfigOverrides
-    arguments: ['@config_pages.loader']
-    tags:
-      - {name: config.factory.override}
