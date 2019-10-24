@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_paragraph_card_preprocess_paragraph(&$variables) {
+  // This function is not running on several paragraph types.
+  // Could be related to: https://www.drupal.org/project/paragraphs/issues/2897906
+  // It is likely due to something in the way that display suite handles
+  // rendering the patterns. To get around this, we have to use
+  // hook_preprocess_ds_entity_view() instead.
+}
+
+/**
+ * Implements hook_preprocess_ds_entity_view().
+ *
+ * Provide the logic for moving the label (link title) from the button_label
+ * region in the card component to the cta_label region.
+ */
+function stanford_paragraph_card_preprocess_ds_entity_view(array &$variables) {
+
+  // You can stop here if this is not a paragraph type.
+  if (!isset($variables['content']['#paragraph'])) {
+    return;
+  }
+
+  // Define the paragraph object variable for shorter code.
+  $paragraph = $variables['content']['#paragraph'];
+
+  // You can also stop if the paragraph is not a card.
+  if ($paragraph->getType() !== "stanford_card") {
+    return;
+  }
+
+  // If someone moved the field or a new view mode has been added that doesn't
+  // have the card_button_label region in the display just quietly end here.
+  if (!isset($variables['content']['#ds_configuration']['regions']['card_button_label'])) {
+    return;
+  }
+
+  // The key to which fields the link should go in to.
+  // By default, the display will render a button so we will only have to change
+  // it when the value is set to action. This behavior should be on all view
+  // modes.
+  $button_display = $paragraph->get('su_card_link_display')->getValue();
+
+  if ($button_display[0]['value'] == "action") {
+    // Change the DS config going in to the render.
+    $label = $variables['content']['#ds_configuration']['regions']['card_button_label'];
+    $variables['content']['#ds_configuration']['regions']['card_cta_label'] = $label;
+
+    // Move the fields.
+    $variables['content']['#fields']['card_cta_label']['display_field_copy:paragraph-su_card_link_title'] = $variables['content']['display_field_copy:paragraph-su_card_link_title'];
+
+    // Unset the cruft.
+    unset($variables['content']['#fields']['card_button_label']);
+    unset($variables['content']['#ds_configuration']['regions']['card_button_label']);
+  }
+}
