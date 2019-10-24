@@ -104,7 +104,13 @@ class InstallTasks implements InstallTasksInterface {
   protected function addSiteOwner($sunet) {
     $form_state = new FormState();
     $form_state->setValue('sunetid', $sunet);
-    $form_state->setValue('roles', ['site_manager']);
+    if ($this->entityTypeManager->getStorage('user_role')
+      ->load('site_manager')) {
+      $form_state->setValue('roles', ['site_manager']);
+    }
+    else {
+      $this->logger->error($this->t('Unable to add role "Site Manager" role to SunetID %sunet'), ['%sunet' => $sunet]);
+    }
     $this->formBuilder->submitForm('\Drupal\stanford_ssp\Form\AddUserForm', $form_state);
   }
 
