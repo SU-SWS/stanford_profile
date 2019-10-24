@@ -122,8 +122,8 @@ class InstallTasks implements InstallTasksInterface {
       $response = $this->client->request('GET', self::SNOW_API, [
         'query' => ['website_address' => $site_name],
         'auth' => [
-          $_ENV['STANFORD_SNOW_API_USER'] ?? '',
-          $_ENV['STANFORD_SNOW_API_PASS'] ?? '',
+          getenv('STANFORD_SNOW_API_USER'),
+          getenv('STANFORD_SNOW_API_PASS'),
         ],
       ]);
 
