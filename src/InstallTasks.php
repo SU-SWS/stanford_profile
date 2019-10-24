@@ -51,6 +51,13 @@ class InstallTasks implements InstallTasksInterface {
    * InstallTasks constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   Entity type manager service.
+   * @param \GuzzleHttp\ClientInterface $client
+   *   Guzzle service.
+   * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
+   *   Form builder service.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
+   *   Logger Factory service.
    */
   public function __construct(EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, FormBuilderInterface $form_builder, LoggerChannelFactoryInterface $logger_factory) {
     $this->entityTypeManager = $entityTypeManager;
@@ -102,18 +109,21 @@ class InstallTasks implements InstallTasksInterface {
   }
 
   /**
+   * Get site information from the SNOW API.
+   *
    * @param string $site_name
    *   The requested name of the site.
    *
    * @return array|null
+   *   Returned data if any exist.
    */
   protected function getSnowData($site_name) {
     try {
       $response = $this->client->request('GET', self::SNOW_API, [
         'query' => ['website_address' => $site_name],
         'auth' => [
-          $_ENV['STANFORD_SNOW_API_USER'] ?? 'acquiaWS',
-          $_ENV['STANFORD_SNOW_API_PASS'] ?? 'SXdzspeYRRlSOmb01eeZ',
+          $_ENV['STANFORD_SNOW_API_USER'] ?? '',
+          $_ENV['STANFORD_SNOW_API_PASS'] ?? '',
         ],
       ]);
 
