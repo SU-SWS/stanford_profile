@@ -28,7 +28,7 @@ function stanford_paragraph_card_preprocess_ds_entity_view(array &$variables) {
   $paragraph = $variables['content']['#paragraph'];
 
   // You can also stop if the paragraph is not a card.
-  if ($paragraph->getType() !== "stanford_card") {
+  if ($paragraph->bundle() !== "stanford_card") {
     return;
   }
 
