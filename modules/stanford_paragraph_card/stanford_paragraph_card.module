@@ -42,7 +42,7 @@ function stanford_paragraph_card_preprocess_ds_entity_view(array &$variables) {
   // By default, the display will render a button so we will only have to change
   // it when the value is set to action. This behavior should be on all view
   // modes.
-  $button_display = $paragraph->get('su_card_link_display')->getValue()->toString();
+  $button_display = $paragraph->get('su_card_link_display')->getString();
 
   if ($button_display == "action") {
     // Change the DS config going in to the render.
