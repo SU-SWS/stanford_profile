@@ -23,6 +23,9 @@ class InstallTaskManager extends DefaultPluginManager {
    *   Cache backend instance to use.
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler to invoke the alter hook with.
+   *
+   * @codeCoverageIgnore
+   *   We can't test a service in profile due to some limitations of the Kernel.
    */
   public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler) {
     parent::__construct(

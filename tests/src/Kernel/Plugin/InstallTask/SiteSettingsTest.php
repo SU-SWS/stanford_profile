@@ -17,6 +17,11 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Drupal\stanford_profile\Plugin\InstallTask\SiteSettings;
 
+/**
+ * Class SiteSettingsTest.
+ *
+ * @coversDefaultClass \Drupal\stanford_profile\Plugin\InstallTask\SiteSettings
+ */
 class SiteSettingsTest extends KernelTestBase {
 
   /**
