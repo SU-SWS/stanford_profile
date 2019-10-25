@@ -1,4 +1,4 @@
 services:
-  stanford_profile.install_tasks:
-    class: Drupal\stanford_profile\InstallTasks
-    arguments: ['@entity_type.manager', '@http_client', '@form_builder', '@logger.factory']
+  plugin.manager.install_tasks:
+    class: Drupal\stanford_profile\InstallTaskManager
+    parent: default_plugin_manager

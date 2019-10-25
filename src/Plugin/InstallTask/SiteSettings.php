@@ -1,30 +1,36 @@
 <?php
 
-namespace Drupal\stanford_profile;
+namespace Drupal\stanford_profile\Plugin\InstallTask;
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\stanford_profile\InstallTaskBase;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class InstallTasks.
+ * Class SiteSettings
  *
- * @package Drupal\stanford_profile
+ * @InstallTask(
+ *   id="stanford_profile_site_settings"
+ * )
  */
-class InstallTasks implements InstallTasksInterface {
-
-  use StringTranslationTrait;
+class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInterface {
 
   /**
-   * Entity type manager service.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   * The fallback site name.
    */
-  protected $entityTypeManager;
+  const DEFAULT_SITE = 'default';
+
+  /**
+   * Service now api endpoint.
+   */
+  const SNOW_API = 'https://stanford.service-now.com/api/stu/su_acsf_site_requester_information/requestor';
 
   /**
    * Guzzle service.
@@ -47,6 +53,18 @@ class InstallTasks implements InstallTasksInterface {
    */
   protected $logger;
 
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager'),
+      $container->get('http_client'),
+      $container->get('form_builder'),
+      $container->get('logger.factory')
+    );
+  }
+
   /**
    * InstallTasks constructor.
    *
@@ -59,7 +77,8 @@ class InstallTasks implements InstallTasksInterface {
    * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
    *   Logger Factory service.
    */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, FormBuilderInterface $form_builder, LoggerChannelFactoryInterface $logger_factory) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, FormBuilderInterface $form_builder, LoggerChannelFactoryInterface $logger_factory) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
     $this->client = $client;
     $this->formBuilder = $form_builder;
@@ -69,7 +88,10 @@ class InstallTasks implements InstallTasksInterface {
   /**
    * {@inheritDoc}
    */
-  public function setSiteSettings($site_name) {
+  public function runTask(&$install_state) {
+    $site_name = $install_state['forms']['install_configure_form']['site_name'] ?? self::DEFAULT_SITE;
+    $site_name = Html::escape($site_name);
+
     $site_data = $this->getSnowData($site_name);
     if (empty($site_data)) {
       return;
@@ -104,13 +126,7 @@ class InstallTasks implements InstallTasksInterface {
   protected function addSiteOwner($sunet) {
     $form_state = new FormState();
     $form_state->setValue('sunetid', $sunet);
-    if ($this->entityTypeManager->getStorage('user_role')
-      ->load('site_manager')) {
-      $form_state->setValue('roles', ['site_manager']);
-    }
-    else {
-      $this->logger->error($this->t('Unable to add role "Site Manager" role to SunetID %sunet'), ['%sunet' => $sunet]);
-    }
+    $form_state->setValue('roles', ['site_manager']);
     $this->formBuilder->submitForm('\Drupal\stanford_ssp\Form\AddUserForm', $form_state);
   }
 
