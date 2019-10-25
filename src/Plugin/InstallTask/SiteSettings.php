@@ -2,19 +2,19 @@
 
 namespace Drupal\stanford_profile\Plugin\InstallTask;
 
+use Acquia\Blt\Robo\Common\EnvironmentDetector;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Form\FormBuilderInterface;
-use Drupal\Core\Form\FormState;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\externalauth\AuthmapInterface;
 use Drupal\stanford_profile\InstallTaskBase;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class SiteSettings
+ * SNOW site settings installation.
  *
  * @InstallTask(
  *   id="stanford_profile_site_settings"
@@ -40,11 +40,11 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
   protected $client;
 
   /**
-   * Form builder service.
+   * Authmap service.
    *
-   * @var \Drupal\Core\Form\FormBuilderInterface
+   * @var \Drupal\externalauth\AuthmapInterface
    */
-  protected $formBuilder;
+  protected $authmap;
 
   /**
    * Logger channel service.
@@ -53,6 +53,9 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    */
   protected $logger;
 
+  /**
+   * {@inheritDoc}
+   */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
@@ -60,35 +63,29 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
       $plugin_definition,
       $container->get('entity_type.manager'),
       $container->get('http_client'),
-      $container->get('form_builder'),
+      $container->get('externalauth.authmap'),
       $container->get('logger.factory')
     );
   }
 
   /**
-   * InstallTasks constructor.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
-   *   Entity type manager service.
-   * @param \GuzzleHttp\ClientInterface $client
-   *   Guzzle service.
-   * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
-   *   Form builder service.
-   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
-   *   Logger Factory service.
+   * {@inheritDoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, FormBuilderInterface $form_builder, LoggerChannelFactoryInterface $logger_factory) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap, LoggerChannelFactoryInterface $logger_factory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
     $this->client = $client;
-    $this->formBuilder = $form_builder;
+    $this->authmap = $authmap;
     $this->logger = $logger_factory->get('stanford_profile');
   }
 
   /**
    * {@inheritDoc}
    */
-  public function runTask(&$install_state) {
+  public function runTask(array &$install_state) {
+    if (!EnvironmentDetector::isAhEnv()) {
+      return;
+    }
     $site_name = $install_state['forms']['install_configure_form']['site_name'] ?? self::DEFAULT_SITE;
     $site_name = Html::escape($site_name);
 
@@ -103,8 +100,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
       'context' => 'a:0:{}',
     ])->save();
 
-    // TODO Figure out how to do this with the default content at the same time.
-    $this->addSiteOwner($site_data['sunetId']);
+    $this->addSiteOwner($site_data['sunetId'], $site_data['email']);
 
     if (isset($site_data['webSiteOwners'])) {
       foreach ($site_data['webSiteOwners'] as $owner) {
@@ -112,7 +108,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
           continue;
         }
 
-        $this->addSiteOwner($owner['sunetId']);
+        $this->addSiteOwner($owner['sunetId'], $owner['email']);
       }
     }
   }
@@ -122,12 +118,23 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    *
    * @param string $sunet
    *   User SunetId.
+   * @param string $email
+   *   User email.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  protected function addSiteOwner($sunet) {
-    $form_state = new FormState();
-    $form_state->setValue('sunetid', $sunet);
-    $form_state->setValue('roles', ['site_manager']);
-    $this->formBuilder->submitForm('\Drupal\stanford_ssp\Form\AddUserForm', $form_state);
+  protected function addSiteOwner($sunet, $email) {
+    $new_user = $this->entityTypeManager->getStorage('user')->create([
+      'name' => $sunet,
+      'pass' => user_password(),
+      'mail' => $email,
+      'roles' => ['site_manager'],
+      'status' => 1,
+    ]);
+    $new_user->save();
+    $this->authmap->save($new_user, 'simplesamlphp_auth', $sunet);
   }
 
   /**

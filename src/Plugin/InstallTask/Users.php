@@ -9,7 +9,7 @@ use Drupal\stanford_profile\InstallTaskBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class Users
+ * Install users task.
  *
  * @InstallTask(
  *   id="stanford_profile_users"
@@ -40,7 +40,7 @@ class Users extends InstallTaskBase implements ContainerFactoryPluginInterface {
   /**
    * {@inheritDoc}
    */
-  public function runTask(&$install_state) {
+  public function runTask(array &$install_state) {
     foreach (glob(__DIR__ . '/users/*.json') as $user_file) {
       $user_data = json_decode(file_get_contents($user_file), TRUE);
       $roles = array_map(function ($role) {
@@ -48,6 +48,13 @@ class Users extends InstallTaskBase implements ContainerFactoryPluginInterface {
       }, $user_data['roles']);
       $this->addUser($user_data['name'][0]['value'], $user_data['mail'][0]['value'], $roles);
     }
+
+    // Modify the User 1 to match our needs.
+    $admin = $this->entityTypeManager->getStorage('user')->load(1);
+    $admin->set('name', 'sws-developers');
+    $admin->set('mail', 'sws-developers@lists.stanford.edu');
+    $admin->addRole('administrator');
+    $admin->save();
   }
 
   /**
@@ -64,10 +71,11 @@ class Users extends InstallTaskBase implements ContainerFactoryPluginInterface {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  protected function addUser($name, $email, $roles = []) {
+  protected function addUser($name, $email, array $roles = []) {
     $this->entityTypeManager->getStorage('user')->create([
       'name' => Html::escape($name),
       'mail' => $email,
+      'roles' => $roles,
       'status' => TRUE,
     ])->save();
   }

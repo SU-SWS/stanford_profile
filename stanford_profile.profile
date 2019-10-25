@@ -1,8 +1,8 @@
 <?php
+
 /**
  * @file
  * stanford_profile.profile
- * Enables modules and site configuration for a standard site installation.
  */
 
 use Drupal\menu_link_content\Entity\MenuLinkContent;
@@ -19,6 +19,8 @@ function stanford_profile_install_tasks(&$install_state) {
  *
  * @param array $install_state
  *   Current install state.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\PluginException
  */
 function stanford_profile_final_task(array &$install_state) {
   /** @var \Drupal\stanford_profile\InstallTaskManager $install_task_manager */
@@ -28,6 +30,10 @@ function stanford_profile_final_task(array &$install_state) {
     $plugin = $install_task_manager->createInstance($definition['id']);
     $plugin->runTask($install_state);
   }
+
+  // We install some menu links, so we have to rebuild the router, to ensure the
+  // menu links are valid.
+  \Drupal::service('router.builder')->rebuildIfNeeded();
 }
 
 /**
