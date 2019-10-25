@@ -13,7 +13,7 @@ interface InstallTaskInterface {
    * Perform some install tasks.
    *
    * @param array $install_state
-   *   Current install state
+   *   Current install state.
    *
    * @see hook_install_tasks()
    */

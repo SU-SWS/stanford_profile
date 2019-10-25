@@ -7,7 +7,7 @@ use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
 
 /**
- * Class InstallTasksManager
+ * Install task plugin manager.
  *
  * @package Drupal\stanford_profile
  */
