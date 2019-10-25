@@ -151,7 +151,7 @@ class SiteSettingsTest extends KernelTestBase {
    */
   protected function runInstallTask($throw_guzzle_exception = NULL) {
     $this->container->set('http_client', $this->getMockGuzzle($throw_guzzle_exception));
-    $plugin = SiteSettings::create($this->container, [], '', []);
+    $plugin = TestSiteSettings::create($this->container, [], '', []);
     $install_state['forms']['install_configure_form']['site_name'] = 'foo bar';
     $plugin->runTask($install_state);
   }
@@ -262,6 +262,20 @@ class SiteSettingsTest extends KernelTestBase {
     drupal_flush_all_caches();
     $this->assertEmpty(\Drupal::config('system.site')->get('name'));
     $this->assertEmpty(\Drupal::config('system.site')->get('mail'));
+  }
+
+}
+
+/**
+ * Test class.
+ */
+class TestSiteSettings extends SiteSettings {
+
+  /**
+   * {@inheritDoc}
+   */
+  protected function isAhEnv() {
+    return TRUE;
   }
 
 }
