@@ -2,7 +2,6 @@
 
 namespace Drupal\stanford_profile\Plugin\InstallTask;
 
-use Acquia\Blt\Robo\Common\EnvironmentDetector;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -192,13 +191,13 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    * Is the install occurring on Acquia environment.
    *
    * @return bool
-   *   True if on Acquia OR CI.
+   *   True if on Acquia.
    *
    * @codeCoverageIgnore
    *   We want to test the class and need to fake being on Acquia.
    */
   protected static function isAhEnv() {
-    return EnvironmentDetector::isAhEnv();
+    return isset($_ENV['AH_SITE_ENVIRONMENT']);
   }
 
 }
