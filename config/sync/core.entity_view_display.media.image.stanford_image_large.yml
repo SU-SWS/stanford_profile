@@ -1,28 +1,27 @@
-uuid: 0ca39d81-593b-4355-aaaa-fd64a13b8cb4
+uuid: 0f442539-4f41-49ad-adbd-87aedad94824
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.stanford_image_large
     - field.field.media.image.field_media_image
+    - image.style.large
     - media.type.image
-    - responsive_image.styles.full_responsive
   module:
-    - responsive_image
-_core:
-  default_config_hash: 4Ny-qpsNb-KZOCogLHV8JHe6zj4XdpwpDi_eu-qFVCs
-id: media.image.default
+    - image
+id: media.image.stanford_image_large
 targetEntityType: media
 bundle: image
-mode: default
+mode: stanford_image_large
 content:
   field_media_image:
     label: hidden
+    type: image
     settings:
-      responsive_image_style: full_responsive
+      image_style: large
       image_link: ''
+    weight: 6
     third_party_settings: {  }
-    type: responsive_image
-    weight: 0
     region: content
 hidden:
   created: true
