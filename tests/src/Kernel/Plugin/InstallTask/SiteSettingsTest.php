@@ -274,7 +274,7 @@ class TestSiteSettings extends SiteSettings {
   /**
    * {@inheritDoc}
    */
-  protected function isAhEnv() {
+  protected static function isAhEnv() {
     return TRUE;
   }
 

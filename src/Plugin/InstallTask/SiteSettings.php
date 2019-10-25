@@ -84,11 +84,10 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    */
   public function runTask(array &$install_state) {
     // @codeCoverageIgnoreStart
-    if (!self::isAhEnv()) {
+    if (!static::isAhEnv()) {
       return;
     }
     // @codeCoverageIgnoreEnd
-
     $site_name = $install_state['forms']['install_configure_form']['site_name'] ?? self::DEFAULT_SITE;
     $site_name = Html::escape($site_name);
 
@@ -193,12 +192,12 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    * Is the install occurring on Acquia environment.
    *
    * @return bool
-   *   True if on Acquia.
+   *   True if on Acquia OR CI.
    *
    * @codeCoverageIgnore
    *   We want to test the class and need to fake being on Acquia.
    */
-  protected function isAhEnv() {
+  protected static function isAhEnv() {
     return EnvironmentDetector::isAhEnv();
   }
 
