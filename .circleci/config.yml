@@ -25,7 +25,7 @@ code_coverage: &code_coverage
         name: Run PHP Unit Coverage Tests
         command: |
           composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
-          ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
+          ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage --latest-drupal
     - save_cache:
         key: dependencies-{{ epoch }}
         paths:
@@ -47,7 +47,7 @@ behat: &behat
         name: Run Behat Tests
         command: |
           composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
-          ~/.composer/vendor/bin/sws-caravan behat /var/www/html --extension-dir=/var/www/test
+          ~/.composer/vendor/bin/sws-caravan behat /var/www/html --extension-dir=/var/www/test --latest-drupal
     - save_cache:
         key: dependencies-{{ epoch }}
         paths:
