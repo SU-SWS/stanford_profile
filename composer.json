@@ -97,13 +97,18 @@
         "su-sws/stanford_media": "dev-8.x-2.x",
         "su-sws/stanford_paragraph_types": "dev-8.x-2.x",
         "su-sws/stanford_ssp": "dev-8.x-1.x",
-        "su-sws/stanford_text_editor": "dev-8.x-1.x"
+        "su-sws/stanford_text_editor": "dev-8.x-1.x#a3dd26e562ff9b00e147c8abf4a599642d9234e4"
     },
     "extra": {
         "patches": {
             "drupal/menu_link_weight": {
                 "https://www.drupal.org/project/menu_link_weight/issues/2995896": "https://www.drupal.org/files/issues/2018-08-29/2995896-menu-admin-per-menu-support-fixes.patch"
             }
+        }
+    },
+    "config": {
+        "preferred-install": {
+            "su-sws/stanford_text_editor": "source"
         }
     }
 }

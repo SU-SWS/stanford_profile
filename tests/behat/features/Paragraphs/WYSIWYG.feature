@@ -72,7 +72,6 @@ Feature: WYSIWYG Paragraph
     And I wait for AJAX to finish
     And I wait 1 seconds
     Then I drop "../../assets/images/logo.jpg" file into dropzone
-    And I wait 2 seconds
     And I press "Upload and Continue"
     And I wait 1 seconds
     And I fill in "Alternative text" with "Stanford Logo"
@@ -115,8 +114,8 @@ Feature: WYSIWYG Paragraph
     And I should see an ".dz-error.dz-complete" element
     Then I click the ".dropzonejs-remove-icon" element
     And I drop "../../assets/documents/test.txt" file into dropzone
-    And I wait 2 seconds
     And I press "Upload and Continue"
+    And I wait for AJAX to finish
     And I wait 1 seconds
     And I fill in "Name" with "Test TXT Document"
     Then I click the ".ui-dialog-buttonset button:contains('Save and insert')" element
