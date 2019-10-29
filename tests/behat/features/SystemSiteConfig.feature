@@ -15,6 +15,7 @@ Feature: System Site Config
     Then I should see the error message "1 error has been found: Google Analytics Account"
     Then I fill in "Google Analytics Account" with "UA-123456-12"
     And I press "Save"
+    And the cache has been cleared
     Then I am an anonymous user
     And I am on the homepage
     And I should see "Foo Bar Site"
