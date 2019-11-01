@@ -5,65 +5,122 @@ type: profile
 project: Jumpstart
 core: 8.x
 
-base profile: minimal
-
-# install can be turned off later
-install:
-  # core
-  - drupal:action
+dependencies:
+  - admin_toolbar:admin_toolbar
+  - admin_toolbar:admin_toolbar_links_access_filter
+  - admin_toolbar:admin_toolbar_tools
+  - allowed_formats:allowed_formats
+  - anchor_link:anchor_link
+  - better_normalizers:better_normalizers
+  - chosen:chosen
+  - chosen:chosen_lib
+  - components:components
+  - config_distro:config_distro
+  - config_filter:config_filter
+  - config_merge:config_merge
+  - config_pages:config_pages
+  - config_pages_overrides:config_pages_overrides
+  - config_readonly:config_readonly
+  - config_split:config_split
+  - config_update:config_update
+  - crop:crop
+  - ctools:ctools
+  - default_content:default_content
+  - display_field_copy:display_field_copy
+  - domain_301_redirect:domain_301_redirect
+  - dropzonejs:dropzonejs
+  - drupal:block
   - drupal:block_content
   - drupal:breakpoint
   - drupal:ckeditor
+  - drupal:color
   - drupal:config
   - drupal:contextual
   - drupal:datetime
+  - drupal:datetime_range
+  - drupal:dynamic_page_cache
   - drupal:editor
-  - drupal:entity_reference
   - drupal:field
   - drupal:field_ui
   - drupal:file
+  - drupal:filter
+  - drupal:hal
   - drupal:help
   - drupal:image
+  - drupal:inline_form_errors
+  - drupal:layout_builder
+  - drupal:layout_discovery
+  - drupal:link
+  - drupal:media
+  - drupal:media_library
   - drupal:menu_link_content
   - drupal:menu_ui
   - drupal:node
   - drupal:options
-  - drupal:path
   - drupal:page_cache
+  - drupal:path
   - drupal:responsive_image
+  - drupal:search
+  - drupal:serialization
   - drupal:shortcut
+  - drupal:system
   - drupal:taxonomy
   - drupal:text
+  - drupal:toolbar
+  - drupal:user
   - drupal:views
-
-  # contrib
-  - admin_toolbar:admin_toolbar
-  - admin_toolbar_links_access_filter:admin_toolbar_links_access_filter
-  - admin_toolbar_tools:admin_toolbar_tools
-  - allowed_formats:allowed_formats
-  - chosen:chosen
-  - config_readonly:config_readonly
-  - config_split:config_split
-  - default_content
+  - drupal:views_ui
+  - ds:ds
+  - ds:ds_extras
+  - editor_advanced_link:editor_advanced_link
+  - entity_reference_revisions:entity_reference_revisions
+  - entity_usage:entity_usage
+  - environment_indicator:environment_indicator
+  - externalauth:externalauth
+  - fakeobjects:fakeobjects
+  - file_mdm:file_mdm
+  - file_mdm:file_mdm_exif
+  - file_mdm:file_mdm_font
+  - focal_point:focal_point
+  - image_effects:image_effects
+  - imagemagick:imagemagick
+  - inline_entity_form:inline_entity_form
+  - jumpstart_ui:jumpstart_ui
+  - layout_builder_modal:layout_builder_modal
+  - layout_library:layout_library
+  - link_title_formatter:link_title_formatter
+  - linkit:linkit
+  - menu_admin_per_menu:menu_admin_per_menu
+  - menu_block:menu_block
+  - menu_link_weight:menu_link_weight
   - nobots:nobots
+  - paragraphs:paragraphs
   - pathauto:pathauto
   - redirect:redirect
-
-  # Stanford
-  - jumpstart_ui
-  - stanford_date_formats
-  - stanford_fields
-  - stanford_image_styles
+  - role_delegation:role_delegation
+  - simplesamlphp_auth:simplesamlphp_auth
+  - stanford_date_formats:stanford_date_formats
+  - stanford_fields:stanford_fields
+  - stanford_image_styles:stanford_image_styles
+  - stanford_media:media_duplicate_validation
+  - stanford_media:stanford_media
+  - stanford_profile:stanford_paragraph_card
+  - stanford_profile:stanford_profile_install
   - stanford_profile:stanford_profile_styles
-
-dependencies:
-  # Stanford functionality.
-  - stanford_media
-  - stanford_text_editor
-
+  - stanford_ssp:stanford_ssp
+  - stanford_text_editor:stanford_text_editor
+  - token:token
+  - ui_patterns:ui_patterns
+  - ui_patterns:ui_patterns_ds
+  - ui_patterns:ui_patterns_layouts
+  - ui_patterns:ui_patterns_library
+  - ui_patterns:ui_patterns_views
+  - views_bulk_operations:views_bulk_operations
 themes:
-  - stanford_basic
+  - stable
+  - classy
   - seven
+  - stanford_basic
 
 default_content:
   file:
