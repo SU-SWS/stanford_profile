@@ -6,6 +6,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Site\Settings;
 use Drupal\externalauth\AuthmapInterface;
 use Drupal\stanford_profile\InstallTaskBase;
 use GuzzleHttp\ClientInterface;
@@ -148,12 +149,13 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    *   Returned data if any exist.
    */
   protected function getSnowData($site_name) {
+
     try {
       $response = $this->client->request('GET', self::SNOW_API, [
         'query' => ['website_address' => $site_name],
         'auth' => [
-          getenv('STANFORD_SNOW_API_USER'),
-          getenv('STANFORD_SNOW_API_PASS'),
+          Settings::get('stanford_profile_snow_api_user'),
+          Settings::get('stanford_profile_snow_api_pass'),
         ],
       ]);
 
