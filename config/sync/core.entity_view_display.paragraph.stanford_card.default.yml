@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.stanford_card.su_card_body
     - field.field.paragraph.stanford_card.su_card_header
     - field.field.paragraph.stanford_card.su_card_link
+    - field.field.paragraph.stanford_card.su_card_link_display
     - field.field.paragraph.stanford_card.su_card_media
     - field.field.paragraph.stanford_card.su_card_super_header
     - paragraphs.paragraphs_type.stanford_card
@@ -84,7 +85,7 @@ content:
     settings:
       view_mode: default
       image_style: full_responsive
-      link: 0
+      link: false
     third_party_settings: {  }
   su_card_super_header:
     type: string
@@ -94,4 +95,5 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  su_card_link_display: true

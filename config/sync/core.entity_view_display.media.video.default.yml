@@ -3,11 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.video.field_media_video_embed_field
-    - image.style.medium
+    - field.field.media.video.field_media_oembed_video
     - media.type.video
   module:
-    - video_embed_field
+    - media
 _core:
   default_config_hash: Lcpr93rB3W6kcI48KJ3MhzP4Kg3HObfdAS8RDpoIyTg
 id: media.video.default
@@ -15,18 +14,14 @@ targetEntityType: media
 bundle: video
 mode: default
 content:
-  field_media_video_embed_field:
+  field_media_oembed_video:
+    type: oembed
     label: hidden
-    settings:
-      image_style: medium
-      link_image_to: ''
-      autoplay: true
-      width: 200
-      height: 133
-      responsive: false
-    third_party_settings: {  }
-    type: video_embed_field_lazyload
     weight: 0
+    settings:
+      max_width: 0
+      max_height: 0
+    third_party_settings: {  }
     region: content
 hidden:
   created: true
