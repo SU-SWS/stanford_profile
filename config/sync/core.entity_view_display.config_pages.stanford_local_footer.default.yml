@@ -68,16 +68,6 @@ targetEntityType: config_pages
 bundle: stanford_local_footer
 mode: default
 content:
-  su_footer_enabled:
-    weight: 12
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
   su_local_foot_action:
     weight: 2
     label: hidden
@@ -183,4 +173,5 @@ content:
     third_party_settings: {  }
     type: link
     region: social_links
-hidden: {  }
+hidden:
+  su_footer_enabled: true
