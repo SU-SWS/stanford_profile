@@ -1,0 +1,190 @@
+uuid: 5dd5d415-866a-47f7-8b2b-576bf115a0f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.field.config_pages.stanford_local_footer.su_footer_enabled
+    - field.field.config_pages.stanford_local_footer.su_local_foot_action
+    - field.field.config_pages.stanford_local_footer.su_local_foot_address
+    - field.field.config_pages.stanford_local_footer.su_local_foot_f_button
+    - field.field.config_pages.stanford_local_footer.su_local_foot_f_intro
+    - field.field.config_pages.stanford_local_footer.su_local_foot_f_method
+    - field.field.config_pages.stanford_local_footer.su_local_foot_f_url
+    - field.field.config_pages.stanford_local_footer.su_local_foot_primary
+    - field.field.config_pages.stanford_local_footer.su_local_foot_prime_h
+    - field.field.config_pages.stanford_local_footer.su_local_foot_second
+    - field.field.config_pages.stanford_local_footer.su_local_foot_second_h
+    - field.field.config_pages.stanford_local_footer.su_local_foot_social
+  module:
+    - address
+    - field_group
+    - link
+    - text
+third_party_settings:
+  field_group:
+    group_signup_form:
+      children:
+        - su_local_foot_f_intro
+        - su_local_foot_f_url
+        - su_local_foot_f_method
+        - su_local_foot_f_button
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        label: 'Signup Form'
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Signup Form'
+    group_primary_links:
+      children:
+        - su_local_foot_prime_h
+        - su_local_foot_primary
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Primary Links'
+    group_secondary_links:
+      children:
+        - su_local_foot_second_h
+        - su_local_foot_second
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Secondary Links'
+    group_action_and_social_links:
+      children:
+        - su_local_foot_action
+        - su_local_foot_social
+      parent_name: ''
+      weight: 2
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Action and Social Links'
+    group_address:
+      children:
+        - su_local_foot_address
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Address
+id: config_pages.stanford_local_footer.default
+targetEntityType: config_pages
+bundle: stanford_local_footer
+mode: default
+content:
+  su_footer_enabled:
+    weight: 0
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  su_local_foot_action:
+    weight: 2
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_local_foot_address:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  su_local_foot_f_button:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_local_foot_f_intro:
+    weight: 7
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  su_local_foot_f_method:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  su_local_foot_f_url:
+    weight: 8
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_local_foot_primary:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_local_foot_prime_h:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_local_foot_second:
+    weight: 6
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_local_foot_second_h:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_local_foot_social:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+hidden:
+  label: true

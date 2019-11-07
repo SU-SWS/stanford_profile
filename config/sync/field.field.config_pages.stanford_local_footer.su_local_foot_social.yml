@@ -1,0 +1,23 @@
+uuid: f7416ac7-5e90-41a7-8c00-a67d812f36f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.storage.config_pages.su_local_foot_social
+  module:
+    - link
+id: config_pages.stanford_local_footer.su_local_foot_social
+field_name: su_local_foot_social
+entity_type: config_pages
+bundle: stanford_local_footer
+label: 'Social Links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

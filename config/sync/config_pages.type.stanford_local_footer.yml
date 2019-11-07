@@ -1,0 +1,26 @@
+uuid: 4d68f1e0-d10b-413a-ab91-62cd8462b6d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages_overrides
+third_party_settings:
+  config_pages_overrides:
+    1062aab0-6026-4f75-84a4-13deabe435e2:
+      field: su_footer_enabled
+      delta: 0
+      column: value
+      config_name: block.block.stanford_local_footer
+      config_item: status
+id: stanford_local_footer
+label: 'Local Footer'
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/appearance/local-footer
+  weight: 0
+  description: ''

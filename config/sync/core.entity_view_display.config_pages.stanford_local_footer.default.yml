@@ -1,0 +1,186 @@
+uuid: 0954e3dd-14f2-41c0-a5da-a65fcfa1c432
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.field.config_pages.stanford_local_footer.su_footer_enabled
+    - field.field.config_pages.stanford_local_footer.su_local_foot_action
+    - field.field.config_pages.stanford_local_footer.su_local_foot_address
+    - field.field.config_pages.stanford_local_footer.su_local_foot_f_button
+    - field.field.config_pages.stanford_local_footer.su_local_foot_f_intro
+    - field.field.config_pages.stanford_local_footer.su_local_foot_f_method
+    - field.field.config_pages.stanford_local_footer.su_local_foot_f_url
+    - field.field.config_pages.stanford_local_footer.su_local_foot_primary
+    - field.field.config_pages.stanford_local_footer.su_local_foot_prime_h
+    - field.field.config_pages.stanford_local_footer.su_local_foot_second
+    - field.field.config_pages.stanford_local_footer.su_local_foot_second_h
+    - field.field.config_pages.stanford_local_footer.su_local_foot_social
+  module:
+    - address
+    - ds
+    - link
+    - options
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_localfooter
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      lockup_title:
+        - 'dynamic_token_field:config_pages-su_site_name'
+      address:
+        - su_local_foot_address
+      action_links:
+        - su_local_foot_action
+      social_links:
+        - su_local_foot_social
+      primary_links_header:
+        - su_local_foot_prime_h
+      primary_links:
+        - su_local_foot_primary
+      secondary_links_header:
+        - su_local_foot_second_h
+      secondary_links:
+        - su_local_foot_second
+      signup_form_content:
+        - su_local_foot_f_intro
+      signup_form_action:
+        - su_local_foot_f_url
+      signup_form_method:
+        - su_local_foot_f_method
+      signup_form_field_submit_value:
+        - su_local_foot_f_button
+    fields:
+      'dynamic_token_field:config_pages-su_site_name':
+        plugin_id: 'dynamic_token_field:config_pages-su_site_name'
+        weight: 0
+        label: hidden
+        formatter: default
+id: config_pages.stanford_local_footer.default
+targetEntityType: config_pages
+bundle: stanford_local_footer
+mode: default
+content:
+  su_footer_enabled:
+    weight: 12
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  su_local_foot_action:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: action_links
+  su_local_foot_address:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: address
+  su_local_foot_f_button:
+    weight: 11
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: signup_form_field_submit_value
+  su_local_foot_f_intro:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: signup_form_content
+  su_local_foot_f_method:
+    weight: 10
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: signup_form_method
+  su_local_foot_f_url:
+    weight: 9
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link
+    region: signup_form_action
+  su_local_foot_primary:
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: primary_links
+  su_local_foot_prime_h:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: primary_links_header
+  su_local_foot_second:
+    weight: 7
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: secondary_links
+  su_local_foot_second_h:
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: secondary_links_header
+  su_local_foot_social:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: social_links
+hidden: {  }

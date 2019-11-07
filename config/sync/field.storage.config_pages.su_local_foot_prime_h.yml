@@ -1,0 +1,21 @@
+uuid: 882f8148-075d-439b-8ecc-d2119b92a498
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+id: config_pages.su_local_foot_prime_h
+field_name: su_local_foot_prime_h
+entity_type: config_pages
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
