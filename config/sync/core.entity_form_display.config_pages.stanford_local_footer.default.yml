@@ -30,15 +30,15 @@ third_party_settings:
         - su_local_foot_f_method
         - su_local_foot_f_button
       parent_name: ''
-      weight: 5
+      weight: 7
       format_type: details
       format_settings:
-        label: 'Signup Form'
         id: ''
         classes: ''
         open: false
         required_fields: false
       label: 'Signup Form'
+      region: content
     group_primary_links:
       children:
         - su_local_foot_prime_h
@@ -52,6 +52,7 @@ third_party_settings:
         open: false
         required_fields: false
       label: 'Primary Links'
+      region: content
     group_secondary_links:
       children:
         - su_local_foot_second_h
@@ -65,6 +66,7 @@ third_party_settings:
         open: false
         required_fields: false
       label: 'Secondary Links'
+      region: content
     group_action_and_social_links:
       children:
         - su_local_foot_action
@@ -78,6 +80,7 @@ third_party_settings:
         open: false
         required_fields: false
       label: 'Action and Social Links'
+      region: content
     group_address:
       children:
         - su_local_foot_address
@@ -90,6 +93,7 @@ third_party_settings:
         open: false
         required_fields: false
       label: Address
+      region: content
 id: config_pages.stanford_local_footer.default
 targetEntityType: config_pages
 bundle: stanford_local_footer
@@ -103,7 +107,7 @@ content:
     type: boolean_checkbox
     region: content
   su_local_foot_action:
-    weight: 2
+    weight: 3
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -111,13 +115,13 @@ content:
     type: link_default
     region: content
   su_local_foot_address:
-    weight: 1
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   su_local_foot_f_button:
-    weight: 10
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -125,7 +129,7 @@ content:
     type: string_textfield
     region: content
   su_local_foot_f_intro:
-    weight: 7
+    weight: 3
     settings:
       rows: 5
       placeholder: ''
@@ -133,13 +137,13 @@ content:
     type: text_textarea
     region: content
   su_local_foot_f_method:
-    weight: 9
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   su_local_foot_f_url:
-    weight: 8
+    weight: 4
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -179,7 +183,7 @@ content:
     type: string_textfield
     region: content
   su_local_foot_social:
-    weight: 3
+    weight: 4
     settings:
       placeholder_url: ''
       placeholder_title: ''
