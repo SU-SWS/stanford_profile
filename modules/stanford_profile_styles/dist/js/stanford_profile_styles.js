@@ -81,14 +81,14 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./lib/js/stanford_module_example.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./lib/js/stanford_profile_styles.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./lib/js/stanford_module_example.behavior.js":
+/***/ "./lib/js/stanford_profile_styles.behavior.js":
 /*!****************************************************!*\
-  !*** ./lib/js/stanford_module_example.behavior.js ***!
+  !*** ./lib/js/stanford_profile_styles.behavior.js ***!
   \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -101,7 +101,7 @@
  * Webpack wraps everything in enclosures and hides the global variables from
  * scripts so special handling is needed.
  */
-window.Drupal.behaviors.stanford_module_example = {
+window.Drupal.behaviors.stanford_profile_styles = {
   // Attach Drupal Behavior.
   attach: function attach(context, settings) {// console.log("Attached.");
   },
@@ -112,28 +112,28 @@ window.Drupal.behaviors.stanford_module_example = {
 
 /***/ }),
 
-/***/ "./lib/js/stanford_module_example.js":
+/***/ "./lib/js/stanford_profile_styles.js":
 /*!*******************************************!*\
-  !*** ./lib/js/stanford_module_example.js ***!
+  !*** ./lib/js/stanford_profile_styles.js ***!
   \*******************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _scss_stanford_module_example_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/stanford_module_example.scss */ "./lib/scss/stanford_module_example.scss");
-/* harmony import */ var _scss_stanford_module_example_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_stanford_module_example_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _stanford_module_example_behavior_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stanford_module_example.behavior.js */ "./lib/js/stanford_module_example.behavior.js");
-/* harmony import */ var _stanford_module_example_behavior_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_stanford_module_example_behavior_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _scss_stanford_profile_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/stanford_profile_styles.scss */ "./lib/scss/stanford_profile_styles.scss");
+/* harmony import */ var _scss_stanford_profile_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_stanford_profile_styles_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _stanford_profile_styles_behavior_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stanford_profile_styles.behavior.js */ "./lib/js/stanford_profile_styles.behavior.js");
+/* harmony import */ var _stanford_profile_styles_behavior_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_stanford_profile_styles_behavior_js__WEBPACK_IMPORTED_MODULE_1__);
 // Main Webpack entry file.
 
  // Your code goes below.
 
 /***/ }),
 
-/***/ "./lib/scss/stanford_module_example.scss":
+/***/ "./lib/scss/stanford_profile_styles.scss":
 /*!***********************************************!*\
-  !*** ./lib/scss/stanford_module_example.scss ***!
+  !*** ./lib/scss/stanford_profile_styles.scss ***!
   \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -143,4 +143,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 /******/ });
-//# sourceMappingURL=stanford_module_example.js.map
+//# sourceMappingURL=stanford_profile_styles.js.map

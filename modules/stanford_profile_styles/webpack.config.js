@@ -41,12 +41,12 @@ const distJS = path.resolve(__dirname, process.env.npm_package_config_distJS);
 // Start configuring webpack.
 var webpackConfig = {
   // What am i?
-  name: 'stanford_module_example',
+  name: 'stanford_profile_styles',
   // Allows for map files.
   devtool: 'source-map',
   // What build?
   entry: {
-    "stanford_module_example": path.resolve(__dirname, srcJS + "/stanford_module_example.js"),
+    "stanford_profile_styles": path.resolve(__dirname, srcJS + "/stanford_profile_styles.js"),
   },
   // Where put build?
   output: {
