@@ -1,0 +1,27 @@
+uuid: 6ffefefa-6f40-4486-a9c9-e29e29789d88
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_profile_bio
+    - node.type.stanford_person
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_html: '0'
+    stanford_minimal_html: '0'
+    plain_text: '0'
+id: node.stanford_person.su_profile_bio
+field_name: su_profile_bio
+entity_type: node
+bundle: stanford_person
+label: Bio
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

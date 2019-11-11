@@ -1,0 +1,27 @@
+uuid: dd7087fa-2256-4399-af42-af74b6becd30
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.capx_profile.su_profile_bio
+  module:
+    - allowed_formats
+    - external_entities
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_html: '0'
+    stanford_minimal_html: '0'
+    plain_text: '0'
+id: capx_profile.capx_profile.su_profile_bio
+field_name: su_profile_bio
+entity_type: capx_profile
+bundle: capx_profile
+label: Bio
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

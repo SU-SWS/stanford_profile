@@ -1,0 +1,51 @@
+uuid: b0d7d3ad-d3b0-42b7-8ce1-2fd73b029a39
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.capx_profile.capx_profile.su_profile_bio
+    - field.field.capx_profile.capx_profile.su_profile_image
+  module:
+    - external_entities
+    - link
+    - text
+id: capx_profile.capx_profile.default
+targetEntityType: capx_profile
+bundle: capx_profile
+mode: default
+content:
+  annotation:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  su_profile_bio:
+    weight: -4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  su_profile_image:
+    weight: -3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

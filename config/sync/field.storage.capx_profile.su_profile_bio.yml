@@ -1,0 +1,19 @@
+uuid: 382e10bc-f6c8-4e62-82c8-8fc9f8faef5c
+langcode: en
+status: true
+dependencies:
+  module:
+    - external_entities
+    - text
+id: capx_profile.su_profile_bio
+field_name: su_profile_bio
+entity_type: capx_profile
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

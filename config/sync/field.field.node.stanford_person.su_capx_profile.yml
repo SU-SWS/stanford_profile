@@ -1,0 +1,21 @@
+uuid: e205351c-2c4e-4980-9172-0d57f48c610f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_capx_profile
+    - node.type.stanford_person
+id: node.stanford_person.su_capx_profile
+field_name: su_capx_profile
+entity_type: node
+bundle: stanford_person
+label: 'Capx Profile'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:capx_profile'
+  handler_settings: {  }
+field_type: entity_reference

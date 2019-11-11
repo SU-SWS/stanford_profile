@@ -1,0 +1,76 @@
+uuid: 83681218-8224-4c1c-9b8b-908f51616bfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.capx_profile.capx_profile.su_profile_bio
+    - field.field.capx_profile.capx_profile.su_profile_image
+  module:
+    - ds
+    - external_entities
+    - imagecache_external
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      card_image:
+        - su_profile_image
+      card_headline:
+        - title
+      card_body:
+        - su_profile_bio
+        - annotation_su_profile_bio
+id: capx_profile.capx_profile.default
+targetEntityType: capx_profile
+bundle: capx_profile
+mode: default
+content:
+  annotation_body:
+    type: text_default
+    weight: 3
+    region: card_body
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  annotation_su_profile_bio:
+    type: text_default
+    weight: 3
+    region: card_body
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  su_profile_bio:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: card_body
+  su_profile_image:
+    weight: 0
+    label: hidden
+    settings:
+      imagecache_external_style: breakpoint_lg_2x
+      imagecache_external_link: ''
+    third_party_settings: {  }
+    type: imagecache_external_image
+    region: card_image
+  title:
+    type: string
+    label: hidden
+    region: card_headline
+    weight: 1
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  annotation: true

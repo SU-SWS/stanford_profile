@@ -1,0 +1,19 @@
+uuid: 044db6b0-1291-477e-abfb-1e03a7a84378
+langcode: en
+status: true
+dependencies:
+  module:
+    - external_entities
+    - link
+id: capx_profile.su_profile_image
+field_name: su_profile_image
+entity_type: capx_profile
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

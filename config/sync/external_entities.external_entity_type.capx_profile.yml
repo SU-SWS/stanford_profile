@@ -1,0 +1,45 @@
+uuid: 987b8c06-faaa-4422-96f7-29721978589a
+langcode: en
+status: true
+dependencies: {  }
+id: capx_profile
+label: 'Capx Profile'
+label_plural: 'Capx Profiles'
+description: ''
+read_only: true
+field_mappings:
+  id:
+    value: profileId
+  uuid:
+    value: uid
+  title:
+    value: displayName
+  su_profile_bio:
+    value: bio/html
+    format: +stanford_html
+  su_profile_image:
+    uri: profilePhotos/bigger/url
+storage_client_id: capx
+storage_client_config:
+  endpoint: 'https://cap.stanford.edu/cap-api/api/profiles/v1'
+  response_format: json
+  pager:
+    default_limit: '25'
+    page_parameter: p
+    page_parameter_type: pagenum
+    page_size_parameter: ps
+    page_size_parameter_type: pagesize
+  api_key:
+    header_name: ''
+    key: ''
+  parameters:
+    list:
+      orgCodes: BSWS
+    single: {  }
+  username: ''
+  password: ''
+persistent_cache_max_age: 300
+annotation_entity_type_id: null
+annotation_bundle_id: null
+annotation_field_name: null
+inherits_annotation_fields: false

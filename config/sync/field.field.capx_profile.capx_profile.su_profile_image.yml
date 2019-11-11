@@ -1,0 +1,23 @@
+uuid: c5d26dd5-9aed-437e-b30d-ad49400de79d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.capx_profile.su_profile_image
+  module:
+    - external_entities
+    - link
+id: capx_profile.capx_profile.su_profile_image
+field_name: su_profile_image
+entity_type: capx_profile
+bundle: capx_profile
+label: 'Profile Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

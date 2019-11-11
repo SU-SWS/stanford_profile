@@ -1,0 +1,23 @@
+uuid: be6aa8f4-c86e-4c84-ac41-c9a155ccde1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.stanford_person.su_capx_profile
+    - node.type.stanford_person
+  module:
+    - user
+id: node.stanford_person.teaser
+targetEntityType: node
+bundle: stanford_person
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  su_capx_profile: true
+  su_profile_bio: true
