@@ -47,6 +47,7 @@ var webpackConfig = {
   // What build?
   entry: {
     "stanford_profile_styles": path.resolve(__dirname, srcJS + "/stanford_profile_styles.js"),
+    "styles": path.resolve(__dirname, srcSass + "/stanford_profile_styles.scss"),
   },
   // Where put build?
   output: {

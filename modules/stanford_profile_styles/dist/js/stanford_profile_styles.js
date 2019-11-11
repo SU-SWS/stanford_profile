@@ -121,24 +121,10 @@ window.Drupal.behaviors.stanford_profile_styles = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _scss_stanford_profile_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/stanford_profile_styles.scss */ "./lib/scss/stanford_profile_styles.scss");
-/* harmony import */ var _scss_stanford_profile_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_stanford_profile_styles_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _stanford_profile_styles_behavior_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stanford_profile_styles.behavior.js */ "./lib/js/stanford_profile_styles.behavior.js");
-/* harmony import */ var _stanford_profile_styles_behavior_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_stanford_profile_styles_behavior_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _stanford_profile_styles_behavior_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./stanford_profile_styles.behavior.js */ "./lib/js/stanford_profile_styles.behavior.js");
+/* harmony import */ var _stanford_profile_styles_behavior_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_stanford_profile_styles_behavior_js__WEBPACK_IMPORTED_MODULE_0__);
 // Main Webpack entry file.
-
  // Your code goes below.
-
-/***/ }),
-
-/***/ "./lib/scss/stanford_profile_styles.scss":
-/*!***********************************************!*\
-  !*** ./lib/scss/stanford_profile_styles.scss ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ })
 
