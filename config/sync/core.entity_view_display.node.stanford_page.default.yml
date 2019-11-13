@@ -14,6 +14,7 @@ dependencies:
     - entity_reference_revisions
     - jumpstart_ui
     - layout_builder
+    - layout_builder_restrictions
     - layout_library
     - menu_block
     - user
@@ -55,13 +56,14 @@ third_party_settings:
             weight: 0
         third_party_settings: {  }
       -
-        layout_id: layout_pacman-left
+        layout_id: jumpstart_ui_one_column
         layout_settings:
-          label: ''
+          extra_classes: ''
+          centered: centered-container
         components:
-          b774addb-41e3-497c-b321-1eb3c5cb4656:
-            uuid: b774addb-41e3-497c-b321-1eb3c5cb4656
-            region: header
+          af0809fe-fe61-4e78-be4e-4837cd773c26:
+            uuid: af0809fe-fe61-4e78-be4e-4837cd773c26
+            region: main
             configuration:
               id: 'field_block:node:stanford_page:title'
               label: Title
@@ -75,11 +77,37 @@ third_party_settings:
                 third_party_settings: {  }
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
-            weight: 1
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+        components:
+          582a6898-7096-40c2-bb65-99a556ada919:
+            uuid: 582a6898-7096-40c2-bb65-99a556ada919
+            region: left
+            configuration:
+              id: 'menu_block:main'
+              label: 'Main navigation'
+              provider: menu_block
+              label_display: '0'
+              follow: false
+              follow_parent: child
+              level: 2
+              depth: 0
+              expand: true
+              parent: 'main:'
+              suggestion: secondary_nav
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
           86b8ea0d-0e38-48c5-8d39-06ec5a440155:
             uuid: 86b8ea0d-0e38-48c5-8d39-06ec5a440155
-            region: content
+            region: right
             configuration:
               id: 'field_block:node:stanford_page:su_page_components'
               label: Components
@@ -97,27 +125,54 @@ third_party_settings:
                 entity: layout_builder.entity
             additional: {  }
             weight: 0
-          582a6898-7096-40c2-bb65-99a556ada919:
-            uuid: 582a6898-7096-40c2-bb65-99a556ada919
-            region: sidebar
+          9ec5b37b-33a4-4aca-b787-7f0584234d1a:
+            uuid: 9ec5b37b-33a4-4aca-b787-7f0584234d1a
+            region: main
             configuration:
-              id: 'menu_block:main'
-              label: 'Main navigation'
-              provider: menu_block
+              id: 'field_block:node:stanford_page:su_page_components'
+              label: Paragraphs
+              provider: layout_builder
               label_display: '0'
-              follow: false
-              follow_parent: child
-              level: 2
-              depth: 0
-              expand: true
-              parent: 'main:'
-              suggestion: secondary_nav
-              context_mapping: {  }
+              formatter:
+                label: hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
             weight: 0
         third_party_settings: {  }
   layout_library:
     enable: true
+  layout_builder_restrictions:
+    entity_view_mode_restriction:
+      allowed_blocks:
+        'Chaos Tools': {  }
+        'Content fields':
+          - 'field_block:node:stanford_page:su_page_banner'
+          - 'field_block:node:stanford_page:su_page_components'
+          - 'field_block:node:stanford_page:title'
+        Forms: {  }
+        Help: {  }
+        Menus:
+          - 'menu_block:footer'
+          - 'system_menu_block:footer'
+          - 'menu_block:main'
+          - 'system_menu_block:main'
+        'SimpleSAMLphp Authentication': {  }
+        'Stanford SimpleSAML PHP': {  }
+        System: {  }
+        'User fields': {  }
+        core: {  }
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
 id: node.stanford_page.default
 targetEntityType: node
 bundle: stanford_page
