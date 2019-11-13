@@ -89,6 +89,7 @@ Feature: WYSIWYG Paragraph
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
     Then I click the "a[title='Insert from Media Library']" element
     And I wait for AJAX to finish
+    And I wait 2 seconds
     Then I click the "a[data-title='Video']" element
     And I wait for AJAX to finish
     Then I fill in "Add Video via URL" with "https://www.youtube.com/watch?v=ktCgVopf7D0"
