@@ -11,3 +11,35 @@
     margin: auto auto;
   }
 }
+
+// Full width layout
+
+.ds-1col {
+  .su-page-components {
+    @include display-grid;
+    @include grid-columns(repeat(12, 1fr));
+
+    > .ptype-stanford-card,
+    > .ptype-stanford-wysiwyg {
+      @include grid-media('sm') {
+        @include grid-item-spans(1, 'span 12');
+      }
+      @include grid-media('md') {
+        @include grid-item-spans(1, 'span 12');
+
+      }
+      @include grid-media('lg') {
+        @include grid-item-spans(1, 'span 12');
+
+      }
+      @include grid-media('xl') {
+
+        @include grid-item-spans(1, 'span 12');
+      }
+      @include grid-media('2xl') {
+
+        @include grid-item-spans(1, 'span 12');
+      }
+    }
+  }
+}

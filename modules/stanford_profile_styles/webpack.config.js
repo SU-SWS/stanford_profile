@@ -57,7 +57,10 @@ var webpackConfig = {
   // Relative output paths for css assets.
   resolve: {
     alias: {
-      'decanter-assets': path.resolve(npmPackage + 'decanter/core/src/img')
+      'decanter-assets': path.resolve(npmPackage + 'decanter/core/src/img'),
+      'decanter-src': path.resolve(npmPackage + 'decanter/core/src'),
+      '@fortawesome': path.resolve(npmPackage + '@fortawesome'),
+
     }
   },
   // Additional module rules.
@@ -121,6 +124,16 @@ var webpackConfig = {
             }
           }
         ]
+      },
+      // Apply plugin to font assets.
+      {
+        test: /\.(woff2?|ttf|otf|eot)$/,
+        loader: 'file-loader',
+        options: {
+          name: "[name].[ext]",
+          publicPath: "../assets/fonts",
+          outputPath: "../assets/fonts"
+        }
       },
       // Apply plugins to image assets.
       {
