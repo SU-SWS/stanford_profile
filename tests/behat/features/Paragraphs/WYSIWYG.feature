@@ -69,8 +69,7 @@ Feature: WYSIWYG Paragraph
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
     Then I click the "a[title='Insert from Media Library']" element
-    And I wait for AJAX to finish
-    And I wait 1 seconds
+    And I wait for element ".dropzone"
     Then I drop "../../assets/images/logo.jpg" file into dropzone
     And I press "Upload and Continue"
     And I wait 1 seconds
@@ -88,8 +87,7 @@ Feature: WYSIWYG Paragraph
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
     Then I click the "a[title='Insert from Media Library']" element
-    And I wait for AJAX to finish
-    And I wait 2 seconds
+    And I wait for element ".dropzone"
     Then I click the "a[data-title='Video']" element
     And I wait for AJAX to finish
     Then I fill in "Add Video via URL" with "https://www.youtube.com/watch?v=ktCgVopf7D0"
@@ -108,7 +106,7 @@ Feature: WYSIWYG Paragraph
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
     Then I click the "a[title='Insert from Media Library']" element
-    And I wait for AJAX to finish
+    And I wait for element ".dropzone"
     Then I click the "a[data-title='File']" element
     And I wait for AJAX to finish
     Then I drop "../../assets/documents/test.php" file into dropzone
