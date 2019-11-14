@@ -23,13 +23,10 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
 }
 
 /**
- * Implements hook_field_widget_form_alter().
- */
-/**
  * Implements hook_entity_field_access().
  */
 function stanford_profile_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
-  if ($field_definition->getName() == 'layout_selection') {
+  if ($field_definition->getType() == 'entity_reference' && $field_definition->getSetting('handler') == 'layout_library') {
     $entity_type = $field_definition->getTargetEntityTypeId();
     $bundle = $field_definition->getTargetBundle();
     if (!$account->hasPermission("choose layout for $entity_type $bundle")) {
