@@ -5,14 +5,3 @@
   max-width: 980px;
   margin: auto auto;
 }
-
-@media only screen and (max-width: 992px) {
-  .basic-page.node--layout-full .layout-pacman--left > div > aside {
-    display: none;
-  }
-  .basic-page.node--layout-full .layout-pacman--left > div > section {
-    grid-column: 1/span 3;
-    ms-grid-column: 1;
-    ms-grid-column-span: 3;
-  }
-}
