@@ -8,13 +8,14 @@ targetEntityType: node
 targetBundle: stanford_page
 layout:
   -
-    layout_id: layout_onecol
+    layout_id: jumpstart_ui_one_column
     layout_settings:
-      label: ''
+      extra_classes: ''
+      centered: null
     components:
       4fba82f7-8808-4c93-95d9-7ecdde2fb0b1:
         uuid: 4fba82f7-8808-4c93-95d9-7ecdde2fb0b1
-        region: content
+        region: main
         configuration:
           id: 'field_block:node:stanford_page:su_page_banner'
           label: Banner
@@ -32,7 +33,7 @@ layout:
         weight: 0
       6ce9c0ce-a019-44f4-9225-4c2a1a9fbc6d:
         uuid: 6ce9c0ce-a019-44f4-9225-4c2a1a9fbc6d
-        region: content
+        region: main
         configuration:
           id: 'field_block:node:stanford_page:title'
           label: Title
@@ -50,7 +51,7 @@ layout:
         weight: 1
       d23da6c4-a596-41c2-8185-cd712c160306:
         uuid: d23da6c4-a596-41c2-8185-cd712c160306
-        region: content
+        region: main
         configuration:
           id: 'field_block:node:stanford_page:su_page_components'
           label: Components
