@@ -42,6 +42,9 @@ class StanfordProfilePermissions implements ContainerInjectionInterface {
 
   /**
    * Returns an array of layout_builder per node type permissions.
+   *
+   * @return array
+   *   A key => value array of permissions for changing layout on specific node types.
    */
   public function permissions() {
     $permissions = [];
