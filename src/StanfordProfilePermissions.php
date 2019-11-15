@@ -40,6 +40,9 @@ class StanfordProfilePermissions implements ContainerInjectionInterface {
     $this->entityTypeManager = $entity_manager;
   }
 
+  /**
+   * Returns an array of layout_builder per node type permissions.
+   */
   public function permissions() {
     $permissions = [];
     $display_storage = $this->entityTypeManager->getStorage('entity_view_display');
