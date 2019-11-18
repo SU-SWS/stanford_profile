@@ -28,7 +28,7 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
 function stanford_profile_preprocess_input__submit__paragraph_action(&$variables) {
   // Change the top banner field button from "Add @type" to "Add Top @type".
   if ($variables['element']['#name'] == 'su_page_banner_stanford_banner_add_more') {
-    $variables['attributes']['value'] = t('Add Top-Page @type', $variables['attributes']['value']->getArguments());
+    $variables['attributes']['value'] = t('Add Top @type', $variables['attributes']['value']->getArguments());
   }
 }
 
