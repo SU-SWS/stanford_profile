@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.media.full
     - core.entity_view_mode.media.stanford_image_large
     - core.entity_view_mode.media.stanford_image_medium
     - core.entity_view_mode.media.stanford_image_stanford_circle
@@ -88,6 +87,7 @@ filters:
     weight: -47
     settings:
       default_view_mode: default
+      allowed_media_types: {  }
       allowed_view_modes:
         default: default
         stanford_image_large: stanford_image_large
