@@ -46,19 +46,3 @@ function stanford_profile_entity_field_access($operation, FieldDefinitionInterfa
   }
   return AccessResult::neutral();
 }
-
-/**
- * Implements hook_ENTITY_TYPE_presave().
- */
-function stanford_profile_config_pages_presave(ConfigPagesInterface $entity) {
-  if ($entity->hasField('su_local_foot_address')) {
-    $address = $entity->get('su_local_foot_address')->getValue();
-
-    // When there is nothing entered into the address field, there is still
-    // a "Country" value added. This will result in the field being rendered
-    // even if there is no address to display.
-    if (count(array_filter($address[0])) <= 1) {
-      $entity->set('su_local_foot_address', NULL);
-    }
-  }
-}
