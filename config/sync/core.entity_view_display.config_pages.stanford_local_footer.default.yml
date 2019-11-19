@@ -16,6 +16,7 @@ dependencies:
     - field.field.config_pages.stanford_local_footer.su_local_foot_second
     - field.field.config_pages.stanford_local_footer.su_local_foot_second_h
     - field.field.config_pages.stanford_local_footer.su_local_foot_social
+    - field.field.config_pages.stanford_local_footer.su_local_foot_sunet_t
   module:
     - address
     - ds
@@ -57,6 +58,8 @@ third_party_settings:
         - su_local_foot_f_method
       signup_form_field_submit_value:
         - su_local_foot_f_button
+      weblogin_text:
+        - su_local_foot_sunet_t
     fields:
       'dynamic_token_field:config_pages-su_site_name':
         plugin_id: 'dynamic_token_field:config_pages-su_site_name'
@@ -173,5 +176,13 @@ content:
     third_party_settings: {  }
     type: link
     region: social_links
+  su_local_foot_sunet_t:
+    weight: 12
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: weblogin_text
 hidden:
   su_footer_enabled: true
