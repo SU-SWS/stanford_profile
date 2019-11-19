@@ -23,6 +23,16 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_profile_preprocess_input__submit__paragraph_action(&$variables) {
+  // Change the top banner field button from "Add @type" to "Add Top @type".
+  if ($variables['element']['#name'] == 'su_page_banner_stanford_banner_add_more') {
+    $variables['attributes']['value'] = t('Add Top @type', $variables['attributes']['value']->getArguments());
+  }
+}
+
+/**
  * Implements hook_entity_field_access().
  */
 function stanford_profile_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
