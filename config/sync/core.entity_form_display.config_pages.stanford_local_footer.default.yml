@@ -26,13 +26,12 @@ third_party_settings:
   field_group:
     group_signup_form:
       children:
-        - su_local_foot_sunet_t
         - su_local_foot_f_intro
         - su_local_foot_f_url
         - su_local_foot_f_method
         - su_local_foot_f_button
       parent_name: ''
-      weight: 7
+      weight: 5
       format_type: details
       format_settings:
         id: ''
@@ -83,19 +82,21 @@ third_party_settings:
         required_fields: false
       label: 'Action and Social Links'
       region: content
-    group_address:
+    group_su_local_lgn_btn:
       children:
-        - su_local_foot_address
+        - su_local_foot_sunet_t
+        - su_su_local_lgn_url
       parent_name: ''
-      weight: 1
+      weight: 6
       format_type: details
+      region: content
       format_settings:
+        description: ''
+        required_fields: true
         id: ''
         classes: ''
         open: false
-        required_fields: false
-      label: Address
-      region: content
+      label: 'Login Button'
 id: config_pages.stanford_local_footer.default
 targetEntityType: config_pages
 bundle: stanford_local_footer
@@ -117,7 +118,7 @@ content:
     type: link_default
     region: content
   su_local_foot_address:
-    weight: 4
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     type: address_default
@@ -193,7 +194,7 @@ content:
     type: link_default
     region: content
   su_local_foot_sunet_t:
-    weight: 8
+    weight: 7
     settings:
       size: 60
       placeholder: ''
