@@ -5,7 +5,6 @@
  * Enables modules and site configuration for a standard site installation.
  */
 
-use Drupal\config_pages\ConfigPagesInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -45,4 +44,21 @@ function stanford_profile_entity_field_access($operation, FieldDefinitionInterfa
     }
   }
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function stanford_profile_preprocess_html(&$vars) {
+  try {
+    $local_footer = \Drupal\config_pages\Entity\ConfigPages::config('stanford_local_footer');
+    if ($local_footer) {
+      $block_view = \Drupal::entityTypeManager()->getViewBuilder('config_pages')->view($local_footer);
+      $vars['global_footers']['localfooter'] = $block_view;
+      $vars["#attached"]['library'][] = "stanford_profile_styles/local_footer";
+    }
+  }
+  catch(\Exception $e) {
+    // Nothing really to do. We just don't show it.
+  }
 }
