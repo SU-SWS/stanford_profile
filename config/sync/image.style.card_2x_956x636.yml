@@ -1,0 +1,17 @@
+uuid: 750dfb04-4c1a-4b96-a33b-73cd46c8e184
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: card_2x_956x636
+label: 'Card - 2X - 956x636'
+effects:
+  2d61f395-da00-4db7-a98d-c9a4e3e1ba6d:
+    uuid: 2d61f395-da00-4db7-a98d-c9a4e3e1ba6d
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 956
+      height: 366
+      crop_type: focal_point

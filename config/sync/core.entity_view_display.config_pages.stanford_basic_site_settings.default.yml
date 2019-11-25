@@ -4,6 +4,9 @@ status: true
 dependencies:
   config:
     - config_pages.type.stanford_basic_site_settings
+    - field.field.config_pages.stanford_basic_site_settings.su_google_analytics
+    - field.field.config_pages.stanford_basic_site_settings.su_site_email
+    - field.field.config_pages.stanford_basic_site_settings.su_site_name
     - field.field.config_pages.stanford_basic_site_settings.su_site_url
   module:
     - link
@@ -12,6 +15,29 @@ targetEntityType: config_pages
 bundle: stanford_basic_site_settings
 mode: default
 content:
+  su_google_analytics:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_site_email:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  su_site_name:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   su_site_url:
     weight: 0
     label: above

@@ -1,0 +1,17 @@
+uuid: bdfc5c7c-144c-4004-8e74-a3b03abe2091
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cta_1x_507x338
+label: 'CTA - 1X - 507x338'
+effects:
+  21c139d3-cf45-4994-a2c0-69d456bf238d:
+    uuid: 21c139d3-cf45-4994-a2c0-69d456bf238d
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 507
+      height: 338
+      crop_type: focal_point

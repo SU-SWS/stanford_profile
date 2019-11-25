@@ -1,0 +1,17 @@
+uuid: 53ec7e9e-40f9-4ef5-bf50-8ee624f745fa
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: cta_2x_1192x794
+label: 'CTA - 2X - 1192x794'
+effects:
+  53821e7f-a825-4519-86f8-84dff276b0c6:
+    uuid: 53821e7f-a825-4519-86f8-84dff276b0c6
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1192
+      height: 794
+      crop_type: focal_point

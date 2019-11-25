@@ -68,85 +68,58 @@ Feature: WYSIWYG Paragraph
     Given I am logged in as a user with the "administrator" role
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
-    Then I click the "a[title='Embed Media']" element
-    And I wait for AJAX to finish
-    And I wait 1 seconds
-    Then I switch to "entity_browser_iframe_media_browser" iframe
-    Then I click "Embed a File"
-    And I wait for AJAX to finish
-    And I wait 1 seconds
+    Then I click the "a[title='Insert from Media Library']" element
+    And I wait for element ".dropzone"
     Then I drop "../../assets/images/logo.jpg" file into dropzone
-    And I press "Add to Library"
+    And I press "Upload and Continue"
+    And I wait 1 seconds
+    And I fill in "Alternative text" with "Stanford Logo"
+    Then I click the ".ui-dialog-buttonset button:contains('Save and insert')" element
     And I wait for AJAX to finish
     And I wait 1 seconds
-    Then I press "Continue"
-    And I wait for AJAX to finish
-    And I wait 1 seconds
-    Then I exit iframe
-    And I wait 2 seconds
-    Then I select "Medium (220×220)" from "Image Style"
-    And I fill in "Alternate text" with "Stanford Logo"
-    Then I click the ".entity-select-dialog .form-actions button" element
-    And I wait for AJAX to finish
     Then I press "Save"
     Then I should be on "/test-wysiwyg-paragraph"
     And I should see 1 "img" element in the "content" region
-    And the element "img" should have the attribute "alt" with the value "Stanford Logo"
 
-  @api @javascript @testthis
+  @api @javascript
   Scenario: Test Embedded Video
     Given I am logged in as a user with the "administrator" role
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
-    Then I click the "a[title='Embed Media']" element
+    Then I click the "a[title='Insert from Media Library']" element
+    And I wait for element ".dropzone"
+    Then I click the "a[data-title='Video']" element
     And I wait for AJAX to finish
-    Then I switch to "entity_browser_iframe_media_browser" iframe
-    Then I click "Embed External Content"
-    And I wait for AJAX to finish
-    And I wait 1 seconds
-    Then I fill in "Shareable Url" with "https://www.youtube.com/watch?v=ktCgVopf7D0"
+    Then I fill in "Add Video via URL" with "https://www.youtube.com/watch?v=ktCgVopf7D0"
     And I press "Add"
     And I wait for AJAX to finish
     And I wait 1 seconds
-    Then I press "Continue"
-    And I wait for AJAX to finish
-    And I wait for AJAX to finish
-    Then I exit iframe
-    And I wait 2 seconds
-    Then I click the ".ui-dialog button:contains('Embed')" element
+    Then I click the ".ui-dialog-buttonset button:contains('Save and insert')" element
     And I wait for AJAX to finish
     Then I press "Save"
     Then I should be on "/test-wysiwyg-paragraph"
     And I should see 1 "iframe" element in the "content" region
-    And the element "iframe" should have the attribute "src" with the value "https://www.youtube.com/embed/ktCgVopf7D0?autoplay=0&start=0&rel=0&showinfo=1"
 
-  @api @javascript @testthis
+  @api @javascript
   Scenario: Test Embedded Document
     Given I am logged in as a user with the "administrator" role
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
-    Then I click the "a[title='Embed Media']" element
+    Then I click the "a[title='Insert from Media Library']" element
+    And I wait for element ".dropzone"
+    Then I click the "a[data-title='File']" element
     And I wait for AJAX to finish
-    Then I switch to "entity_browser_iframe_media_browser" iframe
-    Then I click "Embed a File"
-    And I wait for AJAX to finish
-    And I wait 1 seconds
     Then I drop "../../assets/documents/test.php" file into dropzone
     And I should see an ".dz-error.dz-complete" element
     Then I click the ".dropzonejs-remove-icon" element
     And I drop "../../assets/documents/test.txt" file into dropzone
-    And I press "Add to Library"
+    And I press "Upload and Continue"
     And I wait for AJAX to finish
     And I wait 1 seconds
     And I fill in "Name" with "Test TXT Document"
-    Then I press "Continue"
+    Then I click the ".ui-dialog-buttonset button:contains('Save and insert')" element
     And I wait for AJAX to finish
-    And I wait for AJAX to finish
-    Then I exit iframe
-    And I wait 2 seconds
-    Then the "attributes[data-entity-embed-display-settings][description]" field should contain "Test TXT Document"
-    Then I click the ".ui-dialog button:contains('Embed')" element
-    And I wait for AJAX to finish
+    And I wait 1 seconds
     Then I press "Save"
     Then I should be on "/test-wysiwyg-paragraph"
-    And I should see 1 "a[href*='.txt']:contains('Test TXT Document')" element in the "content" region
+    And I should see 1 "a[href*='.txt']:contains('test.txt')" element in the "content" region

@@ -8,11 +8,8 @@ Feature: Default Content
   Given I am on the homepage
   Then I should get a "200" HTTP response
   Then I should see "Welcome to your site!" in the "content" region
-  Then I am on "/news"
   Then I should get a "200" HTTP response
-  Then I am on "/events"
-  Then I should get a "200" HTTP response
-  Then I am on "/people"
+  Then I am on "/resources"
   Then I should get a "200" HTTP response
   Then I am on "/research"
   Then I should get a "200" HTTP response

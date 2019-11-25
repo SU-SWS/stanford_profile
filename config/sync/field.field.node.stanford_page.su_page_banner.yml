@@ -1,0 +1,37 @@
+uuid: 034af1fa-b072-4078-a962-8fe3633cffab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_page_banner
+    - node.type.stanford_page
+    - paragraphs.paragraphs_type.stanford_banner
+  module:
+    - entity_reference_revisions
+id: node.stanford_page.su_page_banner
+field_name: su_page_banner
+entity_type: node
+bundle: stanford_page
+label: Banner
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      stanford_banner: stanford_banner
+    target_bundles_drag_drop:
+      stanford_banner:
+        enabled: true
+        weight: 4
+      stanford_card:
+        weight: 5
+        enabled: false
+      stanford_wysiwyg:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

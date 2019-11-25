@@ -1,7 +1,41 @@
 uuid: b3e6e228-0d21-4c60-aee1-061149d51778
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - config_pages_overrides
+third_party_settings:
+  config_pages_overrides:
+    3c7aa10e-4113-469b-aa20-897c85d14579:
+      field: su_site_url
+      delta: 0
+      column: uri
+      config_name: domain_301_redirect.settings
+      config_item: domain
+    39cd74f1-a878-442a-b8d6-ba1673a58065:
+      field: su_site_url
+      delta: 0
+      column: uri
+      config_name: domain_301_redirect.settings
+      config_item: enabled
+    35535d67-a065-45b8-9a80-f1df8648dc31:
+      field: su_site_name
+      delta: 0
+      column: value
+      config_name: system.site
+      config_item: name
+    4f299f64-4626-48dd-8632-02b7db6a5010:
+      field: su_site_email
+      delta: 0
+      column: value
+      config_name: system.site
+      config_item: mail
+    ba5fafac-2f0e-4e9f-a27a-f3dfb9d8893e:
+      field: su_google_analytics
+      delta: 0
+      column: value
+      config_name: google_analytics.settings
+      config_item: account
 id: stanford_basic_site_settings
 label: 'Site Settings'
 context:

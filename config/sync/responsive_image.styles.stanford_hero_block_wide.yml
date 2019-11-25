@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - image.style.breakpoint_2xl_1x
+    - image.style.breakpoint_2xl_2x
     - image.style.breakpoint_lg_1x
     - image.style.breakpoint_lg_2x
     - image.style.breakpoint_md_1x
@@ -19,19 +21,25 @@ id: stanford_hero_block_wide
 label: 'Stanford Hero Block - Wide'
 image_style_mappings:
   -
+    breakpoint_id: stanford_image_styles.2xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: breakpoint_2xl_1x
+  -
+    breakpoint_id: stanford_image_styles.2xl
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: breakpoint_2xl_2x
+  -
     breakpoint_id: stanford_image_styles.xl
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: breakpoint_xl_2x
+    image_mapping: breakpoint_2xl_1x
   -
     breakpoint_id: stanford_image_styles.xl
     multiplier: 2x
-    image_mapping_type: sizes
-    image_mapping:
-      sizes: 100vw
-      sizes_image_styles:
-        - breakpoint_xl_2x
-        - '_original image_'
+    image_mapping_type: image_style
+    image_mapping: breakpoint_2xl_2x
   -
     breakpoint_id: stanford_image_styles.lg
     multiplier: 1x
@@ -40,12 +48,8 @@ image_style_mappings:
   -
     breakpoint_id: stanford_image_styles.lg
     multiplier: 2x
-    image_mapping_type: sizes
-    image_mapping:
-      sizes: 100vw
-      sizes_image_styles:
-        - breakpoint_lg_2x
-        - breakpoint_xl_2x
+    image_mapping_type: image_style
+    image_mapping: breakpoint_xl_2x
   -
     breakpoint_id: stanford_image_styles.md
     multiplier: 1x
@@ -54,12 +58,8 @@ image_style_mappings:
   -
     breakpoint_id: stanford_image_styles.md
     multiplier: 2x
-    image_mapping_type: sizes
-    image_mapping:
-      sizes: 100vw
-      sizes_image_styles:
-        - breakpoint_lg_2x
-        - breakpoint_md_2x
+    image_mapping_type: image_style
+    image_mapping: breakpoint_lg_2x
   -
     breakpoint_id: stanford_image_styles.sm
     multiplier: 1x
@@ -68,12 +68,8 @@ image_style_mappings:
   -
     breakpoint_id: stanford_image_styles.sm
     multiplier: 2x
-    image_mapping_type: sizes
-    image_mapping:
-      sizes: 100vw
-      sizes_image_styles:
-        - breakpoint_md_2x
-        - breakpoint_sm_2x
+    image_mapping_type: image_style
+    image_mapping: breakpoint_md_2x
   -
     breakpoint_id: stanford_image_styles.xs
     multiplier: 1x
@@ -82,11 +78,7 @@ image_style_mappings:
   -
     breakpoint_id: stanford_image_styles.xs
     multiplier: 2x
-    image_mapping_type: sizes
-    image_mapping:
-      sizes: 100vw
-      sizes_image_styles:
-        - breakpoint_md_2x
-        - breakpoint_sm_2x
+    image_mapping_type: image_style
+    image_mapping: breakpoint_sm_2x
 breakpoint_group: stanford_image_styles
-fallback_image_style: breakpoint_xl_2x
+fallback_image_style: breakpoint_2xl_2x

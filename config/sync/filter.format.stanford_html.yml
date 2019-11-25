@@ -2,10 +2,15 @@ uuid: e2f5c93d-fb67-4955-9e71-3c07efdf1ef9
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.entity_view_mode.media.stanford_image_large
+    - core.entity_view_mode.media.stanford_image_medium
+    - core.entity_view_mode.media.stanford_image_stanford_circle
+    - core.entity_view_mode.media.thumbnail
   module:
     - editor
-    - entity_embed
     - linkit
+    - media
 name: HTML
 format: stanford_html
 weight: 0
@@ -15,12 +20,6 @@ filters:
     provider: editor
     status: false
     weight: -42
-    settings: {  }
-  entity_embed:
-    id: entity_embed
-    provider: entity_embed
-    status: true
-    weight: -47
     settings: {  }
   filter_caption:
     id: filter_caption
@@ -53,7 +52,7 @@ filters:
     status: true
     weight: -50
     settings:
-      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id class> <h3 id> <h4 id> <h5 id> <h6 id> <a class href hreflang data-entity-substitution data-entity-type data-entity-uuid title name> <drupal-entity data-entity-type data-entity-uuid data-entity-embed-display data-entity-embed-display-settings data-align data-caption data-embed-button data-langcode alt title> <div class> <p class> <table> <caption> <tbody class> <thead> <tfoot> <th scope class> <td class> <tr> <sup> <sub> <i class> <hr>'
+      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id class> <h3 id> <h4 id> <h5 id> <h6 id> <a class href hreflang data-entity-substitution data-entity-type data-entity-uuid title name> <drupal-entity data-entity-type data-entity-uuid data-entity-embed-display data-entity-embed-display-settings data-align data-caption data-embed-button data-langcode alt title> <div class> <p class> <table> <caption> <tbody class> <thead> <tfoot> <th scope class> <td class> <tr> <sup> <sub> <i class> <hr> <drupal-media data-entity-type data-entity-uuid data-align data-caption data-* alt>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -81,3 +80,17 @@ filters:
     weight: -45
     settings:
       title: true
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: -47
+    settings:
+      default_view_mode: default
+      allowed_media_types: {  }
+      allowed_view_modes:
+        default: default
+        stanford_image_large: stanford_image_large
+        stanford_image_medium: stanford_image_medium
+        stanford_image_stanford_circle: stanford_image_stanford_circle
+        thumbnail: thumbnail

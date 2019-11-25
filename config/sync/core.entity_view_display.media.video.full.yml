@@ -4,10 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.full
-    - field.field.media.video.field_media_video_embed_field
+    - field.field.media.video.field_media_oembed_video
     - media.type.video
   module:
-    - video_embed_field
+    - media
 _core:
   default_config_hash: vqVUNXW5VQkzMmWbWehC_qWBkReYPc_i-In_6nmtn8o
 id: media.video.full
@@ -15,16 +15,14 @@ targetEntityType: media
 bundle: video
 mode: full
 content:
-  field_media_video_embed_field:
+  field_media_oembed_video:
+    type: oembed
     label: hidden
-    settings:
-      responsive: true
-      width: 854
-      height: 480
-      autoplay: false
-    third_party_settings: {  }
-    type: video_embed_field_video
     weight: 0
+    settings:
+      max_width: 0
+      max_height: 0
+    third_party_settings: {  }
     region: content
 hidden:
   created: true

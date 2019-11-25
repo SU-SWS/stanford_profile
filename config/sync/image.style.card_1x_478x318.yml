@@ -1,0 +1,17 @@
+uuid: 50173357-e0d7-446a-b933-8f877252b4a7
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: card_1x_478x318
+label: 'Card - 1X - 478x318'
+effects:
+  4d7dd7d6-b4c9-475a-8ee0-8202c4c9ed27:
+    uuid: 4d7dd7d6-b4c9-475a-8ee0-8202c4c9ed27
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 478
+      height: 318
+      crop_type: focal_point

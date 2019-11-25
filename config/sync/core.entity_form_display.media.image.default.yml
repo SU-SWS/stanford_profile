@@ -4,12 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.media.image.field_media_image
-    - field.field.media.image.field_media_image_caption
     - image.style.thumbnail
     - media.type.image
   module:
     - focal_point
-    - text
 _core:
   default_config_hash: VlvGpKQnaptFys0SJOZOeTnEs8B561SwPjIy-uFSiJE
 id: media.image.default
@@ -26,14 +24,6 @@ content:
     third_party_settings: {  }
     type: image_focal_point
     weight: 26
-    region: content
-  field_media_image_caption:
-    weight: 27
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
     region: content
   name:
     type: string_textfield
