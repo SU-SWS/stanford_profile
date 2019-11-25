@@ -55,13 +55,6 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
   protected $logger;
 
   /**
-   * Current state service.
-   *
-   * @var \Drupal\Core\State\StateInterface
-   */
-  protected $state;
-
-  /**
    * {@inheritDoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -72,21 +65,19 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
       $container->get('entity_type.manager'),
       $container->get('http_client'),
       $container->get('externalauth.authmap'),
-      $container->get('logger.factory'),
-      $container->get('state')
+      $container->get('logger.factory')
     );
   }
 
   /**
    * {@inheritDoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap, LoggerChannelFactoryInterface $logger_factory, StateInterface $state) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap, LoggerChannelFactoryInterface $logger_factory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
     $this->client = $client;
     $this->authmap = $authmap;
     $this->logger = $logger_factory->get('stanford_profile');
-    $this->state = $state;
   }
 
   /**
@@ -159,7 +150,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    *   Returned data if any exist.
    */
   protected function getSnowData($site_name) {
-    $api_url = $this->state->get('stanford_profile_snow_api', self::SNOW_API);
+    $api_url = Settings::get('stanford_profile_snow_api_url', self::SNOW_API);
     try {
       $response = $this->client->request('GET', $api_url, [
         'query' => ['website_address' => $site_name],
