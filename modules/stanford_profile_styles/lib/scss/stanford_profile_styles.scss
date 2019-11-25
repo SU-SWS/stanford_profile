@@ -1,14 +1,2 @@
 @charset 'UTF-8';
-
-// Remove this variable if you are not using assets directly out of Decanter
-// that need to be included in the webpack build.
-$image-path: "~decanter-assets";
-
-// Import Decanter Library:
-@import 'decanter-no-markup';
-
-// Your SASS here: 1-888-555-3333
-// body {
-//   background-image: url("../../assets/img/test.jpg");
-// }
-@import 'stanford_page';
+@import './config';

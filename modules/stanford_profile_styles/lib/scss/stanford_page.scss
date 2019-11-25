@@ -1,9 +1,9 @@
-@charset "UTF-8";
+@charset 'UTF-8';
+@import './config';
 
 //
 // Custom Styles For Stanford Page Content Type.
 //
-
 .su-page-components {
   > .ptype-stanford-card,
   > .ptype-stanford-wysiwyg {
@@ -13,7 +13,6 @@
 }
 
 // Full width layout
-
 .ds-1col {
   .su-page-components {
     @include display-grid;
@@ -27,15 +26,13 @@
 
       @include grid-media('md') {
         @include grid-item-spans(1, 'span 12');
-
       }
 
       @include grid-media('lg') {
         @include grid-item-spans(1, 'span 12');
-
       }
 
-      @include grid-media('xl') {\
+      @include grid-media('xl') {
         @include grid-item-spans(1, 'span 12');
       }
 

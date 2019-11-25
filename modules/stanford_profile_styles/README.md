@@ -1,5 +1,5 @@
 # [Stanford Profile Styles](https://github.com/SU-SWS/stanford_profile/tree/8.x-1.x/modules/stanford_profile_styles)
-                      ##### Version: 8.x-1.x
+                      ##### Version: 8.x
 
 Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)  
 

@@ -46,8 +46,8 @@ var webpackConfig = {
   devtool: 'source-map',
   // What build?
   entry: {
-    "stanford_profile_styles": path.resolve(__dirname, srcJS + "/stanford_profile_styles.js"),
-    "styles": path.resolve(__dirname, srcSass + "/stanford_profile_styles.scss"),
+    "stanford_page": path.resolve(__dirname, srcSass + "/stanford_page.scss"),
+    "stanford_profile_styles": path.resolve(__dirname, srcSass + "/stanford_profile_styles.scss")
   },
   // Where put build?
   output: {
@@ -59,8 +59,7 @@ var webpackConfig = {
     alias: {
       'decanter-assets': path.resolve(npmPackage + 'decanter/core/src/img'),
       'decanter-src': path.resolve(npmPackage + 'decanter/core/src'),
-      '@fortawesome': path.resolve(npmPackage + '@fortawesome'),
-
+      '@fortawesome': path.resolve(npmPackage + '@fortawesome')
     }
   },
   // Additional module rules.
@@ -116,6 +115,7 @@ var webpackConfig = {
                 path.resolve(__dirname, npmPackage, "bourbon/core"),
                 path.resolve(__dirname, npmPackage + "/decanter/core/src/scss"),
                 path.resolve(__dirname, srcSass),
+                path.resolve(__dirname, npmPackage)
               ],
               sourceMap: true,
               lineNumbers: true,
@@ -142,18 +142,11 @@ var webpackConfig = {
           // A loader for webpack which transforms files into base64 URIs.
           // https://github.com/webpack-contrib/url-loader
           {
-            loader: 'url-loader',
+            loader: "file-loader",
             options: {
-              // Maximum size of a file in bytes. 8.192 Kilobtyes.
-              limit: 8192,
-              fallback: {
-                loader: "file-loader",
-                options: {
-                  name: "[name].[ext]",
-                  publicPath: "../../assets/img",
-                  outputPath: "../../assets/img"
-                }
-              }
+              name: "[name].[ext]",
+              publicPath: "../../assets/img",
+              outputPath: "../../assets/img"
             }
           }
         ]
@@ -162,21 +155,12 @@ var webpackConfig = {
       {
         test: /\.(svg)$/i,
         use: [
-          // A loader for webpack which transforms files into base64 URIs.
-          // https://github.com/webpack-contrib/url-loader
           {
-            loader: 'url-loader',
+            loader: "file-loader",
             options: {
-              // Maximum size of a file in bytes. 8.192 Kilobtyes.
-              limit: 8192,
-              fallback: {
-                loader: "file-loader",
-                options: {
-                  name: "[name].[ext]",
-                  publicPath: "../../assets/svg",
-                  outputPath: "../../assets/svg"
-                }
-              }
+              name: "[name].[ext]",
+              publicPath: "../../assets/svg",
+              outputPath: "../../assets/svg"
             }
           }
         ]
@@ -210,28 +194,8 @@ var webpackConfig = {
     new FileManagerPlugin({
       onStart: {
         delete: [distDir]
-      },
-      // onEnd: {
-        // copy: [
-          // {
-          //   source: npmPackage + "/decanter/core/src/templates/**/*.twig",
-          //   destination: distDir + "/templates/decanter/"
-          // },
-          // {
-          //   source: srcDir + "/assets/**/*",
-          //   destination: distDir + "/assets/"
-          // }
-        // ],
-      // },
-    }),
-    // Add a plugin to watch other files other than that required by webpack.
-    // https://www.npmjs.com/package/filewatcher-webpack-plugin
-    new ExtraWatchWebpackPlugin( {
-      files: [
-        srcDir + '/**/*.twig',
-        srcDir + '/**/*.json'
-      ]
-    }),
+      }
+    })
   ]
 };
 
