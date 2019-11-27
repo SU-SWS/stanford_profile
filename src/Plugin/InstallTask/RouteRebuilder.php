@@ -17,6 +17,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class RouteRebuilder extends InstallTaskBase implements ContainerFactoryPluginInterface {
 
   /**
+   * Route builder service.
+   *
    * @var \Drupal\Core\Routing\RouteBuilderInterface
    */
   protected $routeBuilder;
