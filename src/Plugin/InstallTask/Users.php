@@ -12,7 +12,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Install users task.
  *
  * @InstallTask(
- *   id="stanford_profile_users"
+ *   id="stanford_profile_users",
+ *   dependencies={"stanford_profile_site_settings"}
  * )
  */
 class Users extends InstallTaskBase implements ContainerFactoryPluginInterface {

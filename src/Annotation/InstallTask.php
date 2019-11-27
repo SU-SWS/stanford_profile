@@ -11,4 +11,11 @@ use Drupal\Component\Annotation\Plugin;
  */
 class InstallTask extends Plugin {
 
+  /**
+   * Array of tasks that must run before the current plugin.
+   *
+   * @var array
+   */
+  protected $dependencies = [];
+
 }

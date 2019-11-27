@@ -14,6 +14,13 @@ use Drupal\Core\Plugin\DefaultPluginManager;
 class InstallTaskManager extends DefaultPluginManager {
 
   /**
+   * Array of completed plugin ids.
+   *
+   * @var array
+   */
+  protected $completedTasks = [];
+
+  /**
    * Constructs a ArchiverManager object.
    *
    * @param \Traversable $namespaces
@@ -37,6 +44,44 @@ class InstallTaskManager extends DefaultPluginManager {
     );
     $this->alterInfo('install_task_plugins');
     $this->setCacheBackend($cache_backend, 'install_task_plugins');
+  }
+
+  /**
+   * Run all install task plugins.
+   *
+   * @param array $install_state
+   *   Current install state.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\PluginException
+   */
+  public function runTasks(array &$install_state) {
+    foreach ($this->getDefinitions() as $definition) {
+      $this->runTask($definition, $install_state);
+    }
+  }
+
+  /**
+   * Run the given task after any dependencies.
+   *
+   * @param array $task_definition
+   *   Plugin definition.
+   * @param array $install_state
+   *   Current install state.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\PluginException
+   */
+  protected function runTask(array $task_definition, array &$install_state) {
+    foreach ($task_definition['dependencies'] as $dependency) {
+      $dependency_definition = $this->getDefinition($dependency);
+      $this->runTask($dependency_definition, $install_state);
+    }
+
+    if (!in_array($task_definition['id'], $this->completedTasks)) {
+      /** @var \Drupal\stanford_profile\InstallTaskInterface $plugin */
+      $plugin = $this->createInstance($task_definition['id']);
+      $plugin->runTask($install_state);
+      $this->completedTasks[] = $task_definition['id'];
+    }
   }
 
 }
