@@ -9,36 +9,34 @@ Feature: Local Footer
     And I am on "/admin/appearance/local-footer"
     Then the response status code should be 403
 
-  @javascript
   Scenario: Site manager can change the footer
     Given I am logged in as a user with the "site_manager" role
     And I am on "/admin/appearance/local-footer"
     And I check "Enabled"
-    Then I click the "summary:contains('Address')" element
     And I select "New York" from "State"
     And I fill in the following:
       | Company        | Drupal        |
       | Street address | 123 Drupal Dr |
       | City           | New York      |
       | Zip code       | 12345         |
-    Then I click the "summary:contains('Action and Social Links')" element
+
     And I fill in the following:
       | su_local_foot_action[0][uri]    | http://google.com    |
       | su_local_foot_action[0][title]  | Action Link          |
       | su_local_foot_social[0][uri]    | http://facebook.com  |
       | su_local_foot_social[0][title]  | Facebook Social Link |
-    Then I click the "summary:contains('Primary Links')" element
+
     And I fill in the following:
       | Primary Links Header             | Primary links header |
       | su_local_foot_primary[0][uri]    | http://google.com    |
       | su_local_foot_primary[0][title]  | Primary Link         |
-    Then I click the "summary:contains('Secondary Links')" element
+
     And I fill in the following:
       | Secondary Links Header          | Secondary Links Header |
       | su_local_foot_second[0][uri]    | http://google.com      |
       | su_local_foot_second[0][title]  | Secondary Link         |
-    Then I click the "summary:contains('Signup Form')" element
-    And I fill in wysiwyg "Signup Form Intro" with "Lorem Ipsum"
+
+    And I fill in "su_local_foot_f_intro[0][value]" with "<p>Lorem Ipsum</p>"
     And I fill in the following:
       | Form Action URL    | http://google.com  |
       | Signup Button Text | Sign Me up         |
