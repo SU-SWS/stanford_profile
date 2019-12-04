@@ -1,0 +1,23 @@
+uuid: 913fa989-397a-4955-bd00-94ee8458ecb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.storage.config_pages.su_footer_enabled
+id: config_pages.stanford_local_footer.su_footer_enabled
+field_name: su_footer_enabled
+entity_type: config_pages
+bundle: stanford_local_footer
+label: Enabled
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

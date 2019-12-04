@@ -1,0 +1,21 @@
+uuid: 5735b438-2380-4d2d-bd3e-89c3b357dd9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.storage.config_pages.su_local_foot_sunet_t
+id: config_pages.stanford_local_footer.su_local_foot_sunet_t
+field_name: su_local_foot_sunet_t
+entity_type: config_pages
+bundle: stanford_local_footer
+label: 'Login link text'
+description: 'The link text for a user to log into this site.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Web Login'
+default_value_callback: ''
+settings: {  }
+field_type: string

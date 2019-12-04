@@ -1,0 +1,23 @@
+uuid: 04022adf-9d36-479f-8409-f7a1ebad60cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.storage.config_pages.su_local_foot_f_url
+  module:
+    - link
+id: config_pages.stanford_local_footer.su_local_foot_f_url
+field_name: su_local_foot_f_url
+entity_type: config_pages
+bundle: stanford_local_footer
+label: 'Form Action URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

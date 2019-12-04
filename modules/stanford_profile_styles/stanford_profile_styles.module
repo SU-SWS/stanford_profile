@@ -10,6 +10,9 @@
  */
 function stanford_profile_styles_page_attachments(array &$page) {
 
+  // Always attach to a page.
+  $page['#attached']['library'][] = 'stanford_profile_styles/stanford_profile_styles';
+
   // Get the node from the route.
   $node = \Drupal::routeMatch()->getParameter('node');
 
