@@ -5,11 +5,11 @@
  * Enables modules and site configuration for a standard site installation.
  */
 
-use Drupal\menu_link_content\Entity\MenuLinkContent;
-use Drupal\Core\Field\FieldDefinitionInterface;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
 
 /**
  * Implements hook_ENTITY_TYPE_insert().

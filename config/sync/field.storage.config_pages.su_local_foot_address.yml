@@ -1,0 +1,19 @@
+uuid: bdc177a3-fc6d-4db3-98bb-95fa700e2a52
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - config_pages
+id: config_pages.su_local_foot_address
+field_name: su_local_foot_address
+entity_type: config_pages
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: b0844c8f-12fe-4a53-92ad-874b9aa609dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.storage.config_pages.su_local_foot_f_method
+  module:
+    - options
+id: config_pages.stanford_local_footer.su_local_foot_f_method
+field_name: su_local_foot_f_method
+entity_type: config_pages
+bundle: stanford_local_footer
+label: 'Form Method'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: POST
+default_value_callback: ''
+settings: {  }
+field_type: list_string

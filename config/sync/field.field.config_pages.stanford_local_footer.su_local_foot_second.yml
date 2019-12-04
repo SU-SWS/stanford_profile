@@ -1,0 +1,23 @@
+uuid: 8eedfb95-3d2e-4d72-b2dc-f2b1cdab47f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.storage.config_pages.su_local_foot_second
+  module:
+    - link
+id: config_pages.stanford_local_footer.su_local_foot_second
+field_name: su_local_foot_second
+entity_type: config_pages
+bundle: stanford_local_footer
+label: 'Secondary Links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link
