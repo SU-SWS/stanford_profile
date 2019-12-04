@@ -30,7 +30,7 @@ class RouteRebuilderTest extends KernelTestBase {
   }
 
   public function testRouteRebuild() {
-    $plugin = RouteRebuilder::create($this->container);
+    $plugin = RouteRebuilder::create($this->container, [], '', []);
     $install_state = [];
     $this->assertNull($plugin->runTask($install_state));
   }
