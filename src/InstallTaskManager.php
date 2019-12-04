@@ -70,6 +70,7 @@ class InstallTaskManager extends DefaultPluginManager {
    * @param array $install_state
    *   Current install state.
    * @param array $requesting_plugins
+   *   The path of plugins that depend on the current task.
    *
    * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
