@@ -5,6 +5,7 @@ namespace Drupal\stanford_profile;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * Install task plugin manager.
@@ -14,6 +15,8 @@ use Drupal\Core\Plugin\DefaultPluginManager;
  *   We can't test a service in profile due to some limitations of the Kernel.
  */
 class InstallTaskManager extends DefaultPluginManager {
+
+  use StringTranslationTrait;
 
   /**
    * Array of completed plugin ids.
@@ -66,13 +69,24 @@ class InstallTaskManager extends DefaultPluginManager {
    *   Plugin definition.
    * @param array $install_state
    *   Current install state.
+   * @param array $requesting_plugins
    *
    * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
-  protected function runTask(array $task_definition, array &$install_state) {
+  protected function runTask(array $task_definition, array &$install_state, array $requesting_plugins = []) {
     foreach ($task_definition['dependencies'] as $dependency) {
       $dependency_definition = $this->getDefinition($dependency);
-      $this->runTask($dependency_definition, $install_state);
+
+      // If task1 depends on task2 which depends on task1, it will create
+      // circular dependencies. Blow up the install if this happens because of
+      // bad development work.
+      if (in_array($task_definition['id'], $requesting_plugins)) {
+        $requesting_plugins[] = $task_definition['id'];
+        throw new \Exception($this->t('Circular dependencies detected. %path', ['%path' => implode(' -> ', $requesting_plugins)]));
+      }
+
+      $requesting_plugins[] = $task_definition['id'];
+      $this->runTask($dependency_definition, $install_state, $requesting_plugins);
     }
 
     if (!in_array($task_definition['id'], $this->completedTasks)) {
