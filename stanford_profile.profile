@@ -45,3 +45,15 @@ function stanford_profile_entity_field_access($operation, FieldDefinitionInterfa
   }
   return AccessResult::neutral();
 }
+
+/**
+ * Implements hook_contextual_links_alter().
+ */
+function stanford_profile_contextual_links_alter(array &$links, $group, array $route_parameters) {
+  if ($group == 'paragraph') {
+    // Paragraphs edit module clone link does not function correctly. Remove it
+    // from available links. Also remove delete to avoid unwanted delete.
+    unset($links['paragraphs_edit.delete_form']);
+    unset($links['paragraphs_edit.clone_form']);
+  }
+}
