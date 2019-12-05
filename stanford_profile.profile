@@ -5,6 +5,7 @@
  * Enables modules and site configuration for a standard site installation.
  */
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -44,4 +45,12 @@ function stanford_profile_entity_field_access($operation, FieldDefinitionInterfa
     }
   }
   return AccessResult::neutral();
+}
+
+function stanford_profile_preprocess_toolbar(&$variables) {
+  array_walk($variables['tabs'], function (&$tab, $key) {
+    if (isset($tab['attributes'])) {
+      $tab['attributes']->addClass(Html::cleanCssIdentifier("$key-tab"));
+    }
+  });
 }
