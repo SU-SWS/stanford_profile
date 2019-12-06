@@ -8,10 +8,7 @@
 /**
  * Implements hook_page_attachments().
  */
-/**
- * Implements hook_page_attachments_alter().
- */
-function stanford_profile_styles_page_attachments_alter(array &$attachments) {
+function stanford_profile_styles_page_attachments(array &$attachments) {
 
   // Always attach to a page.
   $attachments['#attached']['library'][] = 'stanford_profile_styles/stanford_profile_styles';

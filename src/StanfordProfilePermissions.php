@@ -8,7 +8,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class StanfordProfilePermissions
+ * Class StanfordProfilePermissions.
  *
  * @package Drupal\stanford_profile
  */
@@ -44,7 +44,10 @@ class StanfordProfilePermissions implements ContainerInjectionInterface {
    * Returns an array of layout_builder per node type permissions.
    *
    * @return array
-   *   A key => value array of permissions for changing layout on specific node types.
+   *   A key => value array of permissions for layout library on specific nodes.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function permissions() {
     $permissions = [];
