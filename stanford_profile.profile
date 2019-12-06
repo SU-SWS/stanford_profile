@@ -64,6 +64,9 @@ function stanford_profile_entity_field_access($operation, FieldDefinitionInterfa
   return AccessResult::neutral();
 }
 
+/**
+ * Implements hook_preprocess_toolbar().
+ */
 function stanford_profile_preprocess_toolbar(&$variables) {
   array_walk($variables['tabs'], function (&$tab, $key) {
     if (isset($tab['attributes'])) {
