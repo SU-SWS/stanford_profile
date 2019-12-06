@@ -73,7 +73,8 @@ function stanford_profile_preprocess_toolbar(&$variables) {
       $tab['attributes']->addClass(Html::cleanCssIdentifier("$key-tab"));
     }
   });
-  
+}
+
 /**
  * Implements hook_contextual_links_alter().
  */
