@@ -5,12 +5,13 @@ dependencies:
   config:
     - field.storage.paragraph.su_card_media
     - media.type.image
+    - media.type.video
     - paragraphs.paragraphs_type.stanford_card
 id: paragraph.stanford_card.su_card_media
 field_name: su_card_media
 entity_type: paragraph
 bundle: stanford_card
-label: Image
+label: 'Image or Video'
 description: 'The main graphical element in the card. See: /patterns/card'
 required: false
 translatable: false
@@ -21,8 +22,9 @@ settings:
   handler_settings:
     target_bundles:
       image: image
+      video: video
     sort:
       field: _none
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: image
 field_type: entity_reference
