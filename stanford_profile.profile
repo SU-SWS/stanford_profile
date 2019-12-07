@@ -1,15 +1,33 @@
 <?php
+
 /**
  * @file
  * stanford_profile.profile
- * Enables modules and site configuration for a standard site installation.
  */
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+/**
+ * Implements hook_install_tasks().
+ */
+function stanford_profile_install_tasks(&$install_state) {
+  return ['stanford_profile_final_task' => []];
+}
+
+/**
+ * Perform final tasks after the profile has completed installing.
+ *
+ * @param array $install_state
+ *   Current install state.
+ */
+function stanford_profile_final_task(array &$install_state) {
+  \Drupal::service('plugin.manager.install_tasks')->runTasks($install_state);
+}
 
 /**
  * Implements hook_ENTITY_TYPE_insert().
@@ -44,4 +62,27 @@ function stanford_profile_entity_field_access($operation, FieldDefinitionInterfa
     }
   }
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_preprocess_toolbar().
+ */
+function stanford_profile_preprocess_toolbar(&$variables) {
+  array_walk($variables['tabs'], function (&$tab, $key) {
+    if (isset($tab['attributes'])) {
+      $tab['attributes']->addClass(Html::cleanCssIdentifier("$key-tab"));
+    }
+  });
+}
+
+/**
+ * Implements hook_contextual_links_alter().
+ */
+function stanford_profile_contextual_links_alter(array &$links, $group, array $route_parameters) {
+  if ($group == 'paragraph') {
+    // Paragraphs edit module clone link does not function correctly. Remove it
+    // from available links. Also remove delete to avoid unwanted delete.
+    unset($links['paragraphs_edit.delete_form']);
+    unset($links['paragraphs_edit.clone_form']);
+  }
 }
