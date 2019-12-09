@@ -1,0 +1,17 @@
+uuid: 0f7cb620-d319-44de-96b5-88fc0e9eab61
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: card_478x239
+label: 'Card - 478x239'
+effects:
+  c0ca870c-8e53-42be-ab3d-56d262ffc048:
+    uuid: c0ca870c-8e53-42be-ab3d-56d262ffc048
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 478
+      height: 239
+      crop_type: focal_point
