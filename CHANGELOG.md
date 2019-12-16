@@ -1,5 +1,23 @@
 # Stanford Profile
 
+8.x-1.0-alpha3
+--------------------------------------------------------------------------------  
+_Release Date: 2019-12-17_
+
+- Layout library permissions
+- UI language changes
+- Prepare for sub-profiles
+- Changed dependencies to install
+- Add files from stanford_module_example
+- Local footer config pages and block
+- Fixed composer versions
+- Use SNOW API to set site name users
+- Paragraphs edit module for contextual links
+- Move toolbar user tab to far right
+- Allow videos in cards
+- Add seckit module and config files; install with profile.
+- Make card paragraph image 2:1 ratio
+
 8.x-1.0-alpha2
 --------------------------------------------------------------------------------  
 _Release Date: 2019-11-13_
