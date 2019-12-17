@@ -17,6 +17,7 @@ _Release Date: 2019-12-17_
 - Allow videos in cards
 - Add seckit module and config files; install with profile.
 - Make card paragraph image 2:1 ratio
+- Remove Environment Indicator permissions from roles
 
 8.x-1.0-alpha2
 --------------------------------------------------------------------------------  
