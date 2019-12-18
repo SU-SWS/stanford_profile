@@ -1,0 +1,30 @@
+uuid: 07ceefde-692e-43d5-a89e-93507d6005ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_media_caption_media
+    - media.type.image
+    - media.type.video
+    - paragraphs.paragraphs_type.stanford_media_caption
+id: paragraph.stanford_media_caption.su_media_caption_media
+field_name: su_media_caption_media
+entity_type: paragraph
+bundle: stanford_media_caption
+label: 'Media Item'
+description: 'Images or Video. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      video: video
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference
