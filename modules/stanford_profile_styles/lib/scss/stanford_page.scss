@@ -8,7 +8,7 @@
   > .ptype-stanford-card,
   > .ptype-stanford-wysiwyg {
     max-width: 980px;
-    margin: auto auto;
+    margin: auto;
   }
 }
 
@@ -43,6 +43,7 @@
         width: calc(100% - #{map-get($su-screen-margins, '2xl') * 2});
       }
     }
+
     > .ptype-stanford-card {
       img {
         width: 100%;
