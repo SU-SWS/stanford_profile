@@ -9,22 +9,5 @@
   }
 }
 
-//
-// Custom Styles For the wysiwyg
-//
 
-.su-wysiwyg-text {
-  h2 a,
-  h3 a,
-  h4 a,
-  h5 a,
-  h6 a {
-    color: $su-color-bright-red;
-
-    &:after {
-      //@include link-icon(caret-right, 10px, right, 0.06em);
-      background-color: $su-color-bright-red;
-    }
-  }
-}
 
