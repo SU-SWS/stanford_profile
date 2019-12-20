@@ -11,8 +11,8 @@
   h4 a,
   h5 a,
   h6 a {
-    color: $su-color-bright-red;
     @include link-icon(caret-right, 0.65em, right);
+    color: $su-color-bright-red;
 
     &:active,
     &:focus,
@@ -21,7 +21,7 @@
       text-decoration: underline;
     }
 
-    &:after {
+    &::after {
       background-color: $su-color-bright-red;
     }
   }
