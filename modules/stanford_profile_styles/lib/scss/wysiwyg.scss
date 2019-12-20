@@ -12,9 +12,15 @@
   h5 a,
   h6 a {
     color: $su-color-bright-red;
+    @include link-icon(caret-right, 0.65em, right);
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: $su-color-black;
+    }
 
     &:after {
-      //@include link-icon(caret-right, 10px, right, 0.06em);
       background-color: $su-color-bright-red;
     }
   }
