@@ -47,7 +47,8 @@ var webpackConfig = {
   // What build?
   entry: {
     "stanford_page": path.resolve(__dirname, srcSass + "/stanford_page.scss"),
-    "stanford_profile_styles": path.resolve(__dirname, srcSass + "/stanford_profile_styles.scss")
+    "stanford_profile_styles": path.resolve(__dirname, srcSass + "/stanford_profile_styles.scss"),
+    "wysiwyg": path.resolve(__dirname, srcSass + "/wysiwyg.scss")
   },
   // Where put build?
   output: {
