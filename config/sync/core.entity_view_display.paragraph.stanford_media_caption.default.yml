@@ -10,6 +10,7 @@ dependencies:
   module:
     - ds
     - link
+    - stanford_fields
     - text
 third_party_settings:
   ds:
@@ -54,12 +55,16 @@ content:
     type: link
     region: media_link
   su_media_caption_media:
-    type: entity_reference_entity_view
+    type: multimedia
     weight: 2
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_formatter: rendered
+      image_formatter_option: default
+      video_formatter: rendered
+      video_formatter_option: default
+      video_formatter_height: '400'
+      video_formatter_width: '0'
     third_party_settings: {  }
     region: media_custom
 hidden: {  }
