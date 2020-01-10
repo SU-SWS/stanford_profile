@@ -12,6 +12,17 @@
   }
 }
 
+// Hide secondary navigation on mobile.
+.jumpstart-ui--three-column {
+  aside {
+    .menu--main {
+      @include grid-media-max('sm') {
+        display: none;
+      }
+    }
+  }
+}
+
 // Full width layout
 .jumpstart-ui--one-column {
   .su-page-components {
