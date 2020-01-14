@@ -28,3 +28,14 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
   }
 
 }
+
+function stanford_profile_styles_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+
+  print_r($context['widget']);
+  /*
+  if ($context['widget']->getPluginId() == 'text_textarea') {
+    // Adds the library outside of ckeditor iframe.
+    $element['#attached']['library'][] = 'stanford_media/admin';
+  }
+  */
+}
