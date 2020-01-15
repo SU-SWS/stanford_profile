@@ -1,0 +1,35 @@
+@charset 'UTF-8';
+@import './config';
+
+//
+// Custom Styles For the admin for Stanford Page Content Type.
+//
+
+.js {
+  .field--widget-paragraphs {
+    background: #f5f5f2;
+    border: 1px solid #bfbfba;
+    margin: 20px 0;
+    padding: 0 20px 10px;
+
+    .button:first-child, .image-button:first-child {
+      //margin-left: 20px;
+    }
+
+    .field-multiple-table {
+      margin-bottom: 5px;
+    }
+
+    th,
+    tr {
+      padding: 0;
+    }
+
+    thead > tr,
+    thead th {
+      border-bottom: none;
+      border-top: none;
+      text-transform: capitalize;
+    }
+  }
+}

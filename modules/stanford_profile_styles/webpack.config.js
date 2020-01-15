@@ -46,6 +46,7 @@ var webpackConfig = {
   devtool: 'source-map',
   // What build?
   entry: {
+    "admin": path.resolve(__dirname, srcSass + "/admin.scss"),
     "stanford_page": path.resolve(__dirname, srcSass + "/stanford_page.scss"),
     "stanford_profile_styles": path.resolve(__dirname, srcSass + "/stanford_profile_styles.scss"),
     "wysiwyg": path.resolve(__dirname, srcSass + "/wysiwyg.scss")
