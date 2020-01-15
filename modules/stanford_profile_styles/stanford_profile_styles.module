@@ -37,15 +37,7 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
 function stanford_profile_styles_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
 
   if ($context['widget']->getPluginId() == 'paragraphs') {
-    // dpm($context['widget']);
-    // dpm($element);
     // Add the admin CSS library.
     $element['#attached']['library'][] = 'stanford_profile_styles/admin';
-    /*
-    if (isset($element['#paragraph_type']) && ($element['#paragraph_type'] == "stanford_banner")) {
-      $element['#title'] = "Top Banner";
-      $element['#description'] = "The top banner displays directly below the navigation and on interior pages, above the page title";
-    }
-    */
   }
 }
