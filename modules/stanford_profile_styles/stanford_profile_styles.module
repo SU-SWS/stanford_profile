@@ -34,8 +34,7 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
 /**
  * Implements hook_field_widget_form_alter().
  */
-function stanford_profile_styles_field_widget_form_alter(&$element, FormStateInterface $form_state, $context)
-{
+function stanford_profile_styles_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
 
   if ($context['widget']->getPluginId() == 'paragraphs') {
     // dpm($context['widget']);

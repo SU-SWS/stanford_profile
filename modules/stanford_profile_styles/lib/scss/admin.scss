@@ -12,45 +12,44 @@
     margin: 20px 0;
     padding: 0 20px 10px;
 
-    .button:first-child, .image-button:first-child {
-      //margin-left: 20px;
-    }
-
     .field-multiple-table {
       margin-bottom: 5px;
     }
 
     .filter-wrapper {
-      border: none;
+      border: 0;
     }
 
     .form-submit:hover {
-      color: #ffffff;
+      color: #fff;
       background: #057ec7 none;
     }
 
     th,
     tr {
       padding: 0;
-      border: none;
+      border: 0;
     }
 
     thead > tr,
     thead th {
-      border-bottom: none;
-      border-top: none;
+      border-bottom: 0;
+      border-top: 0;
       text-transform: capitalize;
     }
+
     tbody tr {
       border: 1px solid transparent;
       border-bottom: 1px solid #bfbfba;
     }
+
     tbody tr:last-child {
       border-bottom: 1px solid transparent;
     }
+
     tbody tr:hover,
     tbody tr:focus {
-       border: 1px solid #bfbfba;
+      border: 1px solid #bfbfba;
     }
   }
 }
