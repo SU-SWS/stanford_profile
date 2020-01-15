@@ -30,7 +30,7 @@ function stanford_profile_post_update_8001() {
  */
 function stanford_profile_post_update_8003() {
   \Drupal::service('module_installer')->install(['react_paragraphs']);
-
+  drupal_flush_all_caches();
   $database = \Drupal::database();
   $tables = [
     'node__su_page_components',
