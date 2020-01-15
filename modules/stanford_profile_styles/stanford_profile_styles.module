@@ -38,9 +38,15 @@ function stanford_profile_styles_field_widget_form_alter(&$element, FormStateInt
 {
 
   if ($context['widget']->getPluginId() == 'paragraphs') {
-    //dpm($context['widget']);
-    //dpm($element);
+    // dpm($context['widget']);
+    // dpm($element);
     // Add the admin CSS library.
     $element['#attached']['library'][] = 'stanford_profile_styles/admin';
+    /*
+    if (isset($element['#paragraph_type']) && ($element['#paragraph_type'] == "stanford_banner")) {
+      $element['#title'] => "Top Banner";
+      $element['#description'] => "The top banner displays directly below the navigation and on interior pages, above the page title";
+    }
+    */
   }
 }

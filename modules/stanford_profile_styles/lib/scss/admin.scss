@@ -20,9 +20,19 @@
       margin-bottom: 5px;
     }
 
+    .filter-wrapper {
+      border: none;
+    }
+
+    .form-submit:hover {
+      color: #ffffff;
+      background: #057ec7 none;
+    }
+
     th,
     tr {
       padding: 0;
+      border: none;
     }
 
     thead > tr,
@@ -30,6 +40,17 @@
       border-bottom: none;
       border-top: none;
       text-transform: capitalize;
+    }
+    tbody tr {
+      border: 1px solid transparent;
+      border-bottom: 1px solid #bfbfba;
+    }
+    tbody tr:last-child {
+      border-bottom: 1px solid transparent;
+    }
+    tbody tr:hover,
+    tbody tr:focus {
+       border: 1px solid #bfbfba;
     }
   }
 }
