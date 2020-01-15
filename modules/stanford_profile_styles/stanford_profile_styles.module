@@ -43,8 +43,8 @@ function stanford_profile_styles_field_widget_form_alter(&$element, FormStateInt
     $element['#attached']['library'][] = 'stanford_profile_styles/admin';
     /*
     if (isset($element['#paragraph_type']) && ($element['#paragraph_type'] == "stanford_banner")) {
-      $element['#title'] => "Top Banner";
-      $element['#description'] => "The top banner displays directly below the navigation and on interior pages, above the page title";
+      $element['#title'] = "Top Banner";
+      $element['#description'] = "The top banner displays directly below the navigation and on interior pages, above the page title";
     }
     */
   }
