@@ -36,8 +36,6 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
  */
 function stanford_profile_styles_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
 
-  if ($context['widget']->getPluginId() == 'paragraphs') {
     // Add the admin CSS library.
     $element['#attached']['library'][] = 'stanford_profile_styles/admin';
-  }
 }
