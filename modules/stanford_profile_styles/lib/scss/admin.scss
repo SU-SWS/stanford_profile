@@ -5,60 +5,59 @@
 // Custom Styles For the admin for Stanford Page Content Type.
 //
 
-.js {
-  .field--widget-paragraphs {
-    background: #f5f5f2;
+.field--widget-paragraphs {
+  background: #f5f5f2;
+  border: 1px solid #bfbfba;
+  margin: 20px 0;
+  padding: 0 20px 10px;
+
+  .form-item .description,
+  .description {
+    margin-bottom: 15px;
+  }
+
+  .field-multiple-table {
+    margin-bottom: 5px;
+  }
+
+  .filter-wrapper {
+    border: 0;
+  }
+
+  .form-wrapper {
+    padding-right: 5px;
+  }
+
+  .form-submit:focus,
+  .form-submit:hover {
+    color: #fff;
+    background: #057ec7 none;
+  }
+
+  th,
+  tr {
+    padding: 0 5px 0 0;
+    border: 0;
+  }
+
+  thead > tr,
+  thead th {
+    border-bottom: 0;
+    border-top: 0;
+    text-transform: capitalize;
+  }
+
+  tbody tr {
+    border: 1px solid transparent;
+    border-bottom: 1px solid #bfbfba;
+  }
+
+  tbody tr:last-child {
+    border-bottom: 1px solid transparent;
+  }
+
+  tbody tr:hover,
+  tbody tr:focus {
     border: 1px solid #bfbfba;
-    margin: 20px 0;
-    padding: 0 20px 10px;
-
-    #edit-su-page-banner--description,
-    .description {
-      margin-bottom: 15px;
-    }
-
-    .field-multiple-table {
-      margin-bottom: 5px;
-    }
-
-    .filter-wrapper {
-      border: 0;
-    }
-
-    .form-wrapper {
-      padding-right: 5px;
-    }
-
-    .form-submit:hover {
-      color: #fff;
-      background: #057ec7 none;
-    }
-
-    th,
-    tr {
-      padding: 0 5px 0 0;
-      border: 0;
-    }
-
-    thead > tr,
-    thead th {
-      border-bottom: 0;
-      border-top: 0;
-      text-transform: capitalize;
-    }
-
-    tbody tr {
-      border: 1px solid transparent;
-      border-bottom: 1px solid #bfbfba;
-    }
-
-    tbody tr:last-child {
-      border-bottom: 1px solid transparent;
-    }
-
-    tbody tr:hover,
-    tbody tr:focus {
-      border: 1px solid #bfbfba;
-    }
   }
 }
