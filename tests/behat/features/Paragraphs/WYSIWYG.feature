@@ -9,6 +9,8 @@ Feature: WYSIWYG Paragraph
     Given I am logged in as a user with the "contributor" role
     And I am on "/node/add/stanford_page"
     Then I fill in "Title" with "Test WYSIWYG Paragraph"
+    Then I drag "#tool-stanford_banner" to "#row-0"
+    Then I wait 5 seconds
     Then I fill in wysiwyg "Body" with "../../assets/documents/WYSIWYG.html"
     Then I press "Save"
     And I should be on "/test-wysiwyg-paragraph"
