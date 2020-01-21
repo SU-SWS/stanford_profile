@@ -38,4 +38,8 @@ function stanford_profile_styles_field_widget_form_alter(&$element, FormStateInt
 
   // Add the admin CSS library.
   $element['#attached']['library'][] = 'stanford_profile_styles/admin';
+  if (isset($element['#paragraph_type'])) {
+    // load the paragraph styles
+    $element['#attached']['library'][] = 'stanford_profile_styles/paragraph';
+  }
 }
