@@ -10,7 +10,7 @@ dependencies:
   module:
     - ds
     - link
-    - stanford_fields
+    - stanford_media
     - text
 third_party_settings:
   ds:
@@ -59,12 +59,22 @@ content:
     weight: 2
     label: hidden
     settings:
-      image_formatter: rendered
-      image_formatter_option: default
-      video_formatter: rendered
-      video_formatter_option: default
-      video_formatter_height: '0'
-      video_formatter_width: '0'
+      image:
+        image_formatter: entity
+        image_formatter_image_style: card_1900x950
+        image_formatter_responsive_image_style: card_2_1
+        image_formatter_view_mode: default
+      video:
+        video_formatter: entity
+        video_formatter_view_mode: default
+      audio:
+        audio_formatter: entity
+        audio_formatter_view_mode: default
+      other:
+        view_mode: default
+      view_mode: default
+      link: false
     third_party_settings: {  }
     region: media_custom
 hidden: {  }
+
