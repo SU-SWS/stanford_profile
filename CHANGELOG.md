@@ -1,7 +1,16 @@
 # Stanford Profile
 
+8.x-1.0-alpha4
+--------------------------------------------------------------------------------
+_Release Date: 2020-01-22_
+
+- D8CORE-970: adding wysiwyg scss file (#60)
+- D8CORE-850 Added Ckeditor Sticky Toolbar (#51)
+- Changed the widget for the media library form mode on images (#56)
+- Adjusted some wysiwyg styles.
+
 8.x-1.0-alpha3
---------------------------------------------------------------------------------  
+--------------------------------------------------------------------------------
 _Release Date: 2019-12-17_
 
 - Layout library permissions
@@ -20,7 +29,7 @@ _Release Date: 2019-12-17_
 - Remove Environment Indicator permissions from roles
 
 8.x-1.0-alpha2
---------------------------------------------------------------------------------  
+--------------------------------------------------------------------------------
 _Release Date: 2019-11-13_
 
 - Require new modules: field_validation, layout_builder_restrictions
@@ -31,7 +40,7 @@ _Release Date: 2019-11-13_
 - Updated primary and secondary navigation settings.
 
 8.x-1.0-alpha1
---------------------------------------------------------------------------------  
+--------------------------------------------------------------------------------
 _Release Date: 2019-10-30_
 
 - Initial Release for Pilot Projects
