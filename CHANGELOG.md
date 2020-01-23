@@ -1,5 +1,13 @@
 # Stanford Profile
 
+8.x-1.0-alpha5
+--------------------------------------------------------------------------------
+_Release Date: 2020-01-23_
+
+- D8CORE-1200: Prevent home page from being deleted (#68)
+- D8CORE-1013: Allow classes on header elements (#67)
+- Fix for focal point config mis-match and failed circle ci behat tests.
+
 8.x-1.0-alpha4
 --------------------------------------------------------------------------------
 _Release Date: 2020-01-22_
