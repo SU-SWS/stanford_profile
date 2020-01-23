@@ -97,7 +97,8 @@ function stanford_profile_node_access(NodeInterface $node, $op, AccountInterface
     $node_urls = [$node->toUrl()->toString(), "/node/{$node->id()}"];
 
     // If the node is configured to be the home page, 404, or 403, prevent the
-    // user from deleting.
+    // user from deleting. Unfortunately this only works for roles without the
+    // "Bypass content access control" permission.
     if (array_intersect($node_urls, $site_config->get('page'))) {
       return AccessResult::forbidden();
     }
