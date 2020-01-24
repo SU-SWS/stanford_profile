@@ -16,6 +16,12 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
   $attachments['#attached']['library'][] = 'stanford_profile_styles/stanford_profile_styles';
   $attachments['#attached']['library'][] = 'stanford_profile_styles/wysiwyg';
 
+  // Attach admin styles to admin pages
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+  if ($is_admin) {
+    $attachments['#attached']['library'][] = 'stanford_profile_styles/admin';
+  }
+
   // Get the node from the route.
   $node = \Drupal::routeMatch()->getParameter('node');
 
