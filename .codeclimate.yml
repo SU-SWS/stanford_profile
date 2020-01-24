@@ -37,6 +37,8 @@ plugins:
         enabled: false
       LeadingZero:
         enabled: false
+      NestingDepth:
+        max_depth: 4
   phpcodesniffer:
     enabled: true
     checks:

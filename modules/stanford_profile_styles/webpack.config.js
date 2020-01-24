@@ -22,7 +22,7 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 // Paths ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-const npmPackage = 'node_modules/';
+const npmPackage = 'node_modules';
 const srcDir = path.resolve(__dirname, "lib");
 const distDir = path.resolve(__dirname, "dist");
 const srcSass = path.resolve(__dirname, process.env.npm_package_config_srcSass);
@@ -60,9 +60,10 @@ var webpackConfig = {
   // Relative output paths for css assets.
   resolve: {
     alias: {
-      'decanter-assets': path.resolve(npmPackage + 'decanter/core/src/img'),
-      'decanter-src': path.resolve(npmPackage + 'decanter/core/src'),
-      '@fortawesome': path.resolve(npmPackage + '@fortawesome')
+      'decanter-assets': path.resolve(npmPackage, 'decanter/core/src/img'),
+      'decanter-src': path.resolve(npmPackage, 'decanter/core/src'),
+      '@fortawesome': path.resolve(npmPackage, '@fortawesome'),
+      'fa-fonts': path.resolve(npmPackage, '@fortawesome/fontawesome-free/webfonts')
     }
   },
   // Additional module rules.
@@ -116,7 +117,6 @@ var webpackConfig = {
             options: {
               includePaths: [
                 path.resolve(__dirname, npmPackage, "bourbon/core"),
-                path.resolve(__dirname, npmPackage + "/decanter/core/src/scss"),
                 path.resolve(__dirname, srcSass),
                 path.resolve(__dirname, npmPackage)
               ],
