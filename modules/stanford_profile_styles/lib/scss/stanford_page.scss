@@ -24,10 +24,15 @@
   }
 }
 
+.node-stanford-page-su-page-components {
+  @include grid-media('xl') {
+    @include padding(null null null 150px);
+  }
+}
+
 // Full width layout
 .jumpstart-ui--one-column {
   .su-page-components {
-
     > .ptype-stanford-media-caption,
     > .ptype-stanford-card,
     > .ptype-stanford-wysiwyg {
