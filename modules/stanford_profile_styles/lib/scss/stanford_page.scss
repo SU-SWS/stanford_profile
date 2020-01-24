@@ -5,10 +5,22 @@
 // Custom Styles For Stanford Page Content Type.
 //
 .su-page-components {
+  > .ptype-stanford-media-caption,
   > .ptype-stanford-card,
   > .ptype-stanford-wysiwyg {
     max-width: 980px;
     margin: auto;
+  }
+}
+
+// Hide secondary navigation on mobile.
+.jumpstart-ui--three-column {
+  aside {
+    .menu--main {
+      @include grid-media-max('md') {
+        display: none;
+      }
+    }
   }
 }
 
@@ -21,7 +33,7 @@
 // Full width layout
 .jumpstart-ui--one-column {
   .su-page-components {
-
+    > .ptype-stanford-media-caption,
     > .ptype-stanford-card,
     > .ptype-stanford-wysiwyg {
 
