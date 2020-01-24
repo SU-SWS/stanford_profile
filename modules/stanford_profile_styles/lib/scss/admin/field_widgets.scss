@@ -39,24 +39,28 @@
     border: 0;
   }
 
-  thead > tr,
-  thead th {
-    border-bottom: 0;
-    border-top: 0;
-    text-transform: capitalize;
+  thead {
+    > tr,
+    th {
+      border-bottom: 0;
+      border-top: 0;
+      text-transform: capitalize;
+    }
   }
 
-  tbody tr {
-    border: 1px solid transparent;
-    border-bottom: 1px solid #bfbfba;
-  }
+  tbody {
+    tr {
+      border: 1px solid transparent;
+      border-bottom: 1px solid #bfbfba;
 
-  tbody tr:last-child {
-    border-bottom: 1px solid transparent;
-  }
+      &:last-child {
+        border-bottom: 1px solid transparent;
+      }
 
-  tbody tr:hover,
-  tbody tr:focus {
-    border: 1px solid #bfbfba;
+      &:hover,
+      &:focus {
+        border: 1px solid #bfbfba;
+      }
+    }
   }
 }
