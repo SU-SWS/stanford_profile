@@ -11,6 +11,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_install_tasks().
@@ -85,4 +86,22 @@ function stanford_profile_contextual_links_alter(array &$links, $group, array $r
     unset($links['paragraphs_edit.delete_form']);
     unset($links['paragraphs_edit.clone_form']);
   }
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function stanford_profile_node_access(NodeInterface $node, $op, AccountInterface $account) {
+  if ($op == 'delete') {
+    $site_config = \Drupal::config('system.site');
+    $node_urls = [$node->toUrl()->toString(), "/node/{$node->id()}"];
+
+    // If the node is configured to be the home page, 404, or 403, prevent the
+    // user from deleting. Unfortunately this only works for roles without the
+    // "Bypass content access control" permission.
+    if (array_intersect($node_urls, $site_config->get('page'))) {
+      return AccessResult::forbidden();
+    }
+  }
+  return AccessResult::neutral();
 }
