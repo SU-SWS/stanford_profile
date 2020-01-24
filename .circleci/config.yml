@@ -46,7 +46,7 @@ behat: &behat
     - run:
         name: Run Behat Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-drag-behat-step
+          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
           ~/.composer/vendor/bin/sws-caravan behat /var/www/html --extension-dir=/var/www/test
     - save_cache:
         key: dependencies-v1-{{ epoch }}
