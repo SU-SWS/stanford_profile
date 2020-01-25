@@ -38,12 +38,8 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
 }
 
 /**
- * Implements hook_field_widget_form_alter().
+ * Implements hook_field_widget_multivalue_WIDGET_TYPE_form_alter().
  */
-function stanford_profile_styles_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
-
-  // Load the paragraph styles.
-  if (isset($element['#paragraph_type'])) {
-    $element['#attached']['library'][] = 'stanford_profile_styles/field_widgets';
-  }
+function stanford_profile_styles_field_widget_multivalue_paragraphs_form_alter(array &$elements, FormStateInterface $form_state, array $context) {
+  $elements['#attached']['library'][] = 'stanford_profile_styles/field_widgets';;
 }
