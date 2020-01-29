@@ -24,9 +24,15 @@
   }
 }
 
-aside + section .node-stanford-page-su-page-components {
-  @include grid-media('xl') {
-    @include padding(null null null 150px);
+// Add some extra space between the main-region and the sidebar.
+.jumpstart-ui {
+  &--three-column,
+  &--two-column {
+  >  aside + .main-region {
+      @include grid-media('xl') {
+        @include padding(null null null 150px);
+      }
+    }
   }
 }
 
