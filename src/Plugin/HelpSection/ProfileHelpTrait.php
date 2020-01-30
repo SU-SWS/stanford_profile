@@ -5,6 +5,11 @@ namespace Drupal\stanford_profile\Plugin\HelpSection;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
 
+/**
+ * Trait ProfileHelpTrait.
+ *
+ * @package Drupal\stanford_profile\Plugin\HelpSection
+ */
 trait ProfileHelpTrait {
 
   /**
@@ -17,7 +22,7 @@ trait ProfileHelpTrait {
    * @param bool $button
    *   If the link should be a button.
    *
-   * @return \Drupal\Core\GeneratedLink
+   * @return string
    *   The link HTML markup.
    */
   protected static function getLinkString($text, $url, $button = FALSE) {
@@ -27,7 +32,7 @@ trait ProfileHelpTrait {
     }
     $url = Url::fromUri($url, ['attributes' => $attributes]);
     $link = Link::fromTextAndUrl($text, $url);
-    return $link->toString();
+    return (string) $link->toString();
   }
 
 }

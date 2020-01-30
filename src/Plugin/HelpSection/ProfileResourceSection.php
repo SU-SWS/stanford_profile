@@ -28,7 +28,7 @@ class ProfileResourceSection extends HelpSectionPluginBase {
       $this->getBlog(),
       $this->getTechCommons(),
       $this->getLearnDrupal(),
-      $this->getMorningOCode(),
+      $this->getMorningOfCode(),
     ];
   }
 
@@ -99,9 +99,9 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    * @return array
    *   Markup render array.
    */
-  protected function getMorningOCode() {
-    $help = '<h3>' . self::getLinkString($this->t('Mornings o\' Code, Drupallers Drop-in Help, Drupallers Co-Working Sessions'), 'http://opensource.stanford.edu/moc') . '</h3>';
-    $help .= '<p>' . $this->t('Stanford Drupallers (new and experienced) meet regularly to help troubleshoot each others\' problems. Check the schedule for upcoming co-working sessions') . '</p>';
+  protected function getMorningOfCode() {
+    $help = '<h3>' . self::getLinkString($this->t("Mornings o' Code, Drupallers Drop-in Help, Drupallers Co-Working Sessions"), 'http://opensource.stanford.edu/moc') . '</h3>';
+    $help .= '<p>' . $this->t("Stanford Drupallers (new and experienced) meet regularly to help troubleshoot each others' problems. Check the schedule for upcoming co-working sessions") . '</p>';
     return ['#markup' => $help];
   }
 

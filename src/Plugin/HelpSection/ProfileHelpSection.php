@@ -112,8 +112,8 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getContact() {
-    $help = '<h3>' . $this->t('Can\'t find what you\'re looking for?') . '</h3>';
-    $help .= '<p>' . $this->t('We\'ll help you find the answer or connect you with an advisor.') . '</p>';
+    $help = '<h3>' . $this->t("Can't find what you're looking for?") . '</h3>';
+    $help .= '<p>' . $this->t("We'll help you find the answer or connect you with an advisor.") . '</p>';
     $help .= self::getLinkString($this->t('Stanford Web Services ServiceNow Form'), 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a', TRUE);
     return ['#markup' => $help];
   }
