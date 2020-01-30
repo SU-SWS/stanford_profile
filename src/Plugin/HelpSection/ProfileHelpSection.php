@@ -22,10 +22,8 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    * {@inheritdoc}
    */
   public function listTopics() {
-    $user_guide = $this->getUserGuide();
-    $user_guide['#attached']['library'][] = 'stanford_profile/help';
     return [
-      $user_guide,
+      $this->getUserGuide(),
       $this->getAssistance(),
       $this->getLaunchWebsite(),
       $this->getFeedback(),
