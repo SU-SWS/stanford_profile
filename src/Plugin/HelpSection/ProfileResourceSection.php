@@ -100,7 +100,7 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getMorningOfCode() {
-    $help = '<h3>' . self::getLinkString($this->t("Mornings o' Code, Drupallers Drop-in Help, Drupallers Co-Working Sessions"), 'http://opensource.stanford.edu/moc') . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t("Mornings o' Code, Drupallers Drop-in Help, Drupallers Co-Working Sessions"), 'https://opensource.stanford.edu/moc') . '</h3>';
     $help .= '<p>' . $this->t("Stanford Drupallers (new and experienced) meet regularly to help troubleshoot each others' problems. Check the schedule for upcoming co-working sessions") . '</p>';
     return ['#markup' => $help];
   }
