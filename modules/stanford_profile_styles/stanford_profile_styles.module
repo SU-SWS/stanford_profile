@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\editor\Entity\Editor;
 
 /**
  * Implements hook_page_attachments().
@@ -14,7 +15,6 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
 
   // Always attach to a page.
   $attachments['#attached']['library'][] = 'stanford_profile_styles/stanford_profile_styles';
-  $attachments['#attached']['library'][] = 'stanford_profile_styles/wysiwyg';
 
   // Attach admin styles to admin pages.
   $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
