@@ -43,3 +43,13 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
 function stanford_profile_styles_field_widget_multivalue_paragraphs_form_alter(array &$elements, FormStateInterface $form_state, array $context) {
   $elements['#attached']['library'][] = 'stanford_profile_styles/field_widgets';;
 }
+
+/**
+ * Implements hook_preprocess_entity().
+ */
+function stanford_profile_styles_preprocess_paragraph(&$vars) {
+  $type = $vars['paragraph']->bundle();
+  if ($type == "stanford_wysiwyg") {
+    $vars['#attached']['library'][] = "stanford_profile_styles/stanford_paragraph_wysiwyg";
+  }
+}
