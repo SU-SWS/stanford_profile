@@ -159,7 +159,7 @@ class SiteSettingsTest extends KernelTestBase {
   /**
    * Get a mocked logger factory service.
    *
-   * @return \PHPUnit_Framework_MockObject_MockObject
+   * @return \PHPUnit\Framework\MockObject\MockObject
    *   Mock logger service.
    */
   protected function getMockLogger() {
@@ -175,7 +175,7 @@ class SiteSettingsTest extends KernelTestBase {
    * @param string|null $throw_guzzle_exception
    *   The class of the exception to throw.
    *
-   * @return \PHPUnit_Framework_MockObject_MockObject
+   * @return \PHPUnit\Framework\MockObject\MockObject
    *   The mocked service.
    */
   protected function getMockGuzzle($throw_guzzle_exception = NULL) {
