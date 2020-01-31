@@ -49,10 +49,6 @@
     @include modular-spacing('margin-bottom', -2);
   }
 
-  //
-  // WYSIWYG Styles overrides.
-  //
-
   // Caption Styles.
   .caption {
     figcaption {
@@ -60,19 +56,23 @@
     }
   }
 
+  // Paragraph styles.
   p {
     @include modular-spacing('padding-bottom', 1);
     @include margin(0 null null null);
    }
 
+   // Buttons.
   .su-button {
     @include modular-spacing('margin-bottom', 0);
   }
 
+  // Bigger buttons.
   .su-button--big {
     @include modular-spacing('margin-bottom', 0);
   }
 
+  // Secondary buttons.
   .su-button--secondary {
     @include modular-spacing('margin-bottom', 0);
   }
@@ -117,6 +117,7 @@
     @include intro-text;
   }
 
+  // Big splashy font.
   .su-font-splash {
     @include modular-spacing('margin', -1 null 2 null);
 
@@ -133,10 +134,12 @@
     }
   }
 
+  // Big splashy intro text.
   .su-intro-text {
     @include modular-spacing('margin-bottom', 0);
   }
 
+  // A quote that looks similar to h2.
   .su-quote-text {
     @include type-b;
   }
