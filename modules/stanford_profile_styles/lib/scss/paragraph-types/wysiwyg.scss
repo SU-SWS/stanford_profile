@@ -103,6 +103,9 @@
 
   // Drop cap styles.
   .su-drop-cap {
+    // Adding drop-cap automatically applies intro-text
+    @include intro-text;
+
     &::first-letter {
       @include margin(11px 12px 0 0);
       float: left;
@@ -112,9 +115,6 @@
       line-height: 0.6;
       text-transform: uppercase;
     }
-
-    // Adding drop-cap automatically applies intro-text
-    @include intro-text;
   }
 
   // Big splashy font.
