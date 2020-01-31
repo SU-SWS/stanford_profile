@@ -76,7 +76,7 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getTechCommons() {
-    $help = '<h3>' . self::getLinkString($this->t('Tech Commons'), 'http://techcommons.stanford.edu/topics/drupal') . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t('Tech Commons'), 'https://techcommons.stanford.edu/topics/drupal') . '</h3>';
     $help .= '<p>' . $this->t('Tech Commons is a community-created resource for technical knowledge. There is a section for Drupal with many helpful tutorials, discussions, and information.') . '</p>';
     return ['#markup' => $help];
   }
