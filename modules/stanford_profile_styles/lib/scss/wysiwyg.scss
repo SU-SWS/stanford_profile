@@ -6,23 +6,25 @@
 //
 
 .su-wysiwyg-text {
-  h2 a,
-  h3 a,
-  h4 a,
-  h5 a,
-  h6 a {
-    @include link-icon(caret-right, 0.65em, right);
-    color: $su-color-bright-red;
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    a {
+      @include link-icon(caret-right, 0.65em, right);
+      color: $su-color-bright-red;
 
-    &:active,
-    &:focus,
-    &:hover {
-      color: $su-color-black;
-      text-decoration: underline;
-    }
+      &:active,
+      &:focus,
+      &:hover {
+        color: $su-color-black;
+        text-decoration: underline;
+      }
 
-    &::after {
-      background-color: $su-color-bright-red;
+      &::after {
+        background-color: $su-color-bright-red;
+      }
     }
   }
 }

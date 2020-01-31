@@ -42,7 +42,7 @@ Feature: WYSIWYG Paragraph
     And I should see an "h3:contains('Level 03 Heading')" element
     And I should see an "h4:contains('Level 04 Heading')" element
     And I should see an "h5:contains('Level 05 Heading')" element
-    And I should see an "h6:contains('Level 06 Heading')" element
+    And I should not see an "h6:contains('Level 06 Heading')" element
 
     # Text Tags
     And I should see an "p:contains('A small paragraph')" element

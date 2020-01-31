@@ -5,6 +5,7 @@
  * stanford_profile_styles.module
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Utility\Html;
 
 /**
@@ -15,6 +16,12 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
   // Always attach to a page.
   $attachments['#attached']['library'][] = 'stanford_profile_styles/stanford_profile_styles';
   $attachments['#attached']['library'][] = 'stanford_profile_styles/wysiwyg';
+
+  // Attach admin styles to admin pages.
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+  if ($is_admin) {
+    $attachments['#attached']['library'][] = 'stanford_profile_styles/admin';
+  }
 
   // Get the node from the route.
   $node = \Drupal::routeMatch()->getParameter('node');
@@ -32,15 +39,18 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
 }
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_field_widget_multivalue_WIDGET_TYPE_form_alter().
  */
-function stanford_profile_styles_preprocess_react_paragraphs(&$variables) {
-  foreach ($variables['rows'] as &$row) {
-    foreach ($row['items'] as &$item) {
-      // Add some classes to the react items for our css.
-      $bundle = $item['entity']['#paragraph']->bundle();
-      $item['attributes']['class'][] = Html::cleanCssIdentifier("ptype-$bundle");
-      $item['attributes']['class'][] = 'paragraph-item';
-    }
+function stanford_profile_styles_field_widget_multivalue_paragraphs_form_alter(array &$elements, FormStateInterface $form_state, array $context) {
+  $elements['#attached']['library'][] = 'stanford_profile_styles/field_widgets';;
+}
+
+/**
+ * Implements hook_preprocess_entity().
+ */
+function stanford_profile_styles_preprocess_paragraph(&$vars) {
+  $type = $vars['paragraph']->bundle();
+  if ($type == "stanford_wysiwyg") {
+    $vars['#attached']['library'][] = "stanford_profile_styles/stanford_paragraph_wysiwyg";
   }
 }

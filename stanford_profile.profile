@@ -31,6 +31,26 @@ function stanford_profile_final_task(array &$install_state) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_profile_preprocess_block__help(&$variables) {
+  if (\Drupal::routeMatch()->getRouteName() == 'help.main') {
+    // Removes the help text from core help module. Its not helpful, and we're
+    // going to provide our own help text.
+    // @see help_help()
+    unset($variables['content']);
+  }
+}
+
+/**
+ * Implements hook_help_section_info_alter().
+ */
+function stanford_profile_help_section_info_alter(array &$info) {
+  // Change "Module overviews" header.
+  $info['hook_help']['title'] = t('For Developers');
+}
+
+/**
  * Implements hook_ENTITY_TYPE_insert().
  */
 function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {

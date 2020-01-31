@@ -1,5 +1,5 @@
 @charset 'UTF-8';
-@import './config';
+@import '../config';
 
 //
 // Custom Styles For Stanford Page Content Type.
@@ -19,6 +19,18 @@
     .menu--main {
       @include grid-media-max('md') {
         display: none;
+      }
+    }
+  }
+}
+
+// Add some extra space between the main-region and the sidebar.
+.jumpstart-ui {
+  &--three-column,
+  &--two-column {
+    > aside + .main-region {
+      @include grid-media('xl') {
+        @include padding(null null null 150px);
       }
     }
   }
@@ -56,7 +68,7 @@
       }
     }
 
-    > .ptype-stanford-card {
+    .ptype-stanford-card {
       img {
         width: 100%;
       }
