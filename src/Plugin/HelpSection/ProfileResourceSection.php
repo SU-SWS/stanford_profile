@@ -64,7 +64,7 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getBlog() {
-    $help = '<h3>' . self::getLinkString($this->t('Stanford Web Services Blog'), 'http://swsblog.stanford.edu/') . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t('Stanford Web Services Blog'), 'https://swsblog.stanford.edu/') . '</h3>';
     $help .= '<p>' . $this->t('The Stanford Web Services team blogs about all things related to Stanford Sites, Drupal, design, site building, and many other topics. This is a great resource for SWS clients.') . '</p>';
     return ['#markup' => $help];
   }
