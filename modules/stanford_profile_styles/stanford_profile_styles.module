@@ -5,6 +5,8 @@
  * stanford_profile_styles.module
  */
 
+use Drupal\Component\Utility\Html;
+
 /**
  * Implements hook_page_attachments().
  */
@@ -27,4 +29,18 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'stanford_profile_styles/stanford_page';
   }
 
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_profile_styles_preprocess_react_paragraphs(&$variables) {
+  foreach ($variables['rows'] as &$row) {
+    foreach ($row['items'] as &$item) {
+      // Add some classes to the react items for our css.
+      $bundle = $item['entity']['#paragraph']->bundle();
+      $item['attributes']['class'][] = Html::cleanCssIdentifier("ptype-$bundle");
+      $item['attributes']['class'][] = 'paragraph-item';
+    }
+  }
 }
