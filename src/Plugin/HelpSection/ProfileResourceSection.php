@@ -52,7 +52,7 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    */
   protected function getUserGuide() {
     // TODO: Update link when user guide is available.
-    $help = '<h3>' . self::getLinkString($this->t('Stanford D8 Core User Guide'), 'http://stanford.edu') . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t('Stanford D8 Core User Guide'), 'https://userguide.sites.stanford.edu') . '</h3>';
     $help .= '<p>' . $this->t('Your site is hosted on the Stanford Web Services platform. The D8 Core User Guide provides general information about using the service as well as how-to videos for common Drupal tasks.') . '</p>';
     return ['#markup' => $help];
   }
