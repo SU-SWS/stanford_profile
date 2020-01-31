@@ -54,7 +54,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    */
   protected function getLaunchWebsite() {
     $help = '<h3>' . $this->t('Launch your website') . '</h3>';
-    // TODO: Update link when launch process guide is available.
+    // @TODO: Update link when launch process guide is available.
     $help .= '<p>' . $this->t('Learn about the launch process, make use of the launch checklist, and request a site launch Website Launch Process') . '</p>';
     $help .= self::getLinkString($this->t('Website launch process'), 'http://stanford.edu', TRUE);
     return ['#markup' => $help];
