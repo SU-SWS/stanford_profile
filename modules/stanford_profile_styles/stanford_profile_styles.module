@@ -53,3 +53,26 @@ function stanford_profile_styles_preprocess_paragraph(&$vars) {
     $vars['#attached']['library'][] = "stanford_profile_styles/stanford_paragraph_wysiwyg";
   }
 }
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ *
+ * Injects our CSS sheets anytime CKEditor has loaded.
+ *
+ * @param array $css
+ * @param Drupal\editor\Entity\Editor $editor
+ */
+function stanford_profile_styles_ckeditor_css_alter(array &$css, Editor $editor) {
+  if (!$editor->hasAssociatedFilterFormat()) {
+    return;
+  }
+
+  $known_formats = [
+    'stanford_html',
+    'stanford_minimal_html'
+  ];
+
+  if (in_array($editor->getFilterFormat()->id(), $known_formats)) {
+    $css[] = drupal_get_path('module', 'stanford_profile_styles') . '/dist/css/stanford_profile_styles.ckeditor.css';
+  }
+}
