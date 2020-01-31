@@ -5,18 +5,20 @@
 //
 
 .field--widget-paragraphs {
+  @include margin(20px 0);
+  @include padding(0 20px 10px);
   background: #f5f5f2;
   border: 1px solid #bfbfba;
-  margin: 20px 0;
-  padding: 0 20px 10px;
 
-  .form-item .description,
-  .description {
-    margin-bottom: 15px;
+  .form-item {
+    .description &,
+    .description {
+      @include margin(null null 15px null);
+    }
   }
 
   .field-multiple-table {
-    margin-bottom: 5px;
+    @include margin(null null 5px null);
   }
 
   .filter-wrapper {
@@ -35,7 +37,7 @@
 
   th,
   tr {
-    padding: 0 5px 0 0;
+    @include padding(0 5px 0 0);
     border: 0;
   }
 
