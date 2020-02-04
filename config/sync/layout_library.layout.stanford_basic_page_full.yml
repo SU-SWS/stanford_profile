@@ -59,7 +59,7 @@ layout:
           label_display: '0'
           formatter:
             label: hidden
-            type: entity_reference_revisions_entity_view
+            type: react_paragraphs
             settings:
               view_mode: default
             third_party_settings:
@@ -67,6 +67,7 @@ layout:
                 ds_limit: ''
           context_mapping:
             entity: layout_builder.entity
+            view_mode: view_mode
         additional: {  }
         weight: -7
       dae81a37-1839-4bc3-86fc-3e4f7fda4183:

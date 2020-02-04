@@ -1,0 +1,20 @@
+uuid: d86fc828-0d50-4b73-8b89-8374a9ee99c7
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - serialization
+    - user
+_core:
+  default_config_hash: '-jKX83QNMEJA_8r24yvJ0rYZQKthlAe2woMMbfl43L4'
+id: entity.media
+plugin_id: 'entity:media'
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

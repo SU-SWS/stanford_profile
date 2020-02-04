@@ -98,26 +98,6 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 0
-          86b8ea0d-0e38-48c5-8d39-06ec5a440155:
-            uuid: 86b8ea0d-0e38-48c5-8d39-06ec5a440155
-            region: right
-            configuration:
-              id: 'field_block:node:stanford_page:su_page_components'
-              label: Components
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_revisions_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings:
-                  ds:
-                    ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-            additional: {  }
-            weight: 0
           9ec5b37b-33a4-4aca-b787-7f0584234d1a:
             uuid: 9ec5b37b-33a4-4aca-b787-7f0584234d1a
             region: main
@@ -128,7 +108,7 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: hidden
-                type: entity_reference_revisions_entity_view
+                type: react_paragraphs
                 settings:
                   view_mode: default
                 third_party_settings:
