@@ -1,0 +1,22 @@
+uuid: 4f2735ec-b99b-4c68-bbfa-0b19a9e3f2d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.simplesaml
+    - field.field.config_pages.simplesaml.su_simplesaml_roles
+id: config_pages.simplesaml.default
+targetEntityType: config_pages
+bundle: simplesaml
+mode: default
+content:
+  su_simplesaml_roles:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+hidden:
+  label: true

@@ -1,0 +1,20 @@
+uuid: e7a5cb3e-4450-4b05-be72-5f30e318bc17
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.simplesaml
+    - field.field.config_pages.simplesaml.su_simplesaml_roles
+id: config_pages.simplesaml.default
+targetEntityType: config_pages
+bundle: simplesaml
+mode: default
+content:
+  su_simplesaml_roles:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+hidden: {  }
