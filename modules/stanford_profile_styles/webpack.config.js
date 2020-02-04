@@ -51,7 +51,8 @@ var webpackConfig = {
     "stanford_profile_styles.node.stanford_page": path.resolve(__dirname, srcSass + "/node-types/stanford_page.scss"),
     "stanford_profile_styles.paragraph.wysiwyg": path.resolve(__dirname, srcSass + "/paragraph-types/wysiwyg.scss"),
     "stanford_profile_styles.ckeditor": path.resolve(__dirname, srcSass + "/admin/ckeditor.scss"),
-    "stanford_profile_styles": path.resolve(__dirname, srcSass + "/stanford_profile_styles.scss")
+    "stanford_profile_styles": path.resolve(__dirname, srcSass + "/stanford_profile_styles.scss"),
+    "stanford_profile_styles.node_form": path.resolve(__dirname, srcJS + "/node_form.js")
   },
   // Where put build?
   output: {

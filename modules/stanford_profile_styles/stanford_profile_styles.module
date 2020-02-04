@@ -9,6 +9,15 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\editor\Entity\Editor;
 
 /**
+ * Implements hook_form_alter().
+ */
+function stanford_profile_styles_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_state->getBuildInfo()['callback_object'] instanceof \Drupal\node\NodeForm) {
+    $form['#attached']['library'][] = 'stanford_profile_styles/node_form';
+  }
+}
+
+/**
  * Implements hook_page_attachments().
  */
 function stanford_profile_styles_page_attachments(array &$attachments) {
