@@ -13,7 +13,9 @@ label: 'Role Mapping'
 description: "<p>A pipe separated list of rules. Each rule consists of a Drupal role id, a SimpleSAML attribute name, an operation and a value to match. e.g. role_id1:attribute_name,operation,value|role_id2:attribute_name2,operation,value... etc</p>\r\n\r\nEach operation may be either \"@\", \"@=\" or \"~=\".<br>\r\n<ul><li>\"=\" requires the value exactly matches the attribute;</li>\r\n<li>\"@=\" requires the portion after a \"@\" in the attribute to match the value;</li>\r\n<li>\"~=\" allows the value to match any part of any element in the attribute array.</li></ul>\r\nFor instance:<br>\r\n<em>staff:eduPersonPrincipalName,@=,uninett.no;affiliation,=,employee|admin:mail,=,andreas@uninett.no</em><br>\r\nwould ensure any user with an eduPersonPrinciplaName SAML attribute matching .*@uninett.no would be assigned a staff role and the user with the mail attribute exactly matching andreas@uninett.no would assume the admin role."
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: 'administrator:eduPersonEnttitlement,=,itservices:webservices'
 default_value_callback: ''
 settings: {  }
 field_type: string_long
