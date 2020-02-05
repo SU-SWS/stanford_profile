@@ -31,28 +31,32 @@
 
   h2 {
     @include modular-spacing('margin', 1 null 1 null);
-    max-width: 56ch;
+    // 56 character line length.
+    max-width: 43ch;
   }
 
   h3 {
     @include modular-spacing('margin', 0 null 1 null);
-    max-width: 60ch;
+    // 60 character line length.
+    max-width: 44ch;
   }
 
   h4 {
     @include modular-spacing('margin', 0 null 1 null);
-    max-width: 64ch;
+    // 64 character line length.
+    max-width: 47ch;
   }
 
   h5 {
     @include modular-spacing('margin', -1 null -1 null);
-    max-width: 76ch;
+    // 76 character line length.
+    max-width: 60ch;
   }
 
   h6 {
     @include modular-spacing('margin-bottom', -2);
-    // 84 Characters.
-    max-width: 79ch;
+    // 84 character line length.
+    max-width: 78ch;
   }
 
   // Caption Styles.
@@ -93,7 +97,7 @@
     font-weight: bold;
     line-height: 33px;
 
-    // 60 Characters.
+    // 60 character line length.
     max-width: 45ch;
     width: 80%;
 
@@ -147,7 +151,7 @@
   .su-intro-text {
     @include modular-spacing('margin-bottom', 0);
 
-    // 70 characters
+    // 70 character line length.
     max-width: 55ch;
   }
 
@@ -155,8 +159,8 @@
   .su-quote-text {
     @include type-b;
 
-    // 54 Characters.
-    max-width: 41ch;
+    // 54 character line length.
+    max-width: 42ch;
   }
 
   // A shadowy type.
@@ -176,7 +180,7 @@
   // Subtitle styles.
   .su-subheading {
 
-    // 76 characters.
+    // 76 character line length.
     max-width: 60ch;
   }
 
