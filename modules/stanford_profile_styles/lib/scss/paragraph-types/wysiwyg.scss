@@ -68,6 +68,7 @@
 
   // Paragraph styles.
   p {
+    @include big-paragraph;
     @include modular-spacing('padding-bottom', 1);
     @include margin(0 null null null);
    }

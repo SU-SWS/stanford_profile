@@ -21,6 +21,20 @@ function stanford_profile_install_tasks(&$install_state) {
 }
 
 /**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function stanford_profile_menu_links_discovered_alter(&$links) {
+  if (isset($links['admin_toolbar_tools.media_page'])) {
+    // Alter the "Media" link for /admin/content/media path.
+    $links['admin_toolbar_tools.media_page']['title'] = t('All Media');
+  }
+  if (isset($links['system.admin_content'])) {
+    // Change the node list page for the /admin/content path.
+    $links['system.admin_content']['title'] = t('All Content');
+  }
+}
+
+/**
  * Perform final tasks after the profile has completed installing.
  *
  * @param array $install_state
