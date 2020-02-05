@@ -31,22 +31,32 @@
 
   h2 {
     @include modular-spacing('margin', 1 null 1 null);
+    // 56 character line length.
+    max-width: 43ch;
   }
 
   h3 {
     @include modular-spacing('margin', 0 null 1 null);
+    // 60 character line length.
+    max-width: 44ch;
   }
 
   h4 {
     @include modular-spacing('margin', 0 null 1 null);
+    // 64 character line length.
+    max-width: 47ch;
   }
 
   h5 {
     @include modular-spacing('margin', -1 null -1 null);
+    // 76 character line length.
+    max-width: 60ch;
   }
 
   h6 {
     @include modular-spacing('margin-bottom', -2);
+    // 84 character line length.
+    max-width: 78ch;
   }
 
   // Caption Styles.
@@ -87,6 +97,9 @@
     font-style: normal;
     font-weight: bold;
     line-height: 33px;
+
+    // 60 character line length.
+    max-width: 45ch;
     width: 80%;
 
     &:first-child {
@@ -138,11 +151,17 @@
   // Big splashy intro text.
   .su-intro-text {
     @include modular-spacing('margin-bottom', 0);
+
+    // 70 character line length.
+    max-width: 55ch;
   }
 
   // A quote that looks similar to h2.
   .su-quote-text {
     @include type-b;
+
+    // 54 character line length.
+    max-width: 42ch;
   }
 
   // A shadowy type.
@@ -152,11 +171,18 @@
     @include padding(25px);
     border: 1px solid #e3e3e3;
 
-    // Yeah, let's not remove padding-bottom when last.
+    // Yeah, let's not remove padding-bottom when this is last on the page.
     &:last-child {
       @include padding(25px);
       @include margin(null null 0 null);
     }
+  }
+
+  // Subtitle styles.
+  .su-subheading {
+
+    // 76 character line length.
+    max-width: 60ch;
   }
 
   h2,
