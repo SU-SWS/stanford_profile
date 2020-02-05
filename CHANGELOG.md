@@ -2,7 +2,7 @@
 
 8.x-1.0
 --------------------------------------------------------------------------------
-_Release Date: 2020-02-05
+_Release Date: 2020-02-05_
 
 - Stable release!
 - Many configuration updates
@@ -21,7 +21,6 @@ _Release Date: 2020-02-05
 - D8CORE-1018: Adjust content and media menu item titles
 - D8CORE-1243: SAML role mapping config page
 - D8CORE-1028: line length fix
-
 
 8.x-1.0-alpha5
 --------------------------------------------------------------------------------
