@@ -21,6 +21,7 @@ _Release Date: 2020-02-05_
 - D8CORE-1018: Adjust content and media menu item titles
 - D8CORE-1243: SAML role mapping config page
 - D8CORE-1028: line length fix
+- Removed stanford_profile_install from being installed as it has nothing to do.
 
 8.x-1.0-alpha5
 --------------------------------------------------------------------------------
