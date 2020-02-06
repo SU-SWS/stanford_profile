@@ -190,6 +190,19 @@
   h4,
   h5,
   h6 {
+
+    &.text-align-center {
+      @include margin(null auto);
+    }
+
+    &.text-align-left {
+      @include margin(null auto null 0);
+    }
+
+    &.text-align-right {
+      @include margin(null 0 null auto);
+    }
+
     a {
       @include link-icon(caret-right, 0.65em, right);
       color: $su-color-bright-red;
