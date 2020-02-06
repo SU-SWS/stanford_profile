@@ -30,7 +30,7 @@
   &--two-column {
     > aside + .main-region {
       @include grid-media('xl') {
-        @include padding(null null null 150px);
+        @include padding(null null null 80px);
       }
     }
   }
