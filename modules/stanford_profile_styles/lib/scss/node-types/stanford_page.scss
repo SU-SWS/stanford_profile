@@ -28,7 +28,7 @@
 .jumpstart-ui {
   &--three-column,
   &--two-column {
-    > aside + .main-region {
+    > .left-region + .main-region {
       @include grid-media('xl') {
         @include padding(null null null 80px);
       }
