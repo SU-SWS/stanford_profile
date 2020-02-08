@@ -13,24 +13,23 @@
   }
 }
 
-// Hide secondary navigation on mobile.
-.jumpstart-ui--three-column {
-  aside {
-    .menu--main {
-      @include grid-media-max('md') {
-        display: none;
-      }
-    }
-  }
-}
-
-// Add some extra space between the main-region and the sidebar.
 .jumpstart-ui {
   &--three-column,
   &--two-column {
-    > aside + .main-region {
+
+    // Hide secondary navigation on mobile.
+    .left-region {
+      .menu--main {
+        @include grid-media-max('md') {
+          display: none;
+        }
+      }
+    }
+
+    // Add some extra space between the main-region and the left-region.
+    > .left-region + .main-region {
       @include grid-media('xl') {
-        @include padding(null null null 150px);
+        @include padding(null null null 80px);
       }
     }
   }
