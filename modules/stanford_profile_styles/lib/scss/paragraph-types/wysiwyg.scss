@@ -219,4 +219,15 @@
       }
     }
   }
+
+  // When centered, allow the list inidicator to follow the text.
+  li,
+  dt,
+  dd {
+    &.text-align-center,
+    &.text-align-right {
+      list-style-position: inside;
+    }
+  }
+
 }
