@@ -19,7 +19,9 @@ Feature: System Site Config
     Then I am an anonymous user
     And I am on the homepage
     And I should see "Foo Bar Site"
-    And I should see "UA-123456-12"
+    # This was changed to DO NOT as configuration in our systems should prevent
+    # anything but the production environment from displaying tracking code.
+    And I should not see "UA-123456-12"
     Then I am logged in as a user with the "site_manager" role
     And I am on "/admin/config/system/basic-site-settings"
     Then I fill in "Site Name" with ""
