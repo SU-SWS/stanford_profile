@@ -99,6 +99,7 @@ Feature: WYSIWYG Paragraph
     And I wait for AJAX to finish
     And I wait 1 seconds
     Then I press "Continue"
+    And take a screenshot
     Then I press "Save"
     And I should see 1 "img" element in the "content" region
 
