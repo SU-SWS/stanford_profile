@@ -46,7 +46,7 @@ behat: &behat
     - run:
         name: Run Behat Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-chmod-files-dir#8ba385bd2bea2c5c69c367c9ea543841e2af00cc
+          composer global require SU-SWS/stanford-caravan:dev-chmod-files-dir
           ~/.composer/vendor/bin/sws-caravan behat /var/www/html --extension-dir=/var/www/test
     - save_cache:
         key: dependencies-v1-{{ epoch }}
