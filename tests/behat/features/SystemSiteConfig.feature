@@ -10,6 +10,23 @@ Feature: System Site Config
     Then I should not see "Foo Bar Site"
     And I am on "/admin/config/system/basic-site-settings"
     Then I fill in "Site Name" with "Foo Bar Site"
+    And I press "Save"
+    And the cache has been cleared
+    Then I am an anonymous user
+    And I am on the homepage
+    And I should see "Foo Bar Site"
+    Then I am logged in as a user with the "site_manager" role
+    And I am on "/admin/config/system/basic-site-settings"
+    Then I fill in "Site Name" with ""
+    And I press "Save"
+    And the cache has been cleared
+    Then I am on the homepage
+    And I should not see "Foo Bar Site"
+
+  @experimental
+  Scenario: Set google analytics settings
+    Given I am logged in as a user with the "site_manager" role
+    And I am on "/admin/config/system/basic-site-settings"
     And I fill in "Google Analytics Account" with "abcdefg"
     And I press "Save"
     Then I should see the error message "1 error has been found: Google Analytics Account"
@@ -18,14 +35,11 @@ Feature: System Site Config
     And the cache has been cleared
     Then I am an anonymous user
     And I am on the homepage
-    And I should see "Foo Bar Site"
-    # This was changed to DO NOT as configuration in our systems should prevent
-    # anything but the production environment from displaying tracking code.
-    And I should not see "UA-123456-12"
+    And I should see "UA-123456-12"
     Then I am logged in as a user with the "site_manager" role
     And I am on "/admin/config/system/basic-site-settings"
-    Then I fill in "Site Name" with ""
-    And I fill in "Google Analytics Account" with ""
+    Then I fill in "Google Analytics Account" with ""
     And I press "Save"
+    And the cache has been cleared
     Then I am on the homepage
-    And I should not see "Foo Bar Site"
+    And I should not see "UA-123456-12"
