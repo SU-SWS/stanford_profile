@@ -71,3 +71,44 @@ function stanford_profile_styles_ckeditor_css_alter(array &$css, Editor $editor)
     $css[] = drupal_get_path('module', 'stanford_profile_styles') . '/dist/css/stanford_profile_styles.ckeditor.css';
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Move your field or group of fields to the node form options vertical tabs.
+ */
+function stanford_profile_styles_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // This has to go through process so that the vertical tabs are rendered.
+  $form["#process"][] = "stanford_profile_styles_node_form_wide";
+}
+
+/**
+ * Moves the advanced group down to below the content as vertical tabs.
+ *
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state array.
+ *
+ * @return array
+ *   The altered form.
+ */
+function stanford_profile_styles_node_form_wide(array $form, FormStateInterface &$form_state) {
+
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $form_state->getFormObject()->getEntity();
+  if ($node->bundle() !== "stanford_page") {
+    return $form;
+  }
+
+  $form['advanced']['#type'] = 'vertical_tabs';
+  $form['meta']['#type'] = 'details';
+  $form['meta']['#title'] = t('Publishing Information');
+  $form['layout_selection']['#type'] = 'details';
+  $form['layout_selection']['#title'] = t('Layout Options');
+  $form['layout_selection']['#group'] = "advanced";
+  $form['layout_selection']['#weight'] = -11;
+  $form['#attached']['library'][] = 'stanford_profile_styles/node_form';
+
+  return $form;
+}
