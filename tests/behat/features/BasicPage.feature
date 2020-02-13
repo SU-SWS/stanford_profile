@@ -25,15 +25,3 @@ Feature: Basic Page
     Then I press "Change parent (update list of weights)"
     And I press "Save"
     Then I should see "Another Behat Test Menu Item" in the "menu" region
-
-  @javascript
-  Scenario: I am alerted if i try to leave an unsaved node.
-    Given I am logged in as a user with the "Contributor" role
-    And I am on "node/add/stanford_page"
-    And I wait 2 seconds
-    Then I fill in "Title" with "Behat Test"
-    And I wait 2 seconds
-    And I click "Home"
-    Then I should see "Changes you made may not be saved." in popup
-    Then I confirm the popup
-    And I should be on the homepage
