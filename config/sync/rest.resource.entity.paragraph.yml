@@ -1,0 +1,20 @@
+uuid: e63b8e85-b0be-4a84-af9c-6eeb54aa31b6
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - serialization
+    - user
+_core:
+  default_config_hash: UnOWc-ev422qQ1PxW-O6i6pTtaTCHEKW7qIuThykQu4
+id: entity.paragraph
+plugin_id: 'entity:paragraph'
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

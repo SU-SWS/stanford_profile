@@ -1,11 +1,12 @@
 name: Stanford Profile
 description: Jumpstart Website Profile
-version: 8.x-1.0-dev
+version: 8.x-1.0
 type: profile
 project: Jumpstart
 core: 8.x
 
 install:
+  - address:address
   - admin_toolbar:admin_toolbar
   - admin_toolbar:admin_toolbar_links_access_filter
   - admin_toolbar:admin_toolbar_tools
@@ -15,7 +16,6 @@ install:
   - chosen:chosen
   - chosen:chosen_lib
   - components:components
-  - config_distro:config_distro
   - config_filter:config_filter
   - config_merge:config_merge
   - config_pages:config_pages
@@ -78,6 +78,7 @@ install:
   - environment_indicator:environment_indicator
   - externalauth:externalauth
   - fakeobjects:fakeobjects
+  - field_group:field_group
   - field_validation:field_validation
   - file_mdm:file_mdm
   - file_mdm:file_mdm_exif
@@ -93,6 +94,9 @@ install:
   - layout_library:layout_library
   - link_title_formatter:link_title_formatter
   - linkit:linkit
+  - metatag:metatag
+  - metatag:metatag_open_graph
+  - metatag:metatag_verification
   - menu_admin_per_menu:menu_admin_per_menu
   - menu_block:menu_block
   - menu_link_weight:menu_link_weight
@@ -100,6 +104,7 @@ install:
   - paragraphs:paragraphs
   - paragraphs_edit:paragraphs_edit
   - pathauto:pathauto
+  - react_paragraphs:react_paragraphs
   - redirect:redirect
   - role_delegation:role_delegation
   - seckit:seckit
@@ -110,7 +115,6 @@ install:
   - stanford_media:media_duplicate_validation
   - stanford_media:stanford_media
   - stanford_profile:stanford_paragraph_card
-  - stanford_profile:stanford_profile_install
   - stanford_profile:stanford_profile_styles
   - stanford_ssp:stanford_ssp
   - stanford_text_editor:stanford_text_editor
@@ -121,6 +125,8 @@ install:
   - ui_patterns:ui_patterns_library
   - ui_patterns:ui_patterns_views
   - views_bulk_operations:views_bulk_operations
+  - xmlsitemap:xmlsitemap
+  - xmlsitemap:xmlsitemap_engines
 themes:
   - stable
   - classy

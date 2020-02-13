@@ -11,6 +11,7 @@ dependencies:
   module:
     - paragraphs
     - path
+    - react_paragraphs
 id: node.stanford_page.default
 targetEntityType: node
 bundle: stanford_page
@@ -77,21 +78,10 @@ content:
   su_page_components:
     weight: 9
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: closed_expand_nested
-      closed_mode: summary
-      autocollapse: none
-      closed_mode_threshold: 0
-      add_mode: modal
-      form_display_mode: default
-      default_paragraph_type: stanford_wysiwyg
-      features:
-        duplicate: duplicate
-        collapse_edit_all: collapse_edit_all
-        add_above: add_above
+      items_per_row: 1
+      resizable: false
     third_party_settings: {  }
-    type: paragraphs
+    type: react_paragraphs
     region: content
   title:
     type: string_textfield

@@ -20,6 +20,8 @@ Feature: Roles
     Then I should get a "200" HTTP response
     And I am on "/node/add/stanford_page"
     And I should not see "Layout"
+    Then I am on "/node/1/delete"
+    And I should get a 403 HTTP response
 
   Scenario: Check I can log in as the Site Editor role
     Given I am logged in as a user with the "Site Editor" role
@@ -27,6 +29,8 @@ Feature: Roles
     Then I should get a "200" HTTP response
     And I am on "/node/add/stanford_page"
     And I should not see "Layout"
+    Then I am on "/node/1/delete"
+    And I should get a 403 HTTP response
 
   Scenario: Check I can log in as the Site Manager role
     Given I am logged in as a user with the "Site Manager" role
@@ -34,6 +38,8 @@ Feature: Roles
     Then I should get a "200" HTTP response
     And I am on "/node/add/stanford_page"
     And I should see "Layout"
+    Then I am on "/node/1/delete"
+    And I should get a 403 HTTP response
 
   Scenario: Check I can log in as the Site Builder role
     Given I am logged in as a user with the "Site Builder" role
@@ -41,6 +47,8 @@ Feature: Roles
     Then I should get a "200" HTTP response
     And I am on "/node/add/stanford_page"
     And I should see "Layout"
+    Then I am on "/node/1/delete"
+    And I should get a 200 HTTP response
 
   Scenario: Check I can log in as the Site Developer role
     Given I am logged in as a user with the "Site Developer" role
@@ -48,3 +56,5 @@ Feature: Roles
     Then I should get a "200" HTTP response
     And I am on "/node/add/stanford_page"
     And I should see "Layout"
+    Then I am on "/node/1/delete"
+    And I should get a 200 HTTP response

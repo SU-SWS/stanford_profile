@@ -1,0 +1,25 @@
+uuid: 2b49a1a1-16ec-4eaa-9242-0ef0d21db639
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - stanford_basic
+id: stanford_basic_pagetitle
+theme: stanford_basic
+region: content
+weight: -3
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '/node/*'
+    negate: true
+    context_mapping: {  }

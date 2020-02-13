@@ -30,7 +30,7 @@ layout:
           context_mapping:
             entity: layout_builder.entity
         additional: {  }
-        weight: 0
+        weight: -9
       6ce9c0ce-a019-44f4-9225-4c2a1a9fbc6d:
         uuid: 6ce9c0ce-a019-44f4-9225-4c2a1a9fbc6d
         region: main
@@ -48,7 +48,7 @@ layout:
           context_mapping:
             entity: layout_builder.entity
         additional: {  }
-        weight: 1
+        weight: -8
       d23da6c4-a596-41c2-8185-cd712c160306:
         uuid: d23da6c4-a596-41c2-8185-cd712c160306
         region: main
@@ -59,7 +59,7 @@ layout:
           label_display: '0'
           formatter:
             label: hidden
-            type: entity_reference_revisions_entity_view
+            type: react_paragraphs
             settings:
               view_mode: default
             third_party_settings:
@@ -67,6 +67,18 @@ layout:
                 ds_limit: ''
           context_mapping:
             entity: layout_builder.entity
+            view_mode: view_mode
         additional: {  }
-        weight: 2
+        weight: -7
+      dae81a37-1839-4bc3-86fc-3e4f7fda4183:
+        uuid: dae81a37-1839-4bc3-86fc-3e4f7fda4183
+        region: main
+        configuration:
+          id: jumpstart_ui_skipnav_main_anchor
+          label: 'Main content anchor target'
+          provider: jumpstart_ui
+          label_display: '0'
+          context_mapping: {  }
+        additional: {  }
+        weight: -10
     third_party_settings: {  }

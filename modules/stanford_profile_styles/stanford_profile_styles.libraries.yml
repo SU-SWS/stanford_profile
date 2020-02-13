@@ -1,8 +1,26 @@
+admin:
+  version: VERSION
+  css:
+    theme:
+      dist/css/stanford_profile_styles.admin.css: {}
+
+field_widgets:
+  version: VERSION
+  css:
+    theme:
+      dist/css/stanford_profile_styles.field_widgets.css: {}
+
 stanford_page:
   version: VERSION
   css:
     component:
-      dist/css/stanford_page.css: {}
+      dist/css/stanford_profile_styles.node.stanford_page.css: {}
+
+stanford_paragraph_wysiwyg:
+  version: VERSION
+  css:
+    component:
+      dist/css/stanford_profile_styles.paragraph.wysiwyg.css: {}
 
 stanford_profile_styles:
   version: VERSION

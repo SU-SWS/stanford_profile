@@ -9,12 +9,12 @@ dependencies:
 id: node.su_page_components
 field_name: su_page_components
 entity_type: node
-type: entity_reference_revisions
+type: react_paragraphs
 settings:
   target_type: paragraph
-module: entity_reference_revisions
+module: react_paragraphs
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false
