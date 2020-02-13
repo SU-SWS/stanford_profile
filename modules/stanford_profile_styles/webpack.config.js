@@ -46,7 +46,7 @@ var webpackConfig = {
   devtool: 'source-map',
   // What build?
   entry: {
-    "stanford_profile_styles.admin": path.resolve(__dirname, srcSass + "/admin/all_pages.scss"),
+    "stanford_profile_styles.admin.node_form": path.resolve(__dirname, srcSass + "/admin/node_forms.scss"),
     "stanford_profile_styles.field_widgets": path.resolve(__dirname, srcSass + "/admin/field_widgets.scss"),
     "stanford_profile_styles.node.stanford_page": path.resolve(__dirname, srcSass + "/node-types/stanford_page.scss"),
     "stanford_profile_styles.paragraph.wysiwyg": path.resolve(__dirname, srcSass + "/paragraph-types/wysiwyg.scss"),
