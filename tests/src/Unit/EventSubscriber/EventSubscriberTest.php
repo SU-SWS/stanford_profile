@@ -38,6 +38,9 @@ class EventSubscriberTest extends UnitTestCase {
     $this->eventSubscriber = new TestStanfordEventSubscriber($file_system, $logger_factory);
   }
 
+  /**
+   * Test what we can of the content import event listener.
+   */
   public function testConfigImportEventDownload() {
     $expected = ['default_content.import' => 'onContentImport'];
     $this->assertArrayEquals($expected, StanfordEventSubscriber::getSubscribedEvents());
@@ -54,10 +57,14 @@ class EventSubscriberTest extends UnitTestCase {
 
 }
 
+/**
+ * {@inheritDoc}
+ */
 class TestStanfordEventSubscriber extends StanfordEventSubscriber {
 
-  const FETCH_DIR = '';
-
+  /**
+   * {@inheritDoc}
+   */
   protected function downloadFile($source, $destination) {
     return $destination;
   }
