@@ -10,7 +10,9 @@ use Drupal\node\NodeInterface;
 use Drupal\stanford_profile\EventSubscriber\EventSubscriber as StanfordEventSubscriber;
 use Drupal\Tests\UnitTestCase;
 
-define('DRUPAL_ROOT', __DIR__);
+if (!defined('DRUPAL_ROOT')) {
+  define('DRUPAL_ROOT', __DIR__);
+}
 
 /**
  * Class EventSubscriberTest.
