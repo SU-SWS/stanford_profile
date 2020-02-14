@@ -1,5 +1,28 @@
 # Stanford Profile
 
+8.x-1.1
+--------------------------------------------------------------------------------
+_Release Date: 2020-02-14_
+
+- Happy Valentines Day!
+- D8CORE-1177: WYSIWYG heading text alignment (#87)
+- D8CORE-1234: Add missing breakpoint for 2:1 card responsive image style
+- D8CORE-1261: Adjust content/nav gap. (#89)
+- Added page title for non-node pages (#92)
+- D8CORE-1254: Text alignment for lists (#95)
+- Added field_formatter_class module (#93)
+- D8CORE-1289: Update homepage banner default content (#96)
+- D8CORE-369: Enable metatags and XMLSitemap on prod (#88)
+- D8CORE-1114: Alter Node Edit Form for react_paragraphs (#97)
+- D8CORE-1201 use confirm_leave module (#99)
+- D8CORE-1007 Add image for default content (#100)
+- Added github template files.
+- Uninstall better_normalizers module
+- Uninstall config_distro module
+- Updated default content and media library images.
+- D8CORE-1007: Add image for default content (#100)
+- D8CORE-1019: Modified the full width layout (#102)
+
 8.x-1.0
 --------------------------------------------------------------------------------
 _Release Date: 2020-02-05_
