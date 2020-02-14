@@ -20,6 +20,8 @@ _Release Date: 2020-02-14_
 - Uninstall better_normalizers module
 - Uninstall config_distro module
 - Updated default content and media library images.
+- D8CORE-1007: Add image for default content (#100)
+- D8CORE-1019: Modified the full width layout (#102)
 
 8.x-1.0
 --------------------------------------------------------------------------------
