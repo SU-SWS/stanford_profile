@@ -23,4 +23,4 @@ Feature: Default Content
   Scenario: Media
     Given I am logged in as a user with the "site_manager" role
     And I am on "/admin/content/media"
-    Then I should see 15 ".media-library-item img" elements
+    Then I should see 15 or more ".media-library-item img" elements

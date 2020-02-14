@@ -19,7 +19,7 @@ class EventSubscriber implements EventSubscriberInterface {
   /**
    * External site url to fetch the given file from.
    */
-  const FETCH_DOMAIN = 'https://pookmish20191003.sites.stanford.edu';
+  const FETCH_DOMAIN = 'https://content.sites.stanford.edu';
 
   /**
    * The directory the file lives on the server.
