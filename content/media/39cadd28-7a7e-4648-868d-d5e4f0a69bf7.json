@@ -8,19 +8,19 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/media\/image\/uid": [
             {
-                "href": "http:\/\/default\/user\/5?_format=hal_json",
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/media\/image\/thumbnail": [
             {
-                "href": "",
+                "href": "http:\/\/default\/sites\/default\/files\/media\/image\/homepage-default_banner-2_3_2.jpg",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/media\/image\/field_media_image": [
             {
-                "href": "",
+                "href": "http:\/\/default\/sites\/default\/files\/media\/image\/homepage-default_banner-2_3_2.jpg",
                 "lang": "en"
             }
         ]
@@ -53,7 +53,7 @@
     ],
     "revision_created": [
         {
-            "value": "2019-10-11T19:22:04+00:00",
+            "value": "2020-02-13T21:21:24+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -68,7 +68,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/5?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -76,7 +76,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "fb427356-19c7-482f-9d9a-bfb787aeaab6"
+                        "value": "92ead9f7-7e51-4773-b45b-c73f9b9eaba8"
                     }
                 ],
                 "lang": "en"
@@ -86,29 +86,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "a0af0f16-0324-4fe6-9bc2-7ac8fe6c4c60"
-                    }
-                ],
-                "lang": "en",
-                "alt": "Sunset over Stanford Campus",
-                "title": null,
-                "width": "3000",
-                "height": "1500"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/media\/image\/field_media_image": [
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
+                        "href": "http:\/\/default\/sites\/default\/files\/media\/image\/homepage-default_banner-2_3_2.jpg"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
@@ -119,11 +97,25 @@
                         "value": "ba513d3b-0d26-4079-91ce-eb31c5798ed8"
                     }
                 ],
-                "lang": "en",
-                "alt": "Sunset over Stanford Campus",
-                "title": "",
-                "width": "3000",
-                "height": "1500"
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/media\/image\/field_media_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/sites\/default\/files\/media\/image\/homepage-default_banner-2_3_2.jpg"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "ba513d3b-0d26-4079-91ce-eb31c5798ed8"
+                    }
+                ],
+                "lang": "en"
             }
         ]
     },
@@ -156,6 +148,24 @@
     "revision_translation_affected": [
         {
             "value": true,
+            "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "| University",
+                "og_site_name": "University",
+                "canonical_url": "http:\/\/default\/home",
+                "og_url": "http:\/\/default\/home"
+            }
+        }
+    ],
+    "path": [
+        {
+            "alias": null,
+            "pid": null,
+            "langcode": "en",
             "lang": "en"
         }
     ]

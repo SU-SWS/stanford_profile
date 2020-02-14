@@ -8,7 +8,7 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/5?_format=hal_json"
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
@@ -61,7 +61,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/5?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -69,7 +69,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "4113b5a9-e9cb-41d5-96a9-3e6d49a72024"
+                        "value": "92ead9f7-7e51-4773-b45b-c73f9b9eaba8"
                     }
                 ]
             }
@@ -86,7 +86,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "4235fde2-41f8-4dfa-aafe-de7d8f759dde"
+                        "value": "92ead9f7-7e51-4773-b45b-c73f9b9eaba8"
                     }
                 ],
                 "lang": "en"
@@ -108,7 +108,13 @@
                     }
                 ],
                 "lang": "en",
-                "target_revision_id": "1"
+                "target_revision_id": "1",
+                "settings": {
+                    "row": "0",
+                    "index": 0,
+                    "width": 12,
+                    "admin_title": "Text Area"
+                }
             }
         ]
     },
@@ -162,10 +168,20 @@
             "lang": "en"
         }
     ],
+    "metatag": [
+        {
+            "value": {
+                "title": "Resources | University",
+                "og_site_name": "University",
+                "canonical_url": "http:\/\/default\/resources",
+                "og_url": "http:\/\/default\/home"
+            }
+        }
+    ],
     "path": [
         {
             "alias": "\/resources",
-            "pid": 3,
+            "pid": 4,
             "langcode": "en",
             "lang": "en"
         }
