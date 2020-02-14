@@ -4,6 +4,7 @@ namespace Drupal\stanford_profile\EventSubscriber;
 
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\default_content\Event\DefaultContentEvents;
 use Drupal\default_content\Event\ImportEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -26,7 +27,7 @@ class EventSubscriber implements EventSubscriberInterface {
    * This should be the same location in the FETCH_DOMAIN as it is when trying
    * to copy locally.
    */
-  const FETCH_DIR = 'sites/default/files';
+  const FETCH_DIR = '/sites/default/files/';
 
   /**
    * File system service.
@@ -93,8 +94,11 @@ class EventSubscriber implements EventSubscriberInterface {
     $local_directory = substr($file_uri, 0, strrpos($file_uri, '/'));
     $this->fileSystem->prepareDirectory($local_directory, FileSystemInterface::CREATE_DIRECTORY);
 
-    $file_path = substr($file_uri, strpos($file_uri, '://') + 3);
-    $local_file = DRUPAL_ROOT . '/' . self::FETCH_DIR . '/' . $file_path;
+    $file_scheme = StreamWrapperManager::getScheme($file_uri);
+    $file_path = str_replace("$file_scheme://", '', $file_uri);
+    $local_file = DRUPAL_ROOT . $this::FETCH_DIR . $file_path;
+
+    // @codeCoverageIgnoreStart
     if (file_exists($local_file)) {
       try {
         $this->fileSystem->copy($local_file, $file_path, FileSystemInterface::EXISTS_REPLACE);
@@ -107,8 +111,23 @@ class EventSubscriber implements EventSubscriberInterface {
         ]);
       }
     }
+    // @codeCoverageIgnoreEnd
+    $this->downloadFile($this::FETCH_DOMAIN . $this::FETCH_DIR . $file_path, $file_uri);
+  }
 
-    system_retrieve_file(self::FETCH_DOMAIN . '/' . self::FETCH_DIR . '/' . $file_path, $file_uri, FALSE, FileSystemInterface::EXISTS_REPLACE);
+  /**
+   * Download the file and place it in the given location.
+   *
+   * @param string $source
+   *   File url source.
+   * @param string $destination
+   *   Local path with schema.
+   *
+   * @codeCoverageIgnore
+   *   Ignore from unit tests.
+   */
+  protected function downloadFile($source, $destination) {
+    system_retrieve_file($source, $destination, FALSE, FileSystemInterface::EXISTS_REPLACE);
   }
 
 }
