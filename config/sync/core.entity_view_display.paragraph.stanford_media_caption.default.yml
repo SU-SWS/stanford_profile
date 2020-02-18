@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_media_caption
   module:
     - ds
+    - field_formatter_class
     - link
     - stanford_media
     - text
@@ -55,26 +56,24 @@ content:
     type: link
     region: media_link
   su_media_caption_media:
-    type: multimedia
+    type: media_multimedia_formatter
     weight: 2
     label: hidden
     settings:
       image:
-        image_formatter: responsive_image
+        image_formatter: image_style
         image_formatter_image_style: card_1900x950
         image_formatter_responsive_image_style: full_responsive
         image_formatter_view_mode: default
       video:
         video_formatter: entity
         video_formatter_view_mode: default
-      audio:
-        audio_formatter: entity
-        audio_formatter_view_mode: default
       other:
         view_mode: default
       view_mode: default
       link: false
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
     region: media_custom
 hidden: {  }
-
