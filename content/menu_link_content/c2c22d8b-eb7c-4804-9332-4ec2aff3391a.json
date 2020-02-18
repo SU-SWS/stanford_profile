@@ -5,12 +5,7 @@
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/menu_link_content\/menu_link_content"
-        },
-        "http:\/\/drupal.org\/rest\/relation\/menu_link_content\/menu_link_content\/menu_link_content_target_entity": [
-            {
-                "href": "http:\/\/default\/about?_format=hal_json"
-            }
-        ]
+        }
     },
     "id": [
         {
@@ -64,8 +59,7 @@
         {
             "uri": "entity:node\/8",
             "title": "",
-            "options": [],
-            "target_uuid": "d21d84f0-22e7-4596-82cb-9209841a3276"
+            "options": []
         }
     ],
     "external": [
@@ -107,23 +101,14 @@
             "lang": "en"
         }
     ],
-    "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/menu_link_content\/menu_link_content\/menu_link_content_target_entity": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/about?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/node\/stanford_page"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "d21d84f0-22e7-4596-82cb-9209841a3276"
-                    }
-                ]
+    "metatag": [
+        {
+            "value": {
+                "title": "| University",
+                "og_site_name": "University",
+                "canonical_url": "http:\/\/default\/home",
+                "og_url": "http:\/\/default\/home"
             }
-        ]
-    }
+        }
+    ]
 }
