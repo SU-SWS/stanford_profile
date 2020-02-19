@@ -25,3 +25,9 @@ Feature: Basic Page
     Then I press "Change parent (update list of weights)"
     And I press "Save"
     Then I should see "Another Behat Test Menu Item" in the "menu" region
+
+  Scenario: Count the number of H1 Tags
+    Given I am on "/this-doesnt-exist"
+    Then I should see 1 "h1" element
+    And I am on "/search/content?keys=stuff&search="
+    Then I should see 1 "h1" element
