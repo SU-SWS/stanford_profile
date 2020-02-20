@@ -151,6 +151,7 @@
   // Big splashy intro text.
   .su-intro-text {
     @include modular-spacing('margin-bottom', 0);
+    @include modular-typography(2);
 
     // 70 character line length.
     max-width: 55ch;
