@@ -1,0 +1,56 @@
+uuid: c166779a-5c0f-423c-8da5-16a4cb330e89
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.variant_1
+    - field.field.paragraph.stanford_media_caption.su_media_caption_caption
+    - field.field.paragraph.stanford_media_caption.su_media_caption_link
+    - field.field.paragraph.stanford_media_caption.su_media_caption_media
+    - paragraphs.paragraphs_type.stanford_media_caption
+  module:
+    - ds
+    - layout_builder
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_media
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+          variant: video
+    regions:
+      media_caption:
+        - su_media_caption_caption
+      media_custom:
+        - su_media_caption_media
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraph.stanford_media_caption.variant_1
+targetEntityType: paragraph
+bundle: stanford_media_caption
+mode: variant_1
+content:
+  su_media_caption_caption:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: media_caption
+  su_media_caption_media:
+    type: entity_reference_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: media_custom
+hidden:
+  su_media_caption_link: true

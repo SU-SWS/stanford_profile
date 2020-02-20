@@ -1,0 +1,27 @@
+uuid: a80add98-928d-47aa-b864-bfdd429d0006
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_media_caption_caption
+    - paragraphs.paragraphs_type.stanford_media_caption
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_minimal_html: stanford_minimal_html
+    stanford_html: '0'
+    plain_text: '0'
+id: paragraph.stanford_media_caption.su_media_caption_caption
+field_name: su_media_caption_caption
+entity_type: paragraph
+bundle: stanford_media_caption
+label: Caption
+description: 'The caption text that appears beneath the media item.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
