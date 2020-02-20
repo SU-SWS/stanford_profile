@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - linkit
+    - media
 name: 'Minimal HTML'
 format: stanford_minimal_html
 weight: 0
@@ -14,7 +15,7 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<p> <div> <em> <strong> <cite> <blockquote cite> <code> <dd> <a href hreflang data-entity-substitution data-entity-type data-entity-uuid title class="su-button su-button--big su-button--secondary">'
+      allowed_html: '<br> <p> <div> <em> <strong> <cite> <blockquote cite> <code> <dd> <a href hreflang data-entity-substitution data-entity-type data-entity-uuid title class="su-button su-button--big su-button--secondary su-link--action">'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -30,3 +31,12 @@ filters:
     weight: 0
     settings:
       title: true
+  media_embed:
+    id: media_embed
+    provider: media
+    status: false
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_media_types: {  }
+      allowed_view_modes: {  }
