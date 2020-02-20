@@ -134,6 +134,7 @@
   // Big splashy font.
   .su-font-splash {
     @include modular-spacing('margin', -1 null 2 null);
+    @include type-a;
 
     &:first-child {
       // Remove margin-top and padding-top when it is the first item on the page
