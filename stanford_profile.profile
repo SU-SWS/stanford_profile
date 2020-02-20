@@ -9,6 +9,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\NodeInterface;
@@ -97,6 +98,15 @@ function stanford_profile_entity_field_access($operation, FieldDefinitionInterfa
     }
   }
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function stanford_profile_field_widget_options_select_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if ($context['items']->getFieldDefinition()->getName() == 'layout_selection') {
+    $element['#description'] = t('Choose a layout to display the page as a whole. Choose "- None -" to keep the default layout setting.');
+  }
 }
 
 /**
