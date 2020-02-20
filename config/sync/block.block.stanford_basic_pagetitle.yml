@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - response_code_condition
     - system
   theme:
     - stanford_basic
@@ -21,5 +22,10 @@ visibility:
   request_path:
     id: request_path
     pages: '/node/*'
+    negate: true
+    context_mapping: {  }
+  response_code:
+    id: response_code
+    response_codes: "404\r\n403"
     negate: true
     context_mapping: {  }
