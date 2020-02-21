@@ -160,7 +160,8 @@ function stanford_profile_form_menu_edit_form_alter(array &$form, FormStateInter
     return;
   }
 
-  // If the form is locked, hide the config you cannot change from users without the know how.
+  // If the form is locked, hide the config you cannot change from users without
+  // the know how.
   $access = \Drupal::currentUser()->hasPermission('Administer menus and menu items');
   $form['label']['#access'] = $access;
   $form['description']['#access'] = $access;
