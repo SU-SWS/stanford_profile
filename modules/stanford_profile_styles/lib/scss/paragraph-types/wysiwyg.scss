@@ -3,6 +3,20 @@
 
 .su-wysiwyg-text {
 
+  // Margins needed for xs-md for mobile devices only.
+  // When using full width layout but have text paragraphs, we need mobile margins.
+  @include grid-media-only('xs') {
+    @include margin(null 20px);
+  }
+
+  @include grid-media-only('sm') {
+    @include margin(null 30px);
+  }
+
+  @include grid-media-only('md') {
+    @include margin(null 50px);
+  }
+
   //
   // Margin overrides.
   //
@@ -77,15 +91,6 @@
     @include big-paragraph;
     @include modular-spacing('padding-bottom', 1);
     @include margin(0 null null null);
-    @include grid-media-only('xs') {
-      @include margin(null 20px);
-    }
-    @include grid-media-only('sm') {
-      @include margin(null 30px);
-    }
-    @include grid-media-only('md') {
-      @include margin(null 50px);
-    }
    }
 
   // Buttons.
@@ -249,18 +254,4 @@
       @include margin(null 0 null auto)
     }
   }
-
-  // When using full width layout but have text paragraphs, we need mobile margins.
-  h1, h2, h3, h4, h5, h6 {
-    @include grid-media-only('xs') {
-      @include margin(null 20px);
-    }
-    @include grid-media-only('sm') {
-      @include margin(null 30px);
-    }
-    @include grid-media-only('md') {
-      @include margin(null 50px);
-    }
-  }
-
 }
