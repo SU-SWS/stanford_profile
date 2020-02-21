@@ -151,10 +151,7 @@ function stanford_profile_node_access(NodeInterface $node, $op, AccountInterface
 }
 
 /**
- * Adds validation to config page site settings.
- *
- * @param array $form
- * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * Implements hook_form_FORM_ID_alter().
  */
 function stanford_profile_form_config_pages_stanford_basic_site_settings_form_alter(array &$form, FormStateInterface $form_state) {
   $form['#validate'][] = 'stanford_profile_config_pages_stanford_basic_site_settings_form_validate';
@@ -164,7 +161,9 @@ function stanford_profile_form_config_pages_stanford_basic_site_settings_form_al
  * Validates form values.
  *
  * @param array $form
+ *   The form array.
  * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state interface object.
  */
 function stanford_profile_config_pages_stanford_basic_site_settings_form_validate(array $form, FormStateInterface $form_state) {
   $element = $form_state->getValue('su_site_url');
