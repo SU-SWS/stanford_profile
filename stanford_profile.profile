@@ -149,3 +149,30 @@ function stanford_profile_node_access(NodeInterface $node, $op, AccountInterface
   }
   return AccessResult::neutral();
 }
+
+/**
+ * Adds validation to config page site settings.
+ *
+ * @param array $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function stanford_profile_form_config_pages_stanford_basic_site_settings_form_alter(array &$form, FormStateInterface $form_state) {
+  $form['#validate'][] = 'stanford_profile_config_pages_stanford_basic_site_settings_form_validate';
+}
+
+/**
+ * Validates form values.
+ *
+ * @param array $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function stanford_profile_config_pages_stanford_basic_site_settings_form_validate(array $form, FormStateInterface $form_state) {
+  $element = $form_state->getValue('su_site_url');
+  $uri = $element['0']['uri'];
+  if (!empty($uri)) {
+    $match = preg_match('/^http(s)?:\/\/.*\.stanford.edu/i', $uri);
+    if (!$match) {
+      $form_state->setErrorByName('su_site_url', 'Only valid stanford.edu domain names allowed.');
+    }
+  }
+}
