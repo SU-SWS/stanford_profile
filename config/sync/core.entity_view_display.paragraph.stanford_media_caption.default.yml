@@ -1,0 +1,79 @@
+uuid: 86e1dd87-3ca9-418d-8132-cbaedc8592af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_media_caption.su_media_caption_caption
+    - field.field.paragraph.stanford_media_caption.su_media_caption_link
+    - field.field.paragraph.stanford_media_caption.su_media_caption_media
+    - paragraphs.paragraphs_type.stanford_media_caption
+  module:
+    - ds
+    - field_formatter_class
+    - link
+    - stanford_media
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_media
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+          variant: default
+    regions:
+      media_caption:
+        - su_media_caption_caption
+      media_link:
+        - su_media_caption_link
+      media_custom:
+        - su_media_caption_media
+id: paragraph.stanford_media_caption.default
+targetEntityType: paragraph
+bundle: stanford_media_caption
+mode: default
+content:
+  su_media_caption_caption:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: media_caption
+  su_media_caption_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: true
+      url_plain: true
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link
+    region: media_link
+  su_media_caption_media:
+    type: media_multimedia_formatter
+    weight: 2
+    label: hidden
+    settings:
+      image:
+        image_formatter: image_style
+        image_formatter_image_style: card_1900x950
+        image_formatter_responsive_image_style: full_responsive
+        image_formatter_view_mode: default
+      video:
+        video_formatter: entity
+        video_formatter_view_mode: default
+      other:
+        view_mode: default
+      view_mode: default
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    region: media_custom
+hidden: {  }

@@ -8,7 +8,7 @@
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
+                "href": "http:\/\/default\/user\/7?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
@@ -17,11 +17,12 @@
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_banner": [
             {
-                "href": "",
-                "lang": "en"
-            },
+                "href": ""
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
             {
                 "href": "",
                 "lang": "en"
@@ -72,7 +73,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "2019-10-11T19:22:20+00:00",
+            "value": "2020-02-20T00:08:15+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -81,7 +82,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/7?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -89,7 +90,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "92ead9f7-7e51-4773-b45b-c73f9b9eaba8"
+                        "value": "52816e61-5cbd-4e8b-bad9-3f6d789d2091"
                     }
                 ]
             }
@@ -106,13 +107,13 @@
                 },
                 "uuid": [
                     {
-                        "value": "92ead9f7-7e51-4773-b45b-c73f9b9eaba8"
+                        "value": "2d07a1cb-dfbf-4fcf-b79c-eaf88cfed855"
                     }
                 ],
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_banner": [
             {
                 "_links": {
                     "self": {
@@ -124,18 +125,13 @@
                 },
                 "uuid": [
                     {
-                        "value": "5395f779-e884-4429-a533-a6712bd4eb32"
+                        "value": "79c98714-281a-450d-b574-2971426b1f3e"
                     }
                 ],
-                "lang": "en",
-                "target_revision_id": "6",
-                "settings": {
-                    "row": "0",
-                    "index": 0,
-                    "width": 12,
-                    "admin_title": "Banner"
-                }
-            },
+                "target_revision_id": "17"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
             {
                 "_links": {
                     "self": {
@@ -153,7 +149,7 @@
                 "lang": "en",
                 "target_revision_id": "10",
                 "settings": {
-                    "row": "1",
+                    "row": 0,
                     "index": 0,
                     "width": 12,
                     "admin_title": "Text Area"
@@ -176,7 +172,7 @@
                 "lang": "en",
                 "target_revision_id": "8",
                 "settings": {
-                    "row": "2",
+                    "row": 1,
                     "index": 0,
                     "width": 12,
                     "admin_title": "Card"
@@ -199,7 +195,7 @@
                 "lang": "en",
                 "target_revision_id": "15",
                 "settings": {
-                    "row": "3",
+                    "row": 2,
                     "index": 0,
                     "width": 12,
                     "admin_title": "Text Area"
@@ -222,7 +218,7 @@
                 "lang": "en",
                 "target_revision_id": "16",
                 "settings": {
-                    "row": "4",
+                    "row": 3,
                     "index": 0,
                     "width": 12,
                     "admin_title": "Banner"
@@ -245,7 +241,7 @@
                 "lang": "en",
                 "target_revision_id": "14",
                 "settings": {
-                    "row": "5",
+                    "row": 4,
                     "index": 0,
                     "width": 12,
                     "admin_title": "Text Area"
@@ -274,7 +270,7 @@
     ],
     "changed": [
         {
-            "value": "2019-10-11T19:22:20+00:00",
+            "value": "2020-02-20T00:08:15+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
@@ -309,7 +305,9 @@
                 "title": "Home | University",
                 "og_site_name": "University",
                 "canonical_url": "http:\/\/default\/home",
-                "og_url": "http:\/\/default\/home"
+                "og_url": "http:\/\/default\/home",
+                "og_image_0": "http:\/\/default\/sites\/default\/files\/media\/image\/photo-epel-stanford-campus.jpg",
+                "og_image_url_0": "http:\/\/default\/sites\/default\/files\/media\/image\/photo-epel-stanford-campus.jpg"
             }
         }
     ],

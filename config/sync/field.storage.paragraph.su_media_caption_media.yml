@@ -1,0 +1,20 @@
+uuid: 8475cdfd-d84b-4cd1-91f7-22ba03c0311b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - paragraphs
+id: paragraph.su_media_caption_media
+field_name: su_media_caption_media
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

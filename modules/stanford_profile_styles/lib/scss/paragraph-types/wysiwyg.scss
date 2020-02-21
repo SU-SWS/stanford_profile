@@ -64,6 +64,12 @@
     max-width: 78ch;
   }
 
+  // Lists styles
+  ul,
+  ol {
+    @include big-paragraph;
+  }
+
   // Caption Styles.
   .caption {
     figcaption {
