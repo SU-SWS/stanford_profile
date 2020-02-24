@@ -4,7 +4,7 @@
 
 .su-wysiwyg-text {
   // Example.
-  @include modular-spacing(null map_get($su-screen-margins, 'sm'));
+  @include margin(null map-get($su-screen-margins, 'sm'));
 }
 
 .su-hero-banner {
