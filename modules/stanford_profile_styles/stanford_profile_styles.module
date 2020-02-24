@@ -35,6 +35,11 @@ function stanford_profile_styles_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'stanford_profile_styles/stanford_page';
   }
 
+  // Check if stanford page is using a particular layout.
+  if ($node->get('layout_selection')->getValue('target_id')[0]['target_id'] == "stanford_basic_page_full") {
+    $attachments['#attached']['library'][] = "stanford_profile_styles/stanford_page_layout_full";
+  }
+
 }
 
 /**

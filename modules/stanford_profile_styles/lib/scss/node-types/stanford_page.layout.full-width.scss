@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@import '../config';
+
+.su-wysiwyg-text {
+  // Example.
+  @include modular-spacing(null map_get($su-screen-margins, 'sm'));
+}
+
+.su-hero-banner {
+  // Example.
+}
