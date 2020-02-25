@@ -87,7 +87,7 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
       $parent_item = array_pop($menu_link_content);
       $params = $parent_item->getUrlObject()->getRouteParameters();
       if (isset($params['node'])) {
-        CACHE::invalidateTags(['node:'  . $params['node']]);
+        Cache::invalidateTags(['node:' . $params['node']]);
       }
     }
   }
