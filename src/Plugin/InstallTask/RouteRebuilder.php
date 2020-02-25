@@ -48,6 +48,7 @@ class RouteRebuilder extends InstallTaskBase implements ContainerFactoryPluginIn
    */
   public function runTask(array &$install_state) {
     $this->routeBuilder->rebuildIfNeeded();
+    node_access_rebuild();
   }
 
 }
