@@ -1,5 +1,22 @@
 # Stanford Profile
 
+8.x-1.2
+--------------------------------------------------------------------------------
+_Release Date: 2020-02-21
+
+- Resynced the media library view with the drupaDl core version (#105)
+- D8CORE-1393 Dont display page title block on 404 and 403 pages (#106)
+- D8CORE-106: Add Media with Caption paragraph. (#59)
+- D8CORE-1363: Dont show contextual links to users. (#108)
+- D8CORE-1262: Change "Related Text" to "Card Text". (#108)
+- D8CORE-1365: Moved banner to top banner field. (#108)
+- D8CORE-1394: Allow <br> tags. (#108)
+- D8CORE-1224: Add help text to layout selection field. (#108)
+- D8CORE-1326: Allow sitemanagers to view all unpublished content. (#108)
+- D8CORE-1313: Moving the ol and ul styles to the wysiwyg (#111)
+- Added stanford media library to node form since react doesnt add it (#113)
+
+
 8.x-1.1
 --------------------------------------------------------------------------------
 _Release Date: 2020-02-14_
