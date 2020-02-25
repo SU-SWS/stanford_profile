@@ -14,6 +14,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\Cache\Cache;
 
 /**
  * Implements hook_install_tasks().
@@ -74,6 +75,22 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
   // attribute so all menu items are expanded by default.
   if ($entity->isNew()) {
     $entity->set('expanded', TRUE);
+  }
+
+  // When a menu item is added as a child of another menu item clear the parent
+  // pages cache so that the block shows up as it doesn't get invalidated just
+  // by the menu cache tags.
+  $parent_id = $entity->getParentId();
+  if (!empty($parent_id)) {
+    list($entity_name, $uuid) = explode(':', $parent_id);
+    $menu_link_content = \Drupal::entityTypeManager()->getStorage($entity_name)->loadByProperties(['uuid' => $uuid]);
+    if (is_array($menu_link_content)) {
+      $parent_item = array_pop($menu_link_content);
+      $params = $parent_item->getUrlObject()->getRouteParameters();
+      if (isset($params['node'])) {
+        Cache::invalidateTags(['node:' . $params['node']]);
+      }
+    }
   }
 }
 
@@ -170,5 +187,31 @@ function stanford_profile_form_menu_edit_form_alter(array &$form, FormStateInter
   // Remove the warning message if the user does not have access.
   if (!$access) {
     \Drupal::messenger()->deleteByType("warning");
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function stanford_profile_form_config_pages_stanford_basic_site_settings_form_alter(array &$form, FormStateInterface $form_state) {
+  $form['#validate'][] = 'stanford_profile_config_pages_stanford_basic_site_settings_form_validate';
+}
+
+/**
+ * Validates form values.
+ *
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state interface object.
+ */
+function stanford_profile_config_pages_stanford_basic_site_settings_form_validate(array $form, FormStateInterface $form_state) {
+  $element = $form_state->getValue('su_site_url');
+  $uri = $element['0']['uri'];
+  if (!empty($uri)) {
+    $match = preg_match('/^http(s)?:\/\/.*\.stanford.edu/i', $uri);
+    if (!$match) {
+      $form_state->setErrorByName('su_site_url', t('Only valid stanford.edu domain names allowed.'));
+    }
   }
 }
