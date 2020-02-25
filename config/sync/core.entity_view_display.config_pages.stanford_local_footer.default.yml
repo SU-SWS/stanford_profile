@@ -58,8 +58,6 @@ third_party_settings:
         - su_local_foot_f_method
       signup_form_field_submit_value:
         - su_local_foot_f_button
-      weblogin_url:
-        - su_su_local_lgn_url
       weblogin_text:
         - su_local_foot_sunet_t
     fields:
@@ -118,12 +116,14 @@ content:
     weight: 9
     label: hidden
     settings:
-      trim_length: 80
+      trim_length: null
       url_only: true
       url_plain: true
       rel: '0'
       target: '0'
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
     type: link
     region: signup_form_action
   su_local_foot_primary:
