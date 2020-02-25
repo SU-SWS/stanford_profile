@@ -1,5 +1,5 @@
 # [Stanford Profile](https://github.com/SU-SWS/stanford_profile)
-##### 8.x-1.2-dev
+##### 8.x-1.2
 
 Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)  
 
