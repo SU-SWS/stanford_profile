@@ -85,8 +85,7 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
     $menu_link_content = \Drupal::entityTypeManager()->getStorage($entity_name)->loadByProperties(['uuid' => $uuid]);
     if (is_array($menu_link_content)) {
       $parent_item = array_pop($menu_link_content);
-      $parent_url = $parent_item->getUrlObject();
-      $params = $parent_url->getRouteParameters();
+      $params = $parent_item->getUrlObject()->getRouteParameters();
       if (isset($params['node'])) {
         CACHE::invalidateTags(['node:'  . $params['node']]);
       }
