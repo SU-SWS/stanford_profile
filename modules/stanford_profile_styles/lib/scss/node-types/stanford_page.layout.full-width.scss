@@ -2,11 +2,17 @@
 
 @import '../config';
 
-.su-wysiwyg-text {
-  // Example.
-  @include margin(null map-get($su-screen-margins, 'sm'));
-}
+.su-wysiwyg-text,
+.su-card {
+  @include grid-media-only('xs') {
+    @include margin(null map-get($su-screen-margins, 'xs'));
+  }
 
-.su-hero-banner {
-  // Example.
+  @include grid-media-only('sm') {
+    @include margin(null map-get($su-screen-margins, 'sm'));
+  }
+
+  @include grid-media-only('md') {
+    @include margin(null map-get($su-screen-margins, 'md'));
+  }
 }

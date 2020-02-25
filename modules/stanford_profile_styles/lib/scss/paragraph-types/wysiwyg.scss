@@ -2,21 +2,6 @@
 @import '../config';
 
 .su-wysiwyg-text {
-
-  // Margins needed for xs-md for mobile devices only.
-  // When using full width layout but have text paragraphs, we need mobile margins.
-  @include grid-media-only('xs') {
-    @include margin(null 20px);
-  }
-
-  @include grid-media-only('sm') {
-    @include margin(null 30px);
-  }
-
-  @include grid-media-only('md') {
-    @include margin(null 50px);
-  }
-
   //
   // Margin overrides.
   //
