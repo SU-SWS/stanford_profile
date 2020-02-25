@@ -13,6 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Cache\Cache;
 
 /**
  * Implements hook_install_tasks().
@@ -73,6 +74,23 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
   // attribute so all menu items are expanded by default.
   if ($entity->isNew()) {
     $entity->set('expanded', TRUE);
+  }
+
+  // When a menu item is added as a child of another menu item clear the parent
+  // pages cache so that the block shows up as it doesn't get invalidated just
+  // by the menu cache tags.
+  $parent_id = $entity->getParentId();
+  if (!empty($parent_id)) {
+    list($entity_name, $uuid) = explode(':', $parent_id);
+    $menu_link_content = \Drupal::entityTypeManager()->getStorage($entity_name)->loadByProperties(['uuid' => $uuid]);
+    if (is_array($menu_link_content)) {
+      $parent_item = array_pop($menu_link_content);
+      $parent_url = $parent_item->getUrlObject();
+      $params = $parent_url->getRouteParameters();
+      if (isset($params['node'])) {
+        CACHE::invalidateTags(['node:'  . $params['node']]);
+      }
+    }
   }
 }
 
