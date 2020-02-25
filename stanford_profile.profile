@@ -13,6 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Site\Settings;
 use Drupal\Core\Cache\Cache;
 
 /**
@@ -165,6 +166,28 @@ function stanford_profile_node_access(NodeInterface $node, $op, AccountInterface
     }
   }
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function stanford_profile_form_menu_edit_form_alter(array &$form, FormStateInterface $form_state) {
+  $read_only = Settings::get('config_readonly', FALSE);
+  if (!$read_only) {
+    return;
+  }
+
+  // If the form is locked, hide the config you cannot change from users without
+  // the know how.
+  $access = \Drupal::currentUser()->hasPermission('Administer menus and menu items');
+  $form['label']['#access'] = $access;
+  $form['description']['#access'] = $access;
+  $form['id']['#access'] = $access;
+
+  // Remove the warning message if the user does not have access.
+  if (!$access) {
+    \Drupal::messenger()->deleteByType("warning");
+  }
 }
 
 /**
