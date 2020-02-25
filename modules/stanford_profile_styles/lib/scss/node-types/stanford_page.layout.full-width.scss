@@ -2,6 +2,9 @@
 
 @import '../config';
 
+// Styles for the full width page. Need to have margins on text elements and cards.
+// And need to have no margins on the full bleed banner images.
+
 .su-wysiwyg-text,
 .su-card {
   @include grid-media-only('xs') {
