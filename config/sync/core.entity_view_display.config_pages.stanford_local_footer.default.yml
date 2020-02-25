@@ -20,6 +20,7 @@ dependencies:
   module:
     - address
     - ds
+    - field_formatter_class
     - link
     - options
     - text
@@ -32,7 +33,7 @@ third_party_settings:
       entity_classes: all_classes
       settings:
         pattern:
-          field_templates: default
+          field_templates: only_content
     regions:
       lockup_title:
         - 'dynamic_token_field:config_pages-su_site_name'
@@ -58,8 +59,6 @@ third_party_settings:
         - su_local_foot_f_method
       signup_form_field_submit_value:
         - su_local_foot_f_button
-      weblogin_url:
-        - su_su_local_lgn_url
       weblogin_text:
         - su_local_foot_sunet_t
     fields:
@@ -77,12 +76,16 @@ content:
     weight: 2
     label: hidden
     settings:
-      trim_length: 80
+      trim_length: null
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
     type: link
     region: action_links
   su_local_foot_address:
@@ -120,22 +123,28 @@ content:
     settings:
       trim_length: null
       url_only: true
-      url_plain: true
+      url_plain: false
       rel: '0'
       target: '0'
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
     type: link
     region: signup_form_action
   su_local_foot_primary:
     weight: 5
     label: hidden
     settings:
-      trim_length: 80
+      trim_length: null
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
     type: link
     region: primary_links
   su_local_foot_prime_h:
@@ -150,12 +159,16 @@ content:
     weight: 7
     label: hidden
     settings:
-      trim_length: 80
+      trim_length: null
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
     type: link
     region: secondary_links
   su_local_foot_second_h:
@@ -170,12 +183,16 @@ content:
     weight: 3
     label: hidden
     settings:
-      trim_length: 80
+      trim_length: null
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
     type: link
     region: social_links
   su_local_foot_sunet_t:
