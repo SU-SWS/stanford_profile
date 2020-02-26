@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.su-wysiwyg-text {
+
+  // Buttons.
+  .su-button{
+    @include modular-spacing('margin-bottom', 0);
+  }
+
+  // Bigger buttons.
+  .su-button--big {
+    @include modular-spacing('margin-bottom', 0);
+  }
+
+  // Secondary buttons.
+  .su-button--secondary {
+    @include modular-spacing('margin-bottom', 0);
+  }
+
+}

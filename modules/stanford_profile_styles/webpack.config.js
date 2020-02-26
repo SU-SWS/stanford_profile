@@ -49,7 +49,7 @@ var webpackConfig = {
     "stanford_profile_styles.admin.node_form": path.resolve(__dirname, srcSass + "/admin/node_forms.scss"),
     "stanford_profile_styles.field_widgets": path.resolve(__dirname, srcSass + "/admin/field_widgets.scss"),
     "stanford_profile_styles.node.stanford_page": path.resolve(__dirname, srcSass + "/node-types/stanford_page.scss"),
-    "stanford_profile_styles.paragraph.wysiwyg": path.resolve(__dirname, srcSass + "/paragraph-types/wysiwyg.scss"),
+    "stanford_profile_styles.paragraph.wysiwyg": path.resolve(__dirname, srcSass + "/paragraph-types/wysiwyg/index.scss"),
     "stanford_profile_styles.ckeditor": path.resolve(__dirname, srcSass + "/admin/ckeditor.scss"),
     "stanford_profile_styles": path.resolve(__dirname, srcSass + "/stanford_profile_styles.scss")
   },
