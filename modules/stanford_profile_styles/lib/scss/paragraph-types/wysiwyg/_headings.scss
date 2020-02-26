@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+.su-wysiwyg-text {
+  //
+  // Headings overrides
+  //
+  h1 {
+    @include modular-spacing('margin', 4 null 5 null);
+  }
+
+  h2 {
+    @include modular-spacing('margin', 1 null 1 null);
+    // 56 character line length.
+    max-width: 43ch;
+  }
+
+  h3 {
+    @include modular-spacing('margin', 0 null 1 null);
+    // 60 character line length.
+    max-width: 44ch;
+  }
+
+  h4 {
+    @include modular-spacing('margin', 0 null 1 null);
+    // 64 character line length.
+    max-width: 47ch;
+  }
+
+  h5 {
+    @include modular-spacing('margin', -1 null -1 null);
+    // 76 character line length.
+    max-width: 60ch;
+  }
+
+  h6 {
+    @include modular-spacing('margin-bottom', -2);
+    // 84 character line length.
+    max-width: 78ch;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+
+    &.text-align-center {
+      @include margin(null auto);
+    }
+
+    &.text-align-left {
+      @include margin(null auto null 0);
+    }
+
+    &.text-align-right {
+      @include margin(null 0 null auto);
+    }
+
+    a {
+      @include link-icon(caret-right, 0.65em, right);
+      color: $su-color-bright-red;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: $su-color-black;
+        text-decoration: underline;
+      }
+
+      &::after {
+        background-color: $su-color-bright-red;
+      }
+    }
+  }
+
+}

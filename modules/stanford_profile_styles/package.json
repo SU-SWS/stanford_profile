@@ -2,14 +2,6 @@
   "name": "stanford_profile_styles",
   "version": "0.1.0",
   "repository": "https://github.com/SU-SWS/stanford_profile",
-  "config": {
-    "srcSass": "lib/scss",
-    "distSass": "dist/css",
-    "srcJS": "lib/js",
-    "distJS": "dist/js",
-    "srcAssets": "lib/assets",
-    "distAssets": "dist/assets"
-  },
   "scripts": {
     "build": "webpack --mode=development --display-error-details",
     "publish": "webpack --mode=production",

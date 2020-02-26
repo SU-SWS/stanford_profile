@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.su-wysiwyg-text {
+  // Lists styles
+  ul,
+  ol {
+    @include big-paragraph;
+  }
+
+  // When centered, allow the list indicator to follow the text.
+  li,
+  dt,
+  dd {
+    &.text-align-center,
+    &.text-align-right {
+      @include margin(null auto);
+      list-style-position: inside;
+    }
+
+    &.text-align-right {
+      @include margin(null 0 null auto)
+    }
+  }
+}
