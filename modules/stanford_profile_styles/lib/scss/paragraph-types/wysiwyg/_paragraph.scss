@@ -17,28 +17,31 @@
 
   // Big bold beautiful callout text.
   .su-callout-text {
-    @include margin(0 auto 1em 0);
-    @include modular-spacing('margin', -3 null 1 null);
-    display: block;
-    font-size: 2.8rem;
-    font-style: normal;
-    font-weight: $su-font-bold;
-    line-height: 3.3rem;
+    @at-root #{selector-unify(&, p)},
+    & {
+      @include margin(0 auto 1em 0);
+      @include modular-spacing('margin', -3 null 1 null);
+      display: block;
+      font-size: 2.8rem;
+      font-style: normal;
+      font-weight: $su-font-bold;
+      line-height: 3.3rem;
 
-    // 60 character line length.
-    max-width: 45ch;
-    width: 80%;
+      // 60 character line length.
+      max-width: 45ch;
+      width: 80%;
 
-    &:first-child {
-      // Remove margin-top and padding-top when it is the first item on the page
-      @include margin(0 null null null);
-      @include padding(0 null null null);
-    }
+      &:first-child {
+        // Remove margin-top and padding-top when it is the first item on the page
+        @include margin(0 null null null);
+        @include padding(0 null null null);
+      }
 
-    &:last-child {
-      // Remove margin-bottom and padding-bottom when it is the last item on the page
-      @include margin(null null 0 null);
-      @include padding(null null 0 null);
+      &:last-child {
+        // Remove margin-bottom and padding-bottom when it is the last item on the page
+        @include margin(null null 0 null);
+        @include padding(null null 0 null);
+      }
     }
   }
 
