@@ -25,10 +25,10 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const npmPackage = 'node_modules';
 const srcDir = path.resolve(__dirname, "lib");
 const distDir = path.resolve(__dirname, "dist");
-const srcSass = path.resolve(__dirname, process.env.npm_package_config_srcSass);
-const distSass = path.resolve(__dirname, process.env.npm_package_config_distSass);
-const srcJS = path.resolve(__dirname, process.env.npm_package_config_srcJS);
-const distJS = path.resolve(__dirname, process.env.npm_package_config_distJS);
+const srcSass = path.resolve(__dirname, srcDir, "scss");
+const distSass = path.resolve(__dirname, distDir, "css");
+const srcJS = path.resolve(__dirname, srcDir, "js");
+const distJS = path.resolve(__dirname, distDir, "js");
 
 // /////////////////////////////////////////////////////////////////////////////
 // Functions ///////////////////////////////////////////////////////////////////
@@ -46,12 +46,13 @@ var webpackConfig = {
   devtool: 'source-map',
   // What build?
   entry: {
-    "stanford_profile_styles.admin.node_form": path.resolve(__dirname, srcSass + "/admin/node_forms.scss"),
-    "stanford_profile_styles.field_widgets": path.resolve(__dirname, srcSass + "/admin/field_widgets.scss"),
-    "stanford_profile_styles.node.stanford_page": path.resolve(__dirname, srcSass + "/node-types/stanford_page.scss"),
-    "stanford_profile_styles.paragraph.wysiwyg": path.resolve(__dirname, srcSass + "/paragraph-types/wysiwyg/index.scss"),
-    "stanford_profile_styles.ckeditor": path.resolve(__dirname, srcSass + "/admin/ckeditor.scss"),
-    "stanford_profile_styles": path.resolve(__dirname, srcSass + "/stanford_profile_styles.scss")
+    "stanford_profile_styles.admin.node_form":            path.resolve(srcSass, "admin/node_forms.scss"),
+    "stanford_profile_styles.ckeditor":                   path.resolve(srcSass, "admin/ckeditor.scss"),
+    "stanford_profile_styles.field_widgets":              path.resolve(srcSass, "admin/field_widgets.scss"),
+    "stanford_profile_styles.layout.stanford_page.full":  path.resolve(srcSass, "node-types/stanford_page.layout.full-width.scss"),
+    "stanford_profile_styles.node.stanford_page":         path.resolve(srcSass, "node-types/stanford_page.scss"),
+    "stanford_profile_styles.paragraph.wysiwyg":          path.resolve(srcSass, "paragraph-types/wysiwyg/index.scss"),
+    "stanford_profile_styles":                            path.resolve(srcSass, "stanford_profile_styles.scss")
   },
   // Where put build?
   output: {

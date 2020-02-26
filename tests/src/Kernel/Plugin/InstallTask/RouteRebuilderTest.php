@@ -18,6 +18,8 @@ class RouteRebuilderTest extends KernelTestBase {
    */
   protected static $modules = [
     'system',
+    'node',
+    'user',
   ];
 
   /**
@@ -26,6 +28,9 @@ class RouteRebuilderTest extends KernelTestBase {
   protected function setUp() {
     parent::setUp();
     $this->setInstallProfile('stanford_profile');
+    $this->installEntitySchema('user');
+    $this->installEntitySchema('node');
+    $this->installSchema('node', 'node_access');
     $this->container->set('router.builder', $this->createMock(RouteBuilderInterface::class));
   }
 

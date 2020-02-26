@@ -165,4 +165,4 @@ Feature: WYSIWYG Paragraph
     And I wait 1 seconds
     Then I press "Continue"
     Then I press "Save"
-    And I should see 1 "a[href*='.txt']:contains('test.txt')" element in the "content" region
+    And I should see 1 "a[href*='.txt']:contains('Test TXT Document')" element in the "content" region
