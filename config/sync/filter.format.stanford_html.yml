@@ -11,6 +11,7 @@ dependencies:
     - editor
     - linkit
     - media
+    - stanford_media
 name: HTML
 format: stanford_html
 weight: 0
@@ -94,3 +95,9 @@ filters:
         stanford_image_medium: stanford_image_medium
         stanford_image_stanford_circle: stanford_image_stanford_circle
         thumbnail: thumbnail
+  stanford_media_embed_markup:
+    id: stanford_media_embed_markup
+    provider: stanford_media
+    status: true
+    weight: 0
+    settings: {  }
