@@ -32,9 +32,18 @@
         @include padding(null null null 80px);
       }
     }
+
+    // Main region needs to fill the whole parent in case there is not enough content to push
+    // it out.
     .main-region {
       width: 100%;
+
+      // Have a single column layout align left.
+      .ptype-stanford-wysiwyg {
+        @include margin(null 0 null);
+      }
     }
+
   }
 }
 
