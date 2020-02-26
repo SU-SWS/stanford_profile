@@ -58,42 +58,48 @@
   }
 
   // Big splashy intro text.
-  .su-intro-text,
-  p.su-intro-text {
-    @include intro-text;
-    @include modular-typography(2);
-    @include modular-spacing('margin-bottom', 0);
-    // 70 character line length.
-    max-width: 55ch;
+  .su-intro-text {
+    @at-root #{selector-unify(&, p)},
+    & {
+      @include intro-text;
+      @include modular-typography(2);
+      @include modular-spacing('margin-bottom', 0);
+      // 70 character line length.
+      max-width: 55ch;
+    }
   }
 
   // Big splashy font.
-  .su-font-splash,
-  p.su-font-splash {
-    @include font-splash;
-    @include modular-spacing('margin', -1 null 2 null);
-    @include type-a;
+  .su-font-splash {
+    @at-root #{selector-unify(&, p)},
+    & {
+      @include font-splash;
+      @include modular-spacing('margin', -1 null 2 null);
+      @include type-a;
 
-    &:first-child {
-      // Remove margin-top and padding-top when it is the first item on the page
-      @include margin(0 null null null);
-      @include padding(0 null null null);
-    }
+      &:first-child {
+        // Remove margin-top and padding-top when it is the first item on the page
+        @include margin(0 null null null);
+        @include padding(0 null null null);
+      }
 
-    &:last-child {
-      // Remove margin-bottom and padding-bottom when it is the last item on the page
-      @include margin(null null 0 null);
-      @include padding(null null 0 null);
+      &:last-child {
+        // Remove margin-bottom and padding-bottom when it is the last item on the page
+        @include margin(null null 0 null);
+        @include padding(null null 0 null);
+      }
     }
   }
 
   // A quote that looks similar to h2.
-  .su-quote-text,
-  p.su-quote-text {
-    @include quote-text;
-    @include type-b;
-    // 54 character line length.
-    max-width: 42ch;
+  .su-quote-text {
+    @at-root #{selector-unify(&, p)},
+    & {
+      @include quote-text;
+      @include type-b;
+      // 54 character line length.
+      max-width: 42ch;
+    }
   }
 
   // A shadowy type.
@@ -111,11 +117,12 @@
   }
 
   // Subtitle styles.
-  .su-subheading,
-  p.su-subheading {
-    @include subheading;
-    // 76 character line length.
-    max-width: 60ch;
+  .su-subheading {
+    @at-root #{selector-unify(&, p)},
+    & {
+      @include subheading;
+      // 76 character line length.
+      max-width: 60ch;
+    }
   }
-
 }
