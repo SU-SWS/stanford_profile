@@ -2,11 +2,13 @@
 
 8.x-1.3
 --------------------------------------------------------------------------------
-_Release Date: 2020-02-27
+_Release Date: 2020-02-27_
+
+-
 
 8.x-1.2
 --------------------------------------------------------------------------------
-_Release Date: 2020-02-21
+_Release Date: 2020-02-21)
 
 - Resynced the media library view with the drupaDl core version (#105)
 - D8CORE-1393 Dont display page title block on 404 and 403 pages (#106)
