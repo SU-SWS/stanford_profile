@@ -4,18 +4,45 @@
 
 // Styles for the full width page. Need to have margins on text elements and cards.
 // And need to have no margins on the full bleed banner images.
+.su-page-components {
 
-.su-wysiwyg-text,
-.su-card {
-  @include grid-media-only('xs') {
-    @include margin(null map-get($su-screen-margins, 'xs'));
+  .ptype-stanford-media-caption,
+  .ptype-stanford-card,
+  .ptype-stanford-wysiwyg {
+
+    @include grid-media('xs') {
+      @include margin(null map-get($su-screen-margins, 'xs'));
+      width: calc(100% - #{map-get($su-screen-margins, 'xs') * 2});
+    }
+
+    @include grid-media('sm') {
+      @include margin(null map-get($su-screen-margins, 'sm'));
+      width: calc(100% - #{map-get($su-screen-margins, 'sm') * 2});
+    }
+
+    @include grid-media('md') {
+      @include margin(null map-get($su-screen-margins, 'md'));
+      width: calc(100% - #{map-get($su-screen-margins, 'md') * 2});
+    }
+
+    @include grid-media('lg') {
+      @include margin(null auto);
+      width: calc(100% - #{map-get($su-screen-margins, 'lg') * 2});
+    }
+
+    @include grid-media('xl') {
+      width: calc(100% - #{map-get($su-screen-margins, 'xl') * 2});
+    }
+
+    @include grid-media('2xl') {
+      width: calc(100% - #{map-get($su-screen-margins, '2xl') * 2});
+    }
   }
 
-  @include grid-media-only('sm') {
-    @include margin(null map-get($su-screen-margins, 'sm'));
+  .ptype-stanford-card {
+    img {
+      width: 100%;
+    }
   }
 
-  @include grid-media-only('md') {
-    @include margin(null map-get($su-screen-margins, 'md'));
-  }
 }
