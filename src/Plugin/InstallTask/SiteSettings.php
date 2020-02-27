@@ -7,6 +7,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\State\StateInterface;
 use Drupal\externalauth\AuthmapInterface;
 use Drupal\stanford_profile\InstallTaskBase;
 use GuzzleHttp\ClientInterface;
@@ -47,6 +48,13 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
   protected $authmap;
 
   /**
+   * State Service.
+   *
+   * @var \Drupal\Core\State\StateInterface
+   */
+  protected $state;
+
+  /**
    * Logger channel service.
    *
    * @var \Drupal\Core\Logger\LoggerChannelInterface
@@ -64,6 +72,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
       $container->get('entity_type.manager'),
       $container->get('http_client'),
       $container->get('externalauth.authmap'),
+      $container->get('state'),
       $container->get('logger.factory')
     );
   }
@@ -71,11 +80,12 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
   /**
    * {@inheritDoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap, LoggerChannelFactoryInterface $logger_factory) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap, StateInterface $state, LoggerChannelFactoryInterface $logger_factory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
     $this->client = $client;
     $this->authmap = $authmap;
+    $this->state = $state;
     $this->logger = $logger_factory->get('stanford_profile');
   }
 
@@ -83,6 +93,8 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    * {@inheritDoc}
    */
   public function runTask(array &$install_state) {
+    $this->state->set('nobots', FALSE);
+
     // @codeCoverageIgnoreStart
     if (!static::isAhEnv()) {
       return;
