@@ -26,11 +26,12 @@
     }
 
     @include grid-media('lg') {
-      @include margin(null auto);
+      @include margin(null map-get($su-screen-margins, 'lg'));
       width: calc(100% - #{map-get($su-screen-margins, 'lg') * 2});
     }
 
     @include grid-media('xl') {
+      @include margin(null auto);
       width: calc(100% - #{map-get($su-screen-margins, 'xl') * 2});
     }
 
