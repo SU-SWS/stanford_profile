@@ -1,8 +1,26 @@
 # Stanford Profile
 
+8.x-1.3
+--------------------------------------------------------------------------------
+_Release Date: 2020-02-27_
+
+- D8CORE-1307: Full width page only stylesheet. (#118)
+- D8CORE-1357: Adds validation to config form uri. (#112)
+- D8CORE-1282: Invalidate node page cache when new menu items are added as children. (#119)
+- D8CORE-1340 Use core link in wysiwyg for now (#120)
+- D8CORE-1451: Do not limit url characters in local footer (#121)
+- D8CORE-1370: Alter menu form and status messages for config_readonly users (#114)
+- D8CORE-1327: Change filter-format to allow for html entities. (#123)
+- Fixed drupal/paragraphs version (#117)
+- Set home link to the home node for default content (#124)
+- D8CORE-1409: Enable new filter in the full html format. (#125)
+- D8CORE-1279: Fix for subtitle/subhead styles (#110)
+- Disable nobots via state on site install (#128)
+- D8CORE-1464: Kill margin-bottom on <p> tag (#130)
+
 8.x-1.2
 --------------------------------------------------------------------------------
-_Release Date: 2020-02-21
+_Release Date: 2020-02-21_
 
 - Resynced the media library view with the drupaDl core version (#105)
 - D8CORE-1393 Dont display page title block on 404 and 403 pages (#106)
