@@ -197,12 +197,20 @@ display:
           selected_actions:
             -
               action_id: node_unpublish_action
+              preconfiguration:
+                label_override: Unpublish
             -
               action_id: node_publish_action
+              preconfiguration:
+                label_override: Publish
             -
               action_id: node_assign_owner_action
+              preconfiguration:
+                label_override: 'Change Author'
             -
               action_id: views_bulk_operations_delete_entity
+              preconfiguration:
+                label_override: Delete
           plugin_id: views_bulk_operations_bulk_form
         title:
           id: title
