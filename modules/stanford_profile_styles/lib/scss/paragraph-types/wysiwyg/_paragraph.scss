@@ -4,8 +4,8 @@
 
   p {
     @include big-paragraph;
-    @include modular-spacing('margin-bottom', 1);
-    @include margin(0 null null null);
+    @include margin(0 null 0 null);
+    @include modular-spacing('padding-bottom', 2);
   }
 
   // Caption Styles.
@@ -20,7 +20,7 @@
     @at-root #{selector-unify(&, p)},
     & {
       @include margin(0 auto 1em 0);
-      @include modular-spacing('margin', -3 null 1 null);
+      @include modular-spacing('margin', 0 null 1 null);
       display: block;
       font-size: 2.8rem;
       font-style: normal;
@@ -111,6 +111,12 @@
     @include modular-spacing('margin-bottom', 3);
     @include padding(25px);
     border: 1px solid #e3e3e3;
+
+    // Do not remove padding-top when this is first on the page.
+    &:first-child {
+      @include padding(25px);
+      @include margin(0 null null null);
+    }
 
     // Do not remove padding-bottom when this is last on the page.
     &:last-child {

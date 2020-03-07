@@ -9,13 +9,13 @@
   }
 
   h2 {
-    @include modular-spacing('margin', 1 null 1 null);
+    @include modular-spacing('margin', 1 null 0 null);
     // 56 character line length.
     max-width: 43ch;
   }
 
   h3 {
-    @include modular-spacing('margin', 0 null 1 null);
+    @include modular-spacing('margin', 0 null 0 null);
     // 60 character line length.
     max-width: 44ch;
   }
