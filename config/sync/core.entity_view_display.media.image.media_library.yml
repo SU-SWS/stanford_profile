@@ -5,9 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.media.media_library
     - field.field.media.image.field_media_image
-    - image.style.medium
+    - image.style.medium_square
     - media.type.image
   module:
+    - field_formatter_class
     - image
 _core:
   default_config_hash: PaGXvzRcL9eII--JV4eCVfObjrNo0l-u1dB_WJtB9ig
@@ -22,9 +23,11 @@ content:
     region: content
     label: hidden
     settings:
-      image_style: medium
+      image_style: medium_square
       image_link: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
 hidden:
   created: true
   field_media_image: true
