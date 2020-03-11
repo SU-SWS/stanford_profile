@@ -39,5 +39,5 @@ Feature: Basic Page
     Given I am logged in as a user with the "Site Manager" role
     Given I am viewing a "stanford_page" with the title "I would like revisions"
     Then I am on "/i-would-like-revisions"
-    Then I press on the "Revisions" link
+    Then I click "Revisions"
     And the response status code should be 200
