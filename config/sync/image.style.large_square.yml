@@ -1,0 +1,17 @@
+uuid: d8917450-2ccf-4789-b76b-f168f53c53d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: large_square
+label: 'Large Square (480x480)'
+effects:
+  1040d0df-12a5-4ee2-80ab-5699fb351ce8:
+    uuid: 1040d0df-12a5-4ee2-80ab-5699fb351ce8
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 480
+      crop_type: focal_point

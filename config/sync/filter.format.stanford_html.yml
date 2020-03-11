@@ -4,8 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.stanford_image_large
+    - core.entity_view_mode.media.stanford_image_large_square
     - core.entity_view_mode.media.stanford_image_medium
+    - core.entity_view_mode.media.stanford_image_medium_square
     - core.entity_view_mode.media.stanford_image_stanford_circle
+    - core.entity_view_mode.media.stanford_image_thumb_square
     - core.entity_view_mode.media.thumbnail
   module:
     - editor
@@ -92,8 +95,11 @@ filters:
       allowed_view_modes:
         default: default
         stanford_image_large: stanford_image_large
+        stanford_image_large_square: stanford_image_large_square
         stanford_image_medium: stanford_image_medium
+        stanford_image_medium_square: stanford_image_medium_square
         stanford_image_stanford_circle: stanford_image_stanford_circle
+        stanford_image_thumb_square: stanford_image_thumb_square
         thumbnail: thumbnail
   stanford_media_embed_markup:
     id: stanford_media_embed_markup
