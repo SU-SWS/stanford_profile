@@ -29,7 +29,7 @@ Nothing special needed.
 Troubleshooting
 ---
 
-If you are experiencing issues with this module try reverting the feature first. If you are still experiencing issues try posting an issue on the GitHub issues page.
+If you are experiencing issues with this try posting an issue on the [GitHub issues page](https://github.com/SU-SWS/stanford_profile/issues).
 
 Contribution / Collaboration
 ---
