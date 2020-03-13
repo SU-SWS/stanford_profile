@@ -9,25 +9,29 @@
   }
 
   h2 {
-    @include modular-spacing('margin', 1 null 1 null);
+    @include modular-spacing('margin', null null 0 null);
+    @include modular-spacing('padding', 1 null null null);
     // 56 character line length.
     max-width: 43ch;
   }
 
   h3 {
-    @include modular-spacing('margin', 0 null 1 null);
+    @include modular-spacing('margin', null null 0 null);
+    @include modular-spacing('padding', 0 null null null);
     // 60 character line length.
     max-width: 44ch;
   }
 
   h4 {
-    @include modular-spacing('margin', 0 null 1 null);
+    @include modular-spacing('margin', null null 1 null);
+    @include modular-spacing('padding', 0 null null null);
     // 64 character line length.
     max-width: 47ch;
   }
 
   h5 {
-    @include modular-spacing('margin', -1 null -1 null);
+    @include modular-spacing('margin', null null -1 null);
+    @include modular-spacing('padding', -1 null null null);
     // 76 character line length.
     max-width: 60ch;
   }
@@ -72,5 +76,5 @@
       }
     }
   }
-
 }
+

@@ -1,11 +1,19 @@
 @charset "UTF-8";
 
+// We have a convention: margin-bottom for vertical
+// and margin-left for horizontal. One direction margin only.
+//
+// Exception: if we need additional spacing on top,
+// use padding-top, not margin-top.
+
 .su-wysiwyg-text {
 
+  // Remove any existing top and bottom margin and padding.
   p {
     @include big-paragraph;
-    @include modular-spacing('margin-bottom', 1);
     @include margin(0 null null null);
+    @include modular-spacing('margin', null null 2 null);
+    @include padding(0 null 0 null);
   }
 
   // Caption Styles.
@@ -20,7 +28,8 @@
     @at-root #{selector-unify(&, p)},
     & {
       @include margin(0 auto 1em 0);
-      @include modular-spacing('margin', -3 null 1 null);
+      @include modular-spacing('margin', null null 1 null);
+      @include modular-spacing('padding', 0 null null null);
       display: block;
       font-size: 2.8rem;
       font-style: normal;
@@ -49,7 +58,10 @@
   .su-drop-cap {
     @include intro-text;
 
+    // This sets the position for the first character.
     &::first-letter {
+
+      // This margin is needed for Firefox.
       @include margin(11px 12px 0 0);
       float: left;
       font-style: normal;
@@ -77,7 +89,8 @@
     @at-root #{selector-unify(&, p)},
     & {
       @include font-splash;
-      @include modular-spacing('margin', -1 null 2 null);
+      @include modular-spacing('margin', null null 2 null);
+      @include modular-spacing('padding', -1 null null null);
       @include type-a;
 
       &:first-child {
@@ -112,7 +125,13 @@
     @include padding(25px);
     border: 1px solid #e3e3e3;
 
-    // Do not remove padding-bottom when this is last on the page.
+    // Keep padding-top when this is first on the page.
+    &:first-child {
+      @include padding(25px);
+      @include margin(0 null null null);
+    }
+
+    // Keep padding-bottom when this is last on the page.
     &:last-child {
       @include padding(25px);
       @include margin(null null 0 null);
