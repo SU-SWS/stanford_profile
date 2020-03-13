@@ -1,9 +1,9 @@
 services:
   plugin.manager.install_tasks:
-    class: Drupal\stanford_profile\InstallTaskManager
+    class: Drupal\cardinal_service_profile\InstallTaskManager
     parent: default_plugin_manager
-  stanford_profile.event_subscriber:
-    class: '\Drupal\stanford_profile\EventSubscriber\EventSubscriber'
+  cardinal_service_profile.event_subscriber:
+    class: '\Drupal\cardinal_service_profile\EventSubscriber\EventSubscriber'
     arguments: ['@file_system', '@logger.factory']
     tags:
       - { name: 'event_subscriber' }

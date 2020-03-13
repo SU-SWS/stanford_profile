@@ -2,7 +2,7 @@
 
 /**
  * @file
- * stanford_profile.profile
+ * cardinal_service_profile.profile
  */
 
 use Drupal\Component\Utility\Html;
@@ -19,14 +19,14 @@ use Drupal\Core\Cache\Cache;
 /**
  * Implements hook_install_tasks().
  */
-function stanford_profile_install_tasks(&$install_state) {
-  return ['stanford_profile_final_task' => []];
+function cardinal_service_profile_install_tasks(&$install_state) {
+  return ['cardinal_service_profile_final_task' => []];
 }
 
 /**
  * Implements hook_menu_links_discovered_alter().
  */
-function stanford_profile_menu_links_discovered_alter(&$links) {
+function cardinal_service_profile_menu_links_discovered_alter(&$links) {
   if (isset($links['admin_toolbar_tools.media_page'])) {
     // Alter the "Media" link for /admin/content/media path.
     $links['admin_toolbar_tools.media_page']['title'] = t('All Media');
@@ -43,14 +43,14 @@ function stanford_profile_menu_links_discovered_alter(&$links) {
  * @param array $install_state
  *   Current install state.
  */
-function stanford_profile_final_task(array &$install_state) {
+function cardinal_service_profile_final_task(array &$install_state) {
   \Drupal::service('plugin.manager.install_tasks')->runTasks($install_state);
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function stanford_profile_preprocess_block__help(&$variables) {
+function cardinal_service_profile_preprocess_block__help(&$variables) {
   if (\Drupal::routeMatch()->getRouteName() == 'help.main') {
     // Removes the help text from core help module. Its not helpful, and we're
     // going to provide our own help text.
@@ -62,7 +62,7 @@ function stanford_profile_preprocess_block__help(&$variables) {
 /**
  * Implements hook_help_section_info_alter().
  */
-function stanford_profile_help_section_info_alter(array &$info) {
+function cardinal_service_profile_help_section_info_alter(array &$info) {
   // Change "Module overviews" header.
   $info['hook_help']['title'] = t('For Developers');
 }
@@ -70,7 +70,7 @@ function stanford_profile_help_section_info_alter(array &$info) {
 /**
  * Implements hook_ENTITY_TYPE_insert().
  */
-function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
+function cardinal_service_profile_menu_link_content_presave(MenuLinkContent $entity) {
   // For new menu link items created on a node form (normally), set the expanded
   // attribute so all menu items are expanded by default.
   if ($entity->isNew()) {
@@ -97,7 +97,7 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function stanford_profile_preprocess_input__submit__paragraph_action(&$variables) {
+function cardinal_service_profile_preprocess_input__submit__paragraph_action(&$variables) {
   // Change the top banner field button from "Add @type" to "Add Top @type".
   if ($variables['element']['#name'] == 'su_page_banner_stanford_banner_add_more') {
     $variables['attributes']['value'] = t('Add Top @type', $variables['attributes']['value']->getArguments());
@@ -107,7 +107,7 @@ function stanford_profile_preprocess_input__submit__paragraph_action(&$variables
 /**
  * Implements hook_entity_field_access().
  */
-function stanford_profile_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
+function cardinal_service_profile_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
   if ($field_definition->getType() == 'entity_reference' && $field_definition->getSetting('handler') == 'layout_library') {
     $entity_type = $field_definition->getTargetEntityTypeId();
     $bundle = $field_definition->getTargetBundle();
@@ -121,7 +121,7 @@ function stanford_profile_entity_field_access($operation, FieldDefinitionInterfa
 /**
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  */
-function stanford_profile_field_widget_options_select_form_alter(&$element, FormStateInterface $form_state, $context) {
+function cardinal_service_profile_field_widget_options_select_form_alter(&$element, FormStateInterface $form_state, $context) {
   if ($context['items']->getFieldDefinition()->getName() == 'layout_selection') {
     $element['#description'] = t('Choose a layout to display the page as a whole. Choose "- None -" to keep the default layout setting.');
   }
@@ -130,7 +130,7 @@ function stanford_profile_field_widget_options_select_form_alter(&$element, Form
 /**
  * Implements hook_preprocess_toolbar().
  */
-function stanford_profile_preprocess_toolbar(&$variables) {
+function cardinal_service_profile_preprocess_toolbar(&$variables) {
   array_walk($variables['tabs'], function (&$tab, $key) {
     if (isset($tab['attributes'])) {
       $tab['attributes']->addClass(Html::cleanCssIdentifier("$key-tab"));
@@ -141,7 +141,7 @@ function stanford_profile_preprocess_toolbar(&$variables) {
 /**
  * Implements hook_contextual_links_alter().
  */
-function stanford_profile_contextual_links_alter(array &$links, $group, array $route_parameters) {
+function cardinal_service_profile_contextual_links_alter(array &$links, $group, array $route_parameters) {
   if ($group == 'paragraph') {
     // Paragraphs edit module clone link does not function correctly. Remove it
     // from available links. Also remove delete to avoid unwanted delete.
@@ -153,7 +153,7 @@ function stanford_profile_contextual_links_alter(array &$links, $group, array $r
 /**
  * Implements hook_node_access().
  */
-function stanford_profile_node_access(NodeInterface $node, $op, AccountInterface $account) {
+function cardinal_service_profile_node_access(NodeInterface $node, $op, AccountInterface $account) {
   if ($op == 'delete') {
     $site_config = \Drupal::config('system.site');
     $node_urls = [$node->toUrl()->toString(), "/node/{$node->id()}"];
@@ -171,7 +171,7 @@ function stanford_profile_node_access(NodeInterface $node, $op, AccountInterface
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function stanford_profile_form_menu_edit_form_alter(array &$form, FormStateInterface $form_state) {
+function cardinal_service_profile_form_menu_edit_form_alter(array &$form, FormStateInterface $form_state) {
   $read_only = Settings::get('config_readonly', FALSE);
   if (!$read_only) {
     return;
@@ -193,8 +193,8 @@ function stanford_profile_form_menu_edit_form_alter(array &$form, FormStateInter
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function stanford_profile_form_config_pages_stanford_basic_site_settings_form_alter(array &$form, FormStateInterface $form_state) {
-  $form['#validate'][] = 'stanford_profile_config_pages_stanford_basic_site_settings_form_validate';
+function cardinal_service_profile_form_config_pages_stanford_basic_site_settings_form_alter(array &$form, FormStateInterface $form_state) {
+  $form['#validate'][] = 'cardinal_service_profile_config_pages_stanford_basic_site_settings_form_validate';
 }
 
 /**
@@ -205,7 +205,7 @@ function stanford_profile_form_config_pages_stanford_basic_site_settings_form_al
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  *   The form state interface object.
  */
-function stanford_profile_config_pages_stanford_basic_site_settings_form_validate(array $form, FormStateInterface $form_state) {
+function cardinal_service_profile_config_pages_stanford_basic_site_settings_form_validate(array $form, FormStateInterface $form_state) {
   $element = $form_state->getValue('su_site_url');
   $uri = $element['0']['uri'];
   if (!empty($uri)) {
