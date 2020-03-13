@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\stanford_profile\Plugin\HelpSection;
+namespace Drupal\cardinal_service_profile\Plugin\HelpSection;
 
 use Drupal\Core\Link;
 use Drupal\Core\Url;
@@ -8,7 +8,7 @@ use Drupal\Core\Url;
 /**
  * Trait ProfileHelpTrait.
  *
- * @package Drupal\stanford_profile\Plugin\HelpSection
+ * @package Drupal\cardinal_service_profile\Plugin\HelpSection
  */
 trait ProfileHelpTrait {
 

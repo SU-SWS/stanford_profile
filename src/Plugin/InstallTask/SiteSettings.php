@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\stanford_profile\Plugin\InstallTask;
+namespace Drupal\cardinal_service_profile\Plugin\InstallTask;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -9,7 +9,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\State\StateInterface;
 use Drupal\externalauth\AuthmapInterface;
-use Drupal\stanford_profile\InstallTaskBase;
+use Drupal\cardinal_service_profile\InstallTaskBase;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * SNOW site settings installation.
  *
  * @InstallTask(
- *   id="stanford_profile_site_settings"
+ *   id="cardinal_service_profile_site_settings"
  * )
  */
 class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInterface {
@@ -86,7 +86,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
     $this->client = $client;
     $this->authmap = $authmap;
     $this->state = $state;
-    $this->logger = $logger_factory->get('stanford_profile');
+    $this->logger = $logger_factory->get('cardinal_service_profile');
   }
 
   /**
@@ -161,13 +161,13 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    *   Returned data if any exist.
    */
   protected function getSnowData($site_name) {
-    $api_url = Settings::get('stanford_profile_snow_api_url', self::SNOW_API);
+    $api_url = Settings::get('cardinal_service_profile_snow_api_url', self::SNOW_API);
     try {
       $response = $this->client->request('GET', $api_url, [
         'query' => ['website_address' => $site_name],
         'auth' => [
-          Settings::get('stanford_profile_snow_api_user'),
-          Settings::get('stanford_profile_snow_api_pass'),
+          Settings::get('cardinal_service_profile_snow_api_user'),
+          Settings::get('cardinal_service_profile_snow_api_pass'),
         ],
       ]);
 

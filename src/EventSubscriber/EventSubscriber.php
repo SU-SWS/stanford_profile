@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\stanford_profile\EventSubscriber;
+namespace Drupal\cardinal_service_profile\EventSubscriber;
 
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Class EventSubscriber.
  *
- * @package Drupal\stanford_profile\EventSubscriber
+ * @package Drupal\cardinal_service_profile\EventSubscriber
  */
 class EventSubscriber implements EventSubscriberInterface {
 
@@ -60,7 +60,7 @@ class EventSubscriber implements EventSubscriberInterface {
    */
   public function __construct(FileSystemInterface $file_system, LoggerChannelFactoryInterface $logger_factory) {
     $this->fileSystem = $file_system;
-    $this->logger = $logger_factory->get('stanford_profile');
+    $this->logger = $logger_factory->get('cardinal_service_profile');
   }
 
   /**

@@ -1,15 +1,15 @@
 <?php
 
-namespace Drupal\Tests\stanford_profile\Kernel\Plugin\InstallTask;
+namespace Drupal\Tests\cardinal_service_profile\Kernel\Plugin\InstallTask;
 
 use Drupal\Core\Routing\RouteBuilderInterface;
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\stanford_profile\Plugin\InstallTask\RouteRebuilder;
+use Drupal\cardinal_service_profile\Plugin\InstallTask\RouteRebuilder;
 
 /**
  * Class RouteRebuilderTest.
  *
- * @coversDefaultClass \Drupal\stanford_profile\Plugin\InstallTask\RouteRebuilder
+ * @coversDefaultClass \Drupal\cardinal_service_profile\Plugin\InstallTask\RouteRebuilder
  */
 class RouteRebuilderTest extends KernelTestBase {
 
@@ -27,7 +27,7 @@ class RouteRebuilderTest extends KernelTestBase {
    */
   protected function setUp() {
     parent::setUp();
-    $this->setInstallProfile('stanford_profile');
+    $this->setInstallProfile('cardinal_service_profile');
     $this->installEntitySchema('user');
     $this->installEntitySchema('node');
     $this->installSchema('node', 'node_access');

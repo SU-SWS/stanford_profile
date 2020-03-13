@@ -1,17 +1,17 @@
 <?php
 
-namespace Drupal\Tests\stanford_profile\Kernel;
+namespace Drupal\Tests\cardinal_service_profile\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay;
 use Drupal\node\Entity\NodeType;
-use Drupal\stanford_profile\StanfordProfilePermissions;
+use Drupal\cardinal_service_profile\StanfordProfilePermissions;
 
 /**
  * Class StanfordProfilePermissionsTest.
  *
- * @group stanford_profile
- * @coversDefaultClass \Drupal\stanford_profile\StanfordProfilePermissions
+ * @group cardinal_service_profile
+ * @coversDefaultClass \Drupal\cardinal_service_profile\StanfordProfilePermissions
  */
 class StanfordProfilePermissionsTest extends KernelTestBase {
 

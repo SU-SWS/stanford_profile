@@ -1,18 +1,18 @@
 <?php
 
-namespace Drupal\stanford_profile\Plugin\InstallTask;
+namespace Drupal\cardinal_service_profile\Plugin\InstallTask;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\stanford_profile\InstallTaskBase;
+use Drupal\cardinal_service_profile\InstallTaskBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Install users task.
  *
  * @InstallTask(
- *   id="stanford_profile_users"
+ *   id="cardinal_service_profile_users"
  * )
  */
 class Users extends InstallTaskBase implements ContainerFactoryPluginInterface {
