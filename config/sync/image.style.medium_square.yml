@@ -1,0 +1,17 @@
+uuid: aab90a08-0d0e-4186-8439-3c3d53959c96
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: medium_square
+label: 'Medium Square (220x220)'
+effects:
+  5684c6dd-0ef1-4108-abab-192a9f5e711f:
+    uuid: 5684c6dd-0ef1-4108-abab-192a9f5e711f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 220
+      height: 220
+      crop_type: focal_point

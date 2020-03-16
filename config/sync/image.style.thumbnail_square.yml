@@ -1,0 +1,17 @@
+uuid: 8f1d083f-2bd4-44cb-a8fa-c0057f5b12f4
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: thumbnail_square
+label: 'Thumbnail Square (100x100)'
+effects:
+  8bd095fd-3d2d-4ba3-bed6-fcf30394815e:
+    uuid: 8bd095fd-3d2d-4ba3-bed6-fcf30394815e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 100
+      height: 100
+      crop_type: focal_point
