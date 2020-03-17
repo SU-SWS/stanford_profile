@@ -32,7 +32,6 @@ Feature: Roles
     Then I am on "/node/1/delete"
     And I should get a 403 HTTP response
 
-    @testthis
   Scenario: Check I can log in as the Site Manager role
     Given I am logged in as a user with the "Site Manager" role
     And I am on "admin/content"
