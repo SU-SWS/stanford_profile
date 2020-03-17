@@ -57,12 +57,25 @@ behat: &behat
     - store_artifacts:
         path: /var/www/html/artifacts
 
+merge_upstream: &merge_upstream
+  <<: *defaults
+  steps:
+    - checkout:
+        path: /var/www/html
+    - run:
+        name: Merge stanford_profile upstream
+        command: |
+          git pull git@github.com:SU-SWS/stanford_profile.git ${CIRCLE_BRANCH}
+          git push origin ${CIRCLE_BRANCH}
+
 # Declare all of the jobs we should run.
 jobs:
   run-coverage:
     <<: *code_coverage
   run-behat:
     <<: *behat
+  run-merge-upstream:
+    <<: *merge_upstream
 
 # Declare a workflow that runs all of our jobs in parallel.
 workflows:
@@ -71,6 +84,16 @@ workflows:
     jobs:
       - run-coverage
       - run-behat
+  daily:
+    jobs:
+      - run-merge-upstream
+    triggers:
+      - schedule:
+          cron: "0 8 * * *"
+          filters:
+            branches:
+              only:
+                - /8.x-*.x/
   # Re-test every sunday in case this code becomes stale.
   sundays:
     jobs:
