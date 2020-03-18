@@ -8,6 +8,8 @@ Feature: Default Content
     Given I am on the homepage
     Then I should get a "200" HTTP response
     Then I should see "Welcome to your site!" in the "content" region
+    And I should see 1 "meta[property='og:image'][content*='/large/']" element
+    And I should see 1 "meta[property='og:image:url'][content*='/large/']" element
     Then I should get a "200" HTTP response
     Then I am on "/resources"
     Then I should get a "200" HTTP response
