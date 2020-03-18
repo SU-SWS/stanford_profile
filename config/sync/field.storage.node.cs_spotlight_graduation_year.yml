@@ -1,0 +1,20 @@
+uuid: f798a3f8-0d8f-4537-bd3e-8611400971e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.cs_spotlight_graduation_year
+field_name: cs_spotlight_graduation_year
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

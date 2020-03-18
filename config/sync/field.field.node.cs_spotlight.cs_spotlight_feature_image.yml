@@ -1,0 +1,28 @@
+uuid: 08d4c88e-b545-422b-b4e6-ad09b6044890
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.cs_spotlight_feature_image
+    - media.type.image
+    - node.type.cs_spotlight
+id: node.cs_spotlight.cs_spotlight_feature_image
+field_name: cs_spotlight_feature_image
+entity_type: node
+bundle: cs_spotlight
+label: 'Feature Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

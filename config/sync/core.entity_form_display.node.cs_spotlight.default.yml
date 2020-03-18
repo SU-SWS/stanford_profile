@@ -1,0 +1,132 @@
+uuid: eb104442-2e9a-48ab-aaf4-1622d11fa1ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.cs_spotlight.body
+    - field.field.node.cs_spotlight.cs_spotlight_background_image
+    - field.field.node.cs_spotlight.cs_spotlight_feature_image
+    - field.field.node.cs_spotlight.cs_spotlight_graduation_year
+    - field.field.node.cs_spotlight.cs_spotlight_major
+    - field.field.node.cs_spotlight.cs_spotlight_student_name
+    - node.type.cs_spotlight
+  module:
+    - media_library
+    - path
+    - stanford_fields
+    - text
+id: node.cs_spotlight.default
+targetEntityType: node
+bundle: cs_spotlight
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 5
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  cs_spotlight_background_image:
+    type: media_library_widget
+    weight: 6
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  cs_spotlight_feature_image:
+    type: media_library_widget
+    weight: 1
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  cs_spotlight_graduation_year:
+    weight: 4
+    settings:
+      date_order: YMD
+      time_type: none
+      increment: '15'
+      start: '2010'
+      end: '2030'
+    third_party_settings: {  }
+    type: datetime_year_only
+    region: content
+  cs_spotlight_major:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
+  cs_spotlight_student_name:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  path:
+    type: path
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 9
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 13
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 10
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

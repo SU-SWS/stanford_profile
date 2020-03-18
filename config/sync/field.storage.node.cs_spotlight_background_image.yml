@@ -1,0 +1,20 @@
+uuid: 997142cf-bb27-4d8c-a2f5-f20e42c0276d
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+id: node.cs_spotlight_background_image
+field_name: cs_spotlight_background_image
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

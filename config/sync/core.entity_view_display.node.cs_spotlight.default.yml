@@ -1,0 +1,172 @@
+uuid: 0daea3dd-597c-4a74-9753-193d49348f75
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.cs_spotlight.body
+    - field.field.node.cs_spotlight.cs_spotlight_background_image
+    - field.field.node.cs_spotlight.cs_spotlight_feature_image
+    - field.field.node.cs_spotlight.cs_spotlight_graduation_year
+    - field.field.node.cs_spotlight.cs_spotlight_major
+    - field.field.node.cs_spotlight.cs_spotlight_student_name
+    - node.type.cs_spotlight
+  module:
+    - datetime
+    - jumpstart_ui
+    - layout_builder
+    - layout_library
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: ''
+          centered: null
+        components:
+          c1d34561-d1ec-4ef3-b369-2bd212415cb4:
+            uuid: c1d34561-d1ec-4ef3-b369-2bd212415cb4
+            region: main
+            configuration:
+              id: 'field_block:node:cs_spotlight:cs_spotlight_feature_image'
+              label: 'Feature Image'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: media_responsive_image_formatter
+                settings:
+                  view_mode: default
+                  image_style: stanford_hero_block_wide
+                  link: true
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+        components:
+          9a94ac35-54e3-4ae3-967b-708db39f3e8f:
+            uuid: 9a94ac35-54e3-4ae3-967b-708db39f3e8f
+            region: main
+            configuration:
+              id: 'field_block:node:cs_spotlight:title'
+              label: Title
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_title_heading
+                settings:
+                  tag: h1
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+        components:
+          bc090378-a6c5-438c-9b39-68be99e5f961:
+            uuid: bc090378-a6c5-438c-9b39-68be99e5f961
+            region: main
+            configuration:
+              id: 'field_block:node:cs_spotlight:body'
+              label: Story
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: text_default
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+  layout_library:
+    enable: false
+id: node.cs_spotlight.default
+targetEntityType: node
+bundle: cs_spotlight
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  cs_spotlight_background_image:
+    type: entity_reference_entity_view
+    weight: 107
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  cs_spotlight_feature_image:
+    type: entity_reference_entity_view
+    weight: 102
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  cs_spotlight_graduation_year:
+    weight: 105
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  cs_spotlight_major:
+    weight: 106
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  cs_spotlight_student_name:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

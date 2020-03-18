@@ -1,0 +1,29 @@
+uuid: be9d1c91-ec3c-448e-b8ab-b34004158aac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.cs_spotlight
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_html: '0'
+    stanford_minimal_html: '0'
+    plain_text: '0'
+id: node.cs_spotlight.body
+field_name: body
+entity_type: node
+bundle: cs_spotlight
+label: Story
+description: 'Use the Summary if you wish to provide a teaser of the student''s story.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

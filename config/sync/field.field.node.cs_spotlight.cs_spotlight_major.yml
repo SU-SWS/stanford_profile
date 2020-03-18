@@ -1,0 +1,29 @@
+uuid: 8de0995c-041b-40ce-88f0-f4498aaed75d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.cs_spotlight_major
+    - node.type.cs_spotlight
+    - taxonomy.vocabulary.cs_school_majors
+id: node.cs_spotlight.cs_spotlight_major
+field_name: cs_spotlight_major
+entity_type: node
+bundle: cs_spotlight
+label: Major
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      cs_school_majors: cs_school_majors
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
