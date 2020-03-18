@@ -1,4 +1,5 @@
 <?php
+
 namespace Drupal\stanford_profile_permissions\Routing;
 
 use Drupal\Core\Routing\RouteSubscriberBase;
