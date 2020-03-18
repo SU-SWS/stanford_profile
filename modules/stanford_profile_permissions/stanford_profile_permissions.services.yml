@@ -1,0 +1,5 @@
+services:
+  stanford_profile_permissions.route_subscriber:
+    class: Drupal\stanford_profile_permissions\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
