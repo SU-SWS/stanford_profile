@@ -5,7 +5,7 @@ Feature: WYSIWYG Paragraph
 
   @javascript @api
   Scenario: Test Filtered HTML.
-    Given I am logged in as a user with the "Site Developer" role
+    Given I am logged in as a user with the "administrator" role
     Given a "stanford_wysiwyg" paragraph named "created_text":
       | su_wysiwyg_text:value  | Ipsum Lorem   |
       | su_wysiwyg_text:format | stanford_html |
@@ -75,7 +75,7 @@ Feature: WYSIWYG Paragraph
 
   @api @javascript
   Scenario: Test Embedded Image
-    Given I am logged in as a user with the "Site Developer" role
+    Given I am logged in as a user with the "administrator" role
     Given a "stanford_wysiwyg" paragraph named "created_text":
       | su_wysiwyg_text:value  | Ipsum Lorem   |
       | su_wysiwyg_text:format | stanford_html |
@@ -104,7 +104,7 @@ Feature: WYSIWYG Paragraph
 
   @api @javascript
   Scenario: Test Embedded Video
-    Given I am logged in as a user with the "Site Developer" role
+    Given I am logged in as a user with the "administrator" role
     Given a "stanford_wysiwyg" paragraph named "created_text":
       | su_wysiwyg_text:value  | Ipsum Lorem   |
       | su_wysiwyg_text:format | stanford_html |
@@ -134,7 +134,7 @@ Feature: WYSIWYG Paragraph
 
   @api @javascript
   Scenario: Test Embedded Document
-    Given I am logged in as a user with the "Site Developer" role
+    Given I am logged in as a user with the "administrator" role
     Given a "stanford_wysiwyg" paragraph named "created_text":
       | su_wysiwyg_text:value  | Ipsum Lorem   |
       | su_wysiwyg_text:format | stanford_html |
