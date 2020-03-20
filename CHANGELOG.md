@@ -1,4 +1,23 @@
 # Stanford Profile
+8.x-1.4
+--------------------------------------------------------------------------------
+_Release Date: 2020-03-20_
+
+- Bumped version of `views_bulk_operations` to 3.6 (#137)
+- D8CORE-1471: Allow site_manager to assign the site_manager role. (#138)
+- Changed default workgroup for saml role mapping to uit:sws so Marco doesn't get admin. (#140)
+- D8CORE-1405: Added alt text to default content. (#141)
+- Created a config split for acsf modules. (#131)
+- D8CORE-1547: Check for node instance. (#145)
+- D8CORE-1351: Add Paranoia module. (#143)
+- Updated behat test to use existing step definition "Then I click" (fixes bug in tests)
+- D8CORE-1401: wysiwyg tweaks. (#144)
+- D8CORE-943: Added more image styles for wysiwyg. (#146)
+- D8CORE-1689: Allow custom blocks in layout builder. (#149) 
+- D8CORE-1659: Set image metatags to use an image style. (#148)
+- D8CORE-1514: Add administer media permission to site managers. (#150)
+- Changed stanford_page_layout_full layout option to only be on stanford pages. (#151)
+ 
 
 8.x-1.3
 --------------------------------------------------------------------------------
