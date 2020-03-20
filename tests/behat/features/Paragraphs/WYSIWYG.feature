@@ -21,6 +21,7 @@ Feature: WYSIWYG Paragraph
     And I wait 1 seconds
     Then I fill in wysiwyg "Body" with "../../assets/documents/WYSIWYG.html"
     Then I press "Continue"
+    Then I wait for element ".MuiDialog-scrollPaper" to be gone
     Then I press "Save"
 
     # Stripped Tags
@@ -99,6 +100,7 @@ Feature: WYSIWYG Paragraph
     And I wait for AJAX to finish
     And I wait 1 seconds
     Then I press "Continue"
+    Then I wait for element ".MuiDialog-scrollPaper" to be gone
     Then I press "Save"
     And I should see 1 "img" element in the "content" region
 
@@ -129,6 +131,7 @@ Feature: WYSIWYG Paragraph
     Then I click the ".ui-dialog-buttonset button:contains('Save and insert')" element
     And I wait for AJAX to finish
     Then I press "Continue"
+    Then I wait for element ".MuiDialog-scrollPaper" to be gone
     Then I press "Save"
     And I should see 1 "iframe" element in the "content" region
 
@@ -164,5 +167,6 @@ Feature: WYSIWYG Paragraph
     And I wait for AJAX to finish
     And I wait 1 seconds
     Then I press "Continue"
+    Then I wait for element ".MuiDialog-scrollPaper" to be gone
     Then I press "Save"
     And I should see 1 "a[href*='.txt']:contains('Test TXT Document')" element in the "content" region
