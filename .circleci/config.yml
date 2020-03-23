@@ -65,7 +65,7 @@ merge_upstream: &merge_upstream
     - run:
         name: Merge stanford_profile upstream
         command: |
-          git pull git@github.com:SU-SWS/stanford_profile.git ${CIRCLE_BRANCH}
+          git pull git@github.com:SU-SWS/stanford_profile.git ${CIRCLE_BRANCH} --no-edit
           git push origin ${CIRCLE_BRANCH}
 
 # Declare all of the jobs we should run.
