@@ -93,7 +93,7 @@ workflows:
           filters:
             branches:
               only:
-                - /8.x-*.x/
+                - /^8.*x$/
   # Re-test every sunday in case this code becomes stale.
   sundays:
     jobs:
