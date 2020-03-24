@@ -11,11 +11,17 @@ defaults: &defaults
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
   working_directory: /var/www/html
 
+github_token: &github_token
+  run:
+    name: Add Github Token
+    command: |
+      echo '{"github-oauth": {"github.com": "${GITHUB_TOKEN}"}}' >  ~/.composer/auth.json
 
 #Jobs
 code_coverage: &code_coverage
   <<: *defaults
   steps:
+    - *github_token
     - restore_cache:
         keys:
           - dependencies-v1
@@ -24,7 +30,6 @@ code_coverage: &code_coverage
     - run:
         name: Run PHP Unit Coverage Tests
         command: |
-          composer config --global github-oauth.github.com ${GITHUB_TOKEN}
           composer global require SU-SWS/stanford-caravan:dev-codeception-modules
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
     - save_cache:
@@ -39,6 +44,7 @@ code_coverage: &code_coverage
 behat: &behat
   <<: *defaults
   steps:
+    - *github_token
     - restore_cache:
         keys:
           - dependencies-v1
@@ -47,7 +53,6 @@ behat: &behat
     - run:
         name: Run Behat Tests
         command: |
-          composer config --global github-oauth.github.com ${GITHUB_TOKEN}
           composer global require SU-SWS/stanford-caravan:dev-codeception-modules
           ~/.composer/vendor/bin/sws-caravan behat /var/www/html --extension-dir=/var/www/test
     - save_cache:
@@ -62,12 +67,12 @@ behat: &behat
 codeception: &codeception
   <<: *defaults
   steps:
+    - *github_token
     - checkout:
         path: /var/www/test
     - run:
         name: Run Codeception Tests
         command: |
-          composer config --global github-oauth.github.com ${GITHUB_TOKEN}
           composer global require SU-SWS/stanford-caravan:dev-codeception-modules
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
     - store_test_results:
