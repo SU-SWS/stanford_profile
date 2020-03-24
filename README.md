@@ -1,7 +1,8 @@
 # [Stanford Profile](https://github.com/SU-SWS/stanford_profile)
 ##### 8.x
+[![CircleCI](https://circleci.com/gh/SU-HKKU/cardinal_service_profile.svg?style=shield)](https://circleci.com/gh/SU-HKKU/cardinal_service_profile)
 
-Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)  
+Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)
 
 Changelog: [Changelog.md](CHANGELOG.md)
 
