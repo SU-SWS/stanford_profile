@@ -76,7 +76,7 @@ codeception: &codeception
           composer global require SU-SWS/stanford-caravan:dev-codeception-modules
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
     - store_test_results:
-        path: /var/www/html/artifacts/behat
+        path: /var/www/html/artifacts
     - store_artifacts:
         path: /var/www/html/artifacts
 
