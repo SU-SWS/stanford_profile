@@ -51,6 +51,48 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
+          fdece8fd-0474-4e75-a5a5-fa6710cfe0a3:
+            uuid: fdece8fd-0474-4e75-a5a5-fa6710cfe0a3
+            region: main
+            configuration:
+              id: 'field_block:node:cs_spotlight:cs_spotlight_major'
+              label: Major
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
+          da392267-29d9-4a63-b616-3dcd58babeac:
+            uuid: da392267-29d9-4a63-b616-3dcd58babeac
+            region: main
+            configuration:
+              id: 'field_block:node:cs_spotlight:cs_spotlight_student_name'
+              label: 'Student Name'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_title_heading
+                settings:
+                  tag: h2
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
