@@ -2,6 +2,10 @@
 ##### 8.x
 [![CircleCI](https://circleci.com/gh/SU-HKKU/cardinal_service_profile.svg?style=shield)](https://circleci.com/gh/SU-HKKU/cardinal_service_profile)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/4bcf8ab986d6837c7d97/maintainability)](https://codeclimate.com/github/SU-HKKU/cardinal_service_profile/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4bcf8ab986d6837c7d97/test_coverage)](https://codeclimate.com/github/SU-HKKU/cardinal_service_profile/test_coverage)
+
 Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)
 
 Changelog: [Changelog.md](CHANGELOG.md)
