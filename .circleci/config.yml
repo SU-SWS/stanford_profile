@@ -15,7 +15,7 @@ github_token: &github_token
   run:
     name: Add Github Token
     command: |
-      echo "{\"github-oauth\": {\"github.com\": \"${GITHUB_TOKEN}\"}}" >  ~/.composer/auth.json
+      composer config --global --auth github-oauth.github.com ${GITHUB_TOKEN}
 
 #Jobs
 code_coverage: &code_coverage
