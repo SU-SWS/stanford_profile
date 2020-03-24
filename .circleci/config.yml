@@ -15,7 +15,7 @@ github_token: &github_token
   run:
     name: Add Github Token
     command: |
-      echo '{"github-oauth": {"github.com": "${GITHUB_TOKEN}"}}' >  ~/.composer/auth.json
+      echo "{\"github-oauth\": {\"github.com\": \"${GITHUB_TOKEN}\"}}" >  ~/.composer/auth.json
 
 #Jobs
 code_coverage: &code_coverage
