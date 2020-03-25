@@ -1,0 +1,58 @@
+uuid: 3004bc95-e2fa-41f8-83a5-466d956e9955
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.cs_opportunity.body
+    - field.field.node.cs_opportunity.cs_opp_application_deadline
+    - field.field.node.cs_opportunity.cs_opp_contact_email
+    - field.field.node.cs_opportunity.cs_opp_contact_name
+    - field.field.node.cs_opportunity.cs_opp_contact_phone
+    - field.field.node.cs_opportunity.cs_opp_duration
+    - field.field.node.cs_opportunity.cs_opp_eligability
+    - field.field.node.cs_opportunity.cs_opp_image
+    - field.field.node.cs_opportunity.cs_opp_learn_more
+    - field.field.node.cs_opportunity.cs_opp_location
+    - field.field.node.cs_opportunity.cs_opp_open_to
+    - field.field.node.cs_opportunity.cs_opp_solo_url
+    - field.field.node.cs_opportunity.cs_opp_submissions_open
+    - field.field.node.cs_opportunity.cs_opp_time_year
+    - field.field.node.cs_opportunity.cs_opp_type
+    - node.type.cs_opportunity
+  module:
+    - text
+    - user
+id: node.cs_opportunity.teaser
+targetEntityType: node
+bundle: cs_opportunity
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  cs_opp_application_deadline: true
+  cs_opp_contact_email: true
+  cs_opp_contact_name: true
+  cs_opp_contact_phone: true
+  cs_opp_duration: true
+  cs_opp_eligability: true
+  cs_opp_image: true
+  cs_opp_learn_more: true
+  cs_opp_location: true
+  cs_opp_open_to: true
+  cs_opp_solo_url: true
+  cs_opp_submissions_open: true
+  cs_opp_time_year: true
+  cs_opp_type: true

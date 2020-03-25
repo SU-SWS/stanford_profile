@@ -1,0 +1,19 @@
+uuid: dc0a3062-bb9a-418b-8ae4-897c71749ca1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.cs_opp_contact_email
+    - node.type.cs_opportunity
+id: node.cs_opportunity.cs_opp_contact_email
+field_name: cs_opp_contact_email
+entity_type: node
+bundle: cs_opportunity
+label: 'Contact Email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

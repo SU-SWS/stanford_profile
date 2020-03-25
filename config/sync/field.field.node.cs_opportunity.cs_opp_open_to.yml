@@ -1,0 +1,29 @@
+uuid: 63a35828-3d0a-4684-88a0-6768f582e81f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.cs_opp_open_to
+    - node.type.cs_opportunity
+    - taxonomy.vocabulary.cs_opportunity_open_to
+id: node.cs_opportunity.cs_opp_open_to
+field_name: cs_opp_open_to
+entity_type: node
+bundle: cs_opportunity
+label: 'Open To?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      cs_opportunity_open_to: cs_opportunity_open_to
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

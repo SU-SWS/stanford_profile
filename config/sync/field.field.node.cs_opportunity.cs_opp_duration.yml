@@ -1,0 +1,21 @@
+uuid: 63c8fbde-7fac-41bd-8f12-3f322005b44b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.cs_opp_duration
+    - node.type.cs_opportunity
+  module:
+    - datetime_range
+id: node.cs_opportunity.cs_opp_duration
+field_name: cs_opp_duration
+entity_type: node
+bundle: cs_opportunity
+label: Duration
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

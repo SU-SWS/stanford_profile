@@ -1,0 +1,23 @@
+uuid: 044c6ebe-79f1-4f16-8821-7d2cbea0c935
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.cs_opp_solo_url
+    - node.type.cs_opportunity
+  module:
+    - link
+id: node.cs_opportunity.cs_opp_solo_url
+field_name: cs_opp_solo_url
+entity_type: node
+bundle: cs_opportunity
+label: 'SOLO URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

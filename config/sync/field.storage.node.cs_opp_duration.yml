@@ -1,0 +1,20 @@
+uuid: 11f71925-c6b5-43d2-a491-ea30ec78715a
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - node
+id: node.cs_opp_duration
+field_name: cs_opp_duration
+entity_type: node
+type: daterange
+settings:
+  datetime_type: datetime
+module: datetime_range
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
