@@ -4,37 +4,6 @@ status: true
 dependencies:
   config:
     - paragraphs.paragraphs_type.stanford_spacer
-  module:
-    - ds
-third_party_settings:
-  ds:
-    layout:
-      id: ds_1col
-      library: null
-      disable_css: false
-      entity_classes: no_classes
-      settings:
-        label: ''
-        wrappers:
-          ds_content: div
-        outer_wrapper: div
-        attributes: ''
-        link_attribute: ''
-        link_custom: ''
-        classes:
-          layout_class: {  }
-    regions: {  }
-    fields:
-      'dynamic_twig_field:paragraph-empty_space':
-        plugin_id: 'dynamic_twig_field:paragraph-empty_space'
-        weight: null
-        label: null
-        formatter: null
-      'bundle_field:paragraph':
-        plugin_id: 'bundle_field:paragraph'
-        weight: null
-        label: null
-        formatter: null
 id: paragraph.stanford_spacer.default
 targetEntityType: paragraph
 bundle: stanford_spacer
