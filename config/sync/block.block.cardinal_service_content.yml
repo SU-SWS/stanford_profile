@@ -1,0 +1,20 @@
+uuid: e88ca0ff-bed0-4f65-a775-5f9857f3383d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - cardinal_service
+id: cardinal_service_content
+theme: cardinal_service
+region: content
+weight: -1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

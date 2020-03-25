@@ -1,0 +1,23 @@
+uuid: 131d66f7-a0ce-4bca-ab23-4cead5cd9a44
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - cardinal_service
+_core:
+  default_config_hash: vhPsMWd6yz_azjomNpjIHdEceN_vufyctZrYrZ4bSQw
+id: cardinal_service_search
+theme: cardinal_service
+region: search
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+  page_id: ''
+visibility: {  }

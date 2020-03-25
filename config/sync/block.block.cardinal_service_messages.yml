@@ -1,0 +1,20 @@
+uuid: 53f728a6-ab11-4c6b-b41c-d140ccd724f6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - cardinal_service
+id: cardinal_service_messages
+theme: cardinal_service
+region: content
+weight: -3
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  provider: system
+  label_display: '0'
+visibility: {  }

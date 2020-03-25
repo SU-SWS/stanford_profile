@@ -1,0 +1,32 @@
+name: Cardinal Service
+type: theme
+description: 'Cardinal Service theme based on Stanford Basic'
+package: Cardinal Service
+version: 8.x-4.4-dev
+core_version_requirement: ^8 || ^9
+base theme: stanford_basic
+
+regions:
+  page_top: 'Page top'
+  header: Header
+  search: Search
+  menu: Menu
+  help: Help
+  content: Content
+  footer: Footer
+  page_bottom: 'Page bottom'
+
+features:
+  - favicon
+  - logo
+
+component-libraries:
+  cardinal-service:
+    paths:
+      - templates
+
+libraries:
+  - cardinal_service/base
+
+ckeditor_stylesheets:
+  - dist/css/ckeditor.css
