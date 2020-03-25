@@ -24,11 +24,17 @@ stanford_page_layout_full:
     component:
       dist/css/stanford_profile_styles.layout.stanford_page.full.css: { weight: 10 }
 
-stanford_paragraph_wysiwyg:
+paragraph_stanford_wysiwyg:
   version: VERSION
   css:
     component:
       dist/css/stanford_profile_styles.paragraph.wysiwyg.css: {}
+
+paragraph_stanford_spacer:
+  version: VERSION
+  css:
+    component:
+      dist/css/stanford_profile_styles.paragraph.spacer.css: {}
 
 stanford_profile_styles:
   version: VERSION

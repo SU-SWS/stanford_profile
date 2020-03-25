@@ -51,13 +51,16 @@ function stanford_profile_styles_field_widget_multivalue_paragraphs_form_alter(a
 }
 
 /**
- * Implements hook_preprocess_entity().
+ * Implements hook_entity_display_build_alter().
  */
-function stanford_profile_styles_preprocess_paragraph(&$vars) {
-  $type = $vars['paragraph']->bundle();
-  if ($type == "stanford_wysiwyg") {
-    $vars['#attached']['library'][] = "stanford_profile_styles/stanford_paragraph_wysiwyg";
+function stanford_profile_styles_entity_display_build_alter(&$build, $context) {
+  if ($context['entity']->getEntityTypeId() != 'paragraph') {
+    return;
   }
+  $bundle = $context['entity']->bundle();
+  // Add libraries that correspond to the current paragraph type. No need to
+  // check for the existing library. No message is created if no library exists.
+  $build['#attached']['library'][] = "stanford_profile_styles/paragraph_$bundle";
 }
 
 /**

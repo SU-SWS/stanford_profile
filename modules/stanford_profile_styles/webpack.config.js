@@ -52,6 +52,7 @@ var webpackConfig = {
     "stanford_profile_styles.layout.stanford_page.full":  path.resolve(srcSass, "node-types/stanford_page.layout.full-width.scss"),
     "stanford_profile_styles.node.stanford_page":         path.resolve(srcSass, "node-types/stanford_page.scss"),
     "stanford_profile_styles.paragraph.wysiwyg":          path.resolve(srcSass, "paragraph-types/wysiwyg/index.scss"),
+    "stanford_profile_styles.paragraph.spacer":          path.resolve(srcSass, "paragraph-types/spacer/index.scss"),
     "stanford_profile_styles":                            path.resolve(srcSass, "stanford_profile_styles.scss")
   },
   // Where put build?
