@@ -1,5 +1,9 @@
 @charset 'UTF-8';
 
-.content .paragraph-item.ptype-stanford-spacer {
-  @include margin(0);
+.content {
+  .paragraph-item {
+    &.ptype-stanford-spacer {
+      @include margin(0);
+    }
+  }
 }
