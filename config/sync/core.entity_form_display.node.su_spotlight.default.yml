@@ -36,49 +36,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  su_spotlight_background_image:
-    type: media_library_widget
-    weight: 6
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-    region: content
-  su_spotlight_feature_image:
-    type: media_library_widget
-    weight: 1
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-    region: content
-  su_spotlight_graduation_year:
-    weight: 4
-    settings:
-      date_order: YMD
-      time_type: none
-      increment: '15'
-      start: '2010'
-      end: '2030'
-    third_party_settings: {  }
-    type: datetime_year_only
-    region: content
-  su_spotlight_major:
-    weight: 3
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete_tags
-    region: content
-  su_spotlight_student_name:
-    weight: 2
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   path:
     type: path
     weight: 11
@@ -106,6 +63,49 @@ content:
     weight: 10
     region: content
     third_party_settings: {  }
+  su_spotlight_background_image:
+    type: media_library_widget
+    weight: 6
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  su_spotlight_feature_image:
+    type: media_library_widget
+    weight: 1
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  su_spotlight_graduation_year:
+    weight: 4
+    settings:
+      date_order: YMD
+      time_type: none
+      increment: 15
+      start: 2010
+      end: 2030
+    third_party_settings: {  }
+    type: datetime_year_only
+    region: content
+  su_spotlight_major:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
+  su_spotlight_student_name:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   title:
     type: string_textfield
     weight: 0

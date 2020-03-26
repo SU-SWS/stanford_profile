@@ -127,6 +127,7 @@ third_party_settings:
         layout_settings:
           extra_classes: ''
           centered: centered-container
+          orientation: right
         components:
           bc090378-a6c5-438c-9b39-68be99e5f961:
             uuid: bc090378-a6c5-438c-9b39-68be99e5f961
@@ -160,6 +161,11 @@ content:
     label: hidden
     type: text_default
     weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -205,10 +211,5 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
-  links:
-    weight: 100
-    settings: {  }
-    third_party_settings: {  }
     region: content
 hidden: {  }
