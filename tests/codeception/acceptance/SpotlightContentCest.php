@@ -10,7 +10,7 @@ class SpotlightContentCest {
    */
   public function testSpotlightContentCreation(\AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/node/add/cs_spotlight');
+    $I->amOnPage('/node/add/su_spotlight');
     $I->fillField('Title', 'Foo Bar Spotlight');
     $I->fillField('Student Name', 'John Doe');
     $I->fillField('Major', 'Underwater Basket Weaving');
