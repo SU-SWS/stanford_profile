@@ -3,21 +3,21 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.cs_spotlight.body
-    - field.field.node.cs_spotlight.cs_spotlight_background_image
-    - field.field.node.cs_spotlight.cs_spotlight_feature_image
-    - field.field.node.cs_spotlight.cs_spotlight_graduation_year
-    - field.field.node.cs_spotlight.cs_spotlight_major
-    - field.field.node.cs_spotlight.cs_spotlight_student_name
-    - node.type.cs_spotlight
+    - field.field.node.su_spotlight.body
+    - field.field.node.su_spotlight.su_spotlight_background_image
+    - field.field.node.su_spotlight.su_spotlight_feature_image
+    - field.field.node.su_spotlight.su_spotlight_graduation_year
+    - field.field.node.su_spotlight.su_spotlight_major
+    - field.field.node.su_spotlight.su_spotlight_student_name
+    - node.type.su_spotlight
   module:
     - media_library
     - path
     - stanford_fields
     - text
-id: node.cs_spotlight.default
+id: node.su_spotlight.default
 targetEntityType: node
-bundle: cs_spotlight
+bundle: su_spotlight
 mode: default
 content:
   body:
@@ -36,21 +36,21 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  cs_spotlight_background_image:
+  su_spotlight_background_image:
     type: media_library_widget
     weight: 6
     settings:
       media_types: {  }
     third_party_settings: {  }
     region: content
-  cs_spotlight_feature_image:
+  su_spotlight_feature_image:
     type: media_library_widget
     weight: 1
     settings:
       media_types: {  }
     third_party_settings: {  }
     region: content
-  cs_spotlight_graduation_year:
+  su_spotlight_graduation_year:
     weight: 4
     settings:
       date_order: YMD
@@ -61,7 +61,7 @@ content:
     third_party_settings: {  }
     type: datetime_year_only
     region: content
-  cs_spotlight_major:
+  su_spotlight_major:
     weight: 3
     settings:
       match_operator: CONTAINS
@@ -71,7 +71,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
     region: content
-  cs_spotlight_student_name:
+  su_spotlight_student_name:
     weight: 2
     settings:
       size: 60

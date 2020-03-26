@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.cs_spotlight
+    - node.type.su_spotlight
   module:
     - allowed_formats
     - text
@@ -13,10 +13,10 @@ third_party_settings:
     stanford_html: '0'
     stanford_minimal_html: '0'
     plain_text: '0'
-id: node.cs_spotlight.body
+id: node.su_spotlight.body
 field_name: body
 entity_type: node
-bundle: cs_spotlight
+bundle: su_spotlight
 label: Story
 description: 'Use the Summary if you wish to provide a teaser of the student''s story.'
 required: false

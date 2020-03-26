@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.cs_spotlight_graduation_year
-    - node.type.cs_spotlight
+    - field.storage.node.su_spotlight_graduation_year
+    - node.type.su_spotlight
   module:
     - datetime
-id: node.cs_spotlight.cs_spotlight_graduation_year
-field_name: cs_spotlight_graduation_year
+id: node.su_spotlight.su_spotlight_graduation_year
+field_name: su_spotlight_graduation_year
 entity_type: node
-bundle: cs_spotlight
+bundle: su_spotlight
 label: 'Graduation Year'
 description: ''
 required: false

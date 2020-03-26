@@ -1,17 +1,16 @@
-uuid: 00e19a4d-dd7f-463e-ae31-4b90d1c1d092
+uuid: 997142cf-bb27-4d8c-a2f5-f20e42c0276d
 langcode: en
 status: true
 dependencies:
   module:
+    - media
     - node
-id: node.cs_spotlight_student_name
-field_name: cs_spotlight_student_name
+id: node.su_spotlight_background_image
+field_name: su_spotlight_background_image
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
+  target_type: media
 module: core
 locked: false
 cardinality: 1

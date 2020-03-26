@@ -3,13 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.cs_spotlight_background_image
+    - field.storage.node.su_spotlight_background_image
     - media.type.image
-    - node.type.cs_spotlight
-id: node.cs_spotlight.cs_spotlight_background_image
-field_name: cs_spotlight_background_image
+    - node.type.su_spotlight
+id: node.su_spotlight.su_spotlight_background_image
+field_name: su_spotlight_background_image
 entity_type: node
-bundle: cs_spotlight
+bundle: su_spotlight
 label: 'Background Image'
 description: ''
 required: false

@@ -1,16 +1,16 @@
-uuid: f76974b3-6bd5-4ec9-8162-1fc1d383253e
+uuid: 52d2ed6d-dca6-4e05-860b-9a6338e93bac
 langcode: en
 status: true
 dependencies:
   module:
+    - media
     - node
-    - taxonomy
-id: node.cs_spotlight_major
-field_name: cs_spotlight_major
+id: node.su_spotlight_feature_image
+field_name: su_spotlight_feature_image
 entity_type: node
 type: entity_reference
 settings:
-  target_type: taxonomy_term
+  target_type: media
 module: core
 locked: false
 cardinality: 1
