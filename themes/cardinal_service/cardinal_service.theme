@@ -27,7 +27,7 @@ function cardinal_service_preprocess_block(&$variables) {
  */
 function cardinal_service_preprocess_field__link(&$variables) {
   switch ($variables['element']['#field_name']) {
-    case 'cs_opp_solo_url':
+    case 'su_opp_solo_url':
       $variables['attributes']['class'][] = 'centered-container';
       foreach ($variables['items'] as &$item) {
         $title = parse_url($item['content']['#title']);
