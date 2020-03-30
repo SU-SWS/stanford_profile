@@ -1,0 +1,19 @@
+uuid: dc0a3062-bb9a-418b-8ae4-897c71749ca1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_contact_email
+    - node.type.su_opportunity
+id: node.su_opportunity.su_opp_contact_email
+field_name: su_opp_contact_email
+entity_type: node
+bundle: su_opportunity
+label: 'Contact Email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

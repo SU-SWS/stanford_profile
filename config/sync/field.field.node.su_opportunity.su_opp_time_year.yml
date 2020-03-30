@@ -1,0 +1,29 @@
+uuid: 280f185b-329e-4ac7-9f00-90cfdaf48e07
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_time_year
+    - node.type.su_opportunity
+    - taxonomy.vocabulary.su_opportunity_time
+id: node.su_opportunity.su_opp_time_year
+field_name: su_opp_time_year
+entity_type: node
+bundle: su_opportunity
+label: 'Time of the Year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      su_opportunity_time: su_opportunity_time
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

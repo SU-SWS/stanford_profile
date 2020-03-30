@@ -1,0 +1,27 @@
+uuid: ff42fc88-6a53-45af-8fd0-56b4bd6b8a8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_eligability
+    - node.type.su_opportunity
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_html: '0'
+    stanford_minimal_html: '0'
+    plain_text: '0'
+id: node.su_opportunity.su_opp_eligability
+field_name: su_opp_eligability
+entity_type: node
+bundle: su_opportunity
+label: Eligability
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

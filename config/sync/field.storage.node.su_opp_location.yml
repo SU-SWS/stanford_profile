@@ -1,0 +1,20 @@
+uuid: ec2c5fbe-9ca0-47fe-9638-53ab34269e33
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.su_opp_location
+field_name: su_opp_location
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

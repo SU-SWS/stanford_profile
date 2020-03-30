@@ -1,0 +1,29 @@
+uuid: 67abf139-0284-4d4b-8bbc-773c1d097cc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_location
+    - node.type.su_opportunity
+    - taxonomy.vocabulary.su_opportunity_location
+id: node.su_opportunity.su_opp_location
+field_name: su_opp_location
+entity_type: node
+bundle: su_opportunity
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      su_opportunity_location: su_opportunity_location
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

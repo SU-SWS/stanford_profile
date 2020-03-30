@@ -1,0 +1,23 @@
+uuid: c7564a75-bdb7-4838-bb15-9eefe0c768e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_learn_more
+    - node.type.su_opportunity
+  module:
+    - link
+id: node.su_opportunity.su_opp_learn_more
+field_name: su_opp_learn_more
+entity_type: node
+bundle: su_opportunity
+label: 'Learn More Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link
