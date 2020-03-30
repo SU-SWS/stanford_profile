@@ -4,6 +4,7 @@
     "type": "drupal-custom-profile",
     "license": "GPL-2.0+",
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "repositories": [
         {
             "type": "composer",
@@ -123,5 +124,9 @@
                 "https://www.drupal.org/project/paragraphs/issues/2901390": "https://www.drupal.org/files/issues/2019-08-10/paragraphs-set_langcode_widgets-290139_updated.patch"
             }
         }
+    },
+    "require-dev": {
+        "drupal/devel_php": "^1.1",
+        "drupal/devel": "^2.1"
     }
 }
