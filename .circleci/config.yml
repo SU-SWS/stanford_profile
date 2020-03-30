@@ -11,11 +11,17 @@ defaults: &defaults
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
   working_directory: /var/www/html
 
+github_token: &github_token
+  run:
+    name: Add Github Token
+    command: |
+      composer config --global --auth github-oauth.github.com ${GITHUB_TOKEN}
 
 #Jobs
 code_coverage: &code_coverage
   <<: *defaults
   steps:
+    - *github_token
     - restore_cache:
         keys:
           - dependencies-v1
@@ -24,7 +30,7 @@ code_coverage: &code_coverage
     - run:
         name: Run PHP Unit Coverage Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
+          composer global require SU-SWS/stanford-caravan:dev-codeception-modules
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
     - save_cache:
         key: dependencies-v1-{{ epoch }}
@@ -38,6 +44,7 @@ code_coverage: &code_coverage
 behat: &behat
   <<: *defaults
   steps:
+    - *github_token
     - restore_cache:
         keys:
           - dependencies-v1
@@ -46,7 +53,7 @@ behat: &behat
     - run:
         name: Run Behat Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
+          composer global require SU-SWS/stanford-caravan:dev-codeception-modules
           ~/.composer/vendor/bin/sws-caravan behat /var/www/html --extension-dir=/var/www/test
     - save_cache:
         key: dependencies-v1-{{ epoch }}
@@ -54,6 +61,22 @@ behat: &behat
           - .
     - store_test_results:
         path: /var/www/html/artifacts/behat
+    - store_artifacts:
+        path: /var/www/html/artifacts
+
+codeception: &codeception
+  <<: *defaults
+  steps:
+    - *github_token
+    - checkout:
+        path: /var/www/test
+    - run:
+        name: Run Codeception Tests
+        command: |
+          composer global require SU-SWS/stanford-caravan:dev-codeception-modules
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
+    - store_test_results:
+        path: /var/www/html/artifacts
     - store_artifacts:
         path: /var/www/html/artifacts
 
@@ -76,6 +99,8 @@ jobs:
     <<: *code_coverage
   run-behat:
     <<: *behat
+  run-codeception:
+    <<: *codeception
   run-merge-upstream:
     <<: *merge_upstream
 
@@ -86,6 +111,7 @@ workflows:
     jobs:
       - run-coverage
       - run-behat
+      - run-codeception
   daily:
     jobs:
       - run-merge-upstream
@@ -101,10 +127,11 @@ workflows:
     jobs:
       - run-coverage
       - run-behat
+      - run-codeception
     triggers:
       - schedule:
           cron: "0 0 * * 0"
           filters:
             branches:
               only:
-                - 8.x-1.x
+                - /8.x-*.x/

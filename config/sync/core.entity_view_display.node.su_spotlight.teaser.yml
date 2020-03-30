@@ -1,0 +1,40 @@
+uuid: f3831418-e0ec-43e5-82a0-d50d31bb6f16
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.su_spotlight.body
+    - field.field.node.su_spotlight.su_spotlight_background_image
+    - field.field.node.su_spotlight.su_spotlight_feature_image
+    - field.field.node.su_spotlight.su_spotlight_graduation_year
+    - field.field.node.su_spotlight.su_spotlight_major
+    - field.field.node.su_spotlight.su_spotlight_student_name
+    - node.type.su_spotlight
+  module:
+    - text
+    - user
+id: node.su_spotlight.teaser
+targetEntityType: node
+bundle: su_spotlight
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  su_spotlight_background_image: true
+  su_spotlight_feature_image: true
+  su_spotlight_graduation_year: true
+  su_spotlight_major: true
+  su_spotlight_student_name: true

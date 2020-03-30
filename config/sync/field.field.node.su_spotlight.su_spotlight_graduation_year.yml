@@ -1,0 +1,21 @@
+uuid: 33f3ce8c-b2f5-4d7e-a71e-31027fe01aa6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_spotlight_graduation_year
+    - node.type.su_spotlight
+  module:
+    - datetime
+id: node.su_spotlight.su_spotlight_graduation_year
+field_name: su_spotlight_graduation_year
+entity_type: node
+bundle: su_spotlight
+label: 'Graduation Year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

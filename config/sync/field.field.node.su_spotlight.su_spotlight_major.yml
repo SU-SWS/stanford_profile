@@ -1,0 +1,29 @@
+uuid: 8de0995c-041b-40ce-88f0-f4498aaed75d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_spotlight_major
+    - node.type.su_spotlight
+    - taxonomy.vocabulary.su_school_majors
+id: node.su_spotlight.su_spotlight_major
+field_name: su_spotlight_major
+entity_type: node
+bundle: su_spotlight
+label: Major
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      su_school_majors: su_school_majors
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

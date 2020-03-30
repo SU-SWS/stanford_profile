@@ -1,0 +1,22 @@
+uuid: 44a46596-d758-41ed-a868-f5af2dc9b9e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.su_spotlight
+id: node.su_spotlight.promote
+field_name: promote
+entity_type: node
+bundle: su_spotlight
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

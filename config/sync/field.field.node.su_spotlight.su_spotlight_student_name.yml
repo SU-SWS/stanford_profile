@@ -1,0 +1,19 @@
+uuid: e03c184d-5f86-4fba-88f6-c8ef903a68ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_spotlight_student_name
+    - node.type.su_spotlight
+id: node.su_spotlight.su_spotlight_student_name
+field_name: su_spotlight_student_name
+entity_type: node
+bundle: su_spotlight
+label: 'Student Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
