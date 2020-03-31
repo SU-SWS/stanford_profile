@@ -107,6 +107,8 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
     if (empty($site_data)) {
       return;
     }
+    $this->state->set('xmlsitemap_base_url', "https://$site_name.sites.stanford.edu");
+
     $this->entityTypeManager->getStorage('config_pages')->create([
       'type' => 'stanford_basic_site_settings',
       'su_site_email' => $site_data['email'],
