@@ -83,7 +83,7 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
   // by the menu cache tags.
   $parent_id = $entity->getParentId();
   if (!empty($parent_id)) {
-    [$entity_name, $uuid] = explode(':', $parent_id);
+    list($entity_name, $uuid) = explode(':', $parent_id);
     $menu_link_content = \Drupal::entityTypeManager()->getStorage($entity_name)->loadByProperties(['uuid' => $uuid]);
     if (is_array($menu_link_content)) {
       $parent_item = array_pop($menu_link_content);
