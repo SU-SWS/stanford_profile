@@ -1,6 +1,6 @@
 <?php
 
-class DemoCest {
+class HomePageCest {
 
   /**
    * Validate the homepage loads.
