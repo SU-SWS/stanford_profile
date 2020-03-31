@@ -6,15 +6,16 @@
  */
 
 use Drupal\Component\Utility\Html;
+use Drupal\config_pages\ConfigPagesInterface;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Site\Settings;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\NodeInterface;
-use Drupal\Core\Site\Settings;
-use Drupal\Core\Cache\Cache;
 
 /**
  * Implements hook_install_tasks().
@@ -82,7 +83,7 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
   // by the menu cache tags.
   $parent_id = $entity->getParentId();
   if (!empty($parent_id)) {
-    list($entity_name, $uuid) = explode(':', $parent_id);
+    [$entity_name, $uuid] = explode(':', $parent_id);
     $menu_link_content = \Drupal::entityTypeManager()->getStorage($entity_name)->loadByProperties(['uuid' => $uuid]);
     if (is_array($menu_link_content)) {
       $parent_item = array_pop($menu_link_content);
@@ -195,7 +196,6 @@ function stanford_profile_form_menu_edit_form_alter(array &$form, FormStateInter
  */
 function stanford_profile_form_config_pages_stanford_basic_site_settings_form_alter(array &$form, FormStateInterface $form_state) {
   $form['#validate'][] = 'stanford_profile_config_pages_stanford_basic_site_settings_form_validate';
-  $form['#submit'][] = 'stanford_profile_config_pages_stanford_basic_site_settings_form_submit';
 }
 
 /**
@@ -218,17 +218,11 @@ function stanford_profile_config_pages_stanford_basic_site_settings_form_validat
 }
 
 /**
- * Set drupal state values based on field values.
- *
- * @param array $form
- *   The form array.
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- *   The form state interface object.
+ * Implements hook_ENTITY_TYPE_presave().
  */
-function stanford_profile_config_pages_stanford_basic_site_settings_form_submit(array $form, FormStateInterface $form_state) {
-  $element = $form_state->getValue('su_site_url');
-  $uri = $element['0']['uri'];
-  if (!empty($uri)) {
-    \Drupal::state()->set('xmlsitemap_base_url', $uri);
+function stanford_profile_config_pages_presave(ConfigPagesInterface $entity) {
+  if ($entity->hasField('su_site_url') && ($url_field = $entity->get('su_site_url')->getValue())) {
+    // Set the xml sitemap module state to the new domain.
+    \Drupal::state()->set('xmlsitemap_base_url', $url_field[0]['uri']);
   }
 }
