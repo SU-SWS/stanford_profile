@@ -26,7 +26,8 @@ Feature: Default Content
     Given I am logged in as a user with the "site_manager" role
     And I am on "/admin/content/media"
     Then I should see 15 or more ".media-library-item img" elements
-    
+
   Scenario: XML Sitemap Loads
-    Given I am on "/sitemap.xml"
+    Given I run cron
+    And I am on "/sitemap.xml"
     Then the response status code should be 200
