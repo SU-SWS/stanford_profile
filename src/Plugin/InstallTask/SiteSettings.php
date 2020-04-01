@@ -107,6 +107,8 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
     if (empty($site_data)) {
       return;
     }
+    $this->state->set('xmlsitemap_base_url', "https://$site_name.sites.stanford.edu");
+
     $this->entityTypeManager->getStorage('config_pages')->create([
       'type' => 'stanford_basic_site_settings',
       'su_site_email' => $site_data['email'],
@@ -199,19 +201,6 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
         return $this->getSnowData('default');
       }
     }
-  }
-
-  /**
-   * Is the install occurring on Acquia environment.
-   *
-   * @return bool
-   *   True if on Acquia.
-   *
-   * @codeCoverageIgnore
-   *   We want to test the class and need to fake being on Acquia.
-   */
-  protected static function isAhEnv() {
-    return isset($_ENV['AH_SITE_ENVIRONMENT']);
   }
 
 }

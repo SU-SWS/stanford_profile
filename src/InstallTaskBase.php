@@ -21,4 +21,17 @@ abstract class InstallTaskBase extends PluginBase implements InstallTaskInterfac
    */
   protected $entityTypeManager;
 
+  /**
+   * Is the install occurring on Acquia environment.
+   *
+   * @return bool
+   *   True if on Acquia.
+   *
+   * @codeCoverageIgnore
+   *   We want to test the class and need to fake being on Acquia.
+   */
+  protected static function isAhEnv() {
+    return isset($_ENV['AH_SITE_ENVIRONMENT']);
+  }
+
 }
