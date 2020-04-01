@@ -1,7 +1,7 @@
 # [Stanford Profile](https://github.com/SU-SWS/stanford_profile)
 ##### 8.x
 
-Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)  
+Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)
 
 Changelog: [Changelog.md](CHANGELOG.md)
 
@@ -24,6 +24,18 @@ Configuration
 ---
 
 Nothing special needed.
+
+Releases
+---
+
+Steps to build a new release:
+- Checkout the latest commit from the `8.x-1.x` branch.
+- Create a new branch, e.g., `release-8.1.6`.
+- Update the `composer.json` file to use the latest tagged release of all `su-sws` packages, eliminating the `@dev` dependencies.
+- Commit your changes to the release branch.
+- Make a PR to merge your release branch into `master`
+- When the PR is merged to `master`, a new tag will be created automatically, bumping the version by 1 semver patch by default.  If you wish, you may bump a minor or major version by including the text `#minor` or `#major` in the PR.
+- The github action is built from: (github-tag-bump)[https://github.com/marketplace/actions/github-tag-bump], and further documentation is available there.
 
 
 Troubleshooting
