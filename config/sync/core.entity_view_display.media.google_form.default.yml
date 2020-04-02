@@ -1,0 +1,26 @@
+uuid: bad0b056-8551-49ab-8133-ee953293b21e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.google_form.field_media_google_form
+    - media.type.google_form
+  module:
+    - stanford_media
+id: media.google_form.default
+targetEntityType: media
+bundle: google_form
+mode: default
+content:
+  field_media_google_form:
+    label: visually_hidden
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: google_form_formatter
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

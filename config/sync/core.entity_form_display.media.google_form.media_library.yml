@@ -1,0 +1,27 @@
+uuid: bcd212c6-bef7-4879-9b63-4f49ddebfe19
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.google_form.field_media_google_form
+    - media.type.google_form
+id: media.google_form.media_library
+targetEntityType: media
+bundle: google_form
+mode: media_library
+content:
+  name:
+    type: string_textfield
+    settings:
+      size: 60
+      placeholder: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_media_google_form: true
+  path: true
+  status: true
+  uid: true
