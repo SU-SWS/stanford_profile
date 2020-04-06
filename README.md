@@ -34,8 +34,9 @@ Steps to build a new release:
 - Update the `composer.json` file to use the latest tagged release of all `su-sws` packages, eliminating the `@dev` dependencies.
 - Commit your changes to the release branch.
 - Make a PR to merge your release branch into `master`
-- When the PR is merged to `master`, a new tag will be created automatically, bumping the version by 1 semver patch by default.  If you wish, you may bump a minor or major version by including the text `#minor` or `#major` in the PR.
-- The github action is built from: (github-tag-bump)[https://github.com/marketplace/actions/github-tag-bump], and further documentation is available there.
+- Give the PR a semver-compliant label, e.g., (`patch`, `minor`, `major`)
+- When the PR is merged to `master`, a new tag will be created automatically, bumping the version by the semver label.
+- The github action is built from: (semver-release-action)[https://github.com/K-Phoen/semver-release-action], and further documentation is available there.
 
 
 Troubleshooting
