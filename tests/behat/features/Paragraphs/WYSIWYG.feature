@@ -94,7 +94,7 @@ Feature: WYSIWYG Paragraph
     And I wait for element ".dropzone"
     Then I drop "../../assets/images/logo.jpg" file into dropzone
     And I press "Upload and Continue"
-    And I wait 1 seconds
+    And I for element "input[name*='alt']"
     And I fill in "Alternative text" with "Stanford Logo"
     Then I click the ".ui-dialog-buttonset button:contains('Save and insert')" element
     And I wait for AJAX to finish
