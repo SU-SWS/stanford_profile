@@ -74,7 +74,7 @@ Feature: WYSIWYG Paragraph
     And I should see 2 "th[scope]" elements in the "content" region
     And I should see 4 "td" element in the "content" region
 
-  @api @javascript
+  @api @javascript @testthis
   Scenario: Test Embedded Image
     Given I am logged in as a user with the "administrator" role
     Given a "stanford_wysiwyg" paragraph named "created_text":
@@ -94,6 +94,8 @@ Feature: WYSIWYG Paragraph
     And I wait for element ".dropzone"
     Then I drop "../../assets/images/logo.jpg" file into dropzone
     And I press "Upload and Continue"
+    And I run drush "sqlq 'select * from watchdog order by wid desc limit 1'"
+    And print last drush output
     And I wait for element "input[name*='alt']"
     And I fill in "Alternative text" with "Stanford Logo"
     Then I click the ".ui-dialog-buttonset button:contains('Save and insert')" element

@@ -4,7 +4,6 @@ Feature: Layout Builder Paragraphs
   As a site manager
   I should be able to create custom blocks from within layout builder.
 
-  @testthis
   Scenario: Create Paragraphs In Layout Builder
     Given I am logged in as a user with the "site_manager" role
     And I am viewing a "stanford_page" with the title "Customized Layout Builder"
