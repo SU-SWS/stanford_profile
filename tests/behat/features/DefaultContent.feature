@@ -27,7 +27,6 @@ Feature: Default Content
     And I am on "/admin/content/media"
     Then I should see 15 or more ".media-library-item img" elements
     
-  @experimental
   Scenario: XML Sitemap Loads
     Given I run cron
     And I am on "/sitemap.xml"
