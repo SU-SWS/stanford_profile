@@ -2,9 +2,15 @@
 
 class HomePageCest {
 
-  public function testHomepageContent(\AcceptanceTester $I) {
-    $I->amOnPage("/");
-    $I->see("Cardinal Service");
+  /**
+   * Validate the homepage loads.
+   */
+  public function testHomepage(AcceptanceTester $I) {
+    $I->amOnPage('/');
+    $I->canSee('Stanford');
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/structure');
+    $I->canSeeResponseCodeIs(200);
   }
 
 }

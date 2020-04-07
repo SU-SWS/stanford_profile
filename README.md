@@ -6,6 +6,7 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/4bcf8ab986d6837c7d97/test_coverage)](https://codeclimate.com/github/SU-HKKU/cardinal_service_profile/test_coverage)
 
+
 Maintainers: [Mike Decker](https://github.com/pookmish), [sherakama](https://github.com/sherakama)
 
 Changelog: [Changelog.md](CHANGELOG.md)
@@ -29,6 +30,21 @@ Configuration
 ---
 
 Nothing special needed.
+
+Releases
+---
+
+Steps to build a new release:
+- Checkout the latest commit from the `8.x-1.x` branch.
+- Create a new branch for the release.
+- Commit any necessary changes to the release branch.
+  -  These may include, but are not necessarily limited to:
+    - Update the version in any `info.yml` files, including in any submodules.
+    - Update the CHANGELOG to reflect the changes made in the new release.
+- Make a PR to merge your release branch into `master`
+- Give the PR a semver-compliant label, e.g., (`patch`, `minor`, `major`).  This may happen automatically via Github actions (if a labeler action is configured).
+- When the PR is merged to `master`, a new tag will be created automatically, bumping the version by the semver label.
+- The github action is built from: [semver-release-action](https://github.com/K-Phoen/semver-release-action), and further documentation is available there.
 
 
 Troubleshooting

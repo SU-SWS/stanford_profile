@@ -93,6 +93,16 @@ merge_upstream: &merge_upstream
           git pull git@github.com:SU-SWS/stanford_profile.git ${CIRCLE_BRANCH} --no-edit
           git push origin ${CIRCLE_BRANCH}
 
+back_to_dev: &back_to_dev
+  <<: *defaults
+  steps:
+    - checkout
+    - run:
+        name: Back to dev
+        command: |
+          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
+          ~/.composer/vendor/bin/sws-caravan back-to-dev ${CIRCLE_TAG} ${CIRCLE_WORKING_DIRECTORY}
+
 # Declare all of the jobs we should run.
 jobs:
   run-coverage:
@@ -103,10 +113,22 @@ jobs:
     <<: *codeception
   run-merge-upstream:
     <<: *merge_upstream
+  run-back-to-dev:
+    <<: *back_to_dev
 
 # Declare a workflow that runs all of our jobs in parallel.
 workflows:
   version: 2
+  after_release:
+    jobs:
+      - run-back-to-dev:
+          filters:
+            tags:
+              only:
+                - /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*).*?$/
+            branches:
+              ignore:
+                - /.*/
   tests:
     jobs:
       - run-coverage
