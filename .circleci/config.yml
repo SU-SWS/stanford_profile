@@ -11,7 +11,6 @@ defaults: &defaults
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
   working_directory: /var/www/html
 
-
 #Jobs
 code_coverage: &code_coverage
   <<: *defaults
@@ -57,12 +56,29 @@ behat: &behat
     - store_artifacts:
         path: /var/www/html/artifacts
 
+codeception: &codeception
+  <<: *defaults
+  steps:
+    - checkout:
+        path: /var/www/test
+    - run:
+        name: Run Behat Tests
+        command: |
+          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
+    - store_test_results:
+        path: /var/www/html/artifacts/behat
+    - store_artifacts:
+        path: /var/www/html/artifacts
+
 # Declare all of the jobs we should run.
 jobs:
   run-coverage:
     <<: *code_coverage
   run-behat:
     <<: *behat
+  run-codeception:
+    <<: *codeception
 
 # Declare a workflow that runs all of our jobs in parallel.
 workflows:
@@ -71,6 +87,7 @@ workflows:
     jobs:
       - run-coverage
       - run-behat
+      - run-codeception
   # Re-test every sunday in case this code becomes stale.
   sundays:
     jobs:
