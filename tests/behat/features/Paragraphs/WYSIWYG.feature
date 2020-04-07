@@ -77,6 +77,7 @@ Feature: WYSIWYG Paragraph
   @api @javascript @testthis
   Scenario: Test Embedded Image
     Given I am logged in as a user with the "administrator" role
+    And the "dblog" module is enabled
     Given a "stanford_wysiwyg" paragraph named "created_text":
       | su_wysiwyg_text:value  | Ipsum Lorem   |
       | su_wysiwyg_text:format | stanford_html |
