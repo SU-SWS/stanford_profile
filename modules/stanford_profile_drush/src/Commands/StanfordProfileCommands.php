@@ -145,7 +145,7 @@ class StanfordProfileCommands extends DrushCommands {
 
       // Create a paragraph entity that we can clone so we can see the effects
       // at the different widths on the same display.
-      $original_paragraph = $this->createParagraph($bundle, $bundle_info['label']);
+      $original_paragraph = $this->createParagraph($bundle);
       $paragraphs[] = [
         'target_id' => $original_paragraph->id(),
         'target_revision_id' => $original_paragraph->getRevisionId(),
@@ -205,7 +205,8 @@ class StanfordProfileCommands extends DrushCommands {
 
       try {
         $sample_value = $field_type_definition['class']::generateSampleValue($field_definition);
-      } catch (\Exception $e) {
+      }
+      catch (\Exception $e) {
         // Move on to the next field.
         continue;
       }
