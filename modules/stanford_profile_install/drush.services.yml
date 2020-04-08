@@ -1,5 +1,0 @@
-services:
-  stanford_profile_install.commands:
-    class: \Drupal\stanford_profile_install\Commands\StanfordProfileCommands
-    tags:
-      - { name: drush.command }
