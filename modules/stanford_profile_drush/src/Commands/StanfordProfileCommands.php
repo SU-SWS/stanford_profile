@@ -129,7 +129,7 @@ class StanfordProfileCommands extends DrushCommands {
     $handler_settings = $field->getSetting('handler_settings');
 
     $paragraphs = [];
-    foreach ($paragraph_bundles as $bundle => $bundle_info) {
+    foreach (array_keys($paragraph_bundles) as $bundle) {
       // Find out if the field is configured to allow the current bundle. The
       // field allows for "Exclude selected" which is the `negate` value. If a
       // paragraph has been added but the field settings haven't been resaved,
