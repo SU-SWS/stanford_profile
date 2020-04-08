@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\stanford_profile\Commands;
+namespace Drupal\stanford_profile_install\Commands;
 
 use Drush\Commands\DrushCommands;
 
