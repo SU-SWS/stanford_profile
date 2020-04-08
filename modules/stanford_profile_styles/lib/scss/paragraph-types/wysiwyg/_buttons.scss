@@ -17,4 +17,14 @@
     @include modular-spacing('margin-bottom', 0);
   }
 
+  // If they're in the same paragraph, get them to stack.
+  a[class^="su-button"] {
+    display: block;
+    width: fit-content;
+  }
+}
+
+// We want don't want to target the first link.
+a[class^="su-button"] + a[class^="su-button"]{
+  @include margin(-0.3em null null null);
 }
