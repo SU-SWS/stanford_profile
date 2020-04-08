@@ -104,7 +104,6 @@ class StanfordProfileCommands extends DrushCommands {
     $field_config = $this->entityTypeManager->getStorage('field_config')
       ->load("$entity_type_id.$bundle.$field");
 
-    $this->getParagraphFieldValues($field_config);
     $this->entityTypeManager->getStorage($entity_type_id)->create([
       $label_key => 'Stress Test ' . date('F j Y'),
       $bundle_key => $bundle,
@@ -135,9 +134,12 @@ class StanfordProfileCommands extends DrushCommands {
       // field allows for "Exclude selected" which is the `negate` value. If a
       // paragraph has been added but the field settings haven't been resaved,
       // it may or may not be allowed in the field, so we check that too.
-      if (
-        (!isset($handler_settings['target_bundles_drag_drop'][$bundle]) && !$handler_settings['negate']) ||
-        (bool) $handler_settings['negate'] === (bool) $handler_settings['target_bundles_drag_drop'][$bundle]['enabled']) {
+      if (isset($handler_settings['target_bundles_drag_drop'][$bundle])) {
+        if ((bool) $handler_settings['negate'] === (bool) $handler_settings['target_bundles_drag_drop'][$bundle]['enabled']) {
+          continue;
+        }
+      }
+      elseif (!$handler_settings['negate']) {
         continue;
       }
 
