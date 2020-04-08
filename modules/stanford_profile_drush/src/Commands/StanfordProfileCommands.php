@@ -67,7 +67,7 @@ class StanfordProfileCommands extends DrushCommands {
    * Generate a page with the possible combinations of components in rows.
    *
    * @command stanford-profile:stress-test-components
-   * @alias spstc
+   * @aliases spstc
    */
   public function generateStressTestNode() {
     $fields_map = $this->fieldManager->getFieldMapByFieldType('react_paragraphs');
