@@ -212,7 +212,8 @@ class StanfordProfileCommands extends DrushCommands {
 
       try {
         $sample_value = $field_type_definition['class']::generateSampleValue($field_definition);
-      } catch (\Exception $e) {
+      }
+      catch (\Exception $e) {
         // Move on to the next field.
         continue;
       }

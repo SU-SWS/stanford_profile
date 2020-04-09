@@ -133,12 +133,15 @@ class StanfordProfileCommandsTest extends KernelTestBase {
     ])->save();
   }
 
+  /**
+   * The command should generate appropriate counts of fields.
+   */
   public function testCommand() {
     $this->assertCount(0, Node::loadMultiple());
     $this->assertCount(0, Paragraph::loadMultiple());
     $this->command->generateStressTestNode();
     $this->assertCount(1, Node::loadMultiple());
-        $this->assertCount(4, Paragraph::loadMultiple());
+    $this->assertCount(10, Paragraph::loadMultiple());
   }
 
 }
