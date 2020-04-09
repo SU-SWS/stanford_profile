@@ -129,6 +129,7 @@ class StanfordProfileCommands extends DrushCommands {
     $handler_settings = $field->getSetting('handler_settings');
 
     $paragraphs = [];
+    $row = 0;
     foreach (array_keys($paragraph_bundles) as $bundle) {
       // Find out if the field is configured to allow the current bundle. The
       // field allows for "Exclude selected" which is the `negate` value. If a
@@ -150,25 +151,31 @@ class StanfordProfileCommands extends DrushCommands {
         'target_id' => $original_paragraph->id(),
         'target_revision_id' => $original_paragraph->getRevisionId(),
         'settings' => [
-          'row' => count($paragraphs),
+          'row' => $row,
           'index' => 0,
           'width' => 12,
+          'admin_title' => '12 columns',
         ],
       ];
+      $row++;
 
       // Take the original paragraph, clone it and make it smaller.
       foreach ([6, 4, 3] as $width) {
-        $new_paragraph = $original_paragraph->createDuplicate();
-        $new_paragraph->save();
-        $paragraphs[] = [
-          'target_id' => $new_paragraph->id(),
-          'target_revision_id' => $new_paragraph->getRevisionId(),
-          'settings' => [
-            'row' => count($paragraphs),
-            'index' => 0,
-            'width' => $width,
-          ],
-        ];
+        for ($i = 1; $i <= 12 / $width; $i++) {
+          $new_paragraph = $original_paragraph->createDuplicate();
+          $new_paragraph->save();
+          $paragraphs[] = [
+            'target_id' => $new_paragraph->id(),
+            'target_revision_id' => $new_paragraph->getRevisionId(),
+            'settings' => [
+              'row' => $row,
+              'index' => $i - 1,
+              'width' => $width,
+              'admin_title' => "$width columns",
+            ],
+          ];
+        }
+        $row++;
       }
     }
 
@@ -205,8 +212,7 @@ class StanfordProfileCommands extends DrushCommands {
 
       try {
         $sample_value = $field_type_definition['class']::generateSampleValue($field_definition);
-      }
-      catch (\Exception $e) {
+      } catch (\Exception $e) {
         // Move on to the next field.
         continue;
       }
