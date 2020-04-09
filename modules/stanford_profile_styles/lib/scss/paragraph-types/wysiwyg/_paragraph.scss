@@ -77,7 +77,7 @@
     & {
       @include intro-text;
       @include modular-typography(2);
-      @include modular-spacing('margin-bottom', 0);
+      @include modular-spacing('margin-bottom', 2);
       // 70 character line length.
       max-width: 55ch;
     }
