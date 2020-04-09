@@ -91,7 +91,6 @@ filters:
     weight: -47
     settings:
       default_view_mode: default
-      allowed_media_types: {  }
       allowed_view_modes:
         default: default
         stanford_image_large: stanford_image_large
@@ -101,6 +100,7 @@ filters:
         stanford_image_stanford_circle: stanford_image_stanford_circle
         stanford_image_thumb_square: stanford_image_thumb_square
         thumbnail: thumbnail
+      allowed_media_types: {  }
   stanford_media_embed_markup:
     id: stanford_media_embed_markup
     provider: stanford_media

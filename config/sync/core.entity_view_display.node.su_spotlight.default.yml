@@ -12,6 +12,7 @@ dependencies:
     - node.type.su_spotlight
   module:
     - datetime
+    - field_group
     - jumpstart_ui
     - layout_builder
     - layout_library
@@ -23,14 +24,15 @@ third_party_settings:
     enabled: true
     sections:
       -
-        layout_id: jumpstart_ui_one_column
+        layout_id: jumpstart_ui_two_column
         layout_settings:
-          extra_classes: ''
-          centered: null
+          extra_classes: spotlight-header-content-container
+          centered: centered-container
+          orientation: equal
         components:
           c1d34561-d1ec-4ef3-b369-2bd212415cb4:
             uuid: c1d34561-d1ec-4ef3-b369-2bd212415cb4
-            region: main
+            region: left
             configuration:
               id: 'field_block:node:su_spotlight:su_spotlight_feature_image'
               label: 'Feature Image'
@@ -38,31 +40,10 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: hidden
-                type: media_responsive_image_formatter
+                type: media_image_formatter
                 settings:
                   view_mode: default
-                  image_style: stanford_hero_block_wide
-                  link: true
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 0
-          fdece8fd-0474-4e75-a5a5-fa6710cfe0a3:
-            uuid: fdece8fd-0474-4e75-a5a5-fa6710cfe0a3
-            region: main
-            configuration:
-              id: 'field_block:node:su_spotlight:su_spotlight_major'
-              label: Major
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_label
-                settings:
+                  image_style: spotlight_image_370x370_
                   link: false
                 third_party_settings:
                   field_formatter_class:
@@ -71,7 +52,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 2
+            weight: 0
           da392267-29d9-4a63-b616-3dcd58babeac:
             uuid: da392267-29d9-4a63-b616-3dcd58babeac
             region: main
@@ -92,27 +73,21 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
-        third_party_settings: {  }
-      -
-        layout_id: jumpstart_ui_one_column
-        layout_settings:
-          extra_classes: ''
-          centered: centered-container
-        components:
-          9a94ac35-54e3-4ae3-967b-708db39f3e8f:
-            uuid: 9a94ac35-54e3-4ae3-967b-708db39f3e8f
+            weight: 2
+          cd45276b-4d92-4cde-815f-b13dbcf0f375:
+            uuid: cd45276b-4d92-4cde-815f-b13dbcf0f375
             region: main
             configuration:
-              id: 'field_block:node:su_spotlight:title'
-              label: Title
+              id: 'field_block:node:su_spotlight:su_spotlight_graduation_year'
+              label: 'Graduation Year'
               provider: layout_builder
               label_display: '0'
               formatter:
                 label: hidden
-                type: entity_title_heading
+                type: datetime_custom
                 settings:
-                  tag: h1
+                  timezone_override: ''
+                  date_format: '''y,'
                 third_party_settings:
                   field_formatter_class:
                     class: ''
@@ -120,7 +95,28 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 0
+            weight: 3
+          fdece8fd-0474-4e75-a5a5-fa6710cfe0a3:
+            uuid: fdece8fd-0474-4e75-a5a5-fa6710cfe0a3
+            region: main
+            configuration:
+              id: 'field_block:node:su_spotlight:su_spotlight_major'
+              label: Major
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 4
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
@@ -143,7 +139,28 @@ third_party_settings:
                 settings: {  }
                 third_party_settings:
                   field_formatter_class:
-                    class: ''
+                    class: su-spotlight-body
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+          5cd2c184-23b5-4d41-8512-a57669f4e415:
+            uuid: 5cd2c184-23b5-4d41-8512-a57669f4e415
+            region: main
+            configuration:
+              id: 'field_block:node:su_spotlight:body'
+              label: Summary
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: text_summary_or_trimmed
+                settings:
+                  trim_length: 600
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-spotlight-quote
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -152,6 +169,18 @@ third_party_settings:
         third_party_settings: {  }
   layout_library:
     enable: false
+  field_group:
+    group_spotlight_container:
+      children: {  }
+      parent_name: ''
+      weight: 20
+      format_type: fieldset
+      region: hidden
+      format_settings:
+        id: ''
+        classes: su-spotlight-info-container
+        description: ''
+      label: spotlight-container
 id: node.su_spotlight.default
 targetEntityType: node
 bundle: su_spotlight

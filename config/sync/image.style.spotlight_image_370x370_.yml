@@ -1,0 +1,17 @@
+uuid: 1b966590-30b9-4287-bc8d-4bf1945493aa
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: spotlight_image_370x370_
+label: 'Spotlight Image (370x370)'
+effects:
+  0ef5c422-3582-460a-be15-58877a8e53c9:
+    uuid: 0ef5c422-3582-460a-be15-58877a8e53c9
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 370
+      height: 370
+      crop_type: focal_point
