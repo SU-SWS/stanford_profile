@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.su_spotlight.su_spotlight_feature_image
     - field.field.node.su_spotlight.su_spotlight_graduation_year
     - field.field.node.su_spotlight.su_spotlight_major
+    - field.field.node.su_spotlight.su_spotlight_opportunity
     - field.field.node.su_spotlight.su_spotlight_student_name
     - node.type.su_spotlight
   module:
@@ -97,6 +98,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
+    region: content
+  su_spotlight_opportunity:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   su_spotlight_student_name:
     weight: 2

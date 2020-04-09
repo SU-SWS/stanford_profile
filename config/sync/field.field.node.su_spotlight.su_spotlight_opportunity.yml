@@ -1,0 +1,28 @@
+uuid: 7ecd2b33-77b9-46d7-9b7b-b33699e53b7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_spotlight_opportunity
+    - node.type.su_opportunity
+    - node.type.su_spotlight
+id: node.su_spotlight.su_spotlight_opportunity
+field_name: su_spotlight_opportunity
+entity_type: node
+bundle: su_spotlight
+label: 'Related Opportunity'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      su_opportunity: su_opportunity
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

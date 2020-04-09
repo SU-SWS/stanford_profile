@@ -1,0 +1,330 @@
+uuid: 5b79588b-69f7-489f-9df1-30e816f44781
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.su_opportunity.body
+    - field.field.node.su_opportunity.su_opp_application_deadline
+    - field.field.node.su_opportunity.su_opp_contact_email
+    - field.field.node.su_opportunity.su_opp_contact_name
+    - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_duration
+    - field.field.node.su_opportunity.su_opp_eligibility
+    - field.field.node.su_opportunity.su_opp_image
+    - field.field.node.su_opportunity.su_opp_learn_more
+    - field.field.node.su_opportunity.su_opp_location
+    - field.field.node.su_opportunity.su_opp_open_to
+    - field.field.node.su_opportunity.su_opp_solo_url
+    - field.field.node.su_opportunity.su_opp_submissions_open
+    - field.field.node.su_opportunity.su_opp_time_year
+    - field.field.node.su_opportunity.su_opp_type
+    - node.type.su_opportunity
+    - views.view.su_spotlights
+  module:
+    - jumpstart_ui
+    - layout_builder
+    - layout_library
+    - user
+    - views
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: defaults
+        layout_settings:
+          extra_classes: ''
+          centered: null
+        components:
+          fcd2a988-e62a-4a12-8a88-5db19895ab61:
+            uuid: fcd2a988-e62a-4a12-8a88-5db19895ab61
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:title'
+              label: Title
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_title_heading
+                settings:
+                  tag: h1
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+          98885d7b-0d6b-4b0b-acb2-03ee07f54423:
+            uuid: 98885d7b-0d6b-4b0b-acb2-03ee07f54423
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_type'
+              label: Type
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+          orientation: left
+        components:
+          e0be445d-a28e-4cf2-9d7a-157bdf27b391:
+            uuid: e0be445d-a28e-4cf2-9d7a-157bdf27b391
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_location'
+              label: Location
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          c90ca62d-43cb-4b0a-b0d4-6537f99c3580:
+            uuid: c90ca62d-43cb-4b0a-b0d4-6537f99c3580
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_duration'
+              label: When
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: daterange_custom
+                settings:
+                  timezone_override: ''
+                  date_format: 'F j'
+                  separator: '-'
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+          ac4cff86-d454-4ff1-8bef-3208d91c95b2:
+            uuid: ac4cff86-d454-4ff1-8bef-3208d91c95b2
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_application_deadline'
+              label: Deadline
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: datetime_custom
+                settings:
+                  timezone_override: ''
+                  date_format: 'F j, Y'
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
+          972fb6ac-7c3a-4c4f-a744-d6ae5fa3cfb7:
+            uuid: 972fb6ac-7c3a-4c4f-a744-d6ae5fa3cfb7
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_open_to'
+              label: 'Open To'
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 3
+          6b5496e8-f6c2-4113-bbbb-6f355eed3aea:
+            uuid: 6b5496e8-f6c2-4113-bbbb-6f355eed3aea
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_contact_email'
+              label: Contact
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: basic_string
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 4
+          0f84d2e2-f7bb-4b65-b466-1340e832b56c:
+            uuid: 0f84d2e2-f7bb-4b65-b466-1340e832b56c
+            region: left
+            configuration:
+              id: 'field_block:node:su_opportunity:body'
+              label: Body
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: text_default
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+          56e66861-beb1-4b53-96d8-53e7c3022ee4:
+            uuid: 56e66861-beb1-4b53-96d8-53e7c3022ee4
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_solo_url'
+              label: 'SOLO URL'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: link_class
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: _blank
+                  class: su-button
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 5
+          b91c815f-0720-487b-af89-bc947af98442:
+            uuid: b91c815f-0720-487b-af89-bc947af98442
+            region: left
+            configuration:
+              id: 'views_block:su_spotlights-opportunity_spotlight_ref'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 1
+          97425a44-5454-4bcd-97b6-db185f33cf48:
+            uuid: 97425a44-5454-4bcd-97b6-db185f33cf48
+            region: left
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_eligibility'
+              label: eligibility
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: text_default
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
+          45914423-b8ea-4f1c-8667-cb28e51454cc:
+            uuid: 45914423-b8ea-4f1c-8667-cb28e51454cc
+            region: left
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_solo_url'
+              label: 'SOLO URL'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: link_class
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: nofollow
+                  target: '0'
+                  class: su-button
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 3
+        third_party_settings: {  }
+  layout_library:
+    enable: false
+id: node.su_opportunity.default
+targetEntityType: node
+bundle: su_opportunity
+mode: default
+content: {  }
+hidden:
+  body: true
+  links: true
+  su_opp_application_deadline: true
+  su_opp_contact_email: true
+  su_opp_contact_name: true
+  su_opp_contact_phone: true
+  su_opp_duration: true
+  su_opp_eligibility: true
+  su_opp_image: true
+  su_opp_learn_more: true
+  su_opp_location: true
+  su_opp_open_to: true
+  su_opp_solo_url: true
+  su_opp_submissions_open: true
+  su_opp_time_year: true
+  su_opp_type: true

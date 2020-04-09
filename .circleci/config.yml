@@ -30,7 +30,7 @@ code_coverage: &code_coverage
     - run:
         name: Run PHP Unit Coverage Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-codeception-modules
+          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
     - save_cache:
         key: dependencies-v1-{{ epoch }}
@@ -53,7 +53,7 @@ behat: &behat
     - run:
         name: Run Behat Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-codeception-modules
+          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
           ~/.composer/vendor/bin/sws-caravan behat /var/www/html --extension-dir=/var/www/test
     - save_cache:
         key: dependencies-v1-{{ epoch }}
@@ -73,7 +73,7 @@ codeception: &codeception
     - run:
         name: Run Codeception Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-codeception-modules
+          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
     - store_test_results:
         path: /var/www/html/artifacts

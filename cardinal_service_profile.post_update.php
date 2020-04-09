@@ -95,3 +95,10 @@ function stanford_profile_post_update_8003() {
   }
   $view_display->save();
 }
+
+/**
+ * Enable telephone module.
+ */
+function cardinal_service_profile_post_update_cs_8001() {
+  \Drupal::service('module_installer')->install(['telephone']);
+}

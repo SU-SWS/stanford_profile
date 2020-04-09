@@ -220,7 +220,7 @@ function cardinal_service_profile_config_pages_stanford_basic_site_settings_form
 /**
  * Implements hook_ENTITY_TYPE_presave().
  */
-function stanford_profile_config_pages_presave(ConfigPagesInterface $entity) {
+function cardinal_service_profile_config_pages_presave(ConfigPagesInterface $entity) {
   if ($entity->hasField('su_site_url') && ($url_field = $entity->get('su_site_url')->getValue())) {
     // Set the xml sitemap module state to the new domain.
     \Drupal::state()->set('xmlsitemap_base_url', $url_field[0]['uri']);

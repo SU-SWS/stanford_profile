@@ -1,0 +1,201 @@
+uuid: c401984f-5ac0-4ff1-97ff-5ee4b7f2a462
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.su_opportunity.body
+    - field.field.node.su_opportunity.su_opp_application_deadline
+    - field.field.node.su_opportunity.su_opp_contact_email
+    - field.field.node.su_opportunity.su_opp_contact_name
+    - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_duration
+    - field.field.node.su_opportunity.su_opp_eligibility
+    - field.field.node.su_opportunity.su_opp_image
+    - field.field.node.su_opportunity.su_opp_learn_more
+    - field.field.node.su_opportunity.su_opp_location
+    - field.field.node.su_opportunity.su_opp_open_to
+    - field.field.node.su_opportunity.su_opp_solo_url
+    - field.field.node.su_opportunity.su_opp_submissions_open
+    - field.field.node.su_opportunity.su_opp_time_year
+    - field.field.node.su_opportunity.su_opp_type
+    - node.type.su_opportunity
+  module:
+    - datetime
+    - datetime_range
+    - link
+    - media_library
+    - path
+    - telephone
+    - text
+id: node.su_opportunity.default
+targetEntityType: node
+bundle: su_opportunity
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 121
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 120
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    region: content
+    third_party_settings: {  }
+  su_opp_application_deadline:
+    weight: 125
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  su_opp_contact_email:
+    weight: 134
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  su_opp_contact_name:
+    weight: 133
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_opp_contact_phone:
+    weight: 135
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  su_opp_duration:
+    weight: 126
+    settings: {  }
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  su_opp_eligibility:
+    weight: 128
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  su_opp_image:
+    type: media_library_widget
+    weight: 127
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  su_opp_learn_more:
+    weight: 136
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_opp_location:
+    weight: 132
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  su_opp_open_to:
+    weight: 131
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  su_opp_solo_url:
+    weight: 123
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_opp_submissions_open:
+    weight: 124
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  su_opp_time_year:
+    weight: 130
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  su_opp_type:
+    weight: 129
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
