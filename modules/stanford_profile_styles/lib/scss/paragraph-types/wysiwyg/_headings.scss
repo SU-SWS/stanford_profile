@@ -10,20 +10,20 @@
 
   h2 {
     @include modular-spacing('margin', null null 0 null);
-    @include modular-spacing('padding', 1 null null null);
+    @include modular-spacing('padding', 2 null null null);
     // 56 character line length.
     max-width: 40ch;
   }
 
   h3 {
-    @include modular-spacing('margin', null null 0 null);
+    @include modular-spacing('margin', null null -1 null);
     @include modular-spacing('padding', 0 null null null);
     // 60 character line length.
     max-width: 48ch;
   }
 
   h4 {
-    @include modular-spacing('margin', null null 1 null);
+    @include modular-spacing('margin', null null -1 null);
     @include modular-spacing('padding', 0 null null null);
     // 64 character line length.
     max-width: 60ch;
