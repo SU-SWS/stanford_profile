@@ -139,7 +139,18 @@
         "su-sws/stanford_ssp": "dev-8.x-1.x",
         "su-sws/stanford_text_editor": "dev-8.x-1.x"
     },
+    "autoload": {
+        "psr-4": {
+            "Drupal\\stanford_profile\\": "src/",
+            "Drupal\\stanford_profile_drush\\": "modules/stanford_profile_drush/src/"
+        }
+    },
     "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^9"
+            }
+        },
         "patches": {
             "drupal/field_formatter_class": {
                 "https://www.drupal.org/project/field_formatter_class/issues/3046372": "https://www.drupal.org/files/issues/2020-02-03/field_formatter_class-3046372-10.patch"
