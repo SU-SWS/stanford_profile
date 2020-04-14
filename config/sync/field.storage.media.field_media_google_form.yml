@@ -1,0 +1,21 @@
+uuid: c4986e94-7e3d-4dcf-86f9-62732bc30027
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_media_google_form
+field_name: field_media_google_form
+entity_type: media
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
