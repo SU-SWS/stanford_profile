@@ -1,10 +1,41 @@
 @charset 'UTF-8';
 
+// For two column pages
+.jumpstart-ui--two-column {
+  .su-page-components {
+    .react-paragraphs-row {
+
+      // Start stacking elements
+      @include grid-media-between('xs', 'md') {
+        display: block;
+
+        // Overrides to the set widths.
+        [data-react-columns="3"] {
+          min-width: 100%;
+        }
+
+        [data-react-columns="4"] {
+          min-width: 100%;
+        }
+
+        [data-react-columns="6"] {
+          min-width: 100%;
+        }
+
+        [data-react-columns="12"] {
+          min-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// For full width pages
 .jumpstart-ui--one-column {
   .su-page-components {
     .react-paragraphs-row {
 
-      //start stacking elements
+      // Start stacking elements
       @include grid-media-between('xs', 'md') {
         display: block;
       }
@@ -13,40 +44,90 @@
       // to keep the large margins on full-width and
       // the homepage
 
-      .ptype-stanford-card,
-      .ptype-stanford-media-caption,
-      .ptype-stanford-wysiwyg {
+      .paragraph-item {
         &.flex-3-of-12 {
           @include grid-media('xl') {
             @include margin(null 0);
             max-width: 25%;
           }
+
           @include grid-media('lg') {
             @include margin(null 0);
             max-width: 25%;
           }
-        }
-      }
 
-      .ptype-stanford-card,
-      .ptype-stanford-media-caption,
-      .ptype-stanford-wysiwyg {
+          @include grid-media-between('xs', 'md') {
+            max-width: 100%;
+          }
+
+          &.ptype-stanford-banner {
+            @include grid-media-between('xs', 'md') {
+              min-width: 100%
+            }
+          }
+        }
+
         &.flex-4-of-12 {
           @include grid-media-between('lg','xl') {
             @include margin(null 0);
             max-width: 33%;
           }
-        }
-      }
 
-      .ptype-stanford-card,
-      .ptype-stanford-media-caption,
-      .ptype-stanford-wysiwyg {
+          @include grid-media-between('xs', 'md') {
+            max-width: 100%;
+          }
+
+          &.ptype-stanford-banner {
+            @include grid-media-between('xs', 'md') {
+              min-width: 100%
+            }
+          }
+        }
+
         &.flex-6-of-12 {
+          &.ptype-stanford-banner {
+            @include grid-media-between('xs', 'md') {
+              min-width: 100%
+            }
+          }
+
           @include grid-media('lg') {
             @include margin(null 0);
             max-width: 50%;
           }
+
+          @include grid-media-between('xs', 'md') {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// For all templates.
+.react-paragraphs-row {
+  .ptype-stanford-media-caption {
+    .su-media {
+      .su-media__caption {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .su-card {
+    .su-card__contents {
+      overflow-y: hidden;
+    }
+  }
+
+  .flex-3-of-12,
+  .flex-4-of-12,
+  .flex-6-of-12 {
+    .su-hero {
+      .su-hero__card {
+        @include grid-media-only('lg') {
+          left: 0;
         }
       }
     }
