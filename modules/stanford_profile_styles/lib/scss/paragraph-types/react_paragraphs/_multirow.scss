@@ -75,7 +75,7 @@
         &.ptype-stanford-media-caption {
           @include grid-media('xl') {
             @include margin(null $su-gutter-xl);
-            max-width: 45%;
+            max-width: 44%;
           }
           @include grid-media-between('lg','xl') {
             @include margin(null $su-gutter-lg);
@@ -141,4 +141,11 @@
   .flex-12-of-12 {
     @include margin(null auto);
   }
+
+  .flex-12-of-12 {
+    &.ptype-stanford-media-caption {
+      max-width: 980px;
+    }
+  }
+
 }
