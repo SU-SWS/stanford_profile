@@ -55,10 +55,28 @@ function stanford_paragraph_card_preprocess_ds_entity_view(array &$variables) {
     $variables['content']['#ds_configuration']['regions']['card_cta_label'] = $label;
 
     // Move the fields.
-    $variables['content']['#fields']['card_cta_label']['display_field_copy:paragraph-su_card_link_title'] = $variables['content']['display_field_copy:paragraph-su_card_link_title'];
+    $variables['content']['#fields']['card_cta_label'] = $variables['content']['#fields']['card_button_label'];
 
+    array_walk($variables['content']['#fields']['card_cta_label'], '_stanford_paragraph_card_decode_markup');
     // Unset the cruft.
     unset($variables['content']['#fields']['card_button_label']);
     unset($variables['content']['#ds_configuration']['regions']['card_button_label']);
   }
+}
+
+/**
+ * Decode markup strings in nested arrays.
+ *
+ * @param mixed $data
+ *   Array to decode.
+ */
+function _stanford_paragraph_card_decode_markup(&$data) {
+  if (!is_array($data)) {
+    return;
+  }
+  if (isset($data['#markup']) && is_string($data['#markup'])) {
+    $data['#markup'] = html_entity_decode($data['#markup'], ENT_QUOTES);
+    return;
+  }
+  array_walk($data, '_stanford_paragraph_card_decode_markup');
 }
