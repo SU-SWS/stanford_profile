@@ -1,0 +1,42 @@
+opportunity_row:
+  label: Opportunity Row
+  description: "View result row display of opportunities."
+  fields:
+    title:
+      type: text
+      label: Title
+      description: "Title of the opportunity."
+      preview: "Opportunity Title"
+    image:
+      type: image
+      label: Image
+      description: "Title of the opportunity."
+      preview:
+        theme: image
+        uri: http://placecorgi.com/800x1200
+    location:
+      type: text
+      label: Location
+      description: "Title of the opportunity."
+      preview: "Stanford University"
+    when:
+      type: text
+      label: When
+      description: "Title of the opportunity."
+      preview: "Next Year"
+    open_to:
+      type: text
+      label: "Open To"
+      description: "Title of the opportunity."
+      preview: "Everyone"
+    type_list:
+      type: text
+      label: "Type"
+      description: "Title of the opportunity."
+      preview: "Cardinal Service"
+  use: "@cardinal-service/opportunity-row/opportunity_row.html.twig"
+  libraries:
+    - opportunity_row:
+        css:
+          component:
+            ../../../dist/css/components/opportunity-row/opportunity_row.css: {}

@@ -23,6 +23,7 @@ dependencies:
   module:
     - jumpstart_ui
     - layout_builder
+    - layout_builder_restrictions
     - layout_library
     - user
     - views
@@ -306,6 +307,10 @@ third_party_settings:
         third_party_settings: {  }
   layout_library:
     enable: false
+  layout_builder_restrictions:
+    entity_view_mode_restriction:
+      allowed_blocks: {  }
+      allowed_layouts: {  }
 id: node.su_opportunity.default
 targetEntityType: node
 bundle: su_opportunity

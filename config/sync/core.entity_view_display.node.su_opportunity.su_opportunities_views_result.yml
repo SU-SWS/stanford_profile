@@ -1,0 +1,130 @@
+uuid: 061ec4fe-9c82-4e5a-8469-daa83c2e5c01
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.su_opportunities_views_result
+    - field.field.node.su_opportunity.body
+    - field.field.node.su_opportunity.su_opp_application_deadline
+    - field.field.node.su_opportunity.su_opp_contact_email
+    - field.field.node.su_opportunity.su_opp_contact_name
+    - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_duration
+    - field.field.node.su_opportunity.su_opp_eligibility
+    - field.field.node.su_opportunity.su_opp_image
+    - field.field.node.su_opportunity.su_opp_learn_more
+    - field.field.node.su_opportunity.su_opp_location
+    - field.field.node.su_opportunity.su_opp_open_to
+    - field.field.node.su_opportunity.su_opp_solo_url
+    - field.field.node.su_opportunity.su_opp_submissions_open
+    - field.field.node.su_opportunity.su_opp_time_year
+    - field.field.node.su_opportunity.su_opp_type
+    - node.type.su_opportunity
+  module:
+    - ds
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - stanford_media
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    entity_view_mode_restriction:
+      allowed_blocks: {  }
+      allowed_layouts: {  }
+  ds:
+    layout:
+      id: pattern_opportunity_row
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      title:
+        - node_title
+      image:
+        - su_opp_image
+      location:
+        - su_opp_location
+      when:
+        - su_opp_time_year
+      open_to:
+        - su_opp_open_to
+      type_list:
+        - su_opp_type
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          wrapper: ''
+          class: ''
+          link: false
+id: node.su_opportunity.su_opportunities_views_result
+targetEntityType: node
+bundle: su_opportunity
+mode: su_opportunities_views_result
+content:
+  su_opp_image:
+    type: media_responsive_image_formatter
+    weight: 1
+    region: image
+    label: hidden
+    settings:
+      image_style: null
+      link: false
+      view_mode: default
+    third_party_settings: {  }
+  su_opp_location:
+    type: entity_reference_label
+    weight: 2
+    region: location
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  su_opp_open_to:
+    type: entity_reference_label
+    weight: 4
+    region: open_to
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  su_opp_time_year:
+    type: entity_reference_label
+    weight: 3
+    region: when
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  su_opp_type:
+    type: entity_reference_label
+    weight: 5
+    region: type_list
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+hidden:
+  body: true
+  links: true
+  su_opp_application_deadline: true
+  su_opp_contact_email: true
+  su_opp_contact_name: true
+  su_opp_contact_phone: true
+  su_opp_duration: true
+  su_opp_eligibility: true
+  su_opp_learn_more: true
+  su_opp_solo_url: true
+  su_opp_submissions_open: true
