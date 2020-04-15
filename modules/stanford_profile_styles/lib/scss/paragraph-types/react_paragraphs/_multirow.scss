@@ -33,7 +33,7 @@
 
       // Three items across a page.
       &.flex-4-of-12 {
-        @include grid-media-between('lg','xl') {
+        @include grid-media-between('lg', 'xl') {
           @include margin(null 0);
           max-width: 33%;
         }
@@ -70,6 +70,7 @@
             min-width: 100%;
           }
         }
+
         &.ptype-stanford-card,
         &.ptype-stanford-wysiwyg,
         &.ptype-stanford-media-caption {
