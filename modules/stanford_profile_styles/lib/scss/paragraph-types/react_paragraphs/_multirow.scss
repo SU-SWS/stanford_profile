@@ -12,7 +12,7 @@
       &.flex-3-of-12 {
         &.ptype-stanford-banner {
           @include grid-media-max('md') {
-            min-width: 100%
+            min-width: 100%;
           }
         }
 
@@ -44,7 +44,7 @@
 
         &.ptype-stanford-banner {
           @include grid-media-max('md') {
-            min-width: 100%
+            min-width: 100%;
           }
         }
 
@@ -67,7 +67,7 @@
       &.flex-6-of-12 {
         &.ptype-stanford-banner {
           @include grid-media-max('md') {
-            min-width: 100%
+            min-width: 100%;
           }
         }
         &.ptype-stanford-card,
@@ -77,7 +77,8 @@
             @include margin(null $su-gutter-xl);
             max-width: 44%;
           }
-          @include grid-media-between('lg','xl') {
+
+          @include grid-media-between('lg', 'xl') {
             @include margin(null $su-gutter-lg);
             max-width: 43%;
           }
@@ -103,6 +104,7 @@
   &.flex-container {
     @include grid-media-max('md') {
       display: block;
+
       .paragraph-item {
         max-width: 100%;
       }
