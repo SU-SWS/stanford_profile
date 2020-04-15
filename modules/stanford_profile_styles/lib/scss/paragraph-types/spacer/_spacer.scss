@@ -1,9 +1,7 @@
 @charset 'UTF-8';
 
-.content {
-  .paragraph-item {
-    &.ptype-stanford-spacer {
-      @include margin(0);
-    }
+.ptype-stanford-spacer {
+  @include grid-media-max('md') {
+    display: none;
   }
 }
