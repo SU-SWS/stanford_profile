@@ -17,6 +17,8 @@ stanford_page:
   css:
     component:
       dist/css/stanford_profile_styles.node.stanford_page.css: { weight: 1 }
+  dependencies:
+    - stanford_profile_styles/react_paragraphs
 
 stanford_page_layout_full:
   version: VERSION
@@ -41,3 +43,11 @@ stanford_profile_styles:
   css:
     theme:
       dist/css/stanford_profile_styles.css: {}
+  dependencies:
+    - stanford_profile_styles/react_paragraphs
+
+react_paragraphs:
+  version: VERSION
+  css:
+    layout:
+      dist/css/stanford_profile_styles.react_paragraphs.css: {}

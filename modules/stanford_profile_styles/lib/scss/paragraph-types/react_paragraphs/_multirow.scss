@@ -1,0 +1,144 @@
+@charset 'UTF-8';
+
+// For full width pages
+.jumpstart-ui--one-column {
+  .react-paragraphs-row {
+
+    // Setting the max width to help with display and
+    // to keep the margins on full-width pages.
+    .paragraph-item {
+
+      // 4 items across a page.
+      &.flex-3-of-12 {
+        &.ptype-stanford-banner {
+          @include grid-media-between('xs', 'md') {
+            min-width: 100%
+          }
+        }
+
+        &.ptype-stanford-card,
+        &.ptype-stanford-wysiwyg,
+        &.ptype-stanford-media-caption {
+          @include grid-media('xl') {
+            @include margin(null $su-gutter-xl);
+            max-width: 20%;
+          }
+
+          @include grid-media-between('lg', 'xl') {
+            @include margin(null $su-gutter-lg);
+            max-width: 18%;
+          }
+        }
+      }
+
+      // Three items across a page.
+      &.flex-4-of-12 {
+        @include grid-media-between('lg','xl') {
+          @include margin(null 0);
+          max-width: 33%;
+        }
+
+        @include grid-media-between('xs', 'md') {
+          max-width: 100%;
+        }
+
+        &.ptype-stanford-banner {
+          @include grid-media-between('xs', 'md') {
+            min-width: 100%
+          }
+        }
+
+        &.ptype-stanford-card,
+        &.ptype-stanford-wysiwyg,
+        &.ptype-stanford-media-caption {
+          @include grid-media('xl') {
+            @include margin(null $su-gutter-xl);
+            max-width: 28%;
+          }
+
+          @include grid-media-between('lg', 'xl') {
+            @include margin(null $su-gutter-lg);
+            max-width: 26%;
+          }
+        }
+      }
+
+      // 2 items across a page.
+      &.flex-6-of-12 {
+        &.ptype-stanford-banner {
+          @include grid-media-between('xs', 'md') {
+            min-width: 100%
+          }
+        }
+        &.ptype-stanford-card,
+        &.ptype-stanford-wysiwyg,
+        &.ptype-stanford-media-caption {
+          @include grid-media('xl') {
+            @include margin(null $su-gutter-xl);
+            max-width: 45%;
+          }
+          @include grid-media-between('lg','xl') {
+            @include margin(null $su-gutter-lg);
+            max-width: 43%;
+          }
+        }
+
+        @include grid-media('lg') {
+          @include margin(null 0);
+          max-width: 50%;
+        }
+
+        @include grid-media-between('xs', 'md') {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// For all templates.
+.react-paragraphs-row {
+
+  // Single item per row on screens less than and equal to md.
+  &.flex-container {
+    @include grid-media-max('md') {
+      display: block;
+      .paragraph-item {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .ptype-stanford-media-caption {
+    .su-media {
+      .su-media__caption {
+        max-width: 100%;
+      }
+    }
+  }
+
+  // Hide overflowing content.
+  .su-card {
+    .su-card__contents {
+      overflow-y: hidden;
+    }
+  }
+
+  // This left aligns the offset content on a hero card.
+  .flex-3-of-12,
+  .flex-4-of-12,
+  .flex-6-of-12 {
+    .su-hero {
+      .su-hero__card {
+        @include grid-media-only('lg') {
+          left: 0;
+        }
+      }
+    }
+  }
+
+  // Makes sure the single item is still centered.
+  .flex-12-of-12 {
+    @include margin(null auto);
+  }
+}
