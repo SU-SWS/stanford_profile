@@ -1,4 +1,23 @@
 # Stanford Profile
+8.x-1.6
+--------------------------------------------------------------------------------
+_Release Date: 2020-04-17_
+
+- Make edit link clicking more specific (#157)
+- D8CORE-1452: update line lengths (#158)
+- fixed seckit split (#161)
+- D8CORE-1789 Fix xmlsitemap 404 response (#162)
+- D8CORE-1708 D8CORE-1707: Disable menu items in toolbar. (#165)
+- Set up codeception tests framework (#153)
+- D8CORE-1792: Enabled a11y_checker for text editor. (#166)
+- D8CORE-1664 Move to a release branch workflow with dev versions (#167)
+- D8CORE-1816 wysiwyg tweaks (#175)
+- D8CORE-1501 Added drush command to generate stress test node (#173)
+- Dependency config update (#170)
+- D8CORE-1197 Added google form media type (#169)
+- D8CORE-1497 D8CORE-1681 Added spacer paragraph type and enabled multiple per row (#159)
+- D8CORE-1499: Multiple Per Row (#176)
+
 8.x-1.5
 --------------------------------------------------------------------------------
 _Release Date: 2020-03-20_
@@ -19,11 +38,11 @@ _Release Date: 2020-03-20_
 - Updated behat test to use existing step definition "Then I click" (fixes bug in tests)
 - D8CORE-1401: wysiwyg tweaks. (#144)
 - D8CORE-943: Added more image styles for wysiwyg. (#146)
-- D8CORE-1689: Allow custom blocks in layout builder. (#149) 
+- D8CORE-1689: Allow custom blocks in layout builder. (#149)
 - D8CORE-1659: Set image metatags to use an image style. (#148)
 - D8CORE-1514: Add administer media permission to site managers. (#150)
 - Changed stanford_page_layout_full layout option to only be on stanford pages. (#151)
- 
+
 
 8.x-1.3
 --------------------------------------------------------------------------------
