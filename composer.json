@@ -4,6 +4,7 @@
     "type": "drupal-custom-profile",
     "license": "GPL-2.0+",
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "repositories": [
         {
             "type": "composer",
@@ -12,11 +13,41 @@
         {
             "type": "package",
             "package": {
-                "name": "ckeditor-plugin/link",
-                "version": "4.13.1",
+                "name": "ckeditor-plugin/a11ychecker",
+                "version": "1.1.1",
                 "type": "drupal-library",
                 "dist": {
-                    "url": "https://download.ckeditor.com/link/releases/link_4.13.1.zip",
+                    "url": "https://download.ckeditor.com/a11ychecker/releases/a11ychecker_1.1.1.zip",
+                    "type": "zip"
+                },
+                "require": {
+                    "composer/installers": "~1.0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor-plugin/balloonpanel",
+                "version": "4.14.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/balloonpanel/releases/balloonpanel_4.14.0.zip",
+                    "type": "zip"
+                },
+                "require": {
+                    "composer/installers": "~1.0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor-plugin/link",
+                "version": "4.14.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/link/releases/link_4.14.0.zip",
                     "type": "zip"
                 },
                 "require": {
@@ -28,10 +59,10 @@
             "type": "package",
             "package": {
                 "name": "ckeditor-plugin/fakeobjects",
-                "version": "4.13.1",
+                "version": "4.14.0",
                 "type": "drupal-library",
                 "dist": {
-                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.13.1.zip",
+                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.14.0.zip",
                     "type": "zip"
                 },
                 "require": {
@@ -98,17 +129,28 @@
         "drupal/webform": "^5.4",
         "drupal/xmlsitemap": "~1.0@alpha",
         "ext-imagick": "*",
-        "su-sws/jumpstart_ui": "^8.1.0",
-        "su-sws/nobots": "^8.1.0",
-        "su-sws/react_paragraphs": "^8.1.0",
-        "su-sws/stanford_basic": "^8.4.0",
-        "su-sws/stanford_date_formats": "^8.1.0",
-        "su-sws/stanford_fields": "^8.1.0",
-        "su-sws/stanford_image_styles": "^8.1.0",
-        "su-sws/stanford_ssp": "^8.1.1",
-        "su-sws/stanford_text_editor": "^8.1.0"
+        "su-sws/jumpstart_ui": "~8.1.0",
+        "su-sws/nobots": "~8.1",
+        "su-sws/react_paragraphs": "~8.1.0",
+        "su-sws/stanford_basic": "~8.4.0",
+        "su-sws/stanford_date_formats": "~8.1.0",
+        "su-sws/stanford_fields": "~8.1.0",
+        "su-sws/stanford_image_styles": "~8.1.0",
+        "su-sws/stanford_ssp": "~8.1.0",
+        "su-sws/stanford_text_editor": "~8.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drupal\\stanford_profile\\": "src/",
+            "Drupal\\stanford_profile_drush\\": "modules/stanford_profile_drush/src/"
+        }
     },
     "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^9"
+            }
+        },
         "patches": {
             "drupal/field_formatter_class": {
                 "https://www.drupal.org/project/field_formatter_class/issues/3046372": "https://www.drupal.org/files/issues/2020-02-03/field_formatter_class-3046372-10.patch"
@@ -121,6 +163,9 @@
             },
             "drupal/paragraphs": {
                 "https://www.drupal.org/project/paragraphs/issues/2901390": "https://www.drupal.org/files/issues/2019-08-10/paragraphs-set_langcode_widgets-290139_updated.patch"
+            },
+            "drupal/xmlsitemap": {
+                "https://www.drupal.org/project/xmlsitemap/issues/3100808": "https://www.drupal.org/files/issues/2019-12-13/3100808-2.patch"
             }
         }
     }

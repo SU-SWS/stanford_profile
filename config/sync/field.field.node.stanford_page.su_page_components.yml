@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.su_page_components
     - node.type.stanford_page
   module:
-    - entity_reference_revisions
+    - react_paragraphs
 id: node.stanford_page.su_page_components
 field_name: su_page_components
 entity_type: node
@@ -32,4 +32,19 @@ settings:
       stanford_wysiwyg:
         weight: 6
         enabled: false
+      stanford_media_caption:
+        weight: 8
+        enabled: false
+      stanford_spacer:
+        weight: 9
+        enabled: false
+    widths:
+      stanford_banner:
+        min: '12'
+      stanford_card:
+        min: '3'
+      stanford_media_caption:
+        min: '3'
+      stanford_wysiwyg:
+        min: '3'
 field_type: react_paragraphs

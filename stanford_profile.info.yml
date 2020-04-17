@@ -1,6 +1,6 @@
 name: Stanford Profile
 description: Jumpstart Website Profile
-version: 8.x-1.5
+version: 8.x-1.6
 type: profile
 project: Jumpstart
 core: 8.x
@@ -15,6 +15,8 @@ install:
   - better_normalizers:better_normalizers
   - chosen:chosen
   - chosen:chosen_lib
+  - ckeditor_a11ychecker:ckeditor_a11ychecker
+  - ckeditor_a11ychecker:ckeditor_balloonpanel
   - components:components
   - config_filter:config_filter
   - config_merge:config_merge
