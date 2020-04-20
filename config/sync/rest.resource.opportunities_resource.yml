@@ -1,0 +1,18 @@
+uuid: 636a8c1e-d77f-47e8-b26b-c1ea9dd145e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - cardinal_service_rest
+    - serialization
+_core:
+  default_config_hash: Y2k0PtCwAFRtmRGJ5armYEwRo1a2VdyBYd02Q_EN-nc
+id: opportunities_resource
+plugin_id: opportunities_resource
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie

@@ -1,0 +1,119 @@
+uuid: 36aa6280-3e7e-4347-b640-e7eefc1427fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - search_api
+  config:
+    - field.storage.node.su_opp_location
+    - field.storage.node.su_opp_open_to
+    - field.storage.node.su_opp_time_year
+    - field.storage.node.su_opp_type
+    - search_api.server.database
+id: su_opportunities
+name: Opportunities
+description: ''
+read_only: false
+field_settings:
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          su_opportunity: default
+  status:
+    label: status
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  su_opp_location:
+    label: Location
+    datasource_id: 'entity:node'
+    property_path: su_opp_location
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.su_opp_location
+  su_opp_open_to:
+    label: 'Open To?'
+    datasource_id: 'entity:node'
+    property_path: su_opp_open_to
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.su_opp_open_to
+  su_opp_time_year:
+    label: 'Time of the Year'
+    datasource_id: 'entity:node'
+    property_path: su_opp_time_year
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.su_opp_time_year
+  su_opp_type:
+    label: Type
+    datasource_id: 'entity:node'
+    property_path: su_opp_type
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.su_opp_type
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: uid
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - su_opportunity
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  language_with_fallback: {  }
+  rendered_item: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: false
+  cron_limit: 50
+server: database
