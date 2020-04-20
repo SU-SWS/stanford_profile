@@ -10,7 +10,8 @@ class OpportunitiesFilter extends Component {
     {field: 'su_opp_time_year', label: 'When'},
     {field: 'su_opp_open_to', label: 'Open To'},
     {field: 'su_opp_location', label: 'Location'}
-  ]
+  ];
+  multipleSelect = false;
 
   constructor(props) {
     super(props);
@@ -27,14 +28,14 @@ class OpportunitiesFilter extends Component {
       const [key, value] = param.split('=');
       const field = key.replace('[]', '');
 
-      if (this.fields.find(field => field.field === key)) {
+      if (this.fields.find(availableField => availableField.field === field)) {
         if (typeof this.state.filters[field] === 'undefined') {
           this.state.filters[field] = [];
         }
+
         this.state.filters[field].push(value);
       }
     })
-    console.log(this.state.filters);
   }
 
   componentDidMount() {
@@ -105,7 +106,7 @@ class OpportunitiesFilter extends Component {
   }
 
   render() {
-    const multipleSelect = false;
+
     return (
       <form onSubmit={this.onFormSubmit}>
         <div style={{
@@ -120,7 +121,7 @@ class OpportunitiesFilter extends Component {
               field={field.field}
               onChange={this.onSelectChange}
               options={this.state.activeItems[field.field]}
-              multiple={multipleSelect}
+              multiple={this.multipleSelect}
               defaultValue={this.state.filters[field.field]}
             />
           ))}
