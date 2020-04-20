@@ -87,7 +87,6 @@ class OpportunitiesResource extends ResourceBase {
       }
     }
 
-    dpm($data);
     foreach ($data as &$values) {
       // Sort the terms based on how many nodes they have.
       uasort($values, function ($item_a, $item_b) {
