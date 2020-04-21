@@ -113,6 +113,9 @@
         "drupal/menu_link_weight": "^1.0-beta3",
         "drupal/menu_position": "~1.0@alpha",
         "drupal/metatag": "~1.3",
+        "drupal/migrate_file": "^1.1",
+        "drupal/migrate_plus": "^5.0",
+        "drupal/migrate_tools": "^4.5",
         "drupal/paragraph_blocks": "~2.1@beta",
         "drupal/paragraphs": "^1.11",
         "drupal/paragraphs_edit": "^2.0@alpha",
@@ -153,6 +156,9 @@
             }
         },
         "patches": {
+            "drupal/entity_reference_revisions": {
+                "https://www.drupal.org/project/entity_reference_revisions/issues/3004210": "https://www.drupal.org/files/issues/2019-10-14/3004210-14.patch"
+            },
             "drupal/field_formatter_class": {
                 "https://www.drupal.org/project/field_formatter_class/issues/3046372": "https://www.drupal.org/files/issues/2020-02-03/field_formatter_class-3046372-10.patch"
             },

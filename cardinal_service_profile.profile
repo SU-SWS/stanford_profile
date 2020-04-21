@@ -18,6 +18,26 @@ use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\NodeInterface;
 
 /**
+ * Migration callback to just get the current timestamp.
+ *
+ * We use this function in migration callback processes because using `time` as
+ * the callback produces messages about "function accepts 0 arguments, 1
+ * argument passed". So we just have our own callback that takes the argument
+ * from the migration process and does nothing with it.
+ *
+ * @param mixed $arg
+ *   Passed parameter from migration plugin `callback`.
+ *
+ * @return int
+ *   Current timestamp.
+ *
+ * @see \Drupal\migrate\Plugin\migrate\process\Callback::transform()
+ */
+function cardinal_service_profile_get_time($arg = NULL) {
+  return time();
+}
+
+/**
  * Implements hook_install_tasks().
  */
 function cardinal_service_profile_install_tasks(&$install_state) {

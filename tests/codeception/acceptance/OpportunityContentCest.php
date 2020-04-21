@@ -38,6 +38,23 @@ class OpportunityContentCest {
   }
 
   /**
+   * The importer should bring in some content.
+   */
+  public function testImporter(\AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/structure/migrate/manage/opportunities/migrations');
+    $I->canSee('solo_opportunities');
+    $total_items = $I->grabTextFrom('table tbody td:nth-child(4)');
+    $I->assertGreaterOrEquals(1, (int) $total_items);
+
+    // These steps require increased execution time. Figure that out and then
+    // these can be uncommented.
+    // $I->runDrush('mim solo_opportunities');
+    // $I->amOnPage('/admin/content');
+    // $I->canSee('Opportunity', '.vbo-table');
+  }
+
+  /**
    * Create taxonomy terms for testing.
    */
   protected function createTaxonomyTerms(\AcceptanceTester $I, array $terms, $vocab) {
