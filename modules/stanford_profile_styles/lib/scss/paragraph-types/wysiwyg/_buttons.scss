@@ -18,13 +18,13 @@
   }
 
   // If they're in the same paragraph, get them to stack.
-  [class^="su-button"] {
+  [class*="su-button"] {
     display: block;
     width: max-content;
   }
 }
 
 // We want don't want to target the first link.
-[class^="su-button"] + [class^="su-button"] {
+[class*="su-button"] + [class*="su-button"] {
   @include margin(-0.9rem null null null);
 }
