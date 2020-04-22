@@ -1,0 +1,19 @@
+uuid: 261a9641-b807-4f52-ac12-f3451c4953f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_google_form
+    - media.type.google_form
+id: media.google_form.field_media_google_form
+field_name: field_media_google_form
+entity_type: media
+bundle: google_form
+label: 'Google Form'
+description: 'Forms can only be embedded if they do <strong>not</strong> have any file upload fields. Please ensure your form doesn''t have any of these fields.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

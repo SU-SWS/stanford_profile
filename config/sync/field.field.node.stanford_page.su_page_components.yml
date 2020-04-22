@@ -33,9 +33,18 @@ settings:
         weight: 6
         enabled: false
       stanford_media_caption:
-        weight: 7
+        weight: 8
+        enabled: false
+      stanford_spacer:
+        weight: 9
         enabled: false
     widths:
       stanford_banner:
         min: '12'
+      stanford_card:
+        min: '3'
+      stanford_media_caption:
+        min: '3'
+      stanford_wysiwyg:
+        min: '3'
 field_type: react_paragraphs

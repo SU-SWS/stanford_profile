@@ -1,0 +1,19 @@
+uuid: 3fa71289-2f90-4711-8759-7f5870260389
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+    - stanford_media
+third_party_settings:
+  crop:
+    image_field: null
+id: google_form
+label: 'Google Form'
+description: 'Public shared <a href="http://forms.google.com">Google Form</a>'
+source: google_form
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_google_form
+field_map: {  }

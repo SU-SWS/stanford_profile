@@ -1,0 +1,30 @@
+uuid: c8647050-26bf-40f7-ac8a-9925691d2cc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.google_form.field_media_google_form
+    - image.style.medium
+    - media.type.google_form
+  module:
+    - image
+id: media.google_form.media_library
+targetEntityType: media
+bundle: google_form
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_style: medium
+      image_link: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_media_google_form: true
+  name: true
+  uid: true
