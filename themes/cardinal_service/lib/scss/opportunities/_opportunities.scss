@@ -1,0 +1,210 @@
+@charset 'UTF-8';
+
+.opportunity-header-content-container {
+  background-color: $su-color-cloud;
+  margin-bottom: 9.6rem;
+
+  .main-region {
+    margin: 0 auto;
+    max-width: calc(100% - 40px);
+    padding: 115px 0;
+    width: calc(100% - 40px);
+
+    @include grid-media-min('sm') {
+      max-width: calc(100% - 60px);
+      width: calc(100% - 60px);
+    }
+
+    @include grid-media-min('md') {
+      max-width: calc(100% - 100px);
+      width: calc(100% - 100px);
+    }
+
+    @include grid-media-min('lg') {
+      max-width: calc(100% - 160px);
+      width: calc(100% - 160px);
+    }
+
+    @include grid-media-min('xl') {
+      max-width: calc(100% - 200px);
+      width: calc(100% - 200px);
+    }
+
+    @include grid-media-min('2xl') {
+      max-width: 1500px;
+      width: calc(100% - 200px);
+    }
+  }
+
+  .su-opportunity {
+    display: flex;
+
+    div::after {
+      content: ', ';
+      white-space: pre;
+    }
+
+    div:last-child::after {
+      content: '';
+    }
+  }
+}
+
+.flex-lg-3-of-12,
+.node-su-opportunity-body,
+.su-opp-image,
+.su-spotlights-opportunity-spotlight-ref,
+.node-su-opportunity-su-opp-eligibility,
+.node-su-opportunity-su-opp-solo-url {
+  margin-bottom: 9.6rem;
+}
+
+.node-su-opportunity-su-opp-solo-url {
+  display: flex;
+  justify-content: center;
+}
+
+.su-spotlights-opportunity-spotlight-ref {
+  .image {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  img {
+    border-radius: 50%;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+
+  .su-card__contents {
+    margin: auto 0;
+
+    span {
+      font-family: Roboto Slab;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 40px;
+
+      &::before {
+        content: open-quote;
+      }
+
+      &::after {
+        content: close-quote;
+      }
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
+}
+
+.opportunity {
+  .flex-lg-3-of-12 {
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13), 0 3px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    height: fit-content;
+    padding: 3.2rem;
+    position: relative;
+
+    .node-su-opportunity-su-opp-solo-url {
+      margin-bottom: 0;
+    }
+  }
+
+  .node-su-opportunity-su-opp-location,
+  .node-su-opportunity-su-opp-duration,
+  .node-su-opportunity-su-opp-application-deadline,
+  .node-su-opportunity-su-opp-open-to,
+  .node-su-opportunity-su-opp-contact-email {
+    word-wrap: break-word;
+    margin-bottom: 2.31rem;
+
+    &::before {
+      font-family: 'Font Awesome\ 5 Free';
+      font-weight: 900;
+      position: absolute;
+    }
+
+    .block__title {
+      font-size: 2rem;
+      margin-bottom: 1.07rem;
+      margin-left: 30px;
+    }
+
+    .su-opportunity {
+      margin-left: 30px;
+    }
+  }
+
+  .node-su-opportunity-su-opp-location {
+    &::before {
+      content: '\f3c5';
+    }
+  }
+
+  .node-su-opportunity-su-opp-duration {
+    &::before {
+      content: '\f073';
+    }
+  }
+
+  .node-su-opportunity-su-opp-application-deadline {
+    &::before {
+      content: '\f0f3';
+    }
+  }
+
+  .node-su-opportunity-su-opp-open-to {
+    &::before {
+      content: '\f500';
+    }
+  }
+
+  .node-su-opportunity-su-opp-contact-email {
+    &::before {
+      content: '\f059';
+    }
+  }
+
+  @include grid-media-max('lg') {
+    .flex-lg-9-of-12 {
+      order: 2;
+      -ms-flex: none;
+      -webkit-box-flex: none;
+      flex: none;
+      max-width: 100%;
+    }
+
+    .flex-lg-3-of-12 {
+      display: inline-grid;
+      grid-template-columns: repeat(4, auto);
+      order: 1;
+      -ms-flex: none;
+      -webkit-box-flex: none;
+      flex: none;
+      max-width: 100%;
+
+      div:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  @include grid-media-max('md') {
+    .flex-lg-3-of-12 {
+      grid-template-columns: repeat(2, auto);
+    }
+  }
+  @include grid-media-max('sm') {
+    .flex-lg-3-of-12 {
+      display: block;
+    }
+  }
+}

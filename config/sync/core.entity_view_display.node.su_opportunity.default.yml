@@ -35,7 +35,7 @@ third_party_settings:
       -
         layout_id: defaults
         layout_settings:
-          extra_classes: ''
+          extra_classes: opportunity-header-content-container
           centered: null
         components:
           fcd2a988-e62a-4a12-8a88-5db19895ab61:
@@ -257,13 +257,13 @@ third_party_settings:
               items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 1
+            weight: 2
           97425a44-5454-4bcd-97b6-db185f33cf48:
             uuid: 97425a44-5454-4bcd-97b6-db185f33cf48
             region: left
             configuration:
               id: 'field_block:node:su_opportunity:su_opp_eligibility'
-              label: eligibility
+              label: Eligibility
               provider: layout_builder
               label_display: visible
               formatter:
@@ -277,7 +277,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 2
+            weight: 3
           45914423-b8ea-4f1c-8667-cb28e51454cc:
             uuid: 45914423-b8ea-4f1c-8667-cb28e51454cc
             region: left
@@ -303,7 +303,30 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 3
+            weight: 4
+          9efe4387-628a-4dce-9c38-840f2c97bdd9:
+            uuid: 9efe4387-628a-4dce-9c38-840f2c97bdd9
+            region: left
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_image'
+              label: Image
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: media_responsive_image_formatter
+                settings:
+                  view_mode: default
+                  image_style: ''
+                  link: true
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
   layout_library:
     enable: false
