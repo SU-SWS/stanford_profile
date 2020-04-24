@@ -19,7 +19,7 @@ class NodeRevisionDeleteCest {
     }
     $I->amOnPage("/node/{$node->id()}/revisions");
     $I->canSeeNumberOfElements('.node-revision-table tbody tr', 11);
-    $I->runDrush('node-revision-delete stanford_page');
+    $I->runDrush('cron');
     $I->amOnPage("/node/{$node->id()}/revisions");
     $I->canSeeNumberOfElements('.node-revision-table tbody tr', 5);
   }
