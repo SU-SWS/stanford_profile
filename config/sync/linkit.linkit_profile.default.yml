@@ -21,3 +21,14 @@ matchers:
       include_unpublished: false
       substitution_type: canonical
       limit: 100
+  4276c456-af46-418e-b628-4221c799416f:
+    uuid: 4276c456-af46-418e-b628-4221c799416f
+    id: 'entity:media'
+    weight: 0
+    settings:
+      metadata: '[media:field_media_file:entity:basename]: [media:field_media_file:entity:mime]'
+      bundles:
+        file: file
+      group_by_bundle: false
+      substitution_type: media
+      limit: 20
