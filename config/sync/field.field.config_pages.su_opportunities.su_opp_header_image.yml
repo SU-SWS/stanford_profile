@@ -1,0 +1,38 @@
+uuid: 2f36c392-e733-422b-90be-7cc2a0a16a1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.su_opportunities
+    - field.storage.config_pages.su_opp_header_image
+  module:
+    - image
+id: config_pages.su_opportunities.su_opp_header_image
+field_name: su_opp_header_image
+entity_type: config_pages
+bundle: su_opportunities
+label: 'Header Background Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: media/image/opportunities
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: 1000x400
+  alt_field: false
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

@@ -1,0 +1,28 @@
+uuid: 5c129203-aa6b-4102-81ad-b7f57fb019b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.su_opportunities
+    - field.field.config_pages.su_opportunities.su_opp_header_image
+    - responsive_image.styles.stanford_hero_block_wide
+  module:
+    - field_formatter_class
+    - responsive_image
+id: config_pages.su_opportunities.default
+targetEntityType: config_pages
+bundle: su_opportunities
+mode: default
+content:
+  su_opp_header_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: stanford_hero_block_wide
+      image_link: ''
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: responsive_image
+    region: content
+hidden: {  }

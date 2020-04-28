@@ -1,0 +1,28 @@
+uuid: 8f808a2e-7eab-4e75-94c6-cc11c4edcc7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.su_opportunities
+    - field.field.config_pages.su_opportunities.su_opp_header_image
+    - image.style.thumbnail
+  module:
+    - focal_point
+id: config_pages.su_opportunities.default
+targetEntityType: config_pages
+bundle: su_opportunities
+mode: default
+content:
+  su_opp_header_image:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      preview_link_modal: true
+      offsets: '50,50'
+    third_party_settings: {  }
+    type: image_focal_point
+    region: content
+hidden:
+  label: true

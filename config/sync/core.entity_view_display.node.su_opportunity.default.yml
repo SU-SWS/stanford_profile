@@ -21,6 +21,7 @@ dependencies:
     - node.type.su_opportunity
     - views.view.su_spotlights
   module:
+    - config_pages
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
@@ -58,7 +59,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
+            weight: 2
           98885d7b-0d6b-4b0b-acb2-03ee07f54423:
             uuid: 98885d7b-0d6b-4b0b-acb2-03ee07f54423
             region: main
@@ -80,6 +81,19 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+            additional: {  }
+            weight: 1
+          052c0f91-059f-4f9a-8d0f-d128b600429b:
+            uuid: 052c0f91-059f-4f9a-8d0f-d128b600429b
+            region: main
+            configuration:
+              id: config_pages_block
+              label: 'ConfigPages Block'
+              provider: config_pages
+              label_display: '0'
+              config_page_type: su_opportunities
+              config_page_view_mode: full
+              context_mapping: {  }
             additional: {  }
             weight: 0
         third_party_settings: {  }

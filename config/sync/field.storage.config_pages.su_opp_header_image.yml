@@ -1,0 +1,30 @@
+uuid: 23204665-99d9-4c29-a012-f3979f5589ec
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - file
+    - image
+id: config_pages.su_opp_header_image
+field_name: su_opp_header_image
+entity_type: config_pages
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
