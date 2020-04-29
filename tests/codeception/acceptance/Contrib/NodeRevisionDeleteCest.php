@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * Test the node revision delete module functionality.
+ */
 class NodeRevisionDeleteCest {
 
+  /**
+   * Test that revisions are trimmed after cron runs.
+   */
   public function testNodeRevisionDelete(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     /** @var \Drupal\node\NodeInterface $node */
