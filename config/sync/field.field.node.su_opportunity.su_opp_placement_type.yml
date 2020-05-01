@@ -1,0 +1,29 @@
+uuid: dc4abd18-bf05-4dfd-bae8-c39d536958ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_placement_type
+    - node.type.su_opportunity
+    - taxonomy.vocabulary.su_opportunity_placement_type
+id: node.su_opportunity.su_opp_placement_type
+field_name: su_opp_placement_type
+entity_type: node
+bundle: su_opportunity
+label: 'Placement Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      su_opportunity_placement_type: su_opportunity_placement_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

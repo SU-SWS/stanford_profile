@@ -8,13 +8,18 @@ dependencies:
     - field.field.node.su_opportunity.su_opp_contact_email
     - field.field.node.su_opportunity.su_opp_contact_name
     - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_dimension
     - field.field.node.su_opportunity.su_opp_duration
     - field.field.node.su_opportunity.su_opp_eligibility
     - field.field.node.su_opportunity.su_opp_image
     - field.field.node.su_opportunity.su_opp_learn_more
     - field.field.node.su_opportunity.su_opp_location
     - field.field.node.su_opportunity.su_opp_open_to
+    - field.field.node.su_opportunity.su_opp_pathway
+    - field.field.node.su_opportunity.su_opp_placement_type
+    - field.field.node.su_opportunity.su_opp_service_theme
     - field.field.node.su_opportunity.su_opp_solo_url
+    - field.field.node.su_opportunity.su_opp_sponsor
     - field.field.node.su_opportunity.su_opp_submissions_open
     - field.field.node.su_opportunity.su_opp_time_year
     - field.field.node.su_opportunity.su_opp_type
@@ -104,6 +109,16 @@ content:
     third_party_settings: {  }
     type: telephone_default
     region: content
+  su_opp_dimension:
+    weight: 138
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   su_opp_duration:
     weight: 126
     settings: {  }
@@ -149,6 +164,36 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  su_opp_pathway:
+    weight: 139
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  su_opp_placement_type:
+    weight: 140
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  su_opp_service_theme:
+    weight: 137
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   su_opp_solo_url:
     weight: 123
     settings:
@@ -156,6 +201,16 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  su_opp_sponsor:
+    weight: 141
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   su_opp_submissions_open:
     weight: 124

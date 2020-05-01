@@ -8,13 +8,18 @@ dependencies:
     - field.field.node.su_opportunity.su_opp_contact_email
     - field.field.node.su_opportunity.su_opp_contact_name
     - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_dimension
     - field.field.node.su_opportunity.su_opp_duration
     - field.field.node.su_opportunity.su_opp_eligibility
     - field.field.node.su_opportunity.su_opp_image
     - field.field.node.su_opportunity.su_opp_learn_more
     - field.field.node.su_opportunity.su_opp_location
     - field.field.node.su_opportunity.su_opp_open_to
+    - field.field.node.su_opportunity.su_opp_pathway
+    - field.field.node.su_opportunity.su_opp_placement_type
+    - field.field.node.su_opportunity.su_opp_service_theme
     - field.field.node.su_opportunity.su_opp_solo_url
+    - field.field.node.su_opportunity.su_opp_sponsor
     - field.field.node.su_opportunity.su_opp_submissions_open
     - field.field.node.su_opportunity.su_opp_time_year
     - field.field.node.su_opportunity.su_opp_type
@@ -96,6 +101,86 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 0
+          e047e84a-a2f3-4eaa-95b6-de66666631fd:
+            uuid: e047e84a-a2f3-4eaa-95b6-de66666631fd
+            region: main
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:su_opportunity:su_opp_service_theme'
+              formatter:
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+                type: entity_reference_label
+            additional: {  }
+            weight: 2
+          9c56d66f-d97b-40ce-95ca-0c1f473bd291:
+            uuid: 9c56d66f-d97b-40ce-95ca-0c1f473bd291
+            region: main
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:su_opportunity:su_opp_dimension'
+              formatter:
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+                type: entity_reference_label
+            additional: {  }
+            weight: 3
+          6427fc62-c5ef-4a2c-936c-c11a274dfff4:
+            uuid: 6427fc62-c5ef-4a2c-936c-c11a274dfff4
+            region: main
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:su_opportunity:su_opp_pathway'
+              formatter:
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+                type: entity_reference_label
+            additional: {  }
+            weight: 4
+          bc09d322-c615-4aa2-b480-492870f88df8:
+            uuid: bc09d322-c615-4aa2-b480-492870f88df8
+            region: main
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:su_opportunity:su_opp_placement_type'
+              formatter:
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+                type: entity_reference_label
+            additional: {  }
+            weight: 5
+          c7a27454-40ea-446a-932d-fa14f24f2081:
+            uuid: c7a27454-40ea-446a-932d-fa14f24f2081
+            region: main
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:su_opportunity:su_opp_sponsor'
+              formatter:
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+                type: entity_reference_label
+            additional: {  }
+            weight: 6
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
@@ -352,10 +437,51 @@ id: node.su_opportunity.default
 targetEntityType: node
 bundle: su_opportunity
 mode: default
-content: {  }
+content:
+  su_opp_dimension:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: main
+  su_opp_pathway:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: main
+  su_opp_placement_type:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: main
+  su_opp_service_theme:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: main
+  su_opp_sponsor:
+    weight: 5
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: main
 hidden:
   body: true
   links: true
+  search_api_excerpt: true
   su_opp_application_deadline: true
   su_opp_contact_email: true
   su_opp_contact_name: true

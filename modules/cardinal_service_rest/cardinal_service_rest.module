@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * cardinal_service_rest.module
+ */
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function cardinal_service_rest_node_presave(NodeInterface $entity) {
+  if ($entity->bundle() == 'su_opportunity') {
+    // Invalidate the cache of the API endpoint.
+    \Drupal::service('cache_tags.invalidator')
+      ->invalidateTags(['api:opportunities']);
+  }
+}

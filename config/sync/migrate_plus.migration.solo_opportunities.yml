@@ -23,6 +23,7 @@ source:
     image_destination: 'public://media/image/solo/'
     apply_link_title: Apply
     learn_more_link_title: 'Learn More'
+    image_alt: ''
   item_selector: /OPPORTUNITIES/OPPORTUNITY
   fields:
     -
@@ -223,7 +224,9 @@ process:
       entity_type: media
       ignore_case: true
       values:
-        field_media_image: '@image_file'
+        field_media_image/target_id: '@image_file'
+        field_media_image/alt: constants/image_alt
+        field_media_image/title: constants/image_alt
   su_opp_application_deadline:
     -
       plugin: skip_on_empty
