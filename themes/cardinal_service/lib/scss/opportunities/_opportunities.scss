@@ -1,50 +1,24 @@
 @charset 'UTF-8';
 
-.opportunity-header-content-container {
-  background-color: $su-color-cloud;
+.su-hero {
   margin-bottom: 9.6rem;
 
-  .main-region {
-    margin: 0 auto;
-    max-width: calc(100% - 40px);
-    padding: 115px 0;
-    width: calc(100% - 40px);
-
-    @include grid-media-min('sm') {
-      max-width: calc(100% - 60px);
-      width: calc(100% - 60px);
-    }
-
-    @include grid-media-min('md') {
-      max-width: calc(100% - 100px);
-      width: calc(100% - 100px);
-    }
-
-    @include grid-media-min('lg') {
-      max-width: calc(100% - 160px);
-      width: calc(100% - 160px);
-    }
-
-    @include grid-media-min('xl') {
-      max-width: calc(100% - 200px);
-      width: calc(100% - 200px);
-    }
-
-    @include grid-media-min('2xl') {
-      max-width: 1500px;
-      width: calc(100% - 200px);
-    }
+  .su-hero__media {
+    background-color: $su-color-cloud;
   }
+}
 
-  .su-opportunity {
-    display: flex;
+.su-opportunity {
 
-    div::after {
+  div {
+    display: inline-block;
+
+    &::after {
       content: ', ';
       white-space: pre;
     }
 
-    div:last-child::after {
+    &:last-child::after {
       content: '';
     }
   }
@@ -111,7 +85,6 @@
     box-sizing: border-box;
     height: fit-content;
     padding: 3.2rem;
-    position: relative;
 
     .node-su-opportunity-su-opp-solo-url {
       margin-bottom: 0;
