@@ -33,7 +33,7 @@ class BasicPageParagraphsCest {
     $I->click('Save', '#edit-actions');
     $I->canSee('SubHead text');
     $I->canSee('Headline');
-    $I->canSeeLink('Google Link', 'http://google.com');
+    $I->canSeeLink('Google Link', 'http://google.com/');
   }
 
 }
