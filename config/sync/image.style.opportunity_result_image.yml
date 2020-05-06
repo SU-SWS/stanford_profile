@@ -1,0 +1,17 @@
+uuid: 445566dc-5187-4ec2-a70b-a7a58a833d5f
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: opportunity_result_image
+label: 'Opportunity Result Image (300x200)'
+effects:
+  4237edd2-b90f-4146-9130-e9eaea776baa:
+    uuid: 4237edd2-b90f-4146-9130-e9eaea776baa
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 300
+      height: 200
+      crop_type: focal_point

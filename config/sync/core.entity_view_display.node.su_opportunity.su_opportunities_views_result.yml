@@ -82,15 +82,17 @@ bundle: su_opportunity
 mode: su_opportunities_views_result
 content:
   su_opp_image:
-    type: media_responsive_image_formatter
+    type: media_image_formatter
     weight: 1
     region: image
     label: hidden
     settings:
-      image_style: null
-      link: false
       view_mode: default
-    third_party_settings: {  }
+      image_style: opportunity_result_image
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
   su_opp_location:
     type: entity_reference_label
     weight: 2
@@ -109,6 +111,8 @@ content:
     settings:
       link: false
     third_party_settings:
+      field_delimiter:
+        delimiter: ','
       field_formatter_class:
         class: ''
       ds:

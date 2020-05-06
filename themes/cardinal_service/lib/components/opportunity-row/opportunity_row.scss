@@ -68,21 +68,8 @@
   }
 
   .su-opportunity-img {
-    position: relative;
-
-    &::after {
-      display: block;
-      content: '';
-      padding-bottom: calc(2 / 3 * 100%);
-    }
-
-    img {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .su-opp-image {
+      margin-bottom: 0;
     }
   }
 }
