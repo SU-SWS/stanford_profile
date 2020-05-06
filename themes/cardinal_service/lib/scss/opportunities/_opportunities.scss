@@ -12,15 +12,6 @@
 
   div {
     display: inline-block;
-
-    &::after {
-      content: ', ';
-      white-space: pre;
-    }
-
-    &:last-child::after {
-      content: '';
-    }
   }
 }
 

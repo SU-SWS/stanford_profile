@@ -4,20 +4,12 @@
 
 .su-opportunity-result {
   @include card;
+  @include margin(0 0 2em 0);
   position: relative;
 
   .su-opportunity-type {
     div {
       display: inline-block;
-
-      &::after {
-        content: ', ';
-        white-space: pre;
-      }
-
-      &:last-child::after {
-        content: '';
-      }
     }
   }
 
@@ -36,7 +28,7 @@
   .su-opportunity-row-location,
   .su-opportunity-row-duration,
   .su-opportunity-row-open-to {
-    div {
+    > div {
       margin-left: 30px;
     }
 
@@ -44,6 +36,16 @@
       font-family: 'Font Awesome\ 5 Free';
       font-weight: 900;
       position: absolute;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 0;
     }
   }
 

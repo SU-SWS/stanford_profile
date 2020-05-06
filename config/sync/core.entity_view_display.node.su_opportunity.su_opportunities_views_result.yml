@@ -27,6 +27,7 @@ dependencies:
     - node.type.su_opportunity
   module:
     - ds
+    - field_delimiter
     - field_formatter_class
     - layout_builder
     - layout_builder_restrictions
@@ -94,7 +95,7 @@ content:
     type: entity_reference_label
     weight: 2
     region: location
-    label: above
+    label: hidden
     settings:
       link: false
     third_party_settings:
@@ -104,7 +105,7 @@ content:
     type: entity_reference_label
     weight: 4
     region: open_to
-    label: above
+    label: hidden
     settings:
       link: false
     third_party_settings:
@@ -116,7 +117,7 @@ content:
     type: entity_reference_label
     weight: 3
     region: when
-    label: above
+    label: hidden
     settings:
       link: false
     third_party_settings:
@@ -132,6 +133,8 @@ content:
     settings:
       link: false
     third_party_settings:
+      field_delimiter:
+        delimiter: ','
       field_formatter_class:
         class: ''
       ds:

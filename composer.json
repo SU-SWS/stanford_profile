@@ -97,6 +97,7 @@
         "drupal/ds": "~3.3",
         "drupal/element_class_formatter": "^1.0",
         "drupal/environment_indicator": "^3.0",
+        "drupal/field_delimiter": "^1.0",
         "drupal/field_formatter_class": "dev-1.x#e7b3c4a959f63d7a9efc74f2d3a67de306b8ddb4",
         "drupal/field_group": "^3.0@rc",
         "drupal/field_validation": "^1.0-alpha",
@@ -122,10 +123,12 @@
         "drupal/paragraphs_edit": "^2.0@alpha",
         "drupal/paranoia": "~1.0@alpha",
         "drupal/pathauto": "^1.6",
+        "drupal/pdb": "^1.0@alpha",
         "drupal/redirect": "~1.0-beta1",
         "drupal/response_code_condition": "^1.0",
         "drupal/role_delegation": "^1.0@beta",
         "drupal/rules": "^3.0@alpha",
+        "drupal/search_api": "^1.16",
         "drupal/seckit": "^1.0@alpha",
         "drupal/ui_patterns": "~1.0",
         "drupal/view_unpublished": "^1.0@alpha",
@@ -142,9 +145,7 @@
         "su-sws/stanford_fields": "dev-8.x-1.x",
         "su-sws/stanford_image_styles": "dev-8.x-1.x",
         "su-sws/stanford_ssp": "dev-8.x-1.x",
-        "su-sws/stanford_text_editor": "dev-8.x-1.x",
-        "drupal/pdb": "^1.0@alpha",
-        "drupal/search_api": "^1.16"
+        "su-sws/stanford_text_editor": "dev-8.x-1.x"
     },
     "autoload": {
         "psr-4": {
@@ -161,6 +162,9 @@
         "patches": {
             "drupal/entity_reference_revisions": {
                 "https://www.drupal.org/project/entity_reference_revisions/issues/3004210": "https://www.drupal.org/files/issues/2019-10-14/3004210-14.patch"
+            },
+            "drupal/field_delimiter": {
+                "https://www.drupal.org/project/field_delimiter/issues/3064118": "https://www.drupal.org/files/issues/2019-06-25/field_delimiter.module.20190625.patch"
             },
             "drupal/field_formatter_class": {
                 "https://www.drupal.org/project/field_formatter_class/issues/3046372": "https://www.drupal.org/files/issues/2020-02-03/field_formatter_class-3046372-10.patch"
