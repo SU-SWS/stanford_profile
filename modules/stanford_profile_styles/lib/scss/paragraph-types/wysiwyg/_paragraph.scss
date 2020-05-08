@@ -80,6 +80,7 @@
       @include modular-spacing('margin-bottom', 2);
       // 70 character line length.
       max-width: 55ch;
+
       &:last-child {
         // Remove margin-bottom when it is the last item on the paragraph
         @include margin(null null 0 null);
