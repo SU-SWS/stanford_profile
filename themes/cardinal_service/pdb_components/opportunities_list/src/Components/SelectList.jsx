@@ -9,15 +9,13 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
 const checkedIcon = <CheckBoxIcon fontSize="small"/>;
 
 export const SelectList = ({defaultValue, field, label, multiple, onChange, options}) => {
-  let defaultOptions = null
+  let defaultOptions = multiple ? [] : null;
   if (defaultValue !== undefined) {
     defaultOptions = defaultValue.map(tid => {
       return options.find(option => option.id === tid);
     });
     defaultOptions = multiple ? defaultOptions : defaultOptions[0]
   }
-  console.log(field);
-  console.log(defaultOptions);
 
   const onSelectionChange = (e, selectedItems) => {
     if (selectedItems === null) {
@@ -45,7 +43,7 @@ export const SelectList = ({defaultValue, field, label, multiple, onChange, opti
       multiple={multiple}
       onChange={onSelectionChange}
       getOptionSelected={(option, value) => option.id === value.id}
-      // value={defaultOptions}
+      value={defaultOptions}
       renderOption={(option, {selected}) => (
         <React.Fragment>
           <Checkbox

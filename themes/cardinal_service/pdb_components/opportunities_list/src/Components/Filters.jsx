@@ -37,12 +37,8 @@ export class Filters extends Component {
    */
   componentDidMount() {
     const that = this;
-    const params = {
-      bundle: this.props.bundle,
-      fields: this.props.fields.map(field => field.field)
-    };
 
-    fetch('/api/opportunities?' + queryString.stringify(params, {arrayFormat: 'bracket'}))
+    fetch('/api/opportunities')
       .then(response => response.json())
       .then(jsonData => {
         that.setState({

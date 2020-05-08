@@ -3,12 +3,14 @@
 namespace Drupal\cardinal_service_rest\Plugin\rest\resource;
 
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\FieldConfigInterface;
 use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Rest endpoint to provide data about what entities are tagged with terms.
@@ -23,6 +25,10 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class OpportunitiesResource extends ResourceBase {
 
+  const ENTITY_TYPE = 'node';
+
+  const BUNDLE = 'su_opportunity';
+
   /**
    * Entity Type manager service.
    *
@@ -31,11 +37,11 @@ class OpportunitiesResource extends ResourceBase {
   protected $entityTypeManager;
 
   /**
-   * Current page request.
+   * Entity field manager service.
    *
-   * @var \Symfony\Component\HttpFoundation\Request|null
+   * @var \Drupal\Core\Entity\EntityFieldManagerInterface
    */
-  protected $currentRequest;
+  protected $fieldManager;
 
   /**
    * {@inheritDoc}
@@ -48,17 +54,17 @@ class OpportunitiesResource extends ResourceBase {
       $container->getParameter('serializer.formats'),
       $container->get('logger.factory')->get('rest'),
       $container->get('entity_type.manager'),
-      $container->get('request_stack')
+      $container->get('entity_field.manager')
     );
   }
 
   /**
    * {@inheritDoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, array $serializer_formats, LoggerInterface $logger, EntityTypeManagerInterface $entityTypeManager, RequestStack $request_stack) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, array $serializer_formats, LoggerInterface $logger, EntityTypeManagerInterface $entityTypeManager, EntityFieldManagerInterface $field_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger);
     $this->entityTypeManager = $entityTypeManager;
-    $this->currentRequest = $request_stack->getCurrentRequest();
+    $this->fieldManager = $field_manager;
   }
 
   /**
@@ -79,15 +85,17 @@ class OpportunitiesResource extends ResourceBase {
    */
   public function get() {
     $data = [];
-    $fields = $this->currentRequest->query->get('fields');
-    $bundle = $this->currentRequest->query->get('bundle');
 
-    if (empty($fields) || empty($bundle)) {
-      return new ResourceResponse([]);
-    }
+    $fields = $this->fieldManager->getFieldDefinitions(self::ENTITY_TYPE, self::BUNDLE);
 
-    foreach ($fields as $field_name) {
-      $data[$field_name] = $this->getFieldTermsData($bundle, $field_name);
+    foreach ($fields as $field_name => $field_definition) {
+      if (
+        $field_definition instanceof FieldConfig &&
+        $field_definition->getType() == 'entity_reference' &&
+        $field_definition->getSetting('handler') == 'default:taxonomy_term'
+      ) {
+        $data[$field_name] = $this->getFieldTermsData($field_definition);
+      }
     }
     $data = array_filter($data);
 
@@ -95,7 +103,7 @@ class OpportunitiesResource extends ResourceBase {
     $response->setContent(json_encode($data));
     $response->addCacheableDependency($data);
     $response->addCacheableDependency(CacheableMetadata::createFromRenderArray([
-      '#cache' => ['keys' => $fields, 'tags' => ['api:opportunities']],
+      '#cache' => ['tags' => ['api:opportunities']],
     ]));
 
     return $response;
@@ -104,10 +112,7 @@ class OpportunitiesResource extends ResourceBase {
   /**
    * Get the available taxonomy terms with references to the entity using it.
    *
-   * @param string $bundle
-   *   Node type bundle.
-   * @param string $field_name
-   *   Field machine name.
+   * @param \Drupal\field\FieldConfigInterface $field
    *
    * @return array
    *   Array of structured term data.
@@ -115,60 +120,36 @@ class OpportunitiesResource extends ResourceBase {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  protected function getFieldTermsData($bundle, $field_name) {
+  protected function getFieldTermsData(FieldConfigInterface $field) {
     $term_storage = $this->entityTypeManager->getStorage('taxonomy_term');
     $node_storage = $this->entityTypeManager->getStorage('node');
 
     $data = [];
+    $handler_settings = $field->getSetting('handler_settings');
+    $vid = reset($handler_settings['target_bundles']);
 
-    if ($vid = $this->getFieldVocab($bundle, $field_name)) {
-      foreach ($term_storage->loadByProperties([
-        'vid' => $vid,
-        'status' => 1,
-      ]) as $term) {
-        $nodes = $node_storage->getQuery()
-          ->condition('status', 1)
-          ->condition($field_name, $term->id())
-          ->accessCheck(FALSE)
-          ->execute();
+    foreach ($term_storage->loadByProperties([
+      'vid' => $vid,
+      'status' => 1,
+    ]) as $term) {
+      $nodes = $node_storage->getQuery()
+        ->condition('status', 1)
+        ->condition($field->getName(), $term->id())
+        ->accessCheck(FALSE)
+        ->execute();
 
-        if ($nodes) {
-          $data[] = [
-            'id' => $term->id(),
-            'label' => $term->label(),
-            'items' => array_values($nodes),
-          ];
-        }
+      if ($nodes) {
+        $data[] = [
+          'id' => $term->id(),
+          'label' => $term->label(),
+          'items' => array_values($nodes),
+        ];
       }
     }
     uasort($data, function ($item_a, $item_b) {
       return count($item_a['items']) > count($item_b['items']) ? -1 : 1;
     });
     return array_values($data);
-  }
-
-  /**
-   * Get the vocabulary ID from the field on the given node bundle.
-   *
-   * @param string $bundle
-   *   Node type bundle.
-   * @param string $field_name
-   *   Field machine name.
-   *
-   * @return string|null
-   *   Vocabulary id or null if none exists.
-   *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
-   */
-  protected function getFieldVocab($bundle, $field_name) {
-    /** @var \Drupal\field\FieldConfigInterface $field */
-    $field = $this->entityTypeManager->getStorage('field_config')
-      ->load("node.$bundle.$field_name");
-    if ($field && $field->getType() == 'entity_reference') {
-      $handler_settings = $field->getSetting('handler_settings');
-      return reset($handler_settings['target_bundles']);
-    }
   }
 
 }
