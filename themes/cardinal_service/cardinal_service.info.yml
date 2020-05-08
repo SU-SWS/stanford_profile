@@ -32,8 +32,5 @@ ckeditor_stylesheets:
   - dist/css/ckeditor.css
 
 libraries-override:
-  # Replace an asset with another.
-  pdb_react/react:
-    js:
-      //cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.min.js: https://unpkg.com/react@16/umd/react.production.min.js
-      //cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.min.js: https://unpkg.com/react-dom@16/umd/react-dom.production.min.js
+  # Don't load the react library from CDN, we include it in the component.
+  pdb_react/react: false

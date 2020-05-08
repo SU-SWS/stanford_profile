@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {SelectList} from "./SelectList";
+import {Slugs} from "./Slugs";
 
 const _ = require('lodash');
 const lodashUuid = require('lodash-uuid');
@@ -7,6 +8,7 @@ const queryString = require('query-string');
 
 export class Filters extends Component {
 
+  initialFilters = {};
   moreFiltersId = lodashUuid.uuid();
 
   constructor(props) {
@@ -27,6 +29,7 @@ export class Filters extends Component {
       Object.keys(pageParams).map(paramKey => {
         if (this.props.fields.find(field => field.field === paramKey)) {
           this.state.filters[paramKey] = pageParams[paramKey];
+          this.initialFilters[paramKey] = pageParams[paramKey];
         }
       })
     }
@@ -204,6 +207,10 @@ export class Filters extends Component {
                  disabled={this.state.disabledSearch}/>
           <a href={window.location.pathname}>Reset</a>
         </form>
+
+        {Object.keys(this.initialFilters).length > 0 &&
+        <Slugs filters={this.initialFilters} terms={this.state.allItems}/>
+        }
       </div>
     )
   }
