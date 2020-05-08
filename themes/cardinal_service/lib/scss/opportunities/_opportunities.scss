@@ -1,17 +1,33 @@
 @charset 'UTF-8';
 
-.su-hero {
-  margin-bottom: 9.6rem;
+.opportunity {
+  .su-hero {
+    margin-bottom: 9.6rem;
 
-  .su-hero__media {
-    background-color: $su-color-cloud;
+    .su-hero__media {
+      background-color: $su-color-cloud;
+    }
   }
-}
 
-.su-opportunity {
+  .su-hero__card {
+    @include grid-media-min('md') {
+      @include centered-column;
 
-  div {
-    display: inline-block;
+      background: #fff;
+      margin: 45px auto;
+      position: unset;
+      opacity: 0.9;
+    }
+
+    .su-opp-type {
+      div {
+        display: inline-block;
+      }
+    }
+
+    h1 {
+      margin-bottom: 0;
+    }
   }
 }
 
