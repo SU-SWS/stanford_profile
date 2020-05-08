@@ -1,85 +1,70 @@
-import React, {Component} from 'react';
-import Select from 'react-select';
+import React from 'react';
+import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
-const _ = require('lodash-uuid');
+const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
+const checkedIcon = <CheckBoxIcon fontSize="small"/>;
 
-export class SelectList extends Component {
-
-  constructor(props) {
-    super(props);
-    this.uuid = _.uuid();
-    this.state = {selectedItems: []};
-    this.onChange = this.onChange.bind(this);
+export const SelectList = ({defaultValue, field, label, multiple, onChange, options}) => {
+  let defaultOptions = multiple ? [] : null;
+  if (defaultValue !== undefined) {
+    defaultOptions = defaultValue.map(tid => {
+      return options.find(option => option.id === tid);
+    });
+    defaultOptions = multiple ? defaultOptions : defaultOptions[0]
   }
 
-  /**
-   * On selection event listener to build an array of selected values.
-   */
-  onChange(selectedOptions) {
-    if (selectedOptions === null) {
-      this.props.onChange(this.props.field, []);
+  const onSelectionChange = (e, selectedItems) => {
+    if (selectedItems === null) {
+      onChange(field, []);
       return;
     }
 
-    const selections = this.props.multiple ? selectedOptions.map(item => item.value) : [selectedOptions.value];
-    this.props.onChange(this.props.field, selections);
+    if (!multiple) {
+      onChange(field, [selectedItems.id])
+      return;
+    }
+
+    const selectedOptions = selectedItems.map(item => item.id);
+    onChange(field, selectedOptions)
   }
 
-  /**
-   * Callback to see if the option is enabled.
-   */
-  filterOptions = (candidate, input) => {
-    if (input) {
-      return candidate.data.label.toLowerCase().indexOf(input.toLowerCase()) >= 0;
-    }
-    return true;
-  };
-
-  render() {
-    // No options available, don't display anything.
-    if (this.props.options === undefined) {
-      return <React.Fragment/>
-    }
-
-    // Build the options array with properly formatted objects.
-    const options = this.props.options.map(option => ({
-      value: option.id,
-      label: `${option.label} (${option.items.length})`,
-      resultCount: option.items.length
-    }));
-
-    let value = [];
-    // Build the default value array with the matching objects.
-    if (this.props.defaultValue !== undefined) {
-      this.props.defaultValue.map(tid => {
-        const option = options.find(opt => parseInt(opt.value) === parseInt(tid));
-        value.push(option)
-      })
-    }
-
-    const className = this.props.field.split('_').join('-');
-    return (
-      <div style={{width: 'calc(20% - 20px)'}}>
-        <label
-          htmlFor={this.uuid}
-          className="visually-hidden">
-          {this.props.label}
-        </label>
-        <Select
-          isClearable
-          className={className}
-          classNamePrefix={className}
-          placeholder={this.props.label}
-          inputId={this.uuid}
-          options={options}
-          isMulti={this.props.multiple}
-          isSearchable={options.length > 5}
-          onChange={this.onChange}
-          isOptionDisabled={option => option.resultCount === 0}
-          value={value}
-          filterOption={this.filterOptions}
+  return (
+    <Autocomplete
+      disableCloseOnSelect
+      className={field + '-select'}
+      id={field}
+      options={options}
+      getOptionLabel={option => option.label + ' (' + option.items.length + ')'}
+      getOptionDisabled={option => option.items.length <= 0}
+      style={{width: 300}}
+      multiple={multiple}
+      onChange={onSelectionChange}
+      getOptionSelected={(option, value) => option.id === value.id}
+      value={defaultOptions}
+      renderOption={(option, {selected}) => (
+        <React.Fragment>
+          <Checkbox
+            className={'checkbox'}
+            icon={icon}
+            checkedIcon={checkedIcon}
+            style={{marginRight: 8}}
+            checked={selected}
+          />
+          {option.label + ' (' + option.items.length + ')'}
+        </React.Fragment>
+      )}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label={label} variant="outlined"
+          InputLabelProps={{style: {marginTop: 0}}}
         />
-      </div>
-    )
-  }
+      )}
+    />
+  )
+
 }

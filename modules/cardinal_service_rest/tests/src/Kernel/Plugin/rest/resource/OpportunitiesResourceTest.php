@@ -41,8 +41,8 @@ class OpportunitiesResourceTest extends KernelTestBase {
     $this->installEntitySchema('taxonomy_term');
 
     NodeType::create([
-      'name' => 'page',
-      'type' => 'page',
+      'name' => 'opportunity',
+      'type' => 'su_opportunity',
     ])->save();
 
     $term_fields = [
@@ -63,12 +63,16 @@ class OpportunitiesResourceTest extends KernelTestBase {
         'field_name' => $term_field,
         'entity_type' => 'node',
         'type' => 'entity_reference',
-        'settings' => $settings,
+        'settings' => [
+          'target_type' => 'taxonomy_term',
+        ],
       ]);
       $fieldStorage->save();
+
       FieldConfig::create([
         'field_storage' => $fieldStorage,
-        'bundle' => 'page',
+        'bundle' => 'su_opportunity',
+        'settings' => $settings,
       ])->save();
 
       for ($i = 0; $i < rand(10, 20); $i++) {
@@ -82,7 +86,7 @@ class OpportunitiesResourceTest extends KernelTestBase {
     }
 
     for ($i = 0; $i <= 20; $i++) {
-      $values = ['title' => "Page $i", 'type' => 'page'];
+      $values = ['title' => "Page $i", 'type' => 'su_opportunity'];
       foreach (array_keys($term_fields) as $field) {
         $random_term = array_rand($terms[$field]);
         $values[$field] = $terms[$field][$random_term];
@@ -101,7 +105,6 @@ class OpportunitiesResourceTest extends KernelTestBase {
     $response = $resource->get();
     $this->assertInstanceOf(ResourceResponse::class, $response);
 
-    
     $json_data = json_decode($response->getContent(), TRUE);
     $this->assertNotEmpty($json_data['su_opp_location']);
     $this->assertNotEmpty($json_data['su_opp_open_to']);
