@@ -1,34 +1,47 @@
-const path = require("path");
+const path = require('path');
+const glob = require('glob')
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-module.exports = function (_env, argv) {
-  const isProduction = argv.mode === "production";
-  const isDevelopment = !isProduction;
+const entries = glob.sync('./**/app.jsx').reduce((acc, path) => {
+  const entry = path.replace('.jsx', '').replace('src','lib');
+  acc[entry] = path
+  return acc
+}, {});
 
-  return {
-    devtool: isDevelopment && "eval-source-map",
-    entry: "./opportunities_list/src/app.jsx",
-    output: {
-      path: path.resolve(__dirname, "opportunities_list/lib"),
-      filename: "[name].js",
-    },
-    module: {
-      rules: [
-        {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: "babel-loader",
-            options: {
-              cacheDirectory: true,
-              cacheCompression: false,
-              envName: isProduction ? "production" : "development"
-            }
-          }
+module.exports = {
+  entry: entries,
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname),
+  },
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
         }
-      ]
-    },
-    resolve: {
-      extensions: [".js", ".jsx"]
-    }
-  };
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader"
+          }
+        ]
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules']
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./index.html",
+      filename: "./node_modules/dev/index.html"
+    })
+  ]
 };
