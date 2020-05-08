@@ -38,5 +38,5 @@ Feature: Basic Page
   Scenario: Access the revisions page
     Given I am logged in as a user with the "Site Manager" role
     And I am viewing a "stanford_page" with the title "I would like revisions"
-    Then I click "Revisions"
+    Then I click "Version History"
     And the response status code should be 200
