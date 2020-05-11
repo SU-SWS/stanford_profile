@@ -1,0 +1,21 @@
+uuid: e3ea425e-e605-464f-a9d9-0ff46aaef7d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_banner_media_caption
+    - node.type.stanford_news
+_core:
+  default_config_hash: W4lPM6DpZ7AELD-vThQaD5hC0XZVDxVGQc-PnJ3Rr8s
+id: node.stanford_news.su_news_banner_media_caption
+field_name: su_news_banner_media_caption
+entity_type: node
+bundle: stanford_news
+label: 'Banner Caption'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

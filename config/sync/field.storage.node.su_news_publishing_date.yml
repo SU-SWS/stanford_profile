@@ -1,0 +1,22 @@
+uuid: 99cb31a4-203c-4512-ad84-4501dc55d3bd
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+_core:
+  default_config_hash: R4EXNOMhTA_MnD20ONKBFooiIHzdDIM0wveO3EzUaHs
+id: node.su_news_publishing_date
+field_name: su_news_publishing_date
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,24 @@
+uuid: 401ffc57-25aa-4b30-9937-227b8536e364
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: ImGEDfKJJTJEAOQzf_oE3z8NicGl0U-NXDe6BKkt79k
+id: news_nodes
+label: 'News Nodes'
+type: 'canonical_entities:node'
+pattern: 'news/[node:title]'
+selection_criteria:
+  7a7d05be-0ed3-47a8-a375-bc151a7ee92d:
+    id: node_type
+    bundles:
+      stanford_news: stanford_news
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 7a7d05be-0ed3-47a8-a375-bc151a7ee92d
+selection_logic: and
+weight: -5
+relationships: {  }

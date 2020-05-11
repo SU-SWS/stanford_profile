@@ -1,0 +1,22 @@
+uuid: c43dab39-89f1-40f9-a1b7-cbb192c24c14
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: kM2tbqX2QX_uBVDnY0YOk0uvIhLJm9QFElikph5Tcig
+id: node.su_news_topics
+field_name: su_news_topics
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

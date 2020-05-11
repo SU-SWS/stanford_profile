@@ -1,0 +1,17 @@
+uuid: 9a0724fa-df16-46ce-bac8-2b09792ea972
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9y2n4NmiX5OS_NgjSQvUbWqde7Omb-nJTyVIGPY7cAg
+name: su_news_list
+label: 'News List (280x132)'
+effects:
+  a71f6268-bf7b-415f-a92e-58ed5a5bd045:
+    uuid: a71f6268-bf7b-415f-a92e-58ed5a5bd045
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 280
+      height: 132
+      anchor: center-center

@@ -1,0 +1,25 @@
+uuid: 9fcacff2-1618-49c8-ad1a-7efb0a08abc6
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+_core:
+  default_config_hash: DB5CVv3Pu_IW0LddYlHTKS5pSsUHRllJodFKO4ruzQE
+id: news_topics
+label: 'News Topics'
+type: 'canonical_entities:taxonomy_term'
+pattern: 'news/[term:name]'
+selection_criteria:
+  32750fd0-6569-40c7-994e-3a1aa0b31956:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      stanford_news_topics: stanford_news_topics
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 32750fd0-6569-40c7-994e-3a1aa0b31956
+selection_logic: and
+weight: -5
+relationships: {  }

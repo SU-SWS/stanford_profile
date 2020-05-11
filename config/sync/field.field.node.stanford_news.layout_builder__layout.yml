@@ -1,0 +1,23 @@
+uuid: e9978549-2d6e-41c7-80f5-eb1be4a3c8e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_builder__layout
+    - node.type.stanford_news
+  module:
+    - layout_builder
+_core:
+  default_config_hash: k6RasWQJ28ihDwlr2ls9LMSx6_AAKp3MEcIMLkDGdCM
+id: node.stanford_news.layout_builder__layout
+field_name: layout_builder__layout
+entity_type: node
+bundle: stanford_news
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_section

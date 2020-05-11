@@ -1,0 +1,25 @@
+uuid: 71617901-c24f-448e-b9bf-03ac3f308efe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_source
+    - node.type.stanford_news
+  module:
+    - link
+_core:
+  default_config_hash: gaBqcvFSpaT9_z6K6gZNOZCA2OGSJEEYarvXB1MWkjo
+id: node.stanford_news.su_news_source
+field_name: su_news_source
+entity_type: node
+bundle: stanford_news
+label: 'External Source'
+description: 'Add an external source for this news item. By adding an external source URL all news lists will link to the external source article instead of a page on this website.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

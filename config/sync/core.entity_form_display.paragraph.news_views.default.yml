@@ -1,0 +1,25 @@
+uuid: 55ed0138-3ac1-4d62-b468-cde7547c3bbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.news_views.su_news_view_field
+    - paragraphs.paragraphs_type.news_views
+  module:
+    - viewfield
+_core:
+  default_config_hash: R7pven-KN41iN5SbfhjhQpZD4CrYgsE-1gNv5XGZgLs
+id: paragraph.news_views.default
+targetEntityType: paragraph
+bundle: news_views
+mode: default
+content:
+  su_news_view_field:
+    type: viewfield_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

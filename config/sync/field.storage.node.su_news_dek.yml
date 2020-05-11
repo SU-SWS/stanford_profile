@@ -1,0 +1,23 @@
+uuid: d5e40ea3-f6c3-46ed-81cc-7055b38f91d2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: S8RHVWak6dF6pjRTFoXEC8MGLReGfRQ0ycjhpdpPNI0
+id: node.su_news_dek
+field_name: su_news_dek
+entity_type: node
+type: string
+settings:
+  max_length: 180
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

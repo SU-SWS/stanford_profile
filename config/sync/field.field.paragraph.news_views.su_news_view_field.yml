@@ -1,0 +1,45 @@
+uuid: e5a14100-5bb0-48f4-99e9-2a5b3961f598
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_news_view_field
+    - paragraphs.paragraphs_type.news_views
+  module:
+    - viewfield
+_core:
+  default_config_hash: 0A6HSxgBO1PL3ZSQx0zZGJ8g4nDXrSfEWrs17LnM-6Y
+id: paragraph.news_views.su_news_view_field
+field_name: su_news_view_field
+entity_type: paragraph
+bundle: news_views
+label: 'News View Field'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  force_default: false
+  allowed_views:
+    stanford_news: stanford_news
+    content: '0'
+    block_content: '0'
+    files: '0'
+    frontpage: '0'
+    media: '0'
+    media_library: '0'
+    user_admin_people: '0'
+    content_recent: '0'
+    redirect: '0'
+    taxonomy_term: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+  allowed_display_types:
+    block: block
+    feed: '0'
+    default: '0'
+    page: '0'
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

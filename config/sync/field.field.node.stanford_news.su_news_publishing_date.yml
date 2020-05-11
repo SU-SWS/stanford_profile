@@ -1,0 +1,23 @@
+uuid: a7940941-119c-40a1-925d-d8a75eb6fab3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_publishing_date
+    - node.type.stanford_news
+  module:
+    - datetime
+_core:
+  default_config_hash: ximYglYy7DX5R6gU-Tz6Q9Cbmu5Zyi8O6-S4GrfakJw
+id: node.stanford_news.su_news_publishing_date
+field_name: su_news_publishing_date
+entity_type: node
+bundle: stanford_news
+label: 'Publishing Date'
+description: 'The “publishing date” will appear next to the “byline” below the headline and dek on the article page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

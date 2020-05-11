@@ -21,7 +21,7 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '/node/*'
+    pages: "/node/*\r\n/news*"
     negate: true
     context_mapping: {  }
   response_code:

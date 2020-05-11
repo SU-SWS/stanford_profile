@@ -1,0 +1,21 @@
+uuid: a083e38c-41c3-4485-be24-56fd5c866ab2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_headline
+    - node.type.stanford_news
+_core:
+  default_config_hash: 5S0TjddTnoZMjs0Zt8Uq7kTxw-yHK_w1vrN6h3MtSkY
+id: node.stanford_news.su_news_headline
+field_name: su_news_headline
+entity_type: node
+bundle: stanford_news
+label: Headline
+description: 'Maximum 70 characters.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

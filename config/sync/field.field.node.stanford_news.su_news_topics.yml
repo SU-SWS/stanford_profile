@@ -1,0 +1,31 @@
+uuid: 2aee6c51-3f19-4208-8f20-e6452db2b8e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_topics
+    - node.type.stanford_news
+    - taxonomy.vocabulary.stanford_news_topics
+_core:
+  default_config_hash: aGo_HF96wAlWL3Hc8355ex3SBgbxfSbk6uq3hWmyVxo
+id: node.stanford_news.su_news_topics
+field_name: su_news_topics
+entity_type: node
+bundle: stanford_news
+label: 'News Topics Terms'
+description: 'Add all topic terms for your article here. Note, the top 3 topic terms in this list will be displayed on the list page teaser and at the top of the article page. The complete list of terms will be displayed at the end of the article page. You can rearrange the list using the drag-drop functionality'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      stanford_news_topics: stanford_news_topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
