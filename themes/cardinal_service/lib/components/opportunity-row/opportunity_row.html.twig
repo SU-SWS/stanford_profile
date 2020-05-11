@@ -1,6 +1,6 @@
 <div{{ attributes.addClass('su-opportunity-result') }}>
   <div class="flex-container su-card__contents">
-    <div class="{% if image %}flex-9-of-12{% endif %}">
+    <div class="{% if image|render|striptags('<drupal-render-placeholder> <img> <picture> <source>')|trim  %}flex-9-of-12{% endif %}">
       <div class="su-opportunity-type">
         <div>
           {{ type_list }}
@@ -41,7 +41,7 @@
     {% if image %}
       <div class="flex-3-of-12">
         <div class="su-opportunity-img">
-          {{ image }}
+          {{ image|render|striptags('<drupal-render-placeholder> <img> <picture> <source>')|raw }}
         </div>
       </div>
     {% endif %}

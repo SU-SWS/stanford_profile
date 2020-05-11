@@ -7,9 +7,31 @@
   @include margin(0 0 2em 0);
   position: relative;
 
-  .su-opportunity-type {
+  .su-opp-type {
+    margin-bottom: 12px;
+
     div {
       display: inline-block;
+    }
+  }
+
+  a {
+    @include link($su-color-bright-red);
+    text-decoration: none;
+  }
+
+  @include grid-media-max('lg') {
+    .flex-9-of-12 {
+      @include flex-column(12);
+    }
+
+    .flex-3-of-12 {
+      .image,
+      picture,
+      source,
+      img {
+        display: none;
+      }
     }
   }
 
