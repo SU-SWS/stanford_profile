@@ -23,7 +23,7 @@ class BasicPageParagraphsCest {
     $I->waitForElementVisible('#row-0');
     $I->click('Edit', '#row-0');
     $I->waitForElement('.MuiAutocomplete-input');
-    $I->fillField('Subhead', 'SubHead text');
+    $I->fillField('Superhead', 'Superhead text');
     $I->fillField('Headline', 'Headline');
     $I->fillField('URL', 'http://google.com');
     $I->fillField('Link text', 'Google Link');
@@ -31,7 +31,7 @@ class BasicPageParagraphsCest {
     $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
     $I->wait(1);
     $I->click('Save', '#edit-actions');
-    $I->canSee('SubHead text');
+    $I->canSee('Superhead text');
     $I->canSee('Headline');
     $I->canSeeLink('Google Link', 'http://google.com/');
   }
