@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.su_news_view_field
     - paragraphs.paragraphs_type.news_views
+    - views.view.stanford_news
   module:
     - viewfield
 _core:
@@ -17,7 +18,13 @@ label: 'News View Field'
 description: ''
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    token_help: ''
+    display_id: term_block
+    arguments: ''
+    items_to_display: '3'
+    target_uuid: c7aec497-a609-4e72-a764-3d964d87ff9c
 default_value_callback: ''
 settings:
   force_default: false
@@ -25,19 +32,10 @@ settings:
     stanford_news: stanford_news
     content: '0'
     block_content: '0'
-    files: '0'
-    frontpage: '0'
-    media: '0'
     media_library: '0'
-    user_admin_people: '0'
-    content_recent: '0'
     redirect: '0'
-    taxonomy_term: '0'
-    who_s_new: '0'
-    who_s_online: '0'
   allowed_display_types:
     block: block
-    feed: '0'
     default: '0'
     page: '0'
   handler: 'default:view'

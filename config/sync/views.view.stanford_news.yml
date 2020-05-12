@@ -641,6 +641,7 @@ display:
       display_extenders: {  }
       use_ajax: false
       title: News
+      css_class: 'stanford-news--list stanford-news--list-filtered'
     cache_metadata:
       max-age: -1
       contexts:
@@ -659,7 +660,7 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: 'Term Block - All Results'
+    display_title: 'List - All Items'
     position: 1
     display_options:
       display_extenders: {  }
@@ -675,6 +676,7 @@ display:
         empty: false
         style: false
         row: false
+        css_class: false
       exposed_form:
         type: basic
         options:
@@ -685,7 +687,7 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-      display_description: ''
+      display_description: 'Term Block - All Results'
       arguments: {  }
       filters:
         status:
@@ -837,7 +839,8 @@ display:
               plugin: views_row
               source: edit_node
       block_category: 'News Lists (Views)'
-      block_description: 'Term Block (All Results)'
+      block_description: 'News List - All Items'
+      css_class: 'stanford-news--list stanford-news--list-any'
     cache_metadata:
       max-age: -1
       contexts:
@@ -856,7 +859,7 @@ display:
   term_block:
     display_plugin: block
     id: term_block
-    display_title: 'Term Block'
+    display_title: 'List - With Filter'
     position: 1
     display_options:
       display_extenders: {  }
@@ -872,6 +875,7 @@ display:
         empty: false
         style: false
         row: false
+        css_class: false
       exposed_form:
         type: basic
         options:
@@ -882,7 +886,7 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-      display_description: ''
+      display_description: 'Term Block - Filtered'
       arguments:
         tid:
           id: tid
@@ -1081,7 +1085,8 @@ display:
               plugin: views_row
               source: edit_node
       block_category: 'News Lists (Views)'
-      block_description: 'Term Block (Filtered Results)'
+      block_description: 'News List - With Filter'
+      css_class: 'stanford-news--list stanford-news--list-filtered'
     cache_metadata:
       max-age: -1
       contexts:
@@ -1101,7 +1106,7 @@ display:
   topics_list:
     display_plugin: block
     id: topics_list
-    display_title: 'Topics List'
+    display_title: 'Topics Links - With Filter'
     position: 5
     display_options:
       display_extenders: {  }
@@ -1229,7 +1234,7 @@ display:
           entity_type: node
           entity_field: nid
           plugin_id: node_nid
-      block_description: 'Topics List'
+      block_description: 'News Topics Links - With Filter'
       allow:
         items_per_page: true
       pager:
@@ -1252,11 +1257,11 @@ display:
   vertical_teaser_term:
     display_plugin: block
     id: vertical_teaser_term
-    display_title: 'Vertical Teaser Term'
+    display_title: 'Cards - All Items'
     position: 3
     display_options:
       display_extenders: {  }
-      display_description: ''
+      display_description: 'Vertical Teaser Term'
       arguments:
         nid:
           id: nid
@@ -1299,6 +1304,7 @@ display:
         style: false
         row: false
         pager: false
+        css_class: false
       style:
         type: grid
         options:
@@ -1374,7 +1380,8 @@ display:
           items_per_page: 3
           offset: 0
       block_category: 'News Lists (Views)'
-      block_description: 'Vertical Teaser Term'
+      block_description: 'News Cards - All Items'
+      css_class: 'stanford-news--cards stanford-news--cards-any'
     cache_metadata:
       max-age: -1
       contexts:
@@ -1393,11 +1400,11 @@ display:
   vertical_teaser_term_list:
     display_plugin: block
     id: vertical_teaser_term_list
-    display_title: 'Vertical Teaser Term List'
+    display_title: 'Cards - With Filter'
     position: 3
     display_options:
       display_extenders: {  }
-      display_description: ''
+      display_description: 'Vertical Teaser Term List'
       arguments:
         tid:
           id: tid
@@ -1442,6 +1449,7 @@ display:
         style: false
         row: false
         fields: false
+        css_class: false
       pager:
         type: infinite_scroll
         options:
@@ -1464,11 +1472,16 @@ display:
             button_text: 'Load More'
             automatically_load_content: false
       style:
-        type: default
+        type: grid
         options:
           grouping: {  }
-          row_class: ''
-          default_row_class: true
+          columns: 3
+          automatic_width: false
+          alignment: horizontal
+          col_class_default: false
+          col_class_custom: flex-4-of-12
+          row_class_default: false
+          row_class_custom: 'flex-container more-news-view'
       row:
         type: ui_patterns
         options:
@@ -1480,6 +1493,8 @@ display:
             su_news_dek: 0
             su_news_topics: 0
             su_news_source: 0
+            view_node: 0
+            edit_node: 0
           separator: ''
           hide_empty: 0
           pattern: news-vertical-teaser
@@ -1500,14 +1515,29 @@ display:
               weight: 0
               plugin: views_row
               source: su_news_featured_media
+            'views_row:view_node':
+              destination: news_url
+              weight: 1
+              plugin: views_row
+              source: view_node
+            'views_row:edit_node':
+              destination: news_footer
+              weight: 2
+              plugin: views_row
+              source: edit_node
+            'views_row:su_news_source':
+              destination: news_source
+              weight: 3
+              plugin: views_row
+              source: su_news_source
             'views_row:su_news_headline':
               destination: news_vertical_teaser_headline
-              weight: 1
+              weight: 4
               plugin: views_row
               source: su_news_headline
             'views_row:su_news_topics':
-              destination: news_footer
-              weight: 2
+              destination: news_topics
+              weight: 5
               plugin: views_row
               source: su_news_topics
       fields:
@@ -1700,7 +1730,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1847,8 +1877,115 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: true
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'edit this news item'
+          output_url_as_text: false
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link_edit
       block_category: 'News Lists (Views)'
-      block_description: 'Vertical Teaser Term List'
+      block_description: 'News Cards - With Filter'
+      css_class: 'stanford-news--cards stanford-news--cards-filtered'
     cache_metadata:
       max-age: -1
       contexts:
