@@ -796,46 +796,46 @@ display:
             alert: default
             card: default
           pattern_mapping:
-            'views_row:edit_node':
-              destination: news_list_topics
-              weight: 0
-              plugin: views_row
-              source: edit_node
             'views_row:view_node':
               destination: news_url
-              weight: 1
+              weight: 0
               plugin: views_row
               source: view_node
             'views_row:su_news_publishing_date':
               destination: news_list_publishing_date
-              weight: 2
+              weight: 1
               plugin: views_row
               source: su_news_publishing_date
             'views_row:su_news_source':
               destination: news_source
-              weight: 3
+              weight: 2
               plugin: views_row
               source: su_news_source
             'views_row:su_news_featured_media':
               destination: news_list_image
-              weight: 4
+              weight: 3
               plugin: views_row
               source: su_news_featured_media
             'views_row:su_news_dek':
               destination: news_list_dek
-              weight: 5
+              weight: 4
               plugin: views_row
               source: su_news_dek
             'views_row:su_news_headline':
               destination: news_list_headline
-              weight: 6
+              weight: 5
               plugin: views_row
               source: su_news_headline
             'views_row:su_news_topics':
               destination: news_list_topics
-              weight: 7
+              weight: 6
               plugin: views_row
               source: su_news_topics
+            'views_row:edit_node':
+              destination: news_list_footer
+              weight: 7
+              plugin: views_row
+              source: edit_node
       block_category: 'News Lists (Views)'
       block_description: 'Term Block (All Results)'
     cache_metadata:
@@ -1024,6 +1024,7 @@ display:
             su_news_topics: 0
             su_news_source: 0
             view_node: 0
+            edit_node: 0
           separator: ''
           hide_empty: 0
           pattern: news-list
@@ -1074,6 +1075,11 @@ display:
               weight: 6
               plugin: views_row
               source: su_news_topics
+            'views_row:edit_node':
+              destination: news_list_footer
+              weight: 7
+              plugin: views_row
+              source: edit_node
       block_category: 'News Lists (Views)'
       block_description: 'Term Block (Filtered Results)'
     cache_metadata:
@@ -1316,6 +1322,7 @@ display:
             su_news_topics: 0
             su_news_source: 0
             view_node: 0
+            edit_node: 0
           separator: ''
           hide_empty: 0
           pattern: news-vertical-teaser
@@ -1356,6 +1363,11 @@ display:
               weight: 4
               plugin: views_row
               source: su_news_topics
+            'views_row:edit_node':
+              destination: news_footer
+              weight: 5
+              plugin: views_row
+              source: edit_node
       pager:
         type: some
         options:
@@ -1467,9 +1479,21 @@ display:
             su_news_headline: 0
             su_news_dek: 0
             su_news_topics: 0
+            su_news_source: 0
           separator: ''
           hide_empty: 0
           pattern: news-vertical-teaser
+          variants:
+            media: default
+            lockup: a
+            hero: default
+            brandbar: default
+            link: default
+            button: default
+            date-stacked: default
+            cta: default
+            alert: default
+            card: default
           pattern_mapping:
             'views_row:su_news_featured_media':
               destination: news_vertical_teaser_image
@@ -1482,11 +1506,10 @@ display:
               plugin: views_row
               source: su_news_headline
             'views_row:su_news_topics':
-              destination: news_topics
+              destination: news_footer
               weight: 2
               plugin: views_row
               source: su_news_topics
-          pattern_variant: default
       fields:
         su_news_publishing_date:
           id: su_news_publishing_date
