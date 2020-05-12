@@ -1,7 +1,9 @@
 uuid: b5c7ab2b-7e78-45af-8fea-f35f2a3ea87f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.stanford_news
 _core:
   default_config_hash: HX6fOUs_BkV1-Mu76C8-gEbIxSOwu5bwWo-L_YnyBdc
 id: node_type_stanford_news
