@@ -11,6 +11,12 @@
     &.ptype-stanford-media-caption {
       max-width: 980px;
     }
+
+    &.ptype-stanford-card {
+      img {
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -39,3 +45,5 @@
 .node-stanford-page-su-page-banner {
   @include modular-spacing('margin-bottom', 4);
 }
+
+
