@@ -188,3 +188,29 @@
     }
   }
 }
+
+.views-exposed-filter-block {
+  &.su-opportunities-filtered-all {
+    label {
+      margin-top: 0;
+      max-width: 100%;
+    }
+
+    .form-item {
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        width: 50%;
+        float: left;
+      }
+
+      &:nth-child(1n+4) {
+        display: none;
+      }
+    }
+
+    .form-actions {
+      float: right;
+    }
+  }
+}

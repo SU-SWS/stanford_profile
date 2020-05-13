@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * cardinal_service_blocks.module
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function cardinal_service_blocks_form_layout_builder_configure_block_alter(&$form, FormStateInterface $form_state, $form_id) {
+  /** @var \Drupal\layout_builder\SectionComponent $component */
+  $component = $form_state->getFormObject()->getCurrentComponent();
+
+  // We only want to modify views exposed filters.
+  if (strpos($component->get('configuration')['id'], 'views_exposed_filter_block') !== 0) {
+    return;
+  }
+
+  $form['settings']['views_action_url'] = [
+    '#type' => 'textfield',
+    '#title' => t('Form action URL'),
+    '#description' => t('Leave empty to submit the form to the page it is displayed on'),
+    '#default_value' => $component->getThirdPartySetting('cardinal_service_blocks', 'action_url'),
+  ];
+  array_unshift($form['#submit'], '_cardinal_service_blocks_block_form_submit');
+}
+
+/**
+ * Views exposed form block configure submit handler.
+ *
+ * @param array $form
+ *   Complete form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   Current form state.
+ */
+function _cardinal_service_blocks_block_form_submit(array &$form, FormStateInterface $form_state) {
+  /** @var \Drupal\layout_builder\SectionComponent $section_component */
+  $section_component = $form_state->getFormObject()->getCurrentComponent();
+  // Clear the settings first.
+  $section_component->unsetThirdPartySetting('cardinal_service_blocks', 'action_url');
+
+  // If a url is provided, store those settings.
+  if ($url = $form_state->getValue(['settings', 'views_action_url'])) {
+    $section_component->setThirdPartySetting('cardinal_service_blocks', 'action_url', $url);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function cardinal_service_blocks_preprocess_block(&$variables) {
+  // For exposed filter blocks, set the action of the form to the desired url.
+  if ($variables['base_plugin_id'] == 'views_exposed_filter_block' && !empty($variables['configuration']['action_url'])) {
+    $variables['content']['#action'] = $variables['configuration']['action_url'];
+  }
+}

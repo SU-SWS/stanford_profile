@@ -32,6 +32,9 @@ class OpportunitiesFilterCest {
     $I->waitForAjaxToFinish();
     $I->click('Add block');
     $I->waitForAjaxToFinish();
+    
+    // Scroll up because the admin toolbar sometimes overlays the task links.
+    $I->scrollTo(['css' => '.su-brand-bar']);
     $I->click('Save layout');
     $I->canSeeNumberOfElements('.views-row', 10);
 
@@ -50,6 +53,41 @@ class OpportunitiesFilterCest {
     $I->canSee('Showing Results For:');
   }
 
+  /**
+   * Test the exposed filters action works correctly.
+   */
+  public function testViewExposedFilter(FunctionalTester $I) {
+    $I->logInWithRole('site_manager');
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => 'Filters Page',
+    ]);
+    $filter_url = $node->toUrl()->toString();
+    $this->createOpportunityNodes($I);
+
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => 'Test Page',
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->click('Layout');
+    $I->click('Add block');
+    $I->waitForAjaxToFinish();
+    $I->click('Exposed form: su_opportunities-filtered_all');
+    $I->waitForAjaxToFinish();
+    $I->fillField('Form action URL', $filter_url);
+
+    $I->click('Add block');
+    $I->waitForAjaxToFinish();
+    $I->click('Save layout');
+    $I->click('Apply');
+    $I->canSeeInCurrentUrl($filter_url);
+    $I->wait(5);
+  }
+
+  /**
+   * Create some opportunity nodes.
+   */
   protected function createOpportunityNodes(FunctionalTester $I) {
     $terms = $this->createTerms($I);
     for ($j = 0; $j <= 10; $j++) {
@@ -65,6 +103,9 @@ class OpportunitiesFilterCest {
     }
   }
 
+  /**
+   * Create some taxonomy terms.
+   */
   protected function createTerms(FunctionalTester $I) {
     $vids = [
       'su_opportunity_open_to',

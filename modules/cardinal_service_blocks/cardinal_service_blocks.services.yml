@@ -1,0 +1,5 @@
+services:
+  cardinal_service_blocks.block_event_subscriber:
+    class: '\Drupal\cardinal_service_blocks\EventSubscriber\BlockEventSubscriber'
+    tags:
+      - { name: 'event_subscriber' }

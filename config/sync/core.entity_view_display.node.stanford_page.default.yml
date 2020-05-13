@@ -48,6 +48,7 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
+            third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
@@ -75,6 +76,7 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
+            third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
@@ -101,6 +103,7 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 0
+            third_party_settings: {  }
           9ec5b37b-33a4-4aca-b787-7f0584234d1a:
             uuid: 9ec5b37b-33a4-4aca-b787-7f0584234d1a
             region: main
@@ -122,6 +125,7 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: -9
+            third_party_settings: {  }
           c40ac234-fff7-4c9d-8a34-03fb9d335617:
             uuid: c40ac234-fff7-4c9d-8a34-03fb9d335617
             region: main
@@ -133,6 +137,7 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: -10
+            third_party_settings: {  }
         third_party_settings: {  }
   layout_library:
     enable: true
@@ -158,8 +163,12 @@ third_party_settings:
         core: {  }
       allowed_layouts:
         - jumpstart_ui_one_column
+        - jumpstart_ui_one_column_overlay
         - jumpstart_ui_two_column
         - jumpstart_ui_three_column
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+    allowed_block_categories: {  }
 id: node.stanford_page.default
 targetEntityType: node
 bundle: stanford_page
