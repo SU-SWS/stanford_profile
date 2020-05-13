@@ -1,6 +1,14 @@
 @charset "UTF-8";
-
 @import '../config';
+
+// Home page hack.
+.page-home {
+  .stanford-page {
+    &.title {
+      @include sr-only;
+    }
+  }
+}
 
 // Styles for the full width page. Need to have margins on text elements and cards.
 // And need to have no margins on the full bleed banner images.

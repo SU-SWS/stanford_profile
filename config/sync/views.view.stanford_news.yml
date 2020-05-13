@@ -639,7 +639,7 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
-      use_ajax: false
+      use_ajax: true
       title: News
       css_class: 'stanford-news--list stanford-news--list-filtered'
     cache_metadata:
@@ -1818,7 +1818,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -1861,8 +1861,8 @@ display:
           click_sort_column: uri
           type: link
           settings:
-            trim_length: 80
-            url_only: false
+            trim_length: null
+            url_only: true
             url_plain: false
             rel: '0'
             target: '0'
