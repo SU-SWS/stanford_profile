@@ -1,15 +1,14 @@
-uuid: a4b899c7-16cd-4b99-994e-5560386d61da
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.stanford_news.layout_builder__layout
     - field.field.node.stanford_news.su_news_banner
-    - field.field.node.stanford_news.su_news_banner_media_caption
     - field.field.node.stanford_news.su_news_byline
     - field.field.node.stanford_news.su_news_components
     - field.field.node.stanford_news.su_news_dek
     - field.field.node.stanford_news.su_news_featured_media
+    - field.field.node.stanford_news.su_news_banner_media_caption
     - field.field.node.stanford_news.su_news_headline
     - field.field.node.stanford_news.su_news_publishing_date
     - field.field.node.stanford_news.su_news_source
@@ -23,7 +22,6 @@ dependencies:
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
-    - layout_library
     - stanford_news
     - user
     - views
@@ -325,8 +323,6 @@ third_party_settings:
             additional: {  }
             weight: 0
         third_party_settings: {  }
-  layout_library:
-    enable: false
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
@@ -348,8 +344,6 @@ third_party_settings:
         - jumpstart_ui_three_column
         - stanford_news_byline
         - ds_reset
-_core:
-  default_config_hash: RcTWTdBrgslbkJBeaoDKY1E5gJlsPkPruklxXU_PCVQ
 id: node.stanford_news.default
 targetEntityType: node
 bundle: stanford_news
@@ -435,5 +429,6 @@ content:
     region: content
 hidden:
   layout_builder__layout: true
+  layout_selection: true
   links: true
   su_news_source: true

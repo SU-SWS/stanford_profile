@@ -1,12 +1,9 @@
-uuid: eb3fbd46-3611-4636-8a5b-ff578a4e661b
 langcode: en
 status: true
 dependencies:
   config:
     - system.menu.news-topics
     - taxonomy.vocabulary.stanford_news_topics
-_core:
-  default_config_hash: fE_T5t5Ha3kN-GD6OjPrBzIX8VrZsXYv8D3KUa9VRJI
 id: topics_taxonomy_menu
 label: 'Topics Taxonomy Menu'
 vocabulary: stanford_news_topics

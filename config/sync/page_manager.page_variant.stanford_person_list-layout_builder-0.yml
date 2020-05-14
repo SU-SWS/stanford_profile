@@ -1,0 +1,120 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.stanford_person_list
+  module:
+    - ctools
+id: stanford_person_list-layout_builder-0
+label: 'People - Layout Builder'
+variant: layout_builder
+variant_settings:
+  id: layout_builder
+  uuid: b46ec802-1e92-419f-9720-7fef0af71047
+  label: null
+  weight: 0
+  sections:
+    -
+      layout_id: jumpstart_ui_one_column
+      layout_settings:
+        extra_classes: su-section-header
+        centered: centered-container
+        columns: default
+        label: Header
+      components:
+        f715da19-c26c-40dd-a52e-870159339728:
+          uuid: f715da19-c26c-40dd-a52e-870159339728
+          region: main
+          configuration:
+            id: 'views_block:stanford_person_terms-term_name_h1'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: none
+            context_mapping:
+              tid: taxonomy_term
+          additional: {  }
+          weight: 0
+      third_party_settings: {  }
+    -
+      layout_id: jumpstart_ui_two_column
+      layout_settings:
+        extra_classes: su-section-content
+        centered: centered-container
+        orientation: right
+        label: Content
+      components:
+        2c6a80b8-87e3-49d3-81d3-f8d4b6c1904e:
+          uuid: 2c6a80b8-87e3-49d3-81d3-f8d4b6c1904e
+          region: left
+          configuration:
+            id: 'menu_block:stanford-person-type'
+            label: 'Filter By Person Type'
+            provider: menu_block
+            label_display: visible
+            follow: false
+            follow_parent: child
+            level: 1
+            depth: 0
+            expand: false
+            parent: 'stanford-person-type:'
+            suggestion: stanford_person_type
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+        ecc15fe6-4758-4b51-8692-ebaa26f28e60:
+          uuid: ecc15fe6-4758-4b51-8692-ebaa26f28e60
+          region: main
+          configuration:
+            id: 'views_block:stanford_person-grid_list'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: none
+            context_mapping:
+              tid: taxonomy_term
+          additional: {  }
+          weight: 2
+        5efc6f70-507f-41f2-bfeb-6577703e045b:
+          uuid: 5efc6f70-507f-41f2-bfeb-6577703e045b
+          region: main
+          configuration:
+            id: 'views_block:stanford_person_terms-term_description'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: none
+            context_mapping:
+              tid: taxonomy_term
+          additional: {  }
+          weight: 1
+        43db9975-a29d-421d-9dae-b143ec1b076b:
+          uuid: 43db9975-a29d-421d-9dae-b143ec1b076b
+          region: main
+          configuration:
+            id: 'views_block:stanford_person_terms-term_link'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: none
+            context_mapping:
+              tid: taxonomy_term
+          additional: {  }
+          weight: 0
+      third_party_settings: {  }
+page: stanford_person_list
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      stanford_person_types: stanford_person_types
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+selection_logic: and
+static_context: {  }

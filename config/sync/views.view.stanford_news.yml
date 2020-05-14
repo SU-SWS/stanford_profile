@@ -1,4 +1,3 @@
-uuid: c7aec497-a609-4e72-a764-3d964d87ff9c
 langcode: en
 status: true
 dependencies:
@@ -20,8 +19,6 @@ dependencies:
     - ui_patterns_views
     - user
     - views_infinite_scroll
-_core:
-  default_config_hash: aaYmdINCeT9XCySjN_DXW2O_2AQFayQFPxfYmjAZgd8
 id: stanford_news
 label: News
 module: views
@@ -660,7 +657,7 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: 'List - All Items'
+    display_title: List
     position: 1
     display_options:
       display_extenders: {  }
@@ -1257,7 +1254,7 @@ display:
   vertical_teaser_term:
     display_plugin: block
     id: vertical_teaser_term
-    display_title: 'Cards - All Items'
+    display_title: Cards
     position: 3
     display_options:
       display_extenders: {  }
