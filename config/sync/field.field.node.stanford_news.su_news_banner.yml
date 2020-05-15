@@ -1,0 +1,30 @@
+uuid: f778cada-24d7-4895-8c92-310adcbb54b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_banner
+    - media.type.image
+    - media.type.video
+    - node.type.stanford_news
+id: node.stanford_news.su_news_banner
+field_name: su_news_banner
+entity_type: node
+bundle: stanford_news
+label: 'Banner Media'
+description: 'Maximum one banner media. <em>The “banner media” will display as a full-width image or video above the body text area on the article page.</em>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      video: video
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

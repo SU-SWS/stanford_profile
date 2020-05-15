@@ -1,0 +1,19 @@
+uuid: e98d8784-0b76-461b-9b7d-0f874b75658d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_person_telephone
+    - node.type.stanford_person
+id: node.stanford_person.su_person_telephone
+field_name: su_person_telephone
+entity_type: node
+bundle: stanford_person
+label: Telephone
+description: 'The person''s telephone contact number'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

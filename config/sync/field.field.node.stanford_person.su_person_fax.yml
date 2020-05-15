@@ -1,0 +1,19 @@
+uuid: b85f0ef3-baa2-457d-8018-34fc195d2ac3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_person_fax
+    - node.type.stanford_person
+id: node.stanford_person.su_person_fax
+field_name: su_person_fax
+entity_type: node
+bundle: stanford_person
+label: Fax
+description: 'The person''s fax number'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
