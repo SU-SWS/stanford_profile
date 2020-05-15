@@ -57,4 +57,31 @@ class PersonCest {
     $I->see("John Wick");
   }
 
+  /**
+   * Test that the XML sitemap and metatag configuration is set.
+   */
+  public function testXMLMetaDataRevisions(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+
+    // Revision Delete is enabled.
+    $I->amOnPage('/admin/structure/types/manage/stanford_person');
+    $I->seeCheckboxIsChecked("#edit-node-revision-delete-track");
+    $I->seeCheckboxIsChecked("#edit-options-revision");
+    $I->seeInField("edit-minimum-revisions-to-keep", 5);
+
+    // XML Sitemap.
+    $I->amOnPage("/admin/config/search/xmlsitemap/settings");
+    $I->see("Person");
+    $I->amOnPage("/admin/config/search/xmlsitemap/settings/node/stanford_person");
+    $I->selectOption("#edit-xmlsitemap-status", 1);
+
+    // Metatags.
+    $I->amOnPage("/admin/config/search/metatag/page_variant__people-layout_builder-0");
+    $I->canSeeResponseCodeIs(200);
+    $I->amOnPage("/admin/config/search/metatag/page_variant__stanford_person_list-layout_builder-1");
+    $I->canSeeResponseCodeIs(200);
+    $I->amOnPage("/admin/config/search/metatag/node__stanford_person");
+    $I->canSeeResponseCodeIs(200);
+  }
+
 }

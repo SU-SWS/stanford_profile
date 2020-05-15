@@ -104,4 +104,31 @@ class NewsCest {
     $I->see("Test News 3");
   }
 
+  /**
+   * Test that the XML sitemap and metatag configuration is set.
+   */
+  public function testXMLMetaDataRevisions(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+
+    // Revision Delete is enabled.
+    $I->amOnPage('/admin/structure/types/manage/stanford_news');
+    $I->seeCheckboxIsChecked("#edit-node-revision-delete-track");
+    $I->seeCheckboxIsChecked("#edit-options-revision");
+    $I->seeInField("edit-minimum-revisions-to-keep", 5);
+
+    // XML Sitemap.
+    $I->amOnPage("/admin/config/search/xmlsitemap/settings");
+    $I->see("News");
+    $I->amOnPage("/admin/config/search/xmlsitemap/settings/node/stanford_news");
+    $I->selectOption("#edit-xmlsitemap-status", 1);
+
+    // Metatags.
+    $I->amOnPage("/admin/config/search/metatag/page_variant__stanford_news_list-layout_builder-0");
+    $I->canSeeResponseCodeIs(200);
+    $I->amOnPage("/admin/config/search/metatag/page_variant__stanford_news_list_terms-layout_builder-0");
+    $I->canSeeResponseCodeIs(200);
+    $I->amOnPage("/admin/config/search/metatag/node__stanford_news");
+    $I->canSeeResponseCodeIs(200);
+  }
+
 }
