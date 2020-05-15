@@ -53,6 +53,7 @@ class PersonCest {
     ]);
     $I->amOnPage("/person/john-wick");
     $I->see("John Wick");
+    $I->runDrush('cr');
     $I->amOnPage("/people");
     $I->see("John Wick");
   }
@@ -67,7 +68,7 @@ class PersonCest {
     $I->amOnPage('/admin/structure/types/manage/stanford_person');
     $I->seeCheckboxIsChecked("#edit-node-revision-delete-track");
     $I->seeCheckboxIsChecked("#edit-options-revision");
-    $I->seeInField("edit-minimum-revisions-to-keep", 5);
+    $I->seeInField("#edit-minimum-revisions-to-keep", 5);
 
     // XML Sitemap.
     $I->amOnPage("/admin/config/search/xmlsitemap/settings");
