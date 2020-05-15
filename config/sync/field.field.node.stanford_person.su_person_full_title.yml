@@ -1,0 +1,19 @@
+uuid: 6016bb6b-bf1e-42aa-8d56-a5c8a0c4bdc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_person_full_title
+    - node.type.stanford_person
+id: node.stanford_person.su_person_full_title
+field_name: su_person_full_title
+entity_type: node
+bundle: stanford_person
+label: 'Full Title'
+description: 'The person''s full list of titles. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
