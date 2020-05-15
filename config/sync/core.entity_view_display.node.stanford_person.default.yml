@@ -22,6 +22,7 @@ dependencies:
     - field.field.node.stanford_person.su_person_mobile_phone
     - field.field.node.stanford_person.su_person_photo
     - field.field.node.stanford_person.su_person_research
+    - field.field.node.stanford_person.su_person_research_interests
     - field.field.node.stanford_person.su_person_short_title
     - field.field.node.stanford_person.su_person_telephone
     - field.field.node.stanford_person.su_person_type_group
@@ -443,7 +444,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 3
+            weight: 4
           b6ebfc7d-2035-4b63-a17c-adc15ba17fbe:
             uuid: b6ebfc7d-2035-4b63-a17c-adc15ba17fbe
             region: main
@@ -465,7 +466,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 2
+            weight: 3
           1c0fe326-6520-4837-8022-65865025a1ac:
             uuid: 1c0fe326-6520-4837-8022-65865025a1ac
             region: main
@@ -488,7 +489,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
+            weight: 2
           42f48ce2-9cfb-442c-9c7a-55a63ddf63e4:
             uuid: 42f48ce2-9cfb-442c-9c7a-55a63ddf63e4
             region: main
@@ -509,6 +510,29 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
+          cc3fd331-6cc8-4988-88ed-2312832a2e19:
+            uuid: cc3fd331-6cc8-4988-88ed-2312832a2e19
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_person:su_person_components'
+              label: Components
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-person-components
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
