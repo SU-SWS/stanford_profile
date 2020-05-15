@@ -95,3 +95,18 @@ function stanford_profile_post_update_8003() {
   }
   $view_display->save();
 }
+
+/**
+ * Send out notification message about news and person content types.
+ */
+function stanford_profile_post_update_8013() {
+  \Drupal::service('module_installer')->install(['stanford_notifications']);
+  /** @var \Drupal\stanford_notifications\NotificationServiceInterface $notifications */
+  $notifications = \Drupal::service('notification_service');
+
+  $message = 'You can now create "News" content. See <a href="https://userguide.sites.stanford.edu/tour/news">the user guide</a> for more information';
+  $notifications->addNotification($message, ['site_manager', 'contributor']);
+
+  $message = 'You can now create "Person" content. See <a href="https://userguide.sites.stanford.edu/tour/person">the user guide</a> for more information';
+  $notifications->addNotification($message, ['site_manager', 'contributor']);
+}
