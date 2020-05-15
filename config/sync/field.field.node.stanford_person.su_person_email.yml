@@ -1,0 +1,19 @@
+uuid: b6f67eaa-2d23-4283-ae07-feabfe851a94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_person_email
+    - node.type.stanford_person
+id: node.stanford_person.su_person_email
+field_name: su_person_email
+entity_type: node
+bundle: stanford_person
+label: Email
+description: 'The person''s email.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

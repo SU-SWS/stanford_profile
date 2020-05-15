@@ -1,0 +1,19 @@
+uuid: 18267444-0218-41ff-97ff-6904639b0631
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_person_education
+    - node.type.stanford_person
+id: node.stanford_person.su_person_education
+field_name: su_person_education
+entity_type: node
+bundle: stanford_person
+label: Education
+description: 'A list of education degrees or other notable items. eg: BA, Psychology, Stanford University, 1991'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

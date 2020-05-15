@@ -1,0 +1,24 @@
+uuid: 89a5085d-2a80-4eaa-a971-b82008143f8f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - node_revision_delete
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+      - stanford-person-type
+    parent: 'main:'
+  node_revision_delete:
+    minimum_revisions_to_keep: 5
+    minimum_age_to_delete: 0
+    when_to_delete: 0
+name: Person
+type: stanford_person
+description: 'Stanford Person type with bio and supporting information. Content-type for syncing with CAP data.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

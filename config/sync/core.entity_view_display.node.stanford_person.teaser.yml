@@ -1,0 +1,71 @@
+uuid: 5dd1ebc9-f284-4a5f-b64c-3ccae280d2ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.stanford_person.body
+    - field.field.node.stanford_person.layout_builder__layout
+    - field.field.node.stanford_person.su_person_affiliations
+    - field.field.node.stanford_person.su_person_components
+    - field.field.node.stanford_person.su_person_education
+    - field.field.node.stanford_person.su_person_email
+    - field.field.node.stanford_person.su_person_fax
+    - field.field.node.stanford_person.su_person_first_name
+    - field.field.node.stanford_person.su_person_full_title
+    - field.field.node.stanford_person.su_person_last_name
+    - field.field.node.stanford_person.su_person_links
+    - field.field.node.stanford_person.su_person_location_address
+    - field.field.node.stanford_person.su_person_location_name
+    - field.field.node.stanford_person.su_person_mail_code
+    - field.field.node.stanford_person.su_person_map_url
+    - field.field.node.stanford_person.su_person_mobile_phone
+    - field.field.node.stanford_person.su_person_photo
+    - field.field.node.stanford_person.su_person_research
+    - field.field.node.stanford_person.su_person_short_title
+    - field.field.node.stanford_person.su_person_telephone
+    - field.field.node.stanford_person.su_person_type_group
+    - node.type.stanford_person
+  module:
+    - text
+    - user
+id: node.stanford_person.teaser
+targetEntityType: node
+bundle: stanford_person
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  layout_builder__layout: true
+  su_person_affiliations: true
+  su_person_components: true
+  su_person_education: true
+  su_person_email: true
+  su_person_fax: true
+  su_person_first_name: true
+  su_person_full_title: true
+  su_person_last_name: true
+  su_person_links: true
+  su_person_location_address: true
+  su_person_location_name: true
+  su_person_mail_code: true
+  su_person_map_url: true
+  su_person_mobile_phone: true
+  su_person_photo: true
+  su_person_research: true
+  su_person_research_interests: true
+  su_person_short_title: true
+  su_person_telephone: true
+  su_person_type_group: true
