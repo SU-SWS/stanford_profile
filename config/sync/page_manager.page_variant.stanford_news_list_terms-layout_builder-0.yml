@@ -1,0 +1,136 @@
+uuid: c6081ac6-c071-43db-86f7-15c02df7e9dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.stanford_news_list_terms
+  module:
+    - ctools
+id: stanford_news_list_terms-layout_builder-0
+label: 'News - Layout Builder'
+variant: layout_builder
+variant_settings:
+  id: layout_builder
+  uuid: e12aa1f8-6db0-4a81-99b3-37e450658df1
+  label: null
+  weight: 0
+  sections:
+    -
+      layout_id: jumpstart_ui_one_column
+      layout_settings:
+        extra_classes: section-stanford-news-views-header
+        centered: centered-container
+        columns: default
+        label: 'Section - Header'
+      components:
+        1d8aa00c-c36f-403c-8c3a-3605cd3762b4:
+          uuid: 1d8aa00c-c36f-403c-8c3a-3605cd3762b4
+          region: main
+          configuration:
+            id: jumpstart_ui_page_heading
+            label: 'Heading Block'
+            provider: jumpstart_ui
+            label_display: '0'
+            heading_text: News
+            wrapper: h1
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+      third_party_settings: {  }
+    -
+      layout_id: jumpstart_ui_two_column
+      layout_settings:
+        extra_classes: section-news-views-views
+        centered: centered-container
+        orientation: right
+        label: Views
+      components:
+        38316c9e-0d05-42d0-9ed8-17eda758a622:
+          uuid: 38316c9e-0d05-42d0-9ed8-17eda758a622
+          region: main
+          configuration:
+            id: 'views_block:stanford_news-term_block'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: '20'
+            context_mapping: {  }
+          additional: {  }
+          weight: 2
+        4335fb4b-0c3a-4a4c-9e2f-5310d6a76692:
+          uuid: 4335fb4b-0c3a-4a4c-9e2f-5310d6a76692
+          region: main
+          configuration:
+            id: jumpstart_ui_skipnav_main_anchor
+            label: 'Main content anchor target'
+            provider: jumpstart_ui
+            label_display: '0'
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+        38315261-6ab0-4454-99e5-91b0ccfe6236:
+          uuid: 38315261-6ab0-4454-99e5-91b0ccfe6236
+          region: left
+          configuration:
+            id: 'menu_block:news-topics'
+            label: 'Topics Menu'
+            provider: menu_block
+            label_display: '0'
+            follow: false
+            follow_parent: child
+            level: 1
+            depth: 0
+            expand: false
+            parent: 'news-topics:'
+            suggestion: news_topics
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+        fd40f8b0-c0cd-4f55-b599-cb52db332147:
+          uuid: fd40f8b0-c0cd-4f55-b599-cb52db332147
+          region: main
+          configuration:
+            id: 'views_block:stanford_news_terms-results_for'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: none
+            context_mapping: {  }
+          additional: {  }
+          weight: 1
+      third_party_settings: {  }
+    -
+      layout_id: jumpstart_ui_one_column
+      layout_settings:
+        extra_classes: ''
+        centered: centered-container
+        columns: default
+        label: 'Newsletter Signup Block'
+      components:
+        5bebd3b3-a005-4f0e-b6ae-6dde5947c92e:
+          uuid: 5bebd3b3-a005-4f0e-b6ae-6dde5947c92e
+          region: main
+          configuration:
+            id: signup_block
+            label: 'Newsletter Signup'
+            provider: stanford_news
+            label_display: '0'
+            form_action: ''
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+      third_party_settings: {  }
+page: stanford_news_list_terms
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      stanford_news_topics: stanford_news_topics
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+selection_logic: and
+static_context: {  }

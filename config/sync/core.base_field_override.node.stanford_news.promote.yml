@@ -1,0 +1,22 @@
+uuid: 9f3ca067-ef72-4a8b-a6ec-efa0eef6357b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_news
+id: node.stanford_news.promote
+field_name: promote
+entity_type: node
+bundle: stanford_news
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

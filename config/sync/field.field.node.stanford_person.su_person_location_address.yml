@@ -1,0 +1,27 @@
+uuid: de6b606a-02ec-4a75-93c5-42314885cc6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_person_location_address
+    - node.type.stanford_person
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_html: '0'
+    stanford_minimal_html: '0'
+    plain_text: '0'
+id: node.stanford_person.su_person_location_address
+field_name: su_person_location_address
+entity_type: node
+bundle: stanford_person
+label: 'Location Address'
+description: 'Street and room of location.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

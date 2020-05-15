@@ -1,0 +1,16 @@
+uuid: 6ba90761-5491-43e1-a246-3e8d1a98b00d
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.stanford-person-type
+    - taxonomy.vocabulary.stanford_person_types
+id: person_type_menu
+label: 'Person Type Menu'
+vocabulary: stanford_person_types
+menu: stanford-person-type
+expanded: false
+depth: 0
+menu_parent: 'stanford-person-type:'
+description_field_name: description
+use_term_weight_order: true
