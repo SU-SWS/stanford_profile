@@ -1,5 +1,12 @@
 # Stanford Profile
 
+8.x-1.10
+--------------------------------------------------------------------------------
+_Release Date: 2020-05-18_
+
+- Added field permissions to restrict access to the site settings url field.
+- Use drupal state & config overrides to set the home, 404, and 403 pages.
+
 8.x-1.9
 --------------------------------------------------------------------------------
 _Release Date: 2020-05-15_
