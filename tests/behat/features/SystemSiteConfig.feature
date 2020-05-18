@@ -9,6 +9,7 @@ Feature: System Site Config
     And I am on the homepage
     Then I should not see "Foo Bar Site"
     And I am on "/admin/config/system/basic-site-settings"
+    Then I should not see "Site URL"
     Then I fill in "Site Name" with "Foo Bar Site"
     And I press "Save"
     And the cache has been cleared
