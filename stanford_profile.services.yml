@@ -7,3 +7,8 @@ services:
     arguments: ['@file_system', '@logger.factory']
     tags:
       - { name: 'event_subscriber' }
+  stanford_profile.config_overrider:
+    class: Drupal\stanford_profile\Config\ConfigOverrides
+    arguments: ['@state']
+    tags:
+      - {name: config.factory.override, priority: 5}
