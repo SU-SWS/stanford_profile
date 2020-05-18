@@ -8,10 +8,9 @@
 /**
  * Save the system pages from the original config values into state.
  */
-function stanford_profile_update_8001() {
+function stanford_profile_update_8002() {
   $state = \Drupal::state();
-  $config = \Drupal::config('system.site');
-  $state->set('stanford_profile.403_page', $config->getOriginal('page.403'));
-  $state->set('stanford_profile.404_page', $config->getOriginal('page.404'));
-  $state->set('stanford_profile.front_page', $config->getOriginal('page.front'));
+  $state->set('stanford_profile.403_page', '/node/3');
+  $state->set('stanford_profile.404_page', '/node/2');
+  $state->set('stanford_profile.front_page', '/node/1');
 }
