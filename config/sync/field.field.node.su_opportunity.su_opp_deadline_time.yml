@@ -1,17 +1,17 @@
-uuid: 442c3c13-f088-48f3-9465-2d83efc2faf7
+uuid: d970bd24-d50d-4dc4-98ff-461cf9e5d796
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_opp_type
+    - field.storage.node.su_opp_deadline_time
     - node.type.su_opportunity
-    - taxonomy.vocabulary.su_opportunity_type
-id: node.su_opportunity.su_opp_type
-field_name: su_opp_type
+    - taxonomy.vocabulary.su_opportunity_deadline
+id: node.su_opportunity.su_opp_deadline_time
+field_name: su_opp_deadline_time
 entity_type: node
 bundle: su_opportunity
-label: Type
-description: 'Also known as the "What are you looking for?" when a student is searching.'
+label: 'Deadline Time of the Year'
+description: ''
 required: false
 translatable: false
 default_value: {  }
@@ -20,10 +20,10 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      su_opportunity_type: su_opportunity_type
+      su_opportunity_deadline: su_opportunity_deadline
     sort:
       field: name
       direction: asc
-    auto_create: false
+    auto_create: true
     auto_create_bundle: ''
 field_type: entity_reference

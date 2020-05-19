@@ -1,0 +1,52 @@
+uuid: 9bf4b879-52dc-45e5-a36e-bca8f34c23c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.su_opportunity_deadline.su_opp_deadline_date
+    - taxonomy.vocabulary.su_opportunity_deadline
+  module:
+    - datetime_range
+    - path
+    - text
+id: taxonomy_term.su_opportunity_deadline.default
+targetEntityType: taxonomy_term
+bundle: su_opportunity_deadline
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  su_opp_deadline_date:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+hidden: {  }

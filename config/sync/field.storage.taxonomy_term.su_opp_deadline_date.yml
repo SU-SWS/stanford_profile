@@ -1,0 +1,20 @@
+uuid: df5f3b75-95b3-4dd0-a2d6-823fc7acf2f5
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - taxonomy
+id: taxonomy_term.su_opp_deadline_date
+field_name: su_opp_deadline_date
+entity_type: taxonomy_term
+type: daterange
+settings:
+  datetime_type: date
+module: datetime_range
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

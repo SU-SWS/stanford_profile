@@ -1,0 +1,187 @@
+uuid: 7ddacf63-eacf-4f80-8102-887623fe8091
+langcode: en
+status: true
+dependencies: {  }
+id: courses
+label: Courses
+description: 'Course Importers.'
+source_type: null
+module: null
+shared_configuration:
+  source:
+    track_changes: true
+    plugin: url
+    data_fetcher_plugin: http
+    data_parser_plugin: simple_xml
+    item_selector: //courses/course
+    constants:
+      status: 1
+      type: su_opportunity
+      basic_html: stanford_html
+      image_destination: 'public://media/image/courses/'
+      apply_link_title: Apply
+      learn_more_link_title: 'Learn More'
+      image_alt: ''
+      link: 'http://explorecourses.stanford.edu/search?q='
+    fields:
+      -
+        name: course_id
+        label: 'Course ID'
+        selector: administrativeInformation/courseId
+      -
+        name: code
+        label: Code
+        selector: code
+      -
+        name: subject
+        label: Subject
+        selector: subject
+      -
+        name: title
+        label: Title
+        selector: title
+      -
+        name: body
+        label: Body
+        selector: description
+      -
+        name: time_of_year
+        label: 'Time of Year'
+        selector: './/attributes/attribute/name[text()=''NQTR'']/following-sibling::description'
+      -
+        name: academic_career
+        label: 'Academic Career'
+        selector: administrativeInformation/academicCareer
+    ids:
+      course_id:
+        type: string
+      code:
+        type: string
+  process:
+    title: title
+    revision_translation_affected:
+      -
+        plugin: default_value
+        default_value: 1
+    revision_timestamp:
+      plugin: callback
+      callable: cardinal_service_profile_get_time
+    status: constants/status
+    type: constants/type
+    body/value: body
+    body/format: constants/basic_html
+    su_opp_time_year:
+      -
+        plugin: skip_on_empty
+        method: process
+        source: time_of_year
+      -
+        plugin: entity_generate
+        value_key: name
+        bundle_key: vid
+        bundle: su_opportunity_time
+        entity_type: taxonomy_term
+        ignore_case: true
+      -
+        plugin: deduplicate_array
+    su_opp_deadline_time:
+      -
+        plugin: skip_on_empty
+        method: process
+        source: time_of_year
+      -
+        plugin: entity_generate
+        value_key: name
+        bundle_key: vid
+        bundle: su_opportunity_deadline
+        entity_type: taxonomy_term
+        ignore_case: true
+      -
+        plugin: deduplicate_array
+    su_opp_commitment:
+      -
+        plugin: default_value
+        default_value: 'Quarter-long, Course'
+      -
+        plugin: entity_generate
+        value_key: name
+        bundle_key: vid
+        bundle: su_opportunity_commitment
+        entity_type: taxonomy_term
+        ignore_case: true
+    su_opp_type:
+      -
+        plugin: default_value
+        default_value: 'Courses for Credit'
+      -
+        plugin: entity_generate
+        value_key: name
+        bundle_key: vid
+        bundle: su_opportunity_type
+        entity_type: taxonomy_term
+        ignore_case: true
+    su_opp_open_to:
+      -
+        plugin: skip_on_empty
+        method: process
+        source: academic_career
+      -
+        plugin: str_replace
+        search:
+          - UG
+          - GR
+        replace:
+          - Undergraduates
+          - 'Graduate Students'
+      -
+        plugin: entity_generate
+        value_key: name
+        bundle_key: vid
+        bundle: su_opportunity_open_to
+        entity_type: taxonomy_term
+        ignore_case: true
+    su_opp_location:
+      -
+        plugin: default_value
+        default_value: 'United States of America (Stanford on-campus)'
+      -
+        plugin: entity_generate
+        value_key: name
+        bundle_key: vid
+        bundle: su_opportunity_location
+        entity_type: taxonomy_term
+        ignore_case: true
+    su_opp_dimension:
+      -
+        plugin: default_value
+        default_value: 'Cardinal Courses'
+      -
+        plugin: entity_generate
+        value_key: name
+        bundle_key: vid
+        bundle: su_opportunity_dimension
+        entity_type: taxonomy_term
+        ignore_case: true
+    link_query:
+      -
+        plugin: concat
+        source:
+          - subject
+          - code
+      -
+        plugin: urlencode
+    su_opp_learn_more/title: constants/learn_more_link_title
+    su_opp_learn_more/uri:
+      -
+        plugin: concat
+        source:
+          - constants/link
+          - '@link_query'
+    su_opp_solo_url/uri: '@su_opp_learn_more/uri'
+    su_opp_solo_url/title: constants/learn_more_link_title
+  destination:
+    plugin: 'entity_reference_revisions:node'
+    new_revisions: true
+    force_revision: true
+  migration_dependencies:
+    required: {  }

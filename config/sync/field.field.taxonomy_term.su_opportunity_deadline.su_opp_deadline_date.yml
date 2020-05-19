@@ -1,0 +1,21 @@
+uuid: a995358c-b6af-47c3-87db-92c5968c44f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.su_opp_deadline_date
+    - taxonomy.vocabulary.su_opportunity_deadline
+  module:
+    - datetime_range
+id: taxonomy_term.su_opportunity_deadline.su_opp_deadline_date
+field_name: su_opp_deadline_date
+entity_type: taxonomy_term
+bundle: su_opportunity_deadline
+label: 'Time of the Year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

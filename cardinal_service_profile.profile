@@ -17,6 +17,8 @@ use Drupal\Core\Site\Settings;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\NodeInterface;
 
+require_once 'cardinal_service_profile.inc';
+
 /**
  * Migration callback to just get the current timestamp.
  *

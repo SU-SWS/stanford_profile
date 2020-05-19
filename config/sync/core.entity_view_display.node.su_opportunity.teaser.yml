@@ -6,9 +6,11 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.su_opportunity.body
     - field.field.node.su_opportunity.su_opp_application_deadline
+    - field.field.node.su_opportunity.su_opp_commitment
     - field.field.node.su_opportunity.su_opp_contact_email
     - field.field.node.su_opportunity.su_opp_contact_name
     - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_deadline_time
     - field.field.node.su_opportunity.su_opp_dimension
     - field.field.node.su_opportunity.su_opp_duration
     - field.field.node.su_opportunity.su_opp_eligibility
@@ -49,9 +51,11 @@ content:
 hidden:
   search_api_excerpt: true
   su_opp_application_deadline: true
+  su_opp_commitment: true
   su_opp_contact_email: true
   su_opp_contact_name: true
   su_opp_contact_phone: true
+  su_opp_deadline_time: true
   su_opp_dimension: true
   su_opp_duration: true
   su_opp_eligibility: true
