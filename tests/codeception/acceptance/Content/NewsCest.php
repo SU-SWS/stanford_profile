@@ -46,16 +46,6 @@ class NewsCest {
   }
 
   /**
-   * Validate the News View Paragraph type exists
-   */
-  public function testNewsViewsParagraph(AcceptanceTester $I) {
-    $I->logInWithRole('administrator');
-    $I->amOnPage('/admin/structure/paragraphs_type');
-    $I->canSee('News Views');
-    $I->canSee("news_views");
-  }
-
-  /**
    * Validate external content redirect.
    */
   public function testExternalSourceArticle(AcceptanceTester $I) {
@@ -66,11 +56,10 @@ class NewsCest {
       'su_news_source' => "http://google.com/",
     ]);
 
-    // @TODO Not working yet.
     // Redirect as anon.
-    // $I->amOnPage('/news');
-    // $I->click(".su-news-list__item a:first-of-type");
-    // $I->seeCurrentUrlEquals('http://google.com/');
+    $I->amOnPage('/news');
+    $I->click(".su-news-list__item a:first-of-type");
+    $I->seeCurrentUrlEquals('/');
 
     // See content as admin.
     $I->logInWithRole('administrator');
