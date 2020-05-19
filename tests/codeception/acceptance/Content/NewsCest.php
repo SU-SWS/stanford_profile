@@ -57,6 +57,7 @@ class NewsCest {
     ]);
 
     // Redirect as anon.
+    $I->runDrush('cr');
     $I->amOnPage('/news');
     $I->click(".su-news-list__item a:first-of-type");
     $I->seeCurrentUrlEquals('/');
