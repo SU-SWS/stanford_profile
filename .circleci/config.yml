@@ -90,7 +90,8 @@ merge_upstream: &merge_upstream
         command: |
           git config --global user.email "sws-developers@lists.stanford.edu"
           git config --global user.name "CircleCI"
-          git pull git@github.com:SU-SWS/stanford_profile.git ${CIRCLE_BRANCH} --no-edit
+          git remote add upstream git@github.com:SU-SWS/stanford_profile.git
+          git merge upstream/${CIRCLE_BRANCH} --no-edit
           git push origin ${CIRCLE_BRANCH}
 
 back_to_dev: &back_to_dev

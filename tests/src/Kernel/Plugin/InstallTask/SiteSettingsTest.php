@@ -36,6 +36,7 @@ class SiteSettingsTest extends KernelTestBase {
     'stanford_ssp',
     'user',
     'field',
+    'node',
   ];
 
   /**
@@ -58,6 +59,7 @@ class SiteSettingsTest extends KernelTestBase {
     $this->installEntitySchema('field_config');
     $this->installEntitySchema('config_pages_type');
     $this->installEntitySchema('config_pages');
+    $this->installEntitySchema('node');
     $this->installSchema('externalauth', 'authmap');
     $this->installSchema('system', ['key_value_expire', 'sequences']);
     $this->installConfig('system');
