@@ -1,5 +1,14 @@
 # Stanford Profile
 
+8.x-1.12
+--------------------------------------------------------------------------------
+_Release Date: 2020-05-20_
+
+- D8CORE-000: Set media with caption and wysiwyg to 3 in a row. (#208) (5878f09)
+- D8CORE-000: Set cards to 3 in a row. (#206) (e6934b0)
+- D8CORE-000: Changed headline on news to 180 max from 70. (#207) (a74ce2c)
+- D8CORE-2110: Remove news views paragraph type. (#205) (916fafb)
+
 8.x-1.11
 --------------------------------------------------------------------------------
 _Release Date: 2020-05-18_
