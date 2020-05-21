@@ -90,9 +90,13 @@ merge_upstream: &merge_upstream
         command: |
           git config --global user.email "sws-developers@lists.stanford.edu"
           git config --global user.name "CircleCI"
-          git remote add upstream git@github.com:SU-SWS/stanford_profile.git
-          git merge upstream/${CIRCLE_BRANCH} --no-edit
-          git push origin ${CIRCLE_BRANCH}
+          git pull https://github.com/SU-SWS/stanford_profile.git ${CIRCLE_BRANCH} -X ours --no-edit
+          if [[ $(git diff origin/${CIRCLE_BRANCH} --name-only) ]]; then
+            DATE=`date +%Y-%m-%d`
+            git checkout -b ${DATE}
+            git push origin ${DATE}
+            hub pull-request --base=${CIRCLE_BRANCH} --message="Updates from stanford_profile"
+          fi
 
 back_to_dev: &back_to_dev
   <<: *defaults
