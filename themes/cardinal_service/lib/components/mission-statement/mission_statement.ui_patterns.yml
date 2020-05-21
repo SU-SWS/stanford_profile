@@ -1,0 +1,32 @@
+mission_statement:
+  label: Mission Statement
+  description: 'Display text and a link over a background image.'
+  fields:
+    image:
+      type: image
+      label: Image
+      description: 'Title of the opportunity.'
+      preview:
+        theme: image
+        uri: http://placecorgi.com/800x1200
+    overlay:
+      type: text
+      label: Overlay Text
+      description: 'Centered text over top the image.'
+      preview: 'Cardinal Service mission statement'
+    cta:
+      type: text
+      label: Call To Action Link
+      description: 'Title of the opportunity.'
+      preview: '<a href="#">I am a call to action link</a>'
+    lower_text:
+      type: text
+      label: 'Lower text area.'
+      description: 'Title of the opportunity.'
+      preview: 'To learn more about the mission <a href="#">Click me</a>'
+  use: '@cardinal-service/mission-statement/mission_statement.html.twig'
+  libraries:
+    - opportunity_row:
+        css:
+          component:
+            ../../../dist/css/components/mission-statement/mission_statement.css: {}

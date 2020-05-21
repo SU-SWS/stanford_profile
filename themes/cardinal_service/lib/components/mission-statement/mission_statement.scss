@@ -1,0 +1,54 @@
+@charset 'UTF-8';
+
+@import '../../scss/config';
+
+.su-mission-statement {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  img,
+  picture,
+  source {
+    width: 100vw;
+  }
+
+  .background {
+    background: $su-color-brown;
+    position: relative;
+    min-height: 300px;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  .overlay-text {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1426px;
+  }
+
+  .overlay-cta {
+    a {
+      @include button-primary;
+    }
+  }
+
+  .lower-text {
+    background: $su-color-cardinal-red;
+    color: $su-color-white;
+    text-align: center;
+    padding: 24px;
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+}

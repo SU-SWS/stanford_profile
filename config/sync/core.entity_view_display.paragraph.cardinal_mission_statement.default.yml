@@ -1,0 +1,80 @@
+uuid: d7e18727-a14c-4a1f-b8d5-ba6baddbc182
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cardinal_mission_statement.su_mission_cta
+    - field.field.paragraph.cardinal_mission_statement.su_mission_image
+    - field.field.paragraph.cardinal_mission_statement.su_mission_lower_text
+    - field.field.paragraph.cardinal_mission_statement.su_mission_text
+    - paragraphs.paragraphs_type.cardinal_mission_statement
+  module:
+    - ds
+    - field_formatter_class
+    - link
+    - stanford_media
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_mission_statement
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      image:
+        - su_mission_image
+      overlay:
+        - su_mission_text
+      cta:
+        - su_mission_cta
+      lower_text:
+        - su_mission_lower_text
+id: paragraph.cardinal_mission_statement.default
+targetEntityType: paragraph
+bundle: cardinal_mission_statement
+mode: default
+content:
+  su_mission_cta:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: cta
+  su_mission_image:
+    type: media_responsive_image_formatter
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      image_style: stanford_hero_block_wide
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    region: image
+  su_mission_lower_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: lower_text
+  su_mission_text:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: overlay
+hidden:
+  search_api_excerpt: true

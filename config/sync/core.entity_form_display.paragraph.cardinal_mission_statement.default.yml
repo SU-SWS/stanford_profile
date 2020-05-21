@@ -1,0 +1,53 @@
+uuid: 79ceaae1-233b-4a5c-bbcc-ffda99e1d4a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cardinal_mission_statement.su_mission_cta
+    - field.field.paragraph.cardinal_mission_statement.su_mission_image
+    - field.field.paragraph.cardinal_mission_statement.su_mission_lower_text
+    - field.field.paragraph.cardinal_mission_statement.su_mission_text
+    - paragraphs.paragraphs_type.cardinal_mission_statement
+  module:
+    - link
+    - media_library
+    - text
+id: paragraph.cardinal_mission_statement.default
+targetEntityType: paragraph
+bundle: cardinal_mission_statement
+mode: default
+content:
+  su_mission_cta:
+    weight: 2
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_mission_image:
+    type: media_library_widget
+    weight: 0
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  su_mission_lower_text:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  su_mission_text:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+hidden:
+  created: true
+  status: true

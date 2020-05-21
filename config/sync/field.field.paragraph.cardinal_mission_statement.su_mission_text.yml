@@ -1,0 +1,19 @@
+uuid: 53d61c61-c2a2-4c85-82ef-bb4ad0f0685f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_mission_text
+    - paragraphs.paragraphs_type.cardinal_mission_statement
+id: paragraph.cardinal_mission_statement.su_mission_text
+field_name: su_mission_text
+entity_type: paragraph
+bundle: cardinal_mission_statement
+label: 'Overlay Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

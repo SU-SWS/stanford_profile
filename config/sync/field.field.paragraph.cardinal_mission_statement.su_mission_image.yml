@@ -1,0 +1,28 @@
+uuid: f159db73-eb41-420b-bdc6-692aacd8f12a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_mission_image
+    - media.type.image
+    - paragraphs.paragraphs_type.cardinal_mission_statement
+id: paragraph.cardinal_mission_statement.su_mission_image
+field_name: su_mission_image
+entity_type: paragraph
+bundle: cardinal_mission_statement
+label: 'Background Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: aaa7fd22-757f-493c-9043-91cd5d37de61
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - paragraphs
+id: paragraph.su_mission_image
+field_name: su_mission_image
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

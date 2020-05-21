@@ -1,0 +1,27 @@
+uuid: a348bb7d-0ad0-436e-b791-673286d88913
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_mission_lower_text
+    - paragraphs.paragraphs_type.cardinal_mission_statement
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_minimal_html: stanford_minimal_html
+    stanford_html: '0'
+    plain_text: '0'
+id: paragraph.cardinal_mission_statement.su_mission_lower_text
+field_name: su_mission_lower_text
+entity_type: paragraph
+bundle: cardinal_mission_statement
+label: 'Lower Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
