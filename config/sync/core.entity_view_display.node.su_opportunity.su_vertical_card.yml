@@ -1,0 +1,135 @@
+uuid: 5b7187aa-19c1-4f67-be60-b9140bb3faf8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.su_vertical_card
+    - field.field.node.su_opportunity.body
+    - field.field.node.su_opportunity.su_opp_application_deadline
+    - field.field.node.su_opportunity.su_opp_commitment
+    - field.field.node.su_opportunity.su_opp_contact_email
+    - field.field.node.su_opportunity.su_opp_contact_name
+    - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_deadline_time
+    - field.field.node.su_opportunity.su_opp_dimension
+    - field.field.node.su_opportunity.su_opp_duration
+    - field.field.node.su_opportunity.su_opp_eligibility
+    - field.field.node.su_opportunity.su_opp_image
+    - field.field.node.su_opportunity.su_opp_learn_more
+    - field.field.node.su_opportunity.su_opp_location
+    - field.field.node.su_opportunity.su_opp_open_to
+    - field.field.node.su_opportunity.su_opp_pathway
+    - field.field.node.su_opportunity.su_opp_placement_type
+    - field.field.node.su_opportunity.su_opp_service_theme
+    - field.field.node.su_opportunity.su_opp_solo_url
+    - field.field.node.su_opportunity.su_opp_sponsor
+    - field.field.node.su_opportunity.su_opp_submissions_open
+    - field.field.node.su_opportunity.su_opp_time_year
+    - field.field.node.su_opportunity.su_opp_type
+    - node.type.su_opportunity
+  module:
+    - ds
+    - element_class_formatter
+    - field_delimiter
+    - field_formatter_class
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - stanford_media
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    entity_view_mode_restriction:
+      allowed_blocks: {  }
+      allowed_layouts: {  }
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+    allowed_block_categories: {  }
+  ds:
+    layout:
+      id: pattern_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+          variant: default
+    regions:
+      card_image:
+        - su_opp_image
+      card_super_headline:
+        - su_opp_type
+      card_headline:
+        - node_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 2
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: ''
+          class: ''
+id: node.su_opportunity.su_vertical_card
+targetEntityType: node
+bundle: su_opportunity
+mode: su_vertical_card
+content:
+  su_opp_image:
+    type: media_image_formatter
+    weight: 0
+    region: card_image
+    label: hidden
+    settings:
+      view_mode: default
+      image_style: card_956x478
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+  su_opp_type:
+    type: entity_reference_list_label_class
+    weight: 1
+    region: card_super_headline
+    label: hidden
+    settings:
+      list_type: ul
+      class: ''
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ', '
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: '2'
+hidden:
+  body: true
+  links: true
+  search_api_excerpt: true
+  su_opp_application_deadline: true
+  su_opp_commitment: true
+  su_opp_contact_email: true
+  su_opp_contact_name: true
+  su_opp_contact_phone: true
+  su_opp_deadline_time: true
+  su_opp_dimension: true
+  su_opp_duration: true
+  su_opp_eligibility: true
+  su_opp_learn_more: true
+  su_opp_location: true
+  su_opp_open_to: true
+  su_opp_pathway: true
+  su_opp_placement_type: true
+  su_opp_service_theme: true
+  su_opp_solo_url: true
+  su_opp_sponsor: true
+  su_opp_submissions_open: true
+  su_opp_time_year: true

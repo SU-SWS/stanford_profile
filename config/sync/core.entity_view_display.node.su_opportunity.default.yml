@@ -26,6 +26,7 @@ dependencies:
     - field.field.node.su_opportunity.su_opp_time_year
     - field.field.node.su_opportunity.su_opp_type
     - node.type.su_opportunity
+    - views.view.su_opportunities
     - views.view.su_spotlights
   module:
     - config_pages
@@ -372,6 +373,29 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 1
+            third_party_settings: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+          label: ''
+        components:
+          08b590fe-3342-4941-bcd7-66ee72b2fc0e:
+            uuid: 08b590fe-3342-4941-bcd7-66ee72b2fc0e
+            region: main
+            configuration:
+              id: 'views_block:su_opportunities-related'
+              label: 'Related Opportunities'
+              provider: views
+              label_display: visible
+              views_label: 'Related Opportunities'
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
             third_party_settings: {  }
         third_party_settings: {  }
   layout_library:

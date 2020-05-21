@@ -2,6 +2,7 @@
 
 /**
  * Spotlight content type tests.
+ * @group opportunities
  */
 class OpportunityContentCest {
 
@@ -9,25 +10,6 @@ class OpportunityContentCest {
    * Create a new piece of Opportunity content.
    */
   public function testOpportunityContentCreation(\AcceptanceTester $I) {
-    $this->createTaxonomyTerms($I, [
-      'Stanford',
-      'Canada',
-    ], 'su_opportunity_location');
-    $this->createTaxonomyTerms($I, [
-      'Freshmen',
-      'Senior',
-    ], 'su_opportunity_open_to');
-
-    $this->createTaxonomyTerms($I, [
-      'Fall',
-      'Winter',
-    ], 'su_opportunity_time');
-
-    $this->createTaxonomyTerms($I, [
-      'Internship',
-      'Public Service',
-    ], 'su_opportunity_type');
-
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/su_opportunity');
     $I->fillField('Title', 'Test Opportunity');
@@ -55,15 +37,42 @@ class OpportunityContentCest {
   }
 
   /**
+   * The related opportunities block should appear on the opportunity page.
+   */
+  public function testRelatedOpportunities(AcceptanceTester $I) {
+    $terms = $this->createTaxonomyTerms($I, [
+      'Foo Bar Baz',
+    ], 'su_opportunity_type');
+
+    $I->createEntity([
+      'type' => 'su_opportunity',
+      'title' => 'Foo Bar',
+      'su_opp_type' => reset($terms)->id(),
+    ]);
+    $node = $I->createEntity([
+      'type' => 'su_opportunity',
+      'title' => 'Bar Foo',
+      'su_opp_type' => reset($terms)->id(),
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee('Bar Foo', 'h1');
+    $I->canSee('Related Opportunities', 'h2');
+    $I->canSee('Foo Bar', 'h2');
+  }
+
+  /**
    * Create taxonomy terms for testing.
    */
   protected function createTaxonomyTerms(\AcceptanceTester $I, array $terms, $vocab) {
+    $created_terms = [];
     foreach ($terms as $term) {
-      $I->createEntity([
+      $created_terms[] = $I->createEntity([
         'name' => $term,
         'vid' => $vocab,
       ], 'taxonomy_term');
     }
+    return $created_terms;
   }
 
 }
