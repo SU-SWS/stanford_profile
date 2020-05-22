@@ -1,0 +1,23 @@
+uuid: 8f0b1fd0-b6b1-4a90-8f4f-55a42fbe5189
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_map_link
+    - node.type.stanford_event
+  module:
+    - link
+id: node.stanford_event.su_event_map_link
+field_name: su_event_map_link
+entity_type: node
+bundle: stanford_event
+label: 'Map Link'
+description: 'A url to an external map.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 1
+field_type: link

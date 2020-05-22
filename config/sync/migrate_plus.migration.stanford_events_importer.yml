@@ -1,0 +1,160 @@
+uuid: f12377a6-f9c4-4050-8493-87df53c70bae
+_core:
+  default_config_hash: cGwmz8ZjzFcJd_ygOCdIMWZpXlLTbA3JM3CN-rniTws
+langcode: en
+status: true
+dependencies: {  }
+id: stanford_events_importer
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: stanford_events
+label: 'Events importer'
+source:
+  track_changes: true
+  plugin: url
+  data_fetcher_plugin: file
+  urls:
+    - 'http://events.stanford.edu/xml/drupal/v2.php?organization=702'
+    - 'http://events.stanford.edu/xml/drupal/v2.php?organization=702&unlisted'
+  data_parser_plugin: simple_xml
+  item_selector: /EventList/Event
+  fields:
+    -
+      name: guid
+      label: GUID
+      selector: guid
+    -
+      name: title
+      label: 'Event Title'
+      selector: title
+    -
+      name: body
+      label: Description
+      selector: description
+    -
+      name: event_start
+      label: 'Event start'
+      selector: isoEventDate
+    -
+      name: event_end
+      label: 'Event end'
+      selector: isoEventEndDate
+    -
+      name: link
+      label: 'Event Link'
+      selector: link
+    -
+      name: audience
+      label: 'Event Audience'
+      selector: audiences
+    -
+      name: image
+      label: 'Image URL'
+      selector: imageUrl
+    -
+      name: categories
+      label: Categories
+      selector: categories
+    -
+      name: location
+      label: Location
+      selector: locationText
+    -
+      name: map_link
+      label: 'Map Link'
+      selector: mapUrl
+    -
+      name: event_sponsor
+      label: Sponsor
+      selector: sponsor
+    -
+      name: contact_email
+      label: 'Contact Email'
+      selector: contactEmail
+    -
+      name: contact_phone
+      label: 'Contact Phone'
+      selector: contactPhone
+    -
+      name: event_status
+      label: 'Event Status'
+      selector: eventStatus
+  ids:
+    guid:
+      type: string
+  constants:
+    status: 1
+    type: stanford_event
+    timezone: 25200
+    basic_html: stanford_html
+    minimal_html: stanford_minimal_html
+process:
+  status: constants/status
+  type: constants/type
+  title: title
+  body/value: body
+  body/format: constants/stanford_html
+  field_su_event_email: contact_email
+  field_su_event_telephone: contact_phone
+  field_su_event_sponsor: event_sponsor
+  field_su_event_location: location
+  field_su_event_map_link/uri: map_link
+  field_su_event_map_link/title: title
+  field_su_event_cta/uri: link
+  field_su_event_cta/title: title
+  field_su_event_date_time/value:
+    -
+      plugin: format_date
+      source: event_start
+      from_format: 'Y-m-d H:i:s O'
+      to_format: U
+      timezone: Etc/GMT
+    -
+      plugin: format_date
+      from_format: U
+      to_format: 'Y-m-d\TH:i:s'
+      timezone: Etc/GMT
+  field_su_event_date_time/end_value:
+    -
+      plugin: format_date
+      source: event_end
+      from_format: 'Y-m-d H:i:s O'
+      to_format: U
+      timezone: Etc/GMT
+    -
+      plugin: format_date
+      from_format: U
+      to_format: 'Y-m-d\TH:i:s'
+      timezone: Etc/GMT
+  field_su_event_type:
+    -
+      plugin: explode
+      source: categories
+      delimiter: ','
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: stanford_event_types
+      value_key: name
+    -
+      plugin: default_value
+      default_value: null
+  field_su_event_audience:
+    -
+      plugin: explode
+      source: audience
+      delimiter: ','
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: event_audience
+      value_key: name
+    -
+      plugin: default_value
+      default_value: null
+destination:
+  plugin: 'entity:node'

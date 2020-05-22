@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
     - field.field.node.stanford_event.su_event_location
+    - field.field.node.stanford_event.su_event_map_link
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_telephone
@@ -63,6 +64,7 @@ third_party_settings:
       children:
         - su_event_date_time
         - su_event_location
+        - su_event_map_link
         - su_event_email
         - su_event_telephone
         - su_event_audience
@@ -112,7 +114,7 @@ content:
     region: content
     third_party_settings: {  }
   su_event_audience:
-    weight: 12
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -130,7 +132,7 @@ content:
     third_party_settings: {  }
     region: content
   su_event_cta:
-    weight: 13
+    weight: 14
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -153,7 +155,7 @@ content:
     type: string_textfield
     region: content
   su_event_email:
-    weight: 10
+    weight: 11
     settings:
       size: 60
       placeholder: ''
@@ -165,6 +167,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: address_default
+    region: content
+  su_event_map_link:
+    weight: 10
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   su_event_sponsor:
     weight: 6
@@ -183,7 +193,7 @@ content:
     type: string_textfield
     region: content
   su_event_telephone:
-    weight: 11
+    weight: 12
     settings:
       placeholder: ''
     third_party_settings: {  }
