@@ -1,0 +1,25 @@
+uuid: fece96dc-4427-48bb-8a4f-d048826e9e96
+langcode: en
+status: true
+dependencies: {  }
+id: su_stanford_person
+label: 'Stanford Person'
+description: 'Import profile data from who.stanford.edu.'
+source_type: null
+module: null
+shared_configuration:
+  source:
+    authentication:
+      plugin: oauth2
+      base_uri: 'https://authz.stanford.edu'
+      token_url: /oauth/token
+      grant_type: client_credentials
+      client_id: '[client_id]'
+      client_secret: '[client_secret]'
+    track_changes: true
+    plugin: url
+    data_fetcher_plugin: http
+    data_parser_plugin: json
+    headers:
+      Accept: 'application/json; charset=utf-8'
+      Content-Type: application/json
