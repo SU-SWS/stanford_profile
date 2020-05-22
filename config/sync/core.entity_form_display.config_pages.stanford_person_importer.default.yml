@@ -1,0 +1,33 @@
+uuid: 4db512a1-e40d-4b0d-8916-8f1c06f4ee82
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_person_importer
+    - field.field.config_pages.stanford_person_importer.su_person_orgs
+    - field.field.config_pages.stanford_person_importer.su_person_workgroup
+id: config_pages.stanford_person_importer.default
+targetEntityType: config_pages
+bundle: stanford_person_importer
+mode: default
+content:
+  su_person_orgs:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  su_person_workgroup:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  label: true

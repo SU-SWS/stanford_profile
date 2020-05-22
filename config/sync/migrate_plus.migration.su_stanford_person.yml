@@ -13,13 +13,14 @@ source:
   constants:
     status: 1
     type: stanford_person
-    basic_html: basic_html
+    basic_html: stanford_html
     link_domain: 'https://profiles.stanford.edu'
-    link_text: 'Stanford Profile'
-    file_destination: 'public://media/capx/'
+    link_text: 'View Full Stanford Profile'
+    file_destination: 'public://media/person/'
     file_extension: .jpg
   urls:
-    - https://cap.stanford.edu/cap-api/api/profiles/v1?orgCodes=bsws
+    - 'https://cap.stanford.edu/cap-api/api/profiles/v1?orgCodes=QYIS'
+    - 'https://cap.stanford.edu/cap-api/api/profiles/v1?orgCodes=BSWS'
   item_selector: values
   fields:
     -
@@ -55,6 +56,10 @@ source:
       label: Email
       selector: primaryContact/email
     -
+      name: mailcode
+      label: 'Mail Code'
+      selector: ldapAdditionalInfo/mailCode
+    -
       name: alias
       label: Alias
       selector: alias
@@ -83,6 +88,14 @@ source:
       label: 'Profile ID'
       selector: profileId
     -
+      name: education
+      label: Education
+      selector: education
+    -
+      name: current_research_interests
+      label: 'Research Interests'
+      selector: currentResearchInterests/shortText.html
+    -
       name: etag
       label: 'CAP API Etag'
       selector: meta/etag
@@ -94,7 +107,7 @@ process:
   revision_timestamp:
     -
       plugin: callback
-      callable: time
+      callable: _stanford_profile_person_get_time
   revision_translation_affected:
     -
       plugin: default_value
@@ -103,12 +116,23 @@ process:
   type: constants/type
   su_person_first_name: first_name
   su_person_last_name: last_name
-  su_person_full_title: long_title
+  su_person_full_title/value: long_title
+  su_person_full_title/format: constants/basic_html
+  su_person_short_title: short_title
   body/value: bio_html
   body/format: constants/basic_html
   su_person_email: email
   su_person_mobile_phone: phone
-  field_hs_person_external_profile/uri:
+  su_person_education:
+    -
+      plugin: skip_on_empty
+      source: education
+      method: process
+    -
+      plugin: sub_process
+      process:
+        value: label/text
+  su_person_profile_link/uri:
     -
       plugin: skip_on_empty
       source: profile_id
@@ -119,7 +143,7 @@ process:
       source:
         - constants/link_domain
         - profile_id
-  field_hs_person_external_profile/title: constants/link_text
+  su_person_profile_link/title: constants/link_text
   image_timestamp:
     -
       plugin: skip_on_empty
@@ -175,25 +199,22 @@ process:
       entity_type: media
       ignore_case: true
       values:
-        field_media_image: '@image_file'
+        field_media_image/target_id: '@image_file'
+        field_media_image/alt: '@title'
+  su_person_links:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: links
+    -
+      plugin: sub_process
+      process:
+        uri: url
+        title: label/text
+  su_person_mail_code: mailcode
 destination:
   plugin: 'entity_reference_revisions:node'
   new_revisions: true
   force_revision: true
-  overwrite_properties:
-    - title
-    - revision_timestamp
-    - revision_translation_affected
-    - type
-    - field_hs_person_first_name
-    - field_hs_person_last_name
-    - field_hs_person_title
-    - body/value
-    - body/format
-    - field_hs_person_email
-    - field_hs_person_telephone
-    - field_hs_person_external_profile/uri
-    - field_hs_person_external_profile/title
-    - field_hs_person_image/target_id
 migration_dependencies:
   required: {  }

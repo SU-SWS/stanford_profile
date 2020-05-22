@@ -1,0 +1,30 @@
+uuid: 955740ae-326e-4c58-9fdc-414587c4bfb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_person_importer
+    - field.field.config_pages.stanford_person_importer.su_person_orgs
+    - field.field.config_pages.stanford_person_importer.su_person_workgroup
+id: config_pages.stanford_person_importer.default
+targetEntityType: config_pages
+bundle: stanford_person_importer
+mode: default
+content:
+  su_person_orgs:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  su_person_workgroup:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }
