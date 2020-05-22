@@ -1,0 +1,23 @@
+uuid: 481e42f3-f677-42dc-b006-c4b1a85e0ac4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_cta
+    - node.type.stanford_event
+  module:
+    - link
+id: node.stanford_event.su_event_cta
+field_name: su_event_cta
+entity_type: node
+bundle: stanford_event
+label: 'Call to action button'
+description: 'Add a button to a registration form, signup list, or other information. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

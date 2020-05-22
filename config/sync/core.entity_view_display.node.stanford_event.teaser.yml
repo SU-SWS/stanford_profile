@@ -1,0 +1,54 @@
+uuid: 12b19320-7006-4cff-9cbb-91291ccc43f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.stanford_event.body
+    - field.field.node.stanford_event.layout_builder__layout
+    - field.field.node.stanford_event.su_event_audience
+    - field.field.node.stanford_event.su_event_components
+    - field.field.node.stanford_event.su_event_cta
+    - field.field.node.stanford_event.su_event_date_time
+    - field.field.node.stanford_event.su_event_dek
+    - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_location
+    - field.field.node.stanford_event.su_event_sponsor
+    - field.field.node.stanford_event.su_event_subheadline
+    - field.field.node.stanford_event.su_event_telephone
+    - field.field.node.stanford_event.su_event_type
+    - node.type.stanford_event
+  module:
+    - text
+    - user
+id: node.stanford_event.teaser
+targetEntityType: node
+bundle: stanford_event
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  layout_builder__layout: true
+  su_event_audience: true
+  su_event_components: true
+  su_event_cta: true
+  su_event_date_time: true
+  su_event_dek: true
+  su_event_email: true
+  su_event_location: true
+  su_event_sponsor: true
+  su_event_subheadline: true
+  su_event_telephone: true
+  su_event_type: true

@@ -1,0 +1,29 @@
+uuid: 0c784a50-237b-40b9-9ed3-a860922446a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_type
+    - node.type.stanford_event
+    - taxonomy.vocabulary.stanford_event_types
+id: node.stanford_event.su_event_type
+field_name: su_event_type
+entity_type: node
+bundle: stanford_event
+label: 'Event Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      stanford_event_types: stanford_event_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
