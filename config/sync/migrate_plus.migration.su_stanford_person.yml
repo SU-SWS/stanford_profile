@@ -131,7 +131,11 @@ process:
     -
       plugin: sub_process
       process:
-        value: label/text
+        value:
+          plugin: substr
+          start: 0
+          length: 255
+          source: label/text
   su_person_profile_link/uri:
     -
       plugin: skip_on_empty
