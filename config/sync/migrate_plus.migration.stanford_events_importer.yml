@@ -95,19 +95,10 @@ process:
       source: event_sponsor
       start: 0
       length: 120
-  su_event_location/langcode: ""
-  su_event_location/country_code: ""
-  su_event_location/administrative_area: ""
-  su_event_location/locality: ""
-  su_event_location/dependent_locality: ""
-  su_event_location/postal_code: ""
-  su_event_location/sorting_code: ""
-  su_event_location/address_line1: ""
-  su_event_location/address_line2: ""
-  su_event_location/organization: ""
-  su_event_location/given_name: ""
-  su_event_location/additional_name: ""
-  su_event_location/family_name: ""
+  su_event_location:
+    -
+      plugin: default_value
+      default_value: null
   su_event_alt_loc: location
   su_event_map_link/uri: map_link
   su_event_map_link/title: constants/map_title
