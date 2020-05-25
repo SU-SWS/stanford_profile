@@ -6,6 +6,7 @@ dependencies:
     - core.base_field_override.node.stanford_event.title
     - field.field.node.stanford_event.body
     - field.field.node.stanford_event.layout_builder__layout
+    - field.field.node.stanford_event.su_event_alt_loc
     - field.field.node.stanford_event.su_event_audience
     - field.field.node.stanford_event.su_event_components
     - field.field.node.stanford_event.su_event_cta
@@ -234,7 +235,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 8
+            weight: 9
           2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350:
             uuid: 2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350
             region: main
@@ -259,7 +260,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 11
+            weight: 12
           1ce04bbe-b3fd-4040-9011-46a80cb0bea1:
             uuid: 1ce04bbe-b3fd-4040-9011-46a80cb0bea1
             region: main
@@ -302,7 +303,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 10
+            weight: 11
           be4ceb41-1f4b-40f8-be69-c6714369f7bf:
             uuid: be4ceb41-1f4b-40f8-be69-c6714369f7bf
             region: main
@@ -322,7 +323,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 9
+            weight: 10
           c4f8811e-dd0e-44ae-b65d-b0f82cf894df:
             uuid: c4f8811e-dd0e-44ae-b65d-b0f82cf894df
             region: main
@@ -390,6 +391,27 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
+            weight: 8
+          72ffb956-3705-4638-a22a-22c5ce31e291:
+            uuid: 72ffb956-3705-4638-a22a-22c5ce31e291
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_alt_loc'
+              label: Location
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-alt-location
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
             weight: 7
         third_party_settings: {  }
       -
@@ -433,6 +455,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  su_event_alt_loc:
+    weight: 117
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: main
   su_event_audience:
     weight: 114
     label: above

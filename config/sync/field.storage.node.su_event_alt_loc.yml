@@ -1,4 +1,4 @@
-uuid: 7d798179-21d0-414e-ad8e-a1581cc3ffa8
+uuid: ad5f101c-c8e7-4ac9-bd27-c1a6f5d72cbe
 langcode: en
 status: true
 dependencies:
@@ -8,17 +8,17 @@ dependencies:
 third_party_settings:
   field_permissions:
     permission_type: public
-id: node.su_event_sponsor
-field_name: su_event_sponsor
+id: node.su_event_alt_loc
+field_name: su_event_alt_loc
 entity_type: node
 type: string
 settings:
-  max_length: 120
+  max_length: 255
   is_ascii: false
   case_sensitive: false
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false
