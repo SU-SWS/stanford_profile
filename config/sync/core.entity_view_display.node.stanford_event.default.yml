@@ -26,6 +26,7 @@ dependencies:
     - entity_reference_revisions
     - jumpstart_ui
     - layout_builder
+    - layout_builder_restrictions
     - layout_library
     - link
     - smart_date
@@ -45,27 +46,6 @@ third_party_settings:
           columns: default
           label: 'Editorial Content'
         components:
-          44ecbf7f-4d7c-4bc1-a2a1-9f05f3074cca:
-            uuid: 44ecbf7f-4d7c-4bc1-a2a1-9f05f3074cca
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_event:su_event_type'
-              label: 'Event Type'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_label
-                settings:
-                  link: true
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-event-type
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 3
           cee36061-b3bc-4171-92d5-299e62b7d0f2:
             uuid: cee36061-b3bc-4171-92d5-299e62b7d0f2
             region: main
@@ -76,7 +56,7 @@ third_party_settings:
               label_display: '0'
               context_mapping: {  }
             additional: {  }
-            weight: 4
+            weight: -10
           9c246a83-54f9-4f93-a975-e9bdc0259f82:
             uuid: 9c246a83-54f9-4f93-a975-e9bdc0259f82
             region: main
@@ -97,7 +77,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 5
+            weight: -8
           2d7ecccf-4511-455e-ae69-f2b24a376a43:
             uuid: 2d7ecccf-4511-455e-ae69-f2b24a376a43
             region: main
@@ -118,7 +98,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 6
+            weight: -7
           ff876f05-89b3-49c8-9bae-516ac86b4e79:
             uuid: ff876f05-89b3-49c8-9bae-516ac86b4e79
             region: main
@@ -139,7 +119,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 7
+            weight: -6
           625d8b06-94fb-4027-bec0-f39e16810c8a:
             uuid: 625d8b06-94fb-4027-bec0-f39e16810c8a
             region: main
@@ -162,7 +142,28 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 8
+            weight: -5
+          229e196d-4f22-4f5a-b265-added1838d5d:
+            uuid: 229e196d-4f22-4f5a-b265-added1838d5d
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_type'
+              label: 'Event Type'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-type
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: -9
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
@@ -192,29 +193,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 1
-          11df73c4-8beb-43be-b1d2-4ddc537f90b1:
-            uuid: 11df73c4-8beb-43be-b1d2-4ddc537f90b1
-            region: left
-            configuration:
-              id: 'field_block:node:stanford_event:su_event_components'
-              label: Components
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_revisions_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-event-components
-                  ds:
-                    ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 2
           6b731bfb-4a54-43e3-afa5-f60099657490:
             uuid: 6b731bfb-4a54-43e3-afa5-f60099657490
             region: main
@@ -413,6 +391,29 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 7
+          11df73c4-8beb-43be-b1d2-4ddc537f90b1:
+            uuid: 11df73c4-8beb-43be-b1d2-4ddc537f90b1
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_components'
+              label: Components
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-components
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 3
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
@@ -438,6 +439,12 @@ third_party_settings:
         third_party_settings: {  }
   layout_library:
     enable: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+      allowed_layouts: {  }
 id: node.stanford_event.default
 targetEntityType: node
 bundle: stanford_event
