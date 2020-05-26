@@ -1,0 +1,29 @@
+uuid: 64ff5def-1870-4039-b9b1-f6c1c97b89b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_dimension
+    - node.type.su_spotlight
+    - taxonomy.vocabulary.su_opportunity_dimension
+id: node.su_spotlight.su_opp_dimension
+field_name: su_opp_dimension
+entity_type: node
+bundle: su_spotlight
+label: 'Opportunity''s Dimension'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      su_opportunity_dimension: su_opportunity_dimension
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,29 @@
+uuid: 51cc4754-2b4e-4089-b4b3-059ed3abea2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_service_theme
+    - node.type.su_spotlight
+    - taxonomy.vocabulary.su_opportunity_service_theme
+id: node.su_spotlight.su_opp_service_theme
+field_name: su_opp_service_theme
+entity_type: node
+bundle: su_spotlight
+label: 'Opportunity''s Service Theme'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      su_opportunity_service_theme: su_opportunity_service_theme
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.su_opportunities_views_result
     - core.entity_view_mode.node.su_vertical_card
     - node.type.su_opportunity
     - taxonomy.vocabulary.su_opportunity_dimension
@@ -16,6 +17,7 @@ dependencies:
   module:
     - node
     - taxonomy
+    - text
     - user
 id: su_opportunities
 label: Opportunities
@@ -80,7 +82,7 @@ display:
       style:
         type: default
         options:
-          row_class: flex-md-4-of-12
+          row_class: ''
           default_row_class: true
           uses_fields: false
       row:
@@ -658,6 +660,205 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
+  dimension_description:
+    display_plugin: block
+    id: dimension_description
+    display_title: 'Dimension Description'
+    position: 3
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+      defaults:
+        style: false
+        row: false
+        relationships: false
+        filters: false
+        filter_groups: false
+        arguments: false
+        fields: false
+        pager: false
+        empty: false
+        header: false
+        sorts: false
+        title: false
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      block_hide_empty: true
+      relationships:
+        su_opp_dimension:
+          id: su_opp_dimension
+          table: node__su_opp_dimension
+          field: su_opp_dimension
+          relationship: none
+          group_type: group
+          admin_label: 'su_opp_dimension: Taxonomy term'
+          required: true
+          plugin_id: standard
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            su_opportunity: su_opportunity
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      arguments:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+      fields:
+        description__value:
+          id: description__value
+          table: taxonomy_term_field_data
+          field: description__value
+          relationship: su_opp_dimension
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: taxonomy_term
+          entity_field: description
+          plugin_id: field
+      pager:
+        type: some
+        options:
+          items_per_page: 1
+          offset: 0
+      empty: {  }
+      header: {  }
+      sorts: {  }
+      title: 'Dimension Description'
+      block_category: 'Opportunities (Views)'
+      allow:
+        items_per_page: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
   filtered_all:
     display_plugin: block
     id: filtered_all
@@ -668,6 +869,20 @@ display:
       block_category: 'Opportunities (Views)'
       exposed_block: true
       display_description: ''
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      defaults:
+        style: false
+        row: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: su_opportunities_views_result
     cache_metadata:
       max-age: -1
       contexts:
@@ -723,6 +938,8 @@ display:
         empty: false
         header: false
         css_class: false
+        style: false
+        row: false
       filter_groups:
         operator: AND
         groups:
@@ -830,6 +1047,17 @@ display:
       header: {  }
       css_class: flex-container
       block_hide_empty: true
+      style:
+        type: default
+        options:
+          row_class: flex-md-4-of-12
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: su_vertical_card
     cache_metadata:
       max-age: 0
       contexts:

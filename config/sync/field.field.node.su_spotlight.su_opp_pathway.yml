@@ -1,0 +1,29 @@
+uuid: 52ac54b0-6f30-4508-a030-58a04b1b9319
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_pathway
+    - node.type.su_spotlight
+    - taxonomy.vocabulary.su_opportunity_pathway
+id: node.su_spotlight.su_opp_pathway
+field_name: su_opp_pathway
+entity_type: node
+bundle: su_spotlight
+label: 'Opportunity''s Pathway'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      su_opportunity_pathway: su_opportunity_pathway
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

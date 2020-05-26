@@ -1,7 +1,10 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Spotlight content type tests.
+ *
  * @group opportunities
  */
 class OpportunityContentCest {
@@ -43,21 +46,28 @@ class OpportunityContentCest {
     $terms = $this->createTaxonomyTerms($I, [
       'Foo Bar Baz',
     ], 'su_opportunity_type');
-
+    /** @var \Drupal\taxonomy\TermInterface $term */
+    $term = reset($terms);
     $I->createEntity([
       'type' => 'su_opportunity',
       'title' => 'Foo Bar',
-      'su_opp_type' => reset($terms)->id(),
+      'su_opp_type' => $term->id(),
     ]);
+    $dimensions = $this->createTaxonomyTerms($I, [
+      'Foo Bar Baz',
+    ], 'su_opportunity_dimension');
     $node = $I->createEntity([
       'type' => 'su_opportunity',
       'title' => 'Bar Foo',
-      'su_opp_type' => reset($terms)->id(),
+      'su_opp_type' => $term->id(),
+      'su_opp_dimension' => reset($dimensions)->id(),
     ]);
 
     $I->amOnPage($node->toUrl()->toString());
+    $I->canSee(reset($dimensions)->getDescription());
     $I->canSee('Bar Foo', 'h1');
     $I->canSee('Related Opportunities', 'h2');
+    $I->canSeeNumberOfElements('.flex-md-4-of-12.views-row .su-card', [1, 3]);
     $I->canSee('Foo Bar', 'h2');
   }
 
@@ -66,10 +76,12 @@ class OpportunityContentCest {
    */
   protected function createTaxonomyTerms(\AcceptanceTester $I, array $terms, $vocab) {
     $created_terms = [];
+    $faker = Factory::create();
     foreach ($terms as $term) {
       $created_terms[] = $I->createEntity([
         'name' => $term,
         'vid' => $vocab,
+        'description' => $faker->paragraph,
       ], 'taxonomy_term');
     }
     return $created_terms;

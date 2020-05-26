@@ -12,6 +12,11 @@ class SpotlightContentCest {
     $I->createEntity(['type' => 'su_opportunity', 'title' => 'Foo Bar']);
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/su_spotlight');
+    $I->canSee("Opportunity's Information", 'summary');
+    $I->canSee("Opportunity's Open To?");
+    $I->canSee("Opportunity's Service Theme");
+    $I->canSee("Opportunity's Pathway");
+    $I->canSee("Opportunity's Dimension");
     $I->fillField('Title', 'Foo Bar Spotlight');
     $I->fillField('Student Name', 'John Doe');
     $I->fillField('Major', 'Underwater Basket Weaving');
