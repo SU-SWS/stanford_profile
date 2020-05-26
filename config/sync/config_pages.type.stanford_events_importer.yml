@@ -1,0 +1,26 @@
+uuid: 014ae111-629f-4774-bfd6-56c835462ea9
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages_overrides
+third_party_settings:
+  config_pages_overrides:
+    a1e7eda2-59bc-42da-8284-63873ba111d6:
+      field: su_event_xml_url
+      delta: -1
+      column: uri
+      config_name: stanford_events_importer.settings
+      config_item: urls
+id: stanford_events_importer
+label: 'Stanford Events Importer'
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/stanford/events-importer
+  weight: 0
+  description: 'Provide a list of urls to use'
