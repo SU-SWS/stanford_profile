@@ -14,8 +14,7 @@ source:
   track_changes: true
   plugin: url
   data_fetcher_plugin: file
-  urls:
-    - 'http://events.stanford.edu/xml/drupal/v2.php?category=24'
+  urls: null
   data_parser_plugin: simple_xml
   item_selector: /EventList/Event
   fields:
