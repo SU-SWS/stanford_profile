@@ -164,7 +164,8 @@
 
     .flex-lg-3-of-12 {
       display: inline-grid;
-      grid-template-columns: repeat(4, auto);
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
       order: 1;
       -ms-flex: none;
       -webkit-box-flex: none;
@@ -179,7 +180,7 @@
 
   @include grid-media-max('md') {
     .flex-lg-3-of-12 {
-      grid-template-columns: repeat(2, auto);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
   @include grid-media-max('sm') {
@@ -197,14 +198,13 @@
     }
 
     .form-item {
-
       &:nth-child(2),
       &:nth-child(3) {
         width: 50%;
         float: left;
       }
 
-      &:nth-child(1n+4) {
+      &:nth-child(1n + 4) {
         display: none;
       }
     }

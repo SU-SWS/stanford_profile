@@ -1,0 +1,46 @@
+@charset 'UTF-8';
+
+.su-hero-left {
+  h1 {
+    margin: 0;
+  }
+
+  .su-hero__card {
+    @include grid-media-min('lg') {
+      max-width: 650px;
+      text-align: center;
+      opacity: 0.9;
+    }
+  }
+}
+
+.su-hero-fw {
+  &.su-hero {
+    margin-bottom: 9.6rem;
+
+    .su-hero__media {
+      background-color: $su-color-cloud;
+    }
+  }
+
+  .su-hero__card {
+    @include grid-media-min('md') {
+      @include centered-column;
+
+      background: #fff;
+      margin: 45px auto;
+      position: unset;
+      opacity: 0.9;
+    }
+
+    .su-opp-type {
+      div {
+        display: inline-block;
+      }
+    }
+
+    h1 {
+      margin-bottom: 0;
+    }
+  }
+}
