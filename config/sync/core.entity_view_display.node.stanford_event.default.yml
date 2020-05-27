@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_email
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
+    - field.field.node.stanford_event.su_event_source
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_telephone
@@ -430,7 +431,7 @@ third_party_settings:
               id: 'views_block:stanford_events-more_events_block'
               label: 'Explore More Events'
               provider: views
-              label_display: '0'
+              label_display: visible
               views_label: 'Explore More Events'
               items_per_page: none
               context_mapping: {  }
@@ -534,6 +535,18 @@ content:
     region: content
   su_event_map_link:
     weight: 116
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: main
+  su_event_source:
+    weight: 118
     label: above
     settings:
       trim_length: 80

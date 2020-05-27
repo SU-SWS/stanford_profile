@@ -79,7 +79,6 @@ source:
     type: stanford_event
     stanford_html: stanford_html
     stanford_minimal_html: stanford_minimal_html
-    cta_title: 'View event on events.stnaford.edu'
     map_title: 'Open in map'
 process:
   status: constants/status
@@ -102,8 +101,7 @@ process:
   su_event_alt_loc: location
   su_event_map_link/uri: map_link
   su_event_map_link/title: constants/map_title
-  su_event_cta/uri: link
-  su_event_cta/title: constants/cta_title
+  su_event_source/uri: link
   su_event_date_time/value:
     -
       plugin: format_date
@@ -131,6 +129,8 @@ process:
       plugin: explode
       source: categories
       delimiter: ','
+    -
+      plugin: array_shift
     -
       plugin: callback
       callable: trim
