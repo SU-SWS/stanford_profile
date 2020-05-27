@@ -3,15 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.su_event_alt_loc
     - field.storage.node.su_event_date_time
     - field.storage.node.su_event_dek
     - field.storage.node.su_event_location
+    - field.storage.node.su_event_source
     - field.storage.node.su_event_subheadline
     - field.storage.node.su_event_type
     - node.type.stanford_event
     - taxonomy.vocabulary.stanford_event_types
   module:
     - address
+    - link
     - node
     - smart_date
     - stanford_fields
@@ -683,10 +686,10 @@ display:
       block_hide_empty: false
       block_category: 'Events Lists (Views)'
       fields:
-        su_event_date_time_value_1:
-          id: su_event_date_time_value_1
-          table: node__su_event_date_time
-          field: su_event_date_time_value
+        title:
+          id: title
+          table: node_field_data
+          field: title
           relationship: none
           group_type: group
           admin_label: ''
@@ -694,7 +697,7 @@ display:
           exclude: false
           alter:
             alter_text: false
-            text: ''
+            text: '<h2>{{ title }}</h2>'
             make_link: false
             path: ''
             absolute: false
@@ -710,8 +713,8 @@ display:
             target: ''
             nl2br: false
             max_length: 0
-            word_boundary: true
-            ellipsis: true
+            word_boundary: false
+            ellipsis: false
             more_link: false
             more_link_text: ''
             more_link_path: ''
@@ -724,81 +727,50 @@ display:
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
-          element_wrapper_type: span
-          element_wrapper_class: su-start-month
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          date_format: stanford_short_month
-          custom_date_format: ''
-          timezone: ''
-          plugin_id: date
-        su_event_date_time_value:
-          id: su_event_date_time_value
-          table: node__su_event_date_time
-          field: su_event_date_time_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: span
-          element_wrapper_class: su-start-date
+          element_wrapper_type: ''
+          element_wrapper_class: ''
           element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          date_format: stanford_two_digit_day
-          custom_date_format: ''
-          timezone: ''
-          plugin_id: date
-        su_event_date_time_end_value:
-          id: su_event_date_time_end_value
-          table: node__su_event_date_time
-          field: su_event_date_time_end_value
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          output_url_as_text: false
+          absolute: false
+        su_event_source:
+          id: su_event_source
+          table: node__su_event_source
+          field: su_event_source
           relationship: none
           group_type: group
           admin_label: ''
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<h2><a href={{ su_event_source__uri }} class="su-link su-link--external">{{ title }}</a></h2>'
             make_link: false
             path: ''
             absolute: false
@@ -828,69 +800,32 @@ display:
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
-          element_wrapper_type: '0'
+          element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: false
-          empty: ''
+          empty: '<h2><a href={{ node_view }}>{{ title }}</a></h2>'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          date_format: stanford_short_month
-          custom_date_format: ''
-          timezone: ''
-          plugin_id: date
-        su_event_date_time_end_value_1:
-          id: su_event_date_time_end_value_1
-          table: node__su_event_date_time
-          field: su_event_date_time_end_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: '0'
-          element_wrapper_class: ''
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          date_format: stanford_two_digit_day
-          custom_date_format: ''
-          timezone: ''
-          plugin_id: date
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: null
+            url_only: true
+            url_plain: true
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         su_event_type:
           id: su_event_type
           table: node__su_event_type
@@ -953,71 +888,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: true
-            text: '<h2>{{ title }}</h2>'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
           plugin_id: field
         su_event_subheadline:
           id: su_event_subheadline
@@ -1145,10 +1015,218 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        su_event_date_time_1:
-          id: su_event_date_time_1
+        su_event_date_time_value_1:
+          id: su_event_date_time_value_1
           table: node__su_event_date_time
-          field: su_event_date_time
+          field: su_event_date_time_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Start Month'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: su-start-month
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: stanford_short_month
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date
+        su_event_date_time_value:
+          id: su_event_date_time_value
+          table: node__su_event_date_time
+          field: su_event_date_time_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Start Day'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: su-start-date
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: stanford_two_digit_day
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date
+        su_event_date_time_end_value:
+          id: su_event_date_time_end_value
+          table: node__su_event_date_time
+          field: su_event_date_time_end_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'End Month'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: '0'
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: stanford_short_month
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date
+        su_event_date_time_end_value_1:
+          id: su_event_date_time_end_value_1
+          table: node__su_event_date_time
+          field: su_event_date_time_end_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'End Day'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: '0'
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: stanford_two_digit_day
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date
+        su_event_alt_loc:
+          id: su_event_alt_loc
+          table: node__su_event_alt_loc
+          field: su_event_alt_loc
           relationship: none
           group_type: group
           admin_label: ''
@@ -1187,7 +1265,70 @@ display:
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: su-event-full-date-time
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        su_event_date_time:
+          id: su_event_date_time
+          table: node__su_event_date_time
+          field: su_event_date_time
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Full Date & Time'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
           element_default_classes: false
           empty: ''
           hide_empty: false
@@ -1253,7 +1394,7 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: false
           empty: ''
           hide_empty: false
           empty_zero: false
@@ -1287,15 +1428,18 @@ display:
         options:
           default_field_elements: 0
           inline:
+            title: 0
+            view_node: 0
+            su_event_source: 0
+            su_event_type: 0
+            su_event_subheadline: 0
+            su_event_dek: 0
             su_event_date_time_value_1: 0
             su_event_date_time_value: 0
             su_event_date_time_end_value: 0
             su_event_date_time_end_value_1: 0
-            su_event_type: 0
-            title: 0
-            su_event_subheadline: 0
-            su_event_dek: 0
-            su_event_date_time_1: 0
+            su_event_alt_loc: 0
+            su_event_date_time: 0
             su_event_location: 0
           separator: ''
           hide_empty: 1
@@ -1312,54 +1456,59 @@ display:
             alert: default
             card: default
           pattern_mapping:
-            'views_row:su_event_date_time_value_1':
-              destination: su_event_start_month
+            'views_row:su_event_source':
+              destination: su_event_headline
               weight: 0
               plugin: views_row
+              source: su_event_source
+            'views_row:su_event_date_time':
+              destination: su_event_date_time
+              weight: 1
+              plugin: views_row
+              source: su_event_date_time
+            'views_row:su_event_date_time_value_1':
+              destination: su_event_start_month
+              weight: 2
+              plugin: views_row
               source: su_event_date_time_value_1
+            'views_row:su_event_alt_loc':
+              destination: su_event_location
+              weight: 3
+              plugin: views_row
+              source: su_event_alt_loc
             'views_row:su_event_date_time_value':
               destination: su_event_start_date
-              weight: 1
+              weight: 4
               plugin: views_row
               source: su_event_date_time_value
             'views_row:su_event_date_time_end_value_1':
               destination: su_event_end_date
-              weight: 2
+              weight: 5
               plugin: views_row
               source: su_event_date_time_end_value_1
             'views_row:su_event_date_time_end_value':
               destination: su_event_end_month
-              weight: 3
+              weight: 6
               plugin: views_row
               source: su_event_date_time_end_value
             'views_row:su_event_type':
-              destination: su_event_audience
-              weight: 4
+              destination: su_event_type
+              weight: 7
               plugin: views_row
               source: su_event_type
-            'views_row:title':
-              destination: su_event_headline
-              weight: 5
-              plugin: views_row
-              source: title
             'views_row:su_event_subheadline':
               destination: su_event_subheadline
-              weight: 6
+              weight: 8
               plugin: views_row
               source: su_event_subheadline
             'views_row:su_event_dek':
               destination: su_event_dek
-              weight: 7
+              weight: 9
               plugin: views_row
               source: su_event_dek
-            'views_row:su_event_date_time_1':
-              destination: su_event_date_time
-              weight: 8
-              plugin: views_row
-              source: su_event_date_time_1
             'views_row:su_event_location':
               destination: su_event_location
-              weight: 9
+              weight: 10
               plugin: views_row
               source: su_event_location
     cache_metadata:
@@ -1371,9 +1520,11 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.su_event_alt_loc'
         - 'config:field.storage.node.su_event_date_time'
         - 'config:field.storage.node.su_event_dek'
         - 'config:field.storage.node.su_event_location'
+        - 'config:field.storage.node.su_event_source'
         - 'config:field.storage.node.su_event_subheadline'
         - 'config:field.storage.node.su_event_type'
   list_page_filtered:
