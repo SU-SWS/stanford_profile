@@ -1,0 +1,41 @@
+uuid: f39b1966-cf48-4f82-bbf6-e923619f763c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_series_components
+    - node.type.stanford_event_series
+  module:
+    - entity_reference_revisions
+id: node.stanford_event_series.su_event_series_components
+field_name: su_event_series_components
+entity_type: node
+bundle: stanford_event_series
+label: Components
+description: 'Free form content'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles: null
+    target_bundles_drag_drop:
+      stanford_banner:
+        weight: 6
+        enabled: false
+      stanford_card:
+        weight: 7
+        enabled: false
+      stanford_media_caption:
+        weight: 8
+        enabled: false
+      stanford_spacer:
+        weight: 9
+        enabled: false
+      stanford_wysiwyg:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions
