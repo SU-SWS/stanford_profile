@@ -95,7 +95,7 @@ merge_upstream: &merge_upstream
             DATE=`date +%Y-%m-%d`
             git checkout -b ${DATE}
             git push origin ${DATE}
-            hub pull-request --base=${CIRCLE_BRANCH} --message="Updates from stanford_profile"
+            hub pull-request --base=${CIRCLE_BRANCH} --message="Updates from stanford_profile" --assign=pookmish
           fi
 
 back_to_dev: &back_to_dev
