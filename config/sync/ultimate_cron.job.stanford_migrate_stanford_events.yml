@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_migrate
+title: 'Events Migration'
+id: stanford_migrate_stanford_events
+weight: 0
+module: stanford_migrate
+callback: stanford_migrate_ultimate_cron_task
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

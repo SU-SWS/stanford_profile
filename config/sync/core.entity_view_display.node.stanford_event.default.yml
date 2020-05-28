@@ -156,7 +156,7 @@ third_party_settings:
                 label: hidden
                 type: entity_reference_label
                 settings:
-                  link: true
+                  link: false
                 third_party_settings:
                   field_formatter_class:
                     class: su-event-type
@@ -415,6 +415,27 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 3
+          d64439dc-f59e-4822-aba0-cdca5a9dc331:
+            uuid: d64439dc-f59e-4822-aba0-cdca5a9dc331
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_type'
+              label: 'Related Topics'
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 4
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
