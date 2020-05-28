@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Filters} from "../../opportunities_list/src/Components/Filters";
+import './styles.scss';
 
 const nodeBundle = 'su_opportunity';
 const nodeFields = [
