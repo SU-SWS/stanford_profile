@@ -121,7 +121,8 @@ export class Filters extends Component {
       return;
     }
     const query = queryString.stringify(this.state.filters, {arrayFormat: 'bracket'});
-    window.location = `${window.location.pathname}?${query}`;
+    const location = this.props.submitUrl ?? window.location.pathname;
+    window.location = `${location}?${query}`;
   }
 
   /**
