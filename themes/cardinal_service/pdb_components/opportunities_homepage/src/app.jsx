@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Filters} from './Components/Filters';
+import {Filters} from "../../opportunities_list/src/Components/Filters";
 
 const nodeBundle = 'su_opportunity';
 const nodeFields = [
@@ -14,12 +14,9 @@ const nodeFields = [
 
 ReactDOM.render(
   <Filters
-    showMoreFilters
-    useGrid
     bundle={nodeBundle}
     mainFiltersCount={3}
     fields={nodeFields}
-    header={<h2>Search by</h2>}
   />,
-  document.getElementById('opportunities-filter-list')
+  document.getElementById('opportunities-homepage')
 );
