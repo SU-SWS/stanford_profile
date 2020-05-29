@@ -21,7 +21,7 @@ mode: default
 content:
   su_schedule_date_time:
     weight: 0
-    label: above
+    label: hidden
     settings:
       format: default
       force_chronological: false
@@ -32,14 +32,14 @@ content:
     region: content
   su_schedule_description:
     weight: 2
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   su_schedule_headline:
     weight: 1
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -47,7 +47,7 @@ content:
     region: content
   su_schedule_location:
     weight: 3
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: address_default
@@ -55,7 +55,7 @@ content:
   su_schedule_speaker:
     type: entity_reference_revisions_entity_view
     weight: 4
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''

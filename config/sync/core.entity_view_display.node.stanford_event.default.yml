@@ -236,7 +236,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 4
+            weight: 5
           1dc2e07f-0713-48bf-9db4-0ac54fb145df:
             uuid: 1dc2e07f-0713-48bf-9db4-0ac54fb145df
             region: right
@@ -435,6 +435,29 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 13
+          dc2fc12d-355b-4d63-85ff-53e7bf106a3d:
+            uuid: dc2fc12d-355b-4d63-85ff-53e7bf106a3d
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_schedule'
+              label: Schedule
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: above
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-schedule
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 4
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column

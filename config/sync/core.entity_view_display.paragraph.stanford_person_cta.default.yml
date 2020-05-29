@@ -9,7 +9,28 @@ dependencies:
     - field.field.paragraph.stanford_person_cta.su_person_cta_title
     - paragraphs.paragraphs_type.stanford_person_cta
   module:
+    - ds
+    - field_formatter_class
     - link
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_person-cta
+      library: null
+      disable_css: false
+      entity_classes: no_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      su_person_cta_image:
+        - su_person_cta_image
+      su_person_cta_name:
+        - su_person_cta_name
+      su_person_cta_title:
+        - su_person_cta_title
+      su_person_cta_link:
+        - su_person_cta_link
 id: paragraph.stanford_person_cta.default
 targetEntityType: paragraph
 bundle: stanford_person_cta
@@ -18,38 +39,42 @@ content:
   su_person_cta_image:
     type: entity_reference_entity_view
     weight: 0
-    label: above
+    label: hidden
     settings:
-      view_mode: default
+      view_mode: stanford_image_stanford_circle
       link: false
-    third_party_settings: {  }
-    region: content
+    third_party_settings:
+      field_formatter_class:
+        class: su-person-cta--image
+    region: su_person_cta_image
   su_person_cta_link:
-    weight: 3
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
     type: link
-    region: content
+    weight: 3
+    region: su_person_cta_link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: true
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
   su_person_cta_name:
     weight: 1
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
+    region: su_person_cta_name
   su_person_cta_title:
     weight: 2
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
+    region: su_person_cta_title
 hidden: {  }
