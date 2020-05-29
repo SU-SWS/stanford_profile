@@ -1,0 +1,55 @@
+uuid: 0154f147-3cb7-48d5-ba28-ffaa298f3029
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_person_cta.su_person_cta_image
+    - field.field.paragraph.stanford_person_cta.su_person_cta_link
+    - field.field.paragraph.stanford_person_cta.su_person_cta_name
+    - field.field.paragraph.stanford_person_cta.su_person_cta_title
+    - paragraphs.paragraphs_type.stanford_person_cta
+  module:
+    - link
+id: paragraph.stanford_person_cta.default
+targetEntityType: paragraph
+bundle: stanford_person_cta
+mode: default
+content:
+  su_person_cta_image:
+    type: entity_reference_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  su_person_cta_link:
+    weight: 3
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  su_person_cta_name:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_person_cta_title:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

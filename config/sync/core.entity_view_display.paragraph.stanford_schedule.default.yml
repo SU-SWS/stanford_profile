@@ -1,0 +1,64 @@
+uuid: 4362ca68-4ab4-4c22-9d3f-7a137283e7a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_schedule.su_schedule_date_time
+    - field.field.paragraph.stanford_schedule.su_schedule_description
+    - field.field.paragraph.stanford_schedule.su_schedule_headline
+    - field.field.paragraph.stanford_schedule.su_schedule_location
+    - field.field.paragraph.stanford_schedule.su_schedule_speaker
+    - paragraphs.paragraphs_type.stanford_schedule
+  module:
+    - address
+    - entity_reference_revisions
+    - smart_date
+    - text
+id: paragraph.stanford_schedule.default
+targetEntityType: paragraph
+bundle: stanford_schedule
+mode: default
+content:
+  su_schedule_date_time:
+    weight: 0
+    label: above
+    settings:
+      format: default
+      force_chronological: false
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: smartdate_default
+    region: content
+  su_schedule_description:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  su_schedule_headline:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_schedule_location:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  su_schedule_speaker:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

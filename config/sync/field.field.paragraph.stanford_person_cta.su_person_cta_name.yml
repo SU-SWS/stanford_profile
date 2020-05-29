@@ -1,0 +1,19 @@
+uuid: 831f3e08-cc5d-4926-9b33-950036e47b63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_person_cta_name
+    - paragraphs.paragraphs_type.stanford_person_cta
+id: paragraph.stanford_person_cta.su_person_cta_name
+field_name: su_person_cta_name
+entity_type: paragraph
+bundle: stanford_person_cta
+label: Name
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

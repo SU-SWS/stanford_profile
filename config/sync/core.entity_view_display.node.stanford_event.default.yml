@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_email
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
+    - field.field.node.stanford_event.su_event_schedule
     - field.field.node.stanford_event.su_event_source
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
@@ -436,6 +437,29 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 4
+          882aa2ca-8150-4b2b-aee7-c8654c6c173a:
+            uuid: 882aa2ca-8150-4b2b-aee7-c8654c6c173a
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_schedule'
+              label: Schedule
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-schedule
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 5
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
@@ -565,6 +589,15 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: main
+  su_event_schedule:
+    type: entity_reference_revisions_entity_view
+    weight: 119
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: main
   su_event_source:
     weight: 118
