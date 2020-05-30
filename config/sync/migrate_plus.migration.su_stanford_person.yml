@@ -213,7 +213,12 @@ process:
     -
       plugin: sub_process
       process:
-        uri: url
+        uri:
+          plugin: str_replace
+          source: url
+          search: '/^(?![a-zA-Z]).*://.*?$/'
+          replace: ''
+          regex: true
         title: label/text
   su_person_mail_code: mailcode
 destination:
