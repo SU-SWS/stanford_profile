@@ -240,10 +240,10 @@ function stanford_profile_xmlsitemap_link_alter(array &$link, array $context) {
   // Get node/[:id] from loc.
   $node_id = $link['loc'];
 
-  // Get 403 page path
+  // Get 403 page path.
   $stanford_profile_403_page = \Drupal::config('system.site')->get('page.403');
 
-  // Get 404 page path
+  // Get 404 page path.
   $stanford_profile_404_page = \Drupal::config('system.site')->get('page.404');
 
   // If node id matches 403 or 404 pages, remove it from sitemap.
