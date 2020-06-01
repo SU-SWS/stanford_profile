@@ -1,8 +1,53 @@
 // General styles for the component.
 
 #opportunities-homepage {
+  & > div > div {
+    background: inherit;
+    box-shadow: none;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
   .centered-container {
     width: 100%;
     max-width: 100%;
+  }
+
+  .flex-container div {
+    flex: 0 0 100%;
+    max-width: 100%;
+
+    &:first-child div {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+
+      &:nth-child(1) {
+        width: 100%;
+      }
+
+      &:nth-child(2) {
+        margin-right: 20px;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        flex-basis: calc(50% - 10px);
+      }
+    }
+
+    &:last-child > div {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .MuiAutocomplete-root {
+    background-color: #fff;
+
+    &:first-of-type {
+      margin-bottom: 25px;
+    }
   }
 }
