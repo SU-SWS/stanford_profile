@@ -34,13 +34,11 @@ third_party_settings:
   field_group:
     group_editorial_content:
       children:
-        - su_event_type
-        - title
         - su_event_subheadline
         - su_event_dek
         - su_event_sponsor
       parent_name: ''
-      weight: 0
+      weight: 2
       format_type: fieldset
       region: content
       format_settings:
@@ -54,7 +52,7 @@ third_party_settings:
         - body
         - su_event_components
       parent_name: ''
-      weight: 1
+      weight: 3
       format_type: fieldset
       region: content
       format_settings:
@@ -74,7 +72,7 @@ third_party_settings:
         - su_event_audience
         - su_event_cta
       parent_name: ''
-      weight: 2
+      weight: 4
       format_type: fieldset
       region: content
       format_settings:
@@ -87,7 +85,7 @@ third_party_settings:
       children:
         - su_event_schedule
       parent_name: ''
-      weight: 3
+      weight: 5
       format_type: fieldset
       region: content
       format_settings:
@@ -114,13 +112,13 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 4
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -128,7 +126,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 10
     region: content
     third_party_settings: {  }
   su_event_audience:
@@ -238,14 +236,14 @@ content:
     type: telephone_default
     region: content
   su_event_type:
-    weight: 2
+    weight: 0
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   title:
     type: string_textfield
-    weight: 3
+    weight: 1
     region: content
     settings:
       size: 60
@@ -253,7 +251,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -262,7 +260,7 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 6
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }

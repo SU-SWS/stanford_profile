@@ -755,22 +755,14 @@ display:
           id: view_node
           table: node
           field: view_node
-          entity_type: node
-          plugin_id: entity_link
-          output_url_as_text: false
-          absolute: false
-        su_event_source:
-          id: su_event_source
-          table: node__su_event_source
-          field: su_event_source
           relationship: none
           group_type: group
           admin_label: ''
           label: ''
           exclude: false
           alter:
-            alter_text: true
-            text: '<h2><a href={{ su_event_source__uri }} class="su-link su-link--external">{{ title }}</a></h2>'
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -803,7 +795,60 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: false
-          empty: '<h2><a href={{ node_view }}>{{ title }}</a></h2>'
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link
+        su_event_source:
+          id: su_event_source
+          table: node__su_event_source
+          field: su_event_source
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<h2><a href="{{ su_event_source__uri }}" class="su-link su-link--external">{{ title }}</a></h2>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: '<h2><a href="{{ node_view }}" class="su-link su-link--action">{{ title }}</a></h2>'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -1338,7 +1383,7 @@ display:
           type: smartdate_default
           settings:
             timezone_override: ''
-            format: default
+            format: stanford_events_long
             force_chronological: false
           group_column: value
           group_columns: {  }
@@ -1598,7 +1643,7 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: true
+            alter_text: false
             text: '<h2>{{ title }}</h2>'
             make_link: false
             path: ''
@@ -1702,7 +1747,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           text: view
-          output_url_as_text: false
+          output_url_as_text: true
           absolute: false
           entity_type: node
           plugin_id: entity_link
@@ -1717,7 +1762,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<h2><a href={{ su_event_source__uri }} class="su-link su-link--external">{{ title }}</a></h2>'
+            text: '<h2><a href="{{ su_event_source__uri }}" class="su-link su-link--external">{{ title }}</a></h2>'
             make_link: false
             path: ''
             absolute: false
@@ -1749,8 +1794,8 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
-          empty: '<h2><a href={{ node_view }}>{{ title }}</a></h2>'
+          element_default_classes: false
+          empty: '<h2><a href="{{ node_view }}" class="su-link su-link--action">{{ title }}</a></h2>'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -2079,7 +2124,7 @@ display:
           type: smartdate_default
           settings:
             timezone_override: ''
-            format: default
+            format: stanford_events_long
             force_chronological: false
           group_column: value
           group_columns: {  }
@@ -2621,8 +2666,8 @@ display:
             view_node: 0
             su_event_source: 0
             su_event_subheadline: 0
-            su_event_date_time_1: 0
             edit_node: 0
+            su_event_date_time: 0
           separator: ''
           hide_empty: 1
           pattern: events-explore-more
@@ -2643,41 +2688,41 @@ display:
               weight: 0
               plugin: views_row
               source: su_event_date_time_value
+            'views_row:su_event_date_time':
+              destination: su_event_date_time
+              weight: 1
+              plugin: views_row
+              source: su_event_date_time
             'views_row:su_event_date_time_value_1':
               destination: su_event_start_date
-              weight: 1
+              weight: 2
               plugin: views_row
               source: su_event_date_time_value_1
             'views_row:su_event_date_time_end_value':
               destination: su_event_end_month
-              weight: 2
+              weight: 3
               plugin: views_row
               source: su_event_date_time_end_value
             'views_row:su_event_date_time_end_value_1':
-              destination: su_event_start_date
-              weight: 3
+              destination: su_event_end_date
+              weight: 4
               plugin: views_row
               source: su_event_date_time_end_value_1
             'views_row:su_event_type':
               destination: su_event_type
-              weight: 4
+              weight: 5
               plugin: views_row
               source: su_event_type
             'views_row:su_event_source':
               destination: su_event_headline
-              weight: 5
+              weight: 6
               plugin: views_row
               source: su_event_source
             'views_row:su_event_subheadline':
               destination: su_event_subheadline
-              weight: 6
-              plugin: views_row
-              source: su_event_subheadline
-            'views_row:su_event_date_time_1':
-              destination: su_event_date_time
               weight: 7
               plugin: views_row
-              source: su_event_date_time_1
+              source: su_event_subheadline
       fields:
         su_event_date_time_value:
           id: su_event_date_time_value
@@ -2999,9 +3044,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: entity_title_heading
+          type: string
           settings:
-            tag: h2
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -3058,13 +3103,13 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: false
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
           text: view
-          output_url_as_text: false
+          output_url_as_text: true
           absolute: false
           entity_type: node
           plugin_id: entity_link
@@ -3079,7 +3124,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<h2><a href={{ su_event_source__uri }} class="su-link su-link--external">{{ title }}</a></h2>'
+            text: '<h2><a href="{{ su_event_source__uri }}" class="su-link su-link--external">{{ title }}</a></h2>'
             make_link: false
             path: ''
             absolute: false
@@ -3112,7 +3157,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: false
-          empty: '<h2><a href={{ node_view }}>{{ title }}</a></h2>'
+          empty: '<h2><a href="{{ view_node }}" class="su-link su-link--action">{{ title }}</a></h2>'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -3198,71 +3243,6 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        su_event_date_time_1:
-          id: su_event_date_time_1
-          table: node__su_event_date_time
-          field: su_event_date_time
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: smartdate_default
-          settings:
-            timezone_override: ''
-            format: default
-            force_chronological: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
         edit_node:
           id: edit_node
           table: node
@@ -3316,6 +3296,71 @@ display:
           absolute: false
           entity_type: node
           plugin_id: entity_link_edit
+        su_event_date_time:
+          id: su_event_date_time
+          table: node__su_event_date_time
+          field: su_event_date_time
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: smartdate_default
+          settings:
+            timezone_override: ''
+            format: stanford_events_long
+            force_chronological: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
     cache_metadata:
       max-age: -1
       contexts:

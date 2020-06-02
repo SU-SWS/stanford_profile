@@ -248,18 +248,11 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: hidden
-                type: smartdate_custom
+                type: smartdate_default
                 settings:
-                  date_format: 'l, F j Y'
-                  custom_date_format: ''
-                  timezone: ''
-                  separator: ' - '
-                  join: ', '
-                  time_format: 'g:ia'
-                  time_hour_format: 'g:ia'
-                  allday_label: ''
-                  date_first: '1'
-                  ampm_reduce: 0
+                  timezone_override: ''
+                  format: stanford_events_long
+                  force_chronological: false
                 third_party_settings:
                   field_formatter_class:
                     class: su-event-date-time
