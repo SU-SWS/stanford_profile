@@ -98,6 +98,7 @@
         "drupal/environment_indicator": "^3.0",
         "drupal/field_formatter_class": "dev-1.x#e7b3c4a959f63d7a9efc74f2d3a67de306b8ddb4",
         "drupal/field_group": "^3.0@rc",
+        "drupal/field_permissions": "^1.0@RC",
         "drupal/field_validation": "^1.0-alpha",
         "drupal/file_mdm": "~1.1",
         "drupal/google_analytics": "~2.1",
@@ -137,6 +138,9 @@
         "su-sws/stanford_date_formats": "dev-8.x-1.x",
         "su-sws/stanford_fields": "dev-8.x-1.x",
         "su-sws/stanford_image_styles": "dev-8.x-1.x",
+        "su-sws/stanford_news": "dev-8.x-2.x",
+        "su-sws/stanford_notifications": "dev-8.x-1.x",
+        "su-sws/stanford_person": "dev-8.x-1.x",
         "su-sws/stanford_ssp": "dev-8.x-1.x",
         "su-sws/stanford_text_editor": "dev-8.x-1.x"
     },
@@ -153,14 +157,21 @@
             }
         },
         "patches": {
+            "drupal/config_readonly": {
+                "https://www.drupal.org/project/config_readonly/issues/2892631": "https://www.drupal.org/files/issues/2018-04-01/config-readonly-2892631-18.patch"
+            },
+            "drupal/core": {
+                "https://www.drupal.org/project/drupal/issues/2577923": "https://www.drupal.org/files/issues/2019-10-14/2577923-125.patch",
+                "https://www.drupal.org/project/drupal/issues/2353611": "https://www.drupal.org/files/issues/2019-10-15/drupal-link_uuid-2353611-262.patch"
+            },
+            "drupal/default_content": {
+                "https://www.drupal.org/project/default_content/issues/2698425": "https://www.drupal.org/files/issues/2020-02-05/2698425--accept-content-updates--122.patch"
+            },
             "drupal/field_formatter_class": {
                 "https://www.drupal.org/project/field_formatter_class/issues/3046372": "https://www.drupal.org/files/issues/2020-02-03/field_formatter_class-3046372-10.patch"
             },
             "drupal/menu_link_weight": {
                 "https://www.drupal.org/project/menu_link_weight/issues/2995896": "https://www.drupal.org/files/issues/2018-08-29/2995896-menu-admin-per-menu-support-fixes.patch"
-            },
-            "drupal/config_readonly": {
-                "https://www.drupal.org/project/config_readonly/issues/2892631": "https://www.drupal.org/files/issues/2018-04-01/config-readonly-2892631-18.patch"
             },
             "drupal/paragraphs": {
                 "https://www.drupal.org/project/paragraphs/issues/2901390": "https://www.drupal.org/files/issues/2019-08-10/paragraphs-set_langcode_widgets-290139_updated.patch"

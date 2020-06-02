@@ -1,5 +1,44 @@
 # Stanford Profile
 
+8.x-1.12
+--------------------------------------------------------------------------------
+_Release Date: 2020-05-20_
+
+- D8CORE-000: Set media with caption and wysiwyg to 3 in a row. (#208) (5878f09)
+- D8CORE-000: Set cards to 3 in a row. (#206) (e6934b0)
+- D8CORE-000: Changed headline on news to 180 max from 70. (#207) (a74ce2c)
+- D8CORE-2110: Remove news views paragraph type. (#205) (916fafb)
+
+8.x-1.11
+--------------------------------------------------------------------------------
+_Release Date: 2020-05-18_
+
+- Fixed the update hook to set the home, 404 and 403 pages.
+
+8.x-1.10
+--------------------------------------------------------------------------------
+_Release Date: 2020-05-18_
+
+- Added field permissions to restrict access to the site settings url field.
+- Use drupal state & config overrides to set the home, 404, and 403 pages.
+
+8.x-1.9
+--------------------------------------------------------------------------------
+_Release Date: 2020-05-15_
+
+- D8CORE-2017: Integrate stanford_news and stanford_person modules (#194) (ae4b392)
+- D8CORE-1929: Added stanford notifications module (#199) (014ed34)
+- D8CORE-1697: Getting buttons to stack (#174) (9dda5ce)
+- D8CORE-1952: fixing card image width for a single one on a no layout page (#197) (3fc7bda)
+- D8CORE-1870 Change field labels on the card and banner paragraphs (#193) (0ad3673)
+- D8CORE-1933: removed bottom margin from last intro style (#190) (ffbb937)
+- Fixed revision tab link test now that the name has changed (#192) (152d5e5)
+- D8CORE-1943: Tests for Fix links in the react widget (#189) (3f9f873)
+- Fix misspelled eduPersonEntitlement (#188) (876ade6)
+- D8CORE-1852 Setup node revision delete on stanford_page (#185) (ab7d7ac)
+- D8CORE-1458: Add media to linkit suggestions for inline links (#186) (4cec4e0)
+- Use the stable version of layout_builder_modal module (#184) (614863e)
+
 8.x-1.8
 --------------------------------------------------------------------------------
 _Release Date: 2020-04-17_

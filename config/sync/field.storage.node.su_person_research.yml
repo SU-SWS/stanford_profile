@@ -1,0 +1,20 @@
+uuid: 7eecaf6d-81ba-4e5d-9a86-7cceefc5acc1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.su_person_research
+field_name: su_person_research
+entity_type: node
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

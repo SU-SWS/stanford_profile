@@ -17,4 +17,21 @@
     @include modular-spacing('margin-bottom', 0);
   }
 
+  // If they're in the same paragraph, get them to stack.
+  [class*="su-button"] {
+    display: block;
+    width: max-content;
+  }
+
+  // We want don't want to target the first link.
+  [class*="su-button"] + [class*="su-button"] {
+    @include margin(-0.9rem null null null);
+  }
+
+  // Allow the power user to get buttons to display inline.
+  .su-inline-button [class*="su-button"],
+  .su-inline-button [class*="su-button"] + [class*="su-button"] {
+    display: inline-block;
+    @include margin(null 0.5rem null null);
+  }
 }

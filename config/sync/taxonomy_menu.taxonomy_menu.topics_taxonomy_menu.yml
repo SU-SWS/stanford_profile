@@ -1,0 +1,16 @@
+uuid: 8e28c600-1525-4037-85ef-dd6ff71ef48e
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.news-topics
+    - taxonomy.vocabulary.stanford_news_topics
+id: topics_taxonomy_menu
+label: 'Topics Taxonomy Menu'
+vocabulary: stanford_news_topics
+menu: news-topics
+expanded: false
+depth: 0
+menu_parent: 'news-topics:'
+description_field_name: ''
+use_term_weight_order: true

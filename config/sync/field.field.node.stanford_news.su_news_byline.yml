@@ -1,0 +1,19 @@
+uuid: f146fb11-d8e9-4cf9-857a-c71737a40175
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_byline
+    - node.type.stanford_news
+id: node.stanford_news.su_news_byline
+field_name: su_news_byline
+entity_type: node
+bundle: stanford_news
+label: Byline
+description: 'Use a comma to separate the list of names. <em>The “byline" identifies the author(s) of the article. It will appear below the headline and dek on the article page.</em>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
