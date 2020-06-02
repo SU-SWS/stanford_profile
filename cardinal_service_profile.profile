@@ -248,3 +248,32 @@ function cardinal_service_profile_config_pages_presave(ConfigPagesInterface $ent
     \Drupal::state()->set('xmlsitemap_base_url', $url_field[0]['uri']);
   }
 }
+
+/**
+ * Alter the data of a sitemap link before the link is saved.
+ *
+ * @param array $link
+ *   An array with the data of the sitemap link.
+ * @param array $context
+ *   An optional context array containing data related to the link.
+ */
+function cardinal_service_profile_xmlsitemap_link_alter(array &$link, array $context) {
+
+  // Get node/[:id] from loc.
+  $node_id = $link['loc'];
+
+  // Get 403 page path.
+  $stanford_profile_403_page = \Drupal::config('system.site')->get('page.403');
+
+  // Get 404 page path.
+  $stanford_profile_404_page = \Drupal::config('system.site')->get('page.404');
+
+  // If node id matches 403 or 404 pages, remove it from sitemap.
+  switch ($node_id) {
+    case $stanford_profile_403_page:
+    case $stanford_profile_404_page:
+      // Status is set to zero to exclude the item in the sitemap.
+      $link['status'] = 0;
+
+  }
+}
