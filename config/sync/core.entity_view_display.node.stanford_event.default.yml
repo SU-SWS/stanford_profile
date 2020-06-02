@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_type
     - node.type.stanford_event
     - views.view.stanford_events
+    - views.view.stanford_events_schedule
   module:
     - address
     - entity_reference_revisions
@@ -236,7 +237,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 5
+            weight: 6
           1dc2e07f-0713-48bf-9db4-0ac54fb145df:
             uuid: 1dc2e07f-0713-48bf-9db4-0ac54fb145df
             region: right
@@ -435,29 +436,19 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 13
-          dc2fc12d-355b-4d63-85ff-53e7bf106a3d:
-            uuid: dc2fc12d-355b-4d63-85ff-53e7bf106a3d
+          09d8b675-2bdf-45eb-a005-6279e9f81738:
+            uuid: 09d8b675-2bdf-45eb-a005-6279e9f81738
             region: main
             configuration:
-              id: 'field_block:node:stanford_event:su_event_schedule'
+              id: 'views_block:stanford_events_schedule-event_schedule_block'
               label: Schedule
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: above
-                type: entity_reference_revisions_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-event-schedule
-                  ds:
-                    ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
+              provider: views
+              label_display: visible
+              views_label: Schedule
+              items_per_page: none
+              context_mapping: {  }
             additional: {  }
-            weight: 4
+            weight: 5
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
