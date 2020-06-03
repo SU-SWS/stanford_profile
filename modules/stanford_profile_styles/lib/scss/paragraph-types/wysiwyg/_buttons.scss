@@ -29,14 +29,18 @@
       @include margin(-1rem null null null);
     }
 
-    &.text-align-center a {
-      margin-left: auto;
-      margin-right: auto;
+    &.text-align-center {
+      a {
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
-    &.text-align-right a {
-      margin-left: auto;
-      margin-right: 0;
+    &.text-align-right {
+      a {
+        margin-left: auto;
+        margin-right: 0;
+      }
     }
   }
 }
