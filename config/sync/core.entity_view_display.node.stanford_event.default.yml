@@ -76,7 +76,7 @@ third_party_settings:
                   tag: h1
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-headline
+                    class: 'su-event-headline flex-10-of-12'
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -97,7 +97,7 @@ third_party_settings:
                   tag: h2
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-subheadline
+                    class: 'su-event-subheadline flex-9-of-12'
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -118,7 +118,7 @@ third_party_settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-dek
+                    class: 'su-event-dek flex-7-of-12'
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -139,7 +139,7 @@ third_party_settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-sponsor
+                    class: 'su-event-sponsor flex-7-of-12'
                   ds:
                     ds_limit: ''
               context_mapping:
