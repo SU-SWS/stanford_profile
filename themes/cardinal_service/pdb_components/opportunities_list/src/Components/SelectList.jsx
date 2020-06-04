@@ -2,108 +2,120 @@ import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Chip from '@material-ui/core/Chip';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import CloseIcon from '@material-ui/icons/Close';
 import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 
 const icon = <CheckBoxOutlineBlankIcon style={{ width: 18, height: 18 }} />;
 const checkedIcon = <CheckBoxIcon style={{ width: 18, height: 18 }} />;
 const arrowIcon = <ExpandMoreIcon style={{ fontSize: 30 }} />;
 
 const Container = styled.div`
-  .MuiAutocomplete-root {
-    width: 100%;
+  // Autocomplete TextField padding
+  .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon
+    .MuiAutocomplete-inputRoot[class*='MuiFilledInput-root'] {
+    padding: 0;
+
+    &[class*='MuiFilledInput-adornedStart'],
+    &[class*='Mui-focused'] {
+      padding-top: 24px;
+    }
   }
 
   // Autocomplete Label
-  .MuiFormLabel-root {
-    font-weight: 400;
-    color: #4d4f53;
-  }
-
   .MuiFormLabel-root.MuiInputLabel-shrink,
   .MuiFormLabel-root.Mui-focused {
     font-weight: 600;
     color: #4d4f53;
   }
 
-  .MuiButtonBase-root {
-    color: #4d4f53;
-  }
-
   // Autocomplete SelectList Input Slug
-  .MuiInputBase-input,
-  .MuiChip-root {
-    font-size: 16px;
-    line-height: normal;
-    margin: 5px 0;
+  .MuiAutocomplete-inputRoot[class*='MuiFilledInput-root']
+    .MuiAutocomplete-input {
+    margin: 0;
+    max-width: 100%;
+    padding: 15px;
   }
 
-  .MuiChip-deleteIcon,
-  .MuiChip-deleteIcon:hover {
-    background: transparent;
-    color: #4d4f53;
-  }
-
-  // Autocomplete border-bottom
+  // Autocomplete Border-bottom
   .MuiFilledInput-underline {
     &:before,
     &:after {
       border-bottom-color: #2e2d29;
     }
   }
-
-  // Remove Autocomplete Rounded corners
-  .MuiFilledInput-root {
-    border: 1px solid #d2d3d4;
-    border-top-left-radius: unset;
-    border-top-right-radius: unset;
-  }
-
-  // Autocomplete dropdown arrow
-  .MuiAutocomplete-endAdornment {
-    top: 10px;
-  }
-
-  //Autocomplete Clear X
-  .MuiAutocomplete-clearIndicator {
-    display: none;
-  }
-
-  // Overwrite TextField styles
-  input,
-  .MuiFilledInput-root,
-  .MuiAutocomplete-root .MuiFilledInput-root.Mui-focused {
-    background-color: #fff;
-    box-shadow: none;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: #fff;
-      box-shadow: none;
-    }
-  }
-
-  // Autocomplete Height
-  .MuiAutocomplete-root {
-    margin: 4px 0;
-
-    .MuiAutocomplete-inputRoot {
-      padding-top: 0;
-    }
-
-    &.MuiAutocomplete-hasPopupIcon .MuiAutocomplete-inputRoot {
-      &[class*='MuiFilledInput-adornedStart'],
-      &[class*='Mui-focused'] {
-        padding-top: 24px;
-      }
-    }
-  }
 `;
+
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+    margin: '4px 0',
+
+    '& input': {
+      backgroundColor: '#fff',
+      boxShadow: 'none',
+      fontSize: '16px',
+      fontWeight: '400',
+      lineHeight: 'normal',
+    },
+  },
+
+  focused: {
+    backgroundColor: '#fff',
+    boxShadow: 'none',
+
+    '&:hover': {
+      backgroundColor: '#fff',
+      boxShadow: 'none',
+    },
+
+    '&:focus': {
+      backgroundColor: '#fff',
+      boxShadow: 'none',
+    },
+  },
+
+  inputRoot: {
+    outline: '1px solid #d2d3d4',
+    backgroundColor: '#fff',
+    borderRadius: 'unset',
+    borderBottomColor: '#2e2d29',
+    paddingTop: 0,
+    fontWeight: '600',
+    color: '#4d4f53',
+
+    '&:hover': {
+      backgroundColor: '#fff',
+    },
+
+    '&:focus': {
+      backgroundColor: '#fff',
+    },
+
+    '&[class*="Mui-focused"]': {
+      paddingTop: '24px',
+      backgroundColor: '#fff',
+    },
+  },
+
+  popupIndicator: {
+    color: '#4d4f53',
+
+    '&:hover': {
+      color: '#4d4f53',
+    },
+  },
+
+  endAdornment: {
+    top: '10px',
+  },
+
+  clearIndicator: {
+    display: 'none',
+  },
+});
 
 export const SelectList = ({
   defaultValue,
@@ -114,10 +126,13 @@ export const SelectList = ({
   options,
 }) => {
   let defaultOptions = multiple ? [] : null;
+
+  const myStyles = useStyles();
+
   if (defaultValue !== undefined) {
-    defaultOptions = defaultValue.map((tid) => {
-      return options.find((option) => option.id === tid);
-    });
+    defaultOptions = defaultValue.map((tid) =>
+      options.find((option) => option.id === tid)
+    );
     defaultOptions = multiple ? defaultOptions : defaultOptions[0];
   }
 
@@ -139,9 +154,18 @@ export const SelectList = ({
   return (
     <Container>
       <Autocomplete
-        // open
+        classes={myStyles}
         disableCloseOnSelect
         popupIcon={arrowIcon}
+        ChipProps={{
+          style: {
+            margin: '5px',
+            maxWidth: '80%',
+            fontSize: '16px',
+            fontWeight: '400',
+            lineHeight: 'normal',
+          },
+        }}
         ListboxProps={{ style: { fontSize: '18px' } }}
         className={field + '-select'}
         id={field}
@@ -171,7 +195,12 @@ export const SelectList = ({
             {...params}
             label={label}
             variant="filled"
-            InputLabelProps={{ style: { marginTop: 0, fontSize: '20px' } }}
+            InputLabelProps={{
+              style: {
+                marginTop: 0,
+                fontSize: '20px',
+              },
+            }}
           />
         )}
       />
