@@ -6,49 +6,131 @@
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 
+  .background-image,
   img,
   picture,
   source {
-    width: 100vw;
+    height: 100%;
+    max-height: 668px;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
   }
 
   .background {
-    background: $su-color-brown;
     position: relative;
-    min-height: 300px;
+    padding-bottom: 100px;
+    background-color: #2f2424;
+
+    &::before {
+      background: linear-gradient(180deg, rgba(47, 36, 36, 0) 0%, #2f2424 90%);
+      content: '';
+      display: flex;
+      height: 100%;
+      max-height: 668px;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
   }
 
   .overlay {
-    position: absolute;
-    top: 0;
     color: #fff;
-    width: 100%;
-    height: 100%;
-    text-align: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    max-width: 1035px;
+    position: absolute;
+    text-align: left;
+    z-index: 2;
   }
 
   .overlay-text {
-    text-align: center;
-    margin: 0 auto;
-    max-width: 1426px;
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 30px;
   }
 
   .overlay-cta {
+    text-align: right;
+
     a {
-      @include button-primary;
+      @extend %button-base;
+      @include padding(2rem 3.6rem);
+
+      background-color: #eaab00;
+      color: $su-color-black;
+      font-weight: bold;
+      font-size: 18px;
+
+      &:hover,
+      &:focus {
+        background-color: #5f574f;
+        color: color(link--reverse);
+      }
+
+      &:focus {
+        box-shadow: $su-focus-shadow;
+      }
+
+      &::after {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 600;
+        font-size: 18px;
+        content: '\a0\f054';
+      }
     }
   }
 
-  .lower-text {
-    background: $su-color-cardinal-red;
-    color: $su-color-white;
-    text-align: center;
-    padding: 24px;
-
-    p {
-      margin: 0;
-      padding: 0;
+  @include grid-media-max('lg') {
+    .overlay-text {
+      font-size: 36px;
+      margin-bottom: 20px;
     }
   }
 
+  @include grid-media-max('md') {
+    .background {
+      background: linear-gradient(
+        180deg,
+        rgba(47, 36, 36, 0) 10%,
+        #2f2424 100%
+      );
+      padding-bottom: 0;
+    }
+
+    .overlay {
+      position: relative;
+      background: #2f2424;
+      padding: 3.2rem;
+    }
+
+    .overlay-text {
+      font-size: 24px;
+    }
+
+    .overlay-cta {
+      text-align: center;
+    }
+  }
+
+  @include grid-media-max('sm') {
+    .background::before {
+      background: #2f2424;
+      opacity: 0.3;
+    }
+
+    .overlay {
+      padding-bottom: 5rem;
+    }
+
+    .overlay-text {
+      margin-bottom: 35px;
+    }
+  }
 }

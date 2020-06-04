@@ -19,7 +19,6 @@ class MissionStatementCest {
         'uri' => 'http://google.com',
         'title' => 'Verify your identity',
       ],
-      'su_mission_lower_text' => 'This paragraph will self destruct at the end of this test',
     ], 'paragraph');
 
     $node = $I->createEntity([
@@ -40,7 +39,6 @@ class MissionStatementCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee('This is the mission statement whether you choose to accept it or not');
     $I->canSeeLink('Verify your identity', 'http://google.com');
-    $I->canSee('This paragraph will self destruct at the end of this test');
   }
 
 }

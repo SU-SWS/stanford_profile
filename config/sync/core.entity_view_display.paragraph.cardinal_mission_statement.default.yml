@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.paragraph.cardinal_mission_statement.su_mission_cta
     - field.field.paragraph.cardinal_mission_statement.su_mission_image
-    - field.field.paragraph.cardinal_mission_statement.su_mission_lower_text
     - field.field.paragraph.cardinal_mission_statement.su_mission_text
     - paragraphs.paragraphs_type.cardinal_mission_statement
   module:
@@ -13,7 +12,6 @@ dependencies:
     - field_formatter_class
     - link
     - stanford_media
-    - text
 third_party_settings:
   ds:
     layout:
@@ -62,13 +60,6 @@ content:
       field_formatter_class:
         class: ''
     region: image
-  su_mission_lower_text:
-    weight: 3
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: lower_text
   su_mission_text:
     weight: 1
     label: hidden
