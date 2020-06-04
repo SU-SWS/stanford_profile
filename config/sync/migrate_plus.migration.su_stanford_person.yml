@@ -18,9 +18,7 @@ source:
     link_text: 'View Full Stanford Profile'
     file_destination: 'public://media/person/'
     file_extension: .jpg
-  urls:
-    - 'https://cap.stanford.edu/cap-api/api/profiles/v1?orgCodes=QYIS'
-    - 'https://cap.stanford.edu/cap-api/api/profiles/v1?orgCodes=BSWS'
+  urls: {  }
   item_selector: values
   fields:
     -
@@ -216,7 +214,7 @@ process:
         uri:
           plugin: str_replace
           source: url
-          search: '/^(?![a-zA-Z]).*:\/\/.*?$/'
+          search: '/^(?![a-z][a-z0-9]*:\/\/).*?$/i'
           replace: ''
           regex: true
         title: label/text

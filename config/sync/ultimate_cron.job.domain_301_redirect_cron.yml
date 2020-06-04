@@ -1,0 +1,17 @@
+uuid: ad26f3f4-bf8d-4622-97cd-de960f5f5f61
+langcode: en
+status: true
+dependencies:
+  module:
+    - domain_301_redirect
+title: 'Default cron handler'
+id: domain_301_redirect_cron
+weight: 0
+module: domain_301_redirect
+callback: domain_301_redirect_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
