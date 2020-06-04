@@ -158,9 +158,11 @@ content:
   su_event_date_time:
     weight: 21
     settings:
-      modal: false
+      default_tz: user
+      custom_tz: America/Los_Angeles
+      modal: 0
     third_party_settings: {  }
-    type: smartdate_default
+    type: smartdate_timezone
     region: content
   su_event_dek:
     weight: 5
