@@ -9,6 +9,7 @@ dependencies:
     - node.type.stanford_event_series
   module:
     - node
+    - ui_patterns_views
     - user
     - views_infinite_scroll
 id: stanford_event_series
@@ -75,7 +76,61 @@ display:
       style:
         type: default
       row:
-        type: fields
+        type: ui_patterns
+        options:
+          default_field_elements: 0
+          inline:
+            su_event_series_type: 0
+            title: 0
+            su_event_series_subheadline: 0
+            su_event_series_dek: 0
+            edit_node: 0
+            view_node: 0
+          separator: ''
+          hide_empty: 0
+          pattern: events-list
+          variants:
+            media: default
+            lockup: a
+            hero: default
+            brandbar: default
+            link: default
+            button: default
+            date-stacked: default
+            cta: default
+            alert: default
+            card: default
+          pattern_mapping:
+            'views_row:su_event_series_type':
+              destination: su_event_type
+              weight: 0
+              plugin: views_row
+              source: su_event_series_type
+            'views_row:edit_node':
+              destination: su_event_location
+              weight: 1
+              plugin: views_row
+              source: edit_node
+            'views_row:view_node':
+              destination: su_event_url
+              weight: 2
+              plugin: views_row
+              source: view_node
+            'views_row:title':
+              destination: su_event_headline
+              weight: 3
+              plugin: views_row
+              source: title
+            'views_row:su_event_series_subheadline':
+              destination: su_event_subheadline
+              weight: 4
+              plugin: views_row
+              source: su_event_series_subheadline
+            'views_row:su_event_series_dek':
+              destination: su_event_dek
+              weight: 5
+              plugin: views_row
+              source: su_event_series_dek
       fields:
         su_event_series_type:
           id: su_event_series_type
@@ -128,7 +183,7 @@ display:
           click_sort_column: target_id
           type: entity_reference_label
           settings:
-            link: true
+            link: false
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -384,6 +439,59 @@ display:
           absolute: false
           entity_type: node
           plugin_id: entity_link_edit
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: true
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link
       filters:
         status:
           value: '1'

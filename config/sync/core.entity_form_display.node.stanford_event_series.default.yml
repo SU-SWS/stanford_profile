@@ -12,8 +12,65 @@ dependencies:
     - field.field.node.stanford_event_series.su_event_series_weight
     - node.type.stanford_event_series
   module:
+    - field_group
     - paragraphs
     - path
+third_party_settings:
+  field_group:
+    group_editorial_content:
+      children:
+        - su_event_series_type
+        - su_event_series_subheadline
+        - su_event_series_dek
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Editorial Content'
+    group_display_order:
+      children:
+        - su_event_series_weight
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Display Order'
+    group_body_content:
+      children:
+        - su_event_series_components
+      parent_name: ''
+      weight: 3
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Body Content'
+    group_events_in_this_series:
+      children:
+        - su_event_series_event
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Events in this series'
 id: node.stanford_event_series.default
 targetEntityType: node
 bundle: stanford_event_series
@@ -21,13 +78,13 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 8
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 9
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -35,12 +92,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 10
     region: content
     third_party_settings: {  }
   su_event_series_components:
     type: entity_reference_paragraphs
-    weight: 5
+    weight: 4
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -51,7 +108,7 @@ content:
     third_party_settings: {  }
     region: content
   su_event_series_dek:
-    weight: 2
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -59,7 +116,7 @@ content:
     type: string_textfield
     region: content
   su_event_series_event:
-    weight: 6
+    weight: 5
     settings:
       match_operator: CONTAINS
       match_limit: 20
@@ -69,7 +126,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   su_event_series_subheadline:
-    weight: 1
+    weight: 5
     settings:
       size: 60
       placeholder: ''
@@ -77,13 +134,13 @@ content:
     type: string_textfield
     region: content
   su_event_series_type:
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   su_event_series_weight:
-    weight: 4
+    weight: 3
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -99,7 +156,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 7
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -108,7 +165,7 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 10
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
