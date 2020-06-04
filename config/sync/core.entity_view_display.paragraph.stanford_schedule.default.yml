@@ -8,12 +8,14 @@ dependencies:
     - field.field.paragraph.stanford_schedule.su_schedule_headline
     - field.field.paragraph.stanford_schedule.su_schedule_location
     - field.field.paragraph.stanford_schedule.su_schedule_speaker
+    - field.field.paragraph.stanford_schedule.su_schedule_url
     - paragraphs.paragraphs_type.stanford_schedule
   module:
     - address
     - ds
     - entity_reference_revisions
     - field_formatter_class
+    - link
     - smart_date
     - text
 third_party_settings:
@@ -35,6 +37,8 @@ third_party_settings:
         - su_schedule_description
       su_event_location:
         - su_schedule_location
+      su_event_url:
+        - su_schedule_url
       su_event_speakers:
         - su_schedule_speaker
 id: paragraph.stanford_schedule.default
@@ -47,7 +51,7 @@ content:
     label: hidden
     settings:
       timezone_override: ''
-      format: time_only
+      format: time_only_no_all_day
       force_chronological: false
       format_type: medium
     third_party_settings:
@@ -79,11 +83,25 @@ content:
     region: su_event_location
   su_schedule_speaker:
     type: entity_reference_revisions_entity_view
-    weight: 4
+    weight: 5
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: su_event_speakers
+  su_schedule_url:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: true
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: link
+    region: su_event_url
 hidden: {  }

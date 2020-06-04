@@ -8,9 +8,11 @@ dependencies:
     - field.field.paragraph.stanford_schedule.su_schedule_headline
     - field.field.paragraph.stanford_schedule.su_schedule_location
     - field.field.paragraph.stanford_schedule.su_schedule_speaker
+    - field.field.paragraph.stanford_schedule.su_schedule_url
     - paragraphs.paragraphs_type.stanford_schedule
   module:
     - address
+    - link
     - paragraphs
     - smart_date
     - text
@@ -50,7 +52,7 @@ content:
     region: content
   su_schedule_speaker:
     type: entity_reference_paragraphs
-    weight: 4
+    weight: 5
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -59,6 +61,14 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
+    region: content
+  su_schedule_url:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
 hidden:
   created: true
