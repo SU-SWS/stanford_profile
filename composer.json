@@ -96,7 +96,9 @@
         "drupal/domain_301_redirect": "^1.0-alpha0",
         "drupal/ds": "~3.3",
         "drupal/element_class_formatter": "^1.1",
+        "drupal/encrypt": "^3.0@RC",
         "drupal/environment_indicator": "^3.0",
+        "drupal/field_encrypt": "^2.0@alpha",
         "drupal/field_formatter_class": "dev-1.x#e7b3c4a959f63d7a9efc74f2d3a67de306b8ddb4",
         "drupal/field_group": "^3.0@rc",
         "drupal/field_permissions": "^1.0@RC",
@@ -105,6 +107,7 @@
         "drupal/google_analytics": "~2.1",
         "drupal/honeypot": "^1.27",
         "drupal/imagemagick": "~3.0@alpha",
+        "drupal/key": "^1.13",
         "drupal/layout_builder_modal": "~1.0",
         "drupal/layout_builder_restrictions": "^2.2",
         "drupal/layout_library": "^1.0-beta1",
@@ -123,6 +126,7 @@
         "drupal/paragraphs_edit": "^2.0@alpha",
         "drupal/paranoia": "~1.0@alpha",
         "drupal/pathauto": "^1.6",
+        "drupal/real_aes": "^2.3",
         "drupal/redirect": "~1.0-beta1",
         "drupal/response_code_condition": "^1.0",
         "drupal/role_delegation": "^1.0@beta",
@@ -143,15 +147,12 @@
         "su-sws/stanford_date_formats": "dev-8.x-1.x",
         "su-sws/stanford_fields": "dev-8.x-1.x",
         "su-sws/stanford_image_styles": "dev-8.x-1.x",
+        "su-sws/stanford_migrate": "dev-D8CORE-1736",
         "su-sws/stanford_news": "dev-8.x-2.x",
         "su-sws/stanford_notifications": "dev-8.x-1.x",
         "su-sws/stanford_person": "dev-D8CORE-1736",
         "su-sws/stanford_ssp": "dev-8.x-1.x",
-        "su-sws/stanford_text_editor": "dev-8.x-1.x",
-        "drupal/real_aes": "^2.3",
-        "drupal/encrypt": "^3.0@RC",
-        "drupal/key": "^1.13",
-        "drupal/field_encrypt": "^2.0@alpha"
+        "su-sws/stanford_text_editor": "dev-8.x-1.x"
     },
     "autoload": {
         "psr-4": {
