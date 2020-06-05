@@ -210,10 +210,12 @@ function stanford_profile_config_pages_stanford_basic_site_settings_form_validat
   $element = $form_state->getValue('su_site_url');
   $uri = $element['0']['uri'];
   if (!empty($uri)) {
+    // Test if the site url submitted is a *.stanford.edu domain.
     $match = preg_match('/^http(s)?:\/\/.*\.stanford.edu/i', $uri);
     if (!$match) {
       $form_state->setErrorByName('su_site_url', t('Only valid stanford.edu domain names allowed.'));
     }
+    // Test if the site url submmitted is equal to current domain.
     $host = \Drupal::request()->getSchemeAndHttpHost();
     if ($host != $uri) {
       $form_state->setErrorByName('su_site_url', t('Your current domain does not match the supplied domain.'));
