@@ -27,7 +27,7 @@ third_party_settings:
         layout_settings:
           extra_classes: section-event-series--header
           centered: centered-container
-          columns: default
+          columns: flex-10-of-12
           label: Header
         components:
           88ffc4d3-879c-40a2-ae71-c51f2782a54e:
@@ -62,6 +62,48 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 0
+          9fe3d4f3-866f-4020-b1b4-7820abac0bf2:
+            uuid: 9fe3d4f3-866f-4020-b1b4-7820abac0bf2
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event_series:su_event_series_subheadline'
+              label: Subheadline
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_title_heading
+                settings:
+                  tag: h2
+                third_party_settings:
+                  field_formatter_class:
+                    class: 'su-event-series-subheadline flex-9-of-12'
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
+          5b9e13a7-5d6f-4142-8bf4-2439a554fc7d:
+            uuid: 5b9e13a7-5d6f-4142-8bf4-2439a554fc7d
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event_series:su_event_series_dek'
+              label: Dek
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: 'su-event-series-dek flex-7-of-12'
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 3
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column

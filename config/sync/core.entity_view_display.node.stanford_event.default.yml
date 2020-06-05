@@ -243,7 +243,7 @@ third_party_settings:
             region: right
             configuration:
               id: 'field_block:node:stanford_event:su_event_date_time'
-              label: 'Date & Time'
+              label: 'Date field'
               provider: layout_builder
               label_display: '0'
               formatter:
@@ -251,11 +251,11 @@ third_party_settings:
                 type: smartdate_default
                 settings:
                   timezone_override: ''
-                  format: stanford_events_long
+                  format: date_only
                   force_chronological: false
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-date-time
+                    class: su-event-date
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -293,7 +293,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 8
+            weight: 9
           72ffb956-3705-4638-a22a-22c5ce31e291:
             uuid: 72ffb956-3705-4638-a22a-22c5ce31e291
             region: right
@@ -314,7 +314,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 9
+            weight: 10
           0ff08dc5-db6c-413e-b440-8bcabf2911b3:
             uuid: 0ff08dc5-db6c-413e-b440-8bcabf2911b3
             region: right
@@ -339,7 +339,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 10
+            weight: 11
           6b731bfb-4a54-43e3-afa5-f60099657490:
             uuid: 6b731bfb-4a54-43e3-afa5-f60099657490
             region: right
@@ -360,7 +360,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 11
+            weight: 12
           be4ceb41-1f4b-40f8-be69-c6714369f7bf:
             uuid: be4ceb41-1f4b-40f8-be69-c6714369f7bf
             region: right
@@ -380,7 +380,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 12
+            weight: 13
           2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350:
             uuid: 2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350
             region: right
@@ -405,7 +405,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 14
+            weight: 15
           9f9648ba-9864-40fb-a66f-c94fd87bc32d:
             uuid: 9f9648ba-9864-40fb-a66f-c94fd87bc32d
             region: right
@@ -428,7 +428,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 13
+            weight: 14
           09d8b675-2bdf-45eb-a005-6279e9f81738:
             uuid: 09d8b675-2bdf-45eb-a005-6279e9f81738
             region: main
@@ -442,6 +442,29 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 5
+          9a605e2a-8dbd-44ec-83ac-fdd47b7a8cf0:
+            uuid: 9a605e2a-8dbd-44ec-83ac-fdd47b7a8cf0
+            region: right
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_date_time'
+              label: 'Time Field'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: smartdate_default
+                settings:
+                  timezone_override: ''
+                  format: time_only
+                  force_chronological: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-time
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 8
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
