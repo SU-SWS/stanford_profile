@@ -1,0 +1,65 @@
+uuid: ac0b334b-109a-496a-a35f-8f3be16b8d16
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.lockup_settings
+    - field.field.config_pages.lockup_settings.su_line_1
+    - field.field.config_pages.lockup_settings.su_line_2
+    - field.field.config_pages.lockup_settings.su_line_3
+    - field.field.config_pages.lockup_settings.su_line_4
+    - field.field.config_pages.lockup_settings.su_line_5
+    - field.field.config_pages.lockup_settings.su_lockup_options
+id: config_pages.lockup_settings.default
+targetEntityType: config_pages
+bundle: lockup_settings
+mode: default
+content:
+  su_line_1:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_line_2:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_line_3:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_line_4:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_line_5:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_lockup_options:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  label: true
