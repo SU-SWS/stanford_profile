@@ -76,7 +76,7 @@ third_party_settings:
                   tag: h1
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-headline
+                    class: 'su-event-headline flex-10-of-12'
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -97,7 +97,7 @@ third_party_settings:
                   tag: h2
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-subheadline
+                    class: 'su-event-subheadline flex-9-of-12'
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -118,7 +118,7 @@ third_party_settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-dek
+                    class: 'su-event-dek flex-7-of-12'
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -139,7 +139,7 @@ third_party_settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-sponsor
+                    class: 'su-event-sponsor flex-7-of-12'
                   ds:
                     ds_limit: ''
               context_mapping:
@@ -400,7 +400,7 @@ third_party_settings:
                   target: '0'
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-cta
+                    class: 'su-event-cta su-button'
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
@@ -462,6 +462,40 @@ third_party_settings:
               views_label: 'Explore More Events'
               items_per_page: none
               context_mapping: {  }
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: defaults
+        layout_settings:
+          extra_classes: 'stanford-events-link-to-all-events centered-container'
+          centered: centered-container
+          columns: flex-12-of-12
+          label: 'See all events'
+        components:
+          d022745b-2dbe-4e9e-b81a-5e9d00c843e1:
+            uuid: d022745b-2dbe-4e9e-b81a-5e9d00c843e1
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_cta'
+              label: 'All Upcoming Events'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: link
+                settings:
+                  trim_length: null
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-button
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
             weight: 0
         third_party_settings: {  }
