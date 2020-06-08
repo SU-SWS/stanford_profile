@@ -7,6 +7,7 @@ dependencies:
     - field.field.config_pages.stanford_person_importer.su_person_cap_password
     - field.field.config_pages.stanford_person_importer.su_person_cap_username
     - field.field.config_pages.stanford_person_importer.su_person_orgs
+    - field.field.config_pages.stanford_person_importer.su_person_sunetid
     - field.field.config_pages.stanford_person_importer.su_person_workgroup
 id: config_pages.stanford_person_importer.default
 targetEntityType: config_pages
@@ -36,6 +37,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  su_person_sunetid:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   su_person_workgroup:
     weight: 1
