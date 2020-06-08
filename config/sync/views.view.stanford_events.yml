@@ -1313,7 +1313,7 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
@@ -1441,7 +1441,7 @@ display:
           element_wrapper_class: ''
           element_default_classes: false
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: country_code
@@ -1552,7 +1552,7 @@ display:
               plugin: views_row
               source: su_event_dek
             'views_row:su_event_location':
-              destination: su_event_location
+              destination: su_event_address
               weight: 10
               plugin: views_row
               source: su_event_location
@@ -2182,7 +2182,7 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
@@ -2245,7 +2245,7 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: country_code
@@ -2561,7 +2561,7 @@ display:
               plugin: views_row
               source: su_event_dek
             'views_row:su_event_location':
-              destination: su_event_location
+              destination: su_event_address
               weight: 10
               plugin: views_row
               source: su_event_location
