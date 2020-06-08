@@ -274,8 +274,7 @@ function stanford_profile_field_widget_form_alter(&$element, \Drupal\Core\Form\F
     $field_definition = $context['items']
       ->getFieldDefinition();
 
-    if ($field_definition
-        ->getType() == 'link') {
+    if ($field_definition->getType() == 'link') {
         unset($element['uri']['#description']['#items'][1]);
       }
   }
