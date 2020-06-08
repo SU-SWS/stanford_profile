@@ -263,6 +263,9 @@ function stanford_profile_xmlsitemap_link_alter(array &$link, array $context) {
   }
 }
 
+/**
+ * Implements hook_field_widget_form_alter().
+ */
 function stanford_profile_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
 
   // Get build info and remove core linkwidget description.
