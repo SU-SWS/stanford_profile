@@ -83,7 +83,7 @@ function stanford_profile_menu_link_content_presave(MenuLinkContent $entity) {
   // by the menu cache tags.
   $parent_id = $entity->getParentId();
   if (!empty($parent_id)) {
-    list($entity_name, $uuid) = explode(':', $parent_id);
+    [$entity_name, $uuid] = explode(':', $parent_id);
     $menu_link_content = \Drupal::entityTypeManager()->getStorage($entity_name)->loadByProperties(['uuid' => $uuid]);
     if (is_array($menu_link_content)) {
       $parent_item = array_pop($menu_link_content);
@@ -260,5 +260,20 @@ function stanford_profile_xmlsitemap_link_alter(array &$link, array $context) {
       // Status is set to zero to exclude the item in the sitemap.
       $link['status'] = 0;
 
+  }
+}
+
+function stanford_profile_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+
+  // Get build info and remove core linkwidget description.
+  $build_info = $form_state->getBuildInfo();
+  if ($build_info['form_id'] = "config_pages_stanford_basic_site_settings_form") {
+    $field_definition = $context['items']
+      ->getFieldDefinition();
+
+    if ($field_definition
+        ->getType() == 'link') {
+        unset($element['uri']['#description']['#items'][1]);
+      }
   }
 }
