@@ -1,0 +1,17 @@
+uuid: b623ed9a-e2a1-4fc5-8695-7f7a1921afc6
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_events
+title: 'Default cron handler'
+id: stanford_events_cron
+weight: 0
+module: stanford_events
+callback: stanford_events_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
