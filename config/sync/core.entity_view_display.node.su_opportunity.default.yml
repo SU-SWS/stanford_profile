@@ -29,7 +29,6 @@ dependencies:
     - views.view.su_opportunities
     - views.view.su_spotlights
   module:
-    - config_pages
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
@@ -42,29 +41,16 @@ third_party_settings:
     enabled: true
     sections:
       -
-        layout_id: jumpstart_ui_one_column_overlay
+        layout_id: jumpstart_ui_one_column
         layout_settings:
-          extra_classes: opportunity-header-content-container
-          centered: null
+          extra_classes: ''
+          centered: centered-container
           columns: default
+          label: ''
         components:
-          052c0f91-059f-4f9a-8d0f-d128b600429b:
-            uuid: 052c0f91-059f-4f9a-8d0f-d128b600429b
-            region: main
-            configuration:
-              id: config_pages_block
-              label: 'ConfigPages Block'
-              provider: config_pages
-              label_display: '0'
-              config_page_type: su_opportunities
-              config_page_view_mode: full
-              context_mapping: {  }
-            additional: {  }
-            weight: 0
-            third_party_settings: {  }
           fcd2a988-e62a-4a12-8a88-5db19895ab61:
             uuid: fcd2a988-e62a-4a12-8a88-5db19895ab61
-            region: overlay
+            region: main
             configuration:
               id: 'field_block:node:su_opportunity:title'
               label: Title
@@ -86,7 +72,7 @@ third_party_settings:
             third_party_settings: {  }
           98885d7b-0d6b-4b0b-acb2-03ee07f54423:
             uuid: 98885d7b-0d6b-4b0b-acb2-03ee07f54423
-            region: overlay
+            region: main
             configuration:
               id: 'field_block:node:su_opportunity:su_opp_type'
               label: Type
@@ -110,14 +96,6 @@ third_party_settings:
             additional: {  }
             weight: 0
             third_party_settings: {  }
-        third_party_settings: {  }
-      -
-        layout_id: defaults
-        layout_settings:
-          extra_classes: opportunity-header-content-container
-          centered: null
-          columns: default
-        components: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
@@ -418,6 +396,9 @@ third_party_settings:
     entity_view_mode_restriction:
       allowed_blocks: {  }
       allowed_layouts: {  }
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+    allowed_block_categories: {  }
 id: node.su_opportunity.default
 targetEntityType: node
 bundle: su_opportunity
