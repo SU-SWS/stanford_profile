@@ -19,7 +19,7 @@ class EventsCest {
    * Test metadata settings.
    */
   public function testMetaDataSettings(AcceptanceTester $I) {
-    // TODO: Create and expor this config.
+    // TODO: Create and export this config.
   }
 
   /**
@@ -95,8 +95,12 @@ class EventsCest {
     // Can delete a node that is not theirs and can edit.
     $node = $this->createEventNode($I);
     $id = $node->id();
+
+    $I->amOnPage("/node/$id/delete");
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee("This action cannot be undone");
+
     $I->amOnPage("/node/$id/edit");
-    $I->canSee("#edit-delete");
     $I->fillField("#edit-title-0-value", "My new title");
     $I->click('Save');
 
@@ -135,8 +139,12 @@ class EventsCest {
     // Can delete a node that is not theirs and can edit.
     $node = $this->createEventNode($I);
     $id = $node->id();
+
+    $I->amOnPage("/node/$id/delete");
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee("This action cannot be undone");
+
     $I->amOnPage("/node/$id/edit");
-    $I->canSee("#edit-delete");
     $I->fillField("#edit-title-0-value", "My new title");
     $I->click('Save');
     $I->canSee("My new title");
