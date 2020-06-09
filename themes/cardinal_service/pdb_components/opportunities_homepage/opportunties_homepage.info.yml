@@ -1,0 +1,19 @@
+name: Opportunities Homepage Filters
+machine_name: opportunities-homepage
+type: pdb
+description: 'React filters for the CS homepage'
+package: React
+core_version_requirement: ^8.8 || ^9
+module_status: active
+presentation: react
+path: api/opportunities
+configuration:
+  opportunity_homepage_submit:
+    type: textfield
+    title: "Form action submit url"
+    description: "The page where the filtered opportunities will be displayed"
+    default_value: "/opportunities"
+    required: true
+add_js:
+  footer:
+    'lib/app.js': { }

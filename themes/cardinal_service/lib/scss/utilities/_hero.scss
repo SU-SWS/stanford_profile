@@ -1,19 +1,22 @@
 @charset 'UTF-8';
 
+// Hero with left transparent card overlay
 .su-hero-left {
   h1 {
     margin: 0;
   }
 
   .su-hero__card {
-    @include grid-media-min('lg') {
-      max-width: 650px;
-      text-align: center;
-      opacity: 0.9;
+    background-color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+
+    @include grid-media-max('sm') {
+      max-width: 100%;
     }
   }
 }
 
+// Hero with full width transparent card overlay
 .su-hero-fw {
   &.su-hero {
     margin-bottom: 9.6rem;
@@ -27,10 +30,9 @@
     @include grid-media-min('md') {
       @include centered-column;
 
-      background: #fff;
+      background-color: rgba(255, 255, 255, 0.9);
       margin: 45px auto;
       position: unset;
-      opacity: 0.9;
     }
 
     .su-opp-type {
@@ -40,6 +42,22 @@
     }
 
     h1 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Hero with card overlay and responsive background height
+.su-hero-height {
+  .su-hero,
+  .su-hero__media,
+  .su-page-banner,
+  .contextual-region {
+    height: 100%;
+  }
+
+  @media only screen and (min-width: 0) {
+    .node-stanford-page-su-page-banner {
       margin-bottom: 0;
     }
   }

@@ -1,0 +1,71 @@
+// General styles for the component.
+#opportunities-homepage {
+  & > div > div {
+    background: inherit;
+    box-shadow: none;
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .centered-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .flex-container > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+
+    &:first-child > div {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+
+      > div {
+        &:first-child {
+          width: 100%;
+        }
+
+        &:nth-child(2) {
+          margin-right: 20px;
+        }
+
+        &:nth-child(2),
+        &:nth-child(3) {
+          flex: 0 0 calc(50% - 10px);
+          width: calc(50% - 10px);
+        }
+      }
+
+      .MuiAutocomplete-root {
+        background-color: #fff;
+        margin-bottom: 25px;
+
+        .MuiAutocomplete-endAdornment {
+          margin-right: 0;
+        }
+
+        &:not([class*='Mui-focused']) {
+          .MuiInputBase-input:not([value='']) {
+            padding-top: 25px;
+          }
+        }
+
+        .MuiChip-root {
+          display: inline-flex;
+          width: initial;
+
+          .MuiChip-label {
+            width: 80%;
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
+}

@@ -25,7 +25,7 @@ const FilterContainer = styled.div`
 `;
 
 const FilterWrapper = styled.div`
-  display: grid;
+  display: ${props => props.useGrid ? 'grid': 'block'};
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   margin-bottom: 36px;
@@ -75,7 +75,9 @@ export class Filters extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
 
     if (window.location.search.length > 0) {
-      const pageParams = queryString.parse(window.location.search, {
+      const search = decodeURIComponent(window.location.search)
+        .replace(/\[.*?]/g,"[]");
+      const pageParams = queryString.parse(search, {
         arrayFormat: 'bracket',
       });
 
@@ -118,10 +120,10 @@ export class Filters extends Component {
     ) {
       return;
     }
-    window.location =
-      window.location.pathname +
-      '?' +
-      queryString.stringify(this.state.filters, { arrayFormat: 'bracket' });
+    const query = queryString.stringify(this.state.filters, {arrayFormat: 'bracket'});
+    const location = this.props.submitUrl ?? window.location.pathname;
+    window.location = `${location}?${query}`;
+
   }
 
   /**
@@ -216,10 +218,8 @@ export class Filters extends Component {
     if (!newState.showMoreFilters) {
       // When a user hides the more filters, clear out those values to prevent
       // confusion.
-      const availableFields = this.props.fields.filter(
-        (field) =>
-          typeof this.state.allItems[field.field] !== 'undefined' &&
-          this.state.allItems[field.field].length
+      const availableFields = this.props.fields.filter((field) =>
+        typeof this.state.allItems[field.field] !== 'undefined' && this.state.allItems[field.field].length
       );
       const moreFilters = availableFields.slice(this.props.mainFiltersCount);
       moreFilters.map((field) => {
@@ -231,10 +231,8 @@ export class Filters extends Component {
 
   render() {
     // List of fields with available options.
-    const availableFields = this.props.fields.filter(
-      (field) =>
-        typeof this.state.allItems[field.field] !== 'undefined' &&
-        this.state.allItems[field.field].length
+    const availableFields = this.props.fields.filter((field) =>
+      typeof this.state.allItems[field.field] !== 'undefined' && this.state.allItems[field.field].length
     );
 
     const mainFilters = availableFields.slice(0, this.props.mainFiltersCount);
@@ -242,45 +240,49 @@ export class Filters extends Component {
 
     // Show the more filter if any of the more filters have values.
     const showMoreFilter =
-      this.state.showMoreFilters ||
-      (moreFilters.length > 0 &&
-        moreFilters.filter(
-          (field) => typeof this.state.filters[field.field] !== 'undefined'
-        ).length > 0);
+      this.state.showMoreFilters || (
+        moreFilters.length > 0 &&
+        moreFilters.filter((field) => typeof this.state.filters[field.field] !== 'undefined').length > 0
+      );
 
     return (
       <div>
         <FilterContainer>
           <div class="centered-container">
-            <h2>Search by</h2>
+            {this.props.header}
             <form onSubmit={this.onFormSubmit}>
               <div class="flex-container">
                 <div class="flex-lg-10-of-12">
-                  <FilterWrapper>
+                  <FilterWrapper useGrid={this.props.useGrid}>
+
                     {mainFilters.map((field) => this.getSelectElement(field))}
                   </FilterWrapper>
-                  <MoreFilterWrap>
-                    {moreFilters.length > 0 && (
-                      <a
-                        href="#"
-                        aria-controls={this.moreFiltersId}
-                        aria-expanded={showMoreFilter}
-                        onClick={this.showHideMoreFilters.bind(this)}
-                      >
-                        <i class="fas fa-sliders-h"></i>
-                        {showMoreFilter ? 'Hide' : 'Show'} More Filters
-                      </a>
-                    )}
-                  </MoreFilterWrap>
-                  <FilterWrapper
-                    id={this.moreFiltersId}
-                    role="region"
-                    style={{
-                      display: showMoreFilter ? 'grid' : 'none',
-                    }}
-                  >
-                    {moreFilters.map((field) => this.getSelectElement(field))}
-                  </FilterWrapper>
+                  {this.props.showMoreFilters &&
+                  <React.Fragment>
+                    <MoreFilterWrap>
+                      {moreFilters.length > 0 && (
+                        <a
+                          href="#"
+                          aria-controls={this.moreFiltersId}
+                          aria-expanded={showMoreFilter}
+                          onClick={this.showHideMoreFilters.bind(this)}
+                        >
+                          <i class="fas fa-sliders-h"></i>
+                          {showMoreFilter ? 'Hide' : 'Show'} More Filters
+                        </a>
+                      )}
+                    </MoreFilterWrap>
+                    <FilterWrapper
+                      id={this.moreFiltersId}
+                      role="region"
+                      style={{
+                        display: showMoreFilter ? 'grid' : 'none',
+                      }}
+                    >
+                      {moreFilters.map((field) => this.getSelectElement(field))}
+                    </FilterWrapper>
+                  </React.Fragment>
+                  }
                 </div>
                 <div class="flex-lg-2-of-12">
                   <FilterOptions>
