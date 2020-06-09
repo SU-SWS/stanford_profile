@@ -101,7 +101,7 @@ mode: teaser
 content:
   su_event_alt_loc:
     type: string
-    weight: 11
+    weight: 10
     region: su_event_location
     label: hidden
     settings:
@@ -130,8 +130,8 @@ content:
     third_party_settings: {  }
   su_event_location:
     type: address_default
-    weight: 10
-    region: su_event_location
+    weight: 11
+    region: su_event_address
     label: hidden
     settings: {  }
     third_party_settings: {  }
