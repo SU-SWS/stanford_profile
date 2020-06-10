@@ -6,7 +6,7 @@ dependencies:
     - config_pages.type.stanford_events_importer
     - field.field.config_pages.stanford_events_importer.su_event_xml_url
   module:
-    - link
+    - stanford_events_importer
 id: config_pages.stanford_events_importer.default
 targetEntityType: config_pages
 bundle: stanford_events_importer
@@ -15,10 +15,10 @@ content:
   su_event_xml_url:
     weight: 0
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: link_default
+    type: stanford_events_importer_apiurl_field_widget
     region: content
 hidden:
   label: true
