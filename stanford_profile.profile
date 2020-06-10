@@ -210,17 +210,10 @@ function stanford_profile_config_pages_stanford_basic_site_settings_form_validat
   $element = $form_state->getValue('su_site_url');
   $uri = $element['0']['uri'];
   if (!empty($uri)) {
-    // Test if the site url submitted is a *.stanford.edu domain.
     $match = preg_match('/^http(s)?:\/\/.*\.stanford.edu/i', $uri);
     if (!$match) {
-      $form_state->setErrorByName('su_site_url', t('Only valid Stanford reserved URLs allowed.'));
+      $form_state->setErrorByName('su_site_url', t('Only valid stanford.edu domain names allowed.'));
     }
-    // Test if the site url submmitted is equal to current domain.
-    $host = \Drupal::request()->getSchemeAndHttpHost();
-    if ($host != $uri) {
-      $form_state->setErrorByName('su_site_url', t('This entry must match your current domain.'));
-    }
-
   }
 }
 
@@ -260,22 +253,5 @@ function stanford_profile_xmlsitemap_link_alter(array &$link, array $context) {
       // Status is set to zero to exclude the item in the sitemap.
       $link['status'] = 0;
 
-  }
-}
-
-/**
- * Implements hook_field_widget_form_alter().
- */
-function stanford_profile_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
-
-  // Get build info and remove core linkwidget description.
-  $build_info = $form_state->getBuildInfo();
-  if ($build_info['form_id'] = "config_pages_stanford_basic_site_settings_form") {
-    $field_definition = $context['items']
-      ->getFieldDefinition();
-
-    if ($field_definition->getType() == 'link') {
-      unset($element['uri']['#description']['#items'][1]);
-    }
   }
 }
