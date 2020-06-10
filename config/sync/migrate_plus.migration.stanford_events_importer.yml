@@ -14,7 +14,7 @@ label: 'Events importer'
 source:
   track_changes: true
   plugin: url
-  data_fetcher_plugin: file
+  data_fetcher_plugin: http
   urls: {  }
   data_parser_plugin: simple_xml
   item_selector: /EventList/Event
