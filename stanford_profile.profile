@@ -213,7 +213,7 @@ function stanford_profile_config_pages_stanford_basic_site_settings_form_validat
     // Test if the site url submmitted is equal to current domain.
     $host = \Drupal::request()->getSchemeAndHttpHost();
     if ($host != $uri) {
-      $form_state->setErrorByName('su_site_url', t('This entry must match your current domain.'));
+      $form_state->setErrorByName('su_site_url', t('This URL does not match your domain.'));
     }
   }
 }
