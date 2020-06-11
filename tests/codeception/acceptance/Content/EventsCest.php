@@ -11,7 +11,7 @@ class EventsCest {
   public function testXMLSiteMap(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_event');
-    $I->seeOptionIsSelected("#edit-xmlsitemap-status", "Included");
+    $I->seeOptionIsSelected("#edit-xmlsitemap-status", "Excluded");
     $I->seeOptionIsSelected("#edit-xmlsitemap-priority", "0.5 (normal)");
   }
 
