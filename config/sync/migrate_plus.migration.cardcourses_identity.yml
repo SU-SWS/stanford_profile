@@ -23,5 +23,9 @@ process:
       bundle: su_opportunity_service_theme
       entity_type: taxonomy_term
       ignore_case: true
+  skip:
+    plugin: skip_on_exist
+    migrate_exclude:
+      - cardcourses_identity
 destination: null
 migration_dependencies: {  }

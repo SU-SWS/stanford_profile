@@ -11,6 +11,10 @@ migration_group: courses
 label: 'Education Courses'
 source:
   urls: 'https://explorecourses.stanford.edu/search?q=CARDCOURSES%3a%3ageneral&view=xml-20140630&filter-term-Winter=on&academicYear=&filter-term-Summer=on&filter-term-Autumn=on&filter-term-Spring=on&page=0&filter-coursestatus-Active=on&collapse='
-process: {  }
+process:
+  skip:
+    plugin: skip_on_exist
+    migrate_exclude:
+      - cardcourses_general
 destination: null
 migration_dependencies: {  }
