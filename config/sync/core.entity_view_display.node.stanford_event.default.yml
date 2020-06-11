@@ -159,7 +159,7 @@ third_party_settings:
                 label: hidden
                 type: entity_reference_label
                 settings:
-                  link: false
+                  link: true
                 third_party_settings:
                   field_formatter_class:
                     class: su-event-type
@@ -172,75 +172,11 @@ third_party_settings:
       -
         layout_id: stanford_events_body
         layout_settings:
-          label: 'Body Content with Details'
+          label: 'Body Content - Details'
         components:
-          7a80c779-6c87-49fd-94e0-68ae37fa1cd4:
-            uuid: 7a80c779-6c87-49fd-94e0-68ae37fa1cd4
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_event:body'
-              label: Body
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: text_default
-                settings: {  }
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-event-body
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 2
-          11df73c4-8beb-43be-b1d2-4ddc537f90b1:
-            uuid: 11df73c4-8beb-43be-b1d2-4ddc537f90b1
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_event:su_event_components'
-              label: Components
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_revisions_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-event-components
-                  ds:
-                    ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 3
-          d64439dc-f59e-4822-aba0-cdca5a9dc331:
-            uuid: d64439dc-f59e-4822-aba0-cdca5a9dc331
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_event:su_event_type'
-              label: 'Related Topics'
-              provider: layout_builder
-              label_display: visible
-              formatter:
-                label: hidden
-                type: entity_reference_label
-                settings:
-                  link: true
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-event-type-bottom
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 6
           1dc2e07f-0713-48bf-9db4-0ac54fb145df:
             uuid: 1dc2e07f-0713-48bf-9db4-0ac54fb145df
-            region: right
+            region: main
             configuration:
               id: 'field_block:node:stanford_event:su_event_date_time'
               label: 'Date field'
@@ -260,10 +196,10 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 7
+            weight: 3
           c4f8811e-dd0e-44ae-b65d-b0f82cf894df:
             uuid: c4f8811e-dd0e-44ae-b65d-b0f82cf894df
-            region: right
+            region: main
             configuration:
               id: jumpstart_ui_page_heading
               label: 'Heading Block'
@@ -273,10 +209,33 @@ third_party_settings:
               wrapper: h2
               context_mapping: {  }
             additional: {  }
-            weight: 6
+            weight: 2
+          9a605e2a-8dbd-44ec-83ac-fdd47b7a8cf0:
+            uuid: 9a605e2a-8dbd-44ec-83ac-fdd47b7a8cf0
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_date_time'
+              label: 'Time Field'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: smartdate_default
+                settings:
+                  timezone_override: ''
+                  format: time_only
+                  force_chronological: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-time
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 4
           1ce04bbe-b3fd-4040-9011-46a80cb0bea1:
             uuid: 1ce04bbe-b3fd-4040-9011-46a80cb0bea1
-            region: right
+            region: main
             configuration:
               id: 'field_block:node:stanford_event:su_event_location'
               label: Location
@@ -293,10 +252,10 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 9
+            weight: 6
           72ffb956-3705-4638-a22a-22c5ce31e291:
             uuid: 72ffb956-3705-4638-a22a-22c5ce31e291
-            region: right
+            region: main
             configuration:
               id: 'field_block:node:stanford_event:su_event_alt_loc'
               label: Location
@@ -314,10 +273,10 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 10
+            weight: 1
           0ff08dc5-db6c-413e-b440-8bcabf2911b3:
             uuid: 0ff08dc5-db6c-413e-b440-8bcabf2911b3
-            region: right
+            region: main
             configuration:
               id: 'field_block:node:stanford_event:su_event_map_link'
               label: 'Map Link'
@@ -339,7 +298,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 11
+            weight: 7
           6b731bfb-4a54-43e3-afa5-f60099657490:
             uuid: 6b731bfb-4a54-43e3-afa5-f60099657490
             region: right
@@ -360,52 +319,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 12
-          be4ceb41-1f4b-40f8-be69-c6714369f7bf:
-            uuid: be4ceb41-1f4b-40f8-be69-c6714369f7bf
-            region: right
-            configuration:
-              id: 'field_block:node:stanford_event:su_event_email'
-              label: 'Contact Email'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: email_mailto
-                settings: {  }
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-event-email
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 13
-          2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350:
-            uuid: 2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350
-            region: right
-            configuration:
-              id: 'field_block:node:stanford_event:su_event_cta'
-              label: 'Call to action button'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: link
-                settings:
-                  trim_length: null
-                  url_only: false
-                  url_plain: false
-                  rel: '0'
-                  target: '0'
-                third_party_settings:
-                  field_formatter_class:
-                    class: 'su-event-cta su-button'
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 15
+            weight: 2
           9f9648ba-9864-40fb-a66f-c94fd87bc32d:
             uuid: 9f9648ba-9864-40fb-a66f-c94fd87bc32d
             region: right
@@ -428,7 +342,122 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 14
+            weight: 4
+          be4ceb41-1f4b-40f8-be69-c6714369f7bf:
+            uuid: be4ceb41-1f4b-40f8-be69-c6714369f7bf
+            region: right
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_email'
+              label: 'Contact Email'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: email_mailto
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-email
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 3
+        third_party_settings: {  }
+      -
+        layout_id: defaults
+        layout_settings:
+          extra_classes: su-events-details
+          centered: centered-container
+          columns: flex-8-of-12
+          label: 'Body Content - CTA signup'
+        components:
+          2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350:
+            uuid: 2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_cta'
+              label: 'Call to action button'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: link
+                settings:
+                  trim_length: null
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings:
+                  field_formatter_class:
+                    class: 'su-event-cta su-button'
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 10
+        third_party_settings: {  }
+      -
+        layout_id: defaults
+        layout_settings:
+          extra_classes: su-events-body
+          centered: centered-container
+          columns: flex-8-of-12
+          label: 'Body Content'
+        components:
+          11df73c4-8beb-43be-b1d2-4ddc537f90b1:
+            uuid: 11df73c4-8beb-43be-b1d2-4ddc537f90b1
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_components'
+              label: Components
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-components
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+          7a80c779-6c87-49fd-94e0-68ae37fa1cd4:
+            uuid: 7a80c779-6c87-49fd-94e0-68ae37fa1cd4
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:body'
+              label: Body
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: text_default
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-body
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: defaults
+        layout_settings:
+          extra_classes: su-events-type-schedule
+          centered: centered-container
+          columns: flex-10-of-12
+          label: 'Event type and Schedule'
+        components:
           09d8b675-2bdf-45eb-a005-6279e9f81738:
             uuid: 09d8b675-2bdf-45eb-a005-6279e9f81738
             region: main
@@ -441,30 +470,28 @@ third_party_settings:
               items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 5
-          9a605e2a-8dbd-44ec-83ac-fdd47b7a8cf0:
-            uuid: 9a605e2a-8dbd-44ec-83ac-fdd47b7a8cf0
-            region: right
+            weight: 1
+          d64439dc-f59e-4822-aba0-cdca5a9dc331:
+            uuid: d64439dc-f59e-4822-aba0-cdca5a9dc331
+            region: main
             configuration:
-              id: 'field_block:node:stanford_event:su_event_date_time'
-              label: 'Time Field'
+              id: 'field_block:node:stanford_event:su_event_type'
+              label: 'Related Topics'
               provider: layout_builder
-              label_display: '0'
+              label_display: visible
               formatter:
                 label: hidden
-                type: smartdate_default
+                type: entity_reference_label
                 settings:
-                  timezone_override: ''
-                  format: time_only
-                  force_chronological: false
+                  link: true
                 third_party_settings:
                   field_formatter_class:
-                    class: su-event-time
+                    class: su-event-type-bottom
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 8
+            weight: 0
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
@@ -491,16 +518,16 @@ third_party_settings:
       -
         layout_id: defaults
         layout_settings:
-          extra_classes: 'stanford-events-link-to-all-events centered-container'
+          extra_classes: su-events-link-to-all
           centered: centered-container
           columns: flex-12-of-12
-          label: 'See all events'
+          label: 'Link to all '
         components:
-          d022745b-2dbe-4e9e-b81a-5e9d00c843e1:
-            uuid: d022745b-2dbe-4e9e-b81a-5e9d00c843e1
+          804699c4-c88a-45d1-9ed9-48464736a7ef:
+            uuid: 804699c4-c88a-45d1-9ed9-48464736a7ef
             region: main
             configuration:
-              id: 'field_block:node:stanford_event:su_event_cta'
+              id: 'field_block:node:stanford_event:su_event_source'
               label: 'All Upcoming Events'
               provider: layout_builder
               label_display: '0'
@@ -515,7 +542,7 @@ third_party_settings:
                   target: '0'
                 third_party_settings:
                   field_formatter_class:
-                    class: su-button
+                    class: su-events-link-to-all
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
