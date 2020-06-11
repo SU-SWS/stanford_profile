@@ -660,6 +660,8 @@ display:
       display_extenders: {  }
       use_ajax: true
       css_class: stanford-events-list-page
+      link_url: /events
+      link_display: custom_url
     cache_metadata:
       max-age: -1
       contexts:
@@ -1458,6 +1460,59 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: div
+          element_class: su-events-edit-article
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'Edit this event item'
+          output_url_as_text: false
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link_edit
       defaults:
         fields: false
         style: false
@@ -1486,6 +1541,7 @@ display:
             su_event_alt_loc: 0
             su_event_date_time: 0
             su_event_location: 0
+            edit_node: 0
           separator: ''
           hide_empty: 1
           pattern: events-list
@@ -1556,6 +1612,11 @@ display:
               weight: 10
               plugin: views_row
               source: su_event_location
+            'views_row:edit_node':
+              destination: su_event_edit
+              weight: 11
+              plugin: views_row
+              source: edit_node
     cache_metadata:
       max-age: -1
       contexts:
@@ -1739,11 +1800,11 @@ display:
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
+          element_wrapper_type: div
+          element_wrapper_class: su-events-edit-article
           element_default_classes: true
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           text: view
@@ -2059,7 +2120,7 @@ display:
           type: smartdate_default
           settings:
             timezone_override: ''
-            format: date_only
+            format: stanford_event_long_no_time
             force_chronological: false
           group_column: value
           group_columns: {  }
@@ -2470,6 +2531,59 @@ display:
           custom_date_format: ''
           timezone: ''
           plugin_id: date
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: div
+          element_wrapper_class: su-events-edit
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'Edit this event item'
+          output_url_as_text: false
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link_edit
       style:
         type: default
         options:
@@ -2495,6 +2609,7 @@ display:
             su_event_date_time_value_1: 0
             su_event_date_time_end_value: 0
             su_event_date_time_end_value_1: 0
+            edit_node: 0
           separator: ''
           hide_empty: 1
           pattern: events-list
@@ -2510,59 +2625,64 @@ display:
             alert: default
             card: default
           pattern_mapping:
+            'views_row:edit_node':
+              destination: su_event_edit
+              weight: 0
+              plugin: views_row
+              source: edit_node
             'views_row:su_event_source':
               destination: su_event_headline
-              weight: 0
+              weight: 1
               plugin: views_row
               source: su_event_source
             'views_row:su_event_type':
               destination: su_event_type
-              weight: 1
+              weight: 2
               plugin: views_row
               source: su_event_type
             'views_row:su_event_alt_loc':
               destination: su_event_location
-              weight: 2
+              weight: 3
               plugin: views_row
               source: su_event_alt_loc
             'views_row:su_event_date_time_end_value':
               destination: su_event_end_month
-              weight: 3
+              weight: 4
               plugin: views_row
               source: su_event_date_time_end_value
             'views_row:su_event_date_time_end_value_1':
               destination: su_event_end_date
-              weight: 4
+              weight: 5
               plugin: views_row
               source: su_event_date_time_end_value_1
             'views_row:su_event_date_time_value_1':
               destination: su_event_start_date
-              weight: 5
+              weight: 6
               plugin: views_row
               source: su_event_date_time_value_1
             'views_row:su_event_date_time_value':
               destination: su_event_start_month
-              weight: 6
+              weight: 7
               plugin: views_row
               source: su_event_date_time_value
             'views_row:su_event_date_time':
               destination: su_event_date_time
-              weight: 7
+              weight: 8
               plugin: views_row
               source: su_event_date_time
             'views_row:su_event_subheadline':
               destination: su_event_subheadline
-              weight: 8
+              weight: 9
               plugin: views_row
               source: su_event_subheadline
             'views_row:su_event_dek':
               destination: su_event_dek
-              weight: 9
+              weight: 10
               plugin: views_row
               source: su_event_dek
             'views_row:su_event_location':
               destination: su_event_address
-              weight: 10
+              weight: 11
               plugin: views_row
               source: su_event_location
     cache_metadata:
@@ -2603,6 +2723,11 @@ display:
         style: false
         row: false
         fields: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
       arguments:
         nid:
           id: nid
@@ -3361,6 +3486,12 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+      use_more: true
+      use_more_always: true
+      use_more_text: 'All Upcoming Events'
+      link_display: custom_url
+      link_url: /events
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:

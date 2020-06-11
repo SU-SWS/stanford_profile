@@ -184,11 +184,18 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: hidden
-                type: smartdate_default
+                type: smartdate_custom
                 settings:
-                  timezone_override: ''
-                  format: date_only
-                  force_chronological: false
+                  date_format: 'l, F j, Y'
+                  custom_date_format: ''
+                  timezone: ''
+                  separator: ''
+                  join: ''
+                  time_format: ''
+                  time_hour_format: ''
+                  allday_label: ''
+                  date_first: '1'
+                  ampm_reduce: 0
                 third_party_settings:
                   field_formatter_class:
                     class: su-event-date
@@ -220,11 +227,18 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: hidden
-                type: smartdate_default
+                type: smartdate_custom
                 settings:
-                  timezone_override: ''
-                  format: time_only
-                  force_chronological: false
+                  date_format: ''
+                  custom_date_format: ''
+                  timezone: ''
+                  separator: ' - '
+                  join: ''
+                  time_format: 'g:ia T'
+                  time_hour_format: 'g:ia T'
+                  allday_label: ''
+                  date_first: '0'
+                  ampm_reduce: 0
                 third_party_settings:
                   field_formatter_class:
                     class: su-event-time
@@ -396,7 +410,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 10
+            weight: 0
         third_party_settings: {  }
       -
         layout_id: defaults
@@ -491,7 +505,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 0
+            weight: 2
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
@@ -512,40 +526,6 @@ third_party_settings:
               views_label: 'Explore More Events'
               items_per_page: none
               context_mapping: {  }
-            additional: {  }
-            weight: 0
-        third_party_settings: {  }
-      -
-        layout_id: defaults
-        layout_settings:
-          extra_classes: su-events-link-to-all
-          centered: centered-container
-          columns: flex-12-of-12
-          label: 'Link to all '
-        components:
-          804699c4-c88a-45d1-9ed9-48464736a7ef:
-            uuid: 804699c4-c88a-45d1-9ed9-48464736a7ef
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_event:su_event_source'
-              label: 'All Upcoming Events'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: link
-                settings:
-                  trim_length: null
-                  url_only: false
-                  url_plain: false
-                  rel: '0'
-                  target: '0'
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-events-link-to-all
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
             additional: {  }
             weight: 0
         third_party_settings: {  }
