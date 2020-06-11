@@ -9,13 +9,32 @@ dependencies:
     - field.field.config_pages.stanford_person_importer.su_person_orgs
     - field.field.config_pages.stanford_person_importer.su_person_sunetid
     - field.field.config_pages.stanford_person_importer.su_person_workgroup
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_authorization:
+      children:
+        - su_person_cap_username
+        - su_person_cap_password
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        description: 'Please enter your authentication information for the CAP API. If you don''t have these credentials yet you can <a href="https://helpsu.stanford.edu/helpsu/3.0/auth/helpsu-form?pcat=CAP_API&dtemplate=CAP-OAuth-Info">File a HelpSU request.</a>'
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: Authorization
 id: config_pages.stanford_person_importer.default
 targetEntityType: config_pages
 bundle: stanford_person_importer
 mode: default
 content:
   su_person_cap_password:
-    weight: 1
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -23,7 +42,7 @@ content:
     type: string_textfield
     region: content
   su_person_cap_username:
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
@@ -31,7 +50,7 @@ content:
     type: string_textfield
     region: content
   su_person_orgs:
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -41,7 +60,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   su_person_sunetid:
-    weight: 4
+    weight: 5
     settings:
       size: 60
       placeholder: ''
@@ -49,7 +68,7 @@ content:
     type: string_textfield
     region: content
   su_person_workgroup:
-    weight: 3
+    weight: 4
     settings:
       size: 60
       placeholder: ''
