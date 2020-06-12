@@ -1,0 +1,16 @@
+uuid: c0fd806a-902e-4393-9c46-9336dbc372c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.stanford-event-types
+    - taxonomy.vocabulary.stanford_event_types
+id: event_types_menu
+label: 'Event Types Menu'
+vocabulary: stanford_event_types
+menu: stanford-event-types
+expanded: false
+depth: 0
+menu_parent: 'stanford-event-types:'
+description_field_name: description
+use_term_weight_order: true

@@ -1,0 +1,23 @@
+uuid: 78c9a0ec-7965-42c5-98ca-8c6a92c9109c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_person_cta_link
+    - paragraphs.paragraphs_type.stanford_person_cta
+  module:
+    - link
+id: paragraph.stanford_person_cta.su_person_cta_link
+field_name: su_person_cta_link
+entity_type: paragraph
+bundle: stanford_person_cta
+label: Link
+description: 'Link the person''s name to something. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

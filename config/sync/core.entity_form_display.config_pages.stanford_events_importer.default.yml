@@ -1,0 +1,41 @@
+uuid: e36a4070-52cc-49aa-8f40-0f9cdf9dd83a
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_events_importer
+    - field.field.config_pages.stanford_events_importer.su_event_xml_url
+  module:
+    - field_group
+    - stanford_events_importer
+third_party_settings:
+  field_group:
+    group_import_events:
+      children:
+        - su_event_xml_url
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        description: 'Use the following options to import events from https://events.stanford.edu/. Go to https://events.stanford.edu/ to browse the events that would be included in each of the options below. For example, you can go to https://events.stanford.edu/byOrganization/ to see a list of all the organizations that have events and to preview them. Events will be imported and updated daily or you can use the Save & Import button to execute an update immediately. '
+        open: true
+        id: ''
+        classes: ''
+        required_fields: false
+      label: 'Import Events'
+id: config_pages.stanford_events_importer.default
+targetEntityType: config_pages
+bundle: stanford_events_importer
+mode: default
+content:
+  su_event_xml_url:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: stanford_events_importer_apiurl_field_widget
+    region: content
+hidden:
+  label: true

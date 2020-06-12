@@ -1,0 +1,83 @@
+uuid: aea4737d-d630-4e60-abe6-13ea5f6f5970
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.stanford_events_upcoming
+id: stanford_events_upcoming-layout_builder-0
+label: 'Layout Builder'
+variant: layout_builder
+variant_settings:
+  id: layout_builder
+  uuid: 8de0b8fe-a2ef-43f7-8c9b-cf5b43309d79
+  label: null
+  weight: 0
+  sections:
+    -
+      layout_id: jumpstart_ui_one_column
+      layout_settings:
+        extra_classes: section-event-list--title
+        centered: centered-container
+        columns: default
+        label: 'Page Title'
+      components:
+        1d61c490-3289-422f-9025-c70415f7ed1b:
+          uuid: 1d61c490-3289-422f-9025-c70415f7ed1b
+          region: main
+          configuration:
+            id: jumpstart_ui_page_heading
+            label: Events
+            provider: jumpstart_ui
+            label_display: '0'
+            heading_text: Events
+            wrapper: h1
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+      third_party_settings: {  }
+    -
+      layout_id: jumpstart_ui_two_column
+      layout_settings:
+        extra_classes: section-events-list--content
+        centered: centered-container
+        orientation: right
+        label: 'Filter & View'
+      components:
+        39282f6b-c47b-457e-9cc5-4d8ca20c5c84:
+          uuid: 39282f6b-c47b-457e-9cc5-4d8ca20c5c84
+          region: left
+          configuration:
+            id: 'menu_block:stanford-event-types'
+            label: 'Filter by event type'
+            provider: menu_block
+            label_display: visible
+            follow: false
+            follow_parent: child
+            level: 1
+            depth: 1
+            expand: false
+            parent: 'stanford-event-types:'
+            suggestion: stanford_event_types
+            label_type: block
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+        d6b3ac01-2850-45fa-ade2-f29c16e8a19f:
+          uuid: d6b3ac01-2850-45fa-ade2-f29c16e8a19f
+          region: main
+          configuration:
+            id: 'views_block:stanford_events-list_page'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: none
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+      third_party_settings: {  }
+page: stanford_events_upcoming
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }
