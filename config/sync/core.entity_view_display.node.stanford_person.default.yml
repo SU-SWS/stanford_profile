@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.stanford_person.su_person_map_url
     - field.field.node.stanford_person.su_person_mobile_phone
     - field.field.node.stanford_person.su_person_photo
+    - field.field.node.stanford_person.su_person_profile_link
     - field.field.node.stanford_person.su_person_research
     - field.field.node.stanford_person.su_person_research_interests
     - field.field.node.stanford_person.su_person_short_title
@@ -247,7 +248,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 8
+            weight: 10
           82a532c7-d73f-491e-8ce3-3fd27c29a815:
             uuid: 82a532c7-d73f-491e-8ce3-3fd27c29a815
             region: right
@@ -272,7 +273,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 7
+            weight: 9
           a69dd40a-c1a3-4266-b0ce-7efdaaa137fe:
             uuid: a69dd40a-c1a3-4266-b0ce-7efdaaa137fe
             region: right
@@ -292,7 +293,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 6
+            weight: 8
           e04c6120-8ac4-4ff0-bd25-8588de307dd1:
             uuid: e04c6120-8ac4-4ff0-bd25-8588de307dd1
             region: right
@@ -313,7 +314,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 5
+            weight: 6
           8222e428-abc1-40e2-9309-e6ca03530c1f:
             uuid: 8222e428-abc1-40e2-9309-e6ca03530c1f
             region: right
@@ -334,7 +335,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 4
+            weight: 5
           0cff0fa4-edcc-4bae-93bf-865242051b35:
             uuid: 0cff0fa4-edcc-4bae-93bf-865242051b35
             region: right
@@ -354,7 +355,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 3
+            weight: 4
           fc351b32-c332-4d8c-9da8-cd15a4692604:
             uuid: fc351b32-c332-4d8c-9da8-cd15a4692604
             region: right
@@ -375,7 +376,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 2
+            weight: 3
           af2e67a2-b520-4708-bbf0-3c2a348669ed:
             uuid: af2e67a2-b520-4708-bbf0-3c2a348669ed
             region: right
@@ -533,6 +534,32 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 1
+          091088b1-a703-4427-bc0e-9b627205b671:
+            uuid: 091088b1-a703-4427-bc0e-9b627205b671
+            region: right
+            configuration:
+              id: 'field_block:node:stanford_person:su_person_profile_link'
+              label: 'Profile Link'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: link_class
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                  class: su-button
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 11
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -693,6 +720,18 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
+  su_person_profile_link:
+    weight: 127
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   su_person_research:
     weight: 112

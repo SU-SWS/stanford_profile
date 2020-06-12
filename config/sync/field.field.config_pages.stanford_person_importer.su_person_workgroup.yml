@@ -1,0 +1,19 @@
+uuid: cba9c7f7-80eb-43a5-9507-350f18abdadb
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_person_importer
+    - field.storage.config_pages.su_person_workgroup
+id: config_pages.stanford_person_importer.su_person_workgroup
+field_name: su_person_workgroup
+entity_type: config_pages
+bundle: stanford_person_importer
+label: Workgroup
+description: "Enter the name(s) of the workgroup(s) you wish to import. Enter one workgroup for each line.<br>\r\nYou can learn more about workgroups at Stanford, and get proper names for import, at the <a href=\"https://workgroup.stanford.edu/\">workgroup manager website</a>."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

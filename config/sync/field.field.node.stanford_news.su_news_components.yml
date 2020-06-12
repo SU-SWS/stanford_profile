@@ -23,9 +23,6 @@ settings:
     negate: 0
     target_bundles: null
     target_bundles_drag_drop:
-      stanford_wysiwyg:
-        weight: -7
-        enabled: false
       stanford_banner:
         weight: 7
         enabled: false
@@ -34,5 +31,8 @@ settings:
         enabled: false
       stanford_media_caption:
         weight: 9
+        enabled: false
+      stanford_wysiwyg:
+        weight: -7
         enabled: false
 field_type: entity_reference_revisions
