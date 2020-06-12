@@ -1,9 +1,9 @@
 uuid: f12377a6-f9c4-4050-8493-87df53c70bae
+_core:
+  default_config_hash: cGwmz8ZjzFcJd_ygOCdIMWZpXlLTbA3JM3CN-rniTws
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: cGwmz8ZjzFcJd_ygOCdIMWZpXlLTbA3JM3CN-rniTws
 id: stanford_events_importer
 class: null
 field_plugin_method: null
@@ -23,6 +23,10 @@ source:
       name: guid
       label: GUID
       selector: guid
+    -
+      name: event_id
+      label: 'Event ID'
+      selector: eventID
     -
       name: title
       label: 'Event Title'
@@ -72,7 +76,11 @@ source:
       label: 'Contact Phone'
       selector: contactPhone
   ids:
-    guid:
+    event_id:
+      type: string
+    event_start:
+      type: string
+    event_end:
       type: string
   constants:
     status: 1
@@ -80,6 +88,7 @@ source:
     stanford_html: stanford_html
     stanford_minimal_html: stanford_minimal_html
     map_title: 'Open in map'
+    image_path: 'public://events/'
 process:
   status: constants/status
   type: constants/type
@@ -126,7 +135,7 @@ process:
       source: event_end
       values:
         - event_start
-  su_event_date_time/timezone: America/Los_Angeles
+  su_event_date_time/timezone: 'America/Los_Angeles'
   su_event_type:
     -
       plugin: explode
