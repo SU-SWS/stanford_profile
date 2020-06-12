@@ -1,0 +1,19 @@
+uuid: 710ab4b5-b488-4d0d-9a47-8f643f24b9d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_person_importer
+    - field.storage.config_pages.su_person_sunetid
+id: config_pages.stanford_person_importer.su_person_sunetid
+field_name: su_person_sunetid
+entity_type: config_pages
+bundle: stanford_person_importer
+label: SunetID
+description: 'Enter the user''s SunetID to import. One per line.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

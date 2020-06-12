@@ -11,6 +11,9 @@ module: node_revision_delete
 callback: node_revision_delete_cron
 scheduler:
   id: simple
+  configuration:
+    rules:
+      - '* * * * *'
 launcher:
   id: serial
 logger:
