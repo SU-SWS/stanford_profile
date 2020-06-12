@@ -78,7 +78,7 @@ class EventsCest {
     $I->dontSeeResponseCodeIs(200);
 
     // Can't adjust the importer form.
-    $I->amOnPage("/admin/config/importer/events-importer");
+    $I->amOnPage("/admin/config/importers/events-importer");
     $I->dontSeeResponseCodeIs(200);
   }
 
@@ -122,7 +122,7 @@ class EventsCest {
     $I->dontSeeResponseCodeIs(200);
 
     // Can't adjust the importer form.
-    $I->amOnPage("/admin/config/importer/events-importer");
+    $I->amOnPage("/admin/config/importers/events-importer");
     $I->dontSeeResponseCodeIs(200);
   }
 
@@ -165,7 +165,7 @@ class EventsCest {
     $I->seeResponseCodeIs(200);
 
     // Can adjust the importer form.
-    $I->amOnPage("/admin/config/importer/events-importer");
+    $I->amOnPage("/admin/config/importers/events-importer");
     $I->seeResponseCodeIs(200);
   }
 
