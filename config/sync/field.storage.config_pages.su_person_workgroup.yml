@@ -1,0 +1,25 @@
+uuid: fe785c51-e773-49bc-b2c5-540dadbbfd90
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - field_permissions
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: config_pages.su_person_workgroup
+field_name: su_person_workgroup
+entity_type: config_pages
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

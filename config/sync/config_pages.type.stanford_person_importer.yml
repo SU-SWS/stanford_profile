@@ -1,0 +1,16 @@
+uuid: bdfeefed-6815-4573-bc99-ca34359efd71
+langcode: en
+status: true
+dependencies: {  }
+id: stanford_person_importer
+label: 'Person Importer'
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/config/importers/person-importer
+  weight: 0
+  description: ''

@@ -1,0 +1,22 @@
+uuid: 6ac961f1-3c01-448e-8a66-10623379319a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_event
+id: node.stanford_event.promote
+field_name: promote
+entity_type: node
+bundle: stanford_event
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

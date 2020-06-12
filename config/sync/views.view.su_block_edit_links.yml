@@ -1,0 +1,243 @@
+uuid: 179fc468-4a96-472d-bf37-7f5c0a24c884
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - user
+id: su_block_edit_links
+label: 'Block Edit Links'
+module: views
+description: 'This view is for quick links to edit blocks.'
+tag: ''
+base_table: block_content_field_data
+base_field: id
+display:
+  default:
+    display_plugin: default
+    id: default
+    display_title: Master
+    position: 0
+    display_options:
+      access:
+        type: perm
+        options:
+          perm: 'update any stanford_component_block block content'
+      cache:
+        type: tag
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+          contextual_filters_or: false
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        type: some
+        options:
+          items_per_page: 1
+          offset: 0
+      style:
+        type: default
+      row:
+        type: fields
+      fields:
+        edit_block_content:
+          id: edit_block_content
+          table: block_content
+          field: edit_block_content
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'Edit Block Content Above'
+          output_url_as_text: false
+          absolute: false
+          entity_type: block_content
+          plugin_id: entity_link_edit
+      filters:
+        status:
+          value: '1'
+          table: block_content_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: block_content
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        reusable:
+          id: reusable
+          plugin_id: boolean
+          table: block_content_field_data
+          field: reusable
+          value: '1'
+          entity_type: block_content
+          entity_field: reusable
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        uuid:
+          id: uuid
+          table: block_content
+          field: uuid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: fb905cf3-4bd3-4bcd-ad01-92d25e46ba32
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: block_content
+          entity_field: uuid
+          plugin_id: string
+      sorts: {  }
+      title: 'Block Edit Links'
+      header: {  }
+      footer: {  }
+      empty: {  }
+      relationships: {  }
+      arguments:
+        id:
+          id: id
+          table: block_content_field_data
+          field: id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: block_content
+          entity_field: id
+          plugin_id: numeric
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - user.permissions
+      tags: {  }
+  people_intro:
+    display_plugin: block
+    id: people_intro
+    display_title: 'People Intro Edit Link'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - user.permissions
+      tags: {  }

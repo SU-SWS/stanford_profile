@@ -84,7 +84,7 @@ variant_settings:
             items_per_page: none
             context_mapping: {  }
           additional: {  }
-          weight: 3
+          weight: 5
         02b79daa-3558-4551-8313-5c6c65aa099c:
           uuid: 02b79daa-3558-4551-8313-5c6c65aa099c
           region: main
@@ -99,6 +99,19 @@ variant_settings:
             context_mapping: {  }
           additional: {  }
           weight: 2
+        8d451cfc-690e-43c1-95a5-e2f357c166a4:
+          uuid: 8d451cfc-690e-43c1-95a5-e2f357c166a4
+          region: main
+          configuration:
+            id: 'views_block:su_block_edit_links-people_intro'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: none
+            context_mapping: {  }
+          additional: {  }
+          weight: 4
       third_party_settings: {  }
 page: people
 weight: 0
