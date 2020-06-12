@@ -1,0 +1,49 @@
+uuid: 09cf05bb-dbbf-44cf-aa3a-86ca194ce480
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_schedule
+    - node.type.stanford_event
+    - paragraphs.paragraphs_type.stanford_schedule
+  module:
+    - entity_reference_revisions
+id: node.stanford_event.su_event_schedule
+field_name: su_event_schedule
+entity_type: node
+bundle: stanford_event
+label: Schedule
+description: 'Event Schedule'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      stanford_schedule: stanford_schedule
+    target_bundles_drag_drop:
+      stanford_banner:
+        weight: 8
+        enabled: false
+      stanford_card:
+        weight: 9
+        enabled: false
+      stanford_media_caption:
+        weight: 10
+        enabled: false
+      stanford_person_cta:
+        weight: 11
+        enabled: false
+      stanford_schedule:
+        enabled: true
+        weight: 12
+      stanford_spacer:
+        weight: 13
+        enabled: false
+      stanford_wysiwyg:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.su_page_components
     - node.type.stanford_page
+    - paragraphs.paragraphs_type.stanford_person_cta
+    - paragraphs.paragraphs_type.stanford_schedule
   module:
     - react_paragraphs
 id: node.stanford_page.su_page_components
@@ -21,7 +23,9 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 1
-    target_bundles: null
+    target_bundles:
+      stanford_person_cta: stanford_person_cta
+      stanford_schedule: stanford_schedule
     target_bundles_drag_drop:
       stanford_banner:
         weight: 4
@@ -32,6 +36,12 @@ settings:
       stanford_media_caption:
         weight: 8
         enabled: false
+      stanford_person_cta:
+        enabled: true
+        weight: 11
+      stanford_schedule:
+        enabled: true
+        weight: 12
       stanford_spacer:
         weight: 9
         enabled: false

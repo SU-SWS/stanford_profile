@@ -1,0 +1,107 @@
+uuid: 4362ca68-4ab4-4c22-9d3f-7a137283e7a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_schedule.su_schedule_date_time
+    - field.field.paragraph.stanford_schedule.su_schedule_description
+    - field.field.paragraph.stanford_schedule.su_schedule_headline
+    - field.field.paragraph.stanford_schedule.su_schedule_location
+    - field.field.paragraph.stanford_schedule.su_schedule_speaker
+    - field.field.paragraph.stanford_schedule.su_schedule_url
+    - paragraphs.paragraphs_type.stanford_schedule
+  module:
+    - address
+    - ds
+    - entity_reference_revisions
+    - field_formatter_class
+    - link
+    - smart_date
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_event-schedule
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      su_event_time:
+        - su_schedule_date_time
+      su_event_headline:
+        - su_schedule_headline
+      su_event_description:
+        - su_schedule_description
+      su_event_location:
+        - su_schedule_location
+      su_event_url:
+        - su_schedule_url
+      su_event_speakers:
+        - su_schedule_speaker
+id: paragraph.stanford_schedule.default
+targetEntityType: paragraph
+bundle: stanford_schedule
+mode: default
+content:
+  su_schedule_date_time:
+    weight: 0
+    label: hidden
+    settings:
+      timezone_override: ''
+      format: time_only_no_all_day
+      force_chronological: false
+      format_type: medium
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: smartdate_default
+    region: su_event_time
+  su_schedule_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: su_event_description
+  su_schedule_headline:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: su_event_headline
+  su_schedule_location:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: su_event_location
+  su_schedule_speaker:
+    type: entity_reference_revisions_entity_view
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: su_event_speakers
+  su_schedule_url:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: true
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: link
+    region: su_event_url
+hidden: {  }
