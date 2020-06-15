@@ -83,7 +83,7 @@ class RolesCest {
   }
 
   /**
-   * Developers have th emost access.
+   * Developers have the most access.
    */
   public function testSiteDeveloperRole(AcceptanceTester $I) {
     $I->logInWithRole('site_developer');
@@ -93,7 +93,6 @@ class RolesCest {
 
     $allowed_pages = ['/admin/content'];
     $this->runAccessCheck($I, $allowed_pages);
-    $this->runAccessCheck($I, [], 403);
   }
 
   /**
