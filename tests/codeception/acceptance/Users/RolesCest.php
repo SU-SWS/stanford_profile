@@ -76,10 +76,11 @@ class RolesCest {
     $I->amOnPage('/node/add/stanford_page');
     $I->canSee('Layout');
 
-    $allowed_pages = ['/admin/content'];
+    $allowed_pages = [
+      '/admin/content',
+      $this->getFrontPagePath($I) . '/delete',
+    ];
     $this->runAccessCheck($I, $allowed_pages);
-    $not_allowed = [$this->getFrontPagePath($I) . '/delete'];
-    $this->runAccessCheck($I, $not_allowed, 403);
   }
 
   /**
