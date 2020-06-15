@@ -23,8 +23,6 @@ class RolesCest {
 
   /**
    * Contributor role should have some access.
-   *
-   * @testme
    */
   public function testContributorRole(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
@@ -34,7 +32,8 @@ class RolesCest {
 
     $allowed_pages = ['/admin/content'];
     $this->runAccessCheck($I, $allowed_pages);
-    $this->runAccessCheck($I, [], 403);
+    $not_allowed = [$this->getFrontPagePath($I) . '/delete'];
+    $this->runAccessCheck($I, $not_allowed, 403);
 
   }
 
@@ -42,14 +41,15 @@ class RolesCest {
    * Site editor role should have some access.
    */
   public function testSiteEditorRole(AcceptanceTester $I) {
-    $I->logInWithRole('contributor');
+    $I->logInWithRole('site_editor');
 
     $I->amOnPage('/node/add/stanford_page');
     $I->cantSee('Layout');
 
     $allowed_pages = ['/admin/content'];
     $this->runAccessCheck($I, $allowed_pages);
-    $this->runAccessCheck($I, [], 403);
+    $not_allowed = [$this->getFrontPagePath($I) . '/delete'];
+    $this->runAccessCheck($I, $not_allowed, 403);
   }
 
   /**
@@ -63,7 +63,8 @@ class RolesCest {
 
     $allowed_pages = ['/admin/content'];
     $this->runAccessCheck($I, $allowed_pages);
-    $this->runAccessCheck($I, [], 403);
+    $not_allowed = [$this->getFrontPagePath($I) . '/delete'];
+    $this->runAccessCheck($I, $not_allowed, 403);
   }
 
   /**
@@ -77,7 +78,8 @@ class RolesCest {
 
     $allowed_pages = ['/admin/content'];
     $this->runAccessCheck($I, $allowed_pages);
-    $this->runAccessCheck($I, [], 403);
+    $not_allowed = [$this->getFrontPagePath($I) . '/delete'];
+    $this->runAccessCheck($I, $not_allowed, 403);
   }
 
   /**
@@ -105,9 +107,6 @@ class RolesCest {
    *   Expected http response code.
    */
   protected function runAccessCheck(AcceptanceTester $I, $pages = [], $status_code = 200) {
-    if ($status_code == 403) {
-      $pages[] = $this->getFrontPagePath($I) . '/delete';
-    }
     foreach ($pages as $page) {
       $I->amOnPage($page);
       $I->canSeeResponseCodeIs($status_code);
