@@ -26,6 +26,7 @@ class SystemSiteConfigCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->fillField('Site Name', '');
+    $I->click('Save');
     $I->runDrush('cache-rebuild');
     $I->amOnPage('/');
     $I->cantSee('Foo Bar Site');

@@ -1,6 +1,5 @@
 <?php
 
-use Drupal\paragraphs\ParagraphInterface;
 use Faker\Factory;
 
 /**
@@ -75,8 +74,6 @@ class WYSIWYGCest {
 
   /**
    * Images in the WYSIWYG should display correctly.
-   *
-   * @group testme
    */
   public function testEmbeddedImage(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
@@ -89,8 +86,11 @@ class WYSIWYGCest {
     $I->waitForElementVisible('.cke_inner');
     $I->click('Insert from Media Library');
     $I->waitForElementVisible('.dropzone');
-$I->dropFileInDropzone();
-
+    $I->dropFileInDropzone(__DIR__ . '/logo.jpg');
+    $I->click('Upload and Continue');
+    $I->waitForText('Alternative text');
+    $I->clickWithLeftButton(".ui-dialog-buttonset button:nth-child(2)");
+    $I->waitForAjaxToFinish();
     $I->click('Continue');
     $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
     $I->click('Save');
@@ -101,7 +101,6 @@ $I->dropFileInDropzone();
    * Videos in the WYSIWYG should display correctly.
    */
   public function testEmbeddedVideo(FunctionalTester $I) {
-
     $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
     $I->logInWithRole('administrator');
     $I->amOnPage($node->toUrl()->toString());
@@ -132,21 +131,40 @@ $I->dropFileInDropzone();
     $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
     $I->logInWithRole('administrator');
     $I->amOnPage($node->toUrl()->toString());
-    $I->cantSeeElement('.su-page-components img');
+    $I->cantSeeElement('.su-page-components a');
     $I->click('Edit', '.local-tasks-block');
     $I->waitForElementVisible('#row-0');
     $I->click('Edit', '.inner-row-wrapper');
     $I->waitForElementVisible('.cke_inner');
     $I->click('Insert from Media Library');
     $I->waitForElementVisible('.dropzone');
-    $I->click('File', '.media-library-menu-video');
-
+    $I->click('File', '.media-library-menu-file');
+    $I->waitForText('txt, rtf, doc, docx');
+    $I->dropFileInDropzone(__FILE__);
+    $I->canSeeElement('.dz-error.dz-complete');
+    $I->click('.dropzonejs-remove-icon');
+    $I->dropFileInDropzone(__DIR__ . '/test.txt');
+    $I->click('Upload and Continue');
+    $I->waitForText('The media item has been created but has not yet been saved');
+    $I->clickWithLeftButton(".ui-dialog-buttonset button:nth-child(2)");
+    $I->waitForAjaxToFinish();
     $I->click('Continue');
     $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
     $I->click('Save');
-    $I->canSeeElement('.su-page-components img');
+    $I->canSeeElement('.su-page-components a');
   }
 
+  /**
+   * Get a node with a wysiwyg paragraph on it.
+   *
+   * @param \FunctionalTester $I
+   *   Tester.
+   * @param string $paragraph_text
+   *   String to populate the paragraph.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface
+   *   Node entity.
+   */
   protected function getNodeWithParagraph(FunctionalTester $I, $paragraph_text = '') {
     $faker = Factory::create();
     $paragraph = $I->createEntity([
