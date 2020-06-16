@@ -22,9 +22,9 @@ class WYSIWYGCest {
     $I->cantSee("alert('testme')");
 
     $I->cantSeeElement('iframe');
-    $I->cantSeeElement('form');
-    $I->cantSeeElement('label');
-    $I->cantSeeElement('input');
+    $I->cantSeeElement('.system-main-block form');
+    $I->cantSeeElement('.system-main-block label');
+    $I->cantSeeElement('.system-main-block input');
     $I->cantSeeElement('select');
     $I->cantSeeElement('option');
     $I->cantSeeElement('textarea');
