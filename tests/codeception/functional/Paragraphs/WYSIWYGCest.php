@@ -15,8 +15,6 @@ class WYSIWYGCest {
    * HTML should be properly stripped.
    */
   public function testFilteredHtml(FunctionalTester $I) {
-
-
     $paragraph = $I->createEntity([
       'type' => 'stanford_wysiwyg',
       'su_wysiwyg_text' => [
@@ -85,21 +83,50 @@ class WYSIWYGCest {
   /**
    * Images in the WYSIWYG should display correctly.
    */
-  public function testEmbeddedImage(AcceptanceTester $I) {
-
+  public function testEmbeddedImage(FunctionalTester $I) {
   }
 
   /**
    * Videos in the WYSIWYG should display correctly.
+   *
+   * @group testme
    */
-  public function testEmbeddedVideo(AcceptanceTester $I) {
-
+  public function testEmbeddedVideo(FunctionalTester $I) {
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_wysiwyg',
+      'su_wysiwyg_text' => [
+        'format' => 'stanford_html',
+        'value' => 'Lorem Ipsum',
+      ],
+    ], 'paragraph');
+    $node = $this->getNodeWithParagraph($I, $paragraph);
+    $I->logInWithRole('administrator');
+    $I->amOnPage($node->toUrl()->toString());
+    $I->cantSeeElement('.su-page-components img');
+    $I->click('Edit', '.local-tasks-block');
+    $I->waitForElementVisible('#row-0');
+    $I->click('Edit', '.inner-row-wrapper');
+    $I->waitForElementVisible('.cke_inner');
+    $I->click('Insert from Media Library');
+    $I->waitForElementVisible('.dropzone');
+    $I->click('Video', '.media-library-menu-video');
+    $I->waitForElementVisible('.media-library-add-form-oembed-url');
+    $I->fillField('Add Video via URL', 'https://www.youtube.com/watch?v=ktCgVopf7D0');
+    $I->click('Add');
+    $I->waitForElementVisible('.ui-dialog-buttonset');
+    $I->wait(3);
+    $I->clickWithLeftButton( ".ui-dialog-buttonset button:nth-child(2)");
+    $I->waitForAjaxToFinish();
+    $I->click('Continue');
+    $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
+    $I->click('Save');
+    $I->canSeeNumberOfElements('iframe', 1);
   }
 
   /**
    * Documents in the WYSIWYG should display correctly.
    */
-  public function testEmbeddedDocument(AcceptanceTester $I) {
+  public function testEmbeddedDocument(FunctionalTester $I) {
 
   }
 
