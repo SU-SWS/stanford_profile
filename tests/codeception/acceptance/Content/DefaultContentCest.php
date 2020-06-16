@@ -47,7 +47,6 @@ class DefaultContentCest {
     $I->runDrush('cron');
     $I->amOnPage('/sitemap.xml');
     $I->canSeeResponseCodeIs(200);
-    $I->canSeeLink('About');
   }
 
 }
