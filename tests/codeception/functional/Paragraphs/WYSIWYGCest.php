@@ -115,7 +115,7 @@ class WYSIWYGCest {
     $I->waitForElementVisible('.media-library-add-form-oembed-url');
     $I->fillField('Add Video via URL', 'https://www.youtube.com/watch?v=ktCgVopf7D0');
     $I->click('Add');
-    $I->waitForElementVisible('.ui-dialog-buttonset');
+    $I->waitForText('The media item has been created but has not yet been saved');
     $I->clickWithLeftButton(".ui-dialog-buttonset button:nth-child(2)");
     $I->waitForAjaxToFinish();
     $I->click('Continue');
