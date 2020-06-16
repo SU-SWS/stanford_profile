@@ -15,14 +15,7 @@ class WYSIWYGCest {
    * HTML should be properly stripped.
    */
   public function testFilteredHtml(FunctionalTester $I) {
-    $paragraph = $I->createEntity([
-      'type' => 'stanford_wysiwyg',
-      'su_wysiwyg_text' => [
-        'format' => 'stanford_html',
-        'value' => file_get_contents(__DIR__ . '/WYSIWYG.html'),
-      ],
-    ], 'paragraph');
-    $node = $this->getNodeWithParagraph($I, $paragraph);
+    $node = $this->getNodeWithParagraph($I, file_get_contents(__DIR__ . '/WYSIWYG.html'));
     $I->logInWithRole('administrator');
     $I->amOnPage($node->toUrl()->toString());
 
@@ -82,27 +75,37 @@ class WYSIWYGCest {
 
   /**
    * Images in the WYSIWYG should display correctly.
+   *
+   * @group testme
    */
   public function testEmbeddedImage(FunctionalTester $I) {
+    $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
+    $I->logInWithRole('administrator');
+    $I->amOnPage($node->toUrl()->toString());
+    $I->cantSeeElement('.su-page-components img');
+    $I->click('Edit', '.local-tasks-block');
+    $I->waitForElementVisible('#row-0');
+    $I->click('Edit', '.inner-row-wrapper');
+    $I->waitForElementVisible('.cke_inner');
+    $I->click('Insert from Media Library');
+    $I->waitForElementVisible('.dropzone');
+$I->dropFileInDropzone();
+
+    $I->click('Continue');
+    $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
+    $I->click('Save');
+    $I->canSeeElement('.su-page-components img');
   }
 
   /**
    * Videos in the WYSIWYG should display correctly.
-   *
-   * @group testme
    */
   public function testEmbeddedVideo(FunctionalTester $I) {
-    $paragraph = $I->createEntity([
-      'type' => 'stanford_wysiwyg',
-      'su_wysiwyg_text' => [
-        'format' => 'stanford_html',
-        'value' => 'Lorem Ipsum',
-      ],
-    ], 'paragraph');
-    $node = $this->getNodeWithParagraph($I, $paragraph);
+
+    $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
     $I->logInWithRole('administrator');
     $I->amOnPage($node->toUrl()->toString());
-    $I->cantSeeElement('.su-page-components img');
+    $I->cantSeeElement('iframe');
     $I->click('Edit', '.local-tasks-block');
     $I->waitForElementVisible('#row-0');
     $I->click('Edit', '.inner-row-wrapper');
@@ -114,8 +117,7 @@ class WYSIWYGCest {
     $I->fillField('Add Video via URL', 'https://www.youtube.com/watch?v=ktCgVopf7D0');
     $I->click('Add');
     $I->waitForElementVisible('.ui-dialog-buttonset');
-    $I->wait(3);
-    $I->clickWithLeftButton( ".ui-dialog-buttonset button:nth-child(2)");
+    $I->clickWithLeftButton(".ui-dialog-buttonset button:nth-child(2)");
     $I->waitForAjaxToFinish();
     $I->click('Continue');
     $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
@@ -127,11 +129,33 @@ class WYSIWYGCest {
    * Documents in the WYSIWYG should display correctly.
    */
   public function testEmbeddedDocument(FunctionalTester $I) {
+    $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
+    $I->logInWithRole('administrator');
+    $I->amOnPage($node->toUrl()->toString());
+    $I->cantSeeElement('.su-page-components img');
+    $I->click('Edit', '.local-tasks-block');
+    $I->waitForElementVisible('#row-0');
+    $I->click('Edit', '.inner-row-wrapper');
+    $I->waitForElementVisible('.cke_inner');
+    $I->click('Insert from Media Library');
+    $I->waitForElementVisible('.dropzone');
+    $I->click('File', '.media-library-menu-video');
 
+    $I->click('Continue');
+    $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
+    $I->click('Save');
+    $I->canSeeElement('.su-page-components img');
   }
 
-  protected function getNodeWithParagraph(FunctionalTester $I, ParagraphInterface $paragraph) {
+  protected function getNodeWithParagraph(FunctionalTester $I, $paragraph_text = '') {
     $faker = Factory::create();
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_wysiwyg',
+      'su_wysiwyg_text' => [
+        'format' => 'stanford_html',
+        'value' => $paragraph_text,
+      ],
+    ], 'paragraph');
 
     return $I->createEntity([
       'type' => 'stanford_page',
