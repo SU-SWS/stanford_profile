@@ -34,7 +34,7 @@ class SystemSiteConfigCest {
   /**
    * Google Analytics account should be added for anonymous users.
    */
-  public function experimentalTestGoogleAnalytics(AcceptanceTester $I) {
+  protected function experimentalTestGoogleAnalytics(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->fillField('Google Analytics Account', 'abcdefg');
