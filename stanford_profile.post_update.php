@@ -37,12 +37,12 @@ function stanford_profile_post_update_8014() {
     'site_editor',
     'contributor',
   ]);
-  
+
   $message = 'Update: We changed some things about how buttons are aligned. See <a href="https://userguide.sites.stanford.edu/tour/paragraphs/text-area/working-with-buttons">the user guide page</a> for more information';
   $notifications->addNotification($message, [
     'site_manager',
     'site_editor',
     'contributor',
   ]);
-  
+
 }
