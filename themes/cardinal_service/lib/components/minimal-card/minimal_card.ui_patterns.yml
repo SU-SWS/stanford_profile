@@ -1,0 +1,22 @@
+minimal_card:
+  label: Minimal Card
+  description: 'Display image and call to action link'
+  fields:
+    image:
+      type: image
+      label: Image
+      description: 'Title of the minimal card.'
+      preview:
+        theme: image
+        uri: http://placecorgi.com/800x1200
+    cta:
+      type: text
+      label: Call To Action Link
+      description: 'Call To Action Link.'
+      preview: '<a href="#">I am a call to action link</a>'
+  use: '@cardinal-service/minimal-card/minimal_card.html.twig'
+  libraries:
+    - minimal_card:
+        css:
+          component:
+            ../../../dist/css/components/minimal-card/minimal_card.css: {}

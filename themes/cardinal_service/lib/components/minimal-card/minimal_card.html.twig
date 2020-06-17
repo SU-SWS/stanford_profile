@@ -1,0 +1,18 @@
+{% set image = image|render|striptags('<drupal-render-placeholder> <img> <picture> <source>')|trim %}
+
+<div{{ attributes.addClass('su-minimal-card') }}>
+  <div class="flex-container su-card__contents">
+    {% if image %}
+      <div class="flex-8-of-12">
+        <div class="su-card-img">
+          {{ image|raw }}
+        </div>
+      </div>
+    {% endif %}
+    <div class="{% if image %}flex-4-of-12{% endif %}">
+      <div class="su-card-cta">
+        {{ cta }}
+      </div>
+    </div>
+  </div>
+</div>
