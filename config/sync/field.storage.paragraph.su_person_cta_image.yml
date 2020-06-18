@@ -1,0 +1,24 @@
+uuid: 68b07f2b-1401-4b30-ae6d-d5dee5280752
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - media
+    - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: paragraph.su_person_cta_image
+field_name: su_person_cta_image
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

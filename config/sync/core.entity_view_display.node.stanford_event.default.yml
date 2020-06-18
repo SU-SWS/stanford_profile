@@ -1,0 +1,759 @@
+uuid: 5b1e2890-2f35-4623-940a-cb7785f1e804
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.stanford_event.title
+    - field.field.node.stanford_event.body
+    - field.field.node.stanford_event.layout_builder__layout
+    - field.field.node.stanford_event.su_event_alt_loc
+    - field.field.node.stanford_event.su_event_audience
+    - field.field.node.stanford_event.su_event_components
+    - field.field.node.stanford_event.su_event_cta
+    - field.field.node.stanford_event.su_event_date_time
+    - field.field.node.stanford_event.su_event_dek
+    - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_location
+    - field.field.node.stanford_event.su_event_map_link
+    - field.field.node.stanford_event.su_event_schedule
+    - field.field.node.stanford_event.su_event_source
+    - field.field.node.stanford_event.su_event_sponsor
+    - field.field.node.stanford_event.su_event_subheadline
+    - field.field.node.stanford_event.su_event_telephone
+    - field.field.node.stanford_event.su_event_type
+    - node.type.stanford_event
+    - views.view.stanford_events
+    - views.view.stanford_events_schedule
+  module:
+    - address
+    - entity_reference_revisions
+    - jumpstart_ui
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - link
+    - smart_date
+    - stanford_events
+    - text
+    - user
+    - views
+third_party_settings:
+  layout_builder:
+    allow_custom: true
+    enabled: true
+    sections:
+      -
+        layout_id: defaults
+        layout_settings:
+          extra_classes: section-editorial-content
+          centered: centered-container
+          columns: default
+          label: 'Editorial Content'
+        components:
+          cee36061-b3bc-4171-92d5-299e62b7d0f2:
+            uuid: cee36061-b3bc-4171-92d5-299e62b7d0f2
+            region: main
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              provider: jumpstart_ui
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: -10
+            third_party_settings: {  }
+          9c246a83-54f9-4f93-a975-e9bdc0259f82:
+            uuid: 9c246a83-54f9-4f93-a975-e9bdc0259f82
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:title'
+              label: Headline
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_title_heading
+                settings:
+                  tag: h1
+                third_party_settings:
+                  field_formatter_class:
+                    class: 'su-event-headline flex-10-of-12'
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: -8
+            third_party_settings: {  }
+          2d7ecccf-4511-455e-ae69-f2b24a376a43:
+            uuid: 2d7ecccf-4511-455e-ae69-f2b24a376a43
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_subheadline'
+              label: Subheadline
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_title_heading
+                settings:
+                  tag: h2
+                third_party_settings:
+                  field_formatter_class:
+                    class: 'su-event-subheadline flex-9-of-12'
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: -7
+            third_party_settings: {  }
+          ff876f05-89b3-49c8-9bae-516ac86b4e79:
+            uuid: ff876f05-89b3-49c8-9bae-516ac86b4e79
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_dek'
+              label: Dek
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: 'su-event-dek flex-7-of-12'
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: -6
+            third_party_settings: {  }
+          625d8b06-94fb-4027-bec0-f39e16810c8a:
+            uuid: 625d8b06-94fb-4027-bec0-f39e16810c8a
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_sponsor'
+              label: Sponsor
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: 'su-event-sponsor flex-7-of-12'
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: -5
+            third_party_settings: {  }
+          229e196d-4f22-4f5a-b265-added1838d5d:
+            uuid: 229e196d-4f22-4f5a-b265-added1838d5d
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_type'
+              label: 'Event Type'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-type
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: -9
+            third_party_settings: {  }
+        third_party_settings: {  }
+      -
+        layout_id: stanford_events_body
+        layout_settings:
+          label: 'Body Content - Details'
+        components:
+          1dc2e07f-0713-48bf-9db4-0ac54fb145df:
+            uuid: 1dc2e07f-0713-48bf-9db4-0ac54fb145df
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_date_time'
+              label: 'Date field'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: smartdate_custom
+                settings:
+                  date_format: 'l, F j, Y'
+                  custom_date_format: ''
+                  timezone: ''
+                  separator: ''
+                  join: ''
+                  time_format: ''
+                  time_hour_format: ''
+                  allday_label: ''
+                  date_first: '1'
+                  ampm_reduce: 0
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-date
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 3
+            third_party_settings: {  }
+          9a605e2a-8dbd-44ec-83ac-fdd47b7a8cf0:
+            uuid: 9a605e2a-8dbd-44ec-83ac-fdd47b7a8cf0
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_date_time'
+              label: 'Time Field'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: smartdate_custom
+                settings:
+                  date_format: ''
+                  custom_date_format: ''
+                  timezone: ''
+                  separator: ' - '
+                  join: ''
+                  time_format: 'g:ia T'
+                  time_hour_format: 'g:ia T'
+                  allday_label: ''
+                  date_first: '0'
+                  ampm_reduce: 0
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-time
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 4
+            third_party_settings: {  }
+          1ce04bbe-b3fd-4040-9011-46a80cb0bea1:
+            uuid: 1ce04bbe-b3fd-4040-9011-46a80cb0bea1
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_location'
+              label: Location
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: address_default
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-location
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 6
+            third_party_settings: {  }
+          0ff08dc5-db6c-413e-b440-8bcabf2911b3:
+            uuid: 0ff08dc5-db6c-413e-b440-8bcabf2911b3
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_map_link'
+              label: 'Map Link'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: link
+                settings:
+                  trim_length: null
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-map
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 8
+            third_party_settings: {  }
+          6b731bfb-4a54-43e3-afa5-f60099657490:
+            uuid: 6b731bfb-4a54-43e3-afa5-f60099657490
+            region: right
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_telephone'
+              label: Contact
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: telephone_link
+                settings:
+                  title: ''
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-telephone
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
+            third_party_settings: {  }
+          9f9648ba-9864-40fb-a66f-c94fd87bc32d:
+            uuid: 9f9648ba-9864-40fb-a66f-c94fd87bc32d
+            region: right
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_audience'
+              label: 'This event is open to:'
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-audience
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 4
+            third_party_settings: {  }
+          be4ceb41-1f4b-40f8-be69-c6714369f7bf:
+            uuid: be4ceb41-1f4b-40f8-be69-c6714369f7bf
+            region: right
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_email'
+              label: 'Contact Email'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: email_mailto
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-email
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 3
+            third_party_settings: {  }
+          c4f8811e-dd0e-44ae-b65d-b0f82cf894df:
+            uuid: c4f8811e-dd0e-44ae-b65d-b0f82cf894df
+            region: main
+            configuration:
+              id: jumpstart_ui_page_heading
+              label: 'Heading Block'
+              provider: jumpstart_ui
+              label_display: '0'
+              heading_text: 'Event Details:'
+              wrapper: h2
+              context_mapping: {  }
+            additional: {  }
+            weight: 1
+            third_party_settings: {  }
+          72ffb956-3705-4638-a22a-22c5ce31e291:
+            uuid: 72ffb956-3705-4638-a22a-22c5ce31e291
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_alt_loc'
+              label: Location
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-alt-location
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 7
+            third_party_settings: {  }
+        third_party_settings: {  }
+      -
+        layout_id: defaults
+        layout_settings:
+          extra_classes: su-events-details
+          centered: centered-container
+          columns: flex-8-of-12
+          label: 'Body Content - CTA signup'
+        components:
+          2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350:
+            uuid: 2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_cta'
+              label: 'Call to action button'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: link
+                settings:
+                  trim_length: null
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings:
+                  field_formatter_class:
+                    class: 'su-event-cta su-button'
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+            third_party_settings: {  }
+        third_party_settings: {  }
+      -
+        layout_id: defaults
+        layout_settings:
+          extra_classes: su-events-body
+          centered: centered-container
+          columns: flex-8-of-12
+          label: 'Body Content'
+        components:
+          11df73c4-8beb-43be-b1d2-4ddc537f90b1:
+            uuid: 11df73c4-8beb-43be-b1d2-4ddc537f90b1
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_components'
+              label: Components
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-components
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+            third_party_settings: {  }
+          7a80c779-6c87-49fd-94e0-68ae37fa1cd4:
+            uuid: 7a80c779-6c87-49fd-94e0-68ae37fa1cd4
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:body'
+              label: Body
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: text_default
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-body
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+            third_party_settings: {  }
+        third_party_settings: {  }
+      -
+        layout_id: defaults
+        layout_settings:
+          extra_classes: su-events-type-schedule
+          centered: centered-container
+          columns: flex-10-of-12
+          label: 'Event type and Schedule'
+        components:
+          09d8b675-2bdf-45eb-a005-6279e9f81738:
+            uuid: 09d8b675-2bdf-45eb-a005-6279e9f81738
+            region: main
+            configuration:
+              id: 'views_block:stanford_events_schedule-event_schedule_block'
+              label: Schedule
+              provider: views
+              label_display: visible
+              views_label: Schedule
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 1
+            third_party_settings: {  }
+          d64439dc-f59e-4822-aba0-cdca5a9dc331:
+            uuid: d64439dc-f59e-4822-aba0-cdca5a9dc331
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_type'
+              label: 'Related Topics'
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: true
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-type-bottom
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
+            third_party_settings: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: section-event-more-block
+          centered: centered-container
+          columns: default
+          label: 'More Events'
+        components:
+          8e277083-0c99-44f4-ad5f-9f800d0b602e:
+            uuid: 8e277083-0c99-44f4-ad5f-9f800d0b602e
+            region: main
+            configuration:
+              id: 'views_block:stanford_events-more_events_block'
+              label: 'Explore More Events'
+              provider: views
+              label_display: visible
+              views_label: 'Explore More Events'
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+            third_party_settings: {  }
+        third_party_settings: {  }
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      whitelisted_blocks:
+        'Chaos Tools': {  }
+        'Config Pages': {  }
+        'Content fields':
+          - 'field_block:node:stanford_event:su_event_audience'
+          - 'field_block:node:stanford_event:uid'
+          - 'field_block:node:stanford_event:created'
+          - 'field_block:node:stanford_event:body'
+          - 'field_block:node:stanford_event:su_event_cta'
+          - 'field_block:node:stanford_event:changed'
+          - 'field_block:node:stanford_event:su_event_components'
+          - 'field_block:node:stanford_event:su_event_email'
+          - 'field_block:node:stanford_event:su_event_telephone'
+          - 'field_block:node:stanford_event:su_event_date_time'
+          - 'field_block:node:stanford_event:su_event_dek'
+          - 'field_block:node:stanford_event:su_event_alt_loc'
+          - 'field_block:node:stanford_event:title'
+          - 'field_block:node:stanford_event:su_event_type'
+          - 'field_block:node:stanford_event:su_event_source'
+          - 'field_block:node:stanford_event:nid'
+          - 'extra_field_block:node:stanford_event:links'
+          - 'field_block:node:stanford_event:su_event_location'
+          - 'field_block:node:stanford_event:su_event_map_link'
+          - 'field_block:node:stanford_event:menu_link'
+          - 'field_block:node:stanford_event:status'
+          - 'field_block:node:stanford_event:su_event_schedule'
+          - 'field_block:node:stanford_event:su_event_sponsor'
+          - 'field_block:node:stanford_event:su_event_subheadline'
+        Devel: {  }
+        'Devel PHP': {  }
+        Forms: {  }
+        'Lists (Views)': {  }
+        Menus:
+          - 'menu_block:stanford-event-types'
+          - 'menu_block:main'
+        'News Lists (Views)':
+          - 'views_block:stanford_news-vertical_teaser_term'
+          - 'views_block:stanford_news-vertical_teaser_term_list'
+          - 'views_block:stanford_news-block_1'
+          - 'views_block:stanford_news-term_block'
+        'People Lists (Views)':
+          - 'views_block:stanford_person-grid_list_all'
+          - 'views_block:stanford_person_list_terms_first-person_list_grid'
+        'SimpleSAMLphp Authentication': {  }
+        'Stanford News': {  }
+        'Stanford SimpleSAML PHP': {  }
+        System:
+          - system_messages_block
+      blacklisted_blocks: {  }
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_one_column_overlay
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+        - stanford_events_editorial_content
+        - stanford_events_body
+id: node.stanford_event.default
+targetEntityType: node
+bundle: stanford_event
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  su_event_alt_loc:
+    weight: 117
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: main
+  su_event_audience:
+    weight: 114
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  su_event_components:
+    type: entity_reference_revisions_entity_view
+    weight: 106
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  su_event_cta:
+    weight: 113
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  su_event_date_time:
+    weight: 115
+    label: above
+    settings:
+      format: default
+      force_chronological: false
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: smartdate_default
+    region: main
+  su_event_dek:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_event_email:
+    weight: 111
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  su_event_location:
+    weight: 110
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  su_event_map_link:
+    weight: 116
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: main
+  su_event_source:
+    weight: 118
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: main
+  su_event_sponsor:
+    weight: 105
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_event_subheadline:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_event_telephone:
+    weight: 112
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  su_event_type:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  layout_builder__layout: true
+  search_api_excerpt: true
+  su_event_schedule: true

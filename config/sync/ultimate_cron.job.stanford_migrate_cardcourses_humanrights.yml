@@ -1,0 +1,17 @@
+uuid: f9a5bda0-e370-4fd8-a1d7-c17b3699d032
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_migrate
+title: 'Importer: Human Rights Courses'
+id: stanford_migrate_cardcourses_humanrights
+weight: 0
+module: stanford_migrate
+callback: stanford_migrate_ultimate_cron_task
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

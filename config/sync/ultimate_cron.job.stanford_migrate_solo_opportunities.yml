@@ -1,0 +1,17 @@
+uuid: 24a6b623-bd75-4e96-a81c-3f8b87d5e0d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_migrate
+title: 'Importer: SOLO Opportunities'
+id: stanford_migrate_solo_opportunities
+weight: 0
+module: stanford_migrate
+callback: stanford_migrate_ultimate_cron_task
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

@@ -1,0 +1,35 @@
+uuid: efccae33-bb00-42e7-95f2-5a8c895545d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.stanford_event_series.layout_builder__layout
+    - field.field.node.stanford_event_series.su_event_series_components
+    - field.field.node.stanford_event_series.su_event_series_dek
+    - field.field.node.stanford_event_series.su_event_series_event
+    - field.field.node.stanford_event_series.su_event_series_subheadline
+    - field.field.node.stanford_event_series.su_event_series_type
+    - field.field.node.stanford_event_series.su_event_series_weight
+    - node.type.stanford_event_series
+  module:
+    - user
+id: node.stanford_event_series.teaser
+targetEntityType: node
+bundle: stanford_event_series
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  layout_builder__layout: true
+  search_api_excerpt: true
+  su_event_series_components: true
+  su_event_series_dek: true
+  su_event_series_event: true
+  su_event_series_subheadline: true
+  su_event_series_type: true
+  su_event_series_weight: true

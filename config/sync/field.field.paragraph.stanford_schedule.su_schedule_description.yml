@@ -1,0 +1,27 @@
+uuid: 663f33e7-9e5a-43a1-9c89-b2c075d00d94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_schedule_description
+    - paragraphs.paragraphs_type.stanford_schedule
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_minimal_html: stanford_minimal_html
+    stanford_html: '0'
+    plain_text: '0'
+id: paragraph.stanford_schedule.su_schedule_description
+field_name: su_schedule_description
+entity_type: paragraph
+bundle: stanford_schedule
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

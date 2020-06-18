@@ -1,0 +1,17 @@
+uuid: 7fb1a57f-2e5e-4746-8541-db83619a1c64
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_migrate
+title: 'Importer: Engineering Courses'
+id: stanford_migrate_cardcourses_eng
+weight: 0
+module: stanford_migrate
+callback: stanford_migrate_ultimate_cron_task
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

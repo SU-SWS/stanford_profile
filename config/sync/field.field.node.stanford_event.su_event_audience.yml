@@ -1,0 +1,29 @@
+uuid: eea4c2c5-acd5-47c3-8a70-2b6b0849fe16
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_audience
+    - node.type.stanford_event
+    - taxonomy.vocabulary.event_audience
+id: node.stanford_event.su_event_audience
+field_name: su_event_audience
+entity_type: node
+bundle: stanford_event
+label: Audience
+description: 'Groups of people to whom this event is for. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event_audience: event_audience
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

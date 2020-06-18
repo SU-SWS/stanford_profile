@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.stanford_person.su_person_map_url
     - field.field.node.stanford_person.su_person_mobile_phone
     - field.field.node.stanford_person.su_person_photo
+    - field.field.node.stanford_person.su_person_profile_link
     - field.field.node.stanford_person.su_person_research
     - field.field.node.stanford_person.su_person_research_interests
     - field.field.node.stanford_person.su_person_short_title
@@ -716,6 +717,18 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
+  su_person_profile_link:
+    weight: 127
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   su_person_research:
     weight: 112

@@ -1,0 +1,25 @@
+uuid: 33241db8-d650-4e75-8cf8-c7fa0204f408
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_series_weight
+    - node.type.stanford_event_series
+id: node.stanford_event_series.su_event_series_weight
+field_name: su_event_series_weight
+entity_type: node
+bundle: stanford_event_series
+label: Weight
+description: 'An optional value for adjusting the order in which this series item displays on list pages. Negative items (lighter) are shown closer to the top of the page where positive items (heavier) are shown near the bottom relative to the other items and their weight.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: -100
+  max: 100
+  prefix: ''
+  suffix: ''
+field_type: integer

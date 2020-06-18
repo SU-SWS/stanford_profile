@@ -1,0 +1,17 @@
+uuid: 9a5de34e-ed6b-4600-867c-df0ab639fdb8
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_migrate
+title: 'Importer: Stanford Person Importer'
+id: stanford_migrate_su_stanford_person
+weight: 0
+module: stanford_migrate
+callback: stanford_migrate_ultimate_cron_task
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

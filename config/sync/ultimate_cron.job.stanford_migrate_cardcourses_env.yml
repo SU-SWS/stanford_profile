@@ -1,0 +1,17 @@
+uuid: 82a73fa6-6356-43c9-af06-b7334933b20f
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_migrate
+title: 'Importer: Environment Courses'
+id: stanford_migrate_cardcourses_env
+weight: 0
+module: stanford_migrate
+callback: stanford_migrate_ultimate_cron_task
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

@@ -1,0 +1,23 @@
+uuid: c66b17f1-4d9d-4483-b6a9-64e9694fd394
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - paragraphs
+    - smart_date
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: paragraph.su_schedule_date_time
+field_name: su_schedule_date_time
+entity_type: paragraph
+type: smartdate
+settings: {  }
+module: smart_date
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

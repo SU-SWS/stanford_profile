@@ -1,0 +1,87 @@
+uuid: 53d33dc2-9ed4-462c-9c8a-641c026651c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.stanford_events_past
+id: stanford_events_past-layout_builder-0
+label: 'Layout Builder'
+variant: layout_builder
+variant_settings:
+  id: layout_builder
+  uuid: bef69e12-2e88-4e1c-a0cf-23736741f105
+  label: null
+  weight: 0
+  sections:
+    -
+      layout_id: jumpstart_ui_one_column
+      layout_settings:
+        extra_classes: section-events-past--header
+        centered: centered-container
+        columns: default
+        label: Header
+      components:
+        0f215804-4b92-45c1-a5ab-59eb3b7f3122:
+          uuid: 0f215804-4b92-45c1-a5ab-59eb3b7f3122
+          region: main
+          configuration:
+            id: jumpstart_ui_page_heading
+            label: 'Heading Block'
+            provider: jumpstart_ui
+            label_display: '0'
+            heading_text: 'Past Events'
+            wrapper: h1
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+          third_party_settings: {  }
+      third_party_settings: {  }
+    -
+      layout_id: jumpstart_ui_two_column
+      layout_settings:
+        extra_classes: section-events-past--content
+        centered: centered-container
+        orientation: right
+        label: 'Views & Navigation'
+      components:
+        b75e3d64-68b1-4eb0-afae-ef87817f748c:
+          uuid: b75e3d64-68b1-4eb0-afae-ef87817f748c
+          region: left
+          configuration:
+            id: 'menu_block:stanford-event-types'
+            label: 'Filter by event types'
+            provider: menu_block
+            label_display: visible
+            follow: false
+            follow_parent: child
+            level: 1
+            depth: 0
+            expand: false
+            parent: 'stanford-event-types:'
+            suggestion: stanford_event_types
+            label_type: block
+            label_link: false
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+          third_party_settings: {  }
+        f932bc02-92a2-443a-b785-b11ef35f63ad:
+          uuid: f932bc02-92a2-443a-b785-b11ef35f63ad
+          region: main
+          configuration:
+            id: 'views_block:stanford_events_past-past_events_block'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: none
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+          third_party_settings: {  }
+      third_party_settings: {  }
+page: stanford_events_past
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }
