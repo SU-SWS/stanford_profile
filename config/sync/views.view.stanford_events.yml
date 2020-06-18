@@ -688,71 +688,6 @@ display:
       block_hide_empty: false
       block_category: 'Events Lists (Views)'
       fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: '<h2>{{ title }}</h2>'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         view_node:
           id: view_node
           table: node
@@ -816,8 +751,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: true
-            text: '<h2><a href="{{ su_event_source__uri }}" class="su-link su-link--external">{{ title }}</a></h2>'
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -850,7 +785,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: false
-          empty: '<h2><a href="{{ view_node }}" class="su-link">{{ title }}</a></h2>'
+          empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -872,6 +807,71 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          plugin_id: field
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<a class=\"su-link{% if su_event_source %} su-link--external{% else %} su-link--action{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: h2
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: title
           plugin_id: field
         su_event_type:
           id: su_event_type
@@ -1528,9 +1528,9 @@ display:
         options:
           default_field_elements: 0
           inline:
-            title: 0
             view_node: 0
             su_event_source: 0
+            title: 0
             su_event_type: 0
             su_event_subheadline: 0
             su_event_dek: 0
@@ -1546,22 +1546,22 @@ display:
           hide_empty: 1
           pattern: events-list
           variants:
-            media: default
-            lockup: a
-            hero: default
-            brandbar: default
-            link: default
-            button: default
-            date-stacked: default
-            cta: default
             alert: default
+            brandbar: default
+            button: default
             card: default
+            cta: default
+            date-stacked: default
+            hero: default
+            link: default
+            lockup: a
+            media: default
           pattern_mapping:
-            'views_row:su_event_source':
+            'views_row:title':
               destination: su_event_headline
               weight: 0
               plugin: views_row
-              source: su_event_source
+              source: title
             'views_row:su_event_date_time':
               destination: su_event_date_time
               weight: 1
@@ -1694,71 +1694,6 @@ display:
           plugin_id: taxonomy_index_tid
       block_category: 'Events Lists (Views)'
       fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: '<h2>{{ title }}</h2>'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         view_node:
           id: view_node
           table: node
@@ -1809,7 +1744,7 @@ display:
           hide_alter_empty: true
           text: view
           output_url_as_text: true
-          absolute: false
+          absolute: true
           entity_type: node
           plugin_id: entity_link
         su_event_source:
@@ -1822,8 +1757,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: true
-            text: '<h2><a href="{{ su_event_source__uri }}" class="su-link su-link--external">{{ title }}</a></h2>'
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -1856,7 +1791,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: false
-          empty: '<h2><a href="{{ view_node }}" class="su-link">{{ title }}</a></h2>'
+          empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -1878,6 +1813,71 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          plugin_id: field
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<a class=\"su-link{% if su_event_source %} su-link--external{% else %} su-link--action{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
+            make_link: false
+            path: '{{ su_event_source }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: h2
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: title
           plugin_id: field
         su_event_type:
           id: su_event_type
@@ -2595,9 +2595,9 @@ display:
         options:
           default_field_elements: 0
           inline:
-            title: 0
             view_node: 0
             su_event_source: 0
+            title: 0
             su_event_type: 0
             su_event_subheadline: 0
             su_event_dek: 0
@@ -2614,27 +2614,27 @@ display:
           hide_empty: 1
           pattern: events-list
           variants:
-            media: default
-            lockup: a
-            hero: default
-            brandbar: default
-            link: default
-            button: default
-            date-stacked: default
-            cta: default
             alert: default
+            brandbar: default
+            button: default
             card: default
+            cta: default
+            date-stacked: default
+            hero: default
+            link: default
+            lockup: a
+            media: default
           pattern_mapping:
-            'views_row:edit_node':
-              destination: su_event_edit
+            'views_row:title':
+              destination: su_event_headline
               weight: 0
               plugin: views_row
-              source: edit_node
-            'views_row:su_event_source':
-              destination: su_event_headline
+              source: title
+            'views_row:edit_node':
+              destination: su_event_edit
               weight: 1
               plugin: views_row
-              source: su_event_source
+              source: edit_node
             'views_row:su_event_type':
               destination: su_event_type
               weight: 2
@@ -2797,52 +2797,52 @@ display:
           hide_empty: 1
           pattern: events-explore-more
           variants:
-            media: default
-            lockup: a
-            hero: default
-            brandbar: default
-            link: default
-            button: default
-            date-stacked: default
-            cta: default
             alert: default
+            brandbar: default
+            button: default
             card: default
+            cta: default
+            date-stacked: default
+            hero: default
+            link: default
+            lockup: a
+            media: default
           pattern_mapping:
             'views_row:su_event_date_time_value':
               destination: su_event_start_month
               weight: 0
               plugin: views_row
               source: su_event_date_time_value
+            'views_row:title':
+              destination: su_event_headline
+              weight: 1
+              plugin: views_row
+              source: title
             'views_row:su_event_date_time':
               destination: su_event_date_time
-              weight: 1
+              weight: 2
               plugin: views_row
               source: su_event_date_time
             'views_row:su_event_date_time_value_1':
               destination: su_event_start_date
-              weight: 2
+              weight: 3
               plugin: views_row
               source: su_event_date_time_value_1
             'views_row:su_event_date_time_end_value':
               destination: su_event_end_month
-              weight: 3
+              weight: 4
               plugin: views_row
               source: su_event_date_time_end_value
             'views_row:su_event_date_time_end_value_1':
               destination: su_event_end_date
-              weight: 4
+              weight: 5
               plugin: views_row
               source: su_event_date_time_end_value_1
             'views_row:su_event_type':
               destination: su_event_type
-              weight: 5
-              plugin: views_row
-              source: su_event_type
-            'views_row:su_event_source':
-              destination: su_event_headline
               weight: 6
               plugin: views_row
-              source: su_event_source
+              source: su_event_type
             'views_row:su_event_subheadline':
               destination: su_event_subheadline
               weight: 7
@@ -3120,71 +3120,6 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         view_node:
           id: view_node
           table: node
@@ -3235,7 +3170,7 @@ display:
           hide_alter_empty: true
           text: view
           output_url_as_text: true
-          absolute: false
+          absolute: true
           entity_type: node
           plugin_id: entity_link
         su_event_source:
@@ -3248,8 +3183,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: true
-            text: '<h2><a href="{{ su_event_source__uri }}" class="su-link su-link--external">{{ title }}</a></h2>'
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -3282,7 +3217,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: false
-          empty: '<h2><a href="{{ view_node }}" class="su-link su-link--action">{{ title }}</a></h2>'
+          empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -3304,6 +3239,71 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          plugin_id: field
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<a class=\"su-link{% if su_event_source %} su-link--external{% else %} su-link--action{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: h2
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: title
           plugin_id: field
         su_event_subheadline:
           id: su_event_subheadline
