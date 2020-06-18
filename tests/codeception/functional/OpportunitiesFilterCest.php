@@ -45,7 +45,7 @@ class OpportunitiesFilterCest {
     $I->click('.su_opp_open_to-select');
     $I->click('.MuiAutocomplete-listbox li[aria-disabled="false"]');
 
-    $I->click('.su_opp_time_year-select');
+    $I->click('.su_opp_location-select');
     $I->click('.MuiAutocomplete-listbox li[aria-disabled="false"]');
 
     $I->click('Search', '#opportunities-filter-list');
@@ -71,6 +71,7 @@ class OpportunitiesFilterCest {
       'title' => 'Test Page',
     ]);
     $I->amOnPage($node->toUrl()->toString());
+
     $I->click('Layout');
     $I->click('Add block');
     $I->waitForAjaxToFinish();
@@ -80,10 +81,10 @@ class OpportunitiesFilterCest {
 
     $I->click('Add block');
     $I->waitForAjaxToFinish();
+    $I->scrollTo('.su-masthead');
     $I->click('Save layout');
     $I->click('Apply');
     $I->canSeeInCurrentUrl($filter_url);
-    $I->wait(5);
   }
 
   /**
