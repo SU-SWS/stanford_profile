@@ -7,9 +7,10 @@ const nodeFields = [
   {field: 'su_opp_type', label: 'Type of Opportunity', multiple: true},
   {field: 'su_opp_open_to', label: 'Open To', multiple: true},
   {field: 'su_opp_service_theme', label: 'Service Theme', multiple: true},
-  {field: 'su_opp_time_year', label: 'When', multiple: true},
+  {field: 'su_opp_deadline_time', label: 'Application Deadline', multiple: true},
   {field: 'su_opp_location', label: 'Location', multiple: true},
   {field: 'su_opp_dimension', label: 'Dimension', multiple: true},
+  {field: 'su_opp_commitment', label: 'Time Commitment', multiple: true}
 ];
 
 ReactDOM.render(

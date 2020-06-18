@@ -28,10 +28,10 @@ dependencies:
     - node.type.su_opportunity
   module:
     - datetime
-    - datetime_range
     - link
     - media_library
     - path
+    - scheduler
     - telephone
     - text
 id: node.su_opportunity.default
@@ -68,6 +68,12 @@ content:
     weight: 3
     region: content
     third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
@@ -89,13 +95,13 @@ content:
     type: datetime_default
     region: content
   su_opp_commitment:
-    weight: 28
+    weight: 27
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   su_opp_contact_email:
-    weight: 20
+    weight: 19
     settings:
       size: 60
       placeholder: ''
@@ -103,7 +109,7 @@ content:
     type: email_default
     region: content
   su_opp_contact_name:
-    weight: 19
+    weight: 18
     settings:
       size: 60
       placeholder: ''
@@ -111,23 +117,41 @@ content:
     type: string_textfield
     region: content
   su_opp_contact_phone:
-    weight: 21
+    weight: 20
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: telephone_default
     region: content
+  su_opp_deadline_time:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        adb34dff-ff8e-45b9-a001-e5817477e7c5:
+          dependee: su_opp_application_deadline
+          settings:
+            state: visible
+            condition: empty
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: null
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: su_opportunity
   su_opp_dimension:
-    weight: 24
+    weight: 23
     settings: {  }
     third_party_settings: {  }
     type: options_select
-    region: content
-  su_opp_duration:
-    weight: 12
-    settings: {  }
-    third_party_settings: {  }
-    type: daterange_default
     region: content
   su_opp_eligibility:
     weight: 14
@@ -145,7 +169,7 @@ content:
     third_party_settings: {  }
     region: content
   su_opp_learn_more:
-    weight: 22
+    weight: 21
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -153,7 +177,7 @@ content:
     type: link_default
     region: content
   su_opp_location:
-    weight: 18
+    weight: 17
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -163,25 +187,25 @@ content:
     type: entity_reference_autocomplete
     region: content
   su_opp_open_to:
-    weight: 17
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   su_opp_pathway:
-    weight: 25
+    weight: 24
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   su_opp_placement_type:
-    weight: 26
+    weight: 25
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   su_opp_service_theme:
-    weight: 23
+    weight: 22
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -195,19 +219,13 @@ content:
     type: link_default
     region: content
   su_opp_sponsor:
-    weight: 27
+    weight: 26
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
-  su_opp_submissions_open:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
-    type: datetime_default
-    region: content
   su_opp_time_year:
-    weight: 16
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -236,10 +254,17 @@ content:
       match_limit: 10
     region: content
     third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   url_redirects:
     weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  su_opp_deadline_time: true
+  su_opp_duration: true
+  su_opp_submissions_open: true

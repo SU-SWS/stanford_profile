@@ -106,6 +106,14 @@ source:
       name: learn_more
       label: 'Learn More Link'
       selector: LEARN_MORE
+    -
+      name: service_theme
+      label: 'Service Theme'
+      selector: SERVICE_THEME
+    -
+      name: dimension
+      label: 'CS Dimension'
+      selector: CARDINAL_SERVICE
   ids:
     id:
       type: string
@@ -129,6 +137,22 @@ process:
   su_opp_eligibility/value: eligibility
   su_opp_eligibility/format: constants/basic_html
   su_opp_solo_url/uri: url
+  su_opp_dimension:
+    source: dimension
+    plugin: entity_generate
+    value_key: name
+    bundle_key: vid
+    bundle: su_opportunity_dimension
+    entity_type: taxonomy_term
+    ignore_case: true
+  su_opp_service_theme:
+    source: service_theme
+    plugin: entity_generate
+    value_key: name
+    bundle_key: vid
+    bundle: su_opportunity_service_theme
+    entity_type: taxonomy_term
+    ignore_case: true
   su_opp_solo_url/title:
     -
       plugin: skip_on_empty
@@ -166,12 +190,32 @@ process:
       source: open_to
       delimiter: ', '
     -
+      plugin: str_replace
+      search:
+        - Freshman
+        - Sophomore
+        - Junior
+        - Senior
+        - 'Master''s'
+        - PhD
+        - Postgraduate
+      replace:
+        - Undergraduates
+        - Undergraduates
+        - Undergraduates
+        - Undergraduates
+        - 'Graduate Students'
+        - 'Graduate Students'
+        - 'Graduate Students'
+    -
       plugin: entity_generate
       value_key: name
       bundle_key: vid
       bundle: su_opportunity_open_to
       entity_type: taxonomy_term
       ignore_case: true
+    -
+      plugin: deduplicate_array
   su_opp_time_year:
     -
       plugin: explode
@@ -182,18 +226,6 @@ process:
       value_key: name
       bundle_key: vid
       bundle: su_opportunity_time
-      entity_type: taxonomy_term
-      ignore_case: true
-  su_opp_type:
-    -
-      plugin: explode
-      source: type
-      delimiter: ', '
-    -
-      plugin: entity_generate
-      value_key: name
-      bundle_key: vid
-      bundle: su_opportunity_type
       entity_type: taxonomy_term
       ignore_case: true
   image_file:
