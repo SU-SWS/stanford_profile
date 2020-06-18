@@ -1,0 +1,19 @@
+uuid: f7d1d244-2417-466b-8f8d-c90ad658627c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_sponsor
+    - node.type.stanford_event
+id: node.stanford_event.su_event_sponsor
+field_name: su_event_sponsor
+entity_type: node
+bundle: stanford_event
+label: Sponsor
+description: 'Maximum 120 characters. Add all event sponsors here. You can rearrange the list using the drag-drop functionality. <em>Sponsors appear below the Dek on the event page.</em>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

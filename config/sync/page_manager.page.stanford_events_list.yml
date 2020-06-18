@@ -1,0 +1,12 @@
+uuid: 53c76fef-9973-424b-8df0-01df0acfaa55
+langcode: en
+status: true
+dependencies: {  }
+id: stanford_events_list
+label: 'Stanford Events List'
+description: 'A filtered list of upcoming events'
+use_admin_theme: false
+path: '/taxonomy/term/{taxonomy_term}'
+access_logic: and
+access_conditions: {  }
+parameters: {  }

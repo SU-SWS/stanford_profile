@@ -1,0 +1,19 @@
+uuid: e15bd2b5-deab-44f2-87d5-66f32ed54867
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_dek
+    - node.type.stanford_event
+id: node.stanford_event.su_event_dek
+field_name: su_event_dek
+entity_type: node
+bundle: stanford_event
+label: Dek
+description: "Maximum 180 characters. <em>A \"dek\" is a brief summary that appears below the subheadline - in smaller font - on the list page and on the event page.</em>\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

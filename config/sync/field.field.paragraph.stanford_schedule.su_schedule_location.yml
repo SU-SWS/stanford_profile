@@ -1,0 +1,47 @@
+uuid: 544071ba-5286-4a25-a5ca-6574a994a58d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_schedule_location
+    - paragraphs.paragraphs_type.stanford_schedule
+  module:
+    - address
+id: paragraph.stanford_schedule.su_schedule_location
+field_name: su_schedule_location
+entity_type: paragraph
+bundle: stanford_schedule
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: optional
+    addressLine1:
+      override: optional
+    addressLine2:
+      override: optional
+    postalCode:
+      override: optional
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: optional
+    administrativeArea:
+      override: optional
+  fields: {  }
+field_type: address

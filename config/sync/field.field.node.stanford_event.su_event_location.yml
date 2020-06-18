@@ -1,0 +1,47 @@
+uuid: 9fb70bde-f581-48c4-95ff-da1ef05f429e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_location
+    - node.type.stanford_event
+  module:
+    - address
+id: node.stanford_event.su_event_location
+field_name: su_event_location
+entity_type: node
+bundle: stanford_event
+label: Location
+description: 'Where the event is taking place.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: optional
+    addressLine1:
+      override: optional
+    addressLine2:
+      override: optional
+    postalCode:
+      override: optional
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: optional
+    locality:
+      override: optional
+    administrativeArea:
+      override: optional
+  fields: {  }
+field_type: address

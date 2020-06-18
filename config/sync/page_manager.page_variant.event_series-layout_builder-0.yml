@@ -1,0 +1,64 @@
+uuid: aadaf75d-4f05-49aa-85df-d034a4fc9e0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.event_series
+id: event_series-layout_builder-0
+label: 'Layout Builder'
+variant: layout_builder
+variant_settings:
+  id: layout_builder
+  uuid: a9fa4aaf-f0d6-4253-aff3-9e4f73b9cc67
+  label: null
+  weight: 0
+  sections:
+    -
+      layout_id: jumpstart_ui_one_column
+      layout_settings:
+        extra_classes: section-event-series-list--header
+        centered: centered-container
+        columns: default
+        label: Header
+      components:
+        7e322eed-9186-4bef-9e88-f8364e0bd364:
+          uuid: 7e322eed-9186-4bef-9e88-f8364e0bd364
+          region: main
+          configuration:
+            id: jumpstart_ui_page_heading
+            label: 'Heading Block'
+            provider: jumpstart_ui
+            label_display: '0'
+            heading_text: 'All Events Series'
+            wrapper: h1
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+      third_party_settings: {  }
+    -
+      layout_id: jumpstart_ui_one_column
+      layout_settings:
+        extra_classes: section-event-series-list--items
+        centered: centered-container
+        columns: flex-8-of-12
+        label: Items
+      components:
+        f98f7604-b26c-42fa-8e2b-5d7301971cf5:
+          uuid: f98f7604-b26c-42fa-8e2b-5d7301971cf5
+          region: main
+          configuration:
+            id: 'views_block:stanford_event_series-list_all'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: none
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+      third_party_settings: {  }
+page: event_series
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

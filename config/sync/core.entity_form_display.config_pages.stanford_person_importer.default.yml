@@ -1,0 +1,79 @@
+uuid: 4db512a1-e40d-4b0d-8916-8f1c06f4ee82
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_person_importer
+    - field.field.config_pages.stanford_person_importer.su_person_cap_password
+    - field.field.config_pages.stanford_person_importer.su_person_cap_username
+    - field.field.config_pages.stanford_person_importer.su_person_orgs
+    - field.field.config_pages.stanford_person_importer.su_person_sunetid
+    - field.field.config_pages.stanford_person_importer.su_person_workgroup
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_authorization:
+      children:
+        - su_person_cap_username
+        - su_person_cap_password
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        description: 'Please enter your authentication information for the CAP API. If you don''t have these credentials yet you can <a href="https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=3ecd311a13b832008a9175c36144b069">File a HelpSU request.</a>'
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: Authorization
+id: config_pages.stanford_person_importer.default
+targetEntityType: config_pages
+bundle: stanford_person_importer
+mode: default
+content:
+  su_person_cap_password:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_person_cap_username:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_person_orgs:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  su_person_sunetid:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_person_workgroup:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  label: true

@@ -41,7 +41,7 @@ Feature: Roles
     Then I am on "/node/11/delete"
     And I should get a 403 HTTP response
     Then I am on "/admin/content/media"
-    And I should get a 200 HTTP response
+    And I should get a 403 HTTP response
 
   Scenario: Check I can log in as the Site Builder role
     Given I am logged in as a user with the "Site Builder" role
