@@ -1,0 +1,19 @@
+uuid: 396ad41a-f91e-4536-b8fb-7aba8c2db63b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_email
+    - node.type.stanford_event
+id: node.stanford_event.su_event_email
+field_name: su_event_email
+entity_type: node
+bundle: stanford_event
+label: 'Contact Email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

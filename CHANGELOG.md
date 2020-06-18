@@ -1,5 +1,29 @@
 # Stanford Profile
 
+8.x-1.13
+--------------------------------------------------------------------------------
+_Release Date: 2020-06-17_
+
+- D8CORE-000: Fix missing event title in views and re-ordered event node fields (#233)
+- Removed a block on event display (#232)
+- removed webform module since its not in use.
+- D8CORE-000: Added notifications about events and person importer (#227)
+- D8CORE-000: Removes labels from events views(#230)
+- Use process plugin for the timezone field (#229)
+- increased wait time for behat tests
+- D8CORE-000: Adjusted Event Importer IDs. (#225)
+- D8CORE-000: Require Drupal Core 8.9 & Contrib Updates (#224)
+- Update to target IDs in default content and use the auto tagger. (#226)
+- D8CORE-1623: Event, Event Importer, Event Series (#212)
+- D8CORE-2220: Site managers can edit custom blocks (#223)
+- D8CORE-933: screen reader only text for describing WYSIWYG paragraphs (#198)
+- D8CORE-1736: Stanford person importer. (#217)
+- D8CORE-1431: Additional Validation for canonical url field. (#218)
+- D8CORE-2196: Button stacking fix for horizontal alignment. (#216)
+- D8CORE-2074: Fixing the line height in the tables to em (#210)
+- D8CORE-2153: Removed 403 and 404 from xmlsitemap (#214)
+- D8CORE-2038: Changed label from body to description on card (#211)
+
 8.x-1.12
 --------------------------------------------------------------------------------
 _Release Date: 2020-05-20_

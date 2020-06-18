@@ -1,0 +1,175 @@
+uuid: 3c2d4a56-111d-439f-b9dd-d51e6d868f86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.stanford_event_series.layout_builder__layout
+    - field.field.node.stanford_event_series.su_event_series_components
+    - field.field.node.stanford_event_series.su_event_series_dek
+    - field.field.node.stanford_event_series.su_event_series_event
+    - field.field.node.stanford_event_series.su_event_series_subheadline
+    - field.field.node.stanford_event_series.su_event_series_type
+    - field.field.node.stanford_event_series.su_event_series_weight
+    - node.type.stanford_event_series
+  module:
+    - field_group
+    - paragraphs
+    - path
+third_party_settings:
+  field_group:
+    group_editorial_content:
+      children:
+        - su_event_series_type
+        - su_event_series_subheadline
+        - su_event_series_dek
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Editorial Content'
+    group_display_order:
+      children:
+        - su_event_series_weight
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Display Order'
+    group_body_content:
+      children:
+        - su_event_series_components
+      parent_name: ''
+      weight: 3
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Body Content'
+    group_events_in_this_series:
+      children:
+        - su_event_series_event
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Events in this series'
+id: node.stanford_event_series.default
+targetEntityType: node
+bundle: stanford_event_series
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 10
+    region: content
+    third_party_settings: {  }
+  su_event_series_components:
+    type: entity_reference_paragraphs
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  su_event_series_dek:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_event_series_event:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      match_limit: 20
+      size: 90
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  su_event_series_subheadline:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_event_series_type:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  su_event_series_weight:
+    weight: 3
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  layout_builder__layout: true
+  promote: true
+  sticky: true

@@ -1,0 +1,19 @@
+uuid: 8652096a-1872-47db-8c17-59f1328b8261
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_schedule_headline
+    - paragraphs.paragraphs_type.stanford_schedule
+id: paragraph.stanford_schedule.su_schedule_headline
+field_name: su_schedule_headline
+entity_type: paragraph
+bundle: stanford_schedule
+label: Headline
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

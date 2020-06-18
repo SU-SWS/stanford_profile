@@ -1,0 +1,49 @@
+uuid: 65a0a561-9586-425e-8815-9619ce615abe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_schedule_speaker
+    - paragraphs.paragraphs_type.stanford_person_cta
+    - paragraphs.paragraphs_type.stanford_schedule
+  module:
+    - entity_reference_revisions
+id: paragraph.stanford_schedule.su_schedule_speaker
+field_name: su_schedule_speaker
+entity_type: paragraph
+bundle: stanford_schedule
+label: Speaker
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      stanford_person_cta: stanford_person_cta
+    target_bundles_drag_drop:
+      stanford_banner:
+        weight: 8
+        enabled: false
+      stanford_card:
+        weight: 9
+        enabled: false
+      stanford_media_caption:
+        weight: 10
+        enabled: false
+      stanford_person_cta:
+        enabled: true
+        weight: 11
+      stanford_schedule:
+        weight: 12
+        enabled: false
+      stanford_spacer:
+        weight: 13
+        enabled: false
+      stanford_wysiwyg:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

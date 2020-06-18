@@ -1,0 +1,19 @@
+uuid: 468be323-a8c1-4072-802f-97e5742b6a71
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.su_cap_org_code
+    - taxonomy.vocabulary.cap_org_codes
+id: taxonomy_term.cap_org_codes.su_cap_org_code
+field_name: su_cap_org_code
+entity_type: taxonomy_term
+bundle: cap_org_codes
+label: Code
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

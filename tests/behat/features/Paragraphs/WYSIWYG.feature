@@ -89,7 +89,7 @@ Feature: WYSIWYG Paragraph
     And I set the window size to "extra large"
     And I wait 1 seconds
     Then I click the ".inner-row-wrapper button" element
-    And I wait 1 seconds
+    And I wait 3 seconds
     Then I click the "a[title='Insert from Media Library']" element
     And I wait for element ".dropzone"
     Then I drop "../../assets/images/logo.jpg" file into dropzone
@@ -119,7 +119,7 @@ Feature: WYSIWYG Paragraph
     And I set the window size to "extra large"
     And I wait 1 seconds
     Then I click the ".inner-row-wrapper button" element
-    And I wait 1 seconds
+    And I wait 3 seconds
     Then I click the "a[title='Insert from Media Library']" element
     And I wait for element ".dropzone"
     Then I click the "a[data-title='Video']" element
@@ -150,7 +150,7 @@ Feature: WYSIWYG Paragraph
     And I set the window size to "extra large"
     And I wait 1 seconds
     Then I click the ".inner-row-wrapper button" element
-    And I wait 1 seconds
+    And I wait 3 seconds
     Then I click the "a[title='Insert from Media Library']" element
     And I wait for element ".dropzone"
     Then I click the "a[data-title='File']" element

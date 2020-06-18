@@ -210,9 +210,10 @@ function stanford_profile_config_pages_stanford_basic_site_settings_form_validat
   $element = $form_state->getValue('su_site_url');
   $uri = $element['0']['uri'];
   if (!empty($uri)) {
-    $match = preg_match('/^http(s)?:\/\/.*\.stanford.edu/i', $uri);
-    if (!$match) {
-      $form_state->setErrorByName('su_site_url', t('Only valid stanford.edu domain names allowed.'));
+    // Test if the site url submmitted is equal to current domain.
+    $host = \Drupal::request()->getSchemeAndHttpHost();
+    if ($host != $uri) {
+      $form_state->setErrorByName('su_site_url', t('This URL does not match your domain.'));
     }
   }
 }
@@ -224,5 +225,34 @@ function stanford_profile_config_pages_presave(ConfigPagesInterface $entity) {
   if ($entity->hasField('su_site_url') && ($url_field = $entity->get('su_site_url')->getValue())) {
     // Set the xml sitemap module state to the new domain.
     \Drupal::state()->set('xmlsitemap_base_url', $url_field[0]['uri']);
+  }
+}
+
+/**
+ * Alter the data of a sitemap link before the link is saved.
+ *
+ * @param array $link
+ *   An array with the data of the sitemap link.
+ * @param array $context
+ *   An optional context array containing data related to the link.
+ */
+function stanford_profile_xmlsitemap_link_alter(array &$link, array $context) {
+
+  // Get node/[:id] from loc.
+  $node_id = $link['loc'];
+
+  // Get 403 page path.
+  $stanford_profile_403_page = \Drupal::config('system.site')->get('page.403');
+
+  // Get 404 page path.
+  $stanford_profile_404_page = \Drupal::config('system.site')->get('page.404');
+
+  // If node id matches 403 or 404 pages, remove it from sitemap.
+  switch ($node_id) {
+    case $stanford_profile_403_page:
+    case $stanford_profile_404_page:
+      // Status is set to zero to exclude the item in the sitemap.
+      $link['status'] = 0;
+
   }
 }
