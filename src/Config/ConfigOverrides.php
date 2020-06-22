@@ -37,9 +37,11 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   Config factory service.
    */
-  public function __construct(StateInterface $state, ConfigFactoryInterface $config_factory) {
+  public function __construct(StateInterface $state, ConfigFactoryInterface $config_factory = NULL) {
     $this->state = $state;
-    $this->configFactory = $config_factory;
+    if ($config_factory) {
+      $this->configFactory = $config_factory;
+    }
   }
 
   /**
@@ -57,7 +59,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
 
     // Add to the config ignore so that it will ignore the current theme's
     // settings config.
-    if (in_array('config_ignore.settings', $names)) {
+    if (in_array('config_ignore.settings', $names) && $this->configFactory) {
       // We have to get the original values to add to the array.
       $existing_ignored = $this->configFactory->getEditable('config_ignore.settings')
         ->getOriginal('ignored_config_entities', FALSE);
