@@ -256,3 +256,12 @@ function stanford_profile_xmlsitemap_link_alter(array &$link, array $context) {
 
   }
 }
+
+/**
+ * Implements hook_config_readonly_whitelist_patterns().
+ */
+function stanford_profile_config_readonly_whitelist_patterns() {
+  $default_theme = \Drupal::config('system.theme')->get('default');
+  // Allow the theme settings to be changed in the UI.
+  return ["$default_theme.settings"];
+}
