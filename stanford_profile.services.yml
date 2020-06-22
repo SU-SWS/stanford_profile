@@ -9,6 +9,6 @@ services:
       - { name: 'event_subscriber' }
   stanford_profile.config_overrider:
     class: Drupal\stanford_profile\Config\ConfigOverrides
-    arguments: ['@state']
+    arguments: ['@state', '@config.factory']
     tags:
       - {name: config.factory.override, priority: 5}
