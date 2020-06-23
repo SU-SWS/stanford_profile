@@ -13,7 +13,7 @@ class BasicPageCest {
   /**
    * Test placing a basic page in the menu with a child menu item.
    */
-  public function testsCreatingPage(AcceptanceTester $I) {
+  public function testCreatingPage(AcceptanceTester $I) {
     $faker = Factory::create();
     $node_title = $faker->text(20);
 
