@@ -29,6 +29,8 @@ class AuthenticatedPermissionsCest {
       $I->canSeeResponseCodeIs(403);
       $I->amOnPage('/admin/reports');
       $I->canSeeResponseCodeIs(403);
+      $I->amOnPage('/admin/reports/status');
+      $I->canSeeResponseCodeIs(403);
       $I->amOnPage('/update.php');
       $I->canSeeResponseCodeIs(200);
       $I->canSee('Permission denied');
