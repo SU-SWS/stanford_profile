@@ -31,9 +31,6 @@ class AuthenticatedPermissionsCest {
       $I->canSeeResponseCodeIs(403);
       $I->amOnPage('/admin/reports/status');
       $I->canSeeResponseCodeIs(403);
-      $I->amOnPage('/update.php');
-      $I->canSeeResponseCodeIs(200);
-      $I->canSee('Permission denied');
     }
 
     public function testAuthenticatedUserPermissions(AcceptanceTester $I) {
@@ -41,6 +38,5 @@ class AuthenticatedPermissionsCest {
       $I->amOnPage('/patterns');
       $I->canSeeResponseCodeIs(200);
     }
-
 
   }
