@@ -12,10 +12,7 @@ class AuthenticatedPermissionsCest {
     public function testAuthenticatedUserRestrictions(AcceptanceTester $I) {
       $I->logInWithRole('authenticated');
       $I->amOnPage('/');
-      $I->canSee('Stanford');
-      $I->seeCurrentUrlEquals('/');
       $I->canSeeResponseCodeIs(200);
-
       $I->amOnPage('/admin');
       $I->canSeeResponseCodeIs(403);
       $I->amOnPage('/admin/content');
@@ -32,7 +29,15 @@ class AuthenticatedPermissionsCest {
       $I->canSeeResponseCodeIs(403);
       $I->amOnPage('/admin/reports');
       $I->canSeeResponseCodeIs(403);
-
+      $I->amOnPage('/update.php');
+      $I->canSeeResponseCodeIs(403);
     }
+
+    public function testAuthenticatedUserPermissions(AcceptanceTester $I) {
+      $I->logInWithRole('authenticated');
+      $I->amOnPage('/patterns');
+      $I->canSeeResponseCodeIs(200);
+    }
+
 
   }
