@@ -136,6 +136,7 @@ class OpportunitiesResource extends ResourceBase {
 
       $nodes = $node_storage->getQuery()
         ->condition('status', 1)
+        ->condition('type', $field->getTargetBundle())
         ->condition($field->getName(), $term->id())
         ->accessCheck(FALSE)
         ->execute();
