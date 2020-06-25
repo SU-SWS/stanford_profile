@@ -11,7 +11,7 @@
       </h3>
 
       <div class="su-opportunity-body-content">
-        {% if location %}
+        {% if location|render %}
           <div class="su-opportunity-row-location">
             <div>
               <h4>{{ 'Location'|t }}:</h4>
@@ -19,7 +19,7 @@
             </div>
           </div>
         {% endif %}
-        {% if when %}
+        {% if when|render %}
           <div class="su-opportunity-row-duration">
             <div>
               <h4>{{ 'When'|t }}:</h4>
@@ -27,7 +27,7 @@
             </div>
           </div>
         {% endif %}
-        {% if open_to %}
+        {% if open_to|render %}
           <div class="su-opportunity-row-open-to">
             <div>
               <h4>{{ 'Open to'|t }}:</h4>

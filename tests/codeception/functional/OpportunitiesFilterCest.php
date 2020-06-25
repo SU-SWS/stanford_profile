@@ -36,7 +36,7 @@ class OpportunitiesFilterCest {
     // Scroll up because the admin toolbar sometimes overlays the task links.
     $I->scrollTo(['css' => '.su-brand-bar']);
     $I->click('Save layout');
-    $I->canSeeNumberOfElements('.views-row', 10);
+    $I->canSeeNumberOfElements('.views-row', [1, 99]);
 
     $I->waitForElementVisible('.MuiFormControl-root', 5);
     $I->click('.su_opp_type-select');
@@ -49,8 +49,8 @@ class OpportunitiesFilterCest {
     $I->click('.MuiAutocomplete-listbox li[aria-disabled="false"]');
 
     $I->click('Search', '#opportunities-filter-list');
-    $I->canSeeNumberOfElements('.views-row', [1, 10]);
-    $I->canSeeNumberOfElements('.su-opportunity-result', [1, 10]);
+    $I->canSeeNumberOfElements('.views-row', [1, 99]);
+    $I->canSeeNumberOfElements('.su-opportunity-result', [1, 99]);
     $I->canSee('Showing Results For:');
   }
 
