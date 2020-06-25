@@ -616,6 +616,19 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts:
+        su_news_publishing_date_value:
+          id: su_news_publishing_date_value
+          table: node__su_news_publishing_date
+          field: su_news_publishing_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          plugin_id: datetime
         created:
           id: created
           table: node_field_data
