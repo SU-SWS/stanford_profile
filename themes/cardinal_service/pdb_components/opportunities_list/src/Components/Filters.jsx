@@ -54,6 +54,20 @@ const MoreFilterWrap = styled.div`
   }
 `;
 
+const MoreFilterBtn = styled.button`
+  background: transparent;
+  color: #006cb8;
+  text-decoration: underline;
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    background: transparent;
+    color: #2e2d29;
+    box-shadow: none;
+  }
+`
+
 const ResultsContainer = styled.div`
   margin-bottom: 58px;
 `;
@@ -261,7 +275,7 @@ export class Filters extends Component {
                   <React.Fragment>
                     <MoreFilterWrap>
                       {moreFilters.length > 0 && (
-                        <a
+                        <MoreFilterBtn
                           href="#"
                           aria-controls={this.moreFiltersId}
                           aria-expanded={showMoreFilter}
@@ -269,7 +283,7 @@ export class Filters extends Component {
                         >
                           <i class="fas fa-sliders-h"></i>
                           {showMoreFilter ? 'Hide' : 'Show'} More Filters
-                        </a>
+                        </MoreFilterBtn>
                       )}
                     </MoreFilterWrap>
                     <FilterWrapper

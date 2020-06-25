@@ -2,19 +2,19 @@
   <div class="flex-container su-card__contents">
     <div class="{% if image|render|striptags('<drupal-render-placeholder> <img> <picture> <source>')|trim  %}flex-9-of-12{% endif %}">
       <div class="su-opportunity-type">
-        <div>
+        <div  aria-label="{{ 'Opportunity Type'|t }}">
           {{ type_list }}
         </div>
       </div>
-      <h2>
+      <h3>
         {{ title }}
-      </h2>
+      </h3>
 
       <div class="su-opportunity-body-content">
         {% if location %}
           <div class="su-opportunity-row-location">
             <div>
-              <h3>{{ 'Location'|t }}:</h3>
+              <h4>{{ 'Location'|t }}:</h4>
               <div>{{ location }}</div>
             </div>
           </div>
@@ -22,7 +22,7 @@
         {% if when %}
           <div class="su-opportunity-row-duration">
             <div>
-              <h3>{{ 'When'|t }}:</h3>
+              <h4>{{ 'When'|t }}:</h4>
               <div>{{ when }}</div>
             </div>
           </div>
@@ -30,7 +30,7 @@
         {% if open_to %}
           <div class="su-opportunity-row-open-to">
             <div>
-              <h3>{{ 'Open to'|t }}:</h3>
+              <h4>{{ 'Open to'|t }}:</h4>
               <div>{{ open_to }}</div>
             </div>
           </div>
