@@ -262,13 +262,12 @@ export class Filters extends Component {
     return (
       <div>
         <FilterContainer>
-          <div class="centered-container">
+          <div className="centered-container">
             {this.props.header}
             <form onSubmit={this.onFormSubmit}>
-              <div class="flex-container">
-                <div class="flex-lg-10-of-12">
-                  <FilterWrapper useGrid={this.props.useGrid}>
-
+              <div className="flex-container">
+                <div className="flex-lg-10-of-12">
+                  <FilterWrapper useGrid={this.props.useGrid} className="main-filters">
                     {mainFilters.map((field) => this.getSelectElement(field))}
                   </FilterWrapper>
                   {this.props.showMoreFilters &&
@@ -276,18 +275,18 @@ export class Filters extends Component {
                     <MoreFilterWrap>
                       {moreFilters.length > 0 && (
                         <MoreFilterBtn
-                          href="#"
                           aria-controls={this.moreFiltersId}
                           aria-expanded={showMoreFilter}
                           onClick={this.showHideMoreFilters.bind(this)}
                         >
-                          <i class="fas fa-sliders-h"></i>
-                          {showMoreFilter ? 'Hide' : 'Show'} More Filters
+                          <i className="fas fa-sliders-h"></i>
+                          <span>{showMoreFilter ? 'Hide More Filters' : 'Show More Filters'}</span>
                         </MoreFilterBtn>
                       )}
                     </MoreFilterWrap>
                     <FilterWrapper
                       id={this.moreFiltersId}
+                      className="more-filters"
                       role="region"
                       style={{
                         display: showMoreFilter ? 'grid' : 'none',
@@ -298,7 +297,7 @@ export class Filters extends Component {
                   </React.Fragment>
                   }
                 </div>
-                <div class="flex-lg-2-of-12">
+                <div className="flex-lg-2-of-12">
                   <FilterOptions>
                     <input
                       type="submit"
@@ -316,7 +315,7 @@ export class Filters extends Component {
           </div>
         </FilterContainer>
         <ResultsContainer>
-          <div class="centered-container">
+          <div className="centered-container">
             {Object.keys(this.initialFilters).length > 0 && (
               <Slugs
                 filters={this.initialFilters}
