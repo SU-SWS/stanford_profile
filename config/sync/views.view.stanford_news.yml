@@ -1303,6 +1303,11 @@ display:
         row: false
         pager: false
         css_class: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
       style:
         type: grid
         options:
@@ -1380,6 +1385,11 @@ display:
       block_category: 'News Lists (Views)'
       block_description: 'News Cards - All Items'
       css_class: 'stanford-news--cards stanford-news--cards-any'
+      use_more: true
+      use_more_always: false
+      use_more_text: 'See All News'
+      link_display: custom_url
+      link_url: /news
     cache_metadata:
       max-age: -1
       contexts:

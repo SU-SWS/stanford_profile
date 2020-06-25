@@ -137,7 +137,6 @@ workflows:
   tests:
     jobs:
       - run-coverage
-      - run-behat
       - run-codeception
   daily:
     jobs:
