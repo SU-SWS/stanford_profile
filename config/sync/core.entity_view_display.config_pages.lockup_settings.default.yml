@@ -10,7 +10,11 @@ dependencies:
     - field.field.config_pages.lockup_settings.su_line_4
     - field.field.config_pages.lockup_settings.su_line_5
     - field.field.config_pages.lockup_settings.su_lockup_options
+    - field.field.config_pages.lockup_settings.su_path_to_custom_logo
+    - field.field.config_pages.lockup_settings.su_upload_logo_image
+    - field.field.config_pages.lockup_settings.su_use_theme_logo
   module:
+    - image
     - options
 id: config_pages.lockup_settings.default
 targetEntityType: config_pages
@@ -18,30 +22,6 @@ bundle: lockup_settings
 mode: default
 content:
   su_line_1:
-    weight: 1
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  su_line_2:
-    weight: 2
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  su_line_3:
-    weight: 3
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  su_line_4:
     weight: 4
     label: above
     settings:
@@ -49,7 +29,7 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  su_line_5:
+  su_line_2:
     weight: 5
     label: above
     settings:
@@ -57,11 +37,62 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  su_line_3:
+    weight: 6
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_line_4:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_line_5:
+    weight: 8
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   su_lockup_options:
-    weight: 0
+    weight: 3
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
+  su_path_to_custom_logo:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_upload_logo_image:
+    weight: 2
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  su_use_theme_logo:
+    weight: 0
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
 hidden: {  }

@@ -1,0 +1,23 @@
+uuid: 3a0d13e8-409a-4318-8254-e387854b8b6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.lockup_settings
+    - field.storage.config_pages.su_use_theme_logo
+id: config_pages.lockup_settings.su_use_theme_logo
+field_name: su_use_theme_logo
+entity_type: config_pages
+bundle: lockup_settings
+label: 'Use theme logo'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
