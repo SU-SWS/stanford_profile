@@ -22,30 +22,6 @@ bundle: lockup_settings
 mode: default
 content:
   su_line_1:
-    weight: 1
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  su_line_2:
-    weight: 2
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  su_line_3:
-    weight: 3
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  su_line_4:
     weight: 4
     settings:
       size: 60
@@ -53,7 +29,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  su_line_5:
+  su_line_2:
     weight: 5
     settings:
       size: 60
@@ -61,13 +37,15 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  su_lockup_options:
-    weight: 0
-    settings: {  }
+  su_line_3:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: options_select
+    type: string_textfield
     region: content
-  su_path_to_custom_logo:
+  su_line_4:
     weight: 7
     settings:
       size: 60
@@ -75,8 +53,30 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  su_upload_logo_image:
+  su_line_5:
     weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_lockup_options:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  su_path_to_custom_logo:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_upload_logo_image:
+    weight: 2
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -84,7 +84,7 @@ content:
     type: image_image
     region: content
   su_use_theme_logo:
-    weight: 6
+    weight: 0
     settings:
       display_label: true
     third_party_settings: {  }
