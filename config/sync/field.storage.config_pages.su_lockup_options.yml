@@ -17,40 +17,37 @@ settings:
   allowed_values:
     -
       value: a
-      label: 'Option A'
+      label: 'Option A: Lines 1, 5-bold, uppercase'
     -
       value: b
-      label: 'Option B'
+      label: 'Option B: Lines 1-small letters, 2'
     -
       value: d
-      label: 'Option D'
+      label: 'Option D: Lines 1, 3'
     -
       value: e
-      label: 'Option E'
+      label: 'Option E: Lines 1, 2, 3'
     -
       value: h
-      label: 'Option H'
+      label: 'Option H: Lines 1, 3-regular, 4 *needs css adjustments'
     -
       value: i
-      label: 'Option I'
-    -
-      value: k
-      label: 'Option K'
+      label: 'Option I: Lines 1, 3, 4 *needs css adjustments'
     -
       value: o
-      label: 'Option O'
+      label: 'Option O: Line 4'
     -
       value: p
-      label: 'Option P'
+      label: 'Option P: Lines 4, 1'
     -
       value: r
-      label: 'Option R'
+      label: 'Option R: Line 5'
     -
       value: s
-      label: 'Option S'
+      label: 'Option S-stacked: Lines 5, 1-small letters, 2'
     -
       value: t
-      label: 'Option T'
+      label: 'Option T-stacked: Line 4, 1-small letters, 2, 3'
   allowed_values_function: ''
 module: options
 locked: false
