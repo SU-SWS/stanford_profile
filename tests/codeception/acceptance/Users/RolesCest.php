@@ -35,6 +35,18 @@ class RolesCest {
     $not_allowed = [$this->getFrontPagePath($I) . '/delete'];
     $this->runAccessCheck($I, $not_allowed, 403);
 
+    $I->amOnPage('/');
+    $links = [
+      '/admin/content' => 'All Content',
+      '/admin/content/media' => 'All Media',
+    ];
+    $this->runLinkExistCheck($I, $links);
+
+    $links = [
+      'All Media',
+      'Local Footer',
+    ];
+    $this->runLinkExistCheck($I, $links, FALSE);
   }
 
   /**
@@ -50,10 +62,25 @@ class RolesCest {
     $this->runAccessCheck($I, $allowed_pages);
     $not_allowed = [$this->getFrontPagePath($I) . '/delete'];
     $this->runAccessCheck($I, $not_allowed, 403);
+
+    $I->amOnPage('/');
+    $links = [
+      '/admin/content' => 'All Content',
+      '/admin/content/media' => 'All Media',
+    ];
+    $this->runLinkExistCheck($I, $links);
+
+    $links = [
+      'All Media',
+      'Local Footer',
+    ];
+    $this->runLinkExistCheck($I, $links, FALSE);
   }
 
   /**
    * Site manager should have more access.
+   *
+   * @group testme
    */
   public function testSiteManagerRole(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -65,6 +92,19 @@ class RolesCest {
     $this->runAccessCheck($I, $allowed_pages);
     $not_allowed = [$this->getFrontPagePath($I) . '/delete'];
     $this->runAccessCheck($I, $not_allowed, 403);
+
+    $I->amOnPage('/');
+    $links = [
+      '/admin/content' => 'All Content',
+      '/admin/content/media' => 'All Media',
+      '/admin/appearance/local-footer' => 'Local Footer',
+    ];
+    $this->runLinkExistCheck($I, $links);
+
+    $links = [
+      '/admin/appearance/settings' => 'Settings',
+    ];
+    $this->runLinkExistCheck($I, $links, FALSE);
   }
 
   /**
@@ -106,10 +146,33 @@ class RolesCest {
    * @param int $status_code
    *   Expected http response code.
    */
-  protected function runAccessCheck(AcceptanceTester $I, $pages = [], $status_code = 200) {
+  protected function runAccessCheck(AcceptanceTester $I, array $pages = [], $status_code = 200) {
     foreach ($pages as $page) {
       $I->amOnPage($page);
       $I->canSeeResponseCodeIs($status_code);
+    }
+  }
+
+  /**
+   * Check that the current tester can see some links.
+   *
+   * @param \AcceptanceTester $I
+   *   Tester.
+   * @param array $links
+   *   Keyed array of links with the key being the path.
+   * @param bool $can_see
+   *   If the user can see the links or not.
+   */
+  protected function runLinkExistCheck(AcceptanceTester $I, array $links, $can_see = TRUE) {
+    foreach ($links as $path => $link_text) {
+
+      $path = is_int($path) ? NULL : $path;
+      if ($can_see) {
+        $I->canSeeLink($link_text, $path);
+        continue;
+      }
+
+      $I->cantSeeLink($link_text, $path);
     }
   }
 
