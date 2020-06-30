@@ -39,13 +39,13 @@ class OpportunitiesFilterCest {
     $I->canSeeNumberOfElements('.views-row', [1, 99]);
 
     $I->waitForElementVisible('.MuiFormControl-root', 5);
-    $I->click('.su_opp_type-select');
+    $I->click('.main-filters .filter-select-container:first-child > div');
     $I->click('.MuiAutocomplete-listbox li[aria-disabled="false"]');
 
-    $I->click('.su_opp_open_to-select');
+    $I->click('.main-filters .filter-select-container:nth-child(2) > div');
     $I->click('.MuiAutocomplete-listbox li[aria-disabled="false"]');
 
-    $I->click('.su_opp_location-select');
+    $I->click('.main-filters .filter-select-container:last-child > div');
     $I->click('.MuiAutocomplete-listbox li[aria-disabled="false"]');
 
     $I->click('Search', '#opportunities-filter-list');

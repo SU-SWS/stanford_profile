@@ -117,14 +117,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SelectList = ({
-  defaultValue,
-  field,
-  label,
-  multiple,
-  onChange,
-  options,
-}) => {
+export const SelectList = ({defaultValue, field, label, multiple, onChange, options}) => {
   let defaultOptions = multiple ? [] : null;
 
   const myStyles = useStyles();
@@ -152,7 +145,7 @@ export const SelectList = ({
   };
 
   return (
-    <Container>
+    <Container className="filter-select-container">
       <Autocomplete
         classes={myStyles}
         disableCloseOnSelect
