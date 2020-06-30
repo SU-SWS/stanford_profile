@@ -28,7 +28,7 @@ class RolesCest {
     $I->logInWithRole('contributor');
 
     $I->amOnPage('/node/add/stanford_page');
-    $I->cantSee('Layout');
+    $I->cantSeeLink('Layout');
 
     $allowed_pages = ['/admin/content'];
     $this->runAccessCheck($I, $allowed_pages);
@@ -44,7 +44,7 @@ class RolesCest {
     $I->logInWithRole('site_editor');
 
     $I->amOnPage('/node/add/stanford_page');
-    $I->cantSee('Layout');
+    $I->cantSeeLink('Layout');
 
     $allowed_pages = ['/admin/content'];
     $this->runAccessCheck($I, $allowed_pages);
