@@ -7,6 +7,11 @@
     @include modular-spacing('margin-bottom', 0);
   }
 
+  // Buttons in a row.
+  [class^="su-button"] + [class^="su-button"] {
+    @include modular-spacing('margin-left', 0)
+  }
+
   // Bigger buttons.
   .su-button--big {
     @include modular-spacing('margin-bottom', 0);
