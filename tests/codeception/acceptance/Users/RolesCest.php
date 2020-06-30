@@ -45,6 +45,7 @@ class RolesCest {
     $links = [
       'All Media',
       'Local Footer',
+      'Site Settings',
     ];
     $this->runLinkExistCheck($I, $links, FALSE);
   }
@@ -73,6 +74,7 @@ class RolesCest {
     $links = [
       'All Media',
       'Local Footer',
+      'Site Settings',
     ];
     $this->runLinkExistCheck($I, $links, FALSE);
   }
@@ -97,7 +99,8 @@ class RolesCest {
     $links = [
       '/admin/content' => 'All Content',
       '/admin/content/media' => 'All Media',
-      '/admin/appearance/local-footer' => 'Local Footer',
+      '/admin/config/system/local-footer' => 'Local Footer',
+      '/admin/config/system/basic-site-settings' => 'Site Settings',
     ];
     $this->runLinkExistCheck($I, $links);
 
