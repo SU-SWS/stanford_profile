@@ -43,7 +43,6 @@ class RolesCest {
     $this->runLinkExistCheck($I, $links);
 
     $links = [
-      'All Media',
       'Local Footer',
       'Site Settings',
     ];
@@ -72,7 +71,6 @@ class RolesCest {
     $this->runLinkExistCheck($I, $links);
 
     $links = [
-      'All Media',
       'Local Footer',
       'Site Settings',
     ];
