@@ -377,18 +377,9 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 7
-        third_party_settings: {  }
-      -
-        layout_id: defaults
-        layout_settings:
-          extra_classes: su-events-details
-          centered: centered-container
-          columns: flex-8-of-12
-          label: 'Body Content - CTA signup'
-        components:
           2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350:
             uuid: 2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350
-            region: main
+            region: cta
             configuration:
               id: 'field_block:node:stanford_event:su_event_cta'
               label: 'Call to action button'
