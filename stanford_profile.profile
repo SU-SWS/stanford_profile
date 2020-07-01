@@ -16,6 +16,9 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+use Drupal\Core\Render\Markup;
 
 /**
  * Implements hook_install_tasks().
@@ -273,4 +276,17 @@ function stanford_profile_preprocess(array &$variables, $hook) {
 
   // optional: add a cache dependency
   //$variables['#cache']['tags'][] = 'config_pages:' . $myConfigPage ->id();
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function stanford_profile_form_config_pages_lockup_settings_form_alter(array &$form, FormStateInterface $form_state) {
+
+  $img = '<img src="' . base_path() . drupal_get_path('theme', 'stanford_basic') . '/dist/assets/img/lockup-example.png" />';
+  $rendered_image = render($img);
+  $image_markup = Markup::create($rendered_image);
+  $decanter = Link::fromTextAndUrl('Decanter Lockup Component', Url::fromUri('http://decanter.stanford.edu/section-components.html#kssref-components-lockup'))->toString();
+  $form['group_lockup_options']['#field_prefix'] = "<p>$image_markup</p><p>More examples can be found at: $decanter</p>";
+
 }
