@@ -1,0 +1,20 @@
+uuid: e7fb28ca-3d02-4150-a164-4b96da49c3ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.su_user_org_leader
+  module:
+    - user
+id: user.user.su_user_org_leader
+field_name: su_user_org_leader
+entity_type: user
+bundle: user
+label: 'Student Org Leader'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

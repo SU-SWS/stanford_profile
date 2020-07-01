@@ -1,0 +1,21 @@
+uuid: 834b0a74-55e4-40bd-a963-1f16826dcb7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.su_user_class_year
+  module:
+    - datetime
+    - user
+id: user.user.su_user_class_year
+field_name: su_user_class_year
+entity_type: user
+bundle: user
+label: 'Class Year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

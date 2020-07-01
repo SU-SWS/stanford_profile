@@ -1,0 +1,14 @@
+uuid: 74d421b1-4180-4a65-a390-b8db4a260479
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: users
+label: Users
+type: 'canonical_entities:user'
+pattern: '/user/[user:account-name]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }

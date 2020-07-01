@@ -4,7 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.user.user.su_display_name
+    - field.field.user.user.su_user_class_year
+    - field.field.user.user.su_user_graduate
+    - field.field.user.user.su_user_org_leader
   module:
+    - datetime
     - path
     - user
 id: user.user.default
@@ -19,9 +23,9 @@ content:
     third_party_settings: {  }
   google_analytics:
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   language:
     weight: 0
     region: content
@@ -40,6 +44,27 @@ content:
     third_party_settings: {  }
   su_display_name:
     weight: 31
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_user_class_year:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  su_user_graduate:
+    weight: 33
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  su_user_org_leader:
+    weight: 34
     settings:
       size: 60
       placeholder: ''

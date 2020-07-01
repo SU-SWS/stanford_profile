@@ -1,0 +1,57 @@
+uuid: c33af669-ff32-4212-a10f-488d445a332c
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.saved_opportunities
+id: saved_opportunities-layout_builder-0
+label: 'Layout Builder'
+variant: layout_builder
+variant_settings:
+  id: layout_builder
+  uuid: 946d439c-8757-4590-a3ca-e68115f4758f
+  label: null
+  weight: 0
+  sections:
+    -
+      layout_id: jumpstart_ui_one_column
+      layout_settings:
+        extra_classes: ''
+        centered: centered-container
+        columns: default
+        label: ''
+      components:
+        ca5d4034-c8c5-4e2a-a247-296a5a20d26e:
+          uuid: ca5d4034-c8c5-4e2a-a247-296a5a20d26e
+          region: main
+          configuration:
+            id: 'views_block:su_opportunities-user_favorite_opps'
+            label: ''
+            provider: views
+            label_display: '0'
+            views_label: ''
+            items_per_page: none
+            context_mapping: {  }
+          additional: {  }
+          weight: 1
+          third_party_settings: {  }
+        28682dab-d8fd-4158-b519-5053c0ca0aa6:
+          uuid: 28682dab-d8fd-4158-b519-5053c0ca0aa6
+          region: main
+          configuration:
+            id: jumpstart_ui_page_heading
+            label: 'Heading Block'
+            provider: jumpstart_ui
+            label_display: '0'
+            heading_text: 'Saved Opportunities'
+            wrapper: h1
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
+          third_party_settings: {  }
+      third_party_settings: {  }
+page: saved_opportunities
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

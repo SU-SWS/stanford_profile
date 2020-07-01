@@ -68,7 +68,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
+            weight: 3
             third_party_settings: {  }
           98885d7b-0d6b-4b0b-acb2-03ee07f54423:
             uuid: 98885d7b-0d6b-4b0b-acb2-03ee07f54423
@@ -94,7 +94,31 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
+            weight: 2
+            third_party_settings: {  }
+          66b8f249-b528-4087-855e-1f93b9591e71:
+            uuid: 66b8f249-b528-4087-855e-1f93b9591e71
+            region: overlay
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:su_opportunity:flag_cs_favorites'
+            additional: {  }
             weight: 0
+            third_party_settings: {  }
+          bbd6e005-e9c7-4599-8155-53e68653cf10:
+            uuid: bbd6e005-e9c7-4599-8155-53e68653cf10
+            region: main
+            configuration:
+              id: 'extra_field_block:node:su_opportunity:flag_cs_favorites'
+              label: 'Flag: Favorites'
+              provider: layout_builder
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 1
             third_party_settings: {  }
         third_party_settings: {  }
       -
@@ -124,7 +148,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 0
+            weight: 1
             third_party_settings: {  }
           c90ca62d-43cb-4b0a-b0d4-6537f99c3580:
             uuid: c90ca62d-43cb-4b0a-b0d4-6537f99c3580
@@ -148,7 +172,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
+            weight: 2
             third_party_settings: {  }
           ac4cff86-d454-4ff1-8bef-3208d91c95b2:
             uuid: ac4cff86-d454-4ff1-8bef-3208d91c95b2
@@ -171,7 +195,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 2
+            weight: 3
             third_party_settings: {  }
           972fb6ac-7c3a-4c4f-a744-d6ae5fa3cfb7:
             uuid: 972fb6ac-7c3a-4c4f-a744-d6ae5fa3cfb7
@@ -195,7 +219,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 3
+            weight: 4
             third_party_settings: {  }
           6b5496e8-f6c2-4113-bbbb-6f355eed3aea:
             uuid: 6b5496e8-f6c2-4113-bbbb-6f355eed3aea
@@ -216,7 +240,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 4
+            weight: 5
             third_party_settings: {  }
           0f84d2e2-f7bb-4b65-b466-1340e832b56c:
             uuid: 0f84d2e2-f7bb-4b65-b466-1340e832b56c
@@ -264,7 +288,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 5
+            weight: 6
             third_party_settings: {  }
           b91c815f-0720-487b-af89-bc947af98442:
             uuid: b91c815f-0720-487b-af89-bc947af98442
@@ -364,7 +388,7 @@ third_party_settings:
               items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 6
+            weight: 7
             third_party_settings: {  }
         third_party_settings: {  }
       -
@@ -404,6 +428,11 @@ targetEntityType: node
 bundle: su_opportunity
 mode: default
 content:
+  flag_cs_favorites:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: main
   su_opp_commitment:
     weight: 7
     label: above

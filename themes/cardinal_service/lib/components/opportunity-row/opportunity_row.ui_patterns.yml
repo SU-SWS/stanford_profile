@@ -34,6 +34,11 @@ opportunity_row:
       label: 'Type'
       description: 'Title of the opportunity.'
       preview: 'Cardinal Service'
+    favorite:
+      type: link
+      label: 'Favorite Link'
+      description: 'A link for the user to favorite the content'
+      preview: '<div class="flag flag-cs-favorites action-flag"><a href="#">Favorite</a></div>'
   use: '@cardinal-service/opportunity-row/opportunity_row.html.twig'
   libraries:
     - opportunity_row:

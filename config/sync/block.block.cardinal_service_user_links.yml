@@ -1,0 +1,26 @@
+uuid: 97b7e8f5-1fba-4151-8717-dd4eb3647005
+langcode: en
+status: true
+dependencies:
+  module:
+    - cardinal_service_blocks
+    - system
+  theme:
+    - cardinal_service
+id: cardinal_service_user_links
+theme: cardinal_service
+region: search
+weight: -4
+provider: null
+plugin: user_links
+settings:
+  id: user_links
+  label: 'User Links block'
+  provider: cardinal_service_blocks
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '/user/*'
+    negate: true
+    context_mapping: {  }

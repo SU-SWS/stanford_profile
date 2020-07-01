@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.su_opportunities_views_result
     - core.entity_view_mode.node.su_vertical_card
+    - flag.flag.cs_favorites
     - node.type.su_opportunity
     - taxonomy.vocabulary.su_opportunity_deadline
     - taxonomy.vocabulary.su_opportunity_dimension
@@ -16,6 +17,7 @@ dependencies:
     - taxonomy.vocabulary.su_opportunity_time
     - taxonomy.vocabulary.su_opportunity_type
   module:
+    - flag
     - node
     - taxonomy
     - text
@@ -96,39 +98,54 @@ display:
           id: title
           table: node_field_data
           field: title
-          entity_type: node
-          entity_field: title
-          label: ''
-          alter:
-            alter_text: false
-            make_link: false
-            absolute: false
-            trim: false
-            word_boundary: false
-            ellipsis: false
-            strip_tags: false
-            html: false
-          hide_empty: false
-          empty_zero: false
-          settings:
-            link_to_entity: true
-          plugin_id: field
           relationship: none
           group_type: group
           admin_label: ''
+          label: ''
           exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
           element_type: ''
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
+          hide_empty: false
+          empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
           type: string
+          settings:
+            link_to_entity: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -139,6 +156,9 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: node
+          entity_field: title
+          plugin_id: field
       filters:
         status:
           value: '1'
@@ -716,6 +736,240 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
+  count_favorites_opps:
+    display_plugin: block
+    id: count_favorites_opps
+    display_title: 'Count of Favorites Opportunities'
+    position: 4
+    display_options:
+      display_extenders: {  }
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+      defaults:
+        filters: false
+        filter_groups: false
+        relationships: false
+        empty: false
+        sorts: false
+        style: false
+        row: false
+        arguments: false
+        header: false
+        group_by: false
+        fields: false
+        title: false
+        pager: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      relationships:
+        flag_relationship:
+          id: flag_relationship
+          table: node_field_data
+          field: flag_relationship
+          relationship: none
+          group_type: group
+          admin_label: Flags
+          required: true
+          flag: cs_favorites
+          user_scope: current
+          entity_type: node
+          plugin_id: flag_relationship
+      display_description: ''
+      empty: {  }
+      sorts:
+        last_updated:
+          id: last_updated
+          table: flag_counts
+          field: last_updated
+          relationship: flag_relationship
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          plugin_id: date
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          order: ASC
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          relationship: none
+          group_type: group
+          admin_label: ''
+          exposed: false
+          expose:
+            label: ''
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      arguments:
+        uid:
+          id: uid
+          table: flagging
+          field: uid
+          relationship: flag_relationship
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: current_user
+          default_argument_options: {  }
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: flagging
+          entity_field: uid
+          plugin_id: numeric
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          content: "<div class=\"su-card\">\r\n    <div class=\"flex-container\">\r\n        <div class=\"flex-3-of-12\">@total</div>\r\n        <div class=\"flex-9-of-12\">\r\n            <h2><a href=\"/user/opportunities\" class=\"su-link su-link--action\">Opportunities</a></h2>\r\n            @total Saved Item(s)\r\n        </div>\r\n    </div>\r\n</div>"
+          plugin_id: result
+      group_by: false
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: count
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<span></span>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: null
+          group_columns: null
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          set_precision: false
+          precision: 0
+          decimal: .
+          format_plural: false
+          format_plural_string: !!binary MQNAY291bnQ=
+          prefix: ''
+          suffix: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+      block_category: 'Opportunities (Views)'
+      title: 'Count of Opportunities'
+      pager:
+        type: some
+        options:
+          items_per_page: 1
+          offset: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
   dimension_description:
     display_plugin: block
     id: dimension_description
@@ -1144,6 +1398,254 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  user_favorite_opps:
+    display_plugin: block
+    id: user_favorite_opps
+    display_title: 'Saved Opportunities'
+    position: 4
+    display_options:
+      display_extenders: {  }
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+      defaults:
+        filters: false
+        filter_groups: false
+        relationships: false
+        empty: false
+        sorts: false
+        style: false
+        row: false
+        arguments: false
+        header: false
+        group_by: false
+        fields: false
+        title: false
+        pager: false
+        footer: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      relationships:
+        flag_relationship:
+          id: flag_relationship
+          table: node_field_data
+          field: flag_relationship
+          relationship: none
+          group_type: group
+          admin_label: Flags
+          required: true
+          flag: cs_favorites
+          user_scope: current
+          entity_type: node
+          plugin_id: flag_relationship
+      display_description: ''
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: "<p>You have <strong>0</strong> saved opportunities.</p>\r\n\r\n<a href=\"/opportunities\" class=\"su-button\">Explore Opportunities</a>"
+            format: stanford_html
+          plugin_id: text
+      sorts:
+        last_updated:
+          id: last_updated
+          table: flag_counts
+          field: last_updated
+          relationship: flag_relationship
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          plugin_id: date
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          order: ASC
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          relationship: none
+          group_type: group
+          admin_label: ''
+          exposed: false
+          expose:
+            label: ''
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: su_opportunities_views_result
+      arguments:
+        uid:
+          id: uid
+          table: flagging
+          field: uid
+          relationship: flag_relationship
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: current_user
+          default_argument_options: {  }
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: flagging
+          entity_field: uid
+          plugin_id: numeric
+      header: {  }
+      group_by: false
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: count
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<span></span>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: null
+          group_columns: null
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          set_precision: false
+          precision: 0
+          decimal: .
+          format_plural: false
+          format_plural_string: !!binary MQNAY291bnQ=
+          prefix: ''
+          suffix: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+      title: 'Saved Opportunities'
+      pager:
+        type: none
+        options:
+          offset: 0
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: '<a href="/opportunities">Explore Opportunities</a>'
+            format: stanford_html
+          plugin_id: text
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }

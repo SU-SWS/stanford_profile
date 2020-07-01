@@ -1,0 +1,51 @@
+uuid: 388ee088-62aa-4584-b7bf-ec95c3d46dd4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.authenticated_edit
+    - field.field.user.user.su_display_name
+    - field.field.user.user.su_user_class_year
+    - field.field.user.user.su_user_graduate
+    - field.field.user.user.su_user_org_leader
+  module:
+    - stanford_fields
+    - user
+id: user.user.authenticated_edit
+targetEntityType: user
+bundle: user
+mode: authenticated_edit
+content:
+  su_user_class_year:
+    type: datetime_year_only
+    weight: 0
+    region: content
+    settings:
+      date_order: YMD
+      time_type: none
+      increment: 15
+      start: 1970
+      end: 2030
+    third_party_settings: {  }
+  su_user_graduate:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  su_user_org_leader:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  account: true
+  google_analytics: true
+  language: true
+  path: true
+  simplesamlphp_auth_user_enable: true
+  su_display_name: true
+  timezone: true

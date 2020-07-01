@@ -1,0 +1,15 @@
+uuid: 9cb01879-6a66-413d-8498-cf570f6e8113
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.cs_favorites
+  module:
+    - flag
+id: flag_action.cs_favorites_flag
+label: Favorite
+type: node
+plugin: 'flag_action:cs_favorites_flag'
+configuration:
+  flag_id: cs_favorites
+  flag_action: flag

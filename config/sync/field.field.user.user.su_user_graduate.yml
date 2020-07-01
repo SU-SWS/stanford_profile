@@ -1,0 +1,24 @@
+uuid: cb6246b8-962e-4c97-989a-ba66315e48f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.su_user_graduate
+  module:
+    - user
+id: user.user.su_user_graduate
+field_name: su_user_graduate
+entity_type: user
+bundle: user
+label: 'Are you a graduate student'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean
