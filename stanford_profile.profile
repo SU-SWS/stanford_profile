@@ -286,7 +286,7 @@ function stanford_profile_form_config_pages_lockup_settings_form_alter(array &$f
   $img = '<img src="' . base_path() . drupal_get_path('theme', 'stanford_basic') . '/dist/assets/img/lockup-example.png" />';
   $rendered_image = render($img);
   $image_markup = Markup::create($rendered_image);
-  $decanter = Link::fromTextAndUrl('Decanter Lockup Component', Url::fromUri('http://decanter.stanford.edu/section-components.html#kssref-components-lockup'))->toString();
+  $decanter = Link::fromTextAndUrl('Decanter Lockup Component', Url::fromUri('https://decanter.stanford.edu/component/identity-lockup/'))->toString();
   $form['group_lockup_options']['#field_prefix'] = "<p>$image_markup</p><p>More examples can be found at: $decanter</p>";
 
 }
