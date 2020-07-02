@@ -125,7 +125,7 @@ process:
       default_value: 1
   revision_timestamp:
     plugin: callback
-    callable: cardinal_service_profile_get_time
+    callable: _stanford_migrate_get_time
   status: constants/status
   type: constants/type
   body/summary: teaser

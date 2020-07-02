@@ -8,7 +8,7 @@
 /**
  * Implements hook_removed_post_updates().
  */
-function stanford_profile_removed_post_updates() {
+function cardinal_service_profile_removed_post_updates() {
   return [
     'stanford_profile_post_update_8001' => '8.x-1.13',
     'stanford_profile_post_update_8003' => '8.x-1.13',
