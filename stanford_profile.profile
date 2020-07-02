@@ -265,7 +265,7 @@ function stanford_profile_xmlsitemap_link_alter(array &$link, array $context) {
  *
  */
 function stanford_profile_preprocess(array &$variables, $hook) {
-  $su_use_theme_logo = '1';
+  $variables['su_use_theme_logo'] = '1';
   $myConfigPage = \Drupal\config_pages\Entity\ConfigPages::config('lockup_settings');
   if (isset($myConfigPage)) {
     $variables['su_use_theme_logo'] = $myConfigPage->get('su_use_theme_logo')->value;
