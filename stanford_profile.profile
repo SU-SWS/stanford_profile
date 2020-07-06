@@ -289,4 +289,24 @@ function stanford_profile_form_config_pages_lockup_settings_form_alter(array &$f
   $decanter = Link::fromTextAndUrl('Decanter Lockup Component', Url::fromUri('https://decanter.stanford.edu/component/identity-lockup/'))->toString();
   $form['group_lockup_options']['#field_prefix'] = "<p>$image_markup</p><p>More examples can be found at: $decanter</p>";
 
+
+  $form['su_path_to_custom_logo']['#states'] = [
+    'invisible' => [
+      ':input[name="su_use_theme_logo[value]"]' => ['checked' => TRUE],
+    ],
+    'visible' => [
+      ':input[name="su_use_theme_logo[value]"]' => ['checked' => FALSE],
+    ],
+  ];
+
+  $form['su_upload_logo_image']['#states'] = [
+    'invisible' => [
+      ':input[name="su_use_theme_logo[value]"]' => ['checked' => TRUE],
+    ],
+    'visible' => [
+      ':input[name="su_use_theme_logo[value]"]' => ['checked' => FALSE],
+    ],
+  ];
+
+
 }
