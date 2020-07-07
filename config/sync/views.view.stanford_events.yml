@@ -819,7 +819,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<a class=\"su-link{% if su_event_source %} su-link--external{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
+            text: "<a class=\"su-link{% if su_event_source %} su-link--external{% else %} su-link--action{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
             make_link: false
             path: ''
             absolute: false
@@ -1513,6 +1513,451 @@ display:
           absolute: false
           entity_type: node
           plugin_id: entity_link_edit
+        su_event_location_organization:
+          id: su_event_location_organization
+          table: node__su_event_location
+          field: su_event_location_organization
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
+        su_event_location_locality:
+          id: su_event_location_locality
+          table: node__su_event_location
+          field: su_event_location_locality
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
+          plugin_id: subdivision
+        su_event_location_dependent_locality:
+          id: su_event_location_dependent_locality
+          table: node__su_event_location
+          field: su_event_location_dependent_locality
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
+          plugin_id: subdivision
+        su_event_location_address_line1:
+          id: su_event_location_address_line1
+          table: node__su_event_location
+          field: su_event_location_address_line1
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
+        su_event_location_address_line2:
+          id: su_event_location_address_line2
+          table: node__su_event_location
+          field: su_event_location_address_line2
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
+        su_event_location_administrative_area:
+          id: su_event_location_administrative_area
+          table: node__su_event_location
+          field: su_event_location_administrative_area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
+          plugin_id: subdivision
+        su_event_location_country_code:
+          id: su_event_location_country_code
+          table: node__su_event_location
+          field: su_event_location_country_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
+          plugin_id: country
+        su_event_location_postal_code:
+          id: su_event_location_postal_code
+          table: node__su_event_location
+          field: su_event_location_postal_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
+        su_event_location_sorting_code:
+          id: su_event_location_sorting_code
+          table: node__su_event_location
+          field: su_event_location_sorting_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
       defaults:
         fields: false
         style: false
@@ -1542,6 +1987,18 @@ display:
             su_event_date_time: 0
             su_event_location: 0
             edit_node: 0
+            su_event_location_address_line1: 0
+            su_event_location_additional_name: 0
+            su_event_location_address_line2: 0
+            su_event_location_administrative_area: 0
+            su_event_location_country_code: 0
+            su_event_location_dependent_locality: 0
+            su_event_location_family_name: 0
+            su_event_location_given_name: 0
+            su_event_location_locality: 0
+            su_event_location_organization: 0
+            su_event_location_postal_code: 0
+            su_event_location_sorting_code: 0
           separator: ''
           hide_empty: 1
           pattern: events-list
@@ -1556,6 +2013,9 @@ display:
             link: default
             lockup: a
             media: default
+            cta-list-paragraph: default
+            image-cta-paragraph: default
+            stories-paragraph: default
           pattern_mapping:
             'views_row:title':
               destination: su_event_headline
@@ -1617,6 +2077,66 @@ display:
               weight: 11
               plugin: views_row
               source: edit_node
+            'views_row:su_event_location_organization':
+              destination: su_event_entered_address
+              weight: 12
+              plugin: views_row
+              source: su_event_location_organization
+            'views_row:su_event_location_given_name':
+              destination: su_event_entered_address
+              weight: 13
+              plugin: views_row
+              source: su_event_location_given_name
+            'views_row:su_event_location_family_name':
+              destination: su_event_entered_address
+              weight: 14
+              plugin: views_row
+              source: su_event_location_family_name
+            'views_row:su_event_location_additional_name':
+              destination: su_event_entered_address
+              weight: 15
+              plugin: views_row
+              source: su_event_location_additional_name
+            'views_row:su_event_location_locality':
+              destination: su_event_entered_address
+              weight: 16
+              plugin: views_row
+              source: su_event_location_locality
+            'views_row:su_event_location_administrative_area':
+              destination: su_event_entered_address
+              weight: 17
+              plugin: views_row
+              source: su_event_location_administrative_area
+            'views_row:su_event_location_address_line1':
+              destination: su_event_entered_address
+              weight: 18
+              plugin: views_row
+              source: su_event_location_address_line1
+            'views_row:su_event_location_address_line2':
+              destination: su_event_entered_address
+              weight: 19
+              plugin: views_row
+              source: su_event_location_address_line2
+            'views_row:su_event_location_postal_code':
+              destination: su_event_entered_address
+              weight: 20
+              plugin: views_row
+              source: su_event_location_postal_code
+            'views_row:su_event_location_sorting_code':
+              destination: su_event_entered_address
+              weight: 21
+              plugin: views_row
+              source: su_event_location_sorting_code
+            'views_row:su_event_location_country_code':
+              destination: su_event_entered_address
+              weight: 22
+              plugin: views_row
+              source: su_event_location_country_code
+            'views_row:su_event_location_dependent_locality':
+              destination: su_event_entered_address
+              weight: 23
+              plugin: views_row
+              source: su_event_location_dependent_locality
     cache_metadata:
       max-age: -1
       contexts:
@@ -1825,7 +2345,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<a class=\"su-link{% if su_event_source %} su-link--external{% else %} {% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
+            text: "<a class=\"su-link{% if su_event_source %} su-link--external{% else %} su-link--action{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
             make_link: false
             path: '{{ su_event_source }}'
             absolute: false
@@ -2584,6 +3104,451 @@ display:
           absolute: false
           entity_type: node
           plugin_id: entity_link_edit
+        su_event_location_organization:
+          id: su_event_location_organization
+          table: node__su_event_location
+          field: su_event_location_organization
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
+        su_event_location_locality:
+          id: su_event_location_locality
+          table: node__su_event_location
+          field: su_event_location_locality
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
+          plugin_id: subdivision
+        su_event_location_dependent_locality:
+          id: su_event_location_dependent_locality
+          table: node__su_event_location
+          field: su_event_location_dependent_locality
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
+          plugin_id: subdivision
+        su_event_location_address_line1:
+          id: su_event_location_address_line1
+          table: node__su_event_location
+          field: su_event_location_address_line1
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
+        su_event_location_address_line2:
+          id: su_event_location_address_line2
+          table: node__su_event_location
+          field: su_event_location_address_line2
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
+        su_event_location_administrative_area:
+          id: su_event_location_administrative_area
+          table: node__su_event_location
+          field: su_event_location_administrative_area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
+          plugin_id: subdivision
+        su_event_location_country_code:
+          id: su_event_location_country_code
+          table: node__su_event_location
+          field: su_event_location_country_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
+          plugin_id: country
+        su_event_location_postal_code:
+          id: su_event_location_postal_code
+          table: node__su_event_location
+          field: su_event_location_postal_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
+        su_event_location_sorting_code:
+          id: su_event_location_sorting_code
+          table: node__su_event_location
+          field: su_event_location_sorting_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: span
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          plugin_id: standard
       style:
         type: default
         options:
@@ -2610,6 +3575,15 @@ display:
             su_event_date_time_end_value: 0
             su_event_date_time_end_value_1: 0
             edit_node: 0
+            su_event_location_organization: 0
+            su_event_location_locality: 0
+            su_event_location_dependent_locality: 0
+            su_event_location_address_line1: 0
+            su_event_location_address_line2: 0
+            su_event_location_administrative_area: 0
+            su_event_location_country_code: 0
+            su_event_location_postal_code: 0
+            su_event_location_sorting_code: 0
           separator: ''
           hide_empty: 1
           pattern: events-list
@@ -2624,6 +3598,9 @@ display:
             link: default
             lockup: a
             media: default
+            cta-list-paragraph: default
+            image-cta-paragraph: default
+            stories-paragraph: default
           pattern_mapping:
             'views_row:title':
               destination: su_event_headline
@@ -2685,6 +3662,51 @@ display:
               weight: 11
               plugin: views_row
               source: su_event_location
+            'views_row:su_event_location_locality':
+              destination: su_event_entered_address
+              weight: 12
+              plugin: views_row
+              source: su_event_location_locality
+            'views_row:su_event_location_organization':
+              destination: su_event_entered_address
+              weight: 13
+              plugin: views_row
+              source: su_event_location_organization
+            'views_row:su_event_location_dependent_locality':
+              destination: su_event_entered_address
+              weight: 14
+              plugin: views_row
+              source: su_event_location_dependent_locality
+            'views_row:su_event_location_administrative_area':
+              destination: su_event_entered_address
+              weight: 15
+              plugin: views_row
+              source: su_event_location_administrative_area
+            'views_row:su_event_location_address_line1':
+              destination: su_event_entered_address
+              weight: 16
+              plugin: views_row
+              source: su_event_location_address_line1
+            'views_row:su_event_location_address_line2':
+              destination: su_event_entered_address
+              weight: 17
+              plugin: views_row
+              source: su_event_location_address_line2
+            'views_row:su_event_location_postal_code':
+              destination: su_event_entered_address
+              weight: 18
+              plugin: views_row
+              source: su_event_location_postal_code
+            'views_row:su_event_location_sorting_code':
+              destination: su_event_entered_address
+              weight: 19
+              plugin: views_row
+              source: su_event_location_sorting_code
+            'views_row:su_event_location_country_code':
+              destination: su_event_entered_address
+              weight: 20
+              plugin: views_row
+              source: su_event_location_country_code
     cache_metadata:
       max-age: -1
       contexts:
