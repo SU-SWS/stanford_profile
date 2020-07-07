@@ -79,8 +79,6 @@ class RolesCest {
 
   /**
    * Site manager should have more access.
-   *
-   * @group testme
    */
   public function testSiteManagerRole(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
