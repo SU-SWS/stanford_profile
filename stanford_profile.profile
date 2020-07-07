@@ -251,6 +251,7 @@ function stanford_profile_xmlsitemap_link_alter(array &$link, array $context) {
  *
  */
 function stanford_profile_preprocess(array &$variables, $hook) {
+
   $variables['su_use_theme_logo'] = '1';
   $myConfigPage = \Drupal\config_pages\Entity\ConfigPages::config('lockup_settings');
   if (isset($myConfigPage)) {
@@ -260,8 +261,6 @@ function stanford_profile_preprocess(array &$variables, $hook) {
     $variables['su_path_to_custom_logo'] = $myConfigPage->get('su_path_to_custom_logo')->value;
   }
 
-  // optional: add a cache dependency
-  //$variables['#cache']['tags'][] = 'config_pages:' . $myConfigPage ->id();
 }
 
 /**
@@ -275,7 +274,7 @@ function stanford_profile_form_config_pages_lockup_settings_form_alter(array &$f
   $decanter = Link::fromTextAndUrl('Decanter Lockup Component', Url::fromUri('https://decanter.stanford.edu/component/identity-lockup/'))->toString();
   $form['group_lockup_options']['#field_prefix'] = "<p>$image_markup</p><p>More examples can be found at: $decanter</p>";
 
-
+  // Hide path and upload if using theme logo.
   $form['su_path_to_custom_logo']['#states'] = [
     'invisible' => [
       ':input[name="su_use_theme_logo[value]"]' => ['checked' => TRUE],
@@ -293,6 +292,5 @@ function stanford_profile_form_config_pages_lockup_settings_form_alter(array &$f
       ':input[name="su_use_theme_logo[value]"]' => ['checked' => FALSE],
     ],
   ];
-
 
 }
