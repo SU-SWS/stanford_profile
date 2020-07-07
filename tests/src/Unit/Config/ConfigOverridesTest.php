@@ -3,6 +3,8 @@
 namespace Drupal\Tests\stanford_profile\Unit\Config;
 
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Config\Config;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\stanford_profile\Config\ConfigOverrides;
 use Drupal\Tests\UnitTestCase;
@@ -26,8 +28,16 @@ class ConfigOverridesTest extends UnitTestCase {
   protected function setUp() {
     parent::setUp();
     $state = $this->createMock(StateInterface::class);
-    $state->method('get')->will($this->returnCallback([$this, 'getStateCallback']));
-    $this->overrideService = new ConfigOverrides($state);
+    $state->method('get')->will($this->returnCallback([
+      $this,
+      'getStateCallback',
+    ]));
+
+    $config_factory = $this->createMock(ConfigFactoryInterface::class);
+    $config_factory->method('getEditable')
+      ->will($this->returnCallback([$this, 'getConfigCallback']));
+
+    $this->overrideService = new ConfigOverrides($state, $config_factory);
   }
 
   public function testConfigOverrides() {
@@ -45,6 +55,22 @@ class ConfigOverridesTest extends UnitTestCase {
     ], $overrides['system.site']);
   }
 
+  /**
+   * Test the config ignore settings overrides.
+   */
+  public function testConfigIgnoreOverrides() {
+    $overrides = $this->overrideService->loadOverrides(['config_ignore.settings']);
+    $expected = [
+      'config_ignore.settings' => [
+        'ignored_config_entities' => ['stable.settings', 'seven.settings'],
+      ],
+    ];
+    $this->assertArrayEquals($expected, $overrides);
+  }
+
+  /**
+   * State callback.
+   */
   public function getStateCallback($name) {
     switch ($name) {
       case 'stanford_profile.403_page':
@@ -57,6 +83,19 @@ class ConfigOverridesTest extends UnitTestCase {
         return '/node/99';
 
     }
+  }
+
+  public function getConfigCallback($name) {
+    $config = $this->createMock(Config::class);
+    $setting = [];
+    switch ($name) {
+      case 'core.extension':
+        $setting = ['stable' => 0, 'seven' => 0];
+        break;
+    }
+
+    $config->method('getOriginal')->willReturn($setting);
+    return $config;
   }
 
 }
