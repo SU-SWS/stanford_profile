@@ -57,4 +57,50 @@ class SystemSiteConfigCest {
     $I->cantSee('UA-12456-12');
   }
 
+  /**
+   * @group testme
+   */
+  public function testBreadcrumbs(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/config/system/basic-site-settings');
+    $I->uncheckOption('Display Breadcrumbs');
+    $I->click('Save');
+
+    $I->amOnPage('/node/add/stanford_page');
+    $I->fillField('Title', 'Foo');
+    $I->checkOption('Provide a menu link');
+    $I->fillField('Menu link title', 'Foo');
+    $I->click('Save');
+
+
+    $I->amOnPage('/node/add/stanford_page');
+    $I->fillField('Title', 'Bar');
+    $I->checkOption('Provide a menu link');
+    $I->fillField('Menu link title', 'Bar');
+    $I->selectOption('Parent item', '-- Foo');
+    $I->click('Change parent (update list of weights)');
+    $I->click('Save');
+    $I->canSee('Bar', 'h1');
+
+    $url = $I->grabFromCurrentUrl();
+    $I->cantSee('Foo', '.breadcrumb');
+    $I->cantSee('Bar', '.breadcrumb');
+
+    $I->amOnPage('/admin/config/system/basic-site-settings');
+    $I->checkOption('Display Breadcrumbs');
+    $I->click('Save');
+
+    $I->amOnPage($url);
+    $I->canSee('Foo', '.breadcrumb');
+    $I->canSee('Bar', '.breadcrumb');
+
+    $I->amOnPage('/admin/config/system/basic-site-settings');
+    $I->uncheckOption('Display Breadcrumbs');
+    $I->click('Save');
+
+    $I->amOnPage($url);
+    $I->cantSee('Foo', '.breadcrumb');
+    $I->cantSee('Bar', '.breadcrumb');
+  }
+
 }
