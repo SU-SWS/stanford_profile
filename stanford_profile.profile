@@ -5,6 +5,7 @@
  * stanford_profile.profile
  */
 
+use Drupal\config_pages\Entity\ConfigPages;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
@@ -29,19 +30,17 @@ function stanford_profile_final_task(array &$install_state) {
 
 /**
  * Implements hook_preprocess().
- *
  */
 function stanford_profile_preprocess(array &$variables, $hook) {
 
   $variables['su_use_theme_logo'] = '1';
-  $myConfigPage = \Drupal\config_pages\Entity\ConfigPages::config('lockup_settings');
+  $myConfigPage = ConfigPages::config('lockup_settings');
   if (isset($myConfigPage)) {
     $variables['su_use_theme_logo'] = $myConfigPage->get('su_use_theme_logo')->value;
+    if ($variables['su_use_theme_logo'] == '0') {
+      $variables['su_path_to_custom_logo'] = $myConfigPage->get('su_path_to_custom_logo')->value;
+    }
   }
-  if ($variables['su_use_theme_logo'] == '0') {
-    $variables['su_path_to_custom_logo'] = $myConfigPage->get('su_path_to_custom_logo')->value;
-  }
-
 }
 
 /**
