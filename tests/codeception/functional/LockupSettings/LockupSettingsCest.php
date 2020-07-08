@@ -130,24 +130,6 @@ class LockupSettingsCest {
   /**
    * Test the lockup settings overrides.
    */
-  public function testLockupSettingsK(FunctionalTester $I) {
-    $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
-    $I->selectOption("#edit-su-lockup-options", "k");
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
-    $I->click('Save');
-    $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Last line full width option");
-  }
-
-  /**
-   * Test the lockup settings overrides.
-   */
   public function testLockupSettingsO(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/appearance/lockup-settings');
