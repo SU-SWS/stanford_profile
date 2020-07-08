@@ -16,6 +16,7 @@ dependencies:
     - layout_builder_restrictions
     - layout_library
     - menu_block
+    - system
     - user
 third_party_settings:
   layout_builder:
@@ -73,6 +74,17 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+            additional: {  }
+            weight: 1
+          71cdc4f7-083a-4e13-8950-22f31fec82f8:
+            uuid: 71cdc4f7-083a-4e13-8950-22f31fec82f8
+            region: main
+            configuration:
+              id: system_breadcrumb_block
+              label: Breadcrumbs
+              provider: system
+              label_display: '0'
+              context_mapping: {  }
             additional: {  }
             weight: 0
         third_party_settings: {  }

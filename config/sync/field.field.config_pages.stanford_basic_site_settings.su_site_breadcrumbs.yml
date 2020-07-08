@@ -1,0 +1,23 @@
+uuid: fdb20a35-10b0-486c-bd38-5be09ec450cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_breadcrumbs
+id: config_pages.stanford_basic_site_settings.su_site_breadcrumbs
+field_name: su_site_breadcrumbs
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Display Breadcrumbs'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
