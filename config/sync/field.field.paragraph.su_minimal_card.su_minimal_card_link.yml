@@ -1,0 +1,23 @@
+uuid: 6e8e440b-945e-4e53-a057-b759c70effe9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_minimal_card_link
+    - paragraphs.paragraphs_type.su_minimal_card
+  module:
+    - link
+id: paragraph.su_minimal_card.su_minimal_card_link
+field_name: su_minimal_card_link
+entity_type: paragraph
+bundle: su_minimal_card
+label: 'CTA Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

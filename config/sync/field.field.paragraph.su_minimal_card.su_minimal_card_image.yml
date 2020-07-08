@@ -1,0 +1,28 @@
+uuid: 9be34f46-1bae-4341-92e0-0a8c275828ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_minimal_card_image
+    - media.type.image
+    - paragraphs.paragraphs_type.su_minimal_card
+id: paragraph.su_minimal_card.su_minimal_card_image
+field_name: su_minimal_card_image
+entity_type: paragraph
+bundle: su_minimal_card
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

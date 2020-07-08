@@ -1,0 +1,59 @@
+uuid: fe5d8885-f0c7-4f55-9c36-ba3d1957801c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.su_minimal_card.su_minimal_card_image
+    - field.field.paragraph.su_minimal_card.su_minimal_card_link
+    - paragraphs.paragraphs_type.su_minimal_card
+  module:
+    - ds
+    - field_formatter_class
+    - link
+    - stanford_media
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_minimal_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      image:
+        - su_minimal_card_image
+      cta:
+        - su_minimal_card_link
+id: paragraph.su_minimal_card.default
+targetEntityType: paragraph
+bundle: su_minimal_card
+mode: default
+content:
+  su_minimal_card_image:
+    type: media_responsive_image_formatter
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      image_style: card_478x318
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    region: image
+  su_minimal_card_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: cta
+hidden:
+  search_api_excerpt: true
