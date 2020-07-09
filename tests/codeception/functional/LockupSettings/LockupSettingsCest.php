@@ -229,7 +229,34 @@ class LockupSettingsCest {
     $I->fillField('Path to custom logo', 'themes/custom/stanford_basic/dist/assets/img/logo.png');
     $I->click('Save');
     $I->amOnPage('/');
-    $I->seeElement('//img[@src="themes/custom/stanford_basic/dist/assets/img/logo.png"]');
+    $I->assertNotEmpty($I->grabAttributeFrom('.su-masthead img', 'alt'));
+  }
+
+  /**
+   * Test access to lockup settings overrides.
+   */
+  public function testSiteManagerRole(FunctionalTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/config/system');
+    $I->canSeeLink('Lockup Settings');
+  }
+
+  /**
+   * Test access to lockup settings overrides.
+   */
+  public function testContributorRole(FunctionalTester $I) {
+    $I->logInWithRole('contributor');
+    $I->amOnPage('/admin/config/system');
+    $I->cantSeeLink('Lockup Settings');
+  }
+
+  /**
+   * Test access to lockup settings overrides.
+   */
+  public function testSiteEditorRole(FunctionalTester $I) {
+    $I->logInWithRole('site_editor');
+    $I->amOnPage('/admin/config/system');
+    $I->cantSeeLink('Lockup Settings');
   }
 
 }
