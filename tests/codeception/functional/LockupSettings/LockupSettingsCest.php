@@ -20,8 +20,9 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsA(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption('#edit-su-lockup-options', 'a');
+    $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -39,7 +40,7 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsB(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("#edit-su-lockup-options", "b");
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -57,7 +58,7 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsD(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("#edit-su-lockup-options", "d");
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -75,7 +76,7 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsE(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("#edit-su-lockup-options", "e");
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -94,7 +95,7 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsH(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("#edit-su-lockup-options", "h");
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -113,7 +114,7 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsI(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("#edit-su-lockup-options", "i");
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -132,7 +133,7 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsO(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("#edit-su-lockup-options", "o");
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -149,7 +150,7 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsP(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("#edit-su-lockup-options", "p");
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -167,7 +168,7 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsR(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("#edit-su-lockup-options", "r");
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -184,7 +185,7 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsS(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("#edit-su-lockup-options", "s");
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -203,7 +204,7 @@ class LockupSettingsCest {
    */
   public function testLockupSettingsT(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/lockup-settings');
+    $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("#edit-su-lockup-options", "t");
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -211,10 +212,24 @@ class LockupSettingsCest {
     $I->fillField('Line 4', 'Organization name');
     $I->fillField('Line 5', 'Last line full width option');
     $I->click('Save');
+    $I->amOnPage('/');
     $I->canSee("Site title line");
     $I->canSee("Secondary title line");
     $I->canSee("Tertiary title line");
     $I->canSee("Organization name");
   }
 
+  /**
+   * Test the logo image settings overrides.
+   */
+  public function testLogoImage(FunctionalTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/config/system/lockup-settings');
+    $I->uncheckOption('#edit-su-use-theme-logo-value');
+    $I->fillField('Path to custom logo', 'themes/custom/stanford_basic/dist/assets/img/logo.png');
+    $I->click('Save');
+    $I->amOnPage('/');
+    $I->seeElement('//img[@src="themes/custom/stanford_basic/dist/assets/img/logo.png"]');
+  }
+  
 }

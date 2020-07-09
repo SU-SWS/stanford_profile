@@ -9,7 +9,6 @@ use Drupal\config_pages\Entity\ConfigPages;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
-use Drupal\Core\Render\Markup;
 
 /**
  * Implements hook_install_tasks().
@@ -33,6 +32,8 @@ function stanford_profile_final_task(array &$install_state) {
  */
 function stanford_profile_preprocess(array &$variables, $hook) {
 
+  // The default is to use the theme logo, so this sets the variable that the twig template uses.
+  // If the config page has not been saved, this sets the default setting.
   $variables['su_use_theme_logo'] = '1';
   $myConfigPage = ConfigPages::config('lockup_settings');
   if (isset($myConfigPage)) {
@@ -49,10 +50,8 @@ function stanford_profile_preprocess(array &$variables, $hook) {
 function stanford_profile_form_config_pages_lockup_settings_form_alter(array &$form, FormStateInterface $form_state) {
 
   $img = '<img src="' . base_path() . drupal_get_path('theme', 'stanford_basic') . '/dist/assets/img/lockup-example.png" />';
-  $rendered_image = render($img);
-  $image_markup = Markup::create($rendered_image);
-  $decanter = Link::fromTextAndUrl('Decanter Lockup Component', Url::fromUri('https://decanter.stanford.edu/component/identity-lockup/'))->toString();
-  $form['group_lockup_options']['#field_prefix'] = "<p>$image_markup</p><p>More examples can be found at: $decanter</p>";
+  $decanter = Link::fromTextAndUrl(t('Decanter Lockup Component'), Url::fromUri('https://decanter.stanford.edu/component/identity-lockup/'))->toString();
+  $form['group_lockup_options']['#field_prefix'] = "<p>$img</p><p>More examples can be found at: $decanter</p>";
 
   // Hide path and upload if using theme logo.
   $form['su_path_to_custom_logo']['#states'] = [
