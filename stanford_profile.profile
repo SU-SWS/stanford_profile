@@ -32,7 +32,8 @@ function stanford_profile_final_task(array &$install_state) {
  */
 function stanford_profile_preprocess(array &$variables, $hook) {
 
-  // The default is to use the theme logo, so this sets the variable that the twig template uses.
+  // The default is to use the theme logo,
+  // so this sets the variable that the twig template uses.
   // If the config page has not been saved, this sets the default setting.
   $variables['su_use_theme_logo'] = '1';
   $myConfigPage = ConfigPages::config('lockup_settings');

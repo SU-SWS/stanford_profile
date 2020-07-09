@@ -231,5 +231,5 @@ class LockupSettingsCest {
     $I->amOnPage('/');
     $I->seeElement('//img[@src="themes/custom/stanford_basic/dist/assets/img/logo.png"]');
   }
-  
+
 }
