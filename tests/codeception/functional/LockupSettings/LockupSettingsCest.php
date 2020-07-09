@@ -2,6 +2,7 @@
 
 /**
  * Test for the lockup settings
+ * @group lockup_settings
  */
 class LockupSettingsCest {
 
@@ -228,6 +229,7 @@ class LockupSettingsCest {
     $I->uncheckOption('#edit-su-use-theme-logo-value');
     $I->fillField('Path to custom logo', 'themes/custom/stanford_basic/dist/assets/img/logo.png');
     $I->click('Save');
+    $I->runDrush('cache-clear router');
     $I->amOnPage('/');
     $I->assertNotEmpty($I->grabAttributeFrom('.su-masthead img', 'alt'));
   }
