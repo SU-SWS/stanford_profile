@@ -231,7 +231,7 @@ class LockupSettingsCest {
     $I->click('Save');
     $I->runDrush('cache-clear router');
     $I->amOnPage('/');
-    $I->assertNotEmpty($I->grabAttributeFrom('.su-masthead img', 'alt'));
+    $I->click('//img[@alt="site logo"]');
   }
 
   /**
