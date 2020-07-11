@@ -227,11 +227,11 @@ class LockupSettingsCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->uncheckOption('#edit-su-use-theme-logo-value');
-    $I->fillField('Path to custom logo', 'https://placecorgi.com/1080/600');
+    $I->fillField('Path to custom logo', 'themes/custom/stanford_basic/dist/assets/img/logo.png');
     $I->click('Save');
     $I->runDrush('cache-clear router');
     $I->amOnPage('/');
-    $I->canSeeElement('//img[@alt="site logo"]');
+    $I->assertNotEmpty($I->grabAttributeFrom('.su-masthead img', 'alt'));
   }
 
   /**
