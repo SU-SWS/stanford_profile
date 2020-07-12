@@ -6,8 +6,6 @@ dependencies:
     - field.storage.node.su_person_photo
     - media.type.image
     - node.type.stanford_person
-  content:
-    - 'media:image:a4660e7f-d4bf-4a28-8030-9dc8576b1c9a'
 id: node.stanford_person.su_person_photo
 field_name: su_person_photo
 entity_type: node
@@ -16,10 +14,7 @@ label: Photo
 description: 'The person’s headshot or profile photo. Image ration should be 1:1 or Image size should be at least 140 pixels x 140 pixels'
 required: false
 translatable: false
-default_value:
-  -
-    weight: '0'
-    target_uuid: a4660e7f-d4bf-4a28-8030-9dc8576b1c9a
+default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:media'

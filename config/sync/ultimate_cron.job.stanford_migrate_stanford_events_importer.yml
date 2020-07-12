@@ -1,11 +1,11 @@
-uuid: f4580705-615a-4f71-9013-89028b1407a7
+uuid: 7b301c48-8f6f-4c04-95ad-d3ed9b9123ec
 langcode: en
 status: true
 dependencies:
   module:
     - stanford_migrate
-title: 'Importer: Stanford Person Importer'
-id: stanford_migrate_su_stanford_person
+title: 'Importer: Events importer'
+id: stanford_migrate_stanford_events_importer
 weight: 0
 module: stanford_migrate
 callback: stanford_migrate_ultimate_cron_task
