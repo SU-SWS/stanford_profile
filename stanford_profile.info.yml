@@ -1,6 +1,6 @@
 name: 'Stanford Profile'
 description: 'Jumpstart Website Profile'
-version: 8.x-1.13
+version: 8.x-1.14
 type: profile
 project: Jumpstart
 core: 8.x
@@ -115,8 +115,9 @@ install:
     - 'stanford_image_styles:stanford_image_styles'
     - 'stanford_media:media_duplicate_validation'
     - 'stanford_media:stanford_media'
-    - 'stanford_profile:stanford_paragraph_card'
-    - 'stanford_profile:stanford_profile_styles'
+    - 'stanford_profile_helper:stanford_paragraph_card'
+    - 'stanford_profile_helper:stanford_profile_helper'
+    - 'stanford_profile_helper:stanford_profile_styles'
     - 'stanford_ssp:stanford_ssp'
     - 'stanford_text_editor:stanford_text_editor'
     - 'token:token'

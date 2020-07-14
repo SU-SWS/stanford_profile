@@ -83,6 +83,7 @@
         "drupal/ckeditor_fixed_toolbar": "dev-1.x#1e4a8191ab289b4c91d9a0f2ac6b40e82e294908",
         "drupal/components": "~1.0",
         "drupal/config_distro": "^1.0-alpha",
+        "drupal/config_ignore": "^2.2",
         "drupal/config_merge": "^1.0-rc",
         "drupal/config_pages": "^2.6",
         "drupal/config_pages_overrides": "^1.0",
@@ -126,28 +127,29 @@
         "drupal/rules": "^3.0@alpha",
         "drupal/seckit": "^1.0@alpha",
         "drupal/ui_patterns": "~1.0",
-        "drupal/view_unpublished": "^1.0@alpha",
+        "drupal/view_unpublished": "dev-1.x#d3f72872dd8dd3f288dc9d63d65a740ce7d0ba9a",
         "drupal/views_block_filter_block": "^1.0@beta",
         "drupal/views_bulk_operations": "^3.6",
-        "drupal/xmlsitemap": "~1.0@alpha",
+        "drupal/xmlsitemap": "~1.0",
         "ext-imagick": "*",
-        "su-sws/nobots": "~8.2.0",
-        "su-sws/react_paragraphs": "~8.1.0",
-        "su-sws/stanford_basic": "~8.4.0",
-        "su-sws/stanford_date_formats": "~8.1.0",
-        "su-sws/stanford_fields": "~8.1.0",
-        "su-sws/stanford_image_styles": "~8.1.0",
-        "su-sws/stanford_news": "~8.2.0",
-        "su-sws/stanford_notifications": "~8.1.0",
-        "su-sws/stanford_person": "~8.1.0",
-        "su-sws/stanford_ssp": "~8.1.0",
-        "su-sws/stanford_text_editor": "~8.1.0",
-        "su-sws/stanford_events": "~8.1.0"
+        "su-sws/jumpstart_ui": "^8.1.0",
+        "su-sws/nobots": "^8.2.0",
+        "su-sws/react_paragraphs": "^8.1.0",
+        "su-sws/stanford_basic": "^8.4.0",
+        "su-sws/stanford_date_formats": "^8.1.0",
+        "su-sws/stanford_events": "^8.1.0",
+        "su-sws/stanford_fields": "^8.1.0",
+        "su-sws/stanford_image_styles": "^8.1.0",
+        "su-sws/stanford_news": "^8.2.0",
+        "su-sws/stanford_notifications": "^8.1.0",
+        "su-sws/stanford_person": "^8.1.0",
+        "su-sws/stanford_profile_helper": "^8.1.0@rc",
+        "su-sws/stanford_ssp": "^8.1.0",
+        "su-sws/stanford_text_editor": "^8.1.0"
     },
     "autoload": {
         "psr-4": {
-            "Drupal\\stanford_profile\\": "src/",
-            "Drupal\\stanford_profile_drush\\": "modules/stanford_profile_drush/src/"
+            "Drupal\\stanford_profile\\": "src/"
         }
     },
     "extra": {
@@ -157,6 +159,10 @@
             }
         },
         "patches": {
+            "drupal/config_ignore": {
+                "https://www.drupal.org/project/config_ignore/issues/2857247": "https://www.drupal.org/files/issues/2018-10-14/support-for-export-2857247-24.patch",
+                "https://www.drupal.org/project/config_ignore/issues/2865419": "https://www.drupal.org/files/issues/2020-06-21/config_ignore-wildcard_force-14.patch"
+            },
             "drupal/config_readonly": {
                 "https://www.drupal.org/project/config_readonly/issues/2892631": "https://www.drupal.org/files/issues/2018-04-01/config-readonly-2892631-18.patch"
             },
@@ -175,9 +181,6 @@
             },
             "drupal/paragraphs": {
                 "https://www.drupal.org/project/paragraphs/issues/2901390": "https://www.drupal.org/files/issues/2019-08-10/paragraphs-set_langcode_widgets-290139_updated.patch"
-            },
-            "drupal/xmlsitemap": {
-                "https://www.drupal.org/project/xmlsitemap/issues/3100808": "https://www.drupal.org/files/issues/2019-12-13/3100808-2.patch"
             }
         }
     }
