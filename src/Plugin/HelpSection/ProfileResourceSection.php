@@ -26,8 +26,6 @@ class ProfileResourceSection extends HelpSectionPluginBase {
       $this->getTechTraining(),
       $this->getUserGuide(),
       $this->getBlog(),
-      $this->getTechCommons(),
-      $this->getLearnDrupal(),
       $this->getMorningOfCode(),
     ];
   }
@@ -66,30 +64,6 @@ class ProfileResourceSection extends HelpSectionPluginBase {
   protected function getBlog() {
     $help = '<h3>' . self::getLinkString($this->t('Stanford Web Services Blog'), 'https://swsblog.stanford.edu/') . '</h3>';
     $help .= '<p>' . $this->t('The Stanford Web Services team blogs about all things related to Stanford Sites, Drupal, design, site building, and many other topics. This is a great resource for SWS clients.') . '</p>';
-    return ['#markup' => $help];
-  }
-
-  /**
-   * Get the user guide help text.
-   *
-   * @return array
-   *   Markup render array.
-   */
-  protected function getTechCommons() {
-    $help = '<h3>' . self::getLinkString($this->t('Tech Commons'), 'https://techcommons.stanford.edu/topics/drupal') . '</h3>';
-    $help .= '<p>' . $this->t('Tech Commons is a community-created resource for technical knowledge. There is a section for Drupal with many helpful tutorials, discussions, and information.') . '</p>';
-    return ['#markup' => $help];
-  }
-
-  /**
-   * Get the user guide help text.
-   *
-   * @return array
-   *   Markup render array.
-   */
-  protected function getLearnDrupal() {
-    $help = '<h3>' . self::getLinkString($this->t('Learn Drupal'), 'https://learndrupal.stanford.edu/') . '</h3>';
-    $help .= '<p>' . $this->t('A clearinghouse for community voted best Drupal learning resources.') . '</p>';
     return ['#markup' => $help];
   }
 
