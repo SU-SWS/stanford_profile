@@ -12,11 +12,11 @@ class LocalFooterCest {
    */
   public function testAccess(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
-    $I->amOnPage('/admin/appearance/local-footer');
+    $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(403);
     $I->amOnPage('/user/logout');
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/local-footer');
+    $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
   }
 
@@ -25,7 +25,7 @@ class LocalFooterCest {
    */
   public function testCustomLocalFooter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/appearance/local-footer');
+    $I->amOnPage('/admin/config/system/local-footer');
     $I->checkOption('Enabled');
     $I->selectOption('State', 'New York');
     $fields = [
@@ -66,7 +66,7 @@ class LocalFooterCest {
     $I->canSee('Lorem Ipsum', 'p');
     $I->canSeeElement('input[value="Sign Me Up"]');
 
-    $I->amOnPage('/admin/appearance/local-footer');
+    $I->amOnPage('/admin/config/system/local-footer');
     $I->uncheckOption('Enabled');
     $I->click('Save');
     $I->runDrush('cache-rebuild');
