@@ -1,0 +1,5 @@
+services:
+  cardinal_service_profile_helper.route_subscriber:
+    class: Drupal\cardinal_service_profile_helper\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

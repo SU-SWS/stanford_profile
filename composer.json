@@ -74,6 +74,7 @@
     "require": {
         "composer/installers": "^1.2",
         "drupal/conditional_fields": "^1.0@alpha",
+        "drupal/csv_importer": "^1.9",
         "drupal/field_delimiter": "^1.1",
         "drupal/flag": "^4.0@beta",
         "drupal/pdb": "^1.0@alpha",
@@ -85,6 +86,12 @@
     "autoload": {
         "psr-4": {
             "Drupal\\cardinal_service_profile\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Drupal\\Tests\\cardinal_service_profile\\": "tests/src",
+            "Drupal\\Tests\\cardinal_service_profile_helper\\": "modules/cardinal_service_profile_helper/tests/src"
         }
     },
     "extra": {

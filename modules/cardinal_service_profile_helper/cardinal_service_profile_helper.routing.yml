@@ -1,0 +1,11 @@
+csv_importer.template:
+  path: '/admin/content/csv-template/{node_type}'
+  defaults:
+    _controller: '\Drupal\cardinal_service_profile_helper\Controller\NodeCsvTemplate::getTemplate'
+    _title: 'Import CSV'
+  requirements:
+    _permission: 'administer nodes'
+  options:
+    parameters:
+      node_type:
+        type: entity:node_type
