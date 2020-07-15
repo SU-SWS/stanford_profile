@@ -146,13 +146,21 @@ process:
     entity_type: taxonomy_term
     ignore_case: true
   su_opp_service_theme:
-    source: service_theme
-    plugin: entity_generate
-    value_key: name
-    bundle_key: vid
-    bundle: su_opportunity_service_theme
-    entity_type: taxonomy_term
-    ignore_case: true
+    -
+      plugin: skip_on_empty
+      source: service_theme
+      method: process
+    -
+      plugin: explode
+      delimiter: ', '
+      source: service_theme
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: su_opportunity_service_theme
+      entity_type: taxonomy_term
+      ignore_case: true
   su_opp_solo_url/title:
     -
       plugin: skip_on_empty
