@@ -10,29 +10,34 @@ opportunity_row:
     image:
       type: image
       label: Image
-      description: 'Title of the opportunity.'
+      description: 'Image of the opportunity.'
       preview:
         theme: image
         uri: http://placecorgi.com/800x1200
+    application_deadline:
+      type: text
+      label: 'Application Deadline'
+      description: 'Application Deadline.'
+      preview: 'Month Date, Year'
     location:
       type: text
       label: Location
-      description: 'Title of the opportunity.'
+      description: 'Location of the opportunity.'
       preview: 'Stanford University'
     when:
       type: text
       label: When
-      description: 'Title of the opportunity.'
+      description: 'Timing of the opportunity.'
       preview: 'Next Year'
     open_to:
       type: text
       label: 'Open To'
-      description: 'Title of the opportunity.'
+      description: 'Category of student of the opportunity.'
       preview: '<ul><li>Everyone</li></ul>'
     type_list:
       type: text
       label: 'Type'
-      description: 'Title of the opportunity.'
+      description: 'Type of the opportunity.'
       preview: 'Cardinal Service'
     favorite:
       type: link

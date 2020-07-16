@@ -11,6 +11,14 @@
       </h3>
 
       <div class="su-opportunity-body-content">
+        {% if application_deadline|render %}
+          <div class="su-opportunity-row-application-deadline">
+            <div>
+              <h4>{{ 'Application Deadline'|t }}:</h4>
+              <div>{{ application_deadline }}</div>
+            </div>
+          </div>
+        {% endif %}
         {% if location|render %}
           <div class="su-opportunity-row-location">
             <div>

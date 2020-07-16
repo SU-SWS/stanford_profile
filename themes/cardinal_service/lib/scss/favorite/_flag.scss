@@ -1,0 +1,13 @@
+@charset 'UTF-8';
+
+.flag {
+  a {
+    text-decoration: none;
+    color: $su-color-cardinal-red;
+
+    &:focus,
+    &:hover {
+      color: $su-color-black;
+    }
+  }
+}

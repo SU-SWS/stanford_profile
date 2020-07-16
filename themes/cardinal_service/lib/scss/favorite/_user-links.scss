@@ -1,0 +1,129 @@
+@charset 'UTF-8';
+
+.su-masthead {
+  @include grid-media-min('lg') {
+    .su-lockup {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    .su-site-search {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+  }
+}
+
+.user-links {
+  width: 25%;
+  height: fit-content;
+  z-index: 101;
+
+  > a {
+    position: absolute;
+    width: max-content;
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+    padding: 6px 20px;
+    margin: 0.2em 0;
+    text-decoration: none;
+    color: #4d4f53;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    &::before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      content: '\f2bd';
+      color: #4d4f53;
+      margin-right: 8px;
+    }
+  }
+
+  .name,
+  .dropbutton-toggle {
+    margin-bottom: 0;
+  }
+
+  .dropbutton-widget {
+    display: flex;
+
+    .dropbutton {
+      position: absolute;
+      width: max-content;
+      border: 1px solid #e5e5e5;
+      border-radius: 20px;
+      padding: 6px 20px;
+      margin: 0.2em 0;
+      background-color: #fff;
+    }
+
+    .name {
+      display: inline-block;
+      text-decoration: none;
+      color: #4d4f53;
+
+      &::before {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        content: '\f2bd';
+        color: #4d4f53;
+        margin-right: 8px;
+      }
+    }
+
+    .secondary-action {
+      margin-left: 27px;
+    }
+  }
+
+  .dropbutton-multiple {
+    .dropbutton-toggle {
+      position: unset;
+      top: unset;
+      right: unset;
+      bottom: unset;
+      width: 1.5em;
+      display: inline-block;
+    }
+
+    button {
+      box-shadow: none;
+      color: transparent;
+      background: transparent;
+
+      &:hover {
+        background: transparent;
+      }
+
+      &:focus {
+        outline: -webkit-focus-ring-color auto 1px;
+      }
+
+      .dropbutton-arrow {
+        position: unset;
+        display: unset;
+
+        &::before {
+          color: #4d4f53;
+          content: '\f078';
+          font-size: 16px;
+          font-family: 'Font Awesome 5 Free';
+          font-weight: 900;
+        }
+      }
+    }
+
+    &.open {
+      .dropbutton-arrow {
+        &::before {
+          content: '\f077';
+        }
+      }
+    }
+  }
+}
