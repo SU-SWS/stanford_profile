@@ -22,32 +22,59 @@ function cardinal_service_profile_node_presave(NodeInterface $node) {
     return;
   }
 
-  list(, $month, $day) = explode('-', substr($deadline_date, 0, strpos($deadline_date, 'T')));
-
   // Compare the month and day of the deadline field value to taxonomy terms to
   // find out what term has the applicable date range.
   $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')
     ->loadByProperties(['vid' => 'su_opportunity_deadline']);
+
   /** @var \Drupal\taxonomy\TermInterface $term */
-  foreach ($terms as $tid => $term) {
+  foreach ($terms as $term) {
     $deadline_range = $term->get('su_opp_deadline_date')->getValue();
     // The term doesn't have the field value set, skip it.
     if (empty($deadline_range[0]['value'])) {
       continue;
     }
 
-    list(, $from_month, $from_day) = explode('-', $deadline_range[0]['value']);
-    list(, $to_month, $to_day) = explode('-', $deadline_range[0]['end_value']);
-
     // This term is configured for the range surrounding the deadline date field
     // so we use that term id as the deadline term.
-    if ($month >= $from_month && $month <= $to_month && $day >= $from_day && $day <= $to_day) {
-      $node->set('su_opp_deadline_time', $tid);
+    if (_cardinal_service_profile_between_dates($deadline_range[0]['value'], $deadline_range[0]['end_value'], $deadline_date)) {
+      $node->set('su_opp_deadline_time', $term->id());
       return;
     }
 
   }
 
+}
+
+/**
+ * Check if a given date is between two other dates in terms of month and day.
+ *
+ * Compare only the month and day of the string. We don't need to check anything
+ * with the year, hours, or minutes.
+ *
+ * @param string $from_date
+ *   Date string in the form of 2020-01-30.
+ * @param string $to_date
+ *   Date string in the form of 2020-01-30.
+ * @param string $date
+ *   Date string in the form of 2020-01-30T12:35:11.
+ *
+ * @return bool
+ *   True if the date is between.
+ */
+function _cardinal_service_profile_between_dates($from_date, $to_date, $date) {
+  $date = (int) date('md', strtotime($date));
+
+  list(, $from_month, $from_day) = explode('-', $from_date);
+  list(, $to_month, $to_day) = explode('-', $to_date);
+
+  $from = (int) "$from_month$from_day";
+  $to = (int) "$to_month$to_day";
+
+  if ($from > $to) {
+    return $date >= $from || $date <= $to;
+  }
+  return $date >= $from && $date <= $to;
 }
 
 /**
