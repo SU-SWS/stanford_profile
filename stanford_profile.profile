@@ -28,24 +28,6 @@ function stanford_profile_final_task(array &$install_state) {
 }
 
 /**
- * Implements hook_preprocess().
- */
-function stanford_profile_preprocess(array &$variables, $hook) {
-
-  // The default is to use the theme logo,
-  // so this sets the variable that the twig template uses.
-  // If the config page has not been saved, this sets the default setting.
-  $variables['logo']['use_default'] = '1';
-  $myConfigPage = ConfigPages::config('lockup_settings');
-  if (isset($myConfigPage)) {
-    $variables['logo']['use_default'] = $myConfigPage->get('su_use_theme_logo')->value;
-    if ($variables['logo']['use_default'] == '0') {
-      $variables['logo']['path'] = $myConfigPage->get('su_path_to_custom_logo')->value;
-    }
-  }
-}
-
-/**
  * Implements hook_form_FORM_ID_alter().
  */
 function stanford_profile_form_config_pages_lockup_settings_form_alter(array &$form, FormStateInterface $form_state) {
