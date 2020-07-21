@@ -1,5 +1,38 @@
 # Stanford Profile
 
+8.x-1.14
+--------------------------------------------------------------------------------
+_Release Date: 2020-07-13_
+
+- DEVOPS-000: Regenerated and cleaned up migration cron jobs
+- D8CORE-2205: Configure config ignore to allow for custom theme enabling
+- DEVOPS-000: Allow the currently active theme settings to change
+- DEVOPS-000: Added to config ignore to ignore the theme settings
+- D8CORE-1930: Changing the multirow gutters and removing the fixed widths
+- DEVOPS-000: added subtheme test
+- DEVOPS-000: use null value for update
+- D8CORE-2292: Added in the More news button
+- DEVOPS-000: Merge pull request #239 from SU-SWS/D8CORE-2292
+- DEVOPS-000: Merge pull request #236 from SU-SWS/cron-job-clean
+- D8CORE-1538 Converting behat tests to codeception tests (#228)
+- D8CORE-2049: change telephone to contact
+- D8CORE-1930: Changing the multirow gutters and removing the fixed widths
+- D8CORE-2205: Configure config ignore to allow for custom theme enabling
+- D8CORE-2049: change telephone to contact.
+- D8CORE-2099: Added required fields and default image for profile. (#242)
+- D8CORE-1722: Remove everything code related from this profile into an
+- D8CORE-2282 D8CORE-2293 Tests for admin toolbar links
+- D8CORE-2282 D8CORE-2293 Fix the menu links access
+- D8CORE-2290: moved the cta into details area (#247)
+- D8CORE-2178, D8CORE-2180, D8CORE-2181: Adjust news node displays, field
+- D8CORE-2318: removing the action arrow on list items (#245)
+- DEVOPS-000: Lock view unpublished to avoid the error in issue #3097251 (#250)
+- DEVOPS-000: Update help text for Site URL (#252)
+- D8CORE-2007: removing the span as a wrapper (#249)
+- DEVOPS-000: Merge pull request #246 from SU-SWS/D8CORE-2282
+- D8CORE-2229 Update help section texts (#253)
+- D8CORE-2317: location changes to events (#251)
+
 8.x-1.13
 --------------------------------------------------------------------------------
 _Release Date: 2020-06-17_
