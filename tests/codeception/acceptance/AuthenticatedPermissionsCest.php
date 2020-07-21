@@ -56,7 +56,8 @@ class AuthenticatedPermissionsCest {
 
    public function testSiteManagerEscalationSelf(AcceptanceTester $I) {
      $site_manager = $I->logInWithRole('site_manager');
-     $site_manager_id = $site_manager->getUid();
+     // echo(var_export($site_manager, true));
+     $site_manager_id = $site_manager->id();
      $I->amOnPage('/admin/people');
      $I->canSee($site_manager->name);
      $I->click(['link' => $site_manager->name]);
