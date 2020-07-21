@@ -3,7 +3,10 @@
 /**
  * Test the restrictions on authenticated users.
  */
+use StanfordCaravan\Codeception\Drupal\DrupalUser;
+
 class AuthenticatedPermissionsCest {
+
 
   /**
    * Make sure authenticated users can't access things they should not.
@@ -52,19 +55,44 @@ class AuthenticatedPermissionsCest {
    */
 
    public function testSiteManagerEscalationSelf(AcceptanceTester $I) {
-
+     $user_generator = new DrupalUser;
+     $site_manager = $user_generator->createUserWithRoles(['site_manager']);
+     $site_manager_id = $site_manager->id;
+     $I->logInAs($site_manager->name);
+     $I->amOnPage('/admin/people');
+     $I->canSee($site_manager->name);
+     $I->click(['link' => $site_manager->name]);
+     $I->click('.roles.tabs__tab a');
+     $I->canSeeInCurrentUrl("/user/$site_manager_id/roles");
+     $I->canSee('Administrator');
+     $I->checkOption('#edit-role-change-administrator');
+     $I->click('#edit-submit');
+     $I->canSeeInCurrentUrl("/user/$site_manager_id/roles");
+     $I->canSee("The roles have been updated.");
    }
 
-   public function testSiteManagerEscalationOthers(AcceptanceTester $I) {}
+   public function testSiteManagerEscalationOthers(AcceptanceTester $I) {
+     return;
+   }
 
-   public function testPhpInRedirect(AcceptanceTester $I) {}
+   public function testPhpInRedirect(AcceptanceTester $I) {
+     return;
+   }
 
-   public function testPhpInContent(AcceptanceTester $I) {}
+   public function testPhpInContent(AcceptanceTester $I) {
+     return;
+   }
 
-   public function testPhpUploadInMedia(AcceptanceTester $I) {}
+   public function testPhpUploadInMedia(AcceptanceTester $I) {
+     return;
+   }
 
-   public function testPhpUploadInFavicon(AcceptanceTester $I) {}
+   public function testPhpUploadInFavicon(AcceptanceTester $I) {
+     return;
+   }
 
-   public function testPhpUploadInLogo(AcceptanceTester $I) {}
+   public function testPhpUploadInLogo(AcceptanceTester $I) {
+     return;
+   }
 
 }
