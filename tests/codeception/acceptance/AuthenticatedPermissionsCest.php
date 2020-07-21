@@ -55,8 +55,7 @@ class AuthenticatedPermissionsCest {
    */
 
    public function testSiteManagerEscalationSelf(AcceptanceTester $I) {
-     $user_generator = new DrupalUser;
-     $site_manager = $user_generator->createUserWithRoles(['site_manager']);
+     $site_manager = $I->createUserWithRoles(['site_manager']);
      $site_manager_id = $site_manager->id;
      $I->logInAs($site_manager->name);
      $I->amOnPage('/admin/people');
