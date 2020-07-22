@@ -1,0 +1,17 @@
+uuid: 07b69e97-1071-4e28-842c-f0d0f6234dcf
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: square_478
+label: 'Square - 478'
+effects:
+  1891a880-3259-4e36-a1e8-9d9f9de467d0:
+    uuid: 1891a880-3259-4e36-a1e8-9d9f9de467d0
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 478
+      height: 478
+      crop_type: focal_point
