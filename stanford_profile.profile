@@ -5,11 +5,6 @@
  * stanford_profile.profile
  */
 
-use Drupal\config_pages\Entity\ConfigPages;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
-use Drupal\Core\Link;
-
 /**
  * Implements hook_install_tasks().
  */
