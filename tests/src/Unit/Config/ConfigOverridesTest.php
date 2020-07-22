@@ -69,6 +69,15 @@ class ConfigOverridesTest extends UnitTestCase {
   }
 
   /**
+   * Google Tag manager entities should be disabled.
+   */
+  public function testGoogleTagOverrides() {
+    $overrides = $this->overrideService->loadOverrides(['google_tag.container.foo_bar']);
+    $expected = ['google_tag.container.foo_bar' => ['status' => FALSE]];
+    $this->assertArrayEquals($expected, $overrides);
+  }
+
+  /**
    * State callback.
    */
   public function getStateCallback($name) {

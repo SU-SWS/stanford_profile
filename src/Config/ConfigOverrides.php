@@ -88,6 +88,22 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     }
 
     // Theme settings override.
+    $this->setLockupOverrides($names, $overrides);
+
+    // GTM overrides.
+    $this->setOverridesGoogleTag($names, $overrides);
+    return $overrides;
+  }
+
+  /**
+   * Disable google tag manager entities when not on prod environment.
+   *
+   * @param array $names
+   *   Config names.
+   * @param array $overrides
+   *   Keyed array of config overrides.
+   */
+  protected function setLockupOverrides(array $names, array &$overrides) {
     if ($this->configFactory && !in_array('system.theme', $names)) {
       $theme_info = $this->configFactory->get('system.theme');
       // Active default theme.
@@ -117,8 +133,37 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
         }
       }
     }
+  }
 
-    return $overrides;
+  /**
+   * Disable google tag manager entities when not on prod environment.
+   *
+   * @param array $names
+   *   Config names.
+   * @param array $overrides
+   *   Keyed array of config overrides.
+   */
+  protected function setOverridesGoogleTag(array $names, array &$overrides) {
+    if ($this->isProdEnv()) {
+      return;
+    }
+
+    foreach ($names as $name) {
+      if (strpos($name, 'google_tag.container.') === 0) {
+        $overrides[$name]['status'] = FALSE;
+      }
+    }
+  }
+
+  /**
+   * Check if this is Acquia's prod environment.
+   *
+   * @return bool
+   *   Is Acquia environment.
+   */
+  protected function isProdEnv() {
+    $ah_env = $_ENV['AH_SITE_ENVIRONMENT'] ?? NULL;
+    return $ah_env == 'prod' || preg_match('/^\d*live$/', $ah_env);
   }
 
   /**
