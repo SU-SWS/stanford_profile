@@ -130,4 +130,17 @@ function stanford_profile_form_config_pages_lockup_settings_form_alter(array &$f
     ],
   ];
 
+  // Clear caches on submit.
+  $form['actions']["submit"]['#submit'][] = "stanford_profile_form_config_pages_lockup_settings_form_alter_submit";
+}
+
+/**
+ * [stanford_profile_form_config_pages_lockup_settings_form_alter_submit description]
+ * @param  array              $form       [description]
+ * @param  FormStateInterface $form_state [description]
+ * @return [type]                         [description]
+ */
+function stanford_profile_form_config_pages_lockup_settings_form_alter_submit(array &$form, FormStateInterface $form_state) {
+  $renderCache = \Drupal::service('cache.render');
+  $renderCache->invalidateAll();
 }
