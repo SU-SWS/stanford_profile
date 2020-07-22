@@ -9,6 +9,7 @@ use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\file\Entity\File;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * Config overrides for stanford profile.
@@ -39,6 +40,13 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
   protected $configFactory;
 
   /**
+   * Config Entity Type Manager Interface.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
    * ConfigOverrides constructor.
    *
    * @param \Drupal\Core\State\StateInterface $state
@@ -47,8 +55,15 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    *   Config pages service.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   Config factory service.
+   * @param \Drupal\Core\Config\EntityTypeManagerInterface $entity_type_manager
+   *   Entity type manager interface.
    */
-  public function __construct(StateInterface $state, ConfigPagesLoaderServiceInterface $config_pages_loader = NULL, ConfigFactoryInterface $config_factory = NULL) {
+  public function __construct(
+    StateInterface $state,
+    ConfigPagesLoaderServiceInterface $config_pages_loader = NULL,
+    ConfigFactoryInterface $config_factory = NULL,
+    EntityTypeManagerInterface $entity_type_manager = NULL
+  ) {
     $this->state = $state;
 
     if ($config_pages_loader) {
@@ -57,6 +72,10 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
 
     if ($config_factory) {
       $this->configFactory = $config_factory;
+    }
+
+    if ($entity_type_manager) {
+      $this->entityTypeManager = $entity_type_manager;
     }
   }
 
@@ -125,7 +144,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
           // a relative path to the files directory.
           $fid = $config_page->get('su_upload_logo_image')->first()->getValue()['target_id'];
           if ($fid) {
-            $file_uri = File::load($fid)->getFileUri();
+            $file_uri = $this->entityTypeManager->getStorage('file')->load($fid)->getFileUri();
             $file_path = file_url_transform_relative(file_create_url($file_uri));
             $overrides[$theme_name . '.settings']['logo']['use_default'] = $overrides[$theme_name . '.settings']['use_logo'];
             $overrides[$theme_name . '.settings']['logo']['path'] = $file_path;
