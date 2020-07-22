@@ -10,7 +10,6 @@ dependencies:
     - field.field.config_pages.lockup_settings.su_line_4
     - field.field.config_pages.lockup_settings.su_line_5
     - field.field.config_pages.lockup_settings.su_lockup_options
-    - field.field.config_pages.lockup_settings.su_path_to_custom_logo
     - field.field.config_pages.lockup_settings.su_upload_logo_image
     - field.field.config_pages.lockup_settings.su_use_theme_logo
     - image.style.thumbnail
@@ -40,7 +39,6 @@ third_party_settings:
     group_logo_image:
       children:
         - su_use_theme_logo
-        - su_path_to_custom_logo
         - su_upload_logo_image
       parent_name: ''
       weight: 1
@@ -102,14 +100,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
-    region: content
-  su_path_to_custom_logo:
-    weight: 2
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
     region: content
   su_upload_logo_image:
     weight: 3

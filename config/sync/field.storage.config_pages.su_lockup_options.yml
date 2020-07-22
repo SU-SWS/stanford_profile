@@ -16,6 +16,9 @@ type: list_string
 settings:
   allowed_values:
     -
+      value: none
+      label: 'Logo Only'
+    -
       value: a
       label: 'Option A: Lines 1, 5-bold, uppercase'
     -
@@ -29,10 +32,10 @@ settings:
       label: 'Option E: Lines 1, 2, 3'
     -
       value: h
-      label: 'Option H: Lines 1, 3-regular, 4 *needs css adjustments'
+      label: 'Option H: Lines 1, 3-regular, 4'
     -
       value: i
-      label: 'Option I: Lines 1, 3, 4 *needs css adjustments'
+      label: 'Option I: Lines 1, 3, 4'
     -
       value: o
       label: 'Option O: Line 4'

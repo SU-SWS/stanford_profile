@@ -36,8 +36,7 @@ function stanford_profile_form_config_pages_lockup_settings_form_alter(array &$f
   $decanter = Link::fromTextAndUrl(t('Decanter Lockup Component'), Url::fromUri('https://decanter.stanford.edu/component/identity-lockup/'))->toString();
   $form['group_lockup_options']['#field_prefix'] = "<p>$img</p><p>More examples can be found at: $decanter</p>";
 
-  // Hide path and upload if using theme logo.
-  $form['su_path_to_custom_logo']['#states'] = [
+  $form['su_upload_logo_image']['#states'] = [
     'invisible' => [
       ':input[name="su_use_theme_logo[value]"]' => ['checked' => TRUE],
     ],
@@ -46,12 +45,88 @@ function stanford_profile_form_config_pages_lockup_settings_form_alter(array &$f
     ],
   ];
 
-  $form['su_upload_logo_image']['#states'] = [
+  $form['su_line_1']['widget']['0']['value']['#states'] = [
     'invisible' => [
-      ':input[name="su_use_theme_logo[value]"]' => ['checked' => TRUE],
+      [':input[name="su_lockup_options"]' => ['value' => 'none']],
+      [':input[name="su_lockup_options"]' => ['value' => 'o']],
+      [':input[name="su_lockup_options"]' => ['value' => 'r']],
     ],
-    'visible' => [
-      ':input[name="su_use_theme_logo[value]"]' => ['checked' => FALSE],
+  ];
+
+  $form['su_line_2']['widget']['0']['value']['#states'] = [
+    'invisible' => [
+      [':input[name="su_lockup_options"]' => ['value' => 'none']],
+      [':input[name="su_lockup_options"]' => ['value' => 'a']],
+      [':input[name="su_lockup_options"]' => ['value' => 'd']],
+      [':input[name="su_lockup_options"]' => ['value' => 'h']],
+      [':input[name="su_lockup_options"]' => ['value' => 'i']],
+      [':input[name="su_lockup_options"]' => ['value' => 'k']],
+      [':input[name="su_lockup_options"]' => ['value' => 'l']],
+      [':input[name="su_lockup_options"]' => ['value' => 'n']],
+      [':input[name="su_lockup_options"]' => ['value' => 'o']],
+      [':input[name="su_lockup_options"]' => ['value' => 'p']],
+      [':input[name="su_lockup_options"]' => ['value' => 'q']],
+      [':input[name="su_lockup_options"]' => ['value' => 'r']],
+    ],
+  ];
+
+  $form['su_line_3']['widget']['0']['value']['#states'] = [
+    'invisible' => [
+      [':input[name="su_lockup_options"]' => ['value' => 'none']],
+      [':input[name="su_lockup_options"]' => ['value' => 'a']],
+      [':input[name="su_lockup_options"]' => ['value' => 'b']],
+      [':input[name="su_lockup_options"]' => ['value' => 'c']],
+      [':input[name="su_lockup_options"]' => ['value' => 'f']],
+      [':input[name="su_lockup_options"]' => ['value' => 'g']],
+      [':input[name="su_lockup_options"]' => ['value' => 'j']],
+      [':input[name="su_lockup_options"]' => ['value' => 'k']],
+      [':input[name="su_lockup_options"]' => ['value' => 'l']],
+      [':input[name="su_lockup_options"]' => ['value' => 'm']],
+      [':input[name="su_lockup_options"]' => ['value' => 'n']],
+      [':input[name="su_lockup_options"]' => ['value' => 'o']],
+      [':input[name="su_lockup_options"]' => ['value' => 'p']],
+      [':input[name="su_lockup_options"]' => ['value' => 'q']],
+      [':input[name="su_lockup_options"]' => ['value' => 'r']],
+      [':input[name="su_lockup_options"]' => ['value' => 's']],
+    ],
+  ];
+
+  $form['su_line_4']['widget']['0']['value']['#states'] = [
+    'invisible' => [
+      [':input[name="su_lockup_options"]' => ['value' => 'none']],
+      [':input[name="su_lockup_options"]' => ['value' => 'a']],
+      [':input[name="su_lockup_options"]' => ['value' => 'b']],
+      [':input[name="su_lockup_options"]' => ['value' => 'c']],
+      [':input[name="su_lockup_options"]' => ['value' => 'd']],
+      [':input[name="su_lockup_options"]' => ['value' => 'e']],
+      [':input[name="su_lockup_options"]' => ['value' => 'f']],
+      [':input[name="su_lockup_options"]' => ['value' => 'g']],
+      [':input[name="su_lockup_options"]' => ['value' => 'j']],
+      [':input[name="su_lockup_options"]' => ['value' => 'k']],
+      [':input[name="su_lockup_options"]' => ['value' => 'l']],
+      [':input[name="su_lockup_options"]' => ['value' => 'm']],
+      [':input[name="su_lockup_options"]' => ['value' => 'n']],
+      [':input[name="su_lockup_options"]' => ['value' => 'r']],
+    ],
+  ];
+
+  $form['su_line_5']['widget']['0']['value']['#states'] = [
+    'invisible' => [
+      [':input[name="su_lockup_options"]' => ['value' => 'none']],
+      [':input[name="su_lockup_options"]' => ['value' => 'b']],
+      [':input[name="su_lockup_options"]' => ['value' => 'd']],
+      [':input[name="su_lockup_options"]' => ['value' => 'e']],
+      [':input[name="su_lockup_options"]' => ['value' => 'f']],
+      [':input[name="su_lockup_options"]' => ['value' => 'h']],
+      [':input[name="su_lockup_options"]' => ['value' => 'i']],
+      [':input[name="su_lockup_options"]' => ['value' => 'l']],
+      [':input[name="su_lockup_options"]' => ['value' => 'm']],
+      [':input[name="su_lockup_options"]' => ['value' => 'n']],
+      [':input[name="su_lockup_options"]' => ['value' => 'o']],
+      [':input[name="su_lockup_options"]' => ['value' => 'p']],
+      [':input[name="su_lockup_options"]' => ['value' => 'q']],
+      [':input[name="su_lockup_options"]' => ['value' => 's']],
+      [':input[name="su_lockup_options"]' => ['value' => 't']],
     ],
   ];
 

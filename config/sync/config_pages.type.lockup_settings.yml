@@ -1,47 +1,7 @@
 uuid: a18599df-51cc-4b9e-96d0-7a127d0247ed
 langcode: en
 status: true
-dependencies:
-  module:
-    - config_pages_overrides
-third_party_settings:
-  config_pages_overrides:
-    cc9d47c1-ac6c-426d-b3d0-b6b58bd31a51:
-      field: su_lockup_options
-      delta: 0
-      column: value
-      config_name: stanford_basic.settings
-      config_item: lockup.option
-    71986c09-2e8f-457c-bf87-40ffed2a3716:
-      field: su_line_1
-      delta: 0
-      column: value
-      config_name: stanford_basic.settings
-      config_item: lockup.line1
-    f80057a1-9c8e-4149-94c2-d50206dbc74d:
-      field: su_line_2
-      delta: 0
-      column: value
-      config_name: stanford_basic.settings
-      config_item: lockup.line2
-    3b2b9a81-837e-4034-a843-5ffc876b6f1f:
-      field: su_line_3
-      delta: 0
-      column: value
-      config_name: stanford_basic.settings
-      config_item: lockup.line3
-    63a5bc13-3372-4f24-9752-48f4cffa0099:
-      field: su_line_4
-      delta: 0
-      column: value
-      config_name: stanford_basic.settings
-      config_item: lockup.line4
-    d35448bc-6595-4a20-bcc3-b25ff848b5b8:
-      field: su_line_5
-      delta: 0
-      column: value
-      config_name: stanford_basic.settings
-      config_item: lockup.line5
+dependencies: {  }
 id: lockup_settings
 label: 'Lockup Settings'
 context:
@@ -54,3 +14,4 @@ menu:
   path: /admin/config/system/lockup-settings
   weight: 0
   description: ''
+token: null

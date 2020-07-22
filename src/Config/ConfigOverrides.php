@@ -7,6 +7,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ConfigFactoryOverrideInterface;
 use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\State\StateInterface;
+use Drupal\stanford_profile\Services\ActiveTheme;
 
 /**
  * Config overrides for stanford profile.
@@ -39,6 +40,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    */
   public function __construct(StateInterface $state, ConfigFactoryInterface $config_factory = NULL) {
     $this->state = $state;
+
     if ($config_factory) {
       $this->configFactory = $config_factory;
     }
