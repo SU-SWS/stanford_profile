@@ -8,7 +8,6 @@ use Drupal\Core\Config\ConfigFactoryOverrideInterface;
 use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
-use Drupal\file\Entity\File;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
