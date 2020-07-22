@@ -149,6 +149,7 @@ export const SelectList = ({defaultValue, field, label, multiple, onChange, opti
       <Autocomplete
         classes={myStyles}
         disableCloseOnSelect
+        label={label}
         popupIcon={arrowIcon}
         ChipProps={{
           style: {
