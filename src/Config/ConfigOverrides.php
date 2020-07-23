@@ -52,9 +52,9 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    *   State service.
    * @param \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_pages_loader
    *   Config pages service.
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   * @param \Drupal\Core\Config\ConfigFactoryInterface|null $config_factory
    *   Config factory service.
-   * @param \Drupal\Core\Config\EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface|null $entity_type_manager
    *   Entity type manager interface.
    */
   public function __construct(
@@ -141,12 +141,15 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
 
           // If the file upload is available we need to change the path to
           // a relative path to the files directory.
-          $fid = $config_page->get('su_upload_logo_image')->first()->getValue()['target_id'];
-          if ($fid) {
-            $file_uri = $this->entityTypeManager->getStorage('file')->load($fid)->getFileUri();
-            $file_path = file_url_transform_relative(file_create_url($file_uri));
-            $overrides[$theme_name . '.settings']['logo']['use_default'] = $overrides[$theme_name . '.settings']['use_logo'];
-            $overrides[$theme_name . '.settings']['logo']['path'] = $file_path;
+          $file_field = $config_page->get('su_upload_logo_image')->first();
+          if ($file_field) {
+            $fid = $file_field->getValue()['target_id'];
+            if ($fid) {
+              $file_uri = $this->entityTypeManager->getStorage('file')->load($fid)->getFileUri();
+              $file_path = file_url_transform_relative(file_create_url($file_uri));
+              $overrides[$theme_name . '.settings']['logo']['use_default'] = $overrides[$theme_name . '.settings']['use_logo'];
+              $overrides[$theme_name . '.settings']['logo']['path'] = $file_path;
+            }
           }
         }
       }
