@@ -253,7 +253,7 @@ class LockupSettingsCest {
 
     // Add custom logo.
     $I->uncheckOption('#edit-su-use-theme-logo-value');
-    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', 'logo.jpg');
+    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', dirname(__FILE__) . '/logo.jpg');
     $I->waitForElement("input[name='su_upload_logo_image[0][alt]']");
     $I->fillField("input[name='su_upload_logo_image[0][alt]']", "Alternative Text");
 
