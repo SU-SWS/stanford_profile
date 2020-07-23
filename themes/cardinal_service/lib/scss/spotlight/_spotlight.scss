@@ -92,18 +92,6 @@
   }
 }
 
-.su-spotlight {
-  &.body {
-    @include grid-media-max('sm') {
-      width: 100%;
-    }
-
-    margin: 0 auto;
-    padding: 2em 0 0;
-    width: 65%;
-  }
-}
-
 .su-spotlight-body {
   font-size: 1em;
 }
@@ -137,16 +125,21 @@
   margin-bottom: 100px;
 }
 
-.su-spotlight-quote {
+.spotlight-quote {
   font-size: 1.6em;
   font-weight: 400;
   line-height: 1.5em;
+  margin-top: 2em;
 
-  &::before {
+  p::before {
     content: open-quote;
   }
 
-  &::after {
+  p::after {
     content: close-quote;
   }
+}
+
+.su-quote-summary {
+  margin-bottom: 2em;
 }

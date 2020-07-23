@@ -20,45 +20,6 @@
   justify-content: center;
 }
 
-.su-spotlights-opportunity-spotlight-ref {
-  .image {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  img {
-    border-radius: 50%;
-    height: auto;
-    margin: 0 auto;
-    max-width: 100%;
-    vertical-align: middle;
-  }
-
-  .su-card__contents {
-    margin: auto 0;
-
-    span {
-      font-family: Roboto Slab;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 30px;
-      line-height: 40px;
-
-      &::before {
-        content: open-quote;
-      }
-
-      &::after {
-        content: close-quote;
-      }
-    }
-
-    h2 {
-      font-size: 2rem;
-    }
-  }
-}
-
 .opportunity {
   .flex-lg-3-of-12 {
     background: #ffffff;

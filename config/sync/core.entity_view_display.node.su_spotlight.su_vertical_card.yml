@@ -1,0 +1,71 @@
+uuid: 923c3a19-8f3d-4d77-b107-0a254f72c963
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.su_vertical_card
+    - field.field.node.su_spotlight.body
+    - field.field.node.su_spotlight.su_opp_dimension
+    - field.field.node.su_spotlight.su_opp_open_to
+    - field.field.node.su_spotlight.su_opp_pathway
+    - field.field.node.su_spotlight.su_opp_service_theme
+    - field.field.node.su_spotlight.su_spotlight_background_image
+    - field.field.node.su_spotlight.su_spotlight_context
+    - field.field.node.su_spotlight.su_spotlight_feature_image
+    - field.field.node.su_spotlight.su_spotlight_graduation_year
+    - field.field.node.su_spotlight.su_spotlight_major
+    - field.field.node.su_spotlight.su_spotlight_opportunity
+    - field.field.node.su_spotlight.su_spotlight_quote
+    - field.field.node.su_spotlight.su_spotlight_student_name
+    - node.type.su_spotlight
+  module:
+    - field_group
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+  layout_library:
+    enable: false
+  field_group:
+    group_spotlight_container:
+      children: {  }
+      parent_name: ''
+      weight: 13
+      format_type: fieldset
+      region: hidden
+      format_settings:
+        id: ''
+        classes: su-spotlight-info-container
+        description: ''
+      label: spotlight-container
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+      allowed_layouts: {  }
+id: node.su_spotlight.su_vertical_card
+targetEntityType: node
+bundle: su_spotlight
+mode: su_vertical_card
+content: {  }
+hidden:
+  body: true
+  links: true
+  search_api_excerpt: true
+  su_opp_dimension: true
+  su_opp_open_to: true
+  su_opp_pathway: true
+  su_opp_service_theme: true
+  su_spotlight_background_image: true
+  su_spotlight_context: true
+  su_spotlight_feature_image: true
+  su_spotlight_graduation_year: true
+  su_spotlight_major: true
+  su_spotlight_opportunity: true
+  su_spotlight_quote: true
+  su_spotlight_student_name: true

@@ -1,0 +1,22 @@
+uuid: 8fe69a3b-a7c1-4661-bb96-23fdb8a7cc15
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: su_spotlight_stories
+label: 'Spotlight Stories'
+type: 'canonical_entities:node'
+pattern: '/stories/[node:title]'
+selection_criteria:
+  5c183125-0883-4c05-b61a-cdab4d071582:
+    id: node_type
+    bundles:
+      su_spotlight: su_spotlight
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 5c183125-0883-4c05-b61a-cdab4d071582
+selection_logic: and
+weight: -5
+relationships: {  }

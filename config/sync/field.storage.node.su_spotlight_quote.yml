@@ -1,4 +1,4 @@
-uuid: 9275d169-bbde-48fa-849a-1f5aec6509f9
+uuid: 5e126799-c3f1-4b09-bb97-006e8ac0aad2
 langcode: en
 status: true
 dependencies:
@@ -9,10 +9,8 @@ dependencies:
 third_party_settings:
   field_permissions:
     permission_type: public
-_core:
-  default_config_hash: EBUo7qOWqaiZaQ_RC9sLY5IoDKphS34v77VIHSACmVY
-id: node.body
-field_name: body
+id: node.su_spotlight_quote
+field_name: su_spotlight_quote
 entity_type: node
 type: text_with_summary
 settings: {  }
@@ -21,5 +19,5 @@ locked: false
 cardinality: 1
 translatable: true
 indexes: {  }
-persist_with_no_fields: true
+persist_with_no_fields: false
 custom_storage: false

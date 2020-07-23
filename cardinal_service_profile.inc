@@ -170,3 +170,12 @@ function cardinal_service_profile_entity_form_display_alter(EntityFormDisplayInt
   $entity_display_repo = \Drupal::service('entity_display.repository');
   $form_display = $entity_display_repo->getFormDisplay($context['entity_type'], $context['bundle'], 'authenticated_edit') ?: $form_display;
 }
+
+/**
+ * Implements hook_ui_patterns_info_alter().
+ */
+function cardinal_service_profile_ui_patterns_info_alter(array &$definitions) {
+  if (isset($definitions['yaml:quote'])) {
+    $definitions['yaml:quote']->setField('content', 'Additional Content');
+  }
+}

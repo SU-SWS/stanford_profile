@@ -1,0 +1,19 @@
+uuid: 2a38e48b-2ea4-4ffd-96b5-ffd40667fe45
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_spotlight_context
+    - node.type.su_spotlight
+id: node.su_spotlight.su_spotlight_context
+field_name: su_spotlight_context
+entity_type: node
+bundle: su_spotlight
+label: Caption/Context
+description: 'Provide some contextual information about the quote and the story.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

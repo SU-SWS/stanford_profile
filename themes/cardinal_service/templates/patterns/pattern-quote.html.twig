@@ -1,0 +1,20 @@
+<figure{{ attributes.addClass('su-quote') }}>
+  {%- if src is not empty -%}
+    <div class="su-quote__img">{{ src|render|striptags('<img> <drupal-render-placeholder>')|trim|raw }}</div>
+  {%- endif -%}
+
+  <section class="su-quote__body">
+    {%- if name is not empty -%}
+      <h3 class="su-quote__heading">{{ name|render|striptags('<drupal-render-placeholder>')|trim  }}</h3>
+    {%- endif -%}
+    {%- if bio is not empty -%}
+      <p class="su-quote__bio">{{ bio|render|striptags('<drupal-render-placeholder>')|trim }}</p>
+    {%- endif -%}
+    {%- if text is not empty -%}
+      <blockquote>
+        <p class="su-quote__quote">"{{ text|render|striptags('<drupal-render-placeholder>')|trim  }}"</p>
+      </blockquote>
+    {%- endif -%}
+    {{ content }}
+  </section>
+</figure>

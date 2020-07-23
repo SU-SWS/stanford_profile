@@ -7,9 +7,14 @@ class SpotlightContentCest {
 
   /**
    * Create a new piece of spotlight content.
+   *
+   * @group testthis
    */
   public function testSpotlightContentCreation(\AcceptanceTester $I) {
-    $I->createEntity(['type' => 'su_opportunity', 'title' => 'Foo Bar']);
+    $opportunity = $I->createEntity([
+      'type' => 'su_opportunity',
+      'title' => 'Foo Bar',
+    ]);
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/su_spotlight');
     $I->canSee("Opportunity's Information", 'summary');
@@ -20,17 +25,18 @@ class SpotlightContentCest {
     $I->fillField('Title', 'Foo Bar Spotlight');
     $I->fillField('Student Name', 'John Doe');
     $I->fillField('Major', 'Underwater Basket Weaving');
+    $I->fillField('Quote', 'Basket Weaving is fun.');
     $I->fillField('Story', 'Lorem Ipsum');
     $I->fillField('Related Opportunity', 'Foo Bar');
     $I->click('Save');
-    $I->canSee("Foo Bar Spotlight");
+    $I->canSee("Foo Bar Spotlight", 'h1');
     $I->canSee("John Doe");
     $I->canSee("Underwater Basket Weaving");
-    $I->canSee("Lorem Ipsum");
-    $I->amOnPage('/admin/content/');
-    $I->click('Foo Bar');
+    $I->cantSee("Basket Weaving is fun.");
+    $I->canSee('Lorem Ipsum');
+    $I->amOnPage($opportunity->toUrl()->toString());
     $I->canSee('John Doe');
-    $I->canSee('Underwater Basket Weaving');
+    $I->canSee('Basket Weaving is fun.');
   }
 
 }

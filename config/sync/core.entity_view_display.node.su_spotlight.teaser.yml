@@ -1,19 +1,71 @@
 uuid: f3831418-e0ec-43e5-82a0-d50d31bb6f16
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.su_spotlight.body
+    - field.field.node.su_spotlight.su_opp_dimension
+    - field.field.node.su_spotlight.su_opp_open_to
+    - field.field.node.su_spotlight.su_opp_pathway
+    - field.field.node.su_spotlight.su_opp_service_theme
     - field.field.node.su_spotlight.su_spotlight_background_image
+    - field.field.node.su_spotlight.su_spotlight_context
     - field.field.node.su_spotlight.su_spotlight_feature_image
     - field.field.node.su_spotlight.su_spotlight_graduation_year
     - field.field.node.su_spotlight.su_spotlight_major
+    - field.field.node.su_spotlight.su_spotlight_opportunity
+    - field.field.node.su_spotlight.su_spotlight_quote
     - field.field.node.su_spotlight.su_spotlight_student_name
     - node.type.su_spotlight
   module:
+    - ds
     - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes: {  }
+        wrappers:
+          card_image: div
+          card_super_headline: div
+          card_headline: div
+          card_body: div
+          card_link: div
+          card_cta_attributes: div
+          card_cta_label: div
+          card_button_label: div
+          card_media_wrapper_modifier_class: div
+          card_media_image_src: div
+          card_media_icon_image_src: div
+          card_media_video_src: div
+          card_media_content_attributes: div
+          card_media_custom: div
+          card_allow_media_link: div
+          card_icon_font_class: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      card_image:
+        - body
+        - su_opp_dimension
+        - su_opp_open_to
+        - su_opp_pathway
+        - su_opp_service_theme
+        - su_spotlight_background_image
+        - su_spotlight_feature_image
+        - su_spotlight_graduation_year
+        - su_spotlight_major
+        - su_spotlight_opportunity
+        - su_spotlight_quote
+        - su_spotlight_student_name
 id: node.su_spotlight.teaser
 targetEntityType: node
 bundle: su_spotlight
@@ -22,25 +74,23 @@ content:
   body:
     label: hidden
     type: text_summary_or_trimmed
-    weight: 101
+    weight: 0
     settings:
       trim_length: 600
     third_party_settings: {  }
     region: content
-  links:
-    weight: 100
-    settings: {  }
-    third_party_settings: {  }
-    region: content
 hidden:
+  links: true
   search_api_excerpt: true
   su_opp_dimension: true
   su_opp_open_to: true
   su_opp_pathway: true
   su_opp_service_theme: true
   su_spotlight_background_image: true
+  su_spotlight_context: true
   su_spotlight_feature_image: true
   su_spotlight_graduation_year: true
   su_spotlight_major: true
   su_spotlight_opportunity: true
+  su_spotlight_quote: true
   su_spotlight_student_name: true

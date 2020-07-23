@@ -1,9 +1,9 @@
-uuid: be9d1c91-ec3c-448e-b8ab-b34004158aac
+uuid: 65cfa3f8-3ad4-4462-9e9c-4d13311fd777
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.su_spotlight_quote
     - node.type.su_spotlight
   module:
     - allowed_formats
@@ -13,14 +13,14 @@ third_party_settings:
     stanford_html: '0'
     stanford_minimal_html: '0'
     plain_text: '0'
-id: node.su_spotlight.body
-field_name: body
+id: node.su_spotlight.su_spotlight_quote
+field_name: su_spotlight_quote
 entity_type: node
 bundle: su_spotlight
-label: Story
-description: 'Provide the entire story or testimonial from the experience.'
+label: Quote
+description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
