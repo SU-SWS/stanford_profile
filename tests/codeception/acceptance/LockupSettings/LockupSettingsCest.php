@@ -253,13 +253,30 @@ class LockupSettingsCest {
 
     // Add custom logo.
     $I->uncheckOption('#edit-su-use-theme-logo-value');
-    $webdriver = $this->getModule('WebDriver');
-    $webdriver->getSession()->getPage()->attachFileToField('input[name="files[su_upload_logo_image_0]"]', dirname(__FILE__) . '/logo.jpg');
-    $I->waitForElement("input[name='su_upload_logo_image[0][alt]']");
+
+    // In case there was an image already.
+    try {
+      $I->click("Remove");
+    }
+    catch(Exception $e) {
+      // Do nothing and carry on.
+    }
+
+    try {
+      // For CircleCI
+      $I->attachFile('input[name="files[su_upload_logo_image_0]"]', '../acceptance/LockupSettings/logo.jpg');
+    }
+    catch(Exception $e) {
+      // For Local.
+      $uglyHack = "../../../../../../..";
+      $I->attachFile('input[name="files[su_upload_logo_image_0]"]', $uglyHack . __DIR__ . '/logo.jpg');
+    }
+
+    $I->click('Upload');
     $I->fillField("input[name='su_upload_logo_image[0][alt]']", "Alternative Text");
 
     $I->click('Save');
-    $I->runDrush('cache-clear router');
+    $I->runDrush('cr');
     $I->amOnPage('/');
     $I->assertNotEmpty($I->grabAttributeFrom('.su-masthead img', 'alt'));
     $I->canSee("Site title line");

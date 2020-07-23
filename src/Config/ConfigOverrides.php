@@ -158,11 +158,19 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     }
 
     $fid = $file_field->getValue()['target_id'];
-    if ($fid) {
-      $file_uri = $this->entityTypeManager->getStorage('file')->load($fid)->getFileUri();
-      $file_path = file_url_transform_relative(file_create_url($file_uri));
-      $overrides[$theme_name . '.settings']['logo']['path'] = $file_path;
+    if (!$fid) {
+      return;
     }
+
+    $file = $this->entityTypeManager->getStorage('file')->load($fid);
+
+    if (!$file) {
+      return;
+    }
+
+    $file_uri = $file->getFileUri();
+    $file_path = file_url_transform_relative(file_create_url($file_uri));
+    $overrides[$theme_name . '.settings']['logo']['path'] = $file_path;
   }
 
   /**
