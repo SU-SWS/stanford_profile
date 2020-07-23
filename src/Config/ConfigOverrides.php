@@ -122,38 +122,52 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    *   Keyed array of config overrides.
    */
   protected function setLockupOverrides(array $names, array &$overrides) {
-    if ($this->configFactory && !in_array('system.theme', $names)) {
-      $theme_info = $this->configFactory->get('system.theme');
-      // Active default theme.
-      if ($this->configPagesLoader && in_array($theme_info->get('default') . '.settings', $names)) {
-        $theme_name = $theme_info->get('default');
-        $config_page = $this->configPagesLoader->load('lockup_settings');
 
-        // Do the overrides.
-        if ($config_page) {
-          $overrides[$theme_name . '.settings']['lockup']['option'] = $config_page->get('su_lockup_options')->getString();
-          $overrides[$theme_name . '.settings']['lockup']['line1'] = $config_page->get('su_line_1')->getString();
-          $overrides[$theme_name . '.settings']['lockup']['line2'] = $config_page->get('su_line_2')->getString();
-          $overrides[$theme_name . '.settings']['lockup']['line3'] = $config_page->get('su_line_3')->getString();
-          $overrides[$theme_name . '.settings']['lockup']['line4'] = $config_page->get('su_line_4')->getString();
-          $overrides[$theme_name . '.settings']['lockup']['line5'] = $config_page->get('su_line_5')->getString();
-          $overrides[$theme_name . '.settings']['use_logo'] = ($config_page->get('su_use_theme_logo')->getString() == "1") ? TRUE : FALSE;
-
-          // If the file upload is available we need to change the path to
-          // a relative path to the files directory.
-          $file_field = $config_page->get('su_upload_logo_image')->first();
-          if ($file_field) {
-            $fid = $file_field->getValue()['target_id'];
-            if ($fid) {
-              $file_uri = $this->entityTypeManager->getStorage('file')->load($fid)->getFileUri();
-              $file_path = file_url_transform_relative(file_create_url($file_uri));
-              $overrides[$theme_name . '.settings']['logo']['use_default'] = $overrides[$theme_name . '.settings']['use_logo'];
-              $overrides[$theme_name . '.settings']['logo']['path'] = $file_path;
-            }
-          }
-        }
-      }
+    // Avoid circular loops.
+    if (!$this->configFactory || in_array('system.theme', $names)) {
+      return;
     }
+
+    // Avoid times where we don't have access to the services or the theme
+    // we want to change is not in the array.
+    $theme_info = $this->configFactory->get('system.theme');
+    if (!$this->configPagesLoader || !in_array($theme_info->get('default') . '.settings', $names)) {
+      return;
+    }
+
+    // Active default theme.
+    $theme_name = $theme_info->get('default');
+    $config_page = $this->configPagesLoader->load('lockup_settings');
+
+    // Failed to load the config page for some reason.
+    if (!$config_page) {
+      return;
+    }
+
+    // Do the overrides.
+    $overrides[$theme_name . '.settings']['lockup']['option'] = $config_page->get('su_lockup_options')->getString();
+    $overrides[$theme_name . '.settings']['lockup']['line1'] = $config_page->get('su_line_1')->getString();
+    $overrides[$theme_name . '.settings']['lockup']['line2'] = $config_page->get('su_line_2')->getString();
+    $overrides[$theme_name . '.settings']['lockup']['line3'] = $config_page->get('su_line_3')->getString();
+    $overrides[$theme_name . '.settings']['lockup']['line4'] = $config_page->get('su_line_4')->getString();
+    $overrides[$theme_name . '.settings']['lockup']['line5'] = $config_page->get('su_line_5')->getString();
+    $overrides[$theme_name . '.settings']['use_logo'] = ($config_page->get('su_use_theme_logo')->getString() == "1") ? TRUE : FALSE;
+    $overrides[$theme_name . '.settings']['logo']['use_default'] = $overrides[$theme_name . '.settings']['use_logo'];
+
+    // If the file upload is available we need to change the path to
+    // a relative path to the files directory.
+    $file_field = $config_page->get('su_upload_logo_image')->first();
+    if (!$file_field) {
+      return;
+    }
+
+    $fid = $file_field->getValue()['target_id'];
+    if ($fid) {
+      $file_uri = $this->entityTypeManager->getStorage('file')->load($fid)->getFileUri();
+      $file_path = file_url_transform_relative(file_create_url($file_uri));
+      $overrides[$theme_name . '.settings']['logo']['path'] = $file_path;
+    }
+
   }
 
   /**
