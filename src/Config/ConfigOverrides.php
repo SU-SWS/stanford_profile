@@ -6,9 +6,10 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ConfigFactoryOverrideInterface;
 use Drupal\Core\Config\StorageInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\config_pages\ConfigPagesInterface;
 
 /**
  * Config overrides for stanford profile.
@@ -122,6 +123,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    *   Keyed array of config overrides.
    */
   protected function setLockupOverrides(array $names, array &$overrides) {
+
     // Avoid circular loops.
     if (!$this->configFactory || in_array('system.theme', $names)) {
       return;
@@ -133,6 +135,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
       return;
     }
 
+    // Get the default theme from the config.
     $theme_name = $theme_info->get('default');
     $config_page = $this->configPagesLoader->load('lockup_settings');
 
@@ -142,6 +145,24 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     }
 
     // Do the overrides.
+    $this->setLockupTextOverrides($overrides, $theme_name, $config_page);
+
+    // Get and set a file path that is relative to the site base dir.
+    $this->setLockupFileOverrides($overrides, $theme_name, $config_page);
+
+  }
+
+  /**
+   * Set the lockup text overrides.
+   *
+   * @param array $overrides
+   *   The array of overrides.
+   * @param string $theme_name
+   *   The name of the default theme.
+   * @param \Drupal\config_pages\ConfigPagesInterface $config_page
+   *   A config page object.
+   */
+  protected function setLockupTextOverrides(array &$overrides, $theme_name, ConfigPagesInterface $config_page) {
     $overrides[$theme_name . '.settings']['lockup']['option'] = $config_page->get('su_lockup_options')->getString();
     $overrides[$theme_name . '.settings']['lockup']['line1'] = $config_page->get('su_line_1')->getString();
     $overrides[$theme_name . '.settings']['lockup']['line2'] = $config_page->get('su_line_2')->getString();
@@ -150,8 +171,19 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     $overrides[$theme_name . '.settings']['lockup']['line5'] = $config_page->get('su_line_5')->getString();
     $overrides[$theme_name . '.settings']['use_logo'] = ($config_page->get('su_use_theme_logo')->getString() == "1") ? TRUE : FALSE;
     $overrides[$theme_name . '.settings']['logo']['use_default'] = $overrides[$theme_name . '.settings']['use_logo'];
+  }
 
-    // Get and set a file path that is relative to the site base dir.
+  /**
+   * Set the lockup file/logo overrides.
+   *
+   * @param array $overrides
+   *   The array of overrides.
+   * @param string $theme_name
+   *   The name of the default theme.
+   * @param \Drupal\config_pages\ConfigPagesInterface $config_page
+   *   A config page object.
+   */
+  protected function setLockupFileOverrides(array &$overrides, $theme_name, ConfigPagesInterface $config_page) {
     $file_field = $config_page->get('su_upload_logo_image')->first();
     if (!$file_field) {
       return;
@@ -163,7 +195,6 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     }
 
     $file = $this->entityTypeManager->getStorage('file')->load($fid);
-
     if (!$file) {
       return;
     }
