@@ -154,8 +154,8 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     $theme_name = $theme_info->get('default');
     $config_page = $this->configPagesLoader->load('lockup_settings');
 
-    // Failed to load the config page for some reason.
-    if (!$config_page) {
+    // Failed to load the config page or not enabled.
+    if (!$config_page || empty($config_page->get('su_lockup_options')->getString())) {
       return;
     }
 
