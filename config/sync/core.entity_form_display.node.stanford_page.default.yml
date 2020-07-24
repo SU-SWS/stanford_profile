@@ -7,11 +7,37 @@ dependencies:
     - field.field.node.stanford_page.layout_selection
     - field.field.node.stanford_page.su_page_banner
     - field.field.node.stanford_page.su_page_components
+    - field.field.node.stanford_page.su_page_resource_audience
+    - field.field.node.stanford_page.su_page_resource_dimension
+    - field.field.node.stanford_page.su_page_resource_icon
+    - field.field.node.stanford_page.su_page_resource_type
     - node.type.stanford_page
   module:
+    - field_group
+    - media_library
     - paragraphs
     - path
     - react_paragraphs
+    - scheduler
+third_party_settings:
+  field_group:
+    group_resources:
+      children:
+        - su_page_resource_type
+        - su_page_resource_audience
+        - su_page_resource_dimension
+        - su_page_resource_icon
+      parent_name: ''
+      weight: 16
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Resources
 id: node.stanford_page.default
 targetEntityType: node
 bundle: stanford_page
@@ -44,15 +70,15 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 20
+    weight: 11
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   status:
     type: boolean_checkbox
     settings:
@@ -94,6 +120,31 @@ content:
     third_party_settings: {  }
     type: react_paragraphs
     region: content
+  su_page_resource_audience:
+    weight: 15
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  su_page_resource_dimension:
+    weight: 16
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  su_page_resource_icon:
+    type: media_library_widget
+    weight: 17
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  su_page_resource_type:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -114,7 +165,7 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }

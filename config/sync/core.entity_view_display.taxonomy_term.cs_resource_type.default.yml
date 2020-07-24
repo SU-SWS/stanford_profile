@@ -1,0 +1,33 @@
+uuid: e20e8051-6e08-4fc9-95ec-dfd095c50dec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.cs_resource_type.su_resource_type_icon
+    - taxonomy.vocabulary.cs_resource_type
+  module:
+    - image
+    - text
+id: taxonomy_term.cs_resource_type.default
+targetEntityType: taxonomy_term
+bundle: cs_resource_type
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  su_resource_type_icon:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  search_api_excerpt: true

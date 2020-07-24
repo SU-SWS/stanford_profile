@@ -1,0 +1,28 @@
+uuid: 13a1a04e-b8ca-42e2-b310-53cb5cab859a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_page_resource_icon
+    - media.type.image
+    - node.type.stanford_page
+id: node.stanford_page.su_page_resource_icon
+field_name: su_page_resource_icon
+entity_type: node
+bundle: stanford_page
+label: 'Resource Icon'
+description: 'Use this to override the icon provided by the resource type.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

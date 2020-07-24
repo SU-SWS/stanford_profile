@@ -1,0 +1,24 @@
+uuid: fba13019-17f0-4ea7-8aa1-c57e018e65c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - media
+    - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.su_page_resource_icon
+field_name: su_page_resource_icon
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

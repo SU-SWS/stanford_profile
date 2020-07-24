@@ -1,0 +1,29 @@
+uuid: 8ca35169-e283-4bf4-9963-98f7eed56c5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_page_resource_dimension
+    - node.type.stanford_page
+    - taxonomy.vocabulary.su_opportunity_dimension
+id: node.stanford_page.su_page_resource_dimension
+field_name: su_page_resource_dimension
+entity_type: node
+bundle: stanford_page
+label: 'Resource Dimension'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      su_opportunity_dimension: su_opportunity_dimension
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

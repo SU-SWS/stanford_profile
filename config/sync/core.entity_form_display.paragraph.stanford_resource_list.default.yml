@@ -1,0 +1,23 @@
+uuid: ea7f102f-9c3d-4cd1-860c-f36a343d3962
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_resource_list.su_resource_list
+    - paragraphs.paragraphs_type.stanford_resource_list
+  module:
+    - viewfield
+id: paragraph.stanford_resource_list.default
+targetEntityType: paragraph
+bundle: stanford_resource_list
+mode: default
+content:
+  su_resource_list:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: viewfield_select
+    region: content
+hidden:
+  created: true
+  status: true

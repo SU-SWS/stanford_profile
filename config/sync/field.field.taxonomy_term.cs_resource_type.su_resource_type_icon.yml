@@ -1,0 +1,38 @@
+uuid: 6b9f991c-0012-4a7d-86cc-3f4869a33405
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.su_resource_type_icon
+    - taxonomy.vocabulary.cs_resource_type
+  module:
+    - image
+id: taxonomy_term.cs_resource_type.su_resource_type_icon
+field_name: su_resource_type_icon
+entity_type: taxonomy_term
+bundle: cs_resource_type
+label: 'Resource Type Icon'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: media/resources
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: 400x400
+  min_resolution: ''
+  alt_field: false
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

@@ -1,0 +1,25 @@
+uuid: 56f2fa60-ba67-413b-9f6d-a662aea1d79f
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - paragraphs
+    - viewfield
+    - views
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: paragraph.su_resource_list
+field_name: su_resource_list
+entity_type: paragraph
+type: viewfield
+settings:
+  target_type: view
+module: viewfield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
