@@ -10,6 +10,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\config_pages\ConfigPagesInterface;
+use Drupal\Core\StreamWrapper\StreamWrapperManagerInterface;
 
 /**
  * Config overrides for stanford profile.
@@ -47,6 +48,13 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
   protected $entityTypeManager;
 
   /**
+   * StreamWrapperInterface service.
+   *
+   * @var \Drupal\Core\StreamWrapper\StreamWrapperManagerInterface
+   */
+  protected $streamWrapperManager;
+
+  /**
    * ConfigOverrides constructor.
    *
    * @param \Drupal\Core\State\StateInterface $state
@@ -57,12 +65,15 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    *   Config factory service.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface|null $entity_type_manager
    *   Entity type manager interface.
+   * @param \Drupal\Core\StreamWrapper\StreamWrapperManagerInterface|null $stream_wrapper_manager
+   *   Stream wrapper manager interface.
    */
   public function __construct(
     StateInterface $state,
     ConfigPagesLoaderServiceInterface $config_pages_loader = NULL,
     ConfigFactoryInterface $config_factory = NULL,
-    EntityTypeManagerInterface $entity_type_manager = NULL
+    EntityTypeManagerInterface $entity_type_manager = NULL,
+    StreamWrapperManagerInterface $stream_wrapper_manager = NULL
   ) {
     $this->state = $state;
 
@@ -76,6 +87,10 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
 
     if ($entity_type_manager) {
       $this->entityTypeManager = $entity_type_manager;
+    }
+
+    if ($stream_wrapper_manager) {
+      $this->streamWrapperManager = $stream_wrapper_manager;
     }
   }
 
@@ -131,7 +146,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
 
     // Validate we are working with the info we need.
     $theme_info = $this->configFactory->get('system.theme');
-    if (!$this->configPagesLoader || !in_array($theme_info->get('default') . '.settings', $names)) {
+    if (!$this->configPagesLoader || !$theme_info || !in_array($theme_info->get('default') . '.settings', $names)) {
       return;
     }
 
@@ -185,6 +200,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    */
   protected function setLockupFileOverrides(array &$overrides, $theme_name, ConfigPagesInterface $config_page) {
     $file_field = $config_page->get('su_upload_logo_image')->first();
+
     if (!$file_field) {
       return;
     }
@@ -200,7 +216,10 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     }
 
     $file_uri = $file->getFileUri();
-    $file_path = file_url_transform_relative(file_create_url($file_uri));
+
+    $wrapper = $this->streamWrapperManager->getViaUri($file_uri);
+    $file_path = $wrapper->getExternalUrl();
+
     $overrides[$theme_name . '.settings']['logo']['path'] = $file_path;
   }
 
