@@ -24,6 +24,7 @@ class LockupSettingsCest {
       // Do nothing and carry on.
     }
     $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->checkOption('#edit-su-lockup-enabled-value');
     $I->click('Save');
   }
 
@@ -42,6 +43,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption('#edit-su-lockup-options', 'a');
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -62,6 +64,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption("#edit-su-lockup-options", "b");
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -82,6 +85,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption("#edit-su-lockup-options", "d");
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -102,6 +106,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption("#edit-su-lockup-options", "e");
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -123,6 +128,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption("#edit-su-lockup-options", "h");
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -144,6 +150,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption("#edit-su-lockup-options", "i");
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -165,6 +172,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption("#edit-su-lockup-options", "o");
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -184,6 +192,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption("#edit-su-lockup-options", "p");
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -204,6 +213,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption("#edit-su-lockup-options", "r");
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -223,6 +233,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption("#edit-su-lockup-options", "s");
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -244,6 +255,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption("#edit-su-lockup-options", "t");
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->fillField('Line 1', 'Site title line');
@@ -266,6 +278,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption('#edit-su-lockup-options', 'a');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
@@ -312,6 +325,7 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
     $I->selectOption('#edit-su-lockup-options', 'none');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');

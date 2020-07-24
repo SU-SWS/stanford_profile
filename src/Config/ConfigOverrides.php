@@ -155,7 +155,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     $config_page = $this->configPagesLoader->load('lockup_settings');
 
     // Failed to load the config page or not enabled.
-    if (!$config_page || empty($config_page->get('su_lockup_options')->getString())) {
+    if (!$config_page || $config_page->get('su_lockup_enabled')->getString() == "1") {
       return;
     }
 

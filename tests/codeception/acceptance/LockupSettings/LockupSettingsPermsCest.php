@@ -11,7 +11,7 @@ class LockupSettingsPermsCest {
   public function testSiteManagerRole(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/lockup-settings');
-    $I->canSee('Lockup Options');
+    $I->canSee('Edit config page Lockup Settings');
     $I->canSeeResponseCodeIs(200);
   }
 
