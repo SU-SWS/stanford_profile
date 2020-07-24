@@ -153,9 +153,9 @@ class ConfigOverridesTest extends UnitTestCase {
     $overrides = $overrideService->loadOverrides(['system.theme']);
 
     // Test a failed get image from config page.
-    $obj = $this->createMock(FieldItemListInterface::class);
-    $obj->method('first')->willReturn(FALSE);
-    $config_pages->method('get')->willReturn($obj);
+    $config_page = $this->createMock(ConfigPages::class);
+    $config_page->method('get')->willReturn(FALSE);
+    $config_pages->method('load')->willReturn($config_page);
     $overrideService = new ConfigOverrides($state, $config_pages, $config_factory, $entity_manager, $stream_wrapper_manager);
     $overrides = $overrideService->loadOverrides(['stanford_basic.settings']);
     $this->assertTrue(is_array($overrides));
@@ -166,7 +166,9 @@ class ConfigOverridesTest extends UnitTestCase {
     $obj->method('first')->will(
       $this->returnSelf()
     );
-    $config_pages->method('get')->willReturn($obj);
+    $config_page = $this->createMock(ConfigPages::class);
+    $config_page->method('get')->willReturn($obj);
+    $config_pages->method('load')->willReturn($config_page);
     $overrideService = new ConfigOverrides($state, $config_pages, $config_factory, $entity_manager, $stream_wrapper_manager);
     $overrides = $overrideService->loadOverrides(['stanford_basic.settings']);
     $this->assertTrue(is_array($overrides));
