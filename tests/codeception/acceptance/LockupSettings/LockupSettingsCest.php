@@ -6,6 +6,28 @@
 class LockupSettingsCest {
 
   /**
+   * Always cleanup the config after testing.
+   *
+   * @param \AcceptanceTester $I
+   *   Tester.
+   */
+  public function _after(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/config/system/lockup-settings');
+    $I->selectOption("#edit-su-lockup-options", "a");
+    $I->uncheckOption('#edit-su-use-theme-logo-value');
+    // In case there was an image already.
+    try {
+      $I->click("Remove");
+    }
+    catch(Exception $e) {
+      // Do nothing and carry on.
+    }
+    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->click('Save');
+  }
+
+  /**
    * Test the lockup exists.
    */
   public function testLockupSettings(AcceptanceTester $I) {
