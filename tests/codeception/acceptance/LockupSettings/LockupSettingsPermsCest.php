@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Test for the lockup settings
+ * Test for the lockup settings permissions.
  */
-class LockupSettingsCest {
+class LockupSettingsPermsCest {
 
   /**
    * Test access to lockup settings overrides.
