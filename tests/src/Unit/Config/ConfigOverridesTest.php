@@ -145,6 +145,38 @@ class ConfigOverridesTest extends UnitTestCase {
       ],
     ];
     $this->assertArrayEquals($expected, $overrides);
+
+    // TEST SOME FAILURES FOR MORE COVERAGE.
+    // -------------------------------------------------------------------------
+
+    // Test to avoid circular ref.
+    $overrides = $overrideService->loadOverrides(['system.theme']);
+
+    // Test a failed get image from config page.
+    $obj = $this->createMock(FieldItemListInterface::class);
+    $obj->method('first')->willReturn(FALSE);
+    $config_pages->method('get')->willReturn($obj);
+    $overrideService = new ConfigOverrides($state, $config_pages, $config_factory, $entity_manager, $stream_wrapper_manager);
+    $overrides = $overrideService->loadOverrides(['stanford_basic.settings']);
+    $this->assertTrue(is_array($overrides));
+
+    // Test a failed get image fid.
+    $obj = $this->createMock(FieldItemListInterface::class);
+    $obj->method('getValue')->willReturn(FALSE);
+    $obj->method('first')->will(
+      $this->returnSelf()
+    );
+    $config_pages->method('get')->willReturn($obj);
+    $overrideService = new ConfigOverrides($state, $config_pages, $config_factory, $entity_manager, $stream_wrapper_manager);
+    $overrides = $overrideService->loadOverrides(['stanford_basic.settings']);
+    $this->assertTrue(is_array($overrides));
+
+    // Test a failed config page load.
+    $config_pages->method('load')->willReturn(FALSE);
+    $overrideService = new ConfigOverrides($state, $config_pages, $config_factory, $entity_manager, $stream_wrapper_manager);
+    $overrides = $overrideService->loadOverrides(['stanford_basic.settings']);
+    $this->assertTrue(is_array($overrides));
+
   }
 
   /**

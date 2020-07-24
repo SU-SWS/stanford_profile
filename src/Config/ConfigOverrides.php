@@ -211,12 +211,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     }
 
     $file = $this->entityTypeManager->getStorage('file')->load($fid);
-    if (!$file) {
-      return;
-    }
-
     $file_uri = $file->getFileUri();
-
     $wrapper = $this->streamWrapperManager->getViaUri($file_uri);
     $file_path = $wrapper->getExternalUrl();
 
