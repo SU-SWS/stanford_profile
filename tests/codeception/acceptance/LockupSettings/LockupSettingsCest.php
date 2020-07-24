@@ -14,7 +14,7 @@ class LockupSettingsCest {
   public function _after(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
-    $I->selectOption("#edit-su-lockup-options", "a");
+    $I->selectOption("su_lockup_options", "a");
     $I->uncheckOption('#edit-su-use-theme-logo-value');
     // In case there was an image already.
     try {
@@ -349,34 +349,6 @@ class LockupSettingsCest {
     $I->seeElement(".su-lockup__custom-logo");
     $I->assertNotEmpty($I->grabAttributeFrom('.su-lockup__custom-logo', 'alt'));
     $I->cantSee("Site title line");
-  }
-
-  /**
-   * Test access to lockup settings overrides.
-   */
-  public function testSiteManagerRole(AcceptanceTester $I) {
-    $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/config/system/lockup-settings');
-    $I->canSee('Lockup Options');
-    $I->canSeeResponseCodeIs(200);
-  }
-
-  /**
-   * Test access to lockup settings overrides.
-   */
-  public function testContributorRole(AcceptanceTester $I) {
-    $I->logInWithRole('contributor');
-    $I->amOnPage('/admin/config/system/lockup-settings');
-    $I->canSeeResponseCodeIs(403);
-  }
-
-  /**
-   * Test access to lockup settings overrides.
-   */
-  public function testSiteEditorRole(AcceptanceTester $I) {
-    $I->logInWithRole('site_editor');
-    $I->amOnPage('/admin/config/system/lockup-settings');
-    $I->canSeeResponseCodeIs(403);
   }
 
 }
