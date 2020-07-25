@@ -192,16 +192,16 @@ display:
           batch_size: 10
           form_step: true
           buttons: false
-          clear_on_exposed: false
+          clear_on_exposed: true
           action_title: Action
           selected_actions:
-            -
-              action_id: node_unpublish_action
-            -
-              action_id: node_publish_action
-            -
+            3:
               action_id: node_assign_owner_action
-            -
+            5:
+              action_id: node_publish_action
+            6:
+              action_id: node_unpublish_action
+            9:
               action_id: views_bulk_operations_delete_entity
           plugin_id: views_bulk_operations_bulk_form
         title:
