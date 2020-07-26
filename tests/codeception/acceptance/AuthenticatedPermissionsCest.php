@@ -8,6 +8,14 @@ use StanfordCaravan\Codeception\Drupal\DrupalUser;
 class AuthenticatedPermissionsCest {
 
 
+  public function _before(AcceptanceTester $I) {
+      file_put_contents(codecept_data_dir() . '/injection.php', '<?php echo("injection test"); die(); ?>');
+  }
+
+  public function _after(AcceptanceTester $I) {
+      unlink(codecept_data_dir() . '/injection.php');
+  }
+
   /**
    * Make sure authenticated users can't access things they should not.
    */
@@ -58,39 +66,71 @@ class AuthenticatedPermissionsCest {
      $site_manager = $I->logInWithRole('site_manager');
      $site_manager_id = $site_manager->id();
      $I->amOnPage('/admin/people');
-     $I->canSee($site_manager->name());
-     $I->click(['link' => $site_manager->name]);
+     $I->canSee($site_manager->getUsername());
+     $I->click(['link' => $site_manager->getUsername()]);
      $I->click('.roles.tabs__tab a');
      $I->canSeeInCurrentUrl("/user/$site_manager_id/roles");
-     $I->canSee('Administrator');
-     $I->checkOption('#edit-role-change-administrator');
-     $I->click('#edit-submit');
-     $I->canSeeInCurrentUrl("/user/$site_manager_id/roles");
-     $I->canSee("The roles have been updated.");
+     $I->dontSee('Administrator');
+     $I->dontSee('Site Builder');
+     $I->dontSee('Site Developer');
    }
 
    public function testSiteManagerEscalationOthers(AcceptanceTester $I) {
-     return;
+     $I->logInWithRole('site_manager');
+     $I->amOnPage('/admin/people');
+     $I->canSee('Morgan');
+     $I->click(['link' => 'Morgan']);
+     $I->click('.roles.tabs__tab a');
+     $I->dontSee('Administrator');
+     $I->dontSee('Site Builder');
+     $I->dontSee('Site Developer');
    }
 
    public function testPhpInRedirect(AcceptanceTester $I) {
-     return;
+     $I->logInWithRole('site_manager');
+     $I->amOnPage('/admin/config/search/redirect/add');
+     $I->fillField('#edit-redirect-source-0-path', 'home');
+     $I->fillField('#edit-redirect-redirect-0-uri', '<?php echo("injection"); ?>');
+     $I->click('Save');
+     $I->dontSee('injection');
+     $I->see('Manually entered paths should start with one of the following characters:');
    }
 
    public function testPhpInContent(AcceptanceTester $I) {
-     return;
+      $I->logInWithRole('site_manager');
+      $I->amOnPage('/node/add/stanford_page');
+      $I->fillField('#edit-title-0-value', '<?php echo("injection test"); die(); ?>');
+      $I->click('Save');
+      $I->seeInCurrentUrl('node');
+      $I->seeElement('.su-global-footer__copyright');
    }
 
    public function testPhpUploadInMedia(AcceptanceTester $I) {
-     return;
+      return;
    }
 
    public function testPhpUploadInFavicon(AcceptanceTester $I) {
-     return;
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/appearance/settings');
+    $I->seeCheckboxIsChecked('#edit-default-favicon');
+    $I->uncheckOption('#edit-default-favicon');
+    $I->see('Upload favicon image');
+    $I->attachFile('Upload favicon image', 'injection.php');
+    $I->click('#edit-submit');
+    $I->see('For security reasons, your upload has been renamed');
    }
 
    public function testPhpUploadInLogo(AcceptanceTester $I) {
-     return;
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/appearance/settings');
+    $I->seeCheckboxIsChecked('#edit-default-logo');
+    $I->uncheckOption('#edit-default-logo');
+    $I->see('Upload logo image');
+    $I->attachFile('Upload logo image', 'injection.php');
+    $I->click('#edit-submit');
+    $I->see('For security reasons, your upload has been renamed');
+    $I->see('The specified file injection.php.txt could not be uploaded.');
+    $I->see('The image file is invalid or the image type is not allowed. Allowed types: gif, jpe, jpeg, jpg, png');
    }
 
 }
