@@ -1,0 +1,17 @@
+uuid: 49586ca9-dc98-4743-88d2-6766a95b64a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: square_1900
+label: 'Square - 1900'
+effects:
+  578f3e25-6a90-4db7-a90c-91ce8bf4d99e:
+    uuid: 578f3e25-6a90-4db7-a90c-91ce8bf4d99e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1900
+      height: 1900
+      crop_type: focal_point
