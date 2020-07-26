@@ -3,17 +3,20 @@
 /**
  * Test the restrictions on authenticated users.
  */
-use StanfordCaravan\Codeception\Drupal\DrupalUser;
-
 class AuthenticatedPermissionsCest {
 
-
+  /**
+   * Set up a file to test PHP injection.
+   */
   public function _before(AcceptanceTester $I) {
-      file_put_contents(codecept_data_dir() . '/injection.php', '<?php echo("injection test"); die(); ?>');
+    file_put_contents(codecept_data_dir() . '/injection.php', '<?php echo("injection test"); die(); ?>');
   }
 
+  /**
+   * Remove the php injection file.
+   */
   public function _after(AcceptanceTester $I) {
-      unlink(codecept_data_dir() . '/injection.php');
+    unlink(codecept_data_dir() . '/injection.php');
   }
 
   /**
@@ -53,63 +56,64 @@ class AuthenticatedPermissionsCest {
   }
 
   /**
-   * Site Manager cannot escalate own role above Site Manager
-   * Site Manager cannot escalate the role of others above Site Manager
-   * PHP entered in a redirect gets sanitized
-   * PHP code gets sanitized on content creation
-   * Try to upload a PHP file in Media and it fails form validation
-   * Try to upload a PHP file as a favicon in theme settings and have it fail (error message for me was "For security reasons, your upload has been renamed to foo.php.txt.")
-   * Try to upload a PHP file as a logo in theme settings and have it fail (error message for me was "The image file is invalid or the image type is not allowed. Allowed types: gif, jpe, jpeg, jpg, png")
+   * Site Manager cannot escalate their own role above Site Manager.
    */
+  public function testSiteManagerEscalationSelf(AcceptanceTester $I) {
+    $site_manager = $I->logInWithRole('site_manager');
+    $site_manager_id = $site_manager->id();
+    $I->amOnPage('/admin/people');
+    $I->canSee($site_manager->getUsername());
+    $I->click(['link' => $site_manager->getUsername()]);
+    $I->click('.roles.tabs__tab a');
+    $I->canSeeInCurrentUrl("/user/$site_manager_id/roles");
+    $I->dontSee('Administrator');
+    $I->dontSee('Site Builder');
+    $I->dontSee('Site Developer');
+  }
 
-   public function testSiteManagerEscalationSelf(AcceptanceTester $I) {
-     $site_manager = $I->logInWithRole('site_manager');
-     $site_manager_id = $site_manager->id();
-     $I->amOnPage('/admin/people');
-     $I->canSee($site_manager->getUsername());
-     $I->click(['link' => $site_manager->getUsername()]);
-     $I->click('.roles.tabs__tab a');
-     $I->canSeeInCurrentUrl("/user/$site_manager_id/roles");
-     $I->dontSee('Administrator');
-     $I->dontSee('Site Builder');
-     $I->dontSee('Site Developer');
-   }
+  /**
+   * Site Manager cannot escalate others' role above Site Manager.
+   */
+  public function testSiteManagerEscalationOthers(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/people');
+    $I->canSee('Morgan');
+    $I->click(['link' => 'Morgan']);
+    $I->click('.roles.tabs__tab a');
+    $I->dontSee('Administrator');
+    $I->dontSee('Site Builder');
+    $I->dontSee('Site Developer');
+  }
 
-   public function testSiteManagerEscalationOthers(AcceptanceTester $I) {
-     $I->logInWithRole('site_manager');
-     $I->amOnPage('/admin/people');
-     $I->canSee('Morgan');
-     $I->click(['link' => 'Morgan']);
-     $I->click('.roles.tabs__tab a');
-     $I->dontSee('Administrator');
-     $I->dontSee('Site Builder');
-     $I->dontSee('Site Developer');
-   }
+  /**
+   * PHP code is not allowed in redirects.
+   */
+  public function testPhpInRedirect(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/config/search/redirect/add');
+    $I->fillField('#edit-redirect-source-0-path', 'home');
+    $I->fillField('#edit-redirect-redirect-0-uri', '<?php echo("injection"); ?>');
+    $I->click('Save');
+    $I->dontSee('injection');
+    $I->see('Manually entered paths should start with one of the following characters:');
+  }
 
-   public function testPhpInRedirect(AcceptanceTester $I) {
-     $I->logInWithRole('site_manager');
-     $I->amOnPage('/admin/config/search/redirect/add');
-     $I->fillField('#edit-redirect-source-0-path', 'home');
-     $I->fillField('#edit-redirect-redirect-0-uri', '<?php echo("injection"); ?>');
-     $I->click('Save');
-     $I->dontSee('injection');
-     $I->see('Manually entered paths should start with one of the following characters:');
-   }
+  /**
+   * PHP code is escaped and not run when added to content.
+   */
+  public function testPhpInContent(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/node/add/stanford_page');
+    $I->fillField('#edit-title-0-value', '<?php echo("injection test"); die(); ?>');
+    $I->click('Save');
+    $I->seeInCurrentUrl('node');
+    $I->seeElement('.su-global-footer__copyright');
+  }
 
-   public function testPhpInContent(AcceptanceTester $I) {
-      $I->logInWithRole('site_manager');
-      $I->amOnPage('/node/add/stanford_page');
-      $I->fillField('#edit-title-0-value', '<?php echo("injection test"); die(); ?>');
-      $I->click('Save');
-      $I->seeInCurrentUrl('node');
-      $I->seeElement('.su-global-footer__copyright');
-   }
-
-   public function testPhpUploadInMedia(AcceptanceTester $I) {
-      return;
-   }
-
-   public function testPhpUploadInFavicon(AcceptanceTester $I) {
+  /**
+   * PHP files are not allowed as uploads for favicons.
+   */
+  public function testPhpUploadInFavicon(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance/settings');
     $I->seeCheckboxIsChecked('#edit-default-favicon');
@@ -118,9 +122,12 @@ class AuthenticatedPermissionsCest {
     $I->attachFile('Upload favicon image', 'injection.php');
     $I->click('#edit-submit');
     $I->see('For security reasons, your upload has been renamed');
-   }
+  }
 
-   public function testPhpUploadInLogo(AcceptanceTester $I) {
+  /**
+   * PHP files are not allowed as uploads for the logo.
+   */
+  public function testPhpUploadInLogo(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance/settings');
     $I->seeCheckboxIsChecked('#edit-default-logo');
@@ -131,6 +138,6 @@ class AuthenticatedPermissionsCest {
     $I->see('For security reasons, your upload has been renamed');
     $I->see('The specified file injection.php.txt could not be uploaded.');
     $I->see('The image file is invalid or the image type is not allowed. Allowed types: gif, jpe, jpeg, jpg, png');
-   }
+  }
 
 }
