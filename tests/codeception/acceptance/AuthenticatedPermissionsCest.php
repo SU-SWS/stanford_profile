@@ -78,7 +78,7 @@ class AuthenticatedPermissionsCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/people');
     $I->canSee('Morgan');
-    $I->click(['link' => 'Morgan']);
+    $I->click('Morgan');
     $I->click('.roles.tabs__tab a');
     $I->dontSee('Administrator');
     $I->dontSee('Site Builder');
@@ -122,6 +122,8 @@ class AuthenticatedPermissionsCest {
     $I->attachFile('Upload favicon image', 'injection.php');
     $I->click('#edit-submit');
     $I->see('For security reasons, your upload has been renamed');
+    $I->checkOption('#edit-default-favicon');
+    $I->click('#edit-submit');
   }
 
   /**
@@ -137,7 +139,9 @@ class AuthenticatedPermissionsCest {
     $I->click('#edit-submit');
     $I->see('For security reasons, your upload has been renamed');
     $I->see('The specified file injection.php.txt could not be uploaded.');
-    $I->see('The image file is invalid or the image type is not allowed. Allowed types: gif, jpe, jpeg, jpg, png');
+    $I->see('The image file is invalid or the image type is not allowed.');
+    $I->checkOption('#edit-default-logo');
+    $I->click('#edit-submit');
   }
 
 }
