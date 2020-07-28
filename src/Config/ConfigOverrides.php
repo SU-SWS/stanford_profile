@@ -2,6 +2,7 @@
 
 namespace Drupal\cardinal_service_profile\Config;
 
+use Acquia\Blt\Robo\Common\EnvironmentDetector;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ConfigFactoryOverrideInterface;
@@ -49,6 +50,11 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    */
   public function loadOverrides($names) {
     $overrides = [];
+
+    if (in_array('hotjar.settings', $names) && !EnvironmentDetector::isProdEnv()) {
+      $overrides['hotjar.settings']['account'] = '';
+    }
+
     if (in_array('system.site', $names)) {
       $overrides['system.site']['page'] = [
         403 => $this->state->get('stanford_profile.403_page'),
