@@ -6,6 +6,32 @@
 class LockupSettingsCest {
 
   /**
+   * The path to the data dir where codeception wants the logo file.
+   *
+   * @var string
+   */
+  const DATA_DIR = codecept_data_dir();
+
+  /**
+   * The logo file name.
+   *
+   * @var string
+   */
+  const LOGO_FILENAME = "logo.jpg"
+
+  /**
+   * Setup work before running tests.
+   *
+   * @param AcceptanceTester $I
+   *  The working class.
+   */
+  function _before(AcceptanceTester $I) {
+
+    // Copy our assets into place first.
+    copy(__DIR__ . "/" . self::LOGO_FILENAME, self::DATA_DIR . "/" . self::LOGO_FILENAME);
+  }
+
+  /**
    * Always cleanup the config after testing.
    *
    * @param \AcceptanceTester $I
@@ -26,6 +52,9 @@ class LockupSettingsCest {
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->checkOption('#edit-su-lockup-enabled-value');
     $I->click('Save');
+
+    // Clean up our assets.
+    unlink(self::DATA_DIR . "/" . self::LOGO_FILENAME);
   }
 
   /**
@@ -297,16 +326,7 @@ class LockupSettingsCest {
       // Do nothing and carry on.
     }
 
-    try {
-      // For CircleCI
-      $I->attachFile('input[name="files[su_upload_logo_image_0]"]', '../acceptance/LockupSettings/logo.jpg');
-    }
-    catch(Exception $e) {
-      // For Local.
-      $uglyHack = "../../../../../../..";
-      $I->attachFile('input[name="files[su_upload_logo_image_0]"]', $uglyHack . __DIR__ . '/logo.jpg');
-    }
-
+    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', self::LOGO_FILENAME);
     $I->click('Upload');
     $I->fillField("input[name='su_upload_logo_image[0][alt]']", "Alternative Text");
 
@@ -344,16 +364,8 @@ class LockupSettingsCest {
       // Do nothing and carry on.
     }
 
-    try {
-      // For CircleCI
-      $I->attachFile('input[name="files[su_upload_logo_image_0]"]', '../acceptance/LockupSettings/logo.jpg');
-    }
-    catch(Exception $e) {
-      // For Local.
-      $uglyHack = "../../../../../../..";
-      $I->attachFile('input[name="files[su_upload_logo_image_0]"]', $uglyHack . __DIR__ . '/logo.jpg');
-    }
-
+    // For CircleCI
+    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', self::LOGO_FILENAME);
     $I->click('Upload');
     $I->fillField("input[name='su_upload_logo_image[0][alt]']", "Alternative Text");
 
