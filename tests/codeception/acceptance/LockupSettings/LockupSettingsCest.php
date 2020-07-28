@@ -328,7 +328,6 @@ class LockupSettingsCest {
 
     $I->attachFile('input[name="files[su_upload_logo_image_0]"]', self::LOGO_FILENAME);
     $I->click('Upload');
-    $I->fillField("input[name='su_upload_logo_image[0][alt]']", "Alternative Text");
 
     $I->click('Save');
     $I->runDrush('cr');
@@ -367,7 +366,6 @@ class LockupSettingsCest {
     // For CircleCI
     $I->attachFile('input[name="files[su_upload_logo_image_0]"]', self::LOGO_FILENAME);
     $I->click('Upload');
-    $I->fillField("input[name='su_upload_logo_image[0][alt]']", "Alternative Text");
 
     $I->click('Save');
     $I->runDrush('cr');
