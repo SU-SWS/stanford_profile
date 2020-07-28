@@ -10,14 +10,14 @@ class LockupSettingsCest {
    *
    * @var string
    */
-  const DATA_DIR = codecept_data_dir();
+  protected $DATA_DIR;
 
   /**
    * The logo file name.
    *
    * @var string
    */
-  const LOGO_FILENAME = "logo.jpg"
+  const LOGO_FILENAME = "logo.jpg";
 
   /**
    * Setup work before running tests.
@@ -26,9 +26,9 @@ class LockupSettingsCest {
    *  The working class.
    */
   function _before(AcceptanceTester $I) {
-
+    $this->DATA_DIR = codecept_data_dir();
     // Copy our assets into place first.
-    copy(__DIR__ . "/" . self::LOGO_FILENAME, self::DATA_DIR . "/" . self::LOGO_FILENAME);
+    copy(__DIR__ . "/" . self::LOGO_FILENAME, $this->DATA_DIR . "/" . self::LOGO_FILENAME);
   }
 
   /**
@@ -54,7 +54,7 @@ class LockupSettingsCest {
     $I->click('Save');
 
     // Clean up our assets.
-    unlink(self::DATA_DIR . "/" . self::LOGO_FILENAME);
+    unlink($this->DATA_DIR . "/" . self::LOGO_FILENAME);
   }
 
   /**
