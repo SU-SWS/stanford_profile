@@ -2,7 +2,6 @@
 
 namespace Drupal\cardinal_service_profile\Config;
 
-use Acquia\Blt\Robo\Common\EnvironmentDetector;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ConfigFactoryOverrideInterface;
@@ -51,7 +50,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
   public function loadOverrides($names) {
     $overrides = [];
 
-    if (in_array('hotjar.settings', $names) && !EnvironmentDetector::isProdEnv()) {
+    if (in_array('hotjar.settings', $names) && getenv('AH_SITE_ENVIRONMENT') != 'prod') {
       $overrides['hotjar.settings']['account'] = '';
     }
 
