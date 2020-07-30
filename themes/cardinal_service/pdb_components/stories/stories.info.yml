@@ -1,0 +1,12 @@
+name: Stories Filters
+machine_name: stories-filters
+type: pdb
+description: 'React filters for the spotlight content type'
+package: React
+core_version_requirement: ^8.8 || ^9
+module_status: active
+presentation: react
+path: api/opportunities
+add_js:
+  footer:
+    'lib/app.js': { }

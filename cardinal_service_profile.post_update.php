@@ -93,3 +93,43 @@ function _cardinal_service_create_context_field() {
     'bundle' => 'su_spotlight',
   ])->save();
 }
+
+/**
+ * Combine graduation year and major into a text field for spotlights.
+ */
+function cardinal_service_profile_post_update_csd_233() {
+  FieldStorageConfig::create([
+    'uuid' => '8a5eaa06-a940-4765-b76c-3352f060ca3e',
+    'entity_type' => 'node',
+    'type' => 'string',
+    'field_name' => 'su_spotlight_grad_area',
+  ])->save();
+  FieldConfig::create([
+    'uuid' => '350b870c-00b0-44c8-8537-f3ea98588872',
+    'field_name' => 'su_spotlight_grad_area',
+    'label' => 'Graduation Year and Area',
+    'entity_type' => 'node',
+    'bundle' => 'su_spotlight',
+  ])->save();
+  $nodes = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->loadByProperties(['type' => 'su_spotlight']);
+
+  $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+  foreach ($nodes as $node) {
+    $year = (int) $node->get('su_spotlight_graduation_year')->getString();
+    $year = substr($year, 2);
+    $major_tid = (int) $node->get('su_spotlight_major')->getString();
+    $major = $term_storage->load($major_tid)->label();
+
+    $year_major = $year ?: $major;
+    if ($year && $major) {
+      $year_major = "'$year, $major";
+    }
+    $node->set('su_spotlight_grad_area', $year_major)->save();
+  }
+
+  foreach ($term_storage->loadByProperties(['vid' => 'su_school_majors']) as $term) {
+    $term->delete();
+  }
+}

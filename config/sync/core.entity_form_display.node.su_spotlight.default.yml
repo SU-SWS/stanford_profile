@@ -11,9 +11,9 @@ dependencies:
     - field.field.node.su_spotlight.su_spotlight_background_image
     - field.field.node.su_spotlight.su_spotlight_context
     - field.field.node.su_spotlight.su_spotlight_feature_image
-    - field.field.node.su_spotlight.su_spotlight_graduation_year
-    - field.field.node.su_spotlight.su_spotlight_major
+    - field.field.node.su_spotlight.su_spotlight_grad_area
     - field.field.node.su_spotlight.su_spotlight_opportunity
+    - field.field.node.su_spotlight.su_spotlight_person_type
     - field.field.node.su_spotlight.su_spotlight_quote
     - field.field.node.su_spotlight.su_spotlight_student_name
     - node.type.su_spotlight
@@ -22,7 +22,6 @@ dependencies:
     - media_library
     - path
     - scheduler
-    - stanford_fields
     - text
 third_party_settings:
   field_group:
@@ -34,7 +33,7 @@ third_party_settings:
         - su_opp_pathway
         - su_opp_dimension
       parent_name: ''
-      weight: 16
+      weight: 15
       format_type: details
       region: content
       format_settings:
@@ -61,13 +60,13 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 13
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -75,12 +74,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 10
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 17
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -88,14 +87,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 15
+    weight: 14
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 11
     region: content
     third_party_settings: {  }
   su_opp_dimension:
@@ -122,13 +121,6 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  su_spotlight_background_image:
-    type: media_library_widget
-    weight: 8
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-    region: content
   su_spotlight_context:
     weight: 6
     settings:
@@ -144,26 +136,13 @@ content:
       media_types: {  }
     third_party_settings: {  }
     region: content
-  su_spotlight_graduation_year:
+  su_spotlight_grad_area:
     weight: 4
     settings:
-      date_order: YMD
-      time_type: none
-      increment: 15
-      start: 1970
-      end: 2030
-    third_party_settings: {  }
-    type: datetime_year_only
-    region: content
-  su_spotlight_major:
-    weight: 3
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete_tags
+    type: string_textfield
     region: content
   su_spotlight_opportunity:
     weight: 14
@@ -175,6 +154,12 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  su_spotlight_person_type:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   su_spotlight_quote:
     weight: 5
     settings:
@@ -203,7 +188,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 9
+    weight: 8
     settings:
       match_operator: CONTAINS
       size: 60
@@ -213,13 +198,14 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 18
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 14
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  su_spotlight_background_image: true

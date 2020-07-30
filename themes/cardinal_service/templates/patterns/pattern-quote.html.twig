@@ -5,14 +5,14 @@
 
   <section class="su-quote__body">
     {%- if name is not empty -%}
-      <h3 class="su-quote__heading">{{ name|render|striptags('<drupal-render-placeholder>')|trim  }}</h3>
+      <h3 class="su-quote__heading">{{ name|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES')  }}</h3>
     {%- endif -%}
     {%- if bio is not empty -%}
-      <p class="su-quote__bio">{{ bio|render|striptags('<drupal-render-placeholder>')|trim }}</p>
+      <p class="su-quote__bio">{{ bio|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') }}</p>
     {%- endif -%}
     {%- if text is not empty -%}
       <blockquote>
-        <p class="su-quote__quote">"{{ text|render|striptags('<drupal-render-placeholder>')|trim  }}"</p>
+        <p class="su-quote__quote">"{{ text|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') }}"</p>
       </blockquote>
     {%- endif -%}
     {{ content }}

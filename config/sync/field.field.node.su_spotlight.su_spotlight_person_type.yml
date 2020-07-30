@@ -1,17 +1,17 @@
-uuid: 8de0995c-041b-40ce-88f0-f4498aaed75d
+uuid: 652b182c-4932-4b00-9152-1524abae5e7d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_spotlight_major
+    - field.storage.node.su_spotlight_person_type
     - node.type.su_spotlight
-    - taxonomy.vocabulary.su_school_majors
-id: node.su_spotlight.su_spotlight_major
-field_name: su_spotlight_major
+    - taxonomy.vocabulary.spotlight_person
+id: node.su_spotlight.su_spotlight_person_type
+field_name: su_spotlight_person_type
 entity_type: node
 bundle: su_spotlight
-label: Major
-description: ''
+label: 'Person Type'
+description: 'What category is the person who wrote the story.'
 required: false
 translatable: false
 default_value: {  }
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      su_school_majors: su_school_majors
+      spotlight_person: spotlight_person
     sort:
       field: name
       direction: asc

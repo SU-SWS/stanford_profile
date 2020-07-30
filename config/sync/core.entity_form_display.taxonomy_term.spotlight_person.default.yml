@@ -1,0 +1,38 @@
+uuid: ee75f7bb-30f7-432a-bfb0-3c7fff5c2d4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.spotlight_person
+  module:
+    - text
+id: taxonomy_term.spotlight_person.default
+targetEntityType: taxonomy_term
+bundle: spotlight_person
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  path: true

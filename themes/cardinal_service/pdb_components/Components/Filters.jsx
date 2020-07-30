@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { SelectList } from './SelectList';
-import { Slugs } from './Slugs';
+import React, {Component} from 'react';
+import {SelectList} from './SelectList';
+import {Slugs} from './Slugs';
 import styled from 'styled-components';
 
 const _ = require('lodash');
@@ -90,7 +90,7 @@ export class Filters extends Component {
 
     if (window.location.search.length > 0) {
       const search = decodeURIComponent(window.location.search)
-        .replace(/\[.*?]/g,"[]");
+        .replace(/\[.*?]/g, "[]");
       const pageParams = queryString.parse(search, {
         arrayFormat: 'bracket',
       });
@@ -110,7 +110,7 @@ export class Filters extends Component {
   componentDidMount() {
     const that = this;
 
-    fetch('/api/opportunities')
+    fetch('/api/terms-used/' + this.props.bundle)
       .then((response) => response.json())
       .then((jsonData) => {
         that.setState(
@@ -144,7 +144,7 @@ export class Filters extends Component {
    * Select list event action passed down to the select component.
    */
   onSelectChange(fieldName, selectedValues) {
-    const newState = { ...this.state };
+    const newState = {...this.state};
     if (fieldName !== undefined) {
       newState.disabledSearch = false;
     }
@@ -189,7 +189,8 @@ export class Filters extends Component {
         // On the first filter, set the valid entities for the next filter.
         if (validEntities.length === 0) {
           validEntities = [...filterGroup];
-        } else {
+        }
+        else {
           // Filter out entities that aren't similar to the previous filters.
           validEntities = validEntities.filter((x) => filterGroup.includes(x));
         }
@@ -227,7 +228,7 @@ export class Filters extends Component {
    */
   showHideMoreFilters(e) {
     e.preventDefault();
-    const newState = { ...this.state };
+    const newState = {...this.state};
     newState.showMoreFilters = !this.state.showMoreFilters;
     if (!newState.showMoreFilters) {
       // When a user hides the more filters, clear out those values to prevent
@@ -267,7 +268,8 @@ export class Filters extends Component {
             <form onSubmit={this.onFormSubmit}>
               <div className="flex-container">
                 <div className="flex-lg-10-of-12">
-                  <FilterWrapper useGrid={this.props.useGrid} className="main-filters">
+                  <FilterWrapper useGrid={this.props.useGrid}
+                                 className="main-filters">
                     {mainFilters.map((field) => this.getSelectElement(field))}
                   </FilterWrapper>
                   {this.props.showMoreFilters &&

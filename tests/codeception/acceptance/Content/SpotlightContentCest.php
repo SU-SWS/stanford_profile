@@ -24,14 +24,14 @@ class SpotlightContentCest {
     $I->canSee("Opportunity's Dimension");
     $I->fillField('Title', 'Foo Bar Spotlight');
     $I->fillField('Student Name', 'John Doe');
-    $I->fillField('Major', 'Underwater Basket Weaving');
+    $I->fillField('Graduation Year and Area', '2020 Underwater Basket Weaving');
     $I->fillField('Quote', 'Basket Weaving is fun.');
     $I->fillField('Story', 'Lorem Ipsum');
     $I->fillField('Related Opportunity', 'Foo Bar');
     $I->click('Save');
     $I->canSee("Foo Bar Spotlight", 'h1');
     $I->canSee("John Doe");
-    $I->canSee("Underwater Basket Weaving");
+    $I->canSee("2020 Underwater Basket Weaving");
     $I->cantSee("Basket Weaving is fun.");
     $I->canSee('Lorem Ipsum');
     $I->amOnPage($opportunity->toUrl()->toString());

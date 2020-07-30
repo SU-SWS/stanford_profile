@@ -48,6 +48,26 @@ third_party_settings:
           columns: default
           label: ''
         components:
+          66b8f249-b528-4087-855e-1f93b9591e71:
+            uuid: 66b8f249-b528-4087-855e-1f93b9591e71
+            region: overlay
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:su_opportunity:flag_cs_favorites'
+            additional: {  }
+            weight: 0
+            third_party_settings: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+          orientation: right
+          label: ''
+        components:
           fcd2a988-e62a-4a12-8a88-5db19895ab61:
             uuid: fcd2a988-e62a-4a12-8a88-5db19895ab61
             region: main
@@ -68,7 +88,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 3
+            weight: 2
             third_party_settings: {  }
           98885d7b-0d6b-4b0b-acb2-03ee07f54423:
             uuid: 98885d7b-0d6b-4b0b-acb2-03ee07f54423
@@ -94,18 +114,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 2
-            third_party_settings: {  }
-          66b8f249-b528-4087-855e-1f93b9591e71:
-            uuid: 66b8f249-b528-4087-855e-1f93b9591e71
-            region: overlay
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:su_opportunity:flag_cs_favorites'
-            additional: {  }
-            weight: 0
+            weight: 1
             third_party_settings: {  }
           bbd6e005-e9c7-4599-8155-53e68653cf10:
             uuid: bbd6e005-e9c7-4599-8155-53e68653cf10
@@ -118,7 +127,31 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
-            weight: 1
+            weight: 0
+            third_party_settings: {  }
+          9efe4387-628a-4dce-9c38-840f2c97bdd9:
+            uuid: 9efe4387-628a-4dce-9c38-840f2c97bdd9
+            region: left
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_image'
+              label: Image
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: media_responsive_image_formatter
+                settings:
+                  view_mode: default
+                  image_style: ''
+                  link: true
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
             third_party_settings: {  }
         third_party_settings: {  }
       -
@@ -351,30 +384,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 4
-            third_party_settings: {  }
-          9efe4387-628a-4dce-9c38-840f2c97bdd9:
-            uuid: 9efe4387-628a-4dce-9c38-840f2c97bdd9
-            region: left
-            configuration:
-              id: 'field_block:node:su_opportunity:su_opp_image'
-              label: Image
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: media_responsive_image_formatter
-                settings:
-                  view_mode: default
-                  image_style: ''
-                  link: true
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 1
             third_party_settings: {  }
           e65d8887-9835-44e1-9dc2-478e3189bca4:
             uuid: e65d8887-9835-44e1-9dc2-478e3189bca4
