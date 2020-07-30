@@ -151,9 +151,16 @@ process:
       source: service_theme
       method: process
     -
+      plugin: str_replace
+      search: ', '
+      replace: ';'
+    -
+      plugin: str_replace
+      search: 'Law & Justice'
+      replace: 'Law, Policy & Justice'
+    -
       plugin: explode
-      delimiter: ', '
-      source: service_theme
+      delimiter: ';'
     -
       plugin: entity_generate
       value_key: name

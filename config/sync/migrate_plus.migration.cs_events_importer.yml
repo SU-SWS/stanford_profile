@@ -155,18 +155,29 @@ process:
     -
       plugin: str_replace
       source: categories
+      search: ', '
+      replace: ';'
+    -
+      plugin: str_replace
+      source: categories
       search:
         - Arts
+        - Education
+        - Engineering
+        - 'Law & Justice'
         - 'Environment / Sustainability'
         - 'Health / Wellness'
         - 'Public Service'
       replace:
         - 'Arts & Media'
+        - 'Education & Youth Development'
+        - 'Technology & Engineering'
+        - 'Law, Policy & Justice'
         - 'Environmental Sustainability'
         - Health
     -
       plugin: explode
-      delimiter: ','
+      delimiter: ';'
     -
       plugin: callback
       callable: trim
