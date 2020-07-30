@@ -150,6 +150,7 @@ export const SelectList = ({defaultValue, field, label, multiple, onChange, opti
         classes={myStyles}
         disableCloseOnSelect
         label={label}
+        aria-labelledby={field + '-label'}
         popupIcon={arrowIcon}
         ChipProps={{
           style: {
