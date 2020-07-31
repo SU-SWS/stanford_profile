@@ -153,14 +153,14 @@ process:
     -
       plugin: str_replace
       search: ', '
-      replace: ';'
+      replace: ;
     -
       plugin: str_replace
       search: 'Law & Justice'
       replace: 'Law, Policy & Justice'
     -
       plugin: explode
-      delimiter: ';'
+      delimiter: ;
     -
       plugin: entity_generate
       value_key: name

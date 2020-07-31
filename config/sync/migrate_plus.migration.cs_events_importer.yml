@@ -156,7 +156,7 @@ process:
       plugin: str_replace
       source: categories
       search: ', '
-      replace: ';'
+      replace: ;
     -
       plugin: str_replace
       source: categories
@@ -177,7 +177,7 @@ process:
         - Health
     -
       plugin: explode
-      delimiter: ';'
+      delimiter: ;
     -
       plugin: callback
       callable: trim
