@@ -1,0 +1,141 @@
+uuid: a7406e70-2f29-43d0-b9a9-a7d2a74f4922
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.lockup_settings
+    - field.field.config_pages.lockup_settings.su_line_1
+    - field.field.config_pages.lockup_settings.su_line_2
+    - field.field.config_pages.lockup_settings.su_line_3
+    - field.field.config_pages.lockup_settings.su_line_4
+    - field.field.config_pages.lockup_settings.su_line_5
+    - field.field.config_pages.lockup_settings.su_lockup_enabled
+    - field.field.config_pages.lockup_settings.su_lockup_options
+    - field.field.config_pages.lockup_settings.su_upload_logo_image
+    - field.field.config_pages.lockup_settings.su_use_theme_logo
+  module:
+    - field_group
+    - image
+    - options
+third_party_settings:
+  field_group:
+    group_logo_image:
+      children:
+        - su_use_theme_logo
+        - su_path_to_custom_logo
+        - su_upload_logo_image
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      region: content
+      format_settings:
+        description: ''
+        id: ''
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        effect: none
+        speed: fast
+        attributes: ''
+      label: 'Logo Image'
+    group_lockup_options:
+      children:
+        - su_lockup_options
+        - su_line_1
+        - su_line_2
+        - su_line_3
+        - su_line_4
+        - su_line_5
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+      label: 'Lockup Options'
+id: config_pages.lockup_settings.default
+targetEntityType: config_pages
+bundle: lockup_settings
+mode: default
+content:
+  su_line_1:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_line_2:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_line_3:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_line_4:
+    weight: 6
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_line_5:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_lockup_enabled:
+    weight: 8
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  su_lockup_options:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  su_upload_logo_image:
+    weight: 3
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  su_use_theme_logo:
+    weight: 1
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+hidden: {  }
