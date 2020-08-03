@@ -9,14 +9,20 @@ class AuthenticatedPermissionsCest {
    * Set up a file to test PHP injection.
    */
   public function _before(AcceptanceTester $I) {
-    file_put_contents(rtrim(codecept_data_dir(), '/') . '/injection.php', '<?php echo("injection test"); die(); ?>');
+    $file = rtrim(codecept_data_dir(), '/') . '/injection.php';
+    if (!file_exists($file)) {
+      file_put_contents($file, '<?php echo("injection test"); die(); ?>');
+    }
   }
 
   /**
    * Remove the php injection file.
    */
   public function _after(AcceptanceTester $I) {
-    unlink(rtrim(codecept_data_dir(), '/') . '/injection.php');
+    $file = rtrim(codecept_data_dir(), '/') . '/injection.php';
+    if (file_exists($file)) {
+      unlink($file);
+    }
   }
 
   /**
