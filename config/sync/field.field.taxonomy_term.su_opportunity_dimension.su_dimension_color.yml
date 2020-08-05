@@ -1,0 +1,22 @@
+uuid: f13b264a-ad1a-402d-8f05-0b8445ae3871
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.su_dimension_color
+    - taxonomy.vocabulary.su_opportunity_dimension
+  module:
+    - color_field
+id: taxonomy_term.su_opportunity_dimension.su_dimension_color
+field_name: su_dimension_color
+entity_type: taxonomy_term
+bundle: su_opportunity_dimension
+label: Color
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

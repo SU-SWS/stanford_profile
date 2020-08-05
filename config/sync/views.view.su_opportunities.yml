@@ -48,7 +48,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'edit any su_opportunity content'
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
@@ -785,6 +785,7 @@ display:
         fields: false
         title: false
         pager: false
+        access: false
       row:
         type: 'entity:node'
         options:
@@ -1653,6 +1654,10 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+      access:
+        type: perm
+        options:
+          perm: 'edit any su_opportunity content'
     cache_metadata:
       max-age: 0
       contexts:

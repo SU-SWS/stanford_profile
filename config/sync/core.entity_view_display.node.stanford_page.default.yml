@@ -7,8 +7,13 @@ dependencies:
     - field.field.node.stanford_page.layout_selection
     - field.field.node.stanford_page.su_page_banner
     - field.field.node.stanford_page.su_page_components
+    - field.field.node.stanford_page.su_page_resource_audience
+    - field.field.node.stanford_page.su_page_resource_dimension
+    - field.field.node.stanford_page.su_page_resource_icon
+    - field.field.node.stanford_page.su_page_resource_type
     - node.type.stanford_page
     - system.menu.main
+    - views.view.cs_resources
   module:
     - entity_reference_revisions
     - jumpstart_ui
@@ -17,6 +22,7 @@ dependencies:
     - layout_library
     - menu_block
     - user
+    - views
 third_party_settings:
   layout_builder:
     allow_custom: true
@@ -137,6 +143,29 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: -10
+            third_party_settings: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+          label: ''
+        components:
+          848fd51a-0aca-4b1c-b6ba-b13a309d418e:
+            uuid: 848fd51a-0aca-4b1c-b6ba-b13a309d418e
+            region: main
+            configuration:
+              id: 'views_block:cs_resources-3_related'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
             third_party_settings: {  }
         third_party_settings: {  }
   layout_library:

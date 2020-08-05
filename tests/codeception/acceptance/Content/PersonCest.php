@@ -10,11 +10,9 @@ class PersonCest {
    */
   public function testDefaultContentExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $I->amOnPage("/admin/content");
-    $I->see("Haley Jackson");
     $I->amOnPage("/person/haley-jackson");
     $I->see("This page is currently unpublished and not visible to the public.");
-    $I->see("Haley Jackson");
+    $I->see("Haley Jackson", 'h1');
     $I->see("People", ".su-multi-menu");
 
   }

@@ -1,0 +1,24 @@
+uuid: bf34ad5d-a3f9-4316-8b3e-bfd5ee4b7420
+langcode: en
+status: true
+dependencies:
+  module:
+    - color_field
+    - field_permissions
+    - taxonomy
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: taxonomy_term.su_dimension_color
+field_name: su_dimension_color
+entity_type: taxonomy_term
+type: color_field_type
+settings:
+  format: hexhex
+module: color_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

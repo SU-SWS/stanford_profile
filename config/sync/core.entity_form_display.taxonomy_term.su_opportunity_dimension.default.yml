@@ -1,0 +1,47 @@
+uuid: eda2d27e-42ce-4076-b553-1caf2bbd5bb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.su_opportunity_dimension.su_dimension_color
+    - taxonomy.vocabulary.su_opportunity_dimension
+  module:
+    - color_field
+    - text
+id: taxonomy_term.su_opportunity_dimension.default
+targetEntityType: taxonomy_term
+bundle: su_opportunity_dimension
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    region: content
+    third_party_settings: {  }
+  su_dimension_color:
+    weight: 1
+    settings:
+      default_colors: '#2596D1,#FB9B2B,#643666,#175E54,#B1040E,#199969'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+hidden:
+  path: true
