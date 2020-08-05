@@ -93,7 +93,7 @@ class UserLinksBlock extends BlockBase implements ContainerFactoryPluginInterfac
     $context = parent::getCacheContexts();
     // Make the block cache different for each page since the login link has a
     // destination parameter.
-    return Cache::mergeContexts($context, ['url.path', 'url.query_args']);
+    return Cache::mergeContexts($context, ['user', 'url.path', 'url.query_args']);
   }
 
   /**
