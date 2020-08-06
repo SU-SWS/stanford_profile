@@ -177,5 +177,6 @@ function cardinal_service_profile_entity_form_display_alter(EntityFormDisplayInt
 function cardinal_service_profile_ui_patterns_info_alter(array &$definitions) {
   if (isset($definitions['yaml:quote'])) {
     $definitions['yaml:quote']->setField('content', 'Additional Content');
+    $definitions['yaml:quote']->setField('link', 'Link to More Content');
   }
 }

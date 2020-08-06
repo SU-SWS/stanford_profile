@@ -1,20 +1,53 @@
-<figure{{ attributes.addClass('su-quote') }}>
-  {%- if src is not empty -%}
-    <div class="su-quote__img">{{ src|render|striptags('<img> <drupal-render-placeholder>')|trim|raw }}</div>
-  {%- endif -%}
+{%  set link = link|render|striptags('<a> <drupal-render-placeholder>')|trim|raw|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
+{% set src = src|render|striptags('<img> <drupal-render-placeholder>')|trim|raw|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
+{% set name = name|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
+{% set bio = bio|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
+{% set text = text|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
 
-  <section class="su-quote__body">
-    {%- if name is not empty -%}
-      <h3 class="su-quote__heading">{{ name|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES')  }}</h3>
+{% if link %}
+  <figure{{ attributes.addClass('su-quote') }}>
+    {%- if src is not empty -%}
+      <div class="su-quote__img">{{ src|raw }}</div>
     {%- endif -%}
-    {%- if bio is not empty -%}
-      <p class="su-quote__bio">{{ bio|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') }}</p>
-    {%- endif -%}
+
+    <section class="su-quote__body">
+      {%- if name is not empty -%}
+        <h3 class="su-quote__heading">{{ name|raw }}</h3>
+      {%- endif -%}
+      {%- if bio is not empty -%}
+        <p class="su-quote__bio">{{ bio|raw }}</p>
+      {%- endif -%}
+      {%- if text is not empty -%}
+        <blockquote>
+          <p class="su-quote__quote">"{{ text|raw }}"</p>
+        </blockquote>
+      {%- endif -%}
+      {{ content }}
+
+      {{ link|raw }}
+    </section>
+  </figure>
+{% else %}
+
+  <figure{{ attributes.addClass('su-quote') }}>
     {%- if text is not empty -%}
       <blockquote>
-        <p class="su-quote__quote">"{{ text|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') }}"</p>
+        <p class="su-quote__quote">"{{ text|raw }}"</p>
       </blockquote>
     {%- endif -%}
-    {{ content }}
-  </section>
-</figure>
+
+    {%- if src is not empty -%}
+      <div class="su-quote__img">{{ src|raw }}</div>
+    {%- endif -%}
+
+    <section class="su-quote__body">
+      {%- if name is not empty -%}
+        <h3 class="su-quote__heading">{{ name|raw }}</h3>
+      {%- endif -%}
+      {%- if bio is not empty -%}
+        <p class="su-quote__bio">{{ bio|raw }}</p>
+      {%- endif -%}
+      {{ content }}
+    </section>
+  </figure>
+{% endif %}
