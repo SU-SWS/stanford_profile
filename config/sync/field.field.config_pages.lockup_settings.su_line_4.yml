@@ -1,0 +1,19 @@
+uuid: 182852e6-d156-45cd-b95f-f92719c68ed0
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.lockup_settings
+    - field.storage.config_pages.su_line_4
+id: config_pages.lockup_settings.su_line_4
+field_name: su_line_4
+entity_type: config_pages
+bundle: lockup_settings
+label: 'Line 4'
+description: 'Organization name.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

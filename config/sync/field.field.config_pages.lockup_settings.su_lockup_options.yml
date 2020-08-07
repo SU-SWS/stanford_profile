@@ -1,0 +1,23 @@
+uuid: ba9b711c-9ef2-4f50-8132-d76e5afe4c75
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.lockup_settings
+    - field.storage.config_pages.su_lockup_options
+  module:
+    - options
+id: config_pages.lockup_settings.su_lockup_options
+field_name: su_lockup_options
+entity_type: config_pages
+bundle: lockup_settings
+label: 'Lockup Options'
+description: 'Layout options.'
+required: true
+translatable: false
+default_value:
+  -
+    value: a
+default_value_callback: ''
+settings: {  }
+field_type: list_string

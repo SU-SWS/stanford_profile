@@ -24,11 +24,11 @@ class NodeRevisionDeleteCest {
       $node->save();
     }
     $I->amOnPage("/node/{$node->id()}/revisions");
-    $I->canSeeNumberOfElements('.node-revision-table tbody tr', 11);
+    $I->canSeeNumberOfElements('.diff-revisions tbody tr', 11);
     $I->runDrush('cron');
     $I->runDrush('cr');
     $I->amOnPage("/node/{$node->id()}/revisions");
-    $I->canSeeNumberOfElements('.node-revision-table tbody tr', 5);
+    $I->canSeeNumberOfElements('.diff-revisions tbody tr', 5);
   }
 
 }
