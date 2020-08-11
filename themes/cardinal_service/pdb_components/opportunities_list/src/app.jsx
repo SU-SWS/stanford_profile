@@ -13,10 +13,19 @@ const nodeFields = [
   {field: 'su_opp_commitment', label: 'Time Commitment', multiple: true}
 ];
 
-const getSortUrl = (field, direction = 'ASC') => {
+const getSortUrl = (field) => {
   let currentHref = window.location.href.replace(/sort.*?$/, '').replace(/&+$/, '');
   const separator = currentHref.indexOf('?') === -1 ? '?' : '&';
+  const direction = sortOrderIsAsc(field) ? 'DESC' : 'ASC';
   return `${currentHref}${separator}sort_by=${field}&sort_order=${direction}`
+}
+
+const sortedByField = (field) => {
+  return window.location.href.indexOf('sort_by=' + field) > 0;
+}
+
+const sortOrderIsAsc = (field) => {
+  return sortedByField(field) && window.location.href.indexOf('sort_order=ASC') > 0
 }
 
 ReactDOM.render(
@@ -28,17 +37,23 @@ ReactDOM.render(
     fields={nodeFields}
     header={<h2>Search by</h2>}
   >
-    <div className="centered-container">
-      Sort By: <a href={getSortUrl('su_opp_application_deadline_value')}><span className="visually-hidden">Sort By </span>Earliest Deadline</a>
-      &nbsp;|&nbsp;
-      <a href={getSortUrl('su_opp_application_deadline_value', 'DESC')}><span className="visually-hidden">Sort By </span>Latest Deadline</a>
-      &nbsp;|&nbsp;
-      <a href={getSortUrl('title')}><span
-        className="visually-hidden">Sort By Title </span> A to Z
+    <div className="centered-container sort-links">
+      <a
+        href={getSortUrl('su_opp_application_deadline_value')}
+        className={sortedByField('su_opp_application_deadline_value') ? 'active':''}
+      >
+        <span className="visually-hidden">Sort By </span>
+        Date
+        <i style={{marginLeft: '10px'}} className={sortOrderIsAsc('su_opp_application_deadline_value') ? 'fas fa-chevron-up' : 'fas fa-chevron-down'} />
       </a>
       &nbsp;|&nbsp;
-      <a href={getSortUrl('title', 'DESC')}><span
-        className="visually-hidden">Sort By Title </span> Z to A
+      <a
+        href={getSortUrl('title')}
+        className={sortedByField('title') ? 'active' : ''}
+      >
+        <span className="visually-hidden">Sort By Title: </span>
+        {sortOrderIsAsc('title') ? 'Z to A' : 'A to Z'}
+        <i style={{marginLeft: '10px'}} className={sortOrderIsAsc('title') ? 'fas fa-chevron-up' : 'fas fa-chevron-down'} />
       </a>
       <a style={{float: 'right'}} href="/user/opportunities">
         View Saved Items
