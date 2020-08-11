@@ -13,6 +13,12 @@ const nodeFields = [
   {field: 'su_opp_commitment', label: 'Time Commitment', multiple: true}
 ];
 
+const getSortUrl = (field, direction = 'ASC') => {
+  let currentHref = window.location.href.replace(/sort.*?$/, '').replace(/&+$/, '');
+  const separator = currentHref.indexOf('?') === -1 ? '?' : '&';
+  return `${currentHref}${separator}sort_by=${field}&sort_order=${direction}`
+}
+
 ReactDOM.render(
   <Filters
     showMoreFilters
@@ -21,6 +27,23 @@ ReactDOM.render(
     mainFiltersCount={3}
     fields={nodeFields}
     header={<h2>Search by</h2>}
-  />,
+  >
+    <div className="centered-container">
+      Sort By: <a href={getSortUrl('su_opp_application_deadline_value')}><span className="visually-hidden">Sort By </span>Earliest Deadline</a>
+      &nbsp;|&nbsp;
+      <a href={getSortUrl('su_opp_application_deadline_value', 'DESC')}><span className="visually-hidden">Sort By </span>Latest Deadline</a>
+      &nbsp;|&nbsp;
+      <a href={getSortUrl('title')}><span
+        className="visually-hidden">Sort By Title </span> A to Z
+      </a>
+      &nbsp;|&nbsp;
+      <a href={getSortUrl('title', 'DESC')}><span
+        className="visually-hidden">Sort By Title </span> Z to A
+      </a>
+      <a style={{float: 'right'}} href="/user/opportunities">
+        View Saved Items
+      </a>
+    </div>
+  </Filters>,
   document.getElementById('opportunities-filter-list')
 );

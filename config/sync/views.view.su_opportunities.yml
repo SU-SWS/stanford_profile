@@ -24,6 +24,7 @@ dependencies:
     - taxonomy.vocabulary.su_opportunity_time
     - taxonomy.vocabulary.su_opportunity_type
   module:
+    - datetime
     - flag
     - node
     - taxonomy
@@ -705,17 +706,7 @@ display:
           expose:
             label: ''
       title: 'Opportunities Filtered'
-      header:
-        result:
-          id: result
-          table: views
-          field: result
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          content: 'Displaying @start - @end of @total'
-          plugin_id: result
+      header: {  }
       footer: {  }
       empty:
         area:
@@ -2129,6 +2120,7 @@ display:
         group_by: false
         pager: false
         use_ajax: false
+        sorts: false
       row:
         type: 'entity:node'
         options:
@@ -2157,6 +2149,34 @@ display:
             button_text: 'Load More'
             automatically_load_content: false
       use_ajax: true
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: true
+          expose:
+            label: Title
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+        su_opp_application_deadline_value:
+          id: su_opp_application_deadline_value
+          table: node__su_opp_application_deadline
+          field: su_opp_application_deadline_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: true
+          expose:
+            label: 'Application Deadline'
+          granularity: second
+          plugin_id: datetime
     cache_metadata:
       max-age: -1
       contexts:
@@ -2164,6 +2184,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - user
         - 'user.node_grants:view'
         - user.permissions

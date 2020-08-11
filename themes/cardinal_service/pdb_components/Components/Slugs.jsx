@@ -4,13 +4,13 @@ import styled from 'styled-components';
 const Wrapper = styled.div``;
 
 const SlugWrapper = styled.div`
-  border: 1px solid #7a7b7e;
-  border-radius: 30px;
   display: inline-block;
   margin-bottom: 10px;
   margin-right: 18px;
   padding: 6px 20px;
   width: auto;
+  color: #7A7B7E;
+  font-size: 24px;
 `;
 
 export const Slugs = ({ filters, terms }) => {
@@ -30,6 +30,8 @@ export const Slugs = ({ filters, terms }) => {
           ));
         }
       })}
+
+      <a href={window.location.pathname}>Clear All <span className="visually-hidden">Filters</span></a>
     </Wrapper>
   );
 };

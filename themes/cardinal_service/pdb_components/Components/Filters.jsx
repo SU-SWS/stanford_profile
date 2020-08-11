@@ -325,6 +325,8 @@ export class Filters extends Component {
               />
             )}
           </div>
+
+          {this.props.children}
         </ResultsContainer>
       </div>
     );
