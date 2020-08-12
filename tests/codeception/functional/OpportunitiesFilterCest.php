@@ -101,6 +101,7 @@ class OpportunitiesFilterCest {
         'su_opp_location' => $terms['su_opportunity_location'][($j + 1) % 3]->id(),
         'su_opp_time_year' => $terms['su_opportunity_time'][($j + 2) % 3]->id(),
         'su_opp_type' => $terms['su_opportunity_type'][$j % 3]->id(),
+        'su_opp_service_theme' => $terms['su_opportunity_service_theme'][$j % 3]->id(),
       ];
       $I->createEntity($values);
     }
@@ -115,6 +116,7 @@ class OpportunitiesFilterCest {
       'su_opportunity_location',
       'su_opportunity_time',
       'su_opportunity_type',
+      'su_opportunity_service_theme'
     ];
     $terms = [];
     foreach ($vids as $vid) {

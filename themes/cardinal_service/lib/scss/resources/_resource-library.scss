@@ -1,0 +1,97 @@
+@charset 'UTF-8';
+
+.cs-resources {
+  a {
+    color: $su-color-white;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  .flex-3-of-12 {
+    background: $su-color-white;
+    border: 1px solid $su-color-cool-grey-15;
+    box-shadow: 0 3px 6px rgba($su-color-black, 0.13), 0 3px 6px rgba($su-color-black, 0.1);
+    box-sizing: border-box;
+    height: fit-content;
+    width: 100%;
+    @include modular-spacing('margin-bottom', 3);
+  }
+
+  .views-field-su-page-resource-icon {
+    height: 218px;
+    background: $cs-color-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 150px;
+    }
+  }
+
+  .views-field-title {
+    @include modular-spacing('padding', 2);
+  }
+}
+
+.resource-color {
+  width: 100%;
+
+  &.color-2596d1 {
+    .views-field-title {
+      background: $cs-color-blue;
+    }
+  }
+
+  &.color-fb9b2b {
+    .views-field-title {
+      background: $cs-color-gold;
+    }
+  }
+
+  &.color-643666 {
+    .views-field-title {
+      background: $cs-color-purple;
+    }
+  }
+
+  &.color-175e54 {
+    .views-field-title {
+      background: $su-color-palo-alto;
+    }
+  }
+
+  &.color-199969 {
+    .views-field-title {
+      background: $cs-color-bright-green;
+    }
+  }
+
+  &.color-b1040e {
+    .views-field-title {
+      background: $su-color-bright-red;
+    }
+  }
+
+  &[class*="color-"][class*="program-"][class*="--"] {
+    .views-field-title {
+      background: $su-color-cardinal-red;
+    }
+  }
+}
+
+// Individual Resource Page Styles
+
+.cs-resources-3-related {
+  text-align: center;
+
+  .cs-resources {
+    display: flex;
+    justify-content: space-around;
+  }
+}

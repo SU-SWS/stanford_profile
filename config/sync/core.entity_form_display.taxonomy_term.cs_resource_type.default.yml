@@ -3,11 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.cs_resource_type.su_resource_type_icon
-    - image.style.thumbnail
     - taxonomy.vocabulary.cs_resource_type
-  module:
-    - image
 id: taxonomy_term.cs_resource_type.default
 targetEntityType: taxonomy_term
 bundle: cs_resource_type
@@ -21,14 +17,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  su_resource_type_icon:
-    weight: 1
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-    type: image_image
-    region: content
 hidden:
   description: true
   path: true

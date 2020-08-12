@@ -43,9 +43,9 @@
 }
 
 .flex-lg-3-of-12 {
-  background: #ffffff;
-  border: 1px solid #eeeeee;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13), 0 3px 6px rgba(0, 0, 0, 0.1);
+  background: $su-color-white;
+  border: 1px solid $su-color-cool-grey-15;
+  box-shadow: 0 3px 6px rgba($su-color-black, 0.13), 0 3px 6px rgba($su-color-black, 0.1);
   box-sizing: border-box;
   height: fit-content;
   @include modular-spacing('padding', 1);

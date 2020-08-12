@@ -9,12 +9,10 @@ dependencies:
     - field.field.node.stanford_page.su_page_components
     - field.field.node.stanford_page.su_page_resource_audience
     - field.field.node.stanford_page.su_page_resource_dimension
-    - field.field.node.stanford_page.su_page_resource_icon
     - field.field.node.stanford_page.su_page_resource_type
     - node.type.stanford_page
   module:
     - field_group
-    - media_library
     - paragraphs
     - path
     - react_paragraphs
@@ -131,13 +129,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
-    region: content
-  su_page_resource_icon:
-    type: media_library_widget
-    weight: 17
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
     region: content
   su_page_resource_type:
     weight: 14
