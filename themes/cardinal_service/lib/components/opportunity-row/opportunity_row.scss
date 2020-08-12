@@ -23,6 +23,11 @@
   a {
     @include link($su-color-bright-red);
     text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
   }
 
   @include grid-media-max('lg') {

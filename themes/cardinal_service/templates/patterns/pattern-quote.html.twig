@@ -5,49 +5,50 @@
 {% set text = text|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
 
 {% if link %}
-  <figure{{ attributes.addClass('su-quote') }}>
+  <figure{{ attributes.addClass('su-quote', 'story-available') }}>
     {%- if src is not empty -%}
       <div class="su-quote__img">{{ src|raw }}</div>
     {%- endif -%}
 
     <section class="su-quote__body">
-      {%- if name is not empty -%}
-        <h3 class="su-quote__heading">{{ name|raw }}</h3>
-      {%- endif -%}
-      {%- if bio is not empty -%}
-        <p class="su-quote__bio">{{ bio|raw }}</p>
-      {%- endif -%}
       {%- if text is not empty -%}
         <blockquote>
           <p class="su-quote__quote">"{{ text|raw }}"</p>
         </blockquote>
       {%- endif -%}
       {{ content }}
-
-      {{ link|raw }}
-    </section>
-  </figure>
-{% else %}
-
-  <figure{{ attributes.addClass('su-quote') }}>
-    {%- if text is not empty -%}
-      <blockquote>
-        <p class="su-quote__quote">"{{ text|raw }}"</p>
-      </blockquote>
-    {%- endif -%}
-
-    {%- if src is not empty -%}
-      <div class="su-quote__img">{{ src|raw }}</div>
-    {%- endif -%}
-
-    <section class="su-quote__body">
       {%- if name is not empty -%}
         <h3 class="su-quote__heading">{{ name|raw }}</h3>
       {%- endif -%}
       {%- if bio is not empty -%}
         <p class="su-quote__bio">{{ bio|raw }}</p>
       {%- endif -%}
-      {{ content }}
+
+      {{ link|raw }}
+    </section>
+  </figure>
+{% else %}
+
+  <figure{{ attributes.addClass('su-quote', 'no-story') }}>
+    {%- if text is not empty -%}
+      <blockquote>
+        <p class="su-quote__quote">"{{ text|raw }}"</p>
+      </blockquote>
+    {%- endif -%}
+
+    <section class="su-quote__body">
+      {%- if src is not empty -%}
+        <div class="su-quote__img">{{ src|raw }}</div>
+      {%- endif -%}
+
+      <div class="su-quote__details">
+        {%- if name is not empty -%}
+          <h3 class="su-quote__heading">{{ name|raw }}</h3>
+        {%- endif -%}
+        {%- if bio is not empty -%}
+          <p class="su-quote__bio">{{ bio|raw }}</p>
+        {%- endif -%}
+      </div>
     </section>
   </figure>
 {% endif %}

@@ -1,0 +1,39 @@
+@charset 'UTF-8';
+
+.su-spotlights-list {
+  .views-row {
+    @include modular-spacing('margin-bottom', 2);
+  }
+
+  .su-card {
+    @include modular-spacing('padding', 3);
+
+    .views-field-su-spotlight-feature-image {
+      display: flex;
+      justify-content: flex-end;
+      @include modular-spacing('padding-bottom', 3);
+
+      img {
+        border-radius: 50%;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+      }
+    }
+
+    .su-card__contents {
+      padding: 0;
+    }
+  }
+}
+
+.stories {
+  .chZvhb.main-filters {
+    display: flex;
+    flex-direction: row;
+
+    .bcMPWx.filter-select-container {
+      flex-grow: 1;
+    }
+  }
+}

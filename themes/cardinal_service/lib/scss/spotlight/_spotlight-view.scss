@@ -1,0 +1,122 @@
+@charset 'UTF-8';
+
+.su-spotlights-opportunity-spotlight-ref {
+  .su-quote {
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13), 0 3px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    height: fit-content;
+    padding: 3.2rem;
+  }
+
+  .su-quote__img {
+    border: 0;
+  }
+
+  blockquote {
+    font-family: Roboto Slab, 'sans-serif';
+    margin: 0;
+
+    .su-quote__quote {
+      @include modular-typography(3);
+      margin: 0;
+    }
+  }
+
+  .story-available {
+    .su-quote__body {
+      display: flex;
+      flex-direction: column;
+
+      blockquote {
+        order: 1;
+        margin: 0;
+        @include modular-spacing('margin-bottom', 0);
+      }
+
+      .views-field-su-spotlight-context {
+        order: 2;
+        @include modular-typography(0);
+        @include modular-spacing('margin-bottom', 1);
+        font-style: italic;
+      }
+
+      .su-quote__heading {
+        order: 3;
+        margin: 0;
+        @include modular-typography(1);
+      }
+
+      .su-quote__bio {
+        order: 4;
+      }
+
+      .su-link--action {
+        order: 5;
+        @include modular-spacing('margin-top', 2);
+      }
+    }
+
+    @include grid-media-max('sm') {
+      .su-quote__img {
+        display: none;
+      }
+    }
+  }
+
+  .no-story {
+    blockquote {
+      @include modular-spacing('margin-bottom', 3);
+    }
+
+    .su-quote__body {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+
+      .su-quote__img {
+        height: fit-content;
+        margin-right: 0;
+        display: flex;
+        width: 100%;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        img {
+          height: 90px;
+          width: 90px;
+        }
+      }
+
+      .su-quote__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 2rem;
+
+        .su-quote__heading {
+          @include modular-typography(0);
+        }
+
+        .su-quote__bio {
+          @include modular-typography(0);
+        }
+      }
+
+      @include grid-media-max('sm') {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+
+        .su-quote__img {
+          display: none;
+        }
+
+        .su-quote__details {
+          margin-left: 0;
+          width: fit-content;
+        }
+      }
+    }
+  }
+}

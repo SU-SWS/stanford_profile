@@ -1,0 +1,16 @@
+@charset 'UTF-8';
+
+h2,
+h3,
+h4,
+h5 {
+  a {
+    @include link($su-color-bright-red);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
