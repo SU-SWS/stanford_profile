@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.su_opportunities_views_result
     - core.entity_view_mode.node.su_vertical_card
+    - field.storage.node.su_opp_application_deadline
     - field.storage.node.su_opp_commitment
     - field.storage.node.su_opp_dimension
     - field.storage.node.su_opp_open_to
@@ -756,10 +757,54 @@ display:
           summary: ''
           description: ''
           columns:
+            views_bulk_operations_bulk_form: views_bulk_operations_bulk_form
             title: title
+            su_opp_dimension: su_opp_dimension
+            su_opp_open_to: su_opp_open_to
+            su_opp_service_theme: su_opp_service_theme
+            su_opp_commitment: su_opp_commitment
+            su_opp_type: su_opp_type
+            su_opp_application_deadline: su_opp_application_deadline
           info:
+            views_bulk_operations_bulk_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             title:
-              sortable: false
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            su_opp_dimension:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            su_opp_open_to:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            su_opp_service_theme:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            su_opp_commitment:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            su_opp_type:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            su_opp_application_deadline:
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
@@ -1161,11 +1206,95 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
+        su_opp_application_deadline_value:
+          id: su_opp_application_deadline_value
+          table: node__su_opp_application_deadline
+          field: su_opp_application_deadline_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_opp_application_deadline_value_op
+            label: 'Application Deadline (su_opp_application_deadline)'
+            description: null
+            use_operator: false
+            operator: su_opp_application_deadline_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: su_opp_application_deadline_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'Application Deadline/Event Date'
+            description: ''
+            identifier: deadline
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'No Date'
+                operator: empty
+                value:
+                  type: date
+                  value: ''
+                  min: ''
+                  max: ''
+              2:
+                title: 'In The Past'
+                operator: '<='
+                value:
+                  type: offset
+                  value: now
+                  min: ''
+                  max: ''
+              3:
+                title: 'In The Future'
+                operator: '>='
+                value:
+                  type: offset
+                  value: now
+                  min: ''
+                  max: ''
+          plugin_id: datetime
       filter_groups:
         operator: AND
         groups:
           1: AND
-      sorts: {  }
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
       fields:
         views_bulk_operations_bulk_form:
           id: views_bulk_operations_bulk_form
@@ -1613,6 +1742,70 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        su_opp_application_deadline:
+          id: su_opp_application_deadline
+          table: node__su_opp_application_deadline
+          field: su_opp_application_deadline
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Application Deadline'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_custom
+          settings:
+            timezone_override: ''
+            date_format: 'm/d/Y H:i'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
       display_description: ''
       title: 'Administer Opportunities'
       menu:
@@ -1660,6 +1853,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.su_opp_application_deadline'
         - 'config:field.storage.node.su_opp_commitment'
         - 'config:field.storage.node.su_opp_dimension'
         - 'config:field.storage.node.su_opp_open_to'
