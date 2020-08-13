@@ -2,7 +2,7 @@
 
 .cs-resources {
   a {
-    color: $su-color-white;
+    @include link($su-color-bright-red);
     text-decoration: none;
 
     &:hover,
@@ -22,18 +22,6 @@
     @include modular-spacing('margin-bottom', 3);
   }
 
-  .views-field-su-page-resource-icon {
-    height: 218px;
-    background: $cs-color-white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img {
-      width: 150px;
-    }
-  }
-
   .views-field-title {
     @include modular-spacing('padding', 2);
   }
@@ -44,43 +32,43 @@
 
   &.color-2596d1 {
     .views-field-title {
-      background: $cs-color-blue;
+      border-top: 10px solid $cs-color-blue;
     }
   }
 
   &.color-fb9b2b {
     .views-field-title {
-      background: $cs-color-gold;
+      border-top: 10px solid $cs-color-gold;
     }
   }
 
   &.color-643666 {
     .views-field-title {
-      background: $cs-color-purple;
+      border-top: 10px solid $cs-color-purple;
     }
   }
 
   &.color-175e54 {
     .views-field-title {
-      background: $su-color-palo-alto;
+      border-top: 10px solid $su-color-palo-alto;
     }
   }
 
   &.color-199969 {
     .views-field-title {
-      background: $cs-color-bright-green;
+      border-top: 10px solid $cs-color-bright-green;
     }
   }
 
   &.color-b1040e {
     .views-field-title {
-      background: $su-color-bright-red;
+      border-top: 10px solid $su-color-bright-red;
     }
   }
 
   &[class*="color-"][class*="program-"][class*="--"] {
     .views-field-title {
-      background: $su-color-cardinal-red;
+      border-top: 10px solid $su-color-cardinal-red;
     }
   }
 }
