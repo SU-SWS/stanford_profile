@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * cardinal_service_profile_helper.install
+ */
+
+/**
+ * Clear migration events hashes to force updates.
+ */
+function cardinal_service_profile_helper_update_8001(&$sandbox) {
+  \Drupal::database()->update('migrate_map_cs_events_importer')
+    ->fields(['hash' => ''])->execute();
+}

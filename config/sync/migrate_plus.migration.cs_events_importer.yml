@@ -151,6 +151,7 @@ process:
     from_format: 'Y-m-d H:i:s O'
     to_format: 'Y-m-d\TH:i:s'
     to_timezone: UTC
+  su_opp_event_date: '@su_opp_application_deadline'
   su_opp_service_theme:
     -
       plugin: str_replace

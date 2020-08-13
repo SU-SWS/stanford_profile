@@ -82,6 +82,11 @@ targetEntityType: node
 bundle: su_opportunity
 mode: su_vertical_card
 content:
+  flag_cs_favorites:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   su_opp_image:
     type: media_image_formatter
     weight: 0
@@ -123,6 +128,7 @@ hidden:
   su_opp_dimension: true
   su_opp_duration: true
   su_opp_eligibility: true
+  su_opp_event_date: true
   su_opp_learn_more: true
   su_opp_location: true
   su_opp_open_to: true

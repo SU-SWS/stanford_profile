@@ -32,3 +32,21 @@ function cardinal_service_preprocess_links__dropbutton(&$variables) {
     ];
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function cardinal_service_preprocess_field(&$variables) {
+  $fields = ['su_opp_application_deadline', 'su_opp_event_date'];
+  if (!in_array($variables['element']['#field_name'], $fields)) {
+    return;
+  }
+
+  $date_value = $variables['element']['#items']->getString();
+  if (empty($date_value) || time() <= strtotime($date_value)) {
+//    return;
+  }
+
+  $message = t('This @label has passed', ['@label' => $variables['label']])->render();
+  $variables['items'][0]['content']['#suffix'] = "<div class=\"opportunity-passed-date\">* $message</div>";
+}

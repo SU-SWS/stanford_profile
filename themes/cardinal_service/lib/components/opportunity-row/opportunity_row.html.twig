@@ -1,8 +1,34 @@
+{% set date_label = 'Application Deadline'|t %}
+{% set date = 'N/A' %}
+
+{% if application_deadline|render|striptags|trim is not empty %}
+  {% set date = application_deadline %}
+{% endif %}
+
+{% if event_date|render|striptags|trim is not empty %}
+  {% set date_label = 'Event Date'|t %}
+  {% set date = event_date %}
+{% endif %}
+
+{% if location|render|striptags|trim is empty %}
+  {% set location = 'N/A' %}
+{% endif %}
+
+{% if when|render|striptags|trim is empty %}
+  {% set when = 'N/A' %}
+{% endif %}
+
+{% if open_to|render|striptags|trim is empty %}
+  {% set open_to = 'N/A' %}
+{% endif %}
+
+{% set image = image|render|striptags('<drupal-render-placeholder> <img> <picture> <source>') %}
+
 <div{{ attributes.addClass('su-opportunity-result') }}>
   <div class="flex-container su-card__contents">
-    <div class="{% if image|render|striptags('<drupal-render-placeholder> <img> <picture> <source>')|trim  %}flex-9-of-12{% endif %}">
+    <div class="{% if image %}flex-9-of-12{% else %}flex-12-of-12{% endif %}">
       <div class="su-opportunity-type">
-        <div  aria-label="{{ 'Opportunity Type'|t }}">
+        <div aria-label="{{ 'Opportunity Type'|t }}">
           {{ type_list }}
         </div>
       </div>
@@ -11,45 +37,41 @@
       </h3>
 
       <div class="su-opportunity-body-content">
-        {% if application_deadline|render %}
-          <div class="su-opportunity-row-application-deadline">
-            <div>
-              <h4>{{ 'Application Deadline'|t }}:</h4>
-              <div>{{ application_deadline }}</div>
-            </div>
+        <div class="su-opportunity-row-application-deadline">
+          <div>
+            <h4>{{ date_label }}:</h4>
+            <div>{{ date }}</div>
           </div>
-        {% endif %}
-        {% if location|render %}
-          <div class="su-opportunity-row-location">
-            <div>
-              <h4>{{ 'Location'|t }}:</h4>
-              <div>{{ location }}</div>
-            </div>
+        </div>
+
+
+        <div class="su-opportunity-row-location">
+          <div>
+            <h4>{{ 'Location'|t }}:</h4>
+            <div>{{ location }}</div>
           </div>
-        {% endif %}
-        {% if when|render %}
-          <div class="su-opportunity-row-duration">
-            <div>
-              <h4>{{ 'When'|t }}:</h4>
-              <div>{{ when }}</div>
-            </div>
+        </div>
+
+        <div class="su-opportunity-row-duration">
+          <div>
+            <h4>{{ 'When'|t }}:</h4>
+            <div>{{ when }}</div>
           </div>
-        {% endif %}
-        {% if open_to|render %}
-          <div class="su-opportunity-row-open-to">
-            <div>
-              <h4>{{ 'Open to'|t }}:</h4>
-              <div>{{ open_to }}</div>
-            </div>
+        </div>
+
+        <div class="su-opportunity-row-open-to">
+          <div>
+            <h4>{{ 'Open to'|t }}:</h4>
+            <div>{{ open_to }}</div>
           </div>
-        {% endif %}
+        </div>
       </div>
     </div>
 
     {% if image %}
       <div class="flex-3-of-12">
         <div class="su-opportunity-img">
-          {{ image|render|striptags('<drupal-render-placeholder> <img> <picture> <source>')|raw }}
+          {{ image|raw }}
         </div>
       </div>
     {% endif %}

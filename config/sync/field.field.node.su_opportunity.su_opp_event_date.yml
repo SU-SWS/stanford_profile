@@ -1,0 +1,21 @@
+uuid: 961263c0-dffa-4d0d-a6f8-4fcc77960461
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_event_date
+    - node.type.su_opportunity
+  module:
+    - datetime
+id: node.su_opportunity.su_opp_event_date
+field_name: su_opp_event_date
+entity_type: node
+bundle: su_opportunity
+label: 'Event Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

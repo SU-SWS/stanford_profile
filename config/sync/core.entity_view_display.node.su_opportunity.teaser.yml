@@ -43,6 +43,11 @@ content:
       trim_length: 600
     third_party_settings: {  }
     region: content
+  flag_cs_favorites:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   links:
     weight: 100
     settings: {  }
@@ -59,6 +64,7 @@ hidden:
   su_opp_dimension: true
   su_opp_duration: true
   su_opp_eligibility: true
+  su_opp_event_date: true
   su_opp_image: true
   su_opp_learn_more: true
   su_opp_location: true

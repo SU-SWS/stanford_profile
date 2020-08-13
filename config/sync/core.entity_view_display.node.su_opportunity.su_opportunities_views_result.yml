@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.su_opportunity.su_opp_dimension
     - field.field.node.su_opportunity.su_opp_duration
     - field.field.node.su_opportunity.su_opp_eligibility
+    - field.field.node.su_opportunity.su_opp_event_date
     - field.field.node.su_opportunity.su_opp_image
     - field.field.node.su_opportunity.su_opp_learn_more
     - field.field.node.su_opportunity.su_opp_location
@@ -28,6 +29,7 @@ dependencies:
     - field.field.node.su_opportunity.su_opp_type
     - node.type.su_opportunity
   module:
+    - datetime
     - ds
     - field_delimiter
     - field_formatter_class
@@ -60,6 +62,10 @@ third_party_settings:
         - node_title
       image:
         - su_opp_image
+      application_deadline:
+        - su_opp_application_deadline
+      event_date:
+        - su_opp_event_date
       location:
         - su_opp_location
       when:
@@ -86,10 +92,32 @@ bundle: su_opportunity
 mode: su_opportunities_views_result
 content:
   flag_cs_favorites:
-    weight: 6
+    weight: 8
     region: favorite
     settings: {  }
     third_party_settings: {  }
+  su_opp_application_deadline:
+    type: datetime_custom
+    weight: 2
+    region: application_deadline
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j Y, g:i A'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+  su_opp_event_date:
+    type: datetime_custom
+    weight: 3
+    region: event_date
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j Y, g:i A'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
   su_opp_image:
     type: media_image_formatter
     weight: 1
@@ -104,7 +132,7 @@ content:
         class: ''
   su_opp_location:
     type: entity_reference_label
-    weight: 2
+    weight: 4
     region: location
     label: hidden
     settings:
@@ -114,7 +142,7 @@ content:
         class: ''
   su_opp_open_to:
     type: entity_reference_label
-    weight: 4
+    weight: 6
     region: open_to
     label: hidden
     settings:
@@ -128,7 +156,7 @@ content:
         ds_limit: ''
   su_opp_time_year:
     type: entity_reference_label
-    weight: 3
+    weight: 5
     region: when
     label: hidden
     settings:
@@ -140,7 +168,7 @@ content:
         ds_limit: ''
   su_opp_type:
     type: entity_reference_label
-    weight: 5
+    weight: 7
     region: type_list
     label: hidden
     settings:
@@ -156,7 +184,6 @@ hidden:
   body: true
   links: true
   search_api_excerpt: true
-  su_opp_application_deadline: true
   su_opp_commitment: true
   su_opp_contact_email: true
   su_opp_contact_name: true
