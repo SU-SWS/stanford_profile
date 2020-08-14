@@ -267,7 +267,7 @@ export class Filters extends Component {
             {this.props.header}
             <form onSubmit={this.onFormSubmit}>
               <div className="flex-container">
-                <div className="flex-lg-10-of-12">
+                <div className="flex-lg-11-of-12">
                   <FilterWrapper useGrid={this.props.useGrid}
                                  className="main-filters">
                     {mainFilters.map((field) => this.getSelectElement(field))}
@@ -299,7 +299,7 @@ export class Filters extends Component {
                   </React.Fragment>
                   }
                 </div>
-                <div className="flex-lg-2-of-12">
+                <div className="flex-lg-1-of-12">
                   <FilterOptions>
                     <input
                       type="submit"
