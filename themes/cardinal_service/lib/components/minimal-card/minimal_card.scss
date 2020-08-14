@@ -3,13 +3,16 @@
 @import '../../scss/config';
 
 .su-minimal-card {
-  @include card;
-  @include margin(0 0 2em 0);
-  position: relative;
+  &.su-card {
+    @include card;
+    @include margin(0 0 2em 0);
+    position: relative;
 
-  .su-card-cta {
-    align-items: center;
-    display: flex;
-    height: 100%;
+    .su-card-cta {
+      align-items: center;
+      display: flex;
+      height: 100%;
+    }
   }
 }
+

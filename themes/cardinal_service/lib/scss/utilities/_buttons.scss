@@ -1,0 +1,17 @@
+@charset 'UTF-8';
+
+.button {
+  background-color: $su-color-bright-red;
+  color: $su-color-white;
+  font-weight: 400;
+  padding: 1rem 2rem 1.15rem;
+  text-decoration: none;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: $su-color-black;
+    color: $su-color-white;
+    text-decoration: underline;
+  }
+}

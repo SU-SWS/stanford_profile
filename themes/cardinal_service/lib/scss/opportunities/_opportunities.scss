@@ -6,8 +6,18 @@
   @include modular-spacing('padding-left', 5);
   @include modular-spacing('padding-right', 5);
 
+  .su-opp-type {
+    font-weight: 600;
+  }
+
   .left-region {
-    margin-bottom: -2.5rem;
+    position: relative;
+    top: 3rem;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
 
   .main-region {
@@ -54,6 +64,7 @@
 .node-su-opportunity-su-opp-solo-url {
   display: flex;
   justify-content: center;
+  @include modular-spacing(‘padding-top’, 0);
 }
 
 .opportunity-body-content-container {
@@ -166,30 +177,9 @@
   }
 }
 
-// Homepage Opportunity Filter Styles
-.views-exposed-filter-block {
-  &.su-opportunities-filtered-all {
-    label {
-      margin-top: 0;
-      max-width: 100%;
-    }
-
-    .form-item {
-      &:nth-child(2),
-      &:nth-child(3) {
-        width: 50%;
-        float: left;
-      }
-
-      &:nth-child(1n + 4) {
-        display: none;
-      }
-    }
-
-    .form-actions {
-      float: right;
-    }
-  }
+// Homepage Opportunities Filter Style
+.su-hero {
+  @include modular-spacing('margin-bottom', 3);
 }
 
 // Related Opportunities Styling

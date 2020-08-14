@@ -20,13 +20,18 @@
     }
   }
 
-  a {
-    @include link($su-color-bright-red);
-    text-decoration: none;
+  h3 {
+    @include modular-typography(3);
+    font-weight: 700;
 
-    &:hover,
-    &:focus {
-      text-decoration: underline;
+    a {
+      @include link($su-color-bright-red);
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -59,7 +64,14 @@
     }
 
     h4 {
+      @include modular-typography(0);
+      font-weight: 700;
       margin-bottom: 0.5rem;
+    }
+
+    > div > div {
+      @include modular-typography(0);
+      font-weight: normal;
     }
   }
 
@@ -75,6 +87,7 @@
 
     &::before {
       font-family: 'Font Awesome\ 5 Free';
+      @include modular-typography(-1);
       font-weight: 900;
       position: absolute;
     }
@@ -134,5 +147,9 @@
     display: flex;
     width: 100%;
     justify-content: flex-end;
+
+    a {
+      @include modular-typography(1);
+    }
   }
 }

@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 .su-opportunities-count-favorites-opps {
-  @include modular-spacing('padding-bottom', 9);
+  @include modular-spacing('margin-bottom', 9);
 
   .su-card {
     .flex-container {
@@ -27,6 +27,7 @@
 
       h2 {
         @include modular-typography(2);
+        @include modular-spacing('margin-bottom', -4);
 
         a,
         a:hover {
@@ -45,6 +46,8 @@
 }
 
 .stanford-news-term-block {
+  @include modular-spacing('margin-top', 3);
+
   .block__title {
     @include modular-typography(4);
   }
