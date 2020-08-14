@@ -2,23 +2,25 @@ extlink_use_external_js_file: false
 extlink_target: false
 extlink_target_no_override: false
 extlink_nofollow: false
-extlink_noreferrer: true
+extlink_noreferrer: false
 extlink_follow_no_override: false
-extlink_subdomains: true
+extlink_subdomains: false
 extlink_alert: false
 extlink_alert_text: 'This link will take you to an external web site. We are not responsible for their content.'
 extlink_exclude: ''
 extlink_include: ''
-extlink_class: 'su-link--external'
+extlink_class: 'su-link su-link--external'
 extlink_label: '(link is external)'
 extlink_img_class: false
-extlink_css_exclude: '.su-brand-bar, .su-global-footer'
-extlink_css_explicit: ''
-extlink_mailto_class: 'mailto'
+extlink_css_exclude: ''
+extlink_css_explicit: '#page-content, .su-local-footer'
+extlink_mailto_class: mailto
 extlink_mailto_label: '(link sends email)'
 extlink_use_font_awesome: false
-extlink_font_awesome_classes: {  }
-extlink_icon_placement: append
+extlink_font_awesome_classes:
+  links: 'fa fa-external-link'
+  mailto: 'fa fa-envelope-o'
+extlink_icon_placement: 'append'
 whitelisted_domains: {  }
 _core:
   default_config_hash: gp38_GoeI-5DmdfeFE0NfHi_mbT2SqdU0zsJIQv-ehc
