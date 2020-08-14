@@ -10,7 +10,10 @@ class ExtLinkCest {
    */
   public function testExtLink(FunctionalTester $I) {
     $I->amOnPage('/');
-    $I->waitForAjaxToFinish();
+
+    // Local footer block isnt showing up on circle for some reason.
+    $I->runDrush('cim -y');
+    $I->runDrush('cr');
 
     // Validate email links.
     $mails = $I->grabMultiple('a.mailto svg.mailto');
