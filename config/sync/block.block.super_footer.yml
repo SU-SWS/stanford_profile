@@ -1,0 +1,29 @@
+uuid: 331b04e1-de5d-4159-a33f-50f338dc21c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+  theme:
+    - stanford_basic
+id: super_footer
+theme: stanford_basic
+region: footer
+weight: -4
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: 'Super Footer'
+  provider: config_pages
+  label_display: 0
+  config_page_type: super_footer
+  config_page_view_mode: full
+visibility:
+  config_pages_values_access:
+    id: config_pages_values_access
+    negate: false
+    config_page_field: super_footer|su_super_footer_title|string
+    operator: isset
+    condition_value: '1'
+    context_mapping: {  }

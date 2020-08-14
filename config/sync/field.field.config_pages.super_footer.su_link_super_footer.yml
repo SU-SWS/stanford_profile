@@ -1,0 +1,23 @@
+uuid: 34edc784-874f-4e65-80af-6de13e0d85cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.super_footer
+    - field.storage.config_pages.su_link_super_footer
+  module:
+    - link
+id: config_pages.super_footer.su_link_super_footer
+field_name: su_link_super_footer
+entity_type: config_pages
+bundle: super_footer
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

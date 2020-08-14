@@ -1,0 +1,23 @@
+uuid: 962c9675-a32b-41f1-8277-628832c813dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.super_footer
+    - field.storage.config_pages.su_intranet_link
+  module:
+    - link
+id: config_pages.super_footer.su_intranet_link
+field_name: su_intranet_link
+entity_type: config_pages
+bundle: super_footer
+label: 'Intranet Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

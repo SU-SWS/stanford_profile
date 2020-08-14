@@ -1,0 +1,78 @@
+uuid: db984517-79ea-41b0-ad0d-0fa5bb8a74de
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.super_footer
+    - field.field.config_pages.super_footer.su_intranet_link
+    - field.field.config_pages.super_footer.su_link_super_footer
+    - field.field.config_pages.super_footer.su_super_footer_title
+  module:
+    - ds
+    - field_formatter_class
+    - link
+    - stanford_fields
+third_party_settings:
+  ds:
+    layout:
+      id: jumpstart_ui_one_column
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        extra_classes: ''
+        centered: centered-container
+        columns: default
+        label: ''
+    regions:
+      main:
+        - su_super_footer_title
+        - su_link_super_footer
+        - su_intranet_link
+id: config_pages.super_footer.default
+targetEntityType: config_pages
+bundle: super_footer
+mode: default
+content:
+  su_intranet_link:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: su-super-footer__intranet
+    type: link
+    region: main
+  su_link_super_footer:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: su-super-footer__links
+      ds:
+        ds_limit: ''
+    type: link
+    region: main
+  su_super_footer_title:
+    weight: 0
+    label: hidden
+    settings:
+      tag: h4
+      linked: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-super-footer__heading
+    type: entity_title_heading
+    region: main
+hidden: {  }
