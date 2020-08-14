@@ -44,7 +44,7 @@ function cardinal_service_preprocess_field(&$variables) {
 
   $date_value = $variables['element']['#items']->getString();
   if (empty($date_value) || time() <= strtotime($date_value)) {
-//    return;
+    return;
   }
 
   $message = t('This @label has passed', ['@label' => $variables['label']])->render();
