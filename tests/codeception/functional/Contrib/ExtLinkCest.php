@@ -6,7 +6,7 @@
 class ExtLinkCest {
 
   /**
-   * Test that revisions are trimmed after cron runs.
+   * Test external links get the added class and svg.
    */
   public function testExtLink(FunctionalTester $I) {
     $I->amOnPage('/');
