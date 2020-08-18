@@ -1,5 +1,19 @@
 # Stanford Profile
 
+8.x-1.15
+--------------------------------------------------------------------------------
+_Release Date: 2020-08-07_
+
+- fixed the codeception tests for the stack level
+- D8CORE-1472: Config Page for Lockup Configuration. (#220)
+- D8CORE-2478 Updated html filter to allow colspan and rowspan. (#265)
+- CSD-258: Reset selection when filtered. (#259)
+- DEVOPS-000: Remove field formatter patch
+- D8CORE-2155: Added configs for responsive 1:1 image styles (#260)
+- Removed views_taxonomy_term_name_depth not in use.
+- D8CORE-1241: Added self-escalation test.
+- enabled diff module and clean up dependencies
+
 8.x-1.14
 --------------------------------------------------------------------------------
 _Release Date: 2020-07-13_

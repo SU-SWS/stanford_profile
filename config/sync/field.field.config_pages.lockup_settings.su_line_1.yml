@@ -1,0 +1,19 @@
+uuid: 9fa0c34d-c314-44ec-8bd1-eec99823547e
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.lockup_settings
+    - field.storage.config_pages.su_line_1
+id: config_pages.lockup_settings.su_line_1
+field_name: su_line_1
+entity_type: config_pages
+bundle: lockup_settings
+label: 'Line 1'
+description: 'Site title line.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
