@@ -6,6 +6,8 @@ dependencies:
     - field.storage.node.su_spotlight_feature_image
     - media.type.image
     - node.type.su_spotlight
+  content:
+    - 'media:image:a4660e7f-d4bf-4a28-8030-9dc8576b1c9a'
 id: node.su_spotlight.su_spotlight_feature_image
 field_name: su_spotlight_feature_image
 entity_type: node
@@ -14,7 +16,10 @@ label: 'Feature Image'
 description: ''
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    weight: '0'
+    target_uuid: a4660e7f-d4bf-4a28-8030-9dc8576b1c9a
 default_value_callback: ''
 settings:
   handler: 'default:media'

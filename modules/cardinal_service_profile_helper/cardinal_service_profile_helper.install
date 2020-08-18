@@ -12,3 +12,17 @@ function cardinal_service_profile_helper_update_8001(&$sandbox) {
   \Drupal::database()->update('migrate_map_cs_events_importer')
     ->fields(['hash' => ''])->execute();
 }
+
+/**
+ * Apply the default image to stories if no image exists.
+ */
+function cardinal_service_profile_helper_update_8002() {
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  $node_ids = $node_storage->getQuery()
+    ->condition('type', 'su_spotlight')
+    ->condition('su_spotlight_feature_image', NULL, 'IS NULL')
+    ->execute();
+  foreach ($node_storage->loadMultiple($node_ids) as $node){
+    $node->set('su_spotlight_feature_image', 1726)->save();
+  }
+}
