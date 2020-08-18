@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 
 const icon = <CheckBoxOutlineBlankIcon style={{ width: 18, height: 18 }} />;
-const checkedIcon = <CheckBoxIcon style={{ width: 18, height: 18 }} />;
+const checkedIcon = <CheckBoxIcon style={{ width: 18, height: 18, color: '#006CB8' }} />;
 const arrowIcon = <ExpandMoreIcon style={{ fontSize: 30 }} />;
 
 const Container = styled.div`
@@ -44,6 +44,25 @@ const Container = styled.div`
     &:before,
     &:after {
       border-bottom-color: #2e2d29;
+    }
+  }
+
+  .MuiIconButton-root,
+  .MuiCheckbox-colorSecondary.Mui-checked,
+  .MuiCheckbox-colorSecondary {
+    &:hover,
+    &:focus {
+      background-color: rgba(0, 108, 184, 0.04)
+    }
+  }
+
+  // Chip Icon Delete
+  .MuiChip-deleteIcon {
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      color: #f4f4f4;
     }
   }
 `;
@@ -159,6 +178,9 @@ export const SelectList = ({defaultValue, field, label, multiple, onChange, opti
             fontSize: '16px',
             fontWeight: '400',
             lineHeight: 'normal',
+            backgroundColor: '#006CB8',
+            color: '#fff',
+            borderRadius: '5px',
           },
         }}
         ListboxProps={{ style: { fontSize: '18px' } }}
@@ -179,7 +201,10 @@ export const SelectList = ({defaultValue, field, label, multiple, onChange, opti
               className={'checkbox'}
               icon={icon}
               checkedIcon={checkedIcon}
-              style={{ marginRight: 8 }}
+              style={{
+                marginRight: 8
+              }}
+              disableRipple
               checked={selected}
             />
             {option.label + ' (' + option.items.length + ')'}

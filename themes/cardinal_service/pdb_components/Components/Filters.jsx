@@ -16,7 +16,7 @@ const FilterContainer = styled.div`
 
   .flex-lg-2-of-12 {
     display: flex;
-    justify-content: center;
+    justify-content: start;
   }
 
   h2 {
@@ -26,7 +26,7 @@ const FilterContainer = styled.div`
 
 const FilterWrapper = styled.div`
   display: ${props => props.useGrid ? 'grid': 'block'};
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   margin-bottom: 36px;
 
@@ -69,7 +69,7 @@ const MoreFilterBtn = styled.button`
 `
 
 const ResultsContainer = styled.div`
-  margin-bottom: 58px;
+  margin-bottom: 18px;
 `;
 
 export class Filters extends Component {
@@ -267,7 +267,7 @@ export class Filters extends Component {
             {this.props.header}
             <form onSubmit={this.onFormSubmit}>
               <div className="flex-container">
-                <div className="flex-lg-11-of-12">
+                <div className="flex-lg-10-of-12">
                   <FilterWrapper useGrid={this.props.useGrid}
                                  className="main-filters">
                     {mainFilters.map((field) => this.getSelectElement(field))}
@@ -299,7 +299,7 @@ export class Filters extends Component {
                   </React.Fragment>
                   }
                 </div>
-                <div className="flex-lg-1-of-12">
+                <div className="flex-lg-2-of-12">
                   <FilterOptions>
                     <input
                       type="submit"

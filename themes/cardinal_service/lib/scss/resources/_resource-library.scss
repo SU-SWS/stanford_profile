@@ -1,18 +1,39 @@
 @charset 'UTF-8';
 
 .cs-resources {
+  &.all-list {
+    justify-content: unset;
+
+    div:nth-child(3n+2) {
+      margin: 0 20px;
+
+      @include grid-media-max('xs') {
+        margin: 0;
+      }
+    }
+  }
+
+  h3 {
+    margin: 0;
+  }
+
   a {
     @include link($su-color-bright-red);
     text-decoration: none;
+    word-wrap: break-word;
 
     &:hover,
     &:focus {
       cursor: pointer;
       text-decoration: underline;
     }
+
+    &::after {
+      background-color: $su-color-bright-red;
+    }
   }
 
-  .flex-3-of-12 {
+  .single-resource {
     background: $su-color-white;
     border: 1px solid $su-color-cool-grey-15;
     box-shadow: 0 3px 6px rgba($su-color-black, 0.13), 0 3px 6px rgba($su-color-black, 0.1);

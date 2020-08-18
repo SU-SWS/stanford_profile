@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Filters} from '../../Components/Filters';
+import './styles.scss';
 
 const nodeBundle = 'su_opportunity';
 const nodeFields = [
@@ -53,7 +54,7 @@ ReactDOM.render(
       >
         <span className="visually-hidden">Sort By Title: </span>
         {sortOrderIsAsc('title') ? 'Z to A' : 'A to Z'}
-        <i style={{marginLeft: '10px'}} className={sortOrderIsAsc('title') ? 'fas fa-chevron-up' : 'fas fa-chevron-down'} />
+        <i className={sortOrderIsAsc('title') ? 'fas fa-chevron-up' : 'fas fa-chevron-down'} />
       </a>
       <a style={{float: 'right'}} href="/user/opportunities">
         View Saved Items

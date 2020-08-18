@@ -1,22 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 36px;
+  }
+
+  @media (min-width: 1500px) {
+    margin-bottom: 38px;
+  }
+
+  h4 {
+    margin-bottom: 3px;
+  }
+`;
 
 const SlugWrapper = styled.div`
   display: inline-block;
-  margin-bottom: 10px;
   margin-right: 18px;
-  padding: 6px 20px;
   width: auto;
   color: #7A7B7E;
-  font-size: 24px;
+  font-size: 20px;
+
+  @media (min-width: 768px) {
+    font-size: 22.5px;
+  }
+
+  @media (min-width: 1500px) {
+    font-size: 23.75px;
+  }
 `;
 
 export const Slugs = ({ filters, terms }) => {
   return (
     <Wrapper>
-      <h2>Showing Results For:</h2>
+      <h4>Showing Results For:</h4>
       {Object.keys(filters).map((fieldName) => {
         if (typeof terms[fieldName] !== 'undefined') {
           return filters[fieldName].map((tid) => (

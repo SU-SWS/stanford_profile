@@ -52,15 +52,6 @@
   }
 }
 
-.flex-lg-3-of-12 {
-  background: $su-color-white;
-  border: 1px solid $su-color-cool-grey-15;
-  box-shadow: 0 3px 6px rgba($su-color-black, 0.13), 0 3px 6px rgba($su-color-black, 0.1);
-  box-sizing: border-box;
-  height: fit-content;
-  @include modular-spacing('padding', 1);
-}
-
 .node-su-opportunity-su-opp-solo-url {
   display: flex;
   justify-content: center;
@@ -68,6 +59,15 @@
 }
 
 .opportunity-body-content-container {
+  .flex-lg-3-of-12 {
+    background: $su-color-white;
+    border: 1px solid $su-color-cool-grey-15;
+    box-shadow: 0 3px 6px rgba($su-color-black, 0.13), 0 3px 6px rgba($su-color-black, 0.1);
+    box-sizing: border-box;
+    height: fit-content;
+    @include modular-spacing('padding', 1);
+  }
+
   @include modular-spacing('margin-top', 5);
 
   .flex-lg-3-of-12 {
@@ -175,11 +175,6 @@
       display: block;
     }
   }
-}
-
-// Homepage Opportunities Filter Style
-.su-hero {
-  @include modular-spacing('margin-bottom', 3);
 }
 
 // Related Opportunities Styling

@@ -36,7 +36,7 @@
         {{ title }}
       </h3>
 
-      <div class="su-opportunity-body-content">
+      <div class="su-opportunity-body-content {% if image %}{% else %}flex-9-of-12{% endif %}">
         <div class="su-opportunity-row-application-deadline">
           <div>
             <h4>{{ date_label }}:</h4>
