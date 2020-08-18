@@ -21,16 +21,16 @@ class WYSIWYGCest {
     # Stripped Tags
     $I->cantSee("alert('testme')");
 
-    $I->cantSeeElement('iframe');
+    $I->cantSeeElement('.system-main-block iframe');
     $I->cantSeeElement('.system-main-block form');
     $I->cantSeeElement('.system-main-block label');
     $I->cantSeeElement('.system-main-block input');
-    $I->cantSeeElement('select');
-    $I->cantSeeElement('option');
-    $I->cantSeeElement('textarea');
-    $I->cantSeeElement('fieldset');
-    $I->cantSeeElement('legend');
-    $I->cantSeeElement('address');
+    $I->cantSeeElement('.system-main-block select');
+    $I->cantSeeElement('.system-main-block option');
+    $I->cantSeeElement('.system-main-block textarea');
+    $I->cantSeeElement('.system-main-block fieldset');
+    $I->cantSeeElement('.system-main-block legend');
+    $I->cantSeeElement('.system-main-block address');
 
     # Headers
     $I->cantSee('Level 01 heading', 'h1');
