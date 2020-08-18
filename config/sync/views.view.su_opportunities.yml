@@ -33,6 +33,7 @@ dependencies:
     - user
     - views_bulk_operations
     - views_infinite_scroll
+    - views_taxonomy_term_name_depth
 id: su_opportunities
 label: Opportunities
 module: views
@@ -1859,6 +1860,191 @@ display:
         - 'config:field.storage.node.su_opp_open_to'
         - 'config:field.storage.node.su_opp_service_theme'
         - 'config:field.storage.node.su_opp_type'
+  context_filtered_opps:
+    display_plugin: block
+    id: context_filtered_opps
+    display_title: 'Filtered Opportunities (program/audience)'
+    position: 2
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            su_opportunity: su_opportunity
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+      defaults:
+        filters: false
+        filter_groups: false
+        sorts: false
+        pager: false
+        arguments: false
+        empty: false
+        header: false
+        css_class: false
+        style: false
+        row: false
+        link_display: false
+        link_url: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      sorts:
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+      pager:
+        type: some
+        options:
+          items_per_page: 3
+          offset: 0
+      arguments:
+        term_node_taxonomy_name_depth:
+          id: term_node_taxonomy_name_depth
+          table: node_field_data
+          field: term_node_taxonomy_name_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: '0'
+          vocabularies:
+            su_opportunity_dimension: su_opportunity_dimension
+          break_phrase: true
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
+        term_node_taxonomy_name_depth_1:
+          id: term_node_taxonomy_name_depth_1
+          table: node_field_data
+          field: term_node_taxonomy_name_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: '0'
+          vocabularies:
+            su_opportunity_open_to: su_opportunity_open_to
+          break_phrase: true
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
+      block_category: 'Opportunities (Views)'
+      empty: {  }
+      header: {  }
+      css_class: flex-container
+      block_hide_empty: true
+      style:
+        type: default
+        options:
+          row_class: flex-md-4-of-12
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: su_vertical_card
+      link_display: custom_url
+      link_url: /opportunities
+      use_more: true
+      use_more_always: false
+      use_more_text: 'See All Opportunities'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
   count_favorites_opps:
     display_plugin: block
     id: count_favorites_opps

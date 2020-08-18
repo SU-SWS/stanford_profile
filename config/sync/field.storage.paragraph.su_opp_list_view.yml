@@ -1,0 +1,25 @@
+uuid: d72b9308-0cdc-40e8-b4c8-678d32b53b1e
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - paragraphs
+    - viewfield
+    - views
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: paragraph.su_opp_list_view
+field_name: su_opp_list_view
+entity_type: paragraph
+type: viewfield
+settings:
+  target_type: view
+module: viewfield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

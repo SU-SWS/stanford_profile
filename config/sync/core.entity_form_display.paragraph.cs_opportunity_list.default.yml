@@ -1,0 +1,23 @@
+uuid: 85818632-18f8-49b8-b5dd-c6176ee2e480
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cs_opportunity_list.su_opp_list_view
+    - paragraphs.paragraphs_type.cs_opportunity_list
+  module:
+    - viewfield
+id: paragraph.cs_opportunity_list.default
+targetEntityType: paragraph
+bundle: cs_opportunity_list
+mode: default
+content:
+  su_opp_list_view:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: viewfield_select
+    region: content
+hidden:
+  created: true
+  status: true

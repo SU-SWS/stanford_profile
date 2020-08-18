@@ -8,6 +8,7 @@
 use Drupal\node\NodeInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\field\FieldConfigInterface;
 
 /**
  * Implements hook_ENTITY_TYPE_presave().
@@ -178,5 +179,20 @@ function cardinal_service_profile_ui_patterns_info_alter(array &$definitions) {
   if (isset($definitions['yaml:quote'])) {
     $definitions['yaml:quote']->setField('content', 'Additional Content');
     $definitions['yaml:quote']->setField('link', 'Link to More Content');
+  }
+}
+
+/**
+ * Implements hook_react_paragraphs_form_field_data_alter().
+ */
+function cardinal_service_profile_react_paragraphs_form_field_data_alter(array &$info, array $field_element, FieldConfigInterface $field_config) {
+  if ($field_config->getName() == 'su_opp_list_view') {
+    $good_displays = ['context_filtered_opps'];
+    foreach ($info['displays']['su_opportunities'] as $key => $display) {
+      if (!in_array($display['value'], $good_displays)) {
+        unset($info['displays']['su_opportunities'][$key]);
+      }
+    }
+    $info['displays']['su_opportunities'] = array_values($info['displays']['su_opportunities']);
   }
 }
