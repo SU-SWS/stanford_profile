@@ -1,0 +1,22 @@
+uuid: fd6f959e-edaf-4f32-a0c3-1655ccd3a342
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.embeddable.field_media_stanford_embed
+    - field.field.media.embeddable.su_stanford_embed_plain
+    - media.type.embeddable
+id: media.embeddable.media_library
+targetEntityType: media
+bundle: embeddable
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  field_media_stanford_embed: true
+  name: true
+  path: true
+  status: true
+  su_stanford_embed_plain: true
+  uid: true

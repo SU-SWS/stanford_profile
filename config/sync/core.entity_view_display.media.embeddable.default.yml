@@ -1,0 +1,66 @@
+uuid: 59e7bab0-1e7d-4b43-a2f4-db328c9a931d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.embeddable.field_media_stanford_embed
+    - field.field.media.embeddable.su_stanford_embed_plain
+    - media.type.embeddable
+  module:
+    - ds
+    - media
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_media
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes: {  }
+        wrappers:
+          media_caption: div
+          media_image_src: div
+          media_link: div
+          media_link_attributes: div
+          media_video_src: div
+          media_audio_src: div
+          media_content_attributes: div
+          media_custom: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+    regions:
+      media_caption:
+        - field_media_stanford_embed
+        - uid
+        - name
+        - thumbnail
+        - created
+id: media.embeddable.default
+targetEntityType: media
+bundle: embeddable
+mode: default
+content:
+  field_media_stanford_embed:
+    type: oembed
+    label: visually_hidden
+    weight: 0
+    settings:
+      max_width: 0
+      max_height: 0
+    third_party_settings: {  }
+    region: content
+  su_stanford_embed_plain:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

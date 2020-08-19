@@ -1,0 +1,20 @@
+uuid: 04580fd6-ab11-4556-ab0d-c3d8f1e6acbc
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_media
+id: embeddable
+label: Embeddable
+description: 'Stanford Embeds'
+source: stanford_embed
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  thumbnails_directory: 'public://oembed_thumbnails'
+  providers:
+    - Deviantart.com
+    - Flickr
+  source_field: field_media_stanford_embed
+field_map:
+  title: name
