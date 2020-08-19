@@ -21,10 +21,10 @@ class SpotlightContentCest {
     $I->canSee("Opportunity's Open To?");
     $I->canSee("Opportunity's Service Theme");
     $I->canSee("Opportunity's Pathway");
-    $I->canSee("Opportunity's Dimension");
+    $I->canSee("Opportunity Program");
     $I->fillField('Title', 'Foo Bar Spotlight');
-    $I->fillField('Student Name', 'John Doe');
-    $I->fillField('Graduation Year and Area', '2020 Underwater Basket Weaving');
+    $I->fillField('Author Name', 'John Doe');
+    $I->fillField('Author Subtitle', '2020 Underwater Basket Weaving');
     $I->fillField('Quote', 'Basket Weaving is fun.');
     $I->fillField('Story', 'Lorem Ipsum');
     $I->fillField('Related Opportunity', 'Foo Bar');

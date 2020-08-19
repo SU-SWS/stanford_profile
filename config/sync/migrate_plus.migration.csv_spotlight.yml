@@ -1,0 +1,233 @@
+uuid: 3d7c2884-a1e5-4f96-9694-d3ece4c894f1
+langcode: en
+status: true
+dependencies: {  }
+id: csv_spotlight
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: {  }
+migration_group: csv_importers
+label: 'CSV Spotlight'
+source:
+  plugin: csv
+  path: /tmp/foo.csv
+  constants:
+    status: 1
+    type: su_spotlight
+    basic_html: stanford_html
+    image_destination: 'public://media/image/csv/'
+    image_alt: ''
+  fields:
+    -
+      name: id
+      label: 'ID *Required'
+      selector: id
+    -
+      name: existing_nid
+      label: 'Existing Content ID Number'
+      selector: existing_id
+    -
+      name: status
+      label: Status
+      selector: status
+    -
+      name: title
+      label: 'Title *Required'
+      selector: title
+    -
+      name: student_name
+      label: 'Student Name'
+      selector: student_name
+    -
+      name: person_group
+      label: 'Person Group'
+      selector: person_group
+    -
+      name: name_subtitle
+      label: 'Name Subtitle'
+      selector: name_subtitle
+    -
+      name: quote
+      label: Quote
+      selector: Quote
+    -
+      name: caption
+      label: Caption/Context
+      selector: caption
+    -
+      name: story
+      label: Story
+      selector: story
+    -
+      name: open_to
+      label: 'Opportunity''s Open To?'
+      selector: open_to
+    -
+      name: service_theme
+      label: 'Opportunity''s Service Theme'
+      selector: service_theme
+    -
+      name: pathway
+      label: 'Opportunity''s Pathway'
+      selector: pathway
+    -
+      name: program
+      label: 'Opportunity''s Program'
+      selector: program
+    -
+      name: image
+      label: 'Image URL'
+      selector: image_url
+  ids:
+    - id
+process:
+  nid: existing_nid
+  title: title
+  revision_translation_affected:
+    -
+      plugin: default_value
+      default_value: 1
+  revision_timestamp:
+    plugin: callback
+    callable: _stanford_migrate_get_time
+  status:
+    plugin: default_value
+    source: status
+    default_value: 1
+    strict: true
+  type: constants/type
+  body/value: story
+  body/format: constants/basic_html
+  su_spotlight_context: caption
+  su_spotlight_grad_area: name_subtitle
+  su_spotlight_quote/value: quote
+  su_spotlight_quote/format: constants/basic_html
+  su_spotlight_student_name: student_name
+  su_opp_open_to:
+    -
+      plugin: skip_on_empty
+      source: open_to
+      method: process
+    -
+      plugin: explode
+      delimiter: ;
+    -
+      plugin: callback
+      callable: trim
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: su_opportunity_open_to
+      entity_type: taxonomy_term
+      ignore_case: true
+  su_opp_dimension:
+    -
+      plugin: skip_on_empty
+      source: program
+      method: process
+    -
+      plugin: explode
+      delimiter: ;
+    -
+      plugin: callback
+      callable: trim
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: su_opportunity_dimension
+      entity_type: taxonomy_term
+      ignore_case: true
+  su_opp_service_theme:
+    -
+      plugin: skip_on_empty
+      source: service_theme
+      method: process
+    -
+      plugin: explode
+      delimiter: ;
+    -
+      plugin: callback
+      callable: trim
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: su_opportunity_service_theme
+      entity_type: taxonomy_term
+      ignore_case: true
+  su_opp_pathway:
+    -
+      plugin: skip_on_empty
+      source: pathway
+      method: process
+    -
+      plugin: explode
+      delimiter: ;
+    -
+      plugin: callback
+      callable: trim
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: su_opportunity_pathway
+      entity_type: taxonomy_term
+      ignore_case: true
+  su_spotlight_person_type:
+    -
+      plugin: skip_on_empty
+      source: person_group
+      method: process
+    -
+      plugin: explode
+      delimiter: ;
+    -
+      plugin: callback
+      callable: trim
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: spotlight_person
+      entity_type: taxonomy_term
+      ignore_case: true
+  image_file:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: image
+    -
+      plugin: file_import
+      destination: constants/image_destination
+      id_only: true
+      reuse: true
+  su_spotlight_feature_image/target_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: image
+    -
+      plugin: skip_on_empty
+      method: process
+      source: '@image_file'
+    -
+      plugin: entity_generate
+      source: title
+      value_key: name
+      bundle_key: bundle
+      bundle: image
+      entity_type: media
+      ignore_case: true
+      values:
+        field_media_image/target_id: '@image_file'
+        field_media_image/alt: constants/image_alt
+        field_media_image/title: constants/image_alt
+destination:
+  plugin: 'entity_reference_revisions:node'
+  new_revisions: true
+  force_revision: true
+migration_dependencies:
+  required: {  }

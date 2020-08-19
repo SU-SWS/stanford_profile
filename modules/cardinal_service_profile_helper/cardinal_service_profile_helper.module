@@ -5,47 +5,14 @@
  * cardinal_service_profile_helper.module
  */
 
-use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Link;
-use Drupal\Core\Form\FormStateInterface;
-
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements hook_migration_plugins_alter().
  */
-function cardinal_service_profile_form_csv_importer_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  $form['importer']['entity_type']['#options'] = ['node' => t('Node')];
-}
-
-/**
- * Implements hook_menu_links_discovered_alter().
- */
-function cardinal_service_profile_menu_links_discovered_alter(&$links) {
-  if (!empty($links['csv_importer.form'])) {
-    $links['csv_importer.form']['parent'] = 'system.admin_content';
+function cardinal_service_profile_helper_migration_plugins_alter(array &$migrations) {
+  if ($csv_path_cache = \Drupal::cache()->get('migration:csv_path')) {
+    $migration = $csv_path_cache->data['migration'];
+    if (isset($migrations["migration_config_deriver:$migration"])) {
+      $migrations["migration_config_deriver:$migration"]['source']['path'] = $csv_path_cache->data['path'];
+    }
   }
-}
-
-/**
- * Implements hook_help().
- */
-function cardinal_service_profile_help($route_name, RouteMatchInterface $route_match) {
-  $help = '';
-  switch ($route_name) {
-    case 'csv_importer.form':
-      $replacements = [
-        '@people' => Link::createFromRoute(t('People'), 'csv_importer.template', ['node_type' => 'stanford_person'])
-          ->toString(),
-        '@opportunities' => Link::createFromRoute(t('Opportunities'), 'csv_importer.template', ['node_type' => 'su_opportunity'])
-          ->toString(),
-        '@stories' => Link::createFromRoute(t('Spotlight'), 'csv_importer.template', ['node_type' => 'su_spotlight'])
-          ->toString(),
-        '@news' => Link::createFromRoute(t('News'), 'csv_importer.template', ['node_type' => 'stanford_news'])
-          ->toString(),
-        '@events' => Link::createFromRoute(t('Events'), 'csv_importer.template', ['node_type' => 'stanford_event'])
-          ->toString(),
-      ];
-      $help .= t('Download an empty CSV template for @people, @opportunities, @stories, @events, or @news.', $replacements);
-      break;
-  }
-  return $help;
 }

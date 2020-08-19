@@ -3,10 +3,8 @@
 namespace Drupal\Tests\cardinal_service_profile_helper\Kernel\Controller;
 
 use Drupal\cardinal_service_profile_helper\Controller\NodeCsvTemplate;
-use Drupal\field\Entity\FieldConfig;
-use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\node\Entity\NodeType;
+use Drupal\migrate_plus\Entity\MigrationInterface;
 
 /**
  * Class NodeCsvTemplateTest
@@ -22,60 +20,28 @@ class NodeCsvTemplateTest extends KernelTestBase {
   protected static $modules = [
     'system',
     'cardinal_service_profile_helper',
-    'node',
-    'field',
-    'user',
-    'text',
-    'link',
-    'entity_reference',
   ];
 
   /**
-   * Generated node type.
+   * Mock migration entity.
    *
-   * @var \Drupal\node\NodeTypeInterface
+   * @var \Drupal\migrate_plus\Entity\MigrationInterface
    */
-  protected $nodeType;
+  protected $migration;
 
+  /**
+   * {@inheritDoc}
+   */
   protected function setUp() {
     parent::setUp();
-    $this->installEntitySchema('user');
-    $this->installEntitySchema('node');
-    $this->nodeType = NodeType::create(['type' => 'page', 'name' => 'page']);
-    $this->nodeType->save();
-
-    $fieldStorage = FieldStorageConfig::create([
-      'field_name' => 'field_foo',
-      'entity_type' => 'node',
-      'type' => 'string',
-    ]);
-    $fieldStorage->save();
-    $field = FieldConfig::create([
-      'field_storage' => $fieldStorage,
-      'bundle' => 'page',
-    ])->save();
-
-    $fieldStorage = FieldStorageConfig::create([
-      'field_name' => 'field_bar',
-      'entity_type' => 'node',
-      'type' => 'link',
-    ]);
-    $fieldStorage->save();
-    $field = FieldConfig::create([
-      'field_storage' => $fieldStorage,
-      'bundle' => 'page',
-    ])->save();
-
-    $fieldStorage = FieldStorageConfig::create([
-      'field_name' => 'field_baz',
-      'entity_type' => 'node',
-      'type' => 'entity_reference',
-    ]);
-    $fieldStorage->save();
-    $field = FieldConfig::create([
-      'field_storage' => $fieldStorage,
-      'bundle' => 'page',
-    ])->save();
+    $this->migration = $this->createMock(MigrationInterface::class);
+    $this->migration->method('id')->willReturn('page');
+    $this->migration->source = ['fields' => [
+      ['label' => 'title','selector' => 'title'],
+      ['label' => 'field_foo','selector' => 'field_foo'],
+      ['label' => 'field_bar','selector' => 'field_bar'],
+      ['label' => 'field_baz','selector' => 'field_baz'],
+    ]];
   }
 
   /**
@@ -83,10 +49,10 @@ class NodeCsvTemplateTest extends KernelTestBase {
    */
   public function testTemplateController() {
     $controller = NodeCsvTemplate::create(\Drupal::getContainer());
-    $response = $controller->getTemplate($this->nodeType);
+    $response = $controller->getTemplate($this->migration);
 
     $this->assertEquals('text/csv', $response->headers->get('Content-Type'));
-    $this->assertEqual('title,field_foo,field_bar|uri,field_bar|title', file_get_contents('temporary://page.csv'));
+    $this->assertEqual('title (title),field_foo (field_foo),field_bar (field_bar),field_baz (field_baz)', file_get_contents('temporary://page.csv'));
   }
 
 }
