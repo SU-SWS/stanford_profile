@@ -17,6 +17,10 @@ const FilterContainer = styled.div`
   .flex-lg-2-of-12 {
     display: flex;
     justify-content: start;
+
+    @media (max-width: 992px) {
+      justify-content: center;
+    }
   }
 
   h2 {

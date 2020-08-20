@@ -1,5 +1,15 @@
 @charset 'UTF-8';
 
+
+.jumpstart-ui--one-column-overlay {
+  @include modular-spacing('margin-bottom', 7);
+
+  // Hero with no margin-bottom
+  &.su-hero-nospace {
+    margin: 0;
+  }
+}
+
 // Hero with left transparent card overlay
 .su-hero-left {
   h1 {
@@ -55,11 +65,11 @@
   .su-page-banner > div,
   .contextual-region {
     height: 100%;
-  }
 
-  @media only screen and (min-width: 0) {
-    .node-stanford-page-su-page-banner {
-      margin-bottom: 0;
+    @include grid-media-max('sm') {
+      .node-stanford-page-su-page-banner {
+        margin-bottom: 0;
+      }
     }
   }
 }

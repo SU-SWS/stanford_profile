@@ -1,5 +1,12 @@
 @charset 'UTF-8';
 
+[class*='page-user-'] {
+  .block-cardinal-service-content {
+    @include modular-spacing('margin-top', 6);
+    margin-bottom: 300px;
+  }
+}
+
 .su-opportunities-count-favorites-opps {
   @include modular-spacing('margin-bottom', 9);
 

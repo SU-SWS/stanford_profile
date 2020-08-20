@@ -22,16 +22,9 @@
 
   h3 {
     @include modular-typography(3);
-    font-weight: 700;
 
     a {
-      @include link($su-color-bright-red);
-      text-decoration: none;
-
-      &:hover,
-      &:focus {
-        text-decoration: underline;
-      }
+      font-weight: 700;
     }
   }
 
@@ -55,8 +48,8 @@
 
     @include grid-media-min('md') {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto 1fr;
       grid-gap: 10px 10px;
       grid-template-areas:
       "application-deadline application-deadline application-deadline"
