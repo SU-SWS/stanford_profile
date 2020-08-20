@@ -50,3 +50,19 @@ function cardinal_service_preprocess_field(&$variables) {
   $message = t('This @label has passed', ['@label' => $variables['label']])->render();
   $variables['items'][0]['content']['#suffix'] = "<div class=\"opportunity-passed-date\">* $message</div>";
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function cardinal_service_preprocess_page(&$variables) {
+  $variables['page']['content']['go_to_top'] = [
+    '#type' => 'html_tag',
+    '#tag' => 'a',
+    '#value' => '<span class="visually-hidden">Back to Top</span>',
+    '#attributes' => [
+      'href' => '#',
+      'class' => ['back-to-top', 'fas', 'fa-chevron-circle-up'],
+      'title' => t('Back to Top'),
+    ],
+  ];
+}

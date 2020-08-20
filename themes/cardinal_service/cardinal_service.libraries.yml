@@ -1,6 +1,10 @@
 
 base:
   version: VERSION
+  js:
+    lib/js/cardinal_service.js: {}
   css:
     theme:
       dist/css/base.css: {}
+  dependencies:
+    -  core/jquery.once
