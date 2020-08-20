@@ -22,7 +22,39 @@ function cardinal_service_profile_helper_update_8002() {
     ->condition('type', 'su_spotlight')
     ->condition('su_spotlight_feature_image', NULL, 'IS NULL')
     ->execute();
-  foreach ($node_storage->loadMultiple($node_ids) as $node){
+  foreach ($node_storage->loadMultiple($node_ids) as $node) {
     $node->set('su_spotlight_feature_image', 1726)->save();
+  }
+}
+
+/**
+ * Manipulate the data in spotlight fields.
+ */
+function cardinal_service_profile_helper_update_8003() {
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  $node_ids = $node_storage->getQuery()
+    ->accessCheck(FALSE)
+    ->condition('type', 'su_spotlight')
+    ->condition('su_spotlight_grad_area', NULL, 'IS NOT NULL')
+    ->condition('su_spotlight_student_name', NULL, 'IS NOT NULL')
+    ->execute();
+
+  /** @var \Drupal\node\NodeInterface $node */
+  foreach ($node_storage->loadMultiple($node_ids) as $node) {
+    $grad = $node->get('su_spotlight_grad_area')->getString();
+    $name = $node->get('su_spotlight_student_name')->getString();
+
+
+    preg_match_all('/[0-9]+/', $grad, $grad_years);
+    if (empty($grad_years[0])) {
+      continue;
+    }
+
+    if (count($grad_years[0]) == 1) {
+      $name .= ', \'' . implode(', \'', $grad_years[0]);
+      $node->set('su_spotlight_student_name', $name)
+        ->set('su_spotlight_grad_area', '')
+        ->save();
+    }
   }
 }
