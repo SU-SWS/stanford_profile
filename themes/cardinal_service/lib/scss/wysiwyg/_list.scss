@@ -1,0 +1,34 @@
+@charset 'UTF-8';
+
+ol {
+  &.cs-number--big {
+    > li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-areas: "num-list ." ". nested-list";
+      grid-gap: 0 25px;
+      list-style: none;
+      counter-increment: inst;
+
+      &::before {
+        @include modular-typography(2);
+        font-weight: 700;
+        content: counter(inst);
+        background: $cs-color-yellow;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 56px;
+        height: 56px;
+        text-align: center;
+        grid-area: num-list;
+      }
+
+      ol,
+      ul {
+        grid-area: nested-list;
+      }
+    }
+  }
+}
