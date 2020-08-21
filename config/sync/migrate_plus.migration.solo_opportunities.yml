@@ -118,7 +118,29 @@ source:
     id:
       type: string
 process:
-  title: title
+  skip:
+    plugin: skip_on_value
+    source: sponsor
+    method: row
+    value:
+      - Bill Lane Center Internships
+      - Freeman Spogli Institute Global Policy Internships
+      - Stanford Global Studies
+      - King Center on Global Development
+      - Schneider Fellowships
+      - Seed Internships
+      - Stanford Arts
+      - Stanford Energy Internships in California and the West (SEICW)
+  title:
+    -
+      plugin: str_replace
+      source: title
+      regex: true
+      search: '/^Schneider Summer Fellowships:*?$/'
+      replace: ''
+    -
+      plugin: skip_on_empty
+      method: row
   revision_translation_affected:
     -
       plugin: default_value
@@ -274,19 +296,6 @@ process:
         field_media_image/target_id: '@image_file'
         field_media_image/alt: constants/image_alt
         field_media_image/title: constants/image_alt
-  su_opp_application_deadline:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: application_deadline
-    -
-      plugin: format_date
-      from_format: U
-      to_format: 'Y-m-d\TH:i:s'
-      from_timezone: America/Los_Angeles
-      to_timezone: UTC
-      settings:
-        validate_format: false
   su_opp_submissions_open:
     -
       plugin: skip_on_empty
@@ -300,6 +309,38 @@ process:
       to_timezone: UTC
       settings:
         validate_format: false
+  su_opp_application_deadline:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: application_deadline
+    -
+      plugin: format_date
+      from_format: U
+      to_format: 'Y-m-d\TH:i:s'
+      from_timezone: America/Los_Angeles
+      to_timezone: UTC
+      settings:
+        validate_format: false
+    -
+      plugin: skip_on_equal
+      compare: '@su_opp_submissions_open'
+      method: process
+  su_opp_deadline_time:
+    -
+      plugin: default_value
+      default_value:
+        - Autumn
+        - Winter
+        - Spring
+        - Summer
+    -
+      plugin: entity_lookup
+      value_key: name
+      bundle_key: vid
+      bundle: su_opportunity_deadline
+      entity_type: taxonomy_term
+      ignore_case: true
   su_opp_duration/value:
     -
       plugin: skip_on_empty
@@ -329,6 +370,21 @@ process:
     -
       plugin: default_value
       default_value: '@su_opp_duration/value'
+  su_opp_sponsor:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: sponsor
+    -
+      plugin: explode
+      delimiter: ', '
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: su_opportunity_sponsor
+      entity_type: taxonomy_term
+      ignore_case: true
 destination:
   plugin: 'entity_reference_revisions:node'
   new_revisions: true

@@ -58,3 +58,20 @@ function cardinal_service_profile_helper_update_8003() {
     }
   }
 }
+
+/**
+ * Invalidate all imported content to re-import their fields.
+ */
+function cardinal_service_profile_helper_update_8004() {
+  $prefix = 'migrate_plus.migration.';
+  $configs = \Drupal::configFactory()->listAll($prefix);
+  $database = \Drupal::database();
+
+  foreach ($configs as $config_name) {
+    $migration_name = str_replace($prefix, '', $config_name);
+    $table = "migrate_map_$migration_name";
+    if ($database->schema()->tableExists($table)) {
+      $database->update($table)->fields(['hash' => ''])->execute();
+    }
+  }
+}

@@ -5,10 +5,15 @@
  * cardinal_service_profile.inc
  */
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\field\FieldConfigInterface;
 use Drupal\node\NodeInterface;
 use Drupal\views\ViewExecutable;
-use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
-use Drupal\field\FieldConfigInterface;
 
 /**
  * Implements hook_ENTITY_TYPE_presave().
@@ -194,5 +199,119 @@ function cardinal_service_profile_react_paragraphs_form_field_data_alter(array &
       }
     }
     $info['displays']['su_opportunities'] = array_values($info['displays']['su_opportunities']);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function cardinal_service_profile_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'node_su_opportunity_edit_form') {
+    /** @var \Drupal\node\NodeForm $form_object */
+    $form_object = $form_state->getBuildInfo()['callback_object'];
+    $entity = $form_object->getEntity();
+
+    // The current node was imported via migration, present the user with a
+    // message and a link to that profile.
+    if (_cardinal_service_node_imported($entity)) {
+      \Drupal::messenger()
+        ->addWarning(t('Some fields can not be edited since they contain imported data. They are not visible here.'));
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function cardinal_service_profile_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
+  $route_match = \Drupal::routeMatch();
+  // When edit an existing node that was imported via migrate module, mark the
+  // fields that are mapped from migration as forbidden.
+  if (
+    $operation == 'edit' &&
+    $route_match->getRouteName() == 'entity.node.edit_form'
+  ) {
+
+    $node = $route_match->getParameter('node');
+    if (_cardinal_service_profile_field_mapped($node, $field_definition)) {
+      return AccessResult::forbidden(t('Field is mapped by the importer'));
+    }
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Check if the field is mapped by a migration and the node was imported.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   Node entity being edited.
+ * @param \Drupal\Core\Field\FieldDefinitionInterface $field
+ *   Field to check for mapping.
+ *
+ * @return bool
+ *   If the node is imported and the field is mapped.
+ */
+function _cardinal_service_profile_field_mapped(NodeInterface $node, FieldDefinitionInterface $field) {
+  $field_name = $field->getName();
+  $columns = $field->getFieldStorageDefinition()->getColumns();
+
+  if ($migration_name = _cardinal_service_node_imported($node)) {
+    $migration_config = \Drupal::config("migrate_plus.migration.$migration_name");
+    $migration_group = \Drupal::config('migrate_plus.migration_group.' . $migration_config->get('migration_group'));
+
+    $processing = FALSE;
+    foreach (array_keys($columns) as $column) {
+      $processing = !$processing ? $migration_config->get("process.$field_name/$column") : TRUE;
+      $processing = $processing ?: $migration_group->get("shared_configuration.process.$field_name/$column");
+    }
+
+    // The field or a column of the field was mapped with data from migrate.
+    // Mark it as forbidden.
+    if (
+      $processing ||
+      $migration_config->get("process.$field_name") ||
+      $migration_group->get("shared_configuration.process.$field_name")
+    ) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Was this node imported via migrate module.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   Node entity.
+ *
+ * @return string|null
+ *   True if it was imported from migration.
+ */
+function _cardinal_service_node_imported(NodeInterface $node) {
+  $migration_names = \Drupal::configFactory()
+    ->listAll('migrate_plus.migration.');
+
+  foreach ($migration_names as $config_name) {
+    $migration_name = str_replace('migrate_plus.migration.', '', $config_name);
+    $db_name = 'migrate_map_' . $migration_name;
+    $database = \Drupal::database();
+    // Check for the table first.
+    if (
+      $database->schema()->tableExists($db_name) &&
+      $database->schema()->fieldExists($db_name, 'destid1')
+    ) {
+      // Check for the entity id in the destination id column.
+      $migrated = $database->select($db_name, 'm')
+        ->fields('m')
+        ->condition('destid1', $node->id())
+        ->countQuery()
+        ->execute()
+        ->fetchField();
+
+      if ($migrated > 0) {
+        return $migration_name;
+      }
+    }
   }
 }
