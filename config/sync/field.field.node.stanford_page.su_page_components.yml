@@ -27,8 +27,11 @@ settings:
       stanford_person_cta: stanford_person_cta
       stanford_schedule: stanford_schedule
     target_bundles_drag_drop:
-      news_views:
-        weight: 7
+      cardinal_mission_statement:
+        weight: 12
+        enabled: false
+      cs_opportunity_list:
+        weight: 13
         enabled: false
       stanford_banner:
         weight: 4
@@ -42,6 +45,9 @@ settings:
       stanford_person_cta:
         enabled: true
         weight: 11
+      stanford_resource_list:
+        weight: 18
+        enabled: false
       stanford_schedule:
         enabled: true
         weight: 12
@@ -51,15 +57,18 @@ settings:
       stanford_wysiwyg:
         weight: 6
         enabled: false
+      su_minimal_card:
+        weight: 22
+        enabled: false
     widths:
-      news_views:
-        min: '12'
       stanford_banner:
         min: '12'
       stanford_card:
-        min: '4'
+        min: '3'
       stanford_media_caption:
         min: '4'
       stanford_wysiwyg:
         min: '4'
+      su_minimal_card:
+        min: '3'
 field_type: react_paragraphs

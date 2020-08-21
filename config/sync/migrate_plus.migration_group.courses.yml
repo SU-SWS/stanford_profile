@@ -91,7 +91,12 @@ shared_configuration:
         source: time_of_year
       -
         plugin: str_replace
-        search: ['alternate years, given next year', 'alternate years, not given next year', 'Anytime', 'not given this year', 'offered once only']
+        search:
+          - 'alternate years, given next year'
+          - 'alternate years, not given next year'
+          - Anytime
+          - 'not given this year'
+          - 'offered once only'
         replace: ''
       -
         plugin: entity_generate
