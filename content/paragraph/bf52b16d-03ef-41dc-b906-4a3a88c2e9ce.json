@@ -1,15 +1,25 @@
 {
     "_links": {
         "self": {
-            "href": ""
+            "href": "http:\/\/docroot.cardinalsites.loc\/entity\/paragraph\/8?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
         }
     },
+    "id": [
+        {
+            "value": 8
+        }
+    ],
     "uuid": [
         {
             "value": "bf52b16d-03ef-41dc-b906-4a3a88c2e9ce"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": 8
         }
     ],
     "langcode": [
@@ -38,12 +48,12 @@
     ],
     "parent_id": [
         {
-            "value": "6d51339d-ff67-498d-98e9-d8228d36fd51"
+            "value": "10"
         }
     ],
     "parent_type": [
         {
-            "value": "node"
+            "value": "paragraph_row"
         }
     ],
     "parent_field_name": [
@@ -53,7 +63,12 @@
     ],
     "behavior_settings": [
         {
-            "value": []
+            "value": {
+                "react": {
+                    "width": 12,
+                    "label": "Text Area"
+                }
+            }
         }
     ],
     "default_langcode": [

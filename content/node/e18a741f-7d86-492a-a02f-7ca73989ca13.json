@@ -1,32 +1,42 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/research?_format=hal_json"
+            "href": "http:\/\/docroot.cardinalsites.loc\/research?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/stanford_page"
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
             {
-                "href": "http:\/\/default\/user\/1?_format=hal_json"
+                "href": "http:\/\/docroot.cardinalsites.loc\/user\/1?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
             {
-                "href": "http:\/\/default\/user\/1?_format=hal_json",
+                "href": "http:\/\/docroot.cardinalsites.loc\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
             {
-                "href": "",
+                "href": "http:\/\/docroot.cardinalsites.loc\/entity\/paragraph_row\/9?_format=hal_json",
                 "lang": "en"
             }
         ]
     },
+    "nid": [
+        {
+            "value": 8
+        }
+    ],
     "uuid": [
         {
             "value": "e18a741f-7d86-492a-a02f-7ca73989ca13"
+        }
+    ],
+    "vid": [
+        {
+            "value": 8
         }
     ],
     "langcode": [
@@ -51,7 +61,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                        "href": "http:\/\/docroot.cardinalsites.loc\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -59,7 +69,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "92ead9f7-7e51-4773-b45b-c73f9b9eaba8"
+                        "value": "0561f7be-d214-496f-be6b-0a4f4192965b"
                     }
                 ]
             }
@@ -68,7 +78,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/user\/1?_format=hal_json"
+                        "href": "http:\/\/docroot.cardinalsites.loc\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -76,7 +86,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "92ead9f7-7e51-4773-b45b-c73f9b9eaba8"
+                        "value": "0561f7be-d214-496f-be6b-0a4f4192965b"
                     }
                 ],
                 "lang": "en"
@@ -86,25 +96,19 @@
             {
                 "_links": {
                     "self": {
-                        "href": ""
+                        "href": "http:\/\/docroot.cardinalsites.loc\/entity\/paragraph_row\/9?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph_row\/node_stanford_page_row"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "c77c8f62-721c-475d-bd5f-ba5ddce96836"
+                        "value": "8f739f14-a899-4880-9c11-5929f0d4ddde"
                     }
                 ],
                 "lang": "en",
-                "target_revision_id": "c77c8f62-721c-475d-bd5f-ba5ddce96836",
-                "settings": {
-                    "row": "0",
-                    "index": 0,
-                    "width": 12,
-                    "admin_title": "Text Area"
-                }
+                "target_revision_id": "9"
             }
         ]
     },
@@ -129,7 +133,7 @@
     ],
     "changed": [
         {
-            "value": "2019-08-27T23:12:32+00:00",
+            "value": "2020-08-24T18:46:18+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
@@ -158,10 +162,20 @@
             "lang": "en"
         }
     ],
+    "metatag": [
+        {
+            "value": {
+                "title": "Research | University",
+                "og_site_name": "University",
+                "canonical_url": "http:\/\/docroot.cardinalsites.loc\/research",
+                "og_url": "http:\/\/docroot.cardinalsites.loc\/home"
+            }
+        }
+    ],
     "path": [
         {
             "alias": "\/research",
-            "pid": null,
+            "pid": 31,
             "langcode": "en",
             "lang": "en"
         }

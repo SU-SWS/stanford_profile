@@ -1,30 +1,31 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/docroot.cardinalsites.loc\/entity\/paragraph\/17?_format=hal_json"
+            "href": "http:\/\/docroot.cardinalsites.loc\/entity\/paragraph_row\/5?_format=hal_json"
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_banner"
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph_row\/node_stanford_page_row"
         },
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_banner\/su_banner_image": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph_row\/node_stanford_page_row\/su_page_components": [
             {
-                "href": "http:\/\/docroot.cardinalsites.loc\/media\/16\/edit?_format=hal_json"
+                "href": "http:\/\/docroot.cardinalsites.loc\/entity\/paragraph\/17?_format=hal_json",
+                "lang": "en"
             }
         ]
     },
     "id": [
         {
-            "value": 17
+            "value": 5
         }
     ],
     "uuid": [
         {
-            "value": "35b55d09-f3e6-4134-87c1-4a8ea132940f"
+            "value": "a9a54e9d-e433-408f-be3d-141d3cb3aad6"
         }
     ],
     "revision_id": [
         {
-            "value": 17
+            "value": 5
         }
     ],
     "langcode": [
@@ -35,7 +36,7 @@
     ],
     "type": [
         {
-            "target_id": "stanford_banner"
+            "target_id": "node_stanford_page_row"
         }
     ],
     "status": [
@@ -46,19 +47,14 @@
     ],
     "created": [
         {
-            "value": "2019-10-11T19:21:53+00:00",
+            "value": "2020-08-24T18:46:18+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
-    "parent_id": [
-        {
-            "value": "5"
-        }
-    ],
     "parent_type": [
         {
-            "value": "paragraph_row"
+            "value": "node"
         }
     ],
     "parent_field_name": [
@@ -68,12 +64,7 @@
     ],
     "behavior_settings": [
         {
-            "value": {
-                "react": {
-                    "width": 12,
-                    "label": "Banner"
-                }
-            }
+            "value": "a:0:{}"
         }
     ],
     "default_langcode": [
@@ -89,21 +80,23 @@
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/paragraph\/stanford_banner\/su_banner_image": [
+        "http:\/\/drupal.org\/rest\/relation\/paragraph_row\/node_stanford_page_row\/su_page_components": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/docroot.cardinalsites.loc\/media\/16\/edit?_format=hal_json"
+                        "href": "http:\/\/docroot.cardinalsites.loc\/entity\/paragraph\/17?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/media\/image"
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_banner"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "39cadd28-7a7e-4648-868d-d5e4f0a69bf7"
+                        "value": "35b55d09-f3e6-4134-87c1-4a8ea132940f"
                     }
-                ]
+                ],
+                "lang": "en",
+                "target_revision_id": "17"
             }
         ]
     }
