@@ -31,7 +31,7 @@ class BasicPageParagraphsCest {
     $I->amOnPage("/node/{$node->id()}/edit");
     $I->waitForElementVisible('#row-0');
     $I->click('Edit', '#row-0');
-    $I->waitForElementVisible('.MuiAutocomplete-input');
+    $I->waitForText('Superhead');
     $I->fillField('Superhead', 'Superhead text');
     $I->fillField('Headline', 'Headline');
     $I->fillField('URL', 'http://google.com');
