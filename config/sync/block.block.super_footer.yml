@@ -1,4 +1,4 @@
-uuid: 331b04e1-de5d-4159-a33f-50f338dc21c0
+uuid: e27ea028-1956-4e9c-b01d-4cda4c084e86
 langcode: en
 status: true
 dependencies:
@@ -23,7 +23,7 @@ visibility:
   config_pages_values_access:
     id: config_pages_values_access
     negate: false
-    config_page_field: super_footer|su_super_footer_title|string
-    operator: isset
+    config_page_field: super_footer|su_super_foot_enabled|boolean
+    operator: '=='
     condition_value: '1'
     context_mapping: {  }

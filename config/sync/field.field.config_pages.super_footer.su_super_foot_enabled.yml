@@ -1,0 +1,23 @@
+uuid: 43200456-b636-40f4-81aa-5a8e2a1cf5e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.super_footer
+    - field.storage.config_pages.su_super_foot_enabled
+id: config_pages.super_footer.su_super_foot_enabled
+field_name: su_super_foot_enabled
+entity_type: config_pages
+bundle: super_footer
+label: Enabled
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

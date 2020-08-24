@@ -1,4 +1,4 @@
-uuid: db984517-79ea-41b0-ad0d-0fa5bb8a74de
+uuid: f7cefb91-be7d-4ba3-990e-78d225be6110
 langcode: en
 status: true
 dependencies:
@@ -15,7 +15,7 @@ dependencies:
 third_party_settings:
   ds:
     layout:
-      id: jumpstart_ui_one_column
+      id: defaults
       library: null
       disable_css: false
       entity_classes: all_classes
@@ -35,38 +35,40 @@ bundle: super_footer
 mode: default
 content:
   su_intranet_link:
-    type: link_default
-    weight: 3
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  su_link_super_footer:
-    type: link_default
+    type: link
     weight: 2
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  su_super_foot_enabled:
-    type: boolean_checkbox
-    weight: 0
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  su_super_footer_title:
-    weight: 1
+    region: main
     label: hidden
     settings:
-      size: 60
-      placeholder: ''
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  su_link_super_footer:
+    type: link
+    weight: 1
+    region: main
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
     third_party_settings:
       field_formatter_class:
-        class: su-super-footer__heading
-    type: string_textfield
-    region: content
+        class: ''
+      ds:
+        ds_limit: ''
+  su_super_footer_title:
+    type: string
+    weight: 0
+    region: main
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
-  label: true
+  su_super_foot_enabled: true
