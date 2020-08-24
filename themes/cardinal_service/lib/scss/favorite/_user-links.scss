@@ -82,12 +82,23 @@
         padding: 4px 18px;
         margin: 0;
       }
+
+      @include grid-media-max('xs') {
+        top: -5px;
+      }
     }
 
     .name {
       display: inline-block;
       text-decoration: none;
       color: #4d4f53;
+      max-width: 100px;
+      height: 22px;
+      overflow: hidden;
+
+      @include grid-media-max('sm') {
+        height: 20px;
+      }
 
       &::before {
         font-family: 'Font Awesome 5 Free';
@@ -146,6 +157,14 @@
           content: '\f077';
         }
       }
+    }
+  }
+}
+
+@include grid-media-max('sm') {
+  .su-masthead {
+    .su-multi-menu {
+      margin-top: -37px;
     }
   }
 }
