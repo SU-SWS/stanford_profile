@@ -1,5 +1,10 @@
 @charset 'UTF-8';
 
+.spotlight {
+  @include modular-spacing('margin-top', 6);
+  @include modular-spacing('margin-bottom', 6);
+}
+
 .spotlight-header-content-container {
   @include modular-spacing('margin-bottom', 4);
 
