@@ -1,42 +1,32 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/docroot.cardinalsites.loc\/resources?_format=hal_json"
+            "href": "http:\/\/default\/resources?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/stanford_page"
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/revision_uid": [
             {
-                "href": "http:\/\/docroot.cardinalsites.loc\/user\/1?_format=hal_json"
+                "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/uid": [
             {
-                "href": "http:\/\/docroot.cardinalsites.loc\/user\/1?_format=hal_json",
+                "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
             {
-                "href": "http:\/\/docroot.cardinalsites.loc\/entity\/paragraph_row\/7?_format=hal_json",
+                "href": "http:\/\/default\/entity\/paragraph_row\/7?_format=hal_json",
                 "lang": "en"
             }
         ]
     },
-    "nid": [
-        {
-            "value": 6
-        }
-    ],
     "uuid": [
         {
             "value": "bc484600-a21a-4497-b9f7-f928474b511c"
-        }
-    ],
-    "vid": [
-        {
-            "value": 6
         }
     ],
     "langcode": [
@@ -61,7 +51,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/docroot.cardinalsites.loc\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -78,7 +68,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/docroot.cardinalsites.loc\/user\/1?_format=hal_json"
+                        "href": "http:\/\/default\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -96,7 +86,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/docroot.cardinalsites.loc\/entity\/paragraph_row\/7?_format=hal_json"
+                        "href": "http:\/\/default\/entity\/paragraph_row\/7?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/paragraph_row\/node_stanford_page_row"
@@ -108,7 +98,7 @@
                     }
                 ],
                 "lang": "en",
-                "target_revision_id": "7"
+                "target_revision_id": "0427d80b-1f0a-43e1-b902-03d7df3d8523"
             }
         ]
     },
@@ -167,8 +157,8 @@
             "value": {
                 "title": "Resources | University",
                 "og_site_name": "University",
-                "canonical_url": "http:\/\/docroot.cardinalsites.loc\/resources",
-                "og_url": "http:\/\/docroot.cardinalsites.loc\/home"
+                "canonical_url": "http:\/\/default\/resources",
+                "og_url": "http:\/\/default\/home"
             }
         }
     ],
