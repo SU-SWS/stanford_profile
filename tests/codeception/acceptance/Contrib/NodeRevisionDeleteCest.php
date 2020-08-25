@@ -7,8 +7,6 @@ class NodeRevisionDeleteCest {
 
   /**
    * Test that revisions are trimmed after cron runs.
-   *
-   * @group testme
    */
   public function testNodeRevisionDelete(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
