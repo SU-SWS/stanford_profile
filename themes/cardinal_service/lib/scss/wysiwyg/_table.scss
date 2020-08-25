@@ -1,0 +1,12 @@
+@charset 'UTF-8';
+
+table {
+  &.cs-table--span3 {
+    th,
+    td {
+      &:first-child {
+        width: 25%;
+      }
+    }
+  }
+}
