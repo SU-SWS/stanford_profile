@@ -193,6 +193,27 @@ class LockupSettingsCest {
     $I->canSee("Organization name");
     $I->canSee("Tertiary title line");
   }
+  
+   /**
+   * Test the lockup settings overrides.
+   */
+  public function testLockupSettingsO(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/config/system/lockup-settings');
+    $I->canSeeResponseCodeIs(200);
+    $I->uncheckOption('#edit-su-lockup-enabled-value');
+    $I->selectOption("#edit-su-lockup-options", "m");
+    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->fillField('Line 1', 'Site title line');
+    $I->fillField('Line 2', 'Secondary title line');
+    $I->fillField('Line 3', 'Tertiary title line');
+    $I->fillField('Line 4', 'Organization name');
+    $I->fillField('Line 5', 'Last line full width option');
+    $I->click('Save');
+    $I->amOnPage('/');
+    $I->canSee("Site title line");
+    $I->canSee("Secondary title line");
+  }
 
   /**
    * Test the lockup settings overrides.
