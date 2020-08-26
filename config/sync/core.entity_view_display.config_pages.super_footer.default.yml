@@ -12,21 +12,23 @@ dependencies:
     - ds
     - field_formatter_class
     - link
+    - stanford_fields
 third_party_settings:
   ds:
     layout:
-      id: defaults
+      id: jumpstart_ui_two_column
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
         extra_classes: ''
         centered: centered-container
-        columns: default
+        orientation: equal
         label: ''
     regions:
-      main:
+      left:
         - su_super_footer_title
+      main:
         - su_link_super_footer
         - su_intranet_link
 id: config_pages.super_footer.default
@@ -40,35 +42,40 @@ content:
     region: main
     label: hidden
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-  su_link_super_footer:
-    type: link
-    weight: 1
-    region: main
-    label: hidden
-    settings:
-      trim_length: 80
+      trim_length: null
       url_only: false
       url_plain: false
       rel: '0'
       target: '0'
     third_party_settings:
       field_formatter_class:
-        class: ''
-      ds:
-        ds_limit: ''
-  su_super_footer_title:
-    type: string
-    weight: 0
+        class: su-super-footer__intranet
+  su_link_super_footer:
+    type: link
+    weight: 1
     region: main
     label: hidden
     settings:
-      link_to_entity: false
-    third_party_settings: {  }
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: su-super-footer__link
+      ds:
+        ds_limit: ''
+  su_super_footer_title:
+    type: entity_title_heading
+    weight: 0
+    region: left
+    label: hidden
+    settings:
+      tag: h2
+      linked: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-super-footer__heading
 hidden:
   su_super_foot_enabled: true
