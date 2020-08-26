@@ -5,7 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.media.media_library
     - field.field.media.embeddable.field_media_stanford_embed
-    - field.field.media.embeddable.su_stanford_embed_plain
+    - field.field.media.embeddable.field_media_embeddable_code
     - image.style.medium
     - media.type.embeddable
   module:
@@ -28,5 +28,5 @@ hidden:
   created: true
   field_media_stanford_embed: true
   name: true
-  su_stanford_embed_plain: true
+  field_media_embeddable_code: true
   uid: true

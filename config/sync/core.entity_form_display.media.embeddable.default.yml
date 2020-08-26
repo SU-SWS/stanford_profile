@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.embeddable.field_media_stanford_embed
-    - field.field.media.embeddable.su_stanford_embed_plain
+    - field.field.media.embeddable.field_media_embeddable_code
     - media.type.embeddable
   module:
     - media
@@ -49,7 +49,7 @@ content:
     weight: 5
     region: content
     third_party_settings: {  }
-  su_stanford_embed_plain:
+  field_media_embeddable_code:
     weight: 26
     settings:
       rows: 5

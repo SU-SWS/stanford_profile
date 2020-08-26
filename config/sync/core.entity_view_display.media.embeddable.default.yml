@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.embeddable.field_media_stanford_embed
-    - field.field.media.embeddable.su_stanford_embed_plain
+    - field.field.media.embeddable.field_media_embeddable_code
     - media.type.embeddable
   module:
     - ds
@@ -52,12 +52,12 @@ content:
       max_height: 0
     third_party_settings: {  }
     region: content
-  su_stanford_embed_plain:
+  field_media_embeddable_code:
     weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    type: embeddable_formatter
     region: content
 hidden:
   created: true
