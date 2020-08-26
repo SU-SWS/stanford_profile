@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
-    - field.field.media.embeddable.field_media_stanford_embed
+    - field.field.media.embeddable.field_media_embeddable_oembed
     - field.field.media.embeddable.field_media_embeddable_code
     - image.style.medium
     - media.type.embeddable
@@ -26,7 +26,7 @@ content:
     region: content
 hidden:
   created: true
-  field_media_stanford_embed: true
+  field_media_embeddable_oembed: true
   name: true
   field_media_embeddable_code: true
   uid: true

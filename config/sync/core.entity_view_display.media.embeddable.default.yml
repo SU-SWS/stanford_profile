@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.embeddable.field_media_stanford_embed
+    - field.field.media.embeddable.field_media_embeddable_oembed
     - field.field.media.embeddable.field_media_embeddable_code
     - media.type.embeddable
   module:
@@ -33,7 +33,7 @@ third_party_settings:
         link_custom: ''
     regions:
       media_caption:
-        - field_media_stanford_embed
+        - field_media_embeddable_oembed
         - uid
         - name
         - thumbnail
@@ -43,7 +43,7 @@ targetEntityType: media
 bundle: embeddable
 mode: default
 content:
-  field_media_stanford_embed:
+  field_media_embeddable_oembed:
     type: oembed
     label: visually_hidden
     weight: 0

@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.embeddable.field_media_stanford_embed
+    - field.field.media.embeddable.field_media_embeddable_oembed
     - field.field.media.embeddable.field_media_embeddable_code
     - media.type.embeddable
   module:
@@ -20,7 +20,7 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_media_stanford_embed:
+  field_media_embeddable_oembed:
     type: oembed_textfield
     weight: 0
     settings:

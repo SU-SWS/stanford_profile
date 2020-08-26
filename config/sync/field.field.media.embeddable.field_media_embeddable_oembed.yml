@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_media_stanford_embed
+    - field.storage.media.field_media_embeddable_oembed
     - media.type.embeddable
-id: media.embeddable.field_media_stanford_embed
-field_name: field_media_stanford_embed
+id: media.embeddable.field_media_embeddable_oembed
+field_name: field_media_embeddable_oembed
 entity_type: media
 bundle: embeddable
 label: 'Stanford Embedded Media URL'
