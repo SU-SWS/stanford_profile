@@ -7,12 +7,14 @@ dependencies:
     - field.field.config_pages.super_footer.su_intranet_link
     - field.field.config_pages.super_footer.su_link_super_footer
     - field.field.config_pages.super_footer.su_super_foot_enabled
+    - field.field.config_pages.super_footer.su_super_foot_text
     - field.field.config_pages.super_footer.su_super_footer_title
   module:
     - ds
     - field_formatter_class
     - link
     - stanford_fields
+    - text
 third_party_settings:
   ds:
     layout:
@@ -28,6 +30,7 @@ third_party_settings:
     regions:
       left:
         - su_super_footer_title
+        - su_super_foot_text
       main:
         - su_link_super_footer
         - su_intranet_link
@@ -66,6 +69,15 @@ content:
         class: su-super-footer__link
       ds:
         ds_limit: ''
+  su_super_foot_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: text_default
+    region: left
   su_super_footer_title:
     type: entity_title_heading
     weight: 0
