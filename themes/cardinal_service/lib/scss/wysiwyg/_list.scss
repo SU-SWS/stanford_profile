@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 ol {
-  &.cs-number--big {
+  &.cs-number--yellow {
     > li {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -9,6 +9,7 @@ ol {
       grid-gap: 0 25px;
       list-style: none;
       counter-increment: inst;
+      @include modular-spacing('margin-bottom', 2);
 
       &::before {
         @include modular-typography(2);
