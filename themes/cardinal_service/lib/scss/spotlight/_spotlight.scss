@@ -71,3 +71,37 @@
 .content {
   @include modular-spacing('margin-bottom', 8);
 }
+
+.su-spotlight-body {
+  .media {
+    @include padding(null null 2em null);
+  }
+
+  // Remove the bottom padding when the media has a caption since we add padding
+  // to the caption itself.
+  figure {
+    .media {
+      @include padding(null null 0 null);
+    }
+  }
+
+  // Caption Styles.
+  .caption {
+    figcaption {
+      text-align: center;
+      @include padding(null null 2em null);
+    }
+  }
+
+  .align-right {
+    figcaption {
+      padding-left: 1em;
+    }
+  }
+
+  .align-left {
+    figcaption {
+      padding-right: 1em
+    }
+  }
+}
