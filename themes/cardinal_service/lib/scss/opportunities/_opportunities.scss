@@ -177,13 +177,25 @@
   }
 }
 
+.opportunity-passed-date {
+  font-style: italic;
+  color: $su-color-bright-red;
+}
+
 // Related Opportunities Styling
+.su-opportunities-related {
+  .block__title,
+  footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
 .view {
   &.related {
-    @include grid-media-max('md') {
-      .views-row {
-        margin-bottom: 20px;
-      }
+    .views-row {
+      @include modular-spacing('margin-bottom', 2);
     }
 
     ul {
@@ -195,9 +207,4 @@
       margin: 0;
     }
   }
-}
-
-.opportunity-passed-date {
-  font-style: italic;
-  color: $su-color-bright-red;
 }
