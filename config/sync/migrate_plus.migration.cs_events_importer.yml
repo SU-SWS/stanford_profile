@@ -195,8 +195,10 @@ process:
       source: audience
       search:
         - Students
+        - 'General Public'
       replace:
         - 'Undergraduates, Graduate Students'
+        - 'General Public, Graduate Students, Undergraduates, Coterm, Faculty/Staff'
     -
       plugin: explode
       delimiter: ','
@@ -211,6 +213,8 @@ process:
       bundle: su_opportunity_open_to
       value_key: name
       ignore_case: true
+    -
+      plugin: deduplicate_array
   su_opp_type:
     -
       plugin: default_value
