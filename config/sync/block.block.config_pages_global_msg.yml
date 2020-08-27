@@ -1,0 +1,29 @@
+uuid: 64e78378-5e91-468f-917c-48e176dbd248
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+  theme:
+    - stanford_basic
+id: config_pages_global_msg
+theme: stanford_basic
+region: help
+weight: 0
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: 'Global Messages'
+  provider: config_pages
+  label_display: 0
+  config_page_type: global_message
+  config_page_view_mode: full
+visibility:
+  config_pages_values_access:
+    id: config_pages_values_access
+    negate: false
+    config_page_field: global_message|su_global_msg_enabled|boolean
+    operator: '=='
+    condition_value: '1'
+    context_mapping: {  }

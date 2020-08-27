@@ -1,0 +1,58 @@
+uuid: 3d5125dd-f44a-49d9-aac9-15f3383a9be1
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.global_message
+    - field.field.config_pages.global_message.su_global_msg_enabled
+    - field.field.config_pages.global_message.su_global_msg_header
+    - field.field.config_pages.global_message.su_global_msg_link
+    - field.field.config_pages.global_message.su_global_msg_message
+    - field.field.config_pages.global_message.su_global_msg_type
+  module:
+    - link
+    - text
+id: config_pages.global_message.default
+targetEntityType: config_pages
+bundle: global_message
+mode: default
+content:
+  su_global_msg_enabled:
+    weight: 0
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  su_global_msg_header:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_global_msg_link:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_global_msg_message:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  su_global_msg_type:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  label: true
