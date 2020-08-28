@@ -17,3 +17,11 @@ cardinal_service.csv_template:
     parameters:
       migration:
         type: entity:migration
+
+cardinal_service.help_document:
+  path: '/admin/help/cardinal-service/{document}'
+  defaults:
+    _controller: '\Drupal\cardinal_service_profile_helper\Controller\Documentation::getDocumentation'
+    _title_callback: '\Drupal\cardinal_service_profile_helper\Controller\Documentation::getTitle'
+  requirements:
+    _permission: 'access administration pages'

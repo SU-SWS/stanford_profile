@@ -1,4 +1,4 @@
-# [Stanford Profile](https://github.com/SU-SWS/stanford_profile)
+# [Cardinal Service Profile](hhttps://github.com/SU-HKKU/cardinal_service_profile)
 ##### 8.x
 [![CircleCI](https://circleci.com/gh/SU-HKKU/cardinal_service_profile.svg?style=shield)](https://circleci.com/gh/SU-HKKU/cardinal_service_profile)
 
@@ -14,7 +14,13 @@ Changelog: [Changelog.md](CHANGELOG.md)
 Description
 ---
 
-This is the main installation profile for Stanford Web Services' self service platform and is used as a base for more.
+This is the installation profile for Cardinal Service. It is based on and requires the [Stanford Profile](https://github.com/SU-SWS/stanford_profile).
+A nightly task will pull updates from  stanford profile and produce a pull request in github for testing and review.
+
+Profile specific documentation is available in the [help](help) directory. The help documentation in that directory
+is available in the UI at `/admin/help/cardinal-service`. When creating new help documenation, ensure there is an `h1`
+within the file. An `h1` is denoted by a single `#` at the beginning of the file. Each help file produces its own path
+available to the site managers.
 
 Accessibility
 ---
