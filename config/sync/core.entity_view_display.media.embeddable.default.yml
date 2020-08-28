@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.embeddable.field_media_embeddable_oembed
     - field.field.media.embeddable.field_media_embeddable_code
+    - field.field.media.embeddable.field_media_embeddable_oembed
     - media.type.embeddable
   module:
     - ds
     - media
+    - responsive_image
+    - stanford_fields
 third_party_settings:
   ds:
     layout:
@@ -17,50 +19,75 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        classes: {  }
-        wrappers:
-          media_caption: div
-          media_image_src: div
-          media_link: div
-          media_link_attributes: div
-          media_video_src: div
-          media_audio_src: div
-          media_content_attributes: div
-          media_custom: div
-        outer_wrapper: div
-        attributes: ''
-        link_attribute: ''
-        link_custom: ''
+        pattern:
+          field_templates: default
+          variant: default
     regions:
-      media_caption:
-        - field_media_embeddable_oembed
+      media_content_attributes:
         - uid
         - name
-        - thumbnail
         - created
+        - thumbnail
+      media_custom:
+        - field_media_embeddable_oembed
+        - field_media_embeddable_code
 id: media.embeddable.default
 targetEntityType: media
 bundle: embeddable
 mode: default
 content:
-  field_media_embeddable_oembed:
-    type: oembed
-    label: visually_hidden
-    weight: 0
+  created:
+    type: timestamp
+    weight: 2
+    region: media_content_attributes
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  field_media_embeddable_code:
+    weight: 5
+    label: above
     settings:
       max_width: 0
       max_height: 0
     third_party_settings: {  }
-    region: content
-  field_media_embeddable_code:
-    weight: 1
-    label: above
-    settings: {  }
+    type: oembed
+    region: media_custom
+  field_media_embeddable_oembed:
+    type: oembed
+    label: visually_hidden
+    weight: 4
+    settings:
+      max_width: 0
+      max_height: 0
     third_party_settings: {  }
-    type: embeddable_formatter
-    region: content
-hidden:
-  created: true
-  name: true
-  thumbnail: true
-  uid: true
+    region: media_custom
+  name:
+    type: entity_title_heading
+    weight: 1
+    region: media_content_attributes
+    label: above
+    settings:
+      tag: h2
+      linked: false
+    third_party_settings: {  }
+  thumbnail:
+    type: responsive_image
+    weight: 3
+    region: media_content_attributes
+    label: above
+    settings:
+      responsive_image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_label
+    weight: 0
+    region: media_content_attributes
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+hidden: {  }

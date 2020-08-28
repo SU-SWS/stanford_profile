@@ -4,17 +4,42 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
-    - field.field.media.embeddable.field_media_embeddable_oembed
     - field.field.media.embeddable.field_media_embeddable_code
+    - field.field.media.embeddable.field_media_embeddable_oembed
     - image.style.medium
     - media.type.embeddable
   module:
     - image
+    - media
 id: media.embeddable.media_library
 targetEntityType: media
 bundle: embeddable
 mode: media_library
 content:
+  field_media_embeddable_code:
+    type: basic_string
+    weight: 2
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_media_embeddable_oembed:
+    type: oembed
+    weight: 3
+    region: content
+    label: above
+    settings:
+      max_width: 0
+      max_height: 0
+    third_party_settings: {  }
+  name:
+    type: string
+    weight: 1
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   thumbnail:
     type: image
     label: hidden
@@ -26,7 +51,4 @@ content:
     region: content
 hidden:
   created: true
-  field_media_embeddable_oembed: true
-  name: true
-  field_media_embeddable_code: true
   uid: true
