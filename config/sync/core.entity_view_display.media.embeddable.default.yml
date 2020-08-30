@@ -7,87 +7,31 @@ dependencies:
     - field.field.media.embeddable.field_media_embeddable_oembed
     - media.type.embeddable
   module:
-    - ds
     - media
-    - responsive_image
-    - stanford_fields
-third_party_settings:
-  ds:
-    layout:
-      id: pattern_media
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        pattern:
-          field_templates: default
-          variant: default
-    regions:
-      media_content_attributes:
-        - uid
-        - name
-        - created
-        - thumbnail
-      media_custom:
-        - field_media_embeddable_oembed
-        - field_media_embeddable_code
+    - stanford_media
 id: media.embeddable.default
 targetEntityType: media
 bundle: embeddable
 mode: default
 content:
-  created:
-    type: timestamp
-    weight: 2
-    region: media_content_attributes
-    label: above
-    settings:
-      date_format: medium
-      custom_date_format: ''
-      timezone: ''
-    third_party_settings: {  }
   field_media_embeddable_code:
-    weight: 5
-    label: above
-    settings:
-      max_width: 0
-      max_height: 0
+    weight: 1
+    label: visually_hidden
+    settings: {  }
     third_party_settings: {  }
-    type: oembed
-    region: media_custom
+    type: embeddable_formatter
+    region: content
   field_media_embeddable_oembed:
     type: oembed
     label: visually_hidden
-    weight: 4
+    weight: 0
     settings:
       max_width: 0
       max_height: 0
     third_party_settings: {  }
-    region: media_custom
-  name:
-    type: entity_title_heading
-    weight: 1
-    region: media_content_attributes
-    label: above
-    settings:
-      tag: h2
-      linked: false
-    third_party_settings: {  }
-  thumbnail:
-    type: responsive_image
-    weight: 3
-    region: media_content_attributes
-    label: above
-    settings:
-      responsive_image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-  uid:
-    type: entity_reference_label
-    weight: 0
-    region: media_content_attributes
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-hidden: {  }
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true
