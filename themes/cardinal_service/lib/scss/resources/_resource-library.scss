@@ -1,18 +1,6 @@
 @charset 'UTF-8';
 
 .cs-resources {
-  &.all-list {
-    justify-content: unset;
-
-    div:nth-child(3n+2) {
-      margin: 0 20px;
-
-      @include grid-media-max('xs') {
-        margin: 0;
-      }
-    }
-  }
-
   h3 {
     margin: 0;
 
@@ -39,14 +27,23 @@
     }
   }
 
-  .single-resource {
+  &.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .grid-list-item {
+    width: calc(33% - 20px);
     background: $su-color-white;
     border: 1px solid $su-color-cool-grey-15;
     box-shadow: 0 3px 6px rgba($su-color-black, 0.13), 0 3px 6px rgba($su-color-black, 0.1);
     box-sizing: border-box;
-    height: fit-content;
-    width: 100%;
     @include modular-spacing('margin-bottom', 3);
+
+    @include grid-media-max('sm') {
+      width: 100%;
+    }
   }
 
   .views-field-title {

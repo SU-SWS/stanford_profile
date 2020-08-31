@@ -1,12 +1,27 @@
 @charset 'UTF-8';
 
-.su-spotlights-list {
+.su-spotlights.list {
+  &.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .grid-list-item {
+    width: calc(33% - 20px);
+
+    @include grid-media-max('sm') {
+      width: 100%;
+    }
+  }
+
   .views-row {
     @include modular-spacing('margin-bottom', 2);
   }
 
   .su-card {
     @include modular-spacing('padding', 3);
+    height: 100%;
 
     .views-field-su-spotlight-feature-image {
       display: flex;

@@ -1,0 +1,10 @@
+@charset 'UTF-8';
+
+.react-paragraphs-row {
+  [data-react-columns] {
+    & > .contextual-region,
+    .su-card {
+      height: 100%;
+    }
+  }
+}
