@@ -225,6 +225,12 @@
   &[class*="su-opportunities"] {
     .views-row {
       @include modular-spacing('margin-bottom', 2);
+
+      &[class*="flex-"] {
+        .contextual-region {
+          height: 100%;
+        }
+      }
     }
 
     ul {
