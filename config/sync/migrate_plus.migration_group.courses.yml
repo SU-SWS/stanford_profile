@@ -58,7 +58,16 @@ shared_configuration:
       code:
         type: string
   process:
-    title: title
+    title:
+      -
+        plugin: str_replace
+        source: title
+        search: '/\(.*?\)/'
+        replace: ''
+        regex: true
+      -
+        plugin: callback
+        callable: trim
     revision_translation_affected:
       -
         plugin: default_value
