@@ -1,22 +1,24 @@
-uuid: 43d7bfeb-e069-4b02-afb3-f6dc7918becc
+uuid: 64310476-569c-4b5a-8f34-a11b0217763b
 langcode: en
 status: true
 dependencies:
   module:
     - config_pages
     - field_permissions
-    - link
 third_party_settings:
   field_permissions:
     permission_type: public
-id: config_pages.su_link_super_footer
-field_name: su_link_super_footer
+id: config_pages.su_super_foot_title
+field_name: su_super_foot_title
 entity_type: config_pages
-type: link
-settings: {  }
-module: link
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

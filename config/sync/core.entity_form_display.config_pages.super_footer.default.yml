@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - config_pages.type.super_footer
-    - field.field.config_pages.super_footer.su_intranet_link
-    - field.field.config_pages.super_footer.su_link_super_footer
+    - field.field.config_pages.super_footer.su_super_foot_intranet
+    - field.field.config_pages.super_footer.su_super_foot_link
     - field.field.config_pages.super_footer.su_super_foot_enabled
     - field.field.config_pages.super_footer.su_super_foot_text
-    - field.field.config_pages.super_footer.su_super_footer_title
+    - field.field.config_pages.super_footer.su_super_foot_title
   module:
     - ds
     - field_formatter_class
@@ -28,15 +28,15 @@ third_party_settings:
         label: ''
     regions:
       main:
-        - su_super_footer_title
-        - su_link_super_footer
-        - su_intranet_link
+        - su_super_foot_title
+        - su_super_foot_link
+        - su_super_foot_intranet
 id: config_pages.super_footer.default
 targetEntityType: config_pages
 bundle: super_footer
 mode: default
 content:
-  su_intranet_link:
+  su_super_foot_intranet:
     type: link_default
     weight: 4
     region: content
@@ -44,7 +44,7 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-  su_link_super_footer:
+  su_super_foot_link:
     type: link_default
     weight: 3
     region: content
@@ -67,7 +67,7 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  su_super_footer_title:
+  su_super_foot_title:
     weight: 1
     label: hidden
     settings:
