@@ -22,18 +22,20 @@
   }
 
   a {
-    @include link($su-color-bright-red);
-    text-decoration: none;
-    word-wrap: break-word;
+    &:not(.su-button):not(.su-button--secondary):not(.su-button--big)  {
+      @include link($su-color-bright-red);
+      text-decoration: none;
+      word-wrap: break-word;
 
-    &:hover,
-    &:focus {
-      cursor: pointer;
-      text-decoration: underline;
-    }
+      &:hover,
+      &:focus {
+        cursor: pointer;
+        text-decoration: underline;
+      }
 
-    &::after {
-      background-color: $su-color-bright-red;
+      &::after {
+        background-color: $su-color-bright-red;
+      }
     }
   }
 
@@ -99,9 +101,10 @@
 }
 
 // Individual Resource Page Styles
-
 .cs-resources-3-related {
-  text-align: center;
+  .block__title {
+    text-align: center;
+  }
 
   .cs-resources {
     display: flex;

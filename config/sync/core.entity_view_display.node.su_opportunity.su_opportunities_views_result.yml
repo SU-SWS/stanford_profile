@@ -62,6 +62,10 @@ third_party_settings:
         - node_title
       image:
         - su_opp_image
+      time_commitment:
+        - su_opp_commitment
+      service_theme:
+        - su_opp_service_theme
       application_deadline:
         - su_opp_application_deadline
       event_date:
@@ -92,13 +96,13 @@ bundle: su_opportunity
 mode: su_opportunities_views_result
 content:
   flag_cs_favorites:
-    weight: 8
+    weight: 10
     region: favorite
     settings: {  }
     third_party_settings: {  }
   su_opp_application_deadline:
     type: datetime_custom
-    weight: 2
+    weight: 4
     region: application_deadline
     label: hidden
     settings:
@@ -107,9 +111,23 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
+  su_opp_commitment:
+    type: entity_reference_label
+    weight: 2
+    region: time_commitment
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
   su_opp_event_date:
     type: datetime_custom
-    weight: 3
+    weight: 5
     region: event_date
     label: hidden
     settings:
@@ -132,7 +150,7 @@ content:
         class: ''
   su_opp_location:
     type: entity_reference_label
-    weight: 4
+    weight: 6
     region: location
     label: hidden
     settings:
@@ -142,8 +160,22 @@ content:
         class: ''
   su_opp_open_to:
     type: entity_reference_label
-    weight: 6
+    weight: 8
     region: open_to
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+  su_opp_service_theme:
+    type: entity_reference_label
+    weight: 3
+    region: service_theme
     label: hidden
     settings:
       link: false
@@ -156,7 +188,7 @@ content:
         ds_limit: ''
   su_opp_time_year:
     type: entity_reference_label
-    weight: 5
+    weight: 7
     region: when
     label: hidden
     settings:
@@ -168,7 +200,7 @@ content:
         ds_limit: ''
   su_opp_type:
     type: entity_reference_label
-    weight: 7
+    weight: 9
     region: type_list
     label: hidden
     settings:
@@ -184,7 +216,6 @@ hidden:
   body: true
   links: true
   search_api_excerpt: true
-  su_opp_commitment: true
   su_opp_contact_email: true
   su_opp_contact_name: true
   su_opp_contact_phone: true
@@ -195,7 +226,6 @@ hidden:
   su_opp_learn_more: true
   su_opp_pathway: true
   su_opp_placement_type: true
-  su_opp_service_theme: true
   su_opp_solo_url: true
   su_opp_sponsor: true
   su_opp_submissions_open: true

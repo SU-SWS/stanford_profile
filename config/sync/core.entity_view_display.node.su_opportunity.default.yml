@@ -69,7 +69,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 3
+            weight: 5
             third_party_settings: {  }
           9efe4387-628a-4dce-9c38-840f2c97bdd9:
             uuid: 9efe4387-628a-4dce-9c38-840f2c97bdd9
@@ -123,7 +123,7 @@ third_party_settings:
                   link: false
                 third_party_settings:
                   field_delimiter:
-                    delimiter: ','
+                    delimiter: ',&nbsp;'
                   field_formatter_class:
                     class: ''
                   ds:
@@ -132,7 +132,85 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 2
+            weight: 4
+            third_party_settings: {  }
+          2886ed6e-cce0-43da-9d40-714f551bbc06:
+            uuid: 2886ed6e-cce0-43da-9d40-714f551bbc06
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_dimension'
+              label: Program
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: false
+                third_party_settings:
+                  field_delimiter:
+                    delimiter: ',&nbsp;'
+                  field_formatter_class:
+                    class: ''
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 3
+            third_party_settings: {  }
+          f9550cc1-a287-47e4-9eb9-ea9b1fd5bdae:
+            uuid: f9550cc1-a287-47e4-9eb9-ea9b1fd5bdae
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_service_theme'
+              label: 'Service Theme'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: false
+                third_party_settings:
+                  field_delimiter:
+                    delimiter: ',&nbsp;'
+                  field_formatter_class:
+                    class: ''
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 7
+            third_party_settings: {  }
+          91141370-e5f2-4a1c-a402-4bea60593f91:
+            uuid: 91141370-e5f2-4a1c-a402-4bea60593f91
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_commitment'
+              label: 'Time Commitment'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_label
+                settings:
+                  link: false
+                third_party_settings:
+                  field_delimiter:
+                    delimiter: ',&nbsp;'
+                  field_formatter_class:
+                    class: ''
+                  ds:
+                    ds_limit: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 6
             third_party_settings: {  }
         third_party_settings: {  }
       -

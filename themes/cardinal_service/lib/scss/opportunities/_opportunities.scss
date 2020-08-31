@@ -1,14 +1,21 @@
 @charset 'UTF-8';
 
+.opportunity {
+  .flex-lg-3-of-12 {
+    background: $su-color-white;
+    border: 1px solid $su-color-cool-grey-15;
+    box-shadow: 0 3px 6px rgba($su-color-black, 0.13), 0 3px 6px rgba($su-color-black, 0.1);
+    box-sizing: border-box;
+    height: fit-content;
+    @include modular-spacing('padding', 1);
+  }
+}
+
 .opportunity-header-content-container {
   background: $su-color-cloud;
   @include modular-spacing('padding-top', 4);
   @include modular-spacing('padding-left', 5);
   @include modular-spacing('padding-right', 5);
-
-  .su-opp-type {
-    font-weight: 600;
-  }
 
   .left-region {
     position: relative;
@@ -22,20 +29,52 @@
 
   .main-region {
     min-height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
+    @include modular-spacing('margin-bottom', 3);
 
-  .node-su-opportunity-flag-cs-favorites {
-    flex-grow: 1;
-  }
+    h1 {
+      @include modular-spacing('margin-bottom', -1);
+    }
 
-  .flag {
-    display: flex;
-    justify-content: flex-end;
+    .node-su-opportunity-flag-cs-favorites {
+      flex-grow: 1;
+    }
 
-    .fa-heart::before {
-      font-size: 28px;
+    .flag {
+      display: flex;
+      justify-content: flex-end;
+
+      .fa-heart::before {
+        font-size: 28px;
+      }
+    }
+
+    .node-su-opportunity-su-opp-dimension,
+    .node-su-opportunity-su-opp-type,
+    .node-su-opportunity-su-opp-commitment,
+    .node-su-opportunity-su-opp-service-theme {
+      width: fit-content;
+      display: inline-block;
+    }
+
+    .su-opp-type {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .su-opp-dimension {
+      div:last-child {
+        &::after {
+          content: ", ";
+        }
+      }
+    }
+
+    .su-opp-commitment {
+      div:last-child {
+        &::after {
+          content: " in ";
+        }
+      }
     }
   }
 
@@ -59,18 +98,11 @@
 }
 
 .opportunity-body-content-container {
-  .flex-lg-3-of-12 {
-    background: $su-color-white;
-    border: 1px solid $su-color-cool-grey-15;
-    box-shadow: 0 3px 6px rgba($su-color-black, 0.13), 0 3px 6px rgba($su-color-black, 0.1);
-    box-sizing: border-box;
-    height: fit-content;
-    @include modular-spacing('padding', 1);
-  }
-
   @include modular-spacing('margin-top', 5);
 
   .flex-lg-3-of-12 {
+    @include modular-spacing('margin-bottom', 4);
+
     .node-su-opportunity-su-opp-solo-url {
       margin-bottom: 0;
     }
@@ -184,16 +216,13 @@
 
 // Related Opportunities Styling
 .su-opportunities-related {
-  .block__title,
-  footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+  .block__title {
+    text-align: center;
   }
 }
 
 .view {
-  &.related {
+  &[class*="su-opportunities"] {
     .views-row {
       @include modular-spacing('margin-bottom', 2);
     }
@@ -205,6 +234,12 @@
 
     li {
       margin: 0;
+    }
+
+    footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
     }
   }
 }

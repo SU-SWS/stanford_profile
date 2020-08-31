@@ -1916,6 +1916,7 @@ display:
         use_more: false
         use_more_always: false
         use_more_text: false
+        footer: false
       filter_groups:
         operator: AND
         groups:
@@ -2036,11 +2037,25 @@ display:
         options:
           relationship: none
           view_mode: su_vertical_card
-      link_display: custom_url
+      link_display: '0'
       link_url: /opportunities
-      use_more: true
+      use_more: false
       use_more_always: false
       use_more_text: 'See All Opportunities'
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: '<a class="su-button" href="/opportunities">See All Opportunities</a>'
+            format: stanford_html
+          plugin_id: text
     cache_metadata:
       max-age: -1
       contexts:

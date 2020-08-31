@@ -1,3 +1,10 @@
+{% set time_commitment = time_commitment|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
+{% set service_theme = service_theme|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
+
+{% if service_theme|render|striptags|trim is not empty %}
+  {% set time_commitment = (time_commitment ~ ' in '|t) %}
+{% endif %}
+
 {% set date_label = 'Application Deadline'|t %}
 {% set date = 'N/A' %}
 
@@ -35,6 +42,13 @@
       <h3>
         {{ title }}
       </h3>
+      {% if time_commitment|render|striptags|trim is not empty or service_theme|render|striptags|trim is not empty %}
+        <div class="su-opportunity-row-time-commitment-service-theme">
+          <div>
+            <div>{{ time_commitment }}{{ service_theme }}</div>
+          </div>
+        </div>
+      {% endif %}
 
       <div class="su-opportunity-body-content {% if image %}{% else %}flex-9-of-12{% endif %}">
         <div class="su-opportunity-row-application-deadline">
