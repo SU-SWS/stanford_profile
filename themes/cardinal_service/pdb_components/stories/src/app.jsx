@@ -16,6 +16,7 @@ ReactDOM.render(
     bundle={nodeBundle}
     mainFiltersCount={4}
     fields={nodeFields}
+    header={<h2>Search by</h2>}
   />,
   document.getElementById('stories-filters')
 );

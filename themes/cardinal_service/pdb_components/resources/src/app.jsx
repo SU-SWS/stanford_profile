@@ -15,6 +15,7 @@ ReactDOM.render(
     bundle={nodeBundle}
     mainFiltersCount={3}
     fields={nodeFields}
+    header={<h2>Search by</h2>}
   />,
   document.getElementById('resources-filters')
 );
