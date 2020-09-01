@@ -19,10 +19,7 @@ dependencies:
     - taxonomy.vocabulary.su_opportunity_dimension
     - taxonomy.vocabulary.su_opportunity_location
     - taxonomy.vocabulary.su_opportunity_open_to
-    - taxonomy.vocabulary.su_opportunity_pathway
-    - taxonomy.vocabulary.su_opportunity_placement_type
     - taxonomy.vocabulary.su_opportunity_service_theme
-    - taxonomy.vocabulary.su_opportunity_time
     - taxonomy.vocabulary.su_opportunity_type
   module:
     - datetime
@@ -362,116 +359,6 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
-        su_opp_pathway_target_id:
-          id: su_opp_pathway_target_id
-          table: node__su_opp_pathway
-          field: su_opp_pathway_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: su_opp_pathway_target_id_op
-            label: Pathway
-            description: ''
-            use_operator: false
-            operator: su_opp_pathway_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_pathway
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              administrator: '0'
-              anonymous: '0'
-              stanford_faculty: '0'
-              stanford_staff: '0'
-              stanford_student: '0'
-              contributor: '0'
-              site_manager: '0'
-              site_editor: '0'
-              site_builder: '0'
-              site_developer: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: su_opportunity_pathway
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        su_opp_placement_type_target_id:
-          id: su_opp_placement_type_target_id
-          table: node__su_opp_placement_type
-          field: su_opp_placement_type_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: su_opp_placement_type_target_id_op
-            label: 'Placement Type'
-            description: ''
-            use_operator: false
-            operator: su_opp_placement_type_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_placement_type
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              administrator: '0'
-              anonymous: '0'
-              stanford_faculty: '0'
-              stanford_staff: '0'
-              stanford_student: '0'
-              contributor: '0'
-              site_manager: '0'
-              site_editor: '0'
-              site_builder: '0'
-              site_developer: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: su_opportunity_placement_type
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
         su_opp_service_theme_target_id:
           id: su_opp_service_theme_target_id
           table: node__su_opp_service_theme
@@ -524,61 +411,6 @@ display:
           type: select
           limit: true
           vid: su_opportunity_service_theme
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        su_opp_time_year_target_id:
-          id: su_opp_time_year_target_id
-          table: node__su_opp_time_year
-          field: su_opp_time_year_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: su_opp_time_year_target_id_op
-            label: 'Time of the Year'
-            description: ''
-            use_operator: false
-            operator: su_opp_time_year_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_time_year
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              administrator: '0'
-              anonymous: '0'
-              stanford_faculty: '0'
-              stanford_staff: '0'
-              stanford_student: '0'
-              contributor: '0'
-              site_manager: '0'
-              site_editor: '0'
-              site_builder: '0'
-              site_developer: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: su_opportunity_time
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -689,6 +521,61 @@ display:
           type: select
           limit: true
           vid: su_opportunity_deadline
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        su_opp_commitment_target_id:
+          id: su_opp_commitment_target_id
+          table: node__su_opp_commitment
+          field: su_opp_commitment_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_opp_commitment_target_id_op
+            label: 'Time Commitment'
+            description: ''
+            use_operator: false
+            operator: su_opp_commitment_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: su_opp_commitment
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              administrator: '0'
+              anonymous: '0'
+              stanford_faculty: '0'
+              stanford_staff: '0'
+              stanford_student: '0'
+              contributor: '0'
+              site_manager: '0'
+              site_editor: '0'
+              site_builder: '0'
+              site_developer: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: su_opportunity_commitment
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
