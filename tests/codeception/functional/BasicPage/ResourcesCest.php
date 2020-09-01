@@ -53,18 +53,20 @@ class ResourcesCest {
       ],
     ], 'paragraph');
 
+    $row = $I->createEntity([
+      'type' => 'node_stanford_page_row',
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ], 'paragraph_row');
+
     $resources = $I->createEntity([
       'type' => 'stanford_page',
       'title' => 'Resources',
       'su_page_components' => [
-        'target_id' => $paragraph->id(),
-        'entity' => $paragraph,
-        'settings' => json_encode([
-          'row' => 0,
-          'index' => 0,
-          'width' => 12,
-          'admin_title' => 'Resources',
-        ]),
+        'target_id' => $row->id(),
+        'entity' => $row,
       ],
     ]);
 
