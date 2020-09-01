@@ -46,3 +46,10 @@ function stanford_profile_post_update_8014() {
   ]);
 
 }
+
+/**
+ * Update the new config_ignore settings prior to config import.
+ */
+function stanford_profile_post_update_8015() {
+
+}
