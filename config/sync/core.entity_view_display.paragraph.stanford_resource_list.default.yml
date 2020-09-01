@@ -3,15 +3,33 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.stanford_resource_list.su_resource_link
     - field.field.paragraph.stanford_resource_list.su_resource_list
     - paragraphs.paragraphs_type.stanford_resource_list
   module:
+    - element_class_formatter
+    - field_formatter_class
     - viewfield
 id: paragraph.stanford_resource_list.default
 targetEntityType: paragraph
 bundle: stanford_resource_list
 mode: default
 content:
+  su_resource_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      class: 'su-link su-button'
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: text-align-center
+    type: link_class
+    region: content
   su_resource_list:
     weight: 0
     label: hidden

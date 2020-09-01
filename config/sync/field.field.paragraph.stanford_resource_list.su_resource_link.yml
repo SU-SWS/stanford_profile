@@ -1,0 +1,23 @@
+uuid: fb57ab1b-1242-47bf-a053-c626650c9cdf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_resource_link
+    - paragraphs.paragraphs_type.stanford_resource_list
+  module:
+    - link
+id: paragraph.stanford_resource_list.su_resource_link
+field_name: su_resource_link
+entity_type: paragraph
+bundle: stanford_resource_list
+label: 'See More Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

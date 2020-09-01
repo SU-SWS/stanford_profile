@@ -3,15 +3,25 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.stanford_resource_list.su_resource_link
     - field.field.paragraph.stanford_resource_list.su_resource_list
     - paragraphs.paragraphs_type.stanford_resource_list
   module:
+    - link
     - viewfield
 id: paragraph.stanford_resource_list.default
 targetEntityType: paragraph
 bundle: stanford_resource_list
 mode: default
 content:
+  su_resource_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   su_resource_list:
     weight: 0
     settings: {  }
