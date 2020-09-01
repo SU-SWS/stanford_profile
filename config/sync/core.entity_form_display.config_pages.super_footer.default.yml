@@ -36,6 +36,13 @@ targetEntityType: config_pages
 bundle: super_footer
 mode: default
 content:
+  su_super_foot_enabled:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   su_super_foot_intranet:
     type: link_default
     weight: 4
@@ -51,13 +58,6 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
-  su_super_foot_enabled:
-    type: boolean_checkbox
-    weight: 0
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   su_super_foot_text:
     weight: 2

@@ -6,6 +6,7 @@ dependencies:
     - config_pages.type.global_message
     - field.field.config_pages.global_message.su_global_msg_enabled
     - field.field.config_pages.global_message.su_global_msg_header
+    - field.field.config_pages.global_message.su_global_msg_label
     - field.field.config_pages.global_message.su_global_msg_link
     - field.field.config_pages.global_message.su_global_msg_message
     - field.field.config_pages.global_message.su_global_msg_type
@@ -26,6 +27,8 @@ third_party_settings:
           field_templates: only_content
           variant: default
     regions:
+      alert_label:
+        - su_global_msg_label
       alert_header:
         - su_global_msg_header
       alert_text:
@@ -37,15 +40,23 @@ bundle: global_message
 mode: default
 content:
   su_global_msg_header:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: alert_header
+  su_global_msg_label:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: alert_label
   su_global_msg_link:
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       trim_length: null
@@ -59,7 +70,7 @@ content:
     type: link
     region: alert_text
   su_global_msg_message:
-    weight: 1
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
