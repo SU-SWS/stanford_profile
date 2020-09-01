@@ -140,7 +140,7 @@ export class Filters extends Component {
     }
     const query = queryString.stringify(this.state.filters, {arrayFormat: 'bracket'});
     const location = this.props.submitUrl ?? window.location.pathname;
-    window.location = `${location}?${query}`;
+    window.location = `${location}?${query}#filter-wrapper`;
 
   }
 
@@ -267,7 +267,7 @@ export class Filters extends Component {
     return (
       <div>
         <FilterContainer>
-          <div className="centered-container">
+          <div className="centered-container" id="filter-wrapper">
             {this.props.header}
             <form onSubmit={this.onFormSubmit}>
               <div className="flex-container">
@@ -312,7 +312,7 @@ export class Filters extends Component {
                     />
 
                     {Object.keys(this.initialFilters).length > 0 && (
-                      <a href={window.location.pathname}>Clear Filters</a>
+                      <a href={window.location.pathname + '#filter-wrapper'}>Clear Filters</a>
                     )}
                   </FilterOptions>
                 </div>

@@ -51,7 +51,7 @@ export const Slugs = ({ filters, terms }) => {
         }
       })}
 
-      <a href={window.location.pathname}>Clear All <span className="visually-hidden">Filters</span></a>
+      <a href={window.location.pathname + '#filter-wrapper'}>Clear All <span className="visually-hidden">Filters</span></a>
     </Wrapper>
   );
 };
