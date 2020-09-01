@@ -1,0 +1,23 @@
+uuid: 5ddf0bee-5ccc-40c6-b769-dc53cb102ea3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_opp_list_link
+    - paragraphs.paragraphs_type.cs_opportunity_list
+  module:
+    - link
+id: paragraph.cs_opportunity_list.su_opp_list_link
+field_name: su_opp_list_link
+entity_type: paragraph
+bundle: cs_opportunity_list
+label: 'Opportunity Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

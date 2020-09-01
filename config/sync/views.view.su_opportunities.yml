@@ -2042,20 +2042,7 @@ display:
       use_more: false
       use_more_always: false
       use_more_text: 'See All Opportunities'
-      footer:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content:
-            value: '<a class="su-button" href="/opportunities">See All Opportunities</a>'
-            format: stanford_html
-          plugin_id: text
+      footer: {  }
     cache_metadata:
       max-age: -1
       contexts:

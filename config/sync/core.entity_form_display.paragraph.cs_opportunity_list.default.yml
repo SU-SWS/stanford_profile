@@ -3,15 +3,25 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.cs_opportunity_list.su_opp_list_link
     - field.field.paragraph.cs_opportunity_list.su_opp_list_view
     - paragraphs.paragraphs_type.cs_opportunity_list
   module:
+    - link
     - viewfield
 id: paragraph.cs_opportunity_list.default
 targetEntityType: paragraph
 bundle: cs_opportunity_list
 mode: default
 content:
+  su_opp_list_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   su_opp_list_view:
     weight: 0
     settings: {  }

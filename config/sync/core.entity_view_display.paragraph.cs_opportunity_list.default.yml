@@ -3,15 +3,33 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.cs_opportunity_list.su_opp_list_link
     - field.field.paragraph.cs_opportunity_list.su_opp_list_view
     - paragraphs.paragraphs_type.cs_opportunity_list
   module:
+    - element_class_formatter
+    - field_formatter_class
     - viewfield
 id: paragraph.cs_opportunity_list.default
 targetEntityType: paragraph
 bundle: cs_opportunity_list
 mode: default
 content:
+  su_opp_list_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      class: 'su-link su-button'
+      url_only: false
+      url_plain: true
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: text-align-center
+    type: link_class
+    region: content
   su_opp_list_view:
     weight: 0
     label: hidden
