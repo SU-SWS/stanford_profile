@@ -1,0 +1,25 @@
+uuid: cb3efce5-85dd-41c6-a531-73bdbd812a4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph_row.node_stanford_page_row.su_page_components
+    - react_paragraphs.paragraphs_row_type.node_stanford_page_row
+  module:
+    - entity_reference_revisions
+id: paragraph_row.node_stanford_page_row.default
+targetEntityType: paragraph_row
+bundle: node_stanford_page_row
+mode: default
+content:
+  su_page_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  user_id: true

@@ -1,17 +1,18 @@
-uuid: fdbe5b0f-c6d6-4d9e-b2f5-5e55b661416b
+uuid: 0bc3cc85-cf70-4d40-9448-c1616b279a66
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_page_components
-    - node.type.stanford_page
+    - field.storage.paragraph_row.su_page_components
+    - paragraphs.paragraphs_type.stanford_person_cta
+    - paragraphs.paragraphs_type.stanford_schedule
     - react_paragraphs.paragraphs_row_type.node_stanford_page_row
   module:
     - entity_reference_revisions
-id: node.stanford_page.su_page_components
+id: paragraph_row.node_stanford_page_row.su_page_components
 field_name: su_page_components
-entity_type: node
-bundle: stanford_page
+entity_type: paragraph_row
+bundle: node_stanford_page_row
 label: Paragraphs
 description: ''
 required: false
@@ -19,18 +20,13 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:paragraph_row'
+  handler: 'default:paragraph'
   handler_settings:
     negate: 1
     target_bundles:
-      node_stanford_page_row: node_stanford_page_row
+      stanford_person_cta: stanford_person_cta
+      stanford_schedule: stanford_schedule
     target_bundles_drag_drop:
-      cardinal_mission_statement:
-        weight: 12
-        enabled: false
-      cs_opportunity_list:
-        weight: 13
-        enabled: false
       stanford_banner:
         weight: 4
         enabled: false
@@ -43,9 +39,6 @@ settings:
       stanford_person_cta:
         enabled: true
         weight: 11
-      stanford_resource_list:
-        weight: 18
-        enabled: false
       stanford_schedule:
         enabled: true
         weight: 12
@@ -55,20 +48,13 @@ settings:
       stanford_wysiwyg:
         weight: 6
         enabled: false
-      su_minimal_card:
-        weight: 22
-        enabled: false
     widths:
-      cardinal_mission_statement:
-        min: '12'
       stanford_banner:
         min: '12'
       stanford_card:
-        min: '3'
+        min: '4'
       stanford_media_caption:
         min: '4'
       stanford_wysiwyg:
         min: '4'
-      su_minimal_card:
-        min: '3'
-field_type: react_paragraphs
+field_type: entity_reference_revisions
