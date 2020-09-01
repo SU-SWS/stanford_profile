@@ -7,6 +7,7 @@
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -311,6 +312,24 @@ function _cardinal_service_node_imported(NodeInterface $node) {
 
       if ($migrated > 0) {
         return $migration_name;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function cardinal_service_profile_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+  if ($bundle === 'stanford_page') {
+    $resource_fields = [
+      'su_page_resource_type',
+      'su_page_resource_audience',
+      'su_page_resource_dimension',
+    ];
+    foreach ($resource_fields as $resource_field) {
+      if (isset($fields[$resource_field])) {
+        $fields[$resource_field]->addConstraint('ResourceFields', []);
       }
     }
   }
