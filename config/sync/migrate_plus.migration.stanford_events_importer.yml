@@ -18,6 +18,7 @@ source:
   urls: {  }
   data_parser_plugin: simple_xml
   item_selector: /EventList/Event
+  orphan_action: delete
   fields:
     -
       name: guid
