@@ -1,0 +1,27 @@
+uuid: 172b12a1-082f-4509-9abd-eb91efa68b7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.storage.config_pages.su_local_foot_pr_co
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_minimal_html: stanford_minimal_html
+    stanford_html: '0'
+    plain_text: '0'
+id: config_pages.stanford_local_footer.su_local_foot_pr_co
+field_name: su_local_foot_pr_co
+entity_type: config_pages
+bundle: stanford_local_footer
+label: 'Primary Content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
