@@ -1,0 +1,19 @@
+uuid: fb1172cc-6f48-425a-a8d8-72bafb16b510
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_course_code
+    - node.type.su_opportunity
+id: node.su_opportunity.su_opp_course_code
+field_name: su_opp_course_code
+entity_type: node
+bundle: su_opportunity
+label: 'Course Code'
+description: 'Explore courses course code.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

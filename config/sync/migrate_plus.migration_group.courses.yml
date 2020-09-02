@@ -79,6 +79,16 @@ shared_configuration:
     type: constants/type
     body/value: body
     body/format: constants/basic_html
+    su_opp_course_code:
+      -
+        plugin: str_replace
+        source: title
+        search: '/^.*\((.*)\).*/'
+        replace: $1
+        regex: true
+      -
+        plugin: callback
+        callable: trim
     su_opp_time_year:
       -
         plugin: skip_on_empty
