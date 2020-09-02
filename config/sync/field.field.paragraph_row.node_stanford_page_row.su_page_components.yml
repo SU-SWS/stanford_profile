@@ -1,17 +1,18 @@
-uuid: fdbe5b0f-c6d6-4d9e-b2f5-5e55b661416b
+uuid: 0bc3cc85-cf70-4d40-9448-c1616b279a66
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_page_components
-    - node.type.stanford_page
+    - field.storage.paragraph_row.su_page_components
+    - paragraphs.paragraphs_type.stanford_person_cta
+    - paragraphs.paragraphs_type.stanford_schedule
     - react_paragraphs.paragraphs_row_type.node_stanford_page_row
   module:
     - entity_reference_revisions
-id: node.stanford_page.su_page_components
+id: paragraph_row.node_stanford_page_row.su_page_components
 field_name: su_page_components
-entity_type: node
-bundle: stanford_page
+entity_type: paragraph_row
+bundle: node_stanford_page_row
 label: Paragraphs
 description: ''
 required: false
@@ -19,11 +20,12 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:paragraph_row'
+  handler: 'default:paragraph'
   handler_settings:
     negate: 1
     target_bundles:
-      node_stanford_page_row: node_stanford_page_row
+      stanford_person_cta: stanford_person_cta
+      stanford_schedule: stanford_schedule
     target_bundles_drag_drop:
       stanford_banner:
         weight: 4
