@@ -1,0 +1,18 @@
+uuid: 1a1efb75-9bed-42e9-bec0-7c3c0e388b62
+langcode: en
+status: true
+dependencies:
+  module:
+    - react_paragraphs
+    - serialization
+    - user
+id: entity.paragraph_row
+plugin_id: 'entity:paragraph_row'
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie
