@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": ""
+            "href": "http:\/\/default\/entity\/paragraph\/8?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
@@ -38,12 +38,12 @@
     ],
     "parent_id": [
         {
-            "value": "6d51339d-ff67-498d-98e9-d8228d36fd51"
+            "value": "71b78295-dfd1-4eb3-8d20-2013d5b64f69"
         }
     ],
     "parent_type": [
         {
-            "value": "node"
+            "value": "paragraph_row"
         }
     ],
     "parent_field_name": [
@@ -53,7 +53,12 @@
     ],
     "behavior_settings": [
         {
-            "value": []
+            "value": {
+                "react": {
+                    "width": 12,
+                    "label": "Text Area"
+                }
+            }
         }
     ],
     "default_langcode": [
