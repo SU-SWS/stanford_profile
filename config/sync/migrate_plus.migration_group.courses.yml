@@ -14,6 +14,7 @@ shared_configuration:
     data_fetcher_plugin: http
     data_parser_plugin: simple_xml
     item_selector: //courses/course
+    orphan_action: delete
     constants:
       status: 1
       type: su_opportunity
@@ -52,6 +53,10 @@ shared_configuration:
         name: academic_career
         label: 'Academic Career'
         selector: administrativeInformation/academicCareer
+      -
+        name: start_date
+        label: 'Start Date'
+        selector: '(.//startDate)[1]'
     ids:
       course_id:
         type: string
@@ -135,6 +140,21 @@ shared_configuration:
         ignore_case: true
       -
         plugin: deduplicate_array
+    su_opp_course_date:
+      -
+        plugin: format_date
+        source: start_date
+        from_format: 'M j, Y'
+        to_format: Y-m-d
+    su_opp_application_deadline:
+      -
+        plugin: skip_on_empty
+        source: '@su_opp_course_date'
+        method: process
+      -
+        plugin: format_date
+        from_format: Y-m-d
+        to_format: 'Y-m-d\T07:00:00'
     su_opp_commitment:
       -
         plugin: default_value
@@ -220,5 +240,25 @@ shared_configuration:
     plugin: 'entity_reference_revisions:node'
     new_revisions: true
     force_revision: true
+    overwrite_properties:
+      - title
+      - type
+      - body/value
+      - body/format
+      - su_opp_course_code
+      - su_opp_time_year
+      - su_opp_deadline_time
+      - su_opp_course_date
+      - su_opp_application_deadline
+      - su_opp_commitment
+      - su_opp_type
+      - su_opp_open_to
+      - su_opp_location
+      - su_opp_dimension
+      - su_opp_learn_more/title
+      - su_opp_learn_more/uri
+      - su_opp_solo_url/uri
+      - su_opp_solo_url/title
+      - su_opp_service_theme
   migration_dependencies:
     required: {  }

@@ -15,6 +15,9 @@
 {% if event_date|render|striptags|trim is not empty %}
   {% set date_label = 'Event Date'|t %}
   {% set date = event_date %}
+{% elseif course_date|render|striptags|trim is not empty %}
+  {% set date_label = 'Course Date'|t %}
+  {% set date = course_date %}
 {% endif %}
 
 {% if location|render|striptags|trim is empty %}

@@ -1,0 +1,23 @@
+uuid: 31d8c5e8-693f-4d75-9b3c-773b17dfbf30
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_not_eligible
+    - node.type.su_opportunity
+id: node.su_opportunity.su_opp_not_eligible
+field_name: su_opp_not_eligible
+entity_type: node
+bundle: su_opportunity
+label: 'Not Eligible'
+description: 'If the opportunity is not eligible for any reason, check this box to inform the readers.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'This opportunity is currently not eligible.'
+  off_label: 'Off'
+field_type: boolean

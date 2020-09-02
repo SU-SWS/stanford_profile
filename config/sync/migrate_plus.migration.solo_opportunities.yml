@@ -389,5 +389,32 @@ destination:
   plugin: 'entity_reference_revisions:node'
   new_revisions: true
   force_revision: true
+  overwrite_properties:
+    - title
+    - type
+    - body/summary
+    - body/value
+    - body/format
+    - su_opp_contact_email
+    - su_opp_contact_name
+    - su_opp_contact_phone
+    - su_opp_eligibility/value
+    - su_opp_eligibility/format
+    - su_opp_solo_url/uri
+    - su_opp_dimension
+    - su_opp_service_theme
+    - su_opp_solo_url/title
+    - su_opp_learn_more/uri
+    - su_opp_learn_more/title
+    - su_opp_location
+    - su_opp_open_to
+    - su_opp_time_year
+    - su_opp_image/target_id
+    - su_opp_submissions_open
+    - su_opp_application_deadline
+    - su_opp_deadline_time
+    - su_opp_duration/value
+    - su_opp_duration/end_value
+    - su_opp_sponsor
 migration_dependencies:
   required: {  }

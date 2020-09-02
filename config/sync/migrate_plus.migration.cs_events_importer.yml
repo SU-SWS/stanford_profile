@@ -17,6 +17,7 @@ source:
     - 'https://events.stanford.edu/xml/drupal/v2.php?category=11'
   data_parser_plugin: simple_xml
   item_selector: /EventList/Event
+  orphan_action: delete
   fields:
     -
       name: guid
@@ -258,4 +259,24 @@ process:
         field_media_image/alt: constants/image_alt
 destination:
   plugin: 'entity:node'
+  overwrite_properties:
+    - type
+    - title
+    - body/value
+    - body/format
+    - su_opp_contact_email
+    - su_opp_contact_phone
+    - su_opp_sponsor
+    - su_opp_learn_more/uri
+    - su_opp_learn_more/title
+    - su_opp_solo_url/uri
+    - su_opp_solo_url/title
+    - su_opp_duration/value
+    - su_opp_duration/end_value
+    - su_opp_application_deadline
+    - su_opp_event_date
+    - su_opp_service_theme
+    - su_opp_open_to
+    - su_opp_type
+    - su_opp_image/target_id
 migration_dependencies: {  }

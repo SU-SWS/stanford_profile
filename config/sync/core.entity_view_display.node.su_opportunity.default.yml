@@ -9,6 +9,8 @@ dependencies:
     - field.field.node.su_opportunity.su_opp_contact_email
     - field.field.node.su_opportunity.su_opp_contact_name
     - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_course_code
+    - field.field.node.su_opportunity.su_opp_course_date
     - field.field.node.su_opportunity.su_opp_deadline_time
     - field.field.node.su_opportunity.su_opp_dimension
     - field.field.node.su_opportunity.su_opp_duration
@@ -17,6 +19,7 @@ dependencies:
     - field.field.node.su_opportunity.su_opp_image
     - field.field.node.su_opportunity.su_opp_learn_more
     - field.field.node.su_opportunity.su_opp_location
+    - field.field.node.su_opportunity.su_opp_not_eligible
     - field.field.node.su_opportunity.su_opp_open_to
     - field.field.node.su_opportunity.su_opp_pathway
     - field.field.node.su_opportunity.su_opp_placement_type
@@ -335,27 +338,6 @@ third_party_settings:
             additional: {  }
             weight: 5
             third_party_settings: {  }
-          0f84d2e2-f7bb-4b65-b466-1340e832b56c:
-            uuid: 0f84d2e2-f7bb-4b65-b466-1340e832b56c
-            region: left
-            configuration:
-              id: 'field_block:node:su_opportunity:body'
-              label: Body
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: text_default
-                settings: {  }
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 0
-            third_party_settings: {  }
           56e66861-beb1-4b53-96d8-53e7c3022ee4:
             uuid: 56e66861-beb1-4b53-96d8-53e7c3022ee4
             region: main
@@ -395,7 +377,7 @@ third_party_settings:
               items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 2
+            weight: 5
             third_party_settings: {  }
           97425a44-5454-4bcd-97b6-db185f33cf48:
             uuid: 97425a44-5454-4bcd-97b6-db185f33cf48
@@ -416,7 +398,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 3
+            weight: 6
             third_party_settings: {  }
           e65d8887-9835-44e1-9dc2-478e3189bca4:
             uuid: e65d8887-9835-44e1-9dc2-478e3189bca4
@@ -431,6 +413,73 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 7
+            third_party_settings: {  }
+          0e9a2cd1-27ad-40c5-aab8-b51329a8cc56:
+            uuid: 0e9a2cd1-27ad-40c5-aab8-b51329a8cc56
+            region: left
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_course_code'
+              label: 'Course Code'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 3
+            third_party_settings: {  }
+          0f84d2e2-f7bb-4b65-b466-1340e832b56c:
+            uuid: 0f84d2e2-f7bb-4b65-b466-1340e832b56c
+            region: left
+            configuration:
+              id: 'field_block:node:su_opportunity:body'
+              label: Body
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: text_default
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 4
+            third_party_settings: {  }
+          fe6c2ad5-e89a-4ac1-8553-4d4fb0ef2e82:
+            uuid: fe6c2ad5-e89a-4ac1-8553-4d4fb0ef2e82
+            region: left
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_not_eligible'
+              label: 'Not Eligible'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: boolean
+                settings:
+                  format: custom
+                  format_custom_true: 'This opportunity is currently not eligible.'
+                  format_custom_false: ''
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
             third_party_settings: {  }
         third_party_settings: {  }
       -
@@ -540,12 +589,14 @@ hidden:
   su_opp_contact_name: true
   su_opp_contact_phone: true
   su_opp_course_code: true
+  su_opp_course_date: true
   su_opp_duration: true
   su_opp_eligibility: true
   su_opp_event_date: true
   su_opp_image: true
   su_opp_learn_more: true
   su_opp_location: true
+  su_opp_not_eligible: true
   su_opp_open_to: true
   su_opp_solo_url: true
   su_opp_submissions_open: true

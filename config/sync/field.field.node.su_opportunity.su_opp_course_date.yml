@@ -1,0 +1,21 @@
+uuid: 0842fe5e-8409-46d5-8694-d41e416e34b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_course_date
+    - node.type.su_opportunity
+  module:
+    - datetime
+id: node.su_opportunity.su_opp_course_date
+field_name: su_opp_course_date
+entity_type: node
+bundle: su_opportunity
+label: 'Course Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

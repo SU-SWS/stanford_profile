@@ -10,6 +10,8 @@ dependencies:
     - field.field.node.su_opportunity.su_opp_contact_email
     - field.field.node.su_opportunity.su_opp_contact_name
     - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_course_code
+    - field.field.node.su_opportunity.su_opp_course_date
     - field.field.node.su_opportunity.su_opp_deadline_time
     - field.field.node.su_opportunity.su_opp_dimension
     - field.field.node.su_opportunity.su_opp_duration
@@ -70,6 +72,8 @@ third_party_settings:
         - su_opp_application_deadline
       event_date:
         - su_opp_event_date
+      course_date:
+        - su_opp_course_date
       location:
         - su_opp_location
       when:
@@ -96,7 +100,7 @@ bundle: su_opportunity
 mode: su_opportunities_views_result
 content:
   flag_cs_favorites:
-    weight: 10
+    weight: 11
     region: favorite
     settings: {  }
     third_party_settings: {  }
@@ -125,6 +129,17 @@ content:
         class: ''
       ds:
         ds_limit: ''
+  su_opp_course_date:
+    type: datetime_custom
+    weight: 6
+    region: course_date
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j, Y'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
   su_opp_event_date:
     type: datetime_custom
     weight: 5
@@ -150,7 +165,7 @@ content:
         class: ''
   su_opp_location:
     type: entity_reference_label
-    weight: 6
+    weight: 7
     region: location
     label: hidden
     settings:
@@ -160,7 +175,7 @@ content:
         class: ''
   su_opp_open_to:
     type: entity_reference_label
-    weight: 8
+    weight: 9
     region: open_to
     label: hidden
     settings:
@@ -188,7 +203,7 @@ content:
         ds_limit: ''
   su_opp_time_year:
     type: entity_reference_label
-    weight: 7
+    weight: 8
     region: when
     label: hidden
     settings:
@@ -200,7 +215,7 @@ content:
         ds_limit: ''
   su_opp_type:
     type: entity_reference_label
-    weight: 9
+    weight: 10
     region: type_list
     label: hidden
     settings:
@@ -225,6 +240,7 @@ hidden:
   su_opp_duration: true
   su_opp_eligibility: true
   su_opp_learn_more: true
+  su_opp_not_eligible: true
   su_opp_pathway: true
   su_opp_placement_type: true
   su_opp_solo_url: true

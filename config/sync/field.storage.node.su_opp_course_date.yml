@@ -1,0 +1,20 @@
+uuid: 185b4c34-d6cd-4ee3-a16f-24e528b29c2c
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.su_opp_course_date
+field_name: su_opp_course_date
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
