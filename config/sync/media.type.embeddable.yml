@@ -3,7 +3,11 @@ langcode: en
 status: true
 dependencies:
   module:
+    - crop
     - stanford_media
+third_party_settings:
+  crop:
+    image_field: null
 id: embeddable
 label: Embeddable
 description: 'Stanford Embeds'
@@ -15,7 +19,6 @@ source_configuration:
   providers:
     - 'ArcGIS StoryMaps'
     - CircuitLab
-    - Codepen
     - Dailymotion
     - Facebook
     - Flickr
