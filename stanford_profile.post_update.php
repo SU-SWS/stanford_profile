@@ -1,5 +1,8 @@
 <?php
 
+use Drupal\Core\Site\Settings;
+use Drupal\Core\Config\FileStorage;
+
 /**
  * @file
  * stanford_profile.install
@@ -51,5 +54,9 @@ function stanford_profile_post_update_8014() {
  * Update the new config_ignore settings prior to config import.
  */
 function stanford_profile_post_update_8015() {
-
+  $config_name = "config_ignore.settings.yml";
+  $config_path = Settings::get('config_sync_directory');
+  $source = new FileStorage($config_path);
+  $config_storage = \Drupal::service('config.storage');
+  $config_storage->write($config_name, $source->read($config_name));
 }
