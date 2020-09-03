@@ -119,18 +119,24 @@ source:
       type: string
 process:
   skip:
-    plugin: skip_on_value
-    source: sponsor
-    method: row
-    value:
-      - 'Bill Lane Center Internships'
-      - 'Freeman Spogli Institute Global Policy Internships'
-      - 'Stanford Global Studies'
-      - 'King Center on Global Development'
-      - 'Schneider Fellowships'
-      - 'Seed Internships'
-      - 'Stanford Arts'
-      - 'Stanford Energy Internships in California and the West (SEICW)'
+    -
+      plugin: str_replace
+      source: sponsor
+      search:
+        - '/^.*(Bill Lane Center Internships).*/'
+        - '/^.*(Freeman Spogli Institute Global Policy Internships).*/'
+        - '/^.*(Stanford Global Studies).*/'
+        - '/^.*(King Center on Global Development).*/'
+        - '/^.*(Schneider Fellowships).*/'
+        - '/^.*(Seed Internships).*/'
+        - '/^.*(Stanford Arts).*/'
+        - '/^.*(Stanford Energy Internships in California and the West).*/'
+      replace: 'skip'
+      regex: true
+    -
+      plugin: skip_on_value
+      method: row
+      value: skip
   title:
     -
       plugin: str_replace
