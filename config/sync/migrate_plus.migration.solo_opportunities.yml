@@ -131,7 +131,7 @@ process:
         - '/^.*(Seed Internships).*/'
         - '/^.*(Stanford Arts).*/'
         - '/^.*(Stanford Energy Internships in California and the West).*/'
-      replace: 'skip'
+      replace: skip
       regex: true
     -
       plugin: skip_on_value
