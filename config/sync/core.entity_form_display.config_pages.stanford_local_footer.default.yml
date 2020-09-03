@@ -17,6 +17,7 @@ dependencies:
     - field.field.config_pages.stanford_local_footer.su_local_foot_line_4
     - field.field.config_pages.stanford_local_footer.su_local_foot_line_5
     - field.field.config_pages.stanford_local_footer.su_local_foot_loc_img
+    - field.field.config_pages.stanford_local_footer.su_local_foot_loc_link
     - field.field.config_pages.stanford_local_footer.su_local_foot_loc_op
     - field.field.config_pages.stanford_local_footer.su_local_foot_pr_co
     - field.field.config_pages.stanford_local_footer.su_local_foot_primary
@@ -121,6 +122,7 @@ third_party_settings:
         - su_local_foot_line_3
         - su_local_foot_line_4
         - su_local_foot_line_5
+        - su_local_foot_loc_link
       parent_name: ''
       weight: 7
       format_type: details
@@ -205,7 +207,7 @@ content:
     type: link_default
     region: content
   su_local_foot_line_1:
-    weight: 20
+    weight: 19
     settings:
       size: 60
       placeholder: ''
@@ -213,7 +215,7 @@ content:
     type: string_textfield
     region: content
   su_local_foot_line_2:
-    weight: 21
+    weight: 20
     settings:
       size: 60
       placeholder: ''
@@ -221,7 +223,7 @@ content:
     type: string_textfield
     region: content
   su_local_foot_line_3:
-    weight: 22
+    weight: 21
     settings:
       size: 60
       placeholder: ''
@@ -229,7 +231,7 @@ content:
     type: string_textfield
     region: content
   su_local_foot_line_4:
-    weight: 23
+    weight: 22
     settings:
       size: 60
       placeholder: ''
@@ -237,7 +239,7 @@ content:
     type: string_textfield
     region: content
   su_local_foot_line_5:
-    weight: 24
+    weight: 23
     settings:
       size: 60
       placeholder: ''
@@ -245,15 +247,23 @@ content:
     type: string_textfield
     region: content
   su_local_foot_loc_img:
-    weight: 18
+    weight: 17
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
     region: content
+  su_local_foot_loc_link:
+    weight: 24
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   su_local_foot_loc_op:
-    weight: 19
+    weight: 18
     settings: {  }
     third_party_settings: {  }
     type: options_select
