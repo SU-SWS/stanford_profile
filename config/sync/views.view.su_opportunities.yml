@@ -194,78 +194,24 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
-        su_opp_dimension_target_id:
-          id: su_opp_dimension_target_id
-          table: node__su_opp_dimension
-          field: su_opp_dimension_target_id
+          group: 1
+        term_node_tid_depth:
+          id: term_node_tid_depth
+          table: node_field_data
+          field: term_node_tid_depth
           relationship: none
           group_type: group
-          admin_label: ''
+          admin_label: 'Content: Taxonomy Terms - Location'
           operator: or
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: su_opp_dimension_target_id_op
-            label: Dimension
-            description: ''
-            use_operator: false
-            operator: su_opp_dimension_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_dimension
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              administrator: '0'
-              anonymous: '0'
-              stanford_faculty: '0'
-              stanford_staff: '0'
-              stanford_student: '0'
-              contributor: '0'
-              site_manager: '0'
-              site_editor: '0'
-              site_builder: '0'
-              site_developer: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: su_opportunity_dimension
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        su_opp_location_target_id:
-          id: su_opp_location_target_id
-          table: node__su_opp_location
-          field: su_opp_location_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: su_opp_location_target_id_op
+            operator_id: term_node_tid_depth_op
             label: Location
             description: ''
             use_operator: false
-            operator: su_opp_location_target_id_op
+            operator: term_node_tid_depth_op
             operator_limit_selection: false
             operator_list: {  }
             identifier: su_opp_location
@@ -301,191 +247,28 @@ display:
           type: select
           limit: true
           vid: su_opportunity_location
-          hierarchy: false
+          hierarchy: true
           error_message: true
-          plugin_id: taxonomy_index_tid
-        su_opp_open_to_target_id:
-          id: su_opp_open_to_target_id
-          table: node__su_opp_open_to
-          field: su_opp_open_to_target_id
+          depth: 1
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+        term_node_tid_depth_1:
+          id: term_node_tid_depth_1
+          table: node_field_data
+          field: term_node_tid_depth
           relationship: none
           group_type: group
-          admin_label: ''
+          admin_label: 'Content: Taxonomy Terms - Deadline'
           operator: or
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: su_opp_open_to_target_id_op
-            label: 'Open To?'
+            operator_id: term_node_tid_depth_1_op
+            label: Deadline
             description: ''
             use_operator: false
-            operator: su_opp_open_to_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_open_to
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              administrator: '0'
-              anonymous: '0'
-              stanford_faculty: '0'
-              stanford_staff: '0'
-              stanford_student: '0'
-              contributor: '0'
-              site_manager: '0'
-              site_editor: '0'
-              site_builder: '0'
-              site_developer: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: su_opportunity_open_to
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        su_opp_service_theme_target_id:
-          id: su_opp_service_theme_target_id
-          table: node__su_opp_service_theme
-          field: su_opp_service_theme_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: su_opp_service_theme_target_id_op
-            label: 'Service Theme'
-            description: ''
-            use_operator: false
-            operator: su_opp_service_theme_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_service_theme
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              administrator: '0'
-              anonymous: '0'
-              stanford_faculty: '0'
-              stanford_staff: '0'
-              stanford_student: '0'
-              contributor: '0'
-              site_manager: '0'
-              site_editor: '0'
-              site_builder: '0'
-              site_developer: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: su_opportunity_service_theme
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        su_opp_type_target_id:
-          id: su_opp_type_target_id
-          table: node__su_opp_type
-          field: su_opp_type_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: su_opp_type_target_id_op
-            label: Type
-            description: ''
-            use_operator: false
-            operator: su_opp_type_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_type
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              administrator: '0'
-              anonymous: '0'
-              stanford_faculty: '0'
-              stanford_staff: '0'
-              stanford_student: '0'
-              contributor: '0'
-              site_manager: '0'
-              site_editor: '0'
-              site_builder: '0'
-              site_developer: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: su_opportunity_type
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        su_opp_deadline_time_target_id:
-          id: su_opp_deadline_time_target_id
-          table: node__su_opp_deadline_time
-          field: su_opp_deadline_time_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: su_opp_deadline_time_target_id_op
-            label: 'Application Deadline'
-            description: ''
-            use_operator: false
-            operator: su_opp_deadline_time_target_id_op
+            operator: term_node_tid_depth_1_op
             operator_limit_selection: false
             operator_list: {  }
             identifier: su_opp_deadline_time
@@ -521,26 +304,256 @@ display:
           type: select
           limit: true
           vid: su_opportunity_deadline
-          hierarchy: false
+          hierarchy: true
           error_message: true
-          plugin_id: taxonomy_index_tid
-        su_opp_commitment_target_id:
-          id: su_opp_commitment_target_id
-          table: node__su_opp_commitment
-          field: su_opp_commitment_target_id
+          depth: 1
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+        term_node_tid_depth_2:
+          id: term_node_tid_depth_2
+          table: node_field_data
+          field: term_node_tid_depth
           relationship: none
           group_type: group
-          admin_label: ''
+          admin_label: 'Content: Taxonomy Terms - Program'
           operator: or
           value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: su_opp_commitment_target_id_op
+            operator_id: term_node_tid_depth_2_op
+            label: Program
+            description: ''
+            use_operator: false
+            operator: term_node_tid_depth_2_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: su_opp_dimension
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              administrator: '0'
+              anonymous: '0'
+              stanford_faculty: '0'
+              stanford_staff: '0'
+              stanford_student: '0'
+              contributor: '0'
+              site_manager: '0'
+              site_editor: '0'
+              site_builder: '0'
+              site_developer: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: su_opportunity_dimension
+          hierarchy: true
+          error_message: true
+          depth: 1
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+        term_node_tid_depth_3:
+          id: term_node_tid_depth_3
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: 'Content: Taxonomy Terms - Open To'
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: term_node_tid_depth_3_op
+            label: 'Open To?'
+            description: ''
+            use_operator: false
+            operator: term_node_tid_depth_3_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: su_opp_open_to
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              administrator: '0'
+              anonymous: '0'
+              stanford_faculty: '0'
+              stanford_staff: '0'
+              stanford_student: '0'
+              contributor: '0'
+              site_manager: '0'
+              site_editor: '0'
+              site_builder: '0'
+              site_developer: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: su_opportunity_open_to
+          hierarchy: true
+          error_message: true
+          depth: 1
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+        term_node_tid_depth_4:
+          id: term_node_tid_depth_4
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: 'Content: Taxonomy Terms - Service Theme'
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: term_node_tid_depth_4_op
+            label: 'Service Theme'
+            description: ''
+            use_operator: false
+            operator: term_node_tid_depth_4_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: su_opp_service_theme
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              administrator: '0'
+              anonymous: '0'
+              stanford_faculty: '0'
+              stanford_staff: '0'
+              stanford_student: '0'
+              contributor: '0'
+              site_manager: '0'
+              site_editor: '0'
+              site_builder: '0'
+              site_developer: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: su_opportunity_service_theme
+          hierarchy: true
+          error_message: true
+          depth: 1
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+        term_node_tid_depth_5:
+          id: term_node_tid_depth_5
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: 'Content: Taxonomy Terms - Type'
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: term_node_tid_depth_5_op
+            label: Type
+            description: ''
+            use_operator: false
+            operator: term_node_tid_depth_5_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: su_opp_type
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              administrator: '0'
+              anonymous: '0'
+              stanford_faculty: '0'
+              stanford_staff: '0'
+              stanford_student: '0'
+              contributor: '0'
+              site_manager: '0'
+              site_editor: '0'
+              site_builder: '0'
+              site_developer: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: su_opportunity_type
+          hierarchy: true
+          error_message: true
+          depth: 1
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+        term_node_tid_depth_6:
+          id: term_node_tid_depth_6
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: 'Content: Taxonomy Terms - Time Commitment'
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: term_node_tid_depth_6_op
             label: 'Time Commitment'
             description: ''
             use_operator: false
-            operator: su_opp_commitment_target_id_op
+            operator: term_node_tid_depth_6_op
             operator_limit_selection: false
             operator_list: {  }
             identifier: su_opp_commitment
@@ -576,9 +589,11 @@ display:
           type: select
           limit: true
           vid: su_opportunity_commitment
-          hierarchy: false
+          hierarchy: true
           error_message: true
-          plugin_id: taxonomy_index_tid
+          depth: 1
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
       sorts:
         title:
           id: title
@@ -619,6 +634,10 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:

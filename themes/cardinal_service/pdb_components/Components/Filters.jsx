@@ -187,7 +187,9 @@ export class Filters extends Component {
             (a) => parseInt(a.id) == parseInt(selectedTid)
           );
           // This concats the valid entity ids and deduplicates it in one shot.
-          filterGroup = [...new Set(filterGroup.concat(selectedItem.items))];
+          if (typeof selectedItem !== 'undefined') {
+            filterGroup = [...new Set(filterGroup.concat(selectedItem.items))];
+          }
         });
 
         // On the first filter, set the valid entities for the next filter.

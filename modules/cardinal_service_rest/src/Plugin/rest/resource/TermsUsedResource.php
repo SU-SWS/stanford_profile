@@ -9,6 +9,7 @@ use Drupal\field\Entity\FieldConfig;
 use Drupal\field\FieldConfigInterface;
 use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
+use Drupal\taxonomy\TermInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -77,6 +78,8 @@ class TermsUsedResource extends ResourceBase {
    *
    * @param string $node_type
    *   Node type bundle id.
+   * @param bool $include_children
+   *   If the data should include all children terms as well.
    *
    * @return \Drupal\rest\ResourceResponse
    *   Rest response.
@@ -84,7 +87,7 @@ class TermsUsedResource extends ResourceBase {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function get($node_type) {
+  public function get($node_type, $include_children = TRUE) {
     $data = [];
 
     $fields = $this->fieldManager->getFieldDefinitions(self::ENTITY_TYPE, $node_type);
@@ -94,7 +97,7 @@ class TermsUsedResource extends ResourceBase {
         $field_definition->getType() == 'entity_reference' &&
         $field_definition->getSetting('handler') == 'default:taxonomy_term'
       ) {
-        $data[$field_name] = $this->getFieldTermsData($field_definition);
+        $data[$field_name] = $this->getFieldTermsData($field_definition, $include_children);
       }
     }
 
@@ -115,6 +118,8 @@ class TermsUsedResource extends ResourceBase {
    *
    * @param \Drupal\field\FieldConfigInterface $field
    *   Taxonomy field config entity.
+   * @param bool $include_children
+   *   If the data should include all children terms as well.
    *
    * @return array
    *   Array of structured term data.
@@ -122,7 +127,7 @@ class TermsUsedResource extends ResourceBase {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  protected function getFieldTermsData(FieldConfigInterface $field) {
+  protected function getFieldTermsData(FieldConfigInterface $field, $include_children = FALSE) {
     $term_storage = $this->entityTypeManager->getStorage('taxonomy_term');
     $node_storage = $this->entityTypeManager->getStorage('node');
 
@@ -134,11 +139,12 @@ class TermsUsedResource extends ResourceBase {
       'vid' => $vid,
       'status' => 1,
     ]) as $term) {
+      $term_ids = $include_children ? $this->getChildrenIds($term) : [$term->id()];
 
       $query = $node_storage->getQuery()
         ->condition('status', 1)
         ->condition('type', $field->getTargetBundle())
-        ->condition($field->getName(), $term->id());
+        ->condition($field->getName(), $term_ids, 'IN');
 
       if ($field->getTargetBundle() == 'su_spotlight') {
         $query->condition('body', '', '!=');
@@ -160,6 +166,32 @@ class TermsUsedResource extends ResourceBase {
       return count($item_a['items']) > count($item_b['items']) ? -1 : 1;
     });
     return array_values($data);
+  }
+
+  /**
+   * Get an array of term ids with all children terms under it.
+   *
+   * @param \Drupal\taxonomy\TermInterface $term
+   *   Parent taxonomy term.
+   *
+   * @return array
+   *   Array of taxonomy term ids.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  protected function getChildrenIds(TermInterface $term) {
+    $term_ids = [$term->id()];
+    $child_terms = $this->entityTypeManager->getStorage('taxonomy_term')
+      ->loadByProperties(['parent' => $term->id()]);
+    foreach ($child_terms as $child_term) {
+      $term_ids[] = $child_term->id();
+      $term_ids[] = $this->getChildrenIds($child_term);
+    }
+    // Flatten the array.
+    $term_ids = iterator_to_array(new \RecursiveIteratorIterator(new \RecursiveArrayIterator($term_ids)), FALSE);
+    // Remove duplicates.
+    return array_values(array_unique($term_ids));
   }
 
 }

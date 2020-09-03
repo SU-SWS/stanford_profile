@@ -147,6 +147,7 @@ export const SelectList = ({defaultValue, field, label, multiple, onChange, opti
     );
     defaultOptions = multiple ? defaultOptions : defaultOptions[0];
   }
+  defaultOptions = defaultOptions.filter(x => x !== undefined);
 
   const onSelectionChange = (e, selectedItems) => {
     if (selectedItems === null) {

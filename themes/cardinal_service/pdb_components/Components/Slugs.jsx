@@ -33,7 +33,13 @@ const SlugWrapper = styled.div`
   }
 `;
 
-export const Slugs = ({ filters, terms }) => {
+export const Slugs = ({filters, terms}) => {
+
+  const getTermLabel = (fieldName, tid) => {
+    const term = terms[fieldName].find((item) => parseInt(item.id) === parseInt(tid));
+    return typeof term !== 'undefined' ? term.label : 'Unknown';
+  }
+
   return (
     <Wrapper>
       <h4>Showing Results For:</h4>
@@ -41,17 +47,15 @@ export const Slugs = ({ filters, terms }) => {
         if (typeof terms[fieldName] !== 'undefined') {
           return filters[fieldName].map((tid) => (
             <SlugWrapper key={tid}>
-              {
-                terms[fieldName].find(
-                  (item) => parseInt(item.id) === parseInt(tid)
-                ).label
-              }
+              {getTermLabel(fieldName, tid)}
             </SlugWrapper>
           ));
         }
       })}
 
-      <a href={window.location.pathname + '#filter-wrapper'}>Clear All <span className="visually-hidden">Filters</span></a>
+      <a href={window.location.pathname + '#filter-wrapper'}>
+        Clear All <span className="visually-hidden">Filters</span>
+      </a>
     </Wrapper>
   );
 };
