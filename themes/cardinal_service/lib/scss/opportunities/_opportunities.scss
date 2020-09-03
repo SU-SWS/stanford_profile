@@ -29,7 +29,10 @@
 
   .main-region {
     min-height: 100%;
-    @include modular-spacing('margin-bottom', 3);
+
+    > div:last-child {
+      @include modular-spacing('margin-bottom', 3);
+    }
 
     h1 {
       @include modular-spacing('margin-bottom', -1);
@@ -54,6 +57,10 @@
     .node-su-opportunity-su-opp-service-theme {
       width: fit-content;
       display: inline-block;
+
+      div {
+        display: inline-block;
+      }
     }
 
     .su-opp-type {
@@ -216,6 +223,8 @@
 
 // Related Opportunities Styling
 .su-opportunities-related {
+  @include modular-spacing('margin-top', 9);
+
   .block__title {
     text-align: center;
   }
@@ -224,7 +233,7 @@
 .view {
   &[class*="su-opportunities"] {
     .views-row {
-      @include modular-spacing('margin-bottom', 2);
+      @include modular-spacing('margin-bottom', 7);
 
       &[class*="flex-"] {
         .contextual-region {
