@@ -1,12 +1,12 @@
 <?php
 
-use Drupal\Core\Site\Settings;
-use Drupal\Core\Config\FileStorage;
-
 /**
  * @file
  * stanford_profile.install
  */
+
+use Drupal\Core\Site\Settings;
+use Drupal\Core\Config\FileStorage;
 
 /**
  * Implements hook_removed_post_updates().
