@@ -54,7 +54,7 @@ function stanford_profile_post_update_8014() {
  * Update the new config_ignore settings prior to config import.
  */
 function stanford_profile_post_update_8015() {
-  $config_name = "config_ignore.settings.yml";
+  $config_name = "config_ignore.settings";
   $config_path = Settings::get('config_sync_directory');
   $source = new FileStorage($config_path);
   $config_storage = \Drupal::service('config.storage');
