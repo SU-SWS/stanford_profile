@@ -28,7 +28,6 @@ third_party_settings:
     group_opportunity_information:
       children:
         - su_spotlight_opportunity
-        - su_opp_open_to
         - su_opp_service_theme
         - su_opp_pathway
         - su_opp_dimension
@@ -37,12 +36,12 @@ third_party_settings:
       format_type: details
       region: content
       format_settings:
+        description: ''
+        required_fields: true
         id: ''
         classes: ''
-        description: ''
         open: false
-        required_fields: true
-      label: 'Opportunity''s Information'
+      label: 'Spotlight Information'
 id: node.su_spotlight.default
 targetEntityType: node
 bundle: su_spotlight
@@ -99,12 +98,6 @@ content:
     third_party_settings: {  }
   su_opp_dimension:
     weight: 18
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  su_opp_open_to:
-    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -208,4 +201,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  su_opp_open_to: true
   su_spotlight_background_image: true

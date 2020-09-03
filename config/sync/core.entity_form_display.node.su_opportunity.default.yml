@@ -74,7 +74,7 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 29
+    weight: 28
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -99,7 +99,7 @@ content:
     type: datetime_default
     region: content
   su_opp_commitment:
-    weight: 28
+    weight: 27
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -152,7 +152,7 @@ content:
           entity_type: node
           bundle: su_opportunity
   su_opp_dimension:
-    weight: 24
+    weight: 23
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -171,14 +171,6 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
-  su_opp_learn_more:
-    weight: 22
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
     region: content
   su_opp_location:
     weight: 18
@@ -204,19 +196,19 @@ content:
     type: options_select
     region: content
   su_opp_pathway:
-    weight: 25
+    weight: 24
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   su_opp_placement_type:
-    weight: 26
+    weight: 25
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   su_opp_service_theme:
-    weight: 23
+    weight: 22
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -230,7 +222,7 @@ content:
     type: link_default
     region: content
   su_opp_sponsor:
-    weight: 27
+    weight: 26
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -267,7 +259,7 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 29
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -281,4 +273,5 @@ hidden:
   su_opp_course_date: true
   su_opp_duration: true
   su_opp_event_date: true
+  su_opp_learn_more: true
   su_opp_submissions_open: true

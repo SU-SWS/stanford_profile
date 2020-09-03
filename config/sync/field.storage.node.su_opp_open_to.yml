@@ -3,8 +3,12 @@ langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
     - taxonomy
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: node.su_opp_open_to
 field_name: su_opp_open_to
 entity_type: node
