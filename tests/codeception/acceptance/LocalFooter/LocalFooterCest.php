@@ -74,4 +74,20 @@ class LocalFooterCest {
     $I->cantSee('123 Drupal Dr');
   }
 
+  /**
+   * Content blocks.
+   */
+  public function testCustomContentLocalFooter(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/config/system/local-footer');
+    $I->fillField("#edit-su-local-foot-pr-co-0-value", "<p>Block one</p>");
+    $I->fillField("#edit-su-local-foot-se-co-0-value", "<p>Block two</p>");
+    $I->fillField("#edit-su-local-foot-tr-co-0-value", "<p>Block three</p>");
+    $I->click('Save');
+    $I->amOnPage('/');
+    $I->canSee('Block one');
+    $I->canSee('Block two');
+    $I->canSee('Block three');
+  }
+
 }
