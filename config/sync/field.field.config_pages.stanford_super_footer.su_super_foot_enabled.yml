@@ -1,0 +1,23 @@
+uuid: 43200456-b636-40f4-81aa-5a8e2a1cf5e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_super_footer
+    - field.storage.config_pages.su_super_foot_enabled
+id: config_pages.stanford_super_footer.su_super_foot_enabled
+field_name: su_super_foot_enabled
+entity_type: config_pages
+bundle: stanford_super_footer
+label: 'Enable Super Footer'
+description: 'Check this box to display a site-wide super footer. This content will appear above the local footer on all site pages.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

@@ -1,0 +1,17 @@
+uuid: 2b2278c8-1d7c-40be-9c7f-dc894a10ad82
+langcode: en
+status: true
+dependencies: {  }
+id: stanford_super_footer
+label: 'Super Footer'
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/config/system/super-footer
+  weight: 0
+  description: 'A footer with button links above the local footer.'
+token: false
