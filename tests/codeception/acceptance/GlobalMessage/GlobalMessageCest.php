@@ -32,7 +32,7 @@ class GlobalMessageCest {
     $I->checkOption('#edit-su-global-msg-enabled-value');
     $I->selectOption("#edit-su-global-msg-type", "success");
     $I->fillField('Label', 'MESSAGE LABEL');
-    $I->fillField('Header', 'MESSAGE HEADER');
+    $I->fillField('Headline', 'MESSAGE HEADER');
     $I->fillField('#edit-su-global-msg-message-0-value', '<p>This is the message body.</p>');
     $I->fillField('URL', '<front>');
     $I->fillField('Link text', 'Action link');
