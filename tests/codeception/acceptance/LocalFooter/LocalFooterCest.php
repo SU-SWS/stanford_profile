@@ -80,6 +80,7 @@ class LocalFooterCest {
   public function testCustomContentLocalFooter(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
+    $I->checkOption('Enabled');
     $I->fillField("#edit-su-local-foot-pr-co-0-value", "<p>Block one</p>");
     $I->fillField("#edit-su-local-foot-se-co-0-value", "<p>Block two</p>");
     $I->fillField("#edit-su-local-foot-tr-co-0-value", "<p>Block three</p>");
