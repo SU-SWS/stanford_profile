@@ -8,18 +8,11 @@ dependencies:
     - media.type.embeddable
   module:
     - media
-    - path
 id: media.embeddable.default
 targetEntityType: media
 bundle: embeddable
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 4
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_media_embeddable_code:
     weight: 2
     settings:
@@ -44,27 +37,8 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  path:
-    type: path
-    weight: 5
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  status:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 6
-    region: content
-    third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
-    weight: 3
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-      match_limit: 10
-    region: content
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  created: true
+  path: true
+  status: true
+  uid: true

@@ -7,19 +7,11 @@ dependencies:
     - field.field.media.embeddable.field_media_embeddable_code
     - field.field.media.embeddable.field_media_embeddable_oembed
     - media.type.embeddable
-  module:
-    - path
 id: media.embeddable.media_library
 targetEntityType: media
 bundle: embeddable
 mode: media_library
 content:
-  created:
-    type: datetime_timestamp
-    weight: 5
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_media_embeddable_code:
     type: string_textarea
     weight: 2
@@ -44,27 +36,8 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  path:
-    type: path
-    weight: 6
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  status:
-    type: boolean_checkbox
-    weight: 3
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
-    weight: 4
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  created: true
+  path: true
+  status: true
+  uid: true

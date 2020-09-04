@@ -10,28 +10,11 @@ dependencies:
     - media.type.embeddable
   module:
     - image
-    - media
 id: media.embeddable.media_library
 targetEntityType: media
 bundle: embeddable
 mode: media_library
 content:
-  field_media_embeddable_code:
-    type: embeddable_formatter
-    weight: 2
-    region: content
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-  field_media_embeddable_oembed:
-    type: oembed
-    weight: 3
-    region: content
-    label: above
-    settings:
-      max_width: 0
-      max_height: 0
-    third_party_settings: {  }
   name:
     type: string
     weight: 1
@@ -51,4 +34,6 @@ content:
     region: content
 hidden:
   created: true
+  field_media_embeddable_code: true
+  field_media_embeddable_oembed: true
   uid: true
