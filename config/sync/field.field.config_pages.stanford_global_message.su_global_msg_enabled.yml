@@ -3,12 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - config_pages.type.global_message
+    - config_pages.type.stanford_global_message
     - field.storage.config_pages.su_global_msg_enabled
-id: config_pages.global_message.su_global_msg_enabled
+id: config_pages.stanford_global_message.su_global_msg_enabled
 field_name: su_global_msg_enabled
 entity_type: config_pages
-bundle: global_message
+bundle: stanford_global_message
 label: Enabled
 description: 'Check to display the global message.'
 required: false

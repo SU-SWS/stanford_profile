@@ -3,19 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
-    - config_pages.type.global_message
-    - field.field.config_pages.global_message.su_global_msg_enabled
-    - field.field.config_pages.global_message.su_global_msg_header
-    - field.field.config_pages.global_message.su_global_msg_label
-    - field.field.config_pages.global_message.su_global_msg_link
-    - field.field.config_pages.global_message.su_global_msg_message
-    - field.field.config_pages.global_message.su_global_msg_type
+    - config_pages.type.stanford_global_message
+    - field.field.config_pages.stanford_global_message.su_global_msg_enabled
+    - field.field.config_pages.stanford_global_message.su_global_msg_header
+    - field.field.config_pages.stanford_global_message.su_global_msg_label
+    - field.field.config_pages.stanford_global_message.su_global_msg_link
+    - field.field.config_pages.stanford_global_message.su_global_msg_message
+    - field.field.config_pages.stanford_global_message.su_global_msg_type
   module:
     - link
     - text
-id: config_pages.global_message.default
+id: config_pages.stanford_global_message.default
 targetEntityType: config_pages
-bundle: global_message
+bundle: stanford_global_message
 mode: default
 content:
   su_global_msg_enabled:

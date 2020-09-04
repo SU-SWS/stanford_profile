@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - config_pages.type.global_message
+    - config_pages.type.stanford_global_message
     - field.storage.config_pages.su_global_msg_message
   module:
     - allowed_formats
@@ -13,10 +13,10 @@ third_party_settings:
     stanford_minimal_html: stanford_minimal_html
     plain_text: plain_text
     stanford_html: '0'
-id: config_pages.global_message.su_global_msg_message
+id: config_pages.stanford_global_message.su_global_msg_message
 field_name: su_global_msg_message
 entity_type: config_pages
-bundle: global_message
+bundle: stanford_global_message
 label: Message
 description: 'The message body.'
 required: false
