@@ -37,7 +37,6 @@ class GlobalMessageCest {
     $I->fillField('URL', '<front>');
     $I->fillField('Link text', 'Action link');
     $I->click('Save');
-    $I->canSee("Global Message Global Message has been updated.");
     $I->amOnPage("/");
     $I->seeElement(".su-alert--success");
     $I->canSee("MESSAGE LABEL");
