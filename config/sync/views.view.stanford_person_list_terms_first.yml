@@ -504,10 +504,10 @@ display:
           entity_type: taxonomy_term
           entity_field: weight
           plugin_id: standard
-        su_person_last_name_value:
-          id: su_person_last_name_value
-          table: node__su_person_last_name
-          field: su_person_last_name_value
+        su_person_first_name_value:
+          id: su_person_first_name_value
+          table: node__su_person_first_name
+          field: su_person_first_name_value
           relationship: reverse__node__su_person_type_group
           group_type: group
           admin_label: ''
@@ -516,10 +516,10 @@ display:
           expose:
             label: ''
           plugin_id: standard
-        su_person_first_name_value:
-          id: su_person_first_name_value
-          table: node__su_person_first_name
-          field: su_person_first_name_value
+        su_person_last_name_value:
+          id: su_person_last_name_value
+          table: node__su_person_last_name
+          field: su_person_last_name_value
           relationship: reverse__node__su_person_type_group
           group_type: group
           admin_label: ''
