@@ -123,11 +123,11 @@ process:
       plugin: str_replace
       source: sponsor
       search:
-        - '/^.*(Bill Lane Center Internships).*/'
-        - '/^.*(Freeman Spogli Institute Global Policy Internships).*/'
+        - '/^.*(Bill Lane Center).*/'
+        - '/^.*(Freeman Spogli).*/'
         - '/^.*(Stanford Global Studies).*/'
         - '/^.*(King Center on Global Development).*/'
-        - '/^.*(Schneider Fellowships).*/'
+        - '/^.*(Schneider Summer Fellowships).*/'
         - '/^.*(Seed Internships).*/'
         - '/^.*(Stanford Arts).*/'
         - '/^.*(Stanford Energy Internships in California and the West).*/'
@@ -217,9 +217,25 @@ process:
       callable: ucwords
   su_opp_location:
     -
-      plugin: explode
+      plugin: skip_on_empty
       source: location
+      method: process
+    -
+      plugin: str_replace
+      search: ['East Palo Alto', 'Other Bay Area', 'Redwood City']
+      replace: 'Bay Area'
+    -
+      plugin: str_replace
+      search: ['United States of America (Stanford on-campus)', 'Stanford (on-campus)', 'United States of America (Stanford off-campus)']
+      replace: ['Stanford', 'Stanford', 'United States']
+    -
+      plugin: explode
       delimiter: ', '
+    -
+      plugin: str_replace
+      search: '/^(?!.*(Stanford|United States|Bay Area)).*/'
+      replace: 'International'
+      regex: true
     -
       plugin: entity_generate
       value_key: name

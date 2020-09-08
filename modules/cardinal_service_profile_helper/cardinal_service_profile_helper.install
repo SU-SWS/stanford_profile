@@ -81,8 +81,11 @@ function cardinal_service_profile_helper_update_8004() {
  */
 function cardinal_service_profile_helper_update_8006() {
   $terms = [
+    'Bill Lane Center for the American West',
+    'The Bill Lane Center for the American West',
     'Bill Lane Center Internships',
     'Freeman Spogli Institute Global Policy Internships',
+    'Freeman Spogli Institute for International Studies',
     'Stanford Global Studies',
     'King Center on Global Development',
     'Schneider Fellowships',
@@ -90,16 +93,22 @@ function cardinal_service_profile_helper_update_8006() {
     'Stanford Arts',
     'Stanford Energy Internships in California and the West',
   ];
-  $terms = \Drupal::entityTypeManager()
-    ->getStorage('taxonomy_term')
-    ->loadByProperties(['name' => $terms]);
+  $term_storage = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term');
+  $terms = $term_storage->loadByProperties(['name' => $terms]);
 
   $node_storage = \Drupal::entityTypeManager()->getStorage('node');
-  foreach ($terms as $term) {
-    $nids = $node_storage->getQuery()
-      ->condition('su_opp_sponsor', $term->id())
-      ->execute();
-    $node_storage->delete($node_storage->loadMultiple($nids));
-    $term->delete();
-  }
+  $nids = $node_storage->getQuery()
+    ->condition('su_opp_sponsor', array_keys($terms), 'IN')
+    ->execute();
+  $node_storage->delete($node_storage->loadMultiple($nids));
+
+  $term_storage->delete($terms);
+}
+
+/**
+ * Cleanup opportunities.
+ */
+function cardinal_service_profile_helper_update_8007() {
+  cardinal_service_profile_helper_update_8006();
 }
