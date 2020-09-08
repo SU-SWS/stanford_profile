@@ -1,12 +1,13 @@
 @charset 'UTF-8';
 
+// Spotlight Content Type Styles
 .spotlight {
   @include modular-spacing('margin-top', 6);
   @include modular-spacing('margin-bottom', 6);
 }
 
 .spotlight-header-content-container {
-  @include modular-spacing('margin-bottom', 4);
+  @include modular-spacing('margin-bottom', 8);
 
   .node-su-spotlight-su-spotlight-feature-image {
     @include modular-spacing('margin-bottom', 0);
@@ -18,6 +19,11 @@
 
   .main-region {
     text-align: center;
+
+    h2 {
+      @include modular-typography(1);
+      max-width: 20ch;
+    }
   }
 
   @include grid-media-min('lg') {
@@ -39,69 +45,76 @@
   }
 }
 
-.node-su-spotlight-title {
-  h1 {
-    @include modular-spacing('margin-bottom', 4);
-    @include modular-typography(4);
-    text-align: center;
-    margin: 0;
-  }
-}
-
-.su-spotlight-student-name {
-  h2 {
-    @include modular-typography(1);
-    margin: 0;
-  }
-}
-
-.su-spotlight-grad-area {
-  @include modular-typography(0);
-}
-
-.su-spotlight-body {
-  @include modular-typography(0);
-}
-
-.su-spotlight-context {
-  @include modular-spacing('margin-top', 3);
-  font-style: italic;
-}
-
-.content {
-  @include modular-spacing('margin-bottom', 8);
-}
-
-.su-spotlight-body {
-  .media {
-    @include padding(null null 2em null);
+.spotlight-body-content-container {
+  .main-region,
+  .body,
+  p {
+    @include big-paragraph;
+    max-width: 70ch;
   }
 
-  // Remove the bottom padding when the media has a caption since we add padding
-  // to the caption itself.
-  figure {
-    .media {
-      @include padding(null null 0 null);
+  .node-su-spotlight-title {
+    h1 {
+      @include modular-spacing('margin-bottom', 4);
+      @include modular-typography(4);
+      text-align: center;
+      margin: 0;
     }
   }
 
-  // Caption Styles.
-  .caption {
-    figcaption {
-      text-align: center;
+  .su-spotlight-student-name {
+    h2 {
+      @include modular-typography(1);
+      margin: 0;
+    }
+  }
+
+  .su-spotlight-grad-area {
+    @include modular-typography(0);
+  }
+
+  .su-spotlight-context {
+    @include modular-spacing('margin-top', 3);
+    font-style: italic;
+  }
+
+  .content {
+    @include modular-spacing('margin-bottom', 8);
+  }
+
+  .su-spotlight-body {
+    @include modular-typography(0);
+
+    .media {
       @include padding(null null 2em null);
     }
-  }
 
-  .align-right {
-    figcaption {
-      padding-left: 1em;
+    // Remove the bottom padding when the media has a caption since we add padding
+    // to the caption itself.
+    figure {
+      .media {
+        @include padding(null null 0 null);
+      }
     }
-  }
 
-  .align-left {
-    figcaption {
-      padding-right: 1em;
+    // Caption Styles.
+    .caption {
+      figcaption {
+        text-align: center;
+        @include padding(null null 2em null);
+      }
+    }
+
+    .align-right {
+      figcaption {
+        padding-left: 1em;
+      }
+    }
+
+    .align-left {
+      figcaption {
+        padding-right: 1em;
+      }
     }
   }
 }

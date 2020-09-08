@@ -7,17 +7,21 @@
     box-shadow: 0 3px 6px rgba($su-color-black, 0.13), 0 3px 6px rgba($su-color-black, 0.1);
     box-sizing: border-box;
     height: fit-content;
-    @include modular-spacing('padding', 1);
+    @include modular-spacing('padding', 2);
   }
 }
 
 .opportunity-header-content-container {
   background: $su-color-cloud;
   @include modular-spacing('padding-top', 4);
-  @include modular-spacing('padding-left', 5);
-  @include modular-spacing('padding-right', 5);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
   .left-region {
+    @include modular-spacing('padding', 1);
+    @include modular-spacing('margin-right', 2);
+    @include flex-column(2);
     position: relative;
     top: 3rem;
 
@@ -28,6 +32,7 @@
   }
 
   .main-region {
+    @include flex-column(8);
     min-height: 100%;
 
     > div:last-child {
@@ -36,6 +41,7 @@
 
     h1 {
       @include modular-spacing('margin-bottom', -1);
+      max-width: 35ch;
     }
 
     .node-su-opportunity-flag-cs-favorites {
@@ -92,7 +98,8 @@
     }
 
     .main-region {
-      max-width: 100%;
+      max-width: 80%;
+      margin: 0 auto;
       flex: none;
     }
   }
@@ -106,6 +113,17 @@
 
 .opportunity-body-content-container {
   @include modular-spacing('margin-top', 5);
+  justify-content: space-evenly;
+
+  .left-region {
+    @include flex-column(7);
+  }
+
+  .body,
+  p {
+    @include big-paragraph;
+    max-width: 70ch;
+  }
 
   .flex-lg-3-of-12 {
     @include modular-spacing('margin-bottom', 4);
