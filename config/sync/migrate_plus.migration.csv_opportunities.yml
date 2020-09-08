@@ -51,8 +51,12 @@ source:
       selector: learn_more_url
     -
       name: application_deadline
-      label: 'Application Deadline'
+      label: 'Application Deadline (Date and time)'
       selector: application_deadline_date
+    -
+      name: application_deadline_quarter
+      label: 'Application Deadline (Quarter of the year)'
+      selector: application_deadline_quarter
     -
       name: time_of_year
       label: 'Time of the Year'
@@ -280,6 +284,18 @@ process:
       to_timezone: UTC
       settings:
         validate_format: false
+  application_deadline_quarter:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: application_deadline_quarter
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: su_opportunity_time
+      entity_type: taxonomy_term
+      ignore_case: true
   su_opp_pathway:
     -
       plugin: skip_on_empty
