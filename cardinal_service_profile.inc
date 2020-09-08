@@ -235,7 +235,7 @@ function cardinal_service_profile_entity_field_access($operation, FieldDefinitio
 
     $node = $route_match->getParameter('node');
     if (_cardinal_service_profile_field_mapped($node, $field_definition)) {
-      return AccessResult::forbidden(t('Field is mapped by the importer'));
+      return AccessResult::forbidden();
     }
   }
   return AccessResult::neutral();
