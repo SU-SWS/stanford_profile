@@ -232,14 +232,19 @@ function cardinal_service_profile_form_alter(&$form, FormStateInterface $form_st
  */
 function cardinal_service_profile_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
   $route_match = \Drupal::routeMatch();
+
   if (
     $operation == 'view' &&
     $field_definition->getName() == 'su_spotlight_quote' &&
-    $route_match->getRouteName() == 'entity.node.canonical'
+    $route_match->getRouteName() == 'entity.node.canonical' &&
+    $items
   ) {
-    // The spotlight quote and the body should not display at the same time.
-    if ($items->getEntity()->get('body')->count()) {
-      return AccessResult::forbidden();
+    $node = $route_match->getParameter('node');
+    if ($node && $node->id() == $items->getEntity()->id()) {
+      // The spotlight quote and the body should not display at the same time.
+      if ($items->getEntity()->get('body')->count()) {
+        return AccessResult::forbidden();
+      }
     }
   }
 
