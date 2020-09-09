@@ -15,6 +15,21 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\field\FieldConfigInterface;
 use Drupal\node\NodeInterface;
 use Drupal\views\ViewExecutable;
+use Drupal\pathauto\PathautoPatternInterface;
+
+/**
+ * Implements hook_pathauto_pattern_alter().
+ */
+function cardinal_service_profile_pathauto_pattern_alter(PathautoPatternInterface $pattern, array $context) {
+  // Change the path auto pattern if the page is a resource.
+  if ($context['module'] == 'node' && $context['bundle'] == 'stanford_page') {
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $context['data']['node'];
+    if ($node->get('su_page_resource_dimension')->count()) {
+      $pattern->setPattern('/resources/[node:title]');
+    }
+  }
+}
 
 /**
  * Implements hook_ENTITY_TYPE_presave().
