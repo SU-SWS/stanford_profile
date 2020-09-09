@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.su_spotlight.su_spotlight_quote
     - field.field.node.su_spotlight.su_spotlight_student_name
     - node.type.su_spotlight
+    - views.view.su_spotlights
   module:
     - field_group
     - jumpstart_ui
@@ -25,6 +26,7 @@ dependencies:
     - layout_library
     - text
     - user
+    - views
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -199,6 +201,29 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 4
+            third_party_settings: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+          label: ''
+        components:
+          86250bed-476e-4ece-8626-2cc10e3a08a0:
+            uuid: 86250bed-476e-4ece-8626-2cc10e3a08a0
+            region: main
+            configuration:
+              id: 'views_block:su_spotlights-related_stories'
+              label: 'Explore More Stories'
+              provider: views
+              label_display: visible
+              views_label: 'Explore More Stories'
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
             third_party_settings: {  }
         third_party_settings: {  }
   layout_library:
