@@ -16,9 +16,10 @@ const nodeFields = [
 
 const getSortUrl = (field) => {
   let currentHref = window.location.href.replace(/sort.*?$/, '').replace(/&+$/, '');
+  currentHref = currentHref.replace('#filter-wrapper', '');
   const separator = currentHref.indexOf('?') === -1 ? '?' : '&';
   const direction = sortOrderIsAsc(field) ? 'DESC' : 'ASC';
-  return `${currentHref}${separator}sort_by=${field}&sort_order=${direction}`
+  return `${currentHref}${separator}sort_by=${field}&sort_order=${direction}#filter-wrapper`
 }
 
 const sortedByField = (field) => {
