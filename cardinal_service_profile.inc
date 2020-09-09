@@ -20,6 +20,12 @@ use Drupal\views\ViewExecutable;
  * Implements hook_ENTITY_TYPE_presave().
  */
 function cardinal_service_profile_node_presave(NodeInterface $node) {
+  if ($node->bundle() == 'su_spotlight' && $node->get('su_spotlight_student_name')
+      ->getString() === $node->label()) {
+    $node->set('su_spotlight_student_name', NULL);
+    return;
+  }
+
   if ($node->bundle() != 'su_opportunity' || !$node->hasField('su_opp_application_deadline')) {
     return;
   }

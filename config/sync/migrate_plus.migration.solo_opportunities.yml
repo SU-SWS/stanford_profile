@@ -222,19 +222,28 @@ process:
       method: process
     -
       plugin: str_replace
-      search: ['East Palo Alto', 'Other Bay Area', 'Redwood City']
+      search:
+        - 'East Palo Alto'
+        - 'Other Bay Area'
+        - 'Redwood City'
       replace: 'Bay Area'
     -
       plugin: str_replace
-      search: ['United States of America (Stanford on-campus)', 'Stanford (on-campus)', 'United States of America (Stanford off-campus)']
-      replace: ['Stanford', 'Stanford', 'United States']
+      search:
+        - 'United States of America (Stanford on-campus)'
+        - 'Stanford (on-campus)'
+        - 'United States of America (Stanford off-campus)'
+      replace:
+        - Stanford
+        - Stanford
+        - 'United States'
     -
       plugin: explode
       delimiter: ', '
     -
       plugin: str_replace
       search: '/^(?!.*(Stanford|United States|Bay Area)).*/'
-      replace: 'International'
+      replace: International
       regex: true
     -
       plugin: entity_generate

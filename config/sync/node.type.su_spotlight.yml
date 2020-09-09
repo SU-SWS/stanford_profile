@@ -4,14 +4,31 @@ status: true
 dependencies:
   module:
     - menu_ui
+    - node_title_help_text
+    - scheduler
 third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_past_date_created: false
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    show_message_after_update: true
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
+  node_title_help_text:
+    title_help: 'Enter the title of the story here. Use the author’s name and graduation year as a title if this is a spotlight-quote that has no story title.'
 name: Spotlight
 type: su_spotlight
 description: ''
 help: ''
 new_revision: false
-preview_mode: 1
+preview_mode: 0
 display_submitted: false
