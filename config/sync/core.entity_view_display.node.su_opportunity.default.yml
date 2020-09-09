@@ -268,7 +268,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 4
+            weight: 5
             third_party_settings: {  }
           ac4cff86-d454-4ff1-8bef-3208d91c95b2:
             uuid: ac4cff86-d454-4ff1-8bef-3208d91c95b2
@@ -291,7 +291,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 5
+            weight: 6
             third_party_settings: {  }
           972fb6ac-7c3a-4c4f-a744-d6ae5fa3cfb7:
             uuid: 972fb6ac-7c3a-4c4f-a744-d6ae5fa3cfb7
@@ -315,7 +315,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 6
+            weight: 7
             third_party_settings: {  }
           6b5496e8-f6c2-4113-bbbb-6f355eed3aea:
             uuid: 6b5496e8-f6c2-4113-bbbb-6f355eed3aea
@@ -384,7 +384,7 @@ third_party_settings:
             region: left
             configuration:
               id: 'field_block:node:su_opportunity:su_opp_eligibility'
-              label: 'Eligibility and Requirements'
+              label: Eligibility
               provider: layout_builder
               label_display: visible
               formatter:
@@ -481,29 +481,19 @@ third_party_settings:
             additional: {  }
             weight: 2
             third_party_settings: {  }
-          80fc3df7-493a-4601-9c01-ec3edc4e3b0c:
-            uuid: 80fc3df7-493a-4601-9c01-ec3edc4e3b0c
+          de18db59-68de-40d5-941f-b44c734698a0:
+            uuid: de18db59-68de-40d5-941f-b44c734698a0
             region: main
             configuration:
-              id: 'field_block:node:su_opportunity:su_opp_sponsor'
-              label: 'Offered By'
-              provider: layout_builder
+              id: 'views_block:su_opportunities-duration_range'
+              label: When
+              provider: views
               label_display: visible
-              formatter:
-                label: hidden
-                type: entity_reference_label
-                settings:
-                  link: false
-                third_party_settings:
-                  field_delimiter:
-                    delimiter: ''
-                  field_formatter_class:
-                    class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
+              views_label: When
+              items_per_page: none
+              context_mapping: {  }
             additional: {  }
-            weight: 7
+            weight: 4
             third_party_settings: {  }
         third_party_settings: {  }
       -
