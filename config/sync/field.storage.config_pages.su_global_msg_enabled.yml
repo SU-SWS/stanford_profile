@@ -1,0 +1,22 @@
+uuid: 7f2fee12-7adc-4141-879f-abceb288b9ff
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - field_permissions
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: config_pages.su_global_msg_enabled
+field_name: su_global_msg_enabled
+entity_type: config_pages
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

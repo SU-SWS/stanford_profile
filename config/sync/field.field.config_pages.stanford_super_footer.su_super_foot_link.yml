@@ -1,0 +1,23 @@
+uuid: 34edc784-874f-4e65-80af-6de13e0d85cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_super_footer
+    - field.storage.config_pages.su_super_foot_link
+  module:
+    - link
+id: config_pages.stanford_super_footer.su_super_foot_link
+field_name: su_super_foot_link
+entity_type: config_pages
+bundle: stanford_super_footer
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

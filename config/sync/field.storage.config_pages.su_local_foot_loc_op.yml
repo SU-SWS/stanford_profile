@@ -1,0 +1,64 @@
+uuid: dac8bdbf-6193-4384-95b7-21dda3674bcb
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - field_permissions
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: config_pages.su_local_foot_loc_op
+field_name: su_local_foot_loc_op
+entity_type: config_pages
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: none
+      label: 'Logo Only'
+    -
+      value: a
+      label: 'Option A: Lines 1, 5-bold, uppercase'
+    -
+      value: b
+      label: 'Option B: Lines 1-small letters, 2'
+    -
+      value: d
+      label: 'Option D: Lines 1, 3'
+    -
+      value: e
+      label: 'Option E: Lines 1, 2, 3'
+    -
+      value: h
+      label: 'Option H: Lines 1, 3-regular, 4'
+    -
+      value: i
+      label: 'Option I: Lines 1, 3, 4'
+    -
+      value: m
+      label: 'Option M: Lines 1, 2 Large'
+    -
+      value: o
+      label: 'Option O: Line 4'
+    -
+      value: p
+      label: 'Option P: Lines 4, 1'
+    -
+      value: r
+      label: 'Option R: Line 5'
+    -
+      value: s
+      label: 'Option S-stacked: Lines 4, 1-small letters, 2'
+    -
+      value: t
+      label: 'Option T-stacked: Line 4, 1-small letters, 2, 3'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: d4295e2b-9060-4d71-9c2c-7ef0368649cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.storage.config_pages.su_local_foot_use_logo
+id: config_pages.stanford_local_footer.su_local_foot_use_logo
+field_name: su_local_foot_use_logo
+entity_type: config_pages
+bundle: stanford_local_footer
+label: "Use the logo supplied by the theme\t"
+description: 'Uncheck this box if you want to replace the default lock up settings with a custom logo. This custom logo will appear in the top left corner of the website''s main header.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
