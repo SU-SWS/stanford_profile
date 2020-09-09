@@ -149,7 +149,7 @@
   }
 
   .node-su-opportunity-su-opp-location,
-  .node-su-opportunity-su-opp-duration,
+  .su-opportunities-duration-range,
   .node-su-opportunity-su-opp-application-deadline,
   .node-su-opportunity-su-opp-open-to,
   .node-su-opportunity-su-opp-sponsor,
@@ -169,6 +169,7 @@
       margin-left: 30px;
     }
 
+    .field-content,
     .su-opportunity {
       margin-left: 30px;
     }
@@ -180,7 +181,7 @@
     }
   }
 
-  .node-su-opportunity-su-opp-duration {
+  .su-opportunities-duration-range {
     &::before {
       content: '\f073';
     }
@@ -264,7 +265,7 @@
 }
 
 .view {
-  &[class*="su-opportunities"] {
+  &[class*="su-opportunities"]:not(.duration-range) {
     .views-row {
       @include modular-spacing('margin-bottom', 7);
 

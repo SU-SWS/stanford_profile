@@ -199,6 +199,11 @@ class CsvImporterForm extends FormBase {
         ->addError($this->t('Unable to import CSV. Review the logs for more information'));
     }
     // @codeCoverageIgnoreEnd
+
+    $db_table = 'migrate_map_' . $form_state->getValue('migration');
+    if ($this->database->schema()->tableExists($db_table)) {
+      $this->database->truncate($db_table)->execute();
+    }
   }
 
   /**
