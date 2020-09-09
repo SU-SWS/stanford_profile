@@ -64,7 +64,7 @@ display:
         type: basic
         options:
           submit_button: Apply
-          reset_button: false
+          reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
@@ -833,6 +833,86 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
+        su_opp_dimension_target_id:
+          id: su_opp_dimension_target_id
+          table: node__su_opp_dimension
+          field: su_opp_dimension_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: program_op
+            label: Program
+            description: ''
+            use_operator: true
+            operator: su_opp_dimension_target_id_op
+            operator_limit_selection: false
+            operator_list:
+              empty: empty
+            identifier: program
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              administrator: '0'
+              anonymous: '0'
+              stanford_faculty: '0'
+              stanford_staff: '0'
+              stanford_student: '0'
+              contributor: '0'
+              site_manager: '0'
+              site_editor: '0'
+              site_builder: '0'
+              site_developer: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: Program
+            description: ''
+            identifier: su_opp_dimension_target_id
+            optional: true
+            widget: select
+            multiple: true
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Empty
+                operator: empty
+                value: {  }
+              2:
+                title: 'Cardinal Careers'
+                operator: or
+                value:
+                  496: '496'
+              3:
+                title: 'Cardinal Commitment'
+                operator: or
+                value:
+                  486: '486'
+              4:
+                title: 'Cardinal Courses'
+                operator: or
+                value:
+                  491: '491'
+              5:
+                title: 'Cardinal Quarter'
+                operator: or
+                value:
+                  301: '301'
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: su_opportunity_dimension
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
         su_opp_service_theme_target_id:
           id: su_opp_service_theme_target_id
           table: node__su_opp_service_theme
@@ -887,63 +967,6 @@ display:
           type: select
           limit: true
           vid: su_opportunity_service_theme
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        su_opp_dimension_target_id:
-          id: su_opp_dimension_target_id
-          table: node__su_opp_dimension
-          field: su_opp_dimension_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: su_opp_dimension_target_id_op
-            label: 'Dimension (su_opp_dimension)'
-            description: null
-            use_operator: false
-            operator: su_opp_dimension_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_dimension_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: true
-          group_info:
-            label: Program
-            description: ''
-            identifier: su_opp_dimension_target_id
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: Empty
-                operator: empty
-                value: {  }
-              2:
-                title: ''
-                operator: or
-                value: {  }
-              3:
-                title: ''
-                operator: or
-                value: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: su_opportunity_dimension
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
