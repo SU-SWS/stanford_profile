@@ -12,7 +12,7 @@ const FilterContainer = styled.div`
   border-bottom: 1px solid #e5e5e5;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   margin-bottom: 72px;
-  padding: 36px;
+  padding: 36px 0;
 
   .flex-lg-2-of-12 {
     display: flex;
@@ -270,60 +270,62 @@ export class Filters extends Component {
       <div>
         <FilterContainer>
           <div className="centered-container" id="filter-wrapper">
-            {this.props.header}
-            <form onSubmit={this.onFormSubmit}>
-              <div className="flex-container">
-                <div className="flex-lg-10-of-12">
-                  <FilterWrapper useGrid={this.props.useGrid}
-                                 className="main-filters">
-                    {mainFilters.map((field) => this.getSelectElement(field))}
-                  </FilterWrapper>
-                  {this.props.showMoreFilters &&
-                  <React.Fragment>
-                    <MoreFilterWrap>
-                      {moreFilters.length > 0 && (
-                        <MoreFilterBtn
-                          aria-controls={this.moreFiltersId}
-                          aria-expanded={showMoreFilter}
-                          onClick={this.showHideMoreFilters.bind(this)}
-                        >
-                          <i className="fas fa-sliders-h"></i>
-                          <span>{showMoreFilter ? 'Hide More Filters' : 'Show More Filters'}</span>
-                        </MoreFilterBtn>
-                      )}
-                    </MoreFilterWrap>
-                    <FilterWrapper
-                      id={this.moreFiltersId}
-                      className="more-filters"
-                      role="region"
-                      style={{
-                        display: showMoreFilter ? 'grid' : 'none',
-                      }}
-                    >
-                      {moreFilters.map((field) => this.getSelectElement(field))}
+            <div {...this.props.wrapperAttributes}>
+              {this.props.header}
+              <form onSubmit={this.onFormSubmit}>
+                <div className="flex-container">
+                  <div className="flex-lg-10-of-12">
+                    <FilterWrapper useGrid={this.props.useGrid}
+                                   className="main-filters">
+                      {mainFilters.map((field) => this.getSelectElement(field))}
                     </FilterWrapper>
-                  </React.Fragment>
-                  }
-                </div>
-                <div className="flex-lg-2-of-12">
-                  <FilterOptions>
-                    <input
-                      type="submit"
-                      value="Search"
-                      disabled={this.state.disabledSearch}
-                    />
+                    {this.props.showMoreFilters &&
+                    <React.Fragment>
+                      <MoreFilterWrap>
+                        {moreFilters.length > 0 && (
+                          <MoreFilterBtn
+                            aria-controls={this.moreFiltersId}
+                            aria-expanded={showMoreFilter}
+                            onClick={this.showHideMoreFilters.bind(this)}
+                          >
+                            <i className="fas fa-sliders-h"></i>
+                            <span>{showMoreFilter ? 'Hide More Filters' : 'Show More Filters'}</span>
+                          </MoreFilterBtn>
+                        )}
+                      </MoreFilterWrap>
+                      <FilterWrapper
+                        id={this.moreFiltersId}
+                        className="more-filters"
+                        role="region"
+                        style={{
+                          display: showMoreFilter ? 'grid' : 'none',
+                        }}
+                      >
+                        {moreFilters.map((field) => this.getSelectElement(field))}
+                      </FilterWrapper>
+                    </React.Fragment>
+                    }
+                  </div>
+                  <div className="flex-lg-2-of-12">
+                    <FilterOptions>
+                      <input
+                        type="submit"
+                        value="Search"
+                        disabled={this.state.disabledSearch}
+                      />
 
-                    {Object.keys(this.initialFilters).length > 0 && (
-                      <a href={window.location.pathname + '#filter-wrapper'}>Clear Filters</a>
-                    )}
-                  </FilterOptions>
+                      {Object.keys(this.initialFilters).length > 0 && (
+                        <a href={window.location.pathname + '#filter-wrapper'}>Clear Filters</a>
+                      )}
+                    </FilterOptions>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </FilterContainer>
-        <ResultsContainer>
-          <div className="centered-container">
+        <ResultsContainer className="centered-container" >
+          <div {...this.props.wrapperAttributes}>
             {Object.keys(this.initialFilters).length > 0 && (
               <Slugs
                 filters={this.initialFilters}

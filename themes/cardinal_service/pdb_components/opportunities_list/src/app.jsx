@@ -34,11 +34,12 @@ ReactDOM.render(
     showMoreFilters
     useGrid
     bundle={nodeBundle}
-    mainFiltersCount={3}
+    mainFiltersCount={7}
     fields={nodeFields}
     header={<h2>Search by</h2>}
+    wrapperAttributes={{className: "flex-10-of-12"}}
   >
-    <div className="centered-container sort-links">
+    <div className="flex-10-of-12 sort-links">
       <a
         href={getSortUrl('su_opp_application_deadline_value')}
         className={sortedByField('su_opp_application_deadline_value') ? 'active':''}

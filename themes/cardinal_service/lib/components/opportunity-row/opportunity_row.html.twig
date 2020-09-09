@@ -36,24 +36,27 @@
 
 <div{{ attributes.addClass('su-opportunity-result') }}>
   <div class="flex-container su-card__contents">
-    <div class="{% if image %}flex-9-of-12{% else %}flex-12-of-12{% endif %}">
-      <div class="su-opportunity-type">
-        <div aria-label="{{ 'Opportunity Type'|t }}">
-          {{ type_list }}
-        </div>
-      </div>
-      <h3>
-        {{ title }}
-      </h3>
-      {% if time_commitment|render|striptags|trim is not empty or service_theme|render|striptags|trim is not empty %}
-        <div class="su-opportunity-row-time-commitment-service-theme">
-          <div>
-            <div>{{ time_commitment }}{{ service_theme }}</div>
+    <div class="{% if image %}flex-8-of-12{% else %}flex-12-of-12{% endif %}">
+      <div class="su-opportunity-header">
+        <div class="su-opportunity-type">
+          <div aria-label="{{ 'Opportunity Type'|t }}">
+            {{ type_list }}
           </div>
         </div>
-      {% endif %}
+        <h3>
+          {{ title }}
+        </h3>
+        {% if time_commitment|render|striptags|trim is not empty or service_theme|render|striptags|trim is not empty %}
+          <div class="su-opportunity-row-time-commitment-service-theme">
+            <div>
+              <div>{{ time_commitment }}{{ service_theme }}</div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
 
-      <div class="su-opportunity-body-content {% if image %}{% else %}flex-9-of-12{% endif %}">
+
+      <div class="su-opportunity-body-content {% if image %}{% else %}flex-8-of-12{% endif %}">
         <div class="su-opportunity-row-application-deadline">
           <div>
             <h4>{{ date_label }}:</h4>
@@ -86,7 +89,7 @@
     </div>
 
     {% if image %}
-      <div class="flex-3-of-12">
+      <div class="flex-4-of-12">
         <div class="su-opportunity-img">
           {{ image|raw }}
         </div>

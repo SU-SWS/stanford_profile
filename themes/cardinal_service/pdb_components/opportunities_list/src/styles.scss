@@ -22,3 +22,10 @@
     }
   }
 }
+
+.centered-container {
+  > .flex-10-of-12 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

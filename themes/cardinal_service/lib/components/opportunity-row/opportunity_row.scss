@@ -22,7 +22,8 @@
 
   h3 {
     @include modular-typography(3);
-    @include modular-spacing('margin-bottom', -1);
+    @include modular-spacing('margin-bottom', -2);
+    max-width: 50ch;
 
     a {
       font-weight: 700;
@@ -31,17 +32,20 @@
 
   .su-opportunity-type,
   .su-opportunity-row-time-commitment-service-theme {
-    @include modular-spacing('margin-bottom', 2);
     @include modular-typography(1);
     font-weight: normal;
   }
 
+  .su-opportunity-header {
+    @include modular-spacing('margin-bottom', 2);
+  }
+
   @include grid-media-max('lg') {
-    .flex-9-of-12 {
+    .flex-8-of-12 {
       @include flex-column(12);
     }
 
-    .flex-3-of-12 {
+    .flex-4-of-12 {
       .image,
       picture,
       source,
@@ -56,7 +60,7 @@
 
     @include grid-media-min('md') {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 1.5fr 1fr 1fr;
       grid-template-rows: auto 1fr;
       grid-gap: 10px 10px;
       grid-template-areas:
