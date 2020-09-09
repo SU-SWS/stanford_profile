@@ -112,3 +112,71 @@ function cardinal_service_profile_helper_update_8006() {
 function cardinal_service_profile_helper_update_8007() {
   cardinal_service_profile_helper_update_8006();
 }
+
+/**
+ * Delete old opportunities from specific sponsors.
+ */
+function cardinal_service_profile_helper_update_8008() {
+  $xml = file_get_contents('https://solo.stanford.edu/data/opportunities.xml?type=236');
+  $dom = new DOMDocument();
+  $dom->loadXML($xml);
+  $xpath = new DOMXPath($dom);
+  $delete_sponsors = [
+    '/Bill Lane Center/',
+    '/Freeman Spogli/',
+    '/Stanford Global Studies/',
+    '/King Center on Global Development/',
+    '/Schneider Summer Fellowships/',
+    '/Seed Internships/',
+    '/Stanford Arts/',
+    '/Stanford Energy Internships in California and the West/',
+  ];
+
+  foreach ($xpath->query('//OPPORTUNITY') as $opportunity) {
+    $id = $xpath->query('ID', $opportunity)->item(0)->nodeValue;
+    $sponsor = $xpath->query('SPONSOR', $opportunity)->item(0)->nodeValue;
+    $sponsor = preg_replace($delete_sponsors, 'DeleteMe', $sponsor);
+
+    if (strpos($sponsor, 'DeleteMe') === FALSE) {
+      continue;
+    }
+    $entity_id = \Drupal::database()
+      ->select('migrate_map_solo_opportunities', 'm')
+      ->fields('m', ['destid1'])
+      ->condition('sourceid1', $id)
+      ->execute()
+      ->fetchField();
+    if ($entity_id) {
+      $node = \Drupal::entityTypeManager()
+        ->getStorage('node')
+        ->load($entity_id);
+      $node->delete();
+    }
+  }
+}
+
+/**
+ * Delete orphaned taxonomy terms.
+ */
+function cardinal_service_profile_helper_update_8009(&$sandbox) {
+  $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+
+  $vocab_fields = [
+    'su_opportunity_location' => 'su_opp_location',
+    'su_opportunity_sponsor' => 'su_opp_sponsor',
+  ];
+  foreach ($vocab_fields as $vid => $field_name) {
+    $terms = $term_storage->loadByProperties(['vid' => $vid]);
+    foreach ($terms as $term) {
+      $nids = $node_storage->getQuery()
+        ->condition($field_name, $term->id())
+        ->execute();
+      if (empty($nids)) {
+        \Drupal::messenger()
+          ->addStatus(t('Deleted orphaned term: @label', ['@label' => $term->label()]));
+        $term->delete();
+      }
+    }
+  }
+}
