@@ -134,7 +134,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 4
+            weight: 5
             third_party_settings: {  }
           3dfd8da7-9421-45ee-84db-8c1f4df497fb:
             uuid: 3dfd8da7-9421-45ee-84db-8c1f4df497fb
@@ -155,7 +155,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 5
+            weight: 6
             third_party_settings: {  }
           2134b8c5-fc33-49e7-bce4-67620fa484b1:
             uuid: 2134b8c5-fc33-49e7-bce4-67620fa484b1
@@ -178,6 +178,27 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 3
+            third_party_settings: {  }
+          bb8bb003-c864-4be9-92bf-e8795e43b478:
+            uuid: bb8bb003-c864-4be9-92bf-e8795e43b478
+            region: main
+            configuration:
+              id: 'field_block:node:su_spotlight:su_spotlight_quote'
+              label: Quote
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: text_default
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 4
             third_party_settings: {  }
         third_party_settings: {  }
   layout_library:
