@@ -24,6 +24,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - system
     - text
     - user
     - views
@@ -32,6 +33,27 @@ third_party_settings:
     allow_custom: false
     enabled: true
     sections:
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+          label: ''
+        components:
+          bfffcb2b-e9dc-4b67-ad6d-87ddffb2161e:
+            uuid: bfffcb2b-e9dc-4b67-ad6d-87ddffb2161e
+            region: main
+            configuration:
+              id: system_breadcrumb_block
+              label: Breadcrumbs
+              provider: system
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+            third_party_settings: {  }
+        third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:

@@ -180,3 +180,18 @@ function cardinal_service_profile_helper_update_8009(&$sandbox) {
     }
   }
 }
+
+/**
+ * Re-save all the resource pages to generate their new aliases.
+ */
+function cardinal_service_profile_helper_update_8010() {
+  drupal_flush_all_caches();
+  $node_storage = \Drupal::entityTypeManager()
+    ->getStorage('node');
+  $nids = $node_storage->getQuery()
+    ->condition('su_page_resource_dimension', NULL, 'IS NOT NULL')
+    ->execute();
+  foreach ($node_storage->loadMultiple($nids) as $node) {
+    $node->save();
+  }
+}

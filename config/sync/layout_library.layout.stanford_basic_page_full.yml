@@ -8,6 +8,27 @@ targetEntityType: node
 targetBundle: stanford_page
 layout:
   -
+    layout_id: defaults
+    layout_settings:
+      extra_classes: ''
+      centered: centered-container
+      columns: default
+      label: ''
+    components:
+      6e93752c-93fe-4e0e-a6d3-fc8188afcd3d:
+        uuid: 6e93752c-93fe-4e0e-a6d3-fc8188afcd3d
+        region: main
+        configuration:
+          id: system_breadcrumb_block
+          label: Breadcrumbs
+          provider: system
+          label_display: '0'
+          context_mapping: {  }
+        additional: {  }
+        weight: 0
+        third_party_settings: {  }
+    third_party_settings: {  }
+  -
     layout_id: jumpstart_ui_one_column
     layout_settings:
       extra_classes: ''

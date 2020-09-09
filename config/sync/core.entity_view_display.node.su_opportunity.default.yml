@@ -37,6 +37,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - system
     - user
     - views
 third_party_settings:
@@ -44,6 +45,27 @@ third_party_settings:
     allow_custom: false
     enabled: true
     sections:
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+          label: ''
+        components:
+          7eb0d7d7-29f0-41d2-92ca-142aff7a98dd:
+            uuid: 7eb0d7d7-29f0-41d2-92ca-142aff7a98dd
+            region: main
+            configuration:
+              id: system_breadcrumb_block
+              label: Breadcrumbs
+              provider: system
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+            third_party_settings: {  }
+        third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
@@ -246,6 +268,30 @@ third_party_settings:
             additional: {  }
             weight: 1
             third_party_settings: {  }
+          c90ca62d-43cb-4b0a-b0d4-6537f99c3580:
+            uuid: c90ca62d-43cb-4b0a-b0d4-6537f99c3580
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_opp_duration'
+              label: When
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: daterange_custom
+                settings:
+                  timezone_override: ''
+                  date_format: 'F j'
+                  separator: '-'
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
+            third_party_settings: {  }
           ac4cff86-d454-4ff1-8bef-3208d91c95b2:
             uuid: ac4cff86-d454-4ff1-8bef-3208d91c95b2
             region: main
@@ -267,7 +313,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 6
+            weight: 3
             third_party_settings: {  }
           972fb6ac-7c3a-4c4f-a744-d6ae5fa3cfb7:
             uuid: 972fb6ac-7c3a-4c4f-a744-d6ae5fa3cfb7
@@ -291,7 +337,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 7
+            weight: 4
             third_party_settings: {  }
           6b5496e8-f6c2-4113-bbbb-6f355eed3aea:
             uuid: 6b5496e8-f6c2-4113-bbbb-6f355eed3aea
@@ -312,7 +358,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 9
+            weight: 5
             third_party_settings: {  }
           56e66861-beb1-4b53-96d8-53e7c3022ee4:
             uuid: 56e66861-beb1-4b53-96d8-53e7c3022ee4
@@ -339,7 +385,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 10
+            weight: 7
             third_party_settings: {  }
           b91c815f-0720-487b-af89-bc947af98442:
             uuid: b91c815f-0720-487b-af89-bc947af98442
@@ -360,7 +406,7 @@ third_party_settings:
             region: left
             configuration:
               id: 'field_block:node:su_opportunity:su_opp_eligibility'
-              label: 'Eligibility and Requirements'
+              label: Eligibility
               provider: layout_builder
               label_display: visible
               formatter:
@@ -388,7 +434,7 @@ third_party_settings:
               items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 11
+            weight: 8
             third_party_settings: {  }
           0e9a2cd1-27ad-40c5-aab8-b51329a8cc56:
             uuid: 0e9a2cd1-27ad-40c5-aab8-b51329a8cc56
@@ -457,33 +503,19 @@ third_party_settings:
             additional: {  }
             weight: 2
             third_party_settings: {  }
-          de18db59-68de-40d5-941f-b44c734698a0:
-            uuid: de18db59-68de-40d5-941f-b44c734698a0
-            region: main
-            configuration:
-              id: 'views_block:su_opportunities-duration_range'
-              label: When
-              provider: views
-              label_display: visible
-              views_label: When
-              items_per_page: none
-              context_mapping: {  }
-            additional: {  }
-            weight: 4
-            third_party_settings: {  }
-          b2106f41-c02e-4b01-9eaa-f75ba0461128:
-            uuid: b2106f41-c02e-4b01-9eaa-f75ba0461128
+          80fc3df7-493a-4601-9c01-ec3edc4e3b0c:
+            uuid: 80fc3df7-493a-4601-9c01-ec3edc4e3b0c
             region: main
             configuration:
               id: 'field_block:node:su_opportunity:su_opp_sponsor'
-              label: 'Offered By'
+              label: Sponsor
               provider: layout_builder
-              label_display: visible
+              label_display: '0'
               formatter:
-                label: hidden
+                label: above
                 type: entity_reference_label
                 settings:
-                  link: false
+                  link: true
                 third_party_settings:
                   field_delimiter:
                     delimiter: ''
@@ -493,7 +525,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 8
+            weight: 6
             third_party_settings: {  }
         third_party_settings: {  }
       -
