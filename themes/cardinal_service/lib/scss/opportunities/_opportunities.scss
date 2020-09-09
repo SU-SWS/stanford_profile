@@ -265,7 +265,7 @@
 }
 
 .view {
-  &[class*="su-opportunities"] {
+  &[class*="su-opportunities"]:not(.duration-range) {
     .views-row {
       @include modular-spacing('margin-bottom', 7);
 

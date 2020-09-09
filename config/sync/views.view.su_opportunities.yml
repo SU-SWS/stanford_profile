@@ -25,6 +25,7 @@ dependencies:
     - taxonomy.vocabulary.su_opportunity_location
     - taxonomy.vocabulary.su_opportunity_open_to
     - taxonomy.vocabulary.su_opportunity_service_theme
+    - taxonomy.vocabulary.su_opportunity_time
     - taxonomy.vocabulary.su_opportunity_type
   module:
     - datetime
@@ -833,6 +834,142 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
+        su_opp_dimension_target_id:
+          id: su_opp_dimension_target_id
+          table: node__su_opp_dimension
+          field: su_opp_dimension_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: program_op
+            label: Program
+            description: ''
+            use_operator: true
+            operator: su_opp_dimension_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: program
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              administrator: '0'
+              anonymous: '0'
+              stanford_faculty: '0'
+              stanford_staff: '0'
+              stanford_student: '0'
+              contributor: '0'
+              site_manager: '0'
+              site_editor: '0'
+              site_builder: '0'
+              site_developer: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: Program
+            description: ''
+            identifier: su_opp_dimension_target_id
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Empty
+                operator: empty
+                value: {  }
+              2:
+                title: ''
+                operator: or
+                value: {  }
+              3:
+                title: ''
+                operator: or
+                value: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: su_opportunity_dimension
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        su_opp_application_deadline_value:
+          id: su_opp_application_deadline_value
+          table: node__su_opp_application_deadline
+          field: su_opp_application_deadline_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_opp_application_deadline_value_op
+            label: 'Application Deadline (su_opp_application_deadline)'
+            description: null
+            use_operator: false
+            operator: su_opp_application_deadline_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: su_opp_application_deadline_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'Application Deadline/Event Date'
+            description: ''
+            identifier: deadline
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'No Date'
+                operator: empty
+                value:
+                  type: date
+                  value: ''
+                  min: ''
+                  max: ''
+              2:
+                title: 'In The Past'
+                operator: '<='
+                value:
+                  type: offset
+                  value: now
+                  min: ''
+                  max: ''
+              3:
+                title: 'In The Future'
+                operator: '>='
+                value:
+                  type: offset
+                  value: now
+                  min: ''
+                  max: ''
+          plugin_id: datetime
         su_opp_service_theme_target_id:
           id: su_opp_service_theme_target_id
           table: node__su_opp_service_theme
@@ -887,63 +1024,6 @@ display:
           type: select
           limit: true
           vid: su_opportunity_service_theme
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        su_opp_dimension_target_id:
-          id: su_opp_dimension_target_id
-          table: node__su_opp_dimension
-          field: su_opp_dimension_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: su_opp_dimension_target_id_op
-            label: 'Dimension (su_opp_dimension)'
-            description: null
-            use_operator: false
-            operator: su_opp_dimension_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_dimension_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: true
-          group_info:
-            label: Program
-            description: ''
-            identifier: su_opp_dimension_target_id
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: Empty
-                operator: empty
-                value: {  }
-              2:
-                title: ''
-                operator: or
-                value: {  }
-              3:
-                title: ''
-                operator: or
-                value: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: su_opportunity_dimension
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -1118,75 +1198,6 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
-        su_opp_application_deadline_value:
-          id: su_opp_application_deadline_value
-          table: node__su_opp_application_deadline
-          field: su_opp_application_deadline_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
-            type: date
-          group: 1
-          exposed: true
-          expose:
-            operator_id: su_opp_application_deadline_value_op
-            label: 'Application Deadline (su_opp_application_deadline)'
-            description: null
-            use_operator: false
-            operator: su_opp_application_deadline_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_application_deadline_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            placeholder: null
-            min_placeholder: null
-            max_placeholder: null
-          is_grouped: true
-          group_info:
-            label: 'Application Deadline/Event Date'
-            description: ''
-            identifier: deadline
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: 'No Date'
-                operator: empty
-                value:
-                  type: date
-                  value: ''
-                  min: ''
-                  max: ''
-              2:
-                title: 'In The Past'
-                operator: '<='
-                value:
-                  type: offset
-                  value: now
-                  min: ''
-                  max: ''
-              3:
-                title: 'In The Future'
-                operator: '>='
-                value:
-                  type: offset
-                  value: now
-                  min: ''
-                  max: ''
-          plugin_id: datetime
       filter_groups:
         operator: AND
         groups:
@@ -2451,20 +2462,155 @@ display:
       title: 'Duration Range'
       display_description: ''
       pager:
-        type: none
+        type: some
         options:
+          items_per_page: 1
           offset: 0
       filters:
-        type:
-          id: type
-          table: node_field_data
-          field: type
+        su_opp_course_date_value:
+          id: su_opp_course_date_value
+          table: node__su_opp_course_date
+          field: su_opp_course_date_value
           relationship: none
           group_type: group
           admin_label: ''
-          operator: in
+          operator: 'not empty'
           value:
-            su_opportunity: su_opportunity
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        su_opp_duration_value:
+          id: su_opp_duration_value
+          table: node__su_opp_duration
+          field: su_opp_duration_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: 'not empty'
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        su_opp_event_date_value:
+          id: su_opp_event_date_value
+          table: node__su_opp_event_date
+          field: su_opp_event_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: 'not empty'
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        su_opp_time_year_target_id:
+          id: su_opp_time_year_target_id
+          table: node__su_opp_time_year
+          field: su_opp_time_year_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: 'not empty'
+          value: {  }
           group: 1
           exposed: false
           expose:
@@ -2494,28 +2640,18 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: su_opportunity_time
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       filter_groups:
         operator: AND
         groups:
-          1: AND
-      sorts:
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          order: ASC
-          entity_type: node
-          entity_field: title
-          plugin_id: standard
-          relationship: none
-          group_type: group
-          admin_label: ''
-          exposed: false
-          expose:
-            label: ''
+          1: OR
+      sorts: {  }
       empty: {  }
       style:
         type: default
@@ -2529,7 +2665,7 @@ display:
           default_field_elements: true
           inline: {  }
           separator: ''
-          hide_empty: false
+          hide_empty: true
       fields:
         su_opp_time_year:
           id: su_opp_time_year
@@ -2575,9 +2711,9 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
+          empty: aaa
+          hide_empty: true
+          empty_zero: true
           hide_alter_empty: true
           click_sort_column: target_id
           type: entity_reference_label
@@ -2733,7 +2869,7 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
+            alter_text: true
             text: ''
             make_link: false
             path: ''
@@ -2787,16 +2923,7 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-      relationships:
-        su_opp_time_year:
-          id: su_opp_time_year
-          table: node__su_opp_time_year
-          field: su_opp_time_year
-          relationship: none
-          group_type: group
-          admin_label: 'su_opp_time_year: Taxonomy term'
-          required: false
-          plugin_id: standard
+      relationships: {  }
       block_hide_empty: true
       allow:
         items_per_page: false
@@ -2806,6 +2933,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
