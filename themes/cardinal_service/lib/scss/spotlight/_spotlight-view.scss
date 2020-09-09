@@ -16,11 +16,12 @@
   }
 
   blockquote {
-    font-family: Roboto Slab, 'sans-serif';
     margin: 0;
 
     .su-quote__quote {
       @include modular-typography(3);
+      font-family: Roboto Slab, 'sans-serif';
+      font-weight: 600;
       margin: 0;
     }
   }
@@ -41,17 +42,17 @@
         @include modular-spacing('margin-bottom', 0);
       }
 
-      .views-field-su-spotlight-context {
-        order: 2;
-        @include modular-typography(0);
-        @include modular-spacing('margin-bottom', 1);
-        font-style: italic;
-      }
-
       .su-quote__heading {
-        order: 3;
+        order: 2;
         margin: 0;
         @include modular-typography(1);
+        @include modular-spacing('margin-bottom', 1);
+      }
+
+      .views-field-su-spotlight-context {
+        order: 3;
+        @include modular-typography(0);
+        font-style: italic;
       }
 
       .su-quote__bio {

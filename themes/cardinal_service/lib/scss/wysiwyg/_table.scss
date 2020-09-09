@@ -10,6 +10,15 @@ table {
     }
   }
 
+  &.cs-table--span6 {
+    th,
+    td {
+      &:first-child {
+        width: 50%;
+      }
+    }
+  }
+
   th,
   td {
     vertical-align: top;

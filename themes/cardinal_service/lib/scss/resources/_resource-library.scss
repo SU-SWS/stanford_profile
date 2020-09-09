@@ -3,6 +3,7 @@
 .cs-resources {
   h3 {
     margin: 0;
+    @include modular-typography(1);
 
     a {
       font-weight: 700;
@@ -14,6 +15,7 @@
       @include link($su-color-bright-red);
       text-decoration: none;
       word-wrap: break-word;
+      position: relative;
 
       &:hover,
       &:focus {
@@ -23,6 +25,8 @@
 
       &::after {
         background-color: $su-color-bright-red;
+        position: absolute;
+        bottom: 7px;
       }
     }
   }

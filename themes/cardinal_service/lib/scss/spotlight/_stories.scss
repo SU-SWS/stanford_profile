@@ -31,10 +31,10 @@
 
       img {
         border-radius: 50%;
-        height: 100%;
+        height: auto;
         width: 100%;
-        max-height: 250px;
-        max-width: 250px;
+        max-height: 200px;
+        max-width: 200px;
 
         @include grid-media-max(xs) {
           display: block;

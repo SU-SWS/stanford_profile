@@ -13,10 +13,20 @@ class OpportunityContentCest {
    * Create a new piece of Opportunity content.
    */
   public function testOpportunityContentCreation(\AcceptanceTester $I) {
+    $I->createEntity([
+      'name' => 'Foo Bar',
+      'vid' => 'su_opportunity_service_theme',
+    ], 'taxonomy_term');
+    $I->createEntity([
+      'name' => 'Foo Bar',
+      'vid' => 'su_opportunity_dimension',
+    ], 'taxonomy_term');
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/su_opportunity');
     $I->fillField('Title', 'Test Opportunity');
     $I->fillField('Body', 'Lorem Ipsum');
+    $I->selectOption('Service Theme', 'Foo Bar');
+    $I->selectOption('Program', 'Foo Bar');
     $I->click('Save');
     $I->canSee('Test Opportunity');
     $I->canSee('Lorem Ipsum');
