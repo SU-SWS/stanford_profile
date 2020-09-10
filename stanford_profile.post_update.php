@@ -72,7 +72,6 @@ function stanford_profile_post_update_8015() {
   // Resources.
   $config_path = Settings::get('config_sync_directory');
   $source = new FileStorage($config_path);
-  $config_storage = \Drupal::service('config.storage');
   $config_factory = \Drupal::service('config.factory');
 
   // Get the configuration out of the filesystem as it may not have been imported
