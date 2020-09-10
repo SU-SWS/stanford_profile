@@ -93,6 +93,8 @@ function stanford_profile_post_update_8015() {
   $basic_super_config->set('id', $theme_name . '_config_pages_super_global_msg');
   $basic_global_config->set('theme', $theme_name);
   $basic_super_config->set('theme', $theme_name);
+  $basic_global_config->set('dependencies.theme', [$theme_name]);
+  $basic_super_config->set('dependencies.theme', [$theme_name]);
 
   // Remove the UUID.
   $basic_global_config->clear('uuid');
