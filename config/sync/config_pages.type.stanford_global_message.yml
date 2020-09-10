@@ -1,9 +1,9 @@
-uuid: a62dc5f4-5b03-4efe-a8c3-346d78eaddee
+uuid: 3236376b-a199-484b-ad3e-26e92d7eb3b5
 langcode: en
 status: true
 dependencies: {  }
-id: su_opportunities
-label: Opportunities
+id: stanford_global_message
+label: 'Global Message'
 context:
   show_warning: true
   group:
@@ -11,7 +11,7 @@ context:
   fallback:
     language: ''
 menu:
-  path: /admin/appearance/opportunities
+  path: /admin/config/system/global-message
   weight: 0
   description: ''
-token: null
+token: false

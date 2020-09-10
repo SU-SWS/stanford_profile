@@ -1,0 +1,94 @@
+uuid: f7cefb91-be7d-4ba3-990e-78d225be6110
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_super_footer
+    - field.field.config_pages.stanford_super_footer.su_super_foot_intranet
+    - field.field.config_pages.stanford_super_footer.su_super_foot_link
+    - field.field.config_pages.stanford_super_footer.su_super_foot_enabled
+    - field.field.config_pages.stanford_super_footer.su_super_foot_text
+    - field.field.config_pages.stanford_super_footer.su_super_foot_title
+  module:
+    - ds
+    - field_formatter_class
+    - link
+    - stanford_fields
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: jumpstart_ui_two_column
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        extra_classes: ''
+        centered: centered-container
+        orientation: equal
+        label: ''
+    regions:
+      left:
+        - su_super_foot_title
+        - su_super_foot_text
+      main:
+        - su_super_foot_link
+        - su_super_foot_intranet
+id: config_pages.stanford_super_footer.default
+targetEntityType: config_pages
+bundle: stanford_super_footer
+mode: default
+content:
+  su_super_foot_intranet:
+    type: link
+    weight: 2
+    region: main
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: su-super-footer__intranet
+  su_super_foot_link:
+    type: link
+    weight: 1
+    region: main
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: su-super-footer__link
+      ds:
+        ds_limit: ''
+  su_super_foot_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: text_default
+    region: left
+  su_super_foot_title:
+    type: entity_title_heading
+    weight: 0
+    region: left
+    label: hidden
+    settings:
+      tag: h2
+      linked: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-super-footer__heading
+hidden:
+  search_api_excerpt: true
+  su_super_foot_enabled: true

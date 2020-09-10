@@ -1,0 +1,29 @@
+uuid: f904ff4a-61ce-4778-8f74-e68a7c93c19b
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+  theme:
+    - cardinal_service
+id: cardinal_service_config_pages_stanford_global_msg
+theme: cardinal_service
+region: help
+weight: 0
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: 'Global Messages'
+  provider: config_pages
+  label_display: 0
+  config_page_type: stanford_global_message
+  config_page_view_mode: full
+visibility:
+  config_pages_values_access:
+    id: config_pages_values_access
+    negate: false
+    config_page_field: stanford_global_message|su_global_msg_enabled|boolean
+    operator: '=='
+    condition_value: '1'
+    context_mapping: {  }

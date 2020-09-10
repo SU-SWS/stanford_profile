@@ -1,0 +1,19 @@
+uuid: cee123c9-80fe-4e61-af4a-a995e146c8fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_global_message
+    - field.storage.config_pages.su_global_msg_label
+id: config_pages.stanford_global_message.su_global_msg_label
+field_name: su_global_msg_label
+entity_type: config_pages
+bundle: stanford_global_message
+label: Label
+description: 'Maximum 65 characters. <em>A “label” is short description of the message such as alert, information, warning). It will appear in small capital letters with to the icon, next to the message.</em>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

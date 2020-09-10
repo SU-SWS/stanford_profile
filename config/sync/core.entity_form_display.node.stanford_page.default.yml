@@ -112,7 +112,16 @@ content:
   su_page_components:
     type: react_paragraphs
     settings:
-      items_per_row: 4
+      sizes:
+        stanford_banner: 12
+        stanford_card: 3
+        stanford_wysiwyg: 3
+        stanford_media_caption: 3
+        stanford_spacer: 1
+        cardinal_mission_statement: 12
+        cs_opportunity_list: 4
+        stanford_resource_list: 4
+        su_minimal_card: 3
       resizable: false
     weight: 26
     third_party_settings: {  }

@@ -1,0 +1,29 @@
+uuid: 2eed5e6f-087b-4970-9720-34ba218b69ca
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+  theme:
+    - cardinal_service
+id: cardinal_service_config_pages_stanford_super_footer
+theme: cardinal_service
+region: footer
+weight: -4
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: 'Super Footer'
+  provider: config_pages
+  label_display: 0
+  config_page_type: stanford_super_footer
+  config_page_view_mode: full
+visibility:
+  config_pages_values_access:
+    id: config_pages_values_access
+    negate: false
+    config_page_field: stanford_super_footer|su_super_foot_enabled|boolean
+    operator: '=='
+    condition_value: '1'
+    context_mapping: {  }

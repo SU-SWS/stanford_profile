@@ -1,0 +1,82 @@
+uuid: bd6857bb-27ce-4d8d-a3fc-4e0ef158d9c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_global_message
+    - field.field.config_pages.stanford_global_message.su_global_msg_enabled
+    - field.field.config_pages.stanford_global_message.su_global_msg_header
+    - field.field.config_pages.stanford_global_message.su_global_msg_label
+    - field.field.config_pages.stanford_global_message.su_global_msg_link
+    - field.field.config_pages.stanford_global_message.su_global_msg_message
+    - field.field.config_pages.stanford_global_message.su_global_msg_type
+  module:
+    - ds
+    - field_formatter_class
+    - link
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_alert
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+          variant: default
+    regions:
+      alert_label:
+        - su_global_msg_label
+      alert_header:
+        - su_global_msg_header
+      alert_text:
+        - su_global_msg_message
+        - su_global_msg_link
+id: config_pages.stanford_global_message.default
+targetEntityType: config_pages
+bundle: stanford_global_message
+mode: default
+content:
+  su_global_msg_header:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: alert_header
+  su_global_msg_label:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: alert_label
+  su_global_msg_link:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: link
+    region: alert_text
+  su_global_msg_message:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: alert_text
+hidden:
+  search_api_excerpt: true
+  su_global_msg_enabled: true
+  su_global_msg_type: true
