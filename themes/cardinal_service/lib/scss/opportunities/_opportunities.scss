@@ -34,7 +34,7 @@
   }
 
   .main-region {
-    @include flex-column(8);
+    @include flex-column(10);
     min-height: 100%;
 
     > div:last-child {
@@ -75,6 +75,10 @@
       display: flex;
       flex-direction: row;
     }
+  }
+
+  .left-region + .main-region {
+    @include flex-column(8);
   }
 
   @include grid-media-max('lg') {
@@ -286,5 +290,11 @@
       display: flex;
       justify-content: space-around;
     }
+  }
+}
+
+.su-opportunities-filtered-all {
+  .pager {
+    @include modular-spacing('margin-bottom', 9);
   }
 }
