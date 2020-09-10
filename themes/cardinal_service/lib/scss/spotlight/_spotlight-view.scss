@@ -19,7 +19,6 @@
     margin: 0;
 
     .su-quote__quote {
-      @include modular-typography(3);
       font-family: Roboto Slab, 'sans-serif';
       font-weight: 600;
       margin: 0;
@@ -28,8 +27,8 @@
 
   .story-available {
     .su-quote__img {
-      width: 250px;
-      height: 250px;
+      width: 200px;
+      height: 200px;
     }
 
     .su-quote__body {
@@ -40,6 +39,10 @@
         order: 1;
         margin: 0;
         @include modular-spacing('margin-bottom', 0);
+
+        .su-quote__quote {
+          @include modular-typography(3);
+        }
       }
 
       .su-quote__heading {
@@ -75,11 +78,15 @@
   .no-story {
     blockquote {
       @include modular-spacing('margin-bottom', 3);
+
+      .su-quote__quote {
+        @include modular-typography(2);
+      }
     }
 
     .su-quote__body {
       display: grid;
-      grid-template-columns: 3fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
 
       .su-quote__img {
         height: fit-content;

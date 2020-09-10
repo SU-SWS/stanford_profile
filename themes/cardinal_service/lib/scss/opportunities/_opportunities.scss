@@ -79,7 +79,7 @@
     .su-opp-commitment {
       div:last-child {
         &::after {
-          content: " in ";
+          content: ", ";
         }
       }
     }
@@ -99,12 +99,6 @@
   }
 }
 
-.node-su-opportunity-su-opp-solo-url {
-  display: flex;
-  justify-content: center;
-  @include modular-spacing(‘padding-top’, 0);
-}
-
 .opportunity-body-content-container {
   @include modular-spacing('margin-top', 5);
   justify-content: space-evenly;
@@ -117,14 +111,6 @@
   p {
     @include big-paragraph;
     max-width: 70ch;
-  }
-
-  .flex-lg-3-of-12 {
-    @include modular-spacing('margin-bottom', 4);
-
-    .node-su-opportunity-su-opp-solo-url {
-      margin-bottom: 0;
-    }
   }
 
   .su-opp-not-eligible {
@@ -143,8 +129,7 @@
 
   .node-su-opportunity-body,
   .su-spotlights-opportunity-spotlight-ref,
-  .node-su-opportunity-su-opp-eligibility,
-  .node-su-opportunity-su-opp-solo-url {
+  .node-su-opportunity-su-opp-eligibility {
     @include modular-spacing('margin-bottom', 6);
   }
 
@@ -153,9 +138,10 @@
   .node-su-opportunity-su-opp-application-deadline,
   .node-su-opportunity-su-opp-open-to,
   .node-su-opportunity-su-opp-sponsor,
-  .node-su-opportunity-su-opp-contact-email {
+  .node-su-opportunity-su-opp-contact-email,
+  .su-opportunities-dimension-description {
     word-wrap: break-word;
-    margin-bottom: 2.31rem;
+    @include modular-spacing('margin-bottom', 1);
 
     &::before {
       font-family: 'Font Awesome\ 5 Free';
@@ -164,8 +150,8 @@
     }
 
     .block__title {
+      @include modular-spacing('margin-bottom', -2);
       font-size: 2rem;
-      margin-bottom: 1.07rem;
       margin-left: 30px;
     }
 
@@ -211,11 +197,32 @@
     }
   }
 
+  .node-su-opportunity-su-opp-solo-url {
+    @include modular-spacing('margin-bottom', 4);
+    display: flex;
+    justify-content: center;
+  }
+
+  .su-opportunities-dimension-description {
+    border-top: 1px solid $su-color-cool-grey;
+
+    p {
+      @include modular-typography(0);
+      font-weight: 400;
+    }
+  }
+
+  .flex-lg-3-of-12 {
+    @include modular-spacing('margin-bottom', 4);
+
+    > div:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   @include grid-media-max('lg') {
     .flex-lg-9-of-12 {
       order: 2;
-      -ms-flex: none;
-      -webkit-box-flex: none;
       flex: none;
       max-width: 100%;
     }
@@ -226,8 +233,6 @@
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 10px;
       order: 1;
-      -ms-flex: none;
-      -webkit-box-flex: none;
       flex: none;
       max-width: 100%;
 
@@ -258,6 +263,7 @@
 // Related Opportunities Styling
 .su-opportunities-related {
   @include modular-spacing('margin-top', 9);
+  @include modular-spacing('margin-bottom', 9);
 
   .block__title {
     text-align: center;
@@ -266,15 +272,12 @@
 
 .view {
   &[class*="su-opportunities"]:not(.duration-range) {
-    .views-row {
-      @include modular-spacing('margin-bottom', 7);
-
-      &[class*="flex-"] {
-        .contextual-region {
-          height: 100%;
-        }
+    &[class*="flex-"] {
+      .contextual-region {
+        height: 100%;
       }
     }
+
 
     ul {
       list-style: none;
@@ -286,6 +289,7 @@
     }
 
     footer {
+      @include modular-spacing('margin-top', 7);
       width: 100%;
       display: flex;
       justify-content: space-around;

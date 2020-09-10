@@ -10,7 +10,7 @@
   }
 
   .grid-list-item {
-    width: calc(33% - 20px);
+    width: calc(33% - 40px);
 
     @include grid-media-max('sm') {
       width: 100%;
@@ -56,9 +56,17 @@
 }
 
 .su-spotlights-related-stories {
-  margin-top: 20px;
+  @include modular-spacing('padding-top', 9);
+  @include modular-spacing('margin-bottom', 9);
 
   .block__title {
     text-align: center;
+  }
+
+  footer {
+    @include modular-spacing('margin-top', 7);
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
   }
 }

@@ -4,15 +4,13 @@
   h3 {
     margin: 0;
     @include modular-typography(1);
-
-    a {
-      font-weight: 700;
-    }
+    font-weight: 700;
   }
 
   a {
     &:not(.su-button):not(.su-button--secondary):not(.su-button--big)  {
       @include link($su-color-bright-red);
+      font-weight: 700;
       text-decoration: none;
       word-wrap: break-word;
       position: relative;
@@ -103,18 +101,19 @@
 
 // Individual Resource Page Styles
 .cs-resources-3-related {
-  @include modular-spacing('margin-top', 9);
+  @include modular-spacing('padding-top', 9);
+  @include modular-spacing('margin-bottom', 9);
 
   .block__title {
     text-align: center;
   }
 
-  .views-row {
-    @include modular-spacing('margin-bottom', 7);
-  }
-
   .cs-resources {
     display: flex;
     justify-content: space-around;
+  }
+
+  .grid-list-item {
+    @include modular-spacing('margin-bottom', 7);
   }
 }

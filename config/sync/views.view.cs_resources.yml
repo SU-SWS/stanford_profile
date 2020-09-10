@@ -815,7 +815,20 @@ display:
           items_per_page: 3
           offset: 0
       block_hide_empty: true
-      footer: {  }
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: '<a class="su-button" href="/resources-library">See All Resources</a>'
+            format: stanford_html
+          plugin_id: text
     cache_metadata:
       max-age: -1
       contexts:
