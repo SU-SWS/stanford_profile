@@ -1,29 +1,29 @@
-uuid: c54ba0aa-7c79-4b15-b361-36f6ea5b560c
+uuid: f904ff4a-61ce-4778-8f74-e68a7c93c19b
 langcode: en
 status: true
 dependencies:
   module:
     - config_pages
   theme:
-    - stanford_basic
-id: config_pages
-theme: stanford_basic
-region: footer
+    - cardinal_service
+id: cardinal_service_config_pages_stanford_global_msg
+theme: cardinal_service
+region: help
 weight: 0
 provider: null
 plugin: config_pages_block
 settings:
   id: config_pages_block
-  label: 'Local Footer'
+  label: 'Global Messages'
   provider: config_pages
-  label_display: '0'
-  config_page_type: stanford_local_footer
+  label_display: 0
+  config_page_type: stanford_global_message
   config_page_view_mode: full
 visibility:
   config_pages_values_access:
     id: config_pages_values_access
     negate: false
-    config_page_field: stanford_local_footer|su_footer_enabled|boolean
+    config_page_field: stanford_global_message|su_global_msg_enabled|boolean
     operator: '=='
     condition_value: '1'
     context_mapping: {  }
