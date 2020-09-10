@@ -9,7 +9,7 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     .main-filters {
       display: block;
 
@@ -24,5 +24,12 @@
         justify-content: center;
       }
     }
+  }
+}
+
+.centered-container {
+  > .flex-10-of-12 {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

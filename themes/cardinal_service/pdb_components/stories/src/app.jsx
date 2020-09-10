@@ -17,6 +17,7 @@ ReactDOM.render(
     mainFiltersCount={4}
     fields={nodeFields}
     header={<h2>Search by</h2>}
+    wrapperAttributes={{className: "flex-10-of-12"}}
   />,
   document.getElementById('stories-filters')
 );
