@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.su_opportunity.su_opp_image
     - field.field.node.su_opportunity.su_opp_learn_more
     - field.field.node.su_opportunity.su_opp_location
+    - field.field.node.su_opportunity.su_opp_not_eligible
     - field.field.node.su_opportunity.su_opp_open_to
     - field.field.node.su_opportunity.su_opp_pathway
     - field.field.node.su_opportunity.su_opp_placement_type
@@ -80,6 +81,8 @@ third_party_settings:
         - su_opp_time_year
       open_to:
         - su_opp_open_to
+      program:
+        - su_opp_dimension
       type_list:
         - su_opp_type
       favorite:
@@ -100,7 +103,7 @@ bundle: su_opportunity
 mode: su_opportunities_views_result
 content:
   flag_cs_favorites:
-    weight: 11
+    weight: 12
     region: favorite
     settings: {  }
     third_party_settings: {  }
@@ -140,6 +143,14 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
+  su_opp_dimension:
+    type: entity_reference_label
+    weight: 10
+    region: program
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
   su_opp_event_date:
     type: datetime_custom
     weight: 5
@@ -215,7 +226,7 @@ content:
         ds_limit: ''
   su_opp_type:
     type: entity_reference_label
-    weight: 10
+    weight: 11
     region: type_list
     label: hidden
     settings:
@@ -236,7 +247,6 @@ hidden:
   su_opp_contact_phone: true
   su_opp_course_code: true
   su_opp_deadline_time: true
-  su_opp_dimension: true
   su_opp_duration: true
   su_opp_eligibility: true
   su_opp_learn_more: true

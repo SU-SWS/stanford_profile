@@ -54,11 +54,16 @@ opportunity_row:
       label: 'Open To'
       description: 'Category of student of the opportunity.'
       preview: '<ul><li>Everyone</li></ul>'
+    program:
+      type: text
+      label: 'Program'
+      description: 'Opportunity Program.'
+      preview: 'Cardinal Career'
     type_list:
       type: text
       label: 'Type'
       description: 'Type of the opportunity.'
-      preview: 'Cardinal Service'
+      preview: 'Courses for credit'
     favorite:
       type: link
       label: 'Favorite Link'
