@@ -1,0 +1,23 @@
+uuid: e1174816-a60b-4048-9c17-3a3a8f02402d
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_global_message
+    - field.storage.config_pages.su_global_msg_enabled
+id: config_pages.stanford_global_message.su_global_msg_enabled
+field_name: su_global_msg_enabled
+entity_type: config_pages
+bundle: stanford_global_message
+label: Enable
+description: 'Check this box to display a site-wide global message. This message will appear above the master header on all site pages.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

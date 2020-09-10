@@ -1,0 +1,19 @@
+uuid: d9b4e520-5b89-419e-8103-096522e4adfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.storage.config_pages.su_local_foot_line_4
+id: config_pages.stanford_local_footer.su_local_foot_line_4
+field_name: su_local_foot_line_4
+entity_type: config_pages
+bundle: stanford_local_footer
+label: 'Line 4'
+description: 'Organization name.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
