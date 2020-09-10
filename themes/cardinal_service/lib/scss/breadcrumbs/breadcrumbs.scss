@@ -1,0 +1,18 @@
+@charset 'UTF-8';
+
+.system-breadcrumb-block {
+  background: $cs-color-grey;
+
+  .breadcrumb {
+    @include centered-column;
+
+    ol {
+      @include modular-spacing('padding-top', -2);
+      @include modular-spacing('padding-top', -3);
+
+      li:not(:first-child)::before {
+        content: "/";
+      }
+    }
+  }
+}

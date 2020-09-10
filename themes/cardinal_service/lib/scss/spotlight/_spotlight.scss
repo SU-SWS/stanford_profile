@@ -1,12 +1,8 @@
 @charset 'UTF-8';
 
 // Spotlight Content Type Styles
-.spotlight {
-  @include modular-spacing('margin-top', 6);
-  @include modular-spacing('margin-bottom', 6);
-}
-
 .spotlight-header-content-container {
+  @include modular-spacing('margin-top', 6);
   @include modular-spacing('margin-bottom', 8);
 
   .node-su-spotlight-su-spotlight-feature-image {
