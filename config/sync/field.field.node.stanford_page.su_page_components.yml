@@ -21,54 +21,10 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph_row'
   handler_settings:
-    negate: 1
     target_bundles:
       node_stanford_page_row: node_stanford_page_row
-    target_bundles_drag_drop:
-      cardinal_mission_statement:
-        weight: 12
-        enabled: false
-      cs_opportunity_list:
-        weight: 13
-        enabled: false
-      stanford_banner:
-        weight: 4
-        enabled: false
-      stanford_card:
-        weight: 4
-        enabled: false
-      stanford_media_caption:
-        weight: 8
-        enabled: false
-      stanford_person_cta:
-        enabled: true
-        weight: 11
-      stanford_resource_list:
-        weight: 18
-        enabled: false
-      stanford_schedule:
-        enabled: true
-        weight: 12
-      stanford_spacer:
-        weight: 9
-        enabled: false
-      stanford_wysiwyg:
-        weight: 6
-        enabled: false
-      su_minimal_card:
-        weight: 22
-        enabled: false
-    widths:
-      cardinal_mission_statement:
-        min: '12'
-      stanford_banner:
-        min: '12'
-      stanford_card:
-        min: '3'
-      stanford_media_caption:
-        min: '4'
-      stanford_wysiwyg:
-        min: '4'
-      su_minimal_card:
-        min: '3'
-field_type: react_paragraphs
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference_revisions
