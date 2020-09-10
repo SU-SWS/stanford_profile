@@ -17,7 +17,14 @@
         $("html, body").animate({scrollTop: 0}, "slow");
       });
 
+
+      $(".opportunity-header-content-container", context).once('opportunity-tags-separator').each(function() {
+        $('.node-su-opportunity-su-opp-dimension').siblings('.node-su-opportunity-su-opp-type').before('<span>, </span>');
+        $('.node-su-opportunity-su-opp-commitment').siblings('.node-su-opportunity-su-opp-service-theme').before('<span> in </span>');
+      });
     }
   };
+
+
 })(jQuery, Drupal);
 

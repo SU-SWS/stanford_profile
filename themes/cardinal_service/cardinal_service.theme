@@ -74,7 +74,8 @@ function cardinal_service_preprocess_breadcrumb(&$variables) {
   // Add the current page title to the end of the breadcrumbs as a
   // non-clickable link.
   $request = \Drupal::request();
-  $route = \Drupal::routeMatch()->getRouteObject();
-  $title = \Drupal::service('title_resolver')->getTitle($request, $route);
-  $variables['breadcrumb'][] = ['text' => $title];
+  if ($route = \Drupal::routeMatch()->getRouteObject()) {
+    $title = \Drupal::service('title_resolver')->getTitle($request, $route);
+    $variables['breadcrumb'][] = ['text' => $title];
+  }
 }
