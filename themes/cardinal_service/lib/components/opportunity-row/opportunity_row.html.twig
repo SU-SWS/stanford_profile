@@ -54,12 +54,14 @@
         <h3>
           {{ title }}
         </h3>
+
         {% if time_commitment is not empty or service_theme is not empty %}
           <div class="su-opportunity-row-time-commitment-service-theme">
             <div aria-label="{{ 'Time Commitment and Service Theme'|t }}">
               <div>{{ time_commitment }}{{ service_theme }}</div>
             </div>
           </div>
+        {% endif %}
       </div>
 
 
