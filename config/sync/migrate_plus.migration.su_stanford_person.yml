@@ -126,7 +126,7 @@ process:
   revision_timestamp:
     -
       plugin: callback
-      callable: _stanford_profile_person_get_time
+      callable: _stanford_migrate_get_time
   revision_translation_affected:
     -
       plugin: default_value
