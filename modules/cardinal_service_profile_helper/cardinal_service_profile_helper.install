@@ -195,3 +195,18 @@ function cardinal_service_profile_helper_update_8010() {
     $node->save();
   }
 }
+
+/**
+ * Change all the quote formats to minimal html.
+ */
+function cardinal_service_profile_helper_update_8011() {
+  \Drupal::database()
+    ->update('node__su_spotlight_quote')
+    ->fields(['su_spotlight_quote_format' => 'stanford_minimal_html'])
+    ->execute();
+  \Drupal::database()
+    ->update('node_revision__su_spotlight_quote')
+    ->fields(['su_spotlight_quote_format' => 'stanford_minimal_html'])
+    ->execute();
+  drupal_flush_all_caches();
+}

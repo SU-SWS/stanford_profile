@@ -1,8 +1,3 @@
-{%  set link = link|render|striptags('<a> <drupal-render-placeholder>')|trim|raw|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
-{% set src = src|render|striptags('<img> <drupal-render-placeholder>')|trim|raw|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
-{% set name = name|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
-{% set bio = bio|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
-{% set text = text|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
 
 {% if link %}
   <figure{{ attributes.addClass('su-quote', 'story-available') }}>
