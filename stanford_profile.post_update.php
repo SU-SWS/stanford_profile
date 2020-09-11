@@ -74,8 +74,8 @@ function stanford_profile_post_update_8015() {
   $source = new FileStorage($config_path);
   $config_factory = \Drupal::service('config.factory');
 
-  // Get the configuration out of the filesystem as it may not have been imported
-  // yet...
+  // Get the configuration out of the filesystem as it may not have been
+  // imported yet...
   $basic_global_config = $config_factory
     ->getEditable($my_global_name)
     ->setData(
