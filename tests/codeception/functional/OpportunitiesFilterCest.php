@@ -45,7 +45,7 @@ class OpportunitiesFilterCest {
     $I->click('.main-filters .filter-select-container:nth-child(2) > div');
     $I->click('.MuiAutocomplete-listbox li[aria-disabled="false"]');
 
-    $I->click('.main-filters .filter-select-container:last-child > div');
+    $I->click('.main-filters .filter-select-container:nth-child(3) > div');
     $I->click('.MuiAutocomplete-listbox li[aria-disabled="false"]');
 
     $I->click('Search', '#opportunities-filter-list');

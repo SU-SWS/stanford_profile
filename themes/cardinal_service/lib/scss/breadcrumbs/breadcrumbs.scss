@@ -5,13 +5,31 @@
 
   .breadcrumb {
     @include centered-column;
+    padding: 0;
 
     ol {
-      @include modular-spacing('padding-top', -2);
-      @include modular-spacing('padding-top', -3);
+      @include modular-spacing('padding-top', -1);
+      @include modular-spacing('padding-bottom', -2);
 
-      li:not(:first-child)::before {
-        content: "/";
+      li {
+        font-size: 16px;
+        font-weight: 400;
+
+        a {
+          color: $su-color-black;
+          font-weight: 400;
+
+          &:hover,
+          &:focus {
+            color: $su-color-digital-blue;
+          }
+        }
+
+        &:not(:first-child)::before {
+          content: "/";
+          @include modular-spacing('margin-right', -3);
+          @include modular-spacing('margin-left', -3);
+        }
       }
     }
   }
