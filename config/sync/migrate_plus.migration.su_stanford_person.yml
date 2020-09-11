@@ -14,6 +14,7 @@ source:
     status: 1
     type: stanford_person
     basic_html: stanford_html
+    minimal_html: stanford_minimal_html
     link_domain: 'https://profiles.stanford.edu'
     link_text: 'View Full Stanford Profile'
     file_destination: 'public://media/person/'
@@ -97,6 +98,26 @@ source:
       name: etag
       label: 'CAP API Etag'
       selector: meta/etag
+    -
+      name: academic_appts
+      label: 'Academic Appointments'
+      selector: academicOffices/0/position
+    -
+      name: admin_appts
+      label: 'Administrative Appointments'
+      selector: administrativeAppointments
+    -
+      name: research_interest_topics
+      label: 'Research Interest Topics'
+      selector: researchInterestTopics
+    -
+      name: scholarly_interests_fulltext
+      label: 'Scholarly and Research Interests'
+      selector: currentResearchInterests/fullText/html
+    -
+      name: scholarly_interests_tersetext
+      label: 'Scholarly and Research Interests'
+      selector: currentResearchInterests/terseText/html
   ids:
     sunetid:
       type: string
@@ -219,6 +240,26 @@ process:
           regex: true
         title: label/text
   su_person_mail_code: mailcode
+  su_person_academic_appt: academic_appts
+  su_person_admin_appts:
+    -
+      source: admin_appts
+      plugin: sub_process
+      process:
+        value: label/text
+  su_person_research_interests:
+    -
+      source: research_interest_topics
+      plugin: sub_process
+      process:
+        value: label/text
+  su_person_scholarly_interests/format: constants/minimal_html
+  su_person_scholarly_interests/value:
+    -
+      plugin: null_coalesce
+      source:
+        - scholarly_interests_fulltext
+        - scholarly_interests_tersetext
 destination:
   plugin: 'entity_reference_revisions:node'
   new_revisions: true
