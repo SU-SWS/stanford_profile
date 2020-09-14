@@ -1,0 +1,19 @@
+uuid: 06eccd0d-4543-4c87-9e04-3e4249fa28d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_embeddable_code
+    - media.type.embeddable
+id: media.embeddable.field_media_embeddable_code
+field_name: field_media_embeddable_code
+entity_type: media
+bundle: embeddable
+label: 'Embed Code'
+description: 'Use this field to paste in embed codes which are not available through oEmbed'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
