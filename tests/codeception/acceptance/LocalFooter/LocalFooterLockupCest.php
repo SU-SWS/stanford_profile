@@ -29,6 +29,11 @@ class LocalFooterLockupCest {
     $this->DATA_DIR = rtrim(codecept_data_dir(), '/\\');
     // Copy our assets into place first.
     copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    
+    // Make sure it is on.
+    $I->amOnPage('/admin/config/system/local-footer');
+    $I->checkOption('Enabled');
+    $I->click('Save');
   }
 
   /**
