@@ -37,7 +37,6 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
-    - system
     - user
     - views
 third_party_settings:
@@ -45,27 +44,6 @@ third_party_settings:
     allow_custom: false
     enabled: true
     sections:
-      -
-        layout_id: jumpstart_ui_one_column
-        layout_settings:
-          extra_classes: ''
-          centered: null
-          columns: default
-          label: ''
-        components:
-          7eb0d7d7-29f0-41d2-92ca-142aff7a98dd:
-            uuid: 7eb0d7d7-29f0-41d2-92ca-142aff7a98dd
-            region: main
-            configuration:
-              id: system_breadcrumb_block
-              label: Breadcrumbs
-              provider: system
-              label_display: '0'
-              context_mapping: {  }
-            additional: {  }
-            weight: 0
-            third_party_settings: {  }
-        third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
@@ -266,7 +244,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
+            weight: 2
             third_party_settings: {  }
           c90ca62d-43cb-4b0a-b0d4-6537f99c3580:
             uuid: c90ca62d-43cb-4b0a-b0d4-6537f99c3580
@@ -290,7 +268,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 2
+            weight: 3
             third_party_settings: {  }
           ac4cff86-d454-4ff1-8bef-3208d91c95b2:
             uuid: ac4cff86-d454-4ff1-8bef-3208d91c95b2
@@ -313,7 +291,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 3
+            weight: 4
             third_party_settings: {  }
           972fb6ac-7c3a-4c4f-a744-d6ae5fa3cfb7:
             uuid: 972fb6ac-7c3a-4c4f-a744-d6ae5fa3cfb7
@@ -337,7 +315,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 4
+            weight: 5
             third_party_settings: {  }
           6b5496e8-f6c2-4113-bbbb-6f355eed3aea:
             uuid: 6b5496e8-f6c2-4113-bbbb-6f355eed3aea
@@ -358,7 +336,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 5
+            weight: 6
             third_party_settings: {  }
           56e66861-beb1-4b53-96d8-53e7c3022ee4:
             uuid: 56e66861-beb1-4b53-96d8-53e7c3022ee4
@@ -385,7 +363,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 7
+            weight: 8
             third_party_settings: {  }
           b91c815f-0720-487b-af89-bc947af98442:
             uuid: b91c815f-0720-487b-af89-bc947af98442
@@ -434,7 +412,7 @@ third_party_settings:
               items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 8
+            weight: 9
             third_party_settings: {  }
           0e9a2cd1-27ad-40c5-aab8-b51329a8cc56:
             uuid: 0e9a2cd1-27ad-40c5-aab8-b51329a8cc56
@@ -525,7 +503,21 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 6
+            weight: 7
+            third_party_settings: {  }
+          01b1bba3-73f4-44ca-bede-1807b4ef3900:
+            uuid: 01b1bba3-73f4-44ca-bede-1807b4ef3900
+            region: main
+            configuration:
+              id: 'views_block:su_opportunities-duration_range'
+              label: When
+              provider: views
+              label_display: visible
+              views_label: When
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 1
             third_party_settings: {  }
         third_party_settings: {  }
       -
