@@ -15,7 +15,6 @@ source: embeddable
 queue_thumbnail_downloads: false
 new_revision: false
 source_configuration:
-  oembed_field_name: field_media_embeddable_oembed
   unstructured_field_name: field_media_embeddable_code
   thumbnails_directory: 'public://oembed_thumbnails'
   providers:
@@ -36,5 +35,6 @@ source_configuration:
     - 'Stanford Digital Repository'
     - Twitter
   source_field: field_media_embeddable_oembed
+  oembed_field_name: field_media_embeddable_oembed
 field_map:
   title: name
