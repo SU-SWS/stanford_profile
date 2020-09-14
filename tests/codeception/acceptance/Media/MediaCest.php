@@ -2,6 +2,7 @@
 
 /**
  * Tests for various media functionality.
+ * @group testthis
  */
 class MediaCest {
 
@@ -33,24 +34,24 @@ class MediaCest {
   public function testForEmbeddableOptions(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/media/manage/embeddable');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-arcgis-storymaps');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-circuitlab');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-dailymotion');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-facebook');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-flickr');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-getty-images');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-instagram');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-issuu');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-livestream');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-mathembed');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-simplecast');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-slideshare');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-soundcloud');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-spotify');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-stanford-digital-repository');
-    $I->canSeeCheckboxIsChecked('#edit-source-configuration-providers-twitter');
+    $I->canSeeCheckboxIsChecked('ArcGIS StoryMaps');
+    $I->canSeeCheckboxIsChecked('CircuitLab');
+    $I->canSeeCheckboxIsChecked('Dailymotion');
+    $I->canSeeCheckboxIsChecked('Facebook');
+    $I->canSeeCheckboxIsChecked('Flickr');
+    $I->canSeeCheckboxIsChecked('Getty Images');
+    $I->canSeeCheckboxIsChecked('Instagram');
+    $I->canSeeCheckboxIsChecked('Issuu');
+    $I->canSeeCheckboxIsChecked('Livestream');
+    $I->canSeeCheckboxIsChecked('MathEmbed');
+    $I->canSeeCheckboxIsChecked('Simplecast');
+    $I->canSeeCheckboxIsChecked('SlideShare');
+    $I->canSeeCheckboxIsChecked('SoundCloud');
+    $I->canSeeCheckboxIsChecked('Spotify');
+    $I->canSeeCheckboxIsChecked('Stanford Digital Repository');
+    $I->canSeeCheckboxIsChecked('Twitter');
 
-    $I->cantSeeCheckboxIsChecked('#edit-source-configuration-providers-codepen');
+    $I->cantSeeCheckboxIsChecked('Codepen');
   }
 
   /**
@@ -59,8 +60,7 @@ class MediaCest {
   public function testForEmbeddableFields(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/media/manage/embeddable');
-    $I->seeOptionIsSelected('#edit-source-configuration-oembed-field-name', 'media.field_media_embeddable_oembed');
-    $I->seeOptionIsSelected('#edit-source-configuration-unstructured-field-name', 'media.field_media_embeddable_code');
+    $I->seeOptionIsSelected('Field for unstructured embed codes', 'media.field_media_embeddable_code');
   }
 
   /**
