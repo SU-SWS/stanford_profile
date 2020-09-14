@@ -1,5 +1,20 @@
 # Stanford Profile
 
+8.x-1.16
+--------------------------------------------------------------------------------
+_Release Date: 2020-09-14_
+
+- D8CORE-2521: Configs for embeddable media. (#273) (737163c)
+- Settings for the maximum columns required (#284) (27d2037)
+- D8CORE-1609: Super Footer & D8CORE-2490: Global Messages (#270) (0192522)
+- D8CORE-2535: Changed sort fields on people term pages (#282) (196675c)
+- D8CORE-2040: Updated configs for react paragraphs V2 (#275) (928ad75)
+- D8CORE-2591: Allow lockup option M (#278) (d243456)
+- D8CORE-2499 Updated composer license (#274) (eb4b434)
+- DEVGUIDE-000 Added html pre tag to allowed html tags. (#272) (798ef8b)
+- D8CORE-2201: Added extlink dependency (#261) (5e5579c)
+- Update composer.json (#271) (9907620)
+
 8.x-1.15
 --------------------------------------------------------------------------------
 _Release Date: 2020-08-07_
