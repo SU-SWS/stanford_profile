@@ -1,0 +1,93 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/entity\/paragraph_row\/1?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/paragraph_row\/node_stanford_page_row"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/paragraph_row\/node_stanford_page_row\/su_page_components": [
+            {
+                "href": "http:\/\/default\/entity\/paragraph\/10?_format=hal_json",
+                "lang": "en"
+            }
+        ]
+    },
+    "uuid": [
+        {
+            "value": "b9027856-bb49-4c3b-9367-87a4e3731421"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "node_stanford_page_row"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "2020-08-24T18:46:18+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "parent_type": [
+        {
+            "value": "node"
+        }
+    ],
+    "parent_field_name": [
+        {
+            "value": "su_page_components"
+        }
+    ],
+    "behavior_settings": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/paragraph_row\/node_stanford_page_row\/su_page_components": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/entity\/paragraph\/10?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "9df33d0d-239e-4b51-9d97-8703187629b4"
+                    }
+                ],
+                "lang": "en",
+                "target_revision_id": "9df33d0d-239e-4b51-9d97-8703187629b4"
+            }
+        ]
+    }
+}

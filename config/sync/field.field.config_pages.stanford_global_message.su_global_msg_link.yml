@@ -1,0 +1,23 @@
+uuid: 2ac24439-a12e-491e-9df3-d51692101e72
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_global_message
+    - field.storage.config_pages.su_global_msg_link
+  module:
+    - link
+id: config_pages.stanford_global_message.su_global_msg_link
+field_name: su_global_msg_link
+entity_type: config_pages
+bundle: stanford_global_message
+label: 'Action Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

@@ -1,0 +1,40 @@
+uuid: 04580fd6-ab11-4556-ab0d-c3d8f1e6acbc
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+    - stanford_media
+third_party_settings:
+  crop:
+    image_field: null
+id: embeddable
+label: Embeddable
+description: 'Stanford Embeds'
+source: embeddable
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  unstructured_field_name: field_media_embeddable_code
+  thumbnails_directory: 'public://oembed_thumbnails'
+  providers:
+    - 'ArcGIS StoryMaps'
+    - CircuitLab
+    - Dailymotion
+    - Facebook
+    - Flickr
+    - 'Getty Images'
+    - Instagram
+    - Issuu
+    - Livestream
+    - MathEmbed
+    - Simplecast
+    - SlideShare
+    - SoundCloud
+    - Spotify
+    - 'Stanford Digital Repository'
+    - Twitter
+  source_field: field_media_embeddable_oembed
+  oembed_field_name: field_media_embeddable_oembed
+field_map:
+  title: name

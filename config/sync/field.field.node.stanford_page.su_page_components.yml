@@ -5,10 +5,9 @@ dependencies:
   config:
     - field.storage.node.su_page_components
     - node.type.stanford_page
-    - paragraphs.paragraphs_type.stanford_person_cta
-    - paragraphs.paragraphs_type.stanford_schedule
+    - react_paragraphs.paragraphs_row_type.node_stanford_page_row
   module:
-    - react_paragraphs
+    - entity_reference_revisions
 id: node.stanford_page.su_page_components
 field_name: su_page_components
 entity_type: node
@@ -20,12 +19,11 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:paragraph'
+  handler: 'default:paragraph_row'
   handler_settings:
     negate: 1
     target_bundles:
-      stanford_person_cta: stanford_person_cta
-      stanford_schedule: stanford_schedule
+      node_stanford_page_row: node_stanford_page_row
     target_bundles_drag_drop:
       stanford_banner:
         weight: 4
@@ -57,4 +55,4 @@ settings:
         min: '4'
       stanford_wysiwyg:
         min: '4'
-field_type: react_paragraphs
+field_type: entity_reference_revisions

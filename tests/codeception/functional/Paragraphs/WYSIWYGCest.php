@@ -21,16 +21,16 @@ class WYSIWYGCest {
     # Stripped Tags
     $I->cantSee("alert('testme')");
 
-    $I->cantSeeElement('iframe');
+    $I->cantSeeElement('.system-main-block iframe');
     $I->cantSeeElement('.system-main-block form');
     $I->cantSeeElement('.system-main-block label');
     $I->cantSeeElement('.system-main-block input');
-    $I->cantSeeElement('select');
-    $I->cantSeeElement('option');
-    $I->cantSeeElement('textarea');
-    $I->cantSeeElement('fieldset');
-    $I->cantSeeElement('legend');
-    $I->cantSeeElement('address');
+    $I->cantSeeElement('.system-main-block select');
+    $I->cantSeeElement('.system-main-block option');
+    $I->cantSeeElement('.system-main-block textarea');
+    $I->cantSeeElement('.system-main-block fieldset');
+    $I->cantSeeElement('.system-main-block legend');
+    $I->cantSeeElement('.system-main-block address');
 
     # Headers
     $I->cantSee('Level 01 heading', 'h1');
@@ -175,18 +175,20 @@ class WYSIWYGCest {
       ],
     ], 'paragraph');
 
+    $row = $I->createEntity([
+      'type' => 'node_stanford_page_row',
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ], 'paragraph_row');
+
     return $I->createEntity([
       'type' => 'stanford_page',
       'title' => $faker->text(30),
       'su_page_components' => [
-        'target_id' => $paragraph->id(),
-        'entity' => $paragraph,
-        'settings' => json_encode([
-          'row' => 0,
-          'index' => 0,
-          'width' => 12,
-          'admin_title' => 'Banner',
-        ]),
+        'target_id' => $row->id(),
+        'entity' => $row,
       ],
     ]);
   }

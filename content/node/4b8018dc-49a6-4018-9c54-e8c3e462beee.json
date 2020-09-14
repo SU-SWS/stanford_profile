@@ -19,7 +19,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/stanford_page\/su_page_components": [
             {
-                "href": "",
+                "href": "http:\/\/default\/entity\/paragraph_row\/1?_format=hal_json",
                 "lang": "en"
             }
         ]
@@ -59,7 +59,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "92ead9f7-7e51-4773-b45b-c73f9b9eaba8"
+                        "value": "0561f7be-d214-496f-be6b-0a4f4192965b"
                     }
                 ]
             }
@@ -76,7 +76,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "92ead9f7-7e51-4773-b45b-c73f9b9eaba8"
+                        "value": "0561f7be-d214-496f-be6b-0a4f4192965b"
                     }
                 ],
                 "lang": "en"
@@ -86,25 +86,19 @@
             {
                 "_links": {
                     "self": {
-                        "href": ""
+                        "href": "http:\/\/default\/entity\/paragraph_row\/1?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/stanford_wysiwyg"
+                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph_row\/node_stanford_page_row"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "9df33d0d-239e-4b51-9d97-8703187629b4"
+                        "value": "b9027856-bb49-4c3b-9367-87a4e3731421"
                     }
                 ],
                 "lang": "en",
-                "target_revision_id": "9df33d0d-239e-4b51-9d97-8703187629b4",
-                "settings": {
-                    "row": "0",
-                    "index": 0,
-                    "width": 12,
-                    "admin_title": "Text Area"
-                }
+                "target_revision_id": "b9027856-bb49-4c3b-9367-87a4e3731421"
             }
         ]
     },
@@ -129,7 +123,7 @@
     ],
     "changed": [
         {
-            "value": "2019-08-22T20:38:36+00:00",
+            "value": "2020-08-24T18:46:18+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
@@ -156,6 +150,16 @@
         {
             "value": true,
             "lang": "en"
+        }
+    ],
+    "metatag": [
+        {
+            "value": {
+                "title": "Access Denied | University",
+                "og_site_name": "University",
+                "canonical_url": "http:\/\/default\/access-denied",
+                "og_url": "http:\/\/default\/home"
+            }
         }
     ],
     "path": [

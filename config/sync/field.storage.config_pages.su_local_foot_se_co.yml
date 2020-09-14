@@ -1,0 +1,23 @@
+uuid: 22a329ca-9662-4a15-b45d-7af93547b490
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - field_permissions
+    - text
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: config_pages.su_local_foot_se_co
+field_name: su_local_foot_se_co
+entity_type: config_pages
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

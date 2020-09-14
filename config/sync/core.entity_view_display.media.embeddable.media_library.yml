@@ -1,0 +1,39 @@
+uuid: e17dc88d-5714-48a8-ad06-a0eaaa78d27a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.embeddable.field_media_embeddable_code
+    - field.field.media.embeddable.field_media_embeddable_oembed
+    - image.style.medium
+    - media.type.embeddable
+  module:
+    - image
+id: media.embeddable.media_library
+targetEntityType: media
+bundle: embeddable
+mode: media_library
+content:
+  name:
+    type: string
+    weight: 1
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_style: medium
+      image_link: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_media_embeddable_code: true
+  field_media_embeddable_oembed: true
+  uid: true
