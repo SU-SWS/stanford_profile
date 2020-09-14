@@ -261,8 +261,6 @@ process:
         - scholarly_interests_fulltext
         - scholarly_interests_tersetext
 destination:
-  plugin: 'entity_reference_revisions:node'
-  new_revisions: true
-  force_revision: true
+  plugin: 'entity:node'
 migration_dependencies:
   required: {  }
