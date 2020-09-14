@@ -1,0 +1,43 @@
+uuid: fd6f959e-edaf-4f32-a0c3-1655ccd3a342
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.embeddable.field_media_embeddable_code
+    - field.field.media.embeddable.field_media_embeddable_oembed
+    - media.type.embeddable
+id: media.embeddable.media_library
+targetEntityType: media
+bundle: embeddable
+mode: media_library
+content:
+  field_media_embeddable_code:
+    type: string_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_embeddable_oembed:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  status: true
+  uid: true
