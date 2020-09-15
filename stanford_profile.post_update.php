@@ -110,7 +110,7 @@ function stanford_profile_post_update_8015() {
 /**
  * Restore missing content on unpublished nodes.
  */
-function stanford_profile_post_update_8016() {
+function _stanford_profile_react_paragraph_fix() {
   $entity_type_manager = \Drupal::entityTypeManager();
   $field_name = "su_page_components";
   $entity_type = "node";
