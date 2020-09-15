@@ -7,7 +7,7 @@
  */
 class LocalFooterCest {
   
-    /**
+  /**
    * Tidy up after oneself.
    */
   public function _after(AcceptanceTester $I) {
