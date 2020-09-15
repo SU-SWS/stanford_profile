@@ -111,26 +111,18 @@ function stanford_profile_post_update_8015() {
  * Restore missing content on unpublished nodes.
  */
 function _stanford_profile_react_paragraph_fix() {
-  $entity_type_manager = \Drupal::entityTypeManager();
-  $field_name = "su_page_components";
-  $entity_type = "node";
-  $query = \Drupal::entityQuery('node');
-  $query->condition('status', FALSE);
-  $query->condition('type', 'stanford_page');
-  $query->accessCheck(FALSE);
-  $entity_ids = $query->execute();
-  $entities = [];
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
 
-  foreach ($entity_ids as $entity_id) {
-    $entities["$entity_type:$entity_id:$field_name"] = "$entity_type:$entity_id:$field_name";
-  }
+  $entity_ids = $node_storage->getQuery()
+    ->condition('status', FALSE)
+    ->condition('type', 'stanford_page')
+    ->accessCheck(FALSE)
+    ->execute();
 
-  foreach ($entities as $item) {
-    [$entity_type, $id, $field_name] = explode(':', $item);
-    $entity = $entity_type_manager->getStorage($entity_type)->load($id);
+  foreach ($node_storage->loadMultiple($entity_ids) as $entity) {
 
     $rows = [];
-    foreach ($entity->get($field_name)->getValue() as $field_item) {
+    foreach ($entity->get('su_page_components')->getValue() as $field_item) {
       $field_item['settings'] = json_decode($field_item['settings'], TRUE);
       // Because the serializer is gone, the settings might be a double encoded
       // json string, so we will want to check to try and decode it again.
@@ -161,19 +153,19 @@ function _stanford_profile_react_paragraph_fix() {
 
       /** @var \Drupal\react_paragraphs\Entity\ParagraphsRowInterface $row */
       $row = ParagraphRow::create([
-        'type' => "{$entity_type}_{$entity->bundle()}_row",
-        'parent' => $id,
+        'type' => "node_stanford_page_row",
+        'parent' => $entity->id(),
         'parent_type' => $entity->getEntityTypeId(),
-        'parent_field_name' => $field_name,
+        'parent_field_name' => 'su_page_components',
       ]);
-      $row->set($field_name, $row_items)->save();
+      $row->set('su_page_components', $row_items)->save();
       $entity_row_field_data[] = [
         'target_id' => $row->id(),
         'target_revision_id' => $row->getRevisionId(),
       ];
     }
 
-    $entity->set($field_name, $entity_row_field_data);
+    $entity->set('su_page_components', $entity_row_field_data);
     $entity->save();
   }
 }
