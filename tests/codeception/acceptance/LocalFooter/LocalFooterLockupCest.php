@@ -47,7 +47,7 @@ class LocalFooterLockupCest {
     try {
       $I->click("Remove");
     }
-    catch(Exception $e) {
+    catch(\Exception $e) {
       // Do nothing and carry on.
     }
     $I->checkOption('#edit-su-local-foot-use-logo-value');
@@ -344,7 +344,7 @@ class LocalFooterLockupCest {
     try {
       $I->click("Remove");
     }
-    catch(Exception $e) {
+    catch(\Exception $e) {
       // Do nothing and carry on.
     }
 
@@ -381,7 +381,7 @@ class LocalFooterLockupCest {
     try {
       $I->click("Remove");
     }
-    catch(Exception $e) {
+    catch(\Exception $e) {
       // Do nothing and carry on.
     }
 
