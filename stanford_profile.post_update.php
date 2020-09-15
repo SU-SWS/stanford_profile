@@ -7,6 +7,9 @@
 
 use Drupal\Core\Site\Settings;
 use Drupal\Core\Config\FileStorage;
+use Drupal\react_paragraphs\Entity\ParagraphsRowType;
+use Drupal\react_paragraphs\Entity\ParagraphRow;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Implements hook_removed_post_updates().
@@ -102,4 +105,75 @@ function stanford_profile_post_update_8015() {
   // Add it to the DB.
   $basic_global_config->save();
   $basic_super_config->save();
+}
+
+/**
+ * Restore missing content on unpublished nodes.
+ */
+function stanford_profile_post_update_8016() {
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $field_name = "su_page_components";
+  $entity_type = "node";
+  $query = \Drupal::entityQuery('node');
+  $query->condition('status', FALSE);
+  $query->condition('type', 'stanford_page');
+  $query->accessCheck(FALSE);
+  $entity_ids = $query->execute();
+  $entities = [];
+
+  foreach ($entity_ids as $entity_id) {
+    $entities["$entity_type:$entity_id:$field_name"] = "$entity_type:$entity_id:$field_name";
+  }
+
+  foreach ($entities as $item) {
+    [$entity_type, $id, $field_name] = explode(':', $item);
+    $entity = $entity_type_manager->getStorage($entity_type)->load($id);
+
+    $rows = [];
+    foreach ($entity->get($field_name)->getValue() as $field_item) {
+      $field_item['settings'] = json_decode($field_item['settings'], TRUE);
+      // Because the serializer is gone, the settings might be a double encoded
+      // json string, so we will want to check to try and decode it again.
+      if (!is_array($field_item['settings'])) {
+        $field_item['settings'] = json_decode($field_item['settings'], TRUE);
+      }
+      $rows[$field_item['settings']['row']][] = $field_item;
+    }
+
+    $entity_row_field_data = [];
+
+    foreach ($rows as $row_info) {
+      $row_items = [];
+
+      foreach ($row_info as $row_item) {
+        /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+        $paragraph = Paragraph::load($row_item['target_id']);
+        $paragraph->setBehaviorSettings('react', [
+          'width' => $row_item['settings']['width'],
+          'label' => $row_item['settings']['admin_title'],
+        ]);
+        $paragraph->save();
+        $row_items[] = [
+          'target_id' => $paragraph->id(),
+          'target_revision_id' => $paragraph->getRevisionId(),
+        ];
+      }
+
+      /** @var \Drupal\react_paragraphs\Entity\ParagraphsRowInterface $row */
+      $row = ParagraphRow::create([
+        'type' => "{$entity_type}_{$entity->bundle()}_row",
+        'parent' => $id,
+        'parent_type' => $entity->getEntityTypeId(),
+        'parent_field_name' => $field_name,
+      ]);
+      $row->set($field_name, $row_items)->save();
+      $entity_row_field_data[] = [
+        'target_id' => $row->id(),
+        'target_revision_id' => $row->getRevisionId(),
+      ];
+    }
+
+    $entity->set($field_name, $entity_row_field_data);
+    $entity->save();
+  }
 }
