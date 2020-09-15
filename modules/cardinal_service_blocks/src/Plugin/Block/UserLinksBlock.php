@@ -132,7 +132,7 @@ class UserLinksBlock extends BlockBase implements ContainerFactoryPluginInterfac
           'url' => $user_dashboard,
         ],
         'dashboard' => [
-          'title' => $this->t('Dashboard'),
+          'title' => $this->t('Favorites'),
           'url' => $user_dashboard,
         ],
         'edit' => [
