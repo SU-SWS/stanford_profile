@@ -111,11 +111,13 @@ function stanford_profile_post_update_8015() {
  */
 function _stanford_profile_react_paragraph_fix() {
   $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  $time = strtotime('September 15 2020, 11:59 PM');
 
   $entity_ids = $node_storage->getQuery()
     ->condition('status', FALSE)
     ->condition('type', 'stanford_page')
     ->condition('su_page_components', 0, '>')
+    ->condition('changed', $time, '<')
     ->accessCheck(FALSE)
     ->execute();
   $paragraph_types = \Drupal::entityTypeManager()
