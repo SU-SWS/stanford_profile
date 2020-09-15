@@ -7,7 +7,6 @@
 
 use Drupal\Core\Site\Settings;
 use Drupal\Core\Config\FileStorage;
-use Drupal\react_paragraphs\Entity\ParagraphsRowType;
 use Drupal\react_paragraphs\Entity\ParagraphRow;
 use Drupal\paragraphs\Entity\Paragraph;
 
@@ -124,7 +123,7 @@ function _stanford_profile_react_paragraph_fix() {
     ->loadMultiple();
 
   foreach ($node_storage->loadMultiple($entity_ids) as $entity) {
-    $entity_row_field_data = [];
+    $field_data = [];
 
     foreach ($entity->get('su_page_components')->getValue() as $row_item) {
       $row_items = [];
@@ -149,13 +148,13 @@ function _stanford_profile_react_paragraph_fix() {
         'parent_field_name' => 'su_page_components',
       ]);
       $row->set('su_page_components', $row_items)->save();
-      $entity_row_field_data[] = [
+      $field_data[] = [
         'target_id' => $row->id(),
         'target_revision_id' => $row->getRevisionId(),
       ];
     }
 
-    $entity->set('su_page_components', $entity_row_field_data);
+    $entity->set('su_page_components', $field_data);
     $entity->save();
   }
 }
