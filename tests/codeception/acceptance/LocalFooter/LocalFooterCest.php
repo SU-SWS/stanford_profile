@@ -14,6 +14,7 @@ class LocalFooterCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->checkOption('Enabled');
+    $I->click('Save');
   }
 
   /**
