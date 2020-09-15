@@ -118,38 +118,27 @@ function _stanford_profile_react_paragraph_fix() {
     ->condition('type', 'stanford_page')
     ->accessCheck(FALSE)
     ->execute();
+  $paragraph_types = \Drupal::entityTypeManager()
+    ->getStorage('paragraphs_type')
+    ->loadMultiple();
 
   foreach ($node_storage->loadMultiple($entity_ids) as $entity) {
-
-    $rows = [];
-    foreach ($entity->get('su_page_components')->getValue() as $field_item) {
-      $field_item['settings'] = json_decode($field_item['settings'], TRUE);
-      // Because the serializer is gone, the settings might be a double encoded
-      // json string, so we will want to check to try and decode it again.
-      if (!is_array($field_item['settings'])) {
-        $field_item['settings'] = json_decode($field_item['settings'], TRUE);
-      }
-      $rows[$field_item['settings']['row']][] = $field_item;
-    }
-
     $entity_row_field_data = [];
 
-    foreach ($rows as $row_info) {
+    foreach ($entity->get('su_page_components')->getValue() as $row_item) {
       $row_items = [];
 
-      foreach ($row_info as $row_item) {
-        /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
-        $paragraph = Paragraph::load($row_item['target_id']);
-        $paragraph->setBehaviorSettings('react', [
-          'width' => $row_item['settings']['width'],
-          'label' => $row_item['settings']['admin_title'],
-        ]);
-        $paragraph->save();
-        $row_items[] = [
-          'target_id' => $paragraph->id(),
-          'target_revision_id' => $paragraph->getRevisionId(),
-        ];
-      }
+      /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+      $paragraph = Paragraph::load($row_item['target_id']);
+      $paragraph->setBehaviorSettings('react', [
+        'width' => 12,
+        'label' => $paragraph_types[$paragraph->bundle()]->label(),
+      ]);
+      $paragraph->save();
+      $row_items[] = [
+        'target_id' => $paragraph->id(),
+        'target_revision_id' => $paragraph->getRevisionId(),
+      ];
 
       /** @var \Drupal\react_paragraphs\Entity\ParagraphsRowInterface $row */
       $row = ParagraphRow::create([
