@@ -116,6 +116,7 @@ function _stanford_profile_react_paragraph_fix() {
   $entity_ids = $node_storage->getQuery()
     ->condition('status', FALSE)
     ->condition('type', 'stanford_page')
+    ->condition('su_page_components', 0, '>')
     ->accessCheck(FALSE)
     ->execute();
   $paragraph_types = \Drupal::entityTypeManager()
