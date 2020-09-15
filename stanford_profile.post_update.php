@@ -7,6 +7,8 @@
 
 use Drupal\Core\Site\Settings;
 use Drupal\Core\Config\FileStorage;
+use Drupal\react_paragraphs\Entity\ParagraphRow;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Implements hook_removed_post_updates().
@@ -102,4 +104,57 @@ function stanford_profile_post_update_8015() {
   // Add it to the DB.
   $basic_global_config->save();
   $basic_super_config->save();
+}
+
+/**
+ * Restore missing content on unpublished nodes.
+ */
+function _stanford_profile_react_paragraph_fix() {
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+
+  $entity_ids = $node_storage->getQuery()
+    ->condition('status', FALSE)
+    ->condition('type', 'stanford_page')
+    ->condition('su_page_components', 0, '>')
+    ->accessCheck(FALSE)
+    ->execute();
+  $paragraph_types = \Drupal::entityTypeManager()
+    ->getStorage('paragraphs_type')
+    ->loadMultiple();
+
+  foreach ($node_storage->loadMultiple($entity_ids) as $entity) {
+    $field_data = [];
+
+    foreach ($entity->get('su_page_components')->getValue() as $row_item) {
+      $row_items = [];
+
+      /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+      $paragraph = Paragraph::load($row_item['target_id']);
+      $paragraph->setBehaviorSettings('react', [
+        'width' => 12,
+        'label' => $paragraph_types[$paragraph->bundle()]->label(),
+      ]);
+      $paragraph->save();
+      $row_items[] = [
+        'target_id' => $paragraph->id(),
+        'target_revision_id' => $paragraph->getRevisionId(),
+      ];
+
+      /** @var \Drupal\react_paragraphs\Entity\ParagraphsRowInterface $row */
+      $row = ParagraphRow::create([
+        'type' => "node_stanford_page_row",
+        'parent' => $entity->id(),
+        'parent_type' => $entity->getEntityTypeId(),
+        'parent_field_name' => 'su_page_components',
+      ]);
+      $row->set('su_page_components', $row_items)->save();
+      $field_data[] = [
+        'target_id' => $row->id(),
+        'target_revision_id' => $row->getRevisionId(),
+      ];
+    }
+
+    $entity->set('su_page_components', $field_data);
+    $entity->save();
+  }
 }
