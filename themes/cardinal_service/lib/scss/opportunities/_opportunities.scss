@@ -21,11 +21,14 @@
   justify-content: center;
 
   .left-region {
-    @include modular-spacing('padding', 1);
     @include modular-spacing('margin-right', 2);
     @include flex-column(2);
     position: relative;
     top: 3rem;
+
+    &.flex-lg-3-of-12 {
+      @include modular-spacing('padding', 0);
+    }
 
     img {
       height: 100%;
@@ -91,7 +94,7 @@
       margin: 0;
     }
 
-    .main-region {
+    .left-region + .main-region  {
       max-width: 80%;
       margin: 0 auto;
       flex: none;

@@ -248,24 +248,28 @@ function cardinal_service_profile_form_alter(&$form, FormStateInterface $form_st
 function cardinal_service_profile_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
   $route_match = \Drupal::routeMatch();
 
-  if (
-    $operation == 'view' &&
-    $field_definition->getName() == 'su_spotlight_quote' &&
-    $route_match->getRouteName() == 'entity.node.canonical' &&
-    $items
-  ) {
-    $node = $route_match->getParameter('node');
-    if ($node && $node->id() == $items->getEntity()->id()) {
-      // The spotlight quote and the body should not display at the same time.
-      if ($items->getEntity()->get('body')->count()) {
-        return AccessResult::forbidden();
-      }
+  // When the user is viwing the node detail page, hide some of the fields
+  // based on other fields having some data.
+  if (_cardinal_service_profile_viewing_node_page($operation, $items)) {
+    switch ($field_definition->getName()) {
+      case 'su_spotlight_quote':
+        if ($items->getEntity()->get('body')->count()) {
+          return AccessResult::forbidden();
+        }
+        break;
+
+      case 'su_opp_application_deadline':
+        if ($items->getEntity()->get('su_opp_event_date')->count()) {
+          return AccessResult::forbidden();
+        }
+        break;
     }
   }
 
   // When edit an existing node that was imported via migrate module, mark the
   // fields that are mapped from migration as forbidden.
   if (
+    $items &&
     $operation == 'edit' &&
     $route_match->getRouteName() == 'entity.node.edit_form'
   ) {
@@ -276,6 +280,31 @@ function cardinal_service_profile_entity_field_access($operation, FieldDefinitio
     }
   }
   return AccessResult::neutral();
+}
+
+/**
+ * Check if the user is viewing the node related to the field items.
+ *
+ * @param string $operation
+ *   User operation.
+ * @param \Drupal\Core\Field\FieldItemListInterface|null $items
+ *   Field items of the entity.
+ *
+ * @return bool
+ *   True if the node for the field items is the current page.
+ */
+function _cardinal_service_profile_viewing_node_page($operation, FieldItemListInterface $items = NULL) {
+  $route_match = \Drupal::routeMatch();
+  if (
+    $items &&
+    $operation == 'view' &&
+    $route_match->getRouteName() == 'entity.node.canonical' &&
+    $items->getEntity()->getEntityTypeId() == 'node'
+  ) {
+    $node = $route_match->getParameter('node');
+    return $node && $node->id() == $items->getEntity()->id();
+  }
+  return FALSE;
 }
 
 /**
