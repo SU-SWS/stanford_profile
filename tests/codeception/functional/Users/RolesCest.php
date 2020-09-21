@@ -62,6 +62,7 @@ class RolesCest {
     ]);
     $test_home_url = $test_home->toUrl()->toString();
     \Drupal::state()->set('stanford_profile.front_page', $test_home_url);
+    $I->runDrush('cache-rebuild');
     $I->assertEquals($test_home_url, $this->getFrontPagePath($I));
 
     $I->logInWithRole('site_manager');
