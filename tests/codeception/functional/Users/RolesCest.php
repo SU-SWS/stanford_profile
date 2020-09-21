@@ -48,11 +48,17 @@ class RolesCest {
 
   /**
    * D8CORE-1200 Prevent deleteing the homepage from bulk delete.
+   *
+   * @group testme
    */
   public function testBulkDeleteHomePage(FunctionalTester $I) {
     $test_home = $I->createEntity([
       'type' => 'stanford_page',
       'title' => 'Foo Bar Home',
+    ]);
+    $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => 'Another Page',
     ]);
     $test_home_url = $test_home->toUrl()->toString();
     \Drupal::state()->set('stanford_profile.front_page', $test_home_url);
@@ -61,11 +67,13 @@ class RolesCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/content?order=changed&sort=desc');
     $I->checkOption('tbody tr:first-child input[type="checkbox"]');
+    $I->checkOption('tbody tr:nth-child(2) input[type="checkbox"]');
     $I->selectOption('Action', 'Delete selected entities');
     $I->click('Apply to selected items');
     $I->click('Execute action');
     $I->waitForText('Action processing results');
     $I->canSee('Access denied (1)');
+    $I->runDrush('cache-rebuild');
     $I->amOnPage('/');
     $I->canSee('Foo Bar Home', 'h1');
   }
