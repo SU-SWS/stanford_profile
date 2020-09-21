@@ -1,0 +1,19 @@
+uuid: b7be9d37-ec35-4881-b964-e3f0f1d6aa3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_person_academic_appt
+    - node.type.stanford_person
+id: node.stanford_person.su_person_academic_appt
+field_name: su_person_academic_appt
+entity_type: node
+bundle: stanford_person
+label: 'Academic Appointments'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

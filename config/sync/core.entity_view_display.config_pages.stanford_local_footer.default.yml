@@ -11,12 +11,25 @@ dependencies:
     - field.field.config_pages.stanford_local_footer.su_local_foot_f_intro
     - field.field.config_pages.stanford_local_footer.su_local_foot_f_method
     - field.field.config_pages.stanford_local_footer.su_local_foot_f_url
+    - field.field.config_pages.stanford_local_footer.su_local_foot_line_1
+    - field.field.config_pages.stanford_local_footer.su_local_foot_line_2
+    - field.field.config_pages.stanford_local_footer.su_local_foot_line_3
+    - field.field.config_pages.stanford_local_footer.su_local_foot_line_4
+    - field.field.config_pages.stanford_local_footer.su_local_foot_line_5
+    - field.field.config_pages.stanford_local_footer.su_local_foot_loc_img
+    - field.field.config_pages.stanford_local_footer.su_local_foot_loc_link
+    - field.field.config_pages.stanford_local_footer.su_local_foot_loc_op
+    - field.field.config_pages.stanford_local_footer.su_local_foot_pr_co
     - field.field.config_pages.stanford_local_footer.su_local_foot_primary
     - field.field.config_pages.stanford_local_footer.su_local_foot_prime_h
+    - field.field.config_pages.stanford_local_footer.su_local_foot_se_co
     - field.field.config_pages.stanford_local_footer.su_local_foot_second
     - field.field.config_pages.stanford_local_footer.su_local_foot_second_h
     - field.field.config_pages.stanford_local_footer.su_local_foot_social
     - field.field.config_pages.stanford_local_footer.su_local_foot_sunet_t
+    - field.field.config_pages.stanford_local_footer.su_local_foot_tr_co
+    - field.field.config_pages.stanford_local_footer.su_local_foot_use_loc
+    - field.field.config_pages.stanford_local_footer.su_local_foot_use_logo
   module:
     - address
     - ds
@@ -37,6 +50,12 @@ third_party_settings:
     regions:
       lockup_title:
         - 'dynamic_token_field:config_pages-su_site_name'
+      cell1:
+        - su_local_foot_pr_co
+      cell2:
+        - su_local_foot_se_co
+      cell3:
+        - su_local_foot_tr_co
       address:
         - su_local_foot_address
       action_links:
@@ -73,7 +92,7 @@ bundle: stanford_local_footer
 mode: default
 content:
   su_local_foot_action:
-    weight: 2
+    weight: 5
     label: hidden
     settings:
       trim_length: null
@@ -89,14 +108,14 @@ content:
     type: link
     region: action_links
   su_local_foot_address:
-    weight: 1
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: address
   su_local_foot_f_button:
-    weight: 11
+    weight: 14
     label: hidden
     settings:
       link_to_entity: false
@@ -104,21 +123,21 @@ content:
     type: string
     region: signup_form_field_submit_value
   su_local_foot_f_intro:
-    weight: 8
+    weight: 11
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: signup_form_content
   su_local_foot_f_method:
-    weight: 10
+    weight: 13
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: signup_form_method
   su_local_foot_f_url:
-    weight: 9
+    weight: 12
     label: hidden
     settings:
       trim_length: null
@@ -131,8 +150,15 @@ content:
         class: ''
     type: link
     region: signup_form_action
+  su_local_foot_pr_co:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: cell1
   su_local_foot_primary:
-    weight: 5
+    weight: 8
     label: hidden
     settings:
       trim_length: null
@@ -148,15 +174,22 @@ content:
     type: link
     region: primary_links
   su_local_foot_prime_h:
-    weight: 4
+    weight: 7
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: primary_links_header
+  su_local_foot_se_co:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: cell2
   su_local_foot_second:
-    weight: 7
+    weight: 10
     label: hidden
     settings:
       trim_length: null
@@ -172,7 +205,7 @@ content:
     type: link
     region: secondary_links
   su_local_foot_second_h:
-    weight: 6
+    weight: 9
     label: hidden
     settings:
       link_to_entity: false
@@ -180,7 +213,7 @@ content:
     type: string
     region: secondary_links_header
   su_local_foot_social:
-    weight: 3
+    weight: 6
     label: hidden
     settings:
       trim_length: null
@@ -196,12 +229,29 @@ content:
     type: link
     region: social_links
   su_local_foot_sunet_t:
-    weight: 13
+    weight: 15
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: weblogin_text
+  su_local_foot_tr_co:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: cell3
 hidden:
   su_footer_enabled: true
+  su_local_foot_line_1: true
+  su_local_foot_line_2: true
+  su_local_foot_line_3: true
+  su_local_foot_line_4: true
+  su_local_foot_line_5: true
+  su_local_foot_loc_img: true
+  su_local_foot_loc_link: true
+  su_local_foot_loc_op: true
+  su_local_foot_use_loc: true
+  su_local_foot_use_logo: true

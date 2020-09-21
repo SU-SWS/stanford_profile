@@ -1,0 +1,23 @@
+uuid: 0e6af703-a105-4627-897d-b8c7b28758c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_global_message
+    - field.storage.config_pages.su_global_msg_type
+  module:
+    - options
+id: config_pages.stanford_global_message.su_global_msg_type
+field_name: su_global_msg_type
+entity_type: config_pages
+bundle: stanford_global_message
+label: 'Message Type'
+description: "Select the display of the message. You can see examples in <a href=\"https://userguide.sites.stanford.edu/node/676/\">the user-guide.</a>\r\n"
+required: true
+translatable: false
+default_value:
+  -
+    value: plain
+default_value_callback: ''
+settings: {  }
+field_type: list_string

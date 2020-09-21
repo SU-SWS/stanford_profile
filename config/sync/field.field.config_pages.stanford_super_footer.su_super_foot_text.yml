@@ -1,0 +1,27 @@
+uuid: 2746c710-2685-4a3d-99ae-5ff940fd7360
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_super_footer
+    - field.storage.config_pages.su_super_foot_text
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_html: '0'
+    stanford_minimal_html: '0'
+    plain_text: '0'
+id: config_pages.stanford_super_footer.su_super_foot_text
+field_name: su_super_foot_text
+entity_type: config_pages
+bundle: stanford_super_footer
+label: 'Text Block'
+description: 'An open area for WYSIWYG text'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
