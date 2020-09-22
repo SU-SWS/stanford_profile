@@ -462,11 +462,11 @@ third_party_settings:
             region: main
             configuration:
               id: 'field_block:node:su_opportunity:su_opp_sponsor'
-              label: Sponsor
+              label: 'Offered By'
               provider: layout_builder
-              label_display: '0'
+              label_display: visible
               formatter:
-                label: above
+                label: hidden
                 type: entity_reference_label
                 settings:
                   link: false
