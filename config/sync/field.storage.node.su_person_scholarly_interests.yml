@@ -1,16 +1,17 @@
-uuid: 0eeb4076-407b-4d91-a4ea-c036ab80e90d
+uuid: da3e3403-129e-4c48-8414-626b5a02876f
 langcode: en
 status: true
 dependencies:
   module:
-    - link
+    - field_permissions
     - node
-id: node.su_event_source
-field_name: su_event_source
+    - text
+id: node.su_person_scholarly_interests
+field_name: su_person_scholarly_interests
 entity_type: node
-type: link
+type: text_long
 settings: {  }
-module: link
+module: text
 locked: false
 cardinality: 1
 translatable: true

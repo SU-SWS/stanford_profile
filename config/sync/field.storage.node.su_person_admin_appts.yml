@@ -1,12 +1,13 @@
-uuid: bcddb217-b135-412c-b1f5-c04d45bf0926
+uuid: 64fdfbcf-c565-4315-be83-493e33ad5662
 langcode: en
 status: true
 dependencies:
   module:
-    - config_pages
-id: config_pages.su_line_5
-field_name: su_line_5
-entity_type: config_pages
+    - field_permissions
+    - node
+id: node.su_person_admin_appts
+field_name: su_person_admin_appts
+entity_type: node
 type: string
 settings:
   max_length: 255
@@ -14,7 +15,7 @@ settings:
   case_sensitive: false
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false
