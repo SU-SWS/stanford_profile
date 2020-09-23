@@ -25,8 +25,11 @@ dependencies:
     - taxonomy.vocabulary.su_opportunity_location
     - taxonomy.vocabulary.su_opportunity_open_to
     - taxonomy.vocabulary.su_opportunity_service_theme
+    - taxonomy.vocabulary.su_opportunity_sponsor
     - taxonomy.vocabulary.su_opportunity_time
     - taxonomy.vocabulary.su_opportunity_type
+  content:
+    - 'taxonomy_term:su_opportunity_sponsor:6d9d6060-fb9d-445f-8528-1edf12858597'
   module:
     - datetime
     - datetime_range
@@ -2275,6 +2278,52 @@ display:
             operator_limit_selection: false
             operator_list: {  }
           group: 1
+        su_opp_sponsor_target_id:
+          id: su_opp_sponsor_target_id
+          table: node__su_opp_sponsor
+          field: su_opp_sponsor_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: not
+          value:
+            - 321
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: textfield
+          limit: true
+          vid: su_opportunity_sponsor
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       filter_groups:
         operator: AND
         groups:
@@ -2399,6 +2448,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
