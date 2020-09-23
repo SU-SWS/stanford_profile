@@ -62,8 +62,13 @@
             </div>
           </div>
         {% endif %}
-      </div>
 
+        {% if summary %}
+          <div class="su-opportunity-row-summary">
+            {{ summary }}
+          </div>
+        {% endif %}
+      </div>
 
       <div class="su-opportunity-body-content {% if image %}{% else %}flex-8-of-12{% endif %}">
         <div class="su-opportunity-row-application-deadline">
