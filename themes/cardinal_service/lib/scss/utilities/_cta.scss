@@ -21,3 +21,27 @@ svg {
     bottom: 12px;
   }
 }
+
+.su-link--external {
+  position: relative;
+  margin-right: 25px;
+
+  &::after {
+    position: absolute;
+    bottom: 10px;
+  }
+}
+
+.su-link--action {
+  position: relative;
+  margin-right: 20px;
+
+  .su-card__contents & {
+    margin-right: 0;
+  }
+
+  &::after {
+    position: absolute;
+    bottom: 5px;
+  }
+}

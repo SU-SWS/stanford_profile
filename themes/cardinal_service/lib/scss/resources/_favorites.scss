@@ -1,0 +1,13 @@
+@charset 'UTF-8';
+
+.flag-cs-resources {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+
+  .not-resource {
+    .extra-field-block & {
+      display: none;
+    }
+  }
+}

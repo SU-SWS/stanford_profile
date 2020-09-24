@@ -222,6 +222,22 @@ function cardinal_service_profile_react_paragraphs_form_field_data_alter(array &
     }
     $info['displays']['su_opportunities'] = array_values($info['displays']['su_opportunities']);
   }
+
+  if ($field_config->getName() == 'su_resource_list') {
+    $good_displays = [
+      '3_related',
+      'all_list',
+      'audience',
+      'audience_program_filtered',
+      'program_filtered',
+    ];
+    foreach ($info['displays']['cs_resources'] as $key => $display) {
+      if (!in_array($display['value'], $good_displays)) {
+        unset($info['displays']['cs_resources'][$key]);
+      }
+    }
+    $info['displays']['cs_resources'] = array_values($info['displays']['cs_resources']);
+  }
 }
 
 /**

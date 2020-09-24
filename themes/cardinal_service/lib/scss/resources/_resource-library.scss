@@ -8,7 +8,7 @@
   }
 
   a {
-    &:not(.su-button):not(.su-button--secondary):not(.su-button--big)  {
+    &:not(.su-button):not(.su-button--secondary):not(.su-button--big) {
       @include link($su-color-bright-red);
       font-weight: 700;
       text-decoration: none;
@@ -51,10 +51,26 @@
   .views-field-title {
     @include modular-spacing('padding', 2);
   }
+
+  .views-field-view {
+    height: 100%;
+
+    .single-resource {
+      height: 100%;
+    }
+  }
 }
 
 .resource-color {
   width: 100%;
+  height: 100%;
+  position: relative;
+
+  .flag.flag-cs-resources {
+    bottom: 15px;
+    top: unset;
+    display: block;
+  }
 
   &.color-2596d1 {
     .views-field-title {
@@ -112,8 +128,10 @@
     display: flex;
     justify-content: space-around;
   }
+}
 
+.cs-resources {
   .grid-list-item {
-    @include modular-spacing('margin-bottom', 7);
+    @include modular-spacing('margin-bottom', 5);
   }
 }

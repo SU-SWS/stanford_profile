@@ -20,6 +20,7 @@ source:
     status: 1
     type: su_opportunity
     basic_html: stanford_html
+    minimal_html: stanford_minimal_html
     image_destination: 'public://media/image/solo/'
     apply_link_title: Apply
     learn_more_link_title: 'Learn More'
@@ -156,9 +157,10 @@ process:
     callable: _stanford_migrate_get_time
   status: constants/status
   type: constants/type
-  body/summary: teaser
   body/value: body
   body/format: constants/basic_html
+  su_opp_summary/value: teaser
+  su_opp_summary/format: constants/minimal_html
   su_opp_contact_email: contact_email
   su_opp_contact_name: contact_name
   su_opp_contact_phone: contact_phone
@@ -447,5 +449,7 @@ destination:
     - su_opp_duration/value
     - su_opp_duration/end_value
     - su_opp_sponsor
+    - su_opp_summary/value
+    - su_opp_summary/format
 migration_dependencies:
   required: {  }

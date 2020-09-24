@@ -45,11 +45,11 @@
     <div class="{% if image %}flex-8-of-12{% else %}flex-12-of-12{% endif %}">
       <div class="su-opportunity-header">
         {% if program is not empty or type_list is not empty %}
-        <div class="su-opportunity-row-program-type-list">
-          <div aria-label="{{ 'Opportunity Program and Type'|t }}">
-            <div>{{ program }}{{ type_list }}</div>
+          <div class="su-opportunity-row-program-type-list">
+            <div aria-label="{{ 'Opportunity Program and Type'|t }}">
+              <div>{{ program }}{{ type_list }}</div>
+            </div>
           </div>
-        </div>
         {% endif %}
         <h3>
           {{ title }}
@@ -62,38 +62,12 @@
             </div>
           </div>
         {% endif %}
-      </div>
 
-
-      <div class="su-opportunity-body-content {% if image %}{% else %}flex-8-of-12{% endif %}">
-        <div class="su-opportunity-row-application-deadline">
-          <div>
-            <h4>{{ date_label }}:</h4>
-            <div>{{ date }}</div>
+        {% if summary %}
+          <div class="su-opportunity-row-summary">
+            {{ summary }}
           </div>
-        </div>
-
-
-        <div class="su-opportunity-row-location">
-          <div>
-            <h4>{{ 'Location'|t }}:</h4>
-            <div>{{ location }}</div>
-          </div>
-        </div>
-
-        <div class="su-opportunity-row-duration">
-          <div>
-            <h4>{{ 'When'|t }}:</h4>
-            <div>{{ when }}</div>
-          </div>
-        </div>
-
-        <div class="su-opportunity-row-open-to">
-          <div>
-            <h4>{{ 'Open to'|t }}:</h4>
-            <div>{{ open_to }}</div>
-          </div>
-        </div>
+        {% endif %}
       </div>
     </div>
 
@@ -104,6 +78,36 @@
         </div>
       </div>
     {% endif %}
+  </div>
+
+  <div class="su-opportunity-body-content">
+    <div class="su-opportunity-row-application-deadline">
+      <div>
+        <h4>{{ date_label }}:</h4>
+        <div>{{ date }}</div>
+      </div>
+    </div>
+
+    <div class="su-opportunity-row-location">
+      <div>
+        <h4>{{ 'Location'|t }}:</h4>
+        <div>{{ location }}</div>
+      </div>
+    </div>
+
+    <div class="su-opportunity-row-duration">
+      <div>
+        <h4>{{ 'When'|t }}:</h4>
+        <div>{{ when }}</div>
+      </div>
+    </div>
+
+    <div class="su-opportunity-row-open-to">
+      <div>
+        <h4>{{ 'Open to'|t }}:</h4>
+        <div>{{ open_to }}</div>
+      </div>
+    </div>
   </div>
   {{ favorite }}
 </div>

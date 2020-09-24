@@ -79,14 +79,6 @@ third_party_settings:
             third_party_settings: {  }
         third_party_settings: {  }
       -
-        layout_id: jumpstart_ui_one_column
-        layout_settings:
-          extra_classes: ''
-          centered: centered-container
-          columns: default
-        components: {  }
-        third_party_settings: {  }
-      -
         layout_id: jumpstart_ui_two_column
         layout_settings:
           extra_classes: ''
@@ -135,7 +127,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: -7
+            weight: -6
             third_party_settings: {  }
           c40ac234-fff7-4c9d-8a34-03fb9d335617:
             uuid: c40ac234-fff7-4c9d-8a34-03fb9d335617
@@ -147,7 +139,7 @@ third_party_settings:
               label_display: '0'
               context_mapping: {  }
             additional: {  }
-            weight: -8
+            weight: -7
             third_party_settings: {  }
           af0809fe-fe61-4e78-be4e-4837cd773c26:
             uuid: af0809fe-fe61-4e78-be4e-4837cd773c26
@@ -166,6 +158,19 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+            additional: {  }
+            weight: -8
+            third_party_settings: {  }
+          0d08b150-d764-4183-b704-f605733576f1:
+            uuid: 0d08b150-d764-4183-b704-f605733576f1
+            region: main
+            configuration:
+              id: 'extra_field_block:node:stanford_page:flag_cs_resources'
+              label: 'Flag: <em class="placeholder">Resources</em>'
+              provider: layout_builder
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
             additional: {  }
             weight: -9
             third_party_settings: {  }
@@ -228,6 +233,11 @@ targetEntityType: node
 bundle: stanford_page
 mode: default
 content:
+  flag_cs_resources:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: main
   links:
     weight: 1
     region: content

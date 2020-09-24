@@ -32,6 +32,16 @@
 
   .su-opportunity-row-program-type-list,
   .su-opportunity-row-time-commitment-service-theme {
+    font-size: 21px;
+    font-weight: normal;
+  }
+
+  .su-opportunity-row-time-commitment-service-theme {
+    @include modular-spacing('margin-bottom', 0);
+  }
+
+  .su-opportunity-row-summary {
+    @include modular-spacing('margin-bottom', 4);
     @include modular-typography(1);
     font-weight: normal;
   }
@@ -58,14 +68,23 @@
   .su-opportunity-body-content {
     display: block;
 
-    @include grid-media-min('md') {
+    .flex-12-of-12 {
+      .su-opportunity-row-time-commitment-service-theme,
+      .su-opportunity-row-summary {
+        max-width: 70ch;
+      }
+    }
+
+    @include grid-media-min('lg') {
       display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      grid-template-rows: auto 1fr;
-      grid-gap: 10px 10px;
-      grid-template-areas:
-      "application-deadline application-deadline application-deadline"
-      "location when open-to";
+      grid-template-columns: 1.65fr 1.2fr 1fr 1.5fr;
+      grid-gap: 10px;
+
+      .su-opportunity-row-application-deadline {
+        > div {
+          max-width: 25ch;
+        }
+      }
     }
 
     h4 {
@@ -109,32 +128,24 @@
   }
 
   .su-opportunity-row-application-deadline {
-    grid-area: application-deadline;
-
     &::before {
       content: '\f0f3';
     }
   }
 
   .su-opportunity-row-location {
-    grid-area: location;
-
     &::before {
       content: '\f3c5';
     }
   }
 
   .su-opportunity-row-duration {
-    grid-area: when;
-
     &::before {
       content: '\f073';
     }
   }
 
   .su-opportunity-row-open-to {
-    grid-area: open-to;
-
     &::before {
       content: '\f500';
     }

@@ -1,5 +1,16 @@
 @charset 'UTF-8';
 
+.text-with-summary,
+.text-long {
+  table {
+    th,
+    td {
+      line-height: 1.2em;
+    }
+  }
+}
+
+
 table {
   &.cs-table--span3 {
     th,

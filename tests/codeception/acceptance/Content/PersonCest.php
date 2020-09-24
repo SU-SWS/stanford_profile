@@ -83,4 +83,21 @@ class PersonCest {
     $I->canSeeResponseCodeIs(200);
   }
 
+  /**
+   * CAP-52: Check for the new fields.
+   */
+  public function testCap52Fields(AcceptanceTester $I){
+    $I->logInWithRole('administrator');
+
+    $I->amOnPage('/admin/structure/types/manage/stanford_person/fields');
+    $I->canSee('Academic Appointments');
+    $I->canSee('Administrative Appointments');
+    $I->canSee('Scholarly and Research Interests');
+
+    $I->amOnPage('/admin/structure/types/manage/stanford_person/form-display');
+    $I->canSeeOptionIsSelected('fields[su_person_academic_appt][region]', 'Disabled');
+    $I->canSeeOptionIsSelected('fields[su_person_admin_appts][region]', 'Disabled');
+    $I->canSeeOptionIsSelected('fields[su_person_scholarly_interests][region]', 'Disabled');
+  }
+
 }
