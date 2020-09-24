@@ -1,0 +1,30 @@
+uuid: 52324624-8f90-4c0c-9a58-cfeb14a0b307
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: cs_resources
+label: Resources
+bundles:
+  - stanford_page
+entity_type: node
+global: false
+weight: 0
+flag_short: '<i class="far fa-heart"></i><span class="visually-hidden">Favorite</span>'
+flag_long: 'Click to save as a favorite.'
+flag_message: ''
+unflag_short: '<i class="fas fa-heart"></i> Saved'
+unflag_long: 'Click to Unfavorite'
+unflag_message: ''
+unflag_denied_text: ''
+flag_type: 'entity:node'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+linkTypeConfig: {  }

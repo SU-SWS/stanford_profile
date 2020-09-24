@@ -1,0 +1,15 @@
+uuid: befdd19d-7964-4a5d-a6c3-3f1fca26074a
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.cs_resources
+  module:
+    - flag
+id: flag_action.cs_resources_unflag
+label: '<i class="fas fa-heart"></i> Saved'
+type: node
+plugin: 'flag_action:cs_resources_unflag'
+configuration:
+  flag_id: cs_resources
+  flag_action: unflag

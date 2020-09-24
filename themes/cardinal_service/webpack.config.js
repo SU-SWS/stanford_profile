@@ -42,14 +42,21 @@ const glob = require('glob')
 // Config //////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-const entryPoints = glob.sync('./lib/components/**/*.scss').reduce((acc, path) => {
+const componentStyles = glob.sync('./lib/components/**/*.scss').reduce((acc, path) => {
   const entry = path.replace('.scss', '').replace('./lib/', '');
   acc[entry] = path
   return acc
 }, {});
 
-entryPoints.base = path.resolve(__dirname, srcSass + '/base.scss');
-entryPoints.ckeditor = path.resolve(__dirname, srcSass + '/ckeditor.scss');
+const styleSheets = glob.sync('./lib/scss/*.scss').reduce((acc, file) => {
+  if (file.indexOf('_') > 0) {
+    return acc;
+  }
+  const entry =  path.basename(file).split('.').slice(0, -1).join('.');
+  acc[entry] = file
+  return acc
+}, {});
+const entryPoints = {...componentStyles, ...styleSheets }
 
 // Start configuring webpack.
 var webpackConfig = {

@@ -1,0 +1,15 @@
+uuid: ad0db79d-c1b7-41bb-8ba4-4f16752a7c87
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.cs_resources
+  module:
+    - flag
+id: flag_action.cs_resources_flag
+label: '<i class="far fa-heart"></i><span class="visually-hidden">Favorite</span>'
+type: node
+plugin: 'flag_action:cs_resources_flag'
+configuration:
+  flag_id: cs_resources
+  flag_action: flag
