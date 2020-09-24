@@ -12,7 +12,8 @@ _Release Date: 2020-09-24_
 --------------------------------------------------------------------------------
 _Release Date: 2020-09-16_
 
-- Style fixes
+- CSD-476 Hide deadline on event opportunities
+- CSD-477 Removed duration block and unlink sponsor terms (#134)
 
 8.x-1.4
 --------------------------------------------------------------------------------
