@@ -128,8 +128,10 @@
     display: flex;
     justify-content: space-around;
   }
+}
 
+.cs-resources {
   .grid-list-item {
-    @include modular-spacing('margin-bottom', 7);
+    @include modular-spacing('margin-bottom', 5);
   }
 }

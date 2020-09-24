@@ -154,7 +154,13 @@ content:
     label: hidden
     settings:
       link: false
-    third_party_settings: {  }
+    third_party_settings:
+      field_delimiter:
+        delimiter: ', '
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
   su_opp_event_date:
     type: datetime_custom
     weight: 6

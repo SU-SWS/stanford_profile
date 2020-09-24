@@ -281,6 +281,9 @@
       }
     }
 
+    .flex-md-4-of-12 {
+      @include modular-spacing('margin-bottom', 5);
+    }
 
     ul {
       list-style: none;
@@ -292,7 +295,6 @@
     }
 
     footer {
-      @include modular-spacing('margin-top', 7);
       width: 100%;
       display: flex;
       justify-content: space-around;
