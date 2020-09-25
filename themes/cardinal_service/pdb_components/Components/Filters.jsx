@@ -138,7 +138,7 @@ export class Filters extends Component {
     ) {
       return;
     }
-    const query = queryString.stringify(this.state.filters, {arrayFormat: 'bracket'});
+    const query = encodeURI(queryString.stringify(this.state.filters, {arrayFormat: 'bracket'}));
     const location = this.props.submitUrl ?? window.location.pathname;
     window.location = `${location}?${query}#filter-wrapper`;
 
