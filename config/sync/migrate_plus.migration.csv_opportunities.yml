@@ -16,6 +16,7 @@ source:
     status: 1
     type: su_opportunity
     basic_html: stanford_html
+    minimal_html: stanford_minimal_html
     image_destination: 'public://media/image/csv/'
     apply_link_title: Apply
     learn_more_link_title: 'Learn More'
@@ -135,9 +136,10 @@ process:
     default_value: 1
     strict: true
   type: constants/type
-  body/summary: summary
   body/value: body
   body/format: constants/basic_html
+  su_opp_summary/value: summary
+  su_opp_summary/format: constants/minimal_html
   su_opp_contact_email: contact_email
   su_opp_contact_name: contact_name
   su_opp_contact_phone: contact_phone
