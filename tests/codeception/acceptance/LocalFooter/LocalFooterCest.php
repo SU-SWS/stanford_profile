@@ -102,7 +102,7 @@ class LocalFooterCest {
   }
 
   /**
-   * @group testme
+   * Route urls and no link urls should function correctly in the footer.
    */
   public function testNodeRoutesAndNoLink(AcceptanceTester $I) {
     $node = $I->createEntity([

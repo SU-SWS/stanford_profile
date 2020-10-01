@@ -48,8 +48,6 @@ class RolesCest {
 
   /**
    * D8CORE-1200 Prevent deleteing the homepage from bulk delete.
-   *
-   * @group testme
    */
   public function testBulkDeleteHomePage(FunctionalTester $I) {
     $test_home = $I->createEntity([
