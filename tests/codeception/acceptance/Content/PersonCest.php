@@ -104,11 +104,10 @@ class PersonCest {
 
   /**
    * D8CORE-2613: Taxonomy menu items don't respect the UI.
-   *
-   * @group testme
    */
   public function testD8Core2613Terms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
+    
     $foo = $I->createEntity([
       'name' => 'Foo',
       'vid' => 'stanford_person_types',
