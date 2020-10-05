@@ -85,4 +85,61 @@ class PersonCest {
     $I->canSeeResponseCodeIs(200);
   }
 
+  /**
+   * CAP-52: Check for the new fields.
+   */
+  public function testCap52Fields(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+
+    $I->amOnPage('/admin/structure/types/manage/stanford_person/fields');
+    $I->canSee('Academic Appointments');
+    $I->canSee('Administrative Appointments');
+    $I->canSee('Scholarly and Research Interests');
+
+    $I->amOnPage('/admin/structure/types/manage/stanford_person/form-display');
+    $I->canSeeOptionIsSelected('fields[su_person_academic_appt][region]', 'Disabled');
+    $I->canSeeOptionIsSelected('fields[su_person_admin_appts][region]', 'Disabled');
+    $I->canSeeOptionIsSelected('fields[su_person_scholarly_interests][region]', 'Disabled');
+  }
+
+  /**
+   * D8CORE-2613: Taxonomy menu items don't respect the UI.
+   */
+  public function testD8Core2613Terms(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    
+    $foo = $I->createEntity([
+      'name' => 'Foo',
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+    $bar = $I->createEntity([
+      'name' => 'Bar',
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+    $baz = $I->createEntity([
+      'name' => 'Baz',
+      'vid' => 'stanford_person_types',
+      'parent' => ['target_id' => $foo->id()],
+    ], 'taxonomy_term');
+
+    $I->amOnPage('/people');
+    $I->canSeeLink('Foo');
+    $I->canSeeLink('Bar');
+    $I->cantSeeLink('Baz');
+
+    $I->amOnPage($baz->toUrl('edit-form')->toString());
+    $I->selectOption('Parent terms', '<root>');
+    $I->click('Save');
+
+    $I->amOnPage('/people');
+    $I->canSeeLink('Baz');
+
+    $I->amOnPage($baz->toUrl('edit-form')->toString());
+    $I->selectOption('Parent terms', 'Bar');
+    $I->click('Save');
+
+    $I->amOnPage('/people');
+    $I->cantSeeLink('Baz');
+  }
+
 }
