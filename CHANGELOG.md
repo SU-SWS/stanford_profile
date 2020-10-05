@@ -1,5 +1,39 @@
 # Stanford Profile
 
+8.x-1.18
+--------------------------------------------------------------------------------
+_Release Date: 2020-10-05_
+
+- enabled syslog as per recommendation from Acquia (5e8eb57)
+- updated config after database updates (735e7c8)
+- D8CORE-2685 Enable react behaviors module (#304) (4c2a1aa)
+- D8CORE-2613: Tests for manipulating taxonomy terms and the menu (#305) (0d08442)
+- D8CORE-2644: Tests for embeddable media form alters (#299) (a59d9b5)
+- D8CORE-2548: change the pagination counts (#297) (abd31cb)
+- D8CORE-2185: matching the person edit to the news edit (#301) (038a332)
+- D8CORE-2531: adding a Contact header to appear when there is any cont… (#302) (28d325f)
+- Merge pull request #303 from SU-SWS/D8CORE-2538 (811e3a7)
+- D8CORE-2538 Removed permissions for anonymous and a couple roles (c5edb6a)
+- D8CORE-2538 Staff, Faculty, and Students shouldnt see the admin toolbar (5df751b)
+- Merge pull request #300 from SU-SWS/D8CORE-2498_local-footer (f08ddfc)
+- Merge pull request #281 from SU-SWS/D8CORE-2349-wrap-person (4918e77)
+- Update composer.json (908e5d9)
+- fixed branch name (59e0001)
+- changed jumpstart_ui branch to pass tests (71c60d2)
+- D8CORE-2498 Tests for local footer link paths (39d0d70)
+- D8CORE-1200 Additional permission check for deleting home page (#298) (6ae14d5)
+- Merge pull request #295 from SU-SWS/field-permission-unset (5f5b8d0)
+- Merge branch '8.x-1.x' of https://github.com/SU-SWS/stanford_profile into D8CORE-2349-wrap-person (eab3a53)
+- CAP-52: Add more fields to import list from cap. (8f3ffb1)
+- removed module dependency (5bd68b0)
+- Removed unnecessary third party settings (039dca4)
+- removed field permissions junk (7970f81)
+- added test for the fields (bcd8536)
+- Update LocalFooterCest.php (1fe8ebb)
+- dont create revisions (6439ae5)
+- changed callback (32fffc9)
+- CAP-52 Add 4 fields to be mapped from CAP data (46b7963)
+
 8.x-1.17
 --------------------------------------------------------------------------------
 _Release Date: 2020-09-15_
