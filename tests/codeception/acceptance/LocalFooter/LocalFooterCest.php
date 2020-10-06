@@ -18,6 +18,16 @@ class LocalFooterCest {
   }
 
   /**
+   * Tidy up after oneself.
+   */
+  public function _after(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/config/system/local-footer');
+    $I->checkOption('Enabled');
+    $I->click('Save');
+  }
+
+  /**
    * Only site manager and higher should have access.
    */
   public function testAccess(AcceptanceTester $I) {
@@ -99,6 +109,35 @@ class LocalFooterCest {
     $I->canSee('Block one');
     $I->canSee('Block two');
     $I->canSee('Block three');
+  }
+
+  /**
+   * Route urls and no link urls should function correctly in the footer.
+   */
+  public function testNodeRoutesAndNoLink(AcceptanceTester $I) {
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => 'Test Page',
+    ]);
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/config/system/local-footer');
+    $I->checkOption('Enabled');
+    $I->fillField('su_local_foot_primary[0][uri]', $node->label() . " ({$node->id()})");
+    $I->fillField('su_local_foot_primary[0][title]', $node->label());
+    $I->click('Save');
+    $I->canSee('Local Footer Local Footer has been updated.');
+    $I->amOnPage('/');
+    $I->canSeeLink($node->label(), $node->toUrl()->toString());
+
+
+    $I->amOnPage('/admin/config/system/local-footer');
+    $I->checkOption('Enabled');
+    $I->fillField('su_local_foot_primary[0][uri]', '<nolink>');
+    $I->fillField('su_local_foot_primary[0][title]', 'NO LINK');
+    $I->click('Save');
+    $I->canSee('Local Footer Local Footer has been updated.');
+    $I->amOnPage('/');
+    $I->canSee('NO LINK', 'li span');
   }
 
 }
