@@ -18,21 +18,29 @@
     max-width: 100%;
 
     &:first-child > div {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-gap: 18px;
+      grid-template-areas:
+      "opp-type opp-type"
+      "open-to service-theme";
 
       > div {
         &:first-child {
-          width: 100%;
+          grid-area: opp-type;
         }
 
-        &:nth-child(2),
+        &:nth-child(2) {
+          grid-area: open-to;
+        }
+
         &:nth-child(3) {
-          flex: 0 0 calc(50% - 10px);
-          width: calc(50% - 10px);
+          grid-area: service-theme;
         }
       }
+
+
 
       .MuiAutocomplete-root {
         background-color: #fff;
@@ -62,6 +70,24 @@
 
     &:last-child {
       justify-content: flex-end;
+    }
+
+    @media only screen and (max-width: 576px) {
+      &:first-child > div {
+        display: flex;
+        flex-direction: column;
+
+        > div {
+          &:first-child {
+            grid-area: unset;
+          }
+
+          &:nth-child(2),
+          &:nth-child(3) {
+            grid-area: unset;
+          }
+        }
+      }
     }
   }
 }
