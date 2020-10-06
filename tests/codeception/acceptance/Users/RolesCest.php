@@ -22,6 +22,39 @@ class RolesCest {
   }
 
   /**
+   * Stanford Staff role should be very limited.
+   */
+  public function testStaffRole(AcceptanceTester $I){
+    $I->logInWithRole('stanford_staff');
+    // D8CORE-2538 Staff and students without additional roles shouldn't see
+    // the admin toolbar.
+    $I->amOnPage('/');
+    $I->cantSeeElement('#toolbar-administration');
+  }
+
+  /**
+   * Stanford Staff role should be very limited.
+   */
+  public function testStudentRole(AcceptanceTester $I){
+    $I->logInWithRole('stanford_student');
+    // D8CORE-2538 Staff and students without additional roles shouldn't see
+    // the admin toolbar.
+    $I->amOnPage('/');
+    $I->cantSeeElement('#toolbar-administration');
+  }
+
+  /**
+   * Stanford Staff role should be very limited.
+   */
+  public function testFacultyRole(AcceptanceTester $I){
+    $I->logInWithRole('stanford_faculty');
+    // D8CORE-2538 Staff and students without additional roles shouldn't see
+    // the admin toolbar.
+    $I->amOnPage('/');
+    $I->cantSeeElement('#toolbar-administration');
+  }
+
+  /**
    * Contributor role should have some access.
    */
   public function testContributorRole(AcceptanceTester $I) {
@@ -47,6 +80,11 @@ class RolesCest {
       'Site Settings',
     ];
     $this->runLinkExistCheck($I, $links, FALSE);
+
+    // D8CORE-2538 Staff and students without additional roles shouldn't see
+    // the admin toolbar.
+    $I->amOnPage('/');
+    $I->canSeeElement('#toolbar-administration');
   }
 
   /**
@@ -75,6 +113,11 @@ class RolesCest {
       'Site Settings',
     ];
     $this->runLinkExistCheck($I, $links, FALSE);
+
+    // D8CORE-2538 Staff and students without additional roles shouldn't see
+    // the admin toolbar.
+    $I->amOnPage('/');
+    $I->canSeeElement('#toolbar-administration');
   }
 
   /**
@@ -104,6 +147,11 @@ class RolesCest {
       '/admin/appearance/settings' => 'Settings',
     ];
     $this->runLinkExistCheck($I, $links, FALSE);
+
+    // D8CORE-2538 Staff and students without additional roles shouldn't see
+    // the admin toolbar.
+    $I->amOnPage('/');
+    $I->canSeeElement('#toolbar-administration');
   }
 
   /**
@@ -120,6 +168,11 @@ class RolesCest {
       $this->getFrontPagePath($I) . '/delete',
     ];
     $this->runAccessCheck($I, $allowed_pages);
+
+    // D8CORE-2538 Staff and students without additional roles shouldn't see
+    // the admin toolbar.
+    $I->amOnPage('/');
+    $I->canSeeElement('#toolbar-administration');
   }
 
   /**
@@ -133,6 +186,11 @@ class RolesCest {
 
     $allowed_pages = ['/admin/content'];
     $this->runAccessCheck($I, $allowed_pages);
+
+    // D8CORE-2538 Staff and students without additional roles shouldn't see
+    // the admin toolbar.
+    $I->amOnPage('/');
+    $I->canSeeElement('#toolbar-administration');
   }
 
   /**
