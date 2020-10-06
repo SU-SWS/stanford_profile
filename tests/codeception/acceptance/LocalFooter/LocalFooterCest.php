@@ -6,16 +6,6 @@
  * @group local_footer
  */
 class LocalFooterCest {
-  
-  /**
-   * Tidy up after oneself.
-   */
-  public function _after(AcceptanceTester $I) {
-    $I->logInWithRole('administrator');
-    $I->amOnPage('/admin/config/system/local-footer');
-    $I->checkOption('Enabled');
-    $I->click('Save');
-  }
 
   /**
    * Tidy up after oneself.

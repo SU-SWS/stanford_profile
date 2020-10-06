@@ -26,9 +26,9 @@ class MediaFormsCest {
     $I->click('Test embed');
     $I->seeInCurrentUrl('edit');
     $I->seeLink('request support.', $support_url);
-    $I->click('Delete');
+    $I->click('Delete', '.tabs');
     $I->seeInCurrentUrl('delete');
-    $I->click('Delete');
+    $I->click('Delete', '.button');
     $I->dontSeeLink('Test embed');
     $I->seeInCurrentUrl('/admin/content/media');
   }
