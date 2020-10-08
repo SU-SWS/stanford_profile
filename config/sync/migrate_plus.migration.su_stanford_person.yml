@@ -200,6 +200,11 @@ process:
       method: process
       source: profile_photo
     -
+      plugin: image_dimension_skip
+      method: process
+      width: 10
+      height: 10
+    -
       plugin: file_import
       destination: '@image_path'
       id_only: true
