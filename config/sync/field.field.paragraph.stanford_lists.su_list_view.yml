@@ -1,0 +1,45 @@
+uuid: bd7c7df1-493e-4f23-aa24-5d981e6362c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_list_view
+    - paragraphs.paragraphs_type.stanford_lists
+  module:
+    - viewfield
+id: paragraph.stanford_lists.su_list_view
+field_name: su_list_view
+entity_type: paragraph
+bundle: stanford_lists
+label: 'Content List'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  force_default: false
+  allowed_views:
+    stanford_events: stanford_events
+    stanford_news: stanford_news
+    stanford_person: stanford_person
+    su_block_edit_links: '0'
+    content: '0'
+    block_content: '0'
+    stanford_events_past: '0'
+    stanford_events_schedule: '0'
+    stanford_event_series: '0'
+    stanford_event_terms_utility: '0'
+    media: '0'
+    media_library: '0'
+    stanford_news_terms: '0'
+    stanford_person_list_terms_first: '0'
+    stanford_person_terms: '0'
+    redirect: '0'
+  allowed_display_types:
+    block: block
+    default: '0'
+    page: '0'
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

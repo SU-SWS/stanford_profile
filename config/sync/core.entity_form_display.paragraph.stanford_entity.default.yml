@@ -1,0 +1,25 @@
+uuid: 0e4ac1c8-76d0-4343-913f-f247f358e60a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_entity.su_entity_item
+    - paragraphs.paragraphs_type.stanford_entity
+id: paragraph.stanford_entity.default
+targetEntityType: paragraph
+bundle: stanford_entity
+mode: default
+content:
+  su_entity_item:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

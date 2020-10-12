@@ -1,0 +1,25 @@
+uuid: 90bc4aaa-a4dc-418a-ae0e-295f66e679a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_lists.su_list_view
+    - paragraphs.paragraphs_type.stanford_lists
+  module:
+    - viewfield
+id: paragraph.stanford_lists.default
+targetEntityType: paragraph
+bundle: stanford_lists
+mode: default
+content:
+  su_list_view:
+    weight: 0
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings: {  }
+    type: viewfield_default
+    region: content
+hidden: {  }
