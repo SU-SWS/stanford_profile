@@ -1,9 +1,9 @@
-uuid: 5dd1ebc9-f284-4a5f-b64c-3ccae280d2ca
+uuid: 53368cbb-310e-4ea2-9dd0-e0f517cad40a
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.stanford_card
     - field.field.node.stanford_person.body
     - field.field.node.stanford_person.layout_builder__layout
     - field.field.node.stanford_person.su_person_academic_appt
@@ -32,28 +32,96 @@ dependencies:
     - field.field.node.stanford_person.su_person_type_group
     - node.type.stanford_person
   module:
-    - text
+    - ds
+    - field_formatter_class
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - stanford_media
     - user
-id: node.stanford_person.teaser
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+        - stanford_person_header
+        - stanford_person_body
+        - ds_reset
+  layout_library:
+    enable: false
+  ds:
+    layout:
+      id: pattern_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      card_image:
+        - su_person_photo
+      card_super_headline:
+        - su_person_short_title
+      card_headline:
+        - node_title
+      card_body:
+        - su_person_full_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 2
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
+id: node.stanford_person.stanford_card
 targetEntityType: node
 bundle: stanford_person
-mode: teaser
+mode: stanford_card
 content:
-  body:
+  su_person_full_title:
+    type: basic_string
+    weight: 3
+    region: card_body
     label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    region: content
-  links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
-    region: content
+  su_person_photo:
+    type: media_responsive_image_formatter
+    weight: 0
+    region: card_image
+    label: hidden
+    settings:
+      view_mode: default
+      image_style: card_2_1
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+  su_person_short_title:
+    type: string
+    weight: 1
+    region: card_super_headline
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
+  body: true
   layout_builder__layout: true
+  links: true
   su_person_academic_appt: true
   su_person_admin_appts: true
   su_person_affiliations: true
@@ -62,7 +130,6 @@ hidden:
   su_person_email: true
   su_person_fax: true
   su_person_first_name: true
-  su_person_full_title: true
   su_person_last_name: true
   su_person_links: true
   su_person_location_address: true
@@ -70,11 +137,9 @@ hidden:
   su_person_mail_code: true
   su_person_map_url: true
   su_person_mobile_phone: true
-  su_person_photo: true
   su_person_profile_link: true
   su_person_research: true
   su_person_research_interests: true
   su_person_scholarly_interests: true
-  su_person_short_title: true
   su_person_telephone: true
   su_person_type_group: true

@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.stanford_entity.su_entity_item
     - paragraphs.paragraphs_type.stanford_entity
   module:
+    - ds
     - element_class_formatter
     - field_formatter_class
     - stanford_fields
@@ -53,11 +54,13 @@ content:
     weight: 2
     label: hidden
     settings:
-      view_mode: teaser
+      view_mode: stanford_card
       link: false
     third_party_settings:
       field_formatter_class:
         class: ''
+      ds:
+        ds_limit: ''
     type: entity_reference_entity_view
     region: content
 hidden: {  }
