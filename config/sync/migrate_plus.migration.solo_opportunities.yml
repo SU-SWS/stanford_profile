@@ -312,20 +312,17 @@ process:
     -
       plugin: skip_on_empty
       method: process
-      source: image
-    -
-      plugin: skip_on_empty
-      method: process
       source: '@image_file'
     -
       plugin: entity_generate
-      source: title
-      value_key: name
+      source: '@image_file'
+      value_key: field_media_image
       bundle_key: bundle
       bundle: image
       entity_type: media
       ignore_case: true
       values:
+        name: '@title'
         field_media_image/target_id: '@image_file'
         field_media_image/alt: constants/image_alt
         field_media_image/title: constants/image_alt
@@ -419,9 +416,7 @@ process:
       entity_type: taxonomy_term
       ignore_case: true
 destination:
-  plugin: 'entity_reference_revisions:node'
-  new_revisions: true
-  force_revision: true
+  plugin: 'entity:node'
   overwrite_properties:
     - title
     - type
