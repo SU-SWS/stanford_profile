@@ -32,7 +32,7 @@
 
   .su-opportunity-row-program-type-list,
   .su-opportunity-row-time-commitment-service-theme {
-    font-size: 21px;
+    font-size: 18px;
     font-weight: normal;
   }
 
@@ -42,8 +42,12 @@
 
   .su-opportunity-row-summary {
     @include modular-spacing('margin-bottom', 4);
-    @include modular-typography(1);
     font-weight: normal;
+
+    p,
+    a {
+      font-size: 21px;
+    }
   }
 
   .su-opportunity-header {
