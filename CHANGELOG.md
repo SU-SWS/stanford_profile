@@ -1,5 +1,12 @@
 # Cardinal Service Profile
 
+8.x-1.9
+--------------------------------------------------------------------------------
+_Release Date: 2020-10-14_
+
+- Adjusted solo importer to import images correctly.
+- Adjusted font sizes.
+
 8.x-1.8
 --------------------------------------------------------------------------------
 _Release Date: 2020-10-06_
