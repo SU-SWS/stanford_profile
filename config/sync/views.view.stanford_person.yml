@@ -13,7 +13,7 @@ dependencies:
     - user
     - views_infinite_scroll
 id: stanford_person
-label: 'People Grid'
+label: People
 module: views
 description: 'A list of people in a grid with node as the base table'
 tag: ''
@@ -582,7 +582,7 @@ display:
   grid_list_all:
     display_plugin: block
     id: grid_list_all
-    display_title: 'People Grid - All Results'
+    display_title: 'Grid - All Results'
     position: 1
     display_options:
       display_extenders: {  }
