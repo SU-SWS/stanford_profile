@@ -8,6 +8,13 @@ use Faker\Factory;
 class EntityReferenceCest {
 
   /**
+   * Allow all paragraph types by using state.
+   */
+  public function _before(){
+    \Drupal::state()->set('stanford_profile_allow_all_paragraphs', TRUE);
+  }
+
+  /**
    * News items should display in the list paragraph.
    */
   public function testEntityReference(FunctionalTester $I) {
