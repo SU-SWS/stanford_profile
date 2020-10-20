@@ -20,6 +20,7 @@ dependencies:
     - ui_patterns_views
     - user
     - views_infinite_scroll
+    - views_taxonomy_term_name_depth
 id: stanford_news
 label: News
 module: views
@@ -699,7 +700,46 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       display_description: 'Term Block - All Results'
-      arguments: {  }
+      arguments:
+        term_node_taxonomy_name_depth:
+          id: term_node_taxonomy_name_depth
+          table: node_field_data
+          field: term_node_taxonomy_name_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: '0'
+          vocabularies:
+            stanford_news_topics: stanford_news_topics
+          break_phrase: true
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
       filters:
         status:
           value: '1'
@@ -857,6 +897,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
@@ -1274,6 +1315,45 @@ display:
       display_extenders: {  }
       display_description: 'Vertical Teaser Term'
       arguments:
+        term_node_taxonomy_name_depth:
+          id: term_node_taxonomy_name_depth
+          table: node_field_data
+          field: term_node_taxonomy_name_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: '0'
+          vocabularies:
+            stanford_news_topics: stanford_news_topics
+          break_phrase: true
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
         nid:
           id: nid
           table: node_field_data
@@ -1335,7 +1415,7 @@ display:
       row:
         type: ui_patterns
         options:
-          default_field_elements: 0
+          default_field_elements: 1
           inline:
             su_news_publishing_date: 0
             su_news_featured_media: 0
@@ -1346,19 +1426,19 @@ display:
             view_node: 0
             edit_node: 0
           separator: ''
-          hide_empty: 0
+          hide_empty: 1
           pattern: news-vertical-teaser
           variants:
-            media: default
-            lockup: a
-            hero: default
-            brandbar: default
-            link: default
-            button: default
-            date-stacked: default
-            cta: default
             alert: default
+            brandbar: default
+            button: default
             card: default
+            cta: default
+            date-stacked: default
+            hero: default
+            link: default
+            lockup: a
+            media: default
           pattern_mapping:
             'views_row:su_news_featured_media':
               destination: news_vertical_teaser_image
