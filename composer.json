@@ -140,7 +140,8 @@
         "su-sws/stanford_person": "dev-8.x-1.x",
         "su-sws/stanford_profile_helper": "dev-8.x-1.x",
         "su-sws/stanford_ssp": "dev-8.x-1.x",
-        "su-sws/stanford_text_editor": "dev-8.x-1.x"
+        "su-sws/stanford_text_editor": "dev-8.x-1.x",
+        "drupal/views_taxonomy_term_name_depth": "^7.0"
     },
     "autoload": {
         "psr-4": {
@@ -173,6 +174,9 @@
             },
             "drupal/paragraphs": {
                 "https://www.drupal.org/project/paragraphs/issues/2901390": "https://www.drupal.org/files/issues/2020-06-25/paragraphs-2901390-51.patch"
+            },
+            "drupal/views_taxonomy_term_name_depth": {
+                "https://www.drupal.org/project/views_taxonomy_term_name_depth/issues/2877249": "https://www.drupal.org/files/issues/2020-05-01/2877249_21.patch"
             }
         }
     }

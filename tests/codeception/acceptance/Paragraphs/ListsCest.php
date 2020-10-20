@@ -10,7 +10,7 @@ class ListsCest {
   /**
    * Allow all paragraph types by using state.
    */
-  public function _before(){
+  public function _before() {
     \Drupal::state()->set('stanford_profile_allow_all_paragraphs', TRUE);
   }
 
@@ -63,6 +63,81 @@ class ListsCest {
     $I->canSee('Lorem Ipsum');
     $I->canSeeLink('Google', 'http://google.com');
     $I->canSee('Foo Bar Event');
+  }
+
+  /**
+   * When using the list paragraph and view arguments, it should filter results.
+   */
+  public function testListParagraphEventFilters(AcceptanceTester $I) {
+    $I->logInWithRole('contributor');
+    $faker = Factory::create();
+
+    $random_term = $I->createEntity([
+      'name' => $faker->text(10),
+      'vid' => 'stanford_event_types',
+    ], 'taxonomy_term');
+
+    $event_type = $I->createEntity([
+      'name' => $faker->text(10),
+      'vid' => 'stanford_event_types',
+    ], 'taxonomy_term');
+
+    $event_audience = $I->createEntity([
+      'name' => $faker->text(10),
+      'vid' => 'event_audience',
+    ], 'taxonomy_term');
+
+    $event = $I->createEntity([
+      'type' => 'stanford_event',
+      'title' => $faker->text(15),
+      'su_event_audience' => $event_audience->id(),
+      'su_event_type' => $event_type->id(),
+      'su_event_date_time' => [
+        'value' => time(),
+        'end_value' => time() + 60,
+      ],
+    ]);
+    $I->amOnPage("/node/{$event->id()}/edit");
+    $I->click('Save');
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_events',
+      'display_id' => 'list_page',
+      'items_to_display' => 100,
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($event->label());
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_events',
+      'display_id' => 'list_page',
+      'items_to_display' => 100,
+      'arguments' => $random_term->label(),
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->cantSee($event->label());
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_events',
+      'display_id' => 'list_page',
+      'items_to_display' => 100,
+      'arguments' => $event_type->label(),
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($event->label());
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_events',
+      'display_id' => 'list_page',
+      'items_to_display' => 100,
+      'arguments' => $event_audience->label(),
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($event->label());
   }
 
   /**
