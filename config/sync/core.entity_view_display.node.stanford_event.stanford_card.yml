@@ -23,7 +23,9 @@ dependencies:
     - field.field.node.stanford_event.su_event_type
     - node.type.stanford_event
   module:
+    - address
     - ds
+    - field_formatter_class
     - layout_builder
     - layout_builder_restrictions
     - layout_library
@@ -96,23 +98,58 @@ third_party_settings:
         - stanford_events_body
   ds:
     layout:
-      id: pattern_card
+      id: pattern_events-card
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
         pattern:
-          field_templates: default
-          variant: default
+          field_templates: only_content
     regions:
-      card_super_headline:
-        - su_event_date_time
-      card_headline:
+      su_event_start_month:
+        - 'dynamic_token_field:node-event_start_month'
+      su_event_start_date:
+        - 'dynamic_token_field:node-event_start_day'
+      su_event_end_month:
+        - 'dynamic_token_field:node-date_end_month'
+      su_event_end_date:
+        - 'dynamic_token_field:node-date_end_day'
+      su_event_type:
+        - su_event_type
+      su_event_headline:
         - node_title
+      su_event_subheadline:
+        - su_event_subheadline
+      su_event_dek:
+        - su_event_dek
+      su_event_date_time:
+        - su_event_date_time
+      su_event_address:
+        - su_event_location
     fields:
+      'dynamic_token_field:node-date_end_day':
+        plugin_id: 'dynamic_token_field:node-date_end_day'
+        weight: 3
+        label: hidden
+        formatter: default
+      'dynamic_token_field:node-date_end_month':
+        plugin_id: 'dynamic_token_field:node-date_end_month'
+        weight: 2
+        label: hidden
+        formatter: default
+      'dynamic_token_field:node-event_start_day':
+        plugin_id: 'dynamic_token_field:node-event_start_day'
+        weight: 1
+        label: hidden
+        formatter: default
+      'dynamic_token_field:node-event_start_month':
+        plugin_id: 'dynamic_token_field:node-event_start_month'
+        weight: 0
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 5
         label: hidden
         formatter: default
         settings:
@@ -126,14 +163,47 @@ mode: stanford_card
 content:
   su_event_date_time:
     type: smartdate_default
-    weight: 0
-    region: card_super_headline
+    weight: 8
+    region: su_event_date_time
     label: hidden
     settings:
-      format: default
+      timezone_override: ''
+      format: stanford_events_long
       force_chronological: false
       format_type: medium
-      timezone_override: ''
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+  su_event_dek:
+    type: string
+    weight: 7
+    region: su_event_dek
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_event_location:
+    type: address_default
+    weight: 9
+    region: su_event_address
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  su_event_subheadline:
+    type: string
+    weight: 6
+    region: su_event_subheadline
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_event_type:
+    type: entity_reference_label
+    weight: 4
+    region: su_event_type
+    label: hidden
+    settings:
+      link: true
     third_party_settings: {  }
 hidden:
   body: true
@@ -143,13 +213,9 @@ hidden:
   su_event_audience: true
   su_event_components: true
   su_event_cta: true
-  su_event_dek: true
   su_event_email: true
-  su_event_location: true
   su_event_map_link: true
   su_event_schedule: true
   su_event_source: true
   su_event_sponsor: true
-  su_event_subheadline: true
   su_event_telephone: true
-  su_event_type: true
