@@ -147,6 +147,63 @@ class ListsCest {
   }
 
   /**
+   * When using the list paragraph and view arguments, it should filter results.
+   */
+  public function testListParagraphPeopleFilters(AcceptanceTester $I) {
+    $I->logInWithRole('contributor');
+    $faker = Factory::create();
+
+    $random_term = $I->createEntity([
+      'name' => $faker->text(10),
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+
+    $type_term = $I->createEntity([
+      'name' => $faker->text(10),
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+
+    $news = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $faker->text(15),
+      'su_person_last_name' => $faker->text(15),
+      'su_person_type_group' => $type_term->id(),
+    ]);
+
+    $I->amOnPage("/node/{$news->id()}/edit");
+    $I->click('Save');
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_person',
+      'display_id' => 'grid_list_all',
+      'items_to_display' => 100,
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($news->label());
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_person',
+      'display_id' => 'grid_list_all',
+      'items_to_display' => 100,
+      'arguments' => $random_term->label(),
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->cantSee($news->label());
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_person',
+      'display_id' => 'grid_list_all',
+      'items_to_display' => 100,
+      'arguments' => $type_term->label(),
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($news->label());
+  }
+
+  /**
    * Get a node with a list paragraph in a row.
    *
    * @param \AcceptanceTester $I
