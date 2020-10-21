@@ -10,7 +10,7 @@ class ListsCest {
   /**
    * Allow all paragraph types by using state.
    */
-  public function _before(){
+  public function _before() {
     \Drupal::state()->set('stanford_profile_allow_all_paragraphs', TRUE);
   }
 
@@ -87,6 +87,63 @@ class ListsCest {
     $I->canSee('Lorem Ipsum');
     $I->canSeeLink('Google', 'http://google.com');
     $I->canSee('Foo Bar Person');
+  }
+
+  /**
+   * When using the list paragraph and view arguments, it should filter results.
+   */
+  public function testListParagraphPeopleFilters(AcceptanceTester $I) {
+    $I->logInWithRole('contributor');
+    $faker = Factory::create();
+
+    $random_term = $I->createEntity([
+      'name' => $faker->text(10),
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+
+    $type_term = $I->createEntity([
+      'name' => $faker->text(10),
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+
+    $news = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $faker->text(15),
+      'su_person_last_name' => $faker->text(15),
+      'su_person_type_group' => $type_term->id(),
+    ]);
+
+    $I->amOnPage("/node/{$news->id()}/edit");
+    $I->click('Save');
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_person',
+      'display_id' => 'grid_list_all',
+      'items_to_display' => 100,
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($news->label());
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_person',
+      'display_id' => 'grid_list_all',
+      'items_to_display' => 100,
+      'arguments' => $random_term->label(),
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->cantSee($news->label());
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_person',
+      'display_id' => 'grid_list_all',
+      'items_to_display' => 100,
+      'arguments' => $type_term->label(),
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($news->label());
   }
 
   /**
