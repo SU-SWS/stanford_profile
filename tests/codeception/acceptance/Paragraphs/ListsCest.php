@@ -52,6 +52,7 @@ class ListsCest {
       'name' => $faker->text(10),
       'vid' => 'stanford_news_topics',
     ], 'taxonomy_term');
+    $I->runDrush('cache:rebuild');
 
     $news = $I->createEntity([
       'type' => 'stanford_news',
