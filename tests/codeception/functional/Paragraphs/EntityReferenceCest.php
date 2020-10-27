@@ -23,7 +23,7 @@ class EntityReferenceCest {
     $I->fillField('Headline', 'Foo Bar News');
     $I->click('Save');
 
-    $node = $this->getNodeWithList($I);
+    $node = $this->getNodeWithReferenceParagraph($I);
 
     $I->amOnPage($node->toUrl()->toString());
     $I->click('Edit', '.local-tasks-block');
@@ -39,7 +39,7 @@ class EntityReferenceCest {
     $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
     $I->click('Save');
     $I->canSee('has been updated');
-    $I->canSee('Foo Bar News');
+    $I->canSee('Foo Bar News', '.su-card.su-news-vertical-teaser');
   }
 
   /**
@@ -50,7 +50,7 @@ class EntityReferenceCest {
    *
    * @return bool|\Drupal\node\NodeInterface
    */
-  protected function getNodeWithList(FunctionalTester $I) {
+  protected function getNodeWithReferenceParagraph(FunctionalTester $I) {
     $faker = Factory::create();
 
     $paragraph = $I->createEntity([
