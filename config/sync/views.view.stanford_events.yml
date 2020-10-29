@@ -761,6 +761,7 @@ display:
         row: false
         arguments: false
         css_class: false
+        pager: false
       style:
         type: grid
         options:
@@ -819,13 +820,17 @@ display:
           entity_type: node
           plugin_id: taxonomy_index_name_depth
       css_class: ''
+      pager:
+        type: some
+        options:
+          items_per_page: 3
+          offset: 0
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
