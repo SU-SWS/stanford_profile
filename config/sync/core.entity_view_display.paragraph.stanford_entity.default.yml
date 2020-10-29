@@ -38,7 +38,9 @@ content:
     weight: 1
     label: hidden
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-3
     type: text_default
     region: content
   su_entity_headline:
@@ -47,7 +49,9 @@ content:
     settings:
       tag: h2
       linked: false
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom
     type: entity_title_heading
     region: content
   su_entity_item:
@@ -58,7 +62,7 @@ content:
       link: false
     third_party_settings:
       field_formatter_class:
-        class: ''
+        class: su-margin-bottom-5
       ds:
         ds_limit: ''
     type: entity_reference_entity_view
