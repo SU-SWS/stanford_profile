@@ -70,16 +70,14 @@ third_party_settings:
     regions:
       card_image:
         - su_person_photo
-      card_super_headline:
-        - su_person_short_title
       card_headline:
         - node_title
       card_body:
-        - su_person_full_title
+        - su_person_short_title
     fields:
       node_title:
         plugin_id: node_title
-        weight: 2
+        weight: 1
         label: hidden
         formatter: default
         settings:
@@ -91,13 +89,6 @@ targetEntityType: node
 bundle: stanford_person
 mode: stanford_card
 content:
-  su_person_full_title:
-    type: basic_string
-    weight: 3
-    region: card_body
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
   su_person_photo:
     type: media_responsive_image_formatter
     weight: 0
@@ -112,8 +103,8 @@ content:
         class: ''
   su_person_short_title:
     type: string
-    weight: 1
-    region: card_super_headline
+    weight: 2
+    region: card_body
     label: hidden
     settings:
       link_to_entity: false
@@ -130,6 +121,7 @@ hidden:
   su_person_email: true
   su_person_fax: true
   su_person_first_name: true
+  su_person_full_title: true
   su_person_last_name: true
   su_person_links: true
   su_person_location_address: true
