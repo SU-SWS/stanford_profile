@@ -39,20 +39,11 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphNewsFilters(AcceptanceTester $I) {
-    $I->logInWithRole('contributor');
+  public function testListParagraphNewsFiltersNoFilter(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
     $faker = Factory::create();
 
-    $random_term = $I->createEntity([
-      'name' => $faker->text(10),
-      'vid' => 'stanford_news_topics',
-    ], 'taxonomy_term');
-
-    $topic_term = $I->createEntity([
-      'name' => $faker->text(10),
-      'vid' => 'stanford_news_topics',
-    ], 'taxonomy_term');
-    $I->runDrush('cache:rebuild');
+    $topic_term = $this->createTaxonomyTerm($I, 'stanford_news_topics');
 
     $news = $I->createEntity([
       'type' => 'stanford_news',
@@ -72,6 +63,27 @@ class ListsCest {
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($news->label());
+  }
+
+  /**
+   * When using the list paragraph and view arguments, it should filter results.
+   */
+  public function testListParagraphNewsFiltersRandomFilter(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $faker = Factory::create();
+
+    $random_term = $this->createTaxonomyTerm($I, 'stanford_news_topics');
+    $topic_term = $this->createTaxonomyTerm($I, 'stanford_news_topics');
+
+    $news = $I->createEntity([
+      'type' => 'stanford_news',
+      'su_news_headline' => $faker->text(15),
+      'su_news_topics' => $topic_term->id(),
+      'su_news_publishing_date' => date('Y-m-d', time()),
+    ]);
+
+    $I->amOnPage("/node/{$news->id()}/edit");
+    $I->click('Save');
 
     $node = $this->getNodeWithList($I, [
       'target_id' => 'stanford_news',
@@ -80,8 +92,29 @@ class ListsCest {
       'arguments' => $random_term->label(),
     ]);
 
+
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSee($news->label());
+  }
+
+  /**
+   * When using the list paragraph and view arguments, it should filter results.
+   */
+  public function testListParagraphNewsFiltersTopicFilter(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $faker = Factory::create();
+
+    $topic_term = $this->createTaxonomyTerm($I, 'stanford_news_topics');
+
+    $news = $I->createEntity([
+      'type' => 'stanford_news',
+      'su_news_headline' => $faker->text(15),
+      'su_news_topics' => $topic_term->id(),
+      'su_news_publishing_date' => date('Y-m-d', time()),
+    ]);
+
+    $I->amOnPage("/node/{$news->id()}/edit");
+    $I->click('Save');
 
     $node = $this->getNodeWithList($I, [
       'target_id' => 'stanford_news',
@@ -89,6 +122,7 @@ class ListsCest {
       'items_to_display' => 100,
       'arguments' => $topic_term->label(),
     ]);
+
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($news->label());
@@ -126,24 +160,12 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphEventFilters(AcceptanceTester $I) {
-    $I->logInWithRole('contributor');
+  public function testListParagraphEventFiltersNoFilter(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
     $faker = Factory::create();
 
-    $random_term = $I->createEntity([
-      'name' => $faker->text(10),
-      'vid' => 'stanford_event_types',
-    ], 'taxonomy_term');
-
-    $event_type = $I->createEntity([
-      'name' => $faker->text(10),
-      'vid' => 'stanford_event_types',
-    ], 'taxonomy_term');
-
-    $event_audience = $I->createEntity([
-      'name' => $faker->text(10),
-      'vid' => 'event_audience',
-    ], 'taxonomy_term');
+    $event_type = $this->createTaxonomyTerm($I, 'stanford_event_types');
+    $event_audience = $this->createTaxonomyTerm($I, 'event_audience');
 
     $event = $I->createEntity([
       'type' => 'stanford_event',
@@ -157,6 +179,7 @@ class ListsCest {
     ]);
     $I->amOnPage("/node/{$event->id()}/edit");
     $I->click('Save');
+    $I->canSee('has been updated');
 
     $node = $this->getNodeWithList($I, [
       'target_id' => 'stanford_events',
@@ -164,8 +187,35 @@ class ListsCest {
       'items_to_display' => 100,
     ]);
 
+
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($event->label());
+  }
+
+  /**
+   * When using the list paragraph and view arguments, it should filter results.
+   */
+  public function testListParagraphEventFiltersRandomFilter(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $faker = Factory::create();
+
+    $random_term = $this->createTaxonomyTerm($I, 'stanford_event_types');
+    $event_type = $this->createTaxonomyTerm($I, 'stanford_event_types');
+    $event_audience = $this->createTaxonomyTerm($I, 'event_audience');
+
+    $event = $I->createEntity([
+      'type' => 'stanford_event',
+      'title' => $faker->text(15),
+      'su_event_audience' => $event_audience->id(),
+      'su_event_type' => $event_type->id(),
+      'su_event_date_time' => [
+        'value' => time(),
+        'end_value' => time() + 60,
+      ],
+    ]);
+    $I->amOnPage("/node/{$event->id()}/edit");
+    $I->click('Save');
+    $I->canSee('has been updated');
 
     $node = $this->getNodeWithList($I, [
       'target_id' => 'stanford_events',
@@ -174,8 +224,34 @@ class ListsCest {
       'arguments' => $random_term->label(),
     ]);
 
+
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSee($event->label());
+  }
+
+  /**
+   * When using the list paragraph and view arguments, it should filter results.
+   */
+  public function testListParagraphEventFiltersTypeFilter(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $faker = Factory::create();
+
+    $event_type = $this->createTaxonomyTerm($I, 'stanford_event_types');
+    $event_audience = $this->createTaxonomyTerm($I, 'event_audience');
+
+    $event = $I->createEntity([
+      'type' => 'stanford_event',
+      'title' => $faker->text(15),
+      'su_event_audience' => $event_audience->id(),
+      'su_event_type' => $event_type->id(),
+      'su_event_date_time' => [
+        'value' => time(),
+        'end_value' => time() + 60,
+      ],
+    ]);
+    $I->amOnPage("/node/{$event->id()}/edit");
+    $I->click('Save');
+    $I->canSee('has been updated');
 
     $node = $this->getNodeWithList($I, [
       'target_id' => 'stanford_events',
@@ -184,8 +260,36 @@ class ListsCest {
       'arguments' => $event_type->label(),
     ]);
 
+
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($event->label());
+  }
+
+  /**
+   * When using the list paragraph and view arguments, it should filter results.
+   *
+   * @group testme
+   */
+  public function testListParagraphEventFiltersAudienceFilter(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $faker = Factory::create();
+
+    $event_type = $this->createTaxonomyTerm($I, 'stanford_event_types');
+    $event_audience = $this->createTaxonomyTerm($I, 'event_audience');
+
+    $event = $I->createEntity([
+      'type' => 'stanford_event',
+      'title' => $faker->text(15),
+      'su_event_audience' => $event_audience->id(),
+      'su_event_type' => $event_type->id(),
+      'su_event_date_time' => [
+        'value' => time(),
+        'end_value' => time() + 60,
+      ],
+    ]);
+    $I->amOnPage("/node/{$event->id()}/edit");
+    $I->click('Save');
+    $I->canSee('has been updated');
 
     $node = $this->getNodeWithList($I, [
       'target_id' => 'stanford_events',
@@ -193,6 +297,7 @@ class ListsCest {
       'items_to_display' => 100,
       'arguments' => $event_audience->label(),
     ]);
+
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($event->label());
@@ -226,18 +331,10 @@ class ListsCest {
    * When using the list paragraph and view arguments, it should filter results.
    */
   public function testListParagraphPeopleFilters(AcceptanceTester $I) {
-    $I->logInWithRole('contributor');
+    $I->logInWithRole('site_manager');
     $faker = Factory::create();
 
-    $random_term = $I->createEntity([
-      'name' => $faker->text(10),
-      'vid' => 'stanford_person_types',
-    ], 'taxonomy_term');
-
-    $type_term = $I->createEntity([
-      'name' => $faker->text(10),
-      'vid' => 'stanford_person_types',
-    ], 'taxonomy_term');
+    $type_term = $this->createTaxonomyTerm($I, 'stanford_person_types');
 
     $news = $I->createEntity([
       'type' => 'stanford_person',
@@ -255,8 +352,30 @@ class ListsCest {
       'items_to_display' => 100,
     ]);
 
+
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($news->label());
+  }
+
+  /**
+   * When using the list paragraph and view arguments, it should filter results.
+   */
+  public function testListParagraphPeopleFiltersRandomFilter(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $faker = Factory::create();
+
+    $random_term = $this->createTaxonomyTerm($I, 'stanford_person_types');
+    $type_term = $this->createTaxonomyTerm($I, 'stanford_person_types');
+
+    $news = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $faker->text(15),
+      'su_person_last_name' => $faker->text(15),
+      'su_person_type_group' => $type_term->id(),
+    ]);
+
+    $I->amOnPage("/node/{$news->id()}/edit");
+    $I->click('Save');
 
     $node = $this->getNodeWithList($I, [
       'target_id' => 'stanford_person',
@@ -265,8 +384,29 @@ class ListsCest {
       'arguments' => $random_term->label(),
     ]);
 
+
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSee($news->label());
+  }
+
+  /**
+   * When using the list paragraph and view arguments, it should filter results.
+   */
+  public function testListParagraphPeopleFiltersTypeFilter(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $faker = Factory::create();
+
+    $type_term = $this->createTaxonomyTerm($I, 'stanford_person_types');
+
+    $news = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $faker->text(15),
+      'su_person_last_name' => $faker->text(15),
+      'su_person_type_group' => $type_term->id(),
+    ]);
+
+    $I->amOnPage("/node/{$news->id()}/edit");
+    $I->click('Save');
 
     $node = $this->getNodeWithList($I, [
       'target_id' => 'stanford_person',
@@ -274,6 +414,7 @@ class ListsCest {
       'items_to_display' => 100,
       'arguments' => $type_term->label(),
     ]);
+
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($news->label());
@@ -310,7 +451,7 @@ class ListsCest {
       ],
     ], 'paragraph_row');
 
-    return $I->createEntity([
+    $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $faker->text(30),
       'su_page_components' => [
@@ -318,6 +459,28 @@ class ListsCest {
         'entity' => $row,
       ],
     ]);
+
+    return $node;
+  }
+
+  /**
+   * @param \AcceptanceTester $I
+   *   Tester.
+   * @param string $vid
+   *   Term vocabulary ID.
+   * @param string|null $name
+   *   Taxonomy name.
+   *
+   * @return \Drupal\taxonomy\TermInterface
+   *   Generated taxonomy term.
+   */
+  protected function createTaxonomyTerm(AcceptanceTester $I, string $vid, $name = NULL) {
+    if (!$name) {
+      $name = Factory::create()->text(15);
+    }
+
+    $name = trim(preg_replace('/[\W]/', '-', $name), '-');
+    return $I->createEntity(['vid' => $vid, 'name' => $name], 'taxonomy_term');
   }
 
 }
