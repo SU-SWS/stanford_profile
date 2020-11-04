@@ -226,6 +226,182 @@ display:
         - url
         - user.permissions
       tags: {  }
+  events_intro:
+    display_plugin: block
+    id: events_intro
+    display_title: 'Events Intro Edit Link'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      filters:
+        status:
+          value: '1'
+          table: block_content_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: block_content
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        reusable:
+          id: reusable
+          plugin_id: boolean
+          table: block_content_field_data
+          field: reusable
+          value: '1'
+          entity_type: block_content
+          entity_field: reusable
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        uuid:
+          id: uuid
+          table: block_content
+          field: uuid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: f7125c85-197d-4ba2-9f6f-1126bbda0466
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: block_content
+          entity_field: uuid
+          plugin_id: string
+      defaults:
+        filters: false
+        filter_groups: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - user.permissions
+      tags: {  }
+  news_intro:
+    display_plugin: block
+    id: news_intro
+    display_title: 'News Intro Edit Link'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      filters:
+        status:
+          value: '1'
+          table: block_content_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: block_content
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        reusable:
+          id: reusable
+          plugin_id: boolean
+          table: block_content_field_data
+          field: reusable
+          value: '1'
+          entity_type: block_content
+          entity_field: reusable
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        uuid:
+          id: uuid
+          table: block_content
+          field: uuid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: 5168834f-3271-4951-bd95-e75340ca5522
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: block_content
+          entity_field: uuid
+          plugin_id: string
+      defaults:
+        filters: false
+        filter_groups: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - user.permissions
+      tags: {  }
   people_intro:
     display_plugin: block
     id: people_intro
@@ -234,6 +410,79 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
+      filters:
+        status:
+          value: '1'
+          table: block_content_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: block_content
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        reusable:
+          id: reusable
+          plugin_id: boolean
+          table: block_content_field_data
+          field: reusable
+          value: '1'
+          entity_type: block_content
+          entity_field: reusable
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        uuid:
+          id: uuid
+          table: block_content
+          field: uuid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: fb905cf3-4bd3-4bcd-ad01-92d25e46ba32
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: block_content
+          entity_field: uuid
+          plugin_id: string
+      defaults:
+        filters: false
+        filter_groups: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:

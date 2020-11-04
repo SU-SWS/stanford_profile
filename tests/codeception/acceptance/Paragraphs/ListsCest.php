@@ -267,8 +267,6 @@ class ListsCest {
 
   /**
    * When using the list paragraph and view arguments, it should filter results.
-   *
-   * @group testme
    */
   public function testListParagraphEventFiltersAudienceFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
