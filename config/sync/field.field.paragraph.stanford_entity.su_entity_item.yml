@@ -7,15 +7,14 @@ dependencies:
     - node.type.stanford_event
     - node.type.stanford_event_series
     - node.type.stanford_news
-    - node.type.stanford_page
     - node.type.stanford_person
     - paragraphs.paragraphs_type.stanford_entity
 id: paragraph.stanford_entity.su_entity_item
 field_name: su_entity_item
 entity_type: paragraph
 bundle: stanford_entity
-label: 'Content Items'
-description: 'Choose existing pieces of content to display.'
+label: 'Content Item(s)'
+description: 'Start typing the title of the piece of content to select it. You can add multiple items to create a curated list of teaser items.'
 required: false
 translatable: false
 default_value: {  }
@@ -24,7 +23,6 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      stanford_page: stanford_page
       stanford_event: stanford_event
       stanford_event_series: stanford_event_series
       stanford_news: stanford_news
@@ -32,5 +30,5 @@ settings:
     sort:
       field: _none
     auto_create: false
-    auto_create_bundle: stanford_page
+    auto_create_bundle: stanford_event
 field_type: entity_reference
