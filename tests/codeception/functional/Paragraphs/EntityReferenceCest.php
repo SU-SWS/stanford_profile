@@ -31,7 +31,7 @@ class EntityReferenceCest {
     $I->waitForElementVisible('#row-0');
     $I->click('Edit', '.inner-row-wrapper');
 
-    $I->waitForText('Content Items');
+    $I->waitForText('Content Item(s)');
     $I->fillField('#su_entity_item', 'Foo Bar News');
     $I->click('.MuiAutocomplete-option');
 
