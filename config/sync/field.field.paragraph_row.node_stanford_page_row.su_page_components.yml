@@ -28,33 +28,30 @@ settings:
       stanford_schedule: stanford_schedule
     target_bundles_drag_drop:
       stanford_banner:
-        weight: 4
+        weight: -19
         enabled: false
       stanford_card:
-        weight: 4
+        weight: -18
+        enabled: false
+      stanford_entity:
+        weight: -14
+        enabled: false
+      stanford_lists:
+        weight: -12
         enabled: false
       stanford_media_caption:
-        weight: 8
+        weight: -16
         enabled: false
       stanford_person_cta:
         enabled: true
-        weight: 11
+        weight: -15
       stanford_schedule:
         enabled: true
-        weight: 12
+        weight: -13
       stanford_spacer:
-        weight: 9
+        weight: -11
         enabled: false
       stanford_wysiwyg:
-        weight: 6
+        weight: -17
         enabled: false
-    widths:
-      stanford_banner:
-        min: '12'
-      stanford_card:
-        min: '4'
-      stanford_media_caption:
-        min: '4'
-      stanford_wysiwyg:
-        min: '4'
 field_type: entity_reference_revisions

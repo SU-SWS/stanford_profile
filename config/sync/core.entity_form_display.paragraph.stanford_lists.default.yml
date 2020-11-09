@@ -1,0 +1,52 @@
+uuid: 6120280f-7695-4492-b158-11d5697a6b9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_lists.su_list_button
+    - field.field.paragraph.stanford_lists.su_list_description
+    - field.field.paragraph.stanford_lists.su_list_headline
+    - field.field.paragraph.stanford_lists.su_list_view
+    - paragraphs.paragraphs_type.stanford_lists
+  module:
+    - link
+    - text
+    - viewfield
+id: paragraph.stanford_lists.default
+targetEntityType: paragraph
+bundle: stanford_lists
+mode: default
+content:
+  su_list_button:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_list_description:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  su_list_headline:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_list_view:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: viewfield_select
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,70 @@
+uuid: 90bc4aaa-a4dc-418a-ae0e-295f66e679a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_lists.su_list_button
+    - field.field.paragraph.stanford_lists.su_list_description
+    - field.field.paragraph.stanford_lists.su_list_headline
+    - field.field.paragraph.stanford_lists.su_list_view
+    - paragraphs.paragraphs_type.stanford_lists
+  module:
+    - element_class_formatter
+    - field_formatter_class
+    - stanford_fields
+    - text
+    - viewfield
+id: paragraph.stanford_lists.default
+targetEntityType: paragraph
+bundle: stanford_lists
+mode: default
+content:
+  su_list_button:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 80
+      class: su-button
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-top-5
+    type: link_class
+    region: content
+  su_list_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-3
+    type: text_default
+    region: content
+  su_list_headline:
+    weight: 0
+    label: hidden
+    settings:
+      tag: h2
+      linked: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom
+    type: entity_title_heading
+    region: content
+  su_list_view:
+    weight: 2
+    label: hidden
+    settings:
+      view_title: hidden
+      empty_view_title: hidden
+      always_build_output: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: viewfield_default
+    region: content
+hidden:
+  search_api_excerpt: true
