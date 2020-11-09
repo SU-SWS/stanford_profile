@@ -1,5 +1,12 @@
 # Cardinal Service Profile
 
+8.x-1.10
+--------------------------------------------------------------------------------
+_Release Date: 2020-11-09_
+
+- Updates from stanford_profile
+- Adjusted external link icon position.
+
 8.x-1.9
 --------------------------------------------------------------------------------
 _Release Date: 2020-10-14_

@@ -3,12 +3,8 @@ langcode: en
 status: true
 dependencies:
   module:
-    - field_permissions
     - node
     - text
-third_party_settings:
-  field_permissions:
-    permission_type: public
 id: node.su_spotlight_quote
 field_name: su_spotlight_quote
 entity_type: node
