@@ -1,0 +1,19 @@
+uuid: 7c8cb349-3956-4558-bce7-db767fc5d021
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_list_headline
+    - paragraphs.paragraphs_type.stanford_lists
+id: paragraph.stanford_lists.su_list_headline
+field_name: su_list_headline
+entity_type: paragraph
+bundle: stanford_lists
+label: Headline
+description: 'This is the main headline for the list paragraph. The headline will appear above the list view in large font.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

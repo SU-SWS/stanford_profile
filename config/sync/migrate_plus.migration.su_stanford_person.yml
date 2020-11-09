@@ -200,6 +200,11 @@ process:
       method: process
       source: profile_photo
     -
+      plugin: image_dimension_skip
+      method: process
+      width: 10
+      height: 10
+    -
       plugin: file_import
       destination: '@image_path'
       id_only: true
@@ -208,20 +213,17 @@ process:
     -
       plugin: skip_on_empty
       method: process
-      source: profile_photo
-    -
-      plugin: skip_on_empty
-      method: process
       source: '@image_file'
     -
       plugin: entity_generate
-      source: display_name
-      value_key: name
+      source: '@image_file'
+      value_key: field_media_image
       bundle_key: bundle
       bundle: image
       entity_type: media
       ignore_case: true
       values:
+        name: '@title'
         field_media_image/target_id: '@image_file'
         field_media_image/alt: '@title'
   su_person_links:

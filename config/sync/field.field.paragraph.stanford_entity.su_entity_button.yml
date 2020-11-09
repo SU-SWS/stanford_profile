@@ -1,0 +1,23 @@
+uuid: de6e80e8-321c-4c2d-a786-af9853f7e88a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_entity_button
+    - paragraphs.paragraphs_type.stanford_entity
+  module:
+    - link
+id: paragraph.stanford_entity.su_entity_button
+field_name: su_entity_button
+entity_type: paragraph
+bundle: stanford_entity
+label: Button
+description: 'This button will appear below the content items.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

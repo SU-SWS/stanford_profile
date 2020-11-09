@@ -107,7 +107,7 @@ class PersonCest {
    */
   public function testD8Core2613Terms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
-    
+
     $foo = $I->createEntity([
       'name' => 'Foo',
       'vid' => 'stanford_person_types',
@@ -128,14 +128,14 @@ class PersonCest {
     $I->cantSeeLink('Baz');
 
     $I->amOnPage($baz->toUrl('edit-form')->toString());
-    $I->selectOption('Parent terms', '<root>');
+    $I->selectOption('Parent term', '<root>');
     $I->click('Save');
 
     $I->amOnPage('/people');
     $I->canSeeLink('Baz');
 
     $I->amOnPage($baz->toUrl('edit-form')->toString());
-    $I->selectOption('Parent terms', 'Bar');
+    $I->selectOption('Parent term', 'Bar');
     $I->click('Save');
 
     $I->amOnPage('/people');

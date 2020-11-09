@@ -25,6 +25,8 @@ class Issue2901390Cest {
     $I->amOnPage($node->toUrl()->toString());
     $I->click('Layout');
     $I->click('Add block');
+    // Clear cache since sometimes the paragraph type icon fails to generate.
+    $I->runDrush('cache:rebuild');
     $I->click('Create custom block');
     $I->fillField('Title', 'Custom Block');
     $I->fillField('Body', 'Lorem Ipsum Custom Block Text');
