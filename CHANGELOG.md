@@ -1,5 +1,33 @@
 # Stanford Profile
 
+8.x-1.19
+--------------------------------------------------------------------------------
+_Release Date: 2020-11-09_
+
+- D8CORE-2957 Updated feedback form link url (#326) (748b713)
+- D8CORE-2864 Allow site managers access to contextual links (#323) (1381642)
+- D8CORE-2873 Added space for the event date (29cca26)
+- D8CORE-2960 D8CORE-2961 Update paragraph and field names, with icons (#325) (d89ba4e)
+- D8CORE-2570 Add intro block above event and news lists (#324) (c55f522)
+- Add cache clear to prevent random test failure (f23c685)
+- Updated default content for the paragraph row serializable data (#322) (d58e418)
+- Switch card field classes (0597f53)
+- D8CORE 000 entity card and view display tweaks (#321) (de83462)
+- D8CORE-2780 Use square image style to make a circle (#320) (74667b7)
+- Fixup for the composer.json (4b43e0e)
+- D8CORE-2738 Add filters for event lists (#313) (2a88360)
+- D8CORE-2720 D8CORE-2787 News card display for entity reference (#319) (467bf76)
+- added flex-container to the people grid list view (a593c00)
+- Patch token module (#317) (a1b2fd0)
+- D8CORE-2885 People lists contextual filters and tests (#315) (4b1e77f)
+- D8CORE 2710 News lists contextual filters and tests (#314) (76c6312)
+- D8CORE-2875 Allow all paragraph types in tests (#312) (2a1d924)
+- corrected composer.json (2780d18)
+- D8CORE-2856 Add list and entity reference paragraph types (#310) (2b9f721)
+- D8CORE-2002: config adjustment to hide required asterisk for field group (#311) (f72a420)
+- Adjusted the person importer to update the media item correctly (#309) (967b16d)
+- D8CORE-2470: Add process plugin to check image dimensions (#308) (6b9b7eb)
+
 8.x-1.18
 --------------------------------------------------------------------------------
 _Release Date: 2020-10-05_
