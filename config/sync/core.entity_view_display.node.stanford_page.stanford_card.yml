@@ -1,0 +1,91 @@
+uuid: c05a8d85-bad5-43aa-8e5c-511bc0038b89
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.stanford_card
+    - field.field.node.stanford_page.layout_builder__layout
+    - field.field.node.stanford_page.layout_selection
+    - field.field.node.stanford_page.su_page_banner
+    - field.field.node.stanford_page.su_page_components
+    - node.type.stanford_page
+  module:
+    - ds
+    - entity_reference_revisions
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+  layout_library:
+    enable: true
+  layout_builder_restrictions:
+    entity_view_mode_restriction:
+      allowed_blocks:
+        'Chaos Tools': {  }
+        'Content fields':
+          - 'field_block:node:stanford_page:su_page_banner'
+          - 'field_block:node:stanford_page:su_page_components'
+          - 'field_block:node:stanford_page:title'
+        Forms: {  }
+        Help: {  }
+        Menus:
+          - 'menu_block:footer'
+          - 'system_menu_block:footer'
+          - 'menu_block:main'
+          - 'system_menu_block:main'
+        'SimpleSAMLphp Authentication': {  }
+        'Stanford SimpleSAML PHP': {  }
+        System: {  }
+        'User fields': {  }
+        core: {  }
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+    allowed_block_categories: {  }
+  ds:
+    layout:
+      id: pattern_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      card_image:
+        - su_page_banner
+      card_headline:
+        - node_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+id: node.stanford_page.stanford_card
+targetEntityType: node
+bundle: stanford_page
+mode: stanford_card
+content:
+  su_page_banner:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    region: card_image
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+hidden:
+  layout_builder__layout: true
+  layout_selection: true
+  links: true
+  su_page_components: true

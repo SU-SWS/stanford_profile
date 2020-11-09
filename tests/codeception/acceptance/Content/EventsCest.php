@@ -1,9 +1,25 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Test the events + importer functionality.
  */
 class EventsCest {
+
+  /**
+   * Events list intro block is at the top of the page.
+   */
+  public function testListIntro(AcceptanceTester $I){
+    $intro_text = Factory::create()->text();
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/events');
+    $I->click('Edit Block Content Above');
+    $I->click('Add Text Area');
+    $I->fillField('Body', $intro_text);
+    $I->click('Save');
+    $I->canSee($intro_text);
+  }
 
   /**
    * Ensure events are in the sitemap.

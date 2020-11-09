@@ -5,11 +5,11 @@ dependencies:
   config:
     - field.field.node.stanford_news.layout_builder__layout
     - field.field.node.stanford_news.su_news_banner
+    - field.field.node.stanford_news.su_news_banner_media_caption
     - field.field.node.stanford_news.su_news_byline
     - field.field.node.stanford_news.su_news_components
     - field.field.node.stanford_news.su_news_dek
     - field.field.node.stanford_news.su_news_featured_media
-    - field.field.node.stanford_news.su_news_banner_media_caption
     - field.field.node.stanford_news.su_news_headline
     - field.field.node.stanford_news.su_news_publishing_date
     - field.field.node.stanford_news.su_news_source
@@ -23,6 +23,7 @@ dependencies:
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
+    - layout_library
     - stanford_news
     - user
     - views
@@ -357,6 +358,8 @@ third_party_settings:
         - jumpstart_ui_three_column
         - stanford_news_byline
         - ds_reset
+  layout_library:
+    enable: false
 id: node.stanford_news.default
 targetEntityType: node
 bundle: stanford_news

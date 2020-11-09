@@ -1,0 +1,70 @@
+uuid: f43e800f-32a2-4557-beb0-36002b7182b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_entity.su_entity_button
+    - field.field.paragraph.stanford_entity.su_entity_description
+    - field.field.paragraph.stanford_entity.su_entity_headline
+    - field.field.paragraph.stanford_entity.su_entity_item
+    - paragraphs.paragraphs_type.stanford_entity
+  module:
+    - ds
+    - element_class_formatter
+    - field_formatter_class
+    - stanford_fields
+    - text
+id: paragraph.stanford_entity.default
+targetEntityType: paragraph
+bundle: stanford_entity
+mode: default
+content:
+  su_entity_button:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 80
+      class: su-button
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: link_class
+    region: content
+  su_entity_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-3
+    type: text_default
+    region: content
+  su_entity_headline:
+    weight: 0
+    label: hidden
+    settings:
+      tag: h2
+      linked: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom
+    type: entity_title_heading
+    region: content
+  su_entity_item:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: stanford_card
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-5
+      ds:
+        ds_limit: ''
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }
