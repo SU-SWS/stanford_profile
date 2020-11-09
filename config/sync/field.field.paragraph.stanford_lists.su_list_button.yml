@@ -1,0 +1,23 @@
+uuid: 58918065-4d83-4057-89a5-917752630719
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_list_button
+    - paragraphs.paragraphs_type.stanford_lists
+  module:
+    - link
+id: paragraph.stanford_lists.su_list_button
+field_name: su_list_button
+entity_type: paragraph
+bundle: stanford_lists
+label: Button
+description: 'This button will appear at the end of the list view.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

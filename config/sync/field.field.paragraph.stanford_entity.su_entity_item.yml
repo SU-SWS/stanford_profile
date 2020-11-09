@@ -1,0 +1,34 @@
+uuid: 79c18cee-aaea-413c-a062-68b0e26ab337
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_entity_item
+    - node.type.stanford_event
+    - node.type.stanford_event_series
+    - node.type.stanford_news
+    - node.type.stanford_person
+    - paragraphs.paragraphs_type.stanford_entity
+id: paragraph.stanford_entity.su_entity_item
+field_name: su_entity_item
+entity_type: paragraph
+bundle: stanford_entity
+label: 'Content Item(s)'
+description: 'Start typing the title of the piece of content to select it. You can add multiple items to create a curated list of teaser items.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      stanford_event: stanford_event
+      stanford_event_series: stanford_event_series
+      stanford_news: stanford_news
+      stanford_person: stanford_person
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: stanford_event
+field_type: entity_reference

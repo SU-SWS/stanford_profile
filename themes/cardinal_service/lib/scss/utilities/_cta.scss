@@ -30,6 +30,14 @@ svg {
     position: absolute;
     bottom: 10px;
   }
+
+  &.su-button {
+    @include padding(1rem 3rem 1.15rem 2rem);
+
+    &::after {
+      bottom: 16px;
+    }
+  }
 }
 
 .su-link--action {

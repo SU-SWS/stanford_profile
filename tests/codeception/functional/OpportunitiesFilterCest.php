@@ -50,7 +50,7 @@ class OpportunitiesFilterCest {
 
     $I->click('Search', '#opportunities-filter-list');
 
-    $I->canSeeNumberOfElements('.views-row', [1, 10]);
+    $I->canSeeNumberOfElements('.views-row', [1, 999]);
     $I->canSeeNumberOfElements('.su-opportunity-result', [1, 999]);
     $I->canSee('Showing Results For:');
   }

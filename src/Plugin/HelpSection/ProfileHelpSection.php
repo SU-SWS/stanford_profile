@@ -100,7 +100,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
   protected function getFeedback() {
     $help = '<h3>' . $this->t('Do you have feedback for us?') . '</h3>';
     $help .= '<p>' . $this->t('Submit Feedback to our Drupal 8 service through our Google form.') . '</p>';
-    $help .= self::getLinkString($this->t('Feedback form'), 'https://forms.gle/TTWDavR3CVMxrUX48', TRUE);
+    $help .= self::getLinkString($this->t('Feedback form'), 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a', TRUE);
     return ['#markup' => $help];
   }
 
