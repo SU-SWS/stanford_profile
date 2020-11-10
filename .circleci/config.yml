@@ -53,7 +53,6 @@ codeception: &codeception
         name: Run Codeception Tests
         command: |
           composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
-          composer clear-cache
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
     - store_test_results:
         path: /var/www/html/artifacts/behat
