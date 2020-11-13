@@ -28,6 +28,9 @@ class LocalFooterLockupCest {
   function _before(AcceptanceTester $I) {
     $this->DATA_DIR = rtrim(codecept_data_dir(), '/\\');
     // Copy our assets into place first.
+    if (!file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR)) {
+      mkdir($this->DATA_DIR, 0777, TRUE);
+    }
     copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
   }
 
@@ -44,18 +47,17 @@ class LocalFooterLockupCest {
     $I->uncheckOption('#edit-su-local-foot-use-logo-value');
     $I->selectOption("#edit-su-local-foot-loc-op", "a");
     // In case there was an image already.
-    try {
+    if ($I->grabMultiple('input[value="Remove"]')) {
       $I->click("Remove");
-    }
-    catch(Exception $e) {
-      // Do nothing and carry on.
     }
     $I->checkOption('#edit-su-local-foot-use-logo-value');
     $I->checkOption('#edit-su-local-foot-use-loc-value');
     $I->click('Save');
 
     // Clean up our assets.
-    unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    if (file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME)) {
+      unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    }
   }
 
   /**
@@ -341,11 +343,8 @@ class LocalFooterLockupCest {
     $I->uncheckOption('#edit-su-local-foot-use-logo-value');
 
     // In case there was an image already.
-    try {
+    if ($I->grabMultiple('input[value="Remove"]')) {
       $I->click("Remove");
-    }
-    catch(Exception $e) {
-      // Do nothing and carry on.
     }
 
     $I->attachFile('input[name="files[su_local_foot_loc_img_0]"]', self::LOGO_FILENAME);
@@ -378,11 +377,8 @@ class LocalFooterLockupCest {
     $I->uncheckOption('#edit-su-local-foot-use-logo-value');
 
     // In case there was an image already.
-    try {
+    if ($I->grabMultiple('input[value="Remove"]')) {
       $I->click("Remove");
-    }
-    catch(Exception $e) {
-      // Do nothing and carry on.
     }
 
     // For CircleCI
