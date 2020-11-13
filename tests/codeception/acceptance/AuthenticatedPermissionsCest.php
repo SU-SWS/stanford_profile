@@ -68,8 +68,8 @@ class AuthenticatedPermissionsCest {
     $site_manager = $I->logInWithRole('site_manager');
     $site_manager_id = $site_manager->id();
     $I->amOnPage('/admin/people');
-    $I->canSee($site_manager->getUsername());
-    $I->click(['link' => $site_manager->getUsername()]);
+    $I->canSee($site_manager->getDisplayName());
+    $I->click(['link' => $site_manager->getDisplayName()]);
     $I->click('.roles.tabs__tab a');
     $I->canSeeInCurrentUrl("/user/$site_manager_id/roles");
     $I->dontSee('Administrator');
