@@ -199,8 +199,6 @@ class LocalFooterLockupCest {
 
    /**
    * Test the lockup settings overrides.
-    *
-    * @group testme
    */
   public function testLockupSettingsM(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
