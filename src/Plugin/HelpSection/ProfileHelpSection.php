@@ -40,8 +40,8 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    */
   protected function getUserGuide() {
     $help = '<h3>' . $this->t('User Guide') . '</h3>';
-    $help .= '<p>' . $this->t('Everything you need to know about how to use, maintain, and launch your D8 Website.') . '</p>';
-    $help .= self::getLinkString($this->t('D8 User Guide'), 'https://userguide.sites.stanford.edu', TRUE);
+    $help .= '<p>' . $this->t('Everything you need to know about how to use, maintain, and launch your Drupal Website.') . '</p>';
+    $help .= self::getLinkString($this->t('User Guide'), 'https://userguide.sites.stanford.edu', TRUE);
     return ['#markup' => $help];
   }
 
