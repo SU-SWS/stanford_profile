@@ -18,12 +18,10 @@ dependencies:
     - node.type.stanford_news
   module:
     - ds
-    - element_class_formatter
     - field_formatter_class
     - layout_builder
     - layout_builder_restrictions
     - layout_library
-    - link
     - stanford_media
     - user
 third_party_settings:
@@ -55,93 +53,63 @@ third_party_settings:
     enable: false
   ds:
     layout:
-      id: pattern_news-vertical-teaser
+      id: pattern_card
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
         pattern:
-          field_templates: only_content
+          field_templates: default
+          variant: default
     regions:
-      news_vertical_teaser_image:
+      card_image:
         - su_news_featured_media
-      news_vertical_teaser_headline:
+      card_super_headline:
+        - su_news_dek
+      card_headline:
         - node_title
-      news_topics:
-        - su_news_topics
-      news_source:
-        - su_news_source
-      news_url:
-        - 'dynamic_token_field:node-news_content_url'
+      card_body:
+        - node_post_date
     fields:
-      'dynamic_token_field:node-news_content_url':
-        plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 4
-        label: hidden
-        formatter: default
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 2
         label: hidden
         formatter: default
         settings:
-          wrapper: ''
+          link: true
+          wrapper: h2
           class: ''
-          link: false
+      node_post_date:
+        plugin_id: node_post_date
+        weight: 3
+        label: hidden
+        formatter: ds_post_date_long
 id: node.stanford_news.stanford_card
 targetEntityType: node
 bundle: stanford_news
 mode: stanford_card
 content:
+  su_news_dek:
+    type: string
+    weight: 1
+    region: card_super_headline
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   su_news_featured_media:
-    type: media_multimedia_formatter
+    type: media_responsive_image_formatter
     weight: 0
-    region: news_vertical_teaser_image
+    region: card_image
     label: hidden
     settings:
-      image:
-        image_formatter: image_style
-        image_formatter_image_style: su_news_list
-        image_formatter_responsive_image_style: full_responsive
-        image_formatter_view_mode: default
-      video:
-        video_formatter: entity
-        video_formatter_view_mode: default
-      other:
-        view_mode: default
       view_mode: default
-      link: false
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-  su_news_source:
-    type: link
-    weight: 3
-    region: news_source
-    label: hidden
-    settings:
-      trim_length: null
-      url_only: true
-      url_plain: true
-      rel: '0'
-      target: '0'
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-  su_news_topics:
-    type: entity_reference_list_label_class
-    weight: 2
-    region: news_topics
-    label: hidden
-    settings:
+      image_style: card_2_1
       link: true
-      list_type: ul
-      class: ''
     third_party_settings:
       field_formatter_class:
         class: ''
-      ds:
-        ds_limit: ''
 hidden:
   layout_builder__layout: true
   layout_selection: true
@@ -150,6 +118,7 @@ hidden:
   su_news_banner_media_caption: true
   su_news_byline: true
   su_news_components: true
-  su_news_dek: true
   su_news_headline: true
   su_news_publishing_date: true
+  su_news_source: true
+  su_news_topics: true

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.google_form.field_media_google_form
+    - field.field.media.google_form.field_media_google_form_hgt
     - media.type.google_form
   module:
     - stanford_media
@@ -21,6 +22,7 @@ content:
     region: content
 hidden:
   created: true
+  field_media_google_form_hgt: true
   name: true
   thumbnail: true
   uid: true
