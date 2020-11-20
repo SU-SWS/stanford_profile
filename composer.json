@@ -78,8 +78,6 @@
         "drupal/allowed_formats": "~1.1",
         "drupal/block_content_permissions": "^1.8",
         "drupal/chosen": "~2.4",
-        "drupal/ckeditor_fixed_toolbar": "dev-1.x#1e4a8191ab289b4c91d9a0f2ac6b40e82e294908",
-        "drupal/components": "~1.0",
         "drupal/config_ignore": "^2.2",
         "drupal/config_merge": "^1.0-rc",
         "drupal/config_pages": "^2.6",
@@ -88,10 +86,9 @@
         "drupal/config_split": "^1.0",
         "drupal/config_update": "^1.7",
         "drupal/confirm_leave": "^1.0@beta",
-        "drupal/core": "^8.9",
+        "drupal/core": "^8.9 || ^9.0",
         "drupal/default_content": "^1.0@alpha",
         "drupal/diff": "^1.0@RC",
-        "drupal/display_field_copy": "~1.2",
         "drupal/domain_301_redirect": "^1.0-alpha0",
         "drupal/ds": "~3.3",
         "drupal/element_class_formatter": "^1.1",
@@ -154,6 +151,9 @@
             }
         },
         "patches": {
+            "drupal/anchor_link": {
+                "https://www.drupal.org/project/anchor_link/issues/2958532": "https://www.drupal.org/files/issues/2019-01-11/anchor_link-linkit-support_2958532.patch"
+            },
             "drupal/config_ignore": {
                 "https://www.drupal.org/project/config_ignore/issues/2857247": "https://www.drupal.org/files/issues/2020-08-18/support-for-export-2857247-54.patch",
                 "https://www.drupal.org/project/config_ignore/issues/2865419": "https://www.drupal.org/files/issues/2020-06-21/config_ignore-wildcard_force-14.patch"
@@ -162,14 +162,19 @@
                 "https://www.drupal.org/project/config_readonly/issues/2892631": "https://www.drupal.org/files/issues/2018-04-01/config-readonly-2892631-18.patch"
             },
             "drupal/core": {
+                "https://www.drupal.org/project/drupal/issues/3106718": "https://www.drupal.org/files/issues/2020-01-16/3106718-image-hal-3.patch",
                 "https://www.drupal.org/project/drupal/issues/2577923": "https://www.drupal.org/files/issues/2020-06-11/2577923-128.patch",
                 "https://www.drupal.org/project/drupal/issues/2353611": "https://www.drupal.org/files/issues/2019-10-15/drupal-link_uuid-2353611-262.patch"
             },
             "drupal/default_content": {
                 "https://www.drupal.org/project/default_content/issues/2698425": "https://www.drupal.org/files/issues/2020-02-05/2698425--accept-content-updates--122.patch"
             },
+            "drupal/fakeobjects": {
+                "https://www.drupal.org/project/fakeobjects/issues/3002953": "https://www.drupal.org/files/issues/2020-06-22/fakeobjects-missing_plugin-3002953-5.patch"
+            },
             "drupal/menu_link_weight": {
-                "https://www.drupal.org/project/menu_link_weight/issues/2995896": "https://www.drupal.org/files/issues/2018-08-29/2995896-menu-admin-per-menu-support-fixes.patch"
+                "https://www.drupal.org/project/menu_link_weight/issues/2995896": "https://www.drupal.org/files/issues/2018-08-29/2995896-menu-admin-per-menu-support-fixes.patch",
+                "https://www.drupal.org/project/menu_link_weight/issues/3099139": "https://www.drupal.org/files/issues/2019-12-05/menu_link_weight-target_blank-3099139.patch"
             },
             "drupal/paragraphs": {
                 "https://www.drupal.org/project/paragraphs/issues/2901390": "https://www.drupal.org/files/issues/2020-06-25/paragraphs-2901390-51.patch"
