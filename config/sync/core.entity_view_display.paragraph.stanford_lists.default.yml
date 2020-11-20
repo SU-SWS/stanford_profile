@@ -31,14 +31,16 @@ content:
       target: '0'
     third_party_settings:
       field_formatter_class:
-        class: ''
+        class: su-margin-top-5
     type: link_class
     region: content
   su_list_description:
     weight: 1
     label: hidden
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-3
     type: text_default
     region: content
   su_list_headline:
@@ -47,7 +49,9 @@ content:
     settings:
       tag: h2
       linked: false
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom
     type: entity_title_heading
     region: content
   su_list_view:
@@ -55,9 +59,11 @@ content:
     label: hidden
     settings:
       view_title: hidden
-      always_build_output: false
       empty_view_title: hidden
-    third_party_settings: {  }
+      always_build_output: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
     type: viewfield_default
     region: content
 hidden: {  }
