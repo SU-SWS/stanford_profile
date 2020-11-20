@@ -94,8 +94,6 @@ class MediaCest {
    */
   public function testForGoogleFormFields(AcceptanceTester $I) {
     $I->logInWithRole('Administrator');
-    $I->amOnPage('/admin/structure/media/manage/google_form');
-    $I->canSee('iFrame Height');
     $I->amOnPage('/media/add/google_form');
     $I->canSee('Form Height');
   }

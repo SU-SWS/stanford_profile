@@ -40,8 +40,8 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    */
   protected function getUserGuide() {
     $help = '<h3>' . $this->t('User Guide') . '</h3>';
-    $help .= '<p>' . $this->t('Everything you need to know about how to use, maintain, and launch your D8 Website.') . '</p>';
-    $help .= self::getLinkString($this->t('D8 User Guide'), 'https://userguide.sites.stanford.edu', TRUE);
+    $help .= '<p>' . $this->t('Everything you need to know about how to use, maintain, and launch your Drupal Website.') . '</p>';
+    $help .= self::getLinkString($this->t('User Guide'), 'https://userguide.sites.stanford.edu', TRUE);
     return ['#markup' => $help];
   }
 
@@ -99,8 +99,8 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    */
   protected function getFeedback() {
     $help = '<h3>' . $this->t('Do you have feedback for us?') . '</h3>';
-    $help .= '<p>' . $this->t('Submit Feedback to our Drupal 8 service through our Google form.') . '</p>';
-    $help .= self::getLinkString($this->t('Feedback form'), 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a', TRUE);
+    $help .= '<p>' . $this->t('Submit Feedback to our Drupal service through our ServiceNow form') . '</p>';
+    $help .= self::getLinkString($this->t('Stanford Web Services ServiceNow Form'), 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a', TRUE);
     return ['#markup' => $help];
   }
 

@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 3b196c11-47c7-40a2-acbd-d48369e31669
+  bundle: image
+  default_langcode: en
+  depends:
+    6fec2907-db67-4d42-bb09-9bee305a2580: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: card-160911-7312.jpg
+  created:
+    -
+      value: 1581635659
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 6fec2907-db67-4d42-bb09-9bee305a2580
+      alt: 'Students dancing'
+      title: ''
+      width: 2000
+      height: 1000
