@@ -9,7 +9,11 @@ class AuthenticatedPermissionsCest {
    * Set up a file to test PHP injection.
    */
   public function _before(AcceptanceTester $I) {
-    $file = rtrim(codecept_data_dir(), '/') . '/injection.php';
+    $dir = rtrim(codecept_data_dir(), '/');
+    $file = "$dir/injection.php";
+    if (!file_exists($dir)) {
+      mkdir($dir, 0777, TRUE);
+    }
     if (!file_exists($file)) {
       file_put_contents($file, '<?php echo("injection test"); die(); ?>');
     }
@@ -127,7 +131,7 @@ class AuthenticatedPermissionsCest {
     $I->see('Upload favicon image');
     $I->attachFile('Upload favicon image', 'injection.php');
     $I->click('#edit-submit');
-    $I->see('For security reasons, your upload has been renamed');
+    $I->see('Only files with the following extensions are allowed');
     $I->checkOption('#edit-default-favicon');
     $I->click('#edit-submit');
   }
@@ -143,8 +147,7 @@ class AuthenticatedPermissionsCest {
     $I->see('Upload logo image');
     $I->attachFile('Upload logo image', 'injection.php');
     $I->click('#edit-submit');
-    $I->see('For security reasons, your upload has been renamed');
-    $I->see('The specified file injection.php.txt could not be uploaded.');
+    $I->see('Only files with the following extensions are allowed');
     $I->see('The image file is invalid or the image type is not allowed.');
     $I->checkOption('#edit-default-logo');
     $I->click('#edit-submit');
