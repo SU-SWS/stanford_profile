@@ -49,6 +49,7 @@ class BasicPageParagraphsCest {
    * If a user searches in the media library, cardinality is checked.
    */
   public function testMultipleImagesD8Core2428(FunctionalTester $I) {
+    $I->runDrush('cache:rebuild');
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_page');
     // Give it a few seconds to apply the media library javscript.
