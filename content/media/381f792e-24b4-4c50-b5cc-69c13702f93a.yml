@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 381f792e-24b4-4c50-b5cc-69c13702f93a
+  bundle: image
+  default_langcode: en
+  depends:
+    433e17b4-e705-4448-9467-93a03222e3f7: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: card-130514-6102.jpg
+  created:
+    -
+      value: 1581635659
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 433e17b4-e705-4448-9467-93a03222e3f7
+      alt: 'Woman working in laser lab'
+      title: ''
+      width: 2000
+      height: 1000
