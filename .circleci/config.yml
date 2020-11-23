@@ -5,7 +5,7 @@ version: 2
 defaults: &defaults
   docker:
     - image: pookmish/drupal8ci:pcov
-    - image: selenium/standalone-chrome:latest
+    - image: selenium/standalone-chrome:3.141.59-neon
     - image: mariadb:10.3
       environment:
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
