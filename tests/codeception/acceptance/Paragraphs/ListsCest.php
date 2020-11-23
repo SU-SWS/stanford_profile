@@ -105,11 +105,14 @@ class ListsCest {
     $faker = Factory::create();
 
     $topic_term = $this->createTaxonomyTerm($I, 'stanford_news_topics');
+    // Use a child term but the argument is the parent term to verify children
+    // are included in the results.
+    $child_term = $this->createTaxonomyTerm($I, 'stanford_news_topics', NULL, $topic_term->id());
 
     $news = $I->createEntity([
       'type' => 'stanford_news',
       'su_news_headline' => $faker->text(15),
-      'su_news_topics' => $topic_term->id(),
+      'su_news_topics' => $child_term->id(),
       'su_news_publishing_date' => date('Y-m-d', time()),
     ]);
 
@@ -118,11 +121,10 @@ class ListsCest {
 
     $node = $this->getNodeWithList($I, [
       'target_id' => 'stanford_news',
-      'display_id' => 'vertical_teaser_term',
+      'display_id' => 'vertical_cards',
       'items_to_display' => 100,
       'arguments' => $topic_term->label(),
     ]);
-
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($news->label());
@@ -237,13 +239,16 @@ class ListsCest {
     $faker = Factory::create();
 
     $event_type = $this->createTaxonomyTerm($I, 'stanford_event_types');
+    // Use a child term but the argument is the parent term to verify children
+    // are included in the results.
+    $child_type = $this->createTaxonomyTerm($I, 'stanford_event_types', null, $event_type->id());
     $event_audience = $this->createTaxonomyTerm($I, 'event_audience');
 
     $event = $I->createEntity([
       'type' => 'stanford_event',
       'title' => $faker->text(15),
       'su_event_audience' => $event_audience->id(),
-      'su_event_type' => $event_type->id(),
+      'su_event_type' => $child_type->id(),
       'su_event_date_time' => [
         'value' => time(),
         'end_value' => time() + 60,
@@ -260,7 +265,6 @@ class ListsCest {
       'arguments' => $event_type->label(),
     ]);
 
-
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($event->label());
   }
@@ -274,11 +278,14 @@ class ListsCest {
 
     $event_type = $this->createTaxonomyTerm($I, 'stanford_event_types');
     $event_audience = $this->createTaxonomyTerm($I, 'event_audience');
+    // Use a child term but the argument is the parent term to verify children
+    // are included in the results.
+    $child_audience = $this->createTaxonomyTerm($I, 'event_audience', NULL, $event_audience->id());
 
     $event = $I->createEntity([
       'type' => 'stanford_event',
       'title' => $faker->text(15),
-      'su_event_audience' => $event_audience->id(),
+      'su_event_audience' => $child_audience->id(),
       'su_event_type' => $event_type->id(),
       'su_event_date_time' => [
         'value' => time(),
@@ -295,7 +302,6 @@ class ListsCest {
       'items_to_display' => 100,
       'arguments' => $event_audience->label(),
     ]);
-
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($event->label());
@@ -395,12 +401,15 @@ class ListsCest {
     $faker = Factory::create();
 
     $type_term = $this->createTaxonomyTerm($I, 'stanford_person_types');
+    // Use a child term but the argument is the parent term to verify children
+    // are included in the results.
+    $child_type = $this->createTaxonomyTerm($I, 'stanford_person_types', NULL, $type_term->id());
 
     $news = $I->createEntity([
       'type' => 'stanford_person',
       'su_person_first_name' => $faker->text(15),
       'su_person_last_name' => $faker->text(15),
-      'su_person_type_group' => $type_term->id(),
+      'su_person_type_group' => $child_type->id(),
     ]);
 
     $I->amOnPage("/node/{$news->id()}/edit");
@@ -468,17 +477,18 @@ class ListsCest {
    *   Term vocabulary ID.
    * @param string|null $name
    *   Taxonomy name.
+   * @param int|null $parent_id
    *
    * @return \Drupal\taxonomy\TermInterface
    *   Generated taxonomy term.
    */
-  protected function createTaxonomyTerm(AcceptanceTester $I, string $vid, $name = NULL) {
+  protected function createTaxonomyTerm(AcceptanceTester $I, string $vid, ?string $name = NULL, ?int $parent_id = null) {
     if (!$name) {
       $name = Factory::create()->text(15);
     }
 
     $name = trim(preg_replace('/[\W]/', '-', $name), '-');
-    return $I->createEntity(['vid' => $vid, 'name' => $name], 'taxonomy_term');
+    return $I->createEntity(['vid' => $vid, 'name' => $name, 'parent' => $parent_id], 'taxonomy_term');
   }
 
 }
