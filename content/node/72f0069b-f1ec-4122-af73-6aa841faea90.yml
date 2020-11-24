@@ -1,0 +1,345 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 72f0069b-f1ec-4122-af73-6aa841faea90
+  bundle: stanford_page
+  default_langcode: en
+  depends:
+    6fac3713-f499-4750-a7bc-32c16a59043a: media
+    66286339-4f00-4994-8c0d-921b519ea4e4: media
+    39cadd28-7a7e-4648-868d-d5e4f0a69bf7: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: Home
+  created:
+    -
+      value: 1566940584
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /home
+      langcode: en
+      pathauto: 1
+  layout_selection:
+    -
+      target_id: stanford_basic_page_full
+  su_page_banner:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 79c98714-281a-450d-b574-2971426b1f3e
+          bundle: stanford_banner
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1582157158
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          su_banner_body:
+            -
+              value: "<p>To edit this page, <a href=\"/saml_login\">log in with your SUNetID</a>. After you log in, return to the homepage, and use it as a template to begin building your site.</p>\r\n"
+              format: stanford_minimal_html
+          su_banner_header:
+            -
+              value: 'Welcome to your site!'
+          su_banner_image:
+            -
+              entity: 6fac3713-f499-4750-a7bc-32c16a59043a
+          su_banner_sup_header:
+            -
+              value: 'Stanford University'
+  su_page_components:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph_row
+          uuid: 95514879-c3d0-44cc-a8bd-987f547fa1a8
+          bundle: node_stanford_page_row
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1598294778
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          su_page_components:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: b7abb133-a21b-4a1a-a13c-f630aad2ce7e
+                  bundle: stanford_wysiwyg
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1566940599
+                  behavior_settings:
+                    -
+                      value:
+                        react:
+                          width: 12
+                          label: 'Text Area'
+                  revision_translation_affected:
+                    -
+                      value: true
+                  su_wysiwyg_text:
+                    -
+                      value: "<h2 class=\"text-align-center\">Aliquam Tempus Libero Orci Lorem Didum</h2>\r\n\r\n<p class=\"su-intro-text text-align-center\">Praesent tincidunt, justo in suscipit semper, quam nunc porttitor lorem, eget hendrerit dolor ligula eu nunc. Fusce id urna ut sapien malesuada aliquam. Quisque dictum enim ac leo ornare a molestie leo sodales</p>\r\n"
+                      format: stanford_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph_row
+          uuid: 4a607606-12f6-482c-8cd7-a57d64aeff6b
+          bundle: node_stanford_page_row
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1598294778
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          su_page_components:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 9954cc81-919b-4498-9151-bf930831fca7
+                  bundle: stanford_card
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1568405027
+                  behavior_settings:
+                    -
+                      value:
+                        react:
+                          width: 12
+                          label: Card
+                  revision_translation_affected:
+                    -
+                      value: true
+                  su_card_body:
+                    -
+                      value: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae dignissim felis. Nullam nulla leo, venenatis at feugiat sit amet, ultricies non lorem.</p>\r\n"
+                      format: stanford_minimal_html
+                  su_card_header:
+                    -
+                      value: 'Nam scelerisque, urna vitae auctor efficitur, tortor nunc cursus tortor, ut blandit purus arcu quis sapien'
+                  su_card_link:
+                    -
+                      uri: 'internal:/'
+                      title: Button
+                      options: {  }
+                  su_card_link_display:
+                    -
+                      value: button
+                  su_card_media:
+                    -
+                      entity: 66286339-4f00-4994-8c0d-921b519ea4e4
+                  su_card_super_header:
+                    -
+                      value: Vestibulum
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph_row
+          uuid: ed135145-45ed-4955-a1b6-1141bc869568
+          bundle: node_stanford_page_row
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1598294778
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          su_page_components:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: cffc69b9-51a3-4e0e-a1b3-864202e42e6c
+                  bundle: stanford_wysiwyg
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1570817023
+                  behavior_settings:
+                    -
+                      value:
+                        react:
+                          width: 12
+                          label: 'Text Area'
+                  revision_translation_affected:
+                    -
+                      value: true
+                  su_wysiwyg_text:
+                    -
+                      value: "<h2 class=\"text-align-center\">Pellentesque ultricies tristique augue</h2>\r\n\r\n<p class=\"text-align-center\">Vestibulum sed dui facilisis, semper tortor ut, scelerisque est. Nullam porttitor cursus odio, vel feugiat ante laoreet vel. Quisque at dolor vitae mi consectetur vestibulum in ac augue. Sed ante purus, laoreet ac facilisis vel, porttitor varius arcu. Etiam id mi vel est rhoncus tempus. Duis placerat risus nisl.</p>\r\n\r\n<p class=\"text-align-center\"><a class=\"su-button\" href=\"/\">Vestibulum eget ullamcorper</a></p>\r\n"
+                      format: stanford_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph_row
+          uuid: a9a54e9d-e433-408f-be3d-141d3cb3aad6
+          bundle: node_stanford_page_row
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1598294778
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          su_page_components:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 35b55d09-f3e6-4134-87c1-4a8ea132940f
+                  bundle: stanford_banner
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1570821713
+                  behavior_settings:
+                    -
+                      value:
+                        react:
+                          width: 12
+                          label: Banner
+                  revision_translation_affected:
+                    -
+                      value: true
+                  su_banner_image:
+                    -
+                      entity: 39cadd28-7a7e-4648-868d-d5e4f0a69bf7
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph_row
+          uuid: 27047c34-f161-45d4-ab65-c7d7c0e98765
+          bundle: node_stanford_page_row
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1598294778
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          su_page_components:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: fbbaaecc-80fc-494a-8bce-83638d1d668d
+                  bundle: stanford_wysiwyg
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1566947254
+                  behavior_settings:
+                    -
+                      value:
+                        react:
+                          width: 12
+                          label: 'Text Area'
+                  revision_translation_affected:
+                    -
+                      value: true
+                  su_wysiwyg_text:
+                    -
+                      value: "<h2>Sample Content</h2>\r\n\r\n<p><strong>Academic Department</strong><br />\r\nBuilding 100<br />\r\nStanford University<br />\r\nStanford, CA 94305</p>\r\n\r\n<p>email: sunet@stanford.edu<br />\r\nphone: (650) 723-xxxx<br />\r\nfax: (650) 723-xxxx</p>\r\n\r\n<p><strong>Officer Name</strong><br />\r\nCampus address, office number<br />\r\nphone: (650) 123-4567<br />\r\nemail: sunet@stanford.edu</p>\r\n\r\n<p>Officer Name<br />\r\nCampus address, office number<br />\r\nphone: (650) 123-4567<br />\r\nemail: sunet@stanford.edu</p>\r\n\r\n<p><strong>The accessibility content below is required by University Communications for all large units at Stanford:</strong></p>\r\n\r\n<h2>Web Accessibility</h2>\r\n\r\n<p>Stanford University is committed to providing an online environment that is accessible to everyone, including individuals with disabilities.&nbsp;</p>\r\n\r\n<p>Having trouble accessing any of this content due to a disability?&nbsp;<a href=\"http://www.stanford.edu/site/accessibility\">Learn more about accessibility at Stanford and report accessibility issues&nbsp;</a></p>\r\n"
+                      format: stanford_html

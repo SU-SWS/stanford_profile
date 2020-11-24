@@ -1,0 +1,45 @@
+_meta:
+  version: '1.0'
+  entity_type: paragraph
+  uuid: 9954cc81-919b-4498-9151-bf930831fca7
+  bundle: stanford_card
+  default_langcode: en
+  depends:
+    66286339-4f00-4994-8c0d-921b519ea4e4: media
+default:
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1568405027
+  behavior_settings:
+    -
+      value:
+        react:
+          width: 12
+          label: Card
+  revision_translation_affected:
+    -
+      value: true
+  su_card_body:
+    -
+      value: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae dignissim felis. Nullam nulla leo, venenatis at feugiat sit amet, ultricies non lorem.</p>\r\n"
+      format: stanford_minimal_html
+  su_card_header:
+    -
+      value: 'Nam scelerisque, urna vitae auctor efficitur, tortor nunc cursus tortor, ut blandit purus arcu quis sapien'
+  su_card_link:
+    -
+      uri: 'internal:/'
+      title: Button
+      options: {  }
+  su_card_link_display:
+    -
+      value: button
+  su_card_media:
+    -
+      entity: 66286339-4f00-4994-8c0d-921b519ea4e4
+  su_card_super_header:
+    -
+      value: Vestibulum

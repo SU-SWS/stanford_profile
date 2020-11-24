@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: menu_link_content
+  uuid: e635159f-4b50-4016-bbf6-41113adbff65
+  bundle: menu_link_content
+  default_langcode: en
+default:
+  enabled:
+    -
+      value: true
+  title:
+    -
+      value: Resources
+  menu_name:
+    -
+      value: main
+  link:
+    -
+      uri: 'internal:/node/bc484600-a21a-4497-b9f7-f928474b511c'
+      title: ''
+      options: {  }
+  external:
+    -
+      value: false
+  rediscover:
+    -
+      value: true
+  weight:
+    -
+      value: -48
+  expanded:
+    -
+      value: true
+  revision_translation_affected:
+    -
+      value: true

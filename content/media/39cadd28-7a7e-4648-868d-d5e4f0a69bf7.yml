@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 39cadd28-7a7e-4648-868d-d5e4f0a69bf7
+  bundle: image
+  default_langcode: en
+  depends:
+    ba513d3b-0d26-4079-91ce-eb31c5798ed8: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: homepage-default_banner-2.jpg
+  created:
+    -
+      value: 1570821724
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: ba513d3b-0d26-4079-91ce-eb31c5798ed8
+      alt: 'Sunset view from Stanford Campus'
+      title: ''
+      width: 3000
+      height: 1500
