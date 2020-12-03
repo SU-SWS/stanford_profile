@@ -114,8 +114,20 @@ class WYSIWYGCest {
     $I->click('Video', '.media-library-menu-video');
     $I->waitForElementVisible('.media-library-add-form-oembed-url');
     $I->fillField('Add Video via URL', 'https://www.youtube.com/watch?v=ktCgVopf7D0');
-    $I->click('Add');
+
+    // If the youtube api fails, lets try again after a few seconds.
+    $bail = 0;
+    while (!empty($I->grabMultiple('input.media-library-add-form-oembed-submit[value="Add"]'))) {
+      $I->click('Add');
+      $I->wait(5);
+      $bail++;
+      if ($bail >= 10) {
+        break;
+      }
+    }
+
     $I->waitForText('The media item has been created but has not yet been saved');
+    $I->fillField('Name', 'Test Youtube Video');
     $I->clickWithLeftButton(".ui-dialog-buttonset button:nth-child(2)");
     $I->waitForAjaxToFinish();
     $I->click('Continue');
