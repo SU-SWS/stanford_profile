@@ -15,6 +15,7 @@ source: google_form
 queue_thumbnail_downloads: false
 new_revision: false
 source_configuration:
-  height_field_name: field_media_google_form_hgt
   source_field: field_media_google_form
-field_map: {  }
+  height_field_name: field_media_google_form_hgt
+field_map:
+  height: field_media_google_form_hgt
