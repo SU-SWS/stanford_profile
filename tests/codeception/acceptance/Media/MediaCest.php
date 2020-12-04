@@ -95,7 +95,7 @@ class MediaCest {
   public function testForGoogleFormFields(AcceptanceTester $I) {
     $I->logInWithRole('Administrator');
     $I->amOnPage('/media/add/google_form');
-    $I->canSee('Form Height');
+    $I->canSee("Form Height");
   }
 
 }
