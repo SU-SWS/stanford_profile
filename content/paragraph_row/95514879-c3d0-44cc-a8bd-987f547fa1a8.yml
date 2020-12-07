@@ -1,0 +1,48 @@
+_meta:
+  version: '1.0'
+  entity_type: paragraph_row
+  uuid: 95514879-c3d0-44cc-a8bd-987f547fa1a8
+  bundle: node_stanford_page_row
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1598294778
+  behavior_settings:
+    -
+      value: {  }
+  revision_translation_affected:
+    -
+      value: true
+  su_page_components:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: b7abb133-a21b-4a1a-a13c-f630aad2ce7e
+          bundle: stanford_wysiwyg
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1566940599
+          behavior_settings:
+            -
+              value:
+                react:
+                  width: 12
+                  label: 'Text Area'
+          revision_translation_affected:
+            -
+              value: true
+          su_wysiwyg_text:
+            -
+              value: "<h2 class=\"text-align-center\">Aliquam Tempus Libero Orci Lorem Didum</h2>\r\n\r\n<p class=\"su-intro-text text-align-center\">Praesent tincidunt, justo in suscipit semper, quam nunc porttitor lorem, eget hendrerit dolor ligula eu nunc. Fusce id urna ut sapien malesuada aliquam. Quisque dictum enim ac leo ornare a molestie leo sodales</p>\r\n"
+              format: stanford_html

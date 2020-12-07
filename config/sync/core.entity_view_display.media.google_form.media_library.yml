@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.media.media_library
     - field.field.media.google_form.field_media_google_form
+    - field.field.media.google_form.field_media_google_form_hgt
     - image.style.medium
     - media.type.google_form
   module:
@@ -26,5 +27,6 @@ content:
 hidden:
   created: true
   field_media_google_form: true
+  field_media_google_form_hgt: true
   name: true
   uid: true

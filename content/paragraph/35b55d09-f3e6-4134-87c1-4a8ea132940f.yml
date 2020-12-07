@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: paragraph
+  uuid: 35b55d09-f3e6-4134-87c1-4a8ea132940f
+  bundle: stanford_banner
+  default_langcode: en
+  depends:
+    39cadd28-7a7e-4648-868d-d5e4f0a69bf7: media
+default:
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1570821713
+  behavior_settings:
+    -
+      value:
+        react:
+          width: 12
+          label: Banner
+  revision_translation_affected:
+    -
+      value: true
+  su_banner_image:
+    -
+      entity: 39cadd28-7a7e-4648-868d-d5e4f0a69bf7

@@ -1,0 +1,103 @@
+_meta:
+  version: '1.0'
+  entity_type: config_pages
+  uuid: 5a3a16f1-adb6-4946-b957-49c5bb13ef8f
+  bundle: stanford_local_footer
+default:
+  label:
+    -
+      value: 'Local Footer'
+  context:
+    -
+      value: 'a:0:{}'
+  su_footer_enabled:
+    -
+      value: true
+  su_local_foot_action:
+    -
+      uri: 'http://stanford.edu/'
+      title: Visit
+      options: {  }
+    -
+      uri: 'http://stanford.edu/'
+      title: 'Campus Map'
+      options: {  }
+    -
+      uri: 'https://stanford.edu/'
+      title: 'Contact Us'
+      options: {  }
+  su_local_foot_address:
+    -
+      langcode: ''
+      country_code: US
+      administrative_area: CA
+      locality: Stanford
+      dependent_locality: ''
+      postal_code: '94305'
+      sorting_code: ''
+      address_line1: '450 Jane Stanford Way'
+      address_line2: ''
+      organization: 'Lorem Ipsum Dolor Sit Amet'
+      given_name: ''
+      additional_name: ''
+      family_name: ''
+  su_local_foot_f_method:
+    -
+      value: POST
+  su_local_foot_loc_op:
+    -
+      value: a
+  su_local_foot_primary:
+    -
+      uri: 'https://stanford.edu/'
+      title: 'Example Link'
+      options: {  }
+    -
+      uri: 'https://stanford.edu/'
+      title: 'Example Link'
+      options: {  }
+  su_local_foot_prime_h:
+    -
+      value: 'Links to'
+  su_local_foot_second:
+    -
+      uri: 'https://stanford.edu/'
+      title: 'Example Link'
+      options: {  }
+    -
+      uri: 'https://stanford.edu/'
+      title: 'Example Link'
+      options: {  }
+  su_local_foot_second_h:
+    -
+      value: 'Resources for'
+  su_local_foot_social:
+    -
+      uri: 'https://www.facebook.com/stanford/'
+      title: 'Stanford Facebook'
+      options: {  }
+    -
+      uri: 'https://www.instagram.com/stanford/'
+      title: 'Stanford Instagram'
+      options: {  }
+    -
+      uri: 'http://twitter.com/'
+      title: Twitter
+      options: {  }
+    -
+      uri: 'http://linkedin.com'
+      title: LinkedIn
+      options: {  }
+    -
+      uri: 'http://youtube.com'
+      title: Youtube
+      options: {  }
+  su_local_foot_sunet_t:
+    -
+      value: 'Web Login'
+  su_local_foot_use_loc:
+    -
+      value: true
+  su_local_foot_use_logo:
+    -
+      value: true

@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 33324210-4657-4685-8ff3-834160b32a14
+  bundle: image
+  default_langcode: en
+  depends:
+    48d41139-6cd4-47e8-9cad-17dfc3fb2819: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: card-170811-4642.jpg
+  created:
+    -
+      value: 1581635659
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 48d41139-6cd4-47e8-9cad-17dfc3fb2819
+      alt: 'Student working in library'
+      title: ''
+      width: 2000
+      height: 1000
