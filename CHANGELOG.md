@@ -1,5 +1,21 @@
 # Stanford Profile
 
+8.x-1.21
+--------------------------------------------------------------------------------
+_Release Date: 2020-12-07_
+
+- D8CORE-2431: configs (#333) (2e35846)
+- D8CORE-2867 Update image metadata tags (#339) (c755c6f)
+- D8CORE-2325: fixed separator between event dates (#338) (66d5989)
+- D8CORE-000 Patch simplesamlphp auth module to prevent unwanted redirect (#337) (592cac5)
+- D8CORE-3051 Allow paragraph views to display nested taxonomy content (#335) (0f4c59c)
+- Updated default content module (#336) (b5de66f)
+- D8CORE-2878 Add coalesce support for small animated gif fix (#334) (811649d)
+- D8CORE-2759 Fix revisions table to show all revisions (#296) (ac8bd92)
+- D8CORE-2957 Updated help section language (#330) (7efc961)
+- D9 Ready (#329) (c69e05b)
+- D8CORE-2495 Changed the link button in minimal html format (#332) (7c9a540)
+
 8.x-1.20
 --------------------------------------------------------------------------------
 _Release Date: 2020-11-18_
