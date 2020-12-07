@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.google_form.field_media_google_form
+    - field.field.media.google_form.field_media_google_form_hgt
     - media.type.google_form
   module:
     - path
@@ -25,6 +26,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_media_google_form_hgt:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
     region: content
   name:
     type: string_textfield

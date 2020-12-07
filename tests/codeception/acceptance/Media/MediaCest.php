@@ -89,4 +89,13 @@ class MediaCest {
     $I->canSee("Hello World");
   }
 
+  /**
+   * Google Form additional field
+   */
+  public function testForGoogleFormFields(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/media/add/google_form');
+    $I->canSee("Form Height");
+  }
+
 }
