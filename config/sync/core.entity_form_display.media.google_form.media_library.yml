@@ -5,12 +5,20 @@ dependencies:
   config:
     - core.entity_form_mode.media.media_library
     - field.field.media.google_form.field_media_google_form
+    - field.field.media.google_form.field_media_google_form_hgt
     - media.type.google_form
 id: media.google_form.media_library
 targetEntityType: media
 bundle: google_form
 mode: media_library
 content:
+  field_media_google_form_hgt:
+    type: number
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   name:
     type: string_textfield
     settings:

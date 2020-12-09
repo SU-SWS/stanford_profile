@@ -27,7 +27,11 @@ class LockupSettingsCest {
    */
   function _before(AcceptanceTester $I) {
     $this->DATA_DIR = rtrim(codecept_data_dir(), '/\\');
+
     // Copy our assets into place first.
+    if (!file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR)) {
+      mkdir($this->DATA_DIR, 0777, TRUE);
+    }
     copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
   }
 
@@ -42,19 +46,17 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->selectOption("su_lockup_options", "a");
     $I->uncheckOption('#edit-su-use-theme-logo-value');
-    // In case there was an image already.
-    try {
+    if ($I->grabMultiple('input[value="Remove"]')) {
       $I->click("Remove");
-    }
-    catch(Exception $e) {
-      // Do nothing and carry on.
     }
     $I->checkOption('#edit-su-use-theme-logo-value');
     $I->checkOption('#edit-su-lockup-enabled-value');
     $I->click('Save');
 
     // Clean up our assets.
-    unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    if (file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME)) {
+      unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    }
   }
 
   /**
@@ -193,7 +195,7 @@ class LockupSettingsCest {
     $I->canSee("Organization name");
     $I->canSee("Tertiary title line");
   }
-  
+
    /**
    * Test the lockup settings overrides.
    */
@@ -340,11 +342,8 @@ class LockupSettingsCest {
     $I->uncheckOption('#edit-su-use-theme-logo-value');
 
     // In case there was an image already.
-    try {
+    if ($I->grabMultiple('input[value="Remove"]')) {
       $I->click("Remove");
-    }
-    catch(Exception $e) {
-      // Do nothing and carry on.
     }
 
     $I->attachFile('input[name="files[su_upload_logo_image_0]"]', self::LOGO_FILENAME);
@@ -377,11 +376,8 @@ class LockupSettingsCest {
     $I->uncheckOption('#edit-su-use-theme-logo-value');
 
     // In case there was an image already.
-    try {
+    if ($I->grabMultiple('input[value="Remove"]')) {
       $I->click("Remove");
-    }
-    catch(Exception $e) {
-      // Do nothing and carry on.
     }
 
     // For CircleCI

@@ -1,0 +1,25 @@
+uuid: 2c0f88a7-bd81-4947-9f6c-1d9448910ced
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_google_form_hgt
+    - media.type.google_form
+id: media.google_form.field_media_google_form_hgt
+field_name: field_media_google_form_hgt
+entity_type: media
+bundle: google_form
+label: 'Form Height'
+description: 'The height, in pixels, of the iframe used to embed the Google Form'
+required: true
+translatable: false
+default_value:
+  -
+    value: 600
+default_value_callback: ''
+settings:
+  min: 600
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

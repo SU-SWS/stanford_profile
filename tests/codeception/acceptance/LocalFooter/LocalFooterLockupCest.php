@@ -28,6 +28,9 @@ class LocalFooterLockupCest {
   function _before(AcceptanceTester $I) {
     $this->DATA_DIR = rtrim(codecept_data_dir(), '/\\');
     // Copy our assets into place first.
+    if (!file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR)) {
+      mkdir($this->DATA_DIR, 0777, TRUE);
+    }
     copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
   }
 
@@ -40,22 +43,21 @@ class LocalFooterLockupCest {
   public function _after(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->uncheckOption('#edit-su-local-foot-use-logo-value');
-    $I->selectOption("#edit-su-local-foot-loc-op", "a");
+    $I->uncheckOption('Use Default Lockup');
+    $I->uncheckOption('Use the logo supplied by the theme');
+    $I->selectOption('Lockup Options', "a");
     // In case there was an image already.
-    try {
+    if ($I->grabMultiple('input[value="Remove"]')) {
       $I->click("Remove");
     }
-    catch(Exception $e) {
-      // Do nothing and carry on.
-    }
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
-    $I->checkOption('#edit-su-local-foot-use-loc-value');
+    $I->checkOption('Use the logo supplied by the theme');
+    $I->checkOption('Use Default Lockup');
     $I->click('Save');
 
     // Clean up our assets.
-    unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    if (file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME)) {
+      unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    }
   }
 
   /**
@@ -73,9 +75,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', 'a');
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', 'a');
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -94,9 +96,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "b");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "b");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -115,9 +117,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "d");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "d");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -136,9 +138,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "e");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "e");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -158,9 +160,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "h");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "h");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -180,9 +182,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "i");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "i");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -202,9 +204,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "m");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "m");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -223,9 +225,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "o");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "o");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -243,9 +245,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "p");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "p");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -264,9 +266,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "r");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "r");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -284,9 +286,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "s");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "s");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -306,9 +308,9 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', "t");
-    $I->checkOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', "t");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -329,8 +331,8 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', 'a');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', 'a');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -338,14 +340,11 @@ class LocalFooterLockupCest {
     $I->fillField('Line 5', 'Last line full width option');
 
     // Add custom logo.
-    $I->uncheckOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use the logo supplied by the theme');
 
     // In case there was an image already.
-    try {
+    if ($I->grabMultiple('input[value="Remove"]')) {
       $I->click("Remove");
-    }
-    catch(Exception $e) {
-      // Do nothing and carry on.
     }
 
     $I->attachFile('input[name="files[su_local_foot_loc_img_0]"]', self::LOGO_FILENAME);
@@ -366,8 +365,8 @@ class LocalFooterLockupCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-local-foot-use-loc-value');
-    $I->selectOption('#edit-su-local-foot-loc-op', 'none');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', 'none');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -375,14 +374,11 @@ class LocalFooterLockupCest {
     $I->fillField('Line 5', 'Last line full width option');
 
     // Add custom logo.
-    $I->uncheckOption('#edit-su-local-foot-use-logo-value');
+    $I->uncheckOption('Use the logo supplied by the theme');
 
     // In case there was an image already.
-    try {
+    if ($I->grabMultiple('input[value="Remove"]')) {
       $I->click("Remove");
-    }
-    catch(Exception $e) {
-      // Do nothing and carry on.
     }
 
     // For CircleCI
