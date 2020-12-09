@@ -1,0 +1,87 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: e18a741f-7d86-492a-a02f-7ca73989ca13
+  bundle: stanford_page
+  default_langcode: en
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: Research
+  created:
+    -
+      value: 1566947538
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /research
+      langcode: en
+      pathauto: 1
+  su_page_components:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph_row
+          uuid: 8f739f14-a899-4880-9c11-5929f0d4ddde
+          bundle: node_stanford_page_row
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1598294778
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          su_page_components:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: c77c8f62-721c-475d-bd5f-ba5ddce96836
+                  bundle: stanford_wysiwyg
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1566947552
+                  behavior_settings:
+                    -
+                      value:
+                        react:
+                          width: 12
+                          label: 'Text Area'
+                  revision_translation_affected:
+                    -
+                      value: true
+                  su_wysiwyg_text:
+                    -
+                      value: "<p>This is your Research page. Here you can include your research, projects, etc.</p>\r\n\r\n<p>To edit the page and remove this placeholder content, click on the \"Edit\" tab near the top of the page. When finished, be sure to scroll down to the bottom of the page and click \"Save.\"</p>\r\n\r\n<p>To disable this page or add a new page, click&nbsp;Site Actions&nbsp;and then&nbsp;Manage Pages.</p>\r\n\r\n<h2>Research Interests</h2>\r\n\r\n<p>Praesent tincidunt, justo in suscipit semper, quam nunc porttitor lorem, eget hendrerit dolor ligula eu nunc. Fusce id urna ut sapien malesuada aliquam. Quisque dictum enim ac leo ornare a molestie leo sodales.</p>\r\n\r\n<h2>Current Research</h2>\r\n\r\n<p>Proin scelerisque varius justo, quis pharetra nulla pellentesque at. Ut pulvinar sollicitudin erat vel gravida. Nam volutpat facilisis augue, id feugiat sapien fringilla a. Nam mollis pretium augue sit amet pharetra. Nam pulvinar porttitor elementum. Nulla pretium felis non erat venenatis commodo in id ligula.</p>\r\n\r\n<ul>\r\n\t<li>Proin ante odio, tempus id faucibus eget, pharetra mattis mi.</li>\r\n\t<li>Sed et pretium erat.</li>\r\n</ul>\r\n\r\n<p>Integer ornare, odio sed porta bibendum, sem tortor congue metus, auctor tincidunt sem eros vel augue. Donec ullamcorper, diam nec mollis faucibus, mi metus posuere sem, nec commodo eros dolor sed urna. Etiam nibh massa, sagittis eget tristique at, lobortis lacinia lorem.</p>\r\n\r\n<ul>\r\n\t<li>Nam eu arcu adipiscing sapien dapibus faucibus sit amet eu turpis.</li>\r\n\t<li>Suspendisse mollis ullamcorper pulvinar.</li>\r\n\t<li>Vivamus convallis diam urna.</li>\r\n</ul>\r\n"
+                      format: stanford_html
