@@ -22,7 +22,8 @@ class BasicPageCest {
     $I->fillField('Title', $node_title);
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', "$node_title Item");
-    $I->selectOption('Parent item', ' <Main navigation>');
+    // The label on the menu parent changes in D9 vs D8
+    $I->selectOption('menu[menu_parent]', ' <Main navigation>');
     $I->click('Save');
     $I->canSeeLink("$node_title Item");
 
@@ -32,7 +33,7 @@ class BasicPageCest {
     $I->fillField('Title', $child_title);
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', "$child_title Item");
-    $I->selectOption('Parent item', "-- $node_title Item");
+    $I->selectOption('menu[menu_parent]', "-- $node_title Item");
     $I->click('Change parent (update list of weights)');
     $I->click('Save');
     $I->canSeeLink("$child_title Item");
