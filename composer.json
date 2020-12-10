@@ -86,7 +86,7 @@
         "drupal/config_split": "^1.0",
         "drupal/config_update": "^1.7",
         "drupal/confirm_leave": "^1.0@beta",
-        "drupal/core": "^9.0",
+        "drupal/core": "^8.0 || ^9.0",
         "drupal/diff": "^1.0@RC",
         "drupal/domain_301_redirect": "^1.0-alpha0",
         "drupal/ds": "^3.3",
@@ -154,7 +154,6 @@
                 "https://www.drupal.org/project/anchor_link/issues/2958532": "https://www.drupal.org/files/issues/2019-01-11/anchor_link-linkit-support_2958532.patch"
             },
             "drupal/config_ignore": {
-                "https://www.drupal.org/project/config_ignore/issues/2857247": "https://www.drupal.org/files/issues/2020-08-18/support-for-export-2857247-54.patch",
                 "https://www.drupal.org/project/config_ignore/issues/2865419": "https://www.drupal.org/files/issues/2020-06-21/config_ignore-wildcard_force-14.patch"
             },
             "drupal/config_readonly": {
@@ -181,9 +180,6 @@
             },
             "drupal/simplesamlphp_auth": {
                 "https://www.drupal.org/project/simplesamlphp_auth/issues/2936889": "https://www.drupal.org/files/issues/2020-07-31/simplesamlphp_auth-avoid_unexpected_redirect-2936889-12-d8.patch"
-            },
-            "drupal/token": {
-                "https://www.drupal.org/project/token/issues/3154183": "https://www.drupal.org/files/issues/2020-06-23/3154183-2.patch"
             }
         }
     }
