@@ -1,0 +1,24 @@
+uuid: 7d8c1f52-27c9-44fd-85b0-03e4a92d4dd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_gallery.su_gallery_images
+    - paragraphs.paragraphs_type.stanford_gallery
+  module:
+    - media_library
+id: paragraph.stanford_gallery.default
+targetEntityType: paragraph
+bundle: stanford_gallery
+mode: default
+content:
+  su_gallery_images:
+    type: media_library_widget
+    weight: 0
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true
