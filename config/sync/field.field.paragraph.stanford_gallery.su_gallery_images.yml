@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.su_gallery_images
-    - media.type.image
+    - media.type.stanford_gallery_images
     - paragraphs.paragraphs_type.stanford_gallery
 id: paragraph.stanford_gallery.su_gallery_images
 field_name: su_gallery_images
@@ -20,7 +20,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
+      stanford_gallery_images: stanford_gallery_images
     sort:
       field: _none
       direction: ASC

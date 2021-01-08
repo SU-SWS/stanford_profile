@@ -5,7 +5,7 @@ use Faker\Factory;
 /**
  * Class GalleryCest.
  *
- * @group paragraphs
+ * @group testme
  */
 class GalleryCest {
 
@@ -24,10 +24,14 @@ class GalleryCest {
     $I->waitForText('Images', 10, '.MuiDialog-container');
     $I->click('Add media', '.MuiDialog-container');
     $I->waitForText('Drop files here to upload them');
-    $I->checkOption('media_library_select_form[0]');
-    $I->checkOption('media_library_select_form[1]');
-    $I->checkOption('media_library_select_form[2]');
-    $I->click('Insert selected', '.ui-dialog-buttonset');
+
+    $I->dropFileInDropzone(__DIR__.'/logo.jpg');
+    $I->dropFileInDropzone(__DIR__.'/wordmark.jpg');
+    $I->click('Upload and Continue');
+
+    $I->waitForText('The media items have been created but have not yet been saved');
+    $I->click('Save and insert', '.ui-dialog-buttonset');
+
     $I->waitForElementNotVisible('#drupal-modal');
     $I->click('Continue');
     $I->waitForElementNotVisible('.MuiDialog-container');
@@ -35,8 +39,8 @@ class GalleryCest {
 
     // On the node page.
     $I->canSee($title, 'h1');
-    $I->canSeeNumberOfElements('.paragraph-item img', 3);
-    $I->canSeeNumberOfElements('.colorbox', 3);
+    $I->canSeeNumberOfElements('.paragraph-item img', 2);
+    $I->canSeeNumberOfElements('.colorbox', 2);
     $I->click('a.colorbox');
     $I->waitForElementVisible('#cboxLoadedContent');
     $I->canSeeNumberOfElements('#cboxContent img', 1);

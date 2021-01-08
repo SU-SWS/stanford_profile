@@ -1,13 +1,10 @@
-uuid: 61f9c552-679b-465b-a0a0-82c58238a864
+uuid: 8776ad83-17f1-43b3-9a7e-a0945772ceb5
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.paragraph.stanford_gallery.su_gallery_images
     - paragraphs.paragraphs_type.stanford_gallery
-  module:
-    - ds
-    - field_formatter_class
 id: paragraph.stanford_gallery.default
 targetEntityType: paragraph
 bundle: stanford_gallery
@@ -16,14 +13,10 @@ content:
   su_gallery_images:
     type: entity_reference_entity_view
     weight: 0
+    region: content
     label: hidden
     settings:
-      view_mode: su_large_colorbox
-      link: false
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-      ds:
-        ds_limit: ''
-    region: content
+      link: true
+      view_mode: default
+    third_party_settings: {  }
 hidden: {  }
