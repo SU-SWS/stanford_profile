@@ -1,10 +1,9 @@
 name: 'Stanford Profile'
 description: 'Jumpstart Website Profile'
-version: 8.x-1.23-dev
+version: 8.x-2.0-dev
 type: profile
 project: Jumpstart
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9
 install:
   - 'address:address'
   - 'admin_toolbar:admin_toolbar'
@@ -73,7 +72,6 @@ install:
   - 'drupal:views_ui'
   - 'ds:ds'
   - 'ds:ds_extras'
-  - 'editor_advanced_link:editor_advanced_link'
   - 'entity_reference_revisions:entity_reference_revisions'
   - 'entity_usage:entity_usage'
   - 'environment_indicator:environment_indicator'

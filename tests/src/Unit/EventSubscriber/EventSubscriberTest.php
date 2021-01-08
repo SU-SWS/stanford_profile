@@ -45,7 +45,7 @@ class EventSubscriberTest extends UnitTestCase {
    */
   public function testConfigImportEventDownload() {
     $expected = ['default_content.import' => 'onContentImport'];
-    $this->assertArrayEquals($expected, StanfordEventSubscriber::getSubscribedEvents());
+    $this->assertEquals($expected, StanfordEventSubscriber::getSubscribedEvents());
 
     $file_entity = $this->createMock(FileInterface::class);
     $file_entity->method('getEntityTypeId')->willReturn('file');
