@@ -5,7 +5,7 @@ use Faker\Factory;
 /**
  * Class GalleryCest.
  *
- * @group testme
+ * @group paragraph
  */
 class GalleryCest {
 
