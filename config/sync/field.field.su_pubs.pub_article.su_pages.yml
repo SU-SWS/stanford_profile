@@ -1,0 +1,21 @@
+uuid: ee46a5c0-ffde-4679-bddd-d6a28a746bba
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_article
+    - field.storage.su_pubs.su_pages
+_core:
+  default_config_hash: yfiHP0cjhAAoaI6rgGa2ZO3x93wJJkNIlp1NuTfwzJk
+id: su_pubs.pub_article.su_pages
+field_name: su_pages
+entity_type: su_pubs
+bundle: pub_article
+label: 'Page Number(s)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

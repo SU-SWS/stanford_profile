@@ -1,0 +1,22 @@
+uuid: 4aa2a68e-3e22-4385-97f9-85932f15cb6b
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+_core:
+  default_config_hash: O-zhPRJUQ4G_nIOE946SsP1frq6kBbA5RBwNvQHSLTM
+id: su_pubs.su_month
+field_name: su_month
+entity_type: su_pubs
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: 45286fb1-a2af-454a-8c0f-bf644c8d3c9d
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+_core:
+  default_config_hash: KXGOAiA1QtdgxEdO6E9SnkQ4ZJyuoswUda0bgAXbIqM
+id: su_pubs.su_isbn
+field_name: su_isbn
+entity_type: su_pubs
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

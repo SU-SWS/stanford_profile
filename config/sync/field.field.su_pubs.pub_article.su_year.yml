@@ -1,0 +1,25 @@
+uuid: cfe925af-bb3e-4799-b973-5040b567e46b
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_article
+    - field.storage.su_pubs.su_year
+_core:
+  default_config_hash: MZMJonBWl5FkNchK9jwWIxDQPpBAQ0et-deF3G-tgw8
+id: su_pubs.pub_article.su_year
+field_name: su_year
+entity_type: su_pubs
+bundle: pub_article
+label: Year
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1900
+  max: 2030
+  prefix: ''
+  suffix: ''
+field_type: integer

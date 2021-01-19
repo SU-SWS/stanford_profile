@@ -1,0 +1,21 @@
+uuid: c909b45d-defa-4f36-9f43-5a6e595a5319
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_book
+    - field.storage.su_pubs.su_isbn
+_core:
+  default_config_hash: QxRraHKfKKlQ8uDMxWcnL9Hi3vuYKhclVeEtqFwrfG0
+id: su_pubs.pub_book.su_isbn
+field_name: su_isbn
+entity_type: su_pubs
+bundle: pub_book
+label: 'DOI/ISBN/Database Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,25 @@
+uuid: 5954f45e-8cf0-46a4-b137-9bcf164ef755
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_article
+    - field.storage.su_pubs.su_day
+_core:
+  default_config_hash: EZ2EoGPIxJ415YwcgDxaYNXZkV7HkIHkP-yRAZislcs
+id: su_pubs.pub_article.su_day
+field_name: su_day
+entity_type: su_pubs
+bundle: pub_article
+label: Day
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 31
+  prefix: ''
+  suffix: ''
+field_type: integer

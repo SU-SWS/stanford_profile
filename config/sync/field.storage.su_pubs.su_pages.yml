@@ -1,0 +1,23 @@
+uuid: 64ee0d6c-4e06-425c-aa94-6633e83b235c
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+_core:
+  default_config_hash: e4ryL5TIp_MQu7wJXAAEWax2Vo-4OK_tWr582ODem90
+id: su_pubs.su_pages
+field_name: su_pages
+entity_type: su_pubs
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

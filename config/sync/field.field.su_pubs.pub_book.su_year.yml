@@ -1,0 +1,25 @@
+uuid: acf6a549-f108-49a8-8ec0-b145c5109b3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_book
+    - field.storage.su_pubs.su_year
+_core:
+  default_config_hash: ywBVnPJiBl9l6CcEWiza6zyI-3QJR3oRwwMI8CuSV6c
+id: su_pubs.pub_book.su_year
+field_name: su_year
+entity_type: su_pubs
+bundle: pub_book
+label: Year
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1900
+  max: 2030
+  prefix: ''
+  suffix: ''
+field_type: integer

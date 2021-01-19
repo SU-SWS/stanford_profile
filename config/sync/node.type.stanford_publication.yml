@@ -1,0 +1,22 @@
+uuid: 69b2f452-5a09-4735-847e-1104d0ebbeba
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - node_revision_delete
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+  node_revision_delete:
+    minimum_revisions_to_keep: 3
+    minimum_age_to_delete: 0
+    when_to_delete: 0
+name: Publication
+type: stanford_publication
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

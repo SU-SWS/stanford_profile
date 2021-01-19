@@ -1,0 +1,35 @@
+uuid: 1a60b688-4294-46b8-8249-68d6a339563d
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_article
+    - eck.eck_type.su_pubs.pub_book
+    - eck.eck_type.su_pubs.pub_journal
+    - eck.eck_type.su_pubs.pub_thesis
+    - field.storage.node.su_publication_citation
+    - node.type.stanford_publication
+id: node.stanford_publication.su_publication_citation
+field_name: su_publication_citation
+entity_type: node
+bundle: stanford_publication
+label: Citation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:su_pubs'
+  handler_settings:
+    target_bundles:
+      pub_book: pub_book
+      pub_journal: pub_journal
+      pub_article: pub_article
+      pub_thesis: pub_thesis
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: pub_book
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 9150b2d0-41b0-404f-bfde-08d1f8e22f92
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_book
+    - field.storage.su_pubs.su_pages
+_core:
+  default_config_hash: 1en3v4lwjiaCvd7d2-aZAmP47MkB68nlrT1s0LwLUP8
+id: su_pubs.pub_book.su_pages
+field_name: su_pages
+entity_type: su_pubs
+bundle: pub_book
+label: 'Page Number(s)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

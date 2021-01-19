@@ -1,0 +1,22 @@
+uuid: adb25a8a-76b0-43ee-a0bc-aa100ab13d0a
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+_core:
+  default_config_hash: Ef7uBnRCsEHSsLj8ZhGG_ofLIqvZZwTRlZMh3GTFnPE
+id: su_pubs.su_year
+field_name: su_year
+entity_type: su_pubs
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

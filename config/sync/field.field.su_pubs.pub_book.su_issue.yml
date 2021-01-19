@@ -1,0 +1,21 @@
+uuid: fafa1ecc-ad50-494d-83be-1ea93d6918de
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_book
+    - field.storage.su_pubs.su_issue
+_core:
+  default_config_hash: VWHOqTsWfnUmQoDZnX6IX0ZhzN1rJ5rlgYJipc0BufQ
+id: su_pubs.pub_book.su_issue
+field_name: su_issue
+entity_type: su_pubs
+bundle: pub_book
+label: Issue
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

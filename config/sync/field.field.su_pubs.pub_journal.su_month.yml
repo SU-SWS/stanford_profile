@@ -1,0 +1,25 @@
+uuid: 7012a839-7500-477b-99cb-f57264b13328
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_journal
+    - field.storage.su_pubs.su_month
+_core:
+  default_config_hash: eToO_iNqE07rbuY10wP3Ooik_TKQriscljdElwIPuIM
+id: su_pubs.pub_journal.su_month
+field_name: su_month
+entity_type: su_pubs
+bundle: pub_journal
+label: Month
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 12
+  prefix: ''
+  suffix: ''
+field_type: integer

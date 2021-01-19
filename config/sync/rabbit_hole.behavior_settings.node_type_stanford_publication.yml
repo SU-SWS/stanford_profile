@@ -1,0 +1,14 @@
+uuid: 80401fce-7e2b-4b87-aa73-479a6b5c1750
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_publication
+id: node_type_stanford_publication
+entity_type_id: node_type
+entity_id: stanford_publication
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

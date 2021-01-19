@@ -1,0 +1,20 @@
+uuid: 2883c4eb-6513-4df3-8dac-b6b29ba41ff5
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+    - node
+id: node.su_publication_citation
+field_name: su_publication_citation
+entity_type: node
+type: entity_reference
+settings:
+  target_type: su_pubs
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

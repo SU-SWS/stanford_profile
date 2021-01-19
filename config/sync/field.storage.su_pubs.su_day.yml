@@ -1,0 +1,22 @@
+uuid: 33c094ce-617b-4211-8945-21948655375e
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+_core:
+  default_config_hash: ndoM0Fb4p4j7L1yCIYnlSYFXYYgT5e9JArBZHdpdFhM
+id: su_pubs.su_day
+field_name: su_day
+entity_type: su_pubs
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

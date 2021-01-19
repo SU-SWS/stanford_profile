@@ -1,0 +1,25 @@
+uuid: ce383cee-e631-4abd-bbd3-6443cadcfeec
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_thesis
+    - field.storage.su_pubs.su_year
+_core:
+  default_config_hash: FFvy2--XZp_Q3V_35bnqTmKa5rJOfh62yRUYuSySZY0
+id: su_pubs.pub_thesis.su_year
+field_name: su_year
+entity_type: su_pubs
+bundle: pub_thesis
+label: Year
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1900
+  max: 2030
+  prefix: ''
+  suffix: ''
+field_type: integer

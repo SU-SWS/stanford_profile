@@ -1,0 +1,22 @@
+uuid: eb63e792-0b2a-4fa0-81e2-68b4682c62a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.stanford_publication.su_publication_citation
+    - node.type.stanford_publication
+  module:
+    - user
+id: node.stanford_publication.teaser
+targetEntityType: node
+bundle: stanford_publication
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  su_publication_citation: true

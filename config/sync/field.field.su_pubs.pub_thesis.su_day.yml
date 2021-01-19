@@ -1,0 +1,25 @@
+uuid: 0421687e-10d2-4cbf-bf38-4451a8acf010
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_thesis
+    - field.storage.su_pubs.su_day
+_core:
+  default_config_hash: h33bV3voGq7XqjX_BcmCJCmNCbi0ddg-lyxh4HttaJo
+id: su_pubs.pub_thesis.su_day
+field_name: su_day
+entity_type: su_pubs
+bundle: pub_thesis
+label: Day
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 31
+  prefix: ''
+  suffix: ''
+field_type: integer

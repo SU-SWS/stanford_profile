@@ -1,0 +1,21 @@
+uuid: 4d877066-7e32-4c90-83b4-e341999ef0f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_journal
+    - field.storage.su_pubs.su_issue
+_core:
+  default_config_hash: GjUM2J59OsnBIl92eahmarYJ2dr6NqdoZCJWOyBaeuY
+id: su_pubs.pub_journal.su_issue
+field_name: su_issue
+entity_type: su_pubs
+bundle: pub_journal
+label: Issue
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

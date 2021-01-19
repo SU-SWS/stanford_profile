@@ -1,0 +1,23 @@
+uuid: 5e5e7efd-6616-4399-b975-69fff2b225f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+_core:
+  default_config_hash: ku4mpzWJQfJodJ8nNT03TGXzm5vhW6DuyKgR6RZpRyM
+id: su_pubs.su_publisher
+field_name: su_publisher
+entity_type: su_pubs
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
