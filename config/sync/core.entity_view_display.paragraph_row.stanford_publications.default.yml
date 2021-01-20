@@ -1,0 +1,26 @@
+uuid: f6689e1d-debc-4f76-8510-e48824edb544
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph_row.stanford_publications.su_pubs_components
+    - react_paragraphs.paragraphs_row_type.stanford_publications
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: OuM2rbDjqMsdXQtvzY2o1GdexleBdiWXdhI9LVo7gp8
+id: paragraph_row.stanford_publications.default
+targetEntityType: paragraph_row
+bundle: stanford_publications
+mode: default
+content:
+  su_pubs_components:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

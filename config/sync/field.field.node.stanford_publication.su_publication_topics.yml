@@ -1,0 +1,31 @@
+uuid: 51360187-871c-4cef-93b1-323eed2614f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_publication_topics
+    - node.type.stanford_publication
+    - taxonomy.vocabulary.stanford_publication_topics
+_core:
+  default_config_hash: 5_RzSHeTcHTcAqpoWFjpN2FKgNfFSlr1P1vyOyyUocg
+id: node.stanford_publication.su_publication_topics
+field_name: su_publication_topics
+entity_type: node
+bundle: stanford_publication
+label: 'Topic Terms'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      stanford_publication_topics: stanford_publication_topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

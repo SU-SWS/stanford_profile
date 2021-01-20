@@ -1,0 +1,23 @@
+uuid: 67b5f210-9077-4323-8d4e-5d7bfb737905
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+    - react_paragraphs
+_core:
+  default_config_hash: QL2rEcg1oVWEnD84uBTWldTj3fI-DAZrGwnl2-Ibyv0
+id: paragraph_row.su_pubs_components
+field_name: su_pubs_components
+entity_type: paragraph_row
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

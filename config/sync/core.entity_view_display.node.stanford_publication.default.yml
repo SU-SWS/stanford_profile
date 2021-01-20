@@ -1,28 +1,27 @@
-uuid: 1a600113-ce30-462a-9b52-fd87567b6368
+uuid: c9bc950c-746d-4cb6-8ce5-c973f40d3915
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.stanford_publication.su_publication_citation
+    - field.field.node.stanford_publication.su_publication_components
+    - field.field.node.stanford_publication.su_publication_cta
+    - field.field.node.stanford_publication.su_publication_link
+    - field.field.node.stanford_publication.su_publication_topics
     - node.type.stanford_publication
   module:
     - user
+_core:
+  default_config_hash: RQx0ABGrxDqGfNVLkrIiVBILfjsu5ysxBIQ7VOnRmeU
 id: node.stanford_publication.default
 targetEntityType: node
 bundle: stanford_publication
 mode: default
-content:
-  links:
-    weight: 100
-    settings: {  }
-    third_party_settings: {  }
-    region: content
-  su_publication_citation:
-    weight: 101
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-hidden: {  }
+content: {  }
+hidden:
+  links: true
+  su_publication_citation: true
+  su_publication_components: true
+  su_publication_cta: true
+  su_publication_link: true
+  su_publication_topics: true

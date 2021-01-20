@@ -1,0 +1,22 @@
+uuid: 290606c7-0b8a-49a5-bace-478ddf7127f5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: QYzS0s_o91Xq5MoktsILfYZFxnS7VUT56t7PsrJRlrw
+id: node.su_publication_topics
+field_name: su_publication_topics
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
