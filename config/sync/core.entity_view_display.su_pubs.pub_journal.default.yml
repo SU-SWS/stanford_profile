@@ -1,0 +1,111 @@
+uuid: 4d37067a-9572-4a4b-98a6-18200c012dd4
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_journal
+    - field.field.su_pubs.pub_journal.su_author
+    - field.field.su_pubs.pub_journal.su_day
+    - field.field.su_pubs.pub_journal.su_isbn
+    - field.field.su_pubs.pub_journal.su_issue
+    - field.field.su_pubs.pub_journal.su_month
+    - field.field.su_pubs.pub_journal.su_pages
+    - field.field.su_pubs.pub_journal.su_publisher
+    - field.field.su_pubs.pub_journal.su_volume
+    - field.field.su_pubs.pub_journal.su_year
+  module:
+    - name
+_core:
+  default_config_hash: aSfYUK4-SqlgffSEh3B0A7-P6yKsvHCSvhfVdh2cuwM
+id: su_pubs.pub_journal.default
+targetEntityType: su_pubs
+bundle: pub_journal
+mode: default
+content:
+  su_author:
+    type: name_default
+    weight: 0
+    region: content
+    label: above
+    settings:
+      format: default
+      markup: none
+      list_format: ''
+      link_target: ''
+      preferred_field_reference: ''
+      preferred_field_reference_separator: ', '
+      alternative_field_reference: ''
+      alternative_field_reference_separator: ', '
+    third_party_settings: {  }
+  su_day:
+    type: number_integer
+    weight: 2
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+  su_isbn:
+    type: string
+    weight: 8
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_issue:
+    type: string
+    weight: 6
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_month:
+    type: number_integer
+    weight: 1
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+  su_pages:
+    type: string
+    weight: 7
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_publisher:
+    type: string
+    weight: 4
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_volume:
+    type: string
+    weight: 5
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_year:
+    type: number_integer
+    weight: 3
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  title: true
+  uid: true

@@ -1,0 +1,104 @@
+uuid: e09c3dd4-965d-47fe-b49e-e1710967e398
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_book
+    - field.field.su_pubs.pub_book.su_author
+    - field.field.su_pubs.pub_book.su_day
+    - field.field.su_pubs.pub_book.su_isbn
+    - field.field.su_pubs.pub_book.su_issue
+    - field.field.su_pubs.pub_book.su_month
+    - field.field.su_pubs.pub_book.su_pages
+    - field.field.su_pubs.pub_book.su_publisher
+    - field.field.su_pubs.pub_book.su_volume
+    - field.field.su_pubs.pub_book.su_year
+  module:
+    - name
+_core:
+  default_config_hash: s4o8Y6ujGn_orvLNzjNSsbH50eWMNrDgwJ5_lD_FKkQ
+id: su_pubs.pub_book.default
+targetEntityType: su_pubs
+bundle: pub_book
+mode: default
+content:
+  su_author:
+    type: name_default
+    weight: 0
+    region: content
+    label: above
+    settings:
+      format: default
+      markup: none
+      list_format: ''
+      link_target: ''
+      preferred_field_reference: ''
+      preferred_field_reference_separator: ', '
+      alternative_field_reference: ''
+      alternative_field_reference_separator: ', '
+    third_party_settings: {  }
+  su_day:
+    type: number_integer
+    weight: 2
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+  su_isbn:
+    type: string
+    weight: 7
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_month:
+    type: number_integer
+    weight: 1
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+  su_pages:
+    type: string
+    weight: 6
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_publisher:
+    type: string
+    weight: 4
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_volume:
+    type: string
+    weight: 5
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_year:
+    type: number_integer
+    weight: 3
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  su_issue: true
+  title: true
+  uid: true

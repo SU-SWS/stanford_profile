@@ -1,0 +1,112 @@
+uuid: d2c6602e-4fa5-4ae9-b0cb-9e5d38ec83ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.su_pubs.pub_thesis
+    - field.field.su_pubs.pub_thesis.su_author
+    - field.field.su_pubs.pub_thesis.su_day
+    - field.field.su_pubs.pub_thesis.su_isbn
+    - field.field.su_pubs.pub_thesis.su_month
+    - field.field.su_pubs.pub_thesis.su_publisher
+    - field.field.su_pubs.pub_thesis.su_year
+  module:
+    - field_group
+    - name
+third_party_settings:
+  field_group:
+    group_date:
+      children:
+        - su_month
+        - su_day
+        - su_year
+      parent_name: ''
+      weight: 1
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: true
+        required_fields: false
+      label: Date
+_core:
+  default_config_hash: yYuillQybTHjFBnQKEcfRJwM4fqThRrykR09mqS5DoY
+id: su_pubs.pub_thesis.default
+targetEntityType: su_pubs
+bundle: pub_thesis
+mode: default
+content:
+  su_author:
+    type: name_default
+    weight: 0
+    region: content
+    settings:
+      labels:
+        title: Title
+        given: Given
+        middle: 'Middle name(s)'
+        family: Family
+        generational: Generational
+        credentials: Credentials
+      size:
+        title: 6
+        given: 20
+        middle: 20
+        family: 20
+        generational: 5
+        credentials: 35
+      title_display:
+        title: description
+        given: description
+        middle: description
+        family: description
+        generational: description
+        credentials: description
+      widget_layout: stacked
+      show_component_required_marker: false
+      credentials_inline: false
+      override_field_settings: false
+    third_party_settings: {  }
+  su_day:
+    type: number
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  su_isbn:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_month:
+    type: number
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  su_publisher:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_year:
+    type: number
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  title: true
+  uid: true

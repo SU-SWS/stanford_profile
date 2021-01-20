@@ -1,8 +1,9 @@
-uuid: f2f5a4a8-0cfb-4ee3-87d3-36585ae280a8
+uuid: 3750db03-7ab7-4e91-9d53-216c3f4ebdb9
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.stanford_publication.layout_builder__layout
     - field.field.node.stanford_publication.su_publication_citation
     - field.field.node.stanford_publication.su_publication_components
     - field.field.node.stanford_publication.su_publication_cta
@@ -10,11 +11,12 @@ dependencies:
     - field.field.node.stanford_publication.su_publication_topics
     - node.type.stanford_publication
   module:
+    - inline_entity_form
     - link
     - path
     - react_paragraphs
 _core:
-  default_config_hash: gNwzyr3Iin6dLFbmNWORxPwMqYqDH_szPWk8U9m_SW0
+  default_config_hash: uA8I0k5SEIP9sJLneAycrPA_v_6YTmd4qOCndhQNwRg
 id: node.stanford_publication.default
 targetEntityType: node
 bundle: stanford_publication
@@ -54,14 +56,21 @@ content:
       display_label: true
     third_party_settings: {  }
   su_publication_citation:
-    type: entity_reference_autocomplete
+    type: inline_entity_form_complex
     weight: 1
     region: content
     settings:
+      form_mode: default
+      override_labels: true
+      label_singular: citation
+      label_plural: citation
+      allow_new: true
       match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      revision: false
+      collapsible: false
+      collapsed: false
+      allow_existing: false
+      allow_duplicate: false
     third_party_settings: {  }
   su_publication_components:
     weight: 4
@@ -120,4 +129,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  layout_builder__layout: true
