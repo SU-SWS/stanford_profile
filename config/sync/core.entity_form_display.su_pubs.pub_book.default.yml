@@ -7,7 +7,6 @@ dependencies:
     - field.field.su_pubs.pub_book.su_author
     - field.field.su_pubs.pub_book.su_day
     - field.field.su_pubs.pub_book.su_isbn
-    - field.field.su_pubs.pub_book.su_issue
     - field.field.su_pubs.pub_book.su_month
     - field.field.su_pubs.pub_book.su_pages
     - field.field.su_pubs.pub_book.su_publisher
@@ -82,14 +81,6 @@ content:
   su_isbn:
     type: string_textfield
     weight: 6
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  su_issue:
-    type: string_textfield
-    weight: 3
     region: content
     settings:
       size: 60

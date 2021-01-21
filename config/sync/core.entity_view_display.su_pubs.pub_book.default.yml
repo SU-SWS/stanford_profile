@@ -7,7 +7,6 @@ dependencies:
     - field.field.su_pubs.pub_book.su_author
     - field.field.su_pubs.pub_book.su_day
     - field.field.su_pubs.pub_book.su_isbn
-    - field.field.su_pubs.pub_book.su_issue
     - field.field.su_pubs.pub_book.su_month
     - field.field.su_pubs.pub_book.su_pages
     - field.field.su_pubs.pub_book.su_publisher
@@ -99,6 +98,5 @@ content:
 hidden:
   changed: true
   created: true
-  su_issue: true
   title: true
   uid: true
