@@ -1,0 +1,32 @@
+uuid: 0c9df089-a2a3-4702-ad9a-18b7cc16f6bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.stanford_gallery_images.su_gallery_image
+    - image.style.thumbnail
+    - media.type.stanford_gallery_images
+  module:
+    - focal_point
+id: media.stanford_gallery_images.media_library
+targetEntityType: media
+bundle: stanford_gallery_images
+mode: media_library
+content:
+  su_gallery_image:
+    type: image_focal_point
+    weight: 0
+    region: content
+    settings:
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+      progress_indicator: throbber
+    third_party_settings: {  }
+hidden:
+  created: true
+  name: true
+  path: true
+  status: true
+  uid: true
