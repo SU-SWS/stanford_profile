@@ -1,5 +1,7 @@
 <?php
+
 use Faker\Factory;
+
 /**
  * Test for the lockup settings
  */
