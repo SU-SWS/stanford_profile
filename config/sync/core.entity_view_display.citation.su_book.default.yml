@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.citation.su_book.su_author
-    - field.field.citation.su_book.su_day
-    - field.field.citation.su_book.su_month
+    - field.field.citation.su_book.su_doi
+    - field.field.citation.su_book.su_edition
     - field.field.citation.su_book.su_page
     - field.field.citation.su_book.su_publisher
     - field.field.citation.su_book.su_publisher_place
@@ -42,23 +42,21 @@ content:
     third_party_settings: {  }
     type: name_default
     region: content
-  su_day:
-    weight: 5
+  su_doi:
+    weight: 9
     label: above
     settings:
-      thousand_separator: ''
-      prefix_suffix: true
+      link_to_entity: false
     third_party_settings: {  }
-    type: number_integer
+    type: string
     region: content
-  su_month:
-    weight: 6
+  su_edition:
+    weight: 8
     label: above
     settings:
-      thousand_separator: ''
-      prefix_suffix: true
+      link_to_entity: false
     third_party_settings: {  }
-    type: number_integer
+    type: string
     region: content
   su_page:
     weight: 7

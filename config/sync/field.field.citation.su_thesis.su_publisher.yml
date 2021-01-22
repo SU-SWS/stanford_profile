@@ -1,15 +1,15 @@
-uuid: 34bbd4a5-9a8f-41e4-9b35-d23276ce7dc9
+uuid: c8520ada-a699-4ac0-8bd2-9aec290b6533
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.citation.su_journal
+    - field.storage.citation.su_publisher
     - stanford_publication.citation_type.su_thesis
-id: citation.su_thesis.su_journal
-field_name: su_journal
+id: citation.su_thesis.su_publisher
+field_name: su_publisher
 entity_type: citation
 bundle: su_thesis
-label: 'Journal/Publisher Title'
+label: 'University Name'
 description: ''
 required: false
 translatable: true

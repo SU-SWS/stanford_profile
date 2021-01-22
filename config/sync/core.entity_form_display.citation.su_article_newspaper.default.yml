@@ -6,7 +6,6 @@ dependencies:
     - field.field.citation.su_article_newspaper.su_author
     - field.field.citation.su_article_newspaper.su_day
     - field.field.citation.su_article_newspaper.su_month
-    - field.field.citation.su_article_newspaper.su_newspaper
     - field.field.citation.su_article_newspaper.su_url
     - field.field.citation.su_article_newspaper.su_year
     - stanford_publication.citation_type.su_article_newspaper
@@ -82,7 +81,7 @@ content:
     third_party_settings: {  }
     type: number
     region: content
-  su_newspaper:
+  su_publisher:
     weight: 1
     settings:
       size: 60

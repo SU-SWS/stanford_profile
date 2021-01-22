@@ -1,11 +1,11 @@
-uuid: 781e4f40-31a0-4513-8453-21580bfbe1bb
+uuid: 8227a1d6-bcc9-4b39-92fb-6936ff3daca1
 langcode: en
 status: true
 dependencies:
   module:
     - stanford_publication
-id: citation.su_journal
-field_name: su_journal
+id: citation.su_edition
+field_name: su_edition
 entity_type: citation
 type: string
 settings:
@@ -13,7 +13,7 @@ settings:
   is_ascii: false
   case_sensitive: false
 module: core
-locked: true
+locked: false
 cardinality: 1
 translatable: true
 indexes: {  }

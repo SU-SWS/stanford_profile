@@ -6,8 +6,9 @@ dependencies:
     - field.field.citation.su_thesis.su_author
     - field.field.citation.su_thesis.su_day
     - field.field.citation.su_thesis.su_doi
-    - field.field.citation.su_thesis.su_journal
+    - field.field.citation.su_thesis.su_genre
     - field.field.citation.su_thesis.su_month
+    - field.field.citation.su_thesis.su_publisher
     - field.field.citation.su_thesis.su_year
     - stanford_publication.citation_type.su_thesis
   module:
@@ -82,8 +83,8 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  su_journal:
-    weight: 1
+  su_genre:
+    weight: 8
     settings:
       size: 60
       placeholder: ''
@@ -96,6 +97,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
+  su_publisher:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   su_year:
     weight: 5

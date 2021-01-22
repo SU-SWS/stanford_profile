@@ -4,13 +4,13 @@ status: true
 dependencies:
   config:
     - field.storage.citation.su_author
-    - stanford_publication.citation_type.su_journal_article
+    - stanford_publication.citation_type.su_article_journal
   module:
     - name
-id: citation.su_journal_article.su_author
+id: citation.su_article_journal.su_author
 field_name: su_author
 entity_type: citation
-bundle: su_journal_article
+bundle: su_article_journal
 label: Author(s)
 description: ''
 required: false

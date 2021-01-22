@@ -1,23 +1,19 @@
-uuid: 0bdb7bcc-b184-4a8c-b248-0327dadaebd2
+uuid: 5f305552-f3b3-4f29-b9ff-2228d22a2e59
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.citation.su_day
+    - field.storage.citation.su_edition
     - stanford_publication.citation_type.su_book
-id: citation.su_book.su_day
-field_name: su_day
+id: citation.su_book.su_edition
+field_name: su_edition
 entity_type: citation
 bundle: su_book
-label: Day
+label: Edition
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings:
-  min: 1
-  max: 31
-  prefix: ''
-  suffix: ''
-field_type: integer
+settings: {  }
+field_type: string
