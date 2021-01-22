@@ -1,0 +1,19 @@
+uuid: 34bbd4a5-9a8f-41e4-9b35-d23276ce7dc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_journal
+    - stanford_publication.citation_type.su_thesis
+id: citation.su_thesis.su_journal
+field_name: su_journal
+entity_type: citation
+bundle: su_thesis
+label: 'Journal/Publisher Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

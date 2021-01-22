@@ -1,0 +1,19 @@
+uuid: a601b302-be97-4039-b8d8-bb5ffa6d4b5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_doi
+    - stanford_publication.citation_type.su_journal_article
+id: citation.su_journal_article.su_doi
+field_name: su_doi
+entity_type: citation
+bundle: su_journal_article
+label: 'DOI/ISBN/Database Name'
+description: 'DOI OR URL of journal article web page OR Name of database'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

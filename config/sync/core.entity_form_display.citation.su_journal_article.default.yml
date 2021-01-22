@@ -1,0 +1,135 @@
+uuid: aa99c366-8cf0-40a1-9cb4-7aadd3d23c30
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.citation.su_journal_article.su_author
+    - field.field.citation.su_journal_article.su_day
+    - field.field.citation.su_journal_article.su_doi
+    - field.field.citation.su_journal_article.su_issue
+    - field.field.citation.su_journal_article.su_journal
+    - field.field.citation.su_journal_article.su_month
+    - field.field.citation.su_journal_article.su_page
+    - field.field.citation.su_journal_article.su_volume
+    - field.field.citation.su_journal_article.su_year
+    - stanford_publication.citation_type.su_journal_article
+  module:
+    - field_group
+    - name
+third_party_settings:
+  field_group:
+    group_date:
+      children:
+        - su_month
+        - su_day
+        - su_year
+      parent_name: ''
+      weight: 5
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: true
+        required_fields: false
+      label: Date
+id: citation.su_journal_article.default
+targetEntityType: citation
+bundle: su_journal_article
+mode: default
+content:
+  su_author:
+    weight: 0
+    settings:
+      labels:
+        title: Title
+        given: Given
+        middle: 'Middle name(s)'
+        family: Family
+        generational: Generational
+        credentials: Credentials
+      size:
+        title: 6
+        given: 20
+        middle: 20
+        family: 20
+        generational: 5
+        credentials: 35
+      title_display:
+        title: description
+        given: description
+        middle: description
+        family: description
+        generational: description
+        credentials: description
+      widget_layout: stacked
+      show_component_required_marker: false
+      credentials_inline: false
+      override_field_settings: false
+    third_party_settings: {  }
+    type: name_default
+    region: content
+  su_day:
+    weight: 8
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  su_doi:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_issue:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_journal:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_month:
+    weight: 7
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  su_page:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_volume:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_year:
+    weight: 9
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  title: true

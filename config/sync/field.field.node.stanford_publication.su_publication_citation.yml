@@ -1,16 +1,14 @@
-uuid: d1e2bf38-16c4-4432-8ccf-3be5e8717add
+uuid: 74411fb7-76ff-4335-a5e6-0b09a1668308
 langcode: en
 status: true
 dependencies:
   config:
-    - eck.eck_type.su_pubs.pub_article
-    - eck.eck_type.su_pubs.pub_book
-    - eck.eck_type.su_pubs.pub_journal
-    - eck.eck_type.su_pubs.pub_thesis
     - field.storage.node.su_publication_citation
     - node.type.stanford_publication
-_core:
-  default_config_hash: gs8Buq1TZhKpkGdT3IOVpEIKL6DbgxAvNAgPpMHUyYo
+    - stanford_publication.citation_type.su_article_newspaper
+    - stanford_publication.citation_type.su_book
+    - stanford_publication.citation_type.su_journal_article
+    - stanford_publication.citation_type.su_thesis
 id: node.stanford_publication.su_publication_citation
 field_name: su_publication_citation
 entity_type: node
@@ -22,16 +20,16 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:su_pubs'
+  handler: 'default:citation'
   handler_settings:
     target_bundles:
-      pub_book: pub_book
-      pub_journal: pub_journal
-      pub_article: pub_article
-      pub_thesis: pub_thesis
+      su_article_newspaper: su_article_newspaper
+      su_book: su_book
+      su_journal_article: su_journal_article
+      su_thesis: su_thesis
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: pub_book
+    auto_create_bundle: su_article_newspaper
 field_type: entity_reference

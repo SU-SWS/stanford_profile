@@ -1,4 +1,4 @@
-uuid: 99ea6d0b-f1b7-4d5a-9fce-6a6b321ec73e
+uuid: 2b1889e0-c37b-41e2-823b-f742ff77bef7
 langcode: en
 status: true
 dependencies:
@@ -6,13 +6,11 @@ dependencies:
     - field.storage.node.su_publication_topics
     - node.type.stanford_publication
     - taxonomy.vocabulary.stanford_publication_topics
-_core:
-  default_config_hash: 5_RzSHeTcHTcAqpoWFjpN2FKgNfFSlr1P1vyOyyUocg
 id: node.stanford_publication.su_publication_topics
 field_name: su_publication_topics
 entity_type: node
 bundle: stanford_publication
-label: 'Topic Terms'
+label: Topics
 description: ''
 required: false
 translatable: false
@@ -26,6 +24,6 @@ settings:
     sort:
       field: name
       direction: asc
-    auto_create: false
+    auto_create: true
     auto_create_bundle: ''
 field_type: entity_reference

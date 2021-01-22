@@ -1,4 +1,4 @@
-uuid: b3f8d60c-3b8b-40ca-9d5e-354b05de4cf6
+uuid: 7bc0a34b-8574-435f-9d4a-2c78eb8dff59
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.stanford_publication.su_publication_citation
     - field.field.node.stanford_publication.su_publication_components
     - field.field.node.stanford_publication.su_publication_cta
-    - field.field.node.stanford_publication.su_publication_link
     - field.field.node.stanford_publication.su_publication_topics
     - node.type.stanford_publication
   module:
@@ -28,19 +27,19 @@ third_party_settings:
           orientation: left
           label: ''
         components:
-          27982d99-902d-4e0f-8854-0b4cf8e86ec4:
-            uuid: 27982d99-902d-4e0f-8854-0b4cf8e86ec4
+          8d6c0e53-2154-4bbc-8015-4f90ada1b515:
+            uuid: 8d6c0e53-2154-4bbc-8015-4f90ada1b515
             region: left
             configuration:
-              id: 'field_block:node:stanford_publication:su_publication_components'
-              label: Components
+              id: 'field_block:node:stanford_publication:su_publication_topics'
+              label: Topics
               provider: layout_builder
               label_display: '0'
               formatter:
                 label: hidden
-                type: entity_reference_revisions_entity_view
+                type: entity_reference_label
                 settings:
-                  view_mode: default
+                  link: false
                 third_party_settings:
                   field_formatter_class:
                     class: ''
@@ -48,9 +47,9 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 2
-          f591599c-d265-4c9a-8bfa-dce57d0629bc:
-            uuid: f591599c-d265-4c9a-8bfa-dce57d0629bc
+            weight: 0
+          1a0c44d4-f6a2-457f-9d43-0bfb7f32c58f:
+            uuid: 1a0c44d4-f6a2-457f-9d43-0bfb7f32c58f
             region: left
             configuration:
               id: 'field_block:node:stanford_publication:title'
@@ -70,8 +69,29 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 1
-          8b0b6c6d-cbf1-4af2-a847-20d8c9b867b2:
-            uuid: 8b0b6c6d-cbf1-4af2-a847-20d8c9b867b2
+          42ec0a5c-ba15-4be4-9d66-9fecee9a3912:
+            uuid: 42ec0a5c-ba15-4be4-9d66-9fecee9a3912
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_publication:su_publication_components'
+              label: Components
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_reference_revisions_entity_view
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 2
+          10a9b9f7-3532-480f-9500-a73f98dc906a:
+            uuid: 10a9b9f7-3532-480f-9500-a73f98dc906a
             region: main
             configuration:
               id: 'field_block:node:stanford_publication:su_publication_citation'
@@ -91,8 +111,8 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
-          969d270b-8f0d-4342-9684-1f689f020e00:
-            uuid: 969d270b-8f0d-4342-9684-1f689f020e00
+          8e0b99d1-3634-419b-b3f7-0660aa3a7537:
+            uuid: 8e0b99d1-3634-419b-b3f7-0660aa3a7537
             region: main
             configuration:
               id: 'field_block:node:stanford_publication:su_publication_cta'
@@ -117,32 +137,9 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 1
-          4935faa8-6045-461b-9a9d-e839ba877f85:
-            uuid: 4935faa8-6045-461b-9a9d-e839ba877f85
-            region: left
-            configuration:
-              id: 'field_block:node:stanford_publication:su_publication_topics'
-              label: 'Topic Terms'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_label
-                settings:
-                  link: false
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 0
         third_party_settings: {  }
   layout_library:
     enable: false
-_core:
-  default_config_hash: SL2LNilMuTw7RpT8RX9TsOUyddwfscskjRG7WBI641M
 id: node.stanford_publication.default
 targetEntityType: node
 bundle: stanford_publication
@@ -154,5 +151,4 @@ hidden:
   su_publication_citation: true
   su_publication_components: true
   su_publication_cta: true
-  su_publication_link: true
   su_publication_topics: true

@@ -1,0 +1,21 @@
+uuid: 23696b19-4a80-4918-93ee-e843506a6ad5
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_publication
+id: citation.su_publisher
+field_name: su_publisher
+entity_type: citation
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

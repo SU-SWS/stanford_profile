@@ -1,18 +1,16 @@
-uuid: de676108-918f-4c07-aceb-188b620dc5c3
+uuid: 8fccceb3-1919-4da3-a282-937ba269b2ea
 langcode: en
 status: true
 dependencies:
   module:
-    - eck
     - node
-_core:
-  default_config_hash: rxMoVWhVR1n_AOZlAOEseUMDb-em37jae43sPFZ5pco
+    - stanford_publication
 id: node.su_publication_citation
 field_name: su_publication_citation
 entity_type: node
 type: entity_reference
 settings:
-  target_type: su_pubs
+  target_type: citation
 module: core
 locked: false
 cardinality: 1
