@@ -24,8 +24,6 @@ class PublicationsCest {
     $I->fillField('Subtitle', $faker->text);
     $I->fillField('Publication Place', $faker->text);
     $I->fillField('Publisher', $faker->text);
-    $I->fillField('Month', $faker->numberBetween(1, 12));
-    $I->fillField('Day', $faker->numberBetween(1, 28));
     $I->fillField('Year', $faker->numberBetween(1900, 2020));
     $I->fillField('su_publication_cta[0][uri]', $faker->url);
     $I->fillField('Link text', $faker->text);
