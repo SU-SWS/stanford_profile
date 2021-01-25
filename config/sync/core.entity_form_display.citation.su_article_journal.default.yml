@@ -10,11 +10,13 @@ dependencies:
     - field.field.citation.su_article_journal.su_month
     - field.field.citation.su_article_journal.su_page
     - field.field.citation.su_article_journal.su_publisher
+    - field.field.citation.su_article_journal.su_url
     - field.field.citation.su_article_journal.su_volume
     - field.field.citation.su_article_journal.su_year
     - stanford_publication.citation_type.su_article_journal
   module:
     - field_group
+    - link
     - name
 third_party_settings:
   field_group:
@@ -88,10 +90,9 @@ content:
   su_issue:
     weight: 3
     settings:
-      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: number
     region: content
   su_month:
     weight: 7
@@ -116,6 +117,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  su_url:
+    weight: 10
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   su_volume:
     weight: 2
     settings:

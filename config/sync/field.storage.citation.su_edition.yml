@@ -1,4 +1,4 @@
-uuid: 8227a1d6-bcc9-4b39-92fb-6936ff3daca1
+uuid: b1d0374b-16a2-419b-95da-0362c26f5210
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,10 @@ dependencies:
 id: citation.su_edition
 field_name: su_edition
 entity_type: citation
-type: string
+type: integer
 settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
+  unsigned: false
+  size: normal
 module: core
 locked: false
 cardinality: 1

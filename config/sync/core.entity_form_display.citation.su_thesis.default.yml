@@ -9,10 +9,12 @@ dependencies:
     - field.field.citation.su_thesis.su_genre
     - field.field.citation.su_thesis.su_month
     - field.field.citation.su_thesis.su_publisher
+    - field.field.citation.su_thesis.su_url
     - field.field.citation.su_thesis.su_year
     - stanford_publication.citation_type.su_thesis
   module:
     - field_group
+    - link
     - name
 third_party_settings:
   field_group:
@@ -105,6 +107,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  su_url:
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   su_year:
     weight: 5

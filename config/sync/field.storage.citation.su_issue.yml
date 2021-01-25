@@ -1,4 +1,4 @@
-uuid: e8b5af08-a0be-4a89-985d-e77881a5aeba
+uuid: fade03ba-6767-4319-bbbb-272f688fb287
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,10 @@ dependencies:
 id: citation.su_issue
 field_name: su_issue
 entity_type: citation
-type: string
+type: integer
 settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
+  unsigned: false
+  size: normal
 module: core
 locked: false
 cardinality: 1

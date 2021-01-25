@@ -10,29 +10,12 @@ dependencies:
     - field.field.citation.su_book.su_publisher
     - field.field.citation.su_book.su_publisher_place
     - field.field.citation.su_book.su_subtitle
+    - field.field.citation.su_book.su_url
     - field.field.citation.su_book.su_year
     - stanford_publication.citation_type.su_book
   module:
-    - field_group
+    - link
     - name
-third_party_settings:
-  field_group:
-    group_date:
-      children:
-        - su_month
-        - su_day
-        - su_year
-      parent_name: ''
-      weight: 5
-      format_type: details
-      region: content
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        open: true
-        required_fields: false
-      label: Date
 id: citation.su_book.default
 targetEntityType: citation
 bundle: su_book
@@ -70,7 +53,7 @@ content:
     type: name_default
     region: content
   su_doi:
-    weight: 11
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -78,15 +61,14 @@ content:
     type: string_textfield
     region: content
   su_edition:
-    weight: 10
+    weight: 6
     settings:
-      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: number
     region: content
   su_page:
-    weight: 4
+    weight: 5
     settings:
       size: 60
       placeholder: ''
@@ -94,7 +76,7 @@ content:
     type: string_textfield
     region: content
   su_publisher:
-    weight: 3
+    weight: 4
     settings:
       size: 60
       placeholder: ''
@@ -102,7 +84,7 @@ content:
     type: string_textfield
     region: content
   su_publisher_place:
-    weight: 2
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -117,8 +99,16 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  su_url:
+    weight: 8
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   su_year:
-    weight: 9
+    weight: 2
     settings:
       placeholder: ''
     third_party_settings: {  }
