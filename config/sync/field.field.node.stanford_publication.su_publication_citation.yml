@@ -5,16 +5,16 @@ dependencies:
   config:
     - field.storage.node.su_publication_citation
     - node.type.stanford_publication
+    - stanford_publication.citation_type.su_article_journal
     - stanford_publication.citation_type.su_article_newspaper
     - stanford_publication.citation_type.su_book
-    - stanford_publication.citation_type.su_article_journal
     - stanford_publication.citation_type.su_thesis
 id: node.stanford_publication.su_publication_citation
 field_name: su_publication_citation
 entity_type: node
 bundle: stanford_publication
-label: Citation
-description: ''
+label: 'Citation information'
+description: 'Choose a type of publication items to display. You can preview display options by in the user-guide.'
 required: false
 translatable: false
 default_value: {  }
