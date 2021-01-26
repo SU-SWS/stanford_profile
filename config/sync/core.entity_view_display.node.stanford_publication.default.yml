@@ -9,11 +9,13 @@ dependencies:
     - field.field.node.stanford_publication.su_publication_cta
     - field.field.node.stanford_publication.su_publication_topics
     - node.type.stanford_publication
+    - views.view.stanford_publications
   module:
     - jumpstart_ui
     - layout_builder
     - layout_library
     - user
+    - views
 third_party_settings:
   layout_builder:
     allow_custom: true
@@ -169,6 +171,28 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 4
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: ''
+          centered: null
+          columns: flex-12-of-12
+          label: ''
+        components:
+          797a272b-885d-4772-a161-853409dca684:
+            uuid: 797a272b-885d-4772-a161-853409dca684
+            region: main
+            configuration:
+              id: 'views_block:stanford_publications-related'
+              label: 'More Publications'
+              provider: views
+              label_display: visible
+              views_label: 'More Publications'
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
         third_party_settings: {  }
   layout_library:
     enable: false
