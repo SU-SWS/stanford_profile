@@ -148,29 +148,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 1
-          7bc27225-3b16-491d-b443-c266687f6db8:
-            uuid: 7bc27225-3b16-491d-b443-c266687f6db8
-            region: left
-            configuration:
-              id: 'field_block:node:stanford_publication:su_publication_topics'
-              label: 'Related Topics'
-              provider: layout_builder
-              label_display: visible
-              formatter:
-                label: hidden
-                type: entity_reference_list_label_class
-                settings:
-                  link: true
-                  list_type: ul
-                  class: ''
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 4
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
@@ -191,6 +168,29 @@ third_party_settings:
               views_label: 'More Publications'
               items_per_page: none
               context_mapping: {  }
+            additional: {  }
+            weight: 1
+          7bc27225-3b16-491d-b443-c266687f6db8:
+            uuid: 7bc27225-3b16-491d-b443-c266687f6db8
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_publication:su_publication_topics'
+              label: 'Related Topics'
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: entity_reference_list_label_class
+                settings:
+                  link: true
+                  list_type: ul
+                  class: ''
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             additional: {  }
             weight: 0
         third_party_settings: {  }
