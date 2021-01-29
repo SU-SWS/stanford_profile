@@ -1,0 +1,22 @@
+uuid: db92a141-dd74-4c54-b2c8-03e65da4e30f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_publication
+id: node.stanford_publication.promote
+field_name: promote
+entity_type: node
+bundle: stanford_publication
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

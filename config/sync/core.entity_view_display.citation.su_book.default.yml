@@ -1,0 +1,138 @@
+uuid: b0e1ebd7-af94-4314-abae-e2b50c4d6cc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.citation.su_book.su_author
+    - field.field.citation.su_book.su_doi
+    - field.field.citation.su_book.su_edition
+    - field.field.citation.su_book.su_page
+    - field.field.citation.su_book.su_publisher
+    - field.field.citation.su_book.su_publisher_place
+    - field.field.citation.su_book.su_subtitle
+    - field.field.citation.su_book.su_url
+    - field.field.citation.su_book.su_year
+    - stanford_publication.citation_type.su_book
+  module:
+    - ds
+    - field_formatter_class
+    - link
+    - name
+id: citation.su_book.default
+targetEntityType: citation
+bundle: su_book
+mode: default
+content:
+  name:
+    label: above
+    type: string
+    weight: -4
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_author:
+    weight: 0
+    label: above
+    settings:
+      format: default
+      list_format: ''
+      markup: none
+      link_target: ''
+      preferred_field_reference: ''
+      preferred_field_reference_separator: ', '
+      alternative_field_reference: ''
+      alternative_field_reference_separator: ', '
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+      ds:
+        ds_limit: ''
+    type: name_default
+    region: content
+  su_doi:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+    type: string
+    region: content
+  su_edition:
+    weight: 3
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+    type: number_integer
+    region: content
+  su_page:
+    weight: 6
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+    type: string
+    region: content
+  su_publisher:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+    type: string
+    region: content
+  su_publisher_place:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+    type: string
+    region: content
+  su_subtitle:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+    type: string
+    region: content
+  su_url:
+    weight: 8
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  su_year:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+    type: number_integer
+    region: content
+hidden:
+  title: true
