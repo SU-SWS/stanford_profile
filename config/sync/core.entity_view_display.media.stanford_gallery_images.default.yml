@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.stanford_gallery_images.su_gallery_caption
     - field.field.media.stanford_gallery_images.su_gallery_image
     - image.style.breakpoint_2xl_2x
     - image.style.cta_1x_596x397
@@ -15,6 +16,14 @@ targetEntityType: media
 bundle: stanford_gallery_images
 mode: default
 content:
+  su_gallery_caption:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   su_gallery_image:
     type: colorbox
     weight: 0
@@ -26,8 +35,8 @@ content:
       colorbox_image_style: breakpoint_2xl_2x
       colorbox_gallery: page
       colorbox_gallery_custom: ''
-      colorbox_caption: auto
-      colorbox_caption_custom: ''
+      colorbox_caption: custom
+      colorbox_caption_custom: '[media:su_gallery_caption]'
     third_party_settings:
       field_formatter_class:
         class: ''

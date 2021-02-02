@@ -1,0 +1,23 @@
+uuid: 1401a6c0-738a-41a8-84f8-2d6259afd774
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_gallery_button
+    - paragraphs.paragraphs_type.stanford_gallery
+  module:
+    - link
+id: paragraph.stanford_gallery.su_gallery_button
+field_name: su_gallery_button
+entity_type: paragraph
+bundle: stanford_gallery
+label: Button
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

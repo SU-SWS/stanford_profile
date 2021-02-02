@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.stanford_gallery_images.su_gallery_caption
     - field.field.media.stanford_gallery_images.su_gallery_image
     - image.style.thumbnail
     - media.type.stanford_gallery_images
@@ -21,6 +22,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  su_gallery_caption:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   su_gallery_image:
     type: image_focal_point
     weight: 1

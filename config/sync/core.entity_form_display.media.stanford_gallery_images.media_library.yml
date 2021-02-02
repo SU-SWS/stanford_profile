@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.media.media_library
+    - field.field.media.stanford_gallery_images.su_gallery_caption
     - field.field.media.stanford_gallery_images.su_gallery_image
     - image.style.thumbnail
     - media.type.stanford_gallery_images
@@ -14,6 +15,14 @@ targetEntityType: media
 bundle: stanford_gallery_images
 mode: media_library
 content:
+  su_gallery_caption:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   su_gallery_image:
     type: image_focal_point
     weight: 0
