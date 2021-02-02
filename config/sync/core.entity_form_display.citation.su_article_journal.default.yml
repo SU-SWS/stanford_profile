@@ -36,6 +36,20 @@ third_party_settings:
         classes: ''
         required_fields: false
       label: Date
+    group_external_link:
+      children:
+        - su_url
+      parent_name: ''
+      weight: 8
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: true
+        required_fields: false
+      label: 'External Link'
 id: citation.su_article_journal.default
 targetEntityType: citation
 bundle: su_article_journal
@@ -118,7 +132,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_url:
-    weight: 8
+    weight: 9
     settings:
       placeholder_url: ''
       placeholder_title: ''
