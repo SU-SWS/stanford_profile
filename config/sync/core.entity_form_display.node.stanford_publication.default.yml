@@ -72,8 +72,15 @@ content:
   su_publication_components:
     weight: 3
     settings:
+      sizes:
+        stanford_banner: 12
+        stanford_card: 1
+        stanford_entity: 1
+        stanford_gallery: 1
+        stanford_lists: 1
+        stanford_media_caption: 1
+        stanford_wysiwyg: 1
       resizable: false
-      sizes: {  }
     third_party_settings: {  }
     type: react_paragraphs
     region: content
