@@ -13,7 +13,6 @@ dependencies:
   module:
     - ds
     - field_formatter_class
-    - link
     - name
 id: citation.su_article_newspaper.default
 targetEntityType: citation
@@ -71,20 +70,6 @@ content:
         class: su-margin-bottom-2
     type: string
     region: content
-  su_url:
-    weight: 5
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: '0'
-      target: '0'
-    third_party_settings:
-      field_formatter_class:
-        class: su-margin-bottom-2
-    type: link
-    region: content
   su_year:
     weight: 4
     label: above
@@ -97,4 +82,5 @@ content:
     type: number_integer
     region: content
 hidden:
+  su_url: true
   title: true
