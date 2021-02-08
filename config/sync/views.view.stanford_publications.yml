@@ -17,6 +17,7 @@ dependencies:
     - taxonomy
     - ui_patterns_views
     - user
+    - views_infinite_scroll
     - views_taxonomy_term_name_depth
 id: stanford_publications
 label: Publications
@@ -43,7 +44,7 @@ display:
         type: views_query
         options:
           disable_sql_rewrite: false
-          distinct: false
+          distinct: true
           replica: false
           query_comment: ''
           query_tags: {  }
@@ -59,10 +60,26 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: some
+        type: infinite_scroll
         options:
-          items_per_page: 3
+          items_per_page: 20
           offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
       style:
         type: default
         options:
@@ -174,30 +191,6 @@ display:
           expose:
             label: ''
           plugin_id: standard
-        su_author_family:
-          id: su_author_family
-          table: citation__su_author
-          field: su_author_family
-          relationship: su_publication_citation
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: standard
-        su_author_given:
-          id: su_author_given
-          table: citation__su_author
-          field: su_author_given
-          relationship: su_publication_citation
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: standard
         title:
           id: title
           table: node_field_data
@@ -273,6 +266,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -423,6 +417,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -573,6 +568,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -594,6 +590,7 @@ display:
         row: false
         css_class: false
         sorts: false
+        pager: false
       arguments:
         nid:
           id: nid
@@ -1165,6 +1162,11 @@ display:
           expose:
             label: ''
           plugin_id: random
+      pager:
+        type: some
+        options:
+          items_per_page: 3
+          offset: 0
     cache_metadata:
       max-age: 0
       contexts:

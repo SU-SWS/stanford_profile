@@ -3,20 +3,68 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.stanford_gallery.su_gallery_button
+    - field.field.paragraph.stanford_gallery.su_gallery_description
+    - field.field.paragraph.stanford_gallery.su_gallery_headline
     - field.field.paragraph.stanford_gallery.su_gallery_images
     - paragraphs.paragraphs_type.stanford_gallery
+  module:
+    - ds
+    - element_class_formatter
+    - field_formatter_class
+    - stanford_fields
+    - text
 id: paragraph.stanford_gallery.default
 targetEntityType: paragraph
 bundle: stanford_gallery
 mode: default
 content:
+  su_gallery_button:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 80
+      class: su-button
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: link_class
+    region: content
+  su_gallery_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+    type: text_default
+    region: content
+  su_gallery_headline:
+    weight: 0
+    label: hidden
+    settings:
+      tag: h2
+      linked: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+    type: entity_title_heading
+    region: content
   su_gallery_images:
     type: entity_reference_entity_view
-    weight: 0
+    weight: 2
     region: content
     label: hidden
     settings:
-      link: true
       view_mode: default
-    third_party_settings: {  }
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-margin-bottom-2
+      ds:
+        ds_limit: ''
 hidden: {  }

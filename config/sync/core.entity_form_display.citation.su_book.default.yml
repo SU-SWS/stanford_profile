@@ -14,8 +14,25 @@ dependencies:
     - field.field.citation.su_book.su_year
     - stanford_publication.citation_type.su_book
   module:
+    - field_group
     - link
     - name
+third_party_settings:
+  field_group:
+    group_external_link:
+      children:
+        - su_url
+      parent_name: ''
+      weight: 9
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: true
+        required_fields: false
+      label: 'External Link'
 id: citation.su_book.default
 targetEntityType: citation
 bundle: su_book
@@ -100,7 +117,7 @@ content:
     type: string_textfield
     region: content
   su_url:
-    weight: 9
+    weight: 10
     settings:
       placeholder_url: ''
       placeholder_title: ''

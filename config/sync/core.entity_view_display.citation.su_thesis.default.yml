@@ -15,7 +15,6 @@ dependencies:
   module:
     - ds
     - field_formatter_class
-    - link
     - name
 id: citation.su_thesis.default
 targetEntityType: citation
@@ -62,16 +61,6 @@ content:
         class: su-margin-bottom-2
     type: string
     region: content
-  su_genre:
-    weight: 4
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings:
-      field_formatter_class:
-        class: su-margin-bottom-2
-    type: string
-    region: content
   su_month:
     weight: 1
     label: above
@@ -84,7 +73,7 @@ content:
     type: number_integer
     region: content
   su_publisher:
-    weight: 5
+    weight: 1
     label: above
     settings:
       link_to_entity: false
@@ -92,18 +81,6 @@ content:
       field_formatter_class:
         class: su-margin-bottom-2
     type: string
-    region: content
-  su_url:
-    weight: 7
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
     region: content
   su_year:
     weight: 3
@@ -117,4 +94,6 @@ content:
     type: number_integer
     region: content
 hidden:
+  su_genre: true
+  su_url: true
   title: true

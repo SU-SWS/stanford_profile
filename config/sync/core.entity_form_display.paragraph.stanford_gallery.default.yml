@@ -3,15 +3,44 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.stanford_gallery.su_gallery_button
+    - field.field.paragraph.stanford_gallery.su_gallery_description
+    - field.field.paragraph.stanford_gallery.su_gallery_headline
     - field.field.paragraph.stanford_gallery.su_gallery_images
     - paragraphs.paragraphs_type.stanford_gallery
   module:
+    - link
     - media_library
+    - text
 id: paragraph.stanford_gallery.default
 targetEntityType: paragraph
 bundle: stanford_gallery
 mode: default
 content:
+  su_gallery_button:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_gallery_description:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  su_gallery_headline:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   su_gallery_images:
     type: media_library_widget
     weight: 0
