@@ -37,6 +37,7 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 0
+            third_party_settings: {  }
         third_party_settings: {  }
   layout_library:
     enable: false
@@ -52,4 +53,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  search_api_excerpt: true
