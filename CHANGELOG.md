@@ -1,5 +1,18 @@
 # Stanford Profile
 
+8.x-2.0
+--------------------------------------------------------------------------------
+_Release Date: 2021-02-08_
+
+- D8CORE-2968 Change the events schedule view (#354) (567973f)
+- Several configuration tweaks. (#352) (11728b4)
+- D8CORE-2585 Publications content type (#350) (326e730)
+- D8CORE-1123: added tests for dropdown menu (#349) (153da4e)
+- Disable orphan actions on person importer (1bcd31c)
+- D8CORE-3263 Create gallery paragraph type with colorbox actions (#347) (4815971)
+- Exported configs after D9.1 database updates (#340) (9c84759)
+- D8CORE-3142: adding a class to the intro block (#345) (6187724)
+
 8.x-1.22
 --------------------------------------------------------------------------------
 _Release Date: 2020-12-08_

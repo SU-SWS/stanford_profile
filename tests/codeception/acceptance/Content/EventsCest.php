@@ -10,7 +10,7 @@ class EventsCest {
   /**
    * Events list intro block is at the top of the page.
    */
-  public function testListIntro(AcceptanceTester $I){
+  public function testListIntro(AcceptanceTester $I) {
     $intro_text = Factory::create()->text();
     $I->logInWithRole('site_manager');
     $I->amOnPage('/events');
@@ -46,6 +46,9 @@ class EventsCest {
     // Todo: make theme name dynamic.
     $I->amOnPage("/admin/structure/block/manage/stanford_basic_pagetitle");
     $values = $I->grabTextFrom("#edit-visibility-request-path-pages");
+    if (is_string($values)) {
+      $values = explode("\n", $values);
+    }
     $I->assertContains("/events*", $values);
   }
 
