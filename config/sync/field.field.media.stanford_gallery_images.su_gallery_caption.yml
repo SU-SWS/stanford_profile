@@ -1,0 +1,19 @@
+uuid: a4c0b33f-a86b-4ba9-a109-437957579b48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.su_gallery_caption
+    - media.type.stanford_gallery_images
+id: media.stanford_gallery_images.su_gallery_caption
+field_name: su_gallery_caption
+entity_type: media
+bundle: stanford_gallery_images
+label: Caption
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

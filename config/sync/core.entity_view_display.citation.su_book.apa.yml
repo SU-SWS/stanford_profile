@@ -1,0 +1,97 @@
+uuid: 1e603e62-c4aa-4815-83dd-3f42ad201ca8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.citation.apa
+    - field.field.citation.su_book.su_author
+    - field.field.citation.su_book.su_doi
+    - field.field.citation.su_book.su_edition
+    - field.field.citation.su_book.su_page
+    - field.field.citation.su_book.su_publisher
+    - field.field.citation.su_book.su_publisher_place
+    - field.field.citation.su_book.su_subtitle
+    - field.field.citation.su_book.su_url
+    - field.field.citation.su_book.su_year
+    - stanford_publication.citation_type.su_book
+  module:
+    - layout_builder
+    - name
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: citation.su_book.apa
+targetEntityType: citation
+bundle: su_book
+mode: apa
+content:
+  name:
+    label: above
+    type: string
+    weight: -4
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_author:
+    weight: 0
+    label: above
+    settings:
+      format: default
+      markup: none
+      list_format: ''
+      link_target: ''
+      preferred_field_reference: ''
+      preferred_field_reference_separator: ', '
+      alternative_field_reference: ''
+      alternative_field_reference_separator: ', '
+    third_party_settings: {  }
+    type: name_default
+    region: content
+  su_page:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_publisher:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_publisher_place:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_subtitle:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_year:
+    weight: 4
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden:
+  su_doi: true
+  su_edition: true
+  su_url: true
+  title: true

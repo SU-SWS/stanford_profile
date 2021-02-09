@@ -5,7 +5,7 @@ version: 2
 defaults: &defaults
   docker:
     - image: pookmish/drupal8ci:pcov
-    - image: selenium/standalone-chrome:3.141.59-neon
+    - image: selenium/standalone-chrome:latest
     - image: mariadb:10.3
       environment:
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
@@ -30,7 +30,7 @@ code_coverage: &code_coverage
     - run:
         name: Run PHP Unit Coverage Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
     - save_cache:
         key: dependencies-v1-{{ epoch }}
@@ -64,7 +64,7 @@ behat: &behat
     - store_artifacts:
         path: /var/www/html/artifacts
 
-codeception: &codeception
+d8_codeception: &d8_codeception
   <<: *defaults
   steps:
     - *github_token

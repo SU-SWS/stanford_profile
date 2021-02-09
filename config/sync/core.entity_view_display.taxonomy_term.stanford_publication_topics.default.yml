@@ -1,0 +1,55 @@
+uuid: cb53ff19-0b21-44cb-aff6-fe9796ad76bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_publication_topics
+    - views.view.stanford_publications
+  module:
+    - jumpstart_ui
+    - layout_builder
+    - layout_library
+    - text
+    - views
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+          orientation: right
+          label: ''
+        components:
+          d8f08681-9907-4346-9b2a-3136a422cb5b:
+            uuid: d8f08681-9907-4346-9b2a-3136a422cb5b
+            region: main
+            configuration:
+              id: 'views_block:stanford_publications-term_list_chicago'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+  layout_library:
+    enable: false
+id: taxonomy_term.stanford_publication_topics.default
+targetEntityType: taxonomy_term
+bundle: stanford_publication_topics
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
