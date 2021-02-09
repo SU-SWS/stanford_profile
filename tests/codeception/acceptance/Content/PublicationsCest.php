@@ -18,7 +18,7 @@ class PublicationsCest {
     $I->amOnPage('/node/add/stanford_publication');
     $I->fillField('Title', 'Test Publication');
     $I->selectOption('su_publication_citation[actions][bundle]', 'Book');
-    $I->click('Add new Citation');
+    $I->click('Add Citation');
     $I->fillField('First Name', $faker->firstName);
     $I->fillField('Last Name', $faker->lastName);
     $I->fillField('Subtitle', $faker->text);
