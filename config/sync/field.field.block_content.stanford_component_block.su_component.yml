@@ -5,6 +5,11 @@ dependencies:
   config:
     - block_content.type.stanford_component_block
     - field.storage.block_content.su_component
+    - paragraphs.paragraphs_type.stanford_banner
+    - paragraphs.paragraphs_type.stanford_card
+    - paragraphs.paragraphs_type.stanford_media_caption
+    - paragraphs.paragraphs_type.stanford_spacer
+    - paragraphs.paragraphs_type.stanford_wysiwyg
   module:
     - entity_reference_revisions
 id: block_content.stanford_component_block.su_component
@@ -19,5 +24,40 @@ default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:paragraph'
-  handler_settings: {  }
+  handler_settings:
+    negate: 0
+    target_bundles:
+      stanford_banner: stanford_banner
+      stanford_card: stanford_card
+      stanford_media_caption: stanford_media_caption
+      stanford_spacer: stanford_spacer
+      stanford_wysiwyg: stanford_wysiwyg
+    target_bundles_drag_drop:
+      stanford_banner:
+        enabled: true
+        weight: 10
+      stanford_card:
+        enabled: true
+        weight: 11
+      stanford_entity:
+        weight: 12
+        enabled: false
+      stanford_lists:
+        weight: 13
+        enabled: false
+      stanford_media_caption:
+        enabled: true
+        weight: 14
+      stanford_person_cta:
+        weight: 15
+        enabled: false
+      stanford_schedule:
+        weight: 16
+        enabled: false
+      stanford_spacer:
+        enabled: true
+        weight: 17
+      stanford_wysiwyg:
+        enabled: true
+        weight: 18
 field_type: entity_reference_revisions

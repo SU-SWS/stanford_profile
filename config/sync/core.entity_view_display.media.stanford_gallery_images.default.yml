@@ -1,0 +1,48 @@
+uuid: 51af8e5c-0ef0-4f58-b34a-312146e55f1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.stanford_gallery_images.su_gallery_caption
+    - field.field.media.stanford_gallery_images.su_gallery_image
+    - image.style.breakpoint_2xl_2x
+    - image.style.cta_1x_596x397
+    - media.type.stanford_gallery_images
+  module:
+    - colorbox
+    - field_formatter_class
+id: media.stanford_gallery_images.default
+targetEntityType: media
+bundle: stanford_gallery_images
+mode: default
+content:
+  su_gallery_caption:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  su_gallery_image:
+    type: colorbox
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      colorbox_node_style: cta_1x_596x397
+      colorbox_node_style_first: ''
+      colorbox_image_style: breakpoint_2xl_2x
+      colorbox_gallery: page
+      colorbox_gallery_custom: ''
+      colorbox_caption: custom
+      colorbox_caption_custom: '[media:su_gallery_caption]'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+hidden:
+  created: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

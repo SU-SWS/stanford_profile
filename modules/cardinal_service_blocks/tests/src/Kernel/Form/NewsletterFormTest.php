@@ -63,27 +63,27 @@ class NewsletterFormTest extends KernelTestBase {
 
     // No email entered.
     $commands = $form_object->ajaxSubmit($form, $form_state)->getCommands();
-    $this->assertContains('su-alert--error', $commands[0]['data']);
-    $this->assertContains('Email address is required', $commands[0]['data']);
+    $this->assertStringContainsString('su-alert--error', $commands[0]['data']);
+    $this->assertStringContainsString('Email address is required', $commands[0]['data']);
 
     $form_state->setValue('email', 'foo@bar.com');
 
     // Successful ajax.
     $commands = $form_object->ajaxSubmit($form, $form_state)->getCommands();
-    $this->assertContains('su-alert--success', $commands[0]['data']);
-    $this->assertContains('Thank you', $commands[0]['data']);
+    $this->assertStringContainsString('su-alert--success', $commands[0]['data']);
+    $this->assertStringContainsString('Thank you', $commands[0]['data']);
 
     // Form Submission Failure
     $this->responseBody = '<div>There are errors below</div>';
     $commands = $form_object->ajaxSubmit($form, $form_state)->getCommands();
-    $this->assertContains('su-alert--error', $commands[0]['data']);
-    $this->assertContains('Unable to sign up', $commands[0]['data']);
+    $this->assertStringContainsString('su-alert--error', $commands[0]['data']);
+    $this->assertStringContainsString('Unable to sign up', $commands[0]['data']);
 
     // Failing guzzle.
     $this->failGuzzle = TRUE;
     $commands = $form_object->ajaxSubmit($form, $form_state)->getCommands();
-    $this->assertContains('su-alert--error', $commands[0]['data']);
-    $this->assertContains('Unable to sign up', $commands[0]['data']);
+    $this->assertStringContainsString('su-alert--error', $commands[0]['data']);
+    $this->assertStringContainsString('Unable to sign up', $commands[0]['data']);
   }
 
   /**

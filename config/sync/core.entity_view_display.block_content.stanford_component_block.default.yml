@@ -6,7 +6,9 @@ dependencies:
     - block_content.type.stanford_component_block
     - field.field.block_content.stanford_component_block.su_component
   module:
+    - ds
     - entity_reference_revisions
+    - field_formatter_class
 id: block_content.stanford_component_block.default
 targetEntityType: block_content
 bundle: stanford_component_block
@@ -19,7 +21,11 @@ content:
     settings:
       view_mode: default
       link: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: su-intro
+      ds:
+        ds_limit: ''
     region: content
 hidden:
   search_api_excerpt: true

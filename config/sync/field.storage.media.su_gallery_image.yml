@@ -1,0 +1,30 @@
+uuid: 8d3a5118-ea21-4bf4-9129-cab37f109927
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - media
+id: media.su_gallery_image
+field_name: su_gallery_image
+entity_type: media
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
