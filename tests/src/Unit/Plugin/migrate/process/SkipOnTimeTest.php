@@ -31,6 +31,9 @@ class SkipOnTimeTest extends UnitTestCase {
     $time = time();
     $this->assertEquals($time, $plugin->transform($time, $migration, $row, NULL));
 
+    $time = date('m-d-y h:i:s');
+    $this->assertEquals($time, $plugin->transform($time, $migration, $row, NULL));
+
     $plugin = new SkipOnTime([
       'compare' => '<',
       'value' => 'now +1day',
@@ -42,7 +45,6 @@ class SkipOnTimeTest extends UnitTestCase {
 
     $this->expectException(MigrateSkipProcessException::class);
     $plugin->transform($time, $migration, $row, NULL);
-
   }
 
   /**
