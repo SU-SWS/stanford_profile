@@ -1,0 +1,34 @@
+_meta:
+  version: '1.0'
+  entity_type: paragraph
+  uuid: 79c98714-281a-450d-b574-2971426b1f3e
+  bundle: stanford_banner
+  default_langcode: en
+  depends:
+    6fac3713-f499-4750-a7bc-32c16a59043a: media
+default:
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1582157158
+  behavior_settings:
+    -
+      value: {  }
+  revision_translation_affected:
+    -
+      value: true
+  su_banner_body:
+    -
+      value: "<p>To edit this page, <a href=\"/saml_login\">log in with your SUNetID</a>. After you log in, return to the homepage, and use it as a template to begin building your site.</p>\r\n"
+      format: stanford_minimal_html
+  su_banner_header:
+    -
+      value: 'Welcome to your site!'
+  su_banner_image:
+    -
+      entity: 6fac3713-f499-4750-a7bc-32c16a59043a
+  su_banner_sup_header:
+    -
+      value: 'Stanford University'

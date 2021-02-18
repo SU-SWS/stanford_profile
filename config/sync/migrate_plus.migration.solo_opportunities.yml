@@ -356,6 +356,11 @@ process:
       plugin: skip_on_equal
       compare: '@su_opp_submissions_open'
       method: process
+    -
+      plugin: skip_on_time_compare
+      compare: '>'
+      value: 'now +2years'
+      method: process
   su_opp_deadline_time:
     -
       plugin: default_value

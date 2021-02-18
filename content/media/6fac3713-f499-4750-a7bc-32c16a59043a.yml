@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 6fac3713-f499-4750-a7bc-32c16a59043a
+  bundle: image
+  default_langcode: en
+  depends:
+    276ba89e-9679-45df-b6d2-0a6b81b71105: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: photo-epel-stanford-campus.jpg
+  created:
+    -
+      value: 1566539200
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 276ba89e-9679-45df-b6d2-0a6b81b71105
+      alt: 'View of the front of Stanford Campus'
+      title: ''
+      width: 2000
+      height: 1333
