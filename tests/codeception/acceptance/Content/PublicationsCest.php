@@ -46,7 +46,10 @@ class PublicationsCest {
     $I->amOnPage('/publications');
     $I->canSee('Test Publication');
     $I->click('Foo Bar');
+    $I->assertEquals('/publications/foo-bar', $I->grabFromCurrentUrl());
+    $I->canSee('Foo Bar','h1');
     $I->canSee('Test Publication');
+    $I->canSeeLink('Foo Bar');
   }
 
 }
