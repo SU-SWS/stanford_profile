@@ -1,0 +1,20 @@
+uuid: 501a7f89-7757-46d9-900d-66748deb4c27
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_publication
+id: citation.su_year
+field_name: su_year
+entity_type: citation
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

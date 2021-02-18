@@ -1,0 +1,19 @@
+uuid: 1b4dac35-d01b-4b3d-a88b-7cc02122ce15
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.su_gallery_description
+field_name: su_gallery_description
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

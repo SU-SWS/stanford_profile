@@ -1,0 +1,47 @@
+uuid: d41ce681-2e4f-4bf4-a219-aaa6049a6dfa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.stanford_gallery_images.su_gallery_caption
+    - field.field.media.stanford_gallery_images.su_gallery_image
+    - image.style.thumbnail
+    - media.type.stanford_gallery_images
+  module:
+    - focal_point
+id: media.stanford_gallery_images.default
+targetEntityType: media
+bundle: stanford_gallery_images
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_gallery_caption:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_gallery_image:
+    type: image_focal_point
+    weight: 1
+    region: content
+    settings:
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+      progress_indicator: throbber
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  status: true
+  uid: true

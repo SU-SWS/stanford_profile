@@ -1,0 +1,23 @@
+uuid: 2ab8b20d-89bf-4718-8dc4-3c0b47097fbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_month
+    - stanford_publication.citation_type.su_thesis
+id: citation.su_thesis.su_month
+field_name: su_month
+entity_type: citation
+bundle: su_thesis
+label: Month
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 12
+  prefix: ''
+  suffix: ''
+field_type: integer

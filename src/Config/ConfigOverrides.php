@@ -6,6 +6,7 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ConfigFactoryOverrideInterface;
 use Drupal\Core\Config\StorageInterface;
+use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\State\StateInterface;
 
 /**
@@ -69,8 +70,16 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
         $existing_ignored[] = "$theme_name.settings";
       }
       $overrides['config_ignore.settings']['ignored_config_entities'] = $existing_ignored;
+
+      // When installing a site, we don't want to ignore any configs.
+      if (InstallerKernel::installationAttempted()) {
+        foreach ($overrides['config_ignore.settings']['ignored_config_entities'] as &$ignored) {
+          $ignored = 'foo';
+        }
+      }
     }
     $this->setOverridesGoogleTag($names, $overrides);
+
     return $overrides;
   }
 

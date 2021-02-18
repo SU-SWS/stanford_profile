@@ -1,0 +1,29 @@
+uuid: 0cbbdff6-e470-429a-b3bb-6a2d0fa8a833
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_gallery_images
+    - media.type.stanford_gallery_images
+    - paragraphs.paragraphs_type.stanford_gallery
+id: paragraph.stanford_gallery.su_gallery_images
+field_name: su_gallery_images
+entity_type: paragraph
+bundle: stanford_gallery
+label: Images
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      stanford_gallery_images: stanford_gallery_images
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

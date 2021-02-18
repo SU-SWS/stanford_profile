@@ -1,0 +1,20 @@
+uuid: c3a55aef-1185-43af-a7ae-165ea37ff22f
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_publication
+id: citation.su_day
+field_name: su_day
+entity_type: citation
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

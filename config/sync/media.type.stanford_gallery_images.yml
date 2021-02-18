@@ -1,0 +1,18 @@
+uuid: 33541aed-bdc2-4e1e-b49d-2e9ec6f1ea13
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+third_party_settings:
+  crop:
+    image_field: _none
+id: stanford_gallery_images
+label: 'Gallery Images'
+description: 'Images intended only for gallery paragraphs'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: su_gallery_image
+field_map: {  }

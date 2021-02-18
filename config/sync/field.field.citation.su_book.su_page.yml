@@ -1,0 +1,19 @@
+uuid: 047d1892-d4c4-4eaa-ae53-e5db7ca94dc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_page
+    - stanford_publication.citation_type.su_book
+id: citation.su_book.su_page
+field_name: su_page
+entity_type: citation
+bundle: su_book
+label: Page(s)
+description: 'Page numbers may vary based on the e-book viewer used. In these cases it is preferred to use chapter or paragraph numbers if they are provided (eg. chap. 2 or para. 11)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

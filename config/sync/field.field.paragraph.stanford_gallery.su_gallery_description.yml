@@ -1,0 +1,27 @@
+uuid: 1f0e3a67-2054-4ec7-a748-577881215c91
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_gallery_description
+    - paragraphs.paragraphs_type.stanford_gallery
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_minimal_html: stanford_minimal_html
+    stanford_html: '0'
+    plain_text: '0'
+id: paragraph.stanford_gallery.su_gallery_description
+field_name: su_gallery_description
+entity_type: paragraph
+bundle: stanford_gallery
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

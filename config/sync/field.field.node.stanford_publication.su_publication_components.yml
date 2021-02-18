@@ -1,0 +1,31 @@
+uuid: 365cc5f6-345f-4379-8cf1-f9ce1c2e89ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_publication_components
+    - node.type.stanford_publication
+    - react_paragraphs.paragraphs_row_type.su_pub_rows
+  module:
+    - entity_reference_revisions
+id: node.stanford_publication.su_publication_components
+field_name: su_publication_components
+entity_type: node
+bundle: stanford_publication
+label: Components
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph_row'
+  handler_settings:
+    target_bundles:
+      su_pub_rows: su_pub_rows
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference_revisions

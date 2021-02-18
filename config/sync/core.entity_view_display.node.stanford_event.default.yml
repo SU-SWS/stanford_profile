@@ -23,7 +23,6 @@ dependencies:
     - field.field.node.stanford_event.su_event_type
     - node.type.stanford_event
     - views.view.stanford_events
-    - views.view.stanford_events_schedule
   module:
     - address
     - entity_reference_revisions
@@ -463,19 +462,6 @@ third_party_settings:
           columns: flex-10-of-12
           label: 'Event type and Schedule'
         components:
-          09d8b675-2bdf-45eb-a005-6279e9f81738:
-            uuid: 09d8b675-2bdf-45eb-a005-6279e9f81738
-            region: main
-            configuration:
-              id: 'views_block:stanford_events_schedule-event_schedule_block'
-              label: Schedule
-              provider: views
-              label_display: visible
-              views_label: Schedule
-              items_per_page: none
-              context_mapping: {  }
-            additional: {  }
-            weight: 1
           d64439dc-f59e-4822-aba0-cdca5a9dc331:
             uuid: d64439dc-f59e-4822-aba0-cdca5a9dc331
             region: main
@@ -495,6 +481,19 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+            additional: {  }
+            weight: 4
+          5bff4484-cf7e-4513-881c-86ec5239e101:
+            uuid: 5bff4484-cf7e-4513-881c-86ec5239e101
+            region: main
+            configuration:
+              id: 'views_block:stanford_events-schedule'
+              label: Schedule
+              provider: views
+              label_display: visible
+              views_label: Schedule
+              items_per_page: none
+              context_mapping: {  }
             additional: {  }
             weight: 2
         third_party_settings: {  }

@@ -1,0 +1,23 @@
+uuid: d59b9fc0-9be6-4c34-8d1a-d7b75d67af36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_year
+    - stanford_publication.citation_type.su_book
+id: citation.su_book.su_year
+field_name: su_year
+entity_type: citation
+bundle: su_book
+label: Year
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1900
+  max: 2030
+  prefix: ''
+  suffix: ''
+field_type: integer

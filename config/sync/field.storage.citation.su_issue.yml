@@ -1,0 +1,20 @@
+uuid: fade03ba-6767-4319-bbbb-272f688fb287
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_publication
+id: citation.su_issue
+field_name: su_issue
+entity_type: citation
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
