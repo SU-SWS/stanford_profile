@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - system.menu.stanford-publication-topics
     - taxonomy.vocabulary.stanford_publication_topics
     - views.view.stanford_publications
   module:
     - jumpstart_ui
     - layout_builder
     - layout_library
+    - system
     - text
     - views
 third_party_settings:
@@ -16,6 +18,36 @@ third_party_settings:
     allow_custom: false
     enabled: true
     sections:
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+          label: ''
+        components:
+          5be6f2e6-c0af-414f-b676-801e180b42f3:
+            uuid: 5be6f2e6-c0af-414f-b676-801e180b42f3
+            region: main
+            configuration:
+              id: 'field_block:taxonomy_term:stanford_publication_topics:name'
+              label: Name
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: entity_title_heading
+                settings:
+                  tag: h1
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
@@ -34,6 +66,20 @@ third_party_settings:
               label_display: '0'
               views_label: ''
               items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+          691a3b23-5601-4580-9af4-2fef58b42282:
+            uuid: 691a3b23-5601-4580-9af4-2fef58b42282
+            region: left
+            configuration:
+              id: 'system_menu_block:stanford-publication-topics'
+              label: 'Publication Topics'
+              provider: system
+              label_display: '0'
+              level: 1
+              depth: 0
+              expand_all_items: false
               context_mapping: {  }
             additional: {  }
             weight: 0

@@ -1,0 +1,47 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: ce9cb7ca-6c59-4eea-9934-0a33057a7ff2
+  bundle: stanford_page
+  default_langcode: en
+  depends:
+    61002974-6fea-4ac9-99f0-93100787ff3b: user
+default:
+  revision_uid:
+    -
+      entity: 61002974-6fea-4ac9-99f0-93100787ff3b
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: 61002974-6fea-4ac9-99f0-93100787ff3b
+  title:
+    -
+      value: Publications
+  created:
+    -
+      value: 1613684388
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /publications
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
