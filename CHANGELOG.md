@@ -1,5 +1,32 @@
 # Cardinal Service Profile
 
+8.x-1.12
+--------------------------------------------------------------------------------
+_Release Date: 2021-02-22_
+
+- Fixed migrate process plugin for time comparison skip.
+
+8.x-1.11
+--------------------------------------------------------------------------------
+_Release Date: 2021-02-17_
+
+- Migration Process Plugin to skip on time comparison (#159)
+- Stanford profile updates 2020-12-09
+- Dont remove special characters
+- D8CORE-2431: configs (#333)
+- D8CORE-2867 Update image metadata tags (#339)
+- D8CORE-2325: fixed separator between event dates (#338)
+- D8CORE-000 Patch simplesamlphp auth module to prevent unwanted redirect (#337)
+- D8CORE-3051 Allow paragraph views to display nested taxonomy content (#335)
+- Updated default content module (#336)
+- D8CORE-2878 Add coalesce support for small animated gif fix (#334)
+- D8CORE-2759 Fix revisions table to show all revisions (#296)
+- D8CORE-2957 Updated help section language (#330)
+- D9 Ready (#329)
+- D8CORE-2495 Changed the link button in minimal html format (#332)
+- Stanford profile updates 2020-11-19
+- Merge pull request #331 from SU-SWS/hotfix-SA-CORE-2020-012
+
 8.x-1.10
 --------------------------------------------------------------------------------
 _Release Date: 2020-11-09_
