@@ -19,7 +19,7 @@ class SkipOnTime extends SkipOnValue {
    * Transforms the value being compared from the previous process data.
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
-    $original_value = (int) $value ?? strtotime($value);
+    $original_value = is_numeric($value) ? $value : strtotime($value);
     $comparison_value = strtotime($this->configuration['value']);
 
     switch ($this->configuration['compare']) {
