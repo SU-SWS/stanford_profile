@@ -688,11 +688,11 @@ display:
   cards:
     display_plugin: block
     id: cards
-    display_title: Cards
-    position: 1
+    display_title: 'Card Grid'
+    position: 2
     display_options:
       display_extenders: {  }
-      display_description: 'List - All Items'
+      display_description: 'Grid - All Items'
       block_description: 'List Page'
       block_hide_empty: false
       block_category: 'Events Lists (Views)'
@@ -844,7 +844,7 @@ display:
   list_page:
     display_plugin: block
     id: list_page
-    display_title: List
+    display_title: '- Default List -'
     position: 1
     display_options:
       display_extenders: {  }
@@ -2347,7 +2347,7 @@ display:
     display_plugin: block
     id: list_page_filtered
     display_title: 'List Page - Filtered'
-    position: 2
+    position: 3
     display_options:
       display_extenders: {  }
       display_description: ''
@@ -3918,7 +3918,7 @@ display:
     display_plugin: block
     id: more_events_block
     display_title: 'Explore More Events Block'
-    position: 3
+    position: 4
     display_options:
       display_extenders: {  }
       display_description: 'Explore More Events Block'
