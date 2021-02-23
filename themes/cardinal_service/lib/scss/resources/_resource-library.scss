@@ -5,6 +5,7 @@
     margin: 0;
     @include modular-typography(1);
     font-weight: 700;
+    position: relative;
   }
 
   a {
@@ -13,7 +14,7 @@
       font-weight: 700;
       text-decoration: none;
       word-wrap: break-word;
-      position: relative;
+      position: unset;
 
       &:hover,
       &:focus {
