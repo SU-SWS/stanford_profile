@@ -42,14 +42,22 @@ class PublicationsCest {
    * Test out the list pages.
    */
   public function testAllPublicationListPage(AcceptanceTester $I) {
+    $faker = Factory::create();
     $this->testBookCitation($I);
     $I->amOnPage('/publications');
     $I->canSee('Test Publication');
     $I->click('Foo Bar');
     $I->assertEquals('/publications/foo-bar', $I->grabFromCurrentUrl());
-    $I->canSee('Foo Bar','h1');
+    $I->canSee('Foo Bar', 'h1');
     $I->canSee('Test Publication');
     $I->canSeeLink('Foo Bar');
+
+    $term = $I->createEntity([
+      'vid' => 'stanford_publication_topics',
+      'name' => $faker->text,
+    ], 'taxonomy_term');
+    $I->amOnPage('/publications');
+    $I->canSee($term->label());
   }
 
 }
