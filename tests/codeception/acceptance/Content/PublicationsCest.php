@@ -19,7 +19,7 @@ class PublicationsCest {
     ], 'taxonomy_term');
 
     $faker = Factory::create();
-    $I->logInWithRole('contributor');
+    $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_publication');
     $I->fillField('Title', 'Test Publication');
     $I->fillField('Publication Topic Terms (value 1)', 'Foo Bar');
@@ -54,10 +54,12 @@ class PublicationsCest {
 
     $term = $I->createEntity([
       'vid' => 'stanford_publication_topics',
-      'name' => $faker->text,
+      'name' => $faker->text(10),
     ], 'taxonomy_term');
+    \Drupal::service('cache.render')->deleteAll();
+    \Drupal::service('router.builder')->rebuild();
     $I->amOnPage('/publications');
-    $I->canSee($term->label());
+    $I->canSeeLink($term->label());
   }
 
 }
