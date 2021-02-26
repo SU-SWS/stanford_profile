@@ -686,7 +686,7 @@ display:
         - 'config:field.storage.node.su_event_subheadline'
         - 'config:field.storage.node.su_event_type'
   cards:
-    display_plugin: block
+    display_plugin: viewfield_block
     id: cards
     display_title: 'Card Grid'
     position: 2
@@ -842,7 +842,7 @@ display:
         - user.permissions
       tags: {  }
   list_page:
-    display_plugin: block
+    display_plugin: viewfield_block
     id: list_page
     display_title: '- Default List -'
     position: 1
