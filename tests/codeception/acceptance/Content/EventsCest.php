@@ -199,6 +199,26 @@ class EventsCest {
   }
 
   /**
+   * Published checkbox should be hidden on term edit pages.
+   */
+  public function testTermPublishing(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $term = $I->createEntity([
+      'vid' => 'event_audience',
+      'name' => 'Foo',
+    ], 'taxonomy_term');
+    $I->amOnPage($term->toUrl('edit')->toString());
+    $I->cantSee('Published');
+
+    $term = $I->createEntity([
+      'vid' => 'stanford_event_types',
+      'name' => 'Foo',
+    ], 'taxonomy_term');
+    $I->amOnPage($term->toUrl('edit')->toString());
+    $I->cantSee('Published');
+  }
+
+  /**
    * Create an Event Node.
    *
    * @param AcceptanceTester $I
