@@ -60,6 +60,7 @@ class PublicationsCest {
     \Drupal::service('router.builder')->rebuild();
     $I->amOnPage('/publications');
     $I->canSeeLink($term->label());
+  }
 
   /**
    * Published checkbox should be hidden on term edit pages.
