@@ -1,0 +1,14 @@
+uuid: 91fe6c68-4284-4c8a-b4dd-935d130d1e05
+langcode: en
+status: true
+dependencies:
+  module:
+    - search_api_db
+id: database_search
+name: 'Database Search'
+description: ''
+backend: search_api_db
+backend_config:
+  database: 'default:default'
+  min_chars: 2
+  matching: partial
