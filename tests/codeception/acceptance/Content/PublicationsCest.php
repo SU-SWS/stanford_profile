@@ -60,6 +60,18 @@ class PublicationsCest {
     \Drupal::service('router.builder')->rebuild();
     $I->amOnPage('/publications');
     $I->canSeeLink($term->label());
+
+  /**
+   * Published checkbox should be hidden on term edit pages.
+   */
+  public function testTermPublishing(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $term = $I->createEntity([
+      'vid' => 'stanford_publication_topics',
+      'name' => 'Foo',
+    ], 'taxonomy_term');
+    $I->amOnPage($term->toUrl('edit')->toString());
+    $I->cantSee('Published');
   }
 
 }
