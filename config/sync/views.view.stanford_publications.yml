@@ -3,10 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.citation.su_doi
     - field.storage.citation.su_url
     - field.storage.node.su_publication_citation
-    - field.storage.node.su_publication_cta
     - field.storage.node.su_publication_topics
     - node.type.stanford_publication
     - taxonomy.vocabulary.stanford_publication_topics
@@ -408,9 +406,63 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        edit_node:
+          id: edit_node
+          table: node_field_revision
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: su-button--secondary
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'Edit Publication'
+          output_url_as_text: false
+          absolute: true
+          entity_type: node
+          plugin_id: entity_link_edit
       defaults:
         fields: false
       block_category: 'Publication (Views)'
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -559,9 +611,63 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        edit_node:
+          id: edit_node
+          table: node_field_revision
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: su-button--secondary
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'Edit Publication'
+          output_url_as_text: false
+          absolute: true
+          entity_type: node
+          plugin_id: entity_link_edit
       defaults:
         fields: false
       block_category: 'Publication (Views)'
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -573,6 +679,171 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.su_publication_citation'
+  pub_type:
+    display_plugin: block
+    id: pub_type
+    display_title: 'Publication Type'
+    position: 5
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      title: 'Publication Type'
+      defaults:
+        title: false
+        fields: false
+        filters: false
+        filter_groups: false
+        sorts: false
+        arguments: false
+        pager: false
+        style: false
+        row: false
+      fields:
+        type:
+          id: type
+          table: citation_field_data
+          field: type
+          relationship: su_publication_citation
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: citation
+          entity_field: type
+          plugin_id: field
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            stanford_publication: stanford_publication
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      sorts: {  }
+      arguments:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+      block_category: 'Publication (Views)'
+      pager:
+        type: some
+        options:
+          items_per_page: 1
+          offset: 0
+      block_hide_empty: true
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+      row:
+        type: fields
+        options: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
   related:
     display_plugin: block
     id: related
@@ -724,17 +995,17 @@ display:
           absolute: false
           entity_type: node
           plugin_id: entity_link
-        su_publication_cta:
-          id: su_publication_cta
-          table: node__su_publication_cta
-          field: su_publication_cta
-          relationship: none
+        su_url:
+          id: su_url
+          table: citation__su_url
+          field: su_url
+          relationship: su_publication_citation
           group_type: group
           admin_label: ''
           label: ''
           exclude: true
           alter:
-            alter_text: false
+            alter_text: true
             text: ''
             make_link: false
             path: ''
@@ -769,136 +1040,6 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: '{{ view_node }}'
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: uri
-          type: link
-          settings:
-            trim_length: 80
-            url_only: true
-            url_plain: true
-            rel: '0'
-            target: '0'
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        su_doi:
-          id: su_doi
-          table: citation__su_doi
-          field: su_doi
-          relationship: su_publication_citation
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: true
-            text: 'http://doi.org/{{ su_doi }}'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: '{{ su_publication_cta }}'
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        su_url:
-          id: su_url
-          table: citation__su_url
-          field: su_url
-          relationship: su_publication_citation
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: '{{ su_doi }}'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -1112,20 +1253,78 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        edit_node:
+          id: edit_node
+          table: node_field_revision
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<p><a class="su-button--secondary" href="{{ edit_node }}">Edit Publication</a></p>'
+            make_link: false
+            path: ''
+            absolute: true
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: 'Edit Publication'
+            rel: ''
+            link_class: su-button--secondary
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: su-button--secondary
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'Edit Publication'
+          output_url_as_text: true
+          absolute: true
+          entity_type: node
+          plugin_id: entity_link_edit
       style:
         type: default
         options:
           grouping: {  }
-          row_class: 'su-margin-top-3 su-margin-bottom-3 flex-3-of-12'
+          row_class: 'su-margin-top-1 su-margin-bottom-3 flex-3-of-12'
           default_row_class: true
       row:
         type: ui_patterns
         options:
           default_field_elements: 0
           inline:
+            view_node: 0
+            su_publication_cta: 0
+            su_doi: 0
+            su_url: 0
             su_publication_topics: 0
             title: 0
             su_publication_topics_1: 0
+            edit_node: 0
           separator: ''
           hide_empty: 0
           pattern: card
@@ -1135,14 +1334,19 @@ display:
               weight: 0
               plugin: views_row
               source: su_publication_topics
+            'views_row:edit_node':
+              destination: card_body
+              weight: 1
+              plugin: views_row
+              source: edit_node
             'views_row:title':
               destination: card_headline
-              weight: 1
+              weight: 2
               plugin: views_row
               source: title
             'views_row:su_publication_topics_1':
               destination: card_body
-              weight: 2
+              weight: 3
               plugin: views_row
               source: su_publication_topics_1
           pattern_variant: default
@@ -1176,9 +1380,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.citation.su_doi'
         - 'config:field.storage.citation.su_url'
-        - 'config:field.storage.node.su_publication_cta'
         - 'config:field.storage.node.su_publication_topics'
   term_list_chicago:
     display_plugin: block
@@ -1317,9 +1519,63 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        edit_node:
+          id: edit_node
+          table: node_field_revision
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: su-button--secondary
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'Edit Publication'
+          output_url_as_text: false
+          absolute: true
+          entity_type: node
+          plugin_id: entity_link_edit
       defaults:
         fields: false
         pager: false
+        arguments: false
       block_category: 'Publication (Views)'
       pager:
         type: full
@@ -1342,6 +1598,49 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+      block_hide_empty: true
+      arguments:
+        tid:
+          id: tid
+          table: taxonomy_index
+          field: tid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: taxonomy_tid
+          default_argument_options:
+            term_page: '1'
+            anyall: ','
+            node: false
+            limit: false
+            vids: {  }
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          add_table: false
+          require_value: false
+          reduce_duplicates: false
+          plugin_id: taxonomy_index_tid
     cache_metadata:
       max-age: -1
       contexts:
