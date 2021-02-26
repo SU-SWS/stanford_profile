@@ -1,12 +1,12 @@
-uuid: 53d6a841-b739-48c9-b772-d2f255e5aa3c
+uuid: e67b7e43-8ff9-40fe-970a-2cb3208069df
 langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.stanford_person_types
-id: taxonomy_term.stanford_person_types.default
+    - taxonomy.vocabulary.stanford_publication_topics
+id: taxonomy_term.stanford_publication_topics.default
 targetEntityType: taxonomy_term
-bundle: stanford_person_types
+bundle: stanford_publication_topics
 mode: default
 content:
   name:
