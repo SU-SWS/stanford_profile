@@ -86,6 +86,11 @@ display:
           default_row_class: true
       row:
         type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: true
       fields:
         su_publication_citation:
           id: su_publication_citation
@@ -416,8 +421,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<a class="su-button--secondary" href="{{ edit_node }}">Edit Publication</a>'
             make_link: false
             path: ''
             absolute: false
@@ -443,7 +448,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: su-button--secondary
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -455,7 +460,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           text: 'Edit Publication'
-          output_url_as_text: false
+          output_url_as_text: true
           absolute: true
           entity_type: node
           plugin_id: entity_link_edit
@@ -621,8 +626,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<a class="su-button--secondary" href="{{ edit_node }}">Edit Publication</a>'
             make_link: false
             path: ''
             absolute: false
@@ -648,7 +653,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: su-button--secondary
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -660,7 +665,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           text: 'Edit Publication'
-          output_url_as_text: false
+          output_url_as_text: true
           absolute: true
           entity_type: node
           plugin_id: entity_link_edit
@@ -1529,8 +1534,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<a class="su-button--secondary" href="{{ edit_node }}">Edit Publication</a>'
             make_link: false
             path: ''
             absolute: false
@@ -1556,7 +1561,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: su-button--secondary
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -1568,7 +1573,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           text: 'Edit Publication'
-          output_url_as_text: false
+          output_url_as_text: true
           absolute: true
           entity_type: node
           plugin_id: entity_link_edit
@@ -1600,10 +1605,10 @@ display:
           quantity: 9
       block_hide_empty: true
       arguments:
-        tid:
-          id: tid
-          table: taxonomy_index
-          field: tid
+        term_node_tid_depth:
+          id: term_node_tid_depth
+          table: node_field_data
+          field: term_node_tid_depth
           relationship: none
           group_type: group
           admin_label: ''
@@ -1636,11 +1641,11 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
-          break_phrase: false
-          add_table: false
-          require_value: false
-          reduce_duplicates: false
-          plugin_id: taxonomy_index_tid
+          depth: 1
+          break_phrase: true
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
     cache_metadata:
       max-age: -1
       contexts:
