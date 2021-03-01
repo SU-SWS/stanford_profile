@@ -5,6 +5,7 @@ dependencies:
   config:
     - system.menu.stanford-publication-topics
     - taxonomy.vocabulary.stanford_publication_topics
+    - views.view.publication_terms
     - views.view.stanford_publications
   module:
     - jumpstart_ui
@@ -22,7 +23,7 @@ third_party_settings:
         layout_id: jumpstart_ui_one_column
         layout_settings:
           extra_classes: ''
-          centered: centered-container
+          centered: null
           columns: default
           label: ''
         components:
@@ -52,7 +53,7 @@ third_party_settings:
         layout_id: jumpstart_ui_two_column
         layout_settings:
           extra_classes: su-publications-node--filtered
-          centered: centered-container
+          centered: null
           orientation: right
           label: ''
         components:
@@ -68,7 +69,7 @@ third_party_settings:
               items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 0
+            weight: 1
           691a3b23-5601-4580-9af4-2fef58b42282:
             uuid: 691a3b23-5601-4580-9af4-2fef58b42282
             region: left
@@ -80,6 +81,19 @@ third_party_settings:
               level: 1
               depth: 0
               expand_all_items: false
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+          0c64019d-affc-4bf3-9063-aafe7eb7c557:
+            uuid: 0c64019d-affc-4bf3-9063-aafe7eb7c557
+            region: main
+            configuration:
+              id: 'views_block:publication_terms-results_for'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
               context_mapping: {  }
             additional: {  }
             weight: 0
