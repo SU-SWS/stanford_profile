@@ -51,7 +51,7 @@ third_party_settings:
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
-          extra_classes: su-publications-node
+          extra_classes: su-publications-node--filtered
           centered: centered-container
           orientation: right
           label: ''
@@ -74,7 +74,7 @@ third_party_settings:
             region: left
             configuration:
               id: 'system_menu_block:stanford-publication-topics'
-              label: 'Topics Menu'
+              label: 'Filter by Topic'
               provider: system
               label_display: visible
               level: 1
