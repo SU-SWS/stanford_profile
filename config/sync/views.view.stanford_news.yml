@@ -671,7 +671,7 @@ display:
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
   block_1:
-    display_plugin: block
+    display_plugin: viewfield_block
     id: block_1
     display_title: '- Default List -'
     position: 1
@@ -1308,7 +1308,7 @@ display:
       tags:
         - 'config:field.storage.node.su_news_topics'
   vertical_cards:
-    display_plugin: block
+    display_plugin: viewfield_block
     id: vertical_cards
     display_title: 'Card Grid'
     position: 3
