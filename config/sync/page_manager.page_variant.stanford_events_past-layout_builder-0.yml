@@ -36,27 +36,13 @@ variant_settings:
           weight: 0
       third_party_settings: {  }
     -
-      layout_id: jumpstart_ui_two_column
+      layout_id: jumpstart_ui_one_column
       layout_settings:
-        extra_classes: section-events-past--content
+        extra_classes: ''
         centered: centered-container
-        orientation: right
-        label: 'Views & Navigation'
+        columns: flex-8-of-12
+        label: ''
       components:
-        b75e3d64-68b1-4eb0-afae-ef87817f748c:
-          uuid: b75e3d64-68b1-4eb0-afae-ef87817f748c
-          region: left
-          configuration:
-            id: 'inline_block:stanford_component_block'
-            label: Spacer
-            provider: layout_builder
-            label_display: '0'
-            view_mode: full
-            block_revision_id: 5
-            block_serialized: null
-            context_mapping: {  }
-          additional: {  }
-          weight: 0
         f932bc02-92a2-443a-b785-b11ef35f63ad:
           uuid: f932bc02-92a2-443a-b785-b11ef35f63ad
           region: main
@@ -70,6 +56,15 @@ variant_settings:
             context_mapping: {  }
           additional: {  }
           weight: 0
+      third_party_settings: {  }
+    -
+      layout_id: jumpstart_ui_two_column
+      layout_settings:
+        extra_classes: section-events-past--content
+        centered: centered-container
+        orientation: right
+        label: 'Views & Navigation'
+      components: {  }
       third_party_settings: {  }
 page: stanford_events_past
 weight: 0
