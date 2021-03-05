@@ -4,18 +4,31 @@
  * Class IntranetCest.
  *
  * @group users
- * @group mikes
  */
 class IntranetCest {
 
+  /**
+   * Save the state before the tests and reset after the tests.
+   *
+   * @var bool
+   */
   protected $intranetWasEnabled = FALSE;
 
+  /**
+   * Save the original state.
+   */
   public function _before(AcceptanceTester $I) {
     $this->intranetWasEnabled = (bool) $I->runDrush('sget stanford_intranet');
   }
 
+  /**
+   * Set the state back to how it was before the test.
+   */
   public function _after(AcceptanceTester $I) {
     $I->runDrush('sset stanford_intranet ' . (int) $this->intranetWasEnabled);
+    if (file_exists(codecept_data_dir('/test.txt'))) {
+      unlink(codecept_data_dir('/test.txt'));
+    }
   }
 
   /**
@@ -28,44 +41,86 @@ class IntranetCest {
     }
 
     $I->amOnPage('/');
-    $I->canSee('Access denied');
+    $I->canSeeResponseCodeIs(403);
     $I->canSeeNumberOfElements('.su-multi-menu__menu a', 0);
 
     $I->logInWithRole('authenticated');
     $I->amOnPage('/');
+    $I->canSeeResponseCodeIsSuccessful();
     $I->canSeeNumberOfElements('.su-multi-menu__menu a', [0, 99]);
   }
 
-  public function testAccessField(AcceptanceTester $I) {
+  /**
+   * Test the access of content.
+   */
+  public function testAccess(AcceptanceTester $I) {
+    // Contributors can't set access restrictions.
     $I->runDrush('sset stanford_intranet 0');
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_page');
-    $I->cantSee('Allow users with the following roles to view this content');
-
+    $I->cantSee('Access', '.entity-meta__header');
     $I->runDrush('sset stanford_intranet 1');
     $I->amOnPage('/node/add/stanford_page');
-    $I->cantSee('Allow users with the following roles to view this content');
-
+    $I->cantSee('Access', '.entity-meta__header');
     $I->amOnPage('/user/logout');
+
+    // Site managers can set access restrictions.
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_page');
-    $I->canSee('Allow users with the following roles to view this content');
+    $I->canSee('Access', '.entity-meta__header');
     $I->canSee('Site Manager');
     $I->cantSeeCheckboxIsChecked('Contributor');
     $I->cantSeeCheckboxIsChecked('Site Manager');
 
+    // Create a node to test access with.
     $I->fillField('Title', 'Test Private Access');
     $I->checkOption('Stanford Student');
     $I->click('Save');
     $I->canSee('Test Private Access', 'h1');
-//    $page_url = $I->grabFromCurrentUrl();
-//
-//    $I->amOnPage('/user/logout');
-//    $I->amOnPage($page_url);
-//    $I->canSee('Access denied');
-//    $I->logInWithRole('stanford_staff');
-//    $I->amOnPage($page_url);
-//    $I->canSee('Access denied');
+    $I->canSeeResponseCodeIs(200);
+    $page_url = $I->grabFromCurrentUrl();
+    $I->amOnPage('/user/logout');
+
+    // Anonymous users will get denied access.
+    $I->amOnPage($page_url);
+    $I->canSeeResponseCodeIs(403);
+
+    // Staff will be denied access.
+    $I->logInWithRole('stanford_staff');
+    $I->amOnPage($page_url);
+    $I->canSeeResponseCodeIs(403);
+    $I->amOnPage('/user/logout');
+
+    // Students should be able to see the content.
+    $I->logInWithRole('stanford_student');
+    $I->amOnPage($page_url);
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee('Test Private Access', 'h1');
+  }
+
+  /**
+   * Uploaded media should be protected.
+   */
+  public function testMediaAccess(AcceptanceTester $I) {
+    file_put_contents(codecept_data_dir('/test.txt'), 'Foo Bar');
+    $I->runDrush('sset stanford_intranet 1');
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/media/add/file');
+    $I->fillField('Name', 'Test Document');
+    $I->attachFile('File', 'test.txt');
+    $I->click('Save');
+    $I->canSee('has been created.');
+    $media_path = $I->grabAttributeFrom('tbody tr .views-field-name a', 'href');
+    $I->amOnPage($media_path);
+
+    $file_path = $I->grabAttributeFrom('.form-managed-file a', 'href');
+    $I->amOnPage('/user/logout');
+    $I->amOnPage($file_path);
+    $I->canSeeResponseCodeIs(403);
+
+    $I->logInWithRole('authenticated');
+    $I->amOnPage($file_path);
+    $I->canSeeResponseCodeIsSuccessful();
   }
 
 }
