@@ -1,5 +1,30 @@
 # Stanford Profile
 
+8.x-2.1
+--------------------------------------------------------------------------------
+_Release Date: 2021-03-05_
+
+- Add "include child orgs" checkbox for cap org importer (#381) (9a5a388)
+- D8CORE-3352-reroll: config changes for past events (#378) (8d3c6e0)
+- Add and configure search api module to replace core search. (#371) (400b47c)
+- D8CORE-3565: fixing up merge conflicts. Removes the more publication … (#375) (0352bb5)
+- Add a checkbox to the config pages for the drop down menu setting. (#374) (2e1e793)
+- Revert "D8CORE-3576: fixing spacing after the results for on the filtered page" (#377) (ebf4cba)
+- Adjusted the text in the publication term view (0c91c68)
+- D8CORE-3576: fixing spacing after the results for on the filtered page (#376) (3bd01a8)
+- Updated contrib dependencies (#373) (b91b945)
+- fixup composer dependencies (4d0094c)
+- D8CORE-3520 All Publications list page (#366) (4affad9)
+- D8CORE-3476 Create a new view display mode specific for viewfields (#370) (abc52da)
+- D8CORE-3463 Adjust the list and cards displays (#358) (e28b420)
+- D8CORE-3050 Added path redirect import module (#362) (ecf58d9)
+- D8CORE-3482 D8CORE-3484 Adjustments to publication lists and fields (#368) (48357dd)
+- D8CORE-3137 Hide the published checkbox on taxonomy terms (#367) (e91b35f)
+- D8CORE-3392 Changed the view blocks order and names (#364) (4c68f2c)
+- D8CORE-1531 Removed "Remove formatting" ckeditor button that does nothing (#363) (eb8a1fd)
+- Moved patches to shared package and use Stable 9 theme. (#359) (d4f05ac)
+- D8CORE-3479: changing spacing on more cards (#356) (a9dbbda)
+
 8.x-2.0
 --------------------------------------------------------------------------------
 _Release Date: 2021-02-08_
