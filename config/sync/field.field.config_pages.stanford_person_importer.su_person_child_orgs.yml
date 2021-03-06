@@ -1,0 +1,23 @@
+uuid: 3beeb0a8-dcbe-4853-83d8-182fe77a24ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_person_importer
+    - field.storage.config_pages.su_person_child_orgs
+id: config_pages.stanford_person_importer.su_person_child_orgs
+field_name: su_person_child_orgs
+entity_type: config_pages
+bundle: stanford_person_importer
+label: 'Include child organizations'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

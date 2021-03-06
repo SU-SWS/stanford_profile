@@ -1,0 +1,100 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: ce9cb7ca-6c59-4eea-9934-0a33057a7ff2
+  bundle: stanford_page
+  default_langcode: en
+  depends:
+    c1b8c74e-460c-4624-bae9-a4c3ce5dbf86: user
+default:
+  revision_uid:
+    -
+      entity: c1b8c74e-460c-4624-bae9-a4c3ce5dbf86
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 0
+  title:
+    -
+      value: Publications
+  created:
+    -
+      value: 1614190289
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /publications
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  su_page_components:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph_row
+          uuid: e9158340-cb5c-494e-9c66-a959208fe4a8
+          bundle: node_stanford_page_row
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1614191154
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          su_page_components:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 9939d5e0-a261-4f99-b08a-9ba5b43908c1
+                  bundle: stanford_lists
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1614211983
+                  behavior_settings:
+                    -
+                      value:
+                        react:
+                          width: 12
+                          label: Lists
+                  revision_translation_affected:
+                    -
+                      value: true
+                  su_list_view:
+                    -
+                      target_id: stanford_publications
+                      display_id: apa_list
+                      arguments: ''
+                      items_to_display: ''
