@@ -671,9 +671,9 @@ display:
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
   block_1:
-    display_plugin: block
+    display_plugin: viewfield_block
     id: block_1
-    display_title: List
+    display_title: '- Default List -'
     position: 1
     display_options:
       display_extenders: {  }
@@ -700,7 +700,7 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-      display_description: 'Term Block - All Results'
+      display_description: 'List of all content'
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -1308,9 +1308,9 @@ display:
       tags:
         - 'config:field.storage.node.su_news_topics'
   vertical_cards:
-    display_plugin: block
+    display_plugin: viewfield_block
     id: vertical_cards
-    display_title: Cards
+    display_title: 'Card Grid'
     position: 3
     display_options:
       display_extenders: {  }

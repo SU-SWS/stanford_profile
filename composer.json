@@ -96,12 +96,12 @@
         }
     ],
     "require": {
+        "ext-imagick": "*",
         "composer/installers": "^1.2",
         "drupal/address": "^1.2",
-        "drupal/admin_toolbar": "^2.2",
         "drupal/allowed_formats": "^1.1",
         "drupal/block_content_permissions": "^1.8",
-        "drupal/chosen": "^2.4",
+        "drupal/chosen": "^3.0",
         "drupal/colorbox": "^1.6",
         "drupal/config_ignore": "^2.2",
         "drupal/config_merge": "^1.0-rc",
@@ -116,7 +116,7 @@
         "drupal/domain_301_redirect": "^1.0-alpha0",
         "drupal/ds": "^3.3",
         "drupal/element_class_formatter": "^1.1",
-        "drupal/environment_indicator": "^3.0",
+        "drupal/environment_indicator": "^4.0",
         "drupal/extlink": "^1.3",
         "drupal/field_group": "^3.0@rc",
         "drupal/field_permissions": "^1.0@RC",
@@ -128,6 +128,7 @@
         "drupal/layout_builder_restrictions": "^2.2",
         "drupal/layout_library": "^1.0-beta1",
         "drupal/link_title_formatter": "^1.1",
+        "drupal/linkit": "^6.0",
         "drupal/menu_admin_per_menu": "^1.0",
         "drupal/menu_block": "dev-1.x#567becffbb0589e824fb053f15fb38a5846e7276",
         "drupal/menu_link_weight": "^1.0-beta3",
@@ -136,22 +137,24 @@
         "drupal/paragraphs": "^1.11",
         "drupal/paragraphs_edit": "^2.0@alpha",
         "drupal/paranoia": "^1.0@alpha",
+        "drupal/path_redirect_import": "^1.0@beta",
         "drupal/pathauto": "^1.6",
         "drupal/redirect": "^1.0-beta1",
         "drupal/response_code_condition": "^1.0",
         "drupal/role_delegation": "^1.0@beta",
+        "drupal/search_api": "^1.19",
         "drupal/seckit": "^2.0",
         "drupal/ui_patterns": "^1.0",
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_block_filter_block": "^1.0@beta",
         "drupal/views_bulk_operations": "^3.6",
         "drupal/xmlsitemap": "^1.0",
-        "ext-imagick": "*",
         "onlyextart/colorbox": "dev-master#e58476becbc89dc671093d1bcd9f99b2167fa8f7",
+        "su-sws/drupal-patches": "^8.0",
         "su-sws/jumpstart_ui": "^8.1.0",
         "su-sws/nobots": "^8.2.0",
         "su-sws/react_paragraphs": "^8.2.0",
-        "su-sws/stanford_basic": "^8.4.0",
+        "su-sws/stanford_basic": "^8.5",
         "su-sws/stanford_date_formats": "^8.1.0",
         "su-sws/stanford_events": "^8.1.0",
         "su-sws/stanford_fields": "^8.1.0",
@@ -176,39 +179,6 @@
         "drush": {
             "services": {
                 "drush.services.yml": "^9"
-            }
-        },
-        "patches": {
-            "drupal/anchor_link": {
-                "https://www.drupal.org/project/anchor_link/issues/2958532": "https://www.drupal.org/files/issues/2019-01-11/anchor_link-linkit-support_2958532.patch"
-            },
-            "drupal/config_ignore": {
-                "https://www.drupal.org/project/config_ignore/issues/2865419": "https://www.drupal.org/files/issues/2020-06-21/config_ignore-wildcard_force-14.patch"
-            },
-            "drupal/config_readonly": {
-                "https://www.drupal.org/project/config_readonly/issues/2892631": "https://www.drupal.org/files/issues/2018-04-01/config-readonly-2892631-18.patch"
-            },
-            "drupal/core": {
-                "https://www.drupal.org/project/drupal/issues/3106718": "https://www.drupal.org/files/issues/2020-01-16/3106718-image-hal-3.patch",
-                "https://www.drupal.org/project/drupal/issues/2577923": "https://www.drupal.org/files/issues/2020-06-11/2577923-128.patch",
-                "https://www.drupal.org/project/drupal/issues/2353611": "https://www.drupal.org/files/issues/2019-10-15/drupal-link_uuid-2353611-262.patch",
-                "https://www.drupal.org/project/drupal/issues/3128548 & https://www.drupal.org/project/ultimate_cron/issues/3184623": "https://www.drupal.org/files/issues/2020-12-03/3128548-15-StatementInterface.patch"
-            },
-            "drupal/diff": {
-                "https://www.drupal.org/project/diff/issues/2882334#comment-13913401": "https://www.drupal.org/files/issues/2020-09-11/2882334-diff-missing_some_revisions-11.patch"
-            },
-            "drupal/fakeobjects": {
-                "https://www.drupal.org/project/fakeobjects/issues/3002953": "https://www.drupal.org/files/issues/2020-06-22/fakeobjects-missing_plugin-3002953-5.patch"
-            },
-            "drupal/menu_link_weight": {
-                "https://www.drupal.org/project/menu_link_weight/issues/2995896": "https://www.drupal.org/files/issues/2018-08-29/2995896-menu-admin-per-menu-support-fixes.patch",
-                "https://www.drupal.org/project/menu_link_weight/issues/3099139": "https://www.drupal.org/files/issues/2019-12-05/menu_link_weight-target_blank-3099139.patch"
-            },
-            "drupal/paragraphs": {
-                "https://www.drupal.org/project/paragraphs/issues/2901390": "https://www.drupal.org/files/issues/2020-06-25/paragraphs-2901390-51.patch"
-            },
-            "drupal/simplesamlphp_auth": {
-                "https://www.drupal.org/project/simplesamlphp_auth/issues/2936889": "https://www.drupal.org/files/issues/2020-07-31/simplesamlphp_auth-avoid_unexpected_redirect-2936889-12-d8.patch"
             }
         }
     }

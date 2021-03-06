@@ -2,22 +2,22 @@ uuid: 6684dcab-3476-4388-af34-40809aa1983c
 langcode: en
 status: true
 dependencies:
+  config:
+    - views.view.search
   module:
-    - search
+    - views
   theme:
     - stanford_basic
-_core:
-  default_config_hash: vhPsMWd6yz_azjomNpjIHdEceN_vufyctZrYrZ4bSQw
 id: stanford_basic_search
 theme: stanford_basic
 region: search
-weight: -1
+weight: 0
 provider: null
-plugin: search_form_block
+plugin: 'views_exposed_filter_block:search-results'
 settings:
-  id: search_form_block
-  label: Search
-  provider: search
-  label_display: visible
-  page_id: ''
+  id: 'views_exposed_filter_block:search-results'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
 visibility: {  }

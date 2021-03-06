@@ -49,28 +49,20 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
-            weight: 1
-          8d6c0e53-2154-4bbc-8015-4f90ada1b515:
-            uuid: 8d6c0e53-2154-4bbc-8015-4f90ada1b515
+            weight: 2
+          1444e926-3274-4a84-876f-8a51d12c2175:
+            uuid: 1444e926-3274-4a84-876f-8a51d12c2175
             region: main
             configuration:
-              id: 'field_block:node:stanford_publication:su_publication_topics'
-              label: Topics
-              provider: layout_builder
+              id: 'views_block:stanford_publications-pub_type'
+              label: ''
+              provider: views
               label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_label
-                settings:
-                  link: false
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
             additional: {  }
-            weight: 0
+            weight: 1
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
@@ -204,6 +196,7 @@ content: {  }
 hidden:
   layout_builder__layout: true
   links: true
+  search_api_excerpt: true
   su_publication_citation: true
   su_publication_components: true
   su_publication_cta: true

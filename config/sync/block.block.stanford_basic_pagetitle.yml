@@ -10,7 +10,7 @@ dependencies:
 id: stanford_basic_pagetitle
 theme: stanford_basic
 region: content
-weight: -3
+weight: -4
 provider: null
 plugin: page_title_block
 settings:
@@ -21,7 +21,7 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/node/*\r\n/news*\r\n/people*\r\n/events*\r\n/event-series*"
+    pages: "/node/*\r\n/news*\r\n/people*\r\n/events*\r\n/event-series*\r\n/publications*"
     negate: true
     context_mapping: {  }
   response_code:

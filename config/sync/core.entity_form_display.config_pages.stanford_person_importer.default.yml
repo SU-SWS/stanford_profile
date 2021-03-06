@@ -6,6 +6,7 @@ dependencies:
     - config_pages.type.stanford_person_importer
     - field.field.config_pages.stanford_person_importer.su_person_cap_password
     - field.field.config_pages.stanford_person_importer.su_person_cap_username
+    - field.field.config_pages.stanford_person_importer.su_person_child_orgs
     - field.field.config_pages.stanford_person_importer.su_person_orgs
     - field.field.config_pages.stanford_person_importer.su_person_sunetid
     - field.field.config_pages.stanford_person_importer.su_person_workgroup
@@ -49,8 +50,15 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  su_person_orgs:
+  su_person_child_orgs:
     weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  su_person_orgs:
+    weight: 2
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -60,7 +68,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   su_person_sunetid:
-    weight: 5
+    weight: 4
     settings:
       size: 60
       placeholder: ''
@@ -68,7 +76,7 @@ content:
     type: string_textfield
     region: content
   su_person_workgroup:
-    weight: 4
+    weight: 1
     settings:
       size: 60
       placeholder: ''

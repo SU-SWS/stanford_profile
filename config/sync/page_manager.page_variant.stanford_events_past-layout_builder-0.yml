@@ -36,38 +36,18 @@ variant_settings:
           weight: 0
       third_party_settings: {  }
     -
-      layout_id: jumpstart_ui_two_column
+      layout_id: jumpstart_ui_one_column
       layout_settings:
-        extra_classes: section-events-past--content
+        extra_classes: ''
         centered: centered-container
-        orientation: right
-        label: 'Views & Navigation'
+        columns: flex-8-of-12
+        label: ''
       components:
-        b75e3d64-68b1-4eb0-afae-ef87817f748c:
-          uuid: b75e3d64-68b1-4eb0-afae-ef87817f748c
-          region: left
-          configuration:
-            id: 'menu_block:stanford-event-types'
-            label: 'Filter by event types'
-            provider: menu_block
-            label_display: visible
-            follow: false
-            follow_parent: child
-            level: 1
-            depth: 0
-            expand: false
-            parent: 'stanford-event-types:'
-            suggestion: stanford_event_types
-            label_type: block
-            label_link: false
-            context_mapping: {  }
-          additional: {  }
-          weight: 0
         f932bc02-92a2-443a-b785-b11ef35f63ad:
           uuid: f932bc02-92a2-443a-b785-b11ef35f63ad
           region: main
           configuration:
-            id: 'views_block:stanford_events_past-past_events_block'
+            id: 'views_block:stanford_events-past_events_list_block'
             label: ''
             provider: views
             label_display: '0'
