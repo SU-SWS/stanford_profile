@@ -6,6 +6,7 @@ dependencies:
     - config_pages.type.stanford_person_importer
     - field.field.config_pages.stanford_person_importer.su_person_cap_password
     - field.field.config_pages.stanford_person_importer.su_person_cap_username
+    - field.field.config_pages.stanford_person_importer.su_person_child_orgs
     - field.field.config_pages.stanford_person_importer.su_person_orgs
     - field.field.config_pages.stanford_person_importer.su_person_sunetid
     - field.field.config_pages.stanford_person_importer.su_person_workgroup
@@ -29,6 +30,16 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  su_person_child_orgs:
+    weight: 6
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   su_person_orgs:
     weight: 0

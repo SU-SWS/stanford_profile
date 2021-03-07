@@ -10,7 +10,7 @@ class NewsCest {
   /**
    * News list intro block is at the top of the page.
    */
-  public function testListIntro(AcceptanceTester $I){
+  public function testListIntro(AcceptanceTester $I) {
     $intro_text = Factory::create()->text();
     $I->logInWithRole('site_manager');
     $I->amOnPage('/news');
@@ -139,7 +139,7 @@ class NewsCest {
   /**
    * Special characters should stay.
    */
-  public function testSpecialCharacters(AcceptanceTester $I){
+  public function testSpecialCharacters(AcceptanceTester $I) {
     $faker = Factory::create();
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_person');
@@ -148,6 +148,19 @@ class NewsCest {
     $I->fillField('Short Title', $faker->text);
     $I->click('Save');
     $I->canSee('Foo Bar-Baz & Foo', 'h1');
+  }
+
+  /**
+   * Published checkbox should be hidden on term edit pages.
+   */
+  public function testTermPublishing(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $term = $I->createEntity([
+      'vid' => 'stanford_news_topics',
+      'name' => 'Foo',
+    ], 'taxonomy_term');
+    $I->amOnPage($term->toUrl('edit')->toString());
+    $I->cantSee('Published');
   }
 
 }
