@@ -4,19 +4,55 @@ status: true
 dependencies:
   config:
     - config_pages.type.stanford_saml
+    - field.field.config_pages.stanford_saml.su_simplesaml_allowed
     - field.field.config_pages.stanford_saml.su_simplesaml_roles
+    - field.field.config_pages.stanford_saml.su_simplesaml_users
+  module:
+    - field_group
+    - stanford_profile_helper
+third_party_settings:
+  field_group:
+    group_login_restrictions:
+      children:
+        - su_simplesaml_allowed
+        - su_simplesaml_users
+      parent_name: ''
+      weight: 1
+      format_type: details
+      region: content
+      format_settings:
+        description: 'Restrict who can log into the site by limiting to workgroups or SUNet IDs. Leave these empty to allow any user with a valid SUNet to log in.'
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Login Restrictions'
 id: config_pages.stanford_saml.default
 targetEntityType: config_pages
 bundle: stanford_saml
 mode: default
 content:
-  su_simplesaml_roles:
-    weight: 0
+  su_simplesaml_allowed:
+    weight: 2
     settings:
-      rows: 5
+      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textarea
+    type: string_textfield
+    region: content
+  su_simplesaml_roles:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: saml_role_mapping
+    region: content
+  su_simplesaml_users:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
 hidden:
   label: true
