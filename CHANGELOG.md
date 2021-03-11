@@ -1,5 +1,13 @@
 # Stanford Profile
 
+8.x-2.2
+--------------------------------------------------------------------------------
+_Release Date: 2021-03-11_
+
+- Tweaked the publication term page heading language.
+- Changed the order of the components on the publications edit page.
+
+
 8.x-2.1
 --------------------------------------------------------------------------------
 _Release Date: 2021-03-05_
