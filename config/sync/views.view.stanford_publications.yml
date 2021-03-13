@@ -7,6 +7,7 @@ dependencies:
     - field.storage.node.su_publication_citation
     - field.storage.node.su_publication_topics
     - node.type.stanford_publication
+    - views.view.publication_terms
   module:
     - link
     - node
@@ -1539,6 +1540,8 @@ display:
         fields: false
         pager: false
         arguments: false
+        header: false
+        empty: false
       block_category: 'Publication (Views)'
       pager:
         type: full
@@ -1604,6 +1607,32 @@ display:
           use_taxonomy_term_path: false
           entity_type: node
           plugin_id: taxonomy_index_tid_depth
+      header:
+        view:
+          id: view
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          view_to_insert: 'publication_terms:results_for'
+          inherit_arguments: true
+          plugin_id: view
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: 'Sorry, no results found. Please try another topic.'
+            format: stanford_html
+          plugin_id: text
     cache_metadata:
       max-age: -1
       contexts:
