@@ -99,28 +99,13 @@ class IntranetCest {
   }
 
   /**
-   * Uploaded media should be protected.
+   * Files can't be added.
    */
   public function testMediaAccess(AcceptanceTester $I) {
-    file_put_contents(codecept_data_dir('/test.txt'), 'Foo Bar');
     $I->runDrush('sset stanford_intranet 1');
     $I->logInWithRole('site_manager');
     $I->amOnPage('/media/add/file');
-    $I->fillField('Name', 'Test Document');
-    $I->attachFile('File', 'test.txt');
-    $I->click('Save');
-    $I->canSee('has been created.');
-    $media_path = $I->grabAttributeFrom('tbody tr .views-field-name a', 'href');
-    $I->amOnPage($media_path);
-
-    $file_path = $I->grabAttributeFrom('.form-managed-file a', 'href');
-    $I->amOnPage('/user/logout');
-    $I->amOnPage($file_path);
     $I->canSeeResponseCodeIs(403);
-
-    $I->logInWithRole('authenticated');
-    $I->amOnPage($file_path);
-    $I->canSeeResponseCodeIsSuccessful();
   }
 
 }
