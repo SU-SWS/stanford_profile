@@ -868,6 +868,11 @@ display:
         css_class: false
         sorts: false
         pager: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
       arguments:
         nid:
           id: nid
@@ -1335,6 +1340,11 @@ display:
         options:
           items_per_page: 3
           offset: 0
+      use_more: true
+      use_more_always: true
+      use_more_text: 'See All Publications'
+      link_display: custom_url
+      link_url: publications
     cache_metadata:
       max-age: 0
       contexts:
