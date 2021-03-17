@@ -1,0 +1,19 @@
+uuid: 52e7cbe4-f647-4c40-b7b1-1e6cd3fa3f95
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_saml
+    - field.storage.config_pages.su_simplesaml_allowed
+id: config_pages.stanford_saml.su_simplesaml_allowed
+field_name: su_simplesaml_allowed
+entity_type: config_pages
+bundle: stanford_saml
+label: 'Allowed Workgroups'
+description: 'A list of Workgroups that should be allowed to login with simpleSAMLphp. If left blank, any workgroup can login. One workgroup per line.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

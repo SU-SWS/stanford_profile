@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.stanford_page.layout_builder__layout
     - field.field.node.stanford_page.layout_selection
+    - field.field.node.stanford_page.stanford_intranet__access
     - field.field.node.stanford_page.su_page_banner
     - field.field.node.stanford_page.su_page_components
     - node.type.stanford_page
@@ -12,6 +13,7 @@ dependencies:
     - paragraphs
     - path
     - react_paragraphs
+    - stanford_intranet
 id: node.stanford_page.default
 targetEntityType: node
 bundle: stanford_page
@@ -26,7 +28,7 @@ content:
   layout_selection:
     type: options_select
     region: content
-    weight: 10
+    weight: 9
     settings: {  }
     third_party_settings: {  }
   path:
@@ -41,6 +43,12 @@ content:
       display_label: true
     weight: 3
     region: content
+    third_party_settings: {  }
+  stanford_intranet__access:
+    type: entity_access
+    weight: 11
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -86,7 +94,7 @@ content:
         stanford_spacer: 1
         stanford_gallery: 12
       resizable: false
-    weight: 26
+    weight: 10
     third_party_settings: {  }
     region: content
   title:

@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * Class IntranetCest.
+ *
+ * @group users
+ */
+class IntranetCest {
+
+  /**
+   * Save the state before the tests and reset after the tests.
+   *
+   * @var bool
+   */
+  protected $intranetWasEnabled = FALSE;
+
+  /**
+   * Save the original state.
+   */
+  public function _before(AcceptanceTester $I) {
+    $this->intranetWasEnabled = (bool) $I->runDrush('sget stanford_intranet');
+  }
+
+  /**
+   * Set the state back to how it was before the test.
+   */
+  public function _after(AcceptanceTester $I) {
+    $I->runDrush('sset stanford_intranet ' . (int) $this->intranetWasEnabled);
+    if (file_exists(codecept_data_dir('/test.txt'))) {
+      unlink(codecept_data_dir('/test.txt'));
+    }
+  }
+
+  /**
+   * Simple full site access check.
+   */
+  public function testIntranet(AcceptanceTester $I) {
+    if (!$this->intranetWasEnabled) {
+      $I->runDrush('sset stanford_intranet 1');
+      $I->runDrush('cache-rebuild');
+    }
+
+    $I->amOnPage('/');
+    $I->canSeeResponseCodeIs(403);
+    $I->canSeeNumberOfElements('.su-multi-menu__menu a', 0);
+
+    $I->logInWithRole('authenticated');
+    $I->amOnPage('/');
+    $I->canSeeResponseCodeIsSuccessful();
+    $I->canSeeNumberOfElements('.su-multi-menu__menu a', [0, 99]);
+  }
+
+  /**
+   * Test the access of content.
+   */
+  public function testAccess(AcceptanceTester $I) {
+    // Contributors can't set access restrictions.
+    $I->runDrush('sset stanford_intranet 0');
+    $I->logInWithRole('contributor');
+    $I->amOnPage('/node/add/stanford_page');
+    $I->cantSee('Access', '.entity-meta__header');
+    $I->runDrush('sset stanford_intranet 1');
+    $I->amOnPage('/node/add/stanford_page');
+    $I->cantSee('Access', '.entity-meta__header');
+    $I->amOnPage('/user/logout');
+
+    // Site managers can set access restrictions.
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/node/add/stanford_page');
+    $I->canSee('Access', '.entity-meta__header');
+    $I->canSee('Site Manager');
+    $I->cantSeeCheckboxIsChecked('Contributor');
+    $I->cantSeeCheckboxIsChecked('Site Manager');
+
+    // Create a node to test access with.
+    $I->fillField('Title', 'Test Private Access');
+    $I->checkOption('Stanford Student');
+    $I->click('Save');
+    $I->canSee('Test Private Access', 'h1');
+    $I->canSeeResponseCodeIs(200);
+    $page_url = $I->grabFromCurrentUrl();
+    $I->amOnPage('/user/logout');
+
+    // Anonymous users will get denied access.
+    $I->amOnPage($page_url);
+    $I->canSeeResponseCodeIs(403);
+
+    // Staff will be denied access.
+    $I->logInWithRole('stanford_staff');
+    $I->amOnPage($page_url);
+    $I->canSeeResponseCodeIs(403);
+    $I->amOnPage('/user/logout');
+
+    // Students should be able to see the content.
+    $I->logInWithRole('stanford_student');
+    $I->amOnPage($page_url);
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee('Test Private Access', 'h1');
+  }
+
+  /**
+   * Files can't be added.
+   */
+  public function testMediaAccess(AcceptanceTester $I) {
+    $I->runDrush('sset stanford_intranet 1');
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/media/add/file');
+    $I->canSeeResponseCodeIs(403);
+  }
+
+}
