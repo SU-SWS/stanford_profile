@@ -8,6 +8,7 @@ dependencies:
     - node.type.stanford_event_series
     - node.type.stanford_news
     - node.type.stanford_person
+    - node.type.stanford_publication
     - paragraphs.paragraphs_type.stanford_entity
 id: paragraph.stanford_entity.su_entity_item
 field_name: su_entity_item
@@ -27,8 +28,10 @@ settings:
       stanford_event_series: stanford_event_series
       stanford_news: stanford_news
       stanford_person: stanford_person
+      stanford_publication: stanford_publication
     sort:
       field: _none
+      direction: ASC
     auto_create: false
     auto_create_bundle: stanford_event
 field_type: entity_reference
