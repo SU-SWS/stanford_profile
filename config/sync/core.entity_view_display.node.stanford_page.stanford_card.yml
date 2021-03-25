@@ -6,8 +6,12 @@ dependencies:
     - core.entity_view_mode.node.stanford_card
     - field.field.node.stanford_page.layout_builder__layout
     - field.field.node.stanford_page.layout_selection
+    - field.field.node.stanford_page.stanford_intranet__access
+    - field.field.node.stanford_page.su_basic_page_type
     - field.field.node.stanford_page.su_page_banner
     - field.field.node.stanford_page.su_page_components
+    - field.field.node.stanford_page.su_page_description
+    - field.field.node.stanford_page.su_page_image
     - node.type.stanford_page
   module:
     - ds
@@ -90,4 +94,7 @@ hidden:
   links: true
   search_api_excerpt: true
   stanford_intranet__access: true
+  su_basic_page_type: true
   su_page_components: true
+  su_page_description: true
+  su_page_image: true
