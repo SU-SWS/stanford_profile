@@ -52,55 +52,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 0
-          83a9de2f-ab1b-4d0a-bf06-a41e17d8bb48:
-            uuid: 83a9de2f-ab1b-4d0a-bf06-a41e17d8bb48
-            region: main
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:stanford_page:su_page_image'
-              formatter:
-                type: entity_reference_entity_view
-                label: above
-                settings:
-                  view_mode: default
-                  link: false
-                third_party_settings: {  }
-            additional: {  }
-            weight: 1
-          5ed26f0d-e850-4bcb-b2c4-09ac85615130:
-            uuid: 5ed26f0d-e850-4bcb-b2c4-09ac85615130
-            region: main
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:stanford_page:su_page_description'
-              formatter:
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-                type: string
-            additional: {  }
-            weight: 2
-          f0169bff-8057-4f1b-8882-eac3e9f96e40:
-            uuid: f0169bff-8057-4f1b-8882-eac3e9f96e40
-            region: main
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:stanford_page:su_basic_page_type'
-              formatter:
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-                type: entity_reference_label
-            additional: {  }
-            weight: 3
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
@@ -123,6 +74,36 @@ third_party_settings:
                 settings:
                   tag: h1
                 third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+          label: 'page description'
+        components:
+          f27015ee-a2c3-4acc-a68d-9af1b6e538a1:
+            uuid: f27015ee-a2c3-4acc-a68d-9af1b6e538a1
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_page:su_page_description'
+              label: 'Page Description'
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
