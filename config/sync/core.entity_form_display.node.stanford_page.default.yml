@@ -13,12 +13,32 @@ dependencies:
     - field.field.node.stanford_page.su_page_image
     - node.type.stanford_page
   module:
+    - field_group
     - media_library
     - paragraphs
     - path
     - react_paragraphs
     - shs
     - stanford_intranet
+third_party_settings:
+  field_group:
+    group_page_metadata:
+      children:
+        - su_page_image
+        - su_page_description
+        - su_basic_page_type
+      parent_name: ''
+      weight: 12
+      format_type: details_sidebar
+      region: content
+      format_settings:
+        description: ''
+        weight: -1
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: 'Page Metadata'
 id: node.stanford_page.default
 targetEntityType: node
 bundle: stanford_page
@@ -70,15 +90,15 @@ content:
     region: content
     third_party_settings: {  }
   su_basic_page_type:
-    weight: 28
+    type: options_shs
+    weight: 2
+    region: content
     settings:
       display_node_count: false
       create_new_items: false
       create_new_levels: false
       force_deepest: false
     third_party_settings: {  }
-    type: options_shs
-    region: content
   su_page_banner:
     type: paragraphs
     weight: 8
@@ -113,20 +133,20 @@ content:
     third_party_settings: {  }
     region: content
   su_page_description:
-    weight: 27
+    type: string_textfield
+    weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_page_image:
     type: media_library_widget
-    weight: 26
+    weight: 0
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   title:
     type: string_textfield
     weight: 0
