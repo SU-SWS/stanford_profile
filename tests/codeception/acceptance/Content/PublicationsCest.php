@@ -88,7 +88,6 @@ class PublicationsCest {
       $I->fillField('First Name', $faker->firstName);
       $I->fillField('Last Name', $faker->lastName);
       $I->fillField('Subtitle', $faker->text);
-      $I->fillField('Publication Place', $faker->text);
       $I->fillField('Publisher', $faker->text);
       $I->fillField('su_publication_cta[0][uri]', $faker->url);
       $I->fillField('Link text', $faker->text);
