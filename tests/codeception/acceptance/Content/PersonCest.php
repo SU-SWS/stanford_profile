@@ -155,4 +155,29 @@ class PersonCest {
     $I->cantSee('Published');
   }
 
+  /**
+   * Unpublished profiles should not display in the list.
+   */
+  public function testPublishedStatus(AcceptanceTester $I) {
+    $foo = $I->createEntity([
+      'name' => 'Foo',
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => "John",
+      'su_person_last_name' => "Wick",
+      'su_person_type_group' => $foo->id(),
+    ]);
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/people/foo');
+    $I->canSee($node->label());
+    $node->setUnpublished()->save();
+
+    drupal_flush_all_caches();
+    $I->amOnPage('/people/foo');
+    $I->cantSee($node->label());
+  }
+
 }
