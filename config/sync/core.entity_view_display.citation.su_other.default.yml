@@ -7,6 +7,7 @@ dependencies:
     - field.field.citation.su_other.su_day
     - field.field.citation.su_other.su_month
     - field.field.citation.su_other.su_publisher
+    - field.field.citation.su_other.su_subtitle
     - field.field.citation.su_other.su_url
     - field.field.citation.su_other.su_year
     - stanford_publication.citation_type.su_other
@@ -83,5 +84,6 @@ content:
     region: content
 hidden:
   search_api_excerpt: true
+  su_subtitle: true
   su_url: true
   title: true
