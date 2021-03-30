@@ -15,4 +15,14 @@ class HomePageCest {
     $I->canSeeResponseCodeIs(200);
   }
 
+  /**
+   * Users can't unpublish the homepage.
+   */
+  public function testUnpublishingHomepage(AcceptanceTester $I){
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/');
+    $I->click('Edit', '.tabs');
+    $I->cantSee('Published', 'label');
+  }
+
 }
