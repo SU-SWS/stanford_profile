@@ -8,6 +8,7 @@ dependencies:
     - node.type.stanford_page
   module:
     - node
+    - stanford_fields
     - stanford_media
     - taxonomy
     - user
@@ -370,7 +371,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          default_action: 'not found'
+          default_action: ignore
           exception:
             value: all
             title_enable: false
@@ -395,7 +396,7 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
-          depth: '0'
+          depth: '1'
           vocabularies:
             basic_page_types: basic_page_types
           break_phrase: true
@@ -414,9 +415,9 @@ display:
       tags:
         - 'config:field.storage.node.su_page_description'
         - 'config:field.storage.node.su_page_image'
-  block_1:
+  basic_page_type_list:
     display_plugin: viewfield_block
-    id: block_1
+    id: basic_page_type_list
     display_title: 'Basic Page Types Block'
     position: 1
     display_options:
