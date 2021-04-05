@@ -19,8 +19,7 @@
 
     &:first-child > div {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-columns: calc(50% - 9px) calc(50% - 9px);
       grid-gap: 18px;
       grid-template-areas:
       "opp-type opp-type"
