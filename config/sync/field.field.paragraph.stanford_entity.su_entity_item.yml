@@ -7,6 +7,7 @@ dependencies:
     - node.type.stanford_event
     - node.type.stanford_event_series
     - node.type.stanford_news
+    - node.type.stanford_page
     - node.type.stanford_person
     - node.type.stanford_publication
     - paragraphs.paragraphs_type.stanford_entity
@@ -24,6 +25,7 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
+      stanford_page: stanford_page
       stanford_event: stanford_event
       stanford_event_series: stanford_event_series
       stanford_news: stanford_news
