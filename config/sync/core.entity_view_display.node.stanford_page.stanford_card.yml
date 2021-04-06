@@ -71,19 +71,27 @@ third_party_settings:
         - node_title
       basic_page_types_description:
         - su_page_description
-      basic_page_types_page_image:
-        - su_page_banner
+      basic_page_types_page_image_primary:
         - su_page_image
+      basic_page_types_page_image_secondary:
+        - su_page_banner
+      basic_page_types_content_url:
+        - 'dynamic_token_field:node-basic_page_type_content_url'
     fields:
+      'dynamic_token_field:node-basic_page_type_content_url':
+        plugin_id: 'dynamic_token_field:node-basic_page_type_content_url'
+        weight: 5
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
         label: hidden
         formatter: default
         settings:
-          link: true
           wrapper: ''
           class: ''
+          link: false
 id: node.stanford_page.stanford_card
 targetEntityType: node
 bundle: stanford_page
@@ -103,8 +111,8 @@ content:
         ds_limit: ''
   su_page_banner:
     type: entity_reference_revisions_entity_view
-    weight: 3
-    region: basic_page_types_page_image
+    weight: 4
+    region: basic_page_types_page_image_secondary
     label: hidden
     settings:
       view_mode: default
@@ -119,13 +127,22 @@ content:
       link_to_entity: false
     third_party_settings: {  }
   su_page_image:
-    type: media_image_formatter
-    weight: 4
-    region: basic_page_types_page_image
+    type: media_multimedia_formatter
+    weight: 3
+    region: basic_page_types_page_image_primary
     label: hidden
     settings:
+      image:
+        image_formatter: image_style
+        image_formatter_image_style: cta_2x_1192x794
+        image_formatter_responsive_image_style: full_responsive
+        image_formatter_view_mode: default
+      video:
+        video_formatter: entity
+        video_formatter_view_mode: default
+      other:
+        view_mode: default
       view_mode: default
-      image_style: su_news_list
       link: false
     third_party_settings:
       field_formatter_class:
