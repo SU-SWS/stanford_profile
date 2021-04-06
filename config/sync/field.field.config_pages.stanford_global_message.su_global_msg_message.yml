@@ -12,16 +12,16 @@ third_party_settings:
   allowed_formats:
     stanford_minimal_html: stanford_minimal_html
     plain_text: plain_text
-    stanford_html: '0'
+    stanford_html: "0"
 id: config_pages.stanford_global_message.su_global_msg_message
 field_name: su_global_msg_message
 entity_type: config_pages
 bundle: stanford_global_message
 label: Message
-description: 'This is the body content of the message.'
-required: true
+description: "This is the body content of the message."
+required: false
 translatable: false
-default_value: {  }
-default_value_callback: ''
-settings: {  }
+default_value: {}
+default_value_callback: ""
+settings: {}
 field_type: text_long
