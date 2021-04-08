@@ -67,4 +67,22 @@ class BasicPageCest {
     $I->canSeeResponseCodeIs(200);
   }
 
+  /**
+   * There should be a page description field
+   */
+  public function testPageDescription(AcceptanceTester $I) {
+    $faker = Factory::create();
+    $title = $faker->text(20);
+    $description = $faker->text(100);
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/node/add/stanford_page');
+    $I->see('Page Metadata');
+    $I->see('Page Image');
+    $I->see('Basic Page Type');
+    $I->fillField('Title', $title);
+    $I->fillField('Page Description', $description);
+    $I->click('Save');
+    $I->canSee($description);
+  }
+
 }
