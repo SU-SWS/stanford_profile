@@ -1,0 +1,21 @@
+uuid: 6d1483bb-c4a4-4104-85a3-d71d1bd50c0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - book
+  theme:
+    - stanford_basic
+id: stanford_basic_book_nav
+theme: stanford_basic
+region: menu
+weight: 0
+provider: null
+plugin: book_navigation
+settings:
+  id: book_navigation
+  label: 'Book navigation'
+  provider: book
+  label_display: '0'
+  block_mode: 'book pages'
+visibility: {  }
