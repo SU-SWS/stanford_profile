@@ -81,7 +81,7 @@ class BasicPageCest {
     $I->see('Basic Page Type');
     $I->fillField('Title', $title);
     $I->fillField('Page Description', $description);
-    $I->selectOption('Basic Page Type', 'Research Project');
+    $I->selectOption('Basic Pages', 'Research Project');
     $I->click('Save');
     $I->canSee($description);
     $I->seeInSource('<meta name="description" content="'.$description.'" />');
