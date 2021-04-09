@@ -428,7 +428,7 @@ class ListsCest {
   }
 
   /**
-   *
+   * Test basic page types list view
    */
   public function testListParagraphBasicPageTypesFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -454,7 +454,7 @@ class ListsCest {
 
 
     $I->amOnPage($node->toUrl()->toString());
-    $I->canSee($news->label());
+    $I->canSee($type_term->label());
   }
 
   /**
