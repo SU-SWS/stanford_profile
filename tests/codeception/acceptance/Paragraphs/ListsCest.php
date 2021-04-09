@@ -454,7 +454,7 @@ class ListsCest {
 
 
     $I->amOnPage($node->toUrl()->toString());
-    $I->canSee($type_term->label());
+    $I->canSee('Basic Page Test Term');
   }
 
   /**
