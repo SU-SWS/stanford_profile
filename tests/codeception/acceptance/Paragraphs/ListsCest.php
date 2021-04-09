@@ -446,7 +446,7 @@ class ListsCest {
     $I->click('Save');
 
     $node = $this->getNodeWithList($I, [
-      'target_id' => 'basic_page_types',
+      'target_id' => 'stanford_basic_pages',
       'display_id' => 'basic_page_type_list',
       'items_to_display' => 100,
       'arguments' => 'Basic-Page-Test-Term',
