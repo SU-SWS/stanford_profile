@@ -92,27 +92,27 @@ display:
             media: default
           pattern_mapping:
             'views_row:term_node_tid':
-              destination: basic_page_types_category
+              destination: category
               weight: 0
               plugin: views_row
               source: term_node_tid
             'views_row:title':
-              destination: basic_page_types_title
+              destination: title
               weight: 1
               plugin: views_row
               source: title
             'views_row:su_page_description':
-              destination: basic_page_types_description
+              destination: description
               weight: 2
               plugin: views_row
               source: su_page_description
             'views_row:su_page_image':
-              destination: basic_page_types_page_image
+              destination: page_image
               weight: 3
               plugin: views_row
               source: su_page_image
             'views_row:edit_node':
-              destination: basic_page_types_footer
+              destination: footer
               weight: 4
               plugin: views_row
               source: edit_node
