@@ -15,6 +15,7 @@ dependencies:
     - node.type.stanford_page
   module:
     - ds
+    - entity_reference_revisions
     - field_formatter_class
     - layout_builder
     - layout_builder_restrictions
@@ -66,6 +67,7 @@ third_party_settings:
           variant: default
     regions:
       card_image:
+        - su_page_banner
         - su_page_image
       card_super_headline:
         - su_basic_page_type
@@ -76,7 +78,7 @@ third_party_settings:
     fields:
       node_title:
         plugin_id: node_title
-        weight: 2
+        weight: 3
         label: hidden
         formatter: default
         settings:
@@ -90,7 +92,7 @@ mode: stanford_card
 content:
   su_basic_page_type:
     type: entity_reference_label
-    weight: 1
+    weight: 2
     region: card_super_headline
     label: hidden
     settings:
@@ -100,9 +102,20 @@ content:
         class: su-basic-page-types__categories
       ds:
         ds_limit: ''
+  su_page_banner:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    region: card_image
+    label: hidden
+    settings:
+      view_mode: variant_1
+      link: ''
+    third_party_settings:
+      field_formatter_class:
+        class: 'su-media su-media--image su-card__media'
   su_page_description:
     type: string
-    weight: 3
+    weight: 4
     region: card_body
     label: hidden
     settings:
@@ -112,14 +125,14 @@ content:
         class: su-basic-page-types__description
   su_page_image:
     type: media_multimedia_formatter
-    weight: 0
+    weight: 1
     region: card_image
     label: hidden
     settings:
       image:
-        image_formatter: image_style
+        image_formatter: responsive_image_style
         image_formatter_image_style: cta_2x_1014x676
-        image_formatter_responsive_image_style: full_responsive
+        image_formatter_responsive_image_style: card_2_1
         image_formatter_view_mode: default
       video:
         video_formatter: entity
@@ -137,5 +150,4 @@ hidden:
   links: true
   search_api_excerpt: true
   stanford_intranet__access: true
-  su_page_banner: true
   su_page_components: true
