@@ -1,5 +1,25 @@
 # Stanford Profile
 
+8.x-2.4
+--------------------------------------------------------------------------------
+_Release Date: 2021-04-12_
+
+- D8CORE-3254: Basic Page+ with views and teaser display (#388)
+- Allow users to change the taxonomy term description text
+- D8CORE-2572 Added and configured content_lock to prevent simultaneous edits (#395)
+- D8CORE-2766: Don't require the field on the global message form. (#357)
+- D8CORE-4033: updated view config to allow filtering past events lists (#397)
+- D8CORE-3953 Replace "whitelist" with "allowed" for stanford_ssp (#394)
+- D8CORE-4020: fix double h2 tags (#396)
+- D8CORE-2853 test for unpublishing the home page (#392)
+- D8CORE-3538 Add "Other" citation type (#390)
+- D8CORE-3458 Dont display unpublished profiles in the lists (#389)
+- D8CORE-3945 Changed the news card image style for better resolution
+- Corrected dependency in composer.json
+- D8CORE-3536 Display publications as a teaser in the paragraph (#387)
+- D8CORE-3947: adding classes to the filtered by for publications in order to style them (#386)
+- D8CORE-3126 Intranet Configs (#379)
+
 8.x-2.3
 --------------------------------------------------------------------------------
 _Release Date: 2021-03-16_

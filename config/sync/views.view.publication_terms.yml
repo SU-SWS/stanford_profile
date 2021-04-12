@@ -68,7 +68,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: 'Publications | Results For: {{ name }}'
+            text: '<span class="results-for--publications">Publications</span> | <span class="results-for">Results For:</span> <span class="results-for--name">{{ name }}</span>'
             make_link: false
             path: ''
             absolute: false

@@ -1,0 +1,19 @@
+uuid: 80615cf7-aaf6-4375-be22-ab937c84f8e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_publisher
+    - stanford_publication.citation_type.su_other
+id: citation.su_other.su_publisher
+field_name: su_publisher
+entity_type: citation
+bundle: su_other
+label: Publisher
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

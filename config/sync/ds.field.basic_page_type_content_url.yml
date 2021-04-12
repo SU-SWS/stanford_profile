@@ -1,0 +1,11 @@
+id: basic_page_type_content_url
+label: 'Basic Page Type Content URL'
+ui_limit: 'stanford_page|*'
+properties:
+  content:
+    value: "<p>[node:url]</p>\r\n"
+    format: stanford_minimal_html
+type: token
+type_label: 'Token field'
+entities:
+  node: node
