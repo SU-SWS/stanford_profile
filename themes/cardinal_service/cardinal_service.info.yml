@@ -20,10 +20,9 @@ features:
   - favicon
   - logo
 
-component-libraries:
-  cardinal-service:
-    paths:
-      - lib/components
+components:
+  namespaces:
+    cardinal-service: lib/components
 
 libraries:
   - cardinal_service/base
