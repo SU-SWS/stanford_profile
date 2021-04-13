@@ -1,5 +1,13 @@
 # Stanford Profile
 
+8.x-2.5
+--------------------------------------------------------------------------------
+_Release Date: 2021-04-19_
+
+- Hotfix for tweaks to basic page+ functionality
+- disabled "Preview" button on node form
+- D8CORE-3480 Disallow image gallery media in the wysiwyg.
+
 8.x-2.4
 --------------------------------------------------------------------------------
 _Release Date: 2021-04-12_
