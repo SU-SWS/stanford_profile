@@ -921,8 +921,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "{% if type == 'Other' %}\r\n  Publication\r\n{% else %}\r\n  {{ type }}\r\n{% endif %}"
             make_link: false
             path: ''
             absolute: false

@@ -6,15 +6,21 @@ dependencies:
     - core.entity_view_mode.node.stanford_card
     - field.field.node.stanford_page.layout_builder__layout
     - field.field.node.stanford_page.layout_selection
+    - field.field.node.stanford_page.stanford_intranet__access
+    - field.field.node.stanford_page.su_basic_page_type
     - field.field.node.stanford_page.su_page_banner
     - field.field.node.stanford_page.su_page_components
+    - field.field.node.stanford_page.su_page_description
+    - field.field.node.stanford_page.su_page_image
     - node.type.stanford_page
   module:
     - ds
     - entity_reference_revisions
+    - field_formatter_class
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - stanford_media
     - user
 third_party_settings:
   layout_builder:
@@ -57,39 +63,94 @@ third_party_settings:
       entity_classes: all_classes
       settings:
         pattern:
-          field_templates: default
+          field_templates: only_content
           variant: default
     regions:
       card_image:
         - su_page_banner
+        - su_page_image
+      card_super_headline:
+        - su_basic_page_type
       card_headline:
         - node_title
+      card_body:
+        - su_page_description
     fields:
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 3
         label: hidden
         formatter: default
+        settings:
+          link: true
+          wrapper: ''
+          class: su-card__link
 id: node.stanford_page.stanford_card
 targetEntityType: node
 bundle: stanford_page
 mode: stanford_card
 content:
+  su_basic_page_type:
+    type: entity_reference_label
+    weight: 2
+    region: card_super_headline
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-basic-page-types__categories
+      ds:
+        ds_limit: ''
   su_page_banner:
     type: entity_reference_revisions_entity_view
     weight: 0
     region: card_image
     label: hidden
     settings:
-      view_mode: default
+      view_mode: variant_1
       link: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: 'su-media su-media--image su-card__media'
+  su_page_description:
+    type: string
+    weight: 4
+    region: card_body
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      field_formatter_class:
+        class: su-basic-page-types__description
+  su_page_image:
+    type: media_multimedia_formatter
+    weight: 1
+    region: card_image
+    label: hidden
+    settings:
+      image:
+        image_formatter: responsive_image_style
+        image_formatter_image_style: cta_2x_1014x676
+        image_formatter_responsive_image_style: card_2_1
+        image_formatter_view_mode: default
+      video:
+        video_formatter: entity
+        video_formatter_view_mode: default
+      other:
+        view_mode: default
+      view_mode: default
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: 'su-media su-media--image su-card__media'
 hidden:
   flag_cs_resources: false
   layout_builder__layout: true
   layout_selection: true
   links: true
   search_api_excerpt: true
+  stanford_intranet__access: true
   su_page_components: true
   su_page_resource_audience: true
   su_page_resource_dimension: true

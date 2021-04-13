@@ -1,0 +1,29 @@
+uuid: f7fbb866-497b-446c-8d9d-dc3cf62dcbee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_page_image
+    - media.type.image
+    - node.type.stanford_page
+id: node.stanford_page.su_page_image
+field_name: su_page_image
+entity_type: node
+bundle: stanford_page
+label: 'Page Image'
+description: 'Maximum one image. The <i>"page image"</i> will only appear as a thumbnail image on Teaser and List page display. Use the Banner paragraph to add a Featured Media to a page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
