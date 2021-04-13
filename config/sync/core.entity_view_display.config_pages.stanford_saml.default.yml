@@ -4,18 +4,36 @@ status: true
 dependencies:
   config:
     - config_pages.type.stanford_saml
+    - field.field.config_pages.stanford_saml.su_simplesaml_allowed
     - field.field.config_pages.stanford_saml.su_simplesaml_roles
+    - field.field.config_pages.stanford_saml.su_simplesaml_users
 id: config_pages.stanford_saml.default
 targetEntityType: config_pages
 bundle: stanford_saml
 mode: default
 content:
+  su_simplesaml_allowed:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   su_simplesaml_roles:
     weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
+  su_simplesaml_users:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
 hidden:
   search_api_excerpt: true

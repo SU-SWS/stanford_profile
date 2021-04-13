@@ -8,6 +8,7 @@ dependencies:
     - stanford_publication.citation_type.su_article_journal
     - stanford_publication.citation_type.su_article_newspaper
     - stanford_publication.citation_type.su_book
+    - stanford_publication.citation_type.su_other
     - stanford_publication.citation_type.su_thesis
 id: node.stanford_publication.su_publication_citation
 field_name: su_publication_citation
@@ -26,6 +27,7 @@ settings:
       su_article_newspaper: su_article_newspaper
       su_book: su_book
       su_article_journal: su_article_journal
+      su_other: su_other
       su_thesis: su_thesis
     sort:
       field: _none

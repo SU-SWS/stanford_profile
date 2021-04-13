@@ -1,0 +1,19 @@
+uuid: e82f43a1-8e24-4e3d-9eac-b2bcd2896c8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_saml
+    - field.storage.config_pages.su_simplesaml_users
+id: config_pages.stanford_saml.su_simplesaml_users
+field_name: su_simplesaml_users
+entity_type: config_pages
+bundle: stanford_saml
+label: 'Allowed Users'
+description: 'A list of SUNet IDs that should be allowed to login with simpleSAMLphp. If left blank, any valid SUNet ID user can login. One SUNet per line.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: b1af38c4-3c90-4673-a439-709348b179f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_subtitle
+    - stanford_publication.citation_type.su_other
+id: citation.su_other.su_subtitle
+field_name: su_subtitle
+entity_type: citation
+bundle: su_other
+label: Subtitle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
