@@ -91,7 +91,12 @@ filters:
     weight: -47
     settings:
       default_view_mode: default
-      allowed_media_types: {  }
+      allowed_media_types:
+        embeddable: embeddable
+        file: file
+        google_form: google_form
+        image: image
+        video: video
       allowed_view_modes:
         default: default
         stanford_image_large: stanford_image_large
