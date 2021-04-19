@@ -81,36 +81,6 @@ third_party_settings:
             weight: 0
         third_party_settings: {  }
       -
-        layout_id: jumpstart_ui_one_column
-        layout_settings:
-          extra_classes: ''
-          centered: centered-container
-          columns: default
-          label: 'page description'
-        components:
-          f27015ee-a2c3-4acc-a68d-9af1b6e538a1:
-            uuid: f27015ee-a2c3-4acc-a68d-9af1b6e538a1
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_page:su_page_description'
-              label: 'Page Description'
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: hidden
-                type: string
-                settings:
-                  link_to_entity: false
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
-            weight: 0
-        third_party_settings: {  }
-      -
         layout_id: jumpstart_ui_two_column
         layout_settings:
           extra_classes: ''
