@@ -32,7 +32,7 @@ settings:
     middle: false
     generational: false
     credentials: false
-  allow_family_or_given: false
+  allow_family_or_given: true
   field_type:
     title: select
     given: text
@@ -94,7 +94,7 @@ settings:
     title: Title
     given: 'First Name'
     middle: 'Middle Name'
-    family: 'Last Name'
+    family: 'Last Name/Company'
     generational: Generational
     credentials: Credentials
   title_display:
