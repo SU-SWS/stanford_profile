@@ -1,5 +1,12 @@
 # Stanford Profile
 
+8.x-2.6
+--------------------------------------------------------------------------------
+_Release Date: 2021-04-19_
+
+- Added experimental label to basic page types field and view
+- D8CORE-4068 Allow publication authors to have only one name part (#402)
+
 8.x-2.5
 --------------------------------------------------------------------------------
 _Release Date: 2021-04-19_
