@@ -5,7 +5,6 @@ dependencies:
   module:
     - node
     - user
-    - view_unpublished
     - views_bulk_operations
 id: content
 label: Content
@@ -195,14 +194,17 @@ display:
           clear_on_exposed: true
           action_title: Action
           selected_actions:
-            3:
+            1:
               action_id: node_assign_owner_action
-            5:
-              action_id: node_publish_action
-            6:
-              action_id: node_unpublish_action
-            9:
+              preconfiguration:
+                add_confirmation: 0
+            7:
+              action_id: node_clone_action
+              preconfiguration:
+                add_confirmation: 0
+            8:
               action_id: views_bulk_operations_delete_entity
+          force_selection_info: 0
           plugin_id: views_bulk_operations_bulk_form
         title:
           id: title
