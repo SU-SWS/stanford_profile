@@ -18,7 +18,7 @@ dependencies:
     - user
     - views_taxonomy_term_name_depth
 id: stanford_basic_pages
-label: 'Basic Pages'
+label: 'Basic Pages (experimental)'
 module: views
 description: ''
 tag: ''
@@ -572,7 +572,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          default_action: ignore
+          default_action: empty
           exception:
             value: all
             title_enable: false
