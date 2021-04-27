@@ -6,7 +6,7 @@ use Faker\Factory;
  * Class BannerCest.
  *
  * @group paragraphs
- * @group mikes
+ * @group banner
  */
 class BannerCest {
 
