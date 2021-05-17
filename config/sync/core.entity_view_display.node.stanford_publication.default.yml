@@ -68,22 +68,6 @@ third_party_settings:
                 view_mode: view_mode
             additional: {  }
             weight: 3
-          a4e93b88-86b1-43a2-9364-abb036c0fd2d:
-            uuid: a4e93b88-86b1-43a2-9364-abb036c0fd2d
-            region: main
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:stanford_publication:su_shared_tags'
-              formatter:
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-                type: entity_reference_label
-            additional: {  }
-            weight: 4
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column

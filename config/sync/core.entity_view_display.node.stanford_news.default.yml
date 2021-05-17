@@ -107,22 +107,6 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 2
-          22a25866-530b-4230-ba0b-8556d5f61b41:
-            uuid: 22a25866-530b-4230-ba0b-8556d5f61b41
-            region: main
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:stanford_news:su_shared_tags'
-              formatter:
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-                type: entity_reference_label
-            additional: {  }
-            weight: 5
         third_party_settings: {  }
       -
         layout_id: stanford_news_byline
