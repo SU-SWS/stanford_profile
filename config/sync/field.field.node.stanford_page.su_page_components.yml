@@ -5,7 +5,9 @@ dependencies:
   config:
     - field.storage.node.su_page_components
     - node.type.stanford_page
-    - react_paragraphs.paragraphs_row_type.node_stanford_page_row
+    - paragraphs.paragraphs_type.stanford_person_cta
+    - paragraphs.paragraphs_type.stanford_schedule
+    - paragraphs.paragraphs_type.stanford_spacer
   module:
     - entity_reference_revisions
 id: node.stanford_page.su_page_components
@@ -19,40 +21,45 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:paragraph_row'
+  handler: 'default:paragraph'
   handler_settings:
     negate: 1
     target_bundles:
-      node_stanford_page_row: node_stanford_page_row
+      stanford_person_cta: stanford_person_cta
+      stanford_schedule: stanford_schedule
+      stanford_spacer: stanford_spacer
     target_bundles_drag_drop:
       stanford_banner:
-        weight: 4
+        weight: 12
         enabled: false
       stanford_card:
-        weight: 4
+        weight: 13
+        enabled: false
+      stanford_entity:
+        weight: 14
+        enabled: false
+      stanford_gallery:
+        weight: 15
+        enabled: false
+      stanford_layout:
+        weight: 16
+        enabled: false
+      stanford_lists:
+        weight: 17
         enabled: false
       stanford_media_caption:
-        weight: 8
+        weight: 18
         enabled: false
       stanford_person_cta:
         enabled: true
-        weight: 11
+        weight: 19
       stanford_schedule:
         enabled: true
-        weight: 12
+        weight: 20
       stanford_spacer:
-        weight: 9
-        enabled: false
+        enabled: true
+        weight: 21
       stanford_wysiwyg:
-        weight: 6
+        weight: 22
         enabled: false
-    widths:
-      stanford_banner:
-        min: '12'
-      stanford_card:
-        min: '4'
-      stanford_media_caption:
-        min: '4'
-      stanford_wysiwyg:
-        min: '4'
 field_type: entity_reference_revisions

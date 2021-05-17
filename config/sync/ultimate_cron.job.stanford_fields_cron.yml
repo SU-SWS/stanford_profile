@@ -1,0 +1,17 @@
+uuid: 02891e9a-a2da-4bc8-b9b2-7ee360ae70a4
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_fields
+title: 'Default cron handler'
+id: stanford_fields_cron
+weight: 0
+module: stanford_fields
+callback: stanford_fields_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

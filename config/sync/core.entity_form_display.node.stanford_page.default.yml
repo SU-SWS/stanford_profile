@@ -14,10 +14,10 @@ dependencies:
     - node.type.stanford_page
   module:
     - field_group
+    - layout_paragraphs
     - media_library
     - paragraphs
     - path
-    - react_paragraphs
     - stanford_intranet
 third_party_settings:
   field_group:
@@ -114,16 +114,11 @@ content:
     third_party_settings: {  }
     region: content
   su_page_components:
-    type: react_paragraphs
+    type: layout_paragraphs
     settings:
-      sizes:
-        stanford_banner: 12
-        stanford_card: 3
-        stanford_wysiwyg: 3
-        stanford_media_caption: 3
-        stanford_spacer: 1
-        stanford_gallery: 12
-      resizable: false
+      preview_view_mode: default
+      nesting_depth: 0
+      require_layouts: 0
     weight: 10
     third_party_settings: {  }
     region: content

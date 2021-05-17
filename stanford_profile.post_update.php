@@ -9,6 +9,7 @@ use Drupal\Core\Site\Settings;
 use Drupal\Core\Config\FileStorage;
 use Drupal\react_paragraphs\Entity\ParagraphRow;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Implements hook_removed_post_updates().
@@ -158,5 +159,76 @@ function _stanford_profile_react_paragraph_fix() {
 
     $entity->set('su_page_components', $field_data);
     $entity->save();
+  }
+}
+
+/**
+ * Convert react paragraphs to layout paragraphs.
+ */
+function stanford_profile_post_update_layout_paragraphs() {
+  \Drupal::entityTypeManager()
+    ->getStorage('paragraphs_type')
+    ->create(['id' => 'stanford_layout'])
+    ->save();
+
+  /** @var \Drupal\field\FieldStorageConfigInterface $field_storage */
+  $field_storage = FieldStorageConfig::load('node.su_page_components');
+  $field_storage->setSetting('target_type', 'paragraph')->save();
+
+  /** @var \Drupal\node\NodeInterface $nodes */
+  $nodes = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->loadByProperties(['type' => 'stanford_page']);
+  $row_storage = \Drupal::entityTypeManager()->getStorage('paragraph_row');
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+
+  foreach ($nodes as $node) {
+    $converted_components = [];
+
+    $rows = $node->get('su_page_components')->getValue();
+    foreach ($rows as $row) {
+      $row = $row_storage->load($row['target_id']);
+      $components = $row->get('su_page_components')->getValue();
+
+      switch(count($components)){
+        case 1:
+          $converted_components[] = reset($components);
+          continue 2;
+        case 2:
+          $layout_id = 'layout_twocol_section';
+          $layout_config = ['label' => '', 'column_widths' => '50-50'];
+          break;
+        case 3:
+          $layout_id = 'layout_threecol_section';
+          $layout_config = ['label' => '', 'column_widths' => '33-34-33'];
+          break;
+      }
+
+      /** @var \Drupal\paragraphs\ParagraphInterface $new_row */
+      $new_row = $paragraph_storage->create(['type' => 'stanford_layout']);
+      $behavior = [
+        'region' => '',
+        'parent_uuid' => '',
+        'layout' => $layout_id,
+        'config' => $layout_config,
+      ];
+      $new_row->setBehaviorSettings('layout_paragraphs', $behavior);
+      $new_row->save();
+      $converted_components[] = ['target_id' => $new_row->id(), 'revision_id' => $new_row->getRevisionId()];
+
+      $parent_delta = count($converted_components);
+
+      foreach($converted_components as $component){
+        $converted_components[] = $component;
+
+        /** @var \Drupal\paragraphs\ParagraphInterface $component */
+        $component = $paragraph_storage->load($component['target_id']);
+        $behavior = ['region' => 'main', 'parent_uuid' => $new_row->uuid(), 'layout' => '','config' => [], 'parent_delta' => $parent_delta];
+        $component->setBehaviorSettings('layout_paragraphs', $behavior);
+        $component->save();
+      }
+    }
+
+    $node->set('su_page_components', $converted_components)->save();
   }
 }
