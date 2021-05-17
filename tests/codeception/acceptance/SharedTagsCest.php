@@ -26,10 +26,8 @@ class SharedTagsCest {
     $I->fillField('#edit-su-shared-tags-0-target-id', 'basic page test tag');
     $I->click('Save');
     $I->amOnPage('/basic-page-test-title');
-    $I->click('Edit');
-    $I->canSee('basic page test tag');
     $I->amOnPage('/admin/structure/taxonomy/manage/shared_tags/overview');
-    $I->canSee('basic test tag');
+    $I->canSee('basic page test tag');
   }
 
   /**
@@ -44,8 +42,6 @@ class SharedTagsCest {
     $I->fillField('#edit-su-shared-tags-0-target-id', 'publication test tag');
     $I->click('Save');
     $I->amOnPage('/publications/publication-test-title');
-    $I->click('Edit');
-    $I->canSee('publication test tag');
     $I->amOnPage('/admin/structure/taxonomy/manage/shared_tags/overview');
     $I->canSee('publication test tag');
   }
