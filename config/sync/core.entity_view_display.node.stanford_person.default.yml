@@ -6,6 +6,7 @@ dependencies:
     - core.base_field_override.node.stanford_person.title
     - field.field.node.stanford_person.body
     - field.field.node.stanford_person.layout_builder__layout
+    - field.field.node.stanford_person.stanford_intranet__access
     - field.field.node.stanford_person.su_person_academic_appt
     - field.field.node.stanford_person.su_person_admin_appts
     - field.field.node.stanford_person.su_person_affiliations
@@ -30,6 +31,7 @@ dependencies:
     - field.field.node.stanford_person.su_person_short_title
     - field.field.node.stanford_person.su_person_telephone
     - field.field.node.stanford_person.su_person_type_group
+    - field.field.node.stanford_person.su_shared_tags
     - node.type.stanford_person
   module:
     - entity_reference_revisions
@@ -218,6 +220,22 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
+            additional: {  }
+            weight: 0
+          7938dd12-e5df-44d6-ba8f-0019b368ac57:
+            uuid: 7938dd12-e5df-44d6-ba8f-0019b368ac57
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:stanford_person:su_shared_tags'
+              formatter:
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+                type: entity_reference_label
             additional: {  }
             weight: 0
         third_party_settings: {  }
@@ -764,6 +782,14 @@ content:
     region: content
   su_person_type_group:
     weight: 126
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  su_shared_tags:
+    weight: 128
     label: above
     settings:
       link: true
