@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.stanford_page.su_page_components
     - field.field.node.stanford_page.su_page_description
     - field.field.node.stanford_page.su_page_image
+    - field.field.node.stanford_page.su_shared_tags
     - node.type.stanford_page
   module:
     - field_group
@@ -26,6 +27,7 @@ third_party_settings:
         - su_page_image
         - su_page_description
         - su_basic_page_type
+        - su_shared_tags
       parent_name: ''
       weight: 12
       format_type: details_sidebar
@@ -142,6 +144,16 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  su_shared_tags:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   title:
     type: string_textfield
     weight: 0
