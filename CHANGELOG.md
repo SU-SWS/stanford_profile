@@ -1,5 +1,18 @@
 # Stanford Profile
 
+8.x-2.8
+--------------------------------------------------------------------------------
+_Release Date: 2021-05-07_
+
+- D8CORE-4145: adding the margin bottom to the intro for events. (#410) (e07a55a)
+- D8CORE-3523: Added User Search form (#412) (3167707)
+- D8CORE-4093: removing the margin top from the button on lists (#405) (d8d588e)
+- D8CORE-3951: fixing the pagination to the infinite scroll and a Load More button (#411) (751a62b)
+- D8CORE-3970: removed the extra h2 (#409) (a964622)
+- Adjusted citation author fields to prevent only first name data entry (911a7ef)
+- D8CORE-3104 D8CORE-3455 D8CORE-3456 D8CORE-3981 Help text and form tweaks (#408) (97b2d2e)
+- D8CORE-2729 enable the hero banner behavior (#407) (1a9da8b)
+
 8.x-2.7
 --------------------------------------------------------------------------------
 _Release Date: 2021-04-21_
