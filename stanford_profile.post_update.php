@@ -188,11 +188,19 @@ function stanford_profile_post_update_layout_paragraphs() {
     $rows = $node->get('su_page_components')->getValue();
     foreach ($rows as $row) {
       $row = $row_storage->load($row['target_id']);
-      $components = $row->get('su_page_components')->getValue();
-
-      switch(count($components)){
+      $old_components = $row->get('su_page_components')->getValue();
+      switch (count($old_components)) {
         case 1:
-          $converted_components[] = reset($components);
+          $old_component = $paragraph_storage->load($old_components[0]['target_id']);
+          /** @var \Drupal\paragraphs\ParagraphInterface $new_component */
+          $new_component = $old_component->createDuplicate();
+          $new_component->setAllBehaviorSettings([]);
+          $new_component->setParentEntity($node, 'su_page_components')->save();
+          $old_component->delete();
+          $converted_components[] = [
+            'target_id' => $new_component->id(),
+            'target_revision_id' => $new_component->getRevisionId(),
+          ];
           continue 2;
         case 2:
           $layout_id = 'layout_twocol_section';
@@ -213,22 +221,43 @@ function stanford_profile_post_update_layout_paragraphs() {
         'config' => $layout_config,
       ];
       $new_row->setBehaviorSettings('layout_paragraphs', $behavior);
+      $new_row->setParentEntity($node, 'su_page_components');
       $new_row->save();
-      $converted_components[] = ['target_id' => $new_row->id(), 'revision_id' => $new_row->getRevisionId()];
+      $converted_components[] = [
+        'target_id' => $new_row->id(),
+        'target_revision_id' => $new_row->getRevisionId(),
+      ];
 
-      $parent_delta = count($converted_components);
+      $parent_delta = array_key_last($converted_components);
 
-      foreach($converted_components as $component){
-        $converted_components[] = $component;
-
+      $region = 1;
+      foreach ($old_components as $component) {
         /** @var \Drupal\paragraphs\ParagraphInterface $component */
         $component = $paragraph_storage->load($component['target_id']);
-        $behavior = ['region' => 'main', 'parent_uuid' => $new_row->uuid(), 'layout' => '','config' => [], 'parent_delta' => $parent_delta];
-        $component->setBehaviorSettings('layout_paragraphs', $behavior);
-        $component->save();
+        $new_component = $component->createDuplicate();
+        $new_component->setParentEntity($node, 'su_page_components');
+        $behavior = [
+          'region' => $region == 1 ? 'first' : ($region == 2 ? 'second' : 'third'),
+          'parent_uuid' => $new_row->uuid(),
+          'layout' => '',
+          'config' => [],
+          'parent_delta' => $parent_delta,
+        ];
+        $new_component->setAllBehaviorSettings(['layout_paragraphs' => $behavior]);
+        $new_component->save();
+
+        $converted_components[] = [
+          'target_id' => $new_component->id(),
+          'target_revision_id' => $new_component->getRevisionId(),
+        ];
+        $component->delete();
+        $region++;
       }
+      $row->delete();
     }
 
     $node->set('su_page_components', $converted_components)->save();
   }
 }
+
+
