@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.stanford_publication.su_publication_components
     - field.field.node.stanford_publication.su_publication_cta
     - field.field.node.stanford_publication.su_publication_topics
+    - field.field.node.stanford_publication.su_shared_tags
     - node.type.stanford_publication
   module:
     - inline_entity_form
@@ -75,6 +76,16 @@ content:
     region: content
   su_publication_topics:
     weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  su_shared_tags:
+    weight: 26
     settings:
       match_operator: CONTAINS
       match_limit: 10

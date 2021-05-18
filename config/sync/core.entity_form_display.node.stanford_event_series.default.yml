@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.stanford_event_series.su_event_series_subheadline
     - field.field.node.stanford_event_series.su_event_series_type
     - field.field.node.stanford_event_series.su_event_series_weight
+    - field.field.node.stanford_event_series.su_shared_tags
     - node.type.stanford_event_series
   module:
     - field_group
@@ -140,6 +141,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
+  su_shared_tags:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   title:
     type: string_textfield

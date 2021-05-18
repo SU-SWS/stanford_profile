@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.stanford_event_series.su_event_series_subheadline
     - field.field.node.stanford_event_series.su_event_series_type
     - field.field.node.stanford_event_series.su_event_series_weight
+    - field.field.node.stanford_event_series.su_shared_tags
     - node.type.stanford_event_series
   module:
     - ds
@@ -128,3 +129,4 @@ hidden:
   su_event_series_event: true
   su_event_series_type: true
   su_event_series_weight: true
+  su_shared_tags: true

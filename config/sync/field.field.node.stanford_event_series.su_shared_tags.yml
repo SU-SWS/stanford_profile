@@ -1,0 +1,29 @@
+uuid: 65d22d8c-d068-417c-bffa-4c51a3a6ac71
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_shared_tags
+    - node.type.stanford_event_series
+    - taxonomy.vocabulary.shared_tags
+id: node.stanford_event_series.su_shared_tags
+field_name: su_shared_tags
+entity_type: node
+bundle: stanford_event_series
+label: 'Shared Tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      shared_tags: shared_tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

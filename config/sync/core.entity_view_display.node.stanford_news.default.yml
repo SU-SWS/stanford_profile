@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.stanford_news.su_news_publishing_date
     - field.field.node.stanford_news.su_news_source
     - field.field.node.stanford_news.su_news_topics
+    - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
     - views.view.stanford_news
   module:
@@ -438,3 +439,4 @@ hidden:
   search_api_excerpt: true
   stanford_intranet__access: true
   su_news_source: true
+  su_shared_tags: true

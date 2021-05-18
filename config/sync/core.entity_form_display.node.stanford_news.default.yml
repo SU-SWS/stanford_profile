@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.stanford_news.su_news_publishing_date
     - field.field.node.stanford_news.su_news_source
     - field.field.node.stanford_news.su_news_topics
+    - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
   module:
     - datetime
@@ -161,6 +162,16 @@ content:
     region: content
   su_news_topics:
     weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  su_shared_tags:
+    weight: 26
     settings:
       match_operator: CONTAINS
       match_limit: 10
