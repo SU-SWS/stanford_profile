@@ -1554,7 +1554,7 @@ display:
         empty: false
       block_category: 'Publication (Views)'
       pager:
-        type: full
+        type: infinite_scroll
         options:
           items_per_page: 20
           offset: 0
@@ -1563,8 +1563,6 @@ display:
           tags:
             previous: '‹ Previous'
             next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -1573,7 +1571,10 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          quantity: 9
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+            initially_load_all_pages: false
       block_hide_empty: true
       arguments:
         term_node_tid_depth:
