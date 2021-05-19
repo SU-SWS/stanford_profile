@@ -26,13 +26,13 @@ settings:
     generational: false
     credentials: false
   minimum_components:
-    given: true
     family: true
     title: false
+    given: false
     middle: false
     generational: false
     credentials: false
-  allow_family_or_given: true
+  allow_family_or_given: false
   field_type:
     title: select
     given: text

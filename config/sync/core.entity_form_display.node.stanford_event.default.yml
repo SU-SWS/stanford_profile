@@ -67,6 +67,7 @@ third_party_settings:
         - su_event_date_time
         - su_event_source
         - su_event_location
+        - su_event_alt_loc
         - su_event_map_link
         - su_event_email
         - su_event_telephone
@@ -130,26 +131,41 @@ content:
     weight: 6
     region: content
     third_party_settings: {  }
+  su_event_alt_loc:
+    type: string_textfield
+    weight: 24
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   su_event_audience:
-    weight: 27
+    weight: 28
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   su_event_components:
-    type: entity_reference_paragraphs
+    type: paragraphs
     weight: 3
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: '0'
+        duplicate: duplicate
     third_party_settings: {  }
     region: content
   su_event_cta:
-    weight: 28
+    weight: 29
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -174,7 +190,7 @@ content:
     type: string_textfield
     region: content
   su_event_email:
-    weight: 25
+    weight: 26
     settings:
       size: 60
       placeholder: ''
@@ -188,7 +204,7 @@ content:
     type: address_default
     region: content
   su_event_map_link:
-    weight: 24
+    weight: 25
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -232,7 +248,7 @@ content:
     type: string_textfield
     region: content
   su_event_telephone:
-    weight: 26
+    weight: 27
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -279,6 +295,5 @@ hidden:
   path: true
   promote: true
   sticky: true
-  su_event_alt_loc: true
   uid: true
   url_redirects: true
