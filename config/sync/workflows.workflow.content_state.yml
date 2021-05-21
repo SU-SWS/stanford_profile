@@ -1,0 +1,64 @@
+uuid: 4b7f3031-16ca-4c3b-8fc5-0d722d6a8c49
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_event
+    - node.type.stanford_event_series
+    - node.type.stanford_news
+    - node.type.stanford_page
+    - node.type.stanford_person
+    - node.type.stanford_publication
+  module:
+    - content_moderation
+id: content_state
+label: 'Content State'
+type: content_moderation
+type_settings:
+  states:
+    deleted:
+      published: false
+      default_revision: false
+      label: Deleted
+      weight: 2
+    draft:
+      label: Draft
+      published: false
+      default_revision: false
+      weight: 0
+    published:
+      label: Published
+      published: true
+      default_revision: true
+      weight: 1
+  transitions:
+    create_new_draft:
+      label: 'Create New Draft'
+      to: draft
+      weight: 0
+      from:
+        - draft
+        - published
+    delete:
+      label: Delete
+      from:
+        - draft
+        - published
+      to: deleted
+      weight: 2
+    publish:
+      label: Publish
+      to: published
+      weight: 1
+      from:
+        - draft
+        - published
+  entity_types:
+    node:
+      - stanford_event
+      - stanford_event_series
+      - stanford_news
+      - stanford_page
+      - stanford_person
+      - stanford_publication
+  default_moderation_state: published
