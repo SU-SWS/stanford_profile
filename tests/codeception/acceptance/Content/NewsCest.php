@@ -94,17 +94,14 @@ class NewsCest {
     $I->createEntity([
       'type' => 'stanford_news',
       'title' => 'Test News 1',
-      'su_news_headline' => 'Test News 1',
     ]);
     $I->createEntity([
       'type' => 'stanford_news',
       'title' => 'Test News 2',
-      'su_news_headline' => 'Test News 2',
     ]);
     $I->createEntity([
       'type' => 'stanford_news',
       'title' => 'Test News 3',
-      'su_news_headline' => 'Test News 3',
     ]);
 
     $I->amOnPage("/news/test-news-2");
