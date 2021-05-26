@@ -1,4 +1,4 @@
-{% set background = image|render|striptags('<img> <source> <picture>')|trim %}
+{% set background = image|render_clean('<img> <source> <picture>') %}
 
 <div{{ attributes.addClass('su-mission-statement') }}>
   <div class="su-hero-text-overlay">

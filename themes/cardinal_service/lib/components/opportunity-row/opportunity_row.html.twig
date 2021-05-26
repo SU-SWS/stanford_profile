@@ -1,44 +1,45 @@
-{% set program = program|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
-{% set type_list = type_list|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
-{% set time_commitment = time_commitment|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
-{% set service_theme = service_theme|render|striptags('<drupal-render-placeholder>')|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
+{% set program = program|render_clean %}
+{% set type_list = type_list|render_clean %}
+{% set time_commitment = time_commitment|render_clean %}
+{% set service_theme = service_theme|render_clean %}
+
 
 {% if program is not empty and type_list is not empty %}
-  {% set program = (program ~ ', '|t) %}
+  {% set program = program|merge({'#markup': program['#markup'] ~ ', '}) %}
 {% endif %}
 
 {% if time_commitment is not empty and service_theme is not empty %}
-  {% set time_commitment = (time_commitment ~ ' in '|t) %}
+  {% set time_commitment = time_commitment|merge({'#markup': time_commitment['#markup'] ~ ' in '}) %}
 {% endif %}
 
 {% set date_label = 'Application Deadline'|t %}
 {% set date = 'N/A' %}
 
-{% if application_deadline|render|striptags|trim is not empty %}
+{% if application_deadline|render_clean is not empty %}
   {% set date = application_deadline %}
 {% endif %}
 
-{% if event_date|render|striptags|trim is not empty %}
+{% if event_date|render_clean is not empty %}
   {% set date_label = 'Event Date'|t %}
   {% set date = event_date %}
-{% elseif course_date|render|striptags|trim is not empty %}
+{% elseif course_date|render_clean is not empty %}
   {% set date_label = 'Course Date'|t %}
   {% set date = course_date %}
 {% endif %}
 
-{% if location|render|striptags|trim is empty %}
+{% if location|render_clean is empty %}
   {% set location = 'N/A' %}
 {% endif %}
 
-{% if when|render|striptags|trim is empty %}
+{% if when|render_clean is empty %}
   {% set when = 'N/A' %}
 {% endif %}
 
-{% if open_to|render|striptags|trim is empty %}
+{% if open_to|render_clean is empty %}
   {% set open_to = 'N/A' %}
 {% endif %}
 
-{% set image = image|render|striptags('<drupal-render-placeholder> <img> <picture> <source>') %}
+{% set image = image|render_clean('<img> <picture> <source>') %}
 
 <div{{ attributes.addClass('su-opportunity-result') }}>
   <div class="flex-container su-card__contents">
