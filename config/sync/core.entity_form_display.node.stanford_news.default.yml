@@ -11,7 +11,6 @@ dependencies:
     - field.field.node.stanford_news.su_news_components
     - field.field.node.stanford_news.su_news_dek
     - field.field.node.stanford_news.su_news_featured_media
-    - field.field.node.stanford_news.su_news_headline
     - field.field.node.stanford_news.su_news_publishing_date
     - field.field.node.stanford_news.su_news_source
     - field.field.node.stanford_news.su_news_topics
@@ -30,7 +29,7 @@ third_party_settings:
         - su_news_featured_media
         - group_banner
       parent_name: ''
-      weight: 2
+      weight: 3
       format_type: fieldset
       region: content
       format_settings:
@@ -46,7 +45,7 @@ third_party_settings:
         - su_news_byline
         - su_news_source
       parent_name: ''
-      weight: 1
+      weight: 2
       format_type: fieldset
       region: content
       format_settings:
@@ -76,7 +75,7 @@ mode: default
 content:
   stanford_intranet__access:
     type: entity_access
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -84,7 +83,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 6
     region: content
     third_party_settings: {  }
   su_news_banner:
@@ -112,7 +111,7 @@ content:
     region: content
   su_news_components:
     type: entity_reference_paragraphs
-    weight: 4
+    weight: 5
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -137,14 +136,6 @@ content:
     third_party_settings: {  }
     type: media_library_widget
     region: content
-  su_news_headline:
-    weight: 0
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_news_publishing_date:
     weight: 3
     settings: {  }
@@ -160,7 +151,7 @@ content:
     type: link_default
     region: content
   su_news_topics:
-    weight: 3
+    weight: 4
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -169,6 +160,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   created: true
   layout_builder__layout: true
@@ -176,6 +175,5 @@ hidden:
   path: true
   promote: true
   sticky: true
-  title: true
   uid: true
   url_redirects: true

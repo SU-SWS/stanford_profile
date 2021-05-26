@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.node.stanford_card
     - field.storage.node.su_news_dek
     - field.storage.node.su_news_featured_media
-    - field.storage.node.su_news_headline
     - field.storage.node.su_news_publishing_date
     - field.storage.node.su_news_source
     - field.storage.node.su_news_topics
@@ -16,6 +15,7 @@ dependencies:
     - datetime
     - link
     - node
+    - stanford_fields
     - stanford_media
     - taxonomy
     - ui_patterns_views
@@ -95,29 +95,37 @@ display:
           inline:
             su_news_publishing_date: 0
             su_news_featured_media: 0
-            su_news_headline: 0
+            title: 0
             su_news_dek: 0
             su_news_topics: 0
+            su_news_source: 0
+            view_node: 0
+            edit_node: 0
           separator: ''
           hide_empty: 0
           pattern: news-vertical-teaser
+          variants:
+            alert: default
+            brandbar: default
+            button: default
+            card: default
+            cta: default
+            date-stacked: default
+            hero: default
+            link: default
+            lockup: a
+            media: default
           pattern_mapping:
             'views_row:su_news_featured_media':
               destination: news_vertical_teaser_image
               weight: 0
               plugin: views_row
               source: su_news_featured_media
-            'views_row:su_news_headline':
-              destination: news_vertical_teaser_headline
-              weight: 1
-              plugin: views_row
-              source: su_news_headline
             'views_row:su_news_topics':
               destination: news_topics
-              weight: 2
+              weight: 1
               plugin: views_row
               source: su_news_topics
-          pattern_variant: default
       fields:
         su_news_publishing_date:
           id: su_news_publishing_date
@@ -257,10 +265,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        su_news_headline:
-          id: su_news_headline
-          table: node__su_news_headline
-          field: su_news_headline
+        title:
+          id: title
+          table: node_field_data
+          field: title
           relationship: none
           group_type: group
           admin_label: ''
@@ -319,6 +327,8 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: node
+          entity_field: title
           plugin_id: field
         su_news_dek:
           id: su_news_dek
@@ -666,7 +676,6 @@ display:
       tags:
         - 'config:field.storage.node.su_news_dek'
         - 'config:field.storage.node.su_news_featured_media'
-        - 'config:field.storage.node.su_news_headline'
         - 'config:field.storage.node.su_news_publishing_date'
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
@@ -821,7 +830,7 @@ display:
         options:
           grouping: {  }
           row_class: ''
-          default_row_class: true
+          default_row_class: 1
       row:
         type: ui_patterns
         options:
@@ -829,7 +838,7 @@ display:
           inline:
             su_news_publishing_date: 0
             su_news_featured_media: 0
-            su_news_headline: 0
+            title: 0
             su_news_dek: 0
             su_news_topics: 0
             su_news_source: 0
@@ -839,16 +848,16 @@ display:
           hide_empty: 0
           pattern: news-list
           variants:
-            media: default
-            lockup: a
-            hero: default
-            brandbar: default
-            link: default
-            button: default
-            date-stacked: default
-            cta: default
             alert: default
+            brandbar: default
+            button: default
             card: default
+            cta: default
+            date-stacked: default
+            hero: default
+            link: default
+            lockup: a
+            media: default
           pattern_mapping:
             'views_row:view_node':
               destination: news_url
@@ -875,11 +884,11 @@ display:
               weight: 4
               plugin: views_row
               source: su_news_dek
-            'views_row:su_news_headline':
+            'views_row:title':
               destination: news_list_headline
               weight: 5
               plugin: views_row
-              source: su_news_headline
+              source: title
             'views_row:su_news_topics':
               destination: news_list_topics
               weight: 6
@@ -905,7 +914,6 @@ display:
       tags:
         - 'config:field.storage.node.su_news_dek'
         - 'config:field.storage.node.su_news_featured_media'
-        - 'config:field.storage.node.su_news_headline'
         - 'config:field.storage.node.su_news_publishing_date'
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
@@ -1076,7 +1084,7 @@ display:
           inline:
             su_news_publishing_date: 0
             su_news_featured_media: 0
-            su_news_headline: 0
+            title: 0
             su_news_dek: 0
             su_news_topics: 0
             su_news_source: 0
@@ -1086,47 +1094,47 @@ display:
           hide_empty: 0
           pattern: news-list
           variants:
-            media: default
-            lockup: a
-            hero: default
-            brandbar: default
-            link: default
-            button: default
-            date-stacked: default
-            cta: default
             alert: default
+            brandbar: default
+            button: default
             card: default
+            cta: default
+            date-stacked: default
+            hero: default
+            link: default
+            lockup: a
+            media: default
           pattern_mapping:
             'views_row:view_node':
               destination: news_url
               weight: 0
               plugin: views_row
               source: view_node
+            'views_row:title':
+              destination: news_list_headline
+              weight: 1
+              plugin: views_row
+              source: title
             'views_row:su_news_publishing_date':
               destination: news_list_publishing_date
-              weight: 1
+              weight: 2
               plugin: views_row
               source: su_news_publishing_date
             'views_row:su_news_source':
               destination: news_source
-              weight: 2
+              weight: 3
               plugin: views_row
               source: su_news_source
             'views_row:su_news_featured_media':
               destination: news_list_image
-              weight: 3
+              weight: 4
               plugin: views_row
               source: su_news_featured_media
             'views_row:su_news_dek':
               destination: news_list_dek
-              weight: 4
-              plugin: views_row
-              source: su_news_dek
-            'views_row:su_news_headline':
-              destination: news_list_headline
               weight: 5
               plugin: views_row
-              source: su_news_headline
+              source: su_news_dek
             'views_row:su_news_topics':
               destination: news_list_topics
               weight: 6
@@ -1152,7 +1160,6 @@ display:
       tags:
         - 'config:field.storage.node.su_news_dek'
         - 'config:field.storage.node.su_news_featured_media'
-        - 'config:field.storage.node.su_news_headline'
         - 'config:field.storage.node.su_news_publishing_date'
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
@@ -1297,6 +1304,7 @@ display:
           offset: 0
       block_category: 'News Lists (Views)'
       css_class: su-news-topics
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -1431,6 +1439,7 @@ display:
       use_more_text: 'See All News'
       link_display: custom_url
       link_url: /news
+      block_hide_empty: 1
     cache_metadata:
       max-age: -1
       contexts:
@@ -1442,7 +1451,6 @@ display:
       tags:
         - 'config:field.storage.node.su_news_dek'
         - 'config:field.storage.node.su_news_featured_media'
-        - 'config:field.storage.node.su_news_headline'
         - 'config:field.storage.node.su_news_publishing_date'
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
@@ -1570,6 +1578,7 @@ display:
       use_more_text: 'See All News'
       link_display: custom_url
       link_url: /news
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -1581,7 +1590,6 @@ display:
       tags:
         - 'config:field.storage.node.su_news_dek'
         - 'config:field.storage.node.su_news_featured_media'
-        - 'config:field.storage.node.su_news_headline'
         - 'config:field.storage.node.su_news_publishing_date'
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
@@ -1636,7 +1644,7 @@ display:
         pager: false
         style: false
         row: false
-        fields: false
+        fields: true
         css_class: false
       pager:
         type: infinite_scroll
@@ -1675,452 +1683,10 @@ display:
         options:
           relationship: none
           view_mode: stanford_card
-      fields:
-        su_news_publishing_date:
-          id: su_news_publishing_date
-          table: node__su_news_publishing_date
-          field: su_news_publishing_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: datetime_custom
-          settings:
-            timezone_override: ''
-            date_format: 'F d, Y'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        su_news_featured_media:
-          id: su_news_featured_media
-          table: node__su_news_featured_media
-          field: su_news_featured_media
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: media_multimedia_formatter
-          settings:
-            vt_settings:
-              options__settings__vt_settings__active_tab: edit-image
-            image:
-              image_formatter: image_style
-              image_formatter_image_style: card_478x239
-              image_formatter_responsive_image_style: full_responsive
-              image_formatter_view_mode: default
-            video:
-              video_formatter: entity
-              video_formatter_view_mode: default
-            other:
-              view_mode: default
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        su_news_headline:
-          id: su_news_headline
-          table: node__su_news_headline
-          field: su_news_headline
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        su_news_dek:
-          id: su_news_dek
-          table: node__su_news_dek
-          field: su_news_dek
-          plugin_id: field
-        su_news_topics:
-          id: su_news_topics
-          table: node__su_news_topics
-          field: su_news_topics
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: true
-            path: '/news/{{ su_news_topics }}'
-            absolute: false
-            external: false
-            replace_spaces: true
-            path_case: lower
-            trim_whitespace: true
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: true
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 3
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        su_news_source:
-          id: su_news_source
-          table: node__su_news_source
-          field: su_news_source
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: uri
-          type: link
-          settings:
-            trim_length: null
-            url_only: true
-            url_plain: false
-            rel: '0'
-            target: '0'
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        view_node:
-          id: view_node
-          table: node
-          field: view_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: true
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: true
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-          entity_type: node
-          plugin_id: entity_link
-        edit_node:
-          id: edit_node
-          table: node
-          field: edit_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: 'edit this news item'
-          output_url_as_text: false
-          absolute: false
-          entity_type: node
-          plugin_id: entity_link_edit
       block_category: 'News Lists (Views)'
       block_description: 'News Cards - With Filter'
       css_class: 'stanford-news--cards stanford-news--cards-filtered'
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -2133,7 +1699,6 @@ display:
       tags:
         - 'config:field.storage.node.su_news_dek'
         - 'config:field.storage.node.su_news_featured_media'
-        - 'config:field.storage.node.su_news_headline'
         - 'config:field.storage.node.su_news_publishing_date'
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
