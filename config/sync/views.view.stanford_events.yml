@@ -2151,7 +2151,7 @@ display:
             su_event_location_sorting_code: 0
           separator: ''
           hide_empty: 1
-          pattern: events-list
+          pattern: events_list
           variants:
             alert: default
             brandbar: default
@@ -2168,107 +2168,107 @@ display:
             stories-paragraph: default
           pattern_mapping:
             'views_row:title':
-              destination: su_event_headline
+              destination: headline
               weight: 0
               plugin: views_row
               source: title
             'views_row:su_event_date_time':
-              destination: su_event_date_time
+              destination: date_time
               weight: 1
               plugin: views_row
               source: su_event_date_time
             'views_row:su_event_date_time_value_1':
-              destination: su_event_start_month
+              destination: start_month
               weight: 2
               plugin: views_row
               source: su_event_date_time_value_1
             'views_row:su_event_alt_loc':
-              destination: su_event_location
+              destination: location
               weight: 3
               plugin: views_row
               source: su_event_alt_loc
             'views_row:su_event_date_time_value':
-              destination: su_event_start_date
+              destination: start_date
               weight: 4
               plugin: views_row
               source: su_event_date_time_value
             'views_row:su_event_date_time_end_value_1':
-              destination: su_event_end_date
+              destination: end_date
               weight: 5
               plugin: views_row
               source: su_event_date_time_end_value_1
             'views_row:su_event_date_time_end_value':
-              destination: su_event_end_month
+              destination: end_month
               weight: 6
               plugin: views_row
               source: su_event_date_time_end_value
             'views_row:su_event_type':
-              destination: su_event_type
+              destination: event_type
               weight: 7
               plugin: views_row
               source: su_event_type
             'views_row:su_event_subheadline':
-              destination: su_event_subheadline
+              destination: subheadline
               weight: 8
               plugin: views_row
               source: su_event_subheadline
             'views_row:su_event_dek':
-              destination: su_event_dek
+              destination: dek
               weight: 9
               plugin: views_row
               source: su_event_dek
             'views_row:su_event_location':
-              destination: su_event_address
+              destination: address
               weight: 10
               plugin: views_row
               source: su_event_location
             'views_row:edit_node':
-              destination: su_event_edit
+              destination: edit
               weight: 11
               plugin: views_row
               source: edit_node
             'views_row:su_event_location_organization':
-              destination: su_event_location_organization
+              destination: location_organization
               weight: 12
               plugin: views_row
               source: su_event_location_organization
             'views_row:su_event_location_locality':
-              destination: su_event_location_locality
+              destination: location_locality
               weight: 13
               plugin: views_row
               source: su_event_location_locality
             'views_row:su_event_location_administrative_area':
-              destination: su_event_location_administrative_area
+              destination: location_administrative_area
               weight: 14
               plugin: views_row
               source: su_event_location_administrative_area
             'views_row:su_event_location_address_line1':
-              destination: su_event_location_address_line1
+              destination: location_address_line1
               weight: 15
               plugin: views_row
               source: su_event_location_address_line1
             'views_row:su_event_location_address_line2':
-              destination: su_event_location_address_line2
+              destination: location_address_line2
               weight: 16
               plugin: views_row
               source: su_event_location_address_line2
             'views_row:su_event_location_postal_code':
-              destination: su_event_location_postal_code
+              destination: location_postal_code
               weight: 17
               plugin: views_row
               source: su_event_location_postal_code
             'views_row:su_event_location_sorting_code':
-              destination: su_event_location_sorting_code
+              destination: location_sorting_code
               weight: 18
               plugin: views_row
               source: su_event_location_sorting_code
             'views_row:su_event_location_country_code':
-              destination: su_event_location_country_code
+              destination: location_country_code
               weight: 19
               plugin: views_row
               source: su_event_location_country_code
             'views_row:su_event_location_dependent_locality':
-              destination: su_event_location_dependent_locality
+              destination: location_dependent_locality
               weight: 20
               plugin: views_row
               source: su_event_location_dependent_locality
@@ -3653,7 +3653,7 @@ display:
             su_event_location_sorting_code: 0
           separator: ''
           hide_empty: 1
-          pattern: events-list
+          pattern: events_list
           variants:
             alert: default
             brandbar: default
@@ -3670,107 +3670,107 @@ display:
             stories-paragraph: default
           pattern_mapping:
             'views_row:title':
-              destination: su_event_headline
+              destination: headline
               weight: 0
               plugin: views_row
               source: title
             'views_row:su_event_date_time':
-              destination: su_event_date_time
+              destination: date_time
               weight: 1
               plugin: views_row
               source: su_event_date_time
             'views_row:su_event_date_time_value_1':
-              destination: su_event_start_month
+              destination: start_month
               weight: 2
               plugin: views_row
               source: su_event_date_time_value_1
             'views_row:su_event_alt_loc':
-              destination: su_event_location
+              destination: location
               weight: 3
               plugin: views_row
               source: su_event_alt_loc
             'views_row:su_event_date_time_value':
-              destination: su_event_start_date
+              destination: start_date
               weight: 4
               plugin: views_row
               source: su_event_date_time_value
             'views_row:su_event_date_time_end_value_1':
-              destination: su_event_end_date
+              destination: end_date
               weight: 5
               plugin: views_row
               source: su_event_date_time_end_value_1
             'views_row:su_event_date_time_end_value':
-              destination: su_event_end_month
+              destination: end_month
               weight: 6
               plugin: views_row
               source: su_event_date_time_end_value
             'views_row:su_event_type':
-              destination: su_event_type
+              destination: event_type
               weight: 7
               plugin: views_row
               source: su_event_type
             'views_row:su_event_subheadline':
-              destination: su_event_subheadline
+              destination: subheadline
               weight: 8
               plugin: views_row
               source: su_event_subheadline
             'views_row:su_event_dek':
-              destination: su_event_dek
+              destination: dek
               weight: 9
               plugin: views_row
               source: su_event_dek
             'views_row:su_event_location':
-              destination: su_event_address
+              destination: address
               weight: 10
               plugin: views_row
               source: su_event_location
             'views_row:edit_node':
-              destination: su_event_edit
+              destination: edit
               weight: 11
               plugin: views_row
               source: edit_node
             'views_row:su_event_location_organization':
-              destination: su_event_location_organization
+              destination: location_organization
               weight: 12
               plugin: views_row
               source: su_event_location_organization
             'views_row:su_event_location_locality':
-              destination: su_event_location_locality
+              destination: location_locality
               weight: 13
               plugin: views_row
               source: su_event_location_locality
             'views_row:su_event_location_administrative_area':
-              destination: su_event_location_administrative_area
+              destination: location_administrative_area
               weight: 14
               plugin: views_row
               source: su_event_location_administrative_area
             'views_row:su_event_location_address_line1':
-              destination: su_event_location_address_line1
+              destination: location_address_line1
               weight: 15
               plugin: views_row
               source: su_event_location_address_line1
             'views_row:su_event_location_address_line2':
-              destination: su_event_location_address_line2
+              destination: location_address_line2
               weight: 16
               plugin: views_row
               source: su_event_location_address_line2
             'views_row:su_event_location_postal_code':
-              destination: su_event_location_postal_code
+              destination: location_postal_code
               weight: 17
               plugin: views_row
               source: su_event_location_postal_code
             'views_row:su_event_location_sorting_code':
-              destination: su_event_location_sorting_code
+              destination: location_sorting_code
               weight: 18
               plugin: views_row
               source: su_event_location_sorting_code
             'views_row:su_event_location_country_code':
-              destination: su_event_location_country_code
+              destination: location_country_code
               weight: 19
               plugin: views_row
               source: su_event_location_country_code
             'views_row:su_event_location_dependent_locality':
-              destination: su_event_location_dependent_locality
+              destination: location_dependent_locality
               weight: 20
               plugin: views_row
               source: su_event_location_dependent_locality
@@ -6004,7 +6004,7 @@ display:
             su_event_location_sorting_code: 0
           separator: ''
           hide_empty: 1
-          pattern: events-list
+          pattern: events_list
           variants:
             alert: default
             brandbar: default
@@ -6021,117 +6021,117 @@ display:
             stories-paragraph: default
           pattern_mapping:
             'views_row:title':
-              destination: su_event_headline
+              destination: headline
               weight: 0
               plugin: views_row
               source: title
             'views_row:su_event_date_time':
-              destination: su_event_date_time
+              destination: date_time
               weight: 1
               plugin: views_row
               source: su_event_date_time
             'views_row:su_event_date_time_value_1':
-              destination: su_event_start_month
+              destination: start_month
               weight: 2
               plugin: views_row
               source: su_event_date_time_value_1
             'views_row:su_event_alt_loc':
-              destination: su_event_location
+              destination: location
               weight: 3
               plugin: views_row
               source: su_event_alt_loc
             'views_row:su_event_date_time_value':
-              destination: su_event_start_date
+              destination: start_date
               weight: 4
               plugin: views_row
               source: su_event_date_time_value
             'views_row:su_event_date_time_end_value_1':
-              destination: su_event_end_date
+              destination: end_date
               weight: 5
               plugin: views_row
               source: su_event_date_time_end_value_1
             'views_row:su_event_date_time_end_value':
-              destination: su_event_end_month
+              destination: end_month
               weight: 6
               plugin: views_row
               source: su_event_date_time_end_value
             'views_row:su_event_date_time_end_value_2':
-              destination: su_event_type
+              destination: event_type
               weight: 7
               plugin: views_row
               source: su_event_date_time_end_value_2
             'views_row:su_event_type':
-              destination: su_event_type
+              destination: event_type
               weight: 8
               plugin: views_row
               source: su_event_type
             'views_row:su_event_subheadline':
-              destination: su_event_subheadline
+              destination: subheadline
               weight: 9
               plugin: views_row
               source: su_event_subheadline
             'views_row:su_event_dek':
-              destination: su_event_dek
+              destination: dek
               weight: 10
               plugin: views_row
               source: su_event_dek
             'views_row:su_event_location':
-              destination: su_event_address
+              destination: address
               weight: 11
               plugin: views_row
               source: su_event_location
             'views_row:edit_node':
-              destination: su_event_edit
+              destination: edit
               weight: 12
               plugin: views_row
               source: edit_node
             'views_row:su_event_location_organization':
-              destination: su_event_location_organization
+              destination: location_organization
               weight: 13
               plugin: views_row
               source: su_event_location_organization
             'views_row:su_event_location_locality':
-              destination: su_event_location_locality
+              destination: location_locality
               weight: 14
               plugin: views_row
               source: su_event_location_locality
             'views_row:su_event_location_administrative_area':
-              destination: su_event_location_administrative_area
+              destination: location_administrative_area
               weight: 15
               plugin: views_row
               source: su_event_location_administrative_area
             'views_row:su_event_location_address_line1':
-              destination: su_event_location_address_line1
+              destination: location_address_line1
               weight: 16
               plugin: views_row
               source: su_event_location_address_line1
             'views_row:su_event_location_address_line2':
-              destination: su_event_location_address_line2
+              destination: location_address_line2
               weight: 17
               plugin: views_row
               source: su_event_location_address_line2
             'views_row:su_event_location_postal_code':
-              destination: su_event_location_postal_code
+              destination: location_postal_code
               weight: 18
               plugin: views_row
               source: su_event_location_postal_code
             'views_row:su_event_location_sorting_code':
-              destination: su_event_location_sorting_code
+              destination: location_sorting_code
               weight: 19
               plugin: views_row
               source: su_event_location_sorting_code
             'views_row:su_event_location_country_code':
-              destination: su_event_location_country_code
+              destination: location_country_code
               weight: 20
               plugin: views_row
               source: su_event_location_country_code
             'views_row:su_event_location_dependent_locality':
-              destination: su_event_location_dependent_locality
+              destination: location_dependent_locality
               weight: 21
               plugin: views_row
               source: su_event_location_dependent_locality
             'views_row:past_event_label':
-              destination: su_event_date_time
+              destination: date_time
               weight: 22
               plugin: views_row
               source: past_event_location

@@ -15,7 +15,7 @@ dependencies:
 third_party_settings:
   ds:
     layout:
-      id: pattern_person-cta
+      id: pattern_events_person_cta
       library: null
       disable_css: false
       entity_classes: no_classes
@@ -23,13 +23,13 @@ third_party_settings:
         pattern:
           field_templates: only_content
     regions:
-      su_person_cta_image:
+      image:
         - su_person_cta_image
-      su_person_cta_name:
+      name:
         - su_person_cta_name
-      su_person_cta_title:
+      title:
         - su_person_cta_title
-      su_person_cta_link:
+      link:
         - su_person_cta_link
 id: paragraph.stanford_person_cta.default
 targetEntityType: paragraph
@@ -46,11 +46,11 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-person-cta--image
-    region: su_person_cta_image
+    region: image
   su_person_cta_link:
     type: link
     weight: 3
-    region: su_person_cta_link
+    region: link
     label: hidden
     settings:
       trim_length: null
@@ -68,7 +68,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: su_person_cta_name
+    region: name
   su_person_cta_title:
     weight: 2
     label: hidden
@@ -76,6 +76,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: su_person_cta_title
+    region: title
 hidden:
   search_api_excerpt: true

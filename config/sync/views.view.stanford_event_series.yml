@@ -89,7 +89,7 @@ display:
             view_node: 0
           separator: ''
           hide_empty: 1
-          pattern: events-list
+          pattern: events_list
           variants:
             media: default
             lockup: a
@@ -103,32 +103,32 @@ display:
             card: default
           pattern_mapping:
             'views_row:su_event_series_type':
-              destination: su_event_type
+              destination: event_type
               weight: 0
               plugin: views_row
               source: su_event_series_type
             'views_row:edit_node':
-              destination: su_event_edit
+              destination: edit
               weight: 1
               plugin: views_row
               source: edit_node
             'views_row:view_node':
-              destination: su_event_url
+              destination: url
               weight: 2
               plugin: views_row
               source: view_node
             'views_row:title':
-              destination: su_event_headline
+              destination: headline
               weight: 3
               plugin: views_row
               source: title
             'views_row:su_event_series_subheadline':
-              destination: su_event_subheadline
+              destination: subheadline
               weight: 4
               plugin: views_row
               source: su_event_series_subheadline
             'views_row:su_event_series_dek':
-              destination: su_event_dek
+              destination: dek
               weight: 5
               plugin: views_row
               source: su_event_series_dek
