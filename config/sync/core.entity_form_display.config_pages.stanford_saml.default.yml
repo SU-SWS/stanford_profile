@@ -23,7 +23,7 @@ third_party_settings:
       format_type: details
       region: content
       format_settings:
-        description: "Restrict who can log into the site by limiting to workgroups or SUNet IDs. Leave these empty to allow any user with a valid SUNet to log in.\r\nThis is an allowed list, not a restive list. The order of process is:\r\n<ol>\r\n<li>User ID: if the user has a matching user id, they will be allowed.</li>\r\n<li>Affiliations: if a user is a member of the chosen affiliations, they will be allowed.</li>\r\n<li>Workgroups: If a user is a member of the configured workgroups, they will be allowed.</li>\r\n</ol>\r\nIf the user does not satisfy any of the three scenarios, they will be denied access. \r\n<strong>Be sure to configure the settings to allow yourself access in some form, otherwise on your next login, you will be denied access.</strong>"
+        description: "Restrict who can log into the site by limiting to workgroups or SUNetIDs. Leave these empty to allow any user with a valid SUNet to log in.\r\nThis is an allowed list, not a restricted list. The order of process is:\r\n<ol>\r\n<li>User ID: if the user has a matching SUNetID, they will be allowed.</li>\r\n<li>Affiliations: if a user is a member of the chosen affiliations, they will be allowed.</li>\r\n<li>Workgroups: If a user is a member of the configured workgroups, they will be allowed.</li>\r\n</ol>\r\nIf the user does not satisfy any of the three scenarios, they will be denied access. \r\n<strong>Be sure to configure the settings to allow yourself access in some form, otherwise on your next login, you will be denied access.</strong>"
         id: ''
         classes: ''
         open: false
