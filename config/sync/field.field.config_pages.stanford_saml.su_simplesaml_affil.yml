@@ -1,0 +1,21 @@
+uuid: c06e058f-cbb0-42c6-a662-d4b0e1a34073
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_saml
+    - field.storage.config_pages.su_simplesaml_affil
+  module:
+    - options
+id: config_pages.stanford_saml.su_simplesaml_affil
+field_name: su_simplesaml_affil
+entity_type: config_pages
+bundle: stanford_saml
+label: 'Allowed Affiliations'
+description: 'Restrict to the user''s affiliations to Stanford. View what these affiliations entail at <a href="https://uit.stanford.edu/service/saml/arp/edupa">SAML Affiliation Information</a>.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

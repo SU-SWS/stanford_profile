@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - config_pages.type.stanford_saml
+    - field.field.config_pages.stanford_saml.su_simplesaml_affil
     - field.field.config_pages.stanford_saml.su_simplesaml_allowed
     - field.field.config_pages.stanford_saml.su_simplesaml_roles
     - field.field.config_pages.stanford_saml.su_simplesaml_users
@@ -14,6 +15,7 @@ third_party_settings:
   field_group:
     group_login_restrictions:
       children:
+        - su_simplesaml_affil
         - su_simplesaml_allowed
         - su_simplesaml_users
       parent_name: ''
@@ -21,7 +23,7 @@ third_party_settings:
       format_type: details
       region: content
       format_settings:
-        description: 'Restrict who can log into the site by limiting to workgroups or SUNet IDs. Leave these empty to allow any user with a valid SUNet to log in.'
+        description: "Restrict who can log into the site by limiting to workgroups or SUNetIDs. Leave these empty to allow any user with a valid SUNet to log in.\r\nThis is an allowed list, not a restricted list. The order of process is:\r\n<ol>\r\n<li>User ID: if the user has a matching SUNetID, they will be allowed.</li>\r\n<li>Affiliations: if a user is a member of the chosen affiliations, they will be allowed.</li>\r\n<li>Workgroups: If a user is a member of the configured workgroups, they will be allowed.</li>\r\n</ol>\r\nIf the user does not satisfy any of the three scenarios, they will be denied access. \r\n<strong>Be sure to configure the settings to allow yourself access in some form, otherwise on your next login, you will be denied access.</strong>"
         id: ''
         classes: ''
         open: false
@@ -32,8 +34,14 @@ targetEntityType: config_pages
 bundle: stanford_saml
 mode: default
 content:
+  su_simplesaml_affil:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   su_simplesaml_allowed:
-    weight: 2
+    weight: 5
     settings:
       size: 60
       placeholder: ''
@@ -47,7 +55,7 @@ content:
     type: saml_role_mapping
     region: content
   su_simplesaml_users:
-    weight: 3
+    weight: 6
     settings:
       size: 60
       placeholder: ''
