@@ -10,7 +10,10 @@ migration_tags: {  }
 migration_group: courses
 label: 'SocioEcon Courses'
 source:
+  plugin: url
   urls: 'https://explorecourses.stanford.edu/search?q=CARDCOURSES%3a%3asocioecon&view=xml-20140630&filter-term-Winter=on&academicYear=&filter-term-Summer=on&filter-term-Autumn=on&filter-term-Spring=on&page=0&filter-coursestatus-Active=on&collapse='
+  ids: {  }
+  fields: {  }
 process:
   su_opp_service_theme:
     -

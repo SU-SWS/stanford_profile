@@ -5,23 +5,16 @@ version: 2
 defaults: &defaults
   docker:
     - image: pookmish/drupal8ci:pcov
-    - image: selenium/standalone-chrome:3.141.59-neon
+    - image: selenium/standalone-chrome:latest
     - image: mariadb:10.3
       environment:
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
   working_directory: /var/www/html
 
-github_token: &github_token
-  run:
-    name: Add Github Token
-    command: |
-      composer config --global --auth github-oauth.github.com ${GITHUB_TOKEN}
-
 #Jobs
 code_coverage: &code_coverage
   <<: *defaults
   steps:
-    - *github_token
     - restore_cache:
         keys:
           - dependencies-v1
@@ -30,7 +23,7 @@ code_coverage: &code_coverage
     - run:
         name: Run PHP Unit Coverage Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
     - save_cache:
         key: dependencies-v1-{{ epoch }}
@@ -41,39 +34,40 @@ code_coverage: &code_coverage
     - store_artifacts:
         path: /var/www/html/artifacts/phpunit/coverage
 
-behat: &behat
+back_to_dev: &back_to_dev
   <<: *defaults
   steps:
-    - *github_token
-    - restore_cache:
-        keys:
-          - dependencies-v1
-    - checkout:
-        path: /var/www/test
+    - checkout
     - run:
-        name: Run Behat Tests
+        name: Back to dev
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
-          ~/.composer/vendor/bin/sws-caravan behat /var/www/html --extension-dir=/var/www/test
-    - save_cache:
-        key: dependencies-v1-{{ epoch }}
-        paths:
-          - .
-    - store_test_results:
-        path: /var/www/html/artifacts/behat
-    - store_artifacts:
-        path: /var/www/html/artifacts
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          ~/.composer/vendor/bin/sws-caravan back-to-dev ${CIRCLE_TAG} ${CIRCLE_WORKING_DIRECTORY}
 
-codeception: &codeception
+d8_codeception: &d8_codeception
   <<: *defaults
   steps:
-    - *github_token
     - checkout:
         path: /var/www/test
     - run:
         name: Run Codeception Tests
         command: |
           composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
+    - store_test_results:
+        path: /var/www/html/artifacts
+    - store_artifacts:
+        path: /var/www/html/artifacts
+
+d9_codeception: &d9_codeception
+  <<: *defaults
+  steps:
+    - checkout:
+        path: /var/www/test
+    - run:
+        name: Run Codeception Tests
+        command: |
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
     - store_test_results:
         path: /var/www/html/artifacts
@@ -98,28 +92,18 @@ merge_upstream: &merge_upstream
             hub pull-request --base=${CIRCLE_BRANCH} --message="Updates from stanford_profile" --assign=pookmish
           fi
 
-back_to_dev: &back_to_dev
-  <<: *defaults
-  steps:
-    - checkout
-    - run:
-        name: Back to dev
-        command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
-          ~/.composer/vendor/bin/sws-caravan back-to-dev ${CIRCLE_TAG} ${CIRCLE_WORKING_DIRECTORY}
-
 # Declare all of the jobs we should run.
 jobs:
   run-coverage:
     <<: *code_coverage
-  run-behat:
-    <<: *behat
-  run-codeception:
-    <<: *codeception
-  run-merge-upstream:
-    <<: *merge_upstream
   run-back-to-dev:
     <<: *back_to_dev
+  run-d8-codeception:
+    <<: *d8_codeception
+  run-d9-codeception:
+    <<: *d9_codeception
+  run-merge-upstream:
+    <<: *merge_upstream
 
 # Declare a workflow that runs all of our jobs in parallel.
 workflows:
@@ -137,7 +121,19 @@ workflows:
   tests:
     jobs:
       - run-coverage
-      - run-codeception
+#      - run-d8-codeception
+      - run-d9-codeception
+  # Re-test every sunday in case this code becomes stale.
+  sundays:
+    jobs:
+      - run-coverage
+    triggers:
+      - schedule:
+          cron: "0 0 * * 0"
+          filters:
+            branches:
+              only:
+                - 8.x-1.x
   daily:
     jobs:
       - run-merge-upstream
@@ -148,16 +144,3 @@ workflows:
             branches:
               only:
                 - /8.x-2.x/
-  # Re-test every sunday in case this code becomes stale.
-  sundays:
-    jobs:
-      - run-coverage
-      - run-behat
-      - run-codeception
-    triggers:
-      - schedule:
-          cron: "0 0 * * 0"
-          filters:
-            branches:
-              only:
-                - /8.x-*.x/

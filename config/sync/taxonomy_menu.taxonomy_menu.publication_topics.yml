@@ -1,0 +1,16 @@
+uuid: 06e40b2f-28fc-4158-9ab7-68666c12c760
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.stanford-publication-topics
+    - taxonomy.vocabulary.stanford_publication_topics
+id: publication_topics
+label: 'Publication Topics'
+vocabulary: stanford_publication_topics
+depth: 0
+menu: stanford-publication-topics
+expanded: false
+menu_parent: 'stanford-publication-topics:'
+description_field_name: ''
+use_term_weight_order: true

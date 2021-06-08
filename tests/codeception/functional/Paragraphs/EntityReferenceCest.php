@@ -10,7 +10,7 @@ class EntityReferenceCest {
   /**
    * Allow all paragraph types by using state.
    */
-  public function _before(){
+  public function _before() {
     \Drupal::state()->set('stanford_profile_allow_all_paragraphs', TRUE);
   }
 
@@ -40,6 +40,39 @@ class EntityReferenceCest {
     $I->click('Save');
     $I->canSee('has been updated');
     $I->canSee('Foo Bar News', '.su-card.su-news-vertical-teaser');
+  }
+
+  /**
+   * Publications can be referenced in teaser paragraph.
+   */
+  public function testPublicationTeasers(FunctionalTester $I) {
+    $faker = Factory::create();
+    $publication_title = $faker->text(20);
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('node/add/stanford_publication');
+    $I->fillField('Title', $publication_title);
+    $I->selectOption('su_publication_citation[actions][bundle]', 'Journal Article');
+    $I->click('Add Citation');
+    $I->waitForText('First Name');
+    $I->click('Save');
+    $I->canSee($publication_title, 'h1');
+
+    $node = $this->getNodeWithReferenceParagraph($I);
+    $I->amOnPage("/node/{$node->id()}/edit");
+
+    $I->waitForElementVisible('#row-0');
+    $I->click('Edit', '.inner-row-wrapper');
+
+    $I->waitForText('Content Item(s)');
+    $I->fillField('#su_entity_item', $publication_title);
+    $I->click('.MuiAutocomplete-option');
+
+    $I->click('Continue');
+    $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
+    $I->click('Save');
+    $I->canSee('has been updated');
+    $I->canSee($publication_title, 'h2');
+    $I->canSee('Journal Article');
   }
 
   /**

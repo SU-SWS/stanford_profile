@@ -1,0 +1,32 @@
+uuid: b26f2d22-1309-47a7-a944-fcd584ec49d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_event_types
+  module:
+    - text
+id: taxonomy_term.stanford_event_types.default
+targetEntityType: taxonomy_term
+bundle: stanford_event_types
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  path: true
+  status: true

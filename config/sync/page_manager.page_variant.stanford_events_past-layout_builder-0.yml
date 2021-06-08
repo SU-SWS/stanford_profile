@@ -37,12 +37,12 @@ variant_settings:
           third_party_settings: {  }
       third_party_settings: {  }
     -
-      layout_id: jumpstart_ui_two_column
+      layout_id: jumpstart_ui_one_column
       layout_settings:
-        extra_classes: section-events-past--content
+        extra_classes: ''
         centered: centered-container
-        orientation: right
-        label: 'Views & Navigation'
+        columns: flex-8-of-12
+        label: ''
       components:
         b75e3d64-68b1-4eb0-afae-ef87817f748c:
           uuid: b75e3d64-68b1-4eb0-afae-ef87817f748c
@@ -69,7 +69,7 @@ variant_settings:
           uuid: f932bc02-92a2-443a-b785-b11ef35f63ad
           region: main
           configuration:
-            id: 'views_block:stanford_events_past-past_events_block'
+            id: 'views_block:stanford_events-past_events_list_block'
             label: ''
             provider: views
             label_display: '0'

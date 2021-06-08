@@ -22,7 +22,8 @@ class BasicPageCest {
     $I->fillField('Title', $node_title);
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', "$node_title Item");
-    $I->selectOption('Parent item', ' <Main navigation>');
+    // The label on the menu parent changes in D9 vs D8
+    $I->selectOption('Parent link', ' <Main navigation>');
     $I->click('Save');
     $I->canSeeLink("$node_title Item");
 
@@ -32,7 +33,7 @@ class BasicPageCest {
     $I->fillField('Title', $child_title);
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', "$child_title Item");
-    $I->selectOption('Parent item', "-- $node_title Item");
+    $I->selectOption('Parent link', "-- $node_title Item");
     $I->click('Change parent (update list of weights)');
     $I->click('Save');
     $I->canSeeLink("$child_title Item");
@@ -65,5 +66,40 @@ class BasicPageCest {
     $I->click('Version History');
     $I->canSeeResponseCodeIs(200);
   }
+
+  /**
+   * There should be Page Metadata fields
+   */
+  public function testPageDescription(AcceptanceTester $I) {
+    $faker = Factory::create();
+    $title = $faker->text(20);
+    $description = $faker->text(100);
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/node/add/stanford_page');
+    $I->see('Page Metadata');
+    $I->see('Page Image');
+    $I->see('Basic Page Type');
+    $I->fillField('Title', $title);
+    $I->fillField('Page Description', $description);
+    $I->selectOption('Basic Page Type (experimental)', 'Research Project');
+    $I->click('Save');
+    $I->seeInSource('<meta name="description" content="'.$description.'" />');
+  }
+
+  /**
+   * Test that the vocabulary and default terms exist.
+   */
+  public function testBasicPageVocabularyTermsExists(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage("/admin/structure/taxonomy/manage/basic_page_types/overview");
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee('Research Project');
+    $I->amOnPage("/admin/structure/taxonomy/manage/basic_page_types/add");
+    $I->canSeeResponseCodeIs(200);
+    $I->fillField('Name', 'Test Basic Page Term');
+    $I->click('Save');
+    $I->canSee('Created new term');
+  }
+
 
 }

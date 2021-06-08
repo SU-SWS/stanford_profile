@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
     - field.field.node.stanford_news.layout_builder__layout
+    - field.field.node.stanford_news.stanford_intranet__access
     - field.field.node.stanford_news.su_news_banner
     - field.field.node.stanford_news.su_news_banner_media_caption
     - field.field.node.stanford_news.su_news_byline
@@ -74,11 +75,6 @@ third_party_settings:
       news_url:
         - 'dynamic_token_field:node-news_content_url'
     fields:
-      'dynamic_token_field:node-news_content_url':
-        plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 4
-        label: hidden
-        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -88,6 +84,11 @@ third_party_settings:
           wrapper: ''
           class: ''
           link: false
+      'dynamic_token_field:node-news_content_url':
+        plugin_id: 'dynamic_token_field:node-news_content_url'
+        weight: 4
+        label: hidden
+        formatter: default
 id: node.stanford_news.stanford_card
 targetEntityType: node
 bundle: stanford_news
@@ -100,9 +101,9 @@ content:
     label: hidden
     settings:
       image:
-        image_formatter: image_style
-        image_formatter_image_style: su_news_list
-        image_formatter_responsive_image_style: full_responsive
+        image_formatter: responsive_image_style
+        image_formatter_image_style: cta_2x_1014x676
+        image_formatter_responsive_image_style: card_2_1
         image_formatter_view_mode: default
       video:
         video_formatter: entity
@@ -147,6 +148,7 @@ hidden:
   layout_selection: true
   links: true
   search_api_excerpt: true
+  stanford_intranet__access: true
   su_news_banner: true
   su_news_banner_media_caption: true
   su_news_byline: true

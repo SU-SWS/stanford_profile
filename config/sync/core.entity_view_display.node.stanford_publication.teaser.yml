@@ -1,0 +1,34 @@
+uuid: 10b50614-0431-4753-abdc-1dc56f499b7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.stanford_publication.layout_builder__layout
+    - field.field.node.stanford_publication.stanford_intranet__access
+    - field.field.node.stanford_publication.su_publication_citation
+    - field.field.node.stanford_publication.su_publication_components
+    - field.field.node.stanford_publication.su_publication_cta
+    - field.field.node.stanford_publication.su_publication_topics
+    - node.type.stanford_publication
+  module:
+    - user
+id: node.stanford_publication.teaser
+targetEntityType: node
+bundle: stanford_publication
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  citation_type: true
+  layout_builder__layout: true
+  search_api_excerpt: true
+  stanford_intranet__access: true
+  su_publication_citation: true
+  su_publication_components: true
+  su_publication_cta: true
+  su_publication_topics: true

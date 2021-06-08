@@ -210,3 +210,16 @@ function cardinal_service_profile_helper_update_8011() {
     ->execute();
   drupal_flush_all_caches();
 }
+
+/**
+ * Set migration source plugins to avoid config import errors.
+ */
+function cardinal_service_profile_helper_update_8012() {
+  $configs = \Drupal::configFactory()->listAll('migrate_plus.migration.');
+  foreach ($configs as $config_name) {
+    $config = \Drupal::configFactory()->getEditable($config_name);
+    if (!$config->get('source.plugin')) {
+      $config->set('source.plugin', 'url')->save();
+    }
+  }
+}

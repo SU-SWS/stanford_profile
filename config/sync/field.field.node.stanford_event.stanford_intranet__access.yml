@@ -1,0 +1,21 @@
+uuid: 7d23110f-e24c-4e3f-8da1-0f4f8fe07973
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.stanford_intranet__access
+    - node.type.stanford_event
+  module:
+    - stanford_intranet
+id: node.stanford_event.stanford_intranet__access
+field_name: stanford_intranet__access
+entity_type: node
+bundle: stanford_event
+label: Access
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: entity_access

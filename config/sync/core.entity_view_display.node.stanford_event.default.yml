@@ -23,7 +23,6 @@ dependencies:
     - field.field.node.stanford_event.su_event_type
     - node.type.stanford_event
     - views.view.stanford_events
-    - views.view.stanford_events_schedule
   module:
     - address
     - entity_reference_revisions
@@ -524,6 +523,20 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
             additional: {  }
+            weight: 4
+            third_party_settings: {  }
+          5bff4484-cf7e-4513-881c-86ec5239e101:
+            uuid: 5bff4484-cf7e-4513-881c-86ec5239e101
+            region: main
+            configuration:
+              id: 'views_block:stanford_events-schedule'
+              label: Schedule
+              provider: views
+              label_display: visible
+              views_label: Schedule
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
             weight: 2
             third_party_settings: {  }
         third_party_settings: {  }
@@ -756,4 +769,5 @@ content:
 hidden:
   layout_builder__layout: true
   search_api_excerpt: true
+  stanford_intranet__access: true
   su_event_schedule: true

@@ -1,0 +1,70 @@
+uuid: 4a6962fb-b31f-4c3b-aebb-a67e033ec862
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph_row.su_pubs_components
+    - paragraphs.paragraphs_type.stanford_banner
+    - paragraphs.paragraphs_type.stanford_card
+    - paragraphs.paragraphs_type.stanford_entity
+    - paragraphs.paragraphs_type.stanford_gallery
+    - paragraphs.paragraphs_type.stanford_lists
+    - paragraphs.paragraphs_type.stanford_media_caption
+    - paragraphs.paragraphs_type.stanford_wysiwyg
+    - react_paragraphs.paragraphs_row_type.su_pub_rows
+  module:
+    - entity_reference_revisions
+id: paragraph_row.su_pub_rows.su_pubs_components
+field_name: su_pubs_components
+entity_type: paragraph_row
+bundle: su_pub_rows
+label: Components
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      stanford_wysiwyg: stanford_wysiwyg
+      stanford_card: stanford_card
+      stanford_gallery: stanford_gallery
+      stanford_media_caption: stanford_media_caption
+      stanford_banner: stanford_banner
+      stanford_entity: stanford_entity
+      stanford_lists: stanford_lists
+    target_bundles_drag_drop:
+      stanford_banner:
+        enabled: true
+        weight: -17
+      stanford_card:
+        enabled: true
+        weight: -20
+      stanford_entity:
+        enabled: true
+        weight: -16
+      stanford_gallery:
+        enabled: true
+        weight: -19
+      stanford_lists:
+        enabled: true
+        weight: -15
+      stanford_media_caption:
+        enabled: true
+        weight: -18
+      stanford_person_cta:
+        weight: -14
+        enabled: false
+      stanford_schedule:
+        weight: -13
+        enabled: false
+      stanford_spacer:
+        weight: -12
+        enabled: false
+      stanford_wysiwyg:
+        enabled: true
+        weight: -21
+field_type: entity_reference_revisions

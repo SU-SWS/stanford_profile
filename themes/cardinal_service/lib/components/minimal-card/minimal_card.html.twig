@@ -1,4 +1,4 @@
-{% set image = image|render|striptags('<drupal-render-placeholder> <img> <picture> <source>')|trim %}
+{% set image = image|render_clean('<img> <picture> <source>') %}
 
 <div{{ attributes.addClass('su-minimal-card su-card') }}>
   <div class="flex-container su-card__contents">

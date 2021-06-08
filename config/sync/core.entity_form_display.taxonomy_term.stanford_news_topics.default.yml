@@ -1,0 +1,32 @@
+uuid: f08848bc-43f1-45ed-8040-adbbc310ab8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_news_topics
+  module:
+    - text
+id: taxonomy_term.stanford_news_topics.default
+targetEntityType: taxonomy_term
+bundle: stanford_news_topics
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  path: true
+  status: true

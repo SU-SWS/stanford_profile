@@ -20,6 +20,7 @@ module:
   ckeditor_balloonpanel: 0
   color: 0
   color_field: 0
+  colorbox: 0
   components: 0
   conditional_fields: 0
   config: 0
@@ -31,6 +32,8 @@ module:
   config_split: 0
   config_update: 0
   confirm_leave: 0
+  content_lock: 0
+  content_lock_timeout: 0
   contextual: 0
   crop: 0
   ctools: 0
@@ -44,7 +47,6 @@ module:
   ds_extras: 0
   dynamic_page_cache: 0
   editor: 0
-  editor_advanced_link: 0
   element_class_formatter: 0
   encrypt: 0
   entity_reference_revisions: 0
@@ -100,6 +102,7 @@ module:
   migrate_plus: 0
   migrate_source_csv: 0
   migrate_tools: 0
+  name: 0
   nobots: 0
   node: 0
   node_revision_delete: 0
@@ -111,6 +114,7 @@ module:
   paragraphs_edit: 0
   path: 0
   path_alias: 0
+  path_redirect_import: 0
   pdb: 0
   pdb_react: 0
   rabbit_hole: 0
@@ -134,12 +138,14 @@ module:
   simplesamlphp_auth: 0
   smart_date: 0
   sophron: 0
+  stanford_basic_page_types: 0
   stanford_date_formats: 0
   stanford_events: 0
   stanford_events_importer: 0
   stanford_events_series: 0
   stanford_fields: 0
   stanford_image_styles: 0
+  stanford_intranet: 0
   stanford_media: 0
   stanford_migrate: 0
   stanford_news: 0
@@ -150,6 +156,7 @@ module:
   stanford_profile_drush: 0
   stanford_profile_helper: 0
   stanford_profile_styles: 0
+  stanford_publication: 0
   stanford_ssp: 0
   stanford_text_editor: 0
   syslog: 0
@@ -191,8 +198,7 @@ module:
   paragraphs: 11
   cardinal_service_profile: 1000
 theme:
-  stable: 0
-  classy: 0
+  stable9: 0
   seven: 0
   stanford_basic: 0
   cardinal_service: 0

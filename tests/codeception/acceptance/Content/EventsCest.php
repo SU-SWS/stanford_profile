@@ -10,7 +10,7 @@ class EventsCest {
   /**
    * Events list intro block is at the top of the page.
    */
-  public function testListIntro(AcceptanceTester $I){
+  public function testListIntro(AcceptanceTester $I) {
     $intro_text = Factory::create()->text();
     $I->logInWithRole('site_manager');
     $I->amOnPage('/events');
@@ -46,6 +46,9 @@ class EventsCest {
     // Todo: make theme name dynamic.
     $I->amOnPage("/admin/structure/block/manage/stanford_basic_pagetitle");
     $values = $I->grabTextFrom("#edit-visibility-request-path-pages");
+    if (is_string($values)) {
+      $values = explode("\n", $values);
+    }
     $I->assertContains("/events*", $values);
   }
 
@@ -193,6 +196,26 @@ class EventsCest {
     // Events Main Menu Link.
     $I->amOnPage("/admin/structure/menu/manage/main");
     $I->canSee("Events");
+  }
+
+  /**
+   * Published checkbox should be hidden on term edit pages.
+   */
+  public function testTermPublishing(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $term = $I->createEntity([
+      'vid' => 'event_audience',
+      'name' => 'Foo',
+    ], 'taxonomy_term');
+    $I->amOnPage($term->toUrl('edit')->toString());
+    $I->cantSee('Published');
+
+    $term = $I->createEntity([
+      'vid' => 'stanford_event_types',
+      'name' => 'Foo',
+    ], 'taxonomy_term');
+    $I->amOnPage($term->toUrl('edit')->toString());
+    $I->cantSee('Published');
   }
 
   /**

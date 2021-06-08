@@ -1,0 +1,19 @@
+uuid: 9ea7ed03-c288-4a4f-b9fb-829035c808bc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - stanford_intranet
+id: node.stanford_intranet__access
+field_name: stanford_intranet__access
+entity_type: node
+type: entity_access
+settings: {  }
+module: stanford_intranet
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

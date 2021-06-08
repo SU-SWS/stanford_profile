@@ -1,0 +1,19 @@
+uuid: c8520ada-a699-4ac0-8bd2-9aec290b6533
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_publisher
+    - stanford_publication.citation_type.su_thesis
+id: citation.su_thesis.su_publisher
+field_name: su_publisher
+entity_type: citation
+bundle: su_thesis
+label: Publisher
+description: 'This can also be the university for the thesis.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

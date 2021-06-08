@@ -1,0 +1,32 @@
+uuid: e67b7e43-8ff9-40fe-970a-2cb3208069df
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_publication_topics
+  module:
+    - text
+id: taxonomy_term.stanford_publication_topics.default
+targetEntityType: taxonomy_term
+bundle: stanford_publication_topics
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  path: true
+  status: true

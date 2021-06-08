@@ -1,0 +1,37 @@
+uuid: 74411fb7-76ff-4335-a5e6-0b09a1668308
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_publication_citation
+    - node.type.stanford_publication
+    - stanford_publication.citation_type.su_article_journal
+    - stanford_publication.citation_type.su_article_newspaper
+    - stanford_publication.citation_type.su_book
+    - stanford_publication.citation_type.su_other
+    - stanford_publication.citation_type.su_thesis
+id: node.stanford_publication.su_publication_citation
+field_name: su_publication_citation
+entity_type: node
+bundle: stanford_publication
+label: 'Citation information'
+description: 'Choose a type of publication item to display. You can preview display options in the <a href="https://userguide.sites.stanford.edu/tour/publications#publication-examples">user-guide</a>.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:citation'
+  handler_settings:
+    target_bundles:
+      su_article_newspaper: su_article_newspaper
+      su_book: su_book
+      su_article_journal: su_article_journal
+      su_other: su_other
+      su_thesis: su_thesis
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: su_article_newspaper
+field_type: entity_reference

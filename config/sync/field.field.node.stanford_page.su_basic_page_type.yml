@@ -1,0 +1,29 @@
+uuid: d3f2f74b-b05f-49b0-b89a-a18f3a002404
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_basic_page_type
+    - node.type.stanford_page
+    - taxonomy.vocabulary.basic_page_types
+id: node.stanford_page.su_basic_page_type
+field_name: su_basic_page_type
+entity_type: node
+bundle: stanford_page
+label: 'Basic Page Type (experimental)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      basic_page_types: basic_page_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

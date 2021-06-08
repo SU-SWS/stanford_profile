@@ -7,14 +7,16 @@ dependencies:
     - node.type.stanford_event
     - node.type.stanford_event_series
     - node.type.stanford_news
+    - node.type.stanford_page
     - node.type.stanford_person
+    - node.type.stanford_publication
     - paragraphs.paragraphs_type.stanford_entity
 id: paragraph.stanford_entity.su_entity_item
 field_name: su_entity_item
 entity_type: paragraph
 bundle: stanford_entity
 label: 'Content Item(s)'
-description: 'Start typing the title of the piece of content to select it. You can add multiple items to create a curated list of teaser items.'
+description: 'Start typing the title of the piece of content to select it. You can add multiple items to create a curated list of teaser items. Learn more about the Teaser Paragraph in the <a href="https://userguide.sites.stanford.edu/tour/paragraphs/teaser">user-guide</a>.'
 required: false
 translatable: false
 default_value: {  }
@@ -23,12 +25,15 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
+      stanford_page: stanford_page
       stanford_event: stanford_event
       stanford_event_series: stanford_event_series
       stanford_news: stanford_news
       stanford_person: stanford_person
+      stanford_publication: stanford_publication
     sort:
       field: _none
+      direction: ASC
     auto_create: false
     auto_create_bundle: stanford_event
 field_type: entity_reference

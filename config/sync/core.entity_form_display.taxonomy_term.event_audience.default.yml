@@ -1,0 +1,32 @@
+uuid: 17560bac-e814-4536-bf2a-a63761d5af1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.event_audience
+  module:
+    - text
+id: taxonomy_term.event_audience.default
+targetEntityType: taxonomy_term
+bundle: event_audience
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  path: true
+  status: true
