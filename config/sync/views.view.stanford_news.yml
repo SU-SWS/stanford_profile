@@ -394,7 +394,7 @@ display:
           delta_offset: 0
           delta_reversed: false
           delta_first_last: false
-          multi_type: separator
+          multi_type: ul
           separator: ', '
           field_api_classes: false
           plugin_id: field
@@ -826,11 +826,14 @@ display:
             format: stanford_html
           plugin_id: text
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
           default_row_class: 1
+          type: ul
+          wrapper_class: su-item-list__wrapper
+          class: su-news-list
       row:
         type: ui_patterns
         options:
@@ -1072,11 +1075,14 @@ display:
             format: stanford_html
           plugin_id: text
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
+          type: ul
+          wrapper_class: su-news-list__wrapper
+          class: su-news-list
       row:
         type: ui_patterns
         options:
