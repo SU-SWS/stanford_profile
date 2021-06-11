@@ -36,7 +36,7 @@ class BasicPageParagraphsCest {
     $I->waitForText('Superhead');
     $I->fillField('Superhead', 'Superhead text');
     $I->fillField('Headline', 'Headline');
-    $I->fillField('URL', 'http://google.com');
+    $I->fillField('URL', '/about');
     $I->fillField('Link text', 'Google Link');
     $I->click('Continue');
     $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
@@ -44,7 +44,7 @@ class BasicPageParagraphsCest {
     $I->click('Save', '#edit-actions');
     $I->canSee('Superhead text');
     $I->canSee('Headline');
-    $I->canSeeLink('Google Link', 'http://google.com/');
+    $I->canSeeLink('Google Link', '/about');
   }
 
   /**
