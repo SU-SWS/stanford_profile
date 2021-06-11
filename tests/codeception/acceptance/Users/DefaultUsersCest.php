@@ -12,7 +12,7 @@ class DefaultUsersCest {
    */
   public function testDefaultUsers(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $I->amOnPage('/admin/people');
+    $I->amOnPage('/admin/users');
     $I->canSee('Alex');
     $I->canSee('Jamie');
     $I->canSee('Sam');

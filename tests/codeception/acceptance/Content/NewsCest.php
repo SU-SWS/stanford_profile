@@ -71,7 +71,7 @@ class NewsCest {
     // Redirect as anon.
     $I->runDrush('cr');
     $I->amOnPage('/news');
-    $I->click(".su-news-list__item a:first-of-type");
+    $I->click(".su-news-article a:first-of-type");
     $I->seeCurrentUrlEquals('/');
 
     // See content as admin.
@@ -90,17 +90,14 @@ class NewsCest {
     $I->createEntity([
       'type' => 'stanford_news',
       'title' => 'Test News 1',
-      'su_news_headline' => 'Test News 1',
     ]);
     $I->createEntity([
       'type' => 'stanford_news',
       'title' => 'Test News 2',
-      'su_news_headline' => 'Test News 2',
     ]);
     $I->createEntity([
       'type' => 'stanford_news',
       'title' => 'Test News 3',
-      'su_news_headline' => 'Test News 3',
     ]);
 
     $I->amOnPage("/news/test-news-2");

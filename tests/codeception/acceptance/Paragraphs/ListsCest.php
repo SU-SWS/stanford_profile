@@ -47,7 +47,7 @@ class ListsCest {
 
     $news = $I->createEntity([
       'type' => 'stanford_news',
-      'su_news_headline' => $faker->text(15),
+      'title' => $faker->text(15),
       'su_news_topics' => $topic_term->id(),
       'su_news_publishing_date' => date('Y-m-d', time()),
     ]);
@@ -77,7 +77,7 @@ class ListsCest {
 
     $news = $I->createEntity([
       'type' => 'stanford_news',
-      'su_news_headline' => $faker->text(15),
+      'title' => $faker->text(15),
       'su_news_topics' => $topic_term->id(),
       'su_news_publishing_date' => date('Y-m-d', time()),
     ]);
@@ -111,7 +111,7 @@ class ListsCest {
 
     $news = $I->createEntity([
       'type' => 'stanford_news',
-      'su_news_headline' => $faker->text(15),
+      'title' => $faker->text(15),
       'su_news_topics' => $child_term->id(),
       'su_news_publishing_date' => date('Y-m-d', time()),
     ]);

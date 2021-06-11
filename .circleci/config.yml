@@ -4,10 +4,13 @@ version: 2
 ## Defines images and working directory.
 defaults: &defaults
   docker:
-    - image: pookmish/drupal8ci:pcov
+    - image: pookmish/drupal8ci:latest
     - image: selenium/standalone-chrome:latest
-    - image: mariadb:10.3
+    - image: circleci/mysql:5.7
       environment:
+        MYSQL_DATABASE: drupal
+        MYSQL_USER: drupal
+        MYSQL_PASSWORD: drupal
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
   working_directory: /var/www/html
 
@@ -15,9 +18,6 @@ defaults: &defaults
 code_coverage: &code_coverage
   <<: *defaults
   steps:
-    - restore_cache:
-        keys:
-          - dependencies-v1
     - checkout:
         path: /var/www/test
     - run:
@@ -25,10 +25,6 @@ code_coverage: &code_coverage
         command: |
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
-    - save_cache:
-        key: dependencies-v1-{{ epoch }}
-        paths:
-          - .
     - store_test_results:
         path: /var/www/html/artifacts/phpunit
     - store_artifacts:
