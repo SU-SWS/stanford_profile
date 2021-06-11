@@ -26,6 +26,7 @@ class IntranetCest {
    */
   public function _after(AcceptanceTester $I) {
     $I->runDrush('sset stanford_intranet ' . (int) $this->intranetWasEnabled);
+    $I->runDrush('cache:rebuild');
     if (file_exists(codecept_data_dir('/test.txt'))) {
       unlink(codecept_data_dir('/test.txt'));
     }

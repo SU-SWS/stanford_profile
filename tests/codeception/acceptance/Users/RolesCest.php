@@ -12,7 +12,7 @@ class RolesCest {
    */
   public function testRolesExist(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $I->amOnPage('/admin/people/roles');
+    $I->amOnPage('/admin/users/roles');
     $I->canSee('Contributor');
     $I->canSee('Site Editor');
     $I->canSee('Site Manager');

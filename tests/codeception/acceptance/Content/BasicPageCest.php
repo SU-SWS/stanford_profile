@@ -49,7 +49,7 @@ class BasicPageCest {
     $I->canSeeResponseCodeIs(404);
     $I->canSeeNumberOfElements('h1', 1);
 
-    $I->amOnPage('/search/content?keys=stuff&search=');
+    $I->amOnPage('/search?keys=stuff&search=');
     $I->canSeeResponseCodeIs(200);
     $I->canSeeNumberOfElements('h1', 1);
   }

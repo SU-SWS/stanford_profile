@@ -1,5 +1,12 @@
 # Cardinal Service Profile
 
+8.x-2.1
+--------------------------------------------------------------------------------
+_Release Date: 2021-06-11_
+
+- Updates from stanford_profile.
+- Include all content types in the XML sitemap.
+
 8.x-2.0
 --------------------------------------------------------------------------------
 _Release Date: 2021-06-08_
