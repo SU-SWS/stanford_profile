@@ -5,7 +5,14 @@
  * Functions to support theming in the cardinal_service theme.
  */
 
-use Drupal\node\Entity\Node;
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function cardinal_service_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['elements']['#id']) && $variables['elements']['#id'] == 'cardinal_service_search') {
+    $suggestions[] = 'block__stanford_basic_search';
+  }
+}
 
 /**
  * Implements hook_preprocess_HOOK().

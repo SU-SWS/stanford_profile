@@ -1,17 +1,18 @@
-uuid: 8b919827-5ef6-4e05-b99d-f05fa617a3d5
+uuid: bb66d87c-11d5-4c5e-aca8-2e0926435e3f
 langcode: en
 status: true
 dependencies:
   config:
     - views.view.search
   module:
+    - system
     - views
   theme:
-    - stanford_basic
-id: cardinal_service_search
+    - cardinal_service
+id: cardinal_service_search_form
 theme: cardinal_service
-region: search
-weight: 0
+region: content
+weight: -2
 provider: null
 plugin: 'views_exposed_filter_block:search-results'
 settings:
@@ -20,4 +21,8 @@ settings:
   provider: views
   label_display: '0'
   views_label: ''
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false
