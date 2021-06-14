@@ -1,5 +1,12 @@
 # Cardinal Service Profile
 
+8.x-2.2
+--------------------------------------------------------------------------------
+_Release Date: 2021-06-14_
+
+- Updates from stanford_profile.
+- Disabled and replace global search block.
+
 8.x-2.1
 --------------------------------------------------------------------------------
 _Release Date: 2021-06-11_
