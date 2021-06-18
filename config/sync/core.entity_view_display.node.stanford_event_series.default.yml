@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.stanford_event_series.layout_builder__layout
+    - field.field.node.stanford_event_series.stanford_intranet__access
     - field.field.node.stanford_event_series.su_event_series_components
     - field.field.node.stanford_event_series.su_event_series_dek
     - field.field.node.stanford_event_series.su_event_series_event
@@ -30,6 +31,7 @@ third_party_settings:
           centered: centered-container
           columns: flex-10-of-12
           label: Header
+          context_mapping: {  }
         components:
           88ffc4d3-879c-40a2-ae71-c51f2782a54e:
             uuid: 88ffc4d3-879c-40a2-ae71-c51f2782a54e
@@ -113,6 +115,7 @@ third_party_settings:
           centered: centered-container
           columns: default
           label: Components
+          context_mapping: {  }
         components:
           678616f1-e2ff-41c7-8725-c5a446077121:
             uuid: 678616f1-e2ff-41c7-8725-c5a446077121
@@ -145,6 +148,7 @@ third_party_settings:
           centered: centered-container
           columns: flex-8-of-12
           label: 'Event Items'
+          context_mapping: {  }
         components:
           69413f91-a5e0-4afd-805e-bd7b048d576c:
             uuid: 69413f91-a5e0-4afd-805e-bd7b048d576c
