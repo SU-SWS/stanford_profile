@@ -171,6 +171,7 @@ class PersonCest {
       'su_person_type_group' => $foo->id(),
     ]);
     $I->logInWithRole('administrator');
+    drupal_flush_all_caches();
     $I->amOnPage('/people/foo');
     $I->canSee($node->label());
     $node->setUnpublished()->save();
