@@ -104,7 +104,7 @@ display:
             su_event_date_time_end_value_2: 0
           separator: ''
           hide_empty: 1
-          pattern: events-list
+          pattern: events_list
           variants:
             media: default
             lockup: a
@@ -118,62 +118,62 @@ display:
             card: default
           pattern_mapping:
             'views_row:su_event_date_time':
-              destination: su_event_date_time
+              destination: date_time
               weight: 0
               plugin: views_row
               source: su_event_date_time
             'views_row:su_event_date_time_end_value':
-              destination: su_event_end_month
+              destination: end_month
               weight: 1
               plugin: views_row
               source: su_event_date_time_end_value
             'views_row:su_event_date_time_value_1':
-              destination: su_event_start_date
+              destination: start_date
               weight: 2
               plugin: views_row
               source: su_event_date_time_value_1
             'views_row:su_event_date_time_end_value_1':
-              destination: su_event_end_date
+              destination: end_date
               weight: 3
               plugin: views_row
               source: su_event_date_time_end_value_1
             'views_row:su_event_date_time_value':
-              destination: su_event_start_month
+              destination: start_month
               weight: 4
               plugin: views_row
               source: su_event_date_time_value
             'views_row:su_event_dek':
-              destination: su_event_dek
+              destination: dek
               weight: 5
               plugin: views_row
               source: su_event_dek
             'views_row:su_event_alt_loc':
-              destination: su_event_location
+              destination: location
               weight: 6
               plugin: views_row
               source: su_event_alt_loc
             'views_row:su_event_type':
-              destination: su_event_type
+              destination: event_type
               weight: 7
               plugin: views_row
               source: su_event_type
             'views_row:su_event_source':
-              destination: su_event_headline
+              destination: headline
               weight: 8
               plugin: views_row
               source: su_event_source
             'views_row:su_event_location':
-              destination: su_event_location
+              destination: location
               weight: 9
               plugin: views_row
               source: su_event_location
             'views_row:su_event_subheadline':
-              destination: su_event_subheadline
+              destination: subheadline
               weight: 10
               plugin: views_row
               source: su_event_subheadline
             'views_row:su_event_date_time_end_value_2':
-              destination: su_event_type
+              destination: event_type
               weight: 11
               plugin: views_row
               source: su_event_date_time_end_value_2

@@ -33,7 +33,7 @@ dependencies:
 third_party_settings:
   ds:
     layout:
-      id: pattern_events-list
+      id: pattern_events_list
       library: null
       disable_css: false
       entity_classes: all_classes
@@ -41,27 +41,27 @@ third_party_settings:
         pattern:
           field_templates: only_content
     regions:
-      su_event_start_month:
+      start_month:
         - 'dynamic_token_field:node-event_start_month'
-      su_event_start_date:
+      start_date:
         - 'dynamic_token_field:node-event_start_day'
-      su_event_end_month:
+      end_month:
         - 'dynamic_token_field:node-date_end_month'
-      su_event_end_date:
+      end_date:
         - 'dynamic_token_field:node-date_end_day'
-      su_event_type:
+      event_type:
         - su_event_type
-      su_event_headline:
+      headline:
         - node_title
-      su_event_subheadline:
+      subheadline:
         - su_event_subheadline
-      su_event_dek:
+      dek:
         - su_event_dek
-      su_event_url:
+      url:
         - su_event_source
-      su_event_date_time:
+      date_time:
         - su_event_date_time
-      su_event_location:
+      location:
         - su_event_location
         - su_event_alt_loc
     fields:
@@ -102,7 +102,7 @@ content:
   su_event_alt_loc:
     type: string
     weight: 10
-    region: su_event_location
+    region: location
     label: hidden
     settings:
       link_to_entity: false
@@ -110,7 +110,7 @@ content:
   su_event_date_time:
     type: smartdate_default
     weight: 9
-    region: su_event_date_time
+    region: date_time
     label: hidden
     settings:
       timezone_override: ''
@@ -123,7 +123,7 @@ content:
   su_event_dek:
     type: string
     weight: 7
-    region: su_event_dek
+    region: dek
     label: hidden
     settings:
       link_to_entity: false
@@ -131,14 +131,14 @@ content:
   su_event_location:
     type: address_default
     weight: 11
-    region: su_event_address
+    region: address
     label: hidden
     settings: {  }
     third_party_settings: {  }
   su_event_source:
     type: link
     weight: 8
-    region: su_event_url
+    region: url
     label: hidden
     settings:
       trim_length: null
@@ -152,7 +152,7 @@ content:
   su_event_subheadline:
     type: entity_title_heading
     weight: 6
-    region: su_event_subheadline
+    region: subheadline
     label: hidden
     settings:
       tag: h3
@@ -163,7 +163,7 @@ content:
   su_event_type:
     type: entity_reference_label
     weight: 4
-    region: su_event_type
+    region: event_type
     label: hidden
     settings:
       link: false
