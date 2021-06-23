@@ -6,6 +6,7 @@ dependencies:
     - core.base_field_override.node.stanford_person.title
     - field.field.node.stanford_person.body
     - field.field.node.stanford_person.layout_builder__layout
+    - field.field.node.stanford_person.stanford_intranet__access
     - field.field.node.stanford_person.su_person_academic_appt
     - field.field.node.stanford_person.su_person_admin_appts
     - field.field.node.stanford_person.su_person_affiliations
@@ -50,6 +51,7 @@ third_party_settings:
         layout_id: stanford_person_header
         layout_settings:
           label: 'Person Header'
+          context_mapping: {  }
         components:
           08266556-ce1f-4167-b8b7-8c6a94d7acb3:
             uuid: 08266556-ce1f-4167-b8b7-8c6a94d7acb3
@@ -225,6 +227,7 @@ third_party_settings:
         layout_id: stanford_person_body
         layout_settings:
           label: 'Content Body'
+          context_mapping: {  }
         components:
           9f1711f5-f94a-4d9f-9aee-c91ce9d123d9:
             uuid: 9f1711f5-f94a-4d9f-9aee-c91ce9d123d9
