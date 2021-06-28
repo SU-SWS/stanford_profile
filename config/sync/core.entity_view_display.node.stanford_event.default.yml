@@ -6,6 +6,7 @@ dependencies:
     - core.base_field_override.node.stanford_event.title
     - field.field.node.stanford_event.body
     - field.field.node.stanford_event.layout_builder__layout
+    - field.field.node.stanford_event.stanford_intranet__access
     - field.field.node.stanford_event.su_event_alt_loc
     - field.field.node.stanford_event.su_event_audience
     - field.field.node.stanford_event.su_event_components
@@ -48,6 +49,7 @@ third_party_settings:
           centered: centered-container
           columns: default
           label: 'Editorial Content'
+          context_mapping: {  }
         components:
           cee36061-b3bc-4171-92d5-299e62b7d0f2:
             uuid: cee36061-b3bc-4171-92d5-299e62b7d0f2
@@ -178,6 +180,7 @@ third_party_settings:
         layout_id: stanford_events_body
         layout_settings:
           label: 'Body Content - Details'
+          context_mapping: {  }
         components:
           1dc2e07f-0713-48bf-9db4-0ac54fb145df:
             uuid: 1dc2e07f-0713-48bf-9db4-0ac54fb145df
@@ -434,6 +437,7 @@ third_party_settings:
           centered: centered-container
           columns: flex-8-of-12
           label: 'Body Content'
+          context_mapping: {  }
         components:
           11df73c4-8beb-43be-b1d2-4ddc537f90b1:
             uuid: 11df73c4-8beb-43be-b1d2-4ddc537f90b1
@@ -488,6 +492,7 @@ third_party_settings:
           centered: centered-container
           columns: flex-10-of-12
           label: 'Event type and Schedule'
+          context_mapping: {  }
         components:
           09d8b675-2bdf-45eb-a005-6279e9f81738:
             uuid: 09d8b675-2bdf-45eb-a005-6279e9f81738
@@ -547,6 +552,7 @@ third_party_settings:
           centered: centered-container
           columns: default
           label: 'More Events'
+          context_mapping: {  }
         components:
           8e277083-0c99-44f4-ad5f-9f800d0b602e:
             uuid: 8e277083-0c99-44f4-ad5f-9f800d0b602e
