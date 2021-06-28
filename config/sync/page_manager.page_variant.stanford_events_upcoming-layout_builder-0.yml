@@ -74,7 +74,7 @@ variant_settings:
             items_per_page: none
             context_mapping: {  }
           additional: {  }
-          weight: 2
+          weight: 3
         535c57e1-3c85-4315-bd32-3f8277b218d4:
           uuid: 535c57e1-3c85-4315-bd32-3f8277b218d4
           region: main
@@ -88,7 +88,7 @@ variant_settings:
             view_mode: full
             context_mapping: {  }
           additional: {  }
-          weight: 0
+          weight: 1
         343a76ca-856e-461b-b36c-021c34293235:
           uuid: 343a76ca-856e-461b-b36c-021c34293235
           region: main
@@ -101,7 +101,18 @@ variant_settings:
             items_per_page: none
             context_mapping: {  }
           additional: {  }
-          weight: 1
+          weight: 2
+        a56e9016-bc81-4177-b000-87ad578b644f:
+          uuid: a56e9016-bc81-4177-b000-87ad578b644f
+          region: main
+          configuration:
+            id: jumpstart_ui_skipnav_main_anchor
+            label: 'Main content anchor target'
+            provider: jumpstart_ui
+            label_display: '0'
+            context_mapping: {  }
+          additional: {  }
+          weight: 0
       third_party_settings: {  }
 page: stanford_events_upcoming
 weight: 0
