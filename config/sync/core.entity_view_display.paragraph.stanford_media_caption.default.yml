@@ -48,11 +48,13 @@ content:
     label: hidden
     settings:
       trim_length: null
-      url_only: true
       url_plain: true
+      url_only: false
       rel: '0'
       target: '0'
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
     type: link
     region: media_link
   su_media_caption_media:
