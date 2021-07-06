@@ -11,6 +11,8 @@ class GalleryCest {
 
   /**
    * Create a basic page with a gallery and check the colorbox actions.
+   *
+   * @group mikes
    */
   public function testGallery(FunctionalTester $I) {
     $faker = Factory::create();
@@ -25,11 +27,13 @@ class GalleryCest {
     $I->click('Add media', '.MuiDialog-container');
     $I->waitForText('Drop files here to upload them');
 
-    $I->dropFileInDropzone(__DIR__.'/logo.jpg');
-    $I->dropFileInDropzone(__DIR__.'/wordmark.jpg');
+    $I->dropFileInDropzone(__DIR__ . '/logo.jpg');
+    $I->dropFileInDropzone(__DIR__ . '/wordmark.jpg');
     $I->click('Upload and Continue');
 
     $I->waitForText('The media items have been created but have not yet been saved');
+    $I->fillField('media[0][fields][su_gallery_image][0][alt]', 'Logo');
+    $I->fillField('media[1][fields][su_gallery_image][0][alt]', 'Wordmark');
     $I->click('Save and insert', '.ui-dialog-buttonset');
 
     $I->waitForElementNotVisible('#drupal-modal');
