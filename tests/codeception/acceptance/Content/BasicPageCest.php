@@ -103,8 +103,6 @@ class BasicPageCest {
 
   /**
    * A site manager should be able to place a page under an unpublished page.
-   *
-   * @group mikes
    */
   public function testUnpublishedMenuItems(AcceptanceTester $I){
     $I->logInWithRole('site_manager');
