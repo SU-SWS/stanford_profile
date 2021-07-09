@@ -1,5 +1,19 @@
 # Stanford Profile
 
+8.x-2.10
+--------------------------------------------------------------------------------
+_Release Date: 2021-07-09_
+
+- D8CORE-2594 Allow menu placement under unpublished pages (#435) (d1d4c4f)
+- D8CORE-4497 Replaced <h3> with <p> in views no results text (0610b19)
+- D8CORE-4235 Require alt text on gallery images (#433) (758231d)
+- D8CORE-4504 Added mathjax for latex formula support (#434) (879cbb6)
+- D8CORE-4194 Add url text for the link on media w caption paragraph (#423) (1122ead)
+- Added and enabled the PDB module (#432) (de890ff)
+- D8CORE-4378: adding the skip to main content on these list page layouts that were missing (#431) (fc11f09)
+- Corrected the events schedule display settings for the pattern refactor (aff23dc)
+- Exported configs after Drupal 9.2.0 upgrade (#429) (a81ffde)
+
 8.x-2.9
 --------------------------------------------------------------------------------
 _Release Date: 2021-06-11_
