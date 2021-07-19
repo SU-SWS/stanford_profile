@@ -76,7 +76,7 @@ variant_settings:
             items_per_page: none
             context_mapping: {  }
           additional: {  }
-          weight: 1
+          weight: 2
         fd920af1-1c2d-48d7-bf4c-c841d55e374c:
           uuid: fd920af1-1c2d-48d7-bf4c-c841d55e374c
           region: main
@@ -87,6 +87,17 @@ variant_settings:
             label_display: visible
             views_label: 'Results for:'
             items_per_page: none
+            context_mapping: {  }
+          additional: {  }
+          weight: 1
+        2f8688d0-9406-4286-b08f-77b133e676c3:
+          uuid: 2f8688d0-9406-4286-b08f-77b133e676c3
+          region: main
+          configuration:
+            id: jumpstart_ui_skipnav_main_anchor
+            label: 'Main content anchor target'
+            provider: jumpstart_ui
+            label_display: '0'
             context_mapping: {  }
           additional: {  }
           weight: 0
