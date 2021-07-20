@@ -70,7 +70,7 @@ third_party_settings:
               items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 1
+            weight: 2
           691a3b23-5601-4580-9af4-2fef58b42282:
             uuid: 691a3b23-5601-4580-9af4-2fef58b42282
             region: left
@@ -85,6 +85,17 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 0
+          94735082-a939-41b2-aac7-0ea9a0367ba8:
+            uuid: 94735082-a939-41b2-aac7-0ea9a0367ba8
+            region: main
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              provider: jumpstart_ui
+              label_display: '0'
+              context_mapping: {  }
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
   layout_library:
     enable: false
