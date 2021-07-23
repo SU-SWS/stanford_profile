@@ -4,7 +4,12 @@ attachment_mode: build
 snippet_version: 6
 snippet_path: 'public://hotjar/hotjar.script.js'
 visibility_pages: 0
-pages: "/admin\n/admin/*\n/batch\n/node/add*\n/node/*/*"
+pages: |-
+  /admin
+  /admin/*
+  /batch
+  /node/add*
+  /node/*/*
 visibility_roles: 1
 roles:
   administrator: administrator
