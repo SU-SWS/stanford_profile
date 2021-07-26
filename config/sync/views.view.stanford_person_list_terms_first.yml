@@ -292,7 +292,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{{ su_person_photo }} \r\n{{ title }}"
+            text: "{{ su_person_photo }} \r\n<h4>{{ title }}</h4>"
             make_link: true
             path: '{{ view_node }}'
             absolute: false
