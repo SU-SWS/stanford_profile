@@ -1,0 +1,27 @@
+uuid: 2da3adf0-4d0e-417f-bb05-9f5f3f178c6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_accordion_body
+    - paragraphs.paragraphs_type.stanford_accordion
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    stanford_minimal_html: stanford_minimal_html
+    stanford_html: '0'
+    plain_text: '0'
+id: paragraph.stanford_accordion.su_accordion_body
+field_name: su_accordion_body
+entity_type: paragraph
+bundle: stanford_accordion
+label: Body/Answer
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
