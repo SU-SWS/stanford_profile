@@ -12,12 +12,12 @@ field_name: su_event_map_link
 entity_type: node
 bundle: stanford_event
 label: 'Map Link'
-description: 'Add a URL to a map of the location or directions to the location. This must be an external URL such as http://example.com.'
+description: 'This is the text that will display on the site.'
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   link_type: 16
-  title: 1
+  title: 2
 field_type: link

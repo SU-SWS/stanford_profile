@@ -267,7 +267,10 @@ class EventsCest {
         "address_line2" => "",
         "organization" => "Asfdasdfa sdfasd fasf",
       ],
-      'su_event_map_link' => 'https://stanford.edu/',
+      'su_event_map_link' => [
+        'uri' => 'https://stanford.edu/',
+        'title' => 'map link',
+      ],
       'su_event_sponsor' => [
         'This is a sponsor',
         'This is two sponsor',
