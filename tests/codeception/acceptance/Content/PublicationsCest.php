@@ -99,7 +99,6 @@ class PublicationsCest {
 
   /**
    * Publication list should be in date order.
-   * @group mikes
    */
   public function testListSort(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
