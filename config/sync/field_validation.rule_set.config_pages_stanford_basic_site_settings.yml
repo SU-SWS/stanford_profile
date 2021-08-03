@@ -16,4 +16,4 @@ field_validation_rules:
     column: value
     error_message: 'A valid Google Analytics Web Property ID is case sensitive and formatted like UA-xxxxxxx-yy or G-xxxxxxxxxx.'
     data:
-      setting: /^(?:UA-\d+-\d+|G-\w+)$/
+      setting: '/^(?:UA-\d+-\d+|G-\w+)$/'
