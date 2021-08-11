@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.su_opportunity.su_opp_solo_url
     - field.field.node.su_opportunity.su_opp_sponsor
     - field.field.node.su_opportunity.su_opp_submissions_open
+    - field.field.node.su_opportunity.su_opp_summary
     - field.field.node.su_opportunity.su_opp_time_year
     - field.field.node.su_opportunity.su_opp_type
     - node.type.su_opportunity
@@ -527,6 +528,7 @@ third_party_settings:
       allowed_layouts: {  }
       whitelisted_blocks: {  }
       blacklisted_blocks: {  }
+      restricted_categories: {  }
     allowed_block_categories: {  }
 id: node.su_opportunity.default
 targetEntityType: node

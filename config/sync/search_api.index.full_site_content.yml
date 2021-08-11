@@ -7,6 +7,7 @@ dependencies:
     - search_api
   config:
     - search_api.server.database_search
+    - core.entity_view_mode.node.search_api
 id: full_site_content
 name: 'Full Site Content'
 description: ''
@@ -34,8 +35,10 @@ field_settings:
           stanford_page: default
           stanford_person: default
           stanford_publication: default
+          su_opportunity: search_api
+          su_spotlight: search_api
   status:
-    label: null
+    label: status
     datasource_id: 'entity:node'
     property_path: status
     type: boolean
@@ -48,12 +51,13 @@ field_settings:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
-    type: string
+    type: text
+    boost: !!float 5
     dependencies:
       module:
         - node
   uid:
-    label: null
+    label: uid
     datasource_id: 'entity:node'
     property_path: uid
     type: integer
@@ -82,7 +86,8 @@ processor_settings:
     highlight_partial: false
     excerpt: true
     excerpt_length: 256
-    exclude_fields: {  }
+    exclude_fields:
+      - title
     prefix: '<strong>'
     suffix: '</strong>'
     weights:
@@ -91,17 +96,14 @@ processor_settings:
     all_fields: false
     fields:
       - rendered_item
-      - title
     title: true
     alt: true
     tags:
       b: 2
-      em: 1
       h1: 5
       h2: 3
       h3: 2
       strong: 2
-      u: 1
     weights:
       preprocess_index: -15
       preprocess_query: -15
@@ -111,6 +113,7 @@ processor_settings:
     all_fields: true
     fields:
       - rendered_item
+      - title
     exceptions:
       mexican: mexic
       texan: texa
