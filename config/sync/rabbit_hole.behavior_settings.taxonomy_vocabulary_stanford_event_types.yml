@@ -1,0 +1,14 @@
+uuid: dbafb284-5657-49dd-8336-a4e8549fe8a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_event_types
+id: taxonomy_vocabulary_stanford_event_types
+entity_type_id: taxonomy_vocabulary
+entity_id: stanford_event_types
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

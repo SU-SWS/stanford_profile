@@ -1,0 +1,14 @@
+uuid: ed022a09-160c-413a-8162-d0474ea0b64d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_person_types
+id: taxonomy_vocabulary_stanford_person_types
+entity_type_id: taxonomy_vocabulary
+entity_id: stanford_person_types
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied
