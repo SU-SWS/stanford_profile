@@ -101,5 +101,32 @@ class BasicPageCest {
     $I->canSee('Created new term');
   }
 
+  /**
+   * A site manager should be able to place a page under an unpublished page.
+   */
+  public function testUnpublishedMenuItems(AcceptanceTester $I){
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/node/add/stanford_page');
+    $I->fillField('Title', 'Unpublished Parent');
+    $I->checkOption('Provide a menu link');
+    $I->fillField('Menu link title', 'Unpublished Parent');
+    $I->uncheckOption('Published');
+    $I->click('Save');
+    $I->canSee('Unpublished Parent', 'h1');
+
+    $I->amOnPage('/node/add/stanford_page');
+    $I->fillField('Title', 'Child Page');
+    $I->checkOption('Provide a menu link');
+    $I->fillField('Menu link title', 'Child Page');
+    $I->selectOption('Parent link', '-- Unpublished Parent');
+    $I->click('Change parent (update list of weights)');
+    $I->uncheckOption('Published');
+    $I->click('Save');
+    $I->canSee('Child Page', 'h1');
+
+    $I->click('Edit', '.tabs__tab');
+    $I->click('Save');
+    $I->assertEquals('/unpublished-parent/child-page', $I->grabFromCurrentUrl());
+  }
 
 }

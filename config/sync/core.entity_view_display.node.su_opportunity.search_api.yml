@@ -1,0 +1,352 @@
+uuid: 51bd162e-f407-475a-98d0-527e58744fa1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_api
+    - field.field.node.su_opportunity.body
+    - field.field.node.su_opportunity.su_opp_application_deadline
+    - field.field.node.su_opportunity.su_opp_commitment
+    - field.field.node.su_opportunity.su_opp_contact_email
+    - field.field.node.su_opportunity.su_opp_contact_name
+    - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_course_code
+    - field.field.node.su_opportunity.su_opp_course_date
+    - field.field.node.su_opportunity.su_opp_deadline_time
+    - field.field.node.su_opportunity.su_opp_dimension
+    - field.field.node.su_opportunity.su_opp_duration
+    - field.field.node.su_opportunity.su_opp_eligibility
+    - field.field.node.su_opportunity.su_opp_event_date
+    - field.field.node.su_opportunity.su_opp_image
+    - field.field.node.su_opportunity.su_opp_learn_more
+    - field.field.node.su_opportunity.su_opp_location
+    - field.field.node.su_opportunity.su_opp_not_eligible
+    - field.field.node.su_opportunity.su_opp_open_to
+    - field.field.node.su_opportunity.su_opp_pathway
+    - field.field.node.su_opportunity.su_opp_placement_type
+    - field.field.node.su_opportunity.su_opp_service_theme
+    - field.field.node.su_opportunity.su_opp_solo_url
+    - field.field.node.su_opportunity.su_opp_sponsor
+    - field.field.node.su_opportunity.su_opp_submissions_open
+    - field.field.node.su_opportunity.su_opp_summary
+    - field.field.node.su_opportunity.su_opp_time_year
+    - field.field.node.su_opportunity.su_opp_type
+    - node.type.su_opportunity
+  module:
+    - datetime
+    - datetime_range
+    - ds
+    - field_delimiter
+    - field_formatter_class
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - link
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    entity_view_mode_restriction:
+      allowed_blocks: {  }
+      allowed_layouts: {  }
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+      restricted_categories: {  }
+    allowed_block_categories: {  }
+id: node.su_opportunity.search_api
+targetEntityType: node
+bundle: su_opportunity
+mode: search_api
+content:
+  body:
+    type: text_default
+    weight: 0
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  su_opp_application_deadline:
+    type: datetime_default
+    weight: 9
+    region: content
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+  su_opp_commitment:
+    type: entity_reference_label
+    weight: 25
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+  su_opp_contact_email:
+    type: basic_string
+    weight: 13
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  su_opp_contact_name:
+    type: string
+    weight: 14
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_opp_contact_phone:
+    type: string
+    weight: 15
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_opp_course_code:
+    type: string
+    weight: 16
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  su_opp_course_date:
+    type: datetime_default
+    weight: 17
+    region: content
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+  su_opp_deadline_time:
+    type: entity_reference_label
+    weight: 24
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+  su_opp_dimension:
+    type: entity_reference_label
+    weight: 20
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+  su_opp_duration:
+    type: daterange_default
+    weight: 18
+    region: content
+    label: hidden
+    settings:
+      separator: '-'
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+  su_opp_eligibility:
+    type: text_default
+    weight: 12
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  su_opp_event_date:
+    type: datetime_default
+    weight: 10
+    region: content
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+  su_opp_image:
+    type: entity_reference_label
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+  su_opp_learn_more:
+    type: link
+    weight: 8
+    region: content
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  su_opp_location:
+    type: entity_reference_label
+    weight: 11
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+  su_opp_open_to:
+    type: entity_reference_label
+    weight: 7
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+  su_opp_pathway:
+    type: entity_reference_label
+    weight: 21
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+  su_opp_placement_type:
+    type: entity_reference_label
+    weight: 22
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+  su_opp_service_theme:
+    type: entity_reference_label
+    weight: 19
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+  su_opp_solo_url:
+    type: link
+    weight: 6
+    region: content
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  su_opp_sponsor:
+    type: entity_reference_label
+    weight: 23
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+  su_opp_submissions_open:
+    type: datetime_default
+    weight: 5
+    region: content
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+  su_opp_summary:
+    type: text_default
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  su_opp_time_year:
+    type: entity_reference_label
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+  su_opp_type:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+hidden:
+  flag_cs_favorites: true
+  links: true
+  search_api_excerpt: true
+  su_opp_not_eligible: true

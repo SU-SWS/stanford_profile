@@ -14,3 +14,10 @@ function cardinal_service_profile_removed_post_updates() {
     'cardinal_service_profile_post_update_csd_233' => '8.x-2.1',
   ];
 }
+
+/**
+ * Disable the core search module.
+ */
+function cardinal_service_profile_post_update_8200(){
+  \Drupal::service('module_installer')->uninstall(['search']);
+}

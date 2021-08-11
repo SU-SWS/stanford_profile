@@ -29,17 +29,17 @@ third_party_settings:
         pattern:
           field_templates: only_content
     regions:
-      su_event_time:
+      time:
         - su_schedule_date_time
-      su_event_headline:
+      headline:
         - su_schedule_headline
-      su_event_description:
+      description:
         - su_schedule_description
-      su_event_location:
+      location:
         - su_schedule_location
-      su_event_url:
+      url:
         - su_schedule_url
-      su_event_speakers:
+      speakers:
         - su_schedule_speaker
 id: paragraph.stanford_schedule.default
 targetEntityType: paragraph
@@ -54,18 +54,16 @@ content:
       format: time_only_no_all_day
       force_chronological: false
       format_type: medium
-    third_party_settings:
-      field_formatter_class:
-        class: ''
+    third_party_settings: {  }
     type: smartdate_default
-    region: su_event_time
+    region: time
   su_schedule_description:
     weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
-    region: su_event_description
+    region: description
   su_schedule_headline:
     weight: 1
     label: hidden
@@ -73,14 +71,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: su_event_headline
+    region: headline
   su_schedule_location:
     weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: address_default
-    region: su_event_location
+    region: location
   su_schedule_speaker:
     type: entity_reference_revisions_entity_view
     weight: 5
@@ -89,7 +87,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    region: su_event_speakers
+    region: speakers
   su_schedule_url:
     weight: 4
     label: hidden
@@ -103,6 +101,6 @@ content:
       field_formatter_class:
         class: ''
     type: link
-    region: su_event_url
+    region: url
 hidden:
   search_api_excerpt: true

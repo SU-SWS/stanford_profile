@@ -195,6 +195,30 @@ display:
           expose:
             label: ''
           plugin_id: standard
+        su_month_value:
+          id: su_month_value
+          table: citation__su_month
+          field: su_month_value
+          relationship: su_publication_citation
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
+        su_day_value:
+          id: su_day_value
+          table: citation__su_day
+          field: su_day_value
+          relationship: su_publication_citation
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
         title:
           id: title
           table: node_field_data
@@ -1641,7 +1665,7 @@ display:
           empty: true
           tokenize: false
           content:
-            value: 'Sorry, no results found. Please try another topic.'
+            value: '<p class="su-intro-text">Sorry, no results found. Please try another topic.</p>'
             format: stanford_html
           plugin_id: text
     cache_metadata:

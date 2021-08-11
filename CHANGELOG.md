@@ -1,5 +1,31 @@
 # Cardinal Service Profile
 
+8.x-2.3
+--------------------------------------------------------------------------------
+_Release Date: 2021-08-11_
+
+- TASK00242878 Fixed search results for opportunity content
+- D8CORE-4653 Add editoria11y module with permissions for contributors (#445)
+- D8CORE-4681 Enabled rabbit hole taxonomy support (#443)
+- D8CORE-4350 Sort publications by month and day along with year (#444)
+- CAW21-82 Build accordion paragraph component (#440)
+- D8CORE-2277: updated fields help text (#441)
+- D8CORE-2278: Tweaks to Event Series help text (#442)
+- D8CORE-4668 Allow new google analytics account id format `G-` (#439)
+- Updates from stanford_profile 2021-07-21
+- fixed html yml config
+- Adjusted mathjax module CDN url
+- D8CORE-2594 Allow menu placement under unpublished pages (#435)
+- D8CORE-4497 Replaced <h3> with <p> in views no results text
+- D8CORE-4235 Require alt text on gallery images (#433)
+- D8CORE-4504 Added mathjax for latex formula support (#434)
+- D8CORE-4194 Add url text for the link on media w caption paragraph (#423)
+- Added and enabled the PDB module (#432)
+- Updates from Stanford Profile 2021-06-28
+- D8CORE-4378: adding the skip to main content on these list page layouts that were missing (#431)
+- Corrected the events schedule display settings for the pattern refactor
+- Exported configs after Drupal 9.2.0 upgrade (#429)
+
 8.x-2.2
 --------------------------------------------------------------------------------
 _Release Date: 2021-06-14_
