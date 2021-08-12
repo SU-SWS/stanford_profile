@@ -5,6 +5,11 @@
  * cardinal_service_profile_helper.module
  */
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Session\AccountInterface;
+
 /**
  * Implements hook_migration_plugins_alter().
  */
@@ -15,4 +20,26 @@ function cardinal_service_profile_helper_migration_plugins_alter(array &$migrati
       $migrations["migration_config_deriver:$migration"]['source']['path'] = $csv_path_cache->data['path'];
     }
   }
+}
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function cardinal_service_profile_helper_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
+  $allowed_fields = [
+    'su_opp_application_deadline',
+    'su_opp_contact_email',
+    'su_opp_contact_name',
+    'su_opp_contact_phone',
+    'su_opp_time_year',
+  ];
+  // Restrict field access for a specific role.
+  if (
+    !$account->hasPermission('administer nodes') &&
+    in_array('cs_limited_opp_editor', $account->getRoles()) &&
+    !in_array($field_definition->getName(), $allowed_fields)
+  ) {
+    return AccessResult::forbidden();
+  }
+  return AccessResult::neutral();
 }
