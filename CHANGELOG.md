@@ -1,5 +1,12 @@
 # Cardinal Service Profile
 
+8.x-2.4
+--------------------------------------------------------------------------------
+_Release Date: 2021-08-12_
+
+- TASK00241678 Add limited role for only opportunities
+- TASK00241687 Adjust font size on filters
+
 8.x-2.3
 --------------------------------------------------------------------------------
 _Release Date: 2021-08-11_
