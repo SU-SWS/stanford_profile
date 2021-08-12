@@ -67,6 +67,18 @@ const Container = styled.div`
   }
 `;
 
+const LabelSpan = styled.span`
+  font-size: 20px;
+
+  @media (min-width: 770px) {
+    font-size: 15px;
+  }
+
+  @media (min-width: 1300px) {
+    font-size: 20px;
+  }
+`;
+
 const useStyles = makeStyles({
   root: {
     width: '100%',
@@ -214,12 +226,11 @@ export const SelectList = ({defaultValue, field, label, multiple, onChange, opti
         renderInput={(params) => (
           <TextField
             {...params}
-            label={label}
+            label={<LabelSpan>{label}</LabelSpan>}
             variant="filled"
             InputLabelProps={{
               style: {
-                marginTop: 0,
-                fontSize: '20px',
+                marginTop: 0
               },
             }}
           />
