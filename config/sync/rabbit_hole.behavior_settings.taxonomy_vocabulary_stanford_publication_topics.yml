@@ -1,0 +1,14 @@
+uuid: 99f1449c-9fc8-4ad0-bcbc-a965dd24e9ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_publication_topics
+id: taxonomy_vocabulary_stanford_publication_topics
+entity_type_id: taxonomy_vocabulary
+entity_id: stanford_publication_topics
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

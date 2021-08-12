@@ -15,7 +15,7 @@ field_name: su_event_series_components
 entity_type: node
 bundle: stanford_event_series
 label: Components
-description: 'Free form content'
+description: 'Add additional content that displays under the body text on the series node page. '
 required: false
 translatable: false
 default_value: {  }
@@ -34,6 +34,15 @@ settings:
         enabled: false
       stanford_card:
         weight: 7
+        enabled: false
+      stanford_entity:
+        weight: 13
+        enabled: false
+      stanford_gallery:
+        weight: 14
+        enabled: false
+      stanford_lists:
+        weight: 15
         enabled: false
       stanford_media_caption:
         weight: 8
