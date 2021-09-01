@@ -43,24 +43,6 @@ variant_settings:
         orientation: right
         label: 'Section - Views'
       components:
-        18f0e896-6e5b-422a-8243-e93cebfdcad6:
-          uuid: 18f0e896-6e5b-422a-8243-e93cebfdcad6
-          region: left
-          configuration:
-            id: 'menu_block:news-topics'
-            label: 'Topics Menu'
-            provider: menu_block
-            label_display: visible
-            follow: false
-            follow_parent: child
-            level: 1
-            depth: 0
-            expand: false
-            parent: 'news-topics:'
-            suggestion: news_topics
-            context_mapping: {  }
-          additional: {  }
-          weight: 0
         043bb0fa-9705-401d-95ce-f71986c4d3a2:
           uuid: 043bb0fa-9705-401d-95ce-f71986c4d3a2
           region: main
@@ -112,6 +94,20 @@ variant_settings:
             context_mapping: {  }
           additional: {  }
           weight: 4
+        187de883-334d-4b87-bb05-fd1008996663:
+          uuid: 187de883-334d-4b87-bb05-fd1008996663
+          region: left
+          configuration:
+            id: 'system_menu_block:news-topics'
+            label: 'Topics Menu'
+            provider: system
+            label_display: visible
+            level: 1
+            depth: 1
+            expand_all_items: false
+            context_mapping: {  }
+          additional: {  }
+          weight: 1
       third_party_settings: {  }
     -
       layout_id: jumpstart_ui_one_column
