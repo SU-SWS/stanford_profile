@@ -45,25 +45,6 @@ variant_settings:
         orientation: right
         label: 'Filter & View'
       components:
-        0b68d7a8-a3c9-46e2-b4a9-c2987e2626ce:
-          uuid: 0b68d7a8-a3c9-46e2-b4a9-c2987e2626ce
-          region: left
-          configuration:
-            id: 'menu_block:stanford-event-types'
-            label: 'Filter by event type'
-            provider: menu_block
-            label_display: visible
-            follow: false
-            follow_parent: child
-            level: 1
-            depth: 1
-            expand: false
-            parent: 'stanford-event-types:'
-            suggestion: stanford_event_types
-            label_type: block
-            context_mapping: {  }
-          additional: {  }
-          weight: 0
         78ffb5ce-8cbd-4e30-93c0-7cce06776fc1:
           uuid: 78ffb5ce-8cbd-4e30-93c0-7cce06776fc1
           region: main
@@ -101,6 +82,20 @@ variant_settings:
             context_mapping: {  }
           additional: {  }
           weight: 0
+        acda5ff5-db42-4636-9985-4a9b6754599e:
+          uuid: acda5ff5-db42-4636-9985-4a9b6754599e
+          region: left
+          configuration:
+            id: 'system_menu_block:stanford-event-types'
+            label: 'Filter by Event Type'
+            provider: system
+            label_display: visible
+            level: 1
+            depth: 1
+            expand_all_items: false
+            context_mapping: {  }
+          additional: {  }
+          weight: 1
       third_party_settings: {  }
 page: stanford_events_list
 weight: 0

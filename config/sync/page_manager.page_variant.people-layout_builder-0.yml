@@ -43,24 +43,6 @@ variant_settings:
         orientation: right
         label: 'Grid View'
       components:
-        799b95e5-633f-4b67-8e54-e73ade615d63:
-          uuid: 799b95e5-633f-4b67-8e54-e73ade615d63
-          region: left
-          configuration:
-            id: 'menu_block:stanford-person-type'
-            label: 'Filter By Person Type'
-            provider: menu_block
-            label_display: visible
-            follow: false
-            follow_parent: child
-            level: 1
-            depth: 0
-            expand: false
-            parent: 'stanford-person-type:'
-            suggestion: stanford_person_type
-            context_mapping: {  }
-          additional: {  }
-          weight: 0
         67c9b2d7-018a-48a1-a7b7-cef6d3b5f83c:
           uuid: 67c9b2d7-018a-48a1-a7b7-cef6d3b5f83c
           region: main
@@ -112,6 +94,20 @@ variant_settings:
             context_mapping: {  }
           additional: {  }
           weight: 4
+        6865a587-235a-448e-b9ee-ee63bc0ed17d:
+          uuid: 6865a587-235a-448e-b9ee-ee63bc0ed17d
+          region: left
+          configuration:
+            id: 'system_menu_block:stanford-person-type'
+            label: 'Filter by Person Type'
+            provider: system
+            label_display: visible
+            level: 1
+            depth: 1
+            expand_all_items: false
+            context_mapping: {  }
+          additional: {  }
+          weight: 1
       third_party_settings: {  }
 page: people
 weight: 0
