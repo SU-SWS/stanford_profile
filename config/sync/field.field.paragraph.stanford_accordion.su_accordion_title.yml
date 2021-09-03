@@ -1,0 +1,19 @@
+uuid: 4b1861db-1bcc-402e-8d5d-a60b8779f540
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_accordion_title
+    - paragraphs.paragraphs_type.stanford_accordion
+id: paragraph.stanford_accordion.su_accordion_title
+field_name: su_accordion_title
+entity_type: paragraph
+bundle: stanford_accordion
+label: Title/Question
+description: 'The clickable text displayed above the body.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
