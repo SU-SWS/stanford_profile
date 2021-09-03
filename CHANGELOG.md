@@ -1,5 +1,19 @@
 # Stanford Profile
 
+
+8.x-2.11
+--------------------------------------------------------------------------------
+_Release Date: 2021-09-03
+
+- D8CORE-4643 Swapped out the "menu block" block with a regular "menu" block (#446)
+- D8CORE-4653 Add editoria11y module with permissions for contributors (#445)
+- D8CORE-4681 Enabled rabbit hole taxonomy support (#443)
+- D8CORE-4350 Sort publications by month and day along with year (#444)
+- CAW21-82 Build accordion paragraph component (#440)
+- D8CORE-2277: updated fields help text (#441)
+- D8CORE-2278: Tweaks to Event Series help text (#442)
+- D8CORE-4668 Allow new google analytics account id format `G-` (#439)
+
 8.x-2.10
 --------------------------------------------------------------------------------
 _Release Date: 2021-07-09_
