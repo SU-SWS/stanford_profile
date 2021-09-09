@@ -1,9 +1,14 @@
 # Stanford Profile
 
+8.x-2.12
+--------------------------------------------------------------------------------
+_Release Date: 2021-09-09_
+
+- Disable accordion for now.
 
 8.x-2.11
 --------------------------------------------------------------------------------
-_Release Date: 2021-09-03
+_Release Date: 2021-09-03_
 
 - D8CORE-4643 Swapped out the "menu block" block with a regular "menu" block (#446)
 - D8CORE-4653 Add editoria11y module with permissions for contributors (#445)
