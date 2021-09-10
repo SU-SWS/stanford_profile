@@ -17,7 +17,8 @@ class Issue2901390Cest {
    */
   public function testLayoutBuilderParagraph(AcceptanceTester $I) {
     $faker = Factory::create();
-    $I->logInWithRole('site_manager');
+    $user = $I->createUserWithRoles(['site_manager', 'layout_builder_user']);
+    $I->logInAs($user->id());
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $faker->text(20),
