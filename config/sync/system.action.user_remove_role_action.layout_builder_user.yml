@@ -1,0 +1,14 @@
+uuid: fbad7fa5-4936-4821-a8f0-21b0782b2985
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.layout_builder_user
+  module:
+    - user
+id: user_remove_role_action.layout_builder_user
+label: 'Remove the Layout Builder User role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: layout_builder_user
