@@ -10,15 +10,6 @@ use Faker\Factory;
  */
 class BasicPageCest {
 
-  public function _after(AcceptanceTester $I) {
-    $nodes = \Drupal::entityTypeManager()
-      ->getStorage('node')
-      ->loadByProperties(['title' => 'Original Node']);
-    foreach ($nodes as $node) {
-//      $node->delete();
-    }
-  }
-
   /**
    * Test placing a basic page in the menu with a child menu item.
    */
