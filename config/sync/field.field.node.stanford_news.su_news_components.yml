@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.su_news_components
     - node.type.stanford_news
+    - paragraphs.paragraphs_type.stanford_accordion
     - paragraphs.paragraphs_type.stanford_person_cta
     - paragraphs.paragraphs_type.stanford_schedule
     - paragraphs.paragraphs_type.stanford_spacer
@@ -26,9 +27,13 @@ settings:
     negate: 1
     target_bundles:
       stanford_person_cta: stanford_person_cta
+      stanford_accordion: stanford_accordion
       stanford_schedule: stanford_schedule
       stanford_spacer: stanford_spacer
     target_bundles_drag_drop:
+      stanford_accordion:
+        enabled: true
+        weight: 12
       stanford_banner:
         weight: 7
         enabled: false
