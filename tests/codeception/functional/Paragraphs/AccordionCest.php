@@ -7,7 +7,7 @@ use Faker\Factory;
  *
  * @group paragraphs
  */
-class AccordionCest {
+abstract class AccordionCest {
 
   /**
    * Create and check the accordion.
