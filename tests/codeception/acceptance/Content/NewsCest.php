@@ -138,20 +138,6 @@ class NewsCest {
   }
 
   /**
-   * Special characters should stay.
-   */
-  public function testSpecialCharacters(AcceptanceTester $I) {
-    $faker = Factory::create();
-    $I->logInWithRole('contributor');
-    $I->amOnPage('/node/add/stanford_person');
-    $I->fillField('First Name', 'Foo');
-    $I->fillField('Last Name', 'Bar-Baz & Foo');
-    $I->fillField('Short Title', $faker->text);
-    $I->click('Save');
-    $I->canSee('Foo Bar-Baz & Foo', 'h1');
-  }
-
-  /**
    * Published checkbox should be hidden on term edit pages.
    */
   public function testTermPublishing(AcceptanceTester $I) {

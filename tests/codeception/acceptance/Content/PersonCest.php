@@ -1,5 +1,7 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Test the news functionality.
  */
@@ -100,6 +102,20 @@ class PersonCest {
     $I->canSeeOptionIsSelected('fields[su_person_academic_appt][region]', 'Disabled');
     $I->canSeeOptionIsSelected('fields[su_person_admin_appts][region]', 'Disabled');
     $I->canSeeOptionIsSelected('fields[su_person_scholarly_interests][region]', 'Disabled');
+  }
+
+  /**
+   * Special characters should stay.
+   */
+  public function testSpecialCharacters(AcceptanceTester $I) {
+    $faker = Factory::create();
+    $I->logInWithRole('contributor');
+    $I->amOnPage('/node/add/stanford_person');
+    $I->fillField('First Name', 'Foo');
+    $I->fillField('Last Name', 'Bar-Baz & Foo');
+    $I->fillField('Short Title', $faker->text);
+    $I->click('Save');
+    $I->canSee('Foo Bar-Baz & Foo', 'h1');
   }
 
   /**
