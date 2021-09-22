@@ -37,7 +37,7 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getTechTraining() {
-    $help = '<h3>' . self::getLinkString($this->t('IT Services Technology Training'), 'https://itservices.stanford.edu/service/techtraining/schedule') . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t('University IT Technology Training'), 'https://itservices.stanford.edu/service/techtraining/schedule') . '</h3>';
     $help .= '<p>' . $this->t('Check the upcoming courses schedule for Drupal-specific training courses offered to Stanford faculty and staff.') . '</p>';
     return ['#markup' => $help];
   }
@@ -50,8 +50,8 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    */
   protected function getUserGuide() {
     // TODO: Update link when user guide is available.
-    $help = '<h3>' . self::getLinkString($this->t('Stanford D8 Core User Guide'), 'https://userguide.sites.stanford.edu') . '</h3>';
-    $help .= '<p>' . $this->t('Your site is hosted on the Stanford Web Services platform. The D8 Core User Guide provides general information about using the service as well as how-to videos for common Drupal tasks.') . '</p>';
+    $help = '<h3>' . self::getLinkString($this->t('Drupal Core User Guide'), 'https://userguide.sites.stanford.edu') . '</h3>';
+    $help .= '<p>' . $this->t('Your site is hosted on the Stanford Web Services platform. The Drupal Core User Guide provides general information about using the service as well as how-to videos for common Drupal tasks.') . '</p>';
     return ['#markup' => $help];
   }
 
