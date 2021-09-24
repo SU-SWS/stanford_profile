@@ -197,6 +197,16 @@ process:
       source: citationType
       method: process
     -
+      plugin: gate
+      use_as_key: citationType
+      key_direction: unlock
+      valid_keys:
+        - su_article_newspaper
+        - su_book
+        - su_article_journal
+        - su_other
+        - su_thesis
+    -
       plugin: entity_generate_no_lookup
       source: title
       entity_type: citation
