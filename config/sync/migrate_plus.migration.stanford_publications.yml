@@ -183,8 +183,11 @@ process:
     method: process
   citation_authors:
     -
-      plugin: explode
+      plugin: skip_on_empty
       source: authors
+      method: process
+    -
+      plugin: explode
       delimiter: '|'
     -
       plugin: name_field
