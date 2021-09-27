@@ -21,6 +21,8 @@ source:
     status: 1
     basic_html: stanford_html
     minimal_html: stanford_minimal_html
+    alt: ''
+    file_destination: 'public://media/publications/'
   fields:
     -
       name: id
@@ -106,6 +108,10 @@ source:
       name: url
       label: 'External Source URL'
       selector: url
+    -
+      name: image
+      label: 'Image URL'
+      selector: image
 process:
   title: title
   status:
@@ -231,6 +237,39 @@ process:
         su_volume: volume
         su_url: '@citation_url'
         su_author: '@citation_authors'
+  image_file:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: image
+    -
+      plugin: image_dimension_skip
+      method: process
+      width: 10
+      height: 10
+    -
+      plugin: file_import
+      destination: constants/file_destination
+      id_only: true
+      reuse: true
+      max_size: 5MB
+  su_publication_image/target_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: '@image_file'
+    -
+      plugin: entity_generate
+      source: '@image_file'
+      value_key: field_media_image
+      bundle_key: bundle
+      bundle: image
+      entity_type: media
+      ignore_case: true
+      values:
+        name: '@title'
+        field_media_image/target_id: '@image_file'
+        field_media_image/alt: constants/alt
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_publication
