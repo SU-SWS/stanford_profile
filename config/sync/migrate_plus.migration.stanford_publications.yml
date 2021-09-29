@@ -197,14 +197,30 @@ process:
       delimiter: '|'
     -
       plugin: name_field
-  su_publication_citation:
+  citation_type:
     -
       plugin: skip_on_empty
       source: citationType
       method: process
     -
+      plugin: str_replace
+      case_insensitive: true
+      search:
+        - 'Article Newspaper/Magazine'
+        - Book
+        - Journal Article
+        - Other
+        - Thesis
+      replace:
+        - su_article_newspaper
+        - su_book
+        - su_article_journal
+        - su_other
+        - su_thesis
+  su_publication_citation:
+    -
       plugin: gate
-      use_as_key: citationType
+      use_as_key: '@citation_type'
       key_direction: unlock
       valid_keys:
         - su_article_newspaper
@@ -222,7 +238,7 @@ process:
       ignore_case: true
       values:
         title: title
-        type: citationType
+        type: '@citation_type'
         su_day: day
         su_month: month
         su_year: year
