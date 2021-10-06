@@ -100,6 +100,43 @@ class IntranetCest {
   }
 
   /**
+   * Content should be indexed and results displayed.
+   */
+  public function testSearchResults(AcceptanceTester $I){
+    $I->runDrush('sset stanford_intranet 1');
+    $I->runDrush('sapi-c');
+    $quote = 'Life is like a box of chocolates. You never know what you’re going to get.';
+    $text_area = $I->createEntity([
+      'type' => 'stanford_wysiwyg',
+      'su_wysiwyg_text' => [[
+        'value' => "<p>$quote</p>",
+        'format' => 'stanford_html',
+      ]],
+    ], 'paragraph');
+    $row = $I->createEntity([
+      'type' => 'node_stanford_page_row',
+      'su_page_components' => [
+        'target_id' => $text_area->id(),
+        'target_revision_id' => $text_area->getRevisionId(),
+      ],
+    ], 'paragraph_row');
+    $node = $I->createEntity([
+      'title' => 'Forest Gump',
+      'type' => 'stanford_page',
+      'su_page_components' => [
+        'target_id' => $row->id(),
+        'target_revision_id' => $row->getRevisionId(),
+      ],
+    ]);
+    $I->runDrush('sapi-i');
+    $I->logInWithRole('authenticated');
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($quote);
+    $I->amOnPage('/search?key=chocolate');
+    $I->canSeeLink('Forest Gump');
+  }
+
+  /**
    * Files can't be added.
    */
   public function testMediaAccess(AcceptanceTester $I) {
