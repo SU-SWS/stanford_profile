@@ -1,6 +1,30 @@
 # Stanford Profile
 
 
+8.x-2.14
+--------------------------------------------------------------------------------
+_Release Date: 2021-10-08_
+
+- Added publications help text
+- Index intranet content (#458)
+- adjusted publication importer label
+- Add citation to clonable entities
+- tweaks to publication csv importer for easier data
+- Added site manager permission to import publications
+- Exported config after database updates with latest contrib
+- D8CORE-3749 Publication CSV importer
+- D8CORE-4693 Filter events by the second instead of the day (#457)
+- D8CORE-4759 add specific view mode for search indexing for better control (#454)
+- D8CORE-4096 Updated help section text (#455)
+- D8CORE-3026 added and configured stanford_actions (#453)
+- Added layout builder role (#451)
+- Configure the new media embeddable validator (#450)
+- Merge branch 'master' into 8.x-2.x
+- D8CORE-4534: adding a skip anchor block to the filtered pub page (#437)
+- D8CORE-4749 Add and configure views bulk edit (#449)
+- Merge branch 'master' into 8.x-2.x
+
+
 8.x-2.12
 --------------------------------------------------------------------------------
 _Release Date: 2021-09-14_

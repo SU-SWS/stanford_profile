@@ -11,7 +11,7 @@ field_plugin_method: null
 cck_plugin_method: null
 migration_tags: {  }
 migration_group: default
-label: 'Publications Importer'
+label: 'Publications Importer (experimental)'
 source:
   plugin: csv
   csv_help:
@@ -115,6 +115,10 @@ source:
       label: Genre
       selector: genre
 process:
+  skip:
+    plugin: skip_on_empty
+    method: row
+    source: id
   title: title
   status:
     plugin: default_value
