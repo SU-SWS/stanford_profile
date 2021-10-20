@@ -219,6 +219,44 @@ class EventsCest {
   }
 
   /**
+   * Clone events get incremented date.
+   */
+  public function testClone(AcceptanceTester $I) {
+    $user = $I->createUserWithRoles(['contributor']);
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $this->createEventNode($I);
+    $node->set('uid', $user->id())->save();
+    $original_date_time = (int) $node->get('su_event_date_time')[0]->get('value')
+      ->getString();
+    $I->logInAs($user->getAccountName());
+    $I->amOnPage('/admin/content');
+
+    $I->checkOption('[name="views_bulk_operations_bulk_form[0]"]');
+    $I->selectOption('Action', 'Clone selected content');
+    $I->click('Apply to selected items');
+    $I->selectOption('Clone how many times', 2);
+    $I->selectOption('Increment Amount', '3');
+    $I->selectOption('Units', 'Month');
+    $I->click('Apply');
+    $links = $I->grabMultiple('a:contains("' . $node->label() . '")');
+    $I->assertCount(3, $links);
+    $I->click('Edit', '.vbo-table');
+    $current_url = $I->grabFromCurrentUrl();
+    $exploded_url = explode('/', trim($current_url, '/'));
+    $cloned_id = (int) $exploded_url[1];
+    $I->assertGreaterThan(0, $cloned_id);
+    $cloned_date_time = (int) \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->load($cloned_id)
+      ->get('su_event_date_time')[0]->get('value')->getString();
+
+
+    $I->assertNotEquals($cloned_date_time, $original_date_time);
+    $diff = $cloned_date_time - $original_date_time;
+    $I->assertEquals(3, round($diff / (60 * 60 * 24 * 30.5)));
+  }
+
+  /**
    * Create an Event Node.
    *
    * @param AcceptanceTester $I

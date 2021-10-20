@@ -83,7 +83,7 @@ class BasicPageCest {
     $I->fillField('Page Description', $description);
     $I->selectOption('Basic Page Type (experimental)', 'Research Project');
     $I->click('Save');
-    $I->seeInSource('<meta name="description" content="'.$description.'" />');
+    $I->seeInSource('<meta name="description" content="' . $description . '" />');
   }
 
   /**
@@ -104,7 +104,7 @@ class BasicPageCest {
   /**
    * A site manager should be able to place a page under an unpublished page.
    */
-  public function testUnpublishedMenuItems(AcceptanceTester $I){
+  public function testUnpublishedMenuItems(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_page');
     $I->fillField('Title', 'Unpublished Parent');
@@ -127,6 +127,25 @@ class BasicPageCest {
     $I->click('Edit', '.tabs__tab');
     $I->click('Save');
     $I->assertEquals('/unpublished-parent/child-page', $I->grabFromCurrentUrl());
+  }
+
+  /**
+   * Clone a basic page.
+   */
+  public function testClone(AcceptanceTester $I) {
+    $I->logInWithRole('contributor');
+    $I->amOnPage('/node/add/stanford_page');
+    $I->fillField('Title', 'Original Node');
+    $I->click('Save');
+    $I->amOnPage('/admin/content');
+    $I->canSee('Original Node');
+    $I->checkOption('[name="views_bulk_operations_bulk_form[0]"]');
+    $I->selectOption('Action', 'Clone selected content');
+    $I->click('Apply to selected items');
+    $I->selectOption('Clone how many times', 2);
+    $I->click('Apply');
+    $links = $I->grabMultiple('a:contains("Original Node")');
+    $I->assertCount(3, $links);
   }
 
 }
