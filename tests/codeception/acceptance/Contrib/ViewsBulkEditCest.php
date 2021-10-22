@@ -22,7 +22,7 @@ class ViewsBulkEditCest {
     $I->logInWithRole('site_manager');
     $this->createEvents($I);
     $this->createTerms($I);
-    $I->amOnPage('/admin/content');
+    $I->amOnPage('/admin/content?order=changed&sort=desc');
     $I->selectOption('Action', 'Modify field values');
     foreach ($this->nodes as $delta => $node) {
       $I->canSee($node->label(), 'tr');
