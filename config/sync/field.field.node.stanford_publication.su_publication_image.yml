@@ -1,0 +1,29 @@
+uuid: 347f183f-9a3e-4b10-bd85-94746ad0aab1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_publication_image
+    - media.type.image
+    - node.type.stanford_publication
+id: node.stanford_publication.su_publication_image
+field_name: su_publication_image
+entity_type: node
+bundle: stanford_publication
+label: Image
+description: '<strong>CAUTION:</strong> Currently, image functionality is only for data collection. It will NOT BE VISIBLE in the end-user display.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

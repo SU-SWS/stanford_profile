@@ -8,11 +8,13 @@ dependencies:
     - field.field.node.stanford_publication.su_publication_citation
     - field.field.node.stanford_publication.su_publication_components
     - field.field.node.stanford_publication.su_publication_cta
+    - field.field.node.stanford_publication.su_publication_image
     - field.field.node.stanford_publication.su_publication_topics
     - node.type.stanford_publication
   module:
     - inline_entity_form
     - link
+    - media_library
     - react_paragraphs
     - stanford_intranet
 id: node.stanford_publication.default
@@ -41,7 +43,7 @@ content:
     third_party_settings: {  }
   stanford_intranet__access:
     type: entity_access
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -49,7 +51,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 6
     region: content
     third_party_settings: {  }
   su_publication_citation:
@@ -70,7 +72,7 @@ content:
     type: inline_entity_form_complex
     region: content
   su_publication_components:
-    weight: 3
+    weight: 4
     settings:
       sizes:
         stanford_banner: 12
@@ -85,12 +87,19 @@ content:
     type: react_paragraphs
     region: content
   su_publication_cta:
-    weight: 4
+    weight: 5
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  su_publication_image:
+    type: media_library_widget
+    weight: 3
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
     region: content
   su_publication_topics:
     weight: 2

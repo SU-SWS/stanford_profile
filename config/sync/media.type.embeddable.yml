@@ -16,6 +16,8 @@ queue_thumbnail_downloads: false
 new_revision: false
 source_configuration:
   unstructured_field_name: field_media_embeddable_code
+  embed_validation:
+    localist: localist
   thumbnails_directory: 'public://oembed_thumbnails'
   providers:
     - 'ArcGIS StoryMaps'
