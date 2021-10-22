@@ -5,7 +5,7 @@
  *
  * @group users
  */
-class IntranetCest {
+abstract class IntranetCest {
 
   /**
    * Save the state before the tests and reset after the tests.
