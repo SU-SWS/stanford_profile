@@ -1,0 +1,14 @@
+uuid: 1b82dc65-8fc0-4aee-8fda-f3198d5d1c65
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.layout_builder_user
+  module:
+    - user
+id: user_add_role_action.layout_builder_user
+label: 'Add the Layout Builder User role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: layout_builder_user
