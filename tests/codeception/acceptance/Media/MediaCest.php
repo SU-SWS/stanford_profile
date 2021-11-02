@@ -44,7 +44,7 @@ class MediaCest {
     $I->canSeeCheckboxIsChecked('Issuu');
     $I->canSeeCheckboxIsChecked('Livestream');
     $I->canSeeCheckboxIsChecked('MathEmbed');
-    $I->canSeeCheckboxIsChecked('Simplecast');
+    $I->canSeeCheckboxIsChecked('SimpleCast');
     $I->canSeeCheckboxIsChecked('SlideShare');
     $I->canSeeCheckboxIsChecked('SoundCloud');
     $I->canSeeCheckboxIsChecked('Spotify');
