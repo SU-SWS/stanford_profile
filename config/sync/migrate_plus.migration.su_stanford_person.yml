@@ -20,6 +20,7 @@ source:
     link_text: 'View Full Stanford Profile'
     file_destination: 'public://media/person/'
     file_extension: .jpg
+    photo_params: '?placeHolderImage=false&access_token='
   urls: {  }
   item_selector: values
   fields:
@@ -67,6 +68,10 @@ source:
       name: profile_photo
       label: 'Profile Photo'
       selector: profilePhotos/bigger/url
+    -
+      name: large_profile_photo
+      label: 'Large Profile Photo'
+      selector: 'profilePhotos/350x522/url'
     -
       name: appointments
       label: 'Administrative Appointments'
@@ -187,7 +192,7 @@ process:
       replace: ''
     -
       plugin: concat
-  image_path:
+  photo_destination:
     plugin: concat
     source:
       - constants/file_destination
@@ -195,11 +200,19 @@ process:
       - separator
       - '@image_timestamp'
       - constants/file_extension
+  cap_token:
+    plugin: oauth2_access_token
+  photo_source:
+    plugin: concat
+    source:
+      - large_profile_photo
+      - constants/photo_params
+      - '@cap_token'
   image_file:
     -
       plugin: skip_on_empty
       method: process
-      source: profile_photo
+      source: '@photo_source'
     -
       plugin: image_dimension_skip
       method: process
@@ -207,7 +220,7 @@ process:
       height: 10
     -
       plugin: file_import
-      destination: '@image_path'
+      destination: '@photo_destination'
       id_only: true
       reuse: true
   su_person_photo/target_id:
