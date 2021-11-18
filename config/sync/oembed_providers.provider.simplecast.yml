@@ -1,0 +1,17 @@
+uuid: e4ada021-2f92-45ae-bced-987301763a6c
+langcode: en
+status: true
+dependencies: {  }
+id: simplecast
+label: SimpleCast
+provider_url: 'https://simplecast.com'
+endpoints:
+  -
+    schemes:
+      - 'https://*.simplecast.com/*'
+      - 'http://*.simplecast.com/*'
+    url: 'https://api.simplecast.com/oembed'
+    discovery: false
+    formats:
+      json: true
+      xml: false
