@@ -69,7 +69,7 @@ source:
       selector: event/directions
     -
       name: location
-      label: 'Location'
+      label: Location
       selector: event/location
     -
       name: room_number
@@ -285,7 +285,7 @@ process:
         - constants/map_link_base
         - geo_latitude
         - geo_longitude
-      delimiter: ,
+      delimiter: ','
   su_event_map_link/title: constants/map_title
   su_event_cta/uri: localist_url
   su_event_cta/title: constants/cta_text
@@ -308,40 +308,6 @@ process:
       values:
         - event_instance_start
   su_event_date_time/timezone: America/Los_Angeles
-#  su_event_type:
-#    -
-#      plugin: explode
-#      source: categories
-#      delimiter: ','
-#    -
-#      plugin: array_shift
-#    -
-#      plugin: callback
-#      callable: trim
-#    -
-#      plugin: entity_generate
-#      access_check: false
-#      entity_type: taxonomy_term
-#      bundle_key: vid
-#      bundle: stanford_event_types
-#      value_key: name
-#      ignore_case: true
-#  su_event_audience:
-#    -
-#      plugin: explode
-#      source: audience
-#      delimiter: ','
-#    -
-#      plugin: callback
-#      callable: trim
-#    -
-#      plugin: entity_generate
-#      access_check: false
-#      entity_type: taxonomy_term
-#      bundle_key: vid
-#      bundle: event_audience
-#      value_key: name
-#      ignore_case: true
 destination:
   plugin: 'entity:node'
 migration_dependencies: {  }
