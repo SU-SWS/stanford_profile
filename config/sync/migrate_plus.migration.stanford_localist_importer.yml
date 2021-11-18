@@ -224,6 +224,18 @@ source:
       label: Filters
       selector: event/filters
     -
+      name: event_audience
+      label: 'Event Audience'
+      selector: event/filters/event_audience
+    -
+      name: event_subject
+      label: 'Event Subject'
+      selector: event/filters/event_subject
+    -
+      name: event_types
+      label: 'Event Types'
+      selector: event/filters/event_types
+    -
       name: custom_fields
       label: 'Custom Fields'
       selector: event/custom_fields
@@ -268,9 +280,10 @@ source:
     stanford_html: stanford_html
     stanford_minimal_html: stanford_minimal_html
     map_title: 'Open in map'
-    map_link_base: 'https://www.google.com/maps/place/@'
+    map_link_base: 'https://www.google.com/maps/place/'
     image_path: 'public://events/'
     cta_text: 'View this event on Localist'
+    plus: '+'
 process:
   status: constants/status
   type: constants/type
@@ -283,13 +296,16 @@ process:
       plugin: concat
       source:
         - constants/map_link_base
-        - geo_latitude
-        - geo_longitude
-      delimiter: ','
+        - geo_street
+        - constants/plus
+        - geo_city
+        - constants/plus
+        - geo_state
+        - constants/plus
+        - geo_zip
   su_event_map_link/title: constants/map_title
   su_event_cta/uri: localist_url
   su_event_cta/title: constants/cta_text
-  su_event_source/uri: localist_url
   su_event_date_time/value:
     -
       plugin: callback
@@ -308,6 +324,39 @@ process:
       values:
         - event_instance_start
   su_event_date_time/timezone: America/Los_Angeles
+  su_event_audience:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: event_audience
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          plugin: entity_generate
+          value_key: name
+          bundle_key: vid
+          bundle: event_audience
+          entity_type: taxonomy_term
+          source: 'name'
+          ignore_case: true
+  su_event_type:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: event_types
+    -
+      plugin: extract
+      index:
+        - 0
+        - 'name'
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: stanford_event_types
+      entity_type: taxonomy_term
+      ignore_case: true
 destination:
   plugin: 'entity:node'
 migration_dependencies: {  }
