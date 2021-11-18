@@ -156,12 +156,12 @@ process:
         - constants/close_paragraph
     -
       plugin: str_replace
-      search: '/^<p></'
+      search: /^<p></
       replace: '<'
       regex: true
     -
       plugin: str_replace
-      search: '/><\/p>$/'
+      search: /><\/p>$/
       replace: '>'
       regex: true
   su_publication_text_area:
