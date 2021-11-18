@@ -283,8 +283,8 @@ source:
     map_link_base: 'https://www.google.com/maps/place/'
     image_path: 'public://events/'
     cta_text: 'View this event on Localist'
-    plus: '+'
-    timezone: 'America/Los_Angeles'
+    plus: +
+    timezone: America/Los_Angeles
 process:
   status: constants/status
   type: constants/type
@@ -339,7 +339,7 @@ process:
           bundle_key: vid
           bundle: event_audience
           entity_type: taxonomy_term
-          source: 'name'
+          source: name
           ignore_case: true
   su_event_type:
     -
@@ -350,7 +350,7 @@ process:
       plugin: extract
       index:
         - 0
-        - 'name'
+        - name
     -
       plugin: entity_generate
       value_key: name
