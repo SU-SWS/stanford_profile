@@ -314,9 +314,13 @@ process:
       source: event_instance_start
   su_event_date_time/end_value:
     -
+      plugin: null_coalesce
+      source:
+        - event_instance_end
+        - event_instance_start
+    -
       plugin: callback
       callable: strtotime
-      source: event_instance_end
   su_event_date_time/duration:
     -
       plugin: stanford_events_datemath
