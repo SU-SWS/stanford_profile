@@ -454,7 +454,8 @@ class ListsCest {
 
 
     $I->amOnPage($node->toUrl()->toString());
-    $I->canSee($type_term->label());
+    $I->canSee($basic_page_entity->label());
+    $I->cantSee($type_term->label());
   }
 
   /**
