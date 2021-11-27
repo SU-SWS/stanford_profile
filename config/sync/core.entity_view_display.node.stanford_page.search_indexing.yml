@@ -58,6 +58,11 @@ targetEntityType: node
 bundle: stanford_page
 mode: search_indexing
 content:
+  flag_cs_resources:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   su_page_banner:
     type: entity_reference_revisions_entity_view
     weight: 1
@@ -92,3 +97,6 @@ hidden:
   stanford_intranet__access: true
   su_basic_page_type: true
   su_page_image: true
+  su_page_resource_audience: true
+  su_page_resource_dimension: true
+  su_page_resource_type: true
