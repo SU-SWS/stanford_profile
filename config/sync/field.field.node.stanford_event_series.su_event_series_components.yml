@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.su_event_series_components
     - node.type.stanford_event_series
+    - paragraphs.paragraphs_type.stanford_accordion
     - paragraphs.paragraphs_type.stanford_person_cta
     - paragraphs.paragraphs_type.stanford_schedule
     - paragraphs.paragraphs_type.stanford_spacer
@@ -27,8 +28,12 @@ settings:
     target_bundles:
       stanford_spacer: stanford_spacer
       stanford_person_cta: stanford_person_cta
+      stanford_accordion: stanford_accordion
       stanford_schedule: stanford_schedule
     target_bundles_drag_drop:
+      stanford_accordion:
+        enabled: true
+        weight: 12
       stanford_banner:
         weight: 6
         enabled: false

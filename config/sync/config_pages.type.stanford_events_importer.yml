@@ -12,6 +12,12 @@ third_party_settings:
       column: uri
       config_name: migrate_plus.migration.stanford_events_importer
       config_item: source.urls
+    5f10a282-2cf4-4291-9a20-bf17f182885e:
+      field: su_localist_url
+      delta: -1
+      column: uri
+      config_name: migrate_plus.migration.stanford_localist_importer
+      config_item: source.urls
 id: stanford_events_importer
 label: 'Events Importer'
 context:
