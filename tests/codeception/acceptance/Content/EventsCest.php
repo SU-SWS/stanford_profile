@@ -220,6 +220,8 @@ class EventsCest {
 
   /**
    * Clone events get incremented date.
+   *
+   * @group testme
    */
   public function testClone(AcceptanceTester $I) {
     $user = $I->createUserWithRoles(['contributor']);
@@ -253,7 +255,7 @@ class EventsCest {
 
     $I->assertNotEquals($cloned_date_time, $original_date_time);
     $diff = $cloned_date_time - $original_date_time;
-    $I->assertEquals(3, round($diff / (60 * 60 * 24 * 30.5)));
+    $I->assertGreaterThanOrEqual(1, round($diff / (60 * 60 * 24 * 30.5)) / 3);
   }
 
   /**
