@@ -200,8 +200,6 @@ class EventsCest {
 
   /**
    * Published checkbox should be hidden on term edit pages.
-   *
-   * @group testme
    */
   public function testTermPublishing(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -240,22 +238,20 @@ class EventsCest {
     $I->selectOption('Increment Amount', '3');
     $I->selectOption('Units', 'Month');
     $I->click('Apply');
-    $links = $I->grabMultiple('a:contains("' . $node->label() . '")');
-    $I->assertCount(3, $links);
-    $I->click('Edit', '.vbo-table');
-    $current_url = $I->grabFromCurrentUrl();
-    $exploded_url = explode('/', trim($current_url, '/'));
-    $cloned_id = (int) $exploded_url[1];
-    $I->assertGreaterThan(0, $cloned_id);
-    $cloned_date_time = (int) \Drupal::entityTypeManager()
-      ->getStorage('node')
-      ->load($cloned_id)
-      ->get('su_event_date_time')[0]->get('value')->getString();
 
+    $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+    $nids = $node_storage->getQuery()
+      ->condition('type', 'stanford_event')
+      ->accessCheck(FALSE)
+      ->execute();
+    rsort($nids);
+    $cloned_node = $node_storage->load(reset($nids));
+    $cloned_date_time = $cloned_node->get('su_event_date_time')[0]->get('value')
+      ->getString();
 
     $I->assertNotEquals($cloned_date_time, $original_date_time);
     $diff = $cloned_date_time - $original_date_time;
-    $I->assertEquals(3, round($diff / (60 * 60 * 24 * 30.5)));
+    $I->assertEquals(6, round($diff / (60 * 60 * 24 * 30.5)));
   }
 
   /**
