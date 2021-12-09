@@ -242,9 +242,10 @@ class EventsCest {
     $node_storage = \Drupal::entityTypeManager()->getStorage('node');
     $nids = $node_storage->getQuery()
       ->condition('type', 'stanford_event')
+      ->sort('nid', 'DESC')
+      ->range(0, 1)
       ->accessCheck(FALSE)
       ->execute();
-    rsort($nids);
     $cloned_node = $node_storage->load(reset($nids));
     $cloned_date_time = $cloned_node->get('su_event_date_time')[0]->get('value')
       ->getString();
