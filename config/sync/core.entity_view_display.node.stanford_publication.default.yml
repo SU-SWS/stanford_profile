@@ -20,17 +20,17 @@ dependencies:
     - views
 third_party_settings:
   layout_builder:
-    allow_custom: true
     enabled: true
+    allow_custom: true
     sections:
       -
         layout_id: defaults
         layout_settings:
+          label: ''
+          context_mapping: {  }
           extra_classes: ''
           centered: centered-container
           columns: default
-          label: ''
-          context_mapping: {  }
         components:
           4df7625d-a934-4076-a6ff-d70bf5aa9f2e:
             uuid: 4df7625d-a934-4076-a6ff-d70bf5aa9f2e
@@ -38,45 +38,45 @@ third_party_settings:
             configuration:
               id: 'extra_field_block:node:stanford_publication:citation_type'
               label: 'Publication Type'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
               formatter:
                 settings: {  }
                 third_party_settings: {  }
-              context_mapping:
-                entity: layout_builder.entity
-            additional: {  }
             weight: 2
+            additional: {  }
           1a0c44d4-f6a2-457f-9d43-0bfb7f32c58f:
             uuid: 1a0c44d4-f6a2-457f-9d43-0bfb7f32c58f
             region: main
             configuration:
               id: 'field_block:node:stanford_publication:title'
               label: Title
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_title_heading
+                label: hidden
                 settings:
                   tag: h1
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 3
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
+          label: ''
+          context_mapping: {  }
           extra_classes: ''
           centered: centered-container
           orientation: left
-          label: ''
-          context_mapping: {  }
         components:
           42ec0a5c-ba15-4be4-9d66-9fecee9a3912:
             uuid: 42ec0a5c-ba15-4be4-9d66-9fecee9a3912
@@ -84,77 +84,77 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_publication:su_publication_components'
               label: Components
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_reference_revisions_entity_view
+                label: hidden
                 settings:
                   view_mode: default
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 3
+            additional: {  }
           10a9b9f7-3532-480f-9500-a73f98dc906a:
             uuid: 10a9b9f7-3532-480f-9500-a73f98dc906a
             region: main
             configuration:
               id: 'field_block:node:stanford_publication:su_publication_citation'
               label: Citation
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_reference_entity_view
+                label: hidden
                 settings:
                   view_mode: default
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 0
+            additional: {  }
           8e0b99d1-3634-419b-b3f7-0660aa3a7537:
             uuid: 8e0b99d1-3634-419b-b3f7-0660aa3a7537
             region: main
             configuration:
               id: 'field_block:node:stanford_publication:su_publication_cta'
               label: 'CTA Link'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: link_class
+                label: hidden
                 settings:
+                  class: su-button
                   trim_length: 80
                   url_only: false
                   url_plain: false
                   rel: '0'
                   target: '0'
-                  class: su-button
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 1
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: ''
+          context_mapping: {  }
           extra_classes: ''
           centered: centered-container
           columns: flex-12-of-12
-          label: ''
-          context_mapping: {  }
         components:
           797a272b-885d-4772-a161-853409dca684:
             uuid: 797a272b-885d-4772-a161-853409dca684
@@ -162,45 +162,45 @@ third_party_settings:
             configuration:
               id: 'views_block:stanford_publications-related'
               label: 'More Publications'
-              provider: views
               label_display: visible
+              provider: views
+              context_mapping: {  }
               views_label: 'More Publications'
               items_per_page: none
-              context_mapping: {  }
-            additional: {  }
             weight: 1
+            additional: {  }
           7bc27225-3b16-491d-b443-c266687f6db8:
             uuid: 7bc27225-3b16-491d-b443-c266687f6db8
             region: main
             configuration:
               id: 'field_block:node:stanford_publication:su_publication_topics'
               label: 'Related Topics'
-              provider: layout_builder
               label_display: visible
-              formatter:
-                label: hidden
-                type: entity_reference_list_label_class
-                settings:
-                  link: true
-                  list_type: ul
-                  class: ''
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
-            additional: {  }
+              formatter:
+                type: entity_reference_list_label_class
+                label: hidden
+                settings:
+                  link: true
+                  class: ''
+                  list_type: ul
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
             weight: 0
+            additional: {  }
         third_party_settings: {  }
   layout_library:
     enable: false
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
-      whitelisted_blocks: {  }
-      blacklisted_blocks: {  }
       allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
       restricted_categories: {  }
 id: node.stanford_publication.default
 targetEntityType: node

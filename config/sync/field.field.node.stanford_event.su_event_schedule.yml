@@ -21,9 +21,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       stanford_schedule: stanford_schedule
+    negate: 0
     target_bundles_drag_drop:
       stanford_banner:
         weight: 8
@@ -47,8 +47,8 @@ settings:
         weight: 11
         enabled: false
       stanford_schedule:
-        enabled: true
         weight: 12
+        enabled: true
       stanford_spacer:
         weight: 13
         enabled: false

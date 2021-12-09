@@ -13,15 +13,15 @@ bundle: su_pub_rows
 mode: default
 content:
   su_pubs_components:
+    type: entity_reference_revisions_autocomplete
     weight: 0
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_autocomplete
-    region: content
 hidden:
   created: true
   status: true

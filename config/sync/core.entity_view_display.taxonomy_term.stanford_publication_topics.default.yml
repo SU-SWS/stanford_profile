@@ -15,17 +15,17 @@ dependencies:
     - views
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: true
+    allow_custom: false
     sections:
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: ''
+          context_mapping: {  }
           extra_classes: ''
           centered: null
           columns: default
-          label: ''
-          context_mapping: {  }
         components:
           5be6f2e6-c0af-414f-b676-801e180b42f3:
             uuid: 5be6f2e6-c0af-414f-b676-801e180b42f3
@@ -33,30 +33,30 @@ third_party_settings:
             configuration:
               id: 'field_block:taxonomy_term:stanford_publication_topics:name'
               label: Name
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_title_heading
+                label: hidden
                 settings:
                   tag: h1
                 third_party_settings:
                   field_formatter_class:
                     class: node-stanford-page-title
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 0
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
+          label: ''
+          context_mapping: {  }
           extra_classes: su-publications-node--filtered
           centered: null
           orientation: right
-          label: ''
-          context_mapping: {  }
         components:
           d8f08681-9907-4346-9b2a-3136a422cb5b:
             uuid: d8f08681-9907-4346-9b2a-3136a422cb5b
@@ -64,38 +64,38 @@ third_party_settings:
             configuration:
               id: 'views_block:stanford_publications-term_list_chicago'
               label: ''
-              provider: views
               label_display: '0'
+              provider: views
+              context_mapping: {  }
               views_label: ''
               items_per_page: none
-              context_mapping: {  }
-            additional: {  }
             weight: 2
+            additional: {  }
           691a3b23-5601-4580-9af4-2fef58b42282:
             uuid: 691a3b23-5601-4580-9af4-2fef58b42282
             region: left
             configuration:
               id: 'system_menu_block:stanford-publication-topics'
               label: 'Filter by Topic'
-              provider: system
               label_display: visible
+              provider: system
+              context_mapping: {  }
               level: 1
               depth: 0
               expand_all_items: false
-              context_mapping: {  }
-            additional: {  }
             weight: 0
+            additional: {  }
           94735082-a939-41b2-aac7-0ea9a0367ba8:
             uuid: 94735082-a939-41b2-aac7-0ea9a0367ba8
             region: main
             configuration:
               id: jumpstart_ui_skipnav_main_anchor
               label: 'Main content anchor target'
-              provider: jumpstart_ui
               label_display: '0'
+              provider: jumpstart_ui
               context_mapping: {  }
-            additional: {  }
             weight: 1
+            additional: {  }
         third_party_settings: {  }
   layout_library:
     enable: false
@@ -105,11 +105,11 @@ bundle: stanford_publication_topics
 mode: default
 content:
   description:
-    label: hidden
     type: text_default
-    weight: 0
-    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   search_api_excerpt: true

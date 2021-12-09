@@ -14,7 +14,7 @@ bundle: stanford_events_importer
 mode: default
 content:
   su_event_xml_url:
-    weight: 0
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -23,10 +23,10 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 0
     region: content
   su_localist_url:
-    weight: 1
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -35,7 +35,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 1
     region: content
 hidden:
   search_api_excerpt: true

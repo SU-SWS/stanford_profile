@@ -1,11 +1,13 @@
+_core:
+  default_config_hash: BuLah1nwoT5oUjn6XIuKnXkjcvdt5tDIGQ6gAflOY0s
 langcode: en
-default_langcode: en
 activate: true
-mail_attr: mail
-unique_id: uid
-user_name: uid
 auth_source: default-sp
 login_link_display_name: 'SUNetID Login'
+login_link_show: true
+user_name: uid
+unique_id: uid
+mail_attr: mail
 header_no_cache: true
 role:
   population: 'administrator:eduPersonEntitlement,=,uit:sws'
@@ -25,6 +27,4 @@ autoenablesaml: true
 debug: false
 secure: true
 httponly: false
-_core:
-  default_config_hash: BuLah1nwoT5oUjn6XIuKnXkjcvdt5tDIGQ6gAflOY0s
-login_link_show: true
+default_langcode: en

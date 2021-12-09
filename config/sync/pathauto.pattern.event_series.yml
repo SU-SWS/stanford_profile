@@ -11,12 +11,12 @@ pattern: 'event/series/[node:title]'
 selection_criteria:
   7e335004-e90f-455b-811f-8f26492117ae:
     id: node_type
-    bundles:
-      stanford_event_series: stanford_event_series
     negate: false
+    uuid: 7e335004-e90f-455b-811f-8f26492117ae
     context_mapping:
       node: node
-    uuid: 7e335004-e90f-455b-811f-8f26492117ae
+    bundles:
+      stanford_event_series: stanford_event_series
 selection_logic: and
 weight: -5
 relationships: {  }

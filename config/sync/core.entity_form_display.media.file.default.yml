@@ -15,12 +15,12 @@ bundle: file
 mode: default
 content:
   field_media_file:
-    settings:
-      progress_indicator: throbber
-    third_party_settings: {  }
     type: file_generic
     weight: 26
     region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: -5
