@@ -6,7 +6,6 @@ use Faker\Factory;
  * Test out the views bulk edit module.
  *
  * @group contrib
- * @group testme
  */
 class ViewsBulkEditCest {
 
