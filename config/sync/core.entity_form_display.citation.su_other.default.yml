@@ -22,39 +22,42 @@ third_party_settings:
         - su_month
         - su_day
         - su_year
+      label: Date
+      region: content
       parent_name: ''
       weight: 4
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: 'Publication date can be noted various formats. Visit the user-guide to see examples of the different styles.'
+        id: ''
         open: true
+        description: 'Publication date can be noted various formats. Visit the user-guide to see examples of the different styles.'
         required_fields: false
-      label: Date
     group_external_link:
       children:
         - su_url
+      label: 'External Link'
+      region: content
       parent_name: ''
       weight: 5
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: true
+        description: ''
         required_fields: false
-      label: 'External Link'
 id: citation.su_other.default
 targetEntityType: citation
 bundle: su_other
 mode: default
 content:
   su_author:
+    type: name_default
     weight: 0
+    region: content
     settings:
+      override_field_settings: false
       labels:
         title: Title
         given: Given
@@ -62,6 +65,9 @@ content:
         family: Family
         generational: Generational
         credentials: Credentials
+      widget_layout: stacked
+      show_component_required_marker: false
+      credentials_inline: false
       size:
         title: 6
         given: 20
@@ -76,58 +82,52 @@ content:
         family: description
         generational: description
         credentials: description
-      widget_layout: stacked
-      show_component_required_marker: false
-      credentials_inline: false
-      override_field_settings: false
     third_party_settings: {  }
-    type: name_default
-    region: content
   su_day:
+    type: number
     weight: 5
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   su_month:
-    weight: 4
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
     type: number
+    weight: 4
     region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   su_publisher:
+    type: string_textfield
     weight: 3
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_subtitle:
+    type: string_textfield
     weight: 2
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_url:
+    type: link_default
     weight: 5
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_year:
+    type: number
     weight: 6
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   title:
     type: string_textfield
     weight: 1

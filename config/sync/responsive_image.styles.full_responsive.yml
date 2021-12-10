@@ -14,24 +14,24 @@ id: full_responsive
 label: 'Full Responsive'
 image_style_mappings:
   -
-    breakpoint_id: stanford_media.xl
-    multiplier: 1x
     image_mapping_type: image_style
     image_mapping: responsive_large
-  -
-    breakpoint_id: stanford_media.lg
+    breakpoint_id: stanford_media.xl
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: responsive_medium
-  -
-    breakpoint_id: stanford_media.md
+    breakpoint_id: stanford_media.lg
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: ''
-  -
-    breakpoint_id: stanford_media.xs
+    breakpoint_id: stanford_media.md
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: responsive_small
+    breakpoint_id: stanford_media.xs
+    multiplier: 1x
 breakpoint_group: stanford_media
 fallback_image_style: responsive_large

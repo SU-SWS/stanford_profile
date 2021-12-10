@@ -19,27 +19,19 @@ default_value: {  }
 default_value_callback: ''
 settings:
   components:
+    title: false
     given: true
     middle: true
     family: true
-    title: false
     generational: false
     credentials: false
   minimum_components:
-    family: true
     title: false
     given: false
     middle: false
+    family: true
     generational: false
     credentials: false
-  allow_family_or_given: false
-  field_type:
-    title: select
-    given: text
-    middle: text
-    family: text
-    generational: select
-    credentials: text
   max_length:
     title: 31
     given: 255
@@ -47,9 +39,14 @@ settings:
     family: 255
     generational: 15
     credentials: 255
-  sort_options:
-    title: false
-    generational: false
+  labels:
+    title: Title
+    given: 'First Name'
+    middle: 'Middle name'
+    family: 'Last Name/Company'
+    generational: Generational
+    credentials: Credentials
+  allow_family_or_given: false
   autocomplete_source:
     title:
       title: title
@@ -88,22 +85,21 @@ settings:
     - VIII
     - IX
     - X
+  sort_options:
+    title: false
+    generational: false
+  widget_layout: inline
   component_layout: default
   show_component_required_marker: false
-  labels:
-    title: Title
-    given: 'First Name'
-    middle: 'Middle name'
-    family: 'Last Name/Company'
-    generational: Generational
-    credentials: Credentials
-  title_display:
-    title: description
-    given: description
-    middle: description
-    family: description
-    generational: description
-    credentials: description
+  credentials_inline: false
+  override_format: default
+  field_type:
+    title: select
+    given: text
+    middle: text
+    family: text
+    generational: select
+    credentials: text
   size:
     title: 6
     given: 20
@@ -111,11 +107,15 @@ settings:
     family: 20
     generational: 5
     credentials: 35
-  credentials_inline: false
-  widget_layout: inline
+  title_display:
+    title: description
+    given: description
+    middle: description
+    family: description
+    generational: description
+    credentials: description
   preferred_field_reference: ''
   preferred_field_reference_separator: ', '
   alternative_field_reference: ''
   alternative_field_reference_separator: ', '
-  override_format: default
 field_type: name

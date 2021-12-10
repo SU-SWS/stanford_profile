@@ -1,7 +1,50 @@
 uuid: 5fc23439-44fa-4a42-be92-2cf1cf53748b
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - media.type.embeddable
+    - media.type.file
+    - media.type.google_form
+    - media.type.image
+    - media.type.video
+    - node.type.stanford_event
+    - node.type.stanford_event_series
+    - node.type.stanford_news
+    - node.type.stanford_page
+    - node.type.stanford_person
+    - node.type.stanford_publication
+    - taxonomy.vocabulary.basic_page_types
+    - taxonomy.vocabulary.event_audience
+    - taxonomy.vocabulary.stanford_event_types
+    - taxonomy.vocabulary.stanford_news_topics
+    - taxonomy.vocabulary.stanford_person_types
+    - taxonomy.vocabulary.stanford_publication_topics
+  module:
+    - block_content_permissions
+    - config_pages
+    - content_lock
+    - contextual
+    - dropzonejs
+    - editoria11y
+    - field_permissions
+    - media
+    - menu_admin_per_menu
+    - node
+    - paragraphs
+    - path
+    - rabbit_hole
+    - redirect
+    - role_delegation
+    - stanford_migrate
+    - stanford_profile
+    - stanford_publication
+    - system
+    - taxonomy
+    - toolbar
+    - ui_patterns_library
+    - view_unpublished
+    - views_bulk_edit
 id: site_manager
 label: 'Site Manager'
 weight: -3
@@ -10,16 +53,12 @@ permissions:
   - 'access administration pages'
   - 'access content overview'
   - 'access contextual links'
-  - 'access file_browser entity browser pages'
-  - 'access image_browser entity browser pages'
   - 'access media overview'
-  - 'access media_browser entity browser pages'
   - 'access patterns page'
   - 'access site in maintenance mode'
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
-  - 'access video_browser entity browser pages'
   - 'add citation entities'
   - 'administer citation entities'
   - 'administer main menu items'
@@ -31,8 +70,6 @@ permissions:
   - 'administer url aliases'
   - 'administer users'
   - 'assign contributor role'
-  - 'assign custm_layout_builder role'
-  - 'assign custm_layout_builder role'
   - 'assign layout_builder_user role'
   - 'assign site_editor role'
   - 'assign site_manager role'
@@ -127,7 +164,6 @@ permissions:
   - 'edit own stanford_page content'
   - 'edit own stanford_person content'
   - 'edit own stanford_publication content'
-  - 'edit own su_lockup'
   - 'edit own video media'
   - 'edit stanford_basic_site_settings config page entity'
   - 'edit stanford_events_importer config page entity'
@@ -136,7 +172,6 @@ permissions:
   - 'edit stanford_person_importer config page entity'
   - 'edit stanford_saml config page entity'
   - 'edit stanford_super_footer config page entity'
-  - 'edit su_lockup'
   - 'edit terms in basic_page_types'
   - 'edit terms in event_audience'
   - 'edit terms in stanford_event_types'
@@ -156,7 +191,6 @@ permissions:
   - 'update any media'
   - 'update any stanford_component_block block content'
   - 'update media'
-  - 'use advanced search'
   - 'use views bulk edit'
   - 'view all media revisions'
   - 'view all revisions'
@@ -168,7 +202,6 @@ permissions:
   - 'view any unpublished stanford_person content'
   - 'view any unpublished stanford_publication content'
   - 'view editoria11y checker'
-  - 'view own su_lockup'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view stanford_event revisions'
@@ -177,6 +210,5 @@ permissions:
   - 'view stanford_page revisions'
   - 'view stanford_person revisions'
   - 'view stanford_publication revisions'
-  - 'view su_lockup'
   - 'view the administration theme'
   - 'view unpublished paragraphs'

@@ -21,9 +21,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph_row'
   handler_settings:
-    negate: 1
     target_bundles:
       node_stanford_page_row: node_stanford_page_row
+    negate: 1
     target_bundles_drag_drop:
       stanford_banner:
         weight: 4

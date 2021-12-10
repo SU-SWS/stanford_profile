@@ -5,6 +5,7 @@ dependencies: {  }
 id: prod
 label: 'Production Environment'
 description: ''
+weight: 0
 folder: ../config/envs/prod
 module:
   acquia_purge: 0
@@ -20,4 +21,3 @@ blacklist: {  }
 graylist: {  }
 graylist_dependents: true
 graylist_skip_equal: true
-weight: 0

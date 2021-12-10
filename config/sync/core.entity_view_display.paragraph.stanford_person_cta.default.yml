@@ -38,7 +38,6 @@ mode: default
 content:
   su_person_cta_image:
     type: entity_reference_entity_view
-    weight: 0
     label: hidden
     settings:
       view_mode: stanford_image_stanford_circle
@@ -46,11 +45,10 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-person-cta--image
+    weight: 0
     region: image
   su_person_cta_link:
     type: link
-    weight: 3
-    region: link
     label: hidden
     settings:
       trim_length: null
@@ -61,21 +59,23 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 3
+    region: link
   su_person_cta_name:
-    weight: 1
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 1
     region: name
   su_person_cta_title:
-    weight: 2
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 2
     region: title
 hidden:
   search_api_excerpt: true

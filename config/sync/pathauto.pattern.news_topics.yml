@@ -12,12 +12,12 @@ pattern: 'news/[term:name]'
 selection_criteria:
   32750fd0-6569-40c7-994e-3a1aa0b31956:
     id: 'entity_bundle:taxonomy_term'
-    bundles:
-      stanford_news_topics: stanford_news_topics
     negate: false
+    uuid: 32750fd0-6569-40c7-994e-3a1aa0b31956
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: 32750fd0-6569-40c7-994e-3a1aa0b31956
+    bundles:
+      stanford_news_topics: stanford_news_topics
 selection_logic: and
 weight: -5
 relationships: {  }

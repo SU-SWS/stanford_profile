@@ -19,9 +19,9 @@ content:
     third_party_settings: {  }
   google_analytics:
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   language:
     weight: 0
     region: content
@@ -39,13 +39,13 @@ content:
     settings: {  }
     third_party_settings: {  }
   su_display_name:
+    type: string_textfield
     weight: 31
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   timezone:
     weight: 6
     region: content

@@ -16,15 +16,15 @@ bundle: image
 mode: default
 content:
   field_media_image:
-    settings:
-      'preview:image_style': medium
-      offsets: '50,50'
-      progress_indicator: throbber
-      preview_link: false
-    third_party_settings: {  }
     type: image_focal_point
     weight: 26
     region: content
+    settings:
+      progress_indicator: throbber
+      preview_link: false
+      offsets: '50,50'
+      'preview:image_style': medium
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: -5

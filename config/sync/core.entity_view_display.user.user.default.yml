@@ -12,17 +12,17 @@ bundle: user
 mode: default
 content:
   member_for:
-    weight: 5
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 5
+    region: content
   su_display_name:
-    weight: 6
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 6
     region: content
 hidden:
   search_api_excerpt: true

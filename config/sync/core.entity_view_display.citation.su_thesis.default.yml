@@ -22,12 +22,12 @@ bundle: su_thesis
 mode: default
 content:
   su_author:
-    weight: 0
+    type: name_default
     label: above
     settings:
       format: default
-      list_format: ''
       markup: none
+      list_format: ''
       link_target: ''
       preferred_field_reference: ''
       preferred_field_reference_separator: ', '
@@ -38,10 +38,10 @@ content:
         class: su-margin-bottom-2
       ds:
         ds_limit: ''
-    type: name_default
+    weight: 0
     region: content
   su_day:
-    weight: 3
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
@@ -49,28 +49,28 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-2
-    type: number_integer
+    weight: 3
     region: content
   su_doi:
-    weight: 6
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-2
-    type: string
+    weight: 6
     region: content
   su_genre:
     type: string
-    weight: 5
-    region: content
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 5
+    region: content
   su_month:
-    weight: 1
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
@@ -78,20 +78,20 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-2
-    type: number_integer
+    weight: 1
     region: content
   su_publisher:
-    weight: 2
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-2
-    type: string
+    weight: 2
     region: content
   su_year:
-    weight: 4
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
@@ -99,7 +99,7 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-2
-    type: number_integer
+    weight: 4
     region: content
 hidden:
   search_api_excerpt: true

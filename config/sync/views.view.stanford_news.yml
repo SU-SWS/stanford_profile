@@ -31,101 +31,12 @@ base_table: node_field_data
 base_field: nid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'access content'
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        type: infinite_scroll
-        options:
-          items_per_page: 20
-          offset: 0
-          id: 0
-          total_pages: null
-          tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          views_infinite_scroll:
-            button_text: 'Load More'
-            automatically_load_content: false
-      style:
-        type: default
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-      row:
-        type: ui_patterns
-        options:
-          default_field_elements: 0
-          inline:
-            su_news_publishing_date: 0
-            su_news_featured_media: 0
-            title: 0
-            su_news_dek: 0
-            su_news_topics: 0
-            su_news_source: 0
-            view_node: 0
-            edit_node: 0
-          separator: ''
-          hide_empty: 0
-          pattern: news-vertical-teaser
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            link: default
-            lockup: a
-            media: default
-          pattern_mapping:
-            'views_row:su_news_featured_media':
-              destination: news_vertical_teaser_image
-              weight: 0
-              plugin: views_row
-              source: su_news_featured_media
-            'views_row:su_news_topics':
-              destination: news_topics
-              weight: 1
-              plugin: views_row
-              source: su_news_topics
+      title: News
       fields:
         su_news_publishing_date:
           id: su_news_publishing_date
@@ -134,6 +45,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -190,7 +102,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         su_news_featured_media:
           id: su_news_featured_media
           table: node__su_news_featured_media
@@ -198,6 +109,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -242,8 +154,6 @@ display:
           click_sort_column: target_id
           type: media_multimedia_formatter
           settings:
-            vt_settings:
-              options__settings__vt_settings__active_tab: edit-image
             image:
               image_formatter: image_style
               image_formatter_image_style: su_news_list
@@ -254,6 +164,8 @@ display:
               video_formatter_view_mode: default
             other:
               view_mode: default
+            vt_settings:
+              options__settings__vt_settings__active_tab: edit-image
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -264,7 +176,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         title:
           id: title
           table: node_field_data
@@ -272,6 +183,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -327,9 +241,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         su_news_dek:
           id: su_news_dek
           table: node__su_news_dek
@@ -342,6 +253,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -397,7 +309,6 @@ display:
           multi_type: ul
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         su_news_source:
           id: su_news_source
           table: node__su_news_source
@@ -405,6 +316,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -464,7 +376,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         view_node:
           id: view_node
           table: node
@@ -472,6 +383,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: entity_link
           label: ''
           exclude: false
           alter:
@@ -516,8 +429,6 @@ display:
           text: view
           output_url_as_text: true
           absolute: false
-          entity_type: node
-          plugin_id: entity_link
         edit_node:
           id: edit_node
           table: node
@@ -525,6 +436,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: entity_link_edit
           label: ''
           exclude: false
           alter:
@@ -569,22 +482,91 @@ display:
           text: 'edit this news item'
           output_url_as_text: false
           absolute: false
+      pager:
+        type: infinite_scroll
+        options:
+          offset: 0
+          items_per_page: 20
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        su_news_publishing_date_value:
+          id: su_news_publishing_date_value
+          table: node__su_news_publishing_date
+          field: su_news_publishing_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: su_news_publishing_date_value
+          exposed: false
+          granularity: second
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
           entity_type: node
-          plugin_id: entity_link_edit
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: created
+          exposed: false
+          granularity: second
+      arguments: {  }
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
@@ -592,6 +574,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
           operator: in
           value:
             stanford_news: stanford_news
@@ -603,6 +588,8 @@ display:
             description: ''
             use_operator: false
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: ''
             required: false
             remember: false
@@ -610,8 +597,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -624,47 +609,64 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-      sorts:
-        su_news_publishing_date_value:
-          id: su_news_publishing_date_value
-          table: node__su_news_publishing_date
-          field: su_news_publishing_date_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: DESC
-          exposed: false
-          expose:
-            label: ''
-          granularity: second
-          plugin_id: datetime
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          exposed: false
-          expose:
-            label: ''
-          granularity: second
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+      row:
+        type: ui_patterns
+        options:
+          default_field_elements: 0
+          inline:
+            su_news_publishing_date: 0
+            su_news_featured_media: 0
+            title: 0
+            su_news_dek: 0
+            su_news_topics: 0
+            su_news_source: 0
+            view_node: 0
+            edit_node: 0
+          separator: ''
+          hide_empty: 0
+          pattern: news-vertical-teaser
+          variants:
+            alert: default
+            brandbar: default
+            button: default
+            card: default
+            cta: default
+            date-stacked: default
+            hero: default
+            link: default
+            lockup: a
+            media: default
+          pattern_mapping:
+            'views_row:su_news_featured_media':
+              destination: news_vertical_teaser_image
+              weight: 0
+              plugin: views_row
+              source: su_news_featured_media
+            'views_row:su_news_topics':
+              destination: news_topics
+              weight: 1
+              plugin: views_row
+              source: su_news_topics
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships: {  }
+      css_class: 'stanford-news--list stanford-news--list-filtered'
+      use_ajax: true
       header: {  }
       footer: {  }
-      empty: {  }
-      relationships: {  }
-      arguments: {  }
       display_extenders: {  }
-      use_ajax: true
-      title: News
-      css_class: 'stanford-news--list stanford-news--list-filtered'
     cache_metadata:
       max-age: -1
       contexts:
@@ -680,9 +682,9 @@ display:
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
   block_1:
-    display_plugin: viewfield_block
     id: block_1
     display_title: '- Default List -'
+    display_plugin: viewfield_block
     position: 1
     display_options:
       display_extenders: {  }
@@ -921,25 +923,11 @@ display:
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
   term_block:
-    display_plugin: block
     id: term_block
     display_title: 'List - With Filter'
+    display_plugin: block
     position: 1
     display_options:
-      display_extenders: {  }
-      exposed_block: false
-      use_ajax: true
-      defaults:
-        use_ajax: false
-        exposed_form: false
-        arguments: false
-        filters: false
-        filter_groups: false
-        relationships: false
-        empty: false
-        style: false
-        row: false
-        css_class: false
       exposed_form:
         type: basic
         options:
@@ -950,7 +938,20 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-      display_description: 'Term Block - Filtered'
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: "<h2>No results found</h2>\r\n<p>Please try another option from the filter list.</p>"
+            format: stanford_html
+          tokenize: false
       arguments:
         tid:
           id: tid
@@ -959,6 +960,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           default_action: default
           exception:
             value: all
@@ -970,16 +972,16 @@ display:
           default_argument_options:
             term_page: '1'
             node: true
+            limit: false
             vids:
               stanford_news_topics: stanford_news_topics
             anyall: ','
-            limit: false
           default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true
-            items_per_page: 25
             override: false
+            items_per_page: 25
           summary:
             sort_order: asc
             number_of_records: 0
@@ -998,21 +1000,20 @@ display:
           add_table: false
           require_value: false
           reduce_duplicates: true
-          plugin_id: taxonomy_index_tid
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
@@ -1020,6 +1021,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
           operator: in
           value:
             stanford_news: stanford_news
@@ -1031,6 +1035,8 @@ display:
             description: ''
             use_operator: false
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: ''
             required: false
             remember: false
@@ -1038,8 +1044,6 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1052,28 +1056,10 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
       filter_groups:
         operator: AND
         groups:
           1: AND
-      relationships: {  }
-      empty:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content:
-            value: "<h2>No results found</h2>\r\n<p>Please try another option from the filter list.</p>"
-            format: stanford_html
-          plugin_id: text
       style:
         type: html_list
         options:
@@ -1151,9 +1137,25 @@ display:
               weight: 7
               plugin: views_row
               source: edit_node
-      block_category: 'News Lists (Views)'
-      block_description: 'News List - With Filter'
+      defaults:
+        empty: false
+        css_class: false
+        use_ajax: false
+        exposed_form: false
+        style: false
+        row: false
+        relationships: false
+        arguments: false
+        filters: false
+        filter_groups: false
+      relationships: {  }
       css_class: 'stanford-news--list stanford-news--list-filtered'
+      use_ajax: true
+      display_description: 'Term Block - Filtered'
+      exposed_block: false
+      display_extenders: {  }
+      block_description: 'News List - With Filter'
+      block_category: 'News Lists (Views)'
     cache_metadata:
       max-age: -1
       contexts:
@@ -1170,35 +1172,12 @@ display:
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
   topics_list:
-    display_plugin: block
     id: topics_list
     display_title: 'Topics Links - With Filter'
+    display_plugin: block
     position: 5
     display_options:
-      display_extenders: {  }
-      display_description: 'Topics list'
       title: 'News Topics'
-      defaults:
-        title: false
-        style: false
-        row: false
-        fields: false
-        arguments: false
-        pager: false
-        css_class: false
-      style:
-        type: default
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-      row:
-        type: fields
-        options:
-          default_field_elements: false
-          inline: {  }
-          separator: ''
-          hide_empty: true
       fields:
         su_news_topics:
           id: su_news_topics
@@ -1207,6 +1186,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -1262,7 +1242,11 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
       arguments:
         nid:
           id: nid
@@ -1271,6 +1255,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
           default_action: default
           exception:
             value: all
@@ -1284,8 +1271,8 @@ display:
           summary_options:
             base_path: ''
             count: true
-            items_per_page: 25
             override: false
+            items_per_page: 25
           summary:
             sort_order: asc
             number_of_records: 0
@@ -1297,20 +1284,35 @@ display:
           validate_options: {  }
           break_phrase: false
           not: false
-          entity_type: node
-          entity_field: nid
-          plugin_id: node_nid
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+      row:
+        type: fields
+        options:
+          default_field_elements: false
+          inline: {  }
+          separator: ''
+          hide_empty: true
+      defaults:
+        title: false
+        css_class: false
+        pager: false
+        style: false
+        row: false
+        fields: false
+        arguments: false
+      css_class: su-news-topics
+      display_description: 'Topics list'
+      display_extenders: {  }
       block_description: 'News Topics Links - With Filter'
+      block_category: 'News Lists (Views)'
+      block_hide_empty: true
       allow:
         items_per_page: true
-      pager:
-        type: some
-        options:
-          items_per_page: 3
-          offset: 0
-      block_category: 'News Lists (Views)'
-      css_class: su-news-topics
-      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -1322,9 +1324,9 @@ display:
       tags:
         - 'config:field.storage.node.su_news_topics'
   vertical_cards:
-    display_plugin: viewfield_block
     id: vertical_cards
     display_title: 'Card Grid'
+    display_plugin: viewfield_block
     position: 3
     display_options:
       display_extenders: {  }
@@ -1461,13 +1463,16 @@ display:
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
   vertical_teaser_term:
-    display_plugin: block
     id: vertical_teaser_term
     display_title: 'Vertical Teaser Term'
+    display_plugin: block
     position: 3
     display_options:
-      display_extenders: {  }
-      display_description: 'Vertical Teaser Term'
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -1476,6 +1481,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
           default_action: ignore
           exception:
             value: all
@@ -1490,8 +1497,8 @@ display:
           summary_options:
             base_path: ''
             count: true
-            items_per_page: 25
             override: false
+            items_per_page: 25
           summary:
             sort_order: asc
             number_of_records: 0
@@ -1501,13 +1508,11 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
+          break_phrase: true
           depth: '0'
+          use_taxonomy_term_path: false
           vocabularies:
             stanford_news_topics: stanford_news_topics
-          break_phrase: true
-          use_taxonomy_term_path: false
-          entity_type: node
-          plugin_id: taxonomy_index_name_depth
         nid:
           id: nid
           table: node_field_data
@@ -1515,6 +1520,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
           default_action: default
           exception:
             value: all
@@ -1528,8 +1536,8 @@ display:
           summary_options:
             base_path: ''
             count: true
-            items_per_page: 25
             override: false
+            items_per_page: 25
           summary:
             sort_order: asc
             number_of_records: 0
@@ -1541,20 +1549,6 @@ display:
           validate_options: {  }
           break_phrase: false
           not: true
-          entity_type: node
-          entity_field: nid
-          plugin_id: node_nid
-      defaults:
-        arguments: false
-        style: false
-        row: false
-        pager: false
-        css_class: false
-        use_more: false
-        use_more_always: false
-        use_more_text: false
-        link_display: false
-        link_url: false
       style:
         type: grid
         options:
@@ -1562,28 +1556,36 @@ display:
           columns: 3
           automatic_width: false
           alignment: horizontal
-          col_class_default: true
-          col_class_custom: flex-4-of-12
-          row_class_default: true
           row_class_custom: 'flex-container more-news-view'
+          row_class_default: true
+          col_class_custom: flex-4-of-12
+          col_class_default: true
       row:
         type: 'entity:node'
         options:
           relationship: none
           view_mode: stanford_card
-      pager:
-        type: some
-        options:
-          items_per_page: 3
-          offset: 0
-      block_category: 'News Lists (Views)'
-      block_description: 'News Cards - All Items'
+      defaults:
+        css_class: false
+        pager: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
+        style: false
+        row: false
+        arguments: false
       css_class: 'stanford-news--cards stanford-news--cards-any'
+      display_description: 'Vertical Teaser Term'
       use_more: true
       use_more_always: false
       use_more_text: 'See All News'
       link_display: custom_url
       link_url: /news
+      display_extenders: {  }
+      block_description: 'News Cards - All Items'
+      block_category: 'News Lists (Views)'
       block_hide_empty: true
     cache_metadata:
       max-age: -1
@@ -1600,13 +1602,32 @@ display:
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
   vertical_teaser_term_list:
-    display_plugin: block
     id: vertical_teaser_term_list
     display_title: 'Cards - With Filter'
+    display_plugin: block
     position: 3
     display_options:
-      display_extenders: {  }
-      display_description: 'Vertical Teaser Term List'
+      pager:
+        type: infinite_scroll
+        options:
+          offset: 0
+          items_per_page: 0
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
       arguments:
         tid:
           id: tid
@@ -1615,6 +1636,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           default_action: ignore
           exception:
             value: all
@@ -1629,8 +1651,8 @@ display:
           summary_options:
             base_path: ''
             count: true
-            items_per_page: 25
             override: false
+            items_per_page: 25
           summary:
             sort_order: asc
             number_of_records: 0
@@ -1644,35 +1666,6 @@ display:
           add_table: false
           require_value: false
           reduce_duplicates: false
-          plugin_id: taxonomy_index_tid
-      defaults:
-        arguments: false
-        pager: false
-        style: false
-        row: false
-        fields: true
-        css_class: false
-      pager:
-        type: infinite_scroll
-        options:
-          items_per_page: 0
-          offset: 0
-          id: 0
-          total_pages: null
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-          views_infinite_scroll:
-            button_text: 'Load More'
-            automatically_load_content: false
       style:
         type: grid
         options:
@@ -1680,18 +1673,27 @@ display:
           columns: 3
           automatic_width: false
           alignment: horizontal
-          col_class_default: true
-          col_class_custom: flex-4-of-12
-          row_class_default: true
           row_class_custom: 'flex-container more-news-view'
+          row_class_default: true
+          col_class_custom: flex-4-of-12
+          col_class_default: true
       row:
         type: 'entity:node'
         options:
           relationship: none
           view_mode: stanford_card
-      block_category: 'News Lists (Views)'
-      block_description: 'News Cards - With Filter'
+      defaults:
+        css_class: false
+        pager: false
+        style: false
+        row: false
+        fields: true
+        arguments: false
       css_class: 'stanford-news--cards stanford-news--cards-filtered'
+      display_description: 'Vertical Teaser Term List'
+      display_extenders: {  }
+      block_description: 'News Cards - With Filter'
+      block_category: 'News Lists (Views)'
       block_hide_empty: true
     cache_metadata:
       max-age: -1

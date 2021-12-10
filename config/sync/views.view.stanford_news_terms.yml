@@ -16,45 +16,12 @@ base_table: taxonomy_term_field_data
 base_field: tid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'access content'
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        type: some
-        options:
-          items_per_page: 5
-          offset: 0
-      style:
-        type: default
-      row:
-        type: fields
+      title: 'Results For (term)'
       fields:
         name:
           id: name
@@ -63,6 +30,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
           label: 'Results for'
           exclude: false
           alter:
@@ -119,41 +89,30 @@ display:
           separator: ', '
           field_api_classes: false
           convert_spaces: false
-          entity_type: taxonomy_term
-          entity_field: name
-          plugin_id: term_name
-      filters:
-        status:
-          value: '1'
-          table: taxonomy_term_field_data
-          field: status
-          plugin_id: boolean
-          entity_type: taxonomy_term
-          entity_field: status
-          id: status
-          expose:
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-          group: 1
-        vid:
-          id: vid
-          table: taxonomy_term_field_data
-          field: vid
-          value:
-            stanford_news_topics: stanford_news_topics
-          entity_type: taxonomy_term
-          entity_field: vid
-          plugin_id: bundle
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
-      sorts: {  }
-      title: 'Results For (term)'
-      header: {  }
-      footer: {  }
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 5
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
       empty: {  }
-      relationships: {  }
+      sorts: {  }
       arguments:
         tid:
           id: tid
@@ -162,6 +121,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: tid
+          plugin_id: taxonomy
           default_action: default
           exception:
             value: all
@@ -173,15 +135,15 @@ display:
           default_argument_options:
             term_page: '1'
             node: true
-            anyall: ','
             limit: false
             vids: {  }
+            anyall: ','
           default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true
-            items_per_page: 25
             override: false
+            items_per_page: 25
           summary:
             sort_order: asc
             number_of_records: 0
@@ -193,11 +155,49 @@ display:
           validate_options: {  }
           break_phrase: false
           not: false
+      filters:
+        status:
+          id: status
+          table: taxonomy_term_field_data
+          field: status
           entity_type: taxonomy_term
-          entity_field: tid
-          plugin_id: taxonomy
-      display_extenders: {  }
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+          value:
+            stanford_news_topics: stanford_news_topics
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+      style:
+        type: default
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships: {  }
       css_class: stanford-news-terms--results-for
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -207,14 +207,14 @@ display:
         - user.permissions
       tags: {  }
   results_for:
-    display_plugin: block
     id: results_for
     display_title: Block
+    display_plugin: block
     position: 1
     display_options:
       display_extenders: {  }
-      block_category: 'News Lists (Views)'
       block_description: 'Results for'
+      block_category: 'News Lists (Views)'
     cache_metadata:
       max-age: -1
       contexts:

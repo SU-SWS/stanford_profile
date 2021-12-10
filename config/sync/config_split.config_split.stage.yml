@@ -5,6 +5,7 @@ dependencies: {  }
 id: stage
 label: 'Staging Environment'
 description: ''
+weight: 0
 folder: ../config/envs/stage
 module:
   acquia_purge: 0
@@ -20,4 +21,3 @@ blacklist: {  }
 graylist: {  }
 graylist_dependents: true
 graylist_skip_equal: false
-weight: 0

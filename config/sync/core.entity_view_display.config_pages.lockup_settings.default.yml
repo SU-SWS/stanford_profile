@@ -24,14 +24,15 @@ third_party_settings:
         - su_use_theme_logo
         - su_path_to_custom_logo
         - su_upload_logo_image
+      label: 'Logo Image'
       parent_name: ''
+      region: content
       weight: 1
       format_type: fieldset
-      region: content
       format_settings:
-        description: ''
-        id: ''
         classes: ''
+        id: ''
+        description: ''
         element: div
         show_label: false
         label_element: h3
@@ -39,7 +40,6 @@ third_party_settings:
         effect: none
         speed: fast
         attributes: ''
-      label: 'Logo Image'
     group_lockup_options:
       children:
         - su_lockup_options
@@ -48,95 +48,95 @@ third_party_settings:
         - su_line_3
         - su_line_4
         - su_line_5
+      label: 'Lockup Options'
       parent_name: ''
+      region: content
       weight: 0
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
-      label: 'Lockup Options'
 id: config_pages.lockup_settings.default
 targetEntityType: config_pages
 bundle: lockup_settings
 mode: default
 content:
   su_line_1:
-    weight: 3
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 3
     region: content
   su_line_2:
-    weight: 4
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 4
     region: content
   su_line_3:
-    weight: 5
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 5
     region: content
   su_line_4:
-    weight: 6
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 6
     region: content
   su_line_5:
-    weight: 7
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 7
     region: content
   su_lockup_enabled:
-    weight: 8
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 8
     region: content
   su_lockup_options:
-    weight: 2
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 2
     region: content
   su_upload_logo_image:
-    weight: 3
+    type: image
     label: above
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
     third_party_settings: {  }
-    type: image
+    weight: 3
     region: content
   su_use_theme_logo:
-    weight: 1
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 1
     region: content
 hidden:
   search_api_excerpt: true

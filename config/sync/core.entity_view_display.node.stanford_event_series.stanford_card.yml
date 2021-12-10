@@ -21,13 +21,21 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
   layout_library:
     enable: false
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_one_column_overlay
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+        - stanford_events_editorial_content
+        - stanford_events_body
+      blacklisted_blocks: {  }
       whitelisted_blocks:
         'Chaos Tools': {  }
         'Config Pages': {  }
@@ -63,14 +71,6 @@ third_party_settings:
         'Stanford SimpleSAML PHP': {  }
         System:
           - system_messages_block
-      blacklisted_blocks: {  }
-      allowed_layouts:
-        - jumpstart_ui_one_column
-        - jumpstart_ui_one_column_overlay
-        - jumpstart_ui_two_column
-        - jumpstart_ui_three_column
-        - stanford_events_editorial_content
-        - stanford_events_body
   ds:
     layout:
       id: pattern_card
@@ -105,20 +105,20 @@ mode: stanford_card
 content:
   su_event_series_dek:
     type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
     weight: 0
     region: card_super_headline
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
   su_event_series_subheadline:
     type: string
-    weight: 2
-    region: card_body
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 2
+    region: card_body
 hidden:
   layout_builder__layout: true
   links: true
