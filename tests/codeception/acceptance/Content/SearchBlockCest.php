@@ -13,14 +13,14 @@ class SearchBlockCest {
   public function testHideSearchBlock(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/');
-    $I->see('Search this site');
+    $I->seeElement('.su-site-search__input');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->see('Hide Site Search');
     $I->checkOption('Hide Site Search');
     $I->click('Save');
     $I->see('Site Settings has been updated');
     $I->amOnPage('/');
-    $I->dontSee('Search this site');
+    $I->dontSeeElement('.su-site-search__input');
   }
 
 }
