@@ -321,6 +321,9 @@ process:
     -
       plugin: callback
       callable: strtotime
+    -
+      plugin: smartdate_adjust
+      start_time: '@su_event_date_time/value'
   su_event_date_time/duration:
     -
       plugin: stanford_events_datemath
