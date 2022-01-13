@@ -7,6 +7,7 @@ dependencies:
     - media.type.file
     - media.type.google_form
     - media.type.image
+    - media.type.stanford_gallery_images
     - media.type.video
     - node.type.stanford_event
     - node.type.stanford_event_series
@@ -65,6 +66,7 @@ permissions:
   - 'create media'
   - 'create stanford_event content'
   - 'create stanford_event_series content'
+  - 'create stanford_gallery_images media'
   - 'create stanford_news content'
   - 'create stanford_page content'
   - 'create stanford_person content'
@@ -77,8 +79,6 @@ permissions:
   - 'create terms in stanford_publication_topics'
   - 'create url aliases'
   - 'create video media'
-  - 'delete any embeddable media'
-  - 'delete any google_form media'
   - 'delete any stanford_event content'
   - 'delete any stanford_event_series content'
   - 'delete any stanford_news content'
@@ -93,6 +93,7 @@ permissions:
   - 'delete own image media'
   - 'delete own stanford_event content'
   - 'delete own stanford_event_series content'
+  - 'delete own stanford_gallery_images media'
   - 'delete own stanford_news content'
   - 'delete own stanford_page content'
   - 'delete own stanford_person content'
@@ -111,9 +112,10 @@ permissions:
   - 'delete terms in stanford_person_types'
   - 'delete terms in stanford_publication_topics'
   - 'dropzone upload files'
-  - 'edit any embeddable media'
+  - 'edit any image media'
   - 'edit any stanford_event content'
   - 'edit any stanford_event_series content'
+  - 'edit any stanford_gallery_images media'
   - 'edit any stanford_news content'
   - 'edit any stanford_page content'
   - 'edit any stanford_person content'
@@ -128,6 +130,7 @@ permissions:
   - 'edit own image media'
   - 'edit own stanford_event content'
   - 'edit own stanford_event_series content'
+  - 'edit own stanford_gallery_images media'
   - 'edit own stanford_news content'
   - 'edit own stanford_page content'
   - 'edit own stanford_person content'
