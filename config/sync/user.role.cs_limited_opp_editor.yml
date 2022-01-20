@@ -1,7 +1,14 @@
 uuid: f76e3e9b-9625-4064-86c0-bdb398783a4c
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.su_opportunity
+  module:
+    - node
+    - system
+    - toolbar
+    - view_unpublished
 id: cs_limited_opp_editor
 label: 'Opportunity Editor (limited)'
 weight: 1

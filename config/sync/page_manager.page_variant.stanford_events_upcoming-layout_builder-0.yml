@@ -6,20 +6,21 @@ dependencies:
     - page_manager.page.stanford_events_upcoming
 id: stanford_events_upcoming-layout_builder-0
 label: 'Layout Builder'
+weight: 0
 variant: layout_builder
 variant_settings:
   id: layout_builder
-  uuid: 8de0b8fe-a2ef-43f7-8c9b-cf5b43309d79
   label: null
   weight: 0
+  uuid: 8de0b8fe-a2ef-43f7-8c9b-cf5b43309d79
   sections:
     -
       layout_id: jumpstart_ui_one_column
       layout_settings:
+        label: 'Page Title'
         extra_classes: section-event-list--title
         centered: centered-container
         columns: default
-        label: 'Page Title'
       components:
         1d61c490-3289-422f-9025-c70415f7ed1b:
           uuid: 1d61c490-3289-422f-9025-c70415f7ed1b
@@ -27,22 +28,22 @@ variant_settings:
           configuration:
             id: jumpstart_ui_page_heading
             label: Events
-            provider: jumpstart_ui
             label_display: '0'
+            provider: jumpstart_ui
+            context_mapping: {  }
             heading_text: Events
             wrapper: h1
-            context_mapping: {  }
-          additional: {  }
           weight: 0
+          additional: {  }
           third_party_settings: {  }
       third_party_settings: {  }
     -
       layout_id: jumpstart_ui_two_column
       layout_settings:
+        label: 'Filter & View'
         extra_classes: section-events-list--content
         centered: centered-container
         orientation: right
-        label: 'Filter & View'
       components:
         39282f6b-c47b-457e-9cc5-4d8ca20c5c84:
           uuid: 39282f6b-c47b-457e-9cc5-4d8ca20c5c84
@@ -50,19 +51,19 @@ variant_settings:
           configuration:
             id: 'menu_block:stanford-event-types'
             label: 'Filter by event type'
-            provider: menu_block
             label_display: visible
+            provider: menu_block
+            context_mapping: {  }
             follow: false
             follow_parent: child
+            label_type: block
             level: 1
             depth: 1
-            expand: false
             parent: 'stanford-event-types:'
             suggestion: stanford_event_types
-            label_type: block
-            context_mapping: {  }
-          additional: {  }
+            expand: false
           weight: 0
+          additional: {  }
           third_party_settings: {  }
         d6b3ac01-2850-45fa-ade2-f29c16e8a19f:
           uuid: d6b3ac01-2850-45fa-ade2-f29c16e8a19f
@@ -70,13 +71,13 @@ variant_settings:
           configuration:
             id: 'views_block:stanford_events-list_page'
             label: ''
-            provider: views
             label_display: '0'
+            provider: views
+            context_mapping: {  }
             views_label: ''
             items_per_page: none
-            context_mapping: {  }
-          additional: {  }
           weight: 2
+          additional: {  }
           third_party_settings: {  }
         535c57e1-3c85-4315-bd32-3f8277b218d4:
           uuid: 535c57e1-3c85-4315-bd32-3f8277b218d4
@@ -84,14 +85,14 @@ variant_settings:
           configuration:
             id: 'block_content:f7125c85-197d-4ba2-9f6f-1126bbda0466'
             label: 'Events Intro'
-            provider: block_content
             label_display: '0'
+            provider: block_content
             status: true
             info: ''
             view_mode: full
             context_mapping: {  }
-          additional: {  }
           weight: 0
+          additional: {  }
           third_party_settings: {  }
         343a76ca-856e-461b-b36c-021c34293235:
           uuid: 343a76ca-856e-461b-b36c-021c34293235
@@ -99,17 +100,16 @@ variant_settings:
           configuration:
             id: 'views_block:su_block_edit_links-events_intro'
             label: ''
-            provider: views
             label_display: '0'
+            provider: views
+            context_mapping: {  }
             views_label: ''
             items_per_page: none
-            context_mapping: {  }
-          additional: {  }
           weight: 1
+          additional: {  }
           third_party_settings: {  }
       third_party_settings: {  }
 page: stanford_events_upcoming
-weight: 0
 selection_criteria: {  }
 selection_logic: and
 static_context: {  }

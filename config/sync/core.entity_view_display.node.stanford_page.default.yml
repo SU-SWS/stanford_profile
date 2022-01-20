@@ -27,16 +27,16 @@ dependencies:
     - views
 third_party_settings:
   layout_builder:
-    allow_custom: true
     enabled: true
+    allow_custom: true
     sections:
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: ''
           extra_classes: ''
           centered: null
           columns: default
-          label: ''
         components:
           2c1cda4e-0623-4550-a253-c15a7940f185:
             uuid: 2c1cda4e-0623-4550-a253-c15a7940f185
@@ -44,20 +44,20 @@ third_party_settings:
             configuration:
               id: system_breadcrumb_block
               label: Breadcrumbs
-              provider: system
               label_display: '0'
+              provider: system
               context_mapping: {  }
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: ''
           extra_classes: 'su-hero-height su-hero-left'
           centered: null
           columns: default
-          label: ''
         components:
           da20ed40-0f0f-4103-bda1-29d84c24975f:
             uuid: da20ed40-0f0f-4103-bda1-29d84c24975f
@@ -65,28 +65,28 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_page:su_page_banner'
               label: Banner
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_reference_revisions_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
-            additional: {  }
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: 'page description'
           extra_classes: ''
           centered: centered-container
           columns: default
-          label: 'page description'
         components:
           f27015ee-a2c3-4acc-a68d-9af1b6e538a1:
             uuid: f27015ee-a2c3-4acc-a68d-9af1b6e538a1
@@ -94,30 +94,30 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_page:su_page_description'
               label: 'Page Description'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: string
+                label: hidden
                 settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
+          context_mapping: {  }
           extra_classes: ''
           centered: centered-container
           orientation: right
-          context_mapping: {  }
         components:
           582a6898-7096-40c2-bb65-99a556ada919:
             uuid: 582a6898-7096-40c2-bb65-99a556ada919
@@ -125,21 +125,21 @@ third_party_settings:
             configuration:
               id: 'menu_block:main'
               label: 'Main navigation'
-              provider: menu_block
               label_display: '0'
+              provider: menu_block
+              context_mapping: {  }
               follow: false
               follow_parent: child
+              label_link: false
+              label_type: block
               level: 2
               depth: 0
-              expand: true
               parent: 'main:'
               render_parent: true
               suggestion: secondary_nav
-              label_type: block
-              label_link: false
-              context_mapping: {  }
-            additional: {  }
+              expand: true
             weight: 0
+            additional: {  }
             third_party_settings: {  }
           9ec5b37b-33a4-4aca-b787-7f0584234d1a:
             uuid: 9ec5b37b-33a4-4aca-b787-7f0584234d1a
@@ -147,21 +147,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_page:su_page_components'
               label: Paragraphs
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_reference_revisions_entity_view
+                label: hidden
                 settings:
                   view_mode: default
                 third_party_settings:
                   ds:
                     ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: -6
+            additional: {  }
             third_party_settings: {  }
           c40ac234-fff7-4c9d-8a34-03fb9d335617:
             uuid: c40ac234-fff7-4c9d-8a34-03fb9d335617
@@ -169,11 +169,11 @@ third_party_settings:
             configuration:
               id: jumpstart_ui_skipnav_main_anchor
               label: 'Main content anchor target'
-              provider: jumpstart_ui
               label_display: '0'
+              provider: jumpstart_ui
               context_mapping: {  }
-            additional: {  }
             weight: -7
+            additional: {  }
             third_party_settings: {  }
           af0809fe-fe61-4e78-be4e-4837cd773c26:
             uuid: af0809fe-fe61-4e78-be4e-4837cd773c26
@@ -181,19 +181,19 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_page:title'
               label: Title
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: hidden
-                type: entity_title_heading
-                settings:
-                  tag: h1
-                third_party_settings: {  }
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
-            additional: {  }
+              formatter:
+                type: entity_title_heading
+                label: hidden
+                settings:
+                  tag: h1
+                third_party_settings: {  }
             weight: -8
+            additional: {  }
             third_party_settings: {  }
           0d08b150-d764-4183-b704-f605733576f1:
             uuid: 0d08b150-d764-4183-b704-f605733576f1
@@ -201,21 +201,21 @@ third_party_settings:
             configuration:
               id: 'extra_field_block:node:stanford_page:flag_cs_resources'
               label: 'Flag: <em class="placeholder">Resources</em>'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
-            additional: {  }
             weight: -9
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: ''
           extra_classes: ''
           centered: centered-container
           columns: default
-          label: ''
         components:
           848fd51a-0aca-4b1c-b6ba-b13a309d418e:
             uuid: 848fd51a-0aca-4b1c-b6ba-b13a309d418e
@@ -223,19 +223,27 @@ third_party_settings:
             configuration:
               id: 'views_block:cs_resources-3_related'
               label: 'Related Resources'
-              provider: views
               label_display: visible
+              provider: views
+              context_mapping: {  }
               views_label: 'Related Resources'
               items_per_page: none
-              context_mapping: {  }
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
   layout_library:
     enable: true
   layout_builder_restrictions:
     entity_view_mode_restriction:
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_one_column_overlay
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
       allowed_blocks:
         'Chaos Tools': {  }
         'Content fields':
@@ -254,14 +262,6 @@ third_party_settings:
         System: {  }
         'User fields': {  }
         core: {  }
-      allowed_layouts:
-        - jumpstart_ui_one_column
-        - jumpstart_ui_one_column_overlay
-        - jumpstart_ui_two_column
-        - jumpstart_ui_three_column
-      whitelisted_blocks: {  }
-      blacklisted_blocks: {  }
-      restricted_categories: {  }
     allowed_block_categories: {  }
 id: node.stanford_page.default
 targetEntityType: node
@@ -269,57 +269,57 @@ bundle: stanford_page
 mode: default
 content:
   flag_cs_resources:
-    weight: 10
     settings: {  }
     third_party_settings: {  }
+    weight: 10
     region: main
   links:
-    weight: 1
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
   su_basic_page_type:
-    weight: 7
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 7
     region: main
   su_page_banner:
     type: entity_reference_revisions_entity_view
-    weight: 4
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 4
     region: first
   su_page_components:
     type: entity_reference_revisions_entity_view
-    weight: 3
-    region: content
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 3
+    region: content
   su_page_description:
-    weight: 6
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 6
     region: main
   su_page_image:
     type: entity_reference_entity_view
-    weight: 5
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 5
     region: main
 hidden:
   layout_builder__layout: true

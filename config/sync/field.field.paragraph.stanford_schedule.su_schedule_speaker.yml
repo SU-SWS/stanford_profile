@@ -21,9 +21,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       stanford_person_cta: stanford_person_cta
+    negate: 0
     target_bundles_drag_drop:
       stanford_banner:
         weight: 8
@@ -35,8 +35,8 @@ settings:
         weight: 10
         enabled: false
       stanford_person_cta:
-        enabled: true
         weight: 11
+        enabled: true
       stanford_schedule:
         weight: 12
         enabled: false

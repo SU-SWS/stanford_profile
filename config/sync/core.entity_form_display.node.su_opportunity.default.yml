@@ -48,13 +48,13 @@ content:
   body:
     type: text_textarea_with_summary
     weight: 9
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 3
@@ -69,10 +69,10 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 4
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
@@ -82,53 +82,53 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 8
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 5
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   su_opp_application_deadline:
-    weight: 13
-    settings: {  }
-    third_party_settings: {  }
     type: datetime_default
+    weight: 13
     region: content
-  su_opp_commitment:
-    weight: 28
     settings: {  }
     third_party_settings: {  }
+  su_opp_commitment:
     type: options_select
+    weight: 28
     region: content
+    settings: {  }
+    third_party_settings: {  }
   su_opp_contact_email:
-    weight: 21
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
     type: email_default
+    weight: 21
     region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
   su_opp_contact_name:
+    type: string_textfield
     weight: 20
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_opp_contact_phone:
+    type: telephone_default
     weight: 22
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: telephone_default
-    region: content
   su_opp_deadline_time:
     type: options_select
     weight: 12
@@ -137,6 +137,8 @@ content:
     third_party_settings:
       conditional_fields:
         adb34dff-ff8e-45b9-a001-e5817477e7c5:
+          entity_type: node
+          bundle: su_opportunity
           dependee: su_opp_application_deadline
           settings:
             state: visible
@@ -151,39 +153,37 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
-          entity_type: node
-          bundle: su_opportunity
   su_opp_dimension:
+    type: options_select
     weight: 24
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_opp_eligibility:
+    type: text_textarea
     weight: 16
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   su_opp_image:
     type: media_library_widget
     weight: 15
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   su_opp_location:
+    type: entity_reference_autocomplete
     weight: 19
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   su_opp_not_eligible:
     type: boolean_checkbox
     weight: 1
@@ -192,45 +192,47 @@ content:
       display_label: true
     third_party_settings: {  }
   su_opp_open_to:
+    type: options_select
     weight: 18
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_opp_pathway:
+    type: options_select
     weight: 25
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_opp_placement_type:
+    type: options_select
     weight: 26
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_opp_service_theme:
+    type: options_select
     weight: 23
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_opp_solo_url:
+    type: link_default
     weight: 11
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_opp_sponsor:
+    type: options_select
     weight: 27
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_opp_summary:
+    type: text_textarea
     weight: 10
+    region: content
     settings:
       rows: 2
       placeholder: ''
@@ -238,20 +240,18 @@ content:
       allowed_formats:
         hide_help: '0'
         hide_guidelines: '0'
-    type: text_textarea
-    region: content
   su_opp_time_year:
+    type: options_select
     weight: 14
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_opp_type:
+    type: options_select
     weight: 17
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   title:
     type: string_textfield
     weight: 0
@@ -263,12 +263,12 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 2
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default

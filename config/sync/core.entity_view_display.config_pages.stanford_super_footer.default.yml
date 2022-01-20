@@ -23,10 +23,10 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
         extra_classes: ''
         centered: centered-container
         orientation: equal
-        label: ''
     regions:
       left:
         - su_super_foot_title
@@ -41,8 +41,6 @@ mode: default
 content:
   su_super_foot_intranet:
     type: link
-    weight: 2
-    region: main
     label: hidden
     settings:
       trim_length: null
@@ -53,10 +51,10 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-super-footer__intranet
+    weight: 2
+    region: main
   su_super_foot_link:
     type: link
-    weight: 1
-    region: main
     label: hidden
     settings:
       trim_length: null
@@ -69,19 +67,19 @@ content:
         class: su-super-footer__link
       ds:
         ds_limit: ''
+    weight: 1
+    region: main
   su_super_foot_text:
-    weight: 3
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings:
       field_formatter_class:
         class: ''
-    type: text_default
+    weight: 3
     region: left
   su_super_foot_title:
     type: entity_title_heading
-    weight: 0
-    region: left
     label: hidden
     settings:
       tag: h2
@@ -89,6 +87,8 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-super-footer__heading
+    weight: 0
+    region: left
 hidden:
   search_api_excerpt: true
   su_super_foot_enabled: true

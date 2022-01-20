@@ -11,12 +11,12 @@ pattern: 'news/[node:title]'
 selection_criteria:
   7a7d05be-0ed3-47a8-a375-bc151a7ee92d:
     id: node_type
-    bundles:
-      stanford_news: stanford_news
     negate: false
+    uuid: 7a7d05be-0ed3-47a8-a375-bc151a7ee92d
     context_mapping:
       node: node
-    uuid: 7a7d05be-0ed3-47a8-a375-bc151a7ee92d
+    bundles:
+      stanford_news: stanford_news
 selection_logic: and
 weight: -5
 relationships: {  }

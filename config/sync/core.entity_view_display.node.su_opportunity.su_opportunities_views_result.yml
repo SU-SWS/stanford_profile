@@ -45,14 +45,14 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
   layout_library:
     enable: false
   layout_builder_restrictions:
     entity_view_mode_restriction:
-      allowed_blocks: {  }
       allowed_layouts: {  }
+      allowed_blocks: {  }
   ds:
     layout:
       id: pattern_opportunity_row
@@ -107,14 +107,12 @@ bundle: su_opportunity
 mode: su_opportunities_views_result
 content:
   flag_cs_favorites:
-    weight: 13
-    region: favorite
     settings: {  }
     third_party_settings: {  }
+    weight: 13
+    region: favorite
   su_opp_application_deadline:
     type: datetime_custom
-    weight: 5
-    region: application_deadline
     label: hidden
     settings:
       timezone_override: ''
@@ -122,10 +120,10 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 5
+    region: application_deadline
   su_opp_commitment:
     type: entity_reference_label
-    weight: 3
-    region: time_commitment
     label: hidden
     settings:
       link: false
@@ -136,10 +134,10 @@ content:
         class: ''
       ds:
         ds_limit: ''
+    weight: 3
+    region: time_commitment
   su_opp_course_date:
     type: datetime_custom
-    weight: 7
-    region: course_date
     label: hidden
     settings:
       timezone_override: ''
@@ -147,10 +145,10 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 7
+    region: course_date
   su_opp_dimension:
     type: entity_reference_label
-    weight: 11
-    region: program
     label: hidden
     settings:
       link: false
@@ -161,10 +159,10 @@ content:
         class: ''
       ds:
         ds_limit: ''
+    weight: 11
+    region: program
   su_opp_event_date:
     type: datetime_custom
-    weight: 6
-    region: event_date
     label: hidden
     settings:
       timezone_override: ''
@@ -172,46 +170,46 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 6
+    region: event_date
   su_opp_image:
     type: media_image_formatter
-    weight: 2
-    region: image
     label: hidden
     settings:
       view_mode: default
-      image_style: opportunity_result_image
       link: false
+      image_style: opportunity_result_image
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 2
+    region: image
   su_opp_location:
     type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
     weight: 8
     region: location
-    label: hidden
-    settings:
-      link: false
-    third_party_settings:
-      field_formatter_class:
-        class: ''
   su_opp_open_to:
     type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
     weight: 10
     region: open_to
-    label: hidden
-    settings:
-      link: false
-    third_party_settings:
-      field_delimiter:
-        delimiter: ','
-      field_formatter_class:
-        class: ''
-      ds:
-        ds_limit: ''
   su_opp_service_theme:
     type: entity_reference_label
-    weight: 4
-    region: service_theme
     label: hidden
     settings:
       link: false
@@ -222,17 +220,17 @@ content:
         class: ''
       ds:
         ds_limit: ''
+    weight: 4
+    region: service_theme
   su_opp_summary:
     type: text_default
-    weight: 1
-    region: summary
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: summary
   su_opp_time_year:
     type: entity_reference_label
-    weight: 9
-    region: when
     label: hidden
     settings:
       link: false
@@ -241,10 +239,10 @@ content:
         class: ''
       ds:
         ds_limit: ''
+    weight: 9
+    region: when
   su_opp_type:
     type: entity_reference_label
-    weight: 12
-    region: type_list
     label: hidden
     settings:
       link: false
@@ -255,6 +253,8 @@ content:
         class: ''
       ds:
         ds_limit: ''
+    weight: 12
+    region: type_list
 hidden:
   body: true
   links: true

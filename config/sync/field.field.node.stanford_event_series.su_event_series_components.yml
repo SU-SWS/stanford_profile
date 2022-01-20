@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.su_event_series_components
     - node.type.stanford_event_series
-    - paragraphs.paragraphs_type.stanford_accordion
     - paragraphs.paragraphs_type.stanford_person_cta
     - paragraphs.paragraphs_type.stanford_schedule
     - paragraphs.paragraphs_type.stanford_spacer
@@ -24,16 +23,12 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 1
     target_bundles:
       stanford_spacer: stanford_spacer
       stanford_person_cta: stanford_person_cta
-      stanford_accordion: stanford_accordion
       stanford_schedule: stanford_schedule
+    negate: 1
     target_bundles_drag_drop:
-      stanford_accordion:
-        enabled: true
-        weight: 12
       stanford_banner:
         weight: 6
         enabled: false
@@ -53,14 +48,14 @@ settings:
         weight: 8
         enabled: false
       stanford_person_cta:
-        enabled: true
         weight: 11
+        enabled: true
       stanford_schedule:
-        enabled: true
         weight: 12
-      stanford_spacer:
         enabled: true
+      stanford_spacer:
         weight: 9
+        enabled: true
       stanford_wysiwyg:
         weight: 10
         enabled: false

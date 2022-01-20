@@ -44,8 +44,8 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: true
     enabled: true
+    allow_custom: true
     sections:
       -
         layout_id: stanford_person_header
@@ -59,11 +59,11 @@ third_party_settings:
             configuration:
               id: jumpstart_ui_skipnav_main_anchor
               label: 'Main content anchor target'
-              provider: jumpstart_ui
               label_display: '0'
+              provider: jumpstart_ui
               context_mapping: {  }
-            additional: {  }
             weight: -10
+            additional: {  }
             third_party_settings: {  }
           cfc2c3db-caf9-46a5-81c9-935860897edd:
             uuid: cfc2c3db-caf9-46a5-81c9-935860897edd
@@ -71,21 +71,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:title'
               label: 'Full Name'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_title_heading
+                label: hidden
                 settings:
                   tag: h1
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-full-name
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: -8
+            additional: {  }
             third_party_settings: {  }
           3ffb98b1-0e49-427c-ae05-28bca7f8b35f:
             uuid: 3ffb98b1-0e49-427c-ae05-28bca7f8b35f
@@ -93,20 +93,20 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_full_title'
               label: 'Full Title'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: basic_string
+                label: hidden
                 settings: {  }
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-full-title
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: -7
+            additional: {  }
             third_party_settings: {  }
           1de9875f-f4aa-47f6-a813-39dfd35d5ccf:
             uuid: 1de9875f-f4aa-47f6-a813-39dfd35d5ccf
@@ -114,21 +114,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_short_title'
               label: 'Short Title'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: string
+                label: hidden
                 settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
                     class: su-short-title
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
           e0167f4a-2c96-49d4-a0c0-0d316058897c:
             uuid: e0167f4a-2c96-49d4-a0c0-0d316058897c
@@ -136,21 +136,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_short_title'
               label: 'Short Title'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: string
+                label: hidden
                 settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-title
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: -9
+            additional: {  }
             third_party_settings: {  }
           0d5ce623-cc57-4e84-947f-4c1dcd8c3354:
             uuid: 0d5ce623-cc57-4e84-947f-4c1dcd8c3354
@@ -158,21 +158,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:title'
               label: 'Full Name'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_title_heading
+                label: hidden
                 settings:
                   tag: h1
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-name
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 1
+            additional: {  }
             third_party_settings: {  }
           e0a82a15-455a-4d3b-99f8-446122b1d302:
             uuid: e0a82a15-455a-4d3b-99f8-446122b1d302
@@ -180,11 +180,11 @@ third_party_settings:
             configuration:
               id: jumpstart_ui_skipnav_main_anchor
               label: 'Main content anchor target'
-              provider: jumpstart_ui
               label_display: '0'
+              provider: jumpstart_ui
               context_mapping: {  }
-            additional: {  }
             weight: -10
+            additional: {  }
             third_party_settings: {  }
           65beb11f-8040-4951-8ad7-90e28d5a566a:
             uuid: 65beb11f-8040-4951-8ad7-90e28d5a566a
@@ -192,20 +192,20 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_full_title'
               label: 'Full Title'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: basic_string
+                label: hidden
                 settings: {  }
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-full-title
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
           4aa9941a-d5a0-4640-80b8-4f47de956405:
             uuid: 4aa9941a-d5a0-4640-80b8-4f47de956405
@@ -213,23 +213,23 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_photo'
               label: Photo
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: hidden
-                type: media_image_formatter
-                settings:
-                  view_mode: default
-                  image_style: medium_square
-                  link: false
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-person-photo
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
-            additional: {  }
+              formatter:
+                type: media_image_formatter
+                label: hidden
+                settings:
+                  view_mode: default
+                  link: false
+                  image_style: medium_square
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-person-photo
             weight: 0
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
       -
@@ -244,11 +244,14 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_links'
               label: Links
-              provider: layout_builder
               label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: link
+                label: hidden
                 settings:
                   trim_length: null
                   url_only: false
@@ -260,11 +263,8 @@ third_party_settings:
                     class: su-person-links
                   ds:
                     ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 8
+            additional: {  }
             third_party_settings: {  }
           82a532c7-d73f-491e-8ce3-3fd27c29a815:
             uuid: 82a532c7-d73f-491e-8ce3-3fd27c29a815
@@ -272,11 +272,14 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_map_url'
               label: 'Map URL'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: inline
                 type: link
+                label: inline
                 settings:
                   trim_length: null
                   url_only: false
@@ -286,11 +289,8 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-map-link
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 7
+            additional: {  }
             third_party_settings: {  }
           a69dd40a-c1a3-4266-b0ce-7efdaaa137fe:
             uuid: a69dd40a-c1a3-4266-b0ce-7efdaaa137fe
@@ -298,20 +298,20 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_location_address'
               label: 'Location Address'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: text_default
+                label: hidden
                 settings: {  }
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-location-address
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 6
+            additional: {  }
             third_party_settings: {  }
           e04c6120-8ac4-4ff0-bd25-8588de307dd1:
             uuid: e04c6120-8ac4-4ff0-bd25-8588de307dd1
@@ -319,21 +319,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_location_name'
               label: Location
-              provider: layout_builder
               label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: string
+                label: hidden
                 settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-location-name
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 5
+            additional: {  }
             third_party_settings: {  }
           8222e428-abc1-40e2-9309-e6ca03530c1f:
             uuid: 8222e428-abc1-40e2-9309-e6ca03530c1f
@@ -341,21 +341,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_mail_code'
               label: 'Mail Code'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: above
                 type: string
+                label: above
                 settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-mail-code
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 4
+            additional: {  }
             third_party_settings: {  }
           0cff0fa4-edcc-4bae-93bf-865242051b35:
             uuid: 0cff0fa4-edcc-4bae-93bf-865242051b35
@@ -363,20 +363,20 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_email'
               label: Email
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: email_mailto
+                label: hidden
                 settings: {  }
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-email
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 3
+            additional: {  }
             third_party_settings: {  }
           fc351b32-c332-4d8c-9da8-cd15a4692604:
             uuid: fc351b32-c332-4d8c-9da8-cd15a4692604
@@ -384,21 +384,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_fax'
               label: Fax
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: string
+                label: hidden
                 settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-fax
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 2
+            additional: {  }
             third_party_settings: {  }
           af2e67a2-b520-4708-bbf0-3c2a348669ed:
             uuid: af2e67a2-b520-4708-bbf0-3c2a348669ed
@@ -406,21 +406,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_mobile_phone'
               label: 'Mobile Phone'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: string
+                label: hidden
                 settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-mobile
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 1
+            additional: {  }
             third_party_settings: {  }
           a29d77d8-dbcd-4215-8a3a-2653cc2fcbd5:
             uuid: a29d77d8-dbcd-4215-8a3a-2653cc2fcbd5
@@ -428,21 +428,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_telephone'
               label: Contact
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: string
+                label: hidden
                 settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-telephone
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
           aaa920da-eeff-42f1-8b1a-63e940dee638:
             uuid: aaa920da-eeff-42f1-8b1a-63e940dee638
@@ -450,11 +450,14 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_affiliations'
               label: 'Stanford Affiliations'
-              provider: layout_builder
               label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: link
+                label: hidden
                 settings:
                   trim_length: null
                   url_only: false
@@ -466,11 +469,8 @@ third_party_settings:
                     class: su-person-affiliations
                   ds:
                     ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 4
+            additional: {  }
             third_party_settings: {  }
           b6ebfc7d-2035-4b63-a17c-adc15ba17fbe:
             uuid: b6ebfc7d-2035-4b63-a17c-adc15ba17fbe
@@ -478,22 +478,22 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_research'
               label: Research
-              provider: layout_builder
               label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: text_default
+                label: hidden
                 settings: {  }
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-research
                   ds:
                     ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 3
+            additional: {  }
             third_party_settings: {  }
           1c0fe326-6520-4837-8022-65865025a1ac:
             uuid: 1c0fe326-6520-4837-8022-65865025a1ac
@@ -501,11 +501,14 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_education'
               label: Education
-              provider: layout_builder
               label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: string
+                label: hidden
                 settings:
                   link_to_entity: false
                 third_party_settings:
@@ -513,11 +516,8 @@ third_party_settings:
                     class: su-person-education
                   ds:
                     ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 2
+            additional: {  }
             third_party_settings: {  }
           42f48ce2-9cfb-442c-9c7a-55a63ddf63e4:
             uuid: 42f48ce2-9cfb-442c-9c7a-55a63ddf63e4
@@ -525,20 +525,20 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:body'
               label: Body
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: text_default
+                label: hidden
                 settings: {  }
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-body
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
           cc3fd331-6cc8-4988-88ed-2312832a2e19:
             uuid: cc3fd331-6cc8-4988-88ed-2312832a2e19
@@ -546,11 +546,14 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_person:su_person_components'
               label: Components
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_reference_revisions_entity_view
+                label: hidden
                 settings:
                   view_mode: default
                 third_party_settings:
@@ -558,18 +561,13 @@ third_party_settings:
                     class: su-person-components
                   ds:
                     ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 1
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
-      whitelisted_blocks: {  }
-      blacklisted_blocks: {  }
       allowed_layouts:
         - jumpstart_ui_one_column
         - jumpstart_ui_two_column
@@ -577,6 +575,8 @@ third_party_settings:
         - stanford_person_header
         - stanford_person_body
         - ds_reset
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
       restricted_categories: {  }
   layout_library:
     enable: false
@@ -586,19 +586,19 @@ bundle: stanford_person
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 101
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 101
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
   su_person_affiliations:
-    weight: 109
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -607,65 +607,65 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 109
     region: content
   su_person_components:
     type: entity_reference_revisions_entity_view
-    weight: 121
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 121
     region: main
   su_person_education:
-    weight: 111
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 111
     region: content
   su_person_email:
-    weight: 118
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 118
     region: content
   su_person_fax:
-    weight: 115
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 115
     region: content
   su_person_first_name:
-    weight: 104
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 104
     region: content
   su_person_full_title:
-    weight: 106
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 106
     region: content
   su_person_last_name:
-    weight: 105
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 105
     region: content
   su_person_links:
-    weight: 120
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -674,33 +674,33 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 120
     region: content
   su_person_location_address:
-    weight: 117
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 117
     region: content
   su_person_location_name:
-    weight: 116
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 116
     region: content
   su_person_mail_code:
-    weight: 119
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 119
     region: content
   su_person_map_url:
-    weight: 124
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -709,27 +709,27 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 124
     region: content
   su_person_mobile_phone:
-    weight: 114
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 114
     region: content
   su_person_photo:
     type: entity_reference_entity_view
-    weight: 102
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 102
     region: content
   su_person_profile_link:
-    weight: 127
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -738,38 +738,38 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 127
     region: content
   su_person_research:
-    weight: 112
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 112
     region: content
   su_person_short_title:
-    weight: 103
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 103
     region: content
   su_person_telephone:
-    weight: 113
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 113
     region: content
   su_person_type_group:
-    weight: 126
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 126
     region: content
 hidden:
   layout_builder__layout: true

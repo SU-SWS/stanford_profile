@@ -13,17 +13,17 @@ weight: -4
 provider: null
 plugin: config_pages_block
 settings:
+  config_page_type: stanford_super_footer
+  config_page_view_mode: full
   id: config_pages_block
   label: 'Super Footer'
   provider: config_pages
   label_display: 0
-  config_page_type: stanford_super_footer
-  config_page_view_mode: full
 visibility:
   config_pages_values_access:
     id: config_pages_values_access
     negate: false
+    context_mapping: {  }
     config_page_field: stanford_super_footer|su_super_foot_enabled|boolean
     operator: '=='
     condition_value: '1'
-    context_mapping: {  }

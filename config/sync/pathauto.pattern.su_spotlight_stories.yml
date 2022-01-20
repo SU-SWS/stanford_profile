@@ -11,12 +11,12 @@ pattern: '/stories/[node:title]'
 selection_criteria:
   5c183125-0883-4c05-b61a-cdab4d071582:
     id: node_type
-    bundles:
-      su_spotlight: su_spotlight
     negate: false
+    uuid: 5c183125-0883-4c05-b61a-cdab4d071582
     context_mapping:
       node: node
-    uuid: 5c183125-0883-4c05-b61a-cdab4d071582
+    bundles:
+      su_spotlight: su_spotlight
 selection_logic: and
 weight: -5
 relationships: {  }

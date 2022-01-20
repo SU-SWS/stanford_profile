@@ -22,37 +22,38 @@ bundle: stanford_schedule
 mode: default
 content:
   su_schedule_date_time:
+    type: smartdate_default
     weight: 0
+    region: content
     settings:
       modal: false
     third_party_settings: {  }
-    type: smartdate_default
-    region: content
   su_schedule_description:
+    type: text_textarea
     weight: 2
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   su_schedule_headline:
+    type: string_textfield
     weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_schedule_location:
+    type: address_default
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: address_default
-    region: content
   su_schedule_speaker:
     type: paragraphs
     weight: 5
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -68,15 +69,14 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-    region: content
   su_schedule_url:
+    type: link_default
     weight: 4
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
 hidden:
   created: true
   status: true

@@ -20,11 +20,11 @@ bundle: stanford_entity
 mode: default
 content:
   su_entity_button:
-    weight: 3
+    type: link_class
     label: hidden
     settings:
-      trim_length: 80
       class: su-button
+      trim_length: 80
       url_only: false
       url_plain: false
       rel: '0'
@@ -32,19 +32,19 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    type: link_class
+    weight: 3
     region: content
   su_entity_description:
-    weight: 1
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-3
-    type: text_default
+    weight: 1
     region: content
   su_entity_headline:
-    weight: 0
+    type: entity_title_heading
     label: hidden
     settings:
       tag: h2
@@ -52,10 +52,10 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom
-    type: entity_title_heading
+    weight: 0
     region: content
   su_entity_item:
-    weight: 2
+    type: entity_reference_entity_view
     label: hidden
     settings:
       view_mode: stanford_card
@@ -65,7 +65,7 @@ content:
         class: su-margin-bottom-5
       ds:
         ds_limit: ''
-    type: entity_reference_entity_view
+    weight: 2
     region: content
 hidden:
   search_api_excerpt: true

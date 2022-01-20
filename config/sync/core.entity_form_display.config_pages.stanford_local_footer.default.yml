@@ -45,72 +45,72 @@ third_party_settings:
         - su_local_foot_f_url
         - su_local_foot_f_method
         - su_local_foot_f_button
+      label: 'Signup Form'
+      region: content
       parent_name: ''
       weight: 5
       format_type: details
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         open: false
         required_fields: false
-      label: 'Signup Form'
-      region: content
     group_primary_links:
       children:
         - su_local_foot_prime_h
         - su_local_foot_primary
+      label: 'Primary Links'
+      region: content
       parent_name: ''
       weight: 3
       format_type: details
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         open: false
         required_fields: false
-      label: 'Primary Links'
-      region: content
     group_secondary_links:
       children:
         - su_local_foot_second_h
         - su_local_foot_second
+      label: 'Secondary Links'
+      region: content
       parent_name: ''
       weight: 4
       format_type: details
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         open: false
         required_fields: false
-      label: 'Secondary Links'
-      region: content
     group_action_and_social_links:
       children:
         - su_local_foot_action
         - su_local_foot_social
+      label: 'Action and Social Links'
+      region: content
       parent_name: ''
       weight: 2
       format_type: details
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         open: false
         required_fields: false
-      label: 'Action and Social Links'
-      region: content
     group_su_local_lgn_btn:
       children:
         - su_local_foot_sunet_t
+      label: 'Login Button'
+      region: content
       parent_name: ''
       weight: 6
       format_type: details
-      region: content
       format_settings:
+        classes: ''
+        id: ''
+        open: false
         description: ''
         required_fields: true
-        id: ''
-        classes: ''
-        open: false
-      label: 'Login Button'
     group_local_lockup:
       children:
         - su_local_foot_use_loc
@@ -123,236 +123,236 @@ third_party_settings:
         - su_local_foot_line_4
         - su_local_foot_line_5
         - su_local_foot_loc_link
+      label: 'Local Lockup'
+      region: content
       parent_name: ''
       weight: 7
       format_type: details
-      region: content
       format_settings:
+        classes: ''
+        id: ''
+        open: false
         description: 'The local footer''s lockup settings'
         required_fields: true
-        id: ''
-        classes: ''
-        open: false
-      label: 'Local Lockup'
     group_content_blocks:
       children:
         - su_local_foot_pr_co
         - su_local_foot_se_co
         - su_local_foot_tr_co
+      label: 'Content Blocks'
+      region: content
       parent_name: ''
       weight: 8
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: false
+        description: ''
         required_fields: true
-      label: 'Content Blocks'
 id: config_pages.stanford_local_footer.default
 targetEntityType: config_pages
 bundle: stanford_local_footer
 mode: default
 content:
   su_footer_enabled:
+    type: boolean_checkbox
     weight: 0
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   su_local_foot_action:
+    type: link_default
     weight: 3
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_local_foot_address:
+    type: address_default
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: address_default
-    region: content
   su_local_foot_f_button:
+    type: string_textfield
     weight: 12
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_local_foot_f_intro:
+    type: text_textarea
     weight: 9
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   su_local_foot_f_method:
+    type: options_select
     weight: 11
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_local_foot_f_url:
+    type: link_default
     weight: 10
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_local_foot_line_1:
+    type: string_textfield
     weight: 19
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_local_foot_line_2:
+    type: string_textfield
     weight: 20
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_local_foot_line_3:
+    type: string_textfield
     weight: 21
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_local_foot_line_4:
+    type: string_textfield
     weight: 22
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_local_foot_line_5:
+    type: string_textfield
     weight: 23
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_local_foot_loc_img:
+    type: image_image
     weight: 17
+    region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    type: image_image
-    region: content
   su_local_foot_loc_link:
+    type: link_default
     weight: 24
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_local_foot_loc_op:
+    type: options_select
     weight: 18
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_local_foot_pr_co:
+    type: text_textarea
     weight: 17
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   su_local_foot_primary:
+    type: link_default
     weight: 5
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_local_foot_prime_h:
+    type: string_textfield
     weight: 4
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_local_foot_se_co:
+    type: text_textarea
     weight: 18
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   su_local_foot_second:
+    type: link_default
     weight: 6
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_local_foot_second_h:
+    type: string_textfield
     weight: 5
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_local_foot_social:
+    type: link_default
     weight: 4
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_local_foot_sunet_t:
+    type: string_textfield
     weight: 7
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_local_foot_tr_co:
+    type: text_textarea
     weight: 19
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   su_local_foot_use_loc:
+    type: boolean_checkbox
     weight: 15
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   su_local_foot_use_logo:
+    type: boolean_checkbox
     weight: 16
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
 hidden:
   label: true

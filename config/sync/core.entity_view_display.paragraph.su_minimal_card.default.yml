@@ -33,18 +33,18 @@ mode: default
 content:
   su_minimal_card_image:
     type: media_responsive_image_formatter
-    weight: 0
     label: hidden
     settings:
       view_mode: default
-      image_style: card_478x318
       link: false
+      image_style: card_478x318
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 0
     region: image
   su_minimal_card_link:
-    weight: 1
+    type: link
     label: hidden
     settings:
       trim_length: 80
@@ -53,7 +53,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 1
     region: cta
 hidden:
   search_api_excerpt: true

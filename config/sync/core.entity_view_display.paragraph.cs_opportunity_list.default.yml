@@ -16,11 +16,11 @@ bundle: cs_opportunity_list
 mode: default
 content:
   su_opp_list_link:
-    weight: 1
+    type: link_class
     label: hidden
     settings:
-      trim_length: 80
       class: 'su-link su-button'
+      trim_length: 80
       url_only: false
       url_plain: true
       rel: '0'
@@ -28,17 +28,17 @@ content:
     third_party_settings:
       field_formatter_class:
         class: text-align-center
-    type: link_class
+    weight: 1
     region: content
   su_opp_list_view:
-    weight: 0
+    type: viewfield_default
     label: hidden
     settings:
       view_title: hidden
       always_build_output: false
       empty_view_title: hidden
     third_party_settings: {  }
-    type: viewfield_default
+    weight: 0
     region: content
 hidden:
   search_api_excerpt: true

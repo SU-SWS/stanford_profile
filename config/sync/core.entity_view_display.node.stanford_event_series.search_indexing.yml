@@ -23,13 +23,21 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
   layout_library:
     enable: false
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_one_column_overlay
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+        - stanford_events_editorial_content
+        - stanford_events_body
+      blacklisted_blocks: {  }
       whitelisted_blocks:
         'Chaos Tools': {  }
         'Config Pages': {  }
@@ -65,14 +73,6 @@ third_party_settings:
         'Stanford SimpleSAML PHP': {  }
         System:
           - system_messages_block
-      blacklisted_blocks: {  }
-      allowed_layouts:
-        - jumpstart_ui_one_column
-        - jumpstart_ui_one_column_overlay
-        - jumpstart_ui_two_column
-        - jumpstart_ui_three_column
-        - stanford_events_editorial_content
-        - stanford_events_body
       restricted_categories: {  }
 id: node.stanford_event_series.search_indexing
 targetEntityType: node
@@ -81,23 +81,23 @@ mode: search_indexing
 content:
   su_event_series_components:
     type: entity_reference_revisions_entity_view
-    weight: 4
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 4
     region: content
   su_event_series_dek:
     type: string
-    weight: 2
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 2
+    region: content
   su_event_series_event:
-    weight: 3
+    type: entity_reference_entity_view
     label: hidden
     settings:
       view_mode: search_indexing
@@ -107,26 +107,26 @@ content:
         class: ''
       ds:
         ds_limit: ''
-    type: entity_reference_entity_view
+    weight: 3
     region: content
   su_event_series_subheadline:
     type: string
-    weight: 1
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 1
+    region: content
   su_event_series_type:
     type: entity_reference_label
-    weight: 0
-    region: content
     label: hidden
     settings:
       link: false
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 0
+    region: content
 hidden:
   layout_builder__layout: true
   links: true

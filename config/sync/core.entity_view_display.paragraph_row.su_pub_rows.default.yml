@@ -13,13 +13,13 @@ bundle: su_pub_rows
 mode: default
 content:
   su_pubs_components:
-    weight: 0
+    type: entity_reference_revisions_entity_view
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    weight: 0
     region: content
 hidden:
   search_api_excerpt: true

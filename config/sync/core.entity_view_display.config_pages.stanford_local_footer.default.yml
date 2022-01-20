@@ -92,7 +92,7 @@ bundle: stanford_local_footer
 mode: default
 content:
   su_local_foot_action:
-    weight: 5
+    type: link
     label: hidden
     settings:
       trim_length: null
@@ -105,39 +105,39 @@ content:
         class: ''
       ds:
         ds_limit: ''
-    type: link
+    weight: 5
     region: action_links
   su_local_foot_address:
-    weight: 4
+    type: address_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: address_default
+    weight: 4
     region: address
   su_local_foot_f_button:
-    weight: 14
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 14
     region: signup_form_field_submit_value
   su_local_foot_f_intro:
-    weight: 11
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 11
     region: signup_form_content
   su_local_foot_f_method:
-    weight: 13
+    type: list_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 13
     region: signup_form_method
   su_local_foot_f_url:
-    weight: 12
+    type: link
     label: hidden
     settings:
       trim_length: null
@@ -148,17 +148,17 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    type: link
+    weight: 12
     region: signup_form_action
   su_local_foot_pr_co:
-    weight: 1
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 1
     region: cell1
   su_local_foot_primary:
-    weight: 8
+    type: link
     label: hidden
     settings:
       trim_length: null
@@ -171,25 +171,25 @@ content:
         class: ''
       ds:
         ds_limit: ''
-    type: link
+    weight: 8
     region: primary_links
   su_local_foot_prime_h:
-    weight: 7
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 7
     region: primary_links_header
   su_local_foot_se_co:
-    weight: 2
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 2
     region: cell2
   su_local_foot_second:
-    weight: 10
+    type: link
     label: hidden
     settings:
       trim_length: null
@@ -202,18 +202,18 @@ content:
         class: ''
       ds:
         ds_limit: ''
-    type: link
+    weight: 10
     region: secondary_links
   su_local_foot_second_h:
-    weight: 9
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 9
     region: secondary_links_header
   su_local_foot_social:
-    weight: 6
+    type: link
     label: hidden
     settings:
       trim_length: null
@@ -226,22 +226,22 @@ content:
         class: ''
       ds:
         ds_limit: ''
-    type: link
+    weight: 6
     region: social_links
   su_local_foot_sunet_t:
-    weight: 15
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 15
     region: weblogin_text
   su_local_foot_tr_co:
-    weight: 3
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 3
     region: cell3
 hidden:
   search_api_excerpt: true

@@ -15,13 +15,13 @@ bundle: image
 mode: stanford_image_stanford_circle
 content:
   field_media_image:
-    label: hidden
     type: image
+    label: hidden
     settings:
-      image_style: stanford_circle
       image_link: ''
-    weight: 6
+      image_style: stanford_circle
     third_party_settings: {  }
+    weight: 6
     region: content
 hidden:
   created: true
