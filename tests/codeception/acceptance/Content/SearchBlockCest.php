@@ -21,6 +21,12 @@ class SearchBlockCest {
     $I->see('Site Settings has been updated');
     $I->amOnPage('/');
     $I->dontSeeElement('.su-site-search__input');
+
+    $I->amOnPage('/admin/config/system/basic-site-settings');
+    $I->uncheckOption('Hide Site Search');
+    $I->click('Save');
+    $I->amOnPage('/');
+    $I->seeElement('.su-site-search__input');
   }
 
 }
