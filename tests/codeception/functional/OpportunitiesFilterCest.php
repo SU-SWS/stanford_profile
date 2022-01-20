@@ -2,6 +2,8 @@
 
 /**
  * Class OpportunitiesFilterCest.
+ *
+ * @group mikes
  */
 class OpportunitiesFilterCest {
 
@@ -11,6 +13,7 @@ class OpportunitiesFilterCest {
   public function testFilters(FunctionalTester $I) {
     $user = $I->createUserWithRoles(['site_manager','layout_builder_user']);
     $I->logInAs($user->id());
+    $I->resizeWindow(1400, 1400);
     /** @var \Drupal\node\NodeInterface $node */
     $node = $I->createEntity([
       'type' => 'stanford_page',

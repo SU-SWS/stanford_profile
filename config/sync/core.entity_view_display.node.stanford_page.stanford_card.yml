@@ -90,18 +90,6 @@ targetEntityType: node
 bundle: stanford_page
 mode: stanford_card
 content:
-  su_basic_page_type:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: false
-    third_party_settings:
-      field_formatter_class:
-        class: su-basic-page-types__categories
-      ds:
-        ds_limit: ''
-    weight: 2
-    region: card_super_headline
   su_page_banner:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -121,7 +109,7 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-basic-page-types__description
-    weight: 4
+    weight: 3
     region: card_body
   su_page_image:
     type: media_multimedia_formatter
@@ -145,13 +133,10 @@ content:
     weight: 1
     region: card_image
 hidden:
-  flag_cs_resources: false
   layout_builder__layout: true
   layout_selection: true
   links: true
   search_api_excerpt: true
   stanford_intranet__access: true
+  su_basic_page_type: true
   su_page_components: true
-  su_page_resource_audience: true
-  su_page_resource_dimension: true
-  su_page_resource_type: true

@@ -25,6 +25,16 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
+  su_hide_site_search:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
   su_site_dropdowns:
     type: boolean
     label: above

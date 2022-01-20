@@ -5,14 +5,17 @@ dependencies:
   config:
     - config_pages.type.stanford_events_importer
     - field.field.config_pages.stanford_events_importer.su_event_xml_url
+    - field.field.config_pages.stanford_events_importer.su_localist_url
   module:
     - field_group
     - stanford_events_importer
+    - stanford_fields
 third_party_settings:
   field_group:
     group_import_events:
       children:
         - su_event_xml_url
+        - su_localist_url
       label: 'Import Events'
       region: content
       parent_name: ''
@@ -33,7 +36,14 @@ content:
     type: stanford_events_importer_apiurl_field_widget
     weight: 1
     region: content
+    settings: {  }
+    third_party_settings: {  }
+  su_localist_url:
+    type: localist_url
+    weight: 2
+    region: content
     settings:
+      base_url: 'https://stanford.enterprise.localist.com'
       placeholder_url: ''
       placeholder_title: ''
       select_distinct: false

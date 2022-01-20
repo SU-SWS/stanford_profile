@@ -25,6 +25,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  su_hide_site_search:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   su_site_dropdowns:
     type: boolean_checkbox
     weight: 4

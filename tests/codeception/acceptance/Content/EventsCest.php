@@ -220,10 +220,10 @@ class EventsCest {
 
   /**
    * Clone events get incremented date.
-   *
-   * @group testme
    */
   public function testClone(AcceptanceTester $I) {
+    $I->runDrush('migrate:rollback --group=courses,opportunities,stanford_events');
+
     $user = $I->createUserWithRoles(['contributor']);
     /** @var \Drupal\node\NodeInterface $node */
     $node = $this->createEventNode($I);
@@ -244,6 +244,7 @@ class EventsCest {
     $node_storage = \Drupal::entityTypeManager()->getStorage('node');
     $nids = $node_storage->getQuery()
       ->condition('type', 'stanford_event')
+      ->condition('nid', $node->id(), '!=')
       ->sort('nid', 'DESC')
       ->range(0, 1)
       ->accessCheck(FALSE)
@@ -254,7 +255,7 @@ class EventsCest {
 
     $I->assertNotEquals($cloned_date_time, $original_date_time);
     $diff = $cloned_date_time - $original_date_time;
-    $I->assertGreaterThanOrEqual(1, round($diff / (60 * 60 * 24 * 30.5)) / 3);
+    $I->assertEquals(6, round($diff / (60 * 60 * 24 * 30.5)));
   }
 
   /**
