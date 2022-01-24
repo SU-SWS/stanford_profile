@@ -1,7 +1,44 @@
 uuid: b35dd6b6-930d-4b4c-aeb2-443a0ba6fb59
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - media.type.embeddable
+    - media.type.file
+    - media.type.google_form
+    - media.type.image
+    - media.type.video
+    - node.type.stanford_event
+    - node.type.stanford_event_series
+    - node.type.stanford_news
+    - node.type.stanford_page
+    - node.type.stanford_person
+    - node.type.stanford_publication
+    - node.type.su_opportunity
+    - node.type.su_spotlight
+    - taxonomy.vocabulary.basic_page_types
+    - taxonomy.vocabulary.event_audience
+    - taxonomy.vocabulary.stanford_event_types
+    - taxonomy.vocabulary.stanford_news_topics
+    - taxonomy.vocabulary.stanford_person_types
+    - taxonomy.vocabulary.stanford_publication_topics
+  module:
+    - content_lock
+    - dropzonejs
+    - field_permissions
+    - media
+    - menu_admin_per_menu
+    - node
+    - paragraphs
+    - path
+    - shortcut
+    - stanford_publication
+    - system
+    - taxonomy
+    - toolbar
+    - ui_patterns_library
+    - view_unpublished
+    - views_bulk_edit
 id: site_editor
 label: 'Site Editor'
 weight: -2
@@ -9,17 +46,13 @@ is_admin: false
 permissions:
   - 'access administration pages'
   - 'access content overview'
-  - 'access file_browser entity browser pages'
-  - 'access image_browser entity browser pages'
   - 'access media overview'
-  - 'access media_browser entity browser pages'
   - 'access patterns page'
   - 'access shortcuts'
   - 'access site in maintenance mode'
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
-  - 'access video_browser entity browser pages'
   - 'add citation entities'
   - 'administer main menu items'
   - 'administer news-topics menu items'
@@ -35,6 +68,7 @@ permissions:
   - 'create media'
   - 'create stanford_event content'
   - 'create stanford_event_series content'
+  - 'create stanford_gallery_images media'
   - 'create stanford_news content'
   - 'create stanford_page content'
   - 'create stanford_person content'
@@ -49,8 +83,6 @@ permissions:
   - 'create terms in stanford_publication_topics'
   - 'create url aliases'
   - 'create video media'
-  - 'delete any embeddable media'
-  - 'delete any google_form media'
   - 'delete any stanford_event content'
   - 'delete any stanford_event_series content'
   - 'delete any stanford_news content'
@@ -67,6 +99,7 @@ permissions:
   - 'delete own image media'
   - 'delete own stanford_event content'
   - 'delete own stanford_event_series content'
+  - 'delete own stanford_gallery_images media'
   - 'delete own stanford_news content'
   - 'delete own stanford_page content'
   - 'delete own stanford_person content'
@@ -89,9 +122,10 @@ permissions:
   - 'delete terms in stanford_person_types'
   - 'delete terms in stanford_publication_topics'
   - 'dropzone upload files'
-  - 'edit any embeddable media'
+  - 'edit any image media'
   - 'edit any stanford_event content'
   - 'edit any stanford_event_series content'
+  - 'edit any stanford_gallery_images media'
   - 'edit any stanford_news content'
   - 'edit any stanford_page content'
   - 'edit any stanford_person content'
@@ -108,6 +142,7 @@ permissions:
   - 'edit own image media'
   - 'edit own stanford_event content'
   - 'edit own stanford_event_series content'
+  - 'edit own stanford_gallery_images media'
   - 'edit own stanford_news content'
   - 'edit own stanford_page content'
   - 'edit own stanford_person content'
@@ -130,7 +165,6 @@ permissions:
   - 'revert su_opportunity revisions'
   - 'revert su_spotlight revisions'
   - 'update media'
-  - 'use advanced search'
   - 'use views bulk edit'
   - 'view all media revisions'
   - 'view all revisions'

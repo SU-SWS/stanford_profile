@@ -18,70 +18,70 @@ third_party_settings:
       children:
         - su_person_cap_username
         - su_person_cap_password
+      label: Authorization
+      region: content
       parent_name: ''
       weight: 0
       format_type: details
-      region: content
       format_settings:
+        classes: ''
+        id: ''
+        open: false
         description: 'Please enter your authentication information for the CAP API. If you don''t have these credentials yet you can <a href="https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=3ecd311a13b832008a9175c36144b069">File a HelpSU request.</a>'
         required_fields: true
-        id: ''
-        classes: ''
-        open: false
-      label: Authorization
 id: config_pages.stanford_person_importer.default
 targetEntityType: config_pages
 bundle: stanford_person_importer
 mode: default
 content:
   su_person_cap_password:
+    type: string_textfield
     weight: 2
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_person_cap_username:
+    type: string_textfield
     weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_person_child_orgs:
+    type: boolean_checkbox
     weight: 3
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   su_person_orgs:
+    type: entity_reference_autocomplete
     weight: 2
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   su_person_sunetid:
+    type: string_textfield
     weight: 4
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_person_workgroup:
+    type: string_textfield
     weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
 hidden:
   label: true

@@ -18,49 +18,49 @@ third_party_settings:
         - su_simplesaml_affil
         - su_simplesaml_allowed
         - su_simplesaml_users
+      label: 'Login Restrictions'
+      region: content
       parent_name: ''
       weight: 1
       format_type: details
-      region: content
       format_settings:
-        description: "Restrict who can log into the site by limiting to workgroups or SUNetIDs. Leave these empty to allow any user with a valid SUNet to log in.\r\nThis is an allowed list, not a restricted list. The order of process is:\r\n<ol>\r\n<li>User ID: if the user has a matching SUNetID, they will be allowed.</li>\r\n<li>Affiliations: if a user is a member of the chosen affiliations, they will be allowed.</li>\r\n<li>Workgroups: If a user is a member of the configured workgroups, they will be allowed.</li>\r\n</ol>\r\nIf the user does not satisfy any of the three scenarios, they will be denied access. \r\n<strong>Be sure to configure the settings to allow yourself access in some form, otherwise on your next login, you will be denied access.</strong>"
-        id: ''
         classes: ''
+        id: ''
         open: false
+        description: "Restrict who can log into the site by limiting to workgroups or SUNetIDs. Leave these empty to allow any user with a valid SUNet to log in.\r\nThis is an allowed list, not a restricted list. The order of process is:\r\n<ol>\r\n<li>User ID: if the user has a matching SUNetID, they will be allowed.</li>\r\n<li>Affiliations: if a user is a member of the chosen affiliations, they will be allowed.</li>\r\n<li>Workgroups: If a user is a member of the configured workgroups, they will be allowed.</li>\r\n</ol>\r\nIf the user does not satisfy any of the three scenarios, they will be denied access. \r\n<strong>Be sure to configure the settings to allow yourself access in some form, otherwise on your next login, you will be denied access.</strong>"
         required_fields: false
-      label: 'Login Restrictions'
 id: config_pages.stanford_saml.default
 targetEntityType: config_pages
 bundle: stanford_saml
 mode: default
 content:
   su_simplesaml_affil:
-    weight: 4
-    settings: {  }
-    third_party_settings: {  }
     type: options_select
+    weight: 4
     region: content
-  su_simplesaml_allowed:
-    weight: 5
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  su_simplesaml_roles:
-    weight: 0
     settings: {  }
     third_party_settings: {  }
-    type: saml_role_mapping
+  su_simplesaml_allowed:
+    type: string_textfield
+    weight: 5
     region: content
-  su_simplesaml_users:
-    weight: 6
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+  su_simplesaml_roles:
+    type: saml_role_mapping
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
+  su_simplesaml_users:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   label: true

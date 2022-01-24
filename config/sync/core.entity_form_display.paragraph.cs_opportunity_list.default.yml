@@ -15,19 +15,19 @@ bundle: cs_opportunity_list
 mode: default
 content:
   su_opp_list_link:
+    type: link_default
     weight: 1
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_opp_list_view:
+    type: viewfield_select
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: viewfield_select
-    region: content
 hidden:
   created: true
   status: true

@@ -15,6 +15,13 @@ class ViewsBulkEditCest {
   protected $nodes;
 
   /**
+   * Rollback all migrations.
+   */
+  public function _before(AcceptanceTester $I) {
+    $I->runDrush('migrate:rollback --group=courses,opportunities,stanford_events');
+  }
+
+  /**
    * Bulk editing content changes the field values.
    */
   public function testBulkEdits(AcceptanceTester $I) {

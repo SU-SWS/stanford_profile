@@ -30,16 +30,16 @@ dependencies:
     - views
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: true
+    allow_custom: false
     sections:
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: ''
           extra_classes: ''
           centered: null
           columns: default
-          label: ''
         components:
           bfffcb2b-e9dc-4b67-ad6d-87ddffb2161e:
             uuid: bfffcb2b-e9dc-4b67-ad6d-87ddffb2161e
@@ -47,20 +47,20 @@ third_party_settings:
             configuration:
               id: system_breadcrumb_block
               label: Breadcrumbs
-              provider: system
               label_display: '0'
+              provider: system
               context_mapping: {  }
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
+          label: ''
           extra_classes: spotlight-header-content-container
           centered: centered-container
           orientation: equal
-          label: ''
         components:
           c1d34561-d1ec-4ef3-b369-2bd212415cb4:
             uuid: c1d34561-d1ec-4ef3-b369-2bd212415cb4
@@ -68,23 +68,23 @@ third_party_settings:
             configuration:
               id: 'field_block:node:su_spotlight:su_spotlight_feature_image'
               label: 'Feature Image'
-              provider: layout_builder
               label_display: '0'
-              formatter:
-                label: hidden
-                type: media_image_formatter
-                settings:
-                  view_mode: default
-                  image_style: stanford_circle
-                  link: false
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
-            additional: {  }
+              formatter:
+                type: media_image_formatter
+                label: hidden
+                settings:
+                  view_mode: default
+                  link: false
+                  image_style: stanford_circle
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
             weight: 0
+            additional: {  }
             third_party_settings: {  }
           da392267-29d9-4a63-b616-3dcd58babeac:
             uuid: da392267-29d9-4a63-b616-3dcd58babeac
@@ -92,21 +92,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:su_spotlight:su_spotlight_student_name'
               label: 'Student Name'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_title_heading
+                label: hidden
                 settings:
                   tag: h2
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 3
+            additional: {  }
             third_party_settings: {  }
           492bed26-1712-4e43-8f4e-f494129ddbd8:
             uuid: 492bed26-1712-4e43-8f4e-f494129ddbd8
@@ -114,30 +114,30 @@ third_party_settings:
             configuration:
               id: 'field_block:node:su_spotlight:su_spotlight_grad_area'
               label: 'Graduation Year and Area'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: string
+                label: hidden
                 settings:
                   link_to_entity: false
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 4
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: ''
           extra_classes: spotlight-body-content-container
           centered: centered-container
           columns: flex-7-of-12
-          label: ''
         components:
           bc090378-a6c5-438c-9b39-68be99e5f961:
             uuid: bc090378-a6c5-438c-9b39-68be99e5f961
@@ -145,20 +145,20 @@ third_party_settings:
             configuration:
               id: 'field_block:node:su_spotlight:body'
               label: Story
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: text_default
+                label: hidden
                 settings: {  }
                 third_party_settings:
                   field_formatter_class:
                     class: su-spotlight-body
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 5
+            additional: {  }
             third_party_settings: {  }
           3dfd8da7-9421-45ee-84db-8c1f4df497fb:
             uuid: 3dfd8da7-9421-45ee-84db-8c1f4df497fb
@@ -166,20 +166,20 @@ third_party_settings:
             configuration:
               id: 'field_block:node:su_spotlight:su_spotlight_context'
               label: Caption/Context
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: basic_string
+                label: hidden
                 settings: {  }
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 6
+            additional: {  }
             third_party_settings: {  }
           2134b8c5-fc33-49e7-bce4-67620fa484b1:
             uuid: 2134b8c5-fc33-49e7-bce4-67620fa484b1
@@ -187,21 +187,21 @@ third_party_settings:
             configuration:
               id: 'field_block:node:su_spotlight:title'
               label: Title
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_title_heading
+                label: hidden
                 settings:
                   tag: h1
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 3
+            additional: {  }
             third_party_settings: {  }
           bb8bb003-c864-4be9-92bf-e8795e43b478:
             uuid: bb8bb003-c864-4be9-92bf-e8795e43b478
@@ -209,29 +209,29 @@ third_party_settings:
             configuration:
               id: 'field_block:node:su_spotlight:su_spotlight_quote'
               label: Quote
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: text_default
+                label: hidden
                 settings: {  }
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-            additional: {  }
             weight: 4
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: ''
           extra_classes: ''
           centered: centered-container
           columns: default
-          label: ''
         components:
           86250bed-476e-4ece-8626-2cc10e3a08a0:
             uuid: 86250bed-476e-4ece-8626-2cc10e3a08a0
@@ -239,13 +239,13 @@ third_party_settings:
             configuration:
               id: 'views_block:su_spotlights-related_stories'
               label: 'Explore More Stories'
-              provider: views
               label_display: visible
+              provider: views
+              context_mapping: {  }
               views_label: 'Explore More Stories'
               items_per_page: none
-              context_mapping: {  }
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
   layout_library:
@@ -253,21 +253,21 @@ third_party_settings:
   field_group:
     group_spotlight_container:
       children: {  }
+      label: spotlight-container
       parent_name: ''
+      region: hidden
       weight: 20
       format_type: fieldset
-      region: hidden
       format_settings:
-        id: ''
         classes: su-spotlight-info-container
+        id: ''
         description: ''
-      label: spotlight-container
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
-      whitelisted_blocks: {  }
-      blacklisted_blocks: {  }
       allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
       restricted_categories: {  }
 id: node.su_spotlight.default
 targetEntityType: node
@@ -275,56 +275,56 @@ bundle: su_spotlight
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 101
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 101
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
   su_spotlight_background_image:
     type: entity_reference_entity_view
-    weight: 107
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 107
     region: content
   su_spotlight_context:
-    weight: 109
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 109
     region: main
   su_spotlight_feature_image:
     type: entity_reference_entity_view
-    weight: 102
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 102
     region: content
   su_spotlight_quote:
-    weight: 108
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 108
     region: main
   su_spotlight_student_name:
-    weight: 104
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 104
     region: content
 hidden:
   search_api_excerpt: true

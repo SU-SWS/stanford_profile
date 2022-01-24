@@ -92,12 +92,6 @@ filters:
     weight: -46
     settings:
       default_view_mode: default
-      allowed_media_types:
-        embeddable: embeddable
-        file: file
-        google_form: google_form
-        image: image
-        video: video
       allowed_view_modes:
         default: default
         stanford_image_large: stanford_image_large
@@ -107,6 +101,12 @@ filters:
         stanford_image_stanford_circle: stanford_image_stanford_circle
         stanford_image_thumb_square: stanford_image_thumb_square
         thumbnail: thumbnail
+      allowed_media_types:
+        embeddable: embeddable
+        file: file
+        google_form: google_form
+        image: image
+        video: video
   stanford_media_embed_markup:
     id: stanford_media_embed_markup
     provider: stanford_media

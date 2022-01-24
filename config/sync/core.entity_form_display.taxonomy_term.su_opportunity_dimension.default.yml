@@ -18,8 +18,8 @@ content:
     weight: 2
     region: content
     settings:
-      placeholder: ''
       rows: 5
+      placeholder: ''
     third_party_settings: {  }
   name:
     type: string_textfield
@@ -31,17 +31,17 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 3
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   su_dimension_color:
+    type: color_field_widget_box
     weight: 1
+    region: content
     settings:
       default_colors: '#2596D1,#FB9B2B,#643666,#175E54,#B1040E,#199969'
     third_party_settings: {  }
-    type: color_field_widget_box
-    region: content
 hidden:
   path: true

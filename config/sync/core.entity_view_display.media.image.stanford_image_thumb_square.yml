@@ -13,8 +13,8 @@ dependencies:
     - layout_builder
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 _core:
   default_config_hash: 4Ny-qpsNb-KZOCogLHV8JHe6zj4XdpwpDi_eu-qFVCs
 id: media.image.stanford_image_thumb_square
@@ -23,14 +23,14 @@ bundle: image
 mode: stanford_image_thumb_square
 content:
   field_media_image:
+    type: image
     label: hidden
     settings:
-      image_style: thumbnail_square
       image_link: ''
+      image_style: thumbnail_square
     third_party_settings:
       field_formatter_class:
         class: ''
-    type: image
     weight: 0
     region: content
 hidden:

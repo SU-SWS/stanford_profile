@@ -1,7 +1,13 @@
 uuid: 1497b449-5b81-4752-ab4b-a543431405e6
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - field_permissions
+    - flag
+    - media
+    - system
+    - ui_patterns_library
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
 id: anonymous
@@ -13,7 +19,6 @@ permissions:
   - 'access patterns page'
   - 'flag cs_favorites'
   - 'flag cs_resources'
-  - 'search content'
   - 'unflag cs_favorites'
   - 'unflag cs_resources'
   - 'view field_media_embeddable_code'

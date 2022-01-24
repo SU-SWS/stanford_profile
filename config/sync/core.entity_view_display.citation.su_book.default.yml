@@ -23,20 +23,20 @@ bundle: su_book
 mode: default
 content:
   name:
-    label: above
     type: string
-    weight: -4
-    region: content
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: -4
+    region: content
   su_author:
-    weight: 0
+    type: name_default
     label: above
     settings:
       format: default
-      list_format: ''
       markup: none
+      list_format: ''
       link_target: ''
       preferred_field_reference: ''
       preferred_field_reference_separator: ', '
@@ -47,30 +47,30 @@ content:
         class: su-margin-bottom-2
       ds:
         ds_limit: ''
-    type: name_default
+    weight: 0
     region: content
   su_doi:
-    weight: 7
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-2
-    type: string
+    weight: 7
     region: content
   su_publisher:
     type: string
-    weight: 0
-    region: content
     label: above
     settings:
       link_to_entity: false
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-2
+    weight: 0
+    region: content
   su_year:
-    weight: 2
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
@@ -78,7 +78,7 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-2
-    type: number_integer
+    weight: 2
     region: content
 hidden:
   search_api_excerpt: true

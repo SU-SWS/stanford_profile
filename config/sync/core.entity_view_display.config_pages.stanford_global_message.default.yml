@@ -40,23 +40,23 @@ bundle: stanford_global_message
 mode: default
 content:
   su_global_msg_header:
-    weight: 1
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 1
     region: alert_header
   su_global_msg_label:
-    weight: 0
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 0
     region: alert_label
   su_global_msg_link:
-    weight: 3
+    type: link
     label: hidden
     settings:
       trim_length: null
@@ -67,14 +67,14 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    type: link
+    weight: 3
     region: alert_text
   su_global_msg_message:
-    weight: 2
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 2
     region: alert_text
 hidden:
   search_api_excerpt: true

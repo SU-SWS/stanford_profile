@@ -14,8 +14,8 @@ dependencies:
     - layout_builder
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: media.stanford_gallery_images.media_library
 targetEntityType: media
 bundle: stanford_gallery_images
@@ -23,15 +23,15 @@ mode: media_library
 content:
   thumbnail:
     type: image
-    weight: 0
     label: hidden
     settings:
-      image_style: medium_square
       image_link: ''
-    region: content
+      image_style: medium_square
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 0
+    region: content
 hidden:
   created: true
   name: true

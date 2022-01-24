@@ -5,6 +5,7 @@ dependencies: {  }
 id: dev
 label: 'Development Environment'
 description: ''
+weight: 0
 folder: ../config/envs/dev
 module:
   acquia_purge: 0
@@ -21,4 +22,3 @@ blacklist: {  }
 graylist: {  }
 graylist_dependents: true
 graylist_skip_equal: false
-weight: 0

@@ -16,11 +16,11 @@ plugin: user_links
 settings:
   id: user_links
   label: 'User Links block'
-  provider: cardinal_service_blocks
   label_display: '0'
+  provider: cardinal_service_blocks
 visibility:
   request_path:
     id: request_path
-    pages: '/admin/*'
     negate: true
     context_mapping: {  }
+    pages: '/admin/*'

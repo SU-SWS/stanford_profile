@@ -1,11 +1,11 @@
 id: su_site_name
 label: 'Site Name'
 ui_limit: 'stanford_local_footer|*'
-properties:
-  content:
-    value: '[site:name]'
-    format: stanford_minimal_html
 type: token
 type_label: 'Token field'
 entities:
   config_pages: config_pages
+properties:
+  content:
+    value: '[site:name]'
+    format: stanford_minimal_html

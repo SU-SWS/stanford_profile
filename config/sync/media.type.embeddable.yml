@@ -15,9 +15,7 @@ source: embeddable
 queue_thumbnail_downloads: false
 new_revision: false
 source_configuration:
-  unstructured_field_name: field_media_embeddable_code
-  embed_validation:
-    localist: localist
+  source_field: field_media_embeddable_oembed
   thumbnails_directory: 'public://oembed_thumbnails'
   providers:
     - 'ArcGIS StoryMaps'
@@ -36,7 +34,9 @@ source_configuration:
     - Spotify
     - 'Stanford Digital Repository'
     - Twitter
-  source_field: field_media_embeddable_oembed
   oembed_field_name: field_media_embeddable_oembed
+  unstructured_field_name: field_media_embeddable_code
+  embed_validation:
+    localist: localist
 field_map:
   title: name

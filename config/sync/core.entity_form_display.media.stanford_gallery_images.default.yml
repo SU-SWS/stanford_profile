@@ -23,22 +23,22 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_gallery_caption:
+    type: string_textfield
     weight: 26
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_gallery_image:
     type: image_focal_point
     weight: 1
     region: content
     settings:
+      progress_indicator: throbber
       preview_image_style: thumbnail
       preview_link: true
       offsets: '50,50'
-      progress_indicator: throbber
     third_party_settings: {  }
 hidden:
   created: true

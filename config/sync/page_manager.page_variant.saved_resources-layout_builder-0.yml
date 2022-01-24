@@ -6,20 +6,21 @@ dependencies:
     - page_manager.page.saved_resources
 id: saved_resources-layout_builder-0
 label: 'Layout Builder'
+weight: 0
 variant: layout_builder
 variant_settings:
   id: layout_builder
-  uuid: 910d3844-b4fa-45cb-81c0-0edf61a0e317
   label: null
   weight: 0
+  uuid: 910d3844-b4fa-45cb-81c0-0edf61a0e317
   sections:
     -
       layout_id: jumpstart_ui_one_column
       layout_settings:
+        label: ''
         extra_classes: ''
         centered: centered-container
         columns: default
-        label: ''
       components:
         119d931a-8986-481e-b8d9-907820cd35a6:
           uuid: 119d931a-8986-481e-b8d9-907820cd35a6
@@ -27,13 +28,13 @@ variant_settings:
           configuration:
             id: jumpstart_ui_page_heading
             label: 'Heading Block'
-            provider: jumpstart_ui
             label_display: '0'
+            provider: jumpstart_ui
+            context_mapping: {  }
             heading_text: 'Saved Resources'
             wrapper: h1
-            context_mapping: {  }
-          additional: {  }
           weight: 0
+          additional: {  }
           third_party_settings: {  }
         460660b8-c4e7-442b-be33-84362d09d049:
           uuid: 460660b8-c4e7-442b-be33-84362d09d049
@@ -41,17 +42,16 @@ variant_settings:
           configuration:
             id: 'views_block:cs_resources-user_favorite_resources'
             label: ''
-            provider: views
             label_display: '0'
+            provider: views
+            context_mapping: {  }
             views_label: ''
             items_per_page: none
-            context_mapping: {  }
-          additional: {  }
           weight: 1
+          additional: {  }
           third_party_settings: {  }
       third_party_settings: {  }
 page: saved_resources
-weight: 0
 selection_criteria: {  }
 selection_logic: and
 static_context: {  }

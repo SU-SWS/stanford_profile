@@ -15,13 +15,13 @@ bundle: image
 mode: stanford_image_large
 content:
   field_media_image:
-    label: hidden
     type: image
+    label: hidden
     settings:
-      image_style: large
       image_link: ''
-    weight: 6
+      image_style: large
     third_party_settings: {  }
+    weight: 6
     region: content
 hidden:
   created: true
