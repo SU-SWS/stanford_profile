@@ -116,7 +116,11 @@ process:
   su_event_map_link/title: constants/map_title
   su_event_source/uri:
     plugin: str_replace
-    source: link
+    source:
+      plugin: str_replace
+      source: link
+      search: events.stanford.edu
+      replace: events-legacy.stanford.edu
     search: events.stanford.edu
     replace: events-legacy.stanford.edu
   su_event_date_time/value:
