@@ -12,12 +12,12 @@ pattern: 'people/[term:parents:join-path]/[term:name]'
 selection_criteria:
   ca9a94b5-dbd0-42a6-9f35-05ca1f416f97:
     id: 'entity_bundle:taxonomy_term'
-    bundles:
-      stanford_person_types: stanford_person_types
     negate: false
+    uuid: ca9a94b5-dbd0-42a6-9f35-05ca1f416f97
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: ca9a94b5-dbd0-42a6-9f35-05ca1f416f97
+    bundles:
+      stanford_person_types: stanford_person_types
 selection_logic: and
 weight: -5
 relationships: {  }

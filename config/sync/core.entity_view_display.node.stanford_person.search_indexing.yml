@@ -1,0 +1,287 @@
+uuid: 7b3c8710-997e-4492-a034-77e395bb90a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_indexing
+    - field.field.node.stanford_person.body
+    - field.field.node.stanford_person.layout_builder__layout
+    - field.field.node.stanford_person.stanford_intranet__access
+    - field.field.node.stanford_person.su_person_academic_appt
+    - field.field.node.stanford_person.su_person_admin_appts
+    - field.field.node.stanford_person.su_person_affiliations
+    - field.field.node.stanford_person.su_person_components
+    - field.field.node.stanford_person.su_person_education
+    - field.field.node.stanford_person.su_person_email
+    - field.field.node.stanford_person.su_person_fax
+    - field.field.node.stanford_person.su_person_first_name
+    - field.field.node.stanford_person.su_person_full_title
+    - field.field.node.stanford_person.su_person_last_name
+    - field.field.node.stanford_person.su_person_links
+    - field.field.node.stanford_person.su_person_location_address
+    - field.field.node.stanford_person.su_person_location_name
+    - field.field.node.stanford_person.su_person_mail_code
+    - field.field.node.stanford_person.su_person_map_url
+    - field.field.node.stanford_person.su_person_mobile_phone
+    - field.field.node.stanford_person.su_person_photo
+    - field.field.node.stanford_person.su_person_profile_link
+    - field.field.node.stanford_person.su_person_research
+    - field.field.node.stanford_person.su_person_research_interests
+    - field.field.node.stanford_person.su_person_scholarly_interests
+    - field.field.node.stanford_person.su_person_short_title
+    - field.field.node.stanford_person.su_person_telephone
+    - field.field.node.stanford_person.su_person_type_group
+    - node.type.stanford_person
+  module:
+    - entity_reference_revisions
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - link
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+        - stanford_person_header
+        - stanford_person_body
+        - ds_reset
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
+  layout_library:
+    enable: false
+id: node.stanford_person.search_indexing
+targetEntityType: node
+bundle: stanford_person
+mode: search_indexing
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  su_person_academic_appt:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  su_person_admin_appts:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  su_person_affiliations:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  su_person_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  su_person_education:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  su_person_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  su_person_fax:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  su_person_first_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  su_person_full_title:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  su_person_last_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  su_person_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  su_person_location_address:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  su_person_location_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  su_person_mail_code:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  su_person_map_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  su_person_mobile_phone:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  su_person_photo:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  su_person_profile_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  su_person_research:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  su_person_research_interests:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  su_person_scholarly_interests:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  su_person_short_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  su_person_telephone:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  su_person_type_group:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 19
+    region: content
+hidden:
+  layout_builder__layout: true
+  search_api_excerpt: true
+  stanford_intranet__access: true

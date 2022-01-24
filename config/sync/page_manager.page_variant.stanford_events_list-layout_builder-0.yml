@@ -8,20 +8,21 @@ dependencies:
     - ctools
 id: stanford_events_list-layout_builder-0
 label: 'Layout Builder'
+weight: 0
 variant: layout_builder
 variant_settings:
   id: layout_builder
-  uuid: 16def1e7-a207-4ec9-a937-3f5de52d9daf
   label: null
   weight: 0
+  uuid: 16def1e7-a207-4ec9-a937-3f5de52d9daf
   sections:
     -
       layout_id: jumpstart_ui_one_column
       layout_settings:
+        label: 'Page Title'
         extra_classes: section-event-list--title
         centered: centered-container
         columns: default
-        label: 'Page Title'
       components:
         611cbf70-b775-493c-9ec3-4af3397319fe:
           uuid: 611cbf70-b775-493c-9ec3-4af3397319fe
@@ -29,22 +30,22 @@ variant_settings:
           configuration:
             id: jumpstart_ui_page_heading
             label: 'Heading Block'
-            provider: jumpstart_ui
             label_display: '0'
+            provider: jumpstart_ui
+            context_mapping: {  }
             heading_text: Events
             wrapper: h1
-            context_mapping: {  }
-          additional: {  }
           weight: 0
+          additional: {  }
           third_party_settings: {  }
       third_party_settings: {  }
     -
       layout_id: jumpstart_ui_two_column
       layout_settings:
+        label: 'Filter & View'
         extra_classes: section-events-list--content
         centered: centered-container
         orientation: right
-        label: 'Filter & View'
       components:
         0b68d7a8-a3c9-46e2-b4a9-c2987e2626ce:
           uuid: 0b68d7a8-a3c9-46e2-b4a9-c2987e2626ce
@@ -52,19 +53,19 @@ variant_settings:
           configuration:
             id: 'menu_block:stanford-event-types'
             label: 'Filter by event type'
-            provider: menu_block
             label_display: visible
+            provider: menu_block
+            context_mapping: {  }
             follow: false
             follow_parent: child
+            label_type: block
             level: 1
             depth: 1
-            expand: false
             parent: 'stanford-event-types:'
             suggestion: stanford_event_types
-            label_type: block
-            context_mapping: {  }
-          additional: {  }
+            expand: false
           weight: 0
+          additional: {  }
           third_party_settings: {  }
         78ffb5ce-8cbd-4e30-93c0-7cce06776fc1:
           uuid: 78ffb5ce-8cbd-4e30-93c0-7cce06776fc1
@@ -72,13 +73,13 @@ variant_settings:
           configuration:
             id: 'views_block:stanford_events-list_page_filtered'
             label: ''
-            provider: views
             label_display: '0'
+            provider: views
+            context_mapping: {  }
             views_label: ''
             items_per_page: none
-            context_mapping: {  }
-          additional: {  }
           weight: 1
+          additional: {  }
           third_party_settings: {  }
         fd920af1-1c2d-48d7-bf4c-c841d55e374c:
           uuid: fd920af1-1c2d-48d7-bf4c-c841d55e374c
@@ -86,13 +87,13 @@ variant_settings:
           configuration:
             id: 'views_block:stanford_event_terms_utility-results_for'
             label: 'Results for:'
-            provider: views
             label_display: visible
+            provider: views
+            context_mapping: {  }
             views_label: 'Results for:'
             items_per_page: none
-            context_mapping: {  }
-          additional: {  }
           weight: 1
+          additional: {  }
           third_party_settings: {  }
         2f8688d0-9406-4286-b08f-77b133e676c3:
           uuid: 2f8688d0-9406-4286-b08f-77b133e676c3
@@ -100,22 +101,21 @@ variant_settings:
           configuration:
             id: jumpstart_ui_skipnav_main_anchor
             label: 'Main content anchor target'
-            provider: jumpstart_ui
             label_display: '0'
+            provider: jumpstart_ui
             context_mapping: {  }
-          additional: {  }
           weight: 0
+          additional: {  }
           third_party_settings: {  }
       third_party_settings: {  }
 page: stanford_events_list
-weight: 0
 selection_criteria:
   -
     id: 'entity_bundle:taxonomy_term'
-    bundles:
-      stanford_event_types: stanford_event_types
     negate: false
     context_mapping:
       taxonomy_term: taxonomy_term
+    bundles:
+      stanford_event_types: stanford_event_types
 selection_logic: and
 static_context: {  }

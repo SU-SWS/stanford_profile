@@ -39,16 +39,16 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
   layout_library:
     enable: false
   layout_builder_restrictions:
     entity_view_mode_restriction:
-      allowed_blocks: {  }
       allowed_layouts: {  }
-      whitelisted_blocks: {  }
       blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      allowed_blocks: {  }
     allowed_block_categories: {  }
   ds:
     layout:
@@ -83,31 +83,29 @@ bundle: su_opportunity
 mode: su_vertical_card
 content:
   flag_cs_favorites:
-    weight: 10
     settings: {  }
     third_party_settings: {  }
+    weight: 10
     region: content
   su_opp_image:
     type: media_image_formatter
-    weight: 0
-    region: card_image
     label: hidden
     settings:
       view_mode: default
-      image_style: card_956x478
       link: false
+      image_style: card_956x478
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 0
+    region: card_image
   su_opp_type:
     type: entity_reference_list_label_class
-    weight: 1
-    region: card_super_headline
     label: hidden
     settings:
-      list_type: ul
-      class: ''
       link: false
+      class: ''
+      list_type: ul
     third_party_settings:
       field_delimiter:
         delimiter: ', '
@@ -115,6 +113,8 @@ content:
         class: ''
       ds:
         ds_limit: '2'
+    weight: 1
+    region: card_super_headline
 hidden:
   body: true
   links: true

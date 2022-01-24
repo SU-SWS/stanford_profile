@@ -1,0 +1,152 @@
+uuid: 0af96d84-4821-4907-a7e7-f5c6ce4cd028
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_indexing
+    - field.field.node.stanford_news.layout_builder__layout
+    - field.field.node.stanford_news.stanford_intranet__access
+    - field.field.node.stanford_news.su_news_banner
+    - field.field.node.stanford_news.su_news_banner_media_caption
+    - field.field.node.stanford_news.su_news_byline
+    - field.field.node.stanford_news.su_news_components
+    - field.field.node.stanford_news.su_news_dek
+    - field.field.node.stanford_news.su_news_featured_media
+    - field.field.node.stanford_news.su_news_publishing_date
+    - field.field.node.stanford_news.su_news_source
+    - field.field.node.stanford_news.su_news_topics
+    - node.type.stanford_news
+  module:
+    - datetime
+    - entity_reference_revisions
+    - field_formatter_class
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - link
+    - stanford_media
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+        - stanford_news_byline
+        - ds_reset
+      blacklisted_blocks: {  }
+      whitelisted_blocks:
+        'Chaos Tools': {  }
+        'Config Pages': {  }
+        Menus:
+          - 'menu_block:main'
+          - 'menu_block:news-topics'
+        'SimpleSAMLphp Authentication': {  }
+        System:
+          - system_messages_block
+        core:
+          - page_title_block
+      restricted_categories: {  }
+  layout_library:
+    enable: false
+id: node.stanford_news.search_indexing
+targetEntityType: node
+bundle: stanford_news
+mode: search_indexing
+content:
+  su_news_banner:
+    type: media_responsive_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      image_style: full_responsive
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 8
+    region: content
+  su_news_banner_media_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  su_news_byline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  su_news_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  su_news_dek:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  su_news_featured_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 4
+    region: content
+  su_news_publishing_date:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F d, Y'
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  su_news_source:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  su_news_topics:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  layout_builder__layout: true
+  layout_selection: true
+  links: true
+  search_api_excerpt: true
+  stanford_intranet__access: true

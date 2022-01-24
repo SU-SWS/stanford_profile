@@ -9,7 +9,7 @@ use Drupal\help\Plugin\HelpSection\HelpSectionPluginBase;
  *
  * @HelpSection(
  *   id = "profile_connect",
- *   title = @Translation("Drupal resources at Stanford"),
+ *   title = @Translation("Other resources at Stanford"),
  *   description =  @Translation(""),
  *   weight = -20
  * )
@@ -22,8 +22,8 @@ class ProfileConnectSection extends HelpSectionPluginBase {
    * {@inheritdoc}
    */
   public function listTopics() {
-    $help = '<p>' . $this->t('The main way the Stanford Drupal community communicates is through the Drupallers Mailing List. You can join this list to participate in the community discussion. Feel free to post questions to the list, or post responses to help others.') . '</p>';
-    $help .= self::getLinkString($this->t('Join the Drupallers Mailing List'), 'https://mailman.stanford.edu/mailman/listinfo/drupallers');
+    $help = '<p>' . $this->t('The main way the Stanford Drupal community communicates is through the mailing list. You can join this list to participate in the community discussion.') . '</p>';
+    $help .= self::getLinkString($this->t('Join the Drupallers community of practice'), 'https://mailman.stanford.edu/mailman/listinfo/drupallers');
     return [['#markup' => $help]];
   }
 

@@ -163,7 +163,14 @@ process:
   su_opp_summary/format: constants/minimal_html
   su_opp_contact_email: contact_email
   su_opp_contact_name: contact_name
-  su_opp_contact_phone: contact_phone
+  su_opp_contact_phone:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: contact_phone
+    -
+      plugin: callback
+      callable: strip_tags
   su_opp_eligibility/value: eligibility
   su_opp_eligibility/format: constants/basic_html
   su_opp_solo_url/uri: url

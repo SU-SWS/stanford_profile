@@ -11,12 +11,12 @@ pattern: 'event/[node:title]'
 selection_criteria:
   231ea286-348c-490e-a0fd-429818d076c8:
     id: node_type
-    bundles:
-      stanford_event: stanford_event
     negate: false
+    uuid: 231ea286-348c-490e-a0fd-429818d076c8
     context_mapping:
       node: node
-    uuid: 231ea286-348c-490e-a0fd-429818d076c8
+    bundles:
+      stanford_event: stanford_event
 selection_logic: and
 weight: -5
 relationships: {  }

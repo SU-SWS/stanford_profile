@@ -1,8 +1,9 @@
-language: en
+_core:
+  default_config_hash: XWHtTGfKpwNV1L-8e-KL_ZjGkM7LE6nOx64gcHjDNkk
 account: '1921843'
-attachment_mode: build
 snippet_version: 6
 snippet_path: 'public://hotjar/hotjar.script.js'
+attachment_mode: build
 visibility_pages: 0
 pages: |-
   /admin
@@ -18,5 +19,4 @@ roles:
   site_editor: site_editor
   site_builder: site_builder
   site_developer: site_developer
-_core:
-  default_config_hash: XWHtTGfKpwNV1L-8e-KL_ZjGkM7LE6nOx64gcHjDNkk
+language: en

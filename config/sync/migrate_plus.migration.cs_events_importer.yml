@@ -14,7 +14,7 @@ source:
   plugin: url
   data_fetcher_plugin: http
   urls:
-    - 'https://events.stanford.edu/xml/drupal/v2.php?category=11'
+    - 'https://events-legacy.stanford.edu/xml/drupal/v2.php?category=11'
   data_parser_plugin: simple_xml
   item_selector: /EventList/Event
   orphan_action: delete

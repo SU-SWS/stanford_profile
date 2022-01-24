@@ -16,7 +16,6 @@ mode: default
 content:
   su_component:
     type: entity_reference_revisions_entity_view
-    weight: 0
     label: hidden
     settings:
       view_mode: default
@@ -26,6 +25,7 @@ content:
         class: 'su-intro su-margin-bottom-3'
       ds:
         ds_limit: ''
+    weight: 0
     region: content
 hidden:
   search_api_excerpt: true

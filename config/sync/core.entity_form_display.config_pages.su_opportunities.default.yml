@@ -14,15 +14,15 @@ bundle: su_opportunities
 mode: default
 content:
   su_opp_header_image:
+    type: image_focal_point
     weight: 0
+    region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
       preview_link: true
-      preview_link_modal: true
       offsets: '50,50'
+      preview_link_modal: true
     third_party_settings: {  }
-    type: image_focal_point
-    region: content
 hidden:
   label: true

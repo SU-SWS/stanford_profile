@@ -2,12 +2,12 @@ uuid: 0f65495b-35d0-417a-a68f-37d3b80c1a9d
 langcode: en
 status: true
 dependencies:
-  module:
-    - node
-    - search_api
   config:
     - search_api.server.database_search
     - core.entity_view_mode.node.search_api
+  module:
+    - node
+    - search_api
 id: full_site_content
 name: 'Full Site Content'
 description: ''
@@ -82,17 +82,20 @@ processor_settings:
       preprocess_query: -30
   entity_status: {  }
   highlight:
-    highlight: always
-    highlight_partial: false
+    weights:
+      postprocess_query: 0
+    prefix: '<strong>'
+    suffix: '</strong>'
     excerpt: true
     excerpt_length: 256
     exclude_fields:
       - title
-    prefix: '<strong>'
-    suffix: '</strong>'
-    weights:
-      postprocess_query: 0
+    highlight: always
+    highlight_partial: false
   html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
     all_fields: false
     fields:
       - rendered_item
@@ -104,12 +107,32 @@ processor_settings:
       h2: 3
       h3: 2
       strong: 2
+  ignore_character:
     weights:
-      preprocess_index: -15
-      preprocess_query: -15
+      preprocess_index: -10
+      preprocess_query: -10
+    all_fields: false
+    fields:
+      - rendered_item
+      - title
+    ignorable: '[''¿¡!?,.:;]'
+    ignorable_classes:
+      - Pc
+      - Pd
+      - Pe
+      - Pf
+      - Pi
+      - Po
+      - Ps
   language_with_fallback: {  }
   rendered_item: {  }
+  role_access:
+    weights:
+      preprocess_query: -30
   stemmer:
+    weights:
+      preprocess_index: 0
+      preprocess_query: 0
     all_fields: true
     fields:
       - rendered_item
@@ -117,13 +140,61 @@ processor_settings:
     exceptions:
       mexican: mexic
       texan: texa
+  stopwords:
+    weights:
+      preprocess_index: -5
+      preprocess_query: -2
+    all_fields: false
+    fields:
+      - rendered_item
+    stopwords:
+      - a
+      - an
+      - and
+      - are
+      - as
+      - at
+      - be
+      - but
+      - by
+      - for
+      - if
+      - in
+      - into
+      - is
+      - it
+      - 'no'
+      - not
+      - of
+      - 'on'
+      - or
+      - s
+      - such
+      - t
+      - that
+      - the
+      - their
+      - then
+      - there
+      - these
+      - they
+      - this
+      - to
+      - was
+      - will
+      - with
+  type_boost:
     weights:
       preprocess_index: 0
-      preprocess_query: 0
+    boosts:
+      'entity:node':
+        datasource_boost: !!float 1
+        bundle_boosts:
+          stanford_page: !!float 3
 tracker_settings:
   default:
     indexing_order: fifo
 options:
-  index_directly: true
   cron_limit: 50
+  index_directly: true
 server: database_search

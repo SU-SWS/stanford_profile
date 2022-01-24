@@ -2,6 +2,8 @@
 
 /**
  * Class OpportunitiesFilterCest.
+ *
+ * @group mikes
  */
 class OpportunitiesFilterCest {
 
@@ -9,8 +11,10 @@ class OpportunitiesFilterCest {
    * Test the PDB is available and displays nodes when filtering.
    */
   public function testFilters(FunctionalTester $I) {
+    $user = $I->createUserWithRoles(['site_manager','layout_builder_user']);
+    $I->logInAs($user->id());
+    $I->resizeWindow(1400, 1400);
     /** @var \Drupal\node\NodeInterface $node */
-    $I->logInWithRole('site_manager');
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => 'Filters Page',
@@ -59,7 +63,8 @@ class OpportunitiesFilterCest {
    * Test the exposed filters action works correctly.
    */
   public function testViewExposedFilter(FunctionalTester $I) {
-    $I->logInWithRole('site_manager');
+    $user = $I->createUserWithRoles(['site_manager','layout_builder_user']);
+    $I->logInAs($user->id());
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => 'Filters Page',

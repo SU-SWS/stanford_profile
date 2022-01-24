@@ -31,34 +31,34 @@ third_party_settings:
         - su_page_resource_type
         - su_page_resource_audience
         - su_page_resource_dimension
+      label: Resources
+      region: content
       parent_name: ''
       weight: 15
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: false
+        description: ''
         required_fields: true
-      label: Resources
     group_page_metadata:
       children:
         - su_page_image
         - su_page_description
         - su_basic_page_type
+      label: 'Page Metadata'
+      region: content
       parent_name: ''
       weight: 13
       format_type: details_sidebar
-      region: content
       format_settings:
-        description: ''
-        weight: -1
-        required_fields: true
-        id: ''
         classes: ''
+        id: ''
         open: false
-      label: 'Page Metadata'
+        description: ''
+        required_fields: true
+        weight: -1
 id: node.stanford_page.default
 targetEntityType: node
 bundle: stanford_page
@@ -72,8 +72,8 @@ content:
     third_party_settings: {  }
   layout_selection:
     type: options_select
-    region: content
     weight: 9
+    region: content
     settings: {  }
     third_party_settings: {  }
   path:
@@ -84,10 +84,10 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 3
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
@@ -108,17 +108,17 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 7
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 4
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   su_basic_page_type:
     type: options_select
@@ -129,6 +129,7 @@ content:
   su_page_banner:
     type: paragraphs
     weight: 8
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -144,10 +145,12 @@ content:
         collapse_edit_all: '0'
         duplicate: '0'
     third_party_settings: {  }
-    region: content
   su_page_components:
     type: react_paragraphs
+    weight: 10
+    region: content
     settings:
+      resizable: false
       sizes:
         stanford_banner: 12
         stanford_card: 3
@@ -158,10 +161,7 @@ content:
         cs_opportunity_list: 4
         stanford_resource_list: 4
         su_minimal_card: 3
-      resizable: false
-    weight: 10
     third_party_settings: {  }
-    region: content
   su_page_description:
     type: string_textfield
     weight: 1
@@ -178,23 +178,23 @@ content:
       media_types: {  }
     third_party_settings: {  }
   su_page_resource_audience:
+    type: options_select
     weight: 15
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_page_resource_dimension:
+    type: options_select
     weight: 16
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_page_resource_type:
+    type: options_select
     weight: 14
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   title:
     type: string_textfield
     weight: 0
@@ -206,12 +206,12 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 1
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default

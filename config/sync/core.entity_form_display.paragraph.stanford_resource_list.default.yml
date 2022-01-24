@@ -15,19 +15,19 @@ bundle: stanford_resource_list
 mode: default
 content:
   su_resource_link:
+    type: link_default
     weight: 1
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_resource_list:
+    type: viewfield_select
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: viewfield_select
-    region: content
 hidden:
   created: true
   status: true

@@ -27,102 +27,102 @@ third_party_settings:
         - su_line_3
         - su_line_4
         - su_line_5
+      label: 'Lockup Options'
+      region: content
       parent_name: ''
       weight: 1
       format_type: fieldset
-      region: content
       format_settings:
+        classes: ''
+        id: ''
         description: 'This lockup will appear in the top left corner of the website''s main header.'
         required_fields: true
-        id: ''
-        classes: ''
-      label: 'Lockup Options'
     group_logo_image:
       children:
         - su_use_theme_logo
         - su_upload_logo_image
+      label: 'Logo Image'
+      region: content
       parent_name: ''
       weight: 2
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: true
-      label: 'Logo Image'
 id: config_pages.lockup_settings.default
 targetEntityType: config_pages
 bundle: lockup_settings
 mode: default
 content:
   su_line_1:
+    type: string_textfield
     weight: 6
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_line_2:
+    type: string_textfield
     weight: 7
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_line_3:
+    type: string_textfield
     weight: 8
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_line_4:
+    type: string_textfield
     weight: 9
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_line_5:
+    type: string_textfield
     weight: 10
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_lockup_enabled:
+    type: boolean_checkbox
     weight: 0
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   su_lockup_options:
+    type: options_select
     weight: 5
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   su_upload_logo_image:
+    type: image_image
     weight: 3
+    region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    type: image_image
-    region: content
   su_use_theme_logo:
+    type: boolean_checkbox
     weight: 1
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
 hidden:
   label: true

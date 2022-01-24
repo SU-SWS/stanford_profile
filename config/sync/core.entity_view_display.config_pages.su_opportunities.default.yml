@@ -15,7 +15,7 @@ bundle: su_opportunities
 mode: default
 content:
   su_opp_header_image:
-    weight: 0
+    type: responsive_image
     label: hidden
     settings:
       responsive_image_style: stanford_hero_block_wide
@@ -23,7 +23,7 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    type: responsive_image
+    weight: 0
     region: content
 hidden:
   search_api_excerpt: true

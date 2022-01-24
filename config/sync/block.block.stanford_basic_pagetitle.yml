@@ -16,16 +16,16 @@ plugin: page_title_block
 settings:
   id: page_title_block
   label: 'Page title'
-  provider: core
   label_display: '0'
+  provider: core
 visibility:
   request_path:
     id: request_path
-    pages: "/node/*\r\n/news*\r\n/people*\r\n/events*\r\n/event-series*\r\n/publications*"
     negate: true
     context_mapping: {  }
+    pages: "/node/*\r\n/news*\r\n/people*\r\n/events*\r\n/event-series*\r\n/publications*"
   response_code:
     id: response_code
-    response_codes: "404\r\n403"
     negate: true
     context_mapping: {  }
+    response_codes: "404\r\n403"

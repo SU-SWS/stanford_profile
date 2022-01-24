@@ -8,11 +8,13 @@ dependencies:
     - field.field.node.stanford_publication.su_publication_citation
     - field.field.node.stanford_publication.su_publication_components
     - field.field.node.stanford_publication.su_publication_cta
+    - field.field.node.stanford_publication.su_publication_image
     - field.field.node.stanford_publication.su_publication_topics
     - node.type.stanford_publication
   module:
     - inline_entity_form
     - link
+    - media_library
     - react_paragraphs
     - stanford_intranet
 id: node.stanford_publication.default
@@ -28,10 +30,10 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 7
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
@@ -41,37 +43,40 @@ content:
     third_party_settings: {  }
   stanford_intranet__access:
     type: entity_access
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
+    weight: 6
+    region: content
     settings:
       display_label: true
-    weight: 5
-    region: content
     third_party_settings: {  }
   su_publication_citation:
+    type: inline_entity_form_complex
     weight: 1
+    region: content
     settings:
       form_mode: default
       override_labels: true
       label_singular: Citation
       label_plural: Citation
       allow_new: true
+      allow_existing: false
       match_operator: CONTAINS
-      revision: false
+      allow_duplicate: false
       collapsible: false
       collapsed: false
-      allow_existing: false
-      allow_duplicate: false
+      revision: false
     third_party_settings: {  }
-    type: inline_entity_form_complex
-    region: content
   su_publication_components:
-    weight: 3
+    type: react_paragraphs
+    weight: 4
+    region: content
     settings:
+      resizable: false
       sizes:
         stanford_banner: 12
         stanford_card: 1
@@ -80,28 +85,32 @@ content:
         stanford_lists: 1
         stanford_media_caption: 1
         stanford_wysiwyg: 1
-      resizable: false
     third_party_settings: {  }
-    type: react_paragraphs
-    region: content
   su_publication_cta:
-    weight: 4
+    type: link_default
+    weight: 5
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
+  su_publication_image:
+    type: media_library_widget
+    weight: 3
     region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   su_publication_topics:
+    type: entity_reference_autocomplete
     weight: 2
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   title:
     type: string_textfield
     weight: 0
@@ -113,12 +122,12 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 5
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default

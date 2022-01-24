@@ -1,5 +1,7 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Test the news functionality.
  */

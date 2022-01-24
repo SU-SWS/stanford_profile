@@ -37,7 +37,7 @@ bundle: cardinal_mission_statement
 mode: default
 content:
   su_mission_cta:
-    weight: 2
+    type: link
     label: hidden
     settings:
       trim_length: 80
@@ -46,26 +46,26 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 2
     region: cta
   su_mission_image:
     type: media_responsive_image_formatter
-    weight: 0
     label: hidden
     settings:
       view_mode: default
-      image_style: stanford_hero_block_wide
       link: false
+      image_style: stanford_hero_block_wide
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 0
     region: image
   su_mission_text:
-    weight: 1
+    type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 1
     region: overlay
 hidden:
   search_api_excerpt: true

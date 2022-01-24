@@ -19,16 +19,16 @@ dependencies:
     - views
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: true
+    allow_custom: false
     sections:
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: ''
           extra_classes: ''
           centered: centered-container
           columns: default
-          label: ''
         components:
           d680f58b-4965-4c5a-af9d-fc308d637493:
             uuid: d680f58b-4965-4c5a-af9d-fc308d637493
@@ -36,30 +36,30 @@ third_party_settings:
             configuration:
               id: 'field_block:user:user:su_display_name'
               label: 'Display Name'
-              provider: layout_builder
               label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+                view_mode: view_mode
               formatter:
-                label: hidden
                 type: entity_title_heading
+                label: hidden
                 settings:
                   tag: h1
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-              context_mapping:
-                entity: '@user.current_user_context:current_user'
-                view_mode: view_mode
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
+          label: ''
           extra_classes: ''
           centered: centered-container
           orientation: equal
-          label: ''
         components:
           32c0c477-bf52-4385-bdfe-8f5300038477:
             uuid: 32c0c477-bf52-4385-bdfe-8f5300038477
@@ -67,13 +67,13 @@ third_party_settings:
             configuration:
               id: 'views_block:su_opportunities-count_favorites_opps'
               label: ''
-              provider: views
               label_display: '0'
+              provider: views
+              context_mapping: {  }
               views_label: ''
               items_per_page: none
-              context_mapping: {  }
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
           8ce80a35-7aba-4507-b661-8e707da77681:
             uuid: 8ce80a35-7aba-4507-b661-8e707da77681
@@ -81,22 +81,22 @@ third_party_settings:
             configuration:
               id: 'views_block:cs_resources-count_favorites_resources'
               label: ''
-              provider: views
               label_display: '0'
+              provider: views
+              context_mapping: {  }
               views_label: ''
               items_per_page: none
-              context_mapping: {  }
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: defaults
         layout_settings:
+          label: ''
           extra_classes: ''
           centered: centered-container
           columns: default
-          label: ''
         components:
           c8b4da1b-be8e-4bb0-9062-1734a798e71f:
             uuid: c8b4da1b-be8e-4bb0-9062-1734a798e71f
@@ -104,13 +104,13 @@ third_party_settings:
             configuration:
               id: 'views_block:stanford_news-term_block'
               label: Announcements
-              provider: views
               label_display: visible
+              provider: views
+              context_mapping: {  }
               views_label: Announcements
               items_per_page: none
-              context_mapping: {  }
-            additional: {  }
             weight: 0
+            additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
   layout_library:
@@ -121,31 +121,31 @@ bundle: user
 mode: default
 content:
   su_user_class_year:
-    weight: 0
+    type: datetime_default
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_default
+    weight: 0
     region: main
   su_user_graduate:
-    weight: 1
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 1
     region: main
   su_user_org_leader:
-    weight: 2
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 2
     region: main
 hidden:
   member_for: true

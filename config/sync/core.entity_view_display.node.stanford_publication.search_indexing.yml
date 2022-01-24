@@ -1,0 +1,84 @@
+uuid: 8a548e00-c180-489a-9c37-c5fa47fe8709
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_indexing
+    - field.field.node.stanford_publication.layout_builder__layout
+    - field.field.node.stanford_publication.stanford_intranet__access
+    - field.field.node.stanford_publication.su_publication_citation
+    - field.field.node.stanford_publication.su_publication_components
+    - field.field.node.stanford_publication.su_publication_cta
+    - field.field.node.stanford_publication.su_publication_topics
+    - node.type.stanford_publication
+  module:
+    - entity_reference_revisions
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - link
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
+id: node.stanford_publication.search_indexing
+targetEntityType: node
+bundle: stanford_publication
+mode: search_indexing
+content:
+  su_publication_citation:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 0
+    region: content
+  su_publication_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  su_publication_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  su_publication_topics:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  citation_type: true
+  layout_builder__layout: true
+  links: true
+  search_api_excerpt: true
+  stanford_intranet__access: true
+  su_publication_image: true

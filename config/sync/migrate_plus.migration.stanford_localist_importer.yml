@@ -1,0 +1,373 @@
+uuid: 640d3919-ab6d-428f-b75c-49ecff050a85
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 4qTDR2Nt_YKYiCUdGBFC6022pSdZDbjKSWH2mplvPv8
+id: stanford_localist_importer
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: {  }
+migration_group: stanford_events
+label: 'localist importer'
+source:
+  track_changes: true
+  plugin: url
+  data_fetcher_plugin: http
+  urls: {  }
+  data_parser_plugin: json
+  item_selector: events
+  orphan_action: forget
+  fields:
+    -
+      name: id
+      label: ID
+      selector: event/id
+    -
+      name: title
+      label: Title
+      selector: event/title
+    -
+      name: url
+      label: url
+      selector: event/url
+    -
+      name: updated_at
+      label: 'Updated At'
+      selector: event/updated_at
+    -
+      name: created_at
+      label: 'Created At'
+      selector: event/created_at
+    -
+      name: facebook_id
+      label: 'Facebook ID'
+      selector: event/facebook_id
+    -
+      name: first_date
+      label: 'First Date'
+      selector: event/first_date
+    -
+      name: last_date
+      label: 'Last Date'
+      selector: event/last_date
+    -
+      name: hashtag
+      label: Hashtag
+      selector: event/hashtag
+    -
+      name: urlname
+      label: 'URL Name'
+      selector: event/urlname
+    -
+      name: user_id
+      label: 'User ID'
+      selector: event/user_id
+    -
+      name: directions
+      label: Directions
+      selector: event/directions
+    -
+      name: location
+      label: Location
+      selector: event/location
+    -
+      name: room_number
+      label: 'Room Number'
+      selector: event/room_number
+    -
+      name: location_name
+      label: 'Location Name'
+      selector: event/location_name
+    -
+      name: status
+      label: Status
+      selector: event/status
+    -
+      name: experience
+      label: Experience
+      selector: event/experience
+    -
+      name: stream_url
+      label: 'Stream URL'
+      selector: event/stream_url
+    -
+      name: stream_info
+      label: 'Stream Info'
+      selector: event/stream_info
+    -
+      name: stream_embed_code
+      label: 'Stream Embed Code'
+      selector: event/stream_embed_code
+    -
+      name: created_by
+      label: 'Created By'
+      selector: event/created_by
+    -
+      name: updated_by
+      label: 'Updated By'
+      selector: event/updated_by
+    -
+      name: city_id
+      label: 'City ID'
+      selector: event/city_id
+    -
+      name: neighborhood_id
+      label: 'Neighborhood ID'
+      selector: event/neighborhood_id
+    -
+      name: school_id
+      label: 'School ID'
+      selector: event/school_id
+    -
+      name: campus_id
+      label: 'Campus ID'
+      selector: event/campus_id
+    -
+      name: recurring
+      label: Recurring
+      selector: event/recurring
+    -
+      name: free
+      label: Free
+      selector: event/free
+    -
+      name: private
+      label: Private
+      selector: event/private
+    -
+      name: verified
+      label: Verified
+      selector: event/verified
+    -
+      name: rejected
+      label: Rejected
+      selector: event/rejected
+    -
+      name: sponsored
+      label: Sponsored
+      selector: event/sponsored
+    -
+      name: venue_id
+      label: 'Venue ID'
+      selector: event/venue_id
+    -
+      name: ticket_url
+      label: 'Ticket URL'
+      selector: event/ticket_url
+    -
+      name: ticket_cost
+      label: 'Ticket Cost'
+      selector: event/ticket_cost
+    -
+      name: keywords
+      label: 'Keywords Array'
+      selector: event/keywords
+    -
+      name: tags
+      label: 'Tags Array'
+      selector: event/tags
+    -
+      name: description_text
+      label: 'Description Plaintext'
+      selector: event/description_text
+    -
+      name: photo_id
+      label: 'Photo ID'
+      selector: event/photo_id
+    -
+      name: detail_view
+      label: 'Detail View'
+      selector: event/detail_view
+    -
+      name: address
+      label: Address
+      selector: event/address
+    -
+      name: description
+      label: Description
+      selector: event/description
+    -
+      name: featured
+      label: Featured
+      selector: event/featured
+    -
+      name: geo_latitude
+      label: 'Geo Latitutde'
+      selector: event/geo/latitude
+    -
+      name: geo_longitude
+      label: 'Geo Longitude'
+      selector: event/geo/longitude
+    -
+      name: geo_street
+      label: 'Geo Street'
+      selector: event/geo/street
+    -
+      name: geo_city
+      label: 'Geo City'
+      selector: event/geo/city
+    -
+      name: geo_state
+      label: 'Geo State'
+      selector: event/geo/state
+    -
+      name: geo_country
+      label: 'Geo Country'
+      selector: event/geo/country
+    -
+      name: geo_zip
+      label: 'Geo Zip'
+      selector: event/geo/zip
+    -
+      name: filters
+      label: Filters
+      selector: event/filters
+    -
+      name: event_audience
+      label: 'Event Audience'
+      selector: event/filters/event_audience
+    -
+      name: event_subject
+      label: 'Event Subject'
+      selector: event/filters/event_subject
+    -
+      name: event_types
+      label: 'Event Types'
+      selector: event/filters/event_types
+    -
+      name: custom_fields
+      label: 'Custom Fields'
+      selector: event/custom_fields
+    -
+      name: localist_url
+      label: 'Localist URL'
+      selector: event/localist_url
+    -
+      name: localist_ics_url
+      label: 'Localist ICS URL'
+      selector: event/localist_ics_url
+    -
+      name: photo_url
+      label: 'Photo URL'
+      selector: event/photo_url
+    -
+      name: venue_url
+      label: 'Venue URL'
+      selector: event/venue_url
+    -
+      name: event_instances
+      label: 'Event Instances'
+      selector: event/event_instances
+    -
+      name: event_instance_id
+      label: 'Event Instance ID'
+      selector: event/event_instances/0/event_instance/id
+    -
+      name: event_instance_start
+      label: 'Event Instance Start'
+      selector: event/event_instances/0/event_instance/start
+    -
+      name: event_instance_end
+      label: 'Event Instance End'
+      selector: event/event_instances/0/event_instance/end
+  ids:
+    event_instance_id:
+      type: string
+  constants:
+    status: 1
+    type: stanford_event
+    stanford_html: stanford_html
+    stanford_minimal_html: stanford_minimal_html
+    map_title: 'Open in map'
+    map_link_base: 'https://www.google.com/maps/place/'
+    image_path: 'public://events/'
+    cta_text: 'View this event on Localist'
+    plus: +
+    timezone: America/Los_Angeles
+process:
+  status: constants/status
+  type: constants/type
+  title: title
+  body/value: description
+  body/format: constants/stanford_html
+  su_event_alt_loc: location_name
+  su_event_map_link/uri:
+    -
+      plugin: concat
+      source:
+        - constants/map_link_base
+        - geo_street
+        - constants/plus
+        - geo_city
+        - constants/plus
+        - geo_state
+        - constants/plus
+        - geo_zip
+  su_event_map_link/title: constants/map_title
+  su_event_cta/uri: localist_url
+  su_event_cta/title: constants/cta_text
+  su_event_source/uri: localist_url
+  su_event_source/title: constants/cta_text
+  su_event_date_time/value:
+    -
+      plugin: callback
+      callable: strtotime
+      source: event_instance_start
+  su_event_date_time/end_value:
+    -
+      plugin: null_coalesce
+      source:
+        - event_instance_end
+        - event_instance_start
+    -
+      plugin: callback
+      callable: strtotime
+    -
+      plugin: smartdate_adjust
+      start_time: '@su_event_date_time/value'
+  su_event_date_time/duration:
+    -
+      plugin: stanford_events_datemath
+      operation: subtraction
+      source: event_instance_end
+      values:
+        - event_instance_start
+  su_event_date_time/timezone: constants/timezone
+  su_event_audience:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: event_audience
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          plugin: entity_generate
+          value_key: name
+          bundle_key: vid
+          bundle: event_audience
+          entity_type: taxonomy_term
+          source: name
+          ignore_case: true
+  su_event_type:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: event_types
+    -
+      plugin: extract
+      index:
+        - 0
+        - name
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: stanford_event_types
+      entity_type: taxonomy_term
+      ignore_case: true
+destination:
+  plugin: 'entity:node'
+migration_dependencies: {  }

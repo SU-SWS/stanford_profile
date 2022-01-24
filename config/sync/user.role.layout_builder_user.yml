@@ -1,0 +1,25 @@
+uuid: 368828b6-e04f-4f2f-94bb-3cb3871fc627
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.node.stanford_event.default
+    - core.entity_view_display.node.stanford_event_series.default
+    - core.entity_view_display.node.stanford_news.default
+    - core.entity_view_display.node.stanford_page.default
+    - core.entity_view_display.node.stanford_person.default
+    - core.entity_view_display.node.stanford_publication.default
+  module:
+    - layout_builder
+id: layout_builder_user
+label: 'Layout Builder User'
+weight: 1
+is_admin: null
+permissions:
+  - 'configure editable stanford_event node layout overrides'
+  - 'configure editable stanford_event_series node layout overrides'
+  - 'configure editable stanford_news node layout overrides'
+  - 'configure editable stanford_page node layout overrides'
+  - 'configure editable stanford_person node layout overrides'
+  - 'configure editable stanford_publication node layout overrides'
+  - 'create and edit custom blocks'

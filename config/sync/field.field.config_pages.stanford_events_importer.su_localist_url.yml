@@ -1,0 +1,23 @@
+uuid: d35b7390-adf2-4f95-b6a5-da78ef5d8e44
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_events_importer
+    - field.storage.config_pages.su_localist_url
+  module:
+    - link
+id: config_pages.stanford_events_importer.su_localist_url
+field_name: su_localist_url
+entity_type: config_pages
+bundle: stanford_events_importer
+label: 'Localist URL'
+description: "Use these options to import events from Stanford Events calendar, Localist platform. Choose a field to view and select term(s) in a category. Events will be imported and updated daily or you can use the Save & Import button to execute an update immediately.<br>\r\n<b>Note:</b> A term must be selected to import events. No events will be imported if no term is selected."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

@@ -1,7 +1,85 @@
 uuid: d7aedf9d-28c2-4f44-86ff-4f15ea6b8a39
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - core.entity_view_display.node.stanford_event.default
+    - core.entity_view_display.node.stanford_event_series.default
+    - core.entity_view_display.node.stanford_news.default
+    - core.entity_view_display.node.stanford_page.default
+    - core.entity_view_display.node.stanford_person.default
+    - core.entity_view_display.node.stanford_publication.default
+    - media.type.embeddable
+    - media.type.file
+    - media.type.google_form
+    - media.type.image
+    - media.type.video
+    - node.type.stanford_event
+    - node.type.stanford_event_series
+    - node.type.stanford_news
+    - node.type.stanford_page
+    - node.type.stanford_person
+    - node.type.stanford_publication
+    - node.type.su_opportunity
+    - node.type.su_spotlight
+    - taxonomy.vocabulary.basic_page_types
+    - taxonomy.vocabulary.event_audience
+    - taxonomy.vocabulary.stanford_event_types
+    - taxonomy.vocabulary.stanford_news_topics
+    - taxonomy.vocabulary.stanford_person_types
+    - taxonomy.vocabulary.stanford_publication_topics
+  module:
+    - auto_entitylabel
+    - block
+    - block_content
+    - block_content_permissions
+    - cardinal_service_profile
+    - config_pages
+    - content_lock
+    - contextual
+    - crop
+    - domain_301_redirect
+    - dropzonejs
+    - ds
+    - editoria11y
+    - entity_reference_revisions
+    - entity_usage
+    - environment_indicator
+    - field_permissions
+    - field_ui
+    - file
+    - filter
+    - image
+    - layout_builder
+    - layout_builder_modal
+    - layout_builder_restrictions
+    - linkit
+    - media
+    - menu_admin_per_menu
+    - metatag
+    - node
+    - node_revision_delete
+    - page_manager
+    - paragraphs
+    - path
+    - pathauto
+    - rabbit_hole
+    - redirect
+    - responsive_image
+    - role_delegation
+    - scheduler
+    - seckit
+    - shortcut
+    - stanford_media
+    - stanford_publication
+    - system
+    - taxonomy
+    - toolbar
+    - ui_patterns_library
+    - view_unpublished
+    - views_bulk_edit
+    - views_ui
+    - xmlsitemap
 id: site_developer
 label: 'Site Developer'
 weight: 0
@@ -13,18 +91,14 @@ permissions:
   - 'access contextual links'
   - 'access entity usage statistics'
   - 'access environment indicator'
-  - 'access file_browser entity browser pages'
   - 'access files overview'
-  - 'access image_browser entity browser pages'
   - 'access media overview'
-  - 'access media_browser entity browser pages'
   - 'access patterns page'
   - 'access site in maintenance mode'
   - 'access site reports'
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
-  - 'access video_browser entity browser pages'
   - 'add citation entities'
   - 'admin classes'
   - 'admin display suite'
@@ -48,8 +122,6 @@ permissions:
   - 'administer crop types'
   - 'administer devel menu items'
   - 'administer display modes'
-  - 'administer embed buttons'
-  - 'administer entity browsers'
   - 'administer entity usage'
   - 'administer environment indicator settings'
   - 'administer filters'
@@ -81,7 +153,6 @@ permissions:
   - 'administer redirect settings'
   - 'administer redirects'
   - 'administer responsive images'
-  - 'administer search'
   - 'administer seckit'
   - 'administer shortcuts'
   - 'administer stanford-event-types menu items'
@@ -111,6 +182,7 @@ permissions:
   - 'assign stanford_student role'
   - 'break content lock'
   - 'bypass domain 301 redirect'
+  - 'bypass embed field validation'
   - 'bypass node access'
   - 'cancel account'
   - 'change own username'
@@ -133,6 +205,7 @@ permissions:
   - 'create media'
   - 'create stanford_event content'
   - 'create stanford_event_series content'
+  - 'create stanford_gallery_images media'
   - 'create stanford_news content'
   - 'create stanford_page content'
   - 'create stanford_person content'
@@ -155,6 +228,7 @@ permissions:
   - 'delete any media'
   - 'delete any stanford_event content'
   - 'delete any stanford_event_series content'
+  - 'delete any stanford_gallery_images media'
   - 'delete any stanford_news content'
   - 'delete any stanford_page content'
   - 'delete any stanford_person content'
@@ -172,6 +246,7 @@ permissions:
   - 'delete own image media'
   - 'delete own stanford_event content'
   - 'delete own stanford_event_series content'
+  - 'delete own stanford_gallery_images media'
   - 'delete own stanford_news content'
   - 'delete own stanford_page content'
   - 'delete own stanford_person content'
@@ -200,6 +275,7 @@ permissions:
   - 'edit any image media'
   - 'edit any stanford_event content'
   - 'edit any stanford_event_series content'
+  - 'edit any stanford_gallery_images media'
   - 'edit any stanford_news content'
   - 'edit any stanford_page content'
   - 'edit any stanford_person content'
@@ -210,6 +286,7 @@ permissions:
   - 'edit behavior plugin settings'
   - 'edit citation entities'
   - 'edit config_pages entity'
+  - 'edit field default media'
   - 'edit field_media_embeddable_code'
   - 'edit lockup_settings config page entity'
   - 'edit own embeddable media'
@@ -219,6 +296,7 @@ permissions:
   - 'edit own image media'
   - 'edit own stanford_event content'
   - 'edit own stanford_event_series content'
+  - 'edit own stanford_gallery_images media'
   - 'edit own stanford_news content'
   - 'edit own stanford_page content'
   - 'edit own stanford_person content'
@@ -227,7 +305,6 @@ permissions:
   - 'edit own su_spotlight content'
   - 'edit own video media'
   - 'edit stanford_basic_site_settings config page entity'
-  - 'edit stanford_branding_options config page entity'
   - 'edit stanford_events_importer config page entity'
   - 'edit stanford_global_message config page entity'
   - 'edit stanford_local_footer config page entity'
@@ -259,7 +336,7 @@ permissions:
   - 'update any media'
   - 'update any stanford_component_block block content'
   - 'update media'
-  - 'use advanced search'
+  - 'use views bulk edit'
   - 'view all media revisions'
   - 'view all revisions'
   - 'view any unpublished content'

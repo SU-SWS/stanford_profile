@@ -38,30 +38,30 @@ third_party_settings:
         - su_event_subheadline
         - su_event_dek
         - su_event_sponsor
+      label: 'Editorial Content'
+      region: content
       parent_name: ''
       weight: 2
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: false
-      label: 'Editorial Content'
     group_body_content:
       children:
         - body
         - su_event_components
+      label: 'Body Content'
+      region: content
       parent_name: ''
       weight: 3
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: false
-      label: 'Body Content'
     group_event_details:
       children:
         - su_event_date_time
@@ -73,30 +73,30 @@ third_party_settings:
         - su_event_telephone
         - su_event_audience
         - su_event_cta
+      label: 'Event Details'
+      region: content
       parent_name: ''
       weight: 4
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: false
-      label: 'Event Details'
     group_schedule_details:
       children:
         - su_event_schedule
+      label: 'Schedule Details'
+      region: content
       parent_name: ''
       weight: 5
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
-        open: false
         required_fields: true
-      label: 'Schedule Details'
+        open: false
 id: node.stanford_event.default
 targetEntityType: node
 bundle: stanford_event
@@ -105,13 +105,13 @@ content:
   body:
     type: text_textarea_with_summary
     weight: 2
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
@@ -126,10 +126,10 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 6
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   su_event_alt_loc:
     type: string_textfield
@@ -140,14 +140,15 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_event_audience:
+    type: options_buttons
     weight: 28
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_buttons
-    region: content
   su_event_components:
     type: paragraphs
     weight: 3
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -163,57 +164,57 @@ content:
         collapse_edit_all: '0'
         duplicate: duplicate
     third_party_settings: {  }
-    region: content
   su_event_cta:
+    type: link_default
     weight: 29
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_event_date_time:
+    type: smartdate_timezone
     weight: 21
+    region: content
     settings:
       default_tz: user
       custom_tz: America/Los_Angeles
       modal: 0
     third_party_settings: {  }
-    type: smartdate_timezone
-    region: content
   su_event_dek:
-    weight: 5
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
     type: string_textfield
+    weight: 5
     region: content
-  su_event_email:
-    weight: 26
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  su_event_email:
     type: email_default
+    weight: 26
     region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
   su_event_location:
+    type: address_default
     weight: 23
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: address_default
-    region: content
   su_event_map_link:
+    type: link_default
     weight: 25
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_event_schedule:
     type: entity_reference_paragraphs
     weight: 4
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -222,44 +223,43 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
-    region: content
   su_event_source:
+    type: link_default
     weight: 22
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_event_sponsor:
+    type: string_textfield
     weight: 6
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_event_subheadline:
+    type: string_textfield
     weight: 4
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_event_telephone:
+    type: telephone_default
     weight: 27
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: telephone_default
-    region: content
   su_event_type:
+    type: options_select
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   title:
     type: string_textfield
     weight: 1
@@ -271,12 +271,12 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 7
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default

@@ -28,28 +28,28 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
   layout_library:
     enable: false
   field_group:
     group_spotlight_container:
       children: {  }
+      label: spotlight-container
       parent_name: ''
+      region: hidden
       weight: 15
       format_type: fieldset
-      region: hidden
       format_settings:
-        id: ''
         classes: su-spotlight-info-container
+        id: ''
         description: ''
-      label: spotlight-container
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
-      whitelisted_blocks: {  }
-      blacklisted_blocks: {  }
       allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
       restricted_categories: {  }
 id: node.su_spotlight.search_api
 targetEntityType: node
@@ -57,58 +57,56 @@ bundle: su_spotlight
 mode: search_api
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 0
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
     region: content
   su_opp_dimension:
     type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
     weight: 4
     region: content
-    label: hidden
-    settings:
-      link: false
-    third_party_settings:
-      field_delimiter:
-        delimiter: ''
-      field_formatter_class:
-        class: ''
-      ds:
-        ds_limit: ''
   su_opp_open_to:
     type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
     weight: 5
     region: content
-    label: hidden
-    settings:
-      link: false
-    third_party_settings:
-      field_delimiter:
-        delimiter: ''
-      field_formatter_class:
-        class: ''
-      ds:
-        ds_limit: ''
   su_opp_pathway:
     type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
     weight: 6
     region: content
-    label: hidden
-    settings:
-      link: false
-    third_party_settings:
-      field_delimiter:
-        delimiter: ''
-      field_formatter_class:
-        class: ''
-      ds:
-        ds_limit: ''
   su_opp_service_theme:
     type: entity_reference_label
-    weight: 7
-    region: content
     label: hidden
     settings:
       link: false
@@ -119,34 +117,34 @@ content:
         class: ''
       ds:
         ds_limit: ''
+    weight: 7
+    region: content
   su_spotlight_context:
     type: basic_string
-    weight: 11
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 11
+    region: content
   su_spotlight_feature_image:
     type: entity_reference_entity_view
-    weight: 1
     label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 1
     region: content
   su_spotlight_grad_area:
     type: string
-    weight: 3
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 3
+    region: content
   su_spotlight_opportunity:
     type: entity_reference_label
-    weight: 8
-    region: content
     label: hidden
     settings:
       link: false
@@ -157,30 +155,32 @@ content:
         class: ''
       ds:
         ds_limit: ''
+    weight: 8
+    region: content
   su_spotlight_person_type:
     type: entity_reference_label
-    weight: 9
-    region: content
     label: hidden
     settings:
       link: false
     third_party_settings:
       field_formatter_class:
         class: ''
+    weight: 9
+    region: content
   su_spotlight_quote:
     type: text_default
-    weight: 10
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 10
+    region: content
   su_spotlight_student_name:
-    weight: 2
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 2
     region: content
 hidden:
   links: true

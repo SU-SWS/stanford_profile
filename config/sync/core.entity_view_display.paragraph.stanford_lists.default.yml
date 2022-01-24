@@ -20,11 +20,11 @@ bundle: stanford_lists
 mode: default
 content:
   su_list_button:
-    weight: 3
+    type: link_class
     label: hidden
     settings:
-      trim_length: 80
       class: 'su-button su-margin-top-5'
+      trim_length: 80
       url_only: false
       url_plain: false
       rel: '0'
@@ -32,19 +32,19 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    type: link_class
+    weight: 3
     region: content
   su_list_description:
-    weight: 1
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-3
-    type: text_default
+    weight: 1
     region: content
   su_list_headline:
-    weight: 0
+    type: entity_title_heading
     label: hidden
     settings:
       tag: h2
@@ -52,19 +52,19 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom
-    type: entity_title_heading
+    weight: 0
     region: content
   su_list_view:
-    weight: 2
+    type: viewfield_default
     label: hidden
     settings:
       view_title: hidden
-      empty_view_title: hidden
       always_build_output: false
+      empty_view_title: hidden
     third_party_settings:
       field_formatter_class:
         class: ''
-    type: viewfield_default
+    weight: 2
     region: content
 hidden:
   search_api_excerpt: true

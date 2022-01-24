@@ -17,18 +17,18 @@ content:
   su_minimal_card_image:
     type: media_library_widget
     weight: 0
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   su_minimal_card_link:
+    type: link_default
     weight: 1
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
 hidden:
   created: true
   status: true

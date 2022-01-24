@@ -6,20 +6,21 @@ dependencies:
     - page_manager.page.people
 id: people-layout_builder-0
 label: 'People - Layout Builder'
+weight: 0
 variant: layout_builder
 variant_settings:
   id: layout_builder
-  uuid: 55ea0972-1bf8-4ce2-86b3-b40e17c0f69f
   label: null
   weight: 0
+  uuid: 55ea0972-1bf8-4ce2-86b3-b40e17c0f69f
   sections:
     -
       layout_id: jumpstart_ui_one_column
       layout_settings:
+        label: Header
         extra_classes: su-people-header
         centered: centered-container
         columns: default
-        label: Header
       components:
         21416df0-1bf9-492d-9c81-23b8de4debc9:
           uuid: 21416df0-1bf9-492d-9c81-23b8de4debc9
@@ -27,22 +28,22 @@ variant_settings:
           configuration:
             id: jumpstart_ui_page_heading
             label: 'Heading Block'
-            provider: jumpstart_ui
             label_display: '0'
+            provider: jumpstart_ui
+            context_mapping: {  }
             heading_text: People
             wrapper: h1
-            context_mapping: {  }
-          additional: {  }
           weight: 0
+          additional: {  }
           third_party_settings: {  }
       third_party_settings: {  }
     -
       layout_id: jumpstart_ui_two_column
       layout_settings:
+        label: 'Grid View'
         extra_classes: su-person-grid-view
         centered: centered-container
         orientation: right
-        label: 'Grid View'
       components:
         799b95e5-633f-4b67-8e54-e73ade615d63:
           uuid: 799b95e5-633f-4b67-8e54-e73ade615d63
@@ -50,18 +51,18 @@ variant_settings:
           configuration:
             id: 'menu_block:stanford-person-type'
             label: 'Filter By Person Type'
-            provider: menu_block
             label_display: visible
+            provider: menu_block
+            context_mapping: {  }
             follow: false
             follow_parent: child
             level: 1
             depth: 0
-            expand: false
             parent: 'stanford-person-type:'
             suggestion: stanford_person_type
-            context_mapping: {  }
-          additional: {  }
+            expand: false
           weight: 0
+          additional: {  }
           third_party_settings: {  }
         67c9b2d7-018a-48a1-a7b7-cef6d3b5f83c:
           uuid: 67c9b2d7-018a-48a1-a7b7-cef6d3b5f83c
@@ -69,11 +70,11 @@ variant_settings:
           configuration:
             id: jumpstart_ui_skipnav_main_anchor
             label: 'Main content anchor target'
-            provider: jumpstart_ui
             label_display: '0'
+            provider: jumpstart_ui
             context_mapping: {  }
-          additional: {  }
           weight: 0
+          additional: {  }
           third_party_settings: {  }
         342518bc-5cf6-4fa3-9141-b4d7983e0c45:
           uuid: 342518bc-5cf6-4fa3-9141-b4d7983e0c45
@@ -81,13 +82,13 @@ variant_settings:
           configuration:
             id: 'views_block:stanford_person-grid_list_all'
             label: ''
-            provider: views
             label_display: '0'
+            provider: views
+            context_mapping: {  }
             views_label: ''
             items_per_page: none
-            context_mapping: {  }
-          additional: {  }
           weight: 5
+          additional: {  }
           third_party_settings: {  }
         02b79daa-3558-4551-8313-5c6c65aa099c:
           uuid: 02b79daa-3558-4551-8313-5c6c65aa099c
@@ -95,14 +96,14 @@ variant_settings:
           configuration:
             id: 'block_content:fb905cf3-4bd3-4bcd-ad01-92d25e46ba32'
             label: 'People Intro'
-            provider: block_content
             label_display: '0'
+            provider: block_content
             status: true
             info: ''
             view_mode: full
             context_mapping: {  }
-          additional: {  }
           weight: 2
+          additional: {  }
           third_party_settings: {  }
         8d451cfc-690e-43c1-95a5-e2f357c166a4:
           uuid: 8d451cfc-690e-43c1-95a5-e2f357c166a4
@@ -110,17 +111,16 @@ variant_settings:
           configuration:
             id: 'views_block:su_block_edit_links-people_intro'
             label: ''
-            provider: views
             label_display: '0'
+            provider: views
+            context_mapping: {  }
             views_label: ''
             items_per_page: none
-            context_mapping: {  }
-          additional: {  }
           weight: 4
+          additional: {  }
           third_party_settings: {  }
       third_party_settings: {  }
 page: people
-weight: 0
 selection_criteria: {  }
 selection_logic: and
 static_context: {  }
