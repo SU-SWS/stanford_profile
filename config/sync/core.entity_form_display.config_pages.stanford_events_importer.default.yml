@@ -14,8 +14,8 @@ third_party_settings:
   field_group:
     group_import_events:
       children:
-        - su_event_xml_url
         - su_localist_url
+        - su_event_xml_url
       label: 'Import Events'
       region: content
       parent_name: ''
@@ -34,7 +34,7 @@ mode: default
 content:
   su_event_xml_url:
     type: stanford_events_importer_apiurl_field_widget
-    weight: 1
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
