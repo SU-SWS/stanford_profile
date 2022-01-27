@@ -26,5 +26,5 @@ visibility:
     id: config_pages_values_access
     negate: false
     config_page_field: stanford_basic_site_settings|su_hide_site_search|boolean
-    operator: '=='
-    condition_value: '0'
+    operator: '!='
+    condition_value: '1'
