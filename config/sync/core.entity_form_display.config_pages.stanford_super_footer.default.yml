@@ -60,23 +60,23 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   su_super_foot_text:
+    type: text_textarea
     weight: 2
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   su_super_foot_title:
+    type: string_textfield
     weight: 1
-    label: hidden
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings:
       field_formatter_class:
         class: su-super-footer__heading
-    type: string_textfield
-    region: content
+    label: hidden
 hidden:
   label: true

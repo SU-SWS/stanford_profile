@@ -12,12 +12,12 @@ pattern: '/publications/[term:name]'
 selection_criteria:
   3d1ecc58-25ed-49f8-af7f-5d1122a9cee3:
     id: 'entity_bundle:taxonomy_term'
-    bundles:
-      stanford_publication_topics: stanford_publication_topics
     negate: false
+    uuid: 3d1ecc58-25ed-49f8-af7f-5d1122a9cee3
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: 3d1ecc58-25ed-49f8-af7f-5d1122a9cee3
+    bundles:
+      stanford_publication_topics: stanford_publication_topics
 selection_logic: and
 weight: -5
 relationships: {  }

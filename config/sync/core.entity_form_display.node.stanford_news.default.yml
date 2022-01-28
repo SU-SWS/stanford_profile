@@ -28,46 +28,46 @@ third_party_settings:
       children:
         - su_news_featured_media
         - group_banner
+      label: Media
+      region: content
       parent_name: ''
       weight: 3
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: true
-      label: Media
     group_editorial_content:
       children:
         - su_news_dek
         - su_news_publishing_date
         - su_news_byline
         - su_news_source
+      label: 'Editorial Content'
+      region: content
       parent_name: ''
       weight: 2
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: true
-      label: 'Editorial Content'
     group_banner:
       children:
         - su_news_banner
         - su_news_banner_media_caption
+      label: Banner
+      region: content
       parent_name: group_media
       weight: 11
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: true
-      label: Banner
 id: node.stanford_news.default
 targetEntityType: node
 bundle: stanford_news
@@ -81,18 +81,18 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 6
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   su_news_banner:
     type: media_library_widget
     weight: 10
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   su_news_banner_media_caption:
     type: string_textfield
     weight: 12
@@ -102,16 +102,17 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_news_byline:
+    type: string_textfield
     weight: 4
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_news_components:
     type: entity_reference_paragraphs
     weight: 5
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -120,46 +121,45 @@ content:
       form_display_mode: default
       default_paragraph_type: stanford_wysiwyg
     third_party_settings: {  }
-    region: content
   su_news_dek:
+    type: string_textfield
     weight: 2
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_news_featured_media:
+    type: media_library_widget
     weight: 8
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    type: media_library_widget
-    region: content
   su_news_publishing_date:
+    type: datetime_default
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   su_news_source:
+    type: link_default
     weight: 5
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   su_news_topics:
+    type: entity_reference_autocomplete
     weight: 4
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   title:
     type: string_textfield
     weight: 0

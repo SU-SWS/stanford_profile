@@ -5,6 +5,7 @@ dependencies:
   config:
     - config_pages.type.stanford_basic_site_settings
     - field.field.config_pages.stanford_basic_site_settings.su_google_analytics
+    - field.field.config_pages.stanford_basic_site_settings.su_hide_site_search
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
     - field.field.config_pages.stanford_basic_site_settings.su_site_email
     - field.field.config_pages.stanford_basic_site_settings.su_site_name
@@ -17,43 +18,50 @@ bundle: stanford_basic_site_settings
 mode: default
 content:
   su_google_analytics:
+    type: string_textfield
     weight: 3
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+  su_hide_site_search:
+    type: boolean_checkbox
+    weight: 5
     region: content
-  su_site_dropdowns:
-    weight: 4
     settings:
       display_label: true
     third_party_settings: {  }
+  su_site_dropdowns:
     type: boolean_checkbox
+    weight: 4
     region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   su_site_email:
-    weight: 1
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
     type: email_default
+    weight: 1
     region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
   su_site_name:
+    type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   su_site_url:
+    type: link_default
     weight: 2
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
 hidden:
   label: true

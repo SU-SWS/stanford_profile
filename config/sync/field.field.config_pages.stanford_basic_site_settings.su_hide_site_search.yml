@@ -1,0 +1,23 @@
+uuid: 06279c10-fd44-4b61-a06d-c4bae79c0911
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_hide_site_search
+id: config_pages.stanford_basic_site_settings.su_hide_site_search
+field_name: su_hide_site_search
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Hide Site Search'
+description: 'Check this box to disable the site search box.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

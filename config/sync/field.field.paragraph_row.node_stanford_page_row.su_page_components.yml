@@ -23,15 +23,15 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 1
     target_bundles:
       stanford_person_cta: stanford_person_cta
       stanford_schedule: stanford_schedule
       stanford_accordion: stanford_accordion
+    negate: 1
     target_bundles_drag_drop:
       stanford_accordion:
-        enabled: true
         weight: 12
+        enabled: true
       stanford_banner:
         weight: -21
         enabled: false
@@ -51,11 +51,11 @@ settings:
         weight: -18
         enabled: false
       stanford_person_cta:
-        enabled: true
         weight: -17
-      stanford_schedule:
         enabled: true
+      stanford_schedule:
         weight: -15
+        enabled: true
       stanford_spacer:
         weight: -12
         enabled: false

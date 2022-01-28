@@ -1,0 +1,40 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 434972e6-21fb-41a7-b741-97a322b2910f
+  bundle: image
+  default_langcode: en
+  depends:
+    432a9f5f-1b2c-41d7-92b6-d8676d2f0ea9: user
+    84d7eaff-e426-446f-a462-c06e48f7e11a: file
+default:
+  revision_user:
+    -
+      entity: 432a9f5f-1b2c-41d7-92b6-d8676d2f0ea9
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: 432a9f5f-1b2c-41d7-92b6-d8676d2f0ea9
+  name:
+    -
+      value: Placeholder
+  created:
+    -
+      value: 1642033665
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 84d7eaff-e426-446f-a462-c06e48f7e11a
+      alt: ''
+      title: ''
+      width: 2400
+      height: 2400

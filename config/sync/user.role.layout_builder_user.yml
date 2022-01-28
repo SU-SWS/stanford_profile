@@ -1,7 +1,16 @@
 uuid: 368828b6-e04f-4f2f-94bb-3cb3871fc627
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - core.entity_view_display.node.stanford_event.default
+    - core.entity_view_display.node.stanford_event_series.default
+    - core.entity_view_display.node.stanford_news.default
+    - core.entity_view_display.node.stanford_page.default
+    - core.entity_view_display.node.stanford_person.default
+    - core.entity_view_display.node.stanford_publication.default
+  module:
+    - layout_builder
 id: layout_builder_user
 label: 'Layout Builder User'
 weight: 1

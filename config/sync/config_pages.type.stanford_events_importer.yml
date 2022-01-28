@@ -20,6 +20,7 @@ third_party_settings:
       config_item: source.urls
 id: stanford_events_importer
 label: 'Events Importer'
+token: null
 context:
   show_warning: true
   group:
@@ -30,4 +31,3 @@ menu:
   path: /admin/config/importers/events-importer
   weight: 0
   description: 'Provide a list of urls to use'
-token: null
