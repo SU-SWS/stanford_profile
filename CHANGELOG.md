@@ -1,10 +1,11 @@
 # Cardinal Service Profile
 
-
-8.x-2.17
+8.x-2.6
 --------------------------------------------------------------------------------
-_Release Date: 2022-01-27_
-
+_Release Date: 2022-01-28_
+- Fixed the visibility conditions for the search block (#482)
+- D8CORE-5398 Rename Legacy events importer field (#481)
+- Added administrative file list and delete actions (#480)
 - Fixed the visibility conditions for the search block (#482)
 - D8CORE-5398 Rename Legacy events importer field (#481)
 - Added administrative file list and delete actions (#480)
