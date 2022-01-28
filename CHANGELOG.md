@@ -20,25 +20,12 @@ _Release Date: 2022-01-28_
 - D8CORE-5119: added help text for the localist import field. (#470)
 - Upgrade drupal core to 9.3.0 with config updates (#469)
 
-8.x-2.16
---------------------------------------------------------------------------------
-_Release Date: 2022-01-20_
-
-- D8CORE-5266 Update events-legacy importer.
-
-
 8.x-2.4
 --------------------------------------------------------------------------------
 _Release Date: 2021-09-21_
 
 - Updates from stanford_profile 2021-09-21
-- Merge branch 'master' of ssh://github.com/SU-SWS/stanford_profile into 8.x-2.x
-- 8.2.13
-- 8.2.13
 - D8CORE-4534: adding a skip anchor block to the filtered pub page (#437)
-- 8.2.12
-- 8.2.11
-- 8.2.11
 - D8CORE-4643 Swapped out the "menu block" block with a regular "menu" block (#446)
 
 8.x-2.4
