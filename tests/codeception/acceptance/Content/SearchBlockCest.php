@@ -8,7 +8,7 @@
 class SearchBlockCest {
 
   /**
-   * Site managers should be able to disable the search block
+   * Site managers should be able to disable the search block.
    */
   public function testHideSearchBlock(AcceptanceTester $I) {
     $I->runDrush('config:pages-set-field-value stanford_basic_site_settings su_hide_site_search 0');
@@ -19,7 +19,8 @@ class SearchBlockCest {
     $I->see('Hide Site Search');
     $I->checkOption('Hide Site Search');
     $I->click('Save');
-    $I->see('Site Settings has been updated');
+    // The settings might have been created or updated.
+    $I->see('Site Settings has been');
     $I->amOnPage('/');
     $I->dontSeeElement('.su-site-search__input');
 

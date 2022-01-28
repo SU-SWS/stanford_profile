@@ -1,5 +1,24 @@
 # Cardinal Service Profile
 
+
+8.x-2.17
+--------------------------------------------------------------------------------
+_Release Date: 2022-01-27_
+
+- Fixed the visibility conditions for the search block (#482)
+- D8CORE-5398 Rename Legacy events importer field (#481)
+- Added administrative file list and delete actions (#480)
+- D8CORE-5221 D8CORE-4857 D8CORE-3517 Small adjustments to configs and content. (#476)
+- Add more steps to the site search disable tests (#478)
+- D8CORE-5193 Configure localist importer to forget about old events (#475)
+- Merge branch 'master' into 8.x-2.x
+- Added localist url to external source field (#471)
+- Adjust localist end dates for Smart Date "All Day" (#474)
+- Added checkbox to hide site search in site settings config page (#472)
+- D8CORE-5183: changes to external links config to skip localist (#473)
+- D8CORE-5119: added help text for the localist import field. (#470)
+- Upgrade drupal core to 9.3.0 with config updates (#469)
+
 8.x-2.16
 --------------------------------------------------------------------------------
 _Release Date: 2022-01-20_
