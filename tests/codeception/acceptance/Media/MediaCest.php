@@ -2,6 +2,7 @@
 
 /**
  * Tests for various media functionality.
+ *
  * @group testthis
  */
 class MediaCest {
@@ -96,6 +97,70 @@ class MediaCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/media/add/google_form');
     $I->canSee("Form Height");
+  }
+
+  /**
+   * Administrative file listing can delete files.
+   *
+   * @group mikes
+   */
+  public function deleteFiles(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/content/files');
+    $I->canSeeResponseCodeIs(403);
+    $I->amOnPage('/user/logout');
+
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/content/files');
+    $I->canSeeResponseCodeIs(200);
+
+    $I->amOnPage('/media/add/file');
+
+    $filename = 'foo_bar.pdf';
+    $file_path = codecept_data_dir() . $filename;
+    copy(__DIR__ . '/test.pdf', $file_path);
+
+    $I->fillField('Name', 'Test File');
+    $I->attachFile('File', $filename);
+    $I->click('Save');
+    $I->canSee('File Test File has been created.');
+    $I->amOnPage('/admin/content/files');
+    $I->canSee($filename);
+
+    $fids = \Drupal::entityTypeManager()
+      ->getStorage('file')
+      ->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('uri', "%$filename", 'LIKE')
+      ->execute();
+    $I->assertNotEmpty($fids);
+
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(TRUE);
+    $dom->loadHTML($I->grabPageSource());
+    libxml_clear_errors();
+    $xpath = new DOMXPath($dom);
+
+    /** @var \DOMNodeList $nodes */
+    $nodes = $xpath->evaluate("//label[contains(., '$filename')]");
+    $input_id = $nodes->item(0)->attributes['for']->value;
+    $I->checkOption('#' . $input_id);
+    $I->selectOption('Action', 'Delete File');
+    $I->click('Apply to selected items');
+    $I->canSee('Are you sure you wish to perform');
+    $I->canSee($filename);
+    $I->click('Execute action');
+    $I->canSee('Action processing results: Delete entities');
+    $I->amOnPage('/admin/content/files');
+    $I->cantSee($filename);
+
+    $fids = \Drupal::entityTypeManager()
+      ->getStorage('file')
+      ->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('uri', "%$filename", 'LIKE')
+      ->execute();
+    $I->assertEmpty($fids);
   }
 
 }

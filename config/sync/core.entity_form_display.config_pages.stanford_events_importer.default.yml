@@ -14,8 +14,8 @@ third_party_settings:
   field_group:
     group_import_events:
       children:
-        - su_event_xml_url
         - su_localist_url
+        - su_event_xml_url
       label: 'Import Events'
       region: content
       parent_name: ''
@@ -25,7 +25,7 @@ third_party_settings:
         classes: ''
         id: ''
         open: true
-        description: 'Use the following options to import events from https://events.stanford.edu/. Go to https://events.stanford.edu/ to browse the events that would be included in each of the options below. For example, you can go to https://events.stanford.edu/byOrganization/ to see a list of all the organizations that have events and to preview them. Events will be imported and updated daily or you can use the Save & Import button to execute an update immediately. '
+        description: 'Use the following options to import events from https://events.stanford.edu/. Go to https://events.stanford.edu/ to browse the events that would be included in each of the options below. Events will be imported and updated daily or you can use the Save & Import button to execute an update immediately. '
         required_fields: false
 id: config_pages.stanford_events_importer.default
 targetEntityType: config_pages
@@ -34,7 +34,7 @@ mode: default
 content:
   su_event_xml_url:
     type: stanford_events_importer_apiurl_field_widget
-    weight: 1
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
