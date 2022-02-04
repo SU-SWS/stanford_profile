@@ -13,13 +13,6 @@ name: 'Full Site Content'
 description: ''
 read_only: false
 field_settings:
-  node_grants:
-    label: 'Node access information'
-    property_path: search_api_node_grants
-    type: string
-    indexed_locked: true
-    type_locked: true
-    hidden: true
   rendered_item:
     label: 'Rendered HTML output'
     property_path: rendered_item
@@ -37,13 +30,18 @@ field_settings:
           stanford_publication: default
           su_opportunity: search_api
           su_spotlight: search_api
+  role_access:
+    label: 'Role-based access information'
+    property_path: search_api_role_access
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
   status:
     label: status
     datasource_id: 'entity:node'
     property_path: status
     type: boolean
-    indexed_locked: true
-    type_locked: true
     dependencies:
       module:
         - node
@@ -61,8 +59,6 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: uid
     type: integer
-    indexed_locked: true
-    type_locked: true
     dependencies:
       module:
         - node
@@ -77,16 +73,15 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
-  content_access:
-    weights:
-      preprocess_query: -30
   entity_status: {  }
+  entity_type: {  }
   highlight:
     weights:
       postprocess_query: 0
     prefix: '<strong>'
     suffix: '</strong>'
     excerpt: true
+    excerpt_always: false
     excerpt_length: 256
     exclude_fields:
       - title
@@ -188,13 +183,21 @@ processor_settings:
       preprocess_index: 0
     boosts:
       'entity:node':
-        datasource_boost: !!float 1
+        datasource_boost: !!float 0
         bundle_boosts:
+          stanford_event: !!float 0
+          stanford_event_series: !!float 0
+          stanford_news: !!float 0
           stanford_page: !!float 3
+          stanford_person: !!float 0
+          stanford_publication: !!float 0
+          su_opportunity: !!float 0
+          su_spotlight: !!float 0
 tracker_settings:
   default:
     indexing_order: fifo
 options:
   cron_limit: 50
   index_directly: true
+  track_changes_in_references: false
 server: database_search
