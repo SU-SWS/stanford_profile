@@ -11,6 +11,7 @@ dependencies:
     - field.field.config_pages.stanford_local_footer.su_local_foot_f_intro
     - field.field.config_pages.stanford_local_footer.su_local_foot_f_method
     - field.field.config_pages.stanford_local_footer.su_local_foot_f_url
+    - field.field.config_pages.stanford_local_footer.su_local_foot_help
     - field.field.config_pages.stanford_local_footer.su_local_foot_line_1
     - field.field.config_pages.stanford_local_footer.su_local_foot_line_2
     - field.field.config_pages.stanford_local_footer.su_local_foot_line_3
@@ -34,9 +35,11 @@ dependencies:
     - image.style.thumbnail
   module:
     - address
+    - conditional_fields
     - field_group
     - image
     - link
+    - markup
     - text
 third_party_settings:
   field_group:
@@ -115,19 +118,13 @@ third_party_settings:
     group_local_lockup:
       children:
         - su_local_foot_use_loc
-        - su_local_foot_use_logo
-        - su_local_foot_loc_img
-        - su_local_foot_loc_op
-        - su_local_foot_line_1
-        - su_local_foot_line_2
-        - su_local_foot_line_3
-        - su_local_foot_line_4
-        - su_local_foot_line_5
+        - group_lockup_options
+        - group_logo_image
         - su_local_foot_loc_link
       label: 'Local Lockup'
       region: content
       parent_name: ''
-      weight: 7
+      weight: 8
       format_type: details
       format_settings:
         classes: ''
@@ -144,7 +141,7 @@ third_party_settings:
       label: 'Content Blocks'
       region: content
       parent_name: ''
-      weight: 8
+      weight: 9
       format_type: details
       format_settings:
         classes: ''
@@ -152,11 +149,100 @@ third_party_settings:
         open: false
         description: ''
         required_fields: true
+    group_lockup_options:
+      children:
+        - su_local_foot_help
+        - su_local_foot_loc_op
+        - su_local_foot_line_1
+        - su_local_foot_line_2
+        - su_local_foot_line_3
+        - su_local_foot_line_4
+        - su_local_foot_line_5
+      label: 'Lockup Options'
+      region: content
+      parent_name: group_local_lockup
+      weight: 8
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+    group_logo_image:
+      children:
+        - su_local_foot_use_logo
+        - su_local_foot_loc_img
+      label: 'Logo Image'
+      region: content
+      parent_name: group_local_lockup
+      weight: 9
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
 id: config_pages.stanford_local_footer.default
 targetEntityType: config_pages
 bundle: stanford_local_footer
 mode: default
 content:
+  group_lockup_options:
+    weight: 44
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        e490d120-3f5f-4638-a18b-463706a0ac20:
+          entity_type: config_pages
+          bundle: stanford_local_footer
+          dependee: su_local_foot_use_loc
+          settings:
+            state: visible
+            condition: '!checked'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: 1
+            effect: show
+            effect_options: {  }
+            selector: ''
+            inheritance:
+              propagate: '0'
+              apply_to_parent: '0'
+              recurse: '0'
+  group_logo_image:
+    weight: 45
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        05419101-921b-49c4-9a52-9b0a9bb12102:
+          entity_type: config_pages
+          bundle: stanford_local_footer
+          dependee: su_local_foot_use_loc
+          settings:
+            state: visible
+            condition: '!checked'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: 1
+            effect: show
+            effect_options: {  }
+            selector: ''
+            inheritance:
+              propagate: '0'
+              apply_to_parent: '0'
+              recurse: '0'
   su_footer_enabled:
     type: boolean_checkbox
     weight: 0
@@ -208,68 +294,183 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  su_local_foot_help:
+    type: markup
+    weight: 37
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   su_local_foot_line_1:
     type: string_textfield
-    weight: 19
+    weight: 39
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        ff1e991b-57e7-4406-8471-ee10801bbd09:
+          entity_type: config_pages
+          bundle: stanford_local_footer
+          dependee: su_local_foot_loc_op
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 5
+            value: ''
+            values: "none\r\n_none\r\no\r\nr"
+            value_form:
+              -
+                value: a
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_local_foot_line_2:
     type: string_textfield
-    weight: 20
+    weight: 40
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        4f8bcfee-2f0f-4c1a-92cc-6d02ce39258f:
+          entity_type: config_pages
+          bundle: stanford_local_footer
+          dependee: su_local_foot_loc_op
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 5
+            value: ''
+            values: "none\r\n_none\r\na\r\nd\r\nh\r\ni\r\nk\r\nl\r\nn\r\no\r\np\r\nq\r\nr"
+            value_form:
+              -
+                value: a
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_local_foot_line_3:
     type: string_textfield
-    weight: 21
+    weight: 41
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        868b9813-01c7-41e3-9f79-1cd882adb990:
+          entity_type: config_pages
+          bundle: stanford_local_footer
+          dependee: su_local_foot_loc_op
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 5
+            value: ''
+            values: "none\r\n_none\r\na\r\nb\r\nc\r\nf\r\ng\r\nj\r\nk\r\nl\r\nm\r\nn\r\no\r\np\r\nq\r\nr\r\ns"
+            value_form:
+              -
+                value: a
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_local_foot_line_4:
     type: string_textfield
-    weight: 22
+    weight: 42
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        a7c3f56e-1ce8-421f-a505-0b88735162e7:
+          entity_type: config_pages
+          bundle: stanford_local_footer
+          dependee: su_local_foot_loc_op
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 5
+            value: ''
+            values: "none\r\n_none\r\na\r\nb\r\nc\r\nd\r\ne\r\nf\r\ng\r\nj\r\nk\r\nl\r\nm\r\nn\r\nr"
+            value_form:
+              -
+                value: a
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_local_foot_line_5:
     type: string_textfield
-    weight: 23
+    weight: 43
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        6e50502d-dcc5-4bf8-86e9-a642a67900ae:
+          entity_type: config_pages
+          bundle: stanford_local_footer
+          dependee: su_local_foot_loc_op
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 5
+            value: ''
+            values: "none\r\n_none\r\nb\r\nd\r\ne\r\nf\r\nh\r\ni\r\nl\r\nm\r\nn\r\no\r\np\r\nq\r\ns\r\nt"
+            value_form:
+              -
+                value: a
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_local_foot_loc_img:
     type: image_image
-    weight: 17
+    weight: 35
     region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        b92d1113-a856-418c-8cac-eb590f8b7ea3:
+          entity_type: config_pages
+          bundle: stanford_local_footer
+          dependee: su_local_foot_use_logo
+          settings:
+            state: visible
+            condition: '!checked'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: 1
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_local_foot_loc_link:
     type: link_default
-    weight: 24
+    weight: 10
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields: {  }
   su_local_foot_loc_op:
     type: options_select
-    weight: 18
+    weight: 38
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields: {  }
   su_local_foot_pr_co:
     type: text_textarea
     weight: 17
@@ -352,17 +553,18 @@ content:
     third_party_settings: {  }
   su_local_foot_use_loc:
     type: boolean_checkbox
-    weight: 15
+    weight: 7
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_local_foot_use_logo:
     type: boolean_checkbox
-    weight: 16
+    weight: 34
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields: {  }
 hidden:
   label: true

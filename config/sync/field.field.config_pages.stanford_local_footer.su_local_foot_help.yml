@@ -1,0 +1,25 @@
+uuid: 046ff8f6-3d99-43f5-a9b8-6dd814e631b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+    - field.storage.config_pages.su_local_foot_help
+  module:
+    - markup
+id: config_pages.stanford_local_footer.su_local_foot_help
+field_name: su_local_foot_help
+entity_type: config_pages
+bundle: stanford_local_footer
+label: 'Lockup Intro'
+description: ''
+required: false
+translatable: false
+default_value:
+  - {  }
+default_value_callback: ''
+settings:
+  markup:
+    value: "<div>\r\n<p><img alt=\"\" src=\"https://su-sws.github.io/stanford_basic/src/assets/img/lockup-example.png\" /></p>\r\n\r\n<p><a href=\"https://decanter.stanford.edu/component/identity-lockup/\">Decanter Lockup Component</a></p>\r\n\r\n<p>This lockup will appear in the top left corner of the website's main header.</p>\r\n</div>\r\n"
+    format: stanford_html
+field_type: markup
