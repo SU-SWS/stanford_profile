@@ -55,6 +55,7 @@ dependencies:
     - redirect
     - responsive_image
     - role_delegation
+    - scheduler
     - shortcut
     - stanford_media
     - stanford_profile
@@ -268,6 +269,7 @@ permissions:
   - 'revert stanford_page revisions'
   - 'revert stanford_person revisions'
   - 'revert stanford_publication revisions'
+  - 'schedule publishing of nodes'
   - 'select account cancellation method'
   - 'switch shortcut sets'
   - 'update any media'
@@ -289,6 +291,7 @@ permissions:
   - 'view own field_media_embeddable_code'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view scheduled content'
   - 'view stanford_event revisions'
   - 'view stanford_event_series revisions'
   - 'view stanford_news revisions'

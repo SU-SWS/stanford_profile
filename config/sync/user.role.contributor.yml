@@ -22,6 +22,7 @@ dependencies:
     - menu_admin_per_menu
     - node
     - paragraphs
+    - scheduler
     - stanford_publication
     - system
     - toolbar
@@ -88,6 +89,7 @@ permissions:
   - 'edit own stanford_person content'
   - 'edit own stanford_publication content'
   - 'edit own video media'
+  - 'schedule publishing of nodes'
   - 'update media'
   - 'view all revisions'
   - 'view any unpublished stanford_event content'
@@ -99,6 +101,7 @@ permissions:
   - 'view editoria11y checker'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view scheduled content'
   - 'view stanford_event revisions'
   - 'view stanford_event_series revisions'
   - 'view stanford_news revisions'

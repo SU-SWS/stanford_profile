@@ -148,4 +148,32 @@ class BasicPageCest {
     $I->assertCount(3, $links);
   }
 
+  /**
+   * Test the basic page scheduled publishing.
+   *
+   * @group scheduler
+   */
+  public function testScheduler(AcceptanceTester $I) {
+    $time = \Drupal::time();
+
+    /** @var \Drupal\system\TimeZoneResolver $timezone_resolver */
+    $timezone_resolver = \Drupal::service('system.timezone_resolver');
+    $timezone_resolver->setDefaultTimeZone();
+
+    $I->logInWithRole('site_manager');
+    $node = $I->createEntity(['title' => 'Foo Bar', 'type' => 'stanford_page']);
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->fillField('publish_on[0][value][date]', date('Y-m-d'));
+    $I->fillField('publish_on[0][value][time]', date('G:i:s', $time->getCurrentTime() + 10));
+    $I->click('Save');
+    $I->canSee('This page is currently unpublished');
+    echo 'sleep 15 seconds' . PHP_EOL;
+    sleep(15);
+    $I->runDrush('sch-cron');
+    $I->amOnPage($node->toUrl()->toString());
+    $I->cantSee('This page is currently unpublished');
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->canSeeCheckboxIsChecked('Published');
+  }
+
 }
