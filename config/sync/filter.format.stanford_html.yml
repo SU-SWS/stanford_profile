@@ -15,6 +15,7 @@ dependencies:
     - linkit
     - mathjax
     - media
+    - responsive_tables_filter
     - stanford_media
 name: HTML
 format: stanford_html
@@ -57,7 +58,7 @@ filters:
     status: true
     weight: -50
     settings:
-      allowed_html: '<br> <em> <strong> <cite> <blockquote cite> <pre class> <code data-* class> <ul type class> <ol start type class> <li class> <dl class> <dt> <dd class> <h2 id class> <h3 id class> <h4 id class> <h5 id class> <div class> <table class> <caption> <tbody class> <thead> <tfoot> <th scope class> <td colspan rowspan class> <tr> <sup> <sub> <i class> <hr> <s> <aside class> <drupal-media data-entity-type data-entity-uuid data-align data-caption data-* alt data-view-mode title> <a href hreflang data-entity-substitution data-entity-type data-entity-uuid title name class> <p class>'
+      allowed_html: '<br> <em> <strong> <cite> <blockquote cite> <pre class=""> <code data-* class=""> <ul type class=""> <ol start type class=""> <li class=""> <dl class=""> <dt> <dd class=""> <h2 id class=""> <h3 id class=""> <h4 id class=""> <h5 id class=""> <div class=""> <table class=""> <caption> <tbody class=""> <thead> <tfoot> <th scope class=""> <td colspan rowspan class=""> <tr> <sup> <sub> <i class=""> <hr> <s> <aside class=""> <drupal-media data-entity-type data-entity-uuid data-align data-caption data-* alt data-view-mode title> <a href hreflang data-entity-substitution data-entity-type data-entity-uuid title name class=" su-button su-button--big su-button--secondary su-link--action"> <p class=" plain-text su-intro-text su-font-splash su-quote-text su-drop-cap su-related-text su-callout-text su-subheading">'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -119,3 +120,11 @@ filters:
     status: true
     weight: -49
     settings: {  }
+  filter_responsive_tables_filter:
+    id: filter_responsive_tables_filter
+    provider: responsive_tables_filter
+    status: true
+    weight: 0
+    settings:
+      tablesaw_type: stack
+      tablesaw_persist: '1'
