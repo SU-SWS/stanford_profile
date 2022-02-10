@@ -12,20 +12,25 @@ class BasicPageCest {
 
   /**
    * Test placing a basic page in the menu with a child menu item.
+   *
+   * @group pathauto
    */
   public function testCreatingPage(AcceptanceTester $I) {
     $faker = Factory::create();
     $node_title = $faker->text(20);
 
-    $I->logInWithRole('contributor');
+    $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_page');
     $I->fillField('Title', $node_title);
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', "$node_title Item");
     // The label on the menu parent changes in D9 vs D8
     $I->selectOption('Parent link', ' <Main navigation>');
+    $I->uncheckOption('Generate automatic URL alias');
+    $I->fillField('URL alias', '/foo-bar');
     $I->click('Save');
     $I->canSeeLink("$node_title Item");
+    $I->assertStringContainsString('/foo-bar', $I->grabFromCurrentUrl());
 
     $child_title = $faker->text('15');
 
@@ -37,6 +42,7 @@ class BasicPageCest {
     $I->click('Change parent (update list of weights)');
     $I->click('Save');
     $I->canSeeLink("$child_title Item");
+    $I->assertStringContainsString('/foo-bar', $I->grabFromCurrentUrl());
   }
 
   /**
