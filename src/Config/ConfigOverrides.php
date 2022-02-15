@@ -110,7 +110,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    *   Is Acquia environment.
    */
   protected function isProdEnv() {
-    $ah_env = $_ENV['AH_SITE_ENVIRONMENT'] ?? NULL;
+    $ah_env = $_ENV['AH_SITE_ENVIRONMENT'] ?? '';
     return $ah_env == 'prod' || preg_match('/^\d*live$/', $ah_env);
   }
 
