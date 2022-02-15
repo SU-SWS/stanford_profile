@@ -164,7 +164,7 @@ class BasicPageCest {
     $node = $I->createEntity(['title' => 'Foo Bar', 'type' => 'stanford_page']);
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->fillField('publish_on[0][value][date]', date('Y-m-d'));
-    $I->fillField('publish_on[0][value][time]', date('G:i:s', $time->getCurrentTime() + 10));
+    $I->fillField('publish_on[0][value][time]', date('H:i:s', $time->getCurrentTime() + 10));
     $I->click('Save');
     $I->canSee('This page is currently unpublished');
     echo 'sleep 15 seconds' . PHP_EOL;
