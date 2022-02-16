@@ -8,17 +8,27 @@
 class IntranetCest {
 
   /**
-   * Save the state before the tests and reset after the tests.
+   * Save the Intranet state before the tests and reset after the tests.
    *
    * @var bool
    */
   protected $intranetWasEnabled = FALSE;
 
   /**
+   * Save the Allow File Uplaods state before the tests and reset after the
+   * tests.
+   *
+   * @var bool
+   */
+  protected $fileUploadsWasEnabled = FALSE;
+
+
+  /**
    * Save the original state.
    */
   public function _before(AcceptanceTester $I) {
     $this->intranetWasEnabled = (bool) $I->runDrush('sget stanford_intranet');
+    $this->fileUploadsWasEnabled = (bool) $I->runDrush('sget stanford_intranet.allow_file_uploads');
   }
 
   /**
@@ -26,6 +36,7 @@ class IntranetCest {
    */
   public function _after(AcceptanceTester $I) {
     $I->runDrush('sset stanford_intranet ' . (int) $this->intranetWasEnabled);
+    $I->runDrush('sset stanford_intranet.allow_file_uploads ' . (int) $this->fileUploadsWasEnabled);
     $I->runDrush('cache:rebuild');
     if (file_exists(codecept_data_dir('/test.txt'))) {
       unlink(codecept_data_dir('/test.txt'));
@@ -137,10 +148,17 @@ class IntranetCest {
   }
 
   /**
-   * Files can't be added.
+   * Files can only be added when allow_file_uploads state is enabled.
    */
   public function testMediaAccess(AcceptanceTester $I) {
     $I->runDrush('sset stanford_intranet 1');
+    $I->runDrush('sset stanford_intranet.allow_file_uploads 1');
+    $I->runDrush('cache-rebuild');
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/media/add/file');
+    $I->canSeeResponseCodeIs(200);
+
+    $I->runDrush('sset stanford_intranet.allow_file_uploads 0');
     $I->logInWithRole('site_manager');
     $I->amOnPage('/media/add/file');
     $I->canSeeResponseCodeIs(403);
