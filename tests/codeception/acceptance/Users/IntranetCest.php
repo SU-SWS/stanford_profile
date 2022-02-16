@@ -15,7 +15,7 @@ class IntranetCest {
   protected $intranetWasEnabled = FALSE;
 
   /**
-   * Save the Allow File Uplaods state before the tests and reset after the
+   * Save the Allow File Uploads state before the tests and reset after the
    * tests.
    *
    * @var bool
