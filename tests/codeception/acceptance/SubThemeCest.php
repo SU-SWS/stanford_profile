@@ -90,6 +90,25 @@ class SubThemeCest {
     $I->canSeeResponseCodeIs(200);
   }
 
+/**
+   * Enable the minimally branded subtheme and the config should reflect the changes done.
+   * Then test there isn't any Stanford branding.
+   * @group minimal-test
+   */
+  public function testMinimalSubtheme(AcceptanceTester $I) {
+    $I->runDrush('theme:enable -y minimally_branded_subtheme');
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/appearance');
+    $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');
+    $I->amOnPage('/');
+    $I->canSeeResponseCodeIs(200);
+
+    $I->dontSee('.su-lockup__wordmark');
+    $I->dontSee('.su-brand-bar__logo');
+    $I->dontSee('.su-global-footer__container');
+    $I->see('.su-brand-bar--dark');
+  }
+
   /**
    * Run config import and adjust saml module if necessary.
    *
