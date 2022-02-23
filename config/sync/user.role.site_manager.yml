@@ -37,6 +37,7 @@ dependencies:
     - rabbit_hole
     - redirect
     - role_delegation
+    - scheduler
     - stanford_migrate
     - stanford_profile
     - stanford_publication
@@ -194,6 +195,7 @@ permissions:
   - 'revert stanford_page revisions'
   - 'revert stanford_person revisions'
   - 'revert stanford_publication revisions'
+  - 'schedule publishing of nodes'
   - 'update any media'
   - 'update any stanford_component_block block content'
   - 'update media'
@@ -210,6 +212,7 @@ permissions:
   - 'view editoria11y checker'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view scheduled content'
   - 'view stanford_event revisions'
   - 'view stanford_event_series revisions'
   - 'view stanford_news revisions'
