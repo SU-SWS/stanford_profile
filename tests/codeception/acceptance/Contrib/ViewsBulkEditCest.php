@@ -6,6 +6,7 @@ use Faker\Factory;
  * Test out the views bulk edit module.
  *
  * @group contrib
+ * @group bulk_edit
  */
 class ViewsBulkEditCest {
 
@@ -36,10 +37,10 @@ class ViewsBulkEditCest {
     $I->fillField('node[stanford_news][su_news_topics][0][target_id]', 'Foo Bar Baz');
     $I->checkOption('Event Type');
     $I->selectOption('node[stanford_event][su_event_type]', 'Foo Bar Baz');
-    $I->fillField('node[stanford_event][su_event_date_time][0][value][date]', date('Y-m-d'));
-    $I->fillField('node[stanford_event][su_event_date_time][0][value][time]', '12:00:00');
-    $I->fillField('node[stanford_event][su_event_date_time][0][end_value][date]', date('Y-m-d'));
-    $I->fillField('node[stanford_event][su_event_date_time][0][end_value][time]', '12:00:00');
+    $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][value][date]', date('Y-m-d'));
+    $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][value][time]', '12:00:00');
+    $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][end_value][date]', date('Y-m-d'));
+    $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][end_value][time]', '12:00:00');
 
     $I->checkOption('Publication Topic Terms');
     $I->fillField('node[stanford_publication][su_publication_topics][0][target_id]', 'Foo Bar Baz');
