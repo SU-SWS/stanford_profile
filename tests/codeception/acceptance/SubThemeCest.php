@@ -58,8 +58,11 @@ class SubThemeCest {
    */
   public function _failed(AcceptanceTester $I) {
     $this->runConfigImport($I, TRUE);
-    unlink($this->themePath . '/' . strtolower($this->themeName) . '.info.yml');
-    rmdir($this->themePath);
+    $info_path = $this->themePath . '/' . strtolower($this->themeName) . '.info.yml';
+    if (file_exists($info_path)){
+      unlink($info_path);
+      rmdir($this->themePath);
+    }
   }
 
   /**
