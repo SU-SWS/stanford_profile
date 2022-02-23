@@ -105,7 +105,6 @@ class SubThemeCest {
     $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');
     $I->amOnPage('/');
     $I->canSeeResponseCodeIs(200);
-    $I->dontSeeElement('.su-lockup__wordmark');
     $I->dontSeeElement('.su-brand-bar__logo');
     $I->dontSeeElement('.su-global-footer__container');
     $I->dontSeeElement('.su-brand-bar--default');   
