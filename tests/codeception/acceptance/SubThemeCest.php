@@ -67,6 +67,7 @@ class SubThemeCest {
 
   /**
    * Enable the subtheme and the config should reflect the changes done.
+   * @group minimal-subtheme-test2
    */
   public function testSubTheme(AcceptanceTester $I) {
     $I->runDrush('theme:enable -y ' . strtolower($this->themeName));
@@ -103,10 +104,8 @@ class SubThemeCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');
-    $I->amOnPage('/');
     $I->canSeeResponseCodeIs(200);
     $I->seeInSource('<span class="su-lockup__wordmark"></span>');
-    $I->dontSee('Stanford');
     $I->dontSeeElement('.su-brand-bar__logo');
     $I->dontSeeElement('.su-global-footer__container');
     $I->dontSeeElement('.su-brand-bar--default');
