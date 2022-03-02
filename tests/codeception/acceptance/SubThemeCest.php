@@ -103,14 +103,13 @@ class SubThemeCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');
-    $I->click('.su-lockup__cell1');
     $I->amOnPage('/');
     $I->canSeeResponseCodeIs(200);
     $I->seeInSource('<span class="su-lockup__wordmark"></span>');
     $I->dontSee('Stanford');
     $I->dontSeeElement('.su-brand-bar__logo');
     $I->dontSeeElement('.su-global-footer__container');
-    $I->dontSeeElement('.su-brand-bar--default');   
+    $I->dontSeeElement('.su-brand-bar--default');
   }
 
   /**
