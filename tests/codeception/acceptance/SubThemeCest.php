@@ -103,7 +103,7 @@ class SubThemeCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');
-    $I->click('.su-lockup');
+    $I->click('.su-lockup__cell1');
     $I->amOnPage('/');
     $I->canSeeResponseCodeIs(200);
     $I->seeInSource('<span class="su-lockup__wordmark"></span>');
