@@ -1,21 +1,21 @@
-uuid: e90c0c80-f6da-4f2e-a889-3f5f4c56d80b
+uuid: f7aa78ee-616e-46c7-b521-4f5824eca15f
 langcode: en
 status: true
 dependencies:
   config:
     - config_pages.type.stanford_local_footer
-    - field.storage.config_pages.su_local_foot_tr_co
+    - field.storage.config_pages.su_local_foot_tr2_co
   module:
     - allowed_formats
     - text
 third_party_settings:
   allowed_formats:
     allowed_formats: {  }
-id: config_pages.stanford_local_footer.su_local_foot_tr_co
-field_name: su_local_foot_tr_co
+id: config_pages.stanford_local_footer.su_local_foot_tr2_co
+field_name: su_local_foot_tr2_co
 entity_type: config_pages
 bundle: stanford_local_footer
-label: 'Fourth Content Block'
+label: 'Third Content Block'
 description: ''
 required: false
 translatable: false

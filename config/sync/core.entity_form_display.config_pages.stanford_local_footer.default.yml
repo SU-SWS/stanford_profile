@@ -27,6 +27,7 @@ dependencies:
     - field.field.config_pages.stanford_local_footer.su_local_foot_second_h
     - field.field.config_pages.stanford_local_footer.su_local_foot_social
     - field.field.config_pages.stanford_local_footer.su_local_foot_sunet_t
+    - field.field.config_pages.stanford_local_footer.su_local_foot_tr2_co
     - field.field.config_pages.stanford_local_footer.su_local_foot_tr_co
     - field.field.config_pages.stanford_local_footer.su_local_foot_use_loc
     - field.field.config_pages.stanford_local_footer.su_local_foot_use_logo
@@ -138,6 +139,7 @@ third_party_settings:
       children:
         - su_local_foot_pr_co
         - su_local_foot_se_co
+        - su_local_foot_tr2_co
         - su_local_foot_tr_co
       label: 'Content Blocks'
       region: content
@@ -332,9 +334,17 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  su_local_foot_tr_co:
+  su_local_foot_tr2_co:
     type: text_textarea
     weight: 19
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  su_local_foot_tr_co:
+    type: text_textarea
+    weight: 20
     region: content
     settings:
       rows: 5
