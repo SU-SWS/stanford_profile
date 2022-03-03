@@ -164,4 +164,19 @@ class IntranetCest {
     $I->canSeeResponseCodeIs(403);
   }
 
+  /**
+   * @param AcceptanceTester $I
+   * @return void
+   *
+   * Files can only be viewed by users logged in.
+   */
+  public function anonymousFileAccess(AcceptanceTester $I){
+    $private_filename = __DIR__ . '/private-file-test.pdf';
+    $I->createEntity([
+      'vid' => 'file',
+      'title' => 'Test PDF File',
+      'file' => $private_filename,
+    ]);
+//    $I->canSeeResponseCodeIs(403);
+  }
 }
