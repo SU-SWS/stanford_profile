@@ -7,7 +7,7 @@ dependencies:
 id: default
 label: Default
 type: 'canonical_entities:node'
-pattern: '[node:menu-link:parents:join-path]/[node:title]'
+pattern: '[node:menu-link:parent:url:relative]/[node:title]'
 selection_criteria: {  }
 selection_logic: and
 weight: 0

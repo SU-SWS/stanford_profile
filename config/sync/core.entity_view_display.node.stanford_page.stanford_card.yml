@@ -90,6 +90,11 @@ targetEntityType: node
 bundle: stanford_page
 mode: stanford_card
 content:
+  flag_cs_resources:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
   su_page_banner:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -140,3 +145,6 @@ hidden:
   stanford_intranet__access: true
   su_basic_page_type: true
   su_page_components: true
+  su_page_resource_audience: true
+  su_page_resource_dimension: true
+  su_page_resource_type: true
