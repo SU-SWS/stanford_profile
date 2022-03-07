@@ -68,6 +68,7 @@ class BasicPageCest {
   public function testRevisionPage(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $node = $I->createEntity(['title' => 'Foo Bar', 'type' => 'stanford_page']);
+    $I->runDrush('cache-rebuild');
     $I->amOnPage($node->toUrl()->toString());
     $I->click('Version History');
     $I->canSeeResponseCodeIs(200);
