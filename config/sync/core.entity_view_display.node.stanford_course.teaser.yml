@@ -1,0 +1,41 @@
+uuid: c4739714-0cd4-4094-9e6f-7ee5c229d49b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.stanford_course.body
+    - field.field.node.stanford_course.su_course_code
+    - field.field.node.stanford_course.su_course_instructors
+    - field.field.node.stanford_course.su_course_subject
+    - field.field.node.stanford_course.su_course_term
+    - field.field.node.stanford_course.su_course_year
+    - node.type.stanford_course
+  module:
+    - text
+    - user
+id: node.stanford_course.teaser
+targetEntityType: node
+bundle: stanford_course
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  search_api_excerpt: true
+  su_course_code: true
+  su_course_instructors: true
+  su_course_subject: true
+  su_course_term: true
+  su_course_year: true

@@ -1,0 +1,28 @@
+uuid: d8f4ce05-61d5-4a2a-a575-146b92856ade
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.stanford_course
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - stanford_minimal_html
+id: node.stanford_course.body
+field_name: body
+entity_type: node
+bundle: stanford_course
+label: 'Course Description'
+description: 'The description of the course'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

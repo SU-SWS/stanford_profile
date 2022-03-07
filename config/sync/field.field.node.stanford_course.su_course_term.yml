@@ -1,0 +1,19 @@
+uuid: ce079009-a3ed-4df5-a8fc-6a7a80e87451
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_course_term
+    - node.type.stanford_course
+id: node.stanford_course.su_course_term
+field_name: su_course_term
+entity_type: node
+bundle: stanford_course
+label: 'Course Term'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
