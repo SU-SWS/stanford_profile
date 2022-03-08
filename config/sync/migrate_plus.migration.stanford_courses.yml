@@ -18,9 +18,41 @@ source:
   item_selector: /courses/course
   fields:
     -
-      name: guid
-      label: GUID
-      selector: guid
+      name: year
+      label: Year
+      selector: year
+    -
+      name: subject
+      label: Subject
+      selector: subject
+    -
+      name: code
+      label: Code
+      selector: code
+    -
+      name: title
+      label: Title
+      selector: title
+    -
+      name: description
+      label: Description
+      selector: description
+    -
+      name: sections
+      label: Sections
+      selector: sections
+    -
+      name: administrative_info
+      label: Adimistrative Information
+      selector: administrativeInformation
+    -
+      name: attributes
+      label: Attributes
+      selector: attributes
+    -
+      name: tags
+      label: Tags
+      selector: tags
   ids:
     event_id:
       type: string
