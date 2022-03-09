@@ -12,20 +12,25 @@ class BasicPageCest {
 
   /**
    * Test placing a basic page in the menu with a child menu item.
+   *
+   * @group pathauto
    */
   public function testCreatingPage(AcceptanceTester $I) {
     $faker = Factory::create();
     $node_title = $faker->text(20);
 
-    $I->logInWithRole('contributor');
+    $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_page');
     $I->fillField('Title', $node_title);
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', "$node_title Item");
     // The label on the menu parent changes in D9 vs D8
     $I->selectOption('Parent link', ' <Main navigation>');
+    $I->uncheckOption('Generate automatic URL alias');
+    $I->fillField('URL alias', '/foo-bar');
     $I->click('Save');
     $I->canSeeLink("$node_title Item");
+    $I->assertStringContainsString('/foo-bar', $I->grabFromCurrentUrl());
 
     $child_title = $faker->text('15');
 
@@ -37,6 +42,7 @@ class BasicPageCest {
     $I->click('Change parent (update list of weights)');
     $I->click('Save');
     $I->canSeeLink("$child_title Item");
+    $I->assertStringContainsString('/foo-bar', $I->grabFromCurrentUrl());
   }
 
   /**
@@ -60,8 +66,10 @@ class BasicPageCest {
    * Regression test for D8CORE-1547.
    */
   public function testRevisionPage(AcceptanceTester $I) {
+    $faker = Factory::create();
+    $title = $faker->text(20);
     $I->logInWithRole('site_manager');
-    $node = $I->createEntity(['title' => 'Foo Bar', 'type' => 'stanford_page']);
+    $node = $I->createEntity(['title' => $title, 'type' => 'stanford_page']);
     $I->amOnPage($node->toUrl()->toString());
     $I->click('Version History');
     $I->canSeeResponseCodeIs(200);
@@ -146,6 +154,34 @@ class BasicPageCest {
     $I->click('Apply');
     $links = $I->grabMultiple('a:contains("Original Node")');
     $I->assertCount(3, $links);
+  }
+
+  /**
+   * Test the basic page scheduled publishing.
+   *
+   * @group scheduler
+   */
+  public function testScheduler(AcceptanceTester $I) {
+    $time = \Drupal::time();
+
+    /** @var \Drupal\system\TimeZoneResolver $timezone_resolver */
+    $timezone_resolver = \Drupal::service('system.timezone_resolver');
+    $timezone_resolver->setDefaultTimeZone();
+
+    $I->logInWithRole('site_manager');
+    $node = $I->createEntity(['title' => 'Foo Bar', 'type' => 'stanford_page']);
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->fillField('publish_on[0][value][date]', date('Y-m-d'));
+    $I->fillField('publish_on[0][value][time]', date('H:i:s', $time->getCurrentTime() + 10));
+    $I->click('Save');
+    $I->canSee('This page is currently unpublished');
+    echo 'sleep 15 seconds' . PHP_EOL;
+    sleep(15);
+    $I->runDrush('sch-cron');
+    $I->amOnPage($node->toUrl()->toString());
+    $I->cantSee('This page is currently unpublished');
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->canSeeCheckboxIsChecked('Published');
   }
 
 }
