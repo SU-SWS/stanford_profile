@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_su_course_id
-    - node.type.su_course
+    - field.storage.node.su_course_id
+    - node.type.stanford_course
 _core:
   default_config_hash: NQcI2hd8Pqcy1NiRlKbmB5JucKAUQa7SbzSmMPTTqho
-id: node.su_course.field_su_course_id
-field_name: field_su_course_id
+id: node.stanford_course.su_course_id
+field_name: su_course_id
 entity_type: node
-bundle: su_course
+bundle: stanford_course
 label: 'Course ID'
 description: ''
 required: false

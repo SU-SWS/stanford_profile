@@ -4,15 +4,15 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.su_course
+    - node.type.stanford_course
   module:
     - text
 _core:
   default_config_hash: wfCexHzc4xfdwUR3B7mmx-DvHbd7IhJYYCfTZedJdxo
-id: node.su_course.body
+id: node.stanford_course.body
 field_name: body
 entity_type: node
-bundle: su_course
+bundle: stanford_course
 label: Body
 description: ''
 required: false

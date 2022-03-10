@@ -3,16 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_su_course_link
-    - node.type.su_course
+    - field.storage.node.su_course_link
+    - node.type.stanford_course
   module:
     - link
 _core:
   default_config_hash: hgIoUpx7s0juHLRj3woLI5ZGfLEuW9fPc1MQ5KT5ngg
-id: node.su_course.field_su_course_link
-field_name: field_su_course_link
+id: node.stanford_course.su_course_link
+field_name: su_course_link
 entity_type: node
-bundle: su_course
+bundle: stanford_course
 label: 'Course Link'
 description: ''
 required: false
@@ -20,6 +20,6 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  link_type: 16
   title: 0
+  link_type: 16
 field_type: link

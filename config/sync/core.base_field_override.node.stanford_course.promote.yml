@@ -3,13 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.su_course
+    - node.type.stanford_course
 _core:
   default_config_hash: CQYENrDdlg4DTmyxsi_MEUnLBrPMHWxyCin8Bdp2tBw
-id: node.su_course.promote
+id: node.stanford_course.promote
 field_name: promote
 entity_type: node
-bundle: su_course
+bundle: stanford_course
 label: 'Promoted to front page'
 description: ''
 required: false

@@ -9,15 +9,15 @@ _core:
 id: su_courses
 label: Courses
 type: 'canonical_entities:node'
-pattern: '/courses/[node:title]/[node:field_su_course_section_number]'
+pattern: '/courses/[node:title]/[node:su_course_section_number]'
 selection_criteria:
   fcd0ccb7-a344-4563-9117-603f2a67e523:
     id: node_type
-    bundles:
-      su_course: su_course
     negate: false
     context_mapping:
       node: node
+    bundles:
+      stanford_course: stanford_course
 selection_logic: and
 weight: 0
 relationships: {  }

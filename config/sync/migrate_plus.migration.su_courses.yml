@@ -120,7 +120,7 @@ source:
       type: string
   constants:
     status: 1
-    type: su_course
+    type: stanford_course
     basic_html: basic_html
     link: 'http://explorecourses.stanford.edu/search?q='
 process:
@@ -129,18 +129,18 @@ process:
   title: title
   body/value: body
   body/format: constants/basic_html
-  field_su_course_grading: grading
-  field_su_course_code: code
-  field_su_course_code_int: code
-  field_su_course_id: course_id
-  field_su_course_requirements: requirements
-  field_su_course_section_id: section_id
-  field_su_course_section_number: section_number
-  field_su_course_subject: subject
-  field_su_course_section_units: units
-  field_su_course_section_location: section_location
-  field_su_course_academic_career: academic_career
-  field_su_course_academic_year:
+  su_course_grading: grading
+  su_course_code: code
+  su_course_code_int: code
+  su_course_id: course_id
+  su_course_requirements: requirements
+  su_course_section_id: section_id
+  su_course_section_number: section_number
+  su_course_subject: subject
+  su_course_section_units: units
+  su_course_section_location: section_location
+  su_course_academic_career: academic_career
+  su_course_academic_year:
     -
       plugin: skip_on_empty
       method: process
@@ -152,18 +152,18 @@ process:
       plugin: format_date
       from_format: 'Y'
       to_format: Y-06-01
-  field_su_course_section_comp:
+  su_course_section_comp:
     -
       plugin: entity_generate
       entity_type: taxonomy_term
       bundle_key: vid
-      bundle: su_course_component
+      bundle: stanford_course_component
       value_key: name
       source: component
     -
       plugin: default_value
       default_value: null
-  field_su_course_explore_tags:
+  su_course_explore_tags:
     -
       plugin: callback
       callable: simplexml_load_string
@@ -183,11 +183,11 @@ process:
             plugin: entity_generate
             entity_type: taxonomy_term
             bundle_key: vid
-            bundle: su_course_tags
+            bundle: stanford_course_tags
             value_key: name
     -
       plugin: flatten
-  field_su_course_tags:
+  su_course_tags:
     -
       plugin: callback
       callable: simplexml_load_string
@@ -213,11 +213,11 @@ process:
             plugin: entity_generate
             entity_type: taxonomy_term
             bundle_key: vid
-            bundle: su_course_tags
+            bundle: stanford_course_tags
             value_key: name
     -
       plugin: flatten
-  field_su_course_section_quarter:
+  su_course_section_quarter:
     -
       plugin: skip_on_empty
       method: process
@@ -233,13 +233,13 @@ process:
         - code
     -
       plugin: urlencode
-  field_su_course_link:
+  su_course_link:
     -
       plugin: concat
       source:
         - constants/link
         - '@link_query'
-  field_su_course_section_days:
+  su_course_section_days:
     -
       plugin: str_replace
       source: section_days
@@ -259,17 +259,17 @@ process:
     -
       plugin: callback
       callable: trim
-  field_su_course_section_st_date:
+  su_course_section_st_date:
     plugin: format_date
     from_format: 'M j, Y'
     to_format: Y-m-d
     source: start_date
-  field_su_course_section_end_date:
+  su_course_section_end_date:
     plugin: format_date
     from_format: 'M j, Y'
     to_format: Y-m-d
     source: end_date
-  field_su_course_section_end_time:
+  su_course_section_end_time:
     -
       plugin: skip_on_empty
       method: process
@@ -278,7 +278,7 @@ process:
       plugin: str_replace
       search: ':00 '
       replace: ' '
-  field_su_course_section_st_time:
+  su_course_section_st_time:
     -
       plugin: skip_on_empty
       method: process
@@ -287,7 +287,7 @@ process:
       plugin: str_replace
       search: ':00 '
       replace: ' '
-  field_su_course_section_instruc:
+  su_course_section_instruc:
     -
       plugin: callback
       callable: simplexml_load_string

@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - field.storage.node.su_academic_year
-    - node.type.su_course
-id: node.su_course.su_academic_year
+    - node.type.stanford_course
+id: node.stanford_course.su_academic_year
 field_name: su_academic_year
 entity_type: node
-bundle: su_course
+bundle: stanford_course
 label: 'Academic Year'
 description: ''
 required: false
