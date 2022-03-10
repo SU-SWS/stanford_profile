@@ -1,0 +1,23 @@
+uuid: d99f1ff1-b598-4a3a-ac33-2cbebc3dbbca
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: m6uFjG6rzZ_k6BBrhlcW1REfxaSgtxVaWY3tRMTxjIg
+id: su_courses
+label: Courses
+type: 'canonical_entities:node'
+pattern: '/courses/[node:title]/[node:field_su_course_section_number]'
+selection_criteria:
+  fcd0ccb7-a344-4563-9117-603f2a67e523:
+    id: node_type
+    bundles:
+      su_course: su_course
+    negate: false
+    context_mapping:
+      node: node
+selection_logic: and
+weight: 0
+relationships: {  }

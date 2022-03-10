@@ -1,0 +1,21 @@
+uuid: bf241422-f307-4215-be18-2d6259b6039e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_su_course_code
+    - node.type.su_course
+_core:
+  default_config_hash: Smd-oqWbSwcjZVfPuCkRUYoxoWw9KUZf6cpehtEE-44
+id: node.su_course.field_su_course_code
+field_name: field_su_course_code
+entity_type: node
+bundle: su_course
+label: 'Course Code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

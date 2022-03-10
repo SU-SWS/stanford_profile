@@ -1,0 +1,21 @@
+uuid: 9bfe44ea-28ff-48be-96dd-01428cae1560
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_su_course_section_st_time
+    - node.type.su_course
+_core:
+  default_config_hash: _73TVtG21kNclq9UNXse6tXZOSRjHKOK0r_k1P59h8E
+id: node.su_course.field_su_course_section_st_time
+field_name: field_su_course_section_st_time
+entity_type: node
+bundle: su_course
+label: 'Start Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

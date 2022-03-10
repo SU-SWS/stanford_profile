@@ -1,13 +1,15 @@
-uuid: fec00cd9-189d-4ed6-a597-27ced60b96b4
+uuid: 26344138-4e9e-48cf-89d5-73d5b67faec1
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.stanford_course
-id: node.stanford_course.promote
+    - node.type.su_course
+_core:
+  default_config_hash: CQYENrDdlg4DTmyxsi_MEUnLBrPMHWxyCin8Bdp2tBw
+id: node.su_course.promote
 field_name: promote
 entity_type: node
-bundle: stanford_course
+bundle: su_course
 label: 'Promoted to front page'
 description: ''
 required: false

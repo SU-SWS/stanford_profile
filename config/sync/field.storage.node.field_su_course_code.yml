@@ -1,14 +1,18 @@
-uuid: e6e799c7-7058-4c0b-9aab-a6413c446da6
+uuid: fe3aa305-065a-4c31-a824-a02e9a56bac1
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.su_course_instructors
-field_name: su_course_instructors
+_core:
+  default_config_hash: wf4S7bgkvwQJW_DE0PvBOZ4Kr90QVmybxwlVn8yCm2A
+id: node.field_su_course_code
+field_name: field_su_course_code
 entity_type: node
-type: string_long
+type: string
 settings:
+  max_length: 255
+  is_ascii: false
   case_sensitive: false
 module: core
 locked: false

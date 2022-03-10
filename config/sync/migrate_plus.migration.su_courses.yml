@@ -1,0 +1,311 @@
+uuid: 40a6e9ae-1adb-46d4-a04c-6fb301eaeebe
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: j_gtZz0dEUJ-0VPH0tMMnOUXCDfVz0rqCica7ukGDyE
+id: su_courses
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: {  }
+migration_group: su_courses
+label: 'Course importer'
+source:
+  track_changes: true
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'http://events-legacy.stanford.edu/xml/drupal/v2.php?organization=0'
+  data_parser_plugin: simple_xml
+  item_selector: //courses/course/sections/section
+  fields:
+    -
+      name: guid
+      label: GUID
+      selector: guid
+    -
+      name: title
+      label: 'Course Title'
+      selector: ../../title
+    -
+      name: body
+      label: Description
+      selector: ../../description
+    -
+      name: year
+      label: 'Course Academic Year'
+      selector: ../../year
+    -
+      name: component
+      label: 'Section Component'
+      selector: component
+    -
+      name: course_id
+      label: 'Course ID'
+      selector: ../../administrativeInformation/courseId
+    -
+      name: code
+      label: 'Section Code'
+      selector: ../../code
+    -
+      name: grading
+      label: 'Course Grading'
+      selector: ../../grading
+    -
+      name: requirements
+      label: 'Course Requirements'
+      selector: ../../gers
+    -
+      name: section_id
+      label: 'Section ID'
+      selector: classId
+    -
+      name: section_number
+      label: 'Section Number'
+      selector: sectionNumber
+    -
+      name: subject
+      label: 'Course Subject'
+      selector: ../../subject
+    -
+      name: units
+      label: 'Section Units'
+      selector: units
+    -
+      name: tags
+      label: 'Course Tags'
+      selector: ../../tags
+    -
+      name: quarter
+      label: 'Section Quarter'
+      selector: term
+    -
+      name: academic_career
+      label: 'Academic Career'
+      selector: ../../administrativeInformation/academicCareer
+    -
+      name: instructors
+      label: Instructors
+      selector: 'schedules/schedule[1]/instructors'
+    -
+      name: section_location
+      label: 'Section Location'
+      selector: 'schedules/schedule[1]/location'
+    -
+      name: section_days
+      label: 'Section Days'
+      selector: 'schedules/schedule[1]/days'
+    -
+      name: start_date
+      label: 'Start Date'
+      selector: 'schedules/schedule[1]/startDate'
+    -
+      name: end_date
+      label: 'End Date'
+      selector: 'schedules/schedule[1]/endDate'
+    -
+      name: start_time
+      label: 'Start Time'
+      selector: 'schedules/schedule[1]/startTime'
+    -
+      name: end_time
+      label: 'End Time'
+      selector: 'schedules/schedule[1]/endTime'
+  ids:
+    course_id:
+      type: string
+    code:
+      type: string
+    guid:
+      type: string
+  constants:
+    status: 1
+    type: su_course
+    basic_html: basic_html
+    link: 'http://explorecourses.stanford.edu/search?q='
+process:
+  status: constants/status
+  type: constants/type
+  title: title
+  body/value: body
+  body/format: constants/basic_html
+  field_su_course_grading: grading
+  field_su_course_code: code
+  field_su_course_code_int: code
+  field_su_course_id: course_id
+  field_su_course_requirements: requirements
+  field_su_course_section_id: section_id
+  field_su_course_section_number: section_number
+  field_su_course_subject: subject
+  field_su_course_section_units: units
+  field_su_course_section_location: section_location
+  field_su_course_academic_career: academic_career
+  field_su_course_academic_year:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: year
+    -
+      plugin: substr
+      start: 5
+    -
+      plugin: format_date
+      from_format: 'Y'
+      to_format: Y-06-01
+  field_su_course_section_comp:
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: su_course_component
+      value_key: name
+      source: component
+    -
+      plugin: default_value
+      default_value: null
+  field_su_course_explore_tags:
+    -
+      plugin: callback
+      callable: simplexml_load_string
+      source: tags
+    -
+      plugin: sub_process
+      key: name
+      process:
+        target_id:
+          -
+            plugin: concat
+            source:
+              - organization
+              - name
+            delimiter: '::'
+          -
+            plugin: entity_generate
+            entity_type: taxonomy_term
+            bundle_key: vid
+            bundle: su_course_tags
+            value_key: name
+    -
+      plugin: flatten
+  field_su_course_tags:
+    -
+      plugin: callback
+      callable: simplexml_load_string
+      source: tags
+    -
+      plugin: sub_process
+      key: name
+      process:
+        target_id:
+          -
+            plugin: concat
+            source:
+              - organization
+              - name
+            delimiter: '::'
+          -
+            plugin: translate_course_tag
+            ignore_empty: true
+          -
+            plugin: skip_on_empty
+            method: process
+          -
+            plugin: entity_generate
+            entity_type: taxonomy_term
+            bundle_key: vid
+            bundle: su_course_tags
+            value_key: name
+    -
+      plugin: flatten
+  field_su_course_section_quarter:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: quarter
+    -
+      plugin: substr
+      start: 10
+  link_query:
+    -
+      plugin: concat
+      source:
+        - subject
+        - code
+    -
+      plugin: urlencode
+  field_su_course_link:
+    -
+      plugin: concat
+      source:
+        - constants/link
+        - '@link_query'
+  field_su_course_section_days:
+    -
+      plugin: str_replace
+      source: section_days
+      regex: true
+      search: '/[\t]/'
+      replace: ' '
+    -
+      plugin: str_replace
+      regex: true
+      search: '/[\n]/'
+      replace: ' '
+    -
+      plugin: str_replace
+      regex: true
+      search: '/[[:blank:]]+/'
+      replace: ' '
+    -
+      plugin: callback
+      callable: trim
+  field_su_course_section_st_date:
+    plugin: format_date
+    from_format: 'M j, Y'
+    to_format: Y-m-d
+    source: start_date
+  field_su_course_section_end_date:
+    plugin: format_date
+    from_format: 'M j, Y'
+    to_format: Y-m-d
+    source: end_date
+  field_su_course_section_end_time:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: end_time
+    -
+      plugin: str_replace
+      search: ':00 '
+      replace: ' '
+  field_su_course_section_st_time:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: start_time
+    -
+      plugin: str_replace
+      search: ':00 '
+      replace: ' '
+  field_su_course_section_instruc:
+    -
+      plugin: callback
+      callable: simplexml_load_string
+      source: instructors
+    -
+      plugin: sub_process
+      key: sunet
+      process:
+        target_id:
+          plugin: entity_generate_no_lookup
+          entity_type: course_collections
+          bundle_key: type
+          bundle: instructor
+          value_key: title
+          source: name
+    -
+      plugin: flatten
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  required: {  }

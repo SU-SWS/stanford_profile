@@ -1,0 +1,25 @@
+uuid: 25fa9489-ac11-43f3-b5b7-585841f336e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_su_course_id
+    - node.type.su_course
+_core:
+  default_config_hash: NQcI2hd8Pqcy1NiRlKbmB5JucKAUQa7SbzSmMPTTqho
+id: node.su_course.field_su_course_id
+field_name: field_su_course_id
+entity_type: node
+bundle: su_course
+label: 'Course ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
