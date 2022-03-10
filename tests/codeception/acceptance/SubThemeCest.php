@@ -58,12 +58,16 @@ class SubThemeCest {
    */
   public function _failed(AcceptanceTester $I) {
     $this->runConfigImport($I, TRUE);
-    unlink($this->themePath . '/' . strtolower($this->themeName) . '.info.yml');
-    rmdir($this->themePath);
+    $info_path = $this->themePath . '/' . strtolower($this->themeName) . '.info.yml';
+    if (file_exists($info_path)){
+      unlink($info_path);
+      rmdir($this->themePath);
+    }
   }
 
   /**
    * Enable the subtheme and the config should reflect the changes done.
+   * @group minimal-subtheme-test2
    */
   public function testSubTheme(AcceptanceTester $I) {
     $I->runDrush('theme:enable -y ' . strtolower($this->themeName));
@@ -88,6 +92,24 @@ class SubThemeCest {
 
     $I->amOnPage('/');
     $I->canSeeResponseCodeIs(200);
+  }
+
+/**
+   * Enable the minimally branded subtheme and the config should reflect the changes done.
+   * Test the changes are there.
+   * @group minimal-subtheme-test
+   */
+  public function testMinimalSubtheme(AcceptanceTester $I) {
+    $I->runDrush('theme:enable -y minimally_branded_subtheme');
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/appearance');
+    $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');
+    $I->amOnPage('/');
+    $I->canSeeResponseCodeIs(200);
+    $I->seeInSource('<span class="su-lockup__wordmark"></span>');
+    $I->dontSeeElement('.su-brand-bar__logo');
+    $I->dontSeeElement('.su-global-footer__container');
+    $I->dontSeeElement('.su-brand-bar--default');
   }
 
   /**
