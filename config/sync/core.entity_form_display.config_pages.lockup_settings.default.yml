@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - config_pages.type.lockup_settings
+    - field.field.config_pages.lockup_settings.su_intro
     - field.field.config_pages.lockup_settings.su_line_1
     - field.field.config_pages.lockup_settings.su_line_2
     - field.field.config_pages.lockup_settings.su_line_3
@@ -15,12 +16,15 @@ dependencies:
     - field.field.config_pages.lockup_settings.su_use_theme_logo
     - image.style.thumbnail
   module:
+    - conditional_fields
     - field_group
     - image
+    - markup
 third_party_settings:
   field_group:
     group_lockup_options:
       children:
+        - su_intro
         - su_lockup_options
         - su_line_1
         - su_line_2
@@ -34,8 +38,9 @@ third_party_settings:
       format_type: fieldset
       format_settings:
         classes: ''
+        show_empty_fields: false
         id: ''
-        description: 'This lockup will appear in the top left corner of the website''s main header.'
+        description: ''
         required_fields: true
     group_logo_image:
       children:
@@ -56,46 +61,194 @@ targetEntityType: config_pages
 bundle: lockup_settings
 mode: default
 content:
+  group_lockup_options:
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        49128a33-3800-4956-823b-5e78079bb42c:
+          entity_type: config_pages
+          bundle: lockup_settings
+          dependee: su_lockup_enabled
+          settings:
+            state: visible
+            condition: '!checked'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: 1
+            effect: show
+            effect_options: {  }
+            selector: ''
+            inheritance:
+              propagate: '0'
+              apply_to_parent: '0'
+              recurse: '0'
+  group_logo_image:
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        85d04744-e807-4c83-9a96-0418cadcd974:
+          entity_type: config_pages
+          bundle: lockup_settings
+          dependee: su_lockup_enabled
+          settings:
+            state: visible
+            condition: '!checked'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: 1
+            effect: show
+            effect_options: {  }
+            selector: ''
+            inheritance:
+              propagate: propagate
+              apply_to_parent: apply_to_parent
+              recurse: '0'
+  su_intro:
+    type: markup
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   su_line_1:
     type: string_textfield
-    weight: 6
+    weight: 14
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        fe0fc4c8-7eb5-4f94-9fad-7a00561d6083:
+          entity_type: config_pages
+          bundle: lockup_settings
+          dependee: su_lockup_options
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 5
+            value: ''
+            values: "none\r\n_none\r\no\r\nr"
+            value_form:
+              -
+                value: a
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_line_2:
     type: string_textfield
-    weight: 7
+    weight: 15
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        29fd1e16-13b1-4f0b-b21c-de9a00f7ff16:
+          entity_type: config_pages
+          bundle: lockup_settings
+          dependee: su_lockup_options
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 5
+            value: ''
+            values: "none\r\n_none\r\na\r\nd\r\nh\r\ni\r\nk\r\nl\r\nn\r\no\r\np\r\nq\r\nr"
+            value_form:
+              -
+                value: a
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_line_3:
     type: string_textfield
-    weight: 8
+    weight: 16
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        ccb44d91-5971-47aa-b0f5-35ac344b5d88:
+          entity_type: config_pages
+          bundle: lockup_settings
+          dependee: su_lockup_options
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 5
+            value: ''
+            values: "none\r\n_none\r\na\r\nb\r\nc\r\nf\r\ng\r\nj\r\nk\r\nl\r\nm\r\nn\r\no\r\np\r\nq\r\nr\r\ns"
+            value_form:
+              -
+                value: a
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_line_4:
     type: string_textfield
-    weight: 9
+    weight: 17
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        0be77dd3-5637-47bd-bb1e-6c762bc819a1:
+          entity_type: config_pages
+          bundle: lockup_settings
+          dependee: su_lockup_options
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 5
+            value: ''
+            values: "none\r\n_none\r\na\r\nb\r\nc\r\nd\r\ne\r\nf\r\ng\r\nj\r\nk\r\nl\r\nm\r\nn\r\nr"
+            value_form:
+              -
+                value: a
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_line_5:
     type: string_textfield
-    weight: 10
+    weight: 18
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        05100f81-86f9-4b44-8bae-023ee30cb245:
+          entity_type: config_pages
+          bundle: lockup_settings
+          dependee: su_lockup_options
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 5
+            value: ''
+            values: "none\r\n_none\r\nb\r\nd\r\ne\r\nf\r\nh\r\ni\r\nl\r\nm\r\nn\r\no\r\np\r\nq\r\ns\r\nt"
+            value_form:
+              -
+                value: a
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_lockup_enabled:
     type: boolean_checkbox
     weight: 0
@@ -105,7 +258,7 @@ content:
     third_party_settings: {  }
   su_lockup_options:
     type: options_select
-    weight: 5
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -116,7 +269,24 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        7aaf8263-f1ea-47d2-8d5e-bb2372b68646:
+          entity_type: config_pages
+          bundle: lockup_settings
+          dependee: su_use_theme_logo
+          settings:
+            state: visible
+            condition: '!checked'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: 1
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_use_theme_logo:
     type: boolean_checkbox
     weight: 1

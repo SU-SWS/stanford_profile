@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - config_pages.type.lockup_settings
+    - field.field.config_pages.lockup_settings.su_intro
     - field.field.config_pages.lockup_settings.su_line_1
     - field.field.config_pages.lockup_settings.su_line_2
     - field.field.config_pages.lockup_settings.su_line_3
@@ -16,6 +17,7 @@ dependencies:
   module:
     - field_group
     - image
+    - markup
     - options
 third_party_settings:
   field_group:
@@ -62,6 +64,13 @@ targetEntityType: config_pages
 bundle: lockup_settings
 mode: default
 content:
+  su_intro:
+    type: markup
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
   su_line_1:
     type: string
     label: above
