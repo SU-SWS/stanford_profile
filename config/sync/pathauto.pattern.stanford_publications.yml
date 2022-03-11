@@ -7,12 +7,12 @@ dependencies:
 id: stanford_publications
 label: Publications
 type: 'canonical_entities:node'
-pattern: '/publications/[node:su_publication_topics:0:entity:name]/[node:title]'
+pattern: 'publications/[node:su_publication_topics:0:entity:name]/[node:title]'
 selection_criteria:
-  fcff0429-c21e-413a-8b62-d4596e7c2da9:
+  ef034bef-fc25-4dde-ade8-4a026e5b99a7:
     id: node_type
     negate: false
-    uuid: fcff0429-c21e-413a-8b62-d4596e7c2da9
+    uuid: ef034bef-fc25-4dde-ade8-4a026e5b99a7
     context_mapping:
       node: node
     bundles:
