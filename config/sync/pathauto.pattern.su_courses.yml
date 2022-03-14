@@ -9,11 +9,12 @@ _core:
 id: su_courses
 label: Courses
 type: 'canonical_entities:node'
-pattern: '/courses/[node:title]/[node:su_course_section_number]'
+pattern: '/courses/[node:su_course_subject]-[node:su_course_code]/[node:title]'
 selection_criteria:
-  fcd0ccb7-a344-4563-9117-603f2a67e523:
+  d4e8d911-556b-4aa8-8945-5fadf0c3c487:
     id: node_type
     negate: false
+    uuid: d4e8d911-556b-4aa8-8945-5fadf0c3c487
     context_mapping:
       node: node
     bundles:
