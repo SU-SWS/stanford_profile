@@ -11,6 +11,7 @@ dependencies:
     - field.field.config_pages.stanford_local_footer.su_local_foot_f_intro
     - field.field.config_pages.stanford_local_footer.su_local_foot_f_method
     - field.field.config_pages.stanford_local_footer.su_local_foot_f_url
+    - field.field.config_pages.stanford_local_footer.su_local_foot_help
     - field.field.config_pages.stanford_local_footer.su_local_foot_line_1
     - field.field.config_pages.stanford_local_footer.su_local_foot_line_2
     - field.field.config_pages.stanford_local_footer.su_local_foot_line_3
@@ -36,6 +37,7 @@ dependencies:
     - ds
     - field_formatter_class
     - link
+    - markup
     - options
     - text
 third_party_settings:
@@ -152,6 +154,13 @@ content:
         class: ''
     weight: 13
     region: signup_form_action
+  su_local_foot_help:
+    type: markup
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
   su_local_foot_pr_co:
     type: text_default
     label: hidden
