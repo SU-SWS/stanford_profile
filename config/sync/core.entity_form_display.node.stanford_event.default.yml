@@ -27,6 +27,7 @@ dependencies:
     - field_group
     - link
     - paragraphs
+    - scheduler
     - smart_date
     - stanford_intranet
     - telephone
@@ -273,12 +274,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   created: true
   layout_builder__layout: true
@@ -286,4 +281,5 @@ hidden:
   promote: true
   sticky: true
   uid: true
+  unpublish_on: true
   url_redirects: true

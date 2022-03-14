@@ -37,6 +37,7 @@ dependencies:
     - link
     - media_library
     - paragraphs
+    - scheduler
     - shs
     - stanford_intranet
     - text
@@ -338,12 +339,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   created: true
   layout_builder__layout: true
@@ -355,4 +350,5 @@ hidden:
   su_person_research_interests: true
   su_person_scholarly_interests: true
   uid: true
+  unpublish_on: true
   url_redirects: true
