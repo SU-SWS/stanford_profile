@@ -120,6 +120,8 @@ class PersonCest {
 
   /**
    * D8CORE-2613: Taxonomy menu items don't respect the UI.
+   *
+   * @group 4704
    */
   public function testD8Core2613Terms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -156,6 +158,43 @@ class PersonCest {
 
     $I->amOnPage('/people');
     $I->cantSeeLink('Baz');
+
+    $faker = Factory::create();
+    $parent = $I->createEntity([
+      'name' =>'Parent: '. $faker->text(10),
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+    $child = $I->createEntity([
+      'name' => 'Child: '.$faker->text(10),
+      'vid' => 'stanford_person_types',
+      'parent' => $parent->id(),
+    ], 'taxonomy_term');
+    $grandchild = $I->createEntity([
+      'name' => 'GrandChild: '.$faker->text(10),
+      'vid' => 'stanford_person_types',
+      'parent' => $child->id(),
+    ], 'taxonomy_term');
+    $great_grandchild = $I->createEntity([
+      'name' =>'Great GrandChild: '. $faker->text(10),
+      'vid' => 'stanford_person_types',
+      'parent' => $grandchild->id(),
+    ], 'taxonomy_term');
+
+    $node = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $faker->firstName,
+      'su_person_last_name' => $faker->lastName,
+      'su_person_type_group' => $great_grandchild->id(),
+    ]);
+
+    $I->amOnPage($great_grandchild->toUrl()->toString());
+    $I->canSee($node->label());
+    $I->amOnPage($grandchild->toUrl()->toString());
+    $I->canSee($node->label());
+    $I->amOnPage($child->toUrl()->toString());
+    $I->canSee($node->label());
+    $I->amOnPage($parent->toUrl()->toString());
+    $I->canSee($node->label());
   }
 
   /**
