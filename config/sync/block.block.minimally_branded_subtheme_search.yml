@@ -1,0 +1,30 @@
+uuid: 9676adb5-893b-4338-8e8a-e91bcf27c2f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.search
+  module:
+    - config_pages
+    - views
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_search
+theme: minimally_branded_subtheme
+region: search
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:search-results'
+settings:
+  id: 'views_exposed_filter_block:search-results'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+visibility:
+  config_pages_values_access:
+    id: config_pages_values_access
+    negate: false
+    config_page_field: stanford_basic_site_settings|su_hide_site_search|boolean
+    operator: '!='
+    condition_value: '1'
