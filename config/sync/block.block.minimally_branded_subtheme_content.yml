@@ -1,0 +1,20 @@
+uuid: 27fb3d93-a4dd-4900-8cd2-1daebbf9b8b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_content
+theme: minimally_branded_subtheme
+region: content
+weight: -1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

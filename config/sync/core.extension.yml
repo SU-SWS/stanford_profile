@@ -20,6 +20,7 @@ module:
   color: 0
   colorbox: 0
   components: 0
+  conditional_fields: 0
   config: 0
   config_filter: 0
   config_ignore: 0
@@ -32,8 +33,10 @@ module:
   content_lock: 0
   content_lock_timeout: 0
   contextual: 0
+  core_event_dispatcher: 0
   crop: 0
   ctools: 0
+  ctools_views: 0
   datetime: 0
   datetime_range: 0
   default_content: 0
@@ -53,6 +56,7 @@ module:
   fakeobjects: 0
   field: 0
   field_encrypt: 0
+  field_event_dispatcher: 0
   field_formatter_class: 0
   field_group: 0
   field_permissions: 0
@@ -69,12 +73,14 @@ module:
   google_tag: 0
   hal: 0
   help: 0
+  hook_event_dispatcher: 0
   image: 0
   image_effects: 0
   imagemagick: 0
   inline_entity_form: 0
   inline_form_errors: 0
   jsonapi: 0
+  jsonapi_extras: 0
   jumpstart_ui: 0
   key: 0
   layout_builder: 0
@@ -85,6 +91,7 @@ module:
   link: 0
   link_title_formatter: 0
   linkit: 0
+  markup: 0
   mathjax: 0
   media: 0
   media_duplicate_validation: 0
@@ -115,9 +122,11 @@ module:
   path_redirect_import: 0
   pdb: 0
   pdb_react: 0
+  preprocess_event_dispatcher: 0
   rabbit_hole: 0
   react_paragraphs: 0
   react_paragraphs_behaviors: 0
+  readonly_field_widget: 0
   real_aes: 0
   redirect: 0
   response_code_condition: 0
@@ -173,6 +182,7 @@ module:
   ui_patterns_views: 0
   ultimate_cron: 0
   user: 0
+  user_event_dispatcher: 0
   view_unpublished: 0
   viewfield: 0
   views: 0
@@ -180,9 +190,12 @@ module:
   views_bulk_edit: 0
   views_bulk_operations: 0
   views_contextual_filters_or: 0
+  views_custom_cache_tag: 0
+  views_event_dispatcher: 0
   views_infinite_scroll: 0
   views_taxonomy_term_name_depth: 0
   views_ui: 0
+  webp: 0
   xmlsitemap_engines: 0
   ds: 1
   extlink: 1
@@ -201,4 +214,5 @@ theme:
   seven: 0
   stanford_basic: 0
   stable9: 0
+  minimally_branded_subtheme: 0
 profile: stanford_profile

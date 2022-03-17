@@ -1,0 +1,20 @@
+uuid: bfa7a5eb-d9ed-4cba-83c1-5ae2ee80730a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_messages
+theme: minimally_branded_subtheme
+region: content
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  label_display: '0'
+  provider: system
+visibility: {  }
