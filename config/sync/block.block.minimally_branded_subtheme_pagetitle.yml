@@ -1,0 +1,31 @@
+uuid: 90f3ec5d-5630-40b2-88d9-17c17f257c93
+langcode: en
+status: true
+dependencies:
+  module:
+    - response_code_condition
+    - system
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_pagetitle
+theme: minimally_branded_subtheme
+region: content
+weight: -4
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "/node/*\r\n/news*\r\n/people*\r\n/events*\r\n/event-series*\r\n/publications*"
+  response_code:
+    id: response_code
+    negate: true
+    context_mapping: {  }
+    response_codes: "404\r\n403"
