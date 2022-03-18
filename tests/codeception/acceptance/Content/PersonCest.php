@@ -12,7 +12,7 @@ class PersonCest {
    */
   public function testDefaultContentExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $I->amOnPage("/person/haley-jackson");
+    $I->amOnPage("/people/haley-jackson");
     $I->see("This page is currently unpublished and not visible to the public.");
     $I->see("Haley Jackson", 'h1');
     $I->see("People", ".su-multi-menu");
@@ -46,12 +46,12 @@ class PersonCest {
    * up in the all view.
    */
   public function testCreatePerson(AcceptanceTester $I) {
-    $I->createEntity([
+    $node = $I->createEntity([
       'type' => 'stanford_person',
       'su_person_first_name' => "John",
       'su_person_last_name' => "Wick",
     ]);
-    $I->amOnPage("/person/john-wick");
+    $I->amOnPage($node->toUrl()->toString());
     $I->see("John Wick");
     $I->runDrush('cr');
     $I->amOnPage("/people");

@@ -99,21 +99,15 @@
         "ext-imagick": "*",
         "composer/installers": "^1.2",
         "drupal/color_field": "dev-2.x",
-        "drupal/conditional_fields": "^1.0@alpha",
         "drupal/csv_importer": "^1.9",
         "drupal/editoria11y": "^1.0",
         "drupal/field_delimiter": "^1.1",
         "drupal/flag": "^4.0@beta",
         "drupal/hotjar": "^2.0",
-        "drupal/migrate_source_csv": "^3.4",
         "drupal/node_title_help_text": "^1.2",
-        "drupal/pdb": "^1.0@alpha",
-        "drupal/scheduler": "^2.0",
-        "drupal/search_api": "^1.17",
-        "drupal/views_bulk_edit": "^2.4",
         "drupal/views_field_view": "^1.0@beta",
         "michelf/php-markdown": "^1.9",
-        "su-sws/stanford_profile": "dev-8.x-2.x"
+        "su-sws/stanford_profile": "8.x-dev"
     },
     "config": {
         "sort-packages": true
@@ -131,9 +125,6 @@
     },
     "extra": {
         "patches": {
-            "drupal/conditional_fields": {
-                "https://www.drupal.org/project/conditional_fields/issues/3192044": "https://www.drupal.org/files/issues/2021-01-14/fix-notice-3192044-14.patch"
-            },
             "drupal/core": {
                 "https://www.drupal.org/project/drupal/issues/3015152": "https://www.drupal.org/files/issues/2021-12-13/3015152-tps-9.3.x-128.patch"
             },

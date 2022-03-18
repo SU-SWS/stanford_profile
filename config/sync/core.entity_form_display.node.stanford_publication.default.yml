@@ -15,7 +15,9 @@ dependencies:
     - inline_entity_form
     - link
     - media_library
+    - path
     - react_paragraphs
+    - scheduler
     - stanford_intranet
 id: node.stanford_publication.default
 targetEntityType: node
@@ -38,6 +40,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -129,12 +136,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
     weight: 10
     region: content
@@ -147,4 +148,5 @@ hidden:
   promote: true
   sticky: true
   uid: true
+  unpublish_on: true
   url_redirects: true

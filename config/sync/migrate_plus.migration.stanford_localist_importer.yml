@@ -290,7 +290,16 @@ process:
   status: constants/status
   type: constants/type
   title: title
-  body/value: description
+  body/value:
+    -
+      plugin: skip_on_empty
+      source: description
+      method: process
+    -
+      plugin: str_replace
+      regex: true
+      search: '/style=.*height:(.*)px.*width:(.*)px.*?"/'
+      replace: 'height="$1" width="$2"'
   body/format: constants/stanford_html
   su_event_alt_loc: location_name
   su_event_map_link/uri:

@@ -1,0 +1,23 @@
+uuid: 7ca2a9f5-f4b9-4640-be29-7f5fbe4cb380
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_branding
+theme: minimally_branded_subtheme
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

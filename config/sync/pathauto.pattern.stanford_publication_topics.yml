@@ -3,17 +3,16 @@ langcode: en
 status: true
 dependencies:
   module:
-    - ctools
     - taxonomy
 id: stanford_publication_topics
 label: 'Publication Topics'
 type: 'canonical_entities:taxonomy_term'
-pattern: '/publications/[term:name]'
+pattern: 'publications/[term:parents:join-path]/[term:name]'
 selection_criteria:
-  3d1ecc58-25ed-49f8-af7f-5d1122a9cee3:
+  0d5b64c9-6391-4dc7-90ca-777f41554c24:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 3d1ecc58-25ed-49f8-af7f-5d1122a9cee3
+    uuid: 0d5b64c9-6391-4dc7-90ca-777f41554c24
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:
