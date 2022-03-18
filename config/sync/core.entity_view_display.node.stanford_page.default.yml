@@ -9,6 +9,8 @@ dependencies:
     - field.field.node.stanford_page.su_basic_page_type
     - field.field.node.stanford_page.su_page_banner
     - field.field.node.stanford_page.su_page_components
+    - field.field.node.stanford_page.su_page_description
+    - field.field.node.stanford_page.su_page_image
     - field.field.node.stanford_page.su_page_resource_audience
     - field.field.node.stanford_page.su_page_resource_dimension
     - field.field.node.stanford_page.su_page_resource_type
@@ -237,6 +239,7 @@ third_party_settings:
   layout_builder_restrictions:
     allowed_block_categories:
       - 'Basic Page Type Lists (Views)'
+      - 'Cardinal Service Blocks'
       - 'Chaos Tools'
       - 'Config Pages'
       - 'Content fields'
@@ -252,14 +255,15 @@ third_party_settings:
       - 'Lists (Views)'
       - Menus
       - 'News Lists (Views)'
+      - 'Opportunities (Views)'
       - 'PDB React'
       - 'People Lists (Views)'
       - 'Publication (Views)'
       - React
-      - 'SimpleSAMLphp Authentication'
+      - 'Resources (Views)'
+      - 'Spotlights (Views)'
       - 'Stanford News'
       - 'Stanford Profile Helper'
-      - 'Stanford SimpleSAML PHP'
       - System
       - Views
       - core
@@ -316,31 +320,36 @@ third_party_settings:
           - 'field_block:user:user:status'
       whitelisted_blocks:
         Menus:
-          - 'system_menu_block:stanford-event-types'
           - 'menu_block:stanford-event-types'
+          - 'system_menu_block:stanford-event-types'
           - 'menu_block:main'
           - 'system_menu_block:main'
           - 'system_menu_block:stanford-person-type'
           - 'menu_block:stanford-person-type'
           - 'system_menu_block:stanford-publication-topics'
           - 'menu_block:stanford-publication-topics'
-          - 'system_menu_block:news-topics'
           - 'menu_block:news-topics'
+          - 'system_menu_block:news-topics'
         System:
           - system_breadcrumb_block
+        Views:
+          - 'views_exposed_filter_block:cs_resources-all_list'
+          - 'views_exposed_filter_block:su_opportunities-filtered_all'
+          - 'views_exposed_filter_block:su_spotlights-list'
+          - 'views_exposed_filter_block:su_spotlights-related_stories'
         core:
           - page_title_block
       restricted_categories:
+        - 'Cardinal Service Blocks'
         - 'Chaos Tools'
         - 'Config Pages'
         - Forms
         - Help
         - 'Lists (Views)'
         - React
-        - 'SimpleSAMLphp Authentication'
+        - 'Resources (Views)'
+        - 'Spotlights (Views)'
         - 'Stanford Profile Helper'
-        - 'Stanford SimpleSAML PHP'
-        - Views
 id: node.stanford_page.default
 targetEntityType: node
 bundle: stanford_page

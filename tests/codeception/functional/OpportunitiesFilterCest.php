@@ -3,7 +3,7 @@
 /**
  * Class OpportunitiesFilterCest.
  *
- * @group mikes
+ * @group opportunities
  */
 class OpportunitiesFilterCest {
 

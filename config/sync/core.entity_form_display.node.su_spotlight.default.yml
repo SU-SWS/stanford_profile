@@ -189,12 +189,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 17
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
     weight: 13
     region: content
@@ -203,3 +197,4 @@ content:
 hidden:
   su_opp_open_to: true
   su_spotlight_background_image: true
+  unpublish_on: true
