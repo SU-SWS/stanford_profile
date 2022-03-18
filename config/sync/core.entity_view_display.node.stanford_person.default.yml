@@ -567,7 +567,34 @@ third_party_settings:
             third_party_settings: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
-    allowed_block_categories: {  }
+    allowed_block_categories:
+      - 'Basic Page Type Lists (Views)'
+      - 'Chaos Tools'
+      - 'Config Pages'
+      - 'Content fields'
+      - 'Custom block types'
+      - 'Custom blocks'
+      - Devel
+      - 'Devel PHP'
+      - 'Events Lists (Views)'
+      - Forms
+      - Help
+      - 'Inline blocks'
+      - 'Jumpstart UI'
+      - 'Lists (Views)'
+      - Menus
+      - 'News Lists (Views)'
+      - 'PDB React'
+      - 'People Lists (Views)'
+      - 'Publication (Views)'
+      - React
+      - 'SimpleSAMLphp Authentication'
+      - 'Stanford News'
+      - 'Stanford Profile Helper'
+      - 'Stanford SimpleSAML PHP'
+      - System
+      - Views
+      - core
     entity_view_mode_restriction:
       allowed_layouts:
         - jumpstart_ui_one_column
@@ -575,10 +602,77 @@ third_party_settings:
         - jumpstart_ui_three_column
         - stanford_person_header
         - stanford_person_body
-        - ds_reset
-      blacklisted_blocks: {  }
-      whitelisted_blocks: {  }
-      restricted_categories: {  }
+      blacklisted_blocks:
+        'Content fields':
+          - 'field_block:node:stanford_person:uid'
+          - 'field_block:node:stanford_person:created'
+          - 'field_block:node:stanford_person:type'
+          - 'field_block:node:stanford_person:revision_default'
+          - 'field_block:node:stanford_person:default_langcode'
+          - 'field_block:node:stanford_person:nid'
+          - 'field_block:node:stanford_person:langcode'
+          - 'extra_field_block:node:stanford_person:links'
+          - 'field_block:node:stanford_person:menu_link'
+          - 'field_block:node:stanford_person:promote'
+          - 'field_block:node:stanford_person:status'
+          - 'field_block:node:stanford_person:rh_action'
+          - 'field_block:node:stanford_person:rh_redirect_fallback_action'
+          - 'field_block:node:stanford_person:rh_redirect'
+          - 'field_block:node:stanford_person:rh_redirect_response'
+          - 'field_block:node:stanford_person:revision_timestamp'
+          - 'field_block:node:stanford_person:vid'
+          - 'field_block:node:stanford_person:revision_log'
+          - 'field_block:node:stanford_person:revision_translation_affected'
+          - 'field_block:node:stanford_person:revision_uid'
+          - 'extra_field_block:node:stanford_person:search_api_excerpt'
+          - 'field_block:node:stanford_person:sticky'
+          - 'field_block:node:stanford_person:unpublish_on'
+          - 'field_block:user:user:changed'
+          - 'field_block:user:user:created'
+          - 'field_block:user:user:default_langcode'
+          - 'field_block:user:user:su_display_name'
+          - 'field_block:user:user:mail'
+          - 'field_block:user:user:init'
+          - 'field_block:user:user:langcode'
+          - 'field_block:user:user:access'
+          - 'field_block:user:user:login'
+          - 'extra_field_block:user:user:member_for'
+          - 'field_block:user:user:name'
+          - 'field_block:user:user:preferred_admin_langcode'
+          - 'field_block:user:user:preferred_langcode'
+          - 'field_block:user:user:role_change'
+          - 'field_block:user:user:roles'
+          - 'extra_field_block:user:user:search_api_excerpt'
+          - 'field_block:user:user:timezone'
+          - 'field_block:user:user:uid'
+          - 'field_block:user:user:status'
+      whitelisted_blocks:
+        Menus:
+          - 'system_menu_block:stanford-event-types'
+          - 'menu_block:stanford-event-types'
+          - 'system_menu_block:main'
+          - 'menu_block:main'
+          - 'menu_block:stanford-person-type'
+          - 'system_menu_block:stanford-person-type'
+          - 'menu_block:stanford-publication-topics'
+          - 'system_menu_block:stanford-publication-topics'
+          - 'system_menu_block:news-topics'
+          - 'menu_block:news-topics'
+        System:
+          - system_breadcrumb_block
+        core:
+          - page_title_block
+      restricted_categories:
+        - 'Chaos Tools'
+        - 'Config Pages'
+        - Forms
+        - Help
+        - 'Lists (Views)'
+        - React
+        - 'SimpleSAMLphp Authentication'
+        - 'Stanford Profile Helper'
+        - 'Stanford SimpleSAML PHP'
+        - Views
   layout_library:
     enable: false
 id: node.stanford_person.default

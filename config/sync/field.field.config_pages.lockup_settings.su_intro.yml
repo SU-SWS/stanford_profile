@@ -1,0 +1,25 @@
+uuid: ac8fdb30-7355-4b8c-8f39-676b53c755f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.lockup_settings
+    - field.storage.config_pages.su_intro
+  module:
+    - markup
+id: config_pages.lockup_settings.su_intro
+field_name: su_intro
+entity_type: config_pages
+bundle: lockup_settings
+label: 'Lockup Intro'
+description: ''
+required: false
+translatable: false
+default_value:
+  - {  }
+default_value_callback: ''
+settings:
+  markup:
+    value: "<div><p><img alt=\"\" src=\"https://su-sws.github.io/stanford_basic/src/assets/img/lockup-example.png\" /></p>\r\n\r\n<p><a href=\"https://decanter.stanford.edu/component/identity-lockup/\">Decanter Lockup Component</a></p>\r\n\r\n<p>This lockup will appear in the top left corner of the website's main header.</p>\r\n</div>"
+    format: stanford_html
+field_type: markup

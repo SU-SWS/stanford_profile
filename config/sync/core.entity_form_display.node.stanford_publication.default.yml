@@ -16,6 +16,7 @@ dependencies:
     - link
     - media_library
     - react_paragraphs
+    - scheduler
     - stanford_intranet
 id: node.stanford_publication.default
 targetEntityType: node
@@ -147,4 +148,5 @@ hidden:
   promote: true
   sticky: true
   uid: true
+  unpublish_on: true
   url_redirects: true
