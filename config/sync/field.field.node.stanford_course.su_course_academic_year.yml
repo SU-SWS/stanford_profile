@@ -1,17 +1,15 @@
-uuid: bf241422-f307-4215-be18-2d6259b6039e
+uuid: e94434ed-87ed-4192-99f0-edc162a717d6
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_course_code
+    - field.storage.node.su_course_academic_year
     - node.type.stanford_course
-_core:
-  default_config_hash: p1lpxcDqludRq_3IjmBYAkGGcpvwNaRtmDidyG6yYIk
-id: node.stanford_course.su_course_code
-field_name: su_course_code
+id: node.stanford_course.su_course_academic_year
+field_name: su_course_academic_year
 entity_type: node
 bundle: stanford_course
-label: 'Course Code'
+label: 'Academic Year'
 description: ''
 required: false
 translatable: false

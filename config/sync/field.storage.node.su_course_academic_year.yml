@@ -1,17 +1,15 @@
-uuid: fe3aa305-065a-4c31-a824-a02e9a56bac1
+uuid: 3bce1ba9-16b7-4e81-86ab-73a65e3712fb
 langcode: en
 status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: s4gXCBgd_3JcUwM3ZydftMLi-Kl0aHfM0SnN4TwJIfM
-id: node.su_course_code
-field_name: su_course_code
+id: node.su_course_academic_year
+field_name: su_course_academic_year
 entity_type: node
 type: string
 settings:
-  max_length: 255
+  max_length: 60
   case_sensitive: false
   is_ascii: false
 module: core

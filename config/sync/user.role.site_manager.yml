@@ -38,6 +38,7 @@ dependencies:
     - redirect
     - role_delegation
     - scheduler
+    - stanford_courses_importer
     - stanford_migrate
     - stanford_profile
     - stanford_publication
@@ -63,6 +64,7 @@ permissions:
   - 'access user profiles'
   - 'add citation entities'
   - 'administer citation entities'
+  - 'administer course importer settings'
   - 'administer main menu items'
   - 'administer news-topics menu items'
   - 'administer nodes'
@@ -185,6 +187,7 @@ permissions:
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
   - 'edit terms in stanford_publication_topics'
+  - 'import hs_courses migration'
   - 'import stanford_events_importer migration'
   - 'import stanford_publications migration'
   - 'import su_stanford_person migration'

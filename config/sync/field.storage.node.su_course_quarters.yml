@@ -1,11 +1,11 @@
-uuid: 2033810e-672b-4487-a5b5-0ead542e9825
+uuid: 44677715-9a7d-4ff6-91c8-b0daf6042141
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.su_academic_year
-field_name: su_academic_year
+id: node.su_course_quarters
+field_name: su_course_quarters
 entity_type: node
 type: string
 settings:
@@ -14,7 +14,7 @@ settings:
   is_ascii: false
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

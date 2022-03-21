@@ -1,15 +1,13 @@
-uuid: 57b49503-7c39-4d18-98f2-c01da72e911c
+uuid: 1648fe17-15a2-43d6-a21a-691508cacbc6
 langcode: en
 status: true
 dependencies:
   module:
+    - config_pages
     - link
-    - node
-_core:
-  default_config_hash: M4SQ_Wm_WYry_aho3fZeCxvEUrRwrXDHFBze_1v8RwM
-id: node.su_course_link
-field_name: su_course_link
-entity_type: node
+id: config_pages.su_explore_course_url
+field_name: su_explore_course_url
+entity_type: config_pages
 type: link
 settings: {  }
 module: link

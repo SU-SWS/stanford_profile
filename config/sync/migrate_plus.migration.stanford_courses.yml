@@ -1,28 +1,24 @@
-uuid: 40a6e9ae-1adb-46d4-a04c-6fb301eaeebe
+uuid: d3961043-6561-413f-ab82-833655a44fb0
 langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: j_gtZz0dEUJ-0VPH0tMMnOUXCDfVz0rqCica7ukGDyE
-id: su_courses
+  default_config_hash: zO08rG4j8Ebfjjir-Yj3gO1PZ8jZVhQiiO63YIRMmxs
+id: stanford_courses
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags: {  }
-migration_group: su_courses
+migration_group: stanford_courses
 label: 'Course importer'
 source:
   track_changes: true
   plugin: url
   data_fetcher_plugin: http
-  urls: 'http://events-legacy.stanford.edu/xml/drupal/v2.php?organization=0'
+  urls: 'https://explorecourses.stanford.edu/search?view=xml-20200810&academicYear=&page=0&q=ACCT&filter-departmentcode-ACCT=on&filter-coursestatus-Active=on'
   data_parser_plugin: simple_xml
   item_selector: //courses/course/sections/section
   fields:
-    -
-      name: guid
-      label: GUID
-      selector: guid
     -
       name: title
       label: 'Course Title'
@@ -86,7 +82,7 @@ source:
     -
       name: instructors
       label: Instructors
-      selector: 'schedules/schedule[1]/instructors'
+      selector: 'schedules/schedule[1]/instructors/instructor[1]/name'
     -
       name: section_location
       label: 'Section Location'
@@ -114,10 +110,6 @@ source:
   ids:
     course_id:
       type: string
-    code:
-      type: string
-    guid:
-      type: string
   constants:
     status: 1
     type: stanford_course
@@ -129,64 +121,11 @@ process:
   title: title
   body/value: body
   body/format: constants/basic_html
-  su_course_grading: grading
   su_course_code: code
-  su_course_code_int: code
   su_course_id: course_id
-  su_course_requirements: requirements
-  su_course_section_id: section_id
-  su_course_section_number: section_number
   su_course_subject: subject
   su_course_section_units: units
-  su_course_section_location: section_location
-  su_course_academic_career: academic_career
-  su_course_academic_year:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: year
-    -
-      plugin: substr
-      start: 5
-    -
-      plugin: format_date
-      from_format: 'Y'
-      to_format: Y-06-01
-  su_course_section_comp:
-    -
-      plugin: entity_generate
-      entity_type: taxonomy_term
-      bundle_key: vid
-      bundle: stanford_course_component
-      value_key: name
-      source: component
-    -
-      plugin: default_value
-      default_value: null
-  su_course_explore_tags:
-    -
-      plugin: callback
-      callable: simplexml_load_string
-      source: tags
-    -
-      plugin: sub_process
-      key: name
-      process:
-        target_id:
-          -
-            plugin: concat
-            source:
-              - organization
-              - name
-            delimiter: '::'
-          -
-            plugin: entity_generate
-            entity_type: taxonomy_term
-            bundle_key: vid
-            bundle: stanford_course_tags
-            value_key: name
-    -
-      plugin: flatten
+  su_course_academic_year: year
   su_course_tags:
     -
       plugin: callback
@@ -213,11 +152,11 @@ process:
             plugin: entity_generate
             entity_type: taxonomy_term
             bundle_key: vid
-            bundle: stanford_course_tags
+            bundle: su_course_tags
             value_key: name
     -
       plugin: flatten
-  su_course_section_quarter:
+  su_course_quarters:
     -
       plugin: skip_on_empty
       method: process
@@ -239,72 +178,11 @@ process:
       source:
         - constants/link
         - '@link_query'
-  su_course_section_days:
-    -
-      plugin: str_replace
-      source: section_days
-      regex: true
-      search: '/[\t]/'
-      replace: ' '
-    -
-      plugin: str_replace
-      regex: true
-      search: '/[\n]/'
-      replace: ' '
-    -
-      plugin: str_replace
-      regex: true
-      search: '/[[:blank:]]+/'
-      replace: ' '
-    -
-      plugin: callback
-      callable: trim
-  su_course_section_st_date:
-    plugin: format_date
-    from_format: 'M j, Y'
-    to_format: Y-m-d
-    source: start_date
-  su_course_section_end_date:
-    plugin: format_date
-    from_format: 'M j, Y'
-    to_format: Y-m-d
-    source: end_date
-  su_course_section_end_time:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: end_time
-    -
-      plugin: str_replace
-      search: ':00 '
-      replace: ' '
-  su_course_section_st_time:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: start_time
-    -
-      plugin: str_replace
-      search: ':00 '
-      replace: ' '
-  su_course_section_instruc:
+  su_course_instructors:
     -
       plugin: callback
       callable: simplexml_load_string
       source: instructors
-    -
-      plugin: sub_process
-      key: sunet
-      process:
-        target_id:
-          plugin: entity_generate_no_lookup
-          entity_type: course_collections
-          bundle_key: type
-          bundle: instructor
-          value_key: title
-          source: name
-    -
-      plugin: flatten
 destination:
   plugin: 'entity:node'
 migration_dependencies:

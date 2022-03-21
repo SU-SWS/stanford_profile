@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.stanford_course.body
-    - field.field.node.stanford_course.su_academic_year
+    - field.field.node.stanford_course.su_course_academic_year
     - field.field.node.stanford_course.su_course_code
     - field.field.node.stanford_course.su_course_id
+    - field.field.node.stanford_course.su_course_instructors
     - field.field.node.stanford_course.su_course_link
+    - field.field.node.stanford_course.su_course_quarters
     - field.field.node.stanford_course.su_course_section_units
     - field.field.node.stanford_course.su_course_subject
     - field.field.node.stanford_course.su_course_tags
@@ -18,7 +20,7 @@ dependencies:
     - scheduler
     - text
 _core:
-  default_config_hash: K4nTus7mig7k7dAZlw4kWVB1-LahSLVSN7LHnr_DftA
+  default_config_hash: QDRdEfbaTCodBKx86SPI4kztwbpL9XOi2KleL66-Oqc
 id: node.stanford_course.default
 targetEntityType: node
 bundle: stanford_course
@@ -73,9 +75,9 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  su_academic_year:
+  su_course_academic_year:
     type: string_textfield
-    weight: 3
+    weight: 28
     region: content
     settings:
       size: 60
@@ -89,6 +91,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  su_course_instructors:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   su_course_link:
     type: link_default
     weight: 4
@@ -96,6 +106,14 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  su_course_quarters:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   su_course_section_units:
     type: string_textfield

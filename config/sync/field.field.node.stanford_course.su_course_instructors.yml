@@ -1,15 +1,15 @@
-uuid: 03a45673-f720-4260-b624-90f291a1ba46
+uuid: 0ad66a38-ed5d-4164-8fb1-c6c059c25090
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_academic_year
+    - field.storage.node.su_course_instructors
     - node.type.stanford_course
-id: node.stanford_course.su_academic_year
-field_name: su_academic_year
+id: node.stanford_course.su_course_instructors
+field_name: su_course_instructors
 entity_type: node
 bundle: stanford_course
-label: 'Academic Year'
+label: Instructors
 description: ''
 required: false
 translatable: false
