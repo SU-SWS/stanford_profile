@@ -4,21 +4,19 @@ status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: Sr8frGss0-UDl1eL21hYKAT6bXYd7cmnbdvYQPtcc2A
-id: su_courses
-label: Courses
+id: course_nodes
+label: 'Course Nodes'
 type: 'canonical_entities:node'
-pattern: '/courses/[node:su_course_subject]-[node:su_course_code]/[node:title]'
+pattern: 'courses/[node:su_course_subject][node:su_course_code]'
 selection_criteria:
-  d4e8d911-556b-4aa8-8945-5fadf0c3c487:
+  35b60486-f02f-420f-83ed-b275e67bbe32:
     id: node_type
     negate: false
-    uuid: d4e8d911-556b-4aa8-8945-5fadf0c3c487
+    uuid: 35b60486-f02f-420f-83ed-b275e67bbe32
     context_mapping:
       node: node
     bundles:
       stanford_course: stanford_course
 selection_logic: and
-weight: 0
+weight: -5
 relationships: {  }
