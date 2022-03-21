@@ -29,6 +29,7 @@ third_party_settings:
         - su_page_image
         - su_page_description
         - su_basic_page_type
+        - su_shared_tags
       label: 'Page Metadata'
       region: content
       parent_name: ''
@@ -158,7 +159,7 @@ content:
     third_party_settings: {  }
   su_shared_tags:
     type: options_shs
-    weight: 31
+    weight: 3
     region: content
     settings:
       display_node_count: false
