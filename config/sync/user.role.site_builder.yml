@@ -15,6 +15,7 @@ dependencies:
     - media.type.image
     - media.type.stanford_gallery_images
     - media.type.video
+    - node.type.stanford_course
     - node.type.stanford_event
     - node.type.stanford_event_series
     - node.type.stanford_news
@@ -27,6 +28,7 @@ dependencies:
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
     - taxonomy.vocabulary.stanford_publication_topics
+    - taxonomy.vocabulary.su_course_tags
   module:
     - block
     - block_content
@@ -163,6 +165,7 @@ permissions:
   - 'create google_form media'
   - 'create image media'
   - 'create media'
+  - 'create stanford_course content'
   - 'create stanford_event content'
   - 'create stanford_event_series content'
   - 'create stanford_gallery_images media'
@@ -176,6 +179,7 @@ permissions:
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'
   - 'create terms in stanford_publication_topics'
+  - 'create terms in su_course_tags'
   - 'create url aliases'
   - 'create video media'
   - 'customize shortcut links'
@@ -184,6 +188,7 @@ permissions:
   - 'delete any google_form media'
   - 'delete any image media'
   - 'delete any media'
+  - 'delete any stanford_course content'
   - 'delete any stanford_event content'
   - 'delete any stanford_event_series content'
   - 'delete any stanford_gallery_images media'
@@ -199,6 +204,7 @@ permissions:
   - 'delete own file media'
   - 'delete own google_form media'
   - 'delete own image media'
+  - 'delete own stanford_course content'
   - 'delete own stanford_event content'
   - 'delete own stanford_event_series content'
   - 'delete own stanford_gallery_images media'
@@ -207,6 +213,7 @@ permissions:
   - 'delete own stanford_person content'
   - 'delete own stanford_publication content'
   - 'delete own video media'
+  - 'delete stanford_course revisions'
   - 'delete stanford_event revisions'
   - 'delete stanford_event_series revisions'
   - 'delete stanford_news revisions'
@@ -224,6 +231,7 @@ permissions:
   - 'edit any file media'
   - 'edit any google_form media'
   - 'edit any image media'
+  - 'edit any stanford_course content'
   - 'edit any stanford_event content'
   - 'edit any stanford_event_series content'
   - 'edit any stanford_gallery_images media'
@@ -242,6 +250,7 @@ permissions:
   - 'edit own file media'
   - 'edit own google_form media'
   - 'edit own image media'
+  - 'edit own stanford_course content'
   - 'edit own stanford_event content'
   - 'edit own stanford_event_series content'
   - 'edit own stanford_gallery_images media'
@@ -251,6 +260,7 @@ permissions:
   - 'edit own stanford_publication content'
   - 'edit own video media'
   - 'edit stanford_basic_site_settings config page entity'
+  - 'edit stanford_courses_importer config page entity'
   - 'edit stanford_events_importer config page entity'
   - 'edit stanford_global_message config page entity'
   - 'edit stanford_local_footer config page entity'
@@ -262,9 +272,11 @@ permissions:
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
   - 'edit terms in stanford_publication_topics'
+  - 'edit terms in su_course_tags'
   - 'rabbit hole administer taxonomy_term'
   - 'rabbit hole bypass node'
   - 'rabbit hole bypass taxonomy_term'
+  - 'revert stanford_course revisions'
   - 'revert stanford_event revisions'
   - 'revert stanford_event_series revisions'
   - 'revert stanford_news revisions'
@@ -281,6 +293,7 @@ permissions:
   - 'view all media revisions'
   - 'view all revisions'
   - 'view any unpublished content'
+  - 'view any unpublished stanford_course content'
   - 'view any unpublished stanford_event content'
   - 'view any unpublished stanford_event_series content'
   - 'view any unpublished stanford_news content'
@@ -294,6 +307,7 @@ permissions:
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view scheduled content'
+  - 'view stanford_course revisions'
   - 'view stanford_event revisions'
   - 'view stanford_event_series revisions'
   - 'view stanford_news revisions'
