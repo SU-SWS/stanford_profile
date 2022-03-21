@@ -98,6 +98,14 @@ process:
       source:
         - constants/link
         - '@link_query'
+  su_course_quarters:
+    -
+      plugin: explore_courses_quarters
+      source: sections
+  su_course_instructors:
+    -
+      plugin: explore_courses_instructors
+      source: sections
 destination:
   plugin: 'entity:node'
 migration_dependencies:
