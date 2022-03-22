@@ -1,6 +1,13 @@
 # Stanford Profile
 
 
+8.x-3.2
+--------------------------------------------------------------------------------
+_Release Date: 2022-03-22_
+
+- DO not require lockup option select, prevent requiring lockup fields
+- D8CORE-5172: Updated references to localist and events-legacy urls
+
 8.x-3.1
 --------------------------------------------------------------------------------
 _Release Date: 2022-03-22_
