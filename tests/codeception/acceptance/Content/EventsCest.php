@@ -289,9 +289,9 @@ class EventsCest {
         'timezone' => "America/Los_Angeles",
       ],
       'su_event_dek' => 'This is a dek field',
-      'su_event_alt_loc' => $external ? "https://events.stanford.edu/" : "",
+      'su_event_alt_loc' => $external ? "https://events-legacy.stanford.edu/" : "",
       'su_event_source' => $external ? [
-        "uri" => "http://events.stanford.edu/events/880/88074",
+        "uri" => "http://events-legacy.stanford.edu/events/880/88074",
         "title" => "",
       ] : "",
       'su_event_location' => $external ?: [
