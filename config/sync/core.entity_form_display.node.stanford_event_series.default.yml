@@ -143,10 +143,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_event_series_type:
-    type: options_select
+    type: options_shs
     weight: 4
     region: content
-    settings: {  }
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
   su_event_series_weight:
     type: number
