@@ -32,7 +32,7 @@ class MediaPermissionsCest {
     $I->canSee('The given embeddable code is not permitted.');
     $code = [
       '<div id="localist-widget-88041469" class="localist-widget"></div>',
-      '<script defer type="text/javascript" src="http://stanford.enterprise.localist.com/widget/view?schools=stanford&days=31&num=50&container=localist-widget-88041469&template=modern"></script>',
+      '<script defer type="text/javascript" src="http://events.stanford.edu/widget/view?schools=stanford&days=31&num=50&container=localist-widget-88041469&template=modern"></script>',
     ];
     $I->fillField('Embed Code', implode("\n", $code));
     $I->click('Save');
