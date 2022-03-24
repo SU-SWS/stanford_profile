@@ -40,7 +40,7 @@ class PersonCest {
     $I->click("a[href='/people/staff']");
     $I->canSeeResponseCodeIs(200);
     $I->see("Sorry, no results found");
-    $I->see("Filter By Person Type");
+    $I->see("Person Type");
   }
 
   /**

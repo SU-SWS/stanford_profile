@@ -33,7 +33,7 @@ class ViewsBulkEditCest {
     foreach ($this->nodes as $node) {
       $I->canSee($node->label());
     }
-    $I->checkOption('News Topics Terms');
+    $I->checkOption('News Types');
     $I->fillField('node[stanford_news][su_news_topics][0][target_id]', 'Foo Bar Baz');
     $I->checkOption('Event Type');
     $I->selectOption('node[stanford_event][su_event_type]', 'Foo Bar Baz');
@@ -42,7 +42,7 @@ class ViewsBulkEditCest {
     $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][end_value][date]', date('Y-m-d'));
     $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][end_value][time]', '12:00:00');
 
-    $I->checkOption('Publication Topic Terms');
+    $I->checkOption('Publication Types');
     $I->fillField('node[stanford_publication][su_publication_topics][0][target_id]', 'Foo Bar Baz');
     $I->click('Apply');
     $I->canSee('Action processing results');

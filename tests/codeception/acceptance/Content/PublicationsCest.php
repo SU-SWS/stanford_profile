@@ -22,7 +22,7 @@ class PublicationsCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_publication');
     $I->fillField('Title', 'Test Publication');
-    $I->fillField('Publication Topic Terms (value 1)', 'Foo Bar');
+    $I->selectOption('Foo Bar', 'Publication Types');
     $I->selectOption('su_publication_citation[actions][bundle]', 'Book');
     $I->click('Add Citation');
     $I->fillField('First Name', $faker->firstName);
