@@ -1,0 +1,207 @@
+uuid: cd13df5e-da61-46c0-b110-c28938bc3970
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.stanford_person_types.layout_builder__layout
+    - system.menu.stanford-person-type
+    - taxonomy.vocabulary.stanford_person_types
+    - views.view.stanford_person
+    - views.view.taxonomy_term_pages
+  module:
+    - jumpstart_ui
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - system
+    - text
+    - views
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: null
+          columns: default
+        components:
+          1844f356-2a4c-4d0c-84a0-e9be4f7dbd6e:
+            uuid: 1844f356-2a4c-4d0c-84a0-e9be4f7dbd6e
+            region: main
+            configuration:
+              id: 'field_block:taxonomy_term:stanford_person_types:name'
+              label: Name
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_title_heading
+                label: hidden
+                settings:
+                  tag: h1
+                third_party_settings:
+                  field_formatter_class:
+                    class: 'su-margin-top-6 su-margin-bottom-5'
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: null
+          orientation: right
+        components:
+          f531ec33-ad29-4cc1-baa1-f7e9086fcf45:
+            uuid: f531ec33-ad29-4cc1-baa1-f7e9086fcf45
+            region: left
+            configuration:
+              id: 'system_menu_block:stanford-person-type'
+              label: 'Person Type'
+              label_display: '0'
+              provider: system
+              context_mapping: {  }
+              level: 1
+              depth: 0
+              expand_all_items: false
+            weight: 0
+            additional: {  }
+          50fa7466-76c8-4f62-94ff-9143d404cdaf:
+            uuid: 50fa7466-76c8-4f62-94ff-9143d404cdaf
+            region: main
+            configuration:
+              id: 'views_block:stanford_person-term_page_grid'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 5
+            additional: {  }
+          a26cc41e-5521-4f30-8180-936d156bae3c:
+            uuid: a26cc41e-5521-4f30-8180-936d156bae3c
+            region: main
+            configuration:
+              id: 'views_block:taxonomy_term_pages-results_for'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 3
+            additional: {  }
+          7df0de5c-0e64-40d9-b63f-454eb37d3cb5:
+            uuid: 7df0de5c-0e64-40d9-b63f-454eb37d3cb5
+            region: main
+            configuration:
+              id: 'field_block:taxonomy_term:stanford_person_types:description'
+              label: Description
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 4
+            additional: {  }
+        third_party_settings: {  }
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+      blacklisted_blocks:
+        'Content fields':
+          - 'field_block:taxonomy_term:stanford_person_types:revision_default'
+          - 'field_block:taxonomy_term:stanford_person_types:default_langcode'
+          - 'field_block:taxonomy_term:stanford_person_types:langcode'
+          - 'field_block:taxonomy_term:stanford_person_types:status'
+          - 'field_block:taxonomy_term:stanford_person_types:publish_on'
+          - 'field_block:taxonomy_term:stanford_person_types:rh_action'
+          - 'field_block:taxonomy_term:stanford_person_types:rh_redirect_fallback_action'
+          - 'field_block:taxonomy_term:stanford_person_types:rh_redirect'
+          - 'field_block:taxonomy_term:stanford_person_types:rh_redirect_response'
+          - 'field_block:taxonomy_term:stanford_person_types:revision_created'
+          - 'field_block:taxonomy_term:stanford_person_types:revision_id'
+          - 'field_block:taxonomy_term:stanford_person_types:revision_log_message'
+          - 'field_block:taxonomy_term:stanford_person_types:revision_translation_affected'
+          - 'field_block:taxonomy_term:stanford_person_types:revision_user'
+          - 'extra_field_block:taxonomy_term:stanford_person_types:search_api_excerpt'
+          - 'field_block:taxonomy_term:stanford_person_types:tid'
+          - 'field_block:taxonomy_term:stanford_person_types:unpublish_on'
+          - 'field_block:taxonomy_term:stanford_person_types:vid'
+          - 'field_block:taxonomy_term:stanford_person_types:weight'
+          - 'field_block:user:user:changed'
+          - 'field_block:user:user:created'
+          - 'field_block:user:user:default_langcode'
+          - 'field_block:user:user:su_display_name'
+          - 'field_block:user:user:mail'
+          - 'field_block:user:user:init'
+          - 'field_block:user:user:langcode'
+          - 'field_block:user:user:access'
+          - 'field_block:user:user:login'
+          - 'extra_field_block:user:user:member_for'
+          - 'field_block:user:user:name'
+          - 'field_block:user:user:preferred_admin_langcode'
+          - 'field_block:user:user:preferred_langcode'
+          - 'field_block:user:user:roles'
+          - 'field_block:user:user:role_change'
+          - 'extra_field_block:user:user:search_api_excerpt'
+          - 'field_block:user:user:timezone'
+          - 'field_block:user:user:uid'
+          - 'field_block:user:user:status'
+      whitelisted_blocks:
+        Menus:
+          - 'system_menu_block:stanford-person-type'
+          - 'menu_block:stanford-person-type'
+      restricted_categories:
+        - 'Basic Page Type Lists (Views)'
+        - 'Chaos Tools'
+        - 'Config Pages'
+        - Forms
+        - Help
+        - 'Lists (Views)'
+        - React
+        - 'SimpleSAMLphp Authentication'
+        - 'Stanford News'
+        - 'Stanford Profile Helper'
+        - 'Stanford SimpleSAML PHP'
+        - System
+        - Views
+        - core
+id: taxonomy_term.stanford_person_types.default
+targetEntityType: taxonomy_term
+bundle: stanford_person_types
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  layout_builder__layout: true
+  search_api_excerpt: true
