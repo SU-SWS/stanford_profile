@@ -22,6 +22,7 @@ jobs:
           m_max_size: '1000'
           l_max_size: '3000'
           fail_if_xl: 'false'
+          files_to_ignore: '*.yml *.css *.lock'
       - uses: banyan/auto-label@1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
