@@ -7,6 +7,7 @@ use Faker\Factory;
  *
  * @group contrib
  * @group bulk_edit
+ * @group testme
  */
 class ViewsBulkEditCest {
 
@@ -47,16 +48,16 @@ class ViewsBulkEditCest {
       $I->canSee($node->label());
     }
     $I->checkOption('News Types');
-    $I->fillField('node[stanford_news][su_news_topics]', $news_foo_bar_baz->id());
+    $I->selectOption('node[stanford_news][su_news_topics][]', $news_foo_bar_baz->label());
     $I->checkOption('Event Types');
-    $I->fillField('node[stanford_event][su_event_type]', $event_foo_bar_baz->id());
+    $I->selectOption('node[stanford_event][su_event_type][]', $event_foo_bar_baz->label());
     $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][value][date]', date('Y-m-d'));
     $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][value][time]', '12:00:00');
     $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][end_value][date]', date('Y-m-d'));
     $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][end_value][time]', '12:00:00');
 
     $I->checkOption('Publication Types');
-    $I->fillField('node[stanford_publication][su_publication_topics]', $pubs_foo_bar_baz->id());
+    $I->selectOption('node[stanford_publication][su_publication_topics][]', $pubs_foo_bar_baz->label());
     $I->click('Apply');
     $I->canSee('Action processing results');
 
@@ -65,15 +66,15 @@ class ViewsBulkEditCest {
 
       switch ($node->bundle()) {
         case 'stanford_event':
-          $I->canSeeInField('Event Types', $event_foo_bar_baz->id());
+          $I->canSeeOptionIsSelected('Event Types', $event_foo_bar_baz->label());
           break;
 
         case 'stanford_news':
-          $I->canSeeInField('News Types', $news_foo_bar_baz->id());
+          $I->canSeeOptionIsSelected('News Types', $news_foo_bar_baz->label());
           break;
 
         case 'stanford_publication':
-          $I->canSeeInField('Publication Types', $pubs_foo_bar_baz->id());
+          $I->canSeeOptionIsSelected('Publication Types', $pubs_foo_bar_baz->label());
           break;
       }
     }
