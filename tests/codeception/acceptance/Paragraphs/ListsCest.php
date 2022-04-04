@@ -11,7 +11,6 @@ class ListsCest {
 
   /**
    * Shared tags on each content type are identical.
-   * @group newtest
    */
   public function testSharedTags(AcceptanceTester $I) {
     $faker = Factory::create();
@@ -515,7 +514,9 @@ class ListsCest {
   }
 
   /**
-   * Test basic page types list view
+   * Test basic page types list view.
+   *
+   * @group newtest
    */
   public function testListParagraphBasicPageTypesFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -539,10 +540,21 @@ class ListsCest {
       'arguments' => 'Basic-Page-Test-Term',
     ]);
 
-
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($basic_page_entity->label());
     $I->cantSee($type_term->label());
+
+    $layout_changed_page = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $faker->text(15),
+      'su_basic_page_type' => $type_term->id(),
+      'su_page_description' => $faker->text,
+      'layout_selection' => 'stanford_basic_page_full'
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($layout_changed_page->label());
+    $I->canSee($layout_changed_page->get('su_page_description')->getString());
   }
 
   /**

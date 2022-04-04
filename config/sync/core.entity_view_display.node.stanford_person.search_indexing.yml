@@ -31,34 +31,13 @@ dependencies:
     - field.field.node.stanford_person.su_person_short_title
     - field.field.node.stanford_person.su_person_telephone
     - field.field.node.stanford_person.su_person_type_group
+    - field.field.node.stanford_person.su_shared_tags
     - node.type.stanford_person
   module:
     - entity_reference_revisions
-    - layout_builder
-    - layout_builder_restrictions
-    - layout_library
     - link
     - text
     - user
-third_party_settings:
-  layout_builder:
-    enabled: false
-    allow_custom: false
-  layout_builder_restrictions:
-    allowed_block_categories: {  }
-    entity_view_mode_restriction:
-      allowed_layouts:
-        - jumpstart_ui_one_column
-        - jumpstart_ui_two_column
-        - jumpstart_ui_three_column
-        - stanford_person_header
-        - stanford_person_body
-        - ds_reset
-      blacklisted_blocks: {  }
-      whitelisted_blocks: {  }
-      restricted_categories: {  }
-  layout_library:
-    enable: false
 id: node.stanford_person.search_indexing
 targetEntityType: node
 bundle: stanford_person

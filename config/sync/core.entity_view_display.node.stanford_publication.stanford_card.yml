@@ -9,28 +9,16 @@ dependencies:
     - field.field.node.stanford_publication.su_publication_citation
     - field.field.node.stanford_publication.su_publication_components
     - field.field.node.stanford_publication.su_publication_cta
+    - field.field.node.stanford_publication.su_publication_image
     - field.field.node.stanford_publication.su_publication_topics
+    - field.field.node.stanford_publication.su_shared_tags
     - node.type.stanford_publication
   module:
     - ds
     - element_class_formatter
     - field_formatter_class
-    - layout_builder
-    - layout_builder_restrictions
-    - layout_library
     - user
 third_party_settings:
-  layout_builder:
-    enabled: false
-    allow_custom: false
-  layout_library:
-    enable: false
-  layout_builder_restrictions:
-    allowed_block_categories: {  }
-    entity_view_mode_restriction:
-      allowed_layouts: {  }
-      blacklisted_blocks: {  }
-      whitelisted_blocks: {  }
   ds:
     layout:
       id: pattern_card
