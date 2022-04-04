@@ -1,0 +1,21 @@
+uuid: e4f2d935-42c7-4fad-94a9-3e56aa13865e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.layout_builder__layout
+    - taxonomy.vocabulary.stanford_publication_topics
+  module:
+    - layout_builder
+id: taxonomy_term.stanford_publication_topics.layout_builder__layout
+field_name: layout_builder__layout
+entity_type: taxonomy_term
+bundle: stanford_publication_topics
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_section
