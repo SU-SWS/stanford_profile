@@ -502,11 +502,14 @@ display:
             operator_limit_selection: false
             operator_list: {  }
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: ui_patterns
         options:
@@ -615,16 +618,14 @@ display:
       display_extenders: {  }
       display_description: ''
       style:
-        type: grid
+        type: html_list
         options:
+          row_class: ''
+          default_row_class: 1
           uses_fields: 0
-          columns: '3'
-          automatic_width: 0
-          alignment: horizontal
-          col_class_default: 1
-          col_class_custom: 'su-basic-page-types-view-column clearfix'
-          row_class_default: 1
-          row_class_custom: 'node-stanford-page-row su-basic-page-types-view-row more-basic-page-types-view'
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
       defaults:
         style: false
         row: false

@@ -830,11 +830,11 @@ display:
         type: html_list
         options:
           grouping: {  }
-          row_class: ''
+          row_class: su-news-list
           default_row_class: 1
           type: ul
-          wrapper_class: su-item-list__wrapper
-          class: su-news-list
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: ui_patterns
         options:
@@ -905,7 +905,7 @@ display:
               source: edit_node
       block_category: 'News Lists (Views)'
       block_description: ''
-      css_class: 'stanford-news--list stanford-news--list-any'
+      css_class: ''
     cache_metadata:
       max-age: -1
       contexts:
@@ -1057,11 +1057,11 @@ display:
         type: html_list
         options:
           grouping: {  }
-          row_class: ''
+          row_class: su-news-list
           default_row_class: true
           type: ul
-          wrapper_class: su-news-list__wrapper
-          class: su-news-list
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: ui_patterns
         options:
@@ -1412,16 +1412,14 @@ display:
         link_display: false
         link_url: false
       style:
-        type: grid
+        type: html_list
         options:
-          uses_fields: false
-          columns: 3
-          automatic_width: false
-          alignment: horizontal
-          col_class_default: true
-          col_class_custom: flex-4-of-12
-          row_class_default: true
-          row_class_custom: 'flex-container more-news-view'
+          row_class: ''
+          default_row_class: 1
+          uses_fields: 0
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
       row:
         type: 'entity:node'
         options:
@@ -1543,16 +1541,14 @@ display:
           break_phrase: false
           not: true
       style:
-        type: grid
+        type: html_list
         options:
+          row_class: ''
+          default_row_class: true
           uses_fields: false
-          columns: 3
-          automatic_width: false
-          alignment: horizontal
-          row_class_custom: 'flex-container more-news-view'
-          row_class_default: true
-          col_class_custom: flex-4-of-12
-          col_class_default: true
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: 'entity:node'
         options:
@@ -1660,16 +1656,14 @@ display:
           require_value: false
           reduce_duplicates: false
       style:
-        type: grid
+        type: html_list
         options:
-          grouping: {  }
-          columns: 3
-          automatic_width: false
-          alignment: horizontal
-          row_class_custom: 'flex-container more-news-view'
-          row_class_default: true
-          col_class_custom: flex-4-of-12
-          col_class_default: true
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
       row:
         type: 'entity:node'
         options:
