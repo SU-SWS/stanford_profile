@@ -551,7 +551,8 @@ class ListsCest {
       'su_page_description' => $faker->text,
       'layout_selection' => 'stanford_basic_page_full'
     ]);
-
+    $I->amOnPage($layout_changed_page->toUrl('edit-form')->toString());
+    $I->click('Save');
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($layout_changed_page->label());
     $I->canSee($layout_changed_page->get('su_page_description')->getString());
