@@ -109,18 +109,18 @@ process:
       plugin: explore_courses_instructors
       source: sections
   su_course_tags:
-      -
-        plugin: explore_courses_tags
-        source: tags
-      -
-        plugin: explode
-        delimiter: ';'
-      -
-        plugin: entity_generate
-        entity_type: taxonomy_term
-        bundle_key: vid
-        bundle: su_course_tags
-        value_key: name
+    -
+      plugin: explore_courses_tags
+      source: tags
+    -
+      plugin: explode
+      delimiter: ';'
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: su_course_tags
+      value_key: name
 destination:
   plugin: 'entity:node'
 migration_dependencies:
