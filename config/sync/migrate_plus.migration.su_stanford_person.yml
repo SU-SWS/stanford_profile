@@ -124,6 +124,10 @@ source:
       name: scholarly_interests_tersetext
       label: 'Scholarly and Research Interests'
       selector: currentResearchInterests/terseText/html
+    -
+      name: community
+      label: community
+      selector: community
   ids:
     sunetid:
       type: string
@@ -171,7 +175,18 @@ process:
       delimiter: /
       source:
         - constants/link_domain
+        - community
         - profile_id
+    -
+      plugin: str_replace
+      search:
+        - 'stanford/'
+        - 'hidden/'
+        - 'public/'
+      replace:
+        - 'intranet/'
+        - 'intranet/'
+        - ''
   su_person_profile_link/title: constants/link_text
   image_timestamp:
     -
