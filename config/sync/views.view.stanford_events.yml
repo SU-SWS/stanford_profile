@@ -631,7 +631,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
       style:
-        type: default
+        type: html_list
         options:
           grouping:
             -
@@ -640,6 +640,9 @@ display:
               rendered_strip: false
           row_class: ''
           default_row_class: true
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: fields
       query:
@@ -758,16 +761,14 @@ display:
         css_class: false
         pager: false
       style:
-        type: grid
+        type: html_list
         options:
-          grouping: {  }
-          columns: 3
-          automatic_width: false
-          alignment: horizontal
-          col_class_default: true
-          col_class_custom: flex-4-of-12
-          row_class_default: true
-          row_class_custom: flex-container
+          row_class: ''
+          default_row_class: 1
+          uses_fields: 0
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
       row:
         type: 'entity:node'
         options:
@@ -2117,11 +2118,14 @@ display:
         row: false
         arguments: false
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
-          default_row_class: true
+          default_row_class: 1
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: ui_patterns
         options:
@@ -3651,11 +3655,14 @@ display:
           depth: 10
           use_taxonomy_term_path: false
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: ui_patterns
         options:
@@ -4521,16 +4528,14 @@ display:
           break_phrase: false
           not: true
       style:
-        type: grid
+        type: html_list
         options:
-          grouping: {  }
-          columns: 3
-          automatic_width: false
-          alignment: horizontal
-          row_class_custom: flex-container
-          row_class_default: true
-          col_class_custom: flex-4-of-12
-          col_class_default: true
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
       row:
         type: 'entity:node'
         options:
@@ -5967,11 +5972,14 @@ display:
         link_display: false
         link_url: false
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
-          default_row_class: true
+          default_row_class: 1
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: ui_patterns
         options:
