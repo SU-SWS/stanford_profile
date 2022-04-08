@@ -23,7 +23,7 @@ code_coverage: &code_coverage
     - run:
         name: Run PHP Unit Coverage Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x#02be96bd3fdb08f960647b92e01cabc45de41282
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
     - store_test_results:
         path: /var/www/html/artifacts/phpunit
@@ -48,7 +48,7 @@ d9_codeception: &d9_codeception
     - run:
         name: Run Codeception Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x#02be96bd3fdb08f960647b92e01cabc45de41282
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
     - store_test_results:
         path: /var/www/html/artifacts
