@@ -23,7 +23,7 @@ code_coverage: &code_coverage
     - run:
         name: Run PHP Unit Coverage Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x#02be96bd3fdb08f960647b92e01cabc45de41282
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
     - store_test_results:
         path: /var/www/html/artifacts/phpunit
@@ -38,22 +38,7 @@ back_to_dev: &back_to_dev
         name: Back to dev
         command: |
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
-          ~/.composer/vendor/bin/sws-caravan back-to-dev ${CIRCLE_TAG} ${CIRCLE_WORKING_DIRECTORY}
-
-d8_codeception: &d8_codeception
-  <<: *defaults
-  steps:
-    - checkout:
-        path: /var/www/test
-    - run:
-        name: Run Codeception Tests
-        command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
-          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
-    - store_test_results:
-        path: /var/www/html/artifacts
-    - store_artifacts:
-        path: /var/www/html/artifacts
+          ~/.composer/vendor/bin/sws-caravan back-to-dev ${CIRCLE_TAG} ${CIRCLE_WORKING_DIRECTORY} main
 
 d9_codeception: &d9_codeception
   <<: *defaults
@@ -63,7 +48,7 @@ d9_codeception: &d9_codeception
     - run:
         name: Run Codeception Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x#02be96bd3fdb08f960647b92e01cabc45de41282
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
     - store_test_results:
         path: /var/www/html/artifacts
@@ -80,7 +65,7 @@ merge_upstream: &merge_upstream
         command: |
           git config --global user.email "sws-developers@lists.stanford.edu"
           git config --global user.name "CircleCI"
-          git pull https://github.com/SU-SWS/stanford_profile.git master -X ours --no-edit
+          git pull https://github.com/SU-SWS/stanford_profile.git main -X ours --no-edit
           if [[ $(git diff origin/${CIRCLE_BRANCH} --name-only) ]]; then
             DATE=`date +%Y-%m-%d`
             git checkout -b ${DATE}
@@ -94,8 +79,6 @@ jobs:
     <<: *code_coverage
   run-back-to-dev:
     <<: *back_to_dev
-  run-d8-codeception:
-    <<: *d8_codeception
   run-d9-codeception:
     <<: *d9_codeception
   run-merge-upstream:
@@ -117,7 +100,6 @@ workflows:
   tests:
     jobs:
       - run-coverage
-#      - run-d8-codeception
       - run-d9-codeception
   # Re-test every sunday in case this code becomes stale.
   sundays:
@@ -129,7 +111,7 @@ workflows:
           filters:
             branches:
               only:
-                - 8.x-1.x
+                - 8.x
   daily:
     jobs:
       - run-merge-upstream
@@ -139,4 +121,4 @@ workflows:
           filters:
             branches:
               only:
-                - /8.x-2.x/
+                - /8.x/

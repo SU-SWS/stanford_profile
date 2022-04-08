@@ -1,5 +1,28 @@
 # Cardinal Service Profile
 
+8.x-3.0
+--------------------------------------------------------------------------------
+- D8CORE-5172: Updated references to localist and events-legacy urls
+- DO not require lockup option select, prevent requiring lockup fields
+- updated circleci and composer branches
+- switch master branch to main
+- Configure layout builder restrictions consistently (#509)
+- Enable minimally branded theme for easier switching (#508)
+- adjusted VBO dependency to inherit from stanford_actions
+- Updated google analytics to latest 4.0 version
+- D8CORE-3345 Updated path auto pattern for events, news, and people (#505)
+- Added jsonapi_extras and disable write access
+- D8CORE-4704 Fix person list to show nested content (#506)
+- D8CORE-4526 Adjust full width layout for page title position (#497)
+- D8CORE-5583 enabled views_custom_cache_tag module
+- Process Localist html to fix <img> tag styles to attributes (#504)
+- Removed scheduler from media and taxonomy terms
+- conditional fields (#503)
+- Added and enabled webp for performance improvement
+- Modified the revision test to have a dynamic page title.
+- Enabled pdb_react module.
+- D8CORE-2893: Added minimally branded subtheme (#492)
+
 8.x-2.9
 --------------------------------------------------------------------------------
 _Release Date: 2022-03-10_
