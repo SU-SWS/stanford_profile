@@ -1,5 +1,23 @@
 # Cardinal Service Profile
 
+8.x-2.9
+--------------------------------------------------------------------------------
+_Release Date: 2022-03-10_
+- Updates from stanford_profile 2022-03-09
+- Added and enabled webp for performance improvement
+- Modified the revision test to have a dynamic page title.
+- Enabled pdb_react module.
+- D8CORE-2893: Added minimally branded subtheme (#492)
+- D8CORE-5180 D8CORE-5227 Remove alt text on people images (#498)
+- D8CORE-4713 Added id attribute for several wysiwyg tags (#496)
+- D8CORE-4974 Added a third content block for the local footer (#491)
+- BOT-8: Adjusted file upload access test for Intranet and allow_file_uploads. (#493)
+- Updated config and tests for smartdate module update (#494)
+- D8CORE-5278 Added scheduler module and configured for all content types (#486)
+- preg_replace of null is deprecated in php 8, use strings (#490)
+- Fix pathauto parent path generation (#489)
+- D8CORE-5236: Updated text on "Load More" buttons to be more descriptive (#483)
+
 8.x-2.8
 --------------------------------------------------------------------------------
 _Release Date: 2022-03-03_
