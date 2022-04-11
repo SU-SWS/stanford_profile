@@ -1,0 +1,90 @@
+uuid: 447ccfbe-092a-43ed-a323-be622c7df323
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.stanford_card
+    - field.field.node.stanford_course.body
+    - field.field.node.stanford_course.su_course_academic_year
+    - field.field.node.stanford_course.su_course_code
+    - field.field.node.stanford_course.su_course_id
+    - field.field.node.stanford_course.su_course_instructors
+    - field.field.node.stanford_course.su_course_link
+    - field.field.node.stanford_course.su_course_quarters
+    - field.field.node.stanford_course.su_course_section_units
+    - field.field.node.stanford_course.su_course_subject
+    - field.field.node.stanford_course.su_course_tags
+    - node.type.stanford_course
+  module:
+    - ds
+    - element_class_formatter
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
+  layout_library:
+    enable: false
+  ds:
+    layout:
+      id: pattern_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      card_headline:
+        - node_title
+      card_link:
+        - su_course_link
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+_core:
+  default_config_hash: 3q3wp63fQ-h1XTJTAHRzKP7uFPch4KfSFHFXWC50bIw
+id: node.stanford_course.stanford_card
+targetEntityType: node
+bundle: stanford_course
+mode: stanford_card
+content:
+  su_course_link:
+    type: link_class
+    label: above
+    settings:
+      class: ''
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: card_link
+hidden:
+  body: true
+  links: true
+  search_api_excerpt: true
+  su_course_academic_year: true
+  su_course_code: true
+  su_course_id: true
+  su_course_instructors: true
+  su_course_quarters: true
+  su_course_section_units: true
+  su_course_subject: true
+  su_course_tags: true
