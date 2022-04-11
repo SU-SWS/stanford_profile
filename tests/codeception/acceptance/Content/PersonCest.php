@@ -14,7 +14,7 @@ class PersonCest {
     $I->logInWithRole('administrator');
     $I->amOnPage("/admin/content");
     $I->see("Haley Jackson");
-    $I->amOnPage("/person/haley-jackson");
+    $I->amOnPage("/people/haley-jackson");
     $I->see("This page is currently unpublished and not visible to the public.");
     $I->see("Haley Jackson");
     $I->see("People", ".su-multi-menu");
@@ -40,7 +40,7 @@ class PersonCest {
     $I->click("a[href='/people/staff']");
     $I->canSeeResponseCodeIs(200);
     $I->see("Sorry, no results found");
-    $I->see("Filter By Person Type");
+    $I->see("Person Type");
   }
 
   /**
@@ -48,12 +48,12 @@ class PersonCest {
    * up in the all view.
    */
   public function testCreatePerson(AcceptanceTester $I) {
-    $I->createEntity([
+    $node = $I->createEntity([
       'type' => 'stanford_person',
       'su_person_first_name' => "John",
       'su_person_last_name' => "Wick",
     ]);
-    $I->amOnPage("/person/john-wick");
+    $I->amOnPage($node->toUrl()->toString());
     $I->see("John Wick");
     $I->runDrush('cr');
     $I->amOnPage("/people");
@@ -120,6 +120,8 @@ class PersonCest {
 
   /**
    * D8CORE-2613: Taxonomy menu items don't respect the UI.
+   *
+   * @group 4704
    */
   public function testD8Core2613Terms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -156,6 +158,43 @@ class PersonCest {
 
     $I->amOnPage('/people');
     $I->cantSeeLink('Baz');
+
+    $faker = Factory::create();
+    $parent = $I->createEntity([
+      'name' =>'Parent: '. $faker->text(10),
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+    $child = $I->createEntity([
+      'name' => 'Child: '.$faker->text(10),
+      'vid' => 'stanford_person_types',
+      'parent' => $parent->id(),
+    ], 'taxonomy_term');
+    $grandchild = $I->createEntity([
+      'name' => 'GrandChild: '.$faker->text(10),
+      'vid' => 'stanford_person_types',
+      'parent' => $child->id(),
+    ], 'taxonomy_term');
+    $great_grandchild = $I->createEntity([
+      'name' =>'Great GrandChild: '. $faker->text(10),
+      'vid' => 'stanford_person_types',
+      'parent' => $grandchild->id(),
+    ], 'taxonomy_term');
+
+    $node = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $faker->firstName,
+      'su_person_last_name' => $faker->lastName,
+      'su_person_type_group' => $great_grandchild->id(),
+    ]);
+
+    $I->amOnPage($great_grandchild->toUrl()->toString());
+    $I->canSee($node->label());
+    $I->amOnPage($grandchild->toUrl()->toString());
+    $I->canSee($node->label());
+    $I->amOnPage($child->toUrl()->toString());
+    $I->canSee($node->label());
+    $I->amOnPage($parent->toUrl()->toString());
+    $I->canSee($node->label());
   }
 
   /**
@@ -188,12 +227,12 @@ class PersonCest {
     ]);
     $I->logInWithRole('administrator');
     drupal_flush_all_caches();
-    $I->amOnPage('/people/foo');
+    $I->amOnPage($foo->toUrl()->toString());
     $I->canSee($node->label());
     $node->setUnpublished()->save();
 
     drupal_flush_all_caches();
-    $I->amOnPage('/people/foo');
+    $I->amOnPage($foo->toUrl()->toString());
     $I->cantSee($node->label());
   }
 

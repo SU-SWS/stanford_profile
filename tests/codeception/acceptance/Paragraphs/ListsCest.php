@@ -4,14 +4,100 @@ use Faker\Factory;
 
 /**
  * Class ListsCest.
+ *
+ * @group paragraphs
  */
 class ListsCest {
 
   /**
-   * Allow all paragraph types by using state.
+   * Shared tags on each content type are identical.
    */
-  public function _before() {
-    \Drupal::state()->set('stanford_profile_allow_all_paragraphs', TRUE);
+  public function testSharedTags(AcceptanceTester $I) {
+    $faker = Factory::create();
+    $shared_tag = $I->createEntity([
+      'name' => $faker->jobTitle,
+      'vid' => 'su_shared_tags',
+    ], 'taxonomy_term');
+    $basic_page = $I->createEntity([
+      'title' => $faker->text(20),
+      'type' => 'stanford_page',
+      'su_shared_tags' => $shared_tag->id(),
+    ]);
+    $news = $I->createEntity([
+      'title' => $faker->text(20),
+      'type' => 'stanford_news',
+      'su_shared_tags' => $shared_tag->id(),
+    ]);
+    $event = $I->createEntity([
+      'title' => $faker->text(20),
+      'type' => 'stanford_event',
+      'su_shared_tags' => $shared_tag->id(),
+    ]);
+    $person = $I->createEntity([
+      'su_person_first_name' => $faker->firstName,
+      'su_person_last_name' => $faker->lastName,
+      'type' => 'stanford_person',
+      'su_shared_tags' => $shared_tag->id(),
+    ]);
+    $publication = $I->createEntity([
+      'title' => $faker->text(20),
+      'type' => 'stanford_publication',
+      'su_shared_tags' => $shared_tag->id(),
+    ]);
+
+    // List with all content types.
+    $node_list = $this->getNodeWithList($I,[
+      'target_id' => 'stanford_shared_tags',
+      'display_id' => 'card_grid',
+      'items_to_display' => 100,
+      'arguments' => $shared_tag->label(),
+    ]);
+    $I->amOnPage($node_list->toUrl()->toString());
+    $I->canSee($basic_page->label());
+    $I->canSee($news->label());
+    $I->canSee($event->label());
+    $I->canSee($person->label());
+    $I->canSee($publication->label());
+
+    // List with only events and news.
+    $node_list = $this->getNodeWithList($I,[
+      'target_id' => 'stanford_shared_tags',
+      'display_id' => 'card_grid',
+      'items_to_display' => 100,
+      'arguments' => $shared_tag->label() . '/stanford_event+stanford_news',
+    ]);
+    $I->amOnPage($node_list->toUrl()->toString());
+    $I->cantSee($basic_page->label());
+    $I->canSee($news->label());
+    $I->canSee($event->label());
+    $I->cantSee($person->label());
+    $I->cantSee($publication->label());
+
+    // List with only people.
+    $node_list = $this->getNodeWithList($I,[
+      'target_id' => 'stanford_shared_tags',
+      'display_id' => 'card_grid',
+      'items_to_display' => 100,
+      'arguments' => $shared_tag->label() . '/stanford_person',
+    ]);
+    $I->amOnPage($node_list->toUrl()->toString());
+    $I->cantSee($basic_page->label());
+    $I->cantSee($news->label());
+    $I->cantSee($event->label());
+    $I->canSee($person->label());
+    $I->cantSee($publication->label());
+
+    $I->logInWithRole('contributor');
+    $I->amOnPage($basic_page->toUrl('edit-form')->toString());
+    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->amOnPage($news->toUrl('edit-form')->toString());
+    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->amOnPage($event->toUrl('edit-form')->toString());
+    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->amOnPage($person->toUrl('edit-form')->toString());
+    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->amOnPage($publication->toUrl('edit-form')->toString());
+    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
   }
 
   /**
@@ -241,7 +327,7 @@ class ListsCest {
     $event_type = $this->createTaxonomyTerm($I, 'stanford_event_types');
     // Use a child term but the argument is the parent term to verify children
     // are included in the results.
-    $child_type = $this->createTaxonomyTerm($I, 'stanford_event_types', null, $event_type->id());
+    $child_type = $this->createTaxonomyTerm($I, 'stanford_event_types', NULL, $event_type->id());
     $event_audience = $this->createTaxonomyTerm($I, 'event_audience');
 
     $event = $I->createEntity([
@@ -428,7 +514,9 @@ class ListsCest {
   }
 
   /**
-   * Test basic page types list view
+   * Test basic page types list view.
+   *
+   * @group newtest
    */
   public function testListParagraphBasicPageTypesFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -452,10 +540,22 @@ class ListsCest {
       'arguments' => 'Basic-Page-Test-Term',
     ]);
 
-
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($basic_page_entity->label());
     $I->cantSee($type_term->label());
+
+    $layout_changed_page = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $faker->text(15),
+      'su_basic_page_type' => $type_term->id(),
+      'su_page_description' => $faker->text,
+      'layout_selection' => 'stanford_basic_page_full'
+    ]);
+    $I->amOnPage($layout_changed_page->toUrl('edit-form')->toString());
+    $I->click('Save');
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($layout_changed_page->label());
+    $I->canSee($layout_changed_page->get('su_page_description')->getString());
   }
 
   /**
@@ -513,13 +613,17 @@ class ListsCest {
    * @return \Drupal\taxonomy\TermInterface
    *   Generated taxonomy term.
    */
-  protected function createTaxonomyTerm(AcceptanceTester $I, string $vid, ?string $name = NULL, ?int $parent_id = null) {
+  protected function createTaxonomyTerm(AcceptanceTester $I, string $vid, ?string $name = NULL, ?int $parent_id = NULL) {
     if (!$name) {
       $name = Factory::create()->text(15);
     }
 
     $name = trim(preg_replace('/[\W]/', '-', $name), '-');
-    return $I->createEntity(['vid' => $vid, 'name' => $name, 'parent' => $parent_id], 'taxonomy_term');
+    return $I->createEntity([
+      'vid' => $vid,
+      'name' => $name,
+      'parent' => $parent_id,
+    ], 'taxonomy_term');
   }
 
 }

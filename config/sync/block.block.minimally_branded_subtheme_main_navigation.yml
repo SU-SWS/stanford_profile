@@ -1,0 +1,25 @@
+uuid: aaa1edf0-1ac4-403a-9f65-8f22454bd7a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_main_navigation
+theme: minimally_branded_subtheme
+region: menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: true
+visibility: {  }

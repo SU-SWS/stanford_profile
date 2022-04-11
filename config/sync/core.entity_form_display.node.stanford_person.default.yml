@@ -30,6 +30,7 @@ dependencies:
     - field.field.node.stanford_person.su_person_short_title
     - field.field.node.stanford_person.su_person_telephone
     - field.field.node.stanford_person.su_person_type_group
+    - field.field.node.stanford_person.su_shared_tags
     - node.type.stanford_person
   module:
     - allowed_formats
@@ -37,6 +38,7 @@ dependencies:
     - link
     - media_library
     - paragraphs
+    - scheduler
     - shs
     - stanford_intranet
     - text
@@ -330,6 +332,16 @@ content:
       create_new_levels: false
       force_deepest: false
     third_party_settings: {  }
+  su_shared_tags:
+    type: options_shs
+    weight: 31
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 1
@@ -337,12 +349,6 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
@@ -355,4 +361,5 @@ hidden:
   su_person_research_interests: true
   su_person_scholarly_interests: true
   uid: true
+  unpublish_on: true
   url_redirects: true

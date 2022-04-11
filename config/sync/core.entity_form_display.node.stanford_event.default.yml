@@ -21,12 +21,15 @@ dependencies:
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
   module:
     - address
     - field_group
     - link
     - paragraphs
+    - scheduler
+    - shs
     - smart_date
     - stanford_intranet
     - telephone
@@ -185,6 +188,17 @@ content:
       modal: false
       default_tz: user
       custom_tz: America/Los_Angeles
+      allowed_timezones: {  }
+      default_duration: 60
+      default_duration_increments: |-
+        30
+        60|1 hour
+        90
+        120|2 hours
+        custom
+      show_extra: false
+      hide_date: true
+      add_abbreviations: ''
     third_party_settings: {  }
   su_event_dek:
     type: string_textfield
@@ -260,10 +274,24 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_event_type:
-    type: options_select
+    type: options_shs
     weight: 0
     region: content
-    settings: {  }
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
+  su_shared_tags:
+    type: options_shs
+    weight: 31
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -273,12 +301,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   created: true
   layout_builder__layout: true
@@ -286,4 +308,5 @@ hidden:
   promote: true
   sticky: true
   uid: true
+  unpublish_on: true
   url_redirects: true

@@ -334,27 +334,111 @@ third_party_settings:
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
-    allowed_block_categories: {  }
+    allowed_block_categories:
+      - 'Basic Page Type Lists (Views)'
+      - 'Chaos Tools'
+      - 'Config Pages'
+      - 'Content fields'
+      - 'Custom block types'
+      - 'Custom blocks'
+      - Devel
+      - 'Devel PHP'
+      - 'Events Lists (Views)'
+      - Forms
+      - Help
+      - 'Inline blocks'
+      - 'Jumpstart UI'
+      - 'Lists (Views)'
+      - Menus
+      - 'News Lists (Views)'
+      - 'PDB React'
+      - 'People Lists (Views)'
+      - 'Publication (Views)'
+      - React
+      - 'SimpleSAMLphp Authentication'
+      - 'Stanford News'
+      - 'Stanford Profile Helper'
+      - 'Stanford SimpleSAML PHP'
+      - System
+      - Views
+      - core
     entity_view_mode_restriction:
       allowed_layouts:
         - jumpstart_ui_one_column
         - jumpstart_ui_two_column
         - jumpstart_ui_three_column
         - stanford_news_byline
-        - ds_reset
-      blacklisted_blocks: {  }
+      blacklisted_blocks:
+        'Content fields':
+          - 'field_block:node:stanford_news:uid'
+          - 'field_block:node:stanford_news:created'
+          - 'field_block:node:stanford_news:type'
+          - 'field_block:node:stanford_news:revision_default'
+          - 'field_block:node:stanford_news:default_langcode'
+          - 'field_block:node:stanford_news:nid'
+          - 'field_block:node:stanford_news:langcode'
+          - 'extra_field_block:node:stanford_news:links'
+          - 'field_block:node:stanford_news:menu_link'
+          - 'field_block:node:stanford_news:promote'
+          - 'field_block:node:stanford_news:status'
+          - 'field_block:node:stanford_news:rh_action'
+          - 'field_block:node:stanford_news:rh_redirect_fallback_action'
+          - 'field_block:node:stanford_news:rh_redirect'
+          - 'field_block:node:stanford_news:rh_redirect_response'
+          - 'field_block:node:stanford_news:revision_timestamp'
+          - 'field_block:node:stanford_news:vid'
+          - 'field_block:node:stanford_news:revision_log'
+          - 'field_block:node:stanford_news:revision_translation_affected'
+          - 'field_block:node:stanford_news:revision_uid'
+          - 'extra_field_block:node:stanford_news:search_api_excerpt'
+          - 'field_block:node:stanford_news:sticky'
+          - 'field_block:node:stanford_news:unpublish_on'
+          - 'field_block:user:user:changed'
+          - 'field_block:user:user:created'
+          - 'field_block:user:user:default_langcode'
+          - 'field_block:user:user:su_display_name'
+          - 'field_block:user:user:mail'
+          - 'field_block:user:user:init'
+          - 'field_block:user:user:langcode'
+          - 'field_block:user:user:access'
+          - 'field_block:user:user:login'
+          - 'extra_field_block:user:user:member_for'
+          - 'field_block:user:user:name'
+          - 'field_block:user:user:preferred_admin_langcode'
+          - 'field_block:user:user:preferred_langcode'
+          - 'field_block:user:user:role_change'
+          - 'field_block:user:user:roles'
+          - 'extra_field_block:user:user:search_api_excerpt'
+          - 'field_block:user:user:timezone'
+          - 'field_block:user:user:uid'
+          - 'field_block:user:user:status'
       whitelisted_blocks:
-        'Chaos Tools': {  }
-        'Config Pages': {  }
         Menus:
+          - 'menu_block:stanford-event-types'
+          - 'system_menu_block:stanford-event-types'
+          - 'system_menu_block:main'
           - 'menu_block:main'
+          - 'system_menu_block:stanford-person-type'
+          - 'menu_block:stanford-person-type'
+          - 'system_menu_block:stanford-publication-topics'
+          - 'menu_block:stanford-publication-topics'
+          - 'system_menu_block:news-topics'
           - 'menu_block:news-topics'
-        'SimpleSAMLphp Authentication': {  }
         System:
-          - system_messages_block
+          - system_breadcrumb_block
         core:
           - page_title_block
-      restricted_categories: {  }
+      restricted_categories:
+        - 'Chaos Tools'
+        - 'Config Pages'
+        - Forms
+        - Help
+        - 'Lists (Views)'
+        - React
+        - 'SimpleSAMLphp Authentication'
+        - 'Stanford Profile Helper'
+        - 'Stanford SimpleSAML PHP'
+        - Views
   layout_library:
     enable: false
 id: node.stanford_news.default
@@ -439,3 +523,4 @@ hidden:
   search_api_excerpt: true
   stanford_intranet__access: true
   su_news_source: true
+  su_shared_tags: true

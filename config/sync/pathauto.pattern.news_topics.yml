@@ -3,17 +3,16 @@ langcode: en
 status: true
 dependencies:
   module:
-    - ctools
     - taxonomy
 id: news_topics
 label: 'News Topics'
 type: 'canonical_entities:taxonomy_term'
-pattern: 'news/[term:name]'
+pattern: 'news/[term:parents:join-path]/[term:name]'
 selection_criteria:
-  32750fd0-6569-40c7-994e-3a1aa0b31956:
+  0ee0a4fe-7620-4ed6-9aa2-b09655827f3d:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 32750fd0-6569-40c7-994e-3a1aa0b31956
+    uuid: 0ee0a4fe-7620-4ed6-9aa2-b09655827f3d
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

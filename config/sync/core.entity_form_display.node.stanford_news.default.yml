@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.stanford_news.su_news_publishing_date
     - field.field.node.stanford_news.su_news_source
     - field.field.node.stanford_news.su_news_topics
+    - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
   module:
     - datetime
@@ -21,6 +22,8 @@ dependencies:
     - link
     - media_library
     - paragraphs
+    - scheduler
+    - shs
     - stanford_intranet
 third_party_settings:
   field_group:
@@ -162,14 +165,24 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   su_news_topics:
-    type: entity_reference_autocomplete
+    type: options_shs
     weight: 4
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
+  su_shared_tags:
+    type: options_shs
+    weight: 31
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -179,12 +192,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 30
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   created: true
   layout_builder__layout: true
@@ -193,4 +200,5 @@ hidden:
   promote: true
   sticky: true
   uid: true
+  unpublish_on: true
   url_redirects: true

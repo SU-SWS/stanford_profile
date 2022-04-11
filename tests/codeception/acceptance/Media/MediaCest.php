@@ -2,8 +2,6 @@
 
 /**
  * Tests for various media functionality.
- *
- * @group testthis
  */
 class MediaCest {
 

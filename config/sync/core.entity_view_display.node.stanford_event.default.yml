@@ -528,65 +528,110 @@ third_party_settings:
   layout_library:
     enable: false
   layout_builder_restrictions:
-    allowed_block_categories: {  }
+    allowed_block_categories:
+      - 'Basic Page Type Lists (Views)'
+      - 'Chaos Tools'
+      - 'Config Pages'
+      - 'Content fields'
+      - 'Custom block types'
+      - 'Custom blocks'
+      - Devel
+      - 'Devel PHP'
+      - 'Events Lists (Views)'
+      - Forms
+      - Help
+      - 'Inline blocks'
+      - 'Jumpstart UI'
+      - 'Lists (Views)'
+      - Menus
+      - 'News Lists (Views)'
+      - 'PDB React'
+      - 'People Lists (Views)'
+      - 'Publication (Views)'
+      - React
+      - 'SimpleSAMLphp Authentication'
+      - 'Stanford News'
+      - 'Stanford Profile Helper'
+      - 'Stanford SimpleSAML PHP'
+      - System
+      - Views
+      - core
     entity_view_mode_restriction:
       allowed_layouts:
         - jumpstart_ui_one_column
-        - jumpstart_ui_one_column_overlay
         - jumpstart_ui_two_column
         - jumpstart_ui_three_column
-        - stanford_events_editorial_content
-        - stanford_events_body
-      blacklisted_blocks: {  }
-      whitelisted_blocks:
-        'Chaos Tools': {  }
-        'Config Pages': {  }
+      blacklisted_blocks:
         'Content fields':
-          - 'field_block:node:stanford_event:su_event_audience'
           - 'field_block:node:stanford_event:uid'
           - 'field_block:node:stanford_event:created'
-          - 'field_block:node:stanford_event:body'
-          - 'field_block:node:stanford_event:su_event_cta'
-          - 'field_block:node:stanford_event:changed'
-          - 'field_block:node:stanford_event:su_event_components'
-          - 'field_block:node:stanford_event:su_event_email'
-          - 'field_block:node:stanford_event:su_event_telephone'
-          - 'field_block:node:stanford_event:su_event_date_time'
-          - 'field_block:node:stanford_event:su_event_dek'
-          - 'field_block:node:stanford_event:su_event_alt_loc'
-          - 'field_block:node:stanford_event:title'
-          - 'field_block:node:stanford_event:su_event_type'
-          - 'field_block:node:stanford_event:su_event_source'
+          - 'field_block:node:stanford_event:type'
+          - 'field_block:node:stanford_event:revision_default'
+          - 'field_block:node:stanford_event:default_langcode'
           - 'field_block:node:stanford_event:nid'
+          - 'field_block:node:stanford_event:langcode'
           - 'extra_field_block:node:stanford_event:links'
-          - 'field_block:node:stanford_event:su_event_location'
-          - 'field_block:node:stanford_event:su_event_map_link'
           - 'field_block:node:stanford_event:menu_link'
+          - 'field_block:node:stanford_event:promote'
           - 'field_block:node:stanford_event:status'
-          - 'field_block:node:stanford_event:su_event_schedule'
-          - 'field_block:node:stanford_event:su_event_sponsor'
-          - 'field_block:node:stanford_event:su_event_subheadline'
-        Devel: {  }
-        'Devel PHP': {  }
-        Forms: {  }
-        'Lists (Views)': {  }
+          - 'field_block:node:stanford_event:rh_action'
+          - 'field_block:node:stanford_event:rh_redirect_fallback_action'
+          - 'field_block:node:stanford_event:rh_redirect'
+          - 'field_block:node:stanford_event:rh_redirect_response'
+          - 'field_block:node:stanford_event:revision_timestamp'
+          - 'field_block:node:stanford_event:vid'
+          - 'field_block:node:stanford_event:revision_log'
+          - 'field_block:node:stanford_event:revision_translation_affected'
+          - 'field_block:node:stanford_event:revision_uid'
+          - 'extra_field_block:node:stanford_event:search_api_excerpt'
+          - 'field_block:node:stanford_event:sticky'
+          - 'field_block:node:stanford_event:unpublish_on'
+          - 'field_block:user:user:changed'
+          - 'field_block:user:user:created'
+          - 'field_block:user:user:default_langcode'
+          - 'field_block:user:user:su_display_name'
+          - 'field_block:user:user:mail'
+          - 'field_block:user:user:init'
+          - 'field_block:user:user:langcode'
+          - 'field_block:user:user:access'
+          - 'field_block:user:user:login'
+          - 'extra_field_block:user:user:member_for'
+          - 'field_block:user:user:name'
+          - 'field_block:user:user:preferred_admin_langcode'
+          - 'field_block:user:user:preferred_langcode'
+          - 'field_block:user:user:role_change'
+          - 'field_block:user:user:roles'
+          - 'extra_field_block:user:user:search_api_excerpt'
+          - 'field_block:user:user:timezone'
+          - 'field_block:user:user:uid'
+          - 'field_block:user:user:status'
+      whitelisted_blocks:
         Menus:
           - 'menu_block:stanford-event-types'
+          - 'system_menu_block:stanford-event-types'
           - 'menu_block:main'
-        'News Lists (Views)':
-          - 'views_block:stanford_news-vertical_teaser_term'
-          - 'views_block:stanford_news-vertical_teaser_term_list'
-          - 'views_block:stanford_news-block_1'
-          - 'views_block:stanford_news-term_block'
-        'People Lists (Views)':
-          - 'views_block:stanford_person-grid_list_all'
-          - 'views_block:stanford_person_list_terms_first-person_list_grid'
-        'SimpleSAMLphp Authentication': {  }
-        'Stanford News': {  }
-        'Stanford SimpleSAML PHP': {  }
+          - 'system_menu_block:main'
+          - 'system_menu_block:stanford-person-type'
+          - 'menu_block:stanford-person-type'
+          - 'system_menu_block:stanford-publication-topics'
+          - 'menu_block:stanford-publication-topics'
+          - 'system_menu_block:news-topics'
+          - 'menu_block:news-topics'
         System:
-          - system_messages_block
-      restricted_categories: {  }
+          - system_breadcrumb_block
+        core:
+          - page_title_block
+      restricted_categories:
+        - 'Chaos Tools'
+        - 'Config Pages'
+        - Forms
+        - Help
+        - 'Lists (Views)'
+        - React
+        - 'SimpleSAMLphp Authentication'
+        - 'Stanford Profile Helper'
+        - 'Stanford SimpleSAML PHP'
+        - Views
 id: node.stanford_event.default
 targetEntityType: node
 bundle: stanford_event
@@ -734,3 +779,4 @@ hidden:
   search_api_excerpt: true
   stanford_intranet__access: true
   su_event_schedule: true
+  su_shared_tags: true
