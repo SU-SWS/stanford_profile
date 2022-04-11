@@ -180,12 +180,12 @@ process:
     -
       plugin: str_replace
       search:
-        - 'stanford/'
-        - 'hidden/'
-        - 'public/'
+        - stanford/
+        - hidden/
+        - public/
       replace:
-        - 'intranet/'
-        - 'intranet/'
+        - intranet/
+        - intranet/
         - ''
   su_person_profile_link/title: constants/link_text
   image_timestamp:

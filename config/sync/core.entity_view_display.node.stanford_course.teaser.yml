@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.stanford_course.su_course_section_units
     - field.field.node.stanford_course.su_course_subject
     - field.field.node.stanford_course.su_course_tags
+    - field.field.node.stanford_course.su_shared_tags
     - node.type.stanford_course
   module:
     - layout_builder
@@ -85,3 +86,4 @@ hidden:
   su_course_link: true
   su_course_section_units: true
   su_course_subject: true
+  su_shared_tags: true
