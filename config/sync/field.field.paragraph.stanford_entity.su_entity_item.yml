@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.su_entity_item
+    - node.type.stanford_course
     - node.type.stanford_event
     - node.type.stanford_event_series
     - node.type.stanford_news
@@ -26,6 +27,7 @@ settings:
   handler_settings:
     target_bundles:
       stanford_page: stanford_page
+      stanford_course: stanford_course
       stanford_event: stanford_event
       stanford_event_series: stanford_event_series
       stanford_news: stanford_news

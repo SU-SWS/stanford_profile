@@ -22,6 +22,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - stanford_fields
     - user
 third_party_settings:
   layout_builder:
@@ -38,30 +39,27 @@ third_party_settings:
     enable: false
   ds:
     layout:
-      id: pattern_news-vertical-teaser
+      id: pattern_course-vertical-teaser
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        wrappers:
-          news_vertical_teaser_image: div
-          news_vertical_teaser_headline: div
-          news_topics: div
-          news_source: div
-          news_url: div
-          news_footer: div
         pattern:
           field_templates: default
-          variant: default
     regions:
-      card_headline:
+      course_code:
+        - su_course_subject
+        - su_course_code
+      course_academic_year:
+        - su_course_academic_year
+      course_title:
         - node_title
-      card_link:
+      course_url:
         - su_course_link
     fields:
       node_title:
         plugin_id: node_title
-        weight: 0
+        weight: 3
         label: hidden
         formatter: default
 _core:
@@ -71,9 +69,27 @@ targetEntityType: node
 bundle: stanford_course
 mode: stanford_card
 content:
+  su_course_academic_year:
+    type: entity_title_heading
+    label: hidden
+    settings:
+      tag: h2
+      linked: false
+    third_party_settings: {  }
+    weight: 2
+    region: course_academic_year
+  su_course_code:
+    type: entity_title_heading
+    label: hidden
+    settings:
+      tag: h2
+      linked: false
+    third_party_settings: {  }
+    weight: 1
+    region: course_code
   su_course_link:
     type: link_class
-    label: above
+    label: hidden
     settings:
       class: ''
       trim_length: 80
@@ -82,18 +98,24 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 1
-    region: card_link
+    weight: 4
+    region: course_url
+  su_course_subject:
+    type: entity_title_heading
+    label: hidden
+    settings:
+      tag: h2
+      linked: false
+    third_party_settings: {  }
+    weight: 0
+    region: course_code
 hidden:
   body: true
   links: true
   search_api_excerpt: true
-  su_course_academic_year: true
-  su_course_code: true
   su_course_id: true
   su_course_instructors: true
   su_course_quarters: true
   su_course_section_units: true
-  su_course_subject: true
   su_course_tags: true
   su_shared_tags: true

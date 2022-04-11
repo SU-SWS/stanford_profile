@@ -635,6 +635,13 @@ display:
             operator_list: {  }
       style:
         type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: ui_patterns
         options:
@@ -1636,7 +1643,13 @@ display:
         row: false
       style:
         type: html_list
-        options: {  }
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: 1
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: ui_patterns
         options:
