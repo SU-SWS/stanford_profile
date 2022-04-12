@@ -18,6 +18,7 @@ dependencies:
     - node.type.stanford_course
   module:
     - ds
+    - field_formatter_class
     - layout_builder
     - layout_builder_restrictions
     - layout_library
@@ -81,6 +82,16 @@ content:
     third_party_settings: {  }
     weight: 1
     region: course_code
+  su_course_subject:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 0
+    region: course_code
 hidden:
   body: true
   links: true
@@ -90,6 +101,5 @@ hidden:
   su_course_link: true
   su_course_quarters: true
   su_course_section_units: true
-  su_course_subject: true
   su_course_tags: true
   su_shared_tags: true
