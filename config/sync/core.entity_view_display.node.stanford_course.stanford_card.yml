@@ -81,14 +81,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: course_code
-  su_course_subject:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 0
-    region: course_code
 hidden:
   body: true
   links: true
@@ -98,5 +90,6 @@ hidden:
   su_course_link: true
   su_course_quarters: true
   su_course_section_units: true
+  su_course_subject: true
   su_course_tags: true
   su_shared_tags: true

@@ -1,0 +1,31 @@
+uuid: cf9b884b-7d3e-4247-a452-63dc174a28ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.su_course_subjects.su_courses_dept_long
+    - taxonomy.vocabulary.su_course_subjects
+  module:
+    - text
+id: taxonomy_term.su_course_subjects.default
+targetEntityType: taxonomy_term
+bundle: su_course_subjects
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  su_courses_dept_long:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

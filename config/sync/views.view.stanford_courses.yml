@@ -1,6 +1,6 @@
 uuid: 6586c447-2f74-465a-b667-bf52b6d3da1e
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
@@ -10,8 +10,6 @@ dependencies:
     - field.storage.node.su_course_id
     - field.storage.node.su_course_instructors
     - field.storage.node.su_course_link
-    - field.storage.node.su_course_quarters
-    - field.storage.node.su_course_subject
     - node.type.stanford_course
   module:
     - link
@@ -20,6 +18,7 @@ dependencies:
     - text
     - ui_patterns_views
     - user
+    - views_infinite_scroll
     - views_taxonomy_term_name_depth
 id: stanford_courses
 label: Courses
@@ -468,69 +467,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        su_course_quarters:
-          id: su_course_quarters
-          table: node__su_course_quarters
-          field: su_course_quarters
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
       pager:
         type: none
         options:
@@ -741,7 +677,6 @@ display:
         - 'config:field.storage.node.su_course_code'
         - 'config:field.storage.node.su_course_id'
         - 'config:field.storage.node.su_course_instructors'
-        - 'config:field.storage.node.su_course_quarters'
   default_list_viewfield_block:
     id: default_list_viewfield_block
     display_title: '- Default List View -'
@@ -1118,140 +1053,38 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        su_course_quarters:
-          id: su_course_quarters
-          table: node__su_course_quarters
-          field: su_course_quarters
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        su_course_subject:
-          id: su_course_subject
-          table: node__su_course_subject
-          field: su_course_subject
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: 0
-          alter:
-            alter_text: 0
-            text: ''
-            make_link: 0
-            path: ''
-            absolute: 0
-            external: 0
-            replace_spaces: 0
-            path_case: none
-            trim_whitespace: 0
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: 0
-            max_length: '0'
-            word_boundary: 1
-            ellipsis: 1
-            more_link: 0
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: 0
-            trim: 0
-            preserve_tags: ''
-            html: 0
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: 1
-          empty: ''
-          hide_empty: 0
-          empty_zero: 0
-          hide_alter_empty: 1
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: 0
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: 0
-          plugin_id: field
       defaults:
         fields: false
+        pager: false
+      pager:
+        type: infinite_scroll
+        options:
+          items_per_page: '20'
+          offset: '0'
+          id: '0'
+          total_pages: ''
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More Courses'
+            automatically_load_content: 0
+            initially_load_all_pages: 0
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1259,8 +1092,6 @@ display:
         - 'config:field.storage.node.su_course_academic_year'
         - 'config:field.storage.node.su_course_code'
         - 'config:field.storage.node.su_course_instructors'
-        - 'config:field.storage.node.su_course_quarters'
-        - 'config:field.storage.node.su_course_subject'
   vertical_teaser_viewfield_block:
     id: vertical_teaser_viewfield_block
     display_title: 'Vertical Teaser'
@@ -1396,69 +1227,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        su_course_subject:
-          id: su_course_subject
-          table: node__su_course_subject
-          field: su_course_subject
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: 0
-          alter:
-            alter_text: 0
-            text: ''
-            make_link: 0
-            path: ''
-            absolute: 0
-            external: 0
-            replace_spaces: 0
-            path_case: none
-            trim_whitespace: 0
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: 0
-            max_length: '0'
-            word_boundary: 1
-            ellipsis: 1
-            more_link: 0
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: 0
-            trim: 0
-            preserve_tags: ''
-            html: 0
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: 1
-          empty: ''
-          hide_empty: 0
-          empty_zero: 0
-          hide_alter_empty: 1
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: 0
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: 0
-          plugin_id: field
         su_course_code:
           id: su_course_code
           table: node__su_course_code
@@ -1619,4 +1387,3 @@ display:
         - 'config:field.storage.node.su_course_academic_year'
         - 'config:field.storage.node.su_course_code'
         - 'config:field.storage.node.su_course_link'
-        - 'config:field.storage.node.su_course_subject'

@@ -15,7 +15,7 @@ source:
   track_changes: true
   plugin: url
   data_fetcher_plugin: http
-  urls: 'https://explorecourses.stanford.edu/search?view=xml-20200810&academicYear=&page=0&q=ACCT&filter-departmentcode-ACCT=on&filter-coursestatus-Active=on'
+  urls: ''
   data_parser_plugin: simple_xml
   item_selector: //courses/course
   fields:
@@ -75,7 +75,14 @@ process:
   body/format: constants/stanford_html
   su_course_code: code
   su_course_id: course_id
-  su_course_subject: subject
+  su_course_subject:
+    -
+      plugin: entity_generate
+      source: subject
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: su_course_subjects
+      value_key: name
   su_course_section_units:
     -
       plugin: concat
@@ -104,6 +111,12 @@ process:
     -
       plugin: explore_courses_quarters
       source: sections
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: su_course_quarters
+      value_key: name
   su_course_instructors:
     -
       plugin: explore_courses_instructors

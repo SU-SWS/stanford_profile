@@ -5,17 +5,25 @@ dependencies:
   config:
     - field.storage.node.su_course_subject
     - node.type.stanford_course
-_core:
-  default_config_hash: 8gXMH7-tgeESk2CmqRAl07kyxSzWhkDAxo5vhy-Occ0
+    - taxonomy.vocabulary.su_course_subjects
 id: node.stanford_course.su_course_subject
 field_name: su_course_subject
 entity_type: node
 bundle: stanford_course
 label: 'Course Subject'
-description: 'The subject code for the course; e.g., ACCT, CHEM, BIO, etc.'
+description: 'The course subject code. E.g., ACCT, MATH, GEO, etc.'
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
-field_type: string
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      su_course_subjects: su_course_subjects
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
