@@ -1,0 +1,17 @@
+uuid: fb33c843-2042-43ca-a944-90f2597d757c
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_migrate
+title: 'Importer: Courses'
+id: stanford_migrate_stanford_courses
+weight: 0
+module: stanford_migrate
+callback: stanford_migrate_ultimate_cron_task
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
