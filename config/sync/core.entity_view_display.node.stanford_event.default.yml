@@ -14,14 +14,18 @@ dependencies:
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_groups
+    - field.field.node.stanford_event.su_event_keywords
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
     - field.field.node.stanford_event.su_event_schedule
     - field.field.node.stanford_event.su_event_source
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
+    - field.field.node.stanford_event.su_event_subject
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
     - views.view.stanford_events
   module:
@@ -168,6 +172,54 @@ third_party_settings:
                   field_formatter_class:
                     class: su-event-type
             weight: -9
+            additional: {  }
+          94da9d8d-2485-4e33-93c5-b37e3e9517bf:
+            uuid: 94da9d8d-2485-4e33-93c5-b37e3e9517bf
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_keywords'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: -4
+            additional: {  }
+          48db4ad0-44ef-4b9c-8745-2eab58c432e4:
+            uuid: 48db4ad0-44ef-4b9c-8745-2eab58c432e4
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_subject'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: -3
+            additional: {  }
+          5aba3920-b290-4c85-8698-925a6099b053:
+            uuid: 5aba3920-b290-4c85-8698-925a6099b053
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_groups'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: -2
             additional: {  }
         third_party_settings: {  }
       -
@@ -712,6 +764,22 @@ content:
     third_party_settings: {  }
     weight: 111
     region: content
+  su_event_groups:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 121
+    region: main
+  su_event_keywords:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 119
+    region: main
   su_event_location:
     type: address_default
     label: above
@@ -759,6 +827,14 @@ content:
     third_party_settings: {  }
     weight: 103
     region: content
+  su_event_subject:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 120
+    region: main
   su_event_telephone:
     type: basic_string
     label: above
