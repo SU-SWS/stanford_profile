@@ -59,6 +59,26 @@ variant_settings:
             items_per_page: none
           weight: 0
           additional: {  }
+        c25dd839-78e7-4caa-aa3a-9e7d3927271c:
+          uuid: c25dd839-78e7-4caa-aa3a-9e7d3927271c
+          region: left
+          configuration:
+            id: 'menu_block:courses-menu'
+            label: 'Courses Menu'
+            label_display: visible
+            provider: menu_block
+            context_mapping: {  }
+            follow: false
+            follow_parent: child
+            label_link: false
+            label_type: block
+            level: 1
+            depth: 0
+            expand_all_items: false
+            parent: 'courses-menu:'
+            suggestion: courses_menu
+          weight: 0
+          additional: {  }
       third_party_settings: {  }
 page: courses_list_page
 selection_criteria: {  }
