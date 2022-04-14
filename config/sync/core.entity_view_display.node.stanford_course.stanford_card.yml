@@ -22,6 +22,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - link
     - user
 third_party_settings:
   layout_builder:
@@ -53,12 +54,19 @@ third_party_settings:
         - su_course_academic_year
       course_title:
         - node_title
+      course_url:
+        - su_course_link
     fields:
       node_title:
         plugin_id: node_title
         weight: 3
         label: hidden
         formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
 _core:
   default_config_hash: 3q3wp63fQ-h1XTJTAHRzKP7uFPch4KfSFHFXWC50bIw
 id: node.stanford_course.stanford_card
@@ -82,6 +90,20 @@ content:
     third_party_settings: {  }
     weight: 1
     region: course_code
+  su_course_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: true
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 4
+    region: course_url
   su_course_subject:
     type: entity_reference_label
     label: hidden
@@ -98,7 +120,6 @@ hidden:
   search_api_excerpt: true
   su_course_id: true
   su_course_instructors: true
-  su_course_link: true
   su_course_quarters: true
   su_course_section_units: true
   su_course_tags: true
