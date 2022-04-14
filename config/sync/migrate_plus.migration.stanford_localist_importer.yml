@@ -272,11 +272,15 @@ source:
       name: event_instance_end
       label: 'Event Instance End'
       selector: event/event_instances/0/event_instance/end
+    -
+      name: groups
+      label: Groups
+      selector: event/groups
   ids:
     event_instance_id:
       type: string
   constants:
-    status: 1
+    one: 1
     type: stanford_event
     stanford_html: stanford_html
     stanford_minimal_html: stanford_minimal_html
@@ -287,7 +291,7 @@ source:
     plus: +
     timezone: America/Los_Angeles
 process:
-  status: constants/status
+  status: constants/one
   type: constants/type
   title: title
   body/value:
@@ -366,17 +370,86 @@ process:
       method: process
       source: event_types
     -
-      plugin: extract
-      index:
-        - 0
-        - name
+      plugin: sub_process
+      process:
+        target_id:
+          plugin: entity_generate
+          value_key: name
+          bundle_key: vid
+          bundle: stanford_event_types
+          entity_type: taxonomy_term
+          ignore_case: true
+          source: name
+  su_event_subject:
     -
-      plugin: entity_generate
-      value_key: name
-      bundle_key: vid
-      bundle: stanford_event_types
-      entity_type: taxonomy_term
-      ignore_case: true
+      plugin: skip_on_empty
+      method: process
+      source: event_subject
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          plugin: entity_generate
+          value_key: name
+          bundle_key: vid
+          bundle: stanford_event_subject
+          entity_type: taxonomy_term
+          ignore_case: true
+          source: name
+  tags:
+    plugin: merge
+    source:
+      - keywords
+      - tags
+  tags_chunked:
+    -
+      plugin: skip_on_empty
+      source: '@tags'
+      method: process
+    -
+      plugin: single_value
+    -
+      plugin: callback
+      callable: array_chunk
+      unpack_source: true
+      source:
+        - '@tags'
+        - constants/one
+  su_event_keywords:
+    -
+      plugin: skip_on_empty
+      source: '@tags_chunked'
+      method: process
+    -
+      plugin: single_value
+    -
+      plugin: sub_process
+      source: '@tags_chunked'
+      process:
+        target_id:
+          plugin: entity_generate
+          value_key: name
+          bundle_key: vid
+          bundle: stanford_event_keywords
+          entity_type: taxonomy_term
+          ignore_case: true
+          source: '0'
+  su_event_groups:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: groups
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          plugin: entity_generate
+          value_key: name
+          bundle_key: vid
+          bundle: stanford_event_groups
+          entity_type: taxonomy_term
+          ignore_case: true
+          source: name
 destination:
   plugin: 'entity:node'
 migration_dependencies: {  }
