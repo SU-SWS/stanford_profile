@@ -46,8 +46,22 @@ variant_settings:
         centered: centered-container
         orientation: right
       components:
-        de9cb872-3000-4450-a635-7044a779ff3a:
-          uuid: de9cb872-3000-4450-a635-7044a779ff3a
+        61638f94-4347-4e73-a0d4-db42bc7d2f9a:
+          uuid: 61638f94-4347-4e73-a0d4-db42bc7d2f9a
+          region: left
+          configuration:
+            id: 'system_menu_block:courses-menu'
+            label: 'Courses Menu'
+            label_display: '0'
+            provider: system
+            context_mapping: {  }
+            level: 1
+            depth: 0
+            expand_all_items: false
+          weight: 0
+          additional: {  }
+        a59f718c-ba7e-45a8-ad79-0f8265754493:
+          uuid: a59f718c-ba7e-45a8-ad79-0f8265754493
           region: main
           configuration:
             id: 'views_block:stanford_courses-default_list_viewfield_block'
@@ -57,26 +71,6 @@ variant_settings:
             context_mapping: {  }
             views_label: ''
             items_per_page: none
-          weight: 0
-          additional: {  }
-        c25dd839-78e7-4caa-aa3a-9e7d3927271c:
-          uuid: c25dd839-78e7-4caa-aa3a-9e7d3927271c
-          region: left
-          configuration:
-            id: 'menu_block:courses-menu'
-            label: 'Courses Menu'
-            label_display: visible
-            provider: menu_block
-            context_mapping: {  }
-            follow: false
-            follow_parent: child
-            label_link: false
-            label_type: block
-            level: 1
-            depth: 0
-            expand_all_items: false
-            parent: 'courses-menu:'
-            suggestion: courses_menu
           weight: 0
           additional: {  }
       third_party_settings: {  }
