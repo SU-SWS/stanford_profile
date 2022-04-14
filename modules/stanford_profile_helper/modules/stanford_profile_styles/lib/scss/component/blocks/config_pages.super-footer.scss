@@ -1,0 +1,84 @@
+@charset "UTF-8";
+@import '../../config';
+
+.block-config-pages-super-footer {
+  @include modular-spacing('padding', 3 null);
+  background: $su-color-fog;
+  border-bottom: solid 1px #D5D5D4;
+
+  .main-region {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Heading styles.
+.su-super-footer__heading {
+  h2 {
+    @include type-d;
+  }
+}
+
+// Open text.
+.su-super-foot-text {
+  width: 100%;
+}
+
+// Link styles.
+.su-super-footer__link {
+  @include margin(null null 1em null);
+  width: 100%;
+
+  @include grid-media('lg') {
+    text-align: right;
+  }
+
+  > div  {
+    display: inline;
+  }
+
+  a {
+    @include button-primary;
+    @include modular-spacing('margin', null null 0 0);
+    @include modular-spacing('padding', 0);
+    @include box-shadow('shallow');
+    font-weight: $su-font-semi-bold;
+    background: $su-color-white;
+    color: $su-color-bright-red;
+
+    @include grid-media-max('lg') {
+      margin-left: 0;
+      margin-right: 1.8rem;
+    }
+  }
+}
+
+// Intranet link styles.
+.su-super-footer__intranet {
+  width: 100%;
+
+  @include grid-media('lg') {
+    text-align: right;
+  }
+
+  a {
+    @include link-icon(lock, 13px, none, -0.03em);
+    color: $su-color-bright-red;
+    text-decoration: none;
+
+    &::after {
+      background-color: $su-color-bright-red;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+
+      &::after {
+        mask-image: url("#{$su-image-path}/lock-solid.svg");
+      }
+    }
+  }
+}

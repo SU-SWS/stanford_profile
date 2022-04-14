@@ -1,0 +1,77 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 5760692a-e336-4a77-a3f6-7ed5def2418f
+  bundle: stanford_news
+  default_langcode: en
+  depends:
+    66286339-4f00-4994-8c0d-921b519ea4e4: media
+    b1e7c455-31bf-411a-b1b8-a8306a2eabc2: taxonomy_term
+    d4da5598-d960-4665-be27-daee0ed96328: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: false
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Sample: For Runners, Is 15 Feet the New 6 Feet for Social Distancing?'
+  created:
+    -
+      value: 1587103126
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /news/sample-runners-15-feet-new-6-feet-social-distancing
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: page_redirect
+  rh_redirect:
+    -
+      value: 'https://www.nytimes.com/2020/04/15/well/move/running-social-distancing.html'
+  rh_redirect_response:
+    -
+      value: 301
+  su_news_banner_media_caption:
+    -
+      value: 'Stanford with active people'
+  su_news_byline:
+    -
+      value: 'By Gretchen Reynolds'
+  su_news_dek:
+    -
+      value: 'When we walk briskly or run, air moves differently around us, increasing the space required to maintain a proper social distance.'
+  su_news_featured_media:
+    -
+      entity: 66286339-4f00-4994-8c0d-921b519ea4e4
+  su_news_headline:
+    -
+      value: 'Sample: For Runners, Is 15 Feet the New 6 Feet for Social Distancing?'
+  su_news_publishing_date:
+    -
+      value: '2025-09-22'
+  su_news_source:
+    -
+      uri: 'https://www.nytimes.com/2020/04/15/well/move/running-social-distancing.html'
+      title: 'NY Times'
+      options: {  }
+  su_news_topics:
+    -
+      entity: b1e7c455-31bf-411a-b1b8-a8306a2eabc2
+    -
+      entity: d4da5598-d960-4665-be27-daee0ed96328

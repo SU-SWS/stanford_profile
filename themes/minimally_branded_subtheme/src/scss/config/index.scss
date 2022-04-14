@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+// My theme's config settings.
+$su-image-path: "~decanter/core/src/img";
+$fa-font-path:  "~@fortawesome/fontawesome-free/webfonts";
+
+// Import Decanter Library:
+@import 'decanter/core/src/scss/decanter-no-markup';
+
+// Imports
+@import '../utilities/index';
+@import '../base/index';
+@import '../components/index';
+@import '../layout/index';
+@import '../print/index';
+@import '../state/index';
+@import '../theme/index';

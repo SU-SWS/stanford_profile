@@ -1,0 +1,39 @@
+events_schedule:
+  label: Event Schedule
+  description: "A place time and people paragraph."
+  fields:
+    time:
+      type: text
+      label: "Time"
+      description: "The events time span"
+      preview: "2:00pm - 3:00pm"
+    headline:
+      type: text
+      label: "Headline"
+      description: "The schedule item headline"
+      preview: "Lightning talks"
+    description:
+      type: text
+      label: "Description"
+      description: "A description of the schedule item"
+      preview: "Director of the department of redundancy department will begin a speach about speaches."
+    location:
+      type: text
+      label: "Location"
+      description: "Where this thing is."
+      preview: "321 University BLVD, Palo Alto, CA, 93256"
+    url:
+      type: text
+      label: "URL"
+      description: "Link the heading to something."
+      preview: "https://stanford.edu/"
+    speakers:
+      type: text
+      label: "Speakers"
+      description: "A rendered list of speakers."
+  use: "@stanford_events/components/schedule/schedule.html.twig"
+  libraries:
+    - personcta:
+        css:
+          component:
+            ../../../dist/css/stanford_events.event-schedule.css: { }

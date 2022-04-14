@@ -1,0 +1,128 @@
+.events-mini-calender {
+  margin-bottom: 20px;
+
+  .react-calendar__month-view__weekdays__weekday {
+    text-align: center;
+  }
+
+  button {
+    background: #fff;
+    border: 4px solid #fff;
+    color: #b1040e;
+    padding: 5px;
+    font-weight: 600;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .react-calendar__navigation__label {
+    border: 1px solid #fff;
+    color: #000;
+    font-weight: 600;
+  }
+
+  .react-calendar__navigation__arrow {
+    font-weight: 600;
+    font-size: 1.5em;
+  }
+
+  .react-calendar__month-view__weekdays {
+    padding: 5px;
+
+    > div {
+      border: 4px solid #fff;
+    }
+  }
+
+  button {
+    background-color: #f4f4f4;
+
+    //&.react-calendar__tile {
+      &.react-calendar__tile--now {
+        background-color: #43423E;
+        color: #fff;
+      }
+    //}
+
+    &[disabled] {
+      color: #43423e;
+      cursor: auto;
+      background-color: #fff;
+      font-weight: 400;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: #fff;
+        text-decoration: none;
+      }
+
+      //&.react-calendar__tile {
+        &.react-calendar__tile--now {
+          background-color: #43423E;
+          color: #fff;
+        }
+      //}
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: #2e2d29;
+    }
+  }
+
+  .react-calendar__navigation {
+    align-items: center;
+    display: flex;
+  }
+}
+
+.calender-popover {
+  ul {
+    margin: 20px;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    border-bottom: 1px solid #000;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: #b1040e;
+    font-size: 1.3em;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .duration {
+    font-size: .9em;
+    line-height: 2;
+  }
+
+  .close-button {
+    background: transparent;
+    padding: 0;
+    margin: 15px;
+    float: right;
+
+    &:hover::before {
+      color: #2e2d29;
+    }
+  }
+}

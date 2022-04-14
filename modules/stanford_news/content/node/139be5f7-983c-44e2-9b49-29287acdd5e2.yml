@@ -1,0 +1,77 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 139be5f7-983c-44e2-9b49-29287acdd5e2
+  bundle: stanford_news
+  default_langcode: en
+  depends:
+    381f792e-24b4-4c50-b5cc-69c13702f93a: media
+    d4da5598-d960-4665-be27-daee0ed96328: taxonomy_term
+    6f63da5d-c8a8-4fbf-99f6-e3ae03fad125: taxonomy_term
+    14c6b724-f498-400d-8cee-99b72a50531f: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: false
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Sample: Stanford researchers find that misfiring from jittery neurons'
+  created:
+    -
+      value: 1587102854
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /news/sample-stanford-researchers-find-misfiring-jittery-neurons
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: page_redirect
+  rh_redirect:
+    -
+      value: 'https://news.stanford.edu/2020/04/08/misfiring-jittery-neurons-set-fundamental-limit-perception/'
+  rh_redirect_response:
+    -
+      value: 301
+  su_news_byline:
+    -
+      value: 'Watching the watcher'
+  su_news_dek:
+    -
+      value: 'The ability to make fine visual discriminations between two stimuli runs up against a natural barrier created by large groups of “noisy” neurons behaving similarly.'
+  su_news_featured_media:
+    -
+      entity: 381f792e-24b4-4c50-b5cc-69c13702f93a
+  su_news_headline:
+    -
+      value: 'Sample: Stanford researchers find that misfiring from jittery neurons'
+  su_news_publishing_date:
+    -
+      value: '2025-04-08'
+  su_news_source:
+    -
+      uri: 'https://news.stanford.edu/2020/04/08/misfiring-jittery-neurons-set-fundamental-limit-perception/'
+      title: 'By Adam Hadhazy'
+      options: {  }
+  su_news_topics:
+    -
+      entity: d4da5598-d960-4665-be27-daee0ed96328
+    -
+      entity: 6f63da5d-c8a8-4fbf-99f6-e3ae03fad125
+    -
+      entity: 14c6b724-f498-400d-8cee-99b72a50531f

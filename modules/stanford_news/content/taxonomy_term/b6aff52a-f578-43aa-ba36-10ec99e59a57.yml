@@ -1,0 +1,31 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: b6aff52a-f578-43aa-ba36-10ec99e59a57
+  bundle: stanford_news_topics
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Students
+  description:
+    -
+      value: "<p>Students</p>\r\n"
+      format: stanford_html
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /news/students
+      langcode: en
+      pathauto: 1

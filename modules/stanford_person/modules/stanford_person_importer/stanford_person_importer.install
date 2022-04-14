@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * stanford_person_importer.install
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function stanford_person_importer_requirements($phase) {
+  $valid_encrypt_string = strlen(getenv('STANFORD_ENCRYPT')) == (256 / 8);
+  $requirements['stanford_person_importer_encrypt'] = [
+    'title' => t('Stanford Encrypt'),
+    'value' => $valid_encrypt_string ? t('Encryption environment variable is valid') : t('Environment variable for encryption is not correctly set or is not the correct strength'),
+    'description' => $valid_encrypt_string ? NULL : t('Please set the environment variable %envvar to a 256 bit encryption string.', ['%envvar' => 'STANFORD_ENCRYPT']),
+    'severity' => $valid_encrypt_string ? REQUIREMENT_OK : REQUIREMENT_ERROR,
+  ];
+  return $requirements;
+}

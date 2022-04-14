@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * File description.
+ *
+ * Long description.
+ */
+
+use Drupal\views\ViewExecutable;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Cache\Cache;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function stanford_events_series_page_attachments(array &$attachments) {
+
+  // Get the node from the route.
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  // Not a node.. Then just continue.
+  if (!$node instanceof NodeInterface || $node->bundle() != 'stanford_event_series') {
+    return;
+  }
+
+  $attachments['#attached']['library'][] = 'stanford_events_series/event_series_node';
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function stanford_events_series_node_presave(EntityInterface $entity) {
+  if ($entity->bundle() != "stanford_event_series") {
+    return;
+  }
+
+  // If an event series item is being edited or saved,
+  // clear out some cache tags.
+  Cache::invalidateTags(["node_list:{$entity->bundle()}"]);
+}
+
+/**
+ * Implements hook_views_post_render().
+ *
+ * Views render arrays contain a cache tag "node_list". This cache tag is
+ * cleared every time ANY node is created, edited or deleted. When this happens
+ * every view on the site gets its cache flushed. This causes poor performance
+ * since a view would get flushed even if it has no relation to that node. To
+ * assist in cache tags, we create a custom cache tag based on the node type
+ * filter on the view. Its a small improvement but will have huge impact in
+ * keeping cached renders much longer.
+ *
+ * @see stanford_events_series_node_presave()
+ * @see stanford_events_series_taxonomy_term_presave()
+ */
+function stanford_events_series_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
+
+  $allow_list = [
+    'stanford_event_series',
+  ];
+
+  $id = $view->id();
+
+  // Node Base Table Views.
+  if (in_array($id, $allow_list)) {
+    $output['#attached']['library'][] = 'stanford_events_series/event_series_views';
+
+    $node_list_position = array_search('node_list', $output['#cache']['tags']);
+    unset($output['#cache']['tags'][$node_list_position]);
+    foreach ($view->filter['type']->value as $node_type) {
+      $output['#cache']['tags'][] = "node_list:$node_type";
+    }
+  }
+
+}

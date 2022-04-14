@@ -1,0 +1,34 @@
+//
+// Secondary Navigation
+//
+// Decanter overrides.
+
+.su-secondary-nav {
+  @include modular-spacing('margin-bottom', 8);
+
+  &,
+  .su-secondary-nav__menu {
+    background: transparent;
+  }
+
+  .su-secondary-nav__link {
+    border-top: 0;
+  }
+
+  > .su-secondary-nav__menu {
+    @include margin(null null null 0);
+    @include padding(null null null 0);
+
+    > .su-secondary-nav__item {
+      border-top: solid 1px #d9d9d9;
+      line-height: 1.2em;
+    }
+
+    > .su-secondary-nav__item:first-child {
+      border: 0;
+    }
+
+  }
+}
+
+

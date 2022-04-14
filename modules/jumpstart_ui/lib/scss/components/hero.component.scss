@@ -1,0 +1,34 @@
+@charset 'UTF-8';
+@import '../jumpstart_ui.config';
+@import 'decanter/core/src/scss/decanter-no-markup';
+@import 'decanter/core/src/scss/components/hero/index';
+
+.su-hero {
+  .su-hero__media {
+    // Ensure everything gets set to 100% so that the object-fit property works.
+    > div,
+    > article,
+    .media,
+    .image {
+      height: 100%;
+    }
+  }
+}
+
+
+.overlay-right {
+  .su-hero {
+    .su-hero__card {
+      @include grid-media("md") {
+        right: 45px;
+        left: unset;
+        margin-left: auto;
+      }
+
+      @include grid-media('xl') {
+        right: 48px;
+      }
+    }
+  }
+}
+

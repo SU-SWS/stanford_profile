@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+.su-margin-top {
+  @include modular-spacing('margin', 0 null null null);
+}
+
+.su-margin-bottom {
+  @include modular-spacing('margin', null null 0 null);
+}
+
+.su-margin-right {
+  @include modular-spacing('margin', null 0 null null);
+}
+
+.su-margin-left {
+  @include modular-spacing('margin', null null null 0);
+}
+
+// positive decanter multipliers
+@for $i from 1 through 9 {
+  // Top.
+  .su-margin-top-#{$i} {
+    @include modular-spacing('margin', $i null null null);
+  }
+
+  // Right.
+  .su-margin-right-#{$i} {
+    @include modular-spacing('margin', null $i null null);
+  }
+
+  // Bottom.
+  .su-margin-bottom-#{$i} {
+    @include modular-spacing('margin', null null $i null);
+  }
+
+  // Left
+  .su-margin-left-#{$i} {
+    @include modular-spacing('margin', null null null $i);
+  }
+}
+
+// positive decanter multipliers
+@for $i from 1 through 9 {
+  // Top.
+  .su-padding-top-#{$i} {
+    @include modular-spacing('padding', $i null null null);
+  }
+
+  // Right.
+  .su-padding-right-#{$i} {
+    @include modular-spacing('padding', null $i null null);
+  }
+
+  // Bottom.
+  .su-padding-bottom-#{$i} {
+    @include modular-spacing('padding', null null $i null);
+  }
+
+  // Left
+  .su-padding-left-#{$i} {
+    @include modular-spacing('padding', null null null $i);
+  }
+}

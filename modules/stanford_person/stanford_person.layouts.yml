@@ -1,0 +1,36 @@
+stanford_person_header:
+  label: "Stanford Person Header Section"
+  category: "Stanford Person - Sections"
+  path: templates/sections
+  template: section-person-quote
+  default_region: content
+  icon_map:
+    - [quote_media, quote_title]
+    - [quote_media, quote_name]
+    - [quote_media, quote_long_title]
+    - [content]
+  regions:
+    quote_media:
+      label: 'Image or other media'
+    quote_title:
+      label: 'Person title'
+    quote_name:
+      label: 'Person full name'
+    quote_long_title:
+      label: 'Person full title'
+    content:
+      label: 'An open content field'
+
+stanford_person_body:
+  label: "Stanford Person Body Section"
+  category: "Stanford Person - Sections"
+  path: templates/sections
+  template: section-person-body-two-column
+  default_region: content
+  icon_map:
+    - [main, right]
+  regions:
+    main:
+      label: Main
+    right:
+      label: Right

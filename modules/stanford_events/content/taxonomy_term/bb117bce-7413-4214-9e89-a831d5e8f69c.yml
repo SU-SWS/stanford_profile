@@ -1,0 +1,31 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: bb117bce-7413-4214-9e89-a831d5e8f69c
+  bundle: stanford_event_types
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Conference / Symposium'
+  description:
+    -
+      value: "<p>Conference / Symposium</p>\r\n"
+      format: stanford_html
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /events/conference-symposium
+      langcode: en
+      pathauto: 1

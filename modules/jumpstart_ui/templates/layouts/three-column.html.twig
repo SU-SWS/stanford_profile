@@ -1,0 +1,31 @@
+{% set main_class = '' %}
+{% if content.left|render and content.right|render %}
+  {% set main_class = 'flex-lg-6-of-12' %}
+{% elseif content.left|render or content.right|render %}
+  {% set main_class = 'flex-lg-9-of-12' %}
+{% endif %}
+
+{% if content.left|render is empty and content.right|render is empty and 'centered-container' in settings.centered|render %}
+  {% set main_class = 'flex-12-of-12' %}
+{% endif %}
+
+<div{{ attributes.addClass('jumpstart-ui--three-column', 'flex-container', settings.centered, settings.extra_classes) }}>
+
+  {% if content.left|render %}
+    <div {{ region_attributes.left.addClass('left-region', 'flex-lg-3-of-12') }}>
+      {{ content.left }}
+    </div>
+  {% endif %}
+
+  {% if content.main|render %}
+    <div {{ region_attributes.main.addClass('main-region', main_class) }}>
+      {{ content.main }}
+    </div>
+  {% endif %}
+
+  {% if content.right|render %}
+    <div {{ region_attributes.right.addClass('right-region', 'flex-lg-3-of-12') }}>
+      {{ content.right }}
+    </div>
+  {% endif %}
+</div>

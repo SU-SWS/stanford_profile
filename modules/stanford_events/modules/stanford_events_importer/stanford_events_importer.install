@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * stanford_events_importer.install
+ */
+
+/**
+ * Update importer for events-legacy domain.
+ */
+function stanford_events_importer_update_8001() {
+  $config_page = \Drupal::entityTypeManager()
+    ->getStorage('config_pages')
+    ->load('stanford_events_importer');
+  if ($config_page) {
+    $url = $config_page->get('su_event_xml_url')->getString();
+    $config_page->set('su_event_xml_url', str_replace('events.stanford.edu', 'events-legacy.stanford.edu', $url));
+    $config_page->save();
+  }
+
+  $migration_config = \Drupal::configFactory()
+    ->getEditable('migrate_plus.migration.stanford_events_importer');
+  $source = $migration_config->get('process.su_event_source/uri');
+  $source = [
+    'plugin' => 'str_replace',
+    'source' => $source,
+    'search' => 'events.stanford.edu',
+    'replace' => 'events-legacy.stanford.edu',
+  ];
+  $migration_config->set('process.su_event_source/uri', $source)->save();
+}
+
+/**
+ * Update event node urls to point at the events-legacy domain.
+ */
+function stanford_events_importer_update_8002(&$sandbox) {
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  if (empty($sandbox['ids'])) {
+    $sandbox['ids'] = $node_storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('type', 'stanford_event')
+      ->condition('su_event_source', '%events.stanford.edu%', 'LIKE')
+      ->execute();
+    $sandbox['total'] = count($sandbox['ids']);
+  }
+  $node_ids = array_splice($sandbox['ids'], 0, 10);
+
+  /** @var \Drupal\node\NodeInterface $node */
+  foreach ($node_storage->loadMultiple($node_ids) as $node) {
+    /** @var \Drupal\Core\Field\FieldItemInterface $field_item */
+    foreach ($node->get('su_event_source') as $field_item) {
+      $uri = $field_item->get('uri');
+      $uri->setValue(str_replace('events.stanford.edu', 'events-legacy.stanford.edu', $uri->getString()));
+    }
+    $node->save();
+  }
+
+  $sandbox['#finished'] = count($sandbox['ids']) ? 1 - count($sandbox['ids']) / $sandbox['total'] : 1;
+}

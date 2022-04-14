@@ -1,0 +1,44 @@
+{# Override of Decanter's Core Template #}
+{%- if attributes is not empty -%}
+  {%- set attributes = attributes.removeClass('su-alert') -%}
+{%- else -%}
+  {%- set attributes = create_attribute() -%}
+{%- endif -%}
+
+{%- if modifier_class is not empty -%}
+  {%- set attributes = attributes.addClass(modifier_class) -%}
+{%- endif -%}
+
+{%- set modifier_class = attributes.class -%}
+{%- set attributes = attributes|without('class') -%}
+
+{# Default Icon for Alerts. #}
+{%- set fa_class = "su-fa-bell" -%}
+{# Icon for error style. #}
+{%- if 'su-alert--error' in modifier_class -%}
+  {%- set fa_class = "su-fa-exclamation-triangle" -%}
+{%- endif -%}
+{# Icon for success style. #}
+{%- if 'su-alert--success' in modifier_class -%}
+  {%- set fa_class = "su-fa-check-circle" -%}
+{%- endif -%}
+{# Icon for warning style. #}
+{%- if 'su-alert--warning' in modifier_class -%}
+  {%- set fa_class = "su-fa-exclamation-circle" -%}
+{%- endif -%}
+{# Icon for info style. #}
+{%- if 'su-alert--info' in modifier_class -%}
+  {%- set fa_class = "su-fa-info-circle" -%}
+{%- endif -%}
+
+{# Create the HTML for the Alert Icon #}
+{% if alert_icon|render_clean is empty %}
+  {%- set alert_icon -%}
+    <i class="su-fas {{ fa_class }}"></i>
+  {%- endset -%}
+{% endif %}
+
+{% set alert_label = alert_label|render_clean %}
+{% set alert_header = alert_header|render_clean %}
+
+{%- extends '@decanter/components/alert/alert.twig' -%}

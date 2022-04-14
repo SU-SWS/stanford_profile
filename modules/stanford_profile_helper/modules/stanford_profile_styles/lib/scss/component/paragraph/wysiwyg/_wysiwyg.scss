@@ -1,0 +1,23 @@
+@charset 'UTF-8';
+
+.su-wysiwyg-text {
+  //
+  // Margin overrides.
+  //
+  > {
+    * {
+      &:first-child {
+        // Remove margin-top and padding-top when it is the first item on the page
+        @include margin(0 null null null);
+        @include padding(0 null null null);
+      }
+
+      &:last-child {
+        // Remove margin-bottom and padding-bottom when it is the last item on the page
+        @include margin(null null 0 null);
+        @include padding(null null 0 null);
+      }
+    }
+  }
+
+}

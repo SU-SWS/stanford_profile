@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 81a60c63-7638-46d2-8fd9-b4de2cbc3554
+  bundle: image
+  default_langcode: en
+  depends:
+    d2860dd3-4e1c-4d05-bc16-c3df65594cec: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: banner-151017-3191.jpg
+  created:
+    -
+      value: 1581635659
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: d2860dd3-4e1c-4d05-bc16-c3df65594cec
+      alt: 'Brain research visualization'
+      title: ''
+      width: 3000
+      height: 1100

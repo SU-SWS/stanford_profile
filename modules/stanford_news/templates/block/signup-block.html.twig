@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Profile signup_block
+ */
+#}
+<div{{ attributes.addClass('flex-container') }}>
+  <div class="mailchimp-magazine-block flex-8-of-12">
+    <div id="mc_embed_signup">
+      <form action="{{ form_action }}" class="validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank">
+        <div id="mc_embed_signup_scroll">
+          <h2 class="su-signup-form__heading">{{ "Get the latest Research and Ideas"|t }}</h2>
+          <p>{{ "Subscribe to our biweekly email"|t }}</p>
+          <div class="mc_signup_submission_wrapper su-signup-form">
+            <div class="mc-field-group"><input class="required email" id="mce-EMAIL" name="EMAIL" placeholder="email address" type="email" aria-label="{{ "Email Address"|t }}"/></div>
+            <div class="clear" id="mce-responses">
+              <div class="response" id="mce-error-response" style="display:none">&nbsp;</div>
+              <div class="response" id="mce-success-response" style="display:none">&nbsp;</div>
+            </div>
+            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div aria-hidden="true" style="position: absolute; left: -5000px;"><input name="b_84e3c1df5a210f020250ee1d6_74d8f03797" tabindex="-1" type="text" value="" aria-label="no bots"/></div>
+            <div class="clear"><input class="button su-button" id="mc-embedded-subscribe" name="" type="submit" value="Sign up" aria-label="{{ "Sign up"|t }}"/></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

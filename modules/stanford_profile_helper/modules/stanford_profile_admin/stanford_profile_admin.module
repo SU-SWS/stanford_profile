@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Contains stanford_profile_admin.module.
+ */
+
+/**
+ * Implements hook_link_alter().
+ */
+function stanford_profile_admin_link_alter(&$variables) {
+  if (
+    $variables['url']->isRouted() &&
+    ($variables['url']->getRouteName() == 'entity.user.collection' || $variables['url']->getRouteName() == 'user.admin_index')
+  ) {
+    $variables['text'] = 'Users';
+  }
+}

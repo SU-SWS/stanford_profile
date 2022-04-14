@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 66286339-4f00-4994-8c0d-921b519ea4e4
+  bundle: image
+  default_langcode: en
+  depends:
+    05c8015d-4744-44aa-85ad-501a653502d8: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: default-homepage_card-image.jpg
+  created:
+    -
+      value: 1570821683
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 05c8015d-4744-44aa-85ad-501a653502d8
+      alt: 'Buildings and trees on Stanford Campus'
+      title: ''
+      width: 2400
+      height: 1600

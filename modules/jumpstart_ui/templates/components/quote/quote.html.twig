@@ -1,0 +1,14 @@
+{# Glue code for Decanter's component #}
+{% if attributes is not empty %}
+  {% set attributes = attributes.removeClass('su-quote') %}
+{% else %}
+  {% set attributes = create_attribute() %}
+{% endif %}
+
+{% if modifier_class is not empty %}
+  {% set attributes = attributes.addClass(modifier_class) %}
+{% endif %}
+
+{% set modifier_class = attributes.class %}
+{% set attributes = attributes|without('class') %}
+{% extends '@decanter/components/quote/quote.twig' %}
