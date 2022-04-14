@@ -1,0 +1,42 @@
+@charset 'UTF-8';
+@import "./stanford_events.config";
+@import 'components/event-card/event-card--item-type-link';
+
+
+// Heading spacing, here so it covers lists when it is empty or not.
+.heading-h1 {
+  @include modular-spacing('margin', 6 null 5);
+}
+
+// Filtered list
+.stanford-event-terms-utility-results-for {
+  @include modular-spacing('margin', null null 2 null);
+
+  h2,
+  div {
+    @include small-paragraph;
+
+    display: inline-block;
+    font-weight: $su-font-regular;
+  }
+
+  a {
+    &:hover,
+    &:focus  {
+      color: $su-color-black;
+    }
+  }
+}
+
+// Explore More Block.
+.stanford-events {
+  //Back to all events link
+  .more-link {
+    @include modular-spacing('margin', 5 null 9 null);
+    text-align: center;
+
+    a {
+      @include button-primary;
+    }
+  }
+}

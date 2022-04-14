@@ -1,0 +1,41 @@
+{#
+ # Sanitize some of the Drupalness in the picky fields.
+ #}
+{%- set card_cta_label = card_cta_label|render_clean -%}
+{%- set card_link = card_link|render_clean -%}
+{% if card_headline|render_clean is empty %}
+  {% set card_headline = null %}
+{% endif %}
+
+{#
+  You are not allowed to have both action and button at the same time so remove the button
+#}
+{% if card_cta_label is not empty %}
+  {% set card_button_label = null %}
+{% endif %}
+
+{#
+  Override the media section as Drupal has it's own output.
+#}
+{% block block_card_media %}
+  {{ card_image }}
+  {{ card_media_custom }}
+{% endblock %}
+
+{#
+  Attributes get passed along so we need to ensure only what we want trickles down to the nested templates.
+#}
+{% if attributes is not empty %}
+  {% set attributes = attributes.removeClass('su-card') %}
+{% else %}
+  {% set attributes = create_attribute() %}
+{% endif %}
+
+{% if modifier_class is not empty %}
+  {% set attributes = attributes.addClass(modifier_class) %}
+{% endif %}
+
+{% set modifier_class = attributes.class %}
+{% set attributes = attributes|without('class') %}
+
+{% extends "@decanter/components/card/card.twig" %}

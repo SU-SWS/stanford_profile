@@ -1,0 +1,24 @@
+{% if 'centered-container' in settings.centered|render and region_attributes.main is iterable %}
+  {% set region_attributes_main = region_attributes.main.addClass('flex-12-of-12') %}
+  {% set region_attributes = region_attributes|merge({'main': region_attributes_main}) %}
+{% endif %}
+
+{% if layout_builder_admin %}
+  <div{{ attributes.addClass('jumpstart-ui--one-column', settings.centered, settings.extra_classes) }}>
+    <div {{ region_attributes.main.addClass('main-region') }}>
+      <div>{{ 'Background Image'|t }}</div>
+      {{ content.main }}
+    </div>
+
+    <div {{ region_attributes.overlay.addClass('overlay-region') }}>
+      <div>{{ 'Overlaying Contents'|t }}</div>
+      {{ content.overlay }}
+    </div>
+  </div>
+{% else %}
+  {% set hero_body = content.overlay %}
+  {% set hero_image = content.main %}
+  {% set modifier_class = ('jumpstart-ui--one-column-overlay ' ~ settings.extra_classes)|trim %}
+  {% set attributes = attributes|without('class') %}
+  {% include "@decanter/components/hero/hero.twig" %}
+{% endif %}

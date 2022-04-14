@@ -1,0 +1,10 @@
+@charset 'UTF-8';
+// This stylesheet creates a css file that is attached to the CKEDITOR WYSIWYG.
+@import "../../component/paragraph/wysiwyg";
+
+// This extend will duplicate the su-wysiwyg-text styles in to this stylesheet
+// and add a secondary set of children selectors under the body tag. This is an
+// acceptable amount of bloat for maintaining styles automatically.
+body {
+  @extend .su-wysiwyg-text;
+}

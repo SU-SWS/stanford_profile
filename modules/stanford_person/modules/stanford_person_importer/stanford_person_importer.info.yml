@@ -1,0 +1,16 @@
+name: 'Stanford Person Importer'
+type: module
+description: 'Migration support for importing of profile information from stanford.edu.'
+core_version_requirement: '^8.8 || ^9'
+package: Stanford
+version: 8.x-1.19-dev
+dependencies:
+  - 'config_pages:config_pages'
+  - 'drupal:migrate'
+  - 'field_encrypt:field_encrypt'
+  - 'migrate_file:migrate_file'
+  - 'migrate_plus:migrate_plus'
+  - 'migrate_tools:migrate_tools'
+  - 'real_aes:real_aes'
+  - 'stanford_migrate:stanford_migrate'
+  - 'stanford_person:stanford_person'

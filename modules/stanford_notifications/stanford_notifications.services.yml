@@ -1,0 +1,4 @@
+services:
+  notification_service:
+    class: Drupal\stanford_notifications\NotificationService
+    arguments: ['@current_user', '@entity_type.manager']

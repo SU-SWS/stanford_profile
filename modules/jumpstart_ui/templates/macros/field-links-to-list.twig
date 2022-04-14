@@ -1,0 +1,21 @@
+{% macro create_list(field, with_ul = {}) %}
+  {% if with_url is not empty %}
+    <ul {{ with_url }}>
+  {% endif %}
+
+  {# Loop through each of the fields that are available. #}
+  {% for field_key in field|keys %}
+    {% for delta, item in field[field_key] %}
+      {# If the key of the field is an integer, we can use that. #}
+      {% if delta matches '/^\\d+$/' %}
+        <li {{ list_attributes }}>
+          {{ item }}
+        </li>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  {% if with_url is not empty %}
+    </ul>
+  {% endif %}
+{% endmacro %}

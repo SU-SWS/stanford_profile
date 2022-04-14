@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 5e2a5f6b-fa5f-42c1-a189-a2c16ec406b5
+  bundle: image
+  default_langcode: en
+  depends:
+    0035ac18-4606-4f1f-b79f-e9118d5c58bb: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: banner-120521-7816.jpg
+  created:
+    -
+      value: 1581635659
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 0035ac18-4606-4f1f-b79f-e9118d5c58bb
+      alt: 'The Dish in the Stanford foothills at dusk'
+      title: ''
+      width: 3000
+      height: 1100

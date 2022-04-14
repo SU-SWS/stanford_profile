@@ -1,0 +1,28 @@
+date-stacked:
+  label: Date Stacked
+  description: "A pretty calendar date thing."
+  variants:
+    default:
+      label: Default
+      description: "Default"
+    no-background:
+      label: "No Background"
+      description: "No background color."
+      modifier_class: su-date-stacked--no-background
+  fields:
+    month_of_year:
+      type: text
+      label: "The month of the year"
+      description: "eg: Oct."
+      preview: "Oct"
+    day_of_month:
+      type: text
+      label: "Day of month"
+      description: "eg: 31"
+      preview: "31"
+  use: "@jumpstart_ui/components/date-stacked/date-stacked.html.twig"
+  libraries:
+    - date-stacked:
+       css:
+         component:
+           ../../../dist/date-stacked/date-stacked.css: {}

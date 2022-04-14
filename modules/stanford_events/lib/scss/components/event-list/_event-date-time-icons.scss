@@ -1,0 +1,34 @@
+@charset 'UTF-8';
+
+.views-field-su-event-date-time {
+  @include small-paragraph;
+  @include modular-spacing('margin', null null -2 null);
+
+  // Align multirow text with the icon.
+  display: flex;
+
+  //Font Awesome Icon setup and spacings
+  span {
+    @include modular-spacing('padding', null -2 null null);
+
+    &::before {
+      color: $su-color-black;
+      font-family: 'Font Awesome 5 Free';
+      // Need this for the new version of FA. Will go away later.
+      font-weight: $su-font-semi-bold;
+    }
+  }
+}
+
+
+// Icon set up.
+// Calendar icon
+.date-icon {
+  &::before {
+    content: "\f073";
+
+    @include grid-media-max('sm') {
+      left: -16px;
+    }
+  }
+}
