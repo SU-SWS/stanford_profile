@@ -473,4 +473,31 @@ process:
           source: name
 destination:
   plugin: 'entity:node'
+  overwrite_properties:
+    - body/format
+    - body/value
+    - departments
+    - groups
+    - keywords
+    - merged_tags
+    - su_event_alt_loc
+    - su_event_audience
+    - su_event_cta/title
+    - su_event_cta/uri
+    - su_event_date_time/duration
+    - su_event_date_time/end_value
+    - su_event_date_time/timezone
+    - su_event_date_time/value
+    - su_event_groups
+    - su_event_keywords
+    - su_event_map_link/title
+    - su_event_map_link/uri
+    - su_event_source/title
+    - su_event_source/uri
+    - su_event_subject
+    - su_event_type
+    - tags
+    - tags_chunked
+    - title
+    - type
 migration_dependencies: {  }
