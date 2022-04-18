@@ -31,6 +31,7 @@ dependencies:
     - field_group
     - link
     - paragraphs
+    - readonly_field_widget
     - scheduler
     - shs
     - smart_date
@@ -238,24 +239,24 @@ content:
       size: 60
     third_party_settings: {  }
   su_event_groups:
-    type: options_shs
+    type: readonly_field_widget
     weight: 13
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
-      force_deepest: false
+      label: above
+      formatter_type: null
+      formatter_settings: null
+      show_description: false
     third_party_settings: {  }
   su_event_keywords:
-    type: options_shs
+    type: readonly_field_widget
     weight: 11
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
-      force_deepest: false
+      label: above
+      formatter_type: null
+      formatter_settings: null
+      show_description: false
     third_party_settings: {  }
   su_event_location:
     type: address_default
@@ -308,14 +309,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_event_subject:
-    type: options_shs
+    type: readonly_field_widget
     weight: 12
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
-      force_deepest: false
+      label: above
+      formatter_type: null
+      formatter_settings: null
+      show_description: false
     third_party_settings: {  }
   su_event_telephone:
     type: telephone_default

@@ -276,6 +276,10 @@ source:
       name: groups
       label: Groups
       selector: event/groups
+    -
+      name: departments
+      label: Departments
+      selector: event/departments
   ids:
     event_instance_id:
       type: string
@@ -396,15 +400,23 @@ process:
           entity_type: taxonomy_term
           ignore_case: true
           source: name
+  keywords:
+    plugin: default_value
+    source: keywords
+    default_value: {  }
   tags:
+    plugin: default_value
+    source: tags
+    default_value: {  }
+  merged_tags:
     plugin: merge
     source:
-      - keywords
-      - tags
+      - '@keywords'
+      - '@tags'
   tags_chunked:
     -
       plugin: skip_on_empty
-      source: '@tags'
+      source: '@merged_tags'
       method: process
     -
       plugin: single_value
@@ -434,11 +446,20 @@ process:
           entity_type: taxonomy_term
           ignore_case: true
           source: '0'
+  groups:
+    plugin: default_value
+    source: groups
+    default_value: {  }
+  departments:
+    plugin: default_value
+    source: departments
+    default_value: {  }
   su_event_groups:
     -
-      plugin: skip_on_empty
-      method: process
-      source: groups
+      plugin: merge
+      source:
+        - '@groups'
+        - '@departments'
     -
       plugin: sub_process
       process:

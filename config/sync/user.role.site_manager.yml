@@ -17,9 +17,6 @@ dependencies:
     - node.type.stanford_publication
     - taxonomy.vocabulary.basic_page_types
     - taxonomy.vocabulary.event_audience
-    - taxonomy.vocabulary.stanford_event_groups
-    - taxonomy.vocabulary.stanford_event_keywords
-    - taxonomy.vocabulary.stanford_event_subject
     - taxonomy.vocabulary.stanford_event_types
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
@@ -101,9 +98,6 @@ permissions:
   - 'create stanford_publication content'
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
-  - 'create terms in stanford_event_groups'
-  - 'create terms in stanford_event_keywords'
-  - 'create terms in stanford_event_subject'
   - 'create terms in stanford_event_types'
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'
@@ -146,9 +140,6 @@ permissions:
   - 'delete stanford_publication revisions'
   - 'delete terms in basic_page_types'
   - 'delete terms in event_audience'
-  - 'delete terms in stanford_event_groups'
-  - 'delete terms in stanford_event_keywords'
-  - 'delete terms in stanford_event_subject'
   - 'delete terms in stanford_event_types'
   - 'delete terms in stanford_news_topics'
   - 'delete terms in stanford_person_types'
@@ -193,9 +184,6 @@ permissions:
   - 'edit stanford_super_footer config page entity'
   - 'edit terms in basic_page_types'
   - 'edit terms in event_audience'
-  - 'edit terms in stanford_event_groups'
-  - 'edit terms in stanford_event_keywords'
-  - 'edit terms in stanford_event_subject'
   - 'edit terms in stanford_event_types'
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
