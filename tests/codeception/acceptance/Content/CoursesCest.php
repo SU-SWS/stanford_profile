@@ -64,7 +64,7 @@ class CoursesCest {
         $I->amOnPage($path);
         $I->canSee("This page will redirect");
         $I->amOnPage("/node/" . $node->id() . "/edit");
-        $I->canSee("Some fields can not be edited ");
+        $I->seeInField('rh_redirect', 'https://google.com/');
     }
 
 
