@@ -1,14 +1,12 @@
 <?php
 
-use Faker\Factory;
-
 /**
  * Test the Course functionality.
  */
 class CoursesCest {
 
     /**
-     * Test for view pages
+     * Test for view pages and taxonomy functionality
      */
     public function testViewPagesExist(AcceptanceTester $I) {
         $I->logInWithRole('administrator');
@@ -49,9 +47,9 @@ class CoursesCest {
     }
 
     /**
-     * Test rabbit hole settings
+     * Test rabbit hole settings and field locking
      */
-    public function testRabbitHoleRedirects() {
+    public function testRabbitHoleRedirects(AcceptanceTester $I) {
         $I->logInWithRole('administrator');
         $quarters_term = $this->createCourseQuartersTerm($I, 'Autumn');
         $subject_term = $this->createCourseSubjectsTerm($I, 'TEST');
@@ -62,6 +60,7 @@ class CoursesCest {
             'su_course_tags' => $tags_term->id(),
         ];
         $node = $this->createCourseNode($I, $tags);
+        $path = $node->toUrl()->toString();
         $I->amOnPage($path);
         $I->canSee("This page will redirect");
         $I->amOnPage("/node" . $node->id() . "/edit");
