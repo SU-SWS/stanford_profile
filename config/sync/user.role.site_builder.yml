@@ -27,6 +27,7 @@ dependencies:
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
     - taxonomy.vocabulary.stanford_publication_topics
+    - taxonomy.vocabulary.su_shared_tags
   module:
     - block
     - block_content
@@ -174,6 +175,7 @@ permissions:
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'
   - 'create terms in stanford_publication_topics'
+  - 'create terms in su_shared_tags'
   - 'create url aliases'
   - 'create video media'
   - 'customize shortcut links'
@@ -217,6 +219,7 @@ permissions:
   - 'delete terms in stanford_news_topics'
   - 'delete terms in stanford_person_types'
   - 'delete terms in stanford_publication_topics'
+  - 'delete terms in su_shared_tags'
   - 'dropzone upload files'
   - 'edit any embeddable media'
   - 'edit any file media'
@@ -260,6 +263,7 @@ permissions:
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
   - 'edit terms in stanford_publication_topics'
+  - 'edit terms in su_shared_tags'
   - 'rabbit hole administer taxonomy_term'
   - 'rabbit hole bypass node'
   - 'rabbit hole bypass taxonomy_term'

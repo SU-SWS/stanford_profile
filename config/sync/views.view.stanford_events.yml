@@ -781,28 +781,28 @@ display:
           field: term_node_taxonomy_name_depth
           relationship: none
           group_type: group
-          admin_label: ''
+          admin_label: 'Taxonomy Name: Audience or Type'
           default_action: ignore
           exception:
             value: all
-            title_enable: false
+            title_enable: 0
             title: All
-          title_enable: false
+          title_enable: 0
           title: ''
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
+          default_argument_skip_url: 0
           summary_options:
             base_path: ''
-            count: true
-            items_per_page: 25
-            override: false
+            count: '1'
+            items_per_page: '25'
+            override: 0
           summary:
             sort_order: asc
-            number_of_records: 0
+            number_of_records: '0'
             format: default_summary
-          specify_validation: false
+          specify_validation: 0
           validate:
             type: none
             fail: 'not found'
@@ -811,7 +811,124 @@ display:
           vocabularies:
             event_audience: event_audience
             stanford_event_types: stanford_event_types
-          break_phrase: true
+          break_phrase: 1
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
+        term_node_taxonomy_name_depth_1:
+          id: term_node_taxonomy_name_depth_1
+          table: node_field_data
+          field: term_node_taxonomy_name_depth
+          relationship: none
+          group_type: group
+          admin_label: 'Taxonomy Name: Groups'
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: 0
+            title: All
+          title_enable: 0
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: 0
+          summary_options:
+            base_path: ''
+            count: '1'
+            items_per_page: '25'
+            override: 0
+          summary:
+            sort_order: asc
+            number_of_records: '0'
+            format: default_summary
+          specify_validation: 0
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: '10'
+          vocabularies:
+            stanford_event_groups: stanford_event_groups
+          break_phrase: 1
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
+        term_node_taxonomy_name_depth_2:
+          id: term_node_taxonomy_name_depth_2
+          table: node_field_data
+          field: term_node_taxonomy_name_depth
+          relationship: none
+          group_type: group
+          admin_label: 'Taxonomy Name: Subject'
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: 0
+            title: All
+          title_enable: 0
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: 0
+          summary_options:
+            base_path: ''
+            count: '1'
+            items_per_page: '25'
+            override: 0
+          summary:
+            sort_order: asc
+            number_of_records: '0'
+            format: default_summary
+          specify_validation: 0
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: '10'
+          vocabularies:
+            stanford_event_subject: stanford_event_subject
+          break_phrase: 1
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
+        term_node_taxonomy_name_depth_3:
+          id: term_node_taxonomy_name_depth_3
+          table: node_field_data
+          field: term_node_taxonomy_name_depth
+          relationship: none
+          group_type: group
+          admin_label: 'Taxonomy Name: Keywords & Tags'
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: 0
+            title: All
+          title_enable: 0
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: 0
+          summary_options:
+            base_path: ''
+            count: '1'
+            items_per_page: '25'
+            override: 0
+          summary:
+            sort_order: asc
+            number_of_records: '0'
+            format: default_summary
+          specify_validation: 0
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: '10'
+          vocabularies:
+            stanford_event_keywords: stanford_event_keywords
+          break_phrase: 1
           use_taxonomy_term_path: false
           entity_type: node
           plugin_id: taxonomy_index_name_depth
@@ -1782,28 +1899,28 @@ display:
           field: term_node_taxonomy_name_depth
           relationship: none
           group_type: group
-          admin_label: ''
+          admin_label: 'Taxonomy Name: Audience or Type'
           default_action: ignore
           exception:
             value: all
-            title_enable: false
+            title_enable: 0
             title: All
-          title_enable: false
+          title_enable: 0
           title: ''
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
+          default_argument_skip_url: 0
           summary_options:
             base_path: ''
-            count: true
-            items_per_page: 25
-            override: false
+            count: '1'
+            items_per_page: '25'
+            override: 0
           summary:
             sort_order: asc
-            number_of_records: 0
+            number_of_records: '0'
             format: default_summary
-          specify_validation: false
+          specify_validation: 0
           validate:
             type: none
             fail: 'not found'
@@ -1812,7 +1929,124 @@ display:
           vocabularies:
             event_audience: event_audience
             stanford_event_types: stanford_event_types
-          break_phrase: true
+          break_phrase: 1
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
+        term_node_taxonomy_name_depth_1:
+          id: term_node_taxonomy_name_depth_1
+          table: node_field_data
+          field: term_node_taxonomy_name_depth
+          relationship: none
+          group_type: group
+          admin_label: 'Taxonomy Name: Group'
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: 0
+            title: All
+          title_enable: 0
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: 0
+          summary_options:
+            base_path: ''
+            count: '1'
+            items_per_page: '25'
+            override: 0
+          summary:
+            sort_order: asc
+            number_of_records: '0'
+            format: default_summary
+          specify_validation: 0
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: '10'
+          vocabularies:
+            stanford_event_groups: stanford_event_groups
+          break_phrase: 1
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
+        term_node_taxonomy_name_depth_2:
+          id: term_node_taxonomy_name_depth_2
+          table: node_field_data
+          field: term_node_taxonomy_name_depth
+          relationship: none
+          group_type: group
+          admin_label: 'Taxonomy Name: Subject'
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: 0
+            title: All
+          title_enable: 0
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: 0
+          summary_options:
+            base_path: ''
+            count: '1'
+            items_per_page: '25'
+            override: 0
+          summary:
+            sort_order: asc
+            number_of_records: '0'
+            format: default_summary
+          specify_validation: 0
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: '10'
+          vocabularies:
+            stanford_event_subject: stanford_event_subject
+          break_phrase: 1
+          use_taxonomy_term_path: false
+          entity_type: node
+          plugin_id: taxonomy_index_name_depth
+        term_node_taxonomy_name_depth_3:
+          id: term_node_taxonomy_name_depth_3
+          table: node_field_data
+          field: term_node_taxonomy_name_depth
+          relationship: none
+          group_type: group
+          admin_label: 'Taxonomy Name: Keywords & Tags'
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: 0
+            title: All
+          title_enable: 0
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: 0
+          summary_options:
+            base_path: ''
+            count: '1'
+            items_per_page: '25'
+            override: 0
+          summary:
+            sort_order: asc
+            number_of_records: '0'
+            format: default_summary
+          specify_validation: 0
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          depth: '10'
+          vocabularies:
+            stanford_event_keywords: stanford_event_keywords
+          break_phrase: 1
           use_taxonomy_term_path: false
           entity_type: node
           plugin_id: taxonomy_index_name_depth

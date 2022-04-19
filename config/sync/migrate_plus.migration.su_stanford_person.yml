@@ -180,12 +180,12 @@ process:
     -
       plugin: str_replace
       search:
-        - 'stanford/'
-        - 'hidden/'
-        - 'public/'
+        - stanford/
+        - hidden/
+        - public/
       replace:
-        - 'intranet/'
-        - 'intranet/'
+        - intranet/
+        - intranet/
         - ''
   su_person_profile_link/title: constants/link_text
   image_timestamp:
@@ -293,5 +293,35 @@ process:
         - scholarly_interests_tersetext
 destination:
   plugin: 'entity:node'
+  overwrite_properties:
+    - body/format
+    - body/value
+    - cap_token
+    - image_file
+    - image_timestamp
+    - photo_destination
+    - photo_source
+    - revision_timestamp
+    - revision_translation_affected
+    - su_person_academic_appt
+    - su_person_admin_appts
+    - su_person_education
+    - su_person_email
+    - su_person_first_name
+    - su_person_full_title/format
+    - su_person_full_title/value
+    - su_person_last_name
+    - su_person_links
+    - su_person_mail_code
+    - su_person_mobile_phone
+    - su_person_photo/target_id
+    - su_person_profile_link/title
+    - su_person_profile_link/uri
+    - su_person_research_interests
+    - su_person_scholarly_interests/format
+    - su_person_scholarly_interests/value
+    - su_person_short_title
+    - title
+    - type
 migration_dependencies:
   required: {  }
