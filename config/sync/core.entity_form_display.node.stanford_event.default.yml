@@ -13,12 +13,15 @@ dependencies:
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_groups
+    - field.field.node.stanford_event.su_event_keywords
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
     - field.field.node.stanford_event.su_event_schedule
     - field.field.node.stanford_event.su_event_source
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
+    - field.field.node.stanford_event.su_event_subject
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
     - field.field.node.stanford_event.su_shared_tags
@@ -28,6 +31,7 @@ dependencies:
     - field_group
     - link
     - paragraphs
+    - readonly_field_widget
     - scheduler
     - shs
     - smart_date
@@ -100,6 +104,24 @@ third_party_settings:
         description: ''
         required_fields: true
         open: false
+    group_taxonomy:
+      children:
+        - su_shared_tags
+        - su_event_keywords
+        - su_event_subject
+        - su_event_groups
+      label: Taxonomy
+      region: content
+      parent_name: ''
+      weight: 13
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
 id: node.stanford_event.default
 targetEntityType: node
 bundle: stanford_event
@@ -117,12 +139,12 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 20
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -216,6 +238,26 @@ content:
       placeholder: ''
       size: 60
     third_party_settings: {  }
+  su_event_groups:
+    type: readonly_field_widget
+    weight: 13
+    region: content
+    settings:
+      label: above
+      formatter_type: null
+      formatter_settings: null
+      show_description: false
+    third_party_settings: {  }
+  su_event_keywords:
+    type: readonly_field_widget
+    weight: 11
+    region: content
+    settings:
+      label: above
+      formatter_type: null
+      formatter_settings: null
+      show_description: false
+    third_party_settings: {  }
   su_event_location:
     type: address_default
     weight: 23
@@ -266,6 +308,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  su_event_subject:
+    type: readonly_field_widget
+    weight: 12
+    region: content
+    settings:
+      label: above
+      formatter_type: null
+      formatter_settings: null
+      show_description: false
+    third_party_settings: {  }
   su_event_telephone:
     type: telephone_default
     weight: 27
@@ -285,7 +337,7 @@ content:
     third_party_settings: {  }
   su_shared_tags:
     type: options_shs
-    weight: 31
+    weight: 10
     region: content
     settings:
       display_node_count: false
