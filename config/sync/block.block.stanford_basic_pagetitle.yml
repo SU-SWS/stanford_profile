@@ -1,0 +1,31 @@
+uuid: 2b49a1a1-16ec-4eaa-9242-0ef0d21db639
+langcode: en
+status: true
+dependencies:
+  module:
+    - response_code_condition
+    - system
+  theme:
+    - stanford_basic
+id: stanford_basic_pagetitle
+theme: stanford_basic
+region: content
+weight: -4
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "/node/*\r\n/news*\r\n/people*\r\n/events*\r\n/event-series*\r\n/publications*\r\n/courses*"
+  response_code:
+    id: response_code
+    negate: true
+    context_mapping: {  }
+    response_codes: "404\r\n403"
