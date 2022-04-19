@@ -161,30 +161,43 @@ class PersonCest {
 
     $faker = Factory::create();
     $parent = $I->createEntity([
-      'name' =>'Parent: '. $faker->text(10),
+      'name' => 'Parent: ' . $faker->text(10),
       'vid' => 'stanford_person_types',
     ], 'taxonomy_term');
     $child = $I->createEntity([
-      'name' => 'Child: '.$faker->text(10),
+      'name' => 'Child: ' . $faker->text(10),
       'vid' => 'stanford_person_types',
       'parent' => $parent->id(),
     ], 'taxonomy_term');
     $grandchild = $I->createEntity([
-      'name' => 'GrandChild: '.$faker->text(10),
+      'name' => 'GrandChild: ' . $faker->text(10),
       'vid' => 'stanford_person_types',
       'parent' => $child->id(),
     ], 'taxonomy_term');
     $great_grandchild = $I->createEntity([
-      'name' =>'Great GrandChild: '. $faker->text(10),
+      'name' => 'Great GrandChild: ' . $faker->text(10),
       'vid' => 'stanford_person_types',
       'parent' => $grandchild->id(),
+    ], 'taxonomy_term');
+
+    $another_parent = $I->createEntity([
+      'name' => 'Parent: ' . $faker->words(2, TRUE),
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+    $another_child = $I->createEntity([
+      'name' => 'Child: ' . $faker->words(2, TRUE),
+      'vid' => 'stanford_person_types',
+      'parent' => $another_parent->id(),
     ], 'taxonomy_term');
 
     $node = $I->createEntity([
       'type' => 'stanford_person',
       'su_person_first_name' => $faker->firstName,
       'su_person_last_name' => $faker->lastName,
-      'su_person_type_group' => $great_grandchild->id(),
+      'su_person_type_group' => [
+        ['target_id' => $great_grandchild->id()],
+        ['target_id' => $another_child->id()],
+      ],
     ]);
 
     $I->amOnPage($great_grandchild->toUrl()->toString());
@@ -195,6 +208,7 @@ class PersonCest {
     $I->canSee($node->label());
     $I->amOnPage($parent->toUrl()->toString());
     $I->canSee($node->label());
+    $I->cantSee($another_child->label());
   }
 
   /**
