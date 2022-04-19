@@ -63,7 +63,7 @@ class CoursesCest {
         $path = $node->toUrl()->toString();
         $I->amOnPage($path);
         $I->canSee("This page will redirect");
-        $I->amOnPage("/node" . $node->id() . "/edit");
+        $I->amOnPage("/node/" . $node->id() . "/edit");
         $I->canSee("Some fields can not be edited ");
     }
 
