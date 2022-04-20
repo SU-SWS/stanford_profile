@@ -1,0 +1,126 @@
+uuid: 447ccfbe-092a-43ed-a323-be622c7df323
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.stanford_card
+    - field.field.node.stanford_course.body
+    - field.field.node.stanford_course.su_course_academic_year
+    - field.field.node.stanford_course.su_course_code
+    - field.field.node.stanford_course.su_course_id
+    - field.field.node.stanford_course.su_course_instructors
+    - field.field.node.stanford_course.su_course_link
+    - field.field.node.stanford_course.su_course_quarters
+    - field.field.node.stanford_course.su_course_section_units
+    - field.field.node.stanford_course.su_course_subject
+    - field.field.node.stanford_course.su_course_tags
+    - field.field.node.stanford_course.su_shared_tags
+    - node.type.stanford_course
+  module:
+    - ds
+    - field_formatter_class
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - link
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
+  layout_library:
+    enable: false
+  ds:
+    layout:
+      id: pattern_course_vertical_teaser
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      course_code:
+        - su_course_subject
+        - su_course_code
+      course_academic_year:
+        - su_course_academic_year
+      course_title:
+        - node_title
+      course_url:
+        - su_course_link
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 3
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+_core:
+  default_config_hash: 3q3wp63fQ-h1XTJTAHRzKP7uFPch4KfSFHFXWC50bIw
+id: node.stanford_course.stanford_card
+targetEntityType: node
+bundle: stanford_course
+mode: stanford_card
+content:
+  su_course_academic_year:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: course_academic_year
+  su_course_code:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: course_code
+  su_course_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: true
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 4
+    region: course_url
+  su_course_subject:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 0
+    region: course_code
+hidden:
+  body: true
+  links: true
+  search_api_excerpt: true
+  su_course_id: true
+  su_course_instructors: true
+  su_course_quarters: true
+  su_course_section_units: true
+  su_course_tags: true
+  su_shared_tags: true

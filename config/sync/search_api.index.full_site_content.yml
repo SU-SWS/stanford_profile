@@ -29,6 +29,7 @@ field_settings:
         anonymous: anonymous
       view_mode:
         'entity:node':
+          stanford_course: search_indexing
           stanford_event: search_indexing
           stanford_event_series: search_indexing
           stanford_news: search_indexing
@@ -85,12 +86,14 @@ processor_settings:
     weights:
       preprocess_query: -30
   entity_status: {  }
+  entity_type: {  }
   highlight:
     weights:
       postprocess_query: 0
     prefix: '<strong>'
     suffix: '</strong>'
     excerpt: true
+    excerpt_always: false
     excerpt_length: 256
     exclude_fields: {  }
     highlight: always
@@ -200,4 +203,5 @@ tracker_settings:
 options:
   cron_limit: 50
   index_directly: true
+  track_changes_in_references: true
 server: database_search
