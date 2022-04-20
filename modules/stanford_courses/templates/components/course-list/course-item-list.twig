@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Course List teaser.
+ *
+ * Basic list item for courses.
+ *
+ * Available variables:
+ * - attributes: For additional HTML attributes not already provided.
+ * - course_list_code
+ * - course_list_academic_year
+ * - course_list_quarters
+ * - course_list_title
+ * - course_list_instructors
+ * - course_list_description
+ * - course_list_url
+ *
+ */
+#}
+{%- set attributes = attributes.addClass(['su-course-list-item', modifier_class]) -%}
+
+
+{% set course_list_url = course_list_url|render|striptags("<drupal-render-placeholder>")|trim %}
+
+{# Unique id for the title for A11y labels #}
+{% set headline = course_list_title|render_clean %}
+{% if headline is not empty %}
+  {% set headingID = getUniqueId(headline|render) %}
+{% endif %}
+
+
+<article{{ attributes }} {% if headingID %}aria-labelledby="{{ headingID }}"{% endif %}>
+
+  <div class="su-course-list__title">
+    {# Link for headline h2 #}
+        {%- if course_list_url is not empty -%}
+          <a {{ course_list_url_attributes }} href="{{ course_list_url }}" >
+        {%- endif -%}
+
+        {% if course_list_title|render_clean %}
+          <h2 id="{{ headingID }}">
+            {{- course_list_title -}}
+          </h2>
+        {% endif %}
+
+        {%- if course_list_url is not empty -%}
+          </a>
+        {%- endif -%}
+  </div>
+
+  <header class="su-course-list__header">
+    {%- if course_list_code is not empty -%}<strong>{{ course_list_code|render|striptags|replace({'\n': '', ' ': ''}) }}</strong>{%-  endif -%}&nbsp;|{%- if course_list_academic_year is not empty -%}{{ course_list_academic_year }}{%-  endif -%}
+
+    {%- if course_list_quarters is not empty -%}<time>{{ course_list_quarters }}</time>{%-  endif -%}
+  </header>
+
+  {%- if course_list_instructors|render|striptags('<drupal-render-placeholder>')|trim is not empty -%}
+  <div class="su-course-list__instructors">
+    <h3>Instructors: </h3>{{ course_list_instructors}}
+  </div>
+  {%-  endif -%}
+
+  {%- if course_list_description|render|striptags('<drupal-render-placeholder>')|trim is not empty -%}
+  <div class="su-course-list__description">
+    {{ course_list_description }}
+  </div>
+  {%-  endif -%}
+
+
+</article>

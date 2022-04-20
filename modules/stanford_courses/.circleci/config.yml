@@ -1,0 +1,102 @@
+version: 2
+# CircleCI integration with Drupal 8.
+
+## Defines images and working directory.
+defaults: &defaults
+  docker:
+    - image: pookmish/drupal8ci:latest
+    - image: selenium/standalone-chrome:latest
+    - image: circleci/mysql:5.7
+      environment:
+        MYSQL_DATABASE: drupal
+        MYSQL_USER: drupal
+        MYSQL_PASSWORD: drupal
+        MYSQL_ALLOW_EMPTY_PASSWORD: 1
+  working_directory: /var/www/html
+
+
+#Jobs
+code_coverage: &code_coverage
+  <<: *defaults
+  steps:
+    - restore_cache:
+        keys:
+          - dependencies-
+    - checkout:
+        path: /var/www/test
+    - run:
+        name: Run PHP Unit Coverage Tests
+        command: |
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
+    - save_cache:
+        key: dependencies-{{ epoch }}
+        paths:
+          - .
+    - store_test_results:
+        path: /var/www/html/artifacts/phpunit
+    - store_artifacts:
+        path: /var/www/html/artifacts/phpunit/coverage
+
+codeception: &codeception
+  <<: *defaults
+  steps:
+    - checkout:
+        path: /var/www/test
+    - run:
+        name: Run Acceptance Tests
+        command: |
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
+    - store_test_results:
+        path: /var/www/html/artifacts/behat
+    - store_artifacts:
+        path: /var/www/html/artifacts
+
+back_to_dev: &back_to_dev
+  <<: *defaults
+  steps:
+    - checkout
+    - run:
+        name: Back to dev
+        command: |
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          ~/.composer/vendor/bin/sws-caravan back-to-dev ${CIRCLE_TAG} ${CIRCLE_WORKING_DIRECTORY}
+
+# Declare all of the jobs we should run.
+jobs:
+  run-coverage:
+    <<: *code_coverage
+  run-codeception:
+    <<: *codeception
+  run-back-to-dev:
+    <<: *back_to_dev
+
+# Declare a workflow that runs all of our jobs in parallel.
+workflows:
+  version: 2
+  after_release:
+    jobs:
+      - run-back-to-dev:
+          filters:
+            tags:
+              only:
+                - /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*).*?$/
+            branches:
+              ignore:
+                - /.*/
+  weekly:
+    jobs:
+      - run-coverage
+      - run-codeception
+    triggers:
+      - schedule:
+          cron: "0 0 * * 0"
+          filters:
+            branches:
+              only:
+                - 8.x-1.x
+  tests:
+    jobs:
+      - run-coverage
+      - run-codeception

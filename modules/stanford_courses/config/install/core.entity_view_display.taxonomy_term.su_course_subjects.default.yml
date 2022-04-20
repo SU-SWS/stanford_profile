@@ -1,0 +1,208 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.su_course_subjects.su_courses_dept_long
+    - system.menu.courses-menu
+    - taxonomy.vocabulary.su_course_subjects
+    - views.view.stanford_courses
+  module:
+    - jumpstart_ui
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - system
+    - text
+    - views
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: null
+          columns: default
+        components:
+          8b2d9326-b146-4175-93b6-dd85d341d626:
+            uuid: 8b2d9326-b146-4175-93b6-dd85d341d626
+            region: main
+            configuration:
+              id: 'field_block:taxonomy_term:su_course_subjects:name'
+              label: Name
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_title_heading
+                label: hidden
+                settings:
+                  tag: h1
+                third_party_settings:
+                  field_formatter_class:
+                    class: 'su-margin-top-6 su-margin-bottom-5'
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: null
+          orientation: right
+        components:
+          d4e19ce3-4069-4f08-9d3c-b48df1dfc4fa:
+            uuid: d4e19ce3-4069-4f08-9d3c-b48df1dfc4fa
+            region: left
+            configuration:
+              id: 'system_menu_block:courses-menu'
+              label: 'Courses Menu'
+              label_display: '0'
+              provider: system
+              context_mapping: {  }
+              level: 1
+              depth: 0
+              expand_all_items: false
+            weight: 0
+            additional: {  }
+          da7d9402-16a7-4350-b8e5-acc4a99dee4c:
+            uuid: da7d9402-16a7-4350-b8e5-acc4a99dee4c
+            region: main
+            configuration:
+              id: 'views_block:taxonomy_term_pages-results_for'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 0
+            additional: {  }
+          00d6e3fa-7393-4fef-a92d-da1ecbeb1af0:
+            uuid: 00d6e3fa-7393-4fef-a92d-da1ecbeb1af0
+            region: main
+            configuration:
+              id: 'views_block:stanford_courses-taxonomy_term_page_list'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 2
+            additional: {  }
+          4e464987-c068-4266-8ac3-2feed5dc1b08:
+            uuid: 4e464987-c068-4266-8ac3-2feed5dc1b08
+            region: main
+            configuration:
+              id: 'field_block:taxonomy_term:su_course_subjects:description'
+              label: Description
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+      blacklisted_blocks:
+        'Content fields':
+          - 'field_block:taxonomy_term:su_course_subjects:revision_default'
+          - 'field_block:taxonomy_term:su_course_subjects:default_langcode'
+          - 'field_block:taxonomy_term:su_course_subjects:langcode'
+          - 'field_block:taxonomy_term:su_course_subjects:status'
+          - 'field_block:taxonomy_term:su_course_subjects:publish_on'
+          - 'field_block:taxonomy_term:su_course_subjects:rh_action'
+          - 'field_block:taxonomy_term:su_course_subjects:rh_redirect_fallback_action'
+          - 'field_block:taxonomy_term:su_course_subjects:rh_redirect'
+          - 'field_block:taxonomy_term:su_course_subjects:rh_redirect_response'
+          - 'field_block:taxonomy_term:su_course_subjects:revision_created'
+          - 'field_block:taxonomy_term:su_course_subjects:revision_id'
+          - 'field_block:taxonomy_term:su_course_subjects:revision_log_message'
+          - 'field_block:taxonomy_term:su_course_subjects:revision_translation_affected'
+          - 'field_block:taxonomy_term:su_course_subjects:revision_user'
+          - 'extra_field_block:taxonomy_term:su_course_subjects:search_api_excerpt'
+          - 'field_block:taxonomy_term:su_course_subjects:tid'
+          - 'field_block:taxonomy_term:su_course_subjects:unpublish_on'
+          - 'field_block:taxonomy_term:su_course_subjects:vid'
+          - 'field_block:taxonomy_term:su_course_subjects:weight'
+          - 'field_block:user:user:changed'
+          - 'field_block:user:user:created'
+          - 'field_block:user:user:default_langcode'
+          - 'field_block:user:user:su_display_name'
+          - 'field_block:user:user:mail'
+          - 'field_block:user:user:init'
+          - 'field_block:user:user:langcode'
+          - 'field_block:user:user:access'
+          - 'field_block:user:user:login'
+          - 'extra_field_block:user:user:member_for'
+          - 'field_block:user:user:name'
+          - 'field_block:user:user:preferred_admin_langcode'
+          - 'field_block:user:user:preferred_langcode'
+          - 'field_block:user:user:roles'
+          - 'field_block:user:user:role_change'
+          - 'extra_field_block:user:user:search_api_excerpt'
+          - 'field_block:user:user:timezone'
+          - 'field_block:user:user:uid'
+          - 'field_block:user:user:status'
+      whitelisted_blocks: {  }
+      restricted_categories:
+        - 'Basic Page Type Lists (Views)'
+        - 'Chaos Tools'
+        - 'Config Pages'
+        - Forms
+        - Help
+        - React
+        - 'SimpleSAMLphp Authentication'
+        - 'Stanford News'
+        - 'Stanford Profile Helper'
+        - 'Stanford SimpleSAML PHP'
+        - System
+id: taxonomy_term.su_course_subjects.default
+targetEntityType: taxonomy_term
+bundle: su_course_subjects
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  su_courses_dept_long:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  layout_builder__layout: true
+  search_api_excerpt: true
+

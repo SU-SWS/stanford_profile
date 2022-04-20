@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * Course Vertical Teaser.
+ *
+ * Vertical Teaser for Courses
+ *
+ * Available variables:
+ * - attributes: For additional HTML attributes not already provided.
+ * - course_code: The subject and course number
+ * - course_academic_year: Academic year offered
+ * - course_title: The course title.
+ * - course_url: The url to the course
+ */
+#}
+
+{%-
+  set classes = [
+    'su-card',
+    'su-course-vertical-teaser',
+    'su-course-external',
+  ]
+-%}
+
+{# We use rabbit hole to forward to ExploreCourses, which makes it an external, but this might change #}
+{%- set course_url_link_type = "su-link--external" -%}
+
+
+{%- if course_url_attributes is empty -%}
+  {% set course_url_attributes = create_attribute() -%}
+{%- endif -%}
+
+{% set course_url = course_url|render|striptags("<drupal-render-placeholder>")|trim %}
+
+<article{{ attributes.addClass(classes) }}>
+
+  <div class="su-course-link">
+    <h2 class="su-link su-card__link {{ course_url_link_type }}">
+    {%- if course_url is not empty -%}
+      <a {{ course_url_attributes.addClass('su-course-vertical-teaser__link') }} href="{{ course_url }}" >
+    {%- endif -%}
+      {{- course_title -}}
+    {%- if course_url is not empty -%}
+      </a>
+    {%- endif -%}
+    </h2>
+  </div>
+
+  <div class="su-course-header">
+    <strong>{%- if course_code is not empty -%}{{ course_code|render|striptags|replace({'\n': '', ' ': ''})}}{%-  endif -%}</strong>&nbsp;|{%- if course_academic_year is not empty -%}<time>{{ course_academic_year }}</time>{%-  endif -%}
+  </div>
+
+</article>

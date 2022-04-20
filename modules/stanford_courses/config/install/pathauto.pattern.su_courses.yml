@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: su_courses
+label: Courses
+type: 'canonical_entities:node'
+pattern: '/courses/[node:su_course_subject]-[node:su_course_code]/[node:title]'
+selection_criteria:
+  d4e8d911-556b-4aa8-8945-5fadf0c3c487:
+    id: node_type
+    negate: false
+    uuid: d4e8d911-556b-4aa8-8945-5fadf0c3c487
+    context_mapping:
+      node: node
+    bundles:
+      stanford_course: stanford_course
+selection_logic: and
+weight: 0
+relationships: {  }
+

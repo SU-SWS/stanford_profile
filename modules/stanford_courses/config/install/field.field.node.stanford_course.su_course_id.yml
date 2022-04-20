@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_course_id
+    - node.type.stanford_course
+id: node.stanford_course.su_course_id
+field_name: su_course_id
+entity_type: node
+bundle: stanford_course
+label: 'Course ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
+

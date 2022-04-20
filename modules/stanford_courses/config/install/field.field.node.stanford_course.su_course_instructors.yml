@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_course_instructors
+    - node.type.stanford_course
+id: node.stanford_course.su_course_instructors
+field_name: su_course_instructors
+entity_type: node
+bundle: stanford_course
+label: Instructors
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+

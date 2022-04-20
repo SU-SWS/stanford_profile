@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages_overrides
+third_party_settings:
+  config_pages_overrides:
+    455b050b-d304-4c74-acf4-f04767664a6b:
+      field: su_explore_course_url
+      delta: -1
+      column: uri
+      config_name: migrate_plus.migration.stanford_courses
+      config_item: source.urls
+    965187df-76de-4627-b985-9ac449085331:
+      field: su_explore_course_url
+      delta: 0
+      column: uri
+      config_name: migrate_plus.migration.stanford_courses
+      config_item: status
+id: stanford_courses_importer
+label: 'Courses Importer'
+token: false
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/config/importers/courses-importer
+  weight: 0
+  description: 'Provide a list of urls to use'
