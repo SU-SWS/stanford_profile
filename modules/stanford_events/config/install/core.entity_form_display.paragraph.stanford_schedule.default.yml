@@ -1,0 +1,74 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_schedule.su_schedule_date_time
+    - field.field.paragraph.stanford_schedule.su_schedule_description
+    - field.field.paragraph.stanford_schedule.su_schedule_headline
+    - field.field.paragraph.stanford_schedule.su_schedule_location
+    - field.field.paragraph.stanford_schedule.su_schedule_speaker
+    - field.field.paragraph.stanford_schedule.su_schedule_url
+    - paragraphs.paragraphs_type.stanford_schedule
+  module:
+    - address
+    - link
+    - paragraphs
+    - smart_date
+    - text
+id: paragraph.stanford_schedule.default
+targetEntityType: paragraph
+bundle: stanford_schedule
+mode: default
+content:
+  su_schedule_date_time:
+    weight: 0
+    settings:
+      modal: false
+    third_party_settings: {  }
+    type: smartdate_default
+    region: content
+  su_schedule_description:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  su_schedule_headline:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_schedule_location:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  su_schedule_speaker:
+    type: entity_reference_paragraphs
+    weight: 5
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  su_schedule_url:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+hidden:
+  created: true
+  status: true

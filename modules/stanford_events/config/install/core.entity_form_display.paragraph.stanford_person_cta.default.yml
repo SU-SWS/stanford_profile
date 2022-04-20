@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_person_cta.su_person_cta_image
+    - field.field.paragraph.stanford_person_cta.su_person_cta_link
+    - field.field.paragraph.stanford_person_cta.su_person_cta_name
+    - field.field.paragraph.stanford_person_cta.su_person_cta_title
+    - paragraphs.paragraphs_type.stanford_person_cta
+  module:
+    - link
+    - media_library
+id: paragraph.stanford_person_cta.default
+targetEntityType: paragraph
+bundle: stanford_person_cta
+mode: default
+content:
+  su_person_cta_image:
+    type: media_library_widget
+    weight: 0
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  su_person_cta_link:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_person_cta_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_person_cta_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

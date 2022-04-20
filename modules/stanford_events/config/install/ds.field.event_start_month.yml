@@ -1,0 +1,11 @@
+id: event_start_month
+label: 'Date - Start Month'
+ui_limit: 'stanford_event|*'
+properties:
+  content:
+    value: '[node:su_event_date_time:value-custom:M]'
+    format: plain_text
+type: token
+type_label: 'Token field'
+entities:
+  node: node

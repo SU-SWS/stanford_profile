@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: node__stanford_person
+label: 'Content: Person'
+tags:
+  keywords: '[node:su_person_type]'
+  title: '[node:title] | [site:name]'
+  description: '[node:summary]'
+  og_image: '[node:su_person_photo:entity:su_person_photo:0:entity:field_media_image:large]'
+  og_image_url: '[node:su_person_photo:entity:su_person_photo:0:entity:field_media_image:large]'

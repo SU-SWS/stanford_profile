@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_day
+    - stanford_publication.citation_type.su_article_newspaper
+id: citation.su_article_newspaper.su_day
+field_name: su_day
+entity_type: citation
+bundle: su_article_newspaper
+label: Day
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 31
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_doi
+    - stanford_publication.citation_type.su_thesis
+id: citation.su_thesis.su_doi
+field_name: su_doi
+entity_type: citation
+bundle: su_thesis
+label: 'DOI Database Name'
+description: 'DOI of journal article web page without "https:/doi.org/"'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

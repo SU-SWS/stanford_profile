@@ -8,17 +8,7 @@
   @include modular-spacing('margin', 6 null 5);
 }
 
-// Spacing for the filtered terms link
-.views-block {
-  &.stanford-person-terms-term-link {
-    @include modular-spacing('margin-bottom', 3);
-
-    display: inline-block;
-  }
-}
-
-.su-person-grid-view,
-.section-grid-view {
+.flex-container {
   .main-region {
     @include grid-media-min(xl) {
       @include modular-spacing('padding-left', 2);
@@ -28,64 +18,9 @@
 
 // Grid set up
 .stanford-people-grid {
-
-  // Changing to a Css Grid
-  .views-row,
-  .flex-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 1em;
-
-    @include grid-media-max('xs') {
-      display: unset;
-    }
-
-    > .views-col {
-      max-width: 100%;
-    }
-  }
-
-  .views-row {
-    @include modular-spacing('margin-bottom', 6);
-
-    .views-col {
-
-      // In xs display the people have a layout of image and text to the right.
-      @include grid-media-max('lg') {
-        @include modular-spacing('margin-bottom', 4);
-
-        .views-field-su-person-photo {
-          @include modular-spacing('margin-right', 0);
-
-          float: left;
-        }
-
-        .views-field-title {
-          @include modular-spacing('padding-top', 0);
-        }
-      }
-    }
-
-    // Name field
-    .views-field-title {
-      a {
-        @include type-d;
-
-        color: $su-color-bright-red;
-        text-decoration: none;
-        word-break: break-word;
-        word-wrap: break-word;
-
-        &:focus,
-        &:hover {
-          color: $su-color-black;
-          text-decoration: underline;
-        }
-      }
-
-      .field-media-image {
-        @include responsive-spacing('padding-bottom', 0);
-      }
+  .su-list-unstyled {
+    li {
+      @include modular-spacing('margin-bottom', 3);
     }
 
     // Short title
@@ -109,6 +44,28 @@
     &,
     + .js-pager__items {
       @include modular-spacing('margin-bottom', 8);
+    }
+  }
+
+  // Name field
+  .views-field-title {
+    a {
+      @include type-d;
+
+      color: $su-color-bright-red;
+      text-decoration: none;
+      word-break: break-word;
+      word-wrap: break-word;
+
+      &:focus,
+      &:hover {
+        color: $su-color-black;
+        text-decoration: underline;
+      }
+    }
+
+    .field-media-image {
+      @include responsive-spacing('padding-bottom', 0);
     }
   }
 }
@@ -142,16 +99,11 @@
 // Collapsible menu
 // Changing the layout for the filtered pages.
 @include grid-media-max('lg') {
-  .su-person-grid-view,
-  .section-grid-view {
-    .left-region {
-      &.flex-lg-3-of-12 {
-        @include modular-spacing('margin-bottom', 4);
+  .menu--stanford-person-type {
+    @include modular-spacing('margin-bottom', 4);
 
-        flex: auto;
-        max-width: 100%;
-      }
-    }
+    flex: auto;
+    max-width: 100%;
   }
 }
 
