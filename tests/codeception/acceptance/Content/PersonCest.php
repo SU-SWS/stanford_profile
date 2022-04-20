@@ -8,6 +8,20 @@ use Faker\Factory;
 class PersonCest {
 
   /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * Test that the default content has installed and is unpublished.
    */
   public function testDefaultContentExists(AcceptanceTester $I) {
@@ -226,27 +240,32 @@ class PersonCest {
 
   /**
    * Unpublished profiles should not display in the list.
+   *
+   * @group tester
    */
   public function testPublishedStatus(AcceptanceTester $I) {
-    $foo = $I->createEntity([
-      'name' => 'Foo',
+    $term = $I->createEntity([
+      'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',
     ], 'taxonomy_term');
     /** @var \Drupal\node\NodeInterface $node */
     $node = $I->createEntity([
       'type' => 'stanford_person',
-      'su_person_first_name' => "John",
-      'su_person_last_name' => "Wick",
-      'su_person_type_group' => $foo->id(),
+      'su_person_short_title' => $this->faker->title,
+      'su_person_first_name' => $this->faker->firstName,
+      'su_person_last_name' => $this->faker->lastName,
+      'su_person_type_group' => $term->id(),
     ]);
     $I->logInWithRole('administrator');
-    drupal_flush_all_caches();
-    $I->amOnPage($foo->toUrl()->toString());
-    $I->canSee($node->label());
-    $node->setUnpublished()->save();
 
-    drupal_flush_all_caches();
-    $I->amOnPage($foo->toUrl()->toString());
+    $I->amOnPage($term->toUrl()->toString());
+    $I->canSee($node->label());
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->uncheckOption('Published');
+    $I->click('Save');
+    $I->canSee('page is currently unpublished');
+
+    $I->amOnPage($term->toUrl()->toString());
     $I->cantSee($node->label());
   }
 
