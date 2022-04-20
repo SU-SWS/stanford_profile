@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_alt_loc
+    - node.type.stanford_event
+id: node.stanford_event.su_event_alt_loc
+field_name: su_event_alt_loc
+entity_type: node
+bundle: stanford_event
+label: 'Event alternative location'
+description: 'A hidden field for the event importer.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: stanford_publications
+label: Publications
+type: 'canonical_entities:node'
+pattern: '/publications/[node:su_publication_topics:0:entity:name]/[node:title]'
+selection_criteria:
+  fcff0429-c21e-413a-8b62-d4596e7c2da9:
+    id: node_type
+    bundles:
+      stanford_publication: stanford_publication
+    negate: false
+    context_mapping:
+      node: node
+    uuid: fcff0429-c21e-413a-8b62-d4596e7c2da9
+selection_logic: and
+weight: -5
+relationships: {  }

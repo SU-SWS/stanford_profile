@@ -1,0 +1,272 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.stanford_event.body
+    - field.field.node.stanford_event.layout_builder__layout
+    - field.field.node.stanford_event.su_event_alt_loc
+    - field.field.node.stanford_event.su_event_audience
+    - field.field.node.stanford_event.su_event_components
+    - field.field.node.stanford_event.su_event_cta
+    - field.field.node.stanford_event.su_event_date_time
+    - field.field.node.stanford_event.su_event_dek
+    - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_location
+    - field.field.node.stanford_event.su_event_map_link
+    - field.field.node.stanford_event.su_event_schedule
+    - field.field.node.stanford_event.su_event_source
+    - field.field.node.stanford_event.su_event_sponsor
+    - field.field.node.stanford_event.su_event_subheadline
+    - field.field.node.stanford_event.su_event_telephone
+    - field.field.node.stanford_event.su_event_type
+    - node.type.stanford_event
+  module:
+    - address
+    - field_group
+    - link
+    - paragraphs
+    - path
+    - smart_date
+    - telephone
+    - text
+third_party_settings:
+  field_group:
+    group_editorial_content:
+      children:
+        - su_event_subheadline
+        - su_event_dek
+        - su_event_sponsor
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: false
+      label: 'Editorial Content'
+    group_body_content:
+      children:
+        - body
+        - su_event_components
+      parent_name: ''
+      weight: 3
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: false
+      label: 'Body Content'
+    group_event_details:
+      children:
+        - su_event_date_time
+        - su_event_source
+        - su_event_location
+        - su_event_map_link
+        - su_event_email
+        - su_event_telephone
+        - su_event_audience
+        - su_event_cta
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: false
+      label: 'Event Details'
+    group_schedule_details:
+      children:
+        - su_event_schedule
+      parent_name: ''
+      weight: 5
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Schedule Details'
+id: node.stanford_event.default
+targetEntityType: node
+bundle: stanford_event
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 10
+    region: content
+    third_party_settings: {  }
+  su_event_audience:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  su_event_components:
+    type: entity_reference_paragraphs
+    weight: 3
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  su_event_cta:
+    weight: 28
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_event_date_time:
+    weight: 21
+    settings:
+      default_tz: user
+      custom_tz: America/Los_Angeles
+      modal: 0
+    third_party_settings: {  }
+    type: smartdate_timezone
+    region: content
+  su_event_dek:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_event_email:
+    weight: 25
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  su_event_location:
+    weight: 23
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  su_event_map_link:
+    weight: 24
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_event_schedule:
+    type: entity_reference_paragraphs
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  su_event_source:
+    weight: 22
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  su_event_sponsor:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_event_subheadline:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  su_event_telephone:
+    weight: 26
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  su_event_type:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  layout_builder__layout: true
+  promote: true
+  sticky: true
+  su_event_alt_loc: true

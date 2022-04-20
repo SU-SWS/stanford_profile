@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.cap_org_codes.su_cap_org_code
+    - taxonomy.vocabulary.cap_org_codes
+  module:
+    - text
+id: taxonomy_term.cap_org_codes.default
+targetEntityType: taxonomy_term
+bundle: cap_org_codes
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  su_cap_org_code:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_edition
+    - stanford_publication.citation_type.su_book
+id: citation.su_book.su_edition
+field_name: su_edition
+entity_type: citation
+bundle: su_book
+label: Edition
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_person_profile_link
+    - node.type.stanford_person
+  module:
+    - link
+id: node.stanford_person.su_person_profile_link
+field_name: su_person_profile_link
+entity_type: node
+bundle: stanford_person
+label: 'Profile Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 2
+field_type: link

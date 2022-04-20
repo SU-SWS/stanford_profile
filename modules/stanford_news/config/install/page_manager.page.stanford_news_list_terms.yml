@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies: {  }
+id: stanford_news_list_terms
+label: 'Stanford News Topics'
+description: 'Taxonomy Term Page Overrides'
+use_admin_theme: false
+path: '/taxonomy/term/{taxonomy_term}'
+access_logic: and
+access_conditions: {  }
+parameters:
+  taxonomy_term:
+    machine_name: taxonomy_term
+    type: 'entity:taxonomy_term'
+    label: taxonomy_term
