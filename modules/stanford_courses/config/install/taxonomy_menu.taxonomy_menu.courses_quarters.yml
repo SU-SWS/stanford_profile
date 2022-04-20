@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.courses-menu
+    - taxonomy.vocabulary.su_course_quarters
+id: courses_quarters
+label: 'Courses Quarters'
+vocabulary: su_course_quarters
+menu: courses-menu
+expanded: false
+depth: 0
+menu_parent: 'courses-menu:'
+description_field_name: ''
+use_term_weight_order: true
+
