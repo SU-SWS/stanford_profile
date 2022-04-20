@@ -4,6 +4,9 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 
+// @codeCoverageIgnoreStart
+
+
 // Set theme name to use in the key values.
 $theme_name = \Drupal::theme()->getActiveTheme()->getName();
 
