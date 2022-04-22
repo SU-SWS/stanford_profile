@@ -1,0 +1,313 @@
+uuid: a5a6b21b-af5c-406b-9401-6f4224f8dc96
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.su_opportunities_grid_result
+    - field.field.node.su_opportunity.body
+    - field.field.node.su_opportunity.su_opp_application_deadline
+    - field.field.node.su_opportunity.su_opp_commitment
+    - field.field.node.su_opportunity.su_opp_contact_email
+    - field.field.node.su_opportunity.su_opp_contact_name
+    - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_course_code
+    - field.field.node.su_opportunity.su_opp_course_date
+    - field.field.node.su_opportunity.su_opp_deadline_time
+    - field.field.node.su_opportunity.su_opp_dimension
+    - field.field.node.su_opportunity.su_opp_duration
+    - field.field.node.su_opportunity.su_opp_eligibility
+    - field.field.node.su_opportunity.su_opp_event_date
+    - field.field.node.su_opportunity.su_opp_image
+    - field.field.node.su_opportunity.su_opp_learn_more
+    - field.field.node.su_opportunity.su_opp_location
+    - field.field.node.su_opportunity.su_opp_not_eligible
+    - field.field.node.su_opportunity.su_opp_open_to
+    - field.field.node.su_opportunity.su_opp_pathway
+    - field.field.node.su_opportunity.su_opp_placement_type
+    - field.field.node.su_opportunity.su_opp_service_theme
+    - field.field.node.su_opportunity.su_opp_solo_url
+    - field.field.node.su_opportunity.su_opp_sponsor
+    - field.field.node.su_opportunity.su_opp_submissions_open
+    - field.field.node.su_opportunity.su_opp_summary
+    - field.field.node.su_opportunity.su_opp_time_year
+    - field.field.node.su_opportunity.su_opp_type
+    - node.type.su_opportunity
+  module:
+    - datetime
+    - ds
+    - field_delimiter
+    - field_formatter_class
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - smart_trim
+    - stanford_media
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
+      allowed_blocks: {  }
+    allowed_block_categories: {  }
+  ds:
+    layout:
+      id: pattern_opportunity_grid
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      title:
+        - node_title
+      summary:
+        - body
+      image:
+        - su_opp_image
+      time_commitment:
+        - su_opp_commitment
+      service_theme:
+        - su_opp_service_theme
+      application_deadline:
+        - su_opp_application_deadline
+      event_date:
+        - su_opp_event_date
+      course_date:
+        - su_opp_course_date
+      sponsoring_unit:
+        - su_opp_sponsor
+      location:
+        - su_opp_location
+      when:
+        - su_opp_time_year
+      open_to:
+        - su_opp_open_to
+      program:
+        - su_opp_dimension
+      type_list:
+        - su_opp_type
+      favorite:
+        - flag_cs_favorites
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          wrapper: ''
+          class: ''
+id: node.su_opportunity.su_opportunities_grid_result
+targetEntityType: node
+bundle: su_opportunity
+mode: su_opportunities_grid_result
+content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 50
+      trim_type: words
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      more_aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 1
+    region: summary
+  flag_cs_favorites:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: favorite
+  su_opp_application_deadline:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j, Y | g:i A'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 5
+    region: application_deadline
+  su_opp_commitment:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+    weight: 3
+    region: time_commitment
+  su_opp_course_date:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j, Y'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 7
+    region: course_date
+  su_opp_dimension:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+    weight: 12
+    region: program
+  su_opp_event_date:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j, Y | g:i A'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 6
+    region: event_date
+  su_opp_image:
+    type: media_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      image_style: opportunity_result_image
+      remove_alt: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 2
+    region: image
+  su_opp_location:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 9
+    region: location
+  su_opp_open_to:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+    weight: 11
+    region: open_to
+  su_opp_service_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+    weight: 4
+    region: service_theme
+  su_opp_sponsor:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+    weight: 8
+    region: sponsoring_unit
+  su_opp_time_year:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+    weight: 10
+    region: when
+  su_opp_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+    weight: 13
+    region: type_list
+hidden:
+  links: true
+  search_api_excerpt: true
+  su_opp_contact_email: true
+  su_opp_contact_name: true
+  su_opp_contact_phone: true
+  su_opp_course_code: true
+  su_opp_deadline_time: true
+  su_opp_duration: true
+  su_opp_eligibility: true
+  su_opp_learn_more: true
+  su_opp_not_eligible: true
+  su_opp_pathway: true
+  su_opp_placement_type: true
+  su_opp_solo_url: true
+  su_opp_submissions_open: true
+  su_opp_summary: true
