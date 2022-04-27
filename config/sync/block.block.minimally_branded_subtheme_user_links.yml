@@ -1,0 +1,26 @@
+uuid: a589d802-81b6-44f0-8742-28632ae1489a
+langcode: en
+status: true
+dependencies:
+  module:
+    - cardinal_service_blocks
+    - system
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_user_links
+theme: minimally_branded_subtheme
+region: search
+weight: -4
+provider: null
+plugin: user_links
+settings:
+  id: user_links
+  label: 'User Links block'
+  label_display: '0'
+  provider: cardinal_service_blocks
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: '/admin/*'

@@ -38,9 +38,9 @@ ReactDOM.render(
     mainFiltersCount={7}
     fields={nodeFields}
     header={<h2>Search by</h2>}
-    wrapperAttributes={{className: "flex-10-of-12"}}
+    wrapperAttributes={{className: "flex-12-of-12"}}
   >
-    <div className="flex-10-of-12 sort-links">
+    <div className="flex-12-of-12 sort-links">
       <a
         href={getSortUrl('su_opp_application_deadline_value')}
         className={sortedByField('su_opp_application_deadline_value') ? 'active':''}

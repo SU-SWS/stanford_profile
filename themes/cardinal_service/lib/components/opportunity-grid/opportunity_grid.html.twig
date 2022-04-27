@@ -12,19 +12,15 @@
   {% set time_commitment = time_commitment|merge({'#markup': time_commitment['#markup'] ~ ' in '}) %}
 {% endif %}
 
-{% set date_label = 'Application Deadline'|t %}
-{% set date = 'N/A' %}
-
-{% if application_deadline|render_clean is not empty %}
-  {% set date = application_deadline %}
-{% endif %}
-
 {% if event_date|render_clean is not empty %}
   {% set date_label = 'Event Date'|t %}
   {% set date = event_date %}
 {% elseif course_date|render_clean is not empty %}
   {% set date_label = 'Course Date'|t %}
   {% set date = course_date %}
+{% elseif application_deadline|render_clean is not empty %}
+  {% set date_label = 'Application Deadline'|t %}
+  {% set date = application_deadline %}
 {% endif %}
 
 {% if location|render_clean is empty %}
@@ -41,12 +37,19 @@
 
 {% set image = image|render_clean('<img> <picture> <source>') %}
 
-<div{{ attributes.addClass(['su-opportunity-result', 'su-opportunity-row-result']) }}>
-  <div class="flex-container su-card__contents">
-    <div class="{% if image %}flex-8-of-12{% else %}flex-12-of-12{% endif %}">
+<div{{ attributes.addClass(['su-opportunity-result', 'su-opportunity-grid-result']) }}>
+  <div class="su-card__contents">
+    <div>
       <div class="su-opportunity-header">
+
+        {% if image %}
+          <div class="su-opportunity-img">
+              {{ image|raw }}
+          </div>
+        {% endif %}
+
         {% if program is not empty or type_list is not empty %}
-          <div class="su-opportunity-row-program-type-list">
+          <div class="su-opportunity-grid-program-type-list">
             <div aria-label="{{ 'Opportunity Program and Type'|t }}">
               <div>{{ program }}{{ type_list }}</div>
             </div>
@@ -57,7 +60,7 @@
         </h3>
 
         {% if time_commitment is not empty or service_theme is not empty %}
-          <div class="su-opportunity-row-time-commitment-service-theme">
+          <div class="su-opportunity-grid-time-commitment-service-theme">
             <div aria-label="{{ 'Time Commitment and Service Theme'|t }}">
               <div>{{ time_commitment }}{{ service_theme }}</div>
             </div>
@@ -65,50 +68,40 @@
         {% endif %}
 
         {% if summary %}
-          <div class="su-opportunity-row-summary">
-            {{ summary }}
+          <div class="su-opportunity-grid-summary">
+            {{ summary|render_clean }}
           </div>
         {% endif %}
       </div>
     </div>
-
-    {% if image %}
-      <div class="flex-4-of-12">
-        <div class="su-opportunity-img">
-          {{ image|raw }}
-        </div>
-      </div>
-    {% endif %}
   </div>
 
   <div class="su-opportunity-body-content">
-    <div class="su-opportunity-row-application-deadline">
-      <div>
+    {% if sponsoring_unit|render_clean is not empty %}
+      <div class="su-opportunity-grid-sponsoring-unit">
+        <h4>{{ 'Sponsored by'|t }}:</h4> <div>{{ sponsoring_unit }}</div>
+      </div>
+    {% endif %}
+
+    <div class="su-opportunity-grid-location">
+      <h4>{{ 'Location'|t }}:</h4> <div>{{ location }}</div>
+    </div>
+
+    <div class="su-opportunity-grid-open-to">
+      <h4>{{ 'Open to'|t }}:</h4> <div>{{ open_to }}</div>
+    </div>
+
+    <div class="su-opportunity-grid-duration">
+      <h4>{{ 'When'|t }}:</h4> <div>{{ when }}</div>
+    </div>
+
+    {% if date is not empty %}
+      <div class="su-opportunity-grid-application-deadline">
         <h4>{{ date_label }}:</h4>
         <div>{{ date }}</div>
       </div>
-    </div>
+    {% endif %}
 
-    <div class="su-opportunity-row-location">
-      <div>
-        <h4>{{ 'Location'|t }}:</h4>
-        <div>{{ location }}</div>
-      </div>
-    </div>
-
-    <div class="su-opportunity-row-duration">
-      <div>
-        <h4>{{ 'When'|t }}:</h4>
-        <div>{{ when }}</div>
-      </div>
-    </div>
-
-    <div class="su-opportunity-row-open-to">
-      <div>
-        <h4>{{ 'Open to'|t }}:</h4>
-        <div>{{ open_to }}</div>
-      </div>
-    </div>
   </div>
   {{ favorite }}
 </div>

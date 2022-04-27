@@ -1,5 +1,16 @@
 # Cardinal Service Profile
 
+8.x-3.1-alpha
+--------------------------------------------------------------------------------
+- Locked migrate_plus version to 5.2. (#249)
+- CS-79: Opportunities grid (#245)
+- CS-79: Added opportunity grid component and styles.
+- CS-79: Change CS opportunity view to use opportunity grid component and styled view.
+- CS-79: Added and enabled smart_trim module.
+- CS-79: Updated administer opportunities view.
+* Updated circleci caravan version.
+* Enabled transliterate_filenames module.
+
 8.x-3.0
 --------------------------------------------------------------------------------
 - D8CORE-5172: Updated references to localist and events-legacy urls

@@ -1,4 +1,4 @@
-uuid: 90f3ec5d-5630-40b2-88d9-17c17f257c93
+uuid: 85d92541-3116-4a30-a027-065874ec6690
 langcode: en
 status: true
 dependencies:
@@ -10,7 +10,7 @@ dependencies:
 id: minimally_branded_subtheme_pagetitle
 theme: minimally_branded_subtheme
 region: content
-weight: -4
+weight: -3
 provider: null
 plugin: page_title_block
 settings:
@@ -23,7 +23,7 @@ visibility:
     id: request_path
     negate: true
     context_mapping: {  }
-    pages: "/node/*\r\n/news*\r\n/people*\r\n/events*\r\n/event-series*\r\n/publications*"
+    pages: "/node/*\r\n/news*\r\n/people*\r\n/user/*\r\n/events*"
   response_code:
     id: response_code
     negate: true

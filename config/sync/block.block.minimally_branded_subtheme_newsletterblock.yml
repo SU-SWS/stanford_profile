@@ -1,0 +1,24 @@
+uuid: 1a93076d-1d83-4e55-9013-e256e2b4925f
+langcode: en
+status: true
+dependencies:
+  module:
+    - cardinal_service_blocks
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_newsletterblock
+theme: minimally_branded_subtheme
+region: content
+weight: 0
+provider: null
+plugin: newsletter_block
+settings:
+  id: newsletter_block
+  label: 'Subscribe to the Cardinal Service Digest'
+  label_display: visible
+  provider: cardinal_service_blocks
+  url: 'https://stanford.us1.list-manage.com/subscribe/post?u=a77525a849b0888cf8d90460f&id=807864fbe3'
+  intro:
+    value: ''
+    format: stanford_html
+visibility: {  }

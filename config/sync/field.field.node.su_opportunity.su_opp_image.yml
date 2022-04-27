@@ -6,6 +6,8 @@ dependencies:
     - field.storage.node.su_opp_image
     - media.type.image
     - node.type.su_opportunity
+  content:
+    - 'media:image:8f553f0f-1859-45a8-a2a1-851010f36218'
 id: node.su_opportunity.su_opp_image
 field_name: su_opp_image
 entity_type: node
@@ -14,7 +16,10 @@ label: 'Featured Image'
 description: 'Maximum one featured image. The “featured image” will appear as a thumbnail next to the title on the list page and opportunity detail page and as a thumbnail on the teaser card in the list view.'
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    target_uuid: 8f553f0f-1859-45a8-a2a1-851010f36218
+    weight: 0
 default_value_callback: ''
 settings:
   handler: 'default:media'
@@ -23,6 +28,7 @@ settings:
       image: image
     sort:
       field: _none
+      direction: ASC
     auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

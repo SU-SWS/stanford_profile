@@ -1,0 +1,138 @@
+@charset 'UTF-8';
+
+@import '../../scss/config';
+
+// These styles probably belong somewhere else since they're adjusting the view
+// and not the component.
+@include grid-media-min('lg') {
+  .su-opportunities {
+    &.filtered-all {
+      .views-infinite-scroll-content-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .views-row {
+          @include flex-column(4);
+        }
+      }
+    }
+  }
+}
+
+
+.su-opportunity-grid-result {
+  @include modular-spacing(padding, 0);
+  @include margin(0 0 2em 0);
+  position: relative;
+
+  .su-card__contents {
+    padding: 0;
+  }
+
+  .su-opportunity-img {
+    @include modular-spacing(margin-bottom, -1);
+
+    .su-opp-image {
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+
+  .su-opp-type {
+    margin-bottom: 12px;
+
+    div {
+      display: inline-block;
+    }
+  }
+
+  h3 {
+    @include modular-typography(2);
+    @include modular-spacing('margin-bottom', -2);
+
+    a {
+      font-weight: 700;
+    }
+  }
+
+  .su-opportunity-grid-program-type-list,
+  .su-opportunity-grid-time-commitment-service-theme {
+    font-weight: normal;
+  }
+
+  .su-opportunity-grid-time-commitment-service-theme {
+    @include modular-spacing('margin-bottom', 0);
+  }
+
+  .su-opportunity-grid-summary {
+    @include modular-spacing('margin-bottom', 2);
+    font-weight: normal;
+    font-size: 21px;
+    line-height: 1.3;
+  }
+
+  .su-opportunity-header {
+    @include modular-spacing('margin-bottom', 2);
+  }
+
+  .su-opportunity-body-content {
+    display: block;
+
+    .flex-12-of-12 {
+      .su-opportunity-grid-time-commitment-service-theme,
+      .su-opportunity-grid-summary {
+        max-width: 70ch;
+      }
+    }
+
+    h4 {
+      @include modular-typography(0);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    > div > div {
+      @include modular-typography(0);
+      font-weight: normal;
+    }
+  }
+
+  .su-opportunity-grid-application-deadline,
+  .su-opportunity-grid-sponsoring-unit,
+  .su-opportunity-grid-location,
+  .su-opportunity-grid-duration,
+  .su-opportunity-grid-open-to {
+    > h4 {
+      display: inline;
+    }
+
+    div {
+      display: inline;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 0;
+    }
+  }
+
+  .flag {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+
+    a {
+      @include modular-typography(1);
+    }
+  }
+}
