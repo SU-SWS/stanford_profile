@@ -4,7 +4,6 @@
  * @file
  * stanford_profile.install
  */
-use Drupal\block_content\Entity\BlockContent;
 
 /**
  * Implements hook_removed_post_updates().
