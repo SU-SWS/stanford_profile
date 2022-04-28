@@ -71,7 +71,7 @@ variant_settings:
             context_mapping: {  }
             views_label: ''
             items_per_page: none
-          weight: 1
+          weight: 3
           additional: {  }
         326185e7-46b6-4745-9658-7a0ad658c4ea:
           uuid: 326185e7-46b6-4745-9658-7a0ad658c4ea
@@ -83,6 +83,33 @@ variant_settings:
             provider: jumpstart_ui
             context_mapping: {  }
           weight: 0
+          additional: {  }
+        f7850bb4-cf3d-403c-a58b-f1564613fe51:
+          uuid: f7850bb4-cf3d-403c-a58b-f1564613fe51
+          region: main
+          configuration:
+            id: 'block_content:2f343c04-f892-49bb-8d28-2c3f4653b02a'
+            label: 'Courses Intro'
+            label_display: '0'
+            provider: block_content
+            status: true
+            info: ''
+            view_mode: full
+            context_mapping: {  }
+          weight: 1
+          additional: {  }
+        c08dcb65-213b-432b-befe-888be7530eb8:
+          uuid: c08dcb65-213b-432b-befe-888be7530eb8
+          region: main
+          configuration:
+            id: 'views_block:su_block_edit_links-courses_intro'
+            label: ''
+            label_display: '0'
+            provider: views
+            context_mapping: {  }
+            views_label: ''
+            items_per_page: none
+          weight: 2
           additional: {  }
       third_party_settings: {  }
 page: courses_list_page
