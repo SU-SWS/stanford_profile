@@ -28,7 +28,7 @@ function stanford_profile_post_update_8200(){
 }
 
 /**
- * Create the events and news intro block content.
+ * Create the courses intro block content.
  */
 function stanford_profile_post_update_8201() {
   BlockContent::create([
