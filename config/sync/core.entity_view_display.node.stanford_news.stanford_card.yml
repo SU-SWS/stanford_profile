@@ -46,6 +46,11 @@ third_party_settings:
       news_url:
         - 'dynamic_token_field:node-news_content_url'
     fields:
+      'dynamic_token_field:node-news_content_url':
+        plugin_id: 'dynamic_token_field:node-news_content_url'
+        weight: 4
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -55,11 +60,6 @@ third_party_settings:
           link: false
           wrapper: ''
           class: ''
-      'dynamic_token_field:node-news_content_url':
-        plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 4
-        label: hidden
-        formatter: default
 id: node.stanford_news.stanford_card
 targetEntityType: node
 bundle: stanford_news
@@ -111,7 +111,7 @@ content:
       field_formatter_class:
         class: ''
       ds:
-        ds_limit: ''
+        ds_limit: '3'
     weight: 2
     region: news_topics
 hidden:

@@ -92,7 +92,7 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 4
+            weight: 5
             additional: {  }
           d48183f8-9763-4ebf-95ff-50835d6f7298:
             uuid: d48183f8-9763-4ebf-95ff-50835d6f7298
@@ -106,6 +106,17 @@ third_party_settings:
               views_label: ''
               items_per_page: none
             weight: 6
+            additional: {  }
+          b448d9f3-f8b3-4ca1-ae45-6b412a8ee0f9:
+            uuid: b448d9f3-f8b3-4ca1-ae45-6b412a8ee0f9
+            region: main
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+            weight: 4
             additional: {  }
         third_party_settings: {  }
   layout_library:

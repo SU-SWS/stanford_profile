@@ -14,12 +14,15 @@ dependencies:
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_groups
+    - field.field.node.stanford_event.su_event_keywords
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
     - field.field.node.stanford_event.su_event_schedule
     - field.field.node.stanford_event.su_event_source
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
+    - field.field.node.stanford_event.su_event_subject
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
     - field.field.node.stanford_event.su_shared_tags
@@ -65,15 +68,6 @@ third_party_settings:
       address:
         - su_event_location
     fields:
-      node_title:
-        plugin_id: node_title
-        weight: 5
-        label: hidden
-        formatter: default
-        settings:
-          link: true
-          wrapper: h2
-          class: ''
       'dynamic_token_field:node-date_end_day':
         plugin_id: 'dynamic_token_field:node-date_end_day'
         weight: 3
@@ -94,6 +88,15 @@ third_party_settings:
         weight: 0
         label: hidden
         formatter: default
+      node_title:
+        plugin_id: node_title
+        weight: 5
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
 id: node.stanford_event.stanford_card
 targetEntityType: node
 bundle: stanford_event
@@ -115,6 +118,8 @@ content:
       format_type: medium
       format: stanford_events_long
       force_chronological: false
+      add_classes: false
+      time_wrapper: true
     third_party_settings:
       field_formatter_class:
         class: ''
@@ -154,7 +159,11 @@ content:
     label: hidden
     settings:
       link: true
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: '1'
     weight: 4
     region: event_type
 hidden:
