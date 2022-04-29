@@ -140,38 +140,38 @@ class PersonCest {
   public function testD8Core2613Terms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
-    $foo = $I->createEntity([
-      'name' => 'Foo',
+    $term1 = $I->createEntity([
+      'name' => $this->faker->words(2),
       'vid' => 'stanford_person_types',
     ], 'taxonomy_term');
-    $bar = $I->createEntity([
-      'name' => 'Bar',
+    $term2 = $I->createEntity([
+      'name' => $this->faker->words(2),
       'vid' => 'stanford_person_types',
     ], 'taxonomy_term');
-    $baz = $I->createEntity([
-      'name' => 'Baz',
+    $term3 = $I->createEntity([
+      'name' => $this->faker->words(2),
       'vid' => 'stanford_person_types',
-      'parent' => ['target_id' => $foo->id()],
+      'parent' => ['target_id' => $term1->id()],
     ], 'taxonomy_term');
 
     $I->amOnPage('/people');
-    $I->canSeeLink('Foo');
-    $I->canSeeLink('Bar');
-    $I->cantSeeLink('Baz');
+    $I->canSeeLink($term1->label());
+    $I->canSeeLink($term2->label());
+    $I->cantSeeLink($term3->label());
 
-    $I->amOnPage($baz->toUrl('edit-form')->toString());
+    $I->amOnPage($term3->toUrl('edit-form')->toString());
     $I->selectOption('Parent term', '<root>');
     $I->click('Save');
 
     $I->amOnPage('/people');
-    $I->canSeeLink('Baz');
+    $I->canSeeLink($term3->label());
 
-    $I->amOnPage($baz->toUrl('edit-form')->toString());
-    $I->selectOption('Parent term', 'Bar');
+    $I->amOnPage($term3->toUrl('edit-form')->toString());
+    $I->selectOption('Parent term', $term2->label());
     $I->click('Save');
 
     $I->amOnPage('/people');
-    $I->cantSeeLink('Baz');
+    $I->cantSeeLink($term3->label());
 
     $faker = Factory::create();
     $parent = $I->createEntity([
