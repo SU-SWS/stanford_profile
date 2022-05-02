@@ -1,0 +1,22 @@
+uuid: d99f1ff1-b598-4a3a-ac33-2cbebc3dbbca
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: course_nodes
+label: 'Course Nodes'
+type: 'canonical_entities:node'
+pattern: 'courses/[node:su_course_subject][node:su_course_code]'
+selection_criteria:
+  35b60486-f02f-420f-83ed-b275e67bbe32:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 35b60486-f02f-420f-83ed-b275e67bbe32
+    context_mapping:
+      node: node
+    bundles:
+      stanford_course: stanford_course
+selection_logic: and
+weight: -5
+relationships: {  }

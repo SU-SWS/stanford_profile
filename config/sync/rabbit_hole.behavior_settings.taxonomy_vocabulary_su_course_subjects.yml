@@ -1,0 +1,14 @@
+uuid: c4406e5a-ed9f-4887-b523-7132b916f5bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.su_course_subjects
+id: taxonomy_vocabulary_su_course_subjects
+entity_type_id: taxonomy_vocabulary
+entity_id: su_course_subjects
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

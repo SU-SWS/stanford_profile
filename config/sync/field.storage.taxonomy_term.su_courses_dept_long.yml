@@ -1,0 +1,21 @@
+uuid: 620a0dc6-0c68-4661-bca4-74fd1d9d6eec
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.su_courses_dept_long
+field_name: su_courses_dept_long
+entity_type: taxonomy_term
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

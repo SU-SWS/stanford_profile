@@ -1,0 +1,14 @@
+uuid: 50634a36-471e-418b-b664-cd6b52c3297f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.su_shared_tags
+id: taxonomy_vocabulary_su_shared_tags
+entity_type_id: taxonomy_vocabulary
+entity_id: su_shared_tags
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

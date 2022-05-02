@@ -1,0 +1,19 @@
+uuid: 83ad0052-4ac6-4fbd-9335-b7503e9bf8c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.su_courses_dept_long
+    - taxonomy.vocabulary.su_course_subjects
+id: taxonomy_term.su_course_subjects.su_courses_dept_long
+field_name: su_courses_dept_long
+entity_type: taxonomy_term
+bundle: su_course_subjects
+label: 'Department Long Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

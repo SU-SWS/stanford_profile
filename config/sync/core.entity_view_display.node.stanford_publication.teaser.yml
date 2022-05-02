@@ -9,7 +9,9 @@ dependencies:
     - field.field.node.stanford_publication.su_publication_citation
     - field.field.node.stanford_publication.su_publication_components
     - field.field.node.stanford_publication.su_publication_cta
+    - field.field.node.stanford_publication.su_publication_image
     - field.field.node.stanford_publication.su_publication_topics
+    - field.field.node.stanford_publication.su_shared_tags
     - node.type.stanford_publication
   module:
     - user
@@ -33,3 +35,4 @@ hidden:
   su_publication_cta: true
   su_publication_image: true
   su_publication_topics: true
+  su_shared_tags: true

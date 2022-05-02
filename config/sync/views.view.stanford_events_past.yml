@@ -1031,7 +1031,14 @@ display:
             default_group_multiple: {  }
             group_items: {  }
       style:
-        type: default
+        type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: ui_patterns
         options:
