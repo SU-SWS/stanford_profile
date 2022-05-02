@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.stanford_publication.su_publication_cta
     - field.field.node.stanford_publication.su_publication_image
     - field.field.node.stanford_publication.su_publication_topics
+    - field.field.node.stanford_publication.su_shared_tags
     - node.type.stanford_publication
   module:
     - inline_entity_form
@@ -17,6 +18,7 @@ dependencies:
     - media_library
     - react_paragraphs
     - scheduler
+    - shs
     - stanford_intranet
 id: node.stanford_publication.default
 targetEntityType: node
@@ -95,14 +97,24 @@ content:
       media_types: {  }
     third_party_settings: {  }
   su_publication_topics:
-    type: entity_reference_autocomplete
+    type: options_shs
     weight: 2
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
+  su_shared_tags:
+    type: options_shs
+    weight: 31
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
   title:
     type: string_textfield

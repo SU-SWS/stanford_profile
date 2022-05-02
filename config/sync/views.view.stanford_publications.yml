@@ -7,7 +7,7 @@ dependencies:
     - field.storage.node.su_publication_citation
     - field.storage.node.su_publication_topics
     - node.type.stanford_publication
-    - views.view.publication_terms
+    - views.view.taxonomy_term_pages
   module:
     - link
     - node
@@ -258,11 +258,14 @@ display:
             operator_limit_selection: false
             operator_list: {  }
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
           row_class: 'su-padding-top-3 su-padding-bottom-3'
           default_row_class: true
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
       row:
         type: fields
         options:
@@ -1310,11 +1313,14 @@ display:
           break_phrase: false
           not: true
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
-          row_class: 'su-margin-top-1 su-margin-bottom-3 flex-3-of-12'
+          row_class: 'su-margin-top-1 su-margin-bottom-3'
           default_row_class: true
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
       row:
         type: ui_patterns
         options:
@@ -1353,7 +1359,7 @@ display:
           pattern_variant: default
       defaults:
         title: false
-        css_class: false
+        css_class: true
         pager: false
         use_more: false
         use_more_always: false
@@ -1365,7 +1371,6 @@ display:
         fields: false
         sorts: false
         arguments: false
-      css_class: flex-container
       display_description: ''
       use_more: true
       use_more_always: true
@@ -1388,7 +1393,7 @@ display:
         - 'config:field.storage.node.su_publication_topics'
   term_list_chicago:
     id: term_list_chicago
-    display_title: 'Term List - Chicago'
+    display_title: 'Taxonomy Term Page List'
     display_plugin: block
     position: 2
     display_options:
@@ -1650,7 +1655,7 @@ display:
             fail: 'not found'
           validate_options: {  }
           break_phrase: true
-          depth: 1
+          depth: 10
           use_taxonomy_term_path: false
       defaults:
         empty: false
@@ -1669,7 +1674,7 @@ display:
           admin_label: ''
           plugin_id: view
           empty: true
-          view_to_insert: 'publication_terms:results_for'
+          view_to_insert: 'taxonomy_term_pages:results_for'
           inherit_arguments: true
       display_extenders: {  }
       block_category: 'Publication (Views)'

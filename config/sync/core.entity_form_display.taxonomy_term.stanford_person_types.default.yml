@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.stanford_person_types.layout_builder__layout
     - taxonomy.vocabulary.stanford_person_types
   module:
     - text
@@ -28,6 +29,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  layout_builder__layout: true
   path: true
   publish_on: true
   status: true

@@ -15,6 +15,7 @@ dependencies:
     - linkit
     - mathjax
     - media
+    - responsive_tables_filter
     - stanford_media
 name: HTML
 format: stanford_html
@@ -119,3 +120,11 @@ filters:
     status: true
     weight: -49
     settings: {  }
+  filter_responsive_tables_filter:
+    id: filter_responsive_tables_filter
+    provider: responsive_tables_filter
+    status: true
+    weight: 0
+    settings:
+      tablesaw_type: stack
+      tablesaw_persist: '1'

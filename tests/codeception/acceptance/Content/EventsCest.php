@@ -8,6 +8,17 @@ use Faker\Factory;
 class EventsCest {
 
   /**
+   * Faker.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * Events list intro block is at the top of the page.
    */
   public function testListIntro(AcceptanceTester $I) {
@@ -53,13 +64,27 @@ class EventsCest {
   }
 
   /**
-   * Test the the event content type exists and has at least a couple of fields.
+   * Test the event content type exists and has at least a couple of fields.
    */
   public function testContentTypeExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/types/manage/stanford_event/fields');
     $I->canSee('body');
     $I->canSee('su_event_date_time');
+
+    $term = $I->createEntity([
+      'name' => $this->faker->firstName,
+      'vid' => 'stanford_event_types',
+    ], 'taxonomy_term');
+    $event_node = $this->createEventNode($I, FALSE, $this->faker->text(20));
+    $event_node->set('su_event_type', $term->id())->save();
+    $I->amOnPage($term->toUrl()->toString());
+    $I->canSee($event_node->label());
+    $I->canSee('San Francisco');
+    $text = $I->grabTextFrom('.su-event-list-item');
+    $text = preg_replace('/[ ]+/', ' ', str_replace("\n", ' ', $text));
+    preg_match_all('/San Francisco/', $text, $matches);
+    $I->assertCount(1, $matches[0], 'More than 1 occurance of "San Francisco" found on the page');
   }
 
   /**
@@ -289,9 +314,9 @@ class EventsCest {
         'timezone' => "America/Los_Angeles",
       ],
       'su_event_dek' => 'This is a dek field',
-      'su_event_alt_loc' => $external ? "https://events.stanford.edu/" : "",
+      'su_event_alt_loc' => $external ? "https://events-legacy.stanford.edu/" : "",
       'su_event_source' => $external ? [
-        "uri" => "http://events.stanford.edu/events/880/88074",
+        "uri" => "http://events-legacy.stanford.edu/events/880/88074",
         "title" => "",
       ] : "",
       'su_event_location' => $external ?: [

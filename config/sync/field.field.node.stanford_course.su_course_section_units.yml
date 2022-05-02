@@ -1,0 +1,21 @@
+uuid: eb4cdd9d-9ca9-4eee-ad6e-51b8fbb6f0b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_course_section_units
+    - node.type.stanford_course
+_core:
+  default_config_hash: RmGrucYoiQNtN0JX-lKn1R0pFD6zsM2ZJOosWD0e2Bk
+id: node.stanford_course.su_course_section_units
+field_name: su_course_section_units
+entity_type: node
+bundle: stanford_course
+label: Units
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

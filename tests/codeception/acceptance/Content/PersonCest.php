@@ -8,6 +8,20 @@ use Faker\Factory;
 class PersonCest {
 
   /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * Test that the default content has installed and is unpublished.
    */
   public function testDefaultContentExists(AcceptanceTester $I) {
@@ -40,7 +54,7 @@ class PersonCest {
     $I->click("a[href='/people/staff']");
     $I->canSeeResponseCodeIs(200);
     $I->see("Sorry, no results found");
-    $I->see("Filter By Person Type");
+    $I->see("Person Type");
   }
 
   /**
@@ -126,65 +140,78 @@ class PersonCest {
   public function testD8Core2613Terms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
-    $foo = $I->createEntity([
-      'name' => 'Foo',
+    $term1 = $I->createEntity([
+      'name' => $this->faker->words(2),
       'vid' => 'stanford_person_types',
     ], 'taxonomy_term');
-    $bar = $I->createEntity([
-      'name' => 'Bar',
+    $term2 = $I->createEntity([
+      'name' => $this->faker->words(2),
       'vid' => 'stanford_person_types',
     ], 'taxonomy_term');
-    $baz = $I->createEntity([
-      'name' => 'Baz',
+    $term3 = $I->createEntity([
+      'name' => $this->faker->words(2),
       'vid' => 'stanford_person_types',
-      'parent' => ['target_id' => $foo->id()],
+      'parent' => ['target_id' => $term1->id()],
     ], 'taxonomy_term');
 
     $I->amOnPage('/people');
-    $I->canSeeLink('Foo');
-    $I->canSeeLink('Bar');
-    $I->cantSeeLink('Baz');
+    $I->canSeeLink($term1->label());
+    $I->canSeeLink($term2->label());
+    $I->cantSeeLink($term3->label());
 
-    $I->amOnPage($baz->toUrl('edit-form')->toString());
+    $I->amOnPage($term3->toUrl('edit-form')->toString());
     $I->selectOption('Parent term', '<root>');
     $I->click('Save');
 
     $I->amOnPage('/people');
-    $I->canSeeLink('Baz');
+    $I->canSeeLink($term3->label());
 
-    $I->amOnPage($baz->toUrl('edit-form')->toString());
-    $I->selectOption('Parent term', 'Bar');
+    $I->amOnPage($term3->toUrl('edit-form')->toString());
+    $I->selectOption('Parent term', $term2->label());
     $I->click('Save');
 
     $I->amOnPage('/people');
-    $I->cantSeeLink('Baz');
+    $I->cantSeeLink($term3->label());
 
     $faker = Factory::create();
     $parent = $I->createEntity([
-      'name' =>'Parent: '. $faker->text(10),
+      'name' => 'Parent: ' . $faker->text(10),
       'vid' => 'stanford_person_types',
     ], 'taxonomy_term');
     $child = $I->createEntity([
-      'name' => 'Child: '.$faker->text(10),
+      'name' => 'Child: ' . $faker->text(10),
       'vid' => 'stanford_person_types',
       'parent' => $parent->id(),
     ], 'taxonomy_term');
     $grandchild = $I->createEntity([
-      'name' => 'GrandChild: '.$faker->text(10),
+      'name' => 'GrandChild: ' . $faker->text(10),
       'vid' => 'stanford_person_types',
       'parent' => $child->id(),
     ], 'taxonomy_term');
     $great_grandchild = $I->createEntity([
-      'name' =>'Great GrandChild: '. $faker->text(10),
+      'name' => 'Great GrandChild: ' . $faker->text(10),
       'vid' => 'stanford_person_types',
       'parent' => $grandchild->id(),
+    ], 'taxonomy_term');
+
+    $another_parent = $I->createEntity([
+      'name' => 'Parent: ' . $faker->words(2, TRUE),
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+    $another_child = $I->createEntity([
+      'name' => 'Child: ' . $faker->words(2, TRUE),
+      'vid' => 'stanford_person_types',
+      'parent' => $another_parent->id(),
     ], 'taxonomy_term');
 
     $node = $I->createEntity([
       'type' => 'stanford_person',
       'su_person_first_name' => $faker->firstName,
       'su_person_last_name' => $faker->lastName,
-      'su_person_type_group' => $great_grandchild->id(),
+      'su_person_type_group' => [
+        ['target_id' => $great_grandchild->id()],
+        ['target_id' => $another_child->id()],
+      ],
     ]);
 
     $I->amOnPage($great_grandchild->toUrl()->toString());
@@ -195,6 +222,7 @@ class PersonCest {
     $I->canSee($node->label());
     $I->amOnPage($parent->toUrl()->toString());
     $I->canSee($node->label());
+    $I->cantSee($another_child->label());
   }
 
   /**
@@ -212,27 +240,32 @@ class PersonCest {
 
   /**
    * Unpublished profiles should not display in the list.
+   *
+   * @group tester
    */
   public function testPublishedStatus(AcceptanceTester $I) {
-    $foo = $I->createEntity([
-      'name' => 'Foo',
+    $term = $I->createEntity([
+      'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',
     ], 'taxonomy_term');
     /** @var \Drupal\node\NodeInterface $node */
     $node = $I->createEntity([
       'type' => 'stanford_person',
-      'su_person_first_name' => "John",
-      'su_person_last_name' => "Wick",
-      'su_person_type_group' => $foo->id(),
+      'su_person_short_title' => $this->faker->title,
+      'su_person_first_name' => $this->faker->firstName,
+      'su_person_last_name' => $this->faker->lastName,
+      'su_person_type_group' => $term->id(),
     ]);
     $I->logInWithRole('administrator');
-    drupal_flush_all_caches();
-    $I->amOnPage($foo->toUrl()->toString());
-    $I->canSee($node->label());
-    $node->setUnpublished()->save();
 
-    drupal_flush_all_caches();
-    $I->amOnPage($foo->toUrl()->toString());
+    $I->amOnPage($term->toUrl()->toString());
+    $I->canSee($node->label());
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->uncheckOption('Published');
+    $I->click('Save');
+    $I->canSee('page is currently unpublished');
+
+    $I->amOnPage($term->toUrl()->toString());
     $I->cantSee($node->label());
   }
 
