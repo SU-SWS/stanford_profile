@@ -7,7 +7,6 @@ use Faker\Factory;
  *
  * @group contrib
  * @group bulk_edit
- * @group testme
  */
 class ViewsBulkEditCest {
 

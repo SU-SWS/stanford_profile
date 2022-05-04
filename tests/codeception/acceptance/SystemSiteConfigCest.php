@@ -1,11 +1,37 @@
 <?php
 
+use Faker\Factory;
+use Drupal\config_pages\Entity\ConfigPages;
+
 /**
  * Class SystemSiteConfigCest.
  *
  * @group system_site_config
  */
 class SystemSiteConfigCest {
+
+  /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test Constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
+   * Delete the config page after the test finishes.
+   */
+  public function __after(AcceptanceTester $I) {
+    if ($config_page = ConfigPages::load('stanford_basic_site_settings')) {
+      $config_page->delete();
+    }
+  }
 
   /**
    * The site manager should be able to change the site name.
@@ -18,7 +44,7 @@ class SystemSiteConfigCest {
     $I->cantSee('Site URL');
     $I->fillField('Site Name', 'Foo Bar Site');
     $I->click('Save');
-    $I->runDrush('cache-rebuild');
+
     $I->amOnPage('/user/logout');
     $I->amOnPage('/');
     $I->canSee('Foo Bar Site');
@@ -27,9 +53,34 @@ class SystemSiteConfigCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->fillField('Site Name', '');
     $I->click('Save');
-    $I->runDrush('cache-rebuild');
     $I->amOnPage('/');
     $I->cantSee('Foo Bar Site');
+  }
+
+  /**
+   * Site settings config should change the home, 404, and 403 pages.
+   */
+  public function testSitePages(AcceptanceTester $I) {
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/config/system/basic-site-settings');
+    $I->selectOption('Home Page', $node->label());
+    $I->selectOption('404 Page', $node->label());
+    $I->selectOption('403 Page', $node->label());
+    $I->click('Save');
+    $I->canSee('Site Settings Site Settings has been');
+
+    \Drupal::configFactory()->reset('system.site');
+    $settings = \Drupal::config('system.site')->get('page');
+    $path = '/node/' . $node->id();
+    $I->assertEquals([
+      '403' => $path,
+      '404' => $path,
+      'front' => $path,
+    ], $settings);
   }
 
   /**
