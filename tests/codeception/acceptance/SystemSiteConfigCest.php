@@ -30,6 +30,7 @@ class SystemSiteConfigCest {
   public function __after(AcceptanceTester $I) {
     if ($config_page = ConfigPages::load('stanford_basic_site_settings')) {
       $config_page->delete();
+      \Drupal::configFactory()->reset('system.site');
     }
   }
 
