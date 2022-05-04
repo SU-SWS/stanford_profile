@@ -28,7 +28,7 @@ class ListsCest {
    */
   public function testSharedTags(AcceptanceTester $I) {
     $shared_tag = $I->createEntity([
-      'name' => $this->faker->jobTitle,
+      'name' => $this->faker->text(10),
       'vid' => 'su_shared_tags',
     ], 'taxonomy_term');
     $basic_page = $I->createEntity([

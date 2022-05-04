@@ -29,10 +29,10 @@ class SkipOnTimeTest extends UnitTestCase {
     $row = $this->createMock(Row::class);
 
     $time = time();
-    $this->assertEquals($time, $plugin->transform($time, $migration, $row, NULL));
+    $this->assertEquals($time, $plugin->transform($time, $migration, $row, 'foo'));
 
     $time = date('m-d-y h:i:s');
-    $this->assertEquals($time, $plugin->transform($time, $migration, $row, NULL));
+    $this->assertEquals($time, $plugin->transform($time, $migration, $row, 'foo'));
 
     $plugin = new SkipOnTime([
       'compare' => '<',
@@ -44,7 +44,7 @@ class SkipOnTimeTest extends UnitTestCase {
     $row = $this->createMock(Row::class);
 
     $this->expectException(MigrateSkipProcessException::class);
-    $plugin->transform($time, $migration, $row, NULL);
+    $plugin->transform($time, $migration, $row, 'foo');
   }
 
   /**
@@ -61,7 +61,7 @@ class SkipOnTimeTest extends UnitTestCase {
     $row = $this->createMock(Row::class);
 
     $time = time() + 60 * 60 * 24 * 30;
-    $this->assertEquals($time, $plugin->transform($time, $migration, $row, NULL));
+    $this->assertEquals($time, $plugin->transform($time, $migration, $row, 'foo'));
 
 
     $plugin = new SkipOnTime([
@@ -74,7 +74,7 @@ class SkipOnTimeTest extends UnitTestCase {
     $row = $this->createMock(Row::class);
 
     $this->expectException(MigrateSkipProcessException::class);
-    $plugin->transform($time, $migration, $row, NULL);
+    $plugin->transform($time, $migration, $row, 'foo');
 
   }
 

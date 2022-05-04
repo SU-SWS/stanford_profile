@@ -7,7 +7,6 @@ use Faker\Factory;
  *
  * @group contrib
  * @group bulk_edit
- * @group testme
  */
 class ViewsBulkEditCest {
 
@@ -29,7 +28,20 @@ class ViewsBulkEditCest {
   public function testBulkEdits(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $this->createEvents($I);
-    $this->createTerms($I);
+
+    $event_foo_bar_baz = $I->createEntity([
+      'name' => 'Foo Bar Baz',
+      'vid' => 'stanford_event_types',
+    ], 'taxonomy_term');
+    $news_foo_bar_baz= $I->createEntity([
+      'name' => 'Foo Bar Baz',
+      'vid' => 'stanford_news_topics',
+    ], 'taxonomy_term');
+    $pubs_foo_bar_baz = $I->createEntity([
+      'name' => 'Foo Bar Baz',
+      'vid' => 'stanford_publication_topics',
+    ], 'taxonomy_term');
+
     $I->amOnPage('/admin/content?order=changed&sort=desc');
     $I->selectOption('Action', 'Modify field values');
     foreach ($this->nodes as $delta => $node) {

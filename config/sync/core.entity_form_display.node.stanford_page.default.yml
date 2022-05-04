@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.stanford_page.su_page_resource_audience
     - field.field.node.stanford_page.su_page_resource_dimension
     - field.field.node.stanford_page.su_page_resource_type
+    - field.field.node.stanford_page.su_shared_tags
     - node.type.stanford_page
   module:
     - field_group
@@ -199,6 +200,16 @@ content:
     weight: 14
     region: content
     settings: {  }
+    third_party_settings: {  }
+  su_shared_tags:
+    type: options_shs
+    weight: 3
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
   title:
     type: string_textfield
