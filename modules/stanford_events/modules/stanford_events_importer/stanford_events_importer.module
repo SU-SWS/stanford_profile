@@ -83,8 +83,8 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
   // Spin up the things we need and run em.
   $migrateMessage = new MigrateMessage();
   $options = [
-    'update' => TRUE,
-    'force' => TRUE,
+    'update' => 1,
+    'force' => 1,
   ];
 
   try {
@@ -103,8 +103,8 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
     // Spin up the things we need and run em.
     $migrateMessage = new MigrateMessage();
     $options = [
-      'update' => TRUE,
-      'force' => TRUE,
+      'update' => 1,
+      'force' => 1,
     ];
 
     try {
