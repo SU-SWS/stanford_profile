@@ -69,8 +69,8 @@ function stanford_courses_importer_form_config_pages_stanford_courses_importer_f
   // Spin up the things we need and run em.
   $migrateMessage = new MigrateMessage();
   $options = [
-    'update' => TRUE,
-    'force' => TRUE,
+    'update' => 1,
+    'force' => 1,
   ];
 
   try {
