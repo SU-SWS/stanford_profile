@@ -1,8 +1,24 @@
 uuid: c1e1b57f-1f00-49a3-a3eb-2f3b1e9d032f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - scheduler
+third_party_settings:
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_past_date_created: false
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    show_message_after_update: true
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
 name: 'Event Types'
 vid: stanford_event_types
-description: 'Terms used to group types of events so they can be displayed in lists.'
+description: 'Broad categories that specify a type of Event. (i.e. Lecture)'
 weight: 0

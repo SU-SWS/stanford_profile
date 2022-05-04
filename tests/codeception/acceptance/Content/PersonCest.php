@@ -8,6 +8,20 @@ use Faker\Factory;
 class PersonCest {
 
   /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * Test that the default content has installed and is unpublished.
    */
   public function testDefaultContentExists(AcceptanceTester $I) {
@@ -38,7 +52,7 @@ class PersonCest {
     $I->click("a[href='/people/staff']");
     $I->canSeeResponseCodeIs(200);
     $I->see("Sorry, no results found");
-    $I->see("Filter By Person Type");
+    $I->see("Person Type");
   }
 
   /**

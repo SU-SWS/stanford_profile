@@ -1,0 +1,22 @@
+uuid: ffb9d5db-79bb-4e6c-9c9c-f67ade8f6836
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: RjkreUluvN7isH7rMfKqVuw1SmcaO9ikj-ukiYzbDd8
+id: node.su_course_id
+field_name: su_course_id
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

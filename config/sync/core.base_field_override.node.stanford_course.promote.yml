@@ -1,0 +1,24 @@
+uuid: 26344138-4e9e-48cf-89d5-73d5b67faec1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_course
+_core:
+  default_config_hash: hB-CdZSXNSvxX3PRNMn5wDQO6q_exYGpcOHMjyV5ank
+id: node.stanford_course.promote
+field_name: promote
+entity_type: node
+bundle: stanford_course
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

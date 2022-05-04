@@ -1,0 +1,14 @@
+uuid: 7030d98d-e78b-4377-8dad-6b14d3e96a14
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_course
+id: node_type_stanford_course
+entity_type_id: node_type
+entity_id: stanford_course
+action: display_page
+allow_override: 1
+redirect: '[node:su_course_link:uri]'
+redirect_code: 301
+redirect_fallback_action: access_denied

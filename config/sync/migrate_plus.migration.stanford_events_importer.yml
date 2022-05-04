@@ -12,6 +12,7 @@ migration_tags: null
 migration_group: stanford_events
 label: 'Events importer'
 source:
+  orphan_action: forget
   track_changes: true
   plugin: url
   data_fetcher_plugin: http
@@ -183,4 +184,22 @@ process:
       ignore_case: true
 destination:
   plugin: 'entity:node'
+  overwrite_properties:
+    - body/format
+    - body/value
+    - su_event_alt_loc
+    - su_event_audience
+    - su_event_date_time/duration
+    - su_event_date_time/end_value
+    - su_event_date_time/timezone
+    - su_event_date_time/value
+    - su_event_email
+    - su_event_map_link/title
+    - su_event_map_link/uri
+    - su_event_source/uri
+    - su_event_sponsor
+    - su_event_telephone
+    - su_event_type
+    - title
+    - type
 migration_dependencies: {  }

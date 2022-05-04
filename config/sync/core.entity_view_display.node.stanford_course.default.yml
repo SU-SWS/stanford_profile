@@ -1,0 +1,277 @@
+uuid: 178c11e4-2b69-4095-9ae1-cfcf4e31287e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.stanford_course.body
+    - field.field.node.stanford_course.su_course_academic_year
+    - field.field.node.stanford_course.su_course_code
+    - field.field.node.stanford_course.su_course_id
+    - field.field.node.stanford_course.su_course_instructors
+    - field.field.node.stanford_course.su_course_link
+    - field.field.node.stanford_course.su_course_quarters
+    - field.field.node.stanford_course.su_course_section_units
+    - field.field.node.stanford_course.su_course_subject
+    - field.field.node.stanford_course.su_course_tags
+    - field.field.node.stanford_course.su_shared_tags
+    - node.type.stanford_course
+  module:
+    - jumpstart_ui
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: defaults
+        layout_settings:
+          label: 'Courses data'
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+        components:
+          4739a874-31bb-46c9-91bd-a0bcdbb79636:
+            uuid: 4739a874-31bb-46c9-91bd-a0bcdbb79636
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_course:su_course_code'
+              label: 'Course Code'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 3
+            additional: {  }
+          9c974fa8-29c9-40aa-8678-90be7d7f5982:
+            uuid: 9c974fa8-29c9-40aa-8678-90be7d7f5982
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_course:title'
+              label: Title
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 4
+            additional: {  }
+          bebcb891-e0f0-4482-a51c-edbd4b8a1577:
+            uuid: bebcb891-e0f0-4482-a51c-edbd4b8a1577
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_course:su_course_tags'
+              label: 'Course Tags'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 6
+            additional: {  }
+          a9172d90-1e34-4d81-ba12-a1c58c7bb74a:
+            uuid: a9172d90-1e34-4d81-ba12-a1c58c7bb74a
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_course:su_course_instructors'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
+          ceb58449-acb8-4bf9-aadd-f0bc5ea12142:
+            uuid: ceb58449-acb8-4bf9-aadd-f0bc5ea12142
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_course:su_course_academic_year'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 8
+            additional: {  }
+          1216415c-5651-4658-a5d2-e8a8f5216cf6:
+            uuid: 1216415c-5651-4658-a5d2-e8a8f5216cf6
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_course:su_shared_tags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 9
+            additional: {  }
+          9ca8e49a-3632-4103-bd8a-db2bdf4ceed6:
+            uuid: 9ca8e49a-3632-4103-bd8a-db2bdf4ceed6
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_course:su_course_quarters'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 10
+            additional: {  }
+          825cce01-93b7-4c62-aa92-ac48c86eb6c4:
+            uuid: 825cce01-93b7-4c62-aa92-ac48c86eb6c4
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_course:body'
+              label: Body
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 5
+            additional: {  }
+          753612bb-9a41-4c7e-8115-2c24a107e834:
+            uuid: 753612bb-9a41-4c7e-8115-2c24a107e834
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_course:su_course_subject'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
+  layout_library:
+    enable: false
+_core:
+  default_config_hash: 3q3wp63fQ-h1XTJTAHRzKP7uFPch4KfSFHFXWC50bIw
+id: node.stanford_course.default
+targetEntityType: node
+bundle: stanford_course
+mode: default
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  su_course_academic_year:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 107
+    region: main
+  su_course_instructors:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: main
+  su_course_quarters:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 110
+    region: main
+  su_course_subject:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 109
+    region: main
+  su_course_tags:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: main
+  su_shared_tags:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 108
+    region: main
+hidden:
+  body: true
+  search_api_excerpt: true
+  su_course_code: true
+  su_course_id: true
+  su_course_link: true
+  su_course_section_units: true

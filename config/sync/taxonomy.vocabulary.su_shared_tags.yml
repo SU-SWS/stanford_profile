@@ -1,0 +1,27 @@
+uuid: dfac3a5e-2823-46ff-b252-24950155bfc1
+langcode: en
+status: true
+dependencies:
+  module:
+    - flat_taxonomy
+    - scheduler
+third_party_settings:
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_past_date_created: false
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    show_message_after_update: true
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
+  flat_taxonomy:
+    flat: 1
+name: 'Shared Tags'
+vid: su_shared_tags
+description: 'Terms that can be used to describe all content types (i.e. Featured)'
+weight: 0
