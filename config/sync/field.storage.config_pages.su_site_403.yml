@@ -1,0 +1,24 @@
+uuid: 8d3fc680-4d37-459d-b67b-17aa2ddf826e
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - field_permissions
+    - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: config_pages.su_site_403
+field_name: su_site_403
+entity_type: config_pages
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
