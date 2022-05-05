@@ -1,7 +1,8 @@
 <?php
 
-use Faker\Factory;
+use Drupal\Core\Cache\Cache;
 use Drupal\config_pages\Entity\ConfigPages;
+use Faker\Factory;
 
 /**
  * Class SystemSiteConfigCest.
@@ -31,6 +32,7 @@ class SystemSiteConfigCest {
     if ($config_page = ConfigPages::load('stanford_basic_site_settings')) {
       $config_page->delete();
       \Drupal::configFactory()->reset('system.site');
+      Cache::invalidateTags(['route_match']);
     }
   }
 
