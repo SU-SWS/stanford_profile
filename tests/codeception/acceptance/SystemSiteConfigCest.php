@@ -1,6 +1,5 @@
 <?php
 
-use Drupal\Core\Cache\Cache;
 use Drupal\config_pages\Entity\ConfigPages;
 use Faker\Factory;
 
