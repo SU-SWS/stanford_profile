@@ -3,7 +3,9 @@
 use Drupal\config_pages\Entity\ConfigPages;
 
 /**
- * Test for the local lockup settings
+ * Test for the local lockup settings.
+ *
+ * @group local_footer
  */
 class LocalFooterLockupCest {
 
