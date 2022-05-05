@@ -35,11 +35,6 @@ class ExtLinkCest {
       'context' => 'a:0:{}',
     ]);
     $config_page->save();
-
-    // Clean up our assets.
-    if (file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME)) {
-      unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
-    }
   }
 
   /**
