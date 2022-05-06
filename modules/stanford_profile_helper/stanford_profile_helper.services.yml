@@ -4,11 +4,6 @@ services:
     arguments: ['@state', '@config_pages.loader', '@config.factory', '@entity_type.manager', '@stream_wrapper_manager']
     tags:
       - {name: config.factory.override, priority: 5}
-  stanford_profile_helper.event_subscriber:
-    class: '\Drupal\stanford_profile_helper\EventSubscriber\EventSubscriber'
-    arguments: ['@entity_type.manager', '@state']
-    tags:
-      - { name: 'event_subscriber' }
   stanford_profile_helper.menu_link_tree:
     class: Drupal\stanford_profile_helper\MenuLinkTreeOverride
     decorates: menu.link_tree

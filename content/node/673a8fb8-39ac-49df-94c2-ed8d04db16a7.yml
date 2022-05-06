@@ -1,25 +1,27 @@
 _meta:
   version: '1.0'
   entity_type: node
-  uuid: ce9cb7ca-6c59-4eea-9934-0a33057a7ff2
+  uuid: 673a8fb8-39ac-49df-94c2-ed8d04db16a7
   bundle: stanford_page
   default_langcode: en
+  depends:
+    bf34703d-5f52-4278-9f0a-7bd70c282542: user
 default:
   revision_uid:
     -
-      target_id: 1
+      entity: bf34703d-5f52-4278-9f0a-7bd70c282542
   status:
     -
       value: true
   uid:
     -
-      target_id: 1
+      entity: bf34703d-5f52-4278-9f0a-7bd70c282542
   title:
     -
-      value: Publications
+      value: People
   created:
     -
-      value: 1614190289
+      value: 1651861307
   promote:
     -
       value: false
@@ -31,7 +33,7 @@ default:
       value: true
   path:
     -
-      alias: /publications
+      alias: /people
       langcode: en
       pathauto: 1
   rh_action:
@@ -143,71 +145,31 @@ default:
               context_mapping: {  }
             weight: -10
             additional: {  }
-          82d07b03-00fa-4204-8334-9da26b27a3c6:
-            uuid: 82d07b03-00fa-4204-8334-9da26b27a3c6
+          69ac2b3d-4ce0-400d-83e4-09a200b89a82:
+            uuid: 69ac2b3d-4ce0-400d-83e4-09a200b89a82
             region: left
             configuration:
-              id: 'system_menu_block:stanford-publication-topics'
-              label: 'Publication Topics'
-              provider: system
+              id: 'system_menu_block:stanford-person-type'
+              label: 'Person Types'
               label_display: visible
-              level: 1
-              'depth ': 0
+              provider: system
+              level: '1'
+              depth: '0'
               expand_all_items: 0
               context_mapping: {  }
             weight: 0
             additional: {  }
+          fd6d5014-63fc-4ac2-858c-199f77a5b8d8:
+            uuid: fd6d5014-63fc-4ac2-858c-199f77a5b8d8
+            region: main
+            configuration:
+              id: 'views_block:stanford_person-grid_list_all'
+              label: ''
+              label_display: 0
+              provider: views
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            weight: -8
+            additional: {  }
         third_party_settings: {  }
-  su_page_components:
-    -
-      entity:
-        _meta:
-          version: '1.0'
-          entity_type: paragraph_row
-          uuid: e9158340-cb5c-494e-9c66-a959208fe4a8
-          bundle: node_stanford_page_row
-          default_langcode: en
-        default:
-          status:
-            -
-              value: true
-          created:
-            -
-              value: 1614191154
-          behavior_settings:
-            -
-              value: {  }
-          revision_translation_affected:
-            -
-              value: true
-          su_page_components:
-            -
-              entity:
-                _meta:
-                  version: '1.0'
-                  entity_type: paragraph
-                  uuid: 9939d5e0-a261-4f99-b08a-9ba5b43908c1
-                  bundle: stanford_lists
-                  default_langcode: en
-                default:
-                  status:
-                    -
-                      value: true
-                  created:
-                    -
-                      value: 1614211983
-                  behavior_settings:
-                    -
-                      value:
-                        react:
-                          width: 12
-                          label: Lists
-                  revision_translation_affected:
-                    -
-                      value: true
-                  su_list_view:
-                    -
-                      target_id: stanford_publications
-                      display_id: apa_list
-                      arguments: ''
-                      items_to_display: ''

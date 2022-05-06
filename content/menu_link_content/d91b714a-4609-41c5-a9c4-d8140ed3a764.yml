@@ -1,7 +1,7 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
-  uuid: 178b9e51-c3bb-4cd5-a3ac-fe241e27f083
+  uuid: d91b714a-4609-41c5-a9c4-d8140ed3a764
   bundle: menu_link_content
   default_langcode: en
 default:
@@ -10,16 +10,16 @@ default:
       value: true
   title:
     -
-      value: News
+      value: 'All Upcoming Events'
   description:
     -
-      value: News
+      value: 'All upcoming events'
   menu_name:
     -
-      value: main
+      value: stanford-event-types
   link:
     -
-      uri: 'internal:/node/0b83d1e9-688a-4475-9673-a4c385f26247'
+      uri: 'internal:/node/8ba98fcf-d390-4014-92de-c77a59b30f3b'
       title: ''
       options: {  }
   external:
@@ -30,7 +30,7 @@ default:
       value: true
   weight:
     -
-      value: -46
+      value: -50
   expanded:
     -
       value: true
