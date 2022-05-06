@@ -5,6 +5,7 @@
  * stanford_profile_helper.post_update.php
  */
 
+use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\Url;
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\user\Entity\Role;
@@ -189,4 +190,52 @@ function stanford_profile_helper_post_update_8103(&$sandbox) {
   }
 
   $sandbox['#finished'] = count($sandbox['ids']) ? 1 - count($sandbox['ids']) / $sandbox['total'] : 1;
+}
+
+/**
+ * Create event, news, & people landing nodes.
+ */
+function stanford_profile_helper_post_update_9000() {
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  $alias_storage = \Drupal::entityTypeManager()->getStorage('path_alias');
+  $current_profile = \Drupal::config('core.extension')->get('profile');;
+  $profile_path = \Drupal::service('extension.list.profile')
+    ->getPath($current_profile);
+  /** @var \Drupal\default_content\Normalizer\ContentEntityNormalizer $normalizer */
+  $normalizer = \Drupal::service('default_content.content_entity_normalizer');
+  $pages = [
+    '8ba98fcf-d390-4014-92de-c77a59b30f3b' => [
+      'path' => '/events',
+      'type' => 'stanford_events',
+    ],
+    '0b83d1e9-688a-4475-9673-a4c385f26247' => [
+      'path' => '/news',
+      'type' => 'stanford_news',
+    ],
+    '673a8fb8-39ac-49df-94c2-ed8d04db16a7' => [
+      'path' => '/people',
+      'type' => 'stanford_person',
+    ],
+  ];
+
+  foreach ($pages as $uuid => $info) {
+    $number_of_nodes = $node_storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('type', $info['type'])
+      ->count()
+      ->execute();
+
+    if ($alias_storage->loadByProperties(['alias' => $info['path']]) || !$number_of_nodes) {
+      \Drupal::messenger()
+        ->addStatus(t('Node was not created. Either @path exists or no nodes exist for that page.', ['@path' => $info['path']]));
+      continue;
+    }
+
+    $file_path = "$profile_path/content/node/$uuid.yml";
+    if (file_exists($file_path)) {
+      $decoded = Yaml::decode(file_get_contents($file_path));
+      $entity = $normalizer->denormalize($decoded);
+      $entity->save();
+    }
+  }
 }
