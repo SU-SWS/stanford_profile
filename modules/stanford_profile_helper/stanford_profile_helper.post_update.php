@@ -196,8 +196,21 @@ function stanford_profile_helper_post_update_8103(&$sandbox) {
  * Create event, news, & people landing nodes.
  */
 function stanford_profile_helper_post_update_9000() {
+  $pages = \Drupal::entityTypeManager()
+    ->getStorage('page')
+    ->loadMultiple([
+      'stanford_news_list',
+      'stanford_events_upcoming',
+      'people',
+    ]);
+  foreach ($pages as $page) {
+    $page->delete();
+  }
+
   $node_storage = \Drupal::entityTypeManager()->getStorage('node');
   $alias_storage = \Drupal::entityTypeManager()->getStorage('path_alias');
+  \Drupal::service('router.builder')->rebuild();
+
   $current_profile = \Drupal::config('core.extension')->get('profile');;
   $profile_path = \Drupal::service('extension.list.profile')
     ->getPath($current_profile);
@@ -206,7 +219,7 @@ function stanford_profile_helper_post_update_9000() {
   $pages = [
     '8ba98fcf-d390-4014-92de-c77a59b30f3b' => [
       'path' => '/events',
-      'type' => 'stanford_events',
+      'type' => 'stanford_event',
     ],
     '0b83d1e9-688a-4475-9673-a4c385f26247' => [
       'path' => '/news',
@@ -236,6 +249,33 @@ function stanford_profile_helper_post_update_9000() {
       $decoded = Yaml::decode(file_get_contents($file_path));
       $entity = $normalizer->denormalize($decoded);
       $entity->save();
+
+      _stanford_profile_helper_fix_menu_items($entity->id(), $info['path']);
     }
+  }
+}
+
+/**
+ * Find menu items and change them to target the node.
+ *
+ * @param int $node_id
+ *   Node entity id.
+ * @param string $destination_path
+ *   Aliased path of the node.
+ */
+function _stanford_profile_helper_fix_menu_items(int $node_id, string $destination_path) {
+  $menu_link_storage = \Drupal::entityTypeManager()
+    ->getStorage('menu_link_content');
+
+  $menu_link_ids = $menu_link_storage->getQuery()
+    ->accessCheck(FALSE)
+    ->condition('link', "internal:$destination_path")
+    ->execute();
+
+  /** @var \Drupal\menu_link_content\MenuLinkContentInterface $menu_link_item */
+  foreach ($menu_link_storage->loadMultiple($menu_link_ids) as $menu_link_item) {
+    $link = $menu_link_item->get('link')->get(0);
+    $link->set('uri', "internal:/node/$node_id");
+    $menu_link_item->save();
   }
 }
