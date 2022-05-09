@@ -8,6 +8,7 @@
 use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\Url;
 use Drupal\block_content\Entity\BlockContent;
+use Drupal\node\NodeInterface;
 use Drupal\user\Entity\Role;
 
 /**
@@ -79,8 +80,7 @@ function stanford_profile_helper_post_update_8100() {
           throw new \Exception('Trigger log');
         }
       }
-    }
-    catch (\Exception $e) {
+    } catch (\Exception $e) {
       \Drupal::logger('stanford_profile_helper')
         ->error('Unable to set link title for paragraph %id with url %url', [
           '%id' => $paragraph->id(),
@@ -220,14 +220,17 @@ function stanford_profile_helper_post_update_9000() {
     '8ba98fcf-d390-4014-92de-c77a59b30f3b' => [
       'path' => '/events',
       'type' => 'stanford_event',
+      'block' => 'f7125c85-197d-4ba2-9f6f-1126bbda0466',
     ],
     '0b83d1e9-688a-4475-9673-a4c385f26247' => [
       'path' => '/news',
       'type' => 'stanford_news',
+      'block' => '5168834f-3271-4951-bd95-e75340ca5522',
     ],
     '673a8fb8-39ac-49df-94c2-ed8d04db16a7' => [
       'path' => '/people',
       'type' => 'stanford_person',
+      'block' => 'fb905cf3-4bd3-4bcd-ad01-92d25e46ba32',
     ],
   ];
 
@@ -249,8 +252,44 @@ function stanford_profile_helper_post_update_9000() {
       $decoded = Yaml::decode(file_get_contents($file_path));
       $entity = $normalizer->denormalize($decoded);
       $entity->save();
+      _stanford_profile_helper_add_block_contents($entity, $info['block']);
 
       _stanford_profile_helper_fix_menu_items($entity->id(), $info['path']);
+    }
+  }
+}
+
+function _stanford_profile_helper_add_block_contents(NodeInterface $node, $block_uuid) {
+  $block_storage = \Drupal::entityTypeManager()->getStorage('block_content');
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  $row_storage = \Drupal::entityTypeManager()->getStorage('paragraph_row');
+
+  if ($block = $block_storage->loadByProperties(['uuid' => $block_uuid])) {
+    /** @var \Drupal\block_content\BlockContentInterface $block */
+    $block = reset($block);
+    $components = $block->get('su_component');
+    if ($components->count()) {
+      $rows = [];
+      /** @var \Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem $component */
+      foreach ($components as $component) {
+        /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+        $paragraph = $paragraph_storage->load($component->get('target_id')
+          ->getString());
+        $cloned_paragraph = $paragraph->createDuplicate();
+        $cloned_paragraph->enforceIsNew();
+        $cloned_paragraph->save();
+        $row = $row_storage->create([
+          'type' => 'node_stanford_page_row',
+          'su_page_components' => [
+            'target_id' => $cloned_paragraph->id(),
+            'entity' => $cloned_paragraph,
+          ],
+        ]);
+        $row->save();
+        $rows[] = ['target_id' => $row->id(), 'entity' => $row];
+      }
+
+      $node->set('su_page_components', $rows)->save();
     }
   }
 }
