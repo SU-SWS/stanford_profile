@@ -202,6 +202,7 @@ function stanford_profile_helper_post_update_9000() {
       'stanford_news_list',
       'stanford_events_upcoming',
       'people',
+      'courses_list_page'
     ]);
   foreach ($pages as $page) {
     $page->delete();
@@ -231,6 +232,11 @@ function stanford_profile_helper_post_update_9000() {
       'path' => '/people',
       'type' => 'stanford_person',
       'block' => 'fb905cf3-4bd3-4bcd-ad01-92d25e46ba32',
+    ],
+    '14768832-f763-4d27-8df6-7cd784886d57' => [
+      'path' => '/courses',
+      'type' => 'stanford_course',
+      'block' => '2f343c04-f892-49bb-8d28-2c3f4653b02a',
     ],
   ];
 
