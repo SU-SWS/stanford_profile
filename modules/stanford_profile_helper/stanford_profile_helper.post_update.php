@@ -259,39 +259,48 @@ function stanford_profile_helper_post_update_9000() {
   }
 }
 
+/**
+ * Add paragraphs and rows to the node to match the given block.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   Node entity.
+ * @param string $block_uuid
+ *   Block entity UUID.
+ */
 function _stanford_profile_helper_add_block_contents(NodeInterface $node, $block_uuid) {
   $block_storage = \Drupal::entityTypeManager()->getStorage('block_content');
   $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
   $row_storage = \Drupal::entityTypeManager()->getStorage('paragraph_row');
 
-  if ($block = $block_storage->loadByProperties(['uuid' => $block_uuid])) {
-    /** @var \Drupal\block_content\BlockContentInterface $block */
-    $block = reset($block);
-    $components = $block->get('su_component');
-    if ($components->count()) {
-      $rows = [];
-      /** @var \Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem $component */
-      foreach ($components as $component) {
-        /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
-        $paragraph = $paragraph_storage->load($component->get('target_id')
-          ->getString());
-        $cloned_paragraph = $paragraph->createDuplicate();
-        $cloned_paragraph->enforceIsNew();
-        $cloned_paragraph->save();
-        $row = $row_storage->create([
-          'type' => 'node_stanford_page_row',
-          'su_page_components' => [
-            'target_id' => $cloned_paragraph->id(),
-            'entity' => $cloned_paragraph,
-          ],
-        ]);
-        $row->save();
-        $rows[] = ['target_id' => $row->id(), 'entity' => $row];
-      }
-
-      $node->set('su_page_components', $rows)->save();
-    }
+  $block = $block_storage->loadByProperties(['uuid' => $block_uuid]);
+  if (empty($block)) {
+    return;
   }
+
+  /** @var \Drupal\block_content\BlockContentInterface $block */
+  $block = reset($block);
+  $components = $block->get('su_component');
+  if (!$components->count()) {
+    return;
+  }
+  $rows = [];
+  /** @var \Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem $component */
+  foreach ($components as $component) {
+    /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+    $paragraph = $paragraph_storage->load($component->get('target_id')
+      ->getString());
+    $cloned_paragraph = $paragraph->createDuplicate();
+    $cloned_paragraph->enforceIsNew();
+    $cloned_paragraph->save();
+    $row = $row_storage->create([
+      'type' => 'node_stanford_page_row',
+      'su_page_components' => ['entity' => $cloned_paragraph],
+    ]);
+    $row->save();
+    $rows[] = ['entity' => $row];
+  }
+
+  $node->set('su_page_components', $rows)->save();
 }
 
 /**
