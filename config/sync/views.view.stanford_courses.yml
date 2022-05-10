@@ -2080,6 +2080,7 @@ display:
         fields: false
         style: false
         row: false
+        pager: false
       style:
         type: html_list
         options:
@@ -2634,6 +2635,13 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      allow:
+        items_per_page: items_per_page
+      pager:
+        type: some
+        options:
+          items_per_page: '3'
+          offset: '0'
     cache_metadata:
       max-age: -1
       contexts:
