@@ -1,0 +1,82 @@
+uuid: be93000a-8dea-49b5-8e00-9d75302e3275
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.stanford_course.body
+    - field.field.node.stanford_course.su_course_academic_year
+    - field.field.node.stanford_course.su_course_code
+    - field.field.node.stanford_course.su_course_id
+    - field.field.node.stanford_course.su_course_instructors
+    - field.field.node.stanford_course.su_course_link
+    - field.field.node.stanford_course.su_course_quarters
+    - field.field.node.stanford_course.su_course_section_units
+    - field.field.node.stanford_course.su_course_subject
+    - field.field.node.stanford_course.su_course_tags
+    - field.field.node.stanford_course.su_shared_tags
+    - node.type.stanford_course
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
+  layout_library:
+    enable: false
+_core:
+  default_config_hash: 3q3wp63fQ-h1XTJTAHRzKP7uFPch4KfSFHFXWC50bIw
+id: node.stanford_course.teaser
+targetEntityType: node
+bundle: stanford_course
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  su_course_academic_year:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 107
+    region: main
+  su_course_instructors:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: main
+  su_course_tags:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: main
+hidden:
+  body: true
+  search_api_excerpt: true
+  su_course_code: true
+  su_course_id: true
+  su_course_link: true
+  su_course_quarters: true
+  su_course_section_units: true
+  su_course_subject: true
+  su_shared_tags: true

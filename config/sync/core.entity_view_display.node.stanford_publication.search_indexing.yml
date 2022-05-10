@@ -9,28 +9,14 @@ dependencies:
     - field.field.node.stanford_publication.su_publication_citation
     - field.field.node.stanford_publication.su_publication_components
     - field.field.node.stanford_publication.su_publication_cta
+    - field.field.node.stanford_publication.su_publication_image
     - field.field.node.stanford_publication.su_publication_topics
+    - field.field.node.stanford_publication.su_shared_tags
     - node.type.stanford_publication
   module:
     - entity_reference_revisions
-    - layout_builder
-    - layout_builder_restrictions
-    - layout_library
     - link
     - user
-third_party_settings:
-  layout_builder:
-    enabled: false
-    allow_custom: false
-  layout_library:
-    enable: false
-  layout_builder_restrictions:
-    allowed_block_categories: {  }
-    entity_view_mode_restriction:
-      allowed_layouts: {  }
-      blacklisted_blocks: {  }
-      whitelisted_blocks: {  }
-      restricted_categories: {  }
 id: node.stanford_publication.search_indexing
 targetEntityType: node
 bundle: stanford_publication
@@ -82,3 +68,4 @@ hidden:
   search_api_excerpt: true
   stanford_intranet__access: true
   su_publication_image: true
+  su_shared_tags: true

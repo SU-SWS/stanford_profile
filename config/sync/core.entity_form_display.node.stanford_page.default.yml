@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.stanford_page.su_page_resource_audience
     - field.field.node.stanford_page.su_page_resource_dimension
     - field.field.node.stanford_page.su_page_resource_type
+    - field.field.node.stanford_page.su_shared_tags
     - node.type.stanford_page
   module:
     - field_group
@@ -22,6 +23,7 @@ dependencies:
     - path
     - react_paragraphs
     - scheduler
+    - shs
     - stanford_intranet
 third_party_settings:
   field_group:
@@ -46,6 +48,7 @@ third_party_settings:
         - su_page_image
         - su_page_description
         - su_basic_page_type
+        - su_shared_tags
       label: 'Page Metadata'
       region: content
       parent_name: ''
@@ -120,10 +123,14 @@ content:
       display_label: true
     third_party_settings: {  }
   su_basic_page_type:
-    type: options_select
+    type: options_shs
     weight: 2
     region: content
-    settings: {  }
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
   su_page_banner:
     type: paragraphs
@@ -193,6 +200,16 @@ content:
     weight: 14
     region: content
     settings: {  }
+    third_party_settings: {  }
+  su_shared_tags:
+    type: options_shs
+    weight: 3
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
   title:
     type: string_textfield

@@ -1,0 +1,16 @@
+uuid: 6ae9bc7a-aeb7-4418-8e2f-0a7e7c0ab7ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.courses-menu
+    - taxonomy.vocabulary.su_course_subjects
+id: courses_subjects
+label: 'Courses Subjects'
+vocabulary: su_course_subjects
+menu: courses-menu
+expanded: false
+depth: 0
+menu_parent: 'courses-menu:'
+description_field_name: ''
+use_term_weight_order: true

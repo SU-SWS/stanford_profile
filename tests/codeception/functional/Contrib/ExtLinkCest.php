@@ -34,16 +34,13 @@ class ExtLinkCest {
 
     // Validate email links.
     $I->amOnPage('/');
-    $mails = $I->grabMultiple('a.mailto svg.mailto');
-    $I->assertEquals(count($mails), 3);
+    $I->waitForElementVisible('a.mailto svg.mailto');
+    $I->canSeeNumberOfElements('a.mailto svg.mailto', 3);
 
     // External Links in the page-content region.
-    $pageExternals = $I->grabMultiple('#page-content a.su-link--external svg.su-link--external');
-    $I->assertEquals(count($pageExternals), 1);
-
+    $I->canSeeNumberOfElements('#page-content a.su-link--external svg.su-link--external', 1);
     // External links in the local footer.
-    $footerExternals = $I->grabMultiple('.su-local-footer__cell2 a.su-link--external svg.su-link--external');
-    $I->assertEquals(count($footerExternals), 4);
+    $I->canSeeNumberOfElements('.su-local-footer__cell2 a.su-link--external svg.su-link--external', 4);
   }
 
 }

@@ -1,0 +1,151 @@
+uuid: 6afd5587-61b3-49cc-8c6b-0fc762f855e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.courses_list_page
+id: courses_list_page-layout_builder-0
+label: 'Layout Builder'
+weight: 0
+variant: layout_builder
+variant_settings:
+  id: layout_builder
+  label: null
+  weight: 0
+  uuid: e2828ff7-3c97-466e-b401-c4d91f724841
+  sections:
+    -
+      layout_id: defaults
+      layout_settings:
+        label: 'Section - Header'
+        context_mapping: {  }
+        extra_classes: section-stanford-courses-views-header
+        centered: centered-container
+        columns: default
+      components:
+        937e912c-64f8-4f46-99cf-0ae467f6adfa:
+          uuid: 937e912c-64f8-4f46-99cf-0ae467f6adfa
+          region: main
+          configuration:
+            id: jumpstart_ui_page_heading
+            label: 'Heading Block'
+            label_display: '0'
+            provider: jumpstart_ui
+            context_mapping: {  }
+            heading_text: Courses
+            wrapper: h1
+          weight: 0
+          additional: {  }
+          third_party_settings: {  }
+      third_party_settings: {  }
+    -
+      layout_id: jumpstart_ui_two_column
+      layout_settings:
+        label: 'Section - Views'
+        context_mapping: {  }
+        extra_classes: section-courses-views-views
+        centered: centered-container
+        orientation: right
+      components:
+        61638f94-4347-4e73-a0d4-db42bc7d2f9a:
+          uuid: 61638f94-4347-4e73-a0d4-db42bc7d2f9a
+          region: left
+          configuration:
+            id: 'system_menu_block:courses-menu'
+            label: 'Courses Menu'
+            label_display: '0'
+            provider: system
+            context_mapping: {  }
+            level: 1
+            depth: 0
+            expand_all_items: false
+          weight: 0
+          additional: {  }
+        a59f718c-ba7e-45a8-ad79-0f8265754493:
+          uuid: a59f718c-ba7e-45a8-ad79-0f8265754493
+          region: main
+          configuration:
+            id: 'views_block:stanford_courses-default_list_viewfield_block'
+            label: ''
+            label_display: '0'
+            provider: views
+            context_mapping: {  }
+            views_label: ''
+            items_per_page: none
+          weight: 3
+          additional: {  }
+          third_party_settings: {  }
+        4335fb4b-0c3a-4a4c-9e2f-5310d6a76692:
+          uuid: 4335fb4b-0c3a-4a4c-9e2f-5310d6a76692
+          region: main
+          configuration:
+            id: jumpstart_ui_skipnav_main_anchor
+            label: 'Main content anchor target'
+            label_display: '0'
+            provider: jumpstart_ui
+            context_mapping: {  }
+          weight: 0
+          additional: {  }
+          third_party_settings: {  }
+        38315261-6ab0-4454-99e5-91b0ccfe6236:
+          uuid: 38315261-6ab0-4454-99e5-91b0ccfe6236
+          region: left
+          configuration:
+            id: 'menu_block:news-topics'
+            label: 'Topics Menu'
+            label_display: '0'
+            provider: menu_block
+            context_mapping: {  }
+            follow: false
+            follow_parent: child
+            level: 1
+            depth: 0
+            parent: 'news-topics:'
+            suggestion: news_topics
+            expand: false
+          weight: 0
+          additional: {  }
+          third_party_settings: {  }
+        fd40f8b0-c0cd-4f55-b599-cb52db332147:
+          uuid: fd40f8b0-c0cd-4f55-b599-cb52db332147
+          region: main
+          configuration:
+            id: 'block_content:2f343c04-f892-49bb-8d28-2c3f4653b02a'
+            label: 'Courses Intro'
+            label_display: '0'
+            provider: block_content
+            status: true
+            info: ''
+            view_mode: full
+            context_mapping: {  }
+          weight: 1
+          additional: {  }
+          third_party_settings: {  }
+      third_party_settings: {  }
+    -
+      layout_id: jumpstart_ui_one_column
+      layout_settings:
+        label: 'Newsletter Signup Block'
+        extra_classes: ''
+        centered: centered-container
+        columns: default
+      components:
+        5bebd3b3-a005-4f0e-b6ae-6dde5947c92e:
+          uuid: 5bebd3b3-a005-4f0e-b6ae-6dde5947c92e
+          region: main
+          configuration:
+            id: 'views_block:su_block_edit_links-courses_intro'
+            label: ''
+            label_display: '0'
+            provider: views
+            context_mapping: {  }
+            views_label: ''
+            items_per_page: none
+          weight: 2
+          additional: {  }
+          third_party_settings: {  }
+      third_party_settings: {  }
+page: courses_list_page
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

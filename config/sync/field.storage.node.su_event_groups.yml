@@ -1,0 +1,20 @@
+uuid: 286c0706-41c9-41ff-8562-3479b36742ac
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.su_event_groups
+field_name: su_event_groups
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

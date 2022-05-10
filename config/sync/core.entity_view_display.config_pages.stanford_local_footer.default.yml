@@ -37,7 +37,6 @@ dependencies:
     - ds
     - field_formatter_class
     - link
-    - markup
     - options
     - text
 third_party_settings:
@@ -49,7 +48,7 @@ third_party_settings:
       entity_classes: all_classes
       settings:
         pattern:
-          field_templates: only_content
+          field_templates: default
     regions:
       lockup_title:
         - 'dynamic_token_field:config_pages-su_site_name'
@@ -154,13 +153,6 @@ content:
         class: ''
     weight: 13
     region: signup_form_action
-  su_local_foot_help:
-    type: markup
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 16
-    region: content
   su_local_foot_pr_co:
     type: text_default
     label: hidden
@@ -264,6 +256,7 @@ content:
 hidden:
   search_api_excerpt: true
   su_footer_enabled: true
+  su_local_foot_help: true
   su_local_foot_line_1: true
   su_local_foot_line_2: true
   su_local_foot_line_3: true

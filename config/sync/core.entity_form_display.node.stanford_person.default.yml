@@ -30,6 +30,7 @@ dependencies:
     - field.field.node.stanford_person.su_person_short_title
     - field.field.node.stanford_person.su_person_telephone
     - field.field.node.stanford_person.su_person_type_group
+    - field.field.node.stanford_person.su_shared_tags
     - node.type.stanford_person
   module:
     - allowed_formats
@@ -331,6 +332,16 @@ content:
   su_person_type_group:
     type: options_shs
     weight: 17
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
+  su_shared_tags:
+    type: options_shs
+    weight: 31
     region: content
     settings:
       display_node_count: false
