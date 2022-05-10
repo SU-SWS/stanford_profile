@@ -3,8 +3,8 @@ type: module
 description: 'Courses Migration Importer'
 core_version_requirement: ^8.8 || ^9
 package: Stanford
+version: 8.x-1.2
 dependencies:
-  - stanford_courses
-  - migrate_tools
-  - migrate_plus
-version: 8.2.7
+  - stanford_courses:stanford_courses
+  - migrate_tools:migrate_tools
+  - migrate_plus:migrate_plus

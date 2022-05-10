@@ -30,7 +30,7 @@ function App() {
     fetchMonthEvents(currentDate.getMonth(), currentDate.getFullYear());
 
     const params = {
-      filters: {status: 1},
+      filter: {status: 1},
       sort: {date: {path: 'su_event_date_time.value', direction: 'ASC'}},
       page: {limit: 1},
     };

@@ -48,11 +48,14 @@
         {%- endif -%}
   </div>
 
+  {%- if course_list_code|render_clean is not empty or course_list_academic_year|render_clean is not empty -%}
   <header class="su-course-list__header">
-    {%- if course_list_code is not empty -%}<strong>{{ course_list_code|render|striptags|replace({'\n': '', ' ': ''}) }}</strong>{%-  endif -%}&nbsp;|{%- if course_list_academic_year is not empty -%}{{ course_list_academic_year }}{%-  endif -%}
-
-    {%- if course_list_quarters is not empty -%}<time>{{ course_list_quarters }}</time>{%-  endif -%}
+    {%- if course_list_code|render_clean is not empty -%}<strong>{{ course_list_code|render|striptags|replace({'\n': '', ' ': ''})}}</strong>{%-  endif -%}
+    {%- if course_list_code|render_clean is not empty and course_list_academic_year|render_clean  is not empty -%} &nbsp;|{%-  endif -%}
+    {%- if course_list_academic_year|render_clean is not empty -%}{{ course_list_academic_year }}{%-  endif -%}
+    {%- if course_list_quarters is not empty -%}{{ course_list_quarters }}{%-  endif -%}
   </header>
+  {%-  endif -%}
 
   {%- if course_list_instructors|render|striptags('<drupal-render-placeholder>')|trim is not empty -%}
   <div class="su-course-list__instructors">

@@ -90,7 +90,7 @@
 
 // Wrapper spacing
 @include grid-media-min('lg') {
-  .flex-lg-9-of-12 {
+  .flex-container {
     .main-region {
       @include responsive-spacing('padding-left', 2);
     }

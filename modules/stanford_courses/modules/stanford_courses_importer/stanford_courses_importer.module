@@ -6,10 +6,11 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\migrate_tools\MigrateBatchExecutable;
+use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\MigrateMessage;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Cache\Cache;
+use Drupal\stanford_migrate\StanfordMigrateBatchExecutable;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -23,11 +24,11 @@ function stanford_courses_importer_form_config_pages_stanford_courses_importer_f
     '#type' => 'submit',
     '#value' => t('Save & Import'),
     '#name' => 'op',
-    '#button_type' => "primary",
+    '#button_type' => 'primary',
     '#submit' => [
-      "::submitForm",
-      "::save",
-      "stanford_courses_importer_form_config_pages_stanford_courses_importer_form_alter_submit",
+      '::submitForm',
+      '::save',
+      'stanford_courses_importer_form_config_pages_stanford_courses_importer_form_alter_submit',
     ],
   ];
   return $form;
@@ -58,7 +59,7 @@ function stanford_courses_importer_config_pages_presave(EntityInterface $entity)
 function stanford_courses_importer_form_config_pages_stanford_courses_importer_form_alter_submit(array &$form, FormStateInterface $form_state) {
   // Get the migration object from the ones available.
   $migrations = stanford_migrate_migration_list();
-  $migration_plugin = $migrations["stanford_courses"]["stanford_courses"] ?? FALSE;
+  $migration_plugin = $migrations['stanford_courses']['stanford_courses'] ?? FALSE;
 
   // Can't find it.
   if (!$migration_plugin) {
@@ -66,20 +67,19 @@ function stanford_courses_importer_form_config_pages_stanford_courses_importer_f
     return;
   }
 
-  // Spin up the things we need and run em.
+  $migration =  $migrations['stanford_courses']['stanford_courses'];
+
+  $migration->interruptMigration(MigrationInterface::RESULT_STOPPED);
+  $migration->setStatus(MigrationInterface::STATUS_IDLE);
+
   $migrateMessage = new MigrateMessage();
   $options = [
-    'update' => 1,
-    'force' => 1,
+    'limit' => 0,
+    'update' => 0,
+    'force' => 0,
+    'sync' => TRUE,
   ];
 
-  try {
-    $executable = new MigrateBatchExecutable($migration_plugin, $migrateMessage, $options);
-    $executable->batchImport();
-
-  }
-  catch (Exception $e) {
-    \Drupal::messenger()->addError('Could not run Courses importer!');
-  }
-
+  $executable = new StanfordMigrateBatchExecutable($migration, $migrateMessage, $options);
+  $executable->batchImport();
 }
