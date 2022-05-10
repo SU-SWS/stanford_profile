@@ -1,5 +1,13 @@
 # Stanford Profile
 
+8.x-4.1
+--------------------------------------------------------------------------------
+_Release Date: 2022-05-10_
+
+- D8CORE-2331: Updated help on media caption field text (#542)
+- Allow admins to change the home page via site settings (#540)
+- D8CORE-5833: Fix for courses view to respect chosen limit in card grid list paragraph (#539)
+
 8.x-4.0
 --------------------------------------------------------------------------------
 _Release Date: 2022-05-02_
@@ -27,6 +35,13 @@ _Release Date: 2022-05-02_
 - D8CORE-5172: Updated references to localist and events-legacy urls
 - DO not require lockup option select, prevent requiring lockup fields
 
+
+8.x-3.2
+--------------------------------------------------------------------------------
+_Release Date: 2022-03-22_
+
+- DO not require lockup option select, prevent requiring lockup fields
+- D8CORE-5172: Updated references to localist and events-legacy urls
 
 8.x-3.1
 --------------------------------------------------------------------------------

@@ -83,7 +83,7 @@ class EntityReferenceCest {
       'type' => 'stanford_entity',
       'su_list_headline' => 'Headliner',
       'su_list_description' => [
-        'format' => 'stanford_basic_html',
+        'format' => 'stanford_html',
         'value' => '<p>Lorem Ipsum</p>',
       ],
       'su_list_button' => ['uri' => 'http://google.com', 'title' => 'Google'],
