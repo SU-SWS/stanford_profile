@@ -986,7 +986,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<div class="stanford-person-terms-term-link">Results for: {{ name }}</div>'
+            value: '<div class="stanford-person-terms-term-link">Results for: {{ arguments.tid }}</div>'
             format: stanford_html
           tokenize: true
       display_extenders: {  }
