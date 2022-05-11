@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * stanford_publication.install
+ */
+
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+/**
+ * Implements hook_install().
+ */
+function stanford_publication_install() {
+  MenuLinkContent::create([
+    'title' => 'All',
+    'link' => 'internal:/publications',
+    'weight' => -99,
+    'menu_name' => 'stanford-publication-topics',
+  ])->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function stanford_publication_uninstall() {
+  \Drupal::state()->delete('stanford_publication.citation_format');
+}
+
+/**
+ * Create the 'All' publication topic term.
+ */
+function stanford_publication_update_8001() {
+  stanford_publication_install();
+}

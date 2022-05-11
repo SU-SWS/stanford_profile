@@ -1,0 +1,68 @@
+name: 'Stanford Person'
+type: module
+description: 'A person bio and supporting information content type'
+core_version_requirement: ^8 || ^9
+package: Stanford
+version: 9.0.0
+dependencies:
+  - allowed_formats:allowed_formats
+  - auto_entitylabel:auto_entitylabel
+  - ctools:ctools
+  - drupal:layout_builder
+  - drupal:link
+  - drupal:media_library
+  - drupal:menu_ui
+  - drupal:node
+  - drupal:paragraphs
+  - drupal:path
+  - drupal:taxonomy
+  - drupal:text
+  - drupal:views
+  - entity_reference_revisions:entity_reference_revisions
+  - field_group:field_group
+  - jumpstart_ui:jumpstart_ui
+  - layout_builder_restrictions:layout_builder_restrictions
+  - menu_block:menu_block
+  - page_manager:page_manager
+  - page_manager:page_manager_ui
+  - pathauto:pathauto
+  - shs:shs
+  - stanford_media:stanford_media
+  - stanford_text_editor:stanford_text_editor
+  - taxonomy_menu:taxonomy_menu
+  - view_unpublished:view_unpublished
+  - views_contextual_filters_or:views_contextual_filters_or
+  - views_infinite_scroll:views_infinite_scroll
+
+default_content:
+  block_content:
+    - fb905cf3-4bd3-4bcd-ad01-92d25e46ba32
+  file:
+    - 433e17b4-e705-4448-9467-93a03222e3f7
+    - 4d5dde7e-f2c7-4d27-8ad1-99623b1308f8
+  media:
+    - 381f792e-24b4-4c50-b5cc-69c13702f93a
+    - a4660e7f-d4bf-4a28-8030-9dc8576b1c9a
+  menu_link_content:
+    - a5f9f185-b376-4cab-b3bd-dc3b03617cea
+  node:
+    - 6df8090b-5dca-4386-9d72-d86e0156c0a9
+  paragraph:
+    - 01072cf4-793d-4262-8182-b44be7287951
+    - 3e8e3b0e-7803-4713-9f37-7c479f9b3365
+    - bd2273a4-e1f0-4fee-81b9-e98442529610
+  taxonomy_term:
+    - 09700e40-34cd-4168-83f0-f9831651077e
+    - 0d6e3ecd-f7f4-42c7-adc3-af48af999924
+    - 3f0dfa42-d32c-45e6-a984-493fd8a1a56c
+    - 55a7e336-c9d8-4fa6-8d2e-b9ec04600d26
+    - 684cfe9e-80a2-42ec-987f-e99015d00a3e
+    - 6e9c4b16-655e-49f2-b737-9c5421cba82a
+    - 7bdb1a78-0933-4c45-b774-ab04f9891322
+    - 81a712e0-b40f-4ffa-9152-2f97495ca730
+    - a6f8bcd2-3334-4ce9-aaf4-d23be467eb21
+    - df47c78b-8710-48de-9712-f45b0cf65a27
+    - eece3edf-8823-419e-b1ff-8e622eb43bc2
+    - f3bb3c7a-90ee-42af-ae38-381a502bb30c
+    - f836a02f-19a1-4455-ba6b-1d46fa3fcc90
+    - fc64801e-2194-4755-9de3-38b982117dcf

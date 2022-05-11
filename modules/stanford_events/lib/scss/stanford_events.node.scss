@@ -1,0 +1,346 @@
+@charset 'UTF-8';
+@import "./stanford_events.config";
+
+.section-editorial-content {
+  @include modular-spacing('padding', 6 null 3 null);
+  @include modular-spacing('margin', null null 5 null);
+
+  color: $su-color-black;
+
+  h1 {
+    @include modular-spacing('margin', null null -1 null);
+    @include modular-typography(5);
+  }
+
+  .su-event-label-past {
+    color: #6d6c69;
+    text-transform: uppercase;
+
+    .divider {
+      @include margin(null 5px);
+
+    }
+  }
+
+  .su-event-type {
+
+    a {
+      color: $su-color-bright-red;
+      font-weight: $su-font-regular;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: $su-color-black;
+      }
+    }
+  }
+
+  .su-event-dek {
+    @include big-paragraph;
+    @include modular-spacing('margin', null null 4 null);
+  }
+
+  .su-event-sponsor {
+    @include subheading;
+  }
+}
+
+.su-events-type-schedule {
+  .node-stanford-event-su-event-type {
+    @include modular-spacing('margin', 5 null);
+
+    h2 {
+      @include big-paragraph;
+      @include modular-spacing('margin', null null -3 null);
+      @include modular-spacing('padding', 0 null null null);
+
+      border-top: 1px solid $su-color-cool-grey-15;
+      font-weight: $su-font-semi-bold;
+    }
+
+    .su-event {
+      a {
+        color: $su-color-bright-red;
+        font-weight: $su-font-regular;
+
+        &:hover,
+        &:focus {
+          color: $su-color-black;
+        }
+      }
+    }
+
+    .su-event-type-bottom {
+      a {
+        color: $su-color-bright-red;
+        font-weight: $su-font-regular;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          color: $su-color-black;
+        }
+      }
+    }
+  }
+}
+
+.su-events-details {
+
+  .details-wrapper {
+    @include small-paragraph;
+    @include box-shadow('paper');
+    @include modular-spacing('padding', 2 3);
+    @include modular-spacing('margin', 3 null 3 null);
+  }
+
+  .right-region {
+    @include grid-media-min('md') {
+      padding-top: 45px;
+    }
+
+    @include grid-media-max('sm') {
+      &.flex-6-of-12 {
+        flex: unset;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .jumpstart-ui-page-heading {
+
+    h2 {
+      @include modular-typography(1);
+    }
+  }
+
+  .node-stanford-event-su-event-location,
+  .node-stanford-event-su-event-alt-loc,
+  .node-stanford-event-su-event-telephone,
+  .node-stanford-event-su-event-audience {
+
+    h2 {
+      @include small-paragraph;
+      @include modular-spacing('padding', null null null 1);
+
+      font-weight: $su-font-bold;
+    }
+  }
+
+  .su-event-cta {
+
+    a {
+      color: $su-color-white;
+
+      &.su-link--external {
+        &::after {
+          background-color: $su-color-white;
+        }
+      }
+
+      &.mailto {
+        svg {
+          fill: $su-color-white;
+        }
+      }
+    }
+  }
+
+  .node-stanford-event-su-event-date-time,
+  .node-stanford-event-su-event-location,
+  .node-stanford-event-su-event-alt-loc,
+  .node-stanford-event-su-event-map-link,
+  .node-stanford-event-su-event-telephone,
+  .node-stanford-event-su-event-audience {
+
+    &::before {
+      @include small-paragraph;
+
+      color: $su-color-black;
+      font-family: 'Font Awesome 5 Free';
+      // Need this for the new version of FA. Will go away later.
+      font-weight: $su-font-semi-bold;
+      position: absolute;
+    }
+
+    div {
+      @include modular-spacing('padding', null null null 1);
+    }
+  }
+
+  .su-event-text-past {
+    @include caption;
+
+    color: #544948;
+    padding-top: 5px;
+  }
+
+  .node-stanford-event-su-event-audience {
+
+    div {
+      div {
+        padding-left: 0;
+      }
+    }
+  }
+
+  // Icon set up.
+  // Calendar icon
+  div.node-stanford-event-su-event-date-time {
+    margin-bottom: 0;
+
+    &::before {
+      // Need to switch to the SU icons.
+      content: "\f073";
+
+      @include grid-media-max('sm') {
+        left: -16px;
+      }
+    }
+
+    & ~ div.node-stanford-event-su-event-date-time {
+      @include modular-spacing('margin', null null 2 null);
+
+      &::before {
+        // Override icon with blank.
+        content: "";
+
+      }
+    }
+  }
+
+  .node-stanford-event-su-event-location,
+  .node-stanford-event-su-event-alt-loc {
+    &::before {
+      // Need to switch to the SU icons.
+      content: "\f3c5";
+
+      @include grid-media-max('sm') {
+        left: -16px;
+      }
+    }
+  }
+
+  .node-stanford-event-su-event-telephone {
+    &::before {
+      // Need to switch to the SU icons.
+      content: "\f095";
+      transform: scaleX(-1);
+
+      @include grid-media-max('sm') {
+        left: -16px;
+      }
+    }
+  }
+
+  .node-stanford-event-su-event-audience {
+    &::before {
+      // Need to switch to the SU icons.
+      content: "\f0c0";
+
+      @include grid-media-max('sm') {
+        left: -17px;
+      }
+    }
+  }
+
+  .node-stanford-event-su-event-date-time {
+    @include modular-spacing('margin', null null 2 null);
+  }
+
+  // Need conditions for the map link being included.
+  .node-stanford-event-su-event-location {
+    &+ .node-stanford-event-su-event-map-link {
+      @include modular-spacing('margin', -3 null 2 null);
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  // Need conditions for the map link being not included.
+  .node-stanford-event-su-event-location {
+    &+ .node-stanford-event-su-event-telephone {
+      @include modular-spacing('margin', 2 null null null);
+    }
+  }
+
+  .node-stanford-event-su-event-email {
+    @include modular-spacing('margin', null null 2 null);
+    @include modular-spacing('padding', null null null 1);
+
+  }
+
+  .node-stanford-event-su-event-cta {
+    @include modular-spacing('padding', 3 null 5 null);
+
+    text-align: center;
+  }
+
+}
+
+.su-events-body {
+  .main-region {
+    @include modular-spacing('margin', null null 5 null);
+  }
+}
+
+.stanford-events-more-events-block {
+  .block__title {
+    text-align: center;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Schedule Paragraph Styles.
+// -----------------------------------------------------------------------------
+
+// Override of the default margin for paragraphs for the nested ones in the
+// schedule type.
+.content {
+  .su-event-schedule {
+    .ptype-stanford-person-cta {
+      @include modular-spacing('margin-bottom', 0);
+    }
+  }
+}
+
+// The Schedule View.
+.stanford-events-schedule-event-schedule-block {
+
+  // The block title & label (Schedule)
+  .block__title {
+    @include type-a;
+    @include modular-spacing('margin-bottom', 3);
+  }
+
+  // The aggregated group heading.
+  .grouping-title {
+    @include type-b;
+    @include modular-spacing('margin-bottom', 4);
+  }
+
+  // Each schedule item.
+  .su-event-schedule {
+    @include modular-spacing('margin-bottom', 5);
+  }
+
+  // The speakers field.
+  .su-event-schedule__speakers {
+    > div {
+      @include modular-spacing('margin-bottom', 1);
+
+      &:last-of-type {
+        @include margin(null null 0 null);
+      }
+    }
+  }
+
+}
+
+// -----------------------------------------------------------------------------
+// End Schedule Paragraph Styles.
+// -----------------------------------------------------------------------------

@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.su-wysiwyg-text {
+
+  // Button Spacing
+  [class^="su-button"] {
+    @include modular-spacing('margin', null 0 0 null);
+  }
+
+  // Allow the power user to stack buttons with .su-stack-button class.
+  .su-stack-button {
+    [class*="su-button"] {
+      display: block;
+      width: max-content;
+    }
+
+    // We want don't want to target the margin on the first button.
+    [class*="su-button"] + [class*="su-button"] {
+      @include margin(-1rem null null null);
+    }
+
+    &.text-align-center {
+      a {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    &.text-align-right {
+      a {
+        margin-left: auto;
+        margin-right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,228 @@
+@charset "UTF-8";
+
+@import '../config';
+
+// Publication list page spacing
+.section-publications {
+  h1 {
+    @include responsive-spacing('margin-bottom', 5);
+  }
+}
+
+.stanford-publications-related {
+  @include responsive-spacing('margin-bottom', 9);
+
+  .block__title {
+    @include type-b;
+
+    text-align: center;
+  }
+
+  .flex-3-of-12 {
+    @include grid-media-min('lg') {
+      flex: calc(33% - 36px);
+      max-width: calc(33% - 36px);
+    }
+
+    @include grid-media-max('md') {
+      flex: calc(100% - 36px);
+      max-width: calc(100% - 36px);
+    }
+  }
+
+  .su-card {
+    .su-card__contents {
+
+      > span {
+        @include small-paragraph;
+        @include responsive-spacing('margin-bottom', -1);
+
+        font-weight: 600;
+      }
+
+      a {
+        @include small-paragraph;
+
+        font-weight: $su-font-regular;
+        color: $su-color-bright-red;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          color: $su-color-black;
+          text-decoration: underline;
+        }
+      }
+
+
+      h2 {
+        > a:not(.su-link--external) {
+          @include type-e;
+          @include link-icon(caret-right, 1.2rem, right);
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: $su-color-bright-red;
+
+            &::after {
+              background-color: $su-color-bright-red;
+            }
+          }
+
+          &::after {
+            background-color: $su-color-bright-red;
+          }
+        }
+
+        > a {
+          @include type-e;
+
+          color: $su-color-black;
+          font-weight: $su-font-bold;
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: $su-color-bright-red;
+
+            &::after {
+              background-color: $su-color-bright-red;
+            }
+          }
+
+          &::after {
+            background-color: $su-color-bright-red;
+            width: 1.2rem;
+            height: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Extra spacing needed.
+.centered-container {
+  .su-publications-node--filtered {
+    @include responsive-spacing('margin-bottom', 6);
+  }
+}
+
+// Lines and top spacing for all the views.
+.stanford-publications {
+
+  .su-padding-top-3 {
+    border-bottom: 1px solid $su-color-cool-grey-25;
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+  }
+}
+
+.stanford-publications {
+  &.view {
+    @include big-paragraph;
+
+    a {
+      color: $su-color-bright-red;
+      text-decoration: none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $su-color-black;
+        text-decoration: underline;
+
+        &::after {
+          background-color: $su-color-bright-red;
+        }
+      }
+
+      &::after {
+        background-color: $su-color-bright-red;
+      }
+    }
+
+    > div:not(:first-of-type) {
+      @include responsive-spacing('padding-top', 3);
+
+    }
+
+    > div:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  // This creates the indent on subsequent lines.
+  // Default should be Chicago
+  .csl-entry {
+    margin-left: 0.9em;
+    text-indent: -0.9em;
+  }
+
+  // More link
+  // Load more set up
+  .pager {
+    @include responsive-spacing('margin-bottom', 5);
+
+    &,
+    + .js-pager__items {
+      @include responsive-spacing('margin', 5 null 5 null);
+    }
+  }
+}
+
+// Views in the paragraphs
+.su-padding-top-3 {
+  &.su-padding-bottom-3 {
+
+    &.views-row {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Related views block on the node page.
+.stanford-publications-related {
+  .stanford-publications {
+    &.view {
+      > div:first-of-type,
+      > div {
+        padding-top: 0;
+      }
+    }
+  }
+
+  //Back to all Publications link
+  .more-link {
+    @include responsive-spacing('margin', 3 null 9 null);
+
+    flex: 100%;
+    margin: 0 auto;
+    text-align: center;
+
+    a {
+      @include button-primary;
+    }
+  }
+}
+
+// adjusting to match the other list page gutter spacing.
+.jumpstart-ui--two-column {
+  >.left-region {
+    + .flex-lg-9-of-12 {
+      @include modular-spacing('padding-left', 2);
+
+      .ptype-stanford-lists {
+        padding-left: 0;
+
+        .field--name-su-list-view {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,23 @@
+accordion:
+  label: Accordion
+  description: "Collapsible accordion."
+  fields:
+    title:
+      type: text
+      label: Title
+      description: "Accordion Title"
+      preview: "Accordion Title"
+    contents:
+      type: text
+      label: Contents
+      description: "The contents of the accordion body."
+      preview: "<p>Lorem Ipsum</p>"
+
+  use: "@jumpstart_ui/components/accordion/accordion.html.twig"
+  libraries:
+    - accordion:
+        css:
+          component:
+            ../../../dist/css/accordion.css: { }
+        dependencies:
+          - core/drupal.collapse

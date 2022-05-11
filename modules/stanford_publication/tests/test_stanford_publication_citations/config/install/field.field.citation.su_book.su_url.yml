@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_url
+    - stanford_publication.citation_type.su_book
+  module:
+    - link
+id: citation.su_book.su_url
+field_name: su_url
+entity_type: citation
+bundle: su_book
+label: URL
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

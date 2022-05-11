@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+// example mixin for black icons, which turn white on hover.
+//@mixin example--black-icons {
+//  &,
+//  &.su-link--action,
+//  &.su-link--external,
+//  &.su-link--download,
+//  &.su-link--video,
+//  &.su-link--jump,
+//  &.su-link--top,
+//  &.su-link--internal { // needed specificity to override new module updates
+//    &::after {
+//      background-color: $su-color-black;
+//    }
+//
+//    svg {
+//      &.mailto {
+//        fill: $su-color-black;
+//      }
+//    }
+//
+//    &:hover,
+//    &:focus {
+//      &::after {
+//        background-color: $su-color-white;
+//      }
+//
+//      svg {
+//        &.mailto {
+//          fill: $su-color-white;
+//        }
+//      }
+//    }
+//  }
+//}

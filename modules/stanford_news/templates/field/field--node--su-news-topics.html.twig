@@ -1,0 +1,34 @@
+{#
+  Ensures that the visually hidden option for field labels works correctly.
+  @todo: Remove when https://www.drupal.org/node/2779919 is resolved.
+#}
+{% set title_attributes = title_attributes.addClass(label_display == 'visually_hidden' ? 'visually-hidden') %}
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes }}>
+      {% for item in items %}
+        <span{{ item.attributes }}>{{ item.content }}</span>
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for item in items %}
+      <span{{ attributes }}>{{ item.content }}</span>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes }}>
+    <span{{ title_attributes.addClass(title_classes) }}>
+      {{ label }}
+    </span>
+    {% if multiple %}
+      <div>
+    {% endif %}
+    {% for item in items %}
+      <span{{ item.attributes }}>{{ item.content }}</span>
+    {% endfor %}
+    {% if multiple %}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

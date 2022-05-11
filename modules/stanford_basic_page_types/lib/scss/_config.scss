@@ -1,0 +1,9 @@
+@charset 'UTF-8';
+
+// Remove this variable if you are not using assets directly out of Decanter
+// that need to be included in the webpack build.
+$su-image-path: '~decanter/core/src/img/';
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts/';
+
+// Import Decanter Library:
+@import 'decanter/core/src/scss/decanter-no-markup';

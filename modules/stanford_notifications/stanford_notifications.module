@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * stanford_notifications.module
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_toolbar().
+ */
+function stanford_notifications_toolbar() {
+  return \Drupal::service('notification_service')->toolbar();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function stanford_notifications_user_delete(EntityInterface $entity) {
+  \Drupal::service('notification_service')->clearUserNotifications($entity);
+}

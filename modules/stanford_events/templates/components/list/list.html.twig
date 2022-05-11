@@ -1,0 +1,155 @@
+{#
+  Event list item
+
+  Template for an Event List Item.
+
+  * Available variables:
+  * - attributes: For additional HTML attributes not already provided.
+  * - modifier_class: Additional CSS classes to change look and behavior.
+  * - start_month: Starting month of the event.
+  * - start_date: Date of the event
+  * - end_month: Ending month of the event if it spans more than one day.
+  * - end_date: Ending day of the event if it spans more than one day.
+  * - audience: Optional audience for the event.
+  * - headline: Title of the event. Can be a link off to another website.
+  * - subheadline: Optional subtile for the event.
+  * - dek: Descriptive dek/deck for the event.
+  * - date_time: Date and time for the event.
+  * - location: Where it is being held.
+#}
+
+{%- set attributes = attributes.addClass(['su-event-list-item', modifier_class]) -%}
+{%- set event_url = event_url|render_clean -%}
+
+{# Clean up the date fields. #}
+{%- set start_date = start_date|render_clean -%}
+{%- set end_date = end_date|render_clean -%}
+{%- set start_month = start_month|render_clean -%}
+{%- set end_month = end_month|render_clean -%}
+
+{# Separate URL and title #}
+{%- set link_attributes = create_attribute({'class': ['su-link']}) -%}
+{%- set is_external = false -%}
+{%- if url|render_clean is not empty -%}
+  {%- set is_external = url|render|striptags|split('//')[1] ? true : false -%}
+  {%- if is_external -%}
+    {%- set link_attributes = link_attributes.addClass('su-link--external') -%}
+  {%- endif %}
+{%- endif -%}
+
+<div {{ attributes }}>
+  <div class="su-event-list-item__date">
+      <div class="su-date-stacked su-date-stacked--no-background" aria-hidden="true">
+        <span class="su-event-start-month">{{ start_month }}</span>
+        <span class="su-event-start-date">{{ start_date }}</span>
+    </div>
+
+    {# Seperator and end date should be conditional #}
+    {%- if start_date != end_date or start_month != end_month %}
+      <span class="su-event-list-item__date__seperator" aria-hidden="true">&ndash; to &ndash;</span>
+
+      <div class="su-date-stacked su-date-stacked--no-background" aria-hidden="true">
+        <span class="su-event-end-month">{{ end_month }}</span>
+        <span class="su-event-end-date">{{ end_date }}</span>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="su-event-list-item__details">
+
+    {# Event Type  #}
+    {%- if event_type|render_clean is not empty %}
+      <span class="event-list-item__type">{{- event_type -}}</span>
+    {%- endif -%}
+
+    {# Event Title  #}
+    {%- if url|render_clean is empty -%}
+      {{- headline -}}
+    {%- else -%}
+      <h2><a {{ link_attributes }} href="{{ url|render_clean }}">{{ headline|render_clean }}</a></h2>
+    {%- endif -%}
+
+    {# Event Subheadline  #}
+    {%- if subheadline|render_clean is not empty %}
+      <div class="event-list-item__subheadline">{{- subheadline -}}</div>
+    {%- endif -%}
+
+    {# Event Dek  #}
+    {%- if dek|render_clean is not empty %}
+      <div class="event-list_item__dek"> {{- dek -}}</div>
+    {% endif -%}
+
+    {# Event Date/Time  #}
+    {%- if date_time|render_clean is not empty %}
+      <div class="views-field-su-event-date-time"><span class="date-icon" aria-hidden="true"></span> <div>{{- date_time -}}</div></div>
+    {%- endif -%}
+
+    {# Event Location  #}
+    {%- if location|render_clean is not empty %}
+      <div class="views-field-su-event-location"><span class="map-icon" aria-hidden="true"></span> {{- location -}}</div>
+    {%- endif -%}
+
+    {# Event Location Address  #}
+    {%- if  address|render_clean is not empty %}
+    <div class="views-field-su-event-address"><span class="map-icon" aria-hidden="true"></span> {{- address -}}</div>
+    {%- endif -%}
+
+    {# Manually Entered Event Location Address  #}
+    <div class="views-field-su-event-address views-field-su-entered-event-address">
+
+      {% if (location_organization|render_clean is not empty) or  (location_address_line1|render_clean is not empty) %}
+        <span class="map-icon" aria-hidden="true"></span>
+      {% endif %}
+
+      {# Company name #}
+      {%- if location_organization|render_clean is not empty %}
+        {{- location_organization -}}
+      {% endif %}
+
+      {# Address line 1 #}
+      {%- if location_address_line1|render_clean is not empty %}
+        {{- location_address_line1 -}}
+      {% endif %}
+
+      {# address line 2 #}
+      {%- if location_address_line2|render_clean is not empty %}
+        {{- location_address_line2 -}}
+      {% endif %}
+
+      {# City #}
+      {%- if location_locality|render_clean is not empty %}
+        {{- location_locality -}}
+      {% endif %}
+
+      {# A larger area such as a state #}
+      {%- if location_administrative_area|render_clean is not empty %}
+        {{- location_administrative_area -}}
+      {% endif %}
+
+      {# Dependant Locality #}
+      {%- if location_dependent_locality|render_clean is not empty %}
+        {{- location_dependent_locality -}}
+      {% endif %}
+
+      {# Postal code #}
+      {%- if location_postal_code|render_clean is not empty %}
+        {{- location_postal_code -}}
+      {% endif %}
+
+      {#  Country #}
+      {%- if location_country_code|render_clean is not empty %}
+        {{- location_country_code -}}
+      {% endif %}
+
+      {# Sorting Code #}
+      {%- if location_sorting_code|render_clean is not empty %}
+        {{- location_sorting_code -}}
+      {% endif %}
+      </div>
+{#    {% endif %}#}
+
+    {# Edit this Event  #}
+      <div class="views-field-su-event-edit">{{- edit -}}</div>
+
+  </div>
+</div>

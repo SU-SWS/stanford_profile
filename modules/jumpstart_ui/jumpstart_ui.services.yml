@@ -1,0 +1,6 @@
+services:
+  jumpstart_ui.twig:
+    class: Drupal\jumpstart_ui\Plugin\TwigPlugin\JumpstartUITwig
+    arguments: ['@renderer']
+    tags:
+      - { name: twig.extension }

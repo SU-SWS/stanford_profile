@@ -1,0 +1,18 @@
+@charset 'UTF-8';
+
+.stanford-events-more-events-block {
+  .event_list_item__type {
+    a {
+      color: $su-color-bright-red;
+      font-weight: $su-font-regular;
+      text-decoration: none;
+
+      &:hover,
+      &:focus  {
+        color: $su-color-black;
+        text-decoration: underline;
+      }
+
+    }
+  }
+}

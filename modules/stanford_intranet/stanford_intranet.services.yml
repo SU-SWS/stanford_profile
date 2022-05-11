@@ -1,0 +1,6 @@
+services:
+  stanford_intranet.config_overrider:
+    class: \Drupal\stanford_intranet\Config\ConfigOverrider
+    tags:
+      - {name: config.factory.override, priority: 300}
+    arguments: ['@config.factory', '@state']

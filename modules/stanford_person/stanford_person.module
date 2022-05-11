@@ -1,0 +1,168 @@
+<?php
+
+/**
+ * @file
+ * File description.
+ *
+ * Long description.
+ */
+
+use Drupal\views\ViewExecutable;
+use Drupal\node\NodeInterface;
+use Drupal\taxonomy\TermInterface;
+use Drupal\Core\Cache\Cache;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\file\Entity\File;
+use Drupal\media\Entity\Media;
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function stanford_person_page_attachments(array &$attachments) {
+  // Get the node from the route.
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  // Not a node.. Then just continue.
+  if ($node instanceof NodeInterface && $node->getType() == 'stanford_person') {
+    // Check for our type and add library if a match.
+    $attachments['#attached']['library'][] = 'stanford_person/node';
+  }
+}
+
+/**
+ * Implements hook_views_post_render().
+ *
+ * Views render arrays contain a cache tag "node_list". This cache tag is
+ * cleared every time ANY node is created, edited or deleted. When this happens
+ * every view on the site gets its cache flushed. This causes poor performance
+ * since a view would get flushed even if it has no relation to that node. To
+ * assist in cache tags, we create a custom cache tag based on the node type
+ * filter on the view. Its a small improvement but will have huge impact in
+ * keeping cached renders much longer.
+ *
+ * @see stanford_person_node_presave()
+ * @see stanford_person_taxonomy_term_presave ()
+ */
+function stanford_person_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
+
+  // Node Base Table Views.
+  switch ($view->id()) {
+    case 'stanford_person':
+      $node_list_position = array_search('node_list', $output['#cache']['tags']);
+      unset($output['#cache']['tags'][$node_list_position]);
+      foreach ($view->filter['type']->value as $node_type) {
+        $output['#cache']['tags'][] = "node_list:$node_type";
+      }
+      $output['#attached']['library'][] = 'stanford_person/views';
+      break;
+
+    case 'stanford_person_list_terms_first':
+      $output['#attached']['library'][] = 'stanford_person/views';
+
+    case 'stanford_person_terms':
+      $term_list_position = array_search('term_list', $output['#cache']['tags']);
+      unset($output['#cache']['tags'][$term_list_position]);
+      foreach ($view->filter['vid']->value as $term_type) {
+        $output['#cache']['tags'][] = "term_list:$term_type";
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * @see stanford_person_views_post_render()
+ */
+function stanford_person_node_presave(NodeInterface $entity) {
+  if ($entity->bundle() == "stanford_person") {
+    Cache::invalidateTags(["node_list:{$entity->bundle()}"]);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * @see stanford_person_views_post_render()
+ */
+function stanford_person_taxonomy_term_presave(TermInterface $entity) {
+  if ($entity->bundle() == "stanford_person_types") {
+    Cache::invalidateTags(["term_list:{$entity->bundle()}"]);
+  }
+}
+
+/**
+ * Install/Update function for setting the default image on the photo field.
+ */
+function _stanford_person_install_default_photo() {
+  // Services.
+  $file_system = \Drupal::service('file_system');
+  $erepo = \Drupal::service('entity.repository');
+
+  // File UUID.
+  $fuuid = '4d5dde7e-f2c7-4d27-8ad1-99623b1308f8';
+  // Media UUID.
+  $muuid = 'a4660e7f-d4bf-4a28-8030-9dc8576b1c9a';
+
+  // Move the physical file in to place.
+  $saved = _stanford_person_install_default_photo_file();
+
+  // Try to get the image first.
+  $image = $erepo->loadEntityByUuid('file', $fuuid);
+
+  // Save the file/media entities and ensure their UUIDs.
+  if (!$image) {
+    $image = File::create();
+    $image->setFileUri($saved);
+    $image->set('uuid', $fuuid);
+    $image->setOwnerId(\Drupal::currentUser()->id());
+    $image->setMimeType('image/' . pathinfo($saved, PATHINFO_EXTENSION));
+    $image->setFileName($file_system->basename($saved));
+    $image->setPermanent();
+    $image->save();
+  }
+
+  // Try to get the media item first.
+  $image_media = $erepo->loadEntityByUuid('media', $muuid);
+
+  // Create one if not exist.
+  if (!$image_media) {
+    // Create media entity with saved file.
+    $image_media = Media::create([
+      'bundle' => 'image',
+      'uuid' => $muuid,
+      'uid' => \Drupal::currentUser()->id(),
+      'langcode' => \Drupal::languageManager()->getDefaultLanguage()->getId(),
+      'field_media_image' => [
+        'target_id' => $image->id(),
+        'alt' => '',
+        'title' => '',
+      ],
+    ]);
+    $image_media->save();
+  }
+
+}
+
+/**
+ * Move the file into the file system.
+ *
+ * @return string
+ *   The file uri.
+ */
+function _stanford_person_install_default_photo_file() {
+  // Services.
+  $file_system = \Drupal::service('file_system');
+
+  // Save the file to public.
+  $destination = 'public://media/image';
+  $source = $file_system->realpath(
+    drupal_get_path("module", "stanford_person") .
+    "/lib/assets/img/stanford-person-default-profile-image.png"
+  );
+  $file_system->prepareDirectory($destination, FileSystemInterface::CREATE_DIRECTORY);
+  $saved = $file_system->copy($source, $destination, FileSystemInterface::EXISTS_REPLACE);
+
+  return $saved;
+}

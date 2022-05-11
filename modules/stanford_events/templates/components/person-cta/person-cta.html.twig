@@ -1,0 +1,39 @@
+{#
+/**
+ * Person CTA - Events
+ */
+#}
+{%- set image_attributes = create_attribute() -%}
+{%- set content_attributes = create_attribute() -%}
+{%- set link_attributes = create_attribute({'class': ['su-link']}) -%}
+{%- set is_external = false -%}
+{%- if link|render_clean is not empty -%}
+  {%- set is_external = link|render|striptags|split('//')[1] ? true : false -%}
+  {%- if is_external -%}
+    {%- set link_attributes = link_attributes.addClass('su-link--external') -%}
+  {%- endif %}
+{%- endif -%}
+
+<div{{ attributes.addClass('su-person-cta') }}>
+  {%- if image|render_clean('<img> <picture>') is not empty -%}
+  <div {{ image_attributes.addClass('su-person-cta__image') }}>
+    {{ image }}
+  </div>
+  {%- endif -%}
+  <div {{ content_attributes.addClass('su-person-cta__content') }}>
+    {%- if name|render_clean is not empty -%}
+    <p class="su-person-cta__name">
+      {%- if link|render_clean is not empty -%}
+        <a href="{{ link|render_clean }}" {{ link_attributes }}>
+      {%- endif -%}
+      {{- name|render_clean -}}
+      {%- if link|render_clean is not empty -%}
+        </a>
+      {%- endif -%}
+    </p>
+    {%- endif -%}
+    {%- if title|render_clean is not empty -%}
+      <p class="su-person-cta__title">{{ title|render_clean }}</p>
+    {%- endif -%}
+  </div>
+</div>

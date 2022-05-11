@@ -1,0 +1,59 @@
+defaults: &defaults
+  label: Stanford One Column
+  category: 'Stanford'
+  path: templates/layouts
+  class: '\Drupal\jumpstart_ui\Layouts\JumpstartUiLayouts'
+  default_region: main
+  template: one-column
+  icon_map:
+    - [main]
+  regions:
+    main:
+      label: Main
+
+# One Column
+jumpstart_ui_one_column:
+  <<: *defaults
+
+jumpstart_ui_one_column_overlay:
+  <<: *defaults
+  label: Stanford One Column with Overlay
+  regions:
+    main:
+      label: Main
+    overlay:
+      label: Overlay
+  template: one-column-overlay
+  icon_map:
+    - [main]
+    - [overlay]
+
+# Two Column
+jumpstart_ui_two_column:
+  <<: *defaults
+  class: 'Drupal\jumpstart_ui\Layouts\JumpstartUiTwoColumnLayout'
+  label: Stanford Two Column
+  template: two-column
+  icon_map:
+    - [left, main]
+  regions:
+    left:
+      label: Left
+    main:
+      label: Main
+
+# Three Column
+jumpstart_ui_three_column:
+  <<: *defaults
+  class: '\Drupal\jumpstart_ui\Layouts\JumpstartUiThreeColumnLayout'
+  label: Stanford Three Column
+  template: three-column
+  icon_map:
+    - [left, main, right]
+  regions:
+    left:
+      label: Left
+    main:
+      label: Main
+    right:
+      label: Right

@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+//
+//  3. Component
+//
+
+// Discrete, reusable UI elements.
+//
+// Components should not be responsible for their positioning or layout within
+// the site. Never apply widths or heights except to elements that natively have
+// these properties (e.g. images have these properties, so it's okay to use CSS
+// to modify their width and height). Within components, separate structural
+// rules from stylistic rules.
+//
+// Component Naming Convention
+// .component-name
+// .component-name--variant
+// .component-name__sub-object
+
+// First import decanter as no markup.
+@import 'decanter/core/src/scss/decanter-no-markup';
+
+// Then we override the variables, mixins, and functions.
+@import
+'../config/index',
+'../utilities/index';
+
+// Stanford Basic components
+@import
+'all/index', // All comes first so others can override.
+'alert/index',
+'filter-menu/index',
+'link/index.scss',
+'lockup/index',
+'masthead/index',
+'multi-menu/index',
+'paragraphs/paragraph--people',
+'secondary-nav/index',
+'stanford-page/index',
+'wysiwyg/index';
+

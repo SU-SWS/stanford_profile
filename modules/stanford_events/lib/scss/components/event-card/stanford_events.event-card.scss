@@ -1,0 +1,83 @@
+@charset 'UTF-8';
+@import '../../stanford_events.config';
+@import 'event-stacked-date--card';
+@import 'event-spacing-explore-more--card';
+@import 'event-card--heading-link';
+@import 'event-card--item-type-link';
+@import '../event-list/event-date-time-icons';
+
+.stanford-events {
+  &.cards {
+    @include grid-media-min('lg') {
+      .views-row:not(:first-of-type) {
+        @include modular-spacing('padding', 4 null null null);
+      }
+    }
+  }
+}
+
+.su-event-card {
+  &.su-event-list-item {
+
+    .su-event-list-item__details {
+
+      .event-list-item__subheadline {
+        @include modular-typography(1);
+        @include modular-spacing('margin', null null 2 null);
+
+        font-weight: $su-font-bold;
+      }
+
+      .event_list_item__type {
+        a {
+          color: $su-color-bright-red;
+          font-weight: $su-font-regular;
+          text-decoration: none;
+
+          &:hover,
+          &:focus  {
+            color: $su-color-black;
+            text-decoration: underline;
+          }
+
+        }
+      }
+
+      h2 {
+        @include modular-typography(2);
+
+        > a {
+          color: $su-color-black;
+          text-decoration: none;
+
+          &:hover,
+          &:focus  {
+            color: $su-color-bright-red;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Fixing the alignment of the events when in a large grid.
+@include grid-media-min('lg') {
+  .stanford-events {
+    &.cards {
+      .views-view-grid {
+        .flex-container {
+          justify-content: left;
+
+          > div {
+            @include responsive-spacing('margin-right', 1);
+          }
+
+          div:last-of-type {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
