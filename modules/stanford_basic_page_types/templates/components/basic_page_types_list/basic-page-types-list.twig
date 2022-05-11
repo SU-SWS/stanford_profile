@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Basic Page Types List
+ *
+ * Available variables:
+ * - attributes: For additional HTML attributes not already provided.
+ * - category: The taxonomy term for the type.
+ * - title: The Page title.
+ * - description: The page description.
+ * - page_image: the page image.
+ * - footer: an open footer.
+ */
+#}
+{%- set attributes = attributes.addClass(['su-basic-page-types-list', modifier_class]) -%}
+
+<div{{ attributes }}>
+
+{%- block block_category  %}
+{% if category|render_clean is not empty %}
+    <div class="su-basic-page-list__category">{{- category -}}</div>
+{% endif %}
+{% endblock -%}
+
+{%- block block_title  %}
+{% if title|render_clean is not empty %}
+    <div>
+        {% if page_image|render_clean('<img><picture>') is not empty %}
+            <div class="su-basic-page-list__image">{{- page_image -}}</div>
+        {% endif %}
+        <h2 class="su-basic-page-list__title">{{- title -}}</h2>
+    </div>
+{% endif %}
+{% endblock -%}
+
+{%- block block_description  %}
+{% if description|render_clean is not empty %}
+    <div class="su-basic-page-list__description">{{- description -}}</div>
+{% endif %}
+{% endblock -%}
+
+
+{%- block block_footer  %}
+{% if footer|render_clean is not empty %}
+    <div class="su-basic-page-list__footer">{{- footer -}}</div>
+{% endif %}
+{% endblock -%}
+
+</div>

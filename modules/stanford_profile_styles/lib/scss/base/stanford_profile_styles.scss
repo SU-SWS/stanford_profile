@@ -1,0 +1,216 @@
+@charset "UTF-8";
+@import '../config', '../modular_spacing';
+
+.toolbar-oriented {
+  .toolbar-bar {
+    .user-tab {
+      float: right;
+    }
+  }
+}
+
+//
+// Link Icons
+//
+
+// Hide the original SVG, but keep the aria-label.
+svg {
+  &.su-link--external {
+    @include hide-visually;
+  }
+}
+
+// Hide the SVGs in the social links.
+.su-local-footer__columns {
+  .su-local-footer__social-links {
+    a {
+      &.su-link--external {
+        &::after {
+          @include hide-visually;
+        }
+      }
+
+      &.su-link--mailto {
+        &::after {
+          @include hide-visually;
+        }
+      }
+    }
+  }
+}
+
+// Hide the SVG in the lockup.
+.su-lockup {
+  a {
+    &.su-link--external {
+      &::after {
+        @include hide-visually;
+      }
+    }
+  }
+}
+
+a {
+
+  // Style the icons with external links.
+  &.su-link--external {
+    // Add the underline back to external links.
+    text-decoration: underline;
+
+    // Style Buttons.
+    &.su-button {
+      &::after {
+        background-color: $su-color-white;
+      }
+    }
+
+    &.su-button--big {
+      &::after {
+        height: 15px;
+        width: 15px;
+        background-color: $su-color-white;
+      }
+    }
+
+    &.su-button--secondary {
+      &::after {
+        background-color: $su-color-bright-red;
+      }
+
+      &:active,
+      &:focus,
+      &:hover {
+        &::after {
+          background-color: $su-color-black;
+        }
+      }
+    }
+
+    &.su-secondary-nav__link {
+      &::after {
+        background-color: $su-color-bright-red;
+      }
+
+      &:active,
+      &:focus,
+      &:hover {
+        &::after {
+          background-color: $su-color-bright-red;
+        }
+      }
+    }
+  }
+
+  // Style the SVG for mailto.
+  &.mailto {
+    svg {
+      @include margin(null 0 null 0.25em);
+      @include padding(null 0.01em null null);
+      fill: $su-color-bright-blue;
+      transition: transform 0.2s ease-in-out;
+      height: 19px;
+      width: 22px;
+
+      path {
+        stroke: $su-color-bright-blue;
+        stroke-width: 0;
+      }
+
+      &:active,
+      &:focus,
+      &:hover {
+        fill: $su-color-black;
+        transform: translateX(0.2em);
+
+        path {
+          stroke: $su-color-black;
+        }
+      }
+    }
+
+    // Style Buttons.
+    &.su-button,
+    &.su-button--big {
+      svg {
+        fill: $su-color-white;
+
+        &:active,
+        &:focus,
+        &:hover {
+          fill: $su-color-white;
+
+          path {
+            stroke: $su-color-white;
+          }
+        }
+
+        path {
+          stroke: $su-color-white;
+        }
+      }
+    }
+
+    &.su-button--secondary {
+      svg {
+        fill: $su-color-bright-red;
+
+        &:active,
+        &:focus,
+        &:hover {
+          fill: $su-color-black;
+
+          path {
+            stroke: $su-color-black;
+          }
+        }
+
+        path {
+          stroke: $su-color-bright-red;
+        }
+      }
+    }
+
+    // Style mailto for action links.
+    &.su-link--action {
+      text-decoration: underline;
+
+      &::after {
+        margin: 0;
+        mask-size: 0;
+      }
+    }
+  }
+}
+
+// Menu styles and footer action links
+nav[aria-label^='footer'],
+.su-local-footer__action-links,
+.su-secondary-nav {
+  a {
+    &,
+    &.su-link--external {
+      text-decoration: none;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: $su-color-black;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.su-secondary-nav--light {
+  a {
+    &.su-secondary-nav__link {
+      &:active,
+      &:hover {
+        &::after,
+        &::before {
+          background-color: $su-color-black;
+        }
+      }
+    }
+  }
+}

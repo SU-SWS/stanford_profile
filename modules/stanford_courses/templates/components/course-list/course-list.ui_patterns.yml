@@ -1,0 +1,45 @@
+course_list:
+  label: Course List Item
+  description: "Building block component for the Course list page."
+  fields:
+    course_list_code:
+      type: text
+      label: "Course Code"
+      description: "The course code"
+      preview: "MATH101"
+    course_list_academic_year:
+      type: text
+      label: "Academic Year"
+      description: "Academic year"
+      preview: "20xx-20xx"
+    course_list_quarters:
+      type: text
+      label: "Quarters"
+      description: "Quarters offered"
+      preview: "Winter, Spring, Summer, Fall"
+    course_list_title:
+      type: text
+      label: "Title"
+      description: "Title of the course"
+      preview: "Intro to Math Instruction"
+    course_list_instructors:
+      type: text
+      label: "Instructors"
+      description: "The list of instructors teaching the course"
+      preview: "Doe, J.; Smith, J.; Jones, A."
+    course_list_description:
+      type: text
+      label: "Description"
+      description: "The course description"
+      preview: "In this course, you will learn about mathematics and the basics of teaching it."
+    course_list_url:
+      type: text
+      label: "URL for item"
+      description: "URL for title"
+      preview: "http://www.stanford.edu/"
+  use: "@stanford-courses/course-list/course-item-list.twig"
+  libraries:
+    - newslist:
+        css:
+          component:
+            ../../../dist/css/course-list-item.css: { }

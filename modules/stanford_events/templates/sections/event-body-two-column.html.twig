@@ -1,0 +1,29 @@
+{#
+/**
+ * Eent link template.
+ */
+#}
+<div{{ attributes.addClass('centered-container', 'su-events-details', 'flex-container', settings.extra_classes) }}>
+  <div class="flex-8-of-12 flex-container centered-container details-wrapper">
+    <div class="flex-container centered-container details">
+      {% if content.main|render %}
+        <div {{ region_attributes.main.addClass('body-region', 'flex-6-of-12') }}>
+          {{ content.main }}
+        </div>
+      {% endif %}
+
+      {% if content.right|render %}
+        <div {{ region_attributes.right.addClass('right-region', 'flex-6-of-12') }}>
+          {{ content.right }}
+        </div>
+      {% endif %}
+    </div>
+    {% if content.cta|render %}
+      <div class="flex-8-of-12 centered-container cta">
+        <div{{ region_attributes.cta.addClass('cta') }}>
+          {{ content.cta }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>

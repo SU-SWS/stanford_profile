@@ -1,0 +1,31 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: ffd44333-d872-44ef-b797-4c121344576a
+  bundle: stanford_news_topics
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Staff
+  description:
+    -
+      value: "<p>Staff</p>\r\n"
+      format: stanford_html
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /news/staff
+      langcode: en
+      pathauto: 1

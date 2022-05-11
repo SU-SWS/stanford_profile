@@ -1,0 +1,46 @@
+#
+# Used to generate responsive images and other items.
+# https://www.advomatic.com/blog/adding-responsive-images-to-your-drupal-8-site
+#
+jumpstart_ui.xs:
+  label: XS
+  mediaQuery: '(min-width: 0em)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+jumpstart_ui.sm:
+  label: SM
+  mediaQuery: 'screen and (min-width: 576px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+jumpstart_ui.md:
+  label: MD
+  mediaQuery: 'screen and (min-width: 768px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+jumpstart_ui.lg:
+  label: LG
+  mediaQuery: 'screen and (min-width: 992px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+jumpstart_ui.xl:
+  label: XL
+  mediaQuery: 'screen and (min-width: 1200px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+jumpstart_ui.2xl:
+  label: 2XL
+  mediaQuery: 'screen and (min-width: 1500px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x

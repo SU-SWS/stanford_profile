@@ -1,0 +1,52 @@
+@charset 'UTF-8';
+
+.su-event-card {
+  &.su-card {
+    .su-event-list-item__details {
+      .event-list-item__type {
+        a {
+          @include small-paragraph;
+
+          color: $su-color-bright-red;
+          font-weight: $su-font-regular;
+          text-decoration: none;
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: $su-color-black;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  h2 {
+    @include modular-typography(3);
+
+    a {
+      color: $su-color-black;
+      font-weight: $su-font-bold;
+      text-decoration: none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $su-color-bright-red;
+        text-decoration: underline;
+
+        &::after {
+          background-color: $su-color-bright-red;
+        }
+      }
+
+      &::after {
+        background-color: $su-color-bright-red;
+        height: 20px;
+        width: 20px;
+
+      }
+    }
+  }
+}

@@ -1,0 +1,291 @@
+@charset "UTF-8";
+
+// override default link color styles here 
+// Teasers & Lists
+
+// Events default and cards
+.su-event-card {
+  &.su-card {
+    .su-event-list-item__details {
+      .event-list-item__type {
+        a {
+          color: $su-color-digital-blue;
+        }
+      }
+    }
+  }
+
+  &.su-event-list-item {
+    .su-event-list-item__details {
+      h2 {
+        > a {
+          color: $su-color-black;
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: $su-color-digital-blue;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.su-event-list-item {
+  .su-event-list-item__details {
+    h2 {
+      > a {
+        &:hover,
+        &:active,
+        &:focus {
+          color: $su-color-black;
+          text-decoration: underline;
+        }
+      }
+      > a.su-link--external {
+        &:after {
+          background-color: $su-color-digital-blue;
+          display: inline-block;
+        }
+      }
+    }
+
+    .event-list-item__type {
+      a {
+        &:hover,
+        &:active,
+        &:focus {
+          color: $su-color-digital-blue;
+        }
+      }
+    }
+  }
+}
+
+// for the event list pages 
+.su-event-list-item {
+  .su-event-list-item__details {
+    h2 {
+      > a {
+        color: $su-color-digital-blue;
+      }
+    }
+  }
+}
+
+.ds-entity--stanford-event-series {
+  .su-card {
+    a {
+      color: $su-color-black;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $su-color-digital-blue;
+      }
+    }
+  }
+}
+
+// News Default and Card
+.su-news-list {
+  a {
+    &:hover,
+    &:active,
+    &:focus {
+      h2 {
+        color: $su-color-black;
+      }
+    }
+
+    h2 {
+      color: $su-color-digital-blue;
+    }
+  }
+}
+
+.su-news-edit-article {
+  a {
+    &:hover,
+    &:active,
+    &:focus {
+      color: $su-color-black;
+    }
+  }
+}
+
+.su-news-list {
+  .su-news-list__topics {
+    li {
+      a {
+        color: $su-color-digital-blue;
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: $su-color-black;
+        }
+      }
+    }
+  }
+
+  .su-link--external {
+    &:after {
+      background-color: $su-color-digital-blue;
+    }
+  }
+}
+
+.su-news-vertical-teaser {
+  &.su-card {
+
+    .su-link {
+      &:after {
+        background-color: $su-color-digital-blue;
+      }
+    }
+
+    .su-card__contents {
+      .news-vertical-teaser__topics {
+        a {
+          color: $su-color-digital-blue;
+
+          &:hover,
+          &:active,
+          &:focus {
+            color: $su-color-black;
+          }
+        }
+      }
+    }
+
+    .su-news-vertical-teaser__link {
+      &:hover {
+        h2 {
+          color: $su-color-digital-blue;
+        }
+      }
+    }
+  }
+}
+
+// People Default Grid
+.stanford-people-grid .views-row .views-field-title a {
+  color: $su-color-digital-blue;
+}
+
+.ds-entity--stanford-person .stanford-person a {
+  color: $su-color-digital-blue;
+}
+
+// Publications
+.stanford-publications {
+  &.view {
+    a {
+      color: $su-color-digital-blue;
+
+      &:hover,
+      &:active,
+      &:focus {
+    
+        &:after {
+          background-color: $su-color-digital-blue;
+        }
+      }
+   
+      &:after {
+        background-color: $su-color-digital-blue;
+      }
+    }
+  }
+}
+
+.stanford-publications {
+  .views-field-edit-node {
+    a {
+      color: $su-color-bright-red;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $su-color-black;
+      }
+    }
+  }
+}
+
+.ptype-stanford-entity {
+  .ds-entity--stanford-publication {
+    .su-card__contents {
+      > h2 {
+        a {
+          &:after {
+            background-color: $su-color-digital-blue;
+          }
+
+          &:hover,
+          &:active,
+          &:focus {
+            color: $su-color-digital-blue;
+
+            &:after {
+              background-color: $su-color-digital-blue;
+            }
+          }
+        }
+      }
+
+      .su-publication-topics {
+        a {
+          color: $su-color-digital-blue;
+
+          &:hover,
+          &:active,
+          &:focus {
+            color: $su-color-black;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Stanford Page
+.ds-entity--stanford-page {
+  .su-card {
+    .su-card__contents {
+      a {
+        &:hover,
+        &:focus,
+        &:active {
+          color: $su-color-digital-blue;
+          
+          &:after {
+            background-color: $su-color-digital-blue;
+          }
+        }
+
+        &:after {
+          background-color: $su-color-digital-blue;
+        }
+      }
+    }
+  }
+} 
+
+.su-basic-page-types-list {
+  a {
+    color: $su-color-digital-blue;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $su-color-black;
+      text-decoration: underline;
+    }
+  }
+}
+

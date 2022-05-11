@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.citation.su_genre
+    - stanford_publication.citation_type.su_thesis
+id: citation.su_thesis.su_genre
+field_name: su_genre
+entity_type: citation
+bundle: su_thesis
+label: 'Type of Dissertation'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

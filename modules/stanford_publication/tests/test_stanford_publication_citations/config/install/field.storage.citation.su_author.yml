@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - name
+    - stanford_publication
+id: citation.su_author
+field_name: su_author
+entity_type: citation
+type: name
+settings: {  }
+module: name
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

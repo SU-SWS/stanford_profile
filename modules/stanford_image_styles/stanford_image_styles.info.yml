@@ -1,0 +1,11 @@
+name: 'Stanford Image Styles'
+type: module
+description: 'Provides Image Styles'
+core_version_requirement: ^8 || ^9
+package: Stanford
+version: 8.x-1.4-dev
+dependencies:
+  - drupal:image
+  - drupal:responsive_image
+  - focal_point:focal_point
+  - image_effects:image_effects

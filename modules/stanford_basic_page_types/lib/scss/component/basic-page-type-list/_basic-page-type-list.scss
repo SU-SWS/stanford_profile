@@ -1,0 +1,85 @@
+// basic list styles
+.su-basic-page-types-list {
+  @include modular-spacing("padding-top", 4);
+  @include modular-spacing("padding-bottom", 4);
+  overflow: auto;
+  border-bottom: 1px solid $su-color-cool-grey-25;
+
+  a {
+    color: $su-color-bright-red;
+  }
+
+  h2 {
+    @include modular-spacing("margin-bottom", 1);
+
+    display: inline;
+  }
+
+  .media {
+    @include modular-spacing("margin-left", 3);
+    float: right;
+
+    @include grid-media-max("lg") {
+      display: none;
+    }
+  }
+
+  .su-basic-page-list__category {
+    @include small-paragraph;
+    clear: both;
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 0.9em;
+    display: block;
+  }
+
+  .su-basic-page-list__title {
+    @include type-c;
+    margin-left: 0;
+    margin-right: 0;
+
+    a {
+      font-weight: $su-font-bold;
+
+      &::after {
+        @include modular-spacing("margin-left", -1);
+        background-color: $su-color-bright-red;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      @include grid-media-max("lg") {
+        @include modular-spacing("margin-bottom", 0);
+      }
+    }
+  }
+
+  .su-basic-page-list__description {
+    @include big-paragraph;
+    @include modular-spacing("margin-bottom", 2);
+  }
+
+  .su-basic-page-list__footer {
+    width: 100%;
+    clear: both;
+
+    a {
+      @include button-secondary;
+      text-align: right;
+    }
+  }
+
+  .views-infinite-scroll-content-wrapper {
+    @include modular-spacing("margin-bottom", 5);
+
+    & + .js-pager__items {
+      @include modular-spacing("margin-bottom", 8);
+    }
+  }
+}

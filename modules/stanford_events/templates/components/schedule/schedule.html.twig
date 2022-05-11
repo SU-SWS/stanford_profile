@@ -1,0 +1,69 @@
+{#
+/**
+ * Event Schedule
+ */
+#}
+
+{% if region_attributes is empty %}
+  {% set a_info = create_attribute() %}
+  {% set a_time = create_attribute() %}
+  {% set region_attributes =
+    {
+      info: a_info,
+      time: a_time,
+    } %}
+{% endif %}
+
+{# Separate URL and title #}
+{%- set link_attributes = create_attribute({'class': ['su-link']}) -%}
+{%- set is_external = false -%}
+{%- if url|render_clean is not empty -%}
+  {%- set is_external = url|render|striptags|split('//')[1] ? true : false -%}
+  {%- if is_external -%}
+    {%- set link_attributes = link_attributes.addClass('su-link--external') -%}
+  {%- endif %}
+{%- endif -%}
+
+<div{{ attributes.addClass('su-event-schedule') }}>
+
+  {%- if time|render_clean is not empty -%}
+    <div {{ region_attributes.time.addClass("su-event-schedule__time") }}>
+      {{ time }}
+    </div>
+  {%- endif -%}
+
+  <div {{ region_attributes.info.addClass("su-event-schedule__info") }}>
+    {%- if headline|render_clean is not empty -%}
+      <h3 class="su-event-schedule__headline">
+        {%- if url|render_clean is not empty -%}
+        <a {{ link_attributes }} href="{{ url|render_clean }}">
+          {%- endif -%}
+
+          {{ headline|render_clean }}
+
+          {%- if url|render_clean is not empty -%}
+        </a>
+        {%- endif -%}
+      </h3>
+    {%- endif -%}
+
+    {%- if description|render_clean is not empty -%}
+      <div class="su-event-schedule__description">
+        {{ description }}
+      </div>
+    {%- endif -%}
+
+    {%- if location|render_clean is not empty -%}
+      <div class="su-event-schedule__location">
+        {{ location }}
+      </div>
+    {%- endif -%}
+
+    {%- if speakers|render_clean('<img> <picture> <p> <a> <div>') is not empty -%}
+      <div class="su-event-schedule__speakers">
+        {{ speakers }}
+      </div>
+    {%- endif -%}
+  </div>
+
+</div>

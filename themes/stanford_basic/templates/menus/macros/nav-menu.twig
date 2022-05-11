@@ -1,0 +1,49 @@
+{#
+/**
+ * Macro for creating nested menus.
+ */
+#}
+{% macro nav_menu(items, menu_level, class_prefix) %}
+  {% import _self as menus %}
+  <ul class="{{ class_prefix }}__menu {{ class_prefix }}__menu-lv{{ menu_level }}">
+  {% for item in items %}
+
+    {# Link Attribtues #}
+    {% set link_attributes = item.attributes %}
+    {% set link_attributes = link_attributes.addClass(class_prefix ~ "__link") %}
+    {% set link_attributes = link_attributes.setAttribute('href', item.url|render) %}
+
+    {# Tooltips #}
+    {% if item.url.options.attributes.title is not empty %}
+      {% set link_attributes = link_attributes.setAttribute('data-toggle', 'tooltip') %}
+      {% set link_attributes = link_attributes.setAttribute('title', item.url.options.attributes.title) %}
+    {% endif %}
+
+    {# Item Attributes #}
+    {% set list_attributes = create_attribute() %}
+    {% set list_attributes = list_attributes.addClass(class_prefix ~ "__item") %}
+    {% if item.below is not empty %}
+      {% set list_attributes = list_attributes.addClass(class_prefix ~ "__item--parent") %}
+    {% endif %}
+    {% if item.in_active_trail == true %}
+      {% set list_attributes = list_attributes.addClass(class_prefix ~ "__item--active-trail") %}
+    {% endif %}
+    {% if item.is_active == true %}
+      {% set list_attributes = list_attributes.addClass(class_prefix ~ "__item--current") %}
+      {% set link_attributes = link_attributes.setAttribute('aria-current', 'true') %}
+    {% endif %}
+
+    <li{{ list_attributes }}>
+      <a{{ link_attributes }}>
+        <span class="su-multi-menu__link-text-wrapper">{{ item.title }}</span>
+        {% if item.unpublished %}
+          <div class="unpublished-indicator">{{ "Unpublished Page"|t }}</div>
+        {% endif %}
+      </a>
+      {% if item.below %}
+        {{ menus.nav_menu(item.below, menu_level + 1, class_prefix) }}
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+{% endmacro %}
