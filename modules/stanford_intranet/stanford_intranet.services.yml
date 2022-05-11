@@ -4,3 +4,6 @@ services:
     tags:
       - {name: config.factory.override, priority: 300}
     arguments: ['@config.factory', '@state']
+  stanford_intranet.manager:
+    class: \Drupal\stanford_intranet\StanfordIntranetManager
+    arguments: ['@entity_type.manager', '@file.repository', '@file_system', '@state']
