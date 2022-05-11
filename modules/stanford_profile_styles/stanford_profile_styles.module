@@ -260,4 +260,8 @@ function stanford_profile_styles_views_pre_render(ViewExecutable $view) {
   if ($view->id() == 'search') {
     $view->element['#attached']['library'][] = 'stanford_profile_styles/views.search';
   }
+
+  if (isset($view) && ($view->storage->id() == 'taxonomy_term_pages')) {
+    $view->element['#attached']['library'][] = 'stanford_person/views';
+  }
 }

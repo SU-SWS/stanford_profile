@@ -17,5 +17,5 @@ services:
   stanford_profile_helper.cache_context.route.menu_active_trails:
     class: Drupal\stanford_profile_helper\MenuActiveTrailsCacheContextOverride
     decorates: cache_context.route.menu_active_trails
-    plubic: false
+    pubic: false
     arguments: ['@stanford_profile_helper.cache_context.route.menu_active_trails.inner']

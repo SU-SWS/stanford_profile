@@ -85,7 +85,7 @@ class IntranetCommandsTest extends IntranetKernelTestBase {
     ])->save();
 
     $ext_auth = $this->createMock(AuthmapInterface::class);
-    $this->commands = new IntranetCommands(\Drupal::entityTypeManager(), \Drupal::state(), $ext_auth, \Drupal::service('password_generator'));
+    $this->commands = new IntranetCommands(\Drupal::entityTypeManager(), \Drupal::state(), $ext_auth, \Drupal::service('password_generator'), \Drupal::service('stanford_intranet.manager'));
   }
 
   public function testIntranetSetup() {

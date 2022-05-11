@@ -146,7 +146,10 @@ function stanford_profile_helper_post_update_8102() {
   foreach ($configs as $data) {
     /** @var \Drupal\pathauto\PathautoPatternInterface $pathauto_pattern */
     $pathauto_pattern = $pathauto_storage->load($data['id']);
-    if ($pathauto_pattern->getPattern() != $data['pattern']) {
+    if (
+      $pathauto_pattern &&
+      $pathauto_pattern->getPattern() != $data['pattern']
+    ) {
       $pathauto_pattern->setPattern($data['pattern'])->save();
     }
   }

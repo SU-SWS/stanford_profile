@@ -214,3 +214,30 @@ nav[aria-label^='footer'],
     }
   }
 }
+
+// Filtered People view
+.stanford-person-terms-term-link {
+  @include modular-spacing('margin-bottom', 3);
+}
+
+h4 {
+  &.field-content {
+    margin-bottom: 0;
+
+    > a {
+      @include type-e;
+
+      color: $su-color-bright-red;
+      font-weight: $su-font-semi-bold;
+      text-decoration: none;
+      word-break: break-word;
+      word-wrap: break-word;
+
+      &:focus,
+      &:hover {
+        color: $su-color-black;
+        text-decoration: underline;
+      }
+    }
+  }
+}

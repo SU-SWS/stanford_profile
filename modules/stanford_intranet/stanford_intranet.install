@@ -48,3 +48,10 @@ function stanford_intranet_uninstall() {
   \Drupal::state()->delete('stanford_intranet.rids');
   \Drupal::state()->delete('stanford_intranet.allow_file_uploads');
 }
+
+/**
+ * Move files to private storage if the intranet is enabled.
+ */
+function stanford_intranet_update_8001() {
+  \Drupal::service('stanford_intranet.manager')->moveIntranetFiles();
+}

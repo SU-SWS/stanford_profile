@@ -66,19 +66,41 @@
   }
 }
 
-.ptype-stanford-entity {
+// Make the people referenced entity pictures circles.
+.su-person-photo {
+  @include margin(0 auto);
+  @include padding(30px);
+  max-width: 300px;
 
-  // Make the people referenced entity pictures circles.
-  .su-person-photo {
-    @include margin(0 auto);
-    @include padding(30px);
-    max-width: 300px;
+  picture,
+  img {
+    border-radius: 50%;
+  }
+}
 
-    picture,
-    img {
-      border-radius: 50%;
+.ds-entity--stanford-person {
+  text-align: center;
+}
+
+.su-list-unstyled {
+  li {
+    @include modular-spacing('margin-bottom', 4);
+  }
+
+  a {
+    color: $su-color-bright-red;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: $su-color-black;
+      text-decoration: underline;
     }
   }
+}
+
+.ptype-stanford-entity,
+.stanford-shared-tags {
 
   .su-entity-headline {
     h2 {
@@ -103,10 +125,6 @@
         text-decoration: underline;
       }
     }
-  }
-
-  .ds-entity--stanford-person {
-    text-align: center;
   }
 
   &[data-react-columns="12"] {
@@ -191,7 +209,9 @@
           }
 
           &:hover,
-          &:focus {
+          &:focus,
+          &:active {
+            color: $su-color-bright-red;
             text-decoration: underline;
 
             &::after {
@@ -223,7 +243,7 @@
           &:active,
           &:focus,
           &:hover {
-            color: $su-color-bright-red;
+            color: $su-color-black;
             text-decoration: underline;
           }
         }
