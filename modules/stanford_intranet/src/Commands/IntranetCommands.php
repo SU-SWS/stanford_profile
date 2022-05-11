@@ -7,6 +7,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Password\PasswordGeneratorInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\externalauth\AuthmapInterface;
+use Drupal\stanford_intranet\StanfordIntranetManagerInterface;
 use Drush\Commands\DrushCommands;
 
 /**
@@ -43,6 +44,13 @@ class IntranetCommands extends DrushCommands {
   protected $passwordGenerator;
 
   /**
+   * Intranet manager service.
+   *
+   * @var \Drupal\stanford_intranet\StanfordIntranetManagerInterface
+   */
+  protected $intranetManager;
+
+  /**
    * Drush command constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -53,12 +61,24 @@ class IntranetCommands extends DrushCommands {
    *   External Authentication map service.
    * @param \Drupal\Core\Password\PasswordGeneratorInterface $password_generator
    *   Core password generator service.
+   * @param \Drupal\stanford_intranet\StanfordIntranetManagerInterface $intranet_manager
+   *   Intranet manager service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, StateInterface $state, AuthmapInterface $authmap, PasswordGeneratorInterface $password_generator) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, StateInterface $state, AuthmapInterface $authmap, PasswordGeneratorInterface $password_generator, StanfordIntranetManagerInterface $intranet_manager) {
     $this->entityTypeManager = $entity_type_manager;
     $this->state = $state;
     $this->authmap = $authmap;
     $this->passwordGenerator = $password_generator;
+    $this->intranetManager = $intranet_manager;
+  }
+
+  /**
+   * Move files from public to the private file system.
+   *
+   * @command stanford-intranet:move-files
+   */
+  public function moveIntranetFiles() {
+    $this->intranetManager->moveIntranetFiles();
   }
 
   /**
@@ -101,6 +121,7 @@ class IntranetCommands extends DrushCommands {
     foreach (Cache::getBins() as $cache_backend) {
       $cache_backend->deleteAll();
     }
+    $this->moveIntranetFiles();
 
     $config_page_storage = $this->entityTypeManager->getStorage('config_pages');
     /** @var \Drupal\config_pages\ConfigPagesInterface $config_page */

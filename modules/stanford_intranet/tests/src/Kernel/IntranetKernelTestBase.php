@@ -25,6 +25,7 @@ abstract class IntranetKernelTestBase extends KernelTestBase {
     'config_pages',
     'stanford_profile_helper',
     'options',
+    'image',
   ];
 
   /**
@@ -34,9 +35,12 @@ abstract class IntranetKernelTestBase extends KernelTestBase {
     parent::setUp();
     $this->installEntitySchema('node');
     $this->installEntitySchema('user');
+    $this->installEntitySchema('file');
+    $this->installEntitySchema('image_style');
     $this->installConfig('system');
     $this->installSchema('system', ['sequences']);
     $this->installSchema('node', ['node_access']);
+    $this->installSchema('file', ['file_usage']);
 
     $this->fieldStorage = FieldStorageConfig::create([
       'field_name' => 'field_foo',
