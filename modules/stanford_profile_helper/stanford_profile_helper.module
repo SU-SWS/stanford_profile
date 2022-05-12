@@ -12,7 +12,7 @@ use Drupal\Core\Cache\Cache;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Entity\Entity\EntityViewDisplay;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Extension\Extension;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -24,7 +24,6 @@ use Drupal\Core\Site\Settings;
 use Drupal\Core\Url;
 use Drupal\config_pages\ConfigPagesInterface;
 use Drupal\field\FieldStorageConfigInterface;
-use Drupal\layout_builder\SectionComponent;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\menu_link_content\MenuLinkContentInterface;
 use Drupal\node\NodeForm;
@@ -35,6 +34,7 @@ use Drupal\taxonomy\TermInterface;
 use Drupal\taxonomy_menu\Plugin\Menu\TaxonomyMenuMenuLink;
 use Drupal\user\RoleInterface;
 use Drupal\views\ViewExecutable;
+use Drupal\Core\Render\Element;
 
 /**
  * Implements hook_local_tasks_alter().
