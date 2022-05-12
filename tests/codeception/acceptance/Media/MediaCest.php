@@ -159,4 +159,16 @@ class MediaCest {
     $I->assertEmpty($fids);
   }
 
+  /**
+   * SUL Embeddables can be saved.
+   */
+  public function testArcGis(AcceptanceTester $I){
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/media/add/embeddable');
+    $I->fillField('Name','SUL');
+    $I->fillField('oEmbed URL', 'https://purl.stanford.edu/fr477qg2469');
+    $I->click('Save');
+    $I->canSee('Embeddable SUL has been created.');
+  }
+
 }
