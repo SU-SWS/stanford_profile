@@ -1,0 +1,31 @@
+{% set left = content.left|render_clean %}
+{% set main = content.main|render_clean %}
+{% set right = content.right|render_clean %}
+
+{% set main_class = '' %}
+{% if left and right %}
+  {% set main_class = 'su-w-6/12' %}
+{% elseif left or right %}
+  {% set main_class = 'su-w-9/12' %}
+{% endif %}
+
+<div class="su-flex su-flex-col md:su-flex-row {{ settings.centered ? 'su-cc' : '' }}">
+
+  {% if left %}
+    <div {{ region_attributes.left.addClass('su-w-3/12') }}>
+      {{ content.left }}
+    </div>
+  {% endif %}
+
+  {% if main %}
+    <div {{ region_attributes.main.addClass(main_class) }}>
+      {{ content.main }}
+    </div>
+  {% endif %}
+
+  {% if right %}
+    <div {{ region_attributes.right.addClass('su-w-3/12') }}>
+      {{ content.right }}
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,17 @@
+<div class="md:su-flex-row pt-12 pb-20 md:pt-14 md:pb-24 2xl:pt-16 2xl:pb-24">
+  <div aria-hidden="true" class="su-w-40">
+    {{ start_month }}
+    {{ start_date }}
+  </div>
+  <div>
+    {{ event_type|render_clean('<a>') }}
+    {{ title|render_clean('<a>') }}
+    {{ headline|render_clean }}
+    {{ subheadline|render_clean }}
+    {{ dek|render_clean }}
+    {{ date_time|render_clean }}
+    {{ location|render_clean }}
+    {{ edit|render_clean('<a>') }}
+  </div>
+</div>
+

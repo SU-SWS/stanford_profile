@@ -1,0 +1,25 @@
+
+{%- import _self as menu -%}
+<div class="clearfix">
+  {{ menu.nav_menu(items) }}
+</div>
+
+
+{% macro nav_menu(items, menu_level = 1) %}
+  {% import _self as menus %}
+  <ul class="su-list-unstyled su-flex {{ menu_level==1?'su-float-right':'' }}">
+    {% for item in items %}
+      <li>
+        <a href="{{ item.url }}">
+          <span>{{ item.title }}</span>
+          {% if item.unpublished %}
+            <span>{{ "Unpublished Page"|t }}</span>
+          {% endif %}
+        </a>
+        {% if item.below %}
+          {{ menus.nav_menu(item.below, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}

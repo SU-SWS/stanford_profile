@@ -1,0 +1,22 @@
+{% set classes = [
+  'su-button',
+  'su-group',
+  'su-leading-display',
+  'su-text-white',
+  'su-border-2',
+  'su-border-solid',
+  'hover:su-border-black',
+  'focus:su-border-black',
+  'su-transition-colors',
+  'su-px-26',
+  'su-pt-10',
+  'su-pb-11',
+  'su-text-16',
+  'md:su-text-20',
+  attributes.hasClass('button--primary') ? 'su-bg-digital-red su-border-digital-red' : 'su-bg-digital-blue su-border-digital-blue-light'
+] %}
+
+{% if attributes.type == 'submit' %}
+  {% set attributes = attributes.addClass(classes) %}
+{% endif %}
+<input{{ attributes }} />{{ children }}
