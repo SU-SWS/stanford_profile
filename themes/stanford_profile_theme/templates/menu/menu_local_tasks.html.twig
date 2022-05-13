@@ -1,0 +1,20 @@
+{% if primary %}
+  <ul class="list-none flex">
+    {% for link in primary %}
+      <li>
+        {{ link}}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if secondary %}
+  <ul class="list-none flex">
+    {% for link in secondary %}
+      <li>
+        {{ link }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
