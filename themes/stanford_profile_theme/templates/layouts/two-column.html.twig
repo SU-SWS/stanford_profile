@@ -1,0 +1,22 @@
+{% set left_class = 'su-w-3/12' %}
+{% set main_class = content.left ? 'su-w-9/12' : '' %}
+{% set left = content.left|render_clean %}
+
+{% if settings.orientation == 'left' %}
+  {% set left_class = 'su-w-9/12' %}
+  {% set main_class = left ? 'su-w-3/12' : '' %}
+{% elseif settings.orientation == 'equal' %}
+  {% set left_class = 'su-w-6/12' %}
+  {% set main_class = left ? 'su-w-6/12' : '' %}
+{% endif %}
+
+
+<div class="su-flex su-flex-col md:su-flex-row {{ settings.centered ? 'su-cc' : '' }}">
+
+  {% if left %}
+    <div{{ region_attributes.left.addClass(left_class) }}>{{ content.left }}</div>
+  {% endif %}
+
+  <div{{ region_attributes.main.addClass(main_class) }}>{{ content.main }}</div>
+</div>
+

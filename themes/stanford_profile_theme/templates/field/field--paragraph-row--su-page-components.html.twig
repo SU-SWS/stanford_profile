@@ -1,0 +1,8 @@
+{% set item_count = items|length %}
+{% set possible_class = ['su-grid-cols-1', 'su-grid-cols-2', 'su-grid-cols-3'] %}
+<div class="su-grid md:su-grid-cols-{{ item_count }}">
+  {% for item in items %}
+    <div{{ item.attributes }}>{{ item.content }}</div>
+  {% endfor %}
+</div>
+

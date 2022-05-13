@@ -1,0 +1,23 @@
+<div>
+  <div>{{ page.page_top }}</div>
+
+  <div class="su-cc su-identity-bar su-pt-5 su-pb-1 su-bg-cardinal-red">
+    <a class="su-logo su-text-white hocus:su-text-white su-text-20 su-leading-none" href="https://www.stanford.edu">
+      Stanford University
+    </a>
+  </div>
+
+  <div class="su-cc">
+    {{ page.header }}
+    {{ page.search }}
+    {{ page.menu }}
+  </div>
+
+  {{ page.help }}
+  {{ page.content }}
+
+  {{ page.footer }}
+  {% include '@stanford-profile-theme/page/global-footer.html.twig' %}
+
+  <div>{{ page.page_bottom }}</div>
+</div>
