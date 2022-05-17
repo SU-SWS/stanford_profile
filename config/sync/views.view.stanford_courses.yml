@@ -732,7 +732,7 @@ display:
           query_tags: {  }
           contextual_filters_or: false
       relationships: {  }
-      group_by: true
+      group_by: false
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -1189,7 +1189,7 @@ display:
             more_class: more-link
             summary_handler: ignore
             trim_options:
-              text: 0
+              text: text
               trim_zero: 0
           group_column: value
           group_columns: {  }
