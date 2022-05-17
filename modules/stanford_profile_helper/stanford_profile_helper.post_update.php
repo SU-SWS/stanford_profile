@@ -215,7 +215,6 @@ function stanford_profile_helper_post_update_9000() {
   $node_storage = \Drupal::entityTypeManager()->getStorage('node');
   \Drupal::service('router.builder')->rebuild();
 
-  $current_profile = \Drupal::config('core.extension')->get('profile');;
   $pages = [
     '8ba98fcf-d390-4014-92de-c77a59b30f3b' => [
       'type' => 'stanford_event',
@@ -248,7 +247,7 @@ function stanford_profile_helper_post_update_9000() {
 
     if (!$number_of_nodes) {
       \Drupal::messenger()
-        ->addStatus(t('Node was not created. Either @path exists or no nodes exist for that page.', ['@path' => $info['path']]));
+        ->addStatus(t('Node was not created for @path. No nodes exist for that page.', ['@path' => $info['path']]));
       continue;
     }
 

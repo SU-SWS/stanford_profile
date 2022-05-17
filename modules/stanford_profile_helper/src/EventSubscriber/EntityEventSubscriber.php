@@ -7,38 +7,70 @@ use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Link;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\State\StateInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\core_event_dispatcher\EntityHookEvents;
 use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
 use Drupal\node\NodeInterface;
 use Drupal\stanford_profile_helper\StanfordDefaultContentInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * Entity event subscriber service.
+ */
 class EntityEventSubscriber implements EventSubscriberInterface {
 
   use MessengerTrait;
+  use StringTranslationTrait;
 
+  /**
+   * Default content importer service.
+   *
+   * @var \Drupal\stanford_profile_helper\StanfordDefaultContentInterface
+   */
   protected $defaultContent;
 
+  /**
+   * Core state service.
+   *
+   * @var \Drupal\Core\State\StateInterface
+   */
   protected $state;
 
+  /**
+   * Core entity type manager service.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
   protected $entityTypeManager;
 
   /**
    * {@inheritDoc}
    */
   public static function getSubscribedEvents() {
-    return [
-      EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPresave',
-    ];
+    return [EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPresave'];
   }
 
+  /**
+   * @param \Drupal\stanford_profile_helper\StanfordDefaultContentInterface $stanford_default_content
+   *   Default content importer service.
+   * @param \Drupal\Core\State\StateInterface $state
+   *   Core state service.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   Core entity type manager service.
+   */
   public function __construct(StanfordDefaultContentInterface $stanford_default_content, StateInterface $state, EntityTypeManagerInterface $entity_type_manager) {
     $this->defaultContent = $stanford_default_content;
     $this->state = $state;
     $this->entityTypeManager = $entity_type_manager;
   }
 
-  public function onEntityPresave(EntityPresaveEvent $event) {
+  /**
+   * Before saving a new node, if it's the first one, create it's respective list page.
+   *
+   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent $event
+   *   Triggered Event.
+   */
+  public function onEntityPresave(EntityPresaveEvent $event): void {
     if (
       InstallerKernel::installationAttempted() ||
       !($event->getEntity() instanceof NodeInterface) ||

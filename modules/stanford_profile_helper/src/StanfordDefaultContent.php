@@ -12,7 +12,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\default_content\Normalizer\ContentEntityNormalizerInterface;
 
 /**
- * 
+ * Default content importer service to import specific content by uuid.
  */
 class StanfordDefaultContent implements StanfordDefaultContentInterface {
 
@@ -20,37 +20,46 @@ class StanfordDefaultContent implements StanfordDefaultContentInterface {
   use StringTranslationTrait;
 
   /**
+   * Core entity type manager service.
+   *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
 
   /**
+   * Core config factory service.
+   *
    * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   protected $configFactory;
 
   /**
+   * Core profile extension list service.
+   *
    * @var \Drupal\Core\Extension\ExtensionList
    */
   protected $profileExtensionList;
 
   /**
+   * Default content normalizer.
+   *
    * @var \Drupal\default_content\Normalizer\ContentEntityNormalizerInterface
    */
   protected $contentNormalizer;
 
   /**
+   * Default content importer service.
+   *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   Core entity type manager service.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   Core config factory service.
    * @param \Drupal\Core\Extension\ExtensionList $profile_extensions
+   *   Core profile extension list service.
    * @param \Drupal\default_content\Normalizer\ContentEntityNormalizerInterface $normalizer
+   *   Default content normalizer.
    */
-  public function __construct(
-    EntityTypeManagerInterface       $entity_type_manager,
-    ConfigFactoryInterface           $config_factory,
-    ExtensionList                    $profile_extensions,
-    ContentEntityNormalizerInterface $normalizer) {
-
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory, ExtensionList $profile_extensions, ContentEntityNormalizerInterface $normalizer) {
     $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
     $this->profileExtensionList = $profile_extensions;
@@ -64,15 +73,14 @@ class StanfordDefaultContent implements StanfordDefaultContentInterface {
     $current_profile = $this->configFactory->get('core.extension')
       ->get('profile');
     $profile_path = $this->profileExtensionList->getPath($current_profile);
-
     $file_path = "$profile_path/content/node/$page_uuid.yml";
+
     if (file_exists($file_path)) {
       $decoded = Yaml::decode(file_get_contents($file_path));
       $path = $decoded['default']['path'][0]['alias'];
       if ($this->pageAlreadyExists($path)) {
         return NULL;
       }
-
 
       $entity = $this->contentNormalizer->denormalize($decoded);
       $entity->save();
