@@ -213,33 +213,28 @@ function stanford_profile_helper_post_update_9000() {
   }
 
   $node_storage = \Drupal::entityTypeManager()->getStorage('node');
-  $alias_storage = \Drupal::entityTypeManager()->getStorage('path_alias');
   \Drupal::service('router.builder')->rebuild();
 
   $current_profile = \Drupal::config('core.extension')->get('profile');;
-  $profile_path = \Drupal::service('extension.list.profile')
-    ->getPath($current_profile);
-  /** @var \Drupal\default_content\Normalizer\ContentEntityNormalizer $normalizer */
-  $normalizer = \Drupal::service('default_content.content_entity_normalizer');
   $pages = [
     '8ba98fcf-d390-4014-92de-c77a59b30f3b' => [
-      'path' => '/events',
       'type' => 'stanford_event',
+      'path' => '/events/',
       'block' => 'f7125c85-197d-4ba2-9f6f-1126bbda0466',
     ],
     '0b83d1e9-688a-4475-9673-a4c385f26247' => [
-      'path' => '/news',
       'type' => 'stanford_news',
+      'path' => '/news',
       'block' => '5168834f-3271-4951-bd95-e75340ca5522',
     ],
     '673a8fb8-39ac-49df-94c2-ed8d04db16a7' => [
-      'path' => '/people',
       'type' => 'stanford_person',
+      'path' => '/people',
       'block' => 'fb905cf3-4bd3-4bcd-ad01-92d25e46ba32',
     ],
     '14768832-f763-4d27-8df6-7cd784886d57' => [
-      'path' => '/courses',
       'type' => 'stanford_course',
+      'path' => '/courses',
       'block' => '2f343c04-f892-49bb-8d28-2c3f4653b02a',
     ],
   ];
@@ -251,20 +246,16 @@ function stanford_profile_helper_post_update_9000() {
       ->count()
       ->execute();
 
-    if ($alias_storage->loadByProperties(['alias' => $info['path']]) || !$number_of_nodes) {
+    if (!$number_of_nodes) {
       \Drupal::messenger()
         ->addStatus(t('Node was not created. Either @path exists or no nodes exist for that page.', ['@path' => $info['path']]));
       continue;
     }
 
-    $file_path = "$profile_path/content/node/$uuid.yml";
-    if (file_exists($file_path)) {
-      $decoded = Yaml::decode(file_get_contents($file_path));
-      $entity = $normalizer->denormalize($decoded);
-      $entity->save();
-      _stanford_profile_helper_add_block_contents($entity, $info['block']);
-
-      _stanford_profile_helper_fix_menu_items($entity->id(), $info['path']);
+    $node = \Drupal::service('stanford_profile_helper.default_content')->createDefaultListPage($uuid);
+    if ($node) {
+      _stanford_profile_helper_add_block_contents($node, $info['block']);
+      _stanford_profile_helper_fix_menu_items($node->id(), $info['path']);
     }
   }
 }
@@ -282,13 +273,13 @@ function _stanford_profile_helper_add_block_contents(NodeInterface $node, $block
   $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
   $row_storage = \Drupal::entityTypeManager()->getStorage('paragraph_row');
 
-  $block = $block_storage->loadByProperties(['uuid' => $block_uuid]);
-  if (empty($block)) {
+  $blocks = $block_storage->loadByProperties(['uuid' => $block_uuid]);
+  if (empty($blocks)) {
     return;
   }
 
   /** @var \Drupal\block_content\BlockContentInterface $block */
-  $block = reset($block);
+  $block = reset($blocks);
   $components = $block->get('su_component');
   if (!$components->count()) {
     return;
