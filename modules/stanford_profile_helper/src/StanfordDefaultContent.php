@@ -9,7 +9,6 @@ use Drupal\Core\Extension\ExtensionPathResolver;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\default_content\Normalizer\ContentEntityNormalizerInterface;
 
 /**
  * Default content importer service to import specific content by uuid.
