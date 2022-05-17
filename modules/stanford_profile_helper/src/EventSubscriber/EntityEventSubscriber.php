@@ -51,6 +51,8 @@ class EntityEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
+   * Event subscriber constructor.
+   *
    * @param \Drupal\stanford_profile_helper\StanfordDefaultContentInterface $stanford_default_content
    *   Default content importer service.
    * @param \Drupal\Core\State\StateInterface $state
@@ -65,7 +67,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Before saving a new node, if it's the first one, create it's respective list page.
+   * Before saving a new node, if it's the first one, create a list page.
    *
    * @param \Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent $event
    *   Triggered Event.

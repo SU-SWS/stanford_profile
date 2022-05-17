@@ -41,13 +41,6 @@ class StanfordDefaultContent implements StanfordDefaultContentInterface {
   protected $profileExtensionList;
 
   /**
-   * Default content normalizer.
-   *
-   * @var \Drupal\default_content\Normalizer\ContentEntityNormalizerInterface
-   */
-  protected $contentNormalizer;
-
-  /**
    * Default content importer service.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -56,33 +49,30 @@ class StanfordDefaultContent implements StanfordDefaultContentInterface {
    *   Core config factory service.
    * @param \Drupal\Core\Extension\ExtensionList $profile_extensions
    *   Core profile extension list service.
-   * @param \Drupal\default_content\Normalizer\ContentEntityNormalizerInterface $normalizer
-   *   Default content normalizer.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory, ExtensionList $profile_extensions, ContentEntityNormalizerInterface $normalizer) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory, ExtensionList $profile_extensions) {
     $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
     $this->profileExtensionList = $profile_extensions;
-    $this->contentNormalizer = $normalizer;
   }
 
   /**
    * {@inheritDoc}
    */
-  public function createDefaultListPage($page_uuid): ?ContentEntityInterface {
+  public function createDefaultListPage(string $page_uuid): ?ContentEntityInterface {
     $current_profile = $this->configFactory->get('core.extension')
       ->get('profile');
     $profile_path = $this->profileExtensionList->getPath($current_profile);
     $file_path = "$profile_path/content/node/$page_uuid.yml";
-
-    if (file_exists($file_path)) {
+    $normalizer = self::getContentNormalizer();
+    if ($normalizer && file_exists($file_path)) {
       $decoded = Yaml::decode(file_get_contents($file_path));
       $path = $decoded['default']['path'][0]['alias'];
       if ($this->pageAlreadyExists($path)) {
         return NULL;
       }
 
-      $entity = $this->contentNormalizer->denormalize($decoded);
+      $entity = $normalizer->denormalize($decoded);
       $entity->save();
       return $entity;
     }
@@ -104,6 +94,19 @@ class StanfordDefaultContent implements StanfordDefaultContentInterface {
   protected function pageAlreadyExists(string $path): bool {
     $alias_storage = $this->entityTypeManager->getStorage('path_alias');
     return !empty($alias_storage->loadByProperties(['alias' => $path]));
+  }
+
+  /**
+   * Get the default content module normalizer service.
+   *
+   * @return \Drupal\default_content\Normalizer\ContentEntityNormalizerInterface|null
+   *   Normalizer service.
+   */
+  protected static function getContentNormalizer(): ?ContentEntityNormalizerInterface {
+    if (\Drupal::hasService('default_content.content_entity_normalizer')) {
+      return \Drupal::service('default_content.content_entity_normalizer');
+    }
+    return NULL;
   }
 
 }
