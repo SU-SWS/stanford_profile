@@ -250,7 +250,7 @@ function stanford_profile_helper_post_update_9000() {
       continue;
     }
 
-    $node = \Drupal::service('stanford_profile_helper.default_content')->createDefaultListPage($uuid);
+    $node = \Drupal::service('stanford_profile_helper.default_content')->createDefaultContent($uuid);
     if ($node) {
       _stanford_profile_helper_add_block_contents($node, $info['block']);
       _stanford_profile_helper_fix_menu_items($node->id(), $info['path']);

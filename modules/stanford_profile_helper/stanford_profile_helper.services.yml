@@ -1,7 +1,7 @@
 services:
   stanford_profile_helper.default_content:
     class: Drupal\stanford_profile_helper\StanfordDefaultContent
-    arguments: ['@entity_type.manager', '@config.factory', '@extension.list.profile']
+    arguments: ['@entity_type.manager', '@config.factory', '@extension.path.resolver']
   stanford_profile_helper.event_subscriber.entity:
     class: Drupal\stanford_profile_helper\EventSubscriber\EntityEventSubscriber
     arguments: ['@stanford_profile_helper.default_content', '@state', '@entity_type.manager']

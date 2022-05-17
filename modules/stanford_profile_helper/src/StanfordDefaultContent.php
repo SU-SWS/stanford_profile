@@ -5,7 +5,7 @@ namespace Drupal\stanford_profile_helper;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Extension\ExtensionList;
+use Drupal\Core\Extension\ExtensionPathResolver;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -34,11 +34,11 @@ class StanfordDefaultContent implements StanfordDefaultContentInterface {
   protected $configFactory;
 
   /**
-   * Core profile extension list service.
+   * Core extension path resolver service.
    *
-   * @var \Drupal\Core\Extension\ExtensionList
+   * @var \Drupal\Core\Extension\ExtensionPathResolver
    */
-  protected $profileExtensionList;
+  protected $extensionResolver;
 
   /**
    * Default content importer service.
@@ -47,24 +47,29 @@ class StanfordDefaultContent implements StanfordDefaultContentInterface {
    *   Core entity type manager service.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   Core config factory service.
-   * @param \Drupal\Core\Extension\ExtensionList $profile_extensions
-   *   Core profile extension list service.
+   * @param \Drupal\Core\Extension\ExtensionPathResolver $extension_resolver
+   *   Core extension path resolver.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory, ExtensionList $profile_extensions) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory, ExtensionPathResolver $extension_resolver) {
     $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
-    $this->profileExtensionList = $profile_extensions;
+    $this->extensionResolver = $extension_resolver;
   }
 
   /**
    * {@inheritDoc}
    */
-  public function createDefaultListPage(string $page_uuid): ?ContentEntityInterface {
-    $current_profile = $this->configFactory->get('core.extension')
-      ->get('profile');
-    $profile_path = $this->profileExtensionList->getPath($current_profile);
-    $file_path = "$profile_path/content/node/$page_uuid.yml";
+  public function createDefaultContent(string $page_uuid, string $type = 'profile', string $name = ''): ?ContentEntityInterface {
+    // Profile can only ever be 1 value, so ignore whatever was passed by $name.
+    if ($type == 'profile') {
+      $name = $this->configFactory->get('core.extension')->get('profile');
+    }
+
+    $extension_path = $this->extensionResolver->getPath($type, $name);
+    $file_path = "$extension_path/content/node/$page_uuid.yml";
     $normalizer = self::getContentNormalizer();
+
+    // Check if we have the service and the default content file exists.
     if ($normalizer && file_exists($file_path)) {
       $decoded = Yaml::decode(file_get_contents($file_path));
       $path = $decoded['default']['path'][0]['alias'];
@@ -102,11 +107,10 @@ class StanfordDefaultContent implements StanfordDefaultContentInterface {
    * @return \Drupal\default_content\Normalizer\ContentEntityNormalizerInterface|null
    *   Normalizer service.
    */
-  protected static function getContentNormalizer(): ?ContentEntityNormalizerInterface {
+  protected static function getContentNormalizer() {
     if (\Drupal::hasService('default_content.content_entity_normalizer')) {
       return \Drupal::service('default_content.content_entity_normalizer');
     }
-    return NULL;
   }
 
 }

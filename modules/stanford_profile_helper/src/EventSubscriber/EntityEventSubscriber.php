@@ -101,7 +101,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
         ->execute();
 
       if ((int) $count == 0) {
-        $entity = $this->defaultContent->createDefaultListPage($pages[$bundle]);
+        $entity = $this->defaultContent->createDefaultContent($pages[$bundle]);
         if ($entity) {
           $this->messenger()
             ->addMessage($this->t('A new page was created automatically for you. View the @link to make changes.', [
