@@ -16,6 +16,7 @@ use Drupal\Core\Cache\Cache;
 use Drupal\views\Plugin\views\cache\CachePluginBase;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_page_attachments.
@@ -274,4 +275,12 @@ function stanford_events_preprocess_pattern_events_list(&$variables) {
   if ($end_month) {
     $variables['end_month_full'] = date('F', strtotime($end_month));
   }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function stanford_events_form_node_stanford_event_form_alter (array &$form, FormStateInterface $form_state) {
+  dpm($form['su_event_sponsor']['widget']['add_more']['#value']);
+  $form['su_event_sponsor']['widget']['add_more']['#value'] = t("Add another sponsor");
 }
