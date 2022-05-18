@@ -281,6 +281,5 @@ function stanford_events_preprocess_pattern_events_list(&$variables) {
  * Implements hook_form_FORM_ID_alter().
  */
 function stanford_events_form_node_stanford_event_form_alter (array &$form, FormStateInterface $form_state) {
-  dpm($form['su_event_sponsor']['widget']['add_more']['#value']);
   $form['su_event_sponsor']['widget']['add_more']['#value'] = t("Add another sponsor");
 }
