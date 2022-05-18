@@ -104,7 +104,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
         $entity = $this->defaultContent->createDefaultContent($pages[$bundle]);
         if ($entity) {
           $this->messenger()
-            ->addMessage($this->t('A new page was created automatically for you. View the @link to make changes.', [
+            ->addMessage($this->t('A new page was created automatically for you. View the @link page to make changes.', [
               '@link' => Link::fromTextAndUrl($entity->label(), $entity->toUrl())
                 ->toString(),
             ]));
