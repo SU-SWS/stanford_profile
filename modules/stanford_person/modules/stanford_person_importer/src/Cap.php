@@ -116,7 +116,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function setClientId($client_id) {
+  public function setClientId($client_id): self {
     $this->clientId = $client_id;
     return $this;
   }
@@ -124,7 +124,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function setClientSecret($secret) {
+  public function setClientSecret($secret): self {
     $this->clientSecret = $secret;
     return $this;
   }
@@ -144,7 +144,7 @@ class Cap implements CapInterface {
     try {
       $response = $this->client->request('GET', $url, $options);
     }
-    catch (GuzzleException | \Exception $e) {
+    catch (GuzzleException|\Exception $e) {
       // Most errors originate from the API itself.
       $this->logger->error($e->getMessage());
       return FALSE;
@@ -155,7 +155,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function getOrganizationUrl($organizations, $children = FALSE) {
+  public function getOrganizationUrl($organizations, $children = FALSE): string {
     $organizations = preg_replace('/[^A-Z,0-9]/', '', strtoupper($organizations));
     $url = self::CAP_URL . "?orgCodes=$organizations";
     if ($children) {
@@ -167,7 +167,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function getWorkgroupUrl($workgroups) {
+  public function getWorkgroupUrl($workgroups): string {
     $workgroups = preg_replace('/[^A-Z,:~\-_0-9]/', '', strtoupper($workgroups));
     return self::CAP_URL . "?privGroups=$workgroups";
   }
@@ -175,7 +175,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function getSunetUrl($sunetids) {
+  public function getSunetUrl($sunetids): string {
     $count = substr_count($sunetids, ',') + 1;
     $url = self::CAP_URL . "?uids=$sunetids";
     // Cap API default to 10 results. Send the argument to collect more if
@@ -189,16 +189,16 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function getTotalProfileCount($url) {
+  public function getTotalProfileCount($url): int {
     $token = $this->getAccessToken();
     $response = $this->getApiResponse("$url&ps=1&access_token=$token");
-    return $response['totalCount'] ?? 0;
+    return (int) $response['totalCount'] ?? 0;
   }
 
   /**
    * {@inheritDoc}
    */
-  public function testConnection() {
+  public function testConnection(): bool {
     $this->cache->invalidate('cap:access_token');
     return !empty($this->getAccessToken());
   }
@@ -206,7 +206,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function updateOrganizations() {
+  public function updateOrganizations(): void {
     $this->insertOrgData($this->getOrgData());
   }
 

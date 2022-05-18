@@ -33,7 +33,7 @@ interface CapInterface {
    * @return self
    *   CAP service with client ID saved.
    */
-  public function setClientId($client_id);
+  public function setClientId($client_id): self;
 
   /**
    * Set the CAP Password.
@@ -44,7 +44,7 @@ interface CapInterface {
    * @return self
    *   CAP service with client secret saved.
    */
-  public function setClientSecret($secret);
+  public function setClientSecret($secret): self;
 
   /**
    * Get the url for CAPx for the given organizations.
@@ -57,7 +57,7 @@ interface CapInterface {
    * @return string
    *   CAPx URLs.
    */
-  public function getOrganizationUrl($organizations, $children = FALSE);
+  public function getOrganizationUrl($organizations, $children = FALSE): string;
 
   /**
    * Get the url for CAP for given workgroups.
@@ -68,7 +68,7 @@ interface CapInterface {
    * @return string
    *   CAPx URLs.
    */
-  public function getWorkgroupUrl($workgroups);
+  public function getWorkgroupUrl($workgroups): string;
 
   /**
    * Get the url for CAP with the given list of SunetIDs.
@@ -79,7 +79,7 @@ interface CapInterface {
    * @return string
    *   CAPx URLs.
    */
-  public function getSunetUrl($sunetids);
+  public function getSunetUrl($sunetids): string;
 
   /**
    * Get the total number of profiles for the given cap url.
@@ -90,7 +90,7 @@ interface CapInterface {
    * @return int
    *   Total number of profiles.
    */
-  public function getTotalProfileCount($url);
+  public function getTotalProfileCount($url): int;
 
   /**
    * Test the connection with the username and passwords is valid.
@@ -98,11 +98,11 @@ interface CapInterface {
    * @return bool
    *   The connection was successful.
    */
-  public function testConnection();
+  public function testConnection(): bool;
 
   /**
    * Sync the organization database with the api data from CAP.
    */
-  public function updateOrganizations();
+  public function updateOrganizations(): void;
 
 }

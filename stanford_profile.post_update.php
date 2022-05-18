@@ -73,4 +73,5 @@ function _stanford_profile_post_update_encrypt_fields(){
       $queue->releaseItem($item);
     }
   }
+
 }
