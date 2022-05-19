@@ -5,17 +5,19 @@ core_version_requirement: ^8.8 || ^9
 package: Stanford
 version: 9.x-0.2-dev
 dependencies:
-  - 'admin_toolbar:admin_toolbar'
-  - 'admin_toolbar:admin_toolbar_tools'
-  - 'config_pages:config_pages'
-  - 'config_pages_overrides:config_pages_overrides'
-  - 'drupal:block'
-  - 'drupal:block_content'
-  - 'drupal:config'
-  - 'drupal:contextual'
-  - 'drupal:help'
-  - 'drupal:media'
-  - 'drupal:media_library'
-  - 'pdb:pdb'
-  - 'xmlsitemap:xmlsitemap'
-  - 'xmlsitemap:xmlsitemap_engines'
+  - admin_toolbar:admin_toolbar
+  - admin_toolbar:admin_toolbar_tools
+  - config_pages:config_pages
+  - config_pages_overrides:config_pages_overrides
+  - core_event_dispatcher:core_event_dispatcher
+  - default_content:default_content
+  - drupal:block
+  - drupal:block_content
+  - drupal:config
+  - drupal:contextual
+  - drupal:help
+  - drupal:media
+  - drupal:media_library
+  - pdb:pdb
+  - xmlsitemap:xmlsitemap
+  - xmlsitemap:xmlsitemap_engines

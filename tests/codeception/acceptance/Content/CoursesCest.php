@@ -29,10 +29,6 @@ class CoursesCest {
         $I->canSee('Shared Tags');
         $I->amOnPage('/courses');
         $I->canSeeResponseCodeIs(200);
-        $I->seeLink('Edit Block Content Above');
-        $I->click('Edit Block Content Above');
-        $I->canSee('Edit custom block');
-        $I->amOnPage('/courses');
         $I->canSee("A Course Title");
         $I->canSee("Doe, J., Doe, M.");
         $I->canSee("2021-2022");
