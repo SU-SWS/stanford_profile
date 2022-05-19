@@ -21,7 +21,3 @@ function stanford_profile_install_tasks(&$install_state) {
 function stanford_profile_final_task(array &$install_state) {
   \Drupal::service('plugin.manager.install_tasks')->runTasks($install_state);
 }
-
-function mikes() {
-dpm(\Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['uuid' => 'ce9cb7ca-6c59-4eea-9934-0a33057a7ff2']));
-}

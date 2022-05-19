@@ -42,10 +42,12 @@ class Users extends InstallTaskBase implements ContainerFactoryPluginInterface {
   public function runTask(array &$install_state) {
     // Modify the User 1 to match our needs.
     $admin = $this->entityTypeManager->getStorage('user')->load(1);
-    $admin->set('name', 'sws-developers');
-    $admin->set('mail', 'sws-developers@lists.stanford.edu');
-    $admin->addRole('administrator');
-    $admin->save();
+    if ($admin) {
+      $admin->set('name', 'sws-developers');
+      $admin->set('mail', 'sws-developers@lists.stanford.edu');
+      $admin->addRole('administrator');
+      $admin->save();
+    }
   }
 
 }
