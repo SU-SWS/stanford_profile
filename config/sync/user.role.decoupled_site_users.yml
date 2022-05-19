@@ -1,0 +1,15 @@
+uuid: 6fac5ac9-2f01-4b1b-b2e7-453cf88f0364
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - subrequests
+id: decoupled_site_users
+label: 'Decoupled Site User'
+weight: 2
+is_admin: null
+permissions:
+  - 'access user profiles'
+  - 'bypass node access'
+  - 'issue subrequests'

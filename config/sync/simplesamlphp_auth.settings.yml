@@ -16,9 +16,10 @@ register_users: true
 allow:
   set_drupal_pwd: false
   default_login: true
-  default_login_roles: {  }
+  default_login_roles:
+    decoupled_site_users: decoupled_site_users
   default_login_users: '1'
-logout_goto_url: null
+logout_goto_url: ''
 user_register_original: visitors_admin_approval
 sync:
   mail: true
