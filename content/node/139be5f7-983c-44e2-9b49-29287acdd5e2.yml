@@ -6,9 +6,6 @@ _meta:
   default_langcode: en
   depends:
     381f792e-24b4-4c50-b5cc-69c13702f93a: media
-    d4da5598-d960-4665-be27-daee0ed96328: taxonomy_term
-    6f63da5d-c8a8-4fbf-99f6-e3ae03fad125: taxonomy_term
-    14c6b724-f498-400d-8cee-99b72a50531f: taxonomy_term
 default:
   revision_uid:
     -
@@ -57,9 +54,6 @@ default:
   su_news_featured_media:
     -
       entity: 381f792e-24b4-4c50-b5cc-69c13702f93a
-  su_news_headline:
-    -
-      value: 'Sample: Stanford researchers find that misfiring from jittery neurons'
   su_news_publishing_date:
     -
       value: '2025-04-08'
@@ -70,8 +64,8 @@ default:
       options: {  }
   su_news_topics:
     -
-      entity: d4da5598-d960-4665-be27-daee0ed96328
+      target_id: 29
     -
-      entity: 6f63da5d-c8a8-4fbf-99f6-e3ae03fad125
+      target_id: 27
     -
-      entity: 14c6b724-f498-400d-8cee-99b72a50531f
+      target_id: 28

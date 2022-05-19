@@ -6,8 +6,6 @@ _meta:
   default_langcode: en
   depends:
     66286339-4f00-4994-8c0d-921b519ea4e4: media
-    b1e7c455-31bf-411a-b1b8-a8306a2eabc2: taxonomy_term
-    d4da5598-d960-4665-be27-daee0ed96328: taxonomy_term
 default:
   revision_uid:
     -
@@ -59,9 +57,6 @@ default:
   su_news_featured_media:
     -
       entity: 66286339-4f00-4994-8c0d-921b519ea4e4
-  su_news_headline:
-    -
-      value: 'Sample: For Runners, Is 15 Feet the New 6 Feet for Social Distancing?'
   su_news_publishing_date:
     -
       value: '2025-09-22'
@@ -72,6 +67,6 @@ default:
       options: {  }
   su_news_topics:
     -
-      entity: b1e7c455-31bf-411a-b1b8-a8306a2eabc2
+      target_id: 26
     -
-      entity: d4da5598-d960-4665-be27-daee0ed96328
+      target_id: 29

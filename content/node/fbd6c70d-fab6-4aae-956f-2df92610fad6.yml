@@ -6,9 +6,6 @@ _meta:
   default_langcode: en
   depends:
     81a60c63-7638-46d2-8fd9-b4de2cbc3554: media
-    b1e7c455-31bf-411a-b1b8-a8306a2eabc2: taxonomy_term
-    6f63da5d-c8a8-4fbf-99f6-e3ae03fad125: taxonomy_term
-    14c6b724-f498-400d-8cee-99b72a50531f: taxonomy_term
 default:
   revision_uid:
     -
@@ -60,16 +57,13 @@ default:
   su_news_featured_media:
     -
       entity: 81a60c63-7638-46d2-8fd9-b4de2cbc3554
-  su_news_headline:
-    -
-      value: 'Sample: Smith Conference'
   su_news_publishing_date:
     -
       value: '2025-09-30'
   su_news_topics:
     -
-      entity: b1e7c455-31bf-411a-b1b8-a8306a2eabc2
+      target_id: 26
     -
-      entity: 6f63da5d-c8a8-4fbf-99f6-e3ae03fad125
+      target_id: 27
     -
-      entity: 14c6b724-f498-400d-8cee-99b72a50531f
+      target_id: 28
