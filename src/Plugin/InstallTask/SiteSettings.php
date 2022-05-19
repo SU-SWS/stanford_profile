@@ -89,7 +89,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
   /**
    * {@inheritDoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap,PasswordGeneratorInterface $password_generator, StateInterface $state, LoggerChannelFactoryInterface $logger_factory) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap, PasswordGeneratorInterface $password_generator, StateInterface $state, LoggerChannelFactoryInterface $logger_factory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
     $this->client = $client;
@@ -238,7 +238,8 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   protected function getNode($uuid) {
-    $nodes = $this->entityTypeManager->getStorage('node')->loadByProperties(['uuid' => $uuid]);
+    $nodes = $this->entityTypeManager->getStorage('node')
+      ->loadByProperties(['uuid' => $uuid]);
     return reset($nodes);
   }
 
