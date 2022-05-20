@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - node.type.stanford_course
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_filter:
+      'filter:status': '1'
+    page_limit: 50
 id: node--stanford_course
 disabled: false
 path: node/stanford_course

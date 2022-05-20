@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - paragraphs.paragraphs_type.stanford_banner
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_banner_image.field_media_image
+    page_limit: 50
 id: paragraph--stanford_banner
 disabled: false
 path: paragraph/stanford_banner

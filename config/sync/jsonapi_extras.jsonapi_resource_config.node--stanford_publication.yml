@@ -4,6 +4,16 @@ status: true
 dependencies:
   config:
     - node.type.stanford_publication
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_publication_components
+      - su_publication_image.field_media_image
+    default_filter:
+      'filter:status': '1'
+    page_limit: 50
 id: node--stanford_publication
 disabled: false
 path: node/stanford_publication

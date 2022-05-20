@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - paragraphs.paragraphs_type.stanford_media_caption
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_media_caption_media.field_media_image
+    page_limit: 50
 id: paragraph--stanford_media_caption
 disabled: false
 path: paragraph/stanford_media_caption

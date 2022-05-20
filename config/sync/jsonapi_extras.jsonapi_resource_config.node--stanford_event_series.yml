@@ -1,24 +1,20 @@
-uuid: 7a372ddf-1700-4293-8a76-6deecebe8224
+uuid: 899b1e78-9c8c-4319-adb1-5cd9667d6d56
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.stanford_news
+    - node.type.stanford_event_series
   module:
     - jsonapi_defaults
 third_party_settings:
   jsonapi_defaults:
-    default_include:
-      - su_news_components
-      - su_news_banner.field_media_image
-      - su_news_featured_media.field_media_image
     default_filter:
       'filter:status': '1'
     page_limit: 50
-id: node--stanford_news
+id: node--stanford_event_series
 disabled: false
-path: node/stanford_news
-resourceType: node--stanford_news
+path: node/stanford_event_series
+resourceType: node--stanford_event_series
 resourceFields:
   nid:
     disabled: false
@@ -194,60 +190,40 @@ resourceFields:
     publicName: stanford_intranet__access
     enhancer:
       id: ''
-  su_news_banner:
+  su_event_series_components:
     disabled: false
-    fieldName: su_news_banner
-    publicName: su_news_banner
+    fieldName: su_event_series_components
+    publicName: su_event_series_components
     enhancer:
       id: ''
-  su_news_banner_media_caption:
+  su_event_series_dek:
     disabled: false
-    fieldName: su_news_banner_media_caption
-    publicName: su_news_banner_media_caption
+    fieldName: su_event_series_dek
+    publicName: su_event_series_dek
     enhancer:
       id: ''
-  su_news_byline:
+  su_event_series_event:
     disabled: false
-    fieldName: su_news_byline
-    publicName: su_news_byline
+    fieldName: su_event_series_event
+    publicName: su_event_series_event
     enhancer:
       id: ''
-  su_news_components:
+  su_event_series_subheadline:
     disabled: false
-    fieldName: su_news_components
-    publicName: su_news_components
+    fieldName: su_event_series_subheadline
+    publicName: su_event_series_subheadline
     enhancer:
       id: ''
-  su_news_dek:
+  su_event_series_type:
     disabled: false
-    fieldName: su_news_dek
-    publicName: su_news_dek
+    fieldName: su_event_series_type
+    publicName: su_event_series_type
     enhancer:
       id: ''
-  su_news_featured_media:
+  su_event_series_weight:
     disabled: false
-    fieldName: su_news_featured_media
-    publicName: su_news_featured_media
-    enhancer:
-      id: ''
-  su_news_publishing_date:
-    disabled: false
-    fieldName: su_news_publishing_date
-    publicName: su_news_publishing_date
-    enhancer:
-      id: ''
-  su_news_source:
-    disabled: false
-    fieldName: su_news_source
-    publicName: su_news_source
-    enhancer:
-      id: url_link
-      settings:
-        absolute_url: 0
-  su_news_topics:
-    disabled: false
-    fieldName: su_news_topics
-    publicName: su_news_topics
+    fieldName: su_event_series_weight
+    publicName: su_event_series_weight
     enhancer:
       id: ''
   su_shared_tags:

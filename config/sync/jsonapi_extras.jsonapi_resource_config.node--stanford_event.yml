@@ -4,6 +4,15 @@ status: true
 dependencies:
   config:
     - node.type.stanford_event
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_event_components
+    default_filter:
+      'filter:status': '1'
+    page_limit: 50
 id: node--stanford_event
 disabled: false
 path: node/stanford_event

@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - paragraphs.paragraphs_type.stanford_entity
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_entity_item
+    page_limit: 50
 id: paragraph--stanford_entity
 disabled: false
 path: paragraph/stanford_entity

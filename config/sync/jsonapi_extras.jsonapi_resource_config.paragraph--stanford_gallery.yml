@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - paragraphs.paragraphs_type.stanford_gallery
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_gallery_images.field_media_image
+    page_limit: 50
 id: paragraph--stanford_gallery
 disabled: false
 path: paragraph/stanford_gallery
