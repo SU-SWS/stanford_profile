@@ -42,6 +42,30 @@ third_party_settings:
       column: value
       config_name: stanford_basic.settings
       config_item: nav_dropdown_enabled
+    0f41ca24-623b-4ce2-8c31-b60d4b80186f:
+      field: su_site_home
+      delta: 0
+      column: target_id
+      config_name: system.site
+      config_item: page.front
+      prefix: /node/
+      suffix: ''
+    633b7eec-13ab-4b85-b582-3adb9f83c232:
+      field: su_site_403
+      delta: 0
+      column: target_id
+      config_name: system.site
+      config_item: page.403
+      prefix: /node/
+      suffix: ''
+    9c6c3994-b5e0-4425-af8d-b5ed4f6c129c:
+      field: su_site_404
+      delta: 0
+      column: target_id
+      config_name: system.site
+      config_item: page.404
+      prefix: /node/
+      suffix: ''
 id: stanford_basic_site_settings
 label: 'Site Settings'
 token: null

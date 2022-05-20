@@ -37,6 +37,8 @@ class LocalFooterCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->checkOption('Enabled');
+    $I->selectOption('Country', 'United States');
+    $I->click('Save');
     $I->selectOption('State', 'New York');
     $fields = [
       'Company' => 'Drupal',
@@ -63,7 +65,7 @@ class LocalFooterCest {
     }
 
     $I->click('Save');
-    $I->runDrush('cache-rebuild');
+
     $I->amOnPage('/');
     $I->canSee('123 Drupal Dr');
     $I->canSee('New York, NY 12345');
@@ -79,7 +81,7 @@ class LocalFooterCest {
     $I->amOnPage('/admin/config/system/local-footer');
     $I->uncheckOption('Enabled');
     $I->click('Save');
-    $I->runDrush('cache-rebuild');
+
     $I->amOnPage('/');
     $I->cantSee('123 Drupal Dr');
   }
