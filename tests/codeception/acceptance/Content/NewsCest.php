@@ -51,11 +51,11 @@ class NewsCest {
     Cache::invalidateTags(['node_list:stanford_news']);
     $I->amOnPage("/news");
     $I->see("No results found");
-    $I->seeLink('Faculty');
-    $I->click("a[href='/news/staff']");
+    $I->seeLink('Announcement');
+    $I->click("a[href='/news/announcement']");
     $I->canSeeResponseCodeIs(200);
     $I->see("No results found");
-    $I->see("Topics Menu");
+    $I->see("News Topics");
   }
 
   /**
