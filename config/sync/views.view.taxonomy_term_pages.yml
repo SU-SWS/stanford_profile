@@ -603,19 +603,6 @@ display:
             format: stanford_html
           tokenize: false
       sorts:
-        su_person_last_name_value:
-          id: su_person_last_name_value
-          table: node__su_person_last_name
-          field: su_person_last_name_value
-          relationship: reverse__node__su_person_type_group
-          group_type: group
-          admin_label: ''
-          plugin_id: standard
-          order: ASC
-          expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
         weight:
           id: weight
           table: taxonomy_term_field_data
@@ -625,6 +612,34 @@ display:
           admin_label: ''
           entity_type: taxonomy_term
           entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        su_person_last_name_value:
+          id: su_person_last_name_value
+          table: node__su_person_last_name
+          field: su_person_last_name_value
+          relationship: reverse__node__su_person_type_group
+          group_type: group
+          admin_label: ''
           plugin_id: standard
           order: ASC
           expose:
@@ -971,7 +986,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<div class="stanford-person-terms-term-link">Results for: {{ name }}</div>'
+            value: '<div class="stanford-person-terms-term-link">Results for: {{ arguments.tid }}</div>'
             format: stanford_html
           tokenize: true
       display_extenders: {  }
