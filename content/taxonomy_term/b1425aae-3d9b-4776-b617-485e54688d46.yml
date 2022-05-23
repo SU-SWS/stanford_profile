@@ -1,0 +1,38 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: b1425aae-3d9b-4776-b617-485e54688d46
+  bundle: stanford_person_types
+  default_langcode: en
+  depends:
+    0da6a528-91d9-48d9-bbf0-7c1e70bf5873: taxonomy_term
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Student Services'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      entity: 0da6a528-91d9-48d9-bbf0-7c1e70bf5873
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /people/staff/student-services
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default

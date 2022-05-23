@@ -5,13 +5,13 @@ _meta:
   bundle: stanford_news
   default_langcode: en
   depends:
+    9999fd33-d293-45b4-85b1-c7bac0d69a51: user
     66286339-4f00-4994-8c0d-921b519ea4e4: media
-    b1e7c455-31bf-411a-b1b8-a8306a2eabc2: taxonomy_term
-    d4da5598-d960-4665-be27-daee0ed96328: taxonomy_term
+    b30bead1-2ee4-4883-aad8-1590a8877e9c: taxonomy_term
 default:
   revision_uid:
     -
-      target_id: 1
+      entity: 9999fd33-d293-45b4-85b1-c7bac0d69a51
   status:
     -
       value: false
@@ -47,6 +47,9 @@ default:
   rh_redirect_response:
     -
       value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
   su_news_banner_media_caption:
     -
       value: 'Stanford with active people'
@@ -59,9 +62,6 @@ default:
   su_news_featured_media:
     -
       entity: 66286339-4f00-4994-8c0d-921b519ea4e4
-  su_news_headline:
-    -
-      value: 'Sample: For Runners, Is 15 Feet the New 6 Feet for Social Distancing?'
   su_news_publishing_date:
     -
       value: '2025-09-22'
@@ -72,6 +72,4 @@ default:
       options: {  }
   su_news_topics:
     -
-      entity: b1e7c455-31bf-411a-b1b8-a8306a2eabc2
-    -
-      entity: d4da5598-d960-4665-be27-daee0ed96328
+      entity: b30bead1-2ee4-4883-aad8-1590a8877e9c

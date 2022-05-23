@@ -89,7 +89,7 @@ class BasicPageCest {
     $I->see('Basic Page Type');
     $I->fillField('Title', $title);
     $I->fillField('Page Description', $description);
-    $I->selectOption('Basic Page Type', 'Research Project');
+    $I->selectOption('Basic Page Type', 'Research');
     $I->click('Save');
     $I->seeInSource('<meta name="description" content="' . $description . '" />');
   }
@@ -101,7 +101,7 @@ class BasicPageCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage("/admin/structure/taxonomy/manage/basic_page_types/overview");
     $I->canSeeResponseCodeIs(200);
-    $I->canSee('Research Project');
+    $I->canSee('Research');
     $I->amOnPage("/admin/structure/taxonomy/manage/basic_page_types/add");
     $I->canSeeResponseCodeIs(200);
     $I->fillField('Name', 'Test Basic Page Term');

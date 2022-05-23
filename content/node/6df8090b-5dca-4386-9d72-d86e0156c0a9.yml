@@ -5,11 +5,12 @@ _meta:
   bundle: stanford_person
   default_langcode: en
   depends:
+    9999fd33-d293-45b4-85b1-c7bac0d69a51: user
     381f792e-24b4-4c50-b5cc-69c13702f93a: media
 default:
   revision_uid:
     -
-      target_id: 1
+      entity: 9999fd33-d293-45b4-85b1-c7bac0d69a51
   status:
     -
       value: false
@@ -28,12 +29,9 @@ default:
   sticky:
     -
       value: false
-  revision_translation_affected:
-    -
-      value: true
   path:
     -
-      alias: /person/haley-jackson
+      alias: /people/haley-jackson
       langcode: en
       pathauto: 1
   body:

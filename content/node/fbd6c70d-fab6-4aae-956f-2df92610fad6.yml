@@ -5,14 +5,13 @@ _meta:
   bundle: stanford_news
   default_langcode: en
   depends:
+    9999fd33-d293-45b4-85b1-c7bac0d69a51: user
     81a60c63-7638-46d2-8fd9-b4de2cbc3554: media
-    b1e7c455-31bf-411a-b1b8-a8306a2eabc2: taxonomy_term
-    6f63da5d-c8a8-4fbf-99f6-e3ae03fad125: taxonomy_term
-    14c6b724-f498-400d-8cee-99b72a50531f: taxonomy_term
+    04c17e9e-df3a-49d1-b65e-21dd7c13d191: taxonomy_term
 default:
   revision_uid:
     -
-      target_id: 1
+      entity: 9999fd33-d293-45b4-85b1-c7bac0d69a51
   status:
     -
       value: false
@@ -45,6 +44,9 @@ default:
   rh_redirect_response:
     -
       value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
   su_news_banner:
     -
       entity: 81a60c63-7638-46d2-8fd9-b4de2cbc3554
@@ -60,16 +62,9 @@ default:
   su_news_featured_media:
     -
       entity: 81a60c63-7638-46d2-8fd9-b4de2cbc3554
-  su_news_headline:
-    -
-      value: 'Sample: Smith Conference'
   su_news_publishing_date:
     -
       value: '2025-09-30'
   su_news_topics:
     -
-      entity: b1e7c455-31bf-411a-b1b8-a8306a2eabc2
-    -
-      entity: 6f63da5d-c8a8-4fbf-99f6-e3ae03fad125
-    -
-      entity: 14c6b724-f498-400d-8cee-99b72a50531f
+      entity: 04c17e9e-df3a-49d1-b65e-21dd7c13d191

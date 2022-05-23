@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Cache\Cache;
 use Faker\Factory;
 
 /**
@@ -40,20 +41,21 @@ class NewsCest {
   public function testVocabularyTermsExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage("/admin/structure/taxonomy/manage/stanford_news_topics/overview");
-    $I->canSeeNumberOfElements(".term-id", 6);
+    $I->canSeeNumberOfElements("input.term-id", 2);
   }
 
   /**
    * Test that the view pages exist.
    */
   public function testViewPagesExist(AcceptanceTester $I) {
+    Cache::invalidateTags(['node_list:stanford_news']);
     $I->amOnPage("/news");
     $I->see("No results found");
-    $I->seeLink('Faculty');
-    $I->click("a[href='/news/staff']");
+    $I->seeLink('Announcement');
+    $I->click("a[href='/news/announcement']");
     $I->canSeeResponseCodeIs(200);
     $I->see("No results found");
-    $I->see("Topics Menu");
+    $I->see("News Topics");
   }
 
   /**
