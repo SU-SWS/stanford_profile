@@ -1642,8 +1642,8 @@ display:
           exposed: true
           expose:
             operator_id: su_opp_type_target_id_op
-            label: 'Type (su_opp_type)'
-            description: null
+            label: Type
+            description: ''
             use_operator: false
             operator: su_opp_type_target_id_op
             operator_limit_selection: false
@@ -1654,8 +1654,20 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+              administrator: '0'
+              anonymous: '0'
+              stanford_faculty: '0'
+              stanford_staff: '0'
+              stanford_student: '0'
+              contributor: '0'
+              site_manager: '0'
+              site_editor: '0'
+              site_builder: '0'
+              site_developer: '0'
+              layout_builder_user: '0'
+              cs_limited_opp_editor: '0'
             reduce: false
-          is_grouped: true
+          is_grouped: false
           group_info:
             label: Type
             description: ''
