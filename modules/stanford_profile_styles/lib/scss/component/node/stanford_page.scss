@@ -24,6 +24,12 @@
       }
     }
 
+    &.ptype-stanford-lists {
+      @include grid-media-min('2xl') {
+        max-width: inherit;
+      }
+    }
+
     &.ptype-stanford-card {
       img {
         width: 100%;
