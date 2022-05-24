@@ -9,6 +9,10 @@ use Faker\Factory;
  */
 class PublicationsCest {
 
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
   /**
    * Create a book citation
    */
@@ -136,7 +140,7 @@ class PublicationsCest {
 
     $I->amOnPage('/publications');
     $titles = $I->grabMultiple('.csl-entry a');
-    foreach($titles as &$title){
+    foreach ($titles as &$title) {
       $title = preg_replace('/[^\da-z ]/i', '', $title);
     }
 
@@ -153,6 +157,42 @@ class PublicationsCest {
     $I->assertEquals(1, $titles_counts['A June 1st Pub']);
     $I->assertEquals(1, $titles_counts['B June 15th Pub']);
     $I->assertEquals(1, $titles_counts['C January Pub']);
+  }
+
+  /**
+   * Publications should automatically populate on author's page.
+   *
+   * @group D8CORE-4867
+   */
+  public function testPubAuthorPage(AcceptanceTester $I) {
+    $first_name = $this->faker->firstName;
+    $last_name = $this->faker->lastName;
+    $author_node = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $first_name,
+      'su_person_last_name' => $last_name,
+    ]);
+    $I->amOnPage($author_node->toUrl()->toString());
+    $I->dontSee('Publications', 'h2');
+    $publication = $I->createEntity([
+      'type' => 'stanford_publication',
+      'title' => $this->faker->words(3, true),
+      'su_publication_author_ref' => $author_node,
+    ]);
+    $I->logInWithRole('contributor');
+    $I->amOnPage($publication->toUrl('edit-form')->toString());
+    $I->selectOption('su_publication_citation[actions][bundle]', 'Book');
+    $I->click('Add Citation');
+    $I->fillField('First Name', $first_name);
+    $I->fillField('Last Name/Company', $last_name);
+    $I->fillField('Subtitle', $this->faker->words(2, TRUE));
+    $I->fillField('Year', date('Y'));
+    $I->fillField('Publisher', $this->faker->company);
+    $I->click('Save');
+
+    $I->amOnPage($author_node->toUrl()->toString());
+    $I->canSee('Publications', 'h2');
+    $I->canSee($publication->label());
   }
 
 }
