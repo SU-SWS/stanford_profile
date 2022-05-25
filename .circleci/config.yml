@@ -111,7 +111,7 @@ workflows:
           filters:
             branches:
               only:
-                - 8.x
+                - 9.x
   daily:
     jobs:
       - run-merge-upstream
@@ -121,4 +121,4 @@ workflows:
           filters:
             branches:
               only:
-                - /8.x/
+                - /9.x/
