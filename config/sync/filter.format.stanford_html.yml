@@ -25,7 +25,7 @@ filters:
     id: editor_file_reference
     provider: editor
     status: false
-    weight: -40
+    weight: -39
     settings: {  }
   filter_caption:
     id: filter_caption
@@ -37,7 +37,7 @@ filters:
     id: filter_html_escape
     provider: filter
     status: false
-    weight: -41
+    weight: -40
     settings: {  }
   filter_align:
     id: filter_align
@@ -71,13 +71,13 @@ filters:
     id: filter_autop
     provider: filter
     status: false
-    weight: -39
+    weight: -38
     settings: {  }
   filter_html_image_secure:
     id: filter_html_image_secure
     provider: filter
     status: false
-    weight: -38
+    weight: -37
     settings: {  }
   linkit:
     id: linkit
@@ -112,7 +112,7 @@ filters:
     id: stanford_media_embed_markup
     provider: stanford_media
     status: true
-    weight: -42
+    weight: -41
     settings: {  }
   filter_mathjax:
     id: filter_mathjax
@@ -124,7 +124,7 @@ filters:
     id: filter_responsive_tables_filter
     provider: responsive_tables_filter
     status: true
-    weight: 0
+    weight: -42
     settings:
       tablesaw_type: stack
       tablesaw_persist: '1'

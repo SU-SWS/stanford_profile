@@ -86,6 +86,14 @@
   .su-course-list__description {
     @include responsive-spacing('margin-bottom', 4);
   }
+
+  //Edit event content link
+  .su-courses-edit-article {
+    a {
+      @include button-secondary;
+      text-align: right;
+    }
+  }
 }
 
 // Wrapper spacing

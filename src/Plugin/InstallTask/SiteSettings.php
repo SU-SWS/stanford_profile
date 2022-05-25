@@ -5,6 +5,7 @@ namespace Drupal\cardinal_service_profile\Plugin\InstallTask;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Password\PasswordGeneratorInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\State\StateInterface;
@@ -48,6 +49,13 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
   protected $authmap;
 
   /**
+   * Password generator service.
+   *
+   * @var \Drupal\Core\Password\PasswordGeneratorInterface
+   */
+  protected $passwordGenerator;
+
+  /**
    * State Service.
    *
    * @var \Drupal\Core\State\StateInterface
@@ -72,6 +80,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
       $container->get('entity_type.manager'),
       $container->get('http_client'),
       $container->get('externalauth.authmap'),
+      $container->get('password_generator'),
       $container->get('state'),
       $container->get('logger.factory')
     );
@@ -80,11 +89,12 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
   /**
    * {@inheritDoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap, StateInterface $state, LoggerChannelFactoryInterface $logger_factory) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap, PasswordGeneratorInterface $password_generator, StateInterface $state, LoggerChannelFactoryInterface $logger_factory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
     $this->client = $client;
     $this->authmap = $authmap;
+    $this->passwordGenerator = $password_generator;
     $this->state = $state;
     $this->logger = $logger_factory->get('cardinal_service_profile');
   }
@@ -156,7 +166,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
   protected function addSiteOwner($sunet, $email) {
     $new_user = $this->entityTypeManager->getStorage('user')->create([
       'name' => $sunet,
-      'pass' => user_password(),
+      'pass' => $this->passwordGenerator->generate(),
       'mail' => $email,
       'roles' => ['site_manager'],
       'status' => 1,
@@ -228,7 +238,8 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   protected function getNode($uuid) {
-    $nodes = $this->entityTypeManager->getStorage('node')->loadByProperties(['uuid' => $uuid]);
+    $nodes = $this->entityTypeManager->getStorage('node')
+      ->loadByProperties(['uuid' => $uuid]);
     return reset($nodes);
   }
 

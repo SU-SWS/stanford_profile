@@ -1,0 +1,29 @@
+uuid: 04146b3d-3347-4731-826b-41cd9bdc30f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_publication_author_ref
+    - node.type.stanford_person
+    - node.type.stanford_publication
+id: node.stanford_publication.su_publication_author_ref
+field_name: su_publication_author_ref
+entity_type: node
+bundle: stanford_publication
+label: 'Author Reference'
+description: 'Use this to automatically display the publications on the author''s page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      stanford_person: stanford_person
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Cache\Cache;
 use Faker\Factory;
 
 /**
@@ -46,6 +47,7 @@ class PersonCest {
    * Test that the view pages exist.
    */
   public function testViewPagesExist(AcceptanceTester $I) {
+    Cache::invalidateTags(['node_list:stanford_person']);
     $I->amOnPage("/people");
     $I->see("Sorry, no results found");
     $I->seeLink('Student');
