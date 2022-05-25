@@ -18,6 +18,14 @@ third_party_settings:
       column: uri
       config_name: migrate_plus.migration.stanford_localist_importer
       config_item: source.urls
+    23a634c7-34bc-4926-b068-87c93e47eb10:
+      field: su_event_empty
+      delta: 0
+      column: value
+      config_name: views.view.stanford_events
+      config_item: display.default.display_options.empty.area.content.value
+      prefix: ''
+      suffix: ''
 id: stanford_events_importer
 label: 'Events Importer'
 token: null

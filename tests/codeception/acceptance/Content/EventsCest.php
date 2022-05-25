@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\config_pages\Entity\ConfigPages;
 use Faker\Factory;
 
 /**
@@ -14,17 +15,78 @@ class EventsCest {
    */
   protected $faker;
 
+  /**
+   * Test Constructor.
+   */
   public function __construct() {
     $this->faker = Factory::create();
   }
 
+  public function _after(AcceptanceTester $I) {
+    if ($config_page = ConfigPages::load('stanford_events_importer')) {
+      $config_page->delete();
+    }
+  }
+
   /**
    * Events list intro block is at the top of the page.
+   *
+   * @group D8CORE-4858
    */
   public function testListIntro(AcceptanceTester $I) {
+    // Start with no events.
+    $nodes = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->loadByProperties(['type' => 'stanford_event']);
+    foreach ($nodes as $node) {
+      $node->delete();
+    }
+
     $I->logInWithRole('site_manager');
     $I->amOnPage('/events');
     $I->canSeeResponseCodeIs(200);
+    $I->canSee('No events at this time');
+
+    $term = $I->createEntity([
+      'vid' => 'stanford_event_types',
+      'name' => $this->faker->words(2, TRUE),
+    ], 'taxonomy_term');
+    $I->amOnPage($term->toUrl()->toString());
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee('No events at this time');
+
+    $event = $this->createEventNode($I);
+    $event->set('su_event_type', $term->id())->save();
+    $I->amOnPage($event->toUrl('edit-form')->toString());
+    $I->click('Save');
+    $I->canSee($event->label(), 'h1');
+
+    $I->amOnPage('/events');
+    $I->canSee($event->label());
+    $I->cantSee('No events at this time');
+
+    $I->amOnPage($term->toUrl()->toString());
+    $I->canSee($event->label());
+    $I->cantSee('No events at this time');
+
+    $message = $this->faker->sentence;
+    $I->amOnPage('/admin/config/importers/events-importer');
+    $I->fillField('No Results Message', $message);
+    $I->click('Save');
+    $I->canSee('Events Importer Events Importer has been');
+
+    $I->amOnPage($event->toUrl('delete-form')->toString());
+    $I->click('Delete');
+
+    $I->amOnPage('/events');
+    $I->cantSee($event->label());
+    $I->cantSee('No events at this time');
+    $I->canSee($message);
+
+    $I->amOnPage($term->toUrl()->toString());
+    $I->cantSee($event->label());
+    $I->cantSee('No events at this time');
+    $I->canSee($message);
   }
 
   /**
@@ -35,13 +97,6 @@ class EventsCest {
     $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_event');
     $I->seeOptionIsSelected("#edit-xmlsitemap-status", "Included");
     $I->seeOptionIsSelected("#edit-xmlsitemap-priority", "0.5 (normal)");
-  }
-
-  /**
-   * Test metadata settings.
-   */
-  public function testMetaDataSettings(AcceptanceTester $I) {
-    // TODO: Create and export this config.
   }
 
   /**
@@ -291,7 +346,7 @@ class EventsCest {
   protected function createEventNode(AcceptanceTester $I, $external = FALSE, $node_title = NULL) {
     return $I->createEntity([
       'type' => 'stanford_event',
-      'title' => $node_title ?: 'This is a headline',
+      'title' => $node_title ?: $this->faker->words(3, TRUE),
       'body' => [
         "value" => "<p>More updates to come.</p>",
         "summary" => "",
