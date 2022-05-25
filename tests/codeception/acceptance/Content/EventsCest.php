@@ -59,7 +59,7 @@ class EventsCest {
     $event->set('su_event_type', $term->id())->save();
     $I->amOnPage($event->toUrl('edit-form')->toString());
     $I->click('Save');
-    $I->cantSee($event->label(), 'h1');
+    $I->canSee($event->label(), 'h1');
 
     $I->amOnPage('/events');
     $I->canSee($event->label());
