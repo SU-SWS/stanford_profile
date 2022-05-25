@@ -1,0 +1,21 @@
+services:
+  stanford_profile_helper.config_overrider:
+    class: Drupal\stanford_profile_helper\Config\ConfigOverrides
+    arguments: ['@state', '@config_pages.loader', '@config.factory', '@entity_type.manager', '@stream_wrapper_manager']
+    tags:
+      - {name: config.factory.override, priority: 5}
+  stanford_profile_helper.event_subscriber:
+    class: '\Drupal\stanford_profile_helper\EventSubscriber\EventSubscriber'
+    arguments: ['@entity_type.manager', '@state']
+    tags:
+      - { name: 'event_subscriber' }
+  stanford_profile_helper.menu_link_tree:
+    class: Drupal\stanford_profile_helper\MenuLinkTreeOverride
+    decorates: menu.link_tree
+    public: false
+    arguments: ['@stanford_profile_helper.menu_link_tree.inner']
+  stanford_profile_helper.cache_context.route.menu_active_trails:
+    class: Drupal\stanford_profile_helper\MenuActiveTrailsCacheContextOverride
+    decorates: cache_context.route.menu_active_trails
+    pubic: false
+    arguments: ['@stanford_profile_helper.cache_context.route.menu_active_trails.inner']

@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+@import '../config';
+
+.publication {
+  @include responsive-spacing('padding-top', 6);
+
+
+  // Header Related Topics
+  .node-stanford-publication-citation-type {
+    @include responsive-spacing('padding-bottom', 1);
+  }
+
+  h1 {
+    @include responsive-spacing('margin-bottom', 5);
+  }
+
+  // Left region - main content well
+  .left-region {
+    @include grid-media-min("lg") {
+      @include responsive-spacing('padding-right', 3);
+    }
+  }
+
+
+  // Footer Related Topics
+  .jumpstart-ui--one-column {
+
+    .node-stanford-publication-su-publication-topics {
+
+      h2 {
+        @include small-paragraph;
+        @include responsive-spacing('padding-top', 0);
+
+        border-top: 1px solid $su-color-black-10;
+        font-weight: $su-font-bold;
+        margin-bottom: 6px;
+      }
+
+      .su-publication-topics {
+
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        li {
+          display: inline;
+
+          a {
+            color: $su-color-bright-red;
+            font-weight: $su-font-regular;
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+              color: $su-color-black;
+              font-weight: $su-font-regular;
+              text-decoration: none;
+            }
+          }
+
+          &::after {
+            content: ', ';
+          }
+
+          &:last-of-type {
+            &::after {
+              content: '';
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Right col on lg and up
+
+  .main-region {
+    &.flex-lg-3-of-12 {
+      > div {
+        &:last-of-type {
+          @include modular-spacing('margin-bottom', 7);
+        }
+      }
+    }
+  }
+
+
+  .node-stanford-publication-su-publication-citation {
+    @include small-paragraph;
+
+    @include grid-media-min("lg") {
+      @include responsive-spacing('padding-left', 2);
+
+      border-left: 1px solid $su-color-black-10;
+    }
+
+    .label-above  {
+      > div:first-child {
+        // Update the font size at later date.
+        // Small Paragraph should be 20 but is 18.
+        font-weight: $su-font-bold;
+      }
+    }
+  }
+
+  // CTA button
+  .su-publication-cta {
+    @include modular-spacing('padding', 3 null null null);
+
+    @include grid-media-min("lg") {
+      @include modular-spacing('padding-left', 3);
+    }
+  }
+
+  // Related block on the node page.
+  .stanford-publications-related {
+    @include modular-spacing('padding-top', 5);
+
+    .block__title {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+

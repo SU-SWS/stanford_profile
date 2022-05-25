@@ -1,0 +1,28 @@
+@charset 'UTF-8';
+
+// Secondary Navigation - Light theme
+//
+// Decanter overrides.
+
+.su-secondary-nav--light {
+  .su-secondary-nav__link {
+    color: $su-color-bright-red;
+
+    &:hover,
+    &:focus {
+      &::before {
+        background-color: $su-color-bright-red;
+      }
+    }
+  }
+
+  .su-secondary-nav__item--current {
+    > .su-secondary-nav__link {
+      color: $su-color-black;
+
+      &::before {
+        background-color: $su-color-black;
+      }
+    }
+  }
+}

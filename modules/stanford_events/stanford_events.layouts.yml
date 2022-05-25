@@ -1,0 +1,28 @@
+stanford_events_editorial_content:
+  label: "Editorial Content"
+  category: "Stanford Events - Sections"
+  path: templates/sections
+  template: events-editorial-content
+  default_region: su_editorial_content
+  icon_map:
+    - [content]
+  regions:
+    main:
+      label: "Main"
+
+stanford_events_body:
+  label: "Event Body Two Column"
+  category: "Stanford Events - Sections"
+  path: templates/sections
+  template: event-body-two-column
+  default_region: content
+  icon_map:
+    - [content]
+  regions:
+    main:
+      label: Main
+    right:
+      label: Right
+    cta:
+      label: CTA
+

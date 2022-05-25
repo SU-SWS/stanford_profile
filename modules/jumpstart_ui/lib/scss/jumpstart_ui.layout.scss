@@ -1,0 +1,12 @@
+@charset 'UTF-8';
+
+// Jumpstart UI Specific Configuration and variable overrides.
+@import './jumpstart_ui.config';
+// @import 'decanter/core/src/scss/decanter-no-markup';
+
+.centered-content {
+  > div:first-child {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

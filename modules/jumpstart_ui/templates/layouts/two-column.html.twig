@@ -1,0 +1,34 @@
+{% set right_class = 'flex-lg-9-of-12' %}
+{% set left_class = 'flex-lg-3-of-12' %}
+
+{% if settings.orientation == 'left' %}
+  {% set right_class = 'flex-lg-3-of-12' %}
+  {% set left_class = 'flex-lg-9-of-12' %}
+{% elseif settings.orientation == 'equal' %}
+  {% set right_class = 'flex-lg-6-of-12' %}
+  {% set left_class = 'flex-lg-6-of-12' %}
+{% endif %}
+
+{% if content.left|render and region_attributes.main is iterable %}
+  {% set region_attributes_main = region_attributes.main.addClass(right_class) %}
+  {% set region_attributes = region_attributes|merge({'main': region_attributes_main}) %}
+{% elseif 'centered-container' in settings.centered|render and region_attributes.main is iterable %}
+  {% set region_attributes_main = region_attributes.main.addClass('flex-12-of-12') %}
+  {% set region_attributes = region_attributes|merge({'main': region_attributes_main}) %}
+{% endif %}
+
+<div{{ attributes.addClass('jumpstart-ui--two-column', 'flex-container', settings.centered, settings.extra_classes) }}>
+
+  {% if content.left|render %}
+    <div {{ region_attributes.left.addClass('left-region', left_class) }}>
+      {{ content.left }}
+    </div>
+  {% endif %}
+
+  {% if content.main|render %}
+    <div {{ region_attributes.main.addClass('main-region') }}>
+      {{ content.main }}
+    </div>
+  {% endif %}
+
+</div>

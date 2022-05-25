@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+// Remove the border
+.su-lockup__cell1,
+.su-lockup__cell2 {
+  border: 0;
+
+  // adjusting spacing
+  .su-lockup__line4,
+  .su-lockup__logo-wrapper {
+    padding-right: 7px;
+  }
+
+  .su-lockup__line4 {
+    overflow-wrap: break-word;
+    word-break: inherit;
+  }
+}
+
+// adjusting spacing when no logo 
+.su-lockup__cell1.empty-logo {
+  padding: 0;
+  margin: 0;
+
+  + .su-lockup__cell2 {
+    padding: 0;
+    margin: 0;
+  }
+}

@@ -1,0 +1,54 @@
+@charset "UTF-8";
+@import '../../stanford_events.config';
+
+.su-person-cta {
+  @include margin(0);
+  display: flex;
+  justify-content: flex-start;
+
+  // Image styles.
+  .su-person-cta__image {
+    @include modular-spacing('margin-right', 0);
+    max-width: 100px;
+
+    img,
+    figure,
+    picture {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  // Content Styles.
+  .su-person-cta__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    .su-person-cta__name {
+      @include margin(null null 0 null);
+      width: 100%;
+
+      a,
+      a:link,
+      a:visited {
+        color: $su-color-bright-red;
+
+        &::after {
+          background: $su-color-bright-red;
+        }
+      }
+
+      a:hover,
+      a:focus {
+        color: $su-color-black;
+      }
+    }
+
+    .su-person-cta__title {
+      width: 100%;
+    }
+  }
+}

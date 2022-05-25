@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Main Page Template.
+ *
+ * Available variables:
+ * - page: The content regions for this page.
+ * - attributes: HTML attributes for the region div.
+ *
+ * @see template_preprocess_page()
+ */
+#}
+
+{# Template Paths #}
+{%- if template_brand_bar is empty -%}
+  {%- set template_brand_bar = "@basic-dist/decanter/components/brand-bar/brand-bar.twig" -%}
+{%- endif -%}
+
+{%- if template_global_footer is empty -%}
+  {%- set template_global_footer = "@basic-dist/decanter/components/global-footer/global-footer.twig" -%}
+{%- endif -%}
+{# End Template Paths. #}
+
+{# Brand Bar #}
+{%- block block_brandbar -%}
+  {%- include template_brand_bar with { modifier_class : brand_bar_variant } -%}
+{%- endblock -%}
+
+{# Help Section #}
+{%- block block_help -%}
+  {{ page.help }}
+{%- endblock -%}
+
+{# Masthead Section. #}
+{%- block block_header -%}
+  {%- if page.header or page.search or page.menu -%}
+    <header class="su-masthead su-masthead--right">
+      <section>
+        {{ page.header }}
+        {{ page.search }}
+        {{ page.menu }}
+      </section>
+    </header>
+  {%- endif -%}
+{%- endblock -%}
+
+{# Main Page Content Section #}
+<main class="page-content" id="page-content">
+  {%- block block_main -%}
+    {{ page.content }}
+  {%- endblock -%}
+</main>
+
+{# Footer Section #}
+{%- block block_footer -%}
+  <footer id="footer">
+    {{ page.footer }}
+    {%- include template_global_footer -%}
+  </footer>
+{%- endblock -%}
+
+<button id="back-to-top">
+  <span class="fas fa-chevron-up"></span>
+  Back to Top
+</button>
+

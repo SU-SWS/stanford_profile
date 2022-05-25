@@ -1,0 +1,50 @@
+@charset 'UTF-8';
+
+.su-card {
+  .su-event-list-item__date {
+    align-items: center;
+    display: flex;
+  }
+}
+
+.su-event-list-item__date {
+  @include modular-spacing(margin, null 3 0 null);
+
+  @include grid-media-max('sm') {
+    align-items: center;
+    display: flex;
+  }
+
+  max-width: 45px;
+
+  span {
+    display: block;
+  }
+
+  .su-event-start-month,
+  .su-event-end-month {
+    @include modular-typography(0);
+
+    color: $su-color-black;
+    font-weight: $su-font-bold;
+    text-transform: uppercase;
+  }
+
+  .su-event-list-item__date__seperator {
+    @include small-paragraph;
+    @include modular-spacing('margin', null null 0 null);
+    color: $su-color-black;
+    white-space: nowrap;
+
+    @include grid-media-max('sm') {
+      min-width: 45px;
+    }
+  }
+
+  .su-event-start-date,
+  .su-event-end-date {
+    @include modular-typography(4);
+    color: $su-color-black;
+    font-weight: $su-font-bold;
+  }
+}

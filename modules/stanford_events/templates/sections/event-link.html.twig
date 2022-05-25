@@ -1,0 +1,12 @@
+{#
+/**
+ * Eent link template.
+ */
+#}
+<div{{ attributes.addClass('centered-container', 'su-events-link', 'flex-container', settings.extra_classes) }}>
+  {% if content.main|render %}
+    <div {{ region_attributes.main.addClass('body-region', 'flex-6-of-12') }}>
+      {{ content.main }}
+    </div>
+  {% endif %}
+</div>

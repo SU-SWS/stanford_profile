@@ -1,0 +1,103 @@
+{#
+  Glue code for Decanter's component
+#}
+{# Macros for processing link fields into lists. #}
+{% import "@jumpstart_ui/macros/field-links-to-list.twig" as linklist %}
+{% import "@jumpstart_ui/macros/field-links-to-social-list.twig" as sociallist %}
+
+{# Sanitize the weblogin text. #}
+{%- set weblogin_text = weblogin_text|render_clean-%}
+{%- if weblogin_text is empty -%}
+  {%- set weblogin_url = '' -%}
+{%- endif -%}
+
+{# Work with Drupal and format it for this template. #}
+{%- set signup_form_method = signup_form_method|render_clean -%}
+{%- set signup_form_action = signup_form_action|render_clean -%}
+{%- set signup_form_field_submit_value = signup_form_field_submit_value|render_clean -%}
+{%- set action_links = linklist.create_list(action_links) -%}
+{%- set social_links = sociallist.create_list(social_links) -%}
+{%- set primary_links = linklist.create_list(primary_links) -%}
+{%- set secondary_links = linklist.create_list(secondary_links) -%}
+{%- set primary_links_header = primary_links_header|render_clean -%}
+{%- set secondary_links_header = secondary_links_header|render_clean -%}
+
+{% if action_links|render_clean('<ul> <li> <a>') is empty %}
+  {% set action_links = null %}
+{% endif %}
+{% if social_links|render_clean('<ul> <li> <a>') is empty %}
+  {% set social_links = null %}
+{% endif %}
+{% if primary_links|render_clean('<ul> <li> <a>') is empty %}
+  {% set primary_links = null %}
+{% endif %}
+{% if secondary_links|render_clean('<ul> <li> <a>') is empty %}
+  {% set secondary_links = null %}
+{% endif %}
+
+{# Ensure attributes is not empty and remove extra css classes if it does #}
+{% if attributes is empty %}
+  {% set attributes = create_attribute() %}
+{% endif %}
+
+{# Pull the attribute classes out. #}
+{% set attributes = attributes|without('class') %}
+
+{# Pass through custom lockup settings #}
+{%- set lockup_title = lockup_title|render_clean -%}
+{% if line1|render_clean is empty %}
+  {% set line1 = lockup_title %}
+{% endif %}
+
+{% if lockup_link|render_clean is empty %}
+  {% set lockup_link = url('<front>') %}
+{% endif %}
+
+{# Pass through the custom lockup settings. #}
+{%- if custom_lockup -%}
+  {%- set lockup_options =
+    {
+      "modifier_class": lockup_option,
+      "line1": line1,
+      "line2": line2,
+      "line3": line3,
+      "line4": line4,
+      "line5": line5,
+      "link": lockup_link,
+    }
+  -%}
+{%- endif -%}
+
+{# Use custom logo for the footer. #}
+{% block block_lockup %}
+  {% if use_logo == "0" %}
+    {% embed "@decanter/components/lockup/lockup.twig" with lockup_options %}
+
+      {% set image_alt = line1 %}
+      {# if the option was set to logo only. Remove the lines. #}
+      {% if 'su-lockup--option-none' in lockup_option %}
+        {% set line1 = '' %}
+        {% set line2 = '' %}
+        {% set line3 = '' %}
+        {% set line4 = '' %}
+        {% set line5 = '' %}
+      {% endif %}
+
+      {# Override cell 1 with the logo. #}
+      {% block cell1 %}
+        <div class="su-lockup__logo-wrapper">
+          <img src="{{ site_logo }}" alt="{{ image_alt }}" class="su-lockup__custom-logo" />
+          {% if line4 is not empty %}
+            <span class="su-lockup__line4">{{ line4 }}</span>
+          {% endif %}
+        </div>
+      {% endblock %}
+
+    {% endembed %}
+  {% else %}
+    {% include "@decanter/components/lockup/lockup.twig" with lockup_options only %}
+  {% endif %}
+{% endblock %}
+
+{# Finally call the parent template #}
+{%- extends "@decanter/components/local-footer/local-footer.twig" -%}

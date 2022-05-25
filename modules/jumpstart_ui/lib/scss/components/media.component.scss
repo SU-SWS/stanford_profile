@@ -1,0 +1,47 @@
+@charset 'UTF-8';
+@import '../jumpstart_ui.config';
+@import 'decanter/core/src/scss/decanter-no-markup';
+@import 'decanter/core/src/scss/components/media/index';
+
+.su-media {
+  position: relative;
+
+  .media-entity-wrapper.video {
+    @include aspect-ratio(16, 9, '> div');
+
+    iframe {
+      height: 100%;
+      min-height: unset;
+      width: 100%;
+    }
+  }
+
+  .su-media__caption {
+    float: right;
+    text-align: right;
+
+    @include grid-media("lg") {
+      width: ceil($su-screen-lg * 0.6);
+    }
+    @include grid-media("xl") {
+      width: ceil($su-screen-xl * 0.6);
+    }
+    @include grid-media("2xl") {
+      width: ceil($su-screen-2xl * 0.6);
+    }
+  }
+
+  .su-media__link a {
+    text-align: right;
+    display: block;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      content: '';
+    }
+  }
+}

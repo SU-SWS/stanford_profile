@@ -1,0 +1,31 @@
+{#
+  /**
+   * Single Column Container with configuration options.
+   */
+#}
+
+{# Add a few classes to the outer wrapper by default. #}
+{% set attributes = attributes.addClass('jumpstart-ui--one-column', settings.centered, settings.extra_classes) %}
+
+{# Pull out the main attributes so they are easier to work with. #}
+{% set main_attributes = region_attributes.main %}
+{% set main_attributes = main_attributes.addClass('main-region') %}
+
+{# Configuration for the main attributes. #}
+{% if 'centered-container' in settings.centered|render and main_attributes is iterable %}
+  {% set main_attributes = main_attributes.addClass('flex-12-of-12') %}
+{% endif %}
+
+{# If max width has been set allow it to override the centered option. #}
+{% if settings.columns|render is not empty and settings.columns != "default" %}
+  {% if region_attributes.main is iterable %}
+    {% set main_attributes = main_attributes.removeClass('flex-12-of-12').addClass(settings.columns) %}
+    {% set attributes = attributes.addClass('centered-content') %}
+  {% endif %}
+{% endif %}
+
+<div{{ attributes }}>
+    <div {{ main_attributes }}>
+      {{ content.main }}
+    </div>
+</div>

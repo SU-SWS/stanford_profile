@@ -1,0 +1,33 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 0d6e3ecd-f7f4-42c7-adc3-af48af999924
+  bundle: stanford_person_types
+  default_langcode: en
+  depends:
+    81a712e0-b40f-4ffa-9152-2f97495ca730: taxonomy_term
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Assistant Professor'
+  description:
+    -
+      value: "<p>Assistant Professor</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br />\r\n&nbsp;</p>\r\n"
+      format: stanford_html
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      entity: 81a712e0-b40f-4ffa-9152-2f97495ca730
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /people/faculty/assistant-professor
+      langcode: en
+      pathauto: 1
