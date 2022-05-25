@@ -9,6 +9,7 @@ use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\paragraphs\Entity\ParagraphsType;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\paragraphs\ParagraphsBehaviorBase;
+use Drupal\paragraphs\ParagraphsTypeInterface;
 
 /**
  * Class HeroPatternBehavior.
@@ -24,7 +25,7 @@ class ListParagraphBehavior extends ParagraphsBehaviorBase {
   /**
    * {@inheritDoc}
    */
-  public static function isApplicable(ParagraphsType $paragraphs_type) {
+  public static function isApplicable(ParagraphsTypeInterface $paragraphs_type) {
     return $paragraphs_type->id() == 'stanford_lists';
   }
 
@@ -51,17 +52,17 @@ class ListParagraphBehavior extends ParagraphsBehaviorBase {
   /**
    * {@inheritDoc}
    */
-  public function view(array &$build, Paragraph $paragraph, EntityViewDisplayInterface $display, $view_mode) {
-    if (!empty(Element::children($build['su_list_view']))) {
+  public function view(array &$build, ParagraphInterface $paragraph, EntityViewDisplayInterface $display, $view_mode) {
+    if (!isset($build['su_list_view']) || !empty(Element::children($build['su_list_view']))) {
       return;
     }
-//    if ($empty_message = $paragraph->getBehaviorSetting('list_paragraph', 'empty_message')) {
-//      $build['su_list_view']['#markup'] = $empty_message;
-//    }
-//    if ($paragraph->getBehaviorSetting('list_paragraph', 'hide_empty')) {
-//      // Unset everything, but keep the cache for any cache tags and keys.
-//      $build = ['#cache' => $build['#cache']];
-//    }
+    if ($empty_message = $paragraph->getBehaviorSetting('list_paragraph', 'empty_message')) {
+      $build['su_list_view']['#markup'] = $empty_message;
+    }
+    if ($paragraph->getBehaviorSetting('list_paragraph', 'hide_empty')) {
+      // Unset everything, but keep the cache for any cache tags and keys.
+      $build = ['#cache' => $build['#cache']];
+    }
   }
 
 }

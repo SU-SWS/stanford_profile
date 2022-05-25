@@ -43,7 +43,7 @@ function stanford_events_importer_form_config_pages_stanford_events_importer_for
     '#submit' => ["stanford_events_importer_update_opts"],
     '#access' => $user->hasPermission("administer migrations"),
   ];
-dpm($form);
+
   return $form;
 }
 
