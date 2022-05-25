@@ -38,7 +38,7 @@
       blockquote {
         order: 1;
         margin: 0;
-        @include modular-spacing('margin-bottom', 0);
+        @include responsive-spacing('margin-bottom', 0);
 
         .su-quote__quote {
           @include modular-typography(3);
@@ -49,7 +49,7 @@
         order: 2;
         margin: 0;
         @include modular-typography(1);
-        @include modular-spacing('margin-bottom', 1);
+        @include responsive-spacing('margin-bottom', 1);
       }
 
       .views-field-su-spotlight-context {
@@ -64,7 +64,7 @@
 
       .su-link--action {
         order: 5;
-        @include modular-spacing('margin-top', 2);
+        @include responsive-spacing('margin-top', 2);
       }
     }
 
@@ -77,7 +77,7 @@
 
   .no-story {
     blockquote {
-      @include modular-spacing('margin-bottom', 3);
+      @include responsive-spacing('margin-bottom', 3);
 
       .su-quote__quote {
         @include modular-typography(2);

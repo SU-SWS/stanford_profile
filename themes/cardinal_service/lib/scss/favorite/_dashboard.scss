@@ -2,17 +2,17 @@
 
 [class*='page-user-'] {
   .block-cardinal-service-content {
-    @include modular-spacing('margin-top', 6);
+    @include responsive-spacing('margin-top', 6);
     margin-bottom: 300px;
   }
 }
 
 .su-opportunities-count-favorites-opps {
-  @include modular-spacing('margin-bottom', 4);
+  @include responsive-spacing('margin-bottom', 4);
 }
 
 .cs-resources-count-favorites-resources {
-  @include modular-spacing('margin-bottom', 9);
+  @include responsive-spacing('margin-bottom', 9);
 }
 
 .su-opportunities-count-favorites-opps,
@@ -23,7 +23,7 @@
 
   .su-card {
     .flex-container {
-      @include modular-spacing('padding', 2);
+      @include responsive-spacing('padding', 2);
     }
 
     .flex-3-of-12 {
@@ -45,7 +45,7 @@
 
       h2 {
         @include modular-typography(2);
-        @include modular-spacing('margin-bottom', -4);
+        @include responsive-spacing('margin-bottom', -2);
 
         a,
         a:hover {
@@ -64,7 +64,7 @@
 }
 
 .stanford-news-term-block {
-  @include modular-spacing('margin-top', 3);
+  @include responsive-spacing('margin-top', 3);
 
   .block__title {
     @include modular-typography(4);

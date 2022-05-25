@@ -2,7 +2,7 @@
 
 .su-masthead {
   .su-lockup {
-    @include modular-spacing('margin', null null 0);
+    @include responsive-spacing('margin', null null 0);
     max-width: fit-content;
 
     @include grid-media-max('md') {

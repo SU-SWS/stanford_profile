@@ -8,8 +8,8 @@
     padding: 0;
 
     ol {
-      @include modular-spacing('padding-top', -1);
-      @include modular-spacing('padding-bottom', -2);
+      @include responsive-spacing('padding-top', -1);
+      @include responsive-spacing('padding-bottom', -2);
 
       li {
         font-size: 16px;
@@ -27,8 +27,8 @@
 
         &:not(:first-child)::before {
           content: "/";
-          @include modular-spacing('margin-right', -3);
-          @include modular-spacing('margin-left', -3);
+          @include responsive-spacing('margin-right', -2);
+          @include responsive-spacing('margin-left', -2);
         }
       }
     }
