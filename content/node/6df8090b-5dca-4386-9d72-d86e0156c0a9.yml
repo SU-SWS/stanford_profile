@@ -1,0 +1,116 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 6df8090b-5dca-4386-9d72-d86e0156c0a9
+  bundle: stanford_person
+  default_langcode: en
+  depends:
+    9999fd33-d293-45b4-85b1-c7bac0d69a51: user
+    381f792e-24b4-4c50-b5cc-69c13702f93a: media
+default:
+  revision_uid:
+    -
+      entity: 9999fd33-d293-45b4-85b1-c7bac0d69a51
+  status:
+    -
+      value: false
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Haley Jackson'
+  created:
+    -
+      value: 1588091769
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  path:
+    -
+      alias: /people/haley-jackson
+      langcode: en
+      pathauto: 1
+  body:
+    -
+      value: "<p>This is a sample student bio for Sally Jacks. Nullam laoreet pulvinar nibh ut tempus. Aenean a enim in tellus mattis condimentum. Maecenas eu tristique sapien, mollis fringilla dolor. Vivamus nec laoreet metus. Praesent eu neque enim. Nam at neque sed arcu laoreet consequat. Donec feugiat sed magna tempus dignissim. Nunc pretium dolor justo, in hendrerit lectus scelerisque quis. Donec rhoncus condimentum interdum. Sed euismod varius diam quis suscipit. Vestibulum scelerisque gravida massa ut egestas. Maecenas sagittis nibh quis nibh tincidunt, a fringilla risus dictum. Donec at luctus lectus. Sed et dictum nisl.</p>\r\n"
+      format: stanford_html
+      summary: ''
+  su_person_affiliations:
+    -
+      uri: 'https://www.stanford.edu/'
+      title: 'Stanford University'
+      options: {  }
+    -
+      uri: 'https://stanford.edu/'
+      title: Stanford
+      options: {  }
+  su_person_education:
+    -
+      value: 'B.A., Stanford University, 2012'
+    -
+      value: 'PHD, Stanford University, 2019'
+  su_person_email:
+    -
+      value: sunetid@stanford.edu
+  su_person_fax:
+    -
+      value: '(555) 555-5555'
+  su_person_first_name:
+    -
+      value: Haley
+  su_person_full_title:
+    -
+      value: 'Student, mentor, scholar. '
+  su_person_last_name:
+    -
+      value: Jackson
+  su_person_links:
+    -
+      uri: 'https://google.com/'
+      title: Google
+      options: {  }
+    -
+      uri: 'https://stanford.edu'
+      title: Stanford
+      options: {  }
+  su_person_location_address:
+    -
+      value: "<p>Building Name Room 555<br />\r\nStreet Address<br />\r\nStanford, CA 94305</p>\r\n"
+      format: stanford_html
+  su_person_location_name:
+    -
+      value: 'A big shiny new building'
+  su_person_mail_code:
+    -
+      value: '3020'
+  su_person_map_url:
+    -
+      uri: 'https://google.com/'
+      title: ''
+      options: {  }
+  su_person_mobile_phone:
+    -
+      value: '(555) 555-5555'
+  su_person_photo:
+    -
+      entity: 381f792e-24b4-4c50-b5cc-69c13702f93a
+  su_person_research:
+    -
+      value: 'research interest one.'
+      format: stanford_minimal_html
+    -
+      value: 'research interest two.'
+      format: stanford_minimal_html
+    -
+      value: 'research interest three'
+      format: stanford_minimal_html
+  su_person_short_title:
+    -
+      value: Student
+  su_person_telephone:
+    -
+      value: '(555) 555-5555'

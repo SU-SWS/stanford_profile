@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * stanford_image_styles.module
+ */
+
+use Drupal\image\ImageStyleInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function stanford_image_styles_image_style_presave(ImageStyleInterface $image_style) {
+  // Set the path for the mask image for the circle image style when the image
+  // style is created new.
+  if ($image_style->id() == 'stanford_circle' && $image_style->isNew()) {
+    $effects = $image_style->get('effects');
+    foreach ($effects as &$effect) {
+      if ($effect['id'] == 'image_effects_mask') {
+        $effect['data']['mask_image'] = drupal_get_path('module', 'stanford_image_styles') . '/img/mask-image.png';
+      }
+    }
+    $image_style->set('effects', $effects);
+  }
+}

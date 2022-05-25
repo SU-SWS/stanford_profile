@@ -1,0 +1,52 @@
+@charset 'UTF-8';
+/**
+ * This file overrides and extends base typography styles found in Decanter.
+ * See: https://github.com/SU-SWS/decanter/blob/master/core/src/scss/elements/typography/_typography.scss
+ * See: node_modules/decanter/core/src/scss/elements/typography/_typography.scss
+ */
+
+// Restore font style when using font awesome icons on an element.
+a,
+aside,
+dd,
+div,
+h2,
+h3,
+h4,
+h5,
+li,
+p,
+td {
+  &.fab {
+    font-family: inherit;
+    font-weight: inherit;
+
+    &:before {
+      font-family: "Font Awesome 5 Brands";
+      font-weight: 400;
+    }
+  }
+
+  &.fas,
+  &.far {
+    font-family: inherit;
+    font-weight: inherit;
+
+    &:before {
+      font-family: "Font Awesome 5 Free";
+    }
+  }
+
+
+  &.fas {
+    &:before {
+      font-weight: 900;
+    }
+  }
+
+  &.fas {
+    &:before {
+ 
+    }
+  }
+}

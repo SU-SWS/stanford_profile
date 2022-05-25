@@ -1,0 +1,18 @@
+@charset 'UTF-8';
+@import "./stanford_events_series.config";
+
+// Event Series Node Styles.
+.node-event-series {
+  // Just something so quiet code climate.
+  $node-event-series: true;
+}
+
+.section-event-series--header {
+  @include modular-spacing('padding', null null 3 null);
+
+  .su-event-series-title {
+    h1 {
+      @include modular-spacing('margin', 6 null null);
+    }
+  }
+}

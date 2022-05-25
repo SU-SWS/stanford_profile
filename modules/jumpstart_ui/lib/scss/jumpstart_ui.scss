@@ -1,0 +1,27 @@
+@charset 'UTF-8';
+
+// Remove this variable if you are not using assets directly out of Decanter
+// that need to be included in the webpack build.
+@import './jumpstart_ui.config';
+
+// Import Decanter Library:
+@import 'decanter/core/src/scss/decanter-no-markup';
+
+// Your SASS here: 1-888-555-3333
+// body {
+//   background-image: url("../../assets/img/test.jpg");
+// }
+
+.text-long {
+  .media-entity-wrapper.video {
+    float: none;
+    @include aspect-ratio(16, 9, '> div');
+
+    iframe {
+      height: 100%;
+      min-height: unset;
+      width: 100%;
+    }
+  }
+
+}

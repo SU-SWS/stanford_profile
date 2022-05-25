@@ -1,0 +1,40 @@
+news-vertical-teaser:
+  label: News Vertical Teaser
+  description: "News Vertical Teaser"
+  fields:
+    news_vertical_teaser_image:
+      type: text
+      label: "Image"
+      description: "The vertical teaser image."
+      preview: "<img src='https://picsum.photos/900/900/' alt='Example Image' />"
+    news_vertical_teaser_headline:
+      type: text
+      label: "Headline"
+      description: "Text heading"
+      preview: "This is a headline"
+    news_topics:
+      type: text
+      label: "Topics"
+      description: "Associated terms from the topics taxonomy"
+      preview: "Link to taxonomy terms"
+    news_source:
+      type: text
+      label: "Source"
+      description: "The source field."
+      preview: "I am a link"
+    news_url:
+      type: text
+      label: "URL for item"
+      description: "URL for image and heading"
+      preview: "http://www.stanford.edu/"
+    news_footer:
+      type: text
+      label: "Footer"
+      description: "The footer area."
+      preview: ""
+  use: "@news/news-vertical-teaser/news-vertical-teaser.twig"
+  libraries:
+    - newsverteaser:
+        css:
+          component:
+            ../../../dist/css/news-vertical-teaser.css: { weight: 1000 }

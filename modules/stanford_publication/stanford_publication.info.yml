@@ -1,0 +1,23 @@
+name: "Stanford Publications"
+type: module
+description: "Stanford Publications Module."
+core_version_requirement: ^8.8 || ^9
+package: Stanford
+version: 9.x-0.2-dev
+dependencies:
+  - ctools:ctools
+  - drupal:layout_builder
+  - element_class_formatter:element_class_formatter
+  - field_formatter_class:field_formatter_class
+  - field_group:field_group
+  - inline_entity_form:inline_entity_form
+  - jumpstart_ui:jumpstart_ui
+  - name:name
+  - node_revision_delete:node_revision_delete
+  - pathauto:pathauto
+  - rabbit_hole:rabbit_hole
+  - react_paragraphs:react_paragraphs
+  - taxonomy_menu:taxonomy_menu
+  - ui_patterns:ui_patterns_views
+  - views_infinite_scroll:views_infinite_scroll
+  - views_taxonomy_term_name_depth:views_taxonomy_term_name_depth

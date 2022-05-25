@@ -1,0 +1,16 @@
+uuid: 2ed4fbb2-7046-4b31-a3bd-b91fcbeab02f
+langcode: en
+status: true
+dependencies: {  }
+id: sul_embed_service
+label: 'SUL Embed Service'
+provider_url: 'https://embed.stanford.edu'
+endpoints:
+  -
+    schemes:
+      - 'https://purl.stanford.edu/*'
+    url: 'https://purl.stanford.edu/embed.{format}'
+    discovery: true
+    formats:
+      json: true
+      xml: true

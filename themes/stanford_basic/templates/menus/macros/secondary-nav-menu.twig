@@ -1,0 +1,58 @@
+{#
+/**
+ * Macro for creating nested menus.
+ */
+#}
+
+{% macro secondary_nav_menu(items, menu_level, class_prefix, parent) %}
+  {% import _self as menus %}
+
+  {% set items_to_display = items|filter(item => item.in_active_trail == true or menu_level == 1 or parent.in_active_trail == true) %}
+
+  {% if items_to_display is not empty %}
+    <ul class="{{ class_prefix }}__menu {{ class_prefix }}__menu-lv{{ menu_level }}">
+    {% for item in items_to_display %}
+
+      {# Link Attribtues #}
+      {% set link_attributes = item.attributes %}
+      {% set link_attributes = link_attributes.addClass(class_prefix ~ "__link") %}
+      {% set link_attributes = link_attributes.setAttribute('href', item.url|render) %}
+
+      {# Tooltips #}
+      {% if item.url.options.attributes.title is not empty %}
+        {% set link_attributes = link_attributes.setAttribute('data-toggle', 'tooltip') %}
+        {% set link_attributes = link_attributes.setAttribute('title', item.url.options.attributes.title) %}
+      {% endif %}
+
+      {# Item Attributes #}
+      {% set list_attributes = create_attribute() %}
+      {% set list_attributes = list_attributes.addClass(class_prefix ~ "__item") %}
+      {% if item.below is not empty %}
+        {% set list_attributes = list_attributes.addClass(class_prefix ~ "__item--parent") %}
+      {% endif %}
+      {% if item.in_active_trail == true %}
+        {% set list_attributes = list_attributes.addClass(class_prefix ~ "__item--active-trail") %}
+      {% endif %}
+      {% if item.is_active == true %}
+        {% set list_attributes = list_attributes.addClass(class_prefix ~ "__item--current") %}
+        {% set link_attributes = link_attributes.setAttribute('aria-current', 'true') %}
+      {% endif %}
+
+      {# Skip non-trail items below the first level. #}
+      {% if item.in_active_trail == true or menu_level == 1 or parent.in_active_trail == true %}
+        <li{{ list_attributes }}>
+          <a{{ link_attributes }}>
+            {{ item.title }}
+            {% if item.unpublished %}
+              <div class="unpublished-indicator">{{ "Unpublished Page"|t }}</div>
+            {% endif %}
+          </a>
+          {% if item.below %}
+            {{ menus.secondary_nav_menu(item.below, menu_level + 1, class_prefix, item) }}
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

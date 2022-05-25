@@ -1,0 +1,121 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.citation.su_article_journal.su_author
+    - field.field.citation.su_article_journal.su_day
+    - field.field.citation.su_article_journal.su_doi
+    - field.field.citation.su_article_journal.su_issue
+    - field.field.citation.su_article_journal.su_month
+    - field.field.citation.su_article_journal.su_page
+    - field.field.citation.su_article_journal.su_publisher
+    - field.field.citation.su_article_journal.su_url
+    - field.field.citation.su_article_journal.su_volume
+    - field.field.citation.su_article_journal.su_year
+    - stanford_publication.citation_type.su_article_journal
+  module:
+    - field_formatter_class
+    - link
+    - name
+id: citation.su_article_journal.default
+targetEntityType: citation
+bundle: su_article_journal
+mode: default
+content:
+  su_author:
+    weight: 0
+    label: above
+    settings:
+      format: default
+      list_format: ''
+      markup: none
+      link_target: ''
+      preferred_field_reference: ''
+      preferred_field_reference_separator: ', '
+      alternative_field_reference: ''
+      alternative_field_reference_separator: ', '
+    third_party_settings: {}
+    type: name_default
+    region: content
+  su_day:
+    weight: 3
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {}
+    type: number_integer
+    region: content
+  su_doi:
+    weight: 8
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {}
+    type: string
+    region: content
+  su_issue:
+    weight: 6
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {}
+    type: number_integer
+    region: content
+  su_month:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {}
+    type: number_integer
+    region: content
+  su_page:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {}
+    type: string
+    region: content
+  su_publisher:
+    type: string
+    weight: 4
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {}
+  su_url:
+    weight: 9
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  su_volume:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {}
+    type: string
+    region: content
+  su_year:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {}
+    type: number_integer
+    region: content
+hidden:
+  title: true

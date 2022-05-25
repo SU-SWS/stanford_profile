@@ -1,0 +1,38 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 1eaae651-e131-4915-82af-847ad44d0544
+  bundle: stanford_person_types
+  default_langcode: en
+  depends:
+    74d939be-aef1-4b26-8ea3-91f6140fe9d6: taxonomy_term
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Associate Professor'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      entity: 74d939be-aef1-4b26-8ea3-91f6140fe9d6
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /people/faculty/associate-professor
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default

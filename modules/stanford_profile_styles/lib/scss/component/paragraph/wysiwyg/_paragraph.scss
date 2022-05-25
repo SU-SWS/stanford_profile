@@ -1,0 +1,260 @@
+@charset "UTF-8";
+
+// We have a convention: margin-bottom for vertical
+// and margin-left for horizontal. One direction margin only.
+//
+// Exception: if we need additional spacing on top,
+// use padding-top, not margin-top.
+
+
+.su-wysiwyg-text {
+  .media {
+    @include padding(null null 2em null);
+  }
+
+  // Remove the bottom padding when the media has a caption since we add padding
+  // to the caption itself.
+  figure {
+    .media {
+      @include padding(null null 0 null);
+    }
+  }
+
+  // Remove any existing top and bottom margin and padding.
+  p {
+    @include big-paragraph;
+    @include margin(0 null null null);
+    @include modular-spacing('margin', null null 2 null);
+    @include padding(0 null 0 null);
+  }
+
+  // Caption Styles.
+  .caption {
+    figcaption {
+      text-align: center;
+      @include padding(null null 2em null);
+    }
+  }
+
+  // Big bold beautiful callout text.
+  .su-callout-text {
+    @at-root #{selector-unify(&, p)},
+    & {
+      @include margin(0 auto 1em 0);
+      @include modular-spacing('margin', null null 3 null);
+      @include modular-spacing('padding', 0 null null null);
+      display: block;
+      font-size: 2.8rem;
+      font-style: normal;
+      font-weight: $su-font-bold;
+      line-height: 3.3rem;
+
+      &:first-child {
+        // Remove margin-top and padding-top when it is the first item on the page
+        @include margin(0 null null null);
+        @include padding(0 null null null);
+      }
+
+      &:last-child {
+        // Remove margin-bottom and padding-bottom when it is the last item on the page
+        @include margin(null null 0 null);
+        @include padding(null null 0 null);
+      }
+
+      &::after {
+        @include sr-only;
+        content: "End Callout";
+      }
+
+      &::before {
+        @include sr-only;
+        content: "Callout";
+      }
+    }
+  }
+
+  // Drop cap styles.
+  // ::first-letter and content: won't work together here
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter
+
+  .su-drop-cap {
+    @include intro-text;
+
+    // This sets the position for the first character.
+    &::first-letter {
+
+      // This margin is needed for Firefox.
+      @include margin(11px 12px 0 0);
+      float: left;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 3.5em;
+      line-height: 0.6;
+      text-transform: uppercase;
+    }
+  }
+
+  // Big splashy intro text.
+  .su-intro-text {
+    @at-root #{selector-unify(&, p)},
+    & {
+      @include intro-text;
+      @include modular-typography(2);
+      @include modular-spacing('margin-bottom', 2);
+
+      &:last-child {
+        // Remove margin-bottom when it is the last item on the paragraph
+        @include margin(null null 0 null);
+      }
+
+      &::after {
+        @include sr-only;
+        content: "End Intro";
+      }
+
+      &::before {
+        @include sr-only;
+        content: "Begin Intro";
+      }
+
+    }
+  }
+
+  // Big splashy font.
+  .su-font-splash {
+    @at-root #{selector-unify(&, p)},
+    & {
+      @include font-splash;
+      @include modular-spacing('margin', null null 2 null);
+      @include modular-spacing('padding', -1 null null null);
+      @include type-a;
+
+      &:first-child {
+        // Remove margin-top and padding-top when it is the first item on the page
+        @include margin(0 null null null);
+        @include padding(0 null null null);
+      }
+
+      &:last-child {
+        // Remove margin-bottom and padding-bottom when it is the last item on the page
+        @include margin(null null 0 null);
+        @include padding(null null 0 null);
+      }
+
+      &::after {
+        @include sr-only;
+        content: "End Splash text";
+      }
+
+      &::before {
+        @include sr-only;
+        content: "Begin Splash text";
+      }
+
+    }
+  }
+
+  // A quote that looks similar to h2.
+  .su-quote-text {
+    @at-root #{selector-unify(&, p)},
+    & {
+      @include quote-text;
+      @include type-b;
+
+      &::after {
+        @include sr-only;
+        content: "End Quote";
+      }
+
+      &::before {
+        @include sr-only;
+        content: "Quote";
+      }
+    }
+  }
+
+  // A shadowy type.
+  .su-related-text {
+    @include box-shadow('paper');
+    @include modular-spacing('margin-bottom', 3);
+    @include padding(25px);
+    border: 1px solid #e3e3e3;
+
+    // Keep padding-top when this is first on the page.
+    &:first-child {
+      @include padding(25px);
+      @include margin(0 null null null);
+    }
+
+    // Keep padding-bottom when this is last on the page.
+    &:last-child {
+      @include padding(25px);
+      @include margin(null null 0 null);
+    }
+
+    &::after {
+      @include sr-only;
+      content: "End Card";
+    }
+
+    &::before {
+      @include sr-only;
+      content: "Begin Card";
+    }
+
+  }
+
+  // Subtitle styles.
+  .su-subheading {
+    @at-root #{selector-unify(&, p)},
+    & {
+      @include subheading;
+    }
+
+    &::after {
+      @include sr-only;
+      content: "End Subtitle";
+    }
+
+    &::before {
+      @include sr-only;
+      content: "Begin Subtitle";
+    }
+
+  }
+}
+
+// Events, News, People intro content spacing.
+.su-intro {
+  > div {
+    &.paragraph-item {
+      // The clear is needed for the float on the media caption when stacked
+      // with other paragraphs
+      clear: right;
+
+      p:last-of-type,
+      .ds-entity--paragraph:last-of-type {
+        @include responsive-spacing('margin-bottom', 5);
+      }
+    }
+  }
+}
+
+// The clear is needed for the float on the media caption when last and above
+// the grids.
+.su-person-grid-view,
+.section-events-list--content,
+.section-news-views-views {
+  .views-block {
+    clear: right;
+  }
+}
+
+// Footer override to the local footer
+.su-local-footer {
+  p {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+

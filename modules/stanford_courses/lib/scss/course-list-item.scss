@@ -1,0 +1,112 @@
+@charset 'UTF-8';
+
+@import "./stanford_courses.config";
+
+.su-course-list {
+  &.su-list-unstyled {
+    @include responsive-spacing('margin-bottom', 9);
+
+    li {
+      &:first-of-type {
+        article {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.su-course-list-item {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: "header" "headline" "instructors" "description";
+}
+
+.su-course-list-item {
+  @include responsive-spacing('margin-top', 4);
+  @include responsive-spacing('margin-bottom', 1);
+  border-bottom: 1px solid $su-color-black-20;
+
+  .su-course-list__header {
+    order: -1;
+  }
+
+  .su-course-list__title {
+    h2 {
+      @include modular-typography(3);
+    }
+
+    a {
+      color: $su-color-bright-red;
+      font-weight: $su-font-bold;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .su-course-list__instructors {
+    @include responsive-spacing('margin-bottom', 1);
+
+    h3 {
+      @include type-e;
+      float: left;
+      padding-right: 10px;
+      margin-bottom: 0;
+      line-height: 1.4;
+    }
+
+    li {
+      display: inline;
+
+      &::after {
+        content: ',\A0';
+      }
+
+      &:last-of-type {
+        &::after {
+          content: '';
+        }
+      }
+
+      // Address Safari bug
+      & li::before {
+        content: '\200B';
+      }
+    }
+  }
+
+  .su-course-list__description {
+    @include responsive-spacing('margin-bottom', 4);
+  }
+
+  //Edit event content link
+  .su-courses-edit-article {
+    a {
+      @include button-secondary;
+      text-align: right;
+    }
+  }
+}
+
+// Wrapper spacing
+@include grid-media-min('lg') {
+  .flex-container {
+    .main-region {
+      @include responsive-spacing('padding-left', 2);
+    }
+  }
+}
+
+.filter-menu {
+  @include grid-media-max('lg') {
+    @include responsive-spacing('margin-bottom', 4);
+  }
+}

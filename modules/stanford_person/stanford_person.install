@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * File description.
+ *
+ * Long description.
+ */
+
+use Drupal\views\Entity\View;
+
+/**
+ * Implements hook_install().
+ */
+function stanford_person_install() {
+
+  // Disable the core taxonomy_term view if it is enabled.
+  $core_taxonomy_view = View::load('taxonomy_term');
+  if ($core_taxonomy_view) {
+    $core_taxonomy_view->disable()->save();
+  }
+
+  // We don't force the default content module to be enabled on install so we
+  // should check here if it exists or not so that it can do it's thing.
+  if (!\Drupal::service('module_handler')->moduleExists('default_content')) {
+    _stanford_person_install_default_photo();
+  }
+  else {
+    // Just put the file in place.
+    _stanford_person_install_default_photo_file();
+  }
+
+}

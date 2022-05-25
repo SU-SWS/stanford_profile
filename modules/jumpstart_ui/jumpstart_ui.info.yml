@@ -1,0 +1,20 @@
+name: 'Jumpstart UI'
+type: module
+description: 'Provides UI Tools for Jumpstart Projects'
+package: Stanford
+version: 9.x-0.2-dev
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - components:components
+  - drupal:block
+  - drupal:breakpoint
+  - ds:ds
+  - ui_patterns:ui_patterns
+  - ui_patterns_layouts:ui_patterns_layouts
+  - ui_patterns_library:ui_patterns_library
+
+components:
+  namespaces:
+    jumpstart_ui: templates
+    decanter: dist/templates/decanter
+

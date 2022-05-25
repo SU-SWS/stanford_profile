@@ -1,0 +1,19 @@
+uuid: fedfb037-7940-4301-8c46-7eeb2a2c94d8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.su_publication_author_ref
+field_name: su_publication_author_ref
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

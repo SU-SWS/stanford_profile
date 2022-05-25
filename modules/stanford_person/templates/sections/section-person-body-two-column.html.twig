@@ -1,0 +1,21 @@
+{% set right_class = 'flex-lg-4-of-12' %}
+{% set left_class = 'flex-lg-7-of-12' %}
+
+<div{{ attributes.addClass('jumpstart-ui--two-column', 'flex-container', 'centered-container', 'su-person-content', settings.extra_classes) }}>
+
+  {% if content.main|render %}
+    <div {{ region_attributes.main.addClass('main-region', left_class) }}>
+      {{ content.main }}
+    </div>
+  {% endif %}
+
+  {% if content.right|render %}
+    <div {{ region_attributes.right.addClass('right-region', right_class) }}>
+      <div class="node-stanford-person-su-person-contact">
+        <h2 class="block__title">Contact</h2>
+      </div>
+      {{ content.right }}
+    </div>
+  {% endif %}
+
+</div>

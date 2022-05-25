@@ -1,0 +1,6 @@
+services:
+  stanford_intranet.commands:
+    class: \Drupal\stanford_intranet\Commands\IntranetCommands
+    arguments: ['@entity_type.manager', '@state', '@externalauth.authmap', '@password_generator', '@stanford_intranet.manager']
+    tags:
+      - { name: drush.command }

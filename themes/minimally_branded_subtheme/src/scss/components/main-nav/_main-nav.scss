@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+@include grid-media-between('xs','md') {
+  .su-nav-toggle {
+    &:before {
+      background-color: $su-color-digital-blue;
+    }
+  }
+
+  .su-multi-menu {
+    .su-multi-menu__menu {
+      .su-multi-menu__link{
+        &:active {
+          &:before {
+            background-color: $su-color-digital-blue;
+          }
+        }
+      }
+    }
+
+    .su-multi-menu__item--current {
+      >.su-multi-menu__link {
+        &:before {
+          background-color: $su-color-digital-blue;
+        }
+
+        &:active {
+          &:before {
+            background-color: $su-color-digital-blue;
+          }
+        }
+
+        &:focus,
+        &:hover,
+        &:active {
+          &::before {
+            background-color: $su-color-digital-blue;
+          }
+        }
+      }
+    }
+  }
+
+  .su-multi-menu {
+    .su-multi-menu__nav-toggle {
+      &:before {
+        background-color: $su-color-digital-blue;
+      }
+      &:active,
+      &:focus,
+      &:hover {
+        &:before {
+          background-color: $su-color-digital-blue;
+        }
+      }
+
+      &[aria-expanded=true] {
+        &:active,
+        &:focus,
+        &:hover {
+          &:before {
+            background-color: $su-color-digital-blue;
+          }
+        }
+      }
+    }
+    
+  }
+}
+
+@include grid-media-min('lg') {
+  .su-multi-menu {
+    .su-multi-menu__menu-lv1 {
+      > .su-multi-menu__item {
+        > .su-multi-menu__link {
+          color: $su-color-digital-blue;
+        }
+      }
+    }
+
+    &.su-multi-menu--dropdowns {
+      .su-multi-menu__menu {
+        >.su-multi-menu__item--parent {
+          >.su-nav-toggle {
+            &::before {
+              background: transparent url('../../assets/svg/caret-down-digital-blue.svg') no-repeat center / 50%;
+            }
+
+            &:focus,
+            &:hover {
+              &::before {
+                background: transparent url('../../assets/svg/caret-down-digital-blue.svg') no-repeat center / 50%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .su-multi-menu__item--current {
+      >.su-multi-menu__link {
+        &:before {
+          background-color: $su-color-digital-blue;
+        }
+
+        &:active {
+          &:before {
+            background-color: $su-color-digital-blue;
+          }
+        }
+
+        &:focus,
+        &:hover,
+        &:active {
+          &::before {
+            background-color: $su-color-digital-blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+.su-multi-menu {
+  .su-multi-menu__menu {
+    .su-multi-menu__link {
+      &:active {
+        &::before {
+          background-color: $su-color-digital-blue;
+        }
+      }
+    }
+  }
+}

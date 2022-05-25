@@ -1,0 +1,7 @@
+stanford_image_styles_preview.preview_form:
+  path: 'admin/config/media/image-styles/preview'
+  defaults:
+    _form: '\Drupal\stanford_image_styles_preview\Form\PreviewForm'
+    _title: 'Preview Styles'
+  requirements:
+    _permission: 'administer image styles'

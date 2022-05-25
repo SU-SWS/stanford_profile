@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+.su-button,
+.su-button--big,
+.su-button--big.su-link,
+.su-button.su-link,
+button,
+[type='button'],
+[type='submit'],
+[type='reset'],
+[type='image'] {
+  background-color: $su-color-black;
+  font-weight: $su-font-semi-bold;
+
+  &:hover,
+  &:focus {
+    background-color: $su-color-black-40;
+    color: $su-color-black;
+
+    &:after {
+      background-color: $su-color-black;
+    }
+  }
+}
+
+.su-button--secondary,
+.su-button--secondary.su-link {
+  background-color: $su-color-white;
+  box-shadow: inset 0 0 0 2px $su-color-black;
+  color: $su-color-black;
+  font-weight: $su-font-semi-bold;
+
+  &:hover,
+  &:focus {
+    background-color: $su-color-black-40;
+    color: $su-color-black;
+
+    &:after {
+      background-color: $su-color-black;
+    }
+  }
+}
+
+a {
+
+  // Style the icons with external links.
+  &.su-link--external {
+    
+    // Style Buttons.
+    &.su-button {
+      &::after {
+        background-color: $su-color-white;
+      }
+    }
+
+    &.su-button--big {
+      &::after {
+        background-color: $su-color-white;
+      }
+    }
+
+    &.su-button--secondary {
+      &::after {
+        background-color: $su-color-black;
+      }
+
+      &:active,
+      &:focus,
+      &:hover {
+        &::after {
+          background-color: $su-color-black;
+        }
+      }
+    }
+
+    &.su-secondary-nav__link {
+      &::after {
+        background-color: $su-color-white;
+      }
+
+      &:active,
+      &:focus,
+      &:hover {
+        &::after {
+          background-color: $su-color-black;
+        }
+      }
+    }
+  }
+
+  // Style the SVG for mailto.
+  &.mailto {
+    svg {
+      path {
+        stroke: $su-color-white;
+      }
+
+      &:active,
+      &:focus,
+      &:hover {
+        fill: $su-color-black;
+
+        path {
+          stroke: $su-color-black;
+        }
+      }
+    }
+
+    // Style Buttons.
+    &.su-button,
+    &.su-button--big {
+      svg {
+        fill: $su-color-white;
+
+        &:active,
+        &:focus,
+        &:hover {
+          fill: $su-color-black;
+
+          path {
+            stroke: $su-color-black;
+          }
+        }
+
+        path {
+          stroke: $su-color-white;
+        }
+      }
+    }
+
+    &.su-button--secondary {
+      svg {
+        fill: $su-color-black;
+
+        &:active,
+        &:focus,
+        &:hover {
+          fill: $su-color-black;
+
+          path {
+            stroke: $su-color-black;
+          }
+        }
+
+        path {
+          stroke: $su-color-black;
+        }
+      }
+    }
+
+  }
+}

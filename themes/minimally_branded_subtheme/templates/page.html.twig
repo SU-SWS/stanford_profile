@@ -1,0 +1,19 @@
+{#
+/**
+ * Page.html.twig from stanford_basic.
+ */
+#}
+{%- extends "@stanford_basic/page.html.twig" -%}
+
+{# Change the brand bar. #}
+{%- if template_brand_bar is empty -%}
+  {%- set template_brand_bar = "@minimally_branded_subtheme/components/brand-bar/brand-bar.html.twig" -%}
+{%- endif -%}
+
+{# Override the footer #}
+{% block block_footer %}
+  <footer id="footer"> 
+    {{ page.footer }}
+    {%- include "@minimally_branded_subtheme/components/global-footer/global-footer.html.twig" -%}
+  </footer>
+{% endblock %}

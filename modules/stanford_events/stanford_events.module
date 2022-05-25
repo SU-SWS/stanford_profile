@@ -1,0 +1,277 @@
+<?php
+
+/**
+ * @file
+ * File description.
+ *
+ * Long description.
+ */
+
+use Drupal\views\ViewExecutable;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Cache\Cache;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_page_attachments.
+ */
+function stanford_events_page_attachments(array &$attachments) {
+
+  // Get the node from the route.
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  // Not a node.. Then just continue.
+  if (!$node instanceof NodeInterface || $node->bundle() != 'stanford_event') {
+    return;
+  }
+
+  $attachments['#attached']['library'][] = 'stanford_events/event_node';
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function stanford_events_node_presave(EntityInterface $entity) {
+  if ($entity->bundle() != "stanford_event") {
+    return;
+  }
+
+  $rabbit_hole = \Drupal::config('rabbit_hole.behavior_settings.node_type_' . $entity->bundle());
+  $token_service = \Drupal::service('token');
+
+  // When the source field is filled out on a news item we want to set the
+  // redirect options so it doesn't get indexed.
+  if ($rabbit_hole) {
+    /** @var \Drupal\Core\Utility\Token $token_service */
+    $target = $token_service->replace("[node:su_event_source:uri]", ['node' => $entity]);
+
+    // Check if the token that was provided is actually a url. If it is, then we
+    // can set the rabbit hole action to redirect to that url.
+    if (is_string($target) && UrlHelper::isValid($target, TRUE)) {
+      $entity->set('rh_action', 'page_redirect');
+      $entity->set('rh_redirect', $target);
+      $entity->set('rh_redirect_response', 301);
+    }
+    else {
+      $entity->set('rh_action', 'bundle_default');
+      $entity->set('rh_redirect', '');
+    }
+  }
+
+  // If an event item is being edited or saved, clear out some cache tags.
+  Cache::invalidateTags(["node_list:{$entity->bundle()}"]);
+}
+
+/**
+ * Implements hook_views_post_render().
+ *
+ * Views render arrays contain a cache tag "node_list". This cache tag is
+ * cleared every time ANY node is created, edited or deleted. When this happens
+ * every view on the site gets its cache flushed. This causes poor performance
+ * since a view would get flushed even if it has no relation to that node. To
+ * assist in cache tags, we create a custom cache tag based on the node type
+ * filter on the view. Its a small improvement but will have huge impact in
+ * keeping cached renders much longer.
+ *
+ * @see stanford_events_node_presave()
+ * @see stanford_events_taxonomy_term_presave()
+ */
+function stanford_events_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
+
+  $allow_list_node = [
+    'stanford_events',
+    'stanford_events_past',
+    'stanford_events_schedule',
+  ];
+
+  $allow_list_term = [
+    'stanford_event_terms_utility',
+  ];
+
+  $id = $view->id();
+
+  // Node Base Table Views.
+  if (in_array($id, $allow_list_node)) {
+    $output['#attached']['library'][] = 'stanford_events/event_views';
+
+    $node_list_position = array_search('node_list', $output['#cache']['tags']);
+    unset($output['#cache']['tags'][$node_list_position]);
+    foreach ($view->filter['type']->value as $node_type) {
+      $output['#cache']['tags'][] = "node_list:$node_type";
+    }
+  }
+
+  // Term Base Table Views.
+  if (in_array($id, $allow_list_term)) {
+    $output['#attached']['library'][] = 'stanford_events/event_views';
+
+    $term_list_position = array_search('term_list', $output['#cache']['tags']);
+    unset($output['#cache']['tags'][$term_list_position]);
+    foreach ($view->filter['vid']->value as $term_type) {
+      $output['#cache']['tags'][] = "term_list:$term_type";
+    }
+  }
+
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function stanford_events_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+
+  // Only run on stanford news items.
+  if ($entity->bundle() !== "stanford_event" || !node_is_page($entity)) {
+    return;
+  }
+
+  $rh_action = $entity->get('rh_action')->getString();
+  $rh_redirect = $entity->get('rh_redirect')->getString();
+
+  // Display a message to the user that this page would redirect to another
+  // location for other users.
+  if ($rh_action == "page_redirect" && !empty($rh_redirect)) {
+    \Drupal::messenger()
+      ->addWarning(t('This page will redirect to @url for other visitors.', ['@url' => $rh_redirect]));
+  }
+
+  if ($entity->hasField('su_event_date_time')) {
+    $date_time = $entity->get('su_event_date_time')->getValue();
+    if (!empty($date_time[0]['end_value'])) {
+      $build['#attributes']['data-end-date'] = $date_time[0]['end_value'];
+    }
+  }
+
+}
+
+/**
+ * Callback for views ds group title formatter.
+ *
+ * @param string $raw
+ *   The raw string from a views grouping column.
+ * @param Drupal\Core\Entity\ContentEntityInterface $entity
+ *   The loaded entity being rendered.
+ *
+ * @return string|null
+ *   The date formatted with stanford_long_day_date_year
+ */
+function stanford_events_schedule_format_date($raw, ContentEntityInterface $entity) {
+  if (!is_numeric($raw) || empty($entity->get('su_schedule_date_time')->getValue())) {
+    return NULL;
+  }
+
+  // We are going to use the passed object to determine if we are looking
+  // at an event that spans multiple days.
+  $schedule_date_time = $entity->get('su_schedule_date_time')->getValue();
+  $start_date_day = date('m-d-y', $schedule_date_time[0]['value']);
+  $end_date_day = date('m-d-y', $schedule_date_time[0]['end_value']);
+  $same_days = $start_date_day == $end_date_day;
+
+  $timestring = \Drupal::service('date.formatter')->format($schedule_date_time[0]['value'], 'stanford_long_day_date_year');
+  if (!$same_days) {
+    $timestring .= ' - ' . \Drupal::service('date.formatter')->format($schedule_date_time[0]['end_value'], 'stanford_long_day_date_year');
+  }
+
+  return $timestring;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function stanford_events_cron() {
+
+  // Find all events that have passed since last cron run date and now.
+  // Clear cache for those particular events and clear out the views cache.
+  $last_cron = \Drupal::state()->get('system.cron_last');
+  $now = time();
+  $query = \Drupal::entityQuery('node');
+
+  // Conditions.
+  $query->condition('type', 'stanford_event');
+  $query->condition('status', 1);
+  $query->condition('su_event_date_time.end_value', $last_cron, ">=");
+  $query->condition('su_event_date_time.end_value', $now, "<=");
+
+  // Fetch.
+  $entity_ids = $query->execute();
+  $tags = ["node_list:stanford_event"];
+
+  if (count($entity_ids)) {
+
+    // Create an array of "node:{id}".
+    array_walk(
+      $entity_ids,
+      function (&$item, $key, $prefix) {
+        $item = $prefix . $item;
+      },
+      "node:"
+    );
+
+    // Clear all the things.
+    $tags = array_merge($tags, $entity_ids);
+    Cache::invalidateTags($tags);
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_field_multiple_value_form().
+ *
+ * We look for a value that was placed there earlier by
+ * stanford_events_field_widget_form_alter() and change the add_more button
+ * to use that.
+ */
+function stanford_events_preprocess_field_multiple_value_form(&$variables) {
+  if ($variables["element"]["#field_name"] == 'su_event_schedule') {
+    unset($variables['table']['#header']);
+    unset($variables['table']['#tabledrag']);
+    foreach ($variables['table']['#rows'] as &$row) {
+      foreach (array_keys($row['data']) as $key) {
+        if (!empty($row['data'][$key]['class'])
+          && array_intersect($row['data'][$key]['class'], [
+            'field-multiple-drag',
+            'delta-order',
+          ])) {
+          unset($row['data'][$key]);
+        }
+      }
+    }
+  }
+
+  foreach (Element::children($variables['element']) as $child) {
+    $child_element = &$variables['element'][$child];
+
+    if (isset($child_element['add_more_button_stanford_person_cta'])) {
+      $child_element['add_more_button_stanford_person_cta']['#value'] = t('Add another speaker');
+    }
+
+    if ($variables['element']['#field_name'] == "su_schedule_speaker") {
+      $variables['element']['add_more']['#value'] = t('Add another speaker');
+      $variables['element']['add_more']['add_more_button_stanford_person_cta']['#value'] = t('Add another speaker');
+      $variables['element']['add_more_button_stanford_person_cta']['#value'] = t('Add another speaker');
+      $variables['button']['add_more']['#value'] = t('Add another speaker');
+      $variables['button']['add_more_button_stanford_person_cta']['add_more']['#value'] = t('Add another speaker');
+      $variables['button']['add_more_button_stanford_person_cta']['#value'] = t('Add another speaker');
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_events_preprocess_pattern_events_list(&$variables) {
+  $values = $variables;
+  $start_month = !empty($values['start_month']) ? strtolower(trim(strip_tags((string) render($values['start_month'])))) : NULL;
+  $end_month = !empty($values['end_month']) ? strtolower(trim(strip_tags((string) render($values['end_month'])))) : NULL;
+
+  if ($start_month) {
+    $variables['start_month_full'] = date('F', strtotime($start_month));
+  }
+  if ($end_month) {
+    $variables['end_month_full'] = date('F', strtotime($end_month));
+  }
+}

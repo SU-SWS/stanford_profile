@@ -50,7 +50,7 @@ class GalleryCest {
     // Go to the next image and make sure its different sources.
     $first_image_src = $I->grabAttributeFrom('#cboxContent img', 'src');
     $I->click('Next', '#cboxContent');
-    $I->waitForElementVisible('#cboxLoadedContent');
+    $I->waitForText('Image 2');
     $second_image_src = $I->grabAttributeFrom('#cboxContent img', 'src');
     $I->assertNotEquals($first_image_src, $second_image_src);
   }
