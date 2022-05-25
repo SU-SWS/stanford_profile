@@ -57,6 +57,9 @@ class EventsCest {
 
     $event = $this->createEventNode($I);
     $event->set('su_event_type', $term->id())->save();
+    $I->amOnPage($event->toUrl('edit-form')->toString());
+    $I->click('Save');
+    $I->cantSee($event->label(), 'h1');
 
     $I->amOnPage('/events');
     $I->canSee($event->label());
@@ -70,7 +73,10 @@ class EventsCest {
     $I->amOnPage('/admin/config/importers/events-importer');
     $I->fillField('No Results Message', $message);
     $I->click('Save');
-    $event->delete();
+    $I->canSee('Events Importer Events Importer has been');
+
+    $I->amOnPage($event->toUrl('delete-form')->toString());
+    $I->click('Delete');
 
     $I->amOnPage('/events');
     $I->cantSee($event->label());
