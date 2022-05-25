@@ -53,24 +53,29 @@
 
   .su-course-link {
     h2 {
+      @include type-c;
       @include modular-spacing("margin-bottom", 1);
       @include modular-spacing("margin-left", 2);
       @include modular-spacing("margin-right", 2);
+
+      &.su-link--external {
+        &::after {
+          background-color: $su-color-bright-red;
+          height: 20px;
+          width: 20px;
+        }
+      }
     }
 
     a {
       color: $su-color-bright-red;
       font-weight: $su-font-bold;
       text-decoration: none;
-      font-size: 1em;
 
       &:hover,
-      &:focus {
+      &:focus,
+      &:active {
         text-decoration: underline;
-      }
-
-      &::after {
-        display: none;
       }
     }
   }

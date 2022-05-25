@@ -33,7 +33,7 @@
 
   .su-course-list__title {
     h2 {
-      @include modular-typography(3);
+      @include type-c;
     }
 
     a {
@@ -44,10 +44,6 @@
       &:hover,
       &:focus {
         text-decoration: underline;
-      }
-
-      &::after {
-        display: none;
       }
     }
   }
