@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.stanford_event.body
     - field.field.node.stanford_event.layout_builder__layout
+    - field.field.node.stanford_event.stanford_intranet__access
     - field.field.node.stanford_event.su_event_alt_loc
     - field.field.node.stanford_event.su_event_audience
     - field.field.node.stanford_event.su_event_components
@@ -21,6 +22,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
   module:
     - address
@@ -180,7 +182,11 @@ hidden:
   su_event_components: true
   su_event_cta: true
   su_event_email: true
+  su_event_groups: true
+  su_event_keywords: true
   su_event_map_link: true
   su_event_schedule: true
   su_event_sponsor: true
+  su_event_subject: true
   su_event_telephone: true
+  su_shared_tags: true

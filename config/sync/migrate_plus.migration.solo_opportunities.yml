@@ -361,7 +361,7 @@ process:
         validate_format: false
     -
       plugin: skip_on_equal
-      compare: '@su_opp_submissions_open'
+      value: '@su_opp_submissions_open'
       method: process
     -
       plugin: skip_on_time_compare

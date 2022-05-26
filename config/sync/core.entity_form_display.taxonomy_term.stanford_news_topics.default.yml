@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.stanford_news_topics.layout_builder__layout
     - taxonomy.vocabulary.stanford_news_topics
   module:
     - text
@@ -40,6 +41,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  layout_builder__layout: true
   path: true
   publish_on: true
   status: true

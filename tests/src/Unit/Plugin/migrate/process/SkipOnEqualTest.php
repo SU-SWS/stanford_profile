@@ -20,7 +20,7 @@ class SkipOnEqualTest extends UnitTestCase {
    */
   public function testSkipTransform() {
     $plugin = new SkipOnEqual([
-      'compare' => '@bar',
+      'value' => '@bar',
       'method' => 'process',
     ], '', []);
     $migration = $this->createMock(MigrateExecutable::class);
@@ -28,7 +28,7 @@ class SkipOnEqualTest extends UnitTestCase {
     $row->method('get')->willReturn('foo');
 
     $this->expectException(MigrateSkipProcessException::class);
-    $plugin->transform('foo', $migration, $row, NULL);
+    $plugin->transform('foo', $migration, $row, 'foo');
   }
 
   /**
@@ -36,14 +36,14 @@ class SkipOnEqualTest extends UnitTestCase {
    */
   public function testNoSkipTransform() {
     $plugin = new SkipOnEqual([
-      'compare' => '@bar',
+      'value' => '@bar',
       'method' => 'process',
     ], '', []);
     $migration = $this->createMock(MigrateExecutable::class);
     $row = $this->createMock(Row::class);
     $row->method('get')->willReturn('bar');
 
-    $new_value = $plugin->transform('foo', $migration, $row, NULL);
+    $new_value = $plugin->transform('foo', $migration, $row, 'foo');
     $this->assertEquals('foo', $new_value);
   }
 

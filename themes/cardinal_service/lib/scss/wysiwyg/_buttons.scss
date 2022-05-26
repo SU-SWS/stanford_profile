@@ -5,7 +5,7 @@
 
   // Button Spacing
   [class^="su-button"] {
-    @include modular-spacing('margin', null 0 0 null);
+    @include responsive-spacing('margin', null 0 0 null);
   }
 
   // Allow the power user to stack buttons with .su-stack-button class.

@@ -19,7 +19,7 @@ class SkipOnEqual extends SkipOnValue {
    * Transforms the value being compared from the previous process data.
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
-    $this->configuration['value'] = $row->get($this->configuration['compare']);
+    $this->configuration['value'] = $row->get($this->configuration['value']);
     return parent::transform($value, $migrate_executable, $row, $destination_property);
   }
 

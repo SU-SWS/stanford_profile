@@ -2,7 +2,7 @@
 
 
 .jumpstart-ui--one-column-overlay {
-  @include modular-spacing('margin-bottom', 7);
+  @include responsive-spacing('margin-bottom', 7);
 
   // Hero with no margin-bottom
   &.su-hero-nospace {

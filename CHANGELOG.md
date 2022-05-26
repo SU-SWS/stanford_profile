@@ -1,18 +1,34 @@
 # Cardinal Service Profile
 
-8.x-3.1-alpha
+8.x-3.2
 --------------------------------------------------------------------------------
+_Release Date: 2022-05-26_
+- CS-87: Adjusted grid styles for more uniform rows. (#258)
+- Change the branch to pull from for 8.x branch (#261)
+- CS-86: Disabled event opportunities importer (#257)
+- Changed Events page menu block. (#254)
+- Locked stanford_profile to 8.4.4 constraint for 8.x branch (#255)
+- Stanford Profile updates 2022-05-04
+- Added courses department importer for long name population
+- D8CORE-2331: Updated help on media caption field text (#542)
+- Allow admins to change the home page via site settings (#540)
+- D8CORE-5833: Fix for courses view to respect chosen limit in card grid list paragraph (#539)
+
+8.x-3.1
+--------------------------------------------------------------------------------
+_Release Date: 2022-04-27_
 - Locked migrate_plus version to 5.2. (#249)
 - CS-79: Opportunities grid (#245)
 - CS-79: Added opportunity grid component and styles.
 - CS-79: Change CS opportunity view to use opportunity grid component and styled view.
 - CS-79: Added and enabled smart_trim module.
 - CS-79: Updated administer opportunities view.
-* Updated circleci caravan version.
-* Enabled transliterate_filenames module.
+- Updated circleci caravan version.
+- Enabled transliterate_filenames module.
 
 8.x-3.0
 --------------------------------------------------------------------------------
+_Release Date: 2022-04-08_
 - D8CORE-5172: Updated references to localist and events-legacy urls
 - DO not require lockup option select, prevent requiring lockup fields
 - updated circleci and composer branches

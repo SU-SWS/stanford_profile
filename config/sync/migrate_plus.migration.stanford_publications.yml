@@ -295,5 +295,22 @@ process:
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_publication
+  overwrite_properties:
+    - citation_authors
+    - citation_type
+    - citation_url
+    - image_file
+    - skip
+    - su_publication_citation
+    - su_publication_components
+    - su_publication_cta/title
+    - su_publication_cta/uri
+    - su_publication_image/target_id
+    - su_publication_text_area
+    - su_publication_topics
+    - text_area_target_id
+    - text_area_target_revision_id
+    - text_body
+    - title
 migration_dependencies:
   required: {  }

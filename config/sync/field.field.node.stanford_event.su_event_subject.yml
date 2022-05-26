@@ -1,0 +1,29 @@
+uuid: 92f4ce1f-0b11-4d50-adf9-87d451ca04fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_subject
+    - node.type.stanford_event
+    - taxonomy.vocabulary.stanford_event_subject
+id: node.stanford_event.su_event_subject
+field_name: su_event_subject
+entity_type: node
+bundle: stanford_event
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      stanford_event_subject: stanford_event_subject
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -15,44 +15,16 @@ dependencies:
     - field.field.node.stanford_news.su_news_publishing_date
     - field.field.node.stanford_news.su_news_source
     - field.field.node.stanford_news.su_news_topics
+    - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
   module:
     - ds
     - element_class_formatter
     - field_formatter_class
-    - layout_builder
-    - layout_builder_restrictions
-    - layout_library
     - link
     - stanford_media
     - user
 third_party_settings:
-  layout_builder:
-    enabled: false
-    allow_custom: false
-  layout_builder_restrictions:
-    allowed_block_categories: {  }
-    entity_view_mode_restriction:
-      allowed_layouts:
-        - jumpstart_ui_one_column
-        - jumpstart_ui_two_column
-        - jumpstart_ui_three_column
-        - stanford_news_byline
-        - ds_reset
-      blacklisted_blocks: {  }
-      whitelisted_blocks:
-        'Chaos Tools': {  }
-        'Config Pages': {  }
-        Menus:
-          - 'menu_block:main'
-          - 'menu_block:news-topics'
-        'SimpleSAMLphp Authentication': {  }
-        System:
-          - system_messages_block
-        core:
-          - page_title_block
-  layout_library:
-    enable: false
   ds:
     layout:
       id: pattern_news-vertical-teaser
@@ -74,6 +46,11 @@ third_party_settings:
       news_url:
         - 'dynamic_token_field:node-news_content_url'
     fields:
+      'dynamic_token_field:node-news_content_url':
+        plugin_id: 'dynamic_token_field:node-news_content_url'
+        weight: 4
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -83,11 +60,6 @@ third_party_settings:
           link: false
           wrapper: ''
           class: ''
-      'dynamic_token_field:node-news_content_url':
-        plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 4
-        label: hidden
-        formatter: default
 id: node.stanford_news.stanford_card
 targetEntityType: node
 bundle: stanford_news
@@ -133,13 +105,13 @@ content:
     label: hidden
     settings:
       link: true
-      class: ''
+      class: su-list-unstyled
       list_type: ul
     third_party_settings:
       field_formatter_class:
         class: ''
       ds:
-        ds_limit: ''
+        ds_limit: '3'
     weight: 2
     region: news_topics
 hidden:
@@ -154,3 +126,4 @@ hidden:
   su_news_components: true
   su_news_dek: true
   su_news_publishing_date: true
+  su_shared_tags: true

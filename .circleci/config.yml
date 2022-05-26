@@ -65,7 +65,7 @@ merge_upstream: &merge_upstream
         command: |
           git config --global user.email "sws-developers@lists.stanford.edu"
           git config --global user.name "CircleCI"
-          git pull https://github.com/SU-SWS/stanford_profile.git main -X ours --no-edit
+          git pull https://github.com/SU-SWS/stanford_profile.git 8.x -X ours --no-edit
           if [[ $(git diff origin/${CIRCLE_BRANCH} --name-only) ]]; then
             DATE=`date +%Y-%m-%d`
             git checkout -b ${DATE}

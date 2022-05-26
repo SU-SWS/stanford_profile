@@ -1,0 +1,29 @@
+uuid: a09c70f5-827b-45f5-aab6-5573dcd79d5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_403
+    - node.type.stanford_page
+id: config_pages.stanford_basic_site_settings.su_site_403
+field_name: su_site_403
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: '403 Page'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      stanford_page: stanford_page
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

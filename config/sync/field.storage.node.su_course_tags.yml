@@ -1,0 +1,22 @@
+uuid: db3b0ad4-1bd2-422e-bc23-85975cc4cf6b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: LwNEETWdsbTeH9U8cH_PGbKXRkN4LXE91u7WJRUFfeA
+id: node.su_course_tags
+field_name: su_course_tags
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

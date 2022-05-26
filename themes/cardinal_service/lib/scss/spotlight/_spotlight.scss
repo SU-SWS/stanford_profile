@@ -2,11 +2,11 @@
 
 // Spotlight Content Type Styles
 .spotlight-header-content-container {
-  @include modular-spacing('margin-top', 6);
-  @include modular-spacing('margin-bottom', 8);
+  @include responsive-spacing('margin-top', 6);
+  @include responsive-spacing('margin-bottom', 8);
 
   .node-su-spotlight-su-spotlight-feature-image {
-    @include modular-spacing('margin-bottom', 0);
+    @include responsive-spacing('margin-bottom', 0);
 
     img {
       margin: 0 auto;
@@ -51,7 +51,7 @@
 
   .node-su-spotlight-title {
     h1 {
-      @include modular-spacing('margin-bottom', 4);
+      @include responsive-spacing('margin-bottom', 4);
       @include modular-typography(4);
       text-align: center;
       margin: 0;
@@ -70,12 +70,12 @@
   }
 
   .su-spotlight-context {
-    @include modular-spacing('margin-top', 3);
+    @include responsive-spacing('margin-top', 3);
     font-style: italic;
   }
 
   .content {
-    @include modular-spacing('margin-bottom', 8);
+    @include responsive-spacing('margin-bottom', 8);
   }
 
   .su-spotlight-body {

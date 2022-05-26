@@ -45,26 +45,6 @@ variant_settings:
         centered: centered-container
         orientation: right
       components:
-        39282f6b-c47b-457e-9cc5-4d8ca20c5c84:
-          uuid: 39282f6b-c47b-457e-9cc5-4d8ca20c5c84
-          region: left
-          configuration:
-            id: 'menu_block:stanford-event-types'
-            label: 'Filter by event type'
-            label_display: visible
-            provider: menu_block
-            context_mapping: {  }
-            follow: false
-            follow_parent: child
-            label_type: block
-            level: 1
-            depth: 1
-            parent: 'stanford-event-types:'
-            suggestion: stanford_event_types
-            expand: false
-          weight: 0
-          additional: {  }
-          third_party_settings: {  }
         d6b3ac01-2850-45fa-ade2-f29c16e8a19f:
           uuid: d6b3ac01-2850-45fa-ade2-f29c16e8a19f
           region: main
@@ -105,6 +85,21 @@ variant_settings:
             context_mapping: {  }
             views_label: ''
             items_per_page: none
+          weight: 1
+          additional: {  }
+          third_party_settings: {  }
+        48335830-350f-4711-b2a7-d4798c5aed6c:
+          uuid: 48335830-350f-4711-b2a7-d4798c5aed6c
+          region: left
+          configuration:
+            id: 'system_menu_block:stanford-event-types'
+            label: 'Event Types'
+            label_display: visible
+            provider: system
+            context_mapping: {  }
+            level: 1
+            depth: 1
+            expand_all_items: false
           weight: 1
           additional: {  }
           third_party_settings: {  }
