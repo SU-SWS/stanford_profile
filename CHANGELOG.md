@@ -1,5 +1,13 @@
 # Stanford Profile
 
+8.x-4.5
+--------------------------------------------------------------------------------
+_Release Date: 2022-05-27_
+
+- Added and configured ckeditor_blockimagepaste to prevent inline base64 images
+- D8CORe-5871 Change order of filter processing to fix <picture><source> tags
+- D8CORE-5773: Added edit buttons on courses list page (#555)
+
 8.x-4.4
 --------------------------------------------------------------------------------
 _Release Date: 2022-05-12_
