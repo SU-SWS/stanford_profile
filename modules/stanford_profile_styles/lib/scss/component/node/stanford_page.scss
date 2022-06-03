@@ -32,6 +32,24 @@
   }
 }
 
+// Publications List landing pages
+// This keeps the gutter from growing
+// and misaligning paragraphs.
+.page-publications {
+  .su-page-components {
+    div[data-react-columns="12"] {
+      &.ptype-stanford-lists,
+      &.ptype-stanford-wysiwyg,
+      &.ptype-stanford-card,
+      &.ptype-stanford-media-caption,
+      &.ptype-stanford-entity,
+      &.ptype-stanford-gallery {
+        max-width: inherit;
+      }
+    }
+  }
+}
+
 .jumpstart-ui {
   &--three-column,
   &--two-column {
