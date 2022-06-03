@@ -301,12 +301,7 @@ class Cap implements CapInterface {
       'auth' => [$this->clientId, $this->clientSecret],
     ];
     if ($result = $this->getApiResponse(self::AUTH_URL, $options)) {
-      $max_execution = ini_get('max_execution_time');
-      // Make sure the access token doesn't expire by the end of an execution
-      // cycle, to avoid the token becoming stale in the middle of things.
-      $reduced_token_expiration = $max_execution > 0 ? $max_execution : 60 * 60;
-
-      $this->cache->set('cap:access_token', $result, time() + $result['expires_in'] - $reduced_token_expiration, [
+      $this->cache->set('cap:access_token', $result, time() + ($result['expires_in'] / 1000) - 60, [
         'cap',
         'cap:token',
       ]);
