@@ -8,6 +8,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ConfigFactoryOverrideInterface;
 use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Url;
 use Drupal\stanford_person_importer\CapInterface;
 
 /**
@@ -171,11 +172,11 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @return string[]
    *   List of urls.
    */
-  protected function getWorkgroupUrls() {
+  protected function getWorkgroupUrls():array {
     $workgroups = $this->configPages->getValue('stanford_person_importer', 'su_person_workgroup', [], 'value');
 
     if ($workgroups) {
-      return $this->getUrlChunks($this->cap->getWorkgroupUrl(implode(',', $workgroups)));
+      return $this->getUrlChunks($this->cap->getWorkgroupUrl($workgroups));
     }
     return [];
   }
@@ -186,12 +187,12 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @return string[]
    *   List of urls.
    */
-  protected function getSunetUrls() {
+  protected function getSunetUrls(): array {
     $sunets = $this->configPages->getValue('stanford_person_importer', 'su_person_sunetid', [], 'value') ?: [];
 
     $urls = [];
     foreach (array_chunk($sunets, self::URL_CHUNKS) as $chunk) {
-      $urls[] = $this->cap->getSunetUrl(implode(',', $chunk));
+      $urls[] = $this->cap->getSunetUrl($chunk)->toString();
     }
     return $urls;
   }
@@ -199,23 +200,24 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
   /**
    * Break up the url into multiple urls based on the number of results.
    *
-   * @param string $url
+   * @param \Drupal\Core\Url $url
    *   Cap API Url.
    *
    * @return string[]
    *   Array of Cap API Urls.
    */
-  protected function getUrlChunks($url) {
-    $count = (int) $this->cap->getTotalProfileCount($url);
+  protected function getUrlChunks(Url $url): array {
+    $count = $this->cap->getTotalProfileCount($url);
     $number_chunks = ceil($count / self::URL_CHUNKS);
-
     if ($number_chunks <= 1) {
-      return ["$url&ps=" . self::URL_CHUNKS];
+      $url->mergeOptions(['query' => ['ps' => self::URL_CHUNKS]]);
+      return [$url->toString()];
     }
 
     $urls = [];
     for ($i = 1; $i <= $number_chunks; $i++) {
-      $urls[] = "$url&p=$i&ps=" . self::URL_CHUNKS;
+      $url->mergeOptions(['query' => ['p' => $i, 'ps' => self::URL_CHUNKS]]);
+      $urls[] = $url->toString();
     }
     return $urls;
   }
@@ -226,9 +228,8 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @return string|null
    *   Client ID string.
    */
-  protected function getCapClientId() {
-    $field_value = $this->configPages->getValue('stanford_person_importer', 'su_person_cap_username');
-    return $field_value[0]['value'] ?? NULL;
+  protected function getCapClientId(): ?string {
+    return $this->configPages->getValue('stanford_person_importer', 'su_person_cap_username', 0, 'value');
   }
 
   /**
@@ -237,9 +238,8 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @return string|null
    *   Client secret string.
    */
-  protected function getCapClientSecret() {
-    $field_value = $this->configPages->getValue('stanford_person_importer', 'su_person_cap_password');
-    return $field_value[0]['value'] ?? NULL;
+  protected function getCapClientSecret(): ?string {
+    return $this->configPages->getValue('stanford_person_importer', 'su_person_cap_password', 0, 'value');
   }
 
 }

@@ -8,6 +8,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Url;
 use Drupal\taxonomy\TermInterface;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
@@ -119,7 +120,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function setClientId($client_id) {
+  public function setClientId($client_id): self {
     $this->clientId = $client_id;
     return $this;
   }
@@ -127,7 +128,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function setClientSecret($secret) {
+  public function setClientSecret($secret): self {
     $this->clientSecret = $secret;
     return $this;
   }
@@ -135,7 +136,7 @@ class Cap implements CapInterface {
   /**
    * Call the API and return the response.
    *
-   * @param string $url
+   * @param \Drupal\Core\Url $url
    *   API Url.
    * @param array $options
    *   Guzzle request options.
@@ -143,11 +144,11 @@ class Cap implements CapInterface {
    * @return bool|array
    *   Response string or false if failed.
    */
-  protected function getApiResponse($url, array $options = []) {
+  protected function getApiResponse(Url $url, array $options = []) {
     try {
-      $response = $this->client->request('GET', $url, $options);
-    }
-    catch (GuzzleException | \Exception $e) {
+      $response = $this->client->request('GET', $url->toString(), $options);
+    } catch (GuzzleException|\Exception $e) {
+      $this->cache->delete('cap:access_token');
       // Most errors originate from the API itself, log the error and let it
       // fall over.
       $this->logger->error($this->t('An unexpected error came from the API: %message'), ['%message' => $e->getMessage()]);
@@ -159,50 +160,45 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function getOrganizationUrl($organizations, $children = FALSE) {
+  public function getOrganizationUrl($organizations, $children = FALSE): Url {
     $organizations = preg_replace('/[^A-Z,0-9]/', '', strtoupper($organizations));
-    $url = self::CAP_URL . "?orgCodes=$organizations";
+    $query = ['orgCodes' => $organizations];
     if ($children) {
-      $url .= '&includeChildren=true';
+      $query['includeChildren'] = 'true';
     }
-    return $url;
+    return Url::fromUri(self::CAP_URL, ['query' => $query]);
   }
 
   /**
    * {@inheritDoc}
    */
-  public function getWorkgroupUrl($workgroups) {
-    $workgroups = preg_replace('/[^A-Z,:~\-_0-9]/', '', strtoupper($workgroups));
-    return self::CAP_URL . "?privGroups=$workgroups";
+  public function getWorkgroupUrl(array $workgroups): Url {
+    $workgroups = preg_replace('/[^A-Z,:~\-_0-9]/', '', strtoupper(implode(',', $workgroups)));
+    return Url::fromUri(self::CAP_URL, ['query' => ['privGroups' => $workgroups]]);
   }
 
   /**
    * {@inheritDoc}
    */
-  public function getSunetUrl($sunetids) {
-    $count = substr_count($sunetids, ',') + 1;
-    $url = self::CAP_URL . "?uids=$sunetids";
-    // Cap API default to 10 results. Send the argument to collect more if
-    // there are more sunets to get results for.
-    if ($count > 10) {
-      $url .= "&ps=$count";
-    }
-    return $url;
+  public function getSunetUrl(array $sunetids): Url {
+    $query = ['uid' => implode(',', $sunetids), 'ps' => count($sunetids)];
+    return Url::fromUri(self::CAP_URL, ['query' => $query]);
   }
 
   /**
    * {@inheritDoc}
    */
-  public function getTotalProfileCount($url) {
+  public function getTotalProfileCount(Url $url): int {
     $token = $this->getAccessToken();
-    $response = $this->getApiResponse("$url&ps=1&access_token=$token");
-    return $response['totalCount'] ?? 0;
+    $url->mergeOptions(['query' => ['ps' => 1, 'access_token' => $token]]);
+    $response = $this->getApiResponse($url);
+    return (int) ($response['totalCount'] ?? 0);
   }
 
   /**
    * {@inheritDoc}
    */
-  public function testConnection() {
+  public function testConnection(): bool {
     $this->cache->invalidate('cap:access_token');
     return !empty($this->getAccessToken());
   }
