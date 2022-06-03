@@ -301,7 +301,7 @@ class Cap implements CapInterface {
       'auth' => [$this->clientId, $this->clientSecret],
     ];
     if ($result = $this->getApiResponse(self::AUTH_URL, $options)) {
-      $this->cache->set('cap:access_token', $result, time() + ($result['expires_in'] / 1000) - 60, [
+      $this->cache->set('cap:access_token', $result, time() + $result['expires_in'] - 60, [
         'cap',
         'cap:token',
       ]);
