@@ -7,6 +7,7 @@ use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\taxonomy\TermInterface;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
@@ -17,6 +18,8 @@ use GuzzleHttp\Exception\GuzzleException;
  * @package Drupal\stanford_person_importer
  */
 class Cap implements CapInterface {
+
+  use StringTranslationTrait;
 
   /**
    * CAPx API username.
@@ -145,11 +148,12 @@ class Cap implements CapInterface {
       $response = $this->client->request('GET', $url, $options);
     }
     catch (GuzzleException | \Exception $e) {
-      // Most errors originate from the API itself.
-      $this->logger->error($e->getMessage());
-      return FALSE;
+      // Most errors originate from the API itself, log the error and let it
+      // fall over.
+      $this->logger->error($this->t('An unexpected error came from the API: %message'), ['%message' => $e->getMessage()]);
+      throw new \Exception($e->getMessage());
     }
-    return $response->getStatusCode() == 200 ? json_decode((string) $response->getBody(), TRUE) : FALSE;
+    return $response->getStatusCode() == 200 ? json_decode((string) $response->getBody(), TRUE, 512, JSON_THROW_ON_ERROR) : FALSE;
   }
 
   /**
@@ -297,7 +301,12 @@ class Cap implements CapInterface {
       'auth' => [$this->clientId, $this->clientSecret],
     ];
     if ($result = $this->getApiResponse(self::AUTH_URL, $options)) {
-      $this->cache->set('cap:access_token', $result, time() + $result['expires_in'], [
+      $max_execution = ini_get('max_execution_time');
+      // Make sure the access token doesn't expire by the end of an execution
+      // cycle, to avoid the token becoming stale in the middle of things.
+      $reduced_token_expiration = $max_execution > 0 ? $max_execution : 60 * 60;
+
+      $this->cache->set('cap:access_token', $result, time() + $result['expires_in'] - $reduced_token_expiration, [
         'cap',
         'cap:token',
       ]);
