@@ -35,7 +35,7 @@ interface CapInterface {
    * @return self
    *   CAP service with client ID saved.
    */
-  public function setClientId($client_id): self;
+  public function setClientId(string $client_id): self;
 
   /**
    * Set the CAP Password.
@@ -46,13 +46,13 @@ interface CapInterface {
    * @return self
    *   CAP service with client secret saved.
    */
-  public function setClientSecret($secret): self;
+  public function setClientSecret(string $secret): self;
 
   /**
    * Get the url for CAPx for the given organizations.
    *
    * @param string[] $organizations
-   *  Organization codes.
+   *   Organization codes.
    * @param bool $children
    *   Include all children of the organizations.
    *

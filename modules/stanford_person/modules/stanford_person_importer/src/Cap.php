@@ -120,7 +120,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function setClientId($client_id): self {
+  public function setClientId(string $client_id): self {
     $this->clientId = $client_id;
     return $this;
   }
@@ -128,7 +128,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function setClientSecret($secret): self {
+  public function setClientSecret(string $secret): self {
     $this->clientSecret = $secret;
     return $this;
   }
@@ -148,7 +148,7 @@ class Cap implements CapInterface {
     try {
       $response = $this->client->request('GET', $url->toString(), $options);
     }
-    catch (GuzzleException|\Exception $e) {
+    catch (GuzzleException | \Exception $e) {
       $this->cache->delete('cap:access_token');
       // Most errors originate from the API itself, log the error and let it
       // fall over.
