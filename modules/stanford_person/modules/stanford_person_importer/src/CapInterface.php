@@ -51,15 +51,15 @@ interface CapInterface {
   /**
    * Get the url for CAPx for the given organizations.
    *
-   * @param string $organizations
-   *   Comma separated organization codes.
+   * @param string[] $organizations
+   *  Organization codes.
    * @param bool $children
    *   Include all children of the organizations.
    *
    * @return \Drupal\Core\Url
    *   CAPx URLs.
    */
-  public function getOrganizationUrl($organizations, $children = FALSE): Url;
+  public function getOrganizationUrl(array $organizations, bool $children = FALSE): Url;
 
   /**
    * Get the url for CAP for given workgroups.
@@ -105,6 +105,6 @@ interface CapInterface {
   /**
    * Sync the organization database with the api data from CAP.
    */
-  public function updateOrganizations();
+  public function updateOrganizations(): void;
 
 }

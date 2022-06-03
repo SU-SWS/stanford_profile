@@ -11,11 +11,16 @@ use Drupal\Core\Entity\Query\QueryInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\Core\PathProcessor\OutboundPathProcessorInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Utility\UnroutedUrlAssembler;
 use Drupal\stanford_person_importer\Cap;
 use Drupal\taxonomy\TermInterface;
 use Drupal\Tests\UnitTestCase;
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class CapTest.
@@ -76,8 +81,15 @@ class CapTest extends UnitTestCase {
 
     $this->service = new Cap($guzzle, $entity_type_manager, $cache, $database, $logger_factory);
 
+    $request_stack = new RequestStack();
+    $request_stack->push(new Request());
+    $path_processor = $this->createMock(OutboundPathProcessorInterface::class);
+    $unrouted_assembler = new UnroutedUrlAssembler($request_stack, $path_processor);
+
     $container = new ContainerBuilder();
     $container->set('stanford_person_importer.cap', $this->service);
+    $container->set('string_translation', $this->getStringTranslationStub());
+    $container->set('unrouted_url_assembler', $unrouted_assembler);
     \Drupal::setContainer($container);
   }
 
@@ -158,42 +170,46 @@ class CapTest extends UnitTestCase {
    * Returned urls from the service will be properly formatted.
    */
   public function testUrls() {
-    $url = $this->service->getOrganizationUrl('foo,bar');
+    $url = urldecode($this->service->getOrganizationUrl(['foo', 'bar'])
+      ->toString());
     $this->assertEquals('https://cap.stanford.edu/cap-api/api/profiles/v1?orgCodes=FOO,BAR', $url);
 
-    $url = $this->service->getOrganizationUrl('foo,bar', TRUE);
+    $url = urldecode($this->service->getOrganizationUrl(['foo', 'bar'], TRUE)
+      ->toString());
     $this->assertEquals('https://cap.stanford.edu/cap-api/api/profiles/v1?orgCodes=FOO,BAR&includeChildren=true', $url);
 
-    $url = $this->service->getWorkgroupUrl('foo:bar_-baz');
+    $url = urldecode($this->service->getWorkgroupUrl(['foo:bar_-baz'])
+      ->toString());
     $this->assertEquals('https://cap.stanford.edu/cap-api/api/profiles/v1?privGroups=FOO:BAR_-BAZ', $url);
 
-    $url = $this->service->getSunetUrl('foobarbaz');
-    $this->assertEquals('https://cap.stanford.edu/cap-api/api/profiles/v1?uids=foobarbaz', $url);
+    $url = urldecode($this->service->getSunetUrl(['foobarbaz'])->toString());
+    $this->assertEquals('https://cap.stanford.edu/cap-api/api/profiles/v1?uids=foobarbaz&ps=1', $url);
 
-    $sunets = implode(',', array_fill(0, 20, 'foo'));
-    $url = $this->service->getSunetUrl($sunets);
-    $this->assertEquals("https://cap.stanford.edu/cap-api/api/profiles/v1?uids=$sunets&ps=20", $url);
+    $sunets = array_fill(0, 20, 'foo');
+    $url = urldecode($this->service->getSunetUrl($sunets)->toString());
+    $this->assertEquals("https://cap.stanford.edu/cap-api/api/profiles/v1?uids=foo&ps=1", $url);
   }
 
   /**
    * The api will return an appropriate count.
    */
   public function testProfileCount() {
-    $this->assertEquals(0, $this->service->getTotalProfileCount('http://localhost'));
-
     $this->guzzleBody = json_encode([
       'totalCount' => 123,
       'expires_in' => 100,
       'access_token' => 'foo',
     ]);
-    $this->assertEquals(123, $this->service->getTotalProfileCount('http://localhost'));
+    $this->assertEquals(123, $this->service->getTotalProfileCount(Url::fromUri('http://localhost')));
+
+    $this->guzzleBody = NULL;
+    $this->expectException(\JsonException::class);
+    $this->assertEquals(0, $this->service->getTotalProfileCount(Url::fromUri('http://localhost')));
   }
 
   /**
    * The org codes will be stored in taxonomy terms.
    */
   public function testUpdateOrgs() {
-    $this->assertNull($this->service->updateOrganizations());
     $body = [
       'expires_in' => 100,
       'access_token' => 'foo',
@@ -207,6 +223,11 @@ class CapTest extends UnitTestCase {
 
     $this->cacheData = new \stdClass();
     $this->cacheData->data = $body;
+    $this->assertNull($this->service->updateOrganizations());
+
+    $this->cacheData = NULL;
+    $this->guzzleBody = NULL;
+    $this->expectException(\JsonException::class);
     $this->assertNull($this->service->updateOrganizations());
   }
 
@@ -228,8 +249,10 @@ class CapTest extends UnitTestCase {
    * Retain the numbers in the workgroups and organizations.
    */
   public function testNumbers() {
-    $this->assertStringContainsString('FOO:BAR123', $this->service->getWorkgroupUrl('foo:bar123'));
-    $this->assertStringContainsString('FOOBAR123', $this->service->getOrganizationUrl('foo:bar123'));
+    $this->assertStringContainsString('FOO:BAR123', urldecode($this->service->getWorkgroupUrl(['foo:bar123'])
+      ->toString()));
+    $this->assertStringContainsString('FOOBAR123', urldecode($this->service->getOrganizationUrl(['foo:bar123'])
+      ->toString()));
   }
 
 }

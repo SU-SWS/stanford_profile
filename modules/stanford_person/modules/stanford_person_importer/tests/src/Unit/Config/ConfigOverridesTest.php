@@ -5,13 +5,19 @@ namespace Drupal\Tests\stanford_person_importer\Unit\Config;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\Core\Config\Config;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\PathProcessor\OutboundPathProcessorInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Utility\UnroutedUrlAssembler;
 use Drupal\stanford_person_importer\CapInterface;
 use Drupal\stanford_person_importer\Config\ConfigOverrides;
 use Drupal\Tests\UnitTestCase;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class ConfigOverridesTest.
@@ -64,6 +70,16 @@ class ConfigOverridesTest extends UnitTestCase {
     $config_factory = $this->createMock(ConfigFactoryInterface::class);
     $config_factory->method('getEditable')->willReturn($config);
     $this->configOverrides = new ConfigOverrides($this->configPagesService, $entity_type_manager, $cap, $config_factory);
+
+    $request_stack = new RequestStack();
+    $request_stack->push(new Request());
+    $path_processor = $this->createMock(OutboundPathProcessorInterface::class);
+    $unrouted_assembler = new UnroutedUrlAssembler($request_stack, $path_processor);
+
+    $container = new ContainerBuilder();
+    $container->set('string_translation', $this->getStringTranslationStub());
+    $container->set('unrouted_url_assembler', $unrouted_assembler);
+    \Drupal::setContainer($container);
   }
 
   /**
@@ -79,9 +95,12 @@ class ConfigOverridesTest extends UnitTestCase {
         $this->count += 10;
         return $this->count;
       }));
-    $cap->method('getOrganizationUrl')->willReturn('http://localhost.orgs');
-    $cap->method('getWorkgroupUrl')->willReturn('http://localhost.workgroup');
-    $cap->method('getSunetUrl')->willReturn('http://localhost.sunet');
+    $cap->method('getOrganizationUrl')
+      ->willReturn(Url::fromUri('http://localhost.orgs'));
+    $cap->method('getWorkgroupUrl')
+      ->willReturn(Url::fromUri('http://localhost.workgroup'));
+    $cap->method('getSunetUrl')
+      ->willReturn(Url::fromUri('http://localhost.sunet'));
 
     return $cap;
   }
@@ -118,9 +137,9 @@ class ConfigOverridesTest extends UnitTestCase {
       ->willReturnCallback(function ($type, $field_name) {
         switch ($field_name) {
           case 'su_person_cap_username':
-            return ['foo'];
+            return 'foo';
           case 'su_person_cap_password':
-            return ['bar'];
+            return 'bar';
           case 'su_person_orgs':
             return [1, 2];
           case 'su_person_workgroup':
@@ -134,12 +153,17 @@ class ConfigOverridesTest extends UnitTestCase {
     $overrides = $this->configOverrides->loadOverrides(['migrate_plus.migration.su_stanford_person']);
 
     $expected_urls = [
-      'http://localhost.orgs&ps=15&whitelist=fooBar,barFoo',
-      'http://localhost.workgroup&p=1&ps=15&whitelist=fooBar,barFoo',
-      'http://localhost.workgroup&p=2&ps=15&whitelist=fooBar,barFoo',
-      'http://localhost.sunet&whitelist=fooBar,barFoo',
+      'http://localhost.orgs?ps=15&whitelist=fooBar,barFoo',
+      'http://localhost.workgroup?p=1&ps=15&whitelist=fooBar,barFoo',
+      'http://localhost.workgroup?p=2&ps=15&whitelist=fooBar,barFoo',
+      'http://localhost.sunet?whitelist=fooBar,barFoo',
     ];
-    $this->assertArrayEquals($expected_urls, $overrides['migrate_plus.migration.su_stanford_person']['source']['urls']);
+    asort($expected_urls);
+    asort($overrides['migrate_plus.migration.su_stanford_person']['source']['urls']);
+    foreach($overrides['migrate_plus.migration.su_stanford_person']['source']['urls'] as &$url){
+      $url = urldecode($url);
+    }
+    $this->assertEquals(array_values($expected_urls), array_values($overrides['migrate_plus.migration.su_stanford_person']['source']['urls']));
   }
 
 }

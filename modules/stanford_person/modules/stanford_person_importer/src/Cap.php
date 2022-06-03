@@ -147,7 +147,8 @@ class Cap implements CapInterface {
   protected function getApiResponse(Url $url, array $options = []) {
     try {
       $response = $this->client->request('GET', $url->toString(), $options);
-    } catch (GuzzleException|\Exception $e) {
+    }
+    catch (GuzzleException|\Exception $e) {
       $this->cache->delete('cap:access_token');
       // Most errors originate from the API itself, log the error and let it
       // fall over.
@@ -160,8 +161,8 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function getOrganizationUrl($organizations, $children = FALSE): Url {
-    $organizations = preg_replace('/[^A-Z,0-9]/', '', strtoupper($organizations));
+  public function getOrganizationUrl(array $organizations, bool $children = FALSE): Url {
+    $organizations = preg_replace('/[^A-Z,0-9]/', '', strtoupper(implode(',', array_unique($organizations))));
     $query = ['orgCodes' => $organizations];
     if ($children) {
       $query['includeChildren'] = 'true';
@@ -173,7 +174,7 @@ class Cap implements CapInterface {
    * {@inheritDoc}
    */
   public function getWorkgroupUrl(array $workgroups): Url {
-    $workgroups = preg_replace('/[^A-Z,:~\-_0-9]/', '', strtoupper(implode(',', $workgroups)));
+    $workgroups = preg_replace('/[^A-Z,:~\-_0-9]/', '', strtoupper(implode(',', array_unique($workgroups))));
     return Url::fromUri(self::CAP_URL, ['query' => ['privGroups' => $workgroups]]);
   }
 
@@ -181,7 +182,8 @@ class Cap implements CapInterface {
    * {@inheritDoc}
    */
   public function getSunetUrl(array $sunetids): Url {
-    $query = ['uid' => implode(',', $sunetids), 'ps' => count($sunetids)];
+    $sunetids = array_unique($sunetids);
+    $query = ['uids' => implode(',', $sunetids), 'ps' => count($sunetids)];
     return Url::fromUri(self::CAP_URL, ['query' => $query]);
   }
 
@@ -200,13 +202,19 @@ class Cap implements CapInterface {
    */
   public function testConnection(): bool {
     $this->cache->invalidate('cap:access_token');
-    return !empty($this->getAccessToken());
+    try {
+      return !empty($this->getAccessToken());
+    }
+    catch (\Throwable $e) {
+      $this->logger->error($this->t('Unable to connect to CAP Api: %message'), ['%message' => $e->getMessage()]);
+    }
+    return FALSE;
   }
 
   /**
    * {@inheritDoc}
    */
-  public function updateOrganizations() {
+  public function updateOrganizations(): void {
     $this->insertOrgData($this->getOrgData());
   }
 
@@ -220,7 +228,7 @@ class Cap implements CapInterface {
    *
    * @throws \Exception
    */
-  protected function insertOrgData(array $org_data, TermInterface $parent = NULL) {
+  protected function insertOrgData(array $org_data, TermInterface $parent = NULL): void {
     if (!isset($org_data['orgCodes'])) {
       return;
     }
@@ -262,14 +270,14 @@ class Cap implements CapInterface {
    * @return array
    *   Keyed array of all organization data.
    */
-  protected function getOrgData() {
+  protected function getOrgData(): array {
     if ($cache = $this->cache->get('cap:org_data')) {
       return $cache->data;
     }
 
     $options = ['query' => ['access_token' => $this->getAccessToken()]];
     // AA00 is the root level of all Stanford.
-    $result = $this->getApiResponse(self::API_URL . '/cap/v1/orgs/AA00', $options);
+    $result = $this->getApiResponse(Url::fromUri(self::API_URL . '/cap/v1/orgs/AA00', $options));
 
     if ($result) {
       $this->cache->set('cap:org_data', $result, time() + 60 * 60 * 24 * 7, [
@@ -284,10 +292,10 @@ class Cap implements CapInterface {
   /**
    * Get the API token for CAP.
    *
-   * @return string
+   * @return string|null
    *   API Token.
    */
-  protected function getAccessToken() {
+  protected function getAccessToken(): ?string {
     if ($cache = $this->cache->get('cap:access_token')) {
       return $cache->data['access_token'];
     }
@@ -296,13 +304,13 @@ class Cap implements CapInterface {
       'query' => ['grant_type' => 'client_credentials'],
       'auth' => [$this->clientId, $this->clientSecret],
     ];
-    if ($result = $this->getApiResponse(self::AUTH_URL, $options)) {
-      $this->cache->set('cap:access_token', $result, time() + $result['expires_in'] - 60, [
-        'cap',
-        'cap:token',
-      ]);
-      return $result['access_token'];
-    }
+    $result = $this->getApiResponse(Url::fromUri(self::AUTH_URL, $options));
+    $this->cache->set('cap:access_token', $result, time() + $result['expires_in'] - 60, [
+      'cap',
+      'cap:token',
+    ]);
+
+    return $result['access_token'] ?? NULL;
   }
 
 }

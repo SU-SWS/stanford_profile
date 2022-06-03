@@ -106,7 +106,9 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
 
       $allowed_fields = $this->getAllowedFields();
       foreach ($urls as &$url) {
-        $url .= '&whitelist=' . implode(',', $allowed_fields);
+        $url = Url::fromUri($url);
+        $url->mergeOptions(['query' => ['whitelist' => implode(',', $allowed_fields)]]);
+        $url = $url->toString();
       }
       $overrides['migrate_plus.migration.su_stanford_person']['source']['urls'] = $urls;
       $overrides['migrate_plus.migration.su_stanford_person']['source']['authentication']['client_id'] = $this->getCapClientId();
@@ -144,7 +146,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    */
   protected function getOrgsUrls() {
     $org_tids = $this->configPages->getValue('stanford_person_importer', 'su_person_orgs', [], 'target_id');
-    $include_children = $this->configPages->getValue('stanford_person_importer', 'su_person_child_orgs', 0, 'value');
+    $include_children = (bool) $this->configPages->getValue('stanford_person_importer', 'su_person_child_orgs', 0, 'value');
 
     // No field values populated.
     if (empty($org_tids)) {
@@ -162,7 +164,6 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
         $org_codes[] = str_replace(' ', '', $org_code);
       }
     }
-    $org_codes = implode(',', $org_codes);
     return $this->getUrlChunks($this->cap->getOrganizationUrl($org_codes, $include_children));
   }
 
