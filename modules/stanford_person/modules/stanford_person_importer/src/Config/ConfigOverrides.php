@@ -226,21 +226,21 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
   /**
    * Get the username from the config pages field.
    *
-   * @return string|null
+   * @return string
    *   Client ID string.
    */
-  protected function getCapClientId(): ?string {
-    return $this->configPages->getValue('stanford_person_importer', 'su_person_cap_username', 0, 'value');
+  protected function getCapClientId(): string {
+    return $this->configPages->getValue('stanford_person_importer', 'su_person_cap_username', 0, 'value') ?? '';
   }
 
   /**
    * Get the password from the config pages field.
    *
-   * @return string|null
+   * @return string
    *   Client secret string.
    */
-  protected function getCapClientSecret(): ?string {
-    return $this->configPages->getValue('stanford_person_importer', 'su_person_cap_password', 0, 'value');
+  protected function getCapClientSecret(): string {
+    return $this->configPages->getValue('stanford_person_importer', 'su_person_cap_password', 0, 'value') ?? '';
   }
 
 }

@@ -1,0 +1,21 @@
+uuid: 9f2ef83e-a5a2-4e30-8549-603bb0f0271a
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_person_importer
+    - field.storage.config_pages.su_person_orphan
+  module:
+    - options
+id: config_pages.stanford_person_importer.su_person_orphan
+field_name: su_person_orphan
+entity_type: config_pages
+bundle: stanford_person_importer
+label: 'Orphan Action'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

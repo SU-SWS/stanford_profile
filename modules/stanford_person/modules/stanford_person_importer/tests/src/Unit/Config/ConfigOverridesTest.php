@@ -124,8 +124,8 @@ class ConfigOverridesTest extends UnitTestCase {
    */
   public function testEmptyConfigOverrides() {
     $overrides = $this->configOverrides->loadOverrides(['migrate_plus.migration.su_stanford_person']);
-    $this->assertNull($overrides['migrate_plus.migration.su_stanford_person']['source']['authentication']['client_id']);
-    $this->assertNull($overrides['migrate_plus.migration.su_stanford_person']['source']['authentication']['client_secret']);
+    $this->assertEmpty($overrides['migrate_plus.migration.su_stanford_person']['source']['authentication']['client_id']);
+    $this->assertEmpty($overrides['migrate_plus.migration.su_stanford_person']['source']['authentication']['client_secret']);
     $this->assertEmpty($overrides['migrate_plus.migration.su_stanford_person']['source']['urls']);
   }
 
