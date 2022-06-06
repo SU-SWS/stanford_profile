@@ -18,9 +18,11 @@ jobs:
           - 33306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - uses: actions/checkout@v3
+      -
+        uses: actions/checkout@v3
         path: /var/www/test
-      - name: Build project
+      -
+        name: Build project
         run: |
           composer global require fzaninotto/faker:'dev-master as 1.9.2'
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
