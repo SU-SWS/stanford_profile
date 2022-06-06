@@ -35,6 +35,7 @@ jobs:
       DRUPAL_DATABASE_USERNAME: drupal
       DRUPAL_DATABASE_PASSWORD: drupal
       DRUPAL_DATABASE_HOST: mysql
+      DRUPAL_DATABASE_PORT: 3306
     container:
       image: pookmish/drupal8ci:php8
     services:
