@@ -34,6 +34,7 @@ jobs:
       DRUPAL_DATABASE_NAME: drupal
       DRUPAL_DATABASE_USERNAME: drupal
       DRUPAL_DATABASE_PASSWORD: drupal
+      DRUPAL_DATABASE_HOST: mysql
     container:
       image: pookmish/drupal8ci:php8
     services:
@@ -51,7 +52,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           path: project
-      - name: Build project
+      - name: Run tests
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: |
