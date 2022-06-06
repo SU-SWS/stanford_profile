@@ -1,7 +1,8 @@
 name: PHPUnit and Acceptance Tests
-on: [push, pull_request]
+on: [push]
 jobs:
   phpunit:
+    name: PHPUnit Coverage Tests
     runs-on: ubuntu-latest
     container:
       image: pookmish/drupal8ci:php8
@@ -20,6 +21,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build project
         run: |
+          composer global require fzaninotto/faker:'dev-master as 1.9.2'
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
 
