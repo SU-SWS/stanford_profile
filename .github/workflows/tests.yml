@@ -20,10 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          path: /var/www/test
+          path: project
       - name: Build project
         run: |
           composer global require fzaninotto/faker:'dev-master as 1.9.2'
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
-          ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
+          ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
 
