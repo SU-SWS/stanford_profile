@@ -10,7 +10,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_DATABASE: drupal
+          MYSQL_DATABASE: drupal8
           MYSQL_USER: drupal
           MYSQL_PASSWORD: drupal
           MYSQL_ROOT_PASSWORD: drupal
@@ -28,7 +28,7 @@ jobs:
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
 
   codeception:
-    name: PHPUnit Coverage Tests
+    name: Codeception Acceptance Tests
     runs-on: ubuntu-latest
     container:
       image: pookmish/drupal8ci:php8
@@ -36,7 +36,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_DATABASE: drupal
+          MYSQL_DATABASE: drupal8
           MYSQL_USER: drupal
           MYSQL_PASSWORD: drupal
           MYSQL_ROOT_PASSWORD: drupal
