@@ -61,7 +61,7 @@ jobs:
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance
   functional:
-    name: Codeception Acceptance Tests
+    name: Codeception Functional Tests
     runs-on: ubuntu-latest
     env:
       DRUPAL_DATABASE_NAME: drupal
