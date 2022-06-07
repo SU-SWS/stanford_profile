@@ -91,4 +91,4 @@ jobs:
         run: |
           composer global require fzaninotto/faker:'dev-master as 1.9.2'
           composer global require SU-SWS/stanford-caravan:dev-gh-actions
-          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional --webdriver-host=localhost
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional
