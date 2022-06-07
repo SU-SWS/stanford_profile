@@ -70,9 +70,9 @@ jobs:
     container:
       image: pookmish/drupal8ci:php8
     services:
-      selenium:
-        image: selenium/standalone-chrome
-        options: --health-cmd '/opt/bin/check-grid.sh'
+#      selenium:
+#        image: selenium/standalone-chrome
+#        options: --health-cmd '/opt/bin/check-grid.sh'
       mysql:
         image: mysql:5.7
         env:
@@ -87,8 +87,12 @@ jobs:
       - uses: actions/checkout@v3
         with:
           path: project
+      - name: Start Selenium
+        run: |
+          npm install selenium-standalone -g
+          selenium-standalone install && selenium-standalone start
       - name: Run tests
         run: |
           composer global require fzaninotto/faker:'dev-master as 1.9.2'
-          composer global require SU-SWS/stanford-caravan:dev-gh-actions
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional --domain=localhost
