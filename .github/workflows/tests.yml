@@ -27,7 +27,40 @@ jobs:
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
 
-  codeception:
+  acceptance:
+    name: Codeception Acceptance Tests
+    runs-on: ubuntu-latest
+    env:
+      DRUPAL_DATABASE_NAME: drupal
+      DRUPAL_DATABASE_USERNAME: drupal
+      DRUPAL_DATABASE_PASSWORD: drupal
+      DRUPAL_DATABASE_HOST: mysql
+      DRUPAL_DATABASE_PORT: 3306
+    container:
+      image: pookmish/drupal8ci:php8
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: drupal
+          MYSQL_USER: drupal
+          MYSQL_PASSWORD: drupal
+          MYSQL_ROOT_PASSWORD: drupal
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: project
+      - name: Run tests
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+        run: |
+          composer global require fzaninotto/faker:'dev-master as 1.9.2'
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance
+  functional:
     name: Codeception Acceptance Tests
     runs-on: ubuntu-latest
     env:
@@ -61,4 +94,4 @@ jobs:
         run: |
           composer global require fzaninotto/faker:'dev-master as 1.9.2'
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
-          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional
