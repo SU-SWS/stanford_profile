@@ -1,0 +1,17 @@
+uuid: 09bd3dc0-7eb8-4ae0-9f22-581161080a94
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_encrypt
+title: 'Default cron handler'
+id: field_encrypt_cron
+weight: 0
+module: field_encrypt
+callback: field_encrypt_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
