@@ -27,7 +27,7 @@ class RedirectImportCest {
     fclose($file);
 
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/config/search/redirect/migrate');
+    $I->amOnPage('/admin/config/search/redirect/import');
     $I->attachFile('CSV File', 'redirects.csv');
     $I->checkOption('Allow nonexistent paths to be imported');
     $I->click('Import', '.redirect-import-form');
