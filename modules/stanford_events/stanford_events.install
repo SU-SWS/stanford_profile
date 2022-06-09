@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Stanford_events.install.
+ */
+
+/**
+ * Update the length of the event sponsors field.
+ */
+function stanford_events_update_8001() {
+  // Install the change_labels module.
+  \Drupal::service('module_installer')->install(['change_labels']);
+
+  // Update DB columns.
+  $database = \Drupal::database();
+  $database->query("ALTER TABLE node__su_event_sponsor MODIFY su_event_sponsor_value VARCHAR(255)");
+  $database->query("ALTER TABLE node_revision__su_event_sponsor MODIFY su_event_sponsor_value VARCHAR(255)");
+
+  // Update the storage schema.
+  $storage_key = 'node.field_schema_data.su_event_sponsor';
+  $storage_schema = \Drupal::keyValue('entity.storage_schema.sql');
+  $field_schema = $storage_schema->get($storage_key);
+  $field_schema['node__su_event_sponsor']['fields']['su_event_sponsor_value']['length'] = 255;
+  $field_schema['node_revision__su_event_sponsor']['fields']['su_event_sponsor_value']['length'] = 255;
+  $storage_schema->set($storage_key, $field_schema);
+
+}
