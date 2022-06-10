@@ -6,4 +6,4 @@ services:
     arguments: ['@config.factory', '@state']
   stanford_intranet.manager:
     class: \Drupal\stanford_intranet\StanfordIntranetManager
-    arguments: ['@entity_type.manager', '@file.repository', '@file_system', '@state', '@extension.list.module', '@config_factory']
+    arguments: ['@entity_type.manager', '@file.repository', '@file_system', '@state', '@extension.list.module', '@config.factory']
