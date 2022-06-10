@@ -77,7 +77,6 @@ class StanfordIntranetManager implements StanfordIntranetManagerInterface {
     if (!$this->state->get('stanford_intranet')) {
       return;
     }
-    $this->copyMediaIcons();
     $storage = $this->entityTypeManager->getStorage('file');
     $fids = $storage->getQuery()
       ->accessCheck(FALSE)

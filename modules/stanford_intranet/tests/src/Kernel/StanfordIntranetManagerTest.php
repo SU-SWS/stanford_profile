@@ -46,6 +46,8 @@ class StanfordIntranetManagerTest extends IntranetKernelTestBase {
     ]);
     $file->save();
 
+    \Drupal::service('file.usage')->add($file, 'file', 'media', 1);
+
     \Drupal::service('stanford_intranet.manager')->moveIntranetFiles();
     $moved_file = File::load($file->id());
     $this->assertEquals($path, $moved_file->getFileUri());
