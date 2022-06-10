@@ -68,6 +68,10 @@ class StanfordIntranetManager implements StanfordIntranetManagerInterface {
    *   File system service.
    * @param \Drupal\Core\State\StateInterface $state
    *   State service.
+   * @param \Drupal\Core\Extension\ModuleExtensionList $module_list
+   *   Module list service.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   Config factory service.
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager, FileRepositoryInterface $file_repository, FileSystemInterface $file_system, StateInterface $state, ModuleExtensionList $module_list, ConfigFactoryInterface $config_factory) {
     $this->entityTypeManager = $entity_type_manager;
@@ -117,9 +121,10 @@ class StanfordIntranetManager implements StanfordIntranetManagerInterface {
    *
    * @see media_install()
    */
-  protected function copyMediaIcons(){
+  protected function copyMediaIcons() {
     $source = $this->moduleList->getPath('media') . '/images/icons';
-    $destination = $this->configFactory->get('media.settings')->get('icon_base_uri');
+    $destination = $this->configFactory->get('media.settings')
+      ->get('icon_base_uri');
     $this->fileSystem->prepareDirectory($destination, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
 
     $files = $this->fileSystem->scanDirectory($source, '/.*\.(svg|png|jpg|jpeg|gif)$/');
