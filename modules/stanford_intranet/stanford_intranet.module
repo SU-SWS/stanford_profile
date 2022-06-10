@@ -41,6 +41,18 @@ function stanford_intranet_file_download($uri) {
   if (preg_match('/.jp[e]?g.png$/', $uri) && StreamWrapperManager::getScheme($uri) == 'private') {
     return \Drupal::moduleHandler()->invokeAll('file_download', [str_replace('.png', '', $uri)]);
   }
+
+  $file_repository = \Drupal::service('file.repository');
+  $file = $file_repository->loadByUri($uri);
+  if (!$file) {
+    return;
+  }
+
+  $usage_list = \Drupal::service('file.usage')->listUsage($file);
+  // Paragraph type icons should be allowed.
+  if (isset($usage_list['paragraphs']['paragraphs_type'])) {
+    return file_get_content_headers($file);
+  }
 }
 
 /**
