@@ -49,8 +49,11 @@ function stanford_intranet_file_download($uri) {
   }
 
   $usage_list = \Drupal::service('file.usage')->listUsage($file);
-  // Paragraph type icons should always be allowed.
-  if (isset($usage_list['paragraphs']['paragraphs_type'])) {
+  // Allow icon files to be viewed. All other files on the system are referenced
+  // via media entities, so they will go through normal access checks. This
+  // allows media library icons, paragraph type icons, etc to be viewed and
+  // downloaded.
+  if (!isset($usage_list['file']['media'])) {
     return file_get_content_headers($file);
   }
 }
