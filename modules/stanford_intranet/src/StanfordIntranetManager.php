@@ -2,7 +2,10 @@
 
 namespace Drupal\stanford_intranet;
 
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Extension\ModuleExtensionList;
+use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\file\FileRepositoryInterface;
@@ -41,6 +44,20 @@ class StanfordIntranetManager implements StanfordIntranetManagerInterface {
   protected $state;
 
   /**
+   * Module extension list service.
+   *
+   * @var \Drupal\Core\Extension\ModuleExtensionList
+   */
+  protected $moduleList;
+
+  /**
+   * Config factory service.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  /**
    * Service constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -52,11 +69,13 @@ class StanfordIntranetManager implements StanfordIntranetManagerInterface {
    * @param \Drupal\Core\State\StateInterface $state
    *   State service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, FileRepositoryInterface $file_repository, FileSystemInterface $file_system, StateInterface $state) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, FileRepositoryInterface $file_repository, FileSystemInterface $file_system, StateInterface $state, ModuleExtensionList $module_list, ConfigFactoryInterface $config_factory) {
     $this->entityTypeManager = $entity_type_manager;
     $this->fileRepository = $file_repository;
     $this->fileSystem = $file_system;
     $this->state = $state;
+    $this->moduleList = $module_list;
+    $this->configFactory = $config_factory;
   }
 
   /**
@@ -66,6 +85,7 @@ class StanfordIntranetManager implements StanfordIntranetManagerInterface {
     if (!$this->state->get('stanford_intranet')) {
       return;
     }
+    $this->copyMediaIcons();
     $storage = $this->entityTypeManager->getStorage('file');
     $fids = $storage->getQuery()
       ->accessCheck(FALSE)
@@ -88,6 +108,30 @@ class StanfordIntranetManager implements StanfordIntranetManagerInterface {
       ->loadMultiple();
     foreach ($image_styles as $style) {
       $style->flush();
+    }
+    $this->copyMediaIcons();
+  }
+
+  /**
+   * Media icons are best suited for the public directory, make sure they exist.
+   *
+   * @see media_install()
+   */
+  protected function copyMediaIcons(){
+    $source = $this->moduleList->getPath('media') . '/images/icons';
+    $destination = $this->configFactory->get('media.settings')->get('icon_base_uri');
+    $this->fileSystem->prepareDirectory($destination, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
+
+    $files = $this->fileSystem->scanDirectory($source, '/.*\.(svg|png|jpg|jpeg|gif)$/');
+    foreach ($files as $file) {
+      if (!file_exists($destination . DIRECTORY_SEPARATOR . $file->filename)) {
+        try {
+          $this->fileSystem->copy($file->uri, $destination, FileSystemInterface::EXISTS_ERROR);
+        }
+        catch (FileException $e) {
+          // Ignore and continue.
+        }
+      }
     }
   }
 
