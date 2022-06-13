@@ -53,8 +53,6 @@ jobs:
         with:
           path: project
       - name: Run tests
-        env:
-          DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: |
           composer global require fzaninotto/faker:'dev-master as 1.9.2'
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
