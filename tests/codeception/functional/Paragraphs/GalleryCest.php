@@ -11,8 +11,6 @@ class GalleryCest {
 
   /**
    * Create a basic page with a gallery and check the colorbox actions.
-   *
-   * @group runthis
    */
   public function testGallery(FunctionalTester $I) {
     $faker = Factory::create();
