@@ -88,7 +88,7 @@ class WYSIWYGCest {
     $I->waitForElementVisible('.dropzone');
     $I->dropFileInDropzone(__DIR__ . '/logo.jpg');
     $I->click('Upload and Continue');
-    $I->waitForText('Alternative text');
+    $I->waitForText('Decorative Image');
     $I->clickWithLeftButton(".ui-dialog-buttonset button:nth-child(2)");
     $I->waitForAjaxToFinish();
     $I->click('Continue');
