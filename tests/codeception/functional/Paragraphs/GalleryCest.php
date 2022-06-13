@@ -11,6 +11,8 @@ class GalleryCest {
 
   /**
    * Create a basic page with a gallery and check the colorbox actions.
+   *
+   * @group runthis
    */
   public function testGallery(FunctionalTester $I) {
     $faker = Factory::create();
@@ -30,7 +32,9 @@ class GalleryCest {
     $I->click('Upload and Continue');
 
     $I->waitForText('The media items have been created but have not yet been saved');
+    $I->clickWithLeftButton('input[name="media[0][fields][su_gallery_image][0][alt]"]');
     $I->fillField('media[0][fields][su_gallery_image][0][alt]', 'Logo');
+    $I->clickWithLeftButton('input[name="media[1][fields][su_gallery_image][0][alt]"]');
     $I->fillField('media[1][fields][su_gallery_image][0][alt]', 'Wordmark');
     $I->click('Save and insert', '.ui-dialog-buttonset');
 
