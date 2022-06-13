@@ -40,13 +40,18 @@ function jumpstart_ui_preprocess_ds_entity_view(&$variables) {
     $link_attributes_key = NULL;
     switch ($variables['content']['#id']) {
       case 'hero':
-        $link_field = reset($variables['content']['#ds_configuration']['regions']['hero_button_link']);
-        $link_attributes_key = 'hero_cta_attributes';
+
+        if (isset($variables['content']['#ds_configuration']['regions']['hero_button_link'])) {
+          $link_field = reset($variables['content']['#ds_configuration']['regions']['hero_button_link']);
+          $link_attributes_key = 'hero_cta_attributes';
+        }
         break;
 
-      case'card':
-        $link_field = reset($variables['content']['#ds_configuration']['regions']['card_link']);
-        $link_attributes_key = 'card_cta_attributes';
+      case 'card':
+        if (isset($variables['content']['#ds_configuration']['regions']['card_link'])) {
+          $link_field = reset($variables['content']['#ds_configuration']['regions']['card_link']);
+          $link_attributes_key = 'card_cta_attributes';
+        }
         break;
     }
 
