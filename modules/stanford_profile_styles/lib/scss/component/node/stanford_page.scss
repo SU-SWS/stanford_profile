@@ -32,24 +32,6 @@
   }
 }
 
-// Publications List landing pages
-// This keeps the gutter from growing
-// and misaligning paragraphs.
-.page-publications {
-  .su-page-components {
-    div[data-react-columns="12"] {
-      &.ptype-stanford-lists,
-      &.ptype-stanford-wysiwyg,
-      &.ptype-stanford-card,
-      &.ptype-stanford-media-caption,
-      &.ptype-stanford-entity,
-      &.ptype-stanford-gallery {
-        max-width: inherit;
-      }
-    }
-  }
-}
-
 .jumpstart-ui {
   &--three-column,
   &--two-column {
@@ -65,7 +47,6 @@
 
     // Add some extra space between the main-region and the left-region.
     > .left-region + .main-region {
-
       // Needed to add spacing for gutters for special all list page: News/events
       .stanford-news-block-1,
       .stanford-events-list-page.list-page {
@@ -77,8 +58,8 @@
   }
 }
 
-// Setting the margin to 0 to remove the centering but keep the max-width for lists.
-// This fixes extra space on Pubs and Courses and keeps a list contained to
+// Setting the margin to 0 to remove the centering and keep the max-width for lists.
+// This fixes extra space on Pubs and Courses list pages and keeps a list contained to
 // the 980px max width when a paragraph in a page.
 .jumpstart-ui--two-column {
   >.left-region {
