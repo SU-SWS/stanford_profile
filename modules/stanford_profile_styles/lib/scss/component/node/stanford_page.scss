@@ -32,11 +32,12 @@
   }
 }
 
-// Publications List landing pages
+// Publications, People & Courses List landing pages
 // This keeps the gutter from growing
 // and misaligning paragraphs.
 .page-publications,
-.page-courses {
+.page-courses,
+.page-people {
   .su-page-components {
     div[data-react-columns="12"] {
       &.ptype-stanford-lists,
@@ -47,14 +48,12 @@
       &.ptype-stanford-gallery {
         max-width: inherit;
 
-        // @include grid-media('xl') {
-        //   @include padding(null null null 37px);
-        // }
       }
     }
   }
 }
 
+// News and Events list pages need a little spacing.
 .page-news,
 .page-events {
   .su-page-components {
