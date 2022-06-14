@@ -8,8 +8,11 @@ dependencies:
     - field.field.config_pages.stanford_person_importer.su_person_cap_username
     - field.field.config_pages.stanford_person_importer.su_person_child_orgs
     - field.field.config_pages.stanford_person_importer.su_person_orgs
+    - field.field.config_pages.stanford_person_importer.su_person_orphan
     - field.field.config_pages.stanford_person_importer.su_person_sunetid
     - field.field.config_pages.stanford_person_importer.su_person_workgroup
+  module:
+    - options
 id: config_pages.stanford_person_importer.default
 targetEntityType: config_pages
 bundle: stanford_person_importer
@@ -48,6 +51,13 @@ content:
       link: true
     third_party_settings: {  }
     weight: 0
+    region: content
+  su_person_orphan:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
     region: content
   su_person_sunetid:
     type: string
