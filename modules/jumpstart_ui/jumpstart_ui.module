@@ -8,9 +8,10 @@
  */
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
-use Drupal\ui_patterns\UiPatterns;
 use Drupal\ui_patterns\Element\PatternContext;
+use Drupal\ui_patterns\UiPatterns;
 
 /**
  * Implements hook_page_attachments().
@@ -27,6 +28,44 @@ function jumpstart_ui_page_attachments(array &$page) {
     $page['#attached']['library'][] = 'jumpstart_ui/jumpstart_ui';
   }
 
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function jumpstart_ui_preprocess_ds_entity_view(&$variables) {
+  /** @var \Drupal\Core\Entity\FieldableEntityInterface $entity */
+  $entity = $variables['content']['#entity'];
+  if ($variables['content']['#type'] == 'pattern') {
+    $link_field = NULL;
+    $link_attributes_key = NULL;
+    switch ($variables['content']['#id']) {
+      case 'hero':
+
+        if (isset($variables['content']['#ds_configuration']['regions']['hero_button_link'])) {
+          $link_field = reset($variables['content']['#ds_configuration']['regions']['hero_button_link']);
+          $link_attributes_key = 'hero_cta_attributes';
+        }
+        break;
+
+      case 'card':
+        if (isset($variables['content']['#ds_configuration']['regions']['card_link'])) {
+          $link_field = reset($variables['content']['#ds_configuration']['regions']['card_link']);
+          $link_attributes_key = 'card_cta_attributes';
+        }
+        break;
+    }
+
+    if (
+      $link_field &&
+      $entity->hasField($link_field) &&
+      $entity->get($link_field)->count()
+    ) {
+      $link = $entity->get($link_field);
+      $options = $link->get(0)->get('options')->getValue();
+      $variables['content']['#fields'][$link_attributes_key] = new Attribute($options['attributes'] ?? []);
+    }
+  }
 }
 
 /**
