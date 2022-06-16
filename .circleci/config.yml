@@ -100,19 +100,7 @@ workflows:
                 - /.*/
   tests:
     jobs:
-      - run-coverage
       - run-d9-codeception
-  # Re-test every sunday in case this code becomes stale.
-  sundays:
-    jobs:
-      - run-coverage
-    triggers:
-      - schedule:
-          cron: "0 0 * * 0"
-          filters:
-            branches:
-              only:
-                - 8.x
   daily:
     jobs:
       - run-merge-upstream
