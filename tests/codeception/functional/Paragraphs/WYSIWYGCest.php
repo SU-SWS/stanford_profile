@@ -113,6 +113,7 @@ class WYSIWYGCest {
     $I->waitForElementVisible('.dropzone');
     $I->click('Video', '.media-library-menu-video');
     $I->waitForElementVisible('.media-library-add-form-oembed-url');
+    $I->clickWithLeftButton('input.media-library-add-form-oembed-url[name="url"]');
     $I->fillField('Add Video via URL', 'https://www.youtube.com/watch?v=ktCgVopf7D0');
 
     // If the youtube api fails, lets try again after a few seconds.

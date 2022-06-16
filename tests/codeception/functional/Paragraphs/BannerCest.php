@@ -11,20 +11,40 @@ use Faker\Factory;
 class BannerCest {
 
   /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * The banner paragraph should display its fields.
    */
   public function testBannerBehaviors(FunctionalTester $I) {
-    $faker = Factory::create();
+    $field_values =[
+      'sup_header' => $this->faker->words(3, true),
+      'header' => $this->faker->words(3, true),
+      'body' => $this->faker->words(3, true),
+      'uri' => $this->faker->url,
+      'title' => $this->faker->words(3, true),
+    ];
 
     $paragraph = $I->createEntity([
       'type' => 'stanford_banner',
-      'su_banner_sup_header' => 'This is a super headline',
-      'su_banner_header' => 'Some Headline Here',
+      'su_banner_sup_header' => $field_values['sup_header'],
+      'su_banner_header' => $field_values['header'],
       'su_banner_button' => [
-        'uri' => 'http://google.com/',
-        'title' => 'Google Button',
+        'uri' => $field_values['uri'],
+        'title' => $field_values['title'],
       ],
-      'su_banner_body' => 'Ipsum Lorem',
+      'su_banner_body' => $field_values['body'],
     ], 'paragraph');
 
     $row = $I->createEntity([
@@ -37,7 +57,7 @@ class BannerCest {
 
     $node = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => $faker->text(30),
+      'title' => $this->faker->words(4, TRUE),
       'su_page_components' => [
         'target_id' => $row->id(),
         'entity' => $row,
@@ -45,10 +65,11 @@ class BannerCest {
     ]);
 
     $I->amOnPage($node->toUrl()->toString());
-    $I->canSee('This is a super headline');
-    $I->canSee('Some Headline Here');
-    $I->canSee('Ipsum Lorem');
-    $I->canSeeLink('Google Button', 'http://google.com/');
+    $I->canSee($field_values['sup_header']);
+    $I->canSee($field_values['header']);
+    $I->canSee($field_values['body']);
+    $I->canSeeLink($field_values['title'], $field_values['uri']);
+
     $I->cantSeeElement('.overlay-right');
 
     $I->logInWithRole('site_manager');
@@ -61,6 +82,7 @@ class BannerCest {
     $I->waitForText('Text Overlay Position');
 
     $I->clickWithLeftButton('#overlay_position');
+    $I->wait(1);
     $I->clickWithLeftButton('li[data-value="right"]');
 
     $I->click('Continue');
