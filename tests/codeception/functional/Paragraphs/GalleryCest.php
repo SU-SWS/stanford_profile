@@ -30,7 +30,9 @@ class GalleryCest {
     $I->click('Upload and Continue');
 
     $I->waitForText('The media items have been created but have not yet been saved');
+    $I->clickWithLeftButton('input[name="media[0][fields][su_gallery_image][0][alt]"]');
     $I->fillField('media[0][fields][su_gallery_image][0][alt]', 'Logo');
+    $I->clickWithLeftButton('input[name="media[1][fields][su_gallery_image][0][alt]"]');
     $I->fillField('media[1][fields][su_gallery_image][0][alt]', 'Wordmark');
     $I->click('Save and insert', '.ui-dialog-buttonset');
 
@@ -50,7 +52,7 @@ class GalleryCest {
     // Go to the next image and make sure its different sources.
     $first_image_src = $I->grabAttributeFrom('#cboxContent img', 'src');
     $I->click('Next', '#cboxContent');
-    $I->waitForElementVisible('#cboxLoadedContent');
+    $I->waitForText('Image 2');
     $second_image_src = $I->grabAttributeFrom('#cboxContent img', 'src');
     $I->assertNotEquals($first_image_src, $second_image_src);
   }
