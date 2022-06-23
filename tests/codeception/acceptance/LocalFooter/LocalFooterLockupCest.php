@@ -24,6 +24,13 @@ class LocalFooterLockupCest {
   const LOGO_FILENAME = "logo.jpg";
 
   /**
+   * Path to the logo image during the test.
+   *
+   * @var string
+   */
+  protected $logoPath;
+
+  /**
    * Setup work before running tests.
    *
    * @param AcceptanceTester $I
@@ -35,7 +42,8 @@ class LocalFooterLockupCest {
     if (!file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR)) {
       mkdir($this->DATA_DIR, 0777, TRUE);
     }
-    copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    $this->logoPath = $this->DATA_DIR . DIRECTORY_SEPARATOR . str_replace('/', '-', self::class) . self::LOGO_FILENAME;
+    copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->logoPath);
   }
 
   /**
@@ -59,8 +67,8 @@ class LocalFooterLockupCest {
     $config_page->save();
 
     // Clean up our assets.
-    if (file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME)) {
-      unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    if (file_exists($this->logoPath)) {
+      unlink($this->logoPath);
     }
   }
 
@@ -343,7 +351,7 @@ class LocalFooterLockupCest {
       $I->click("Remove");
     }
 
-    $I->attachFile('input[name="files[su_local_foot_loc_img_0]"]', self::LOGO_FILENAME);
+    $I->attachFile('input[name="files[su_local_foot_loc_img_0]"]', $this->logoPath);
     $I->click('Upload');
 
     $I->click('Save');
@@ -377,7 +385,7 @@ class LocalFooterLockupCest {
     }
 
     // For CircleCI
-    $I->attachFile('input[name="files[su_local_foot_loc_img_0]"]', self::LOGO_FILENAME);
+    $I->attachFile('input[name="files[su_local_foot_loc_img_0]"]', $this->logoPath);
     $I->click('Upload');
 
     $I->click('Save');

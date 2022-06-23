@@ -20,6 +20,13 @@ class LockupSettingsCest {
   const LOGO_FILENAME = "logo.jpg";
 
   /**
+   * Path to the logo image during the test.
+   *
+   * @var string
+   */
+  protected $logoPath;
+
+  /**
    * Setup work before running tests.
    *
    * @param AcceptanceTester $I
@@ -27,12 +34,12 @@ class LockupSettingsCest {
    */
   function _before(AcceptanceTester $I) {
     $this->DATA_DIR = rtrim(codecept_data_dir(), '/\\');
-
     // Copy our assets into place first.
     if (!file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR)) {
       mkdir($this->DATA_DIR, 0777, TRUE);
     }
-    copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    $this->logoPath = $this->DATA_DIR . DIRECTORY_SEPARATOR . str_replace('/', '-', self::class) . self::LOGO_FILENAME;
+    copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->logoPath);
   }
 
   /**
@@ -54,8 +61,8 @@ class LockupSettingsCest {
     $I->click('Save');
 
     // Clean up our assets.
-    if (file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME)) {
-      unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    if (file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR . $this->logoPath)) {
+      unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . $this->logoPath);
     }
   }
 
@@ -346,7 +353,7 @@ class LockupSettingsCest {
       $I->click("Remove");
     }
 
-    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', self::LOGO_FILENAME);
+    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', $this->logoPath);
     $I->click('Upload');
 
     $I->click('Save');
@@ -381,7 +388,7 @@ class LockupSettingsCest {
     }
 
     // For CircleCI
-    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', self::LOGO_FILENAME);
+    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', $this->logoPath);
     $I->click('Upload');
 
     $I->click('Save');
