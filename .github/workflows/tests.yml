@@ -25,7 +25,6 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         run: |
-          composer global require fzaninotto/faker:'dev-master as 1.9.2'
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
 
@@ -56,7 +55,6 @@ jobs:
           path: project
       - name: Run tests
         run: |
-          composer global require fzaninotto/faker:'dev-master as 1.9.2'
           composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance
 #  functional:
@@ -89,6 +87,5 @@ jobs:
 #          path: project
 #      - name: Run tests
 #        run: |
-#          composer global require fzaninotto/faker:'dev-master as 1.9.2'
 #          composer global require SU-SWS/stanford-caravan:dev-gh-actions
 #          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional
