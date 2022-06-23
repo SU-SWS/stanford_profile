@@ -48,7 +48,7 @@ d9_codeception: &d9_codeception
     - run:
         name: Run Codeception Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          composer global require SU-SWS/stanford-caravan:dev-faker-php
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test --suites=functional
 #          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
     - store_test_results:
