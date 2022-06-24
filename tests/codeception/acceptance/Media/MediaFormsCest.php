@@ -1,9 +1,23 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Tests for various media form functionality.
  */
 class MediaFormsCest {
+
+  /**
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test Constructor
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
 
   /**
    * Test embeddables form alters
@@ -16,20 +30,21 @@ class MediaFormsCest {
     $I->amOnPage('/user/logout');
     $I->logInWithRole('administrator');
     $I->amOnPage('/media/add/embeddable');
-    $I->fillField('Name', 'Test embed');
+    $name = $this->faker->words(3, true);
+    $I->fillField('Name', $name);
     $I->fillField('Embed Code', '<div>test</div>');
     $I->click('Save');
     $I->seeInCurrentUrl('/admin/content/media');
     $I->amOnPage('/user/logout');
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/content/media');
-    $I->click('Test embed');
+    $I->click($name);
     $I->seeInCurrentUrl('edit');
     $I->seeLink('request support.', $support_url);
     $I->click('Delete');
     $I->seeInCurrentUrl('delete');
     $I->click('Delete');
-    $I->dontSeeLink('Test embed');
+    $I->dontSeeLink($name);
     $I->seeInCurrentUrl('/admin/content/media');
   }
 

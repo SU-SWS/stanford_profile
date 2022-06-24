@@ -2,6 +2,8 @@
 
 use Drupal\config_pages\Entity\ConfigPages;
 
+require_once __DIR__ . '/../TestFilesTrait.php';
+
 /**
  * Test for the local lockup settings.
  *
@@ -9,26 +11,7 @@ use Drupal\config_pages\Entity\ConfigPages;
  */
 class LocalFooterLockupCest {
 
-  /**
-   * The path to the data dir where codeception wants the logo file.
-   *
-   * @var string
-   */
-  protected $DATA_DIR;
-
-  /**
-   * The logo file name.
-   *
-   * @var string
-   */
-  const LOGO_FILENAME = "logo.jpg";
-
-  /**
-   * Path to the logo image during the test.
-   *
-   * @var string
-   */
-  protected $logoPath;
+  use TestFilesTrait;
 
   /**
    * Setup work before running tests.
@@ -37,13 +20,7 @@ class LocalFooterLockupCest {
    *  The working class.
    */
   function _before(AcceptanceTester $I) {
-    $this->DATA_DIR = rtrim(codecept_data_dir(), '/\\');
-    // Copy our assets into place first.
-    if (!file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR)) {
-      mkdir($this->DATA_DIR, 0777, TRUE);
-    }
-    $this->logoPath = $this->DATA_DIR . DIRECTORY_SEPARATOR . str_replace('/', '-', self::class) . self::LOGO_FILENAME;
-    copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->logoPath);
+    $this->prepareImage();
   }
 
   /**
@@ -56,20 +33,7 @@ class LocalFooterLockupCest {
     if ($config_page = ConfigPages::load('stanford_local_footer')) {
       $config_page->delete();
     }
-
-    $config_page = ConfigPages::create([
-      'type' => 'stanford_local_footer',
-      'su_local_foot_use_loc' => TRUE,
-      'su_local_foot_use_logo' => TRUE,
-      'su_local_foot_loc_op' => 'a',
-      'context' => 'a:0:{}',
-    ]);
-    $config_page->save();
-
-    // Clean up our assets.
-    if (file_exists($this->logoPath)) {
-      unlink($this->logoPath);
-    }
+    $this->removeFiles();
   }
 
   /**

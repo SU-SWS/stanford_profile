@@ -12,7 +12,7 @@ class XmlsitemapCest {
     $I->logInWithRole('administrator');
     $I->amOnPage("/admin/config/search/xmlsitemap/rebuild");
     $I->click('Save configuration');
-    $I->runDrush('cr');
+
     $I->amOnPage("/sitemap.xml");
     $host = \Drupal::request()->getSchemeAndHttpHost();
     /** @var \Drupal\path_alias\AliasManagerInterface $alias_manager */

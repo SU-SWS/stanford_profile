@@ -36,7 +36,7 @@ function jumpstart_ui_page_attachments(array &$page) {
 function jumpstart_ui_preprocess_ds_entity_view(&$variables) {
   /** @var \Drupal\Core\Entity\FieldableEntityInterface $entity */
   $entity = $variables['content']['#entity'];
-  if ($variables['content']['#type'] == 'pattern') {
+  if (isset($variables['content']['#type']) && $variables['content']['#type'] == 'pattern') {
     $link_field = NULL;
     $link_attributes_key = NULL;
     switch ($variables['content']['#id']) {

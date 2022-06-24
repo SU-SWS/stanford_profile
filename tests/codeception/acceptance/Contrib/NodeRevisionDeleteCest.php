@@ -1,9 +1,25 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Test the node revision delete module functionality.
  */
 class NodeRevisionDeleteCest {
+
+  /**
+   * Faker generator.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
 
   /**
    * Test that revisions are trimmed after cron runs.
@@ -13,7 +29,7 @@ class NodeRevisionDeleteCest {
     /** @var \Drupal\node\NodeInterface $node */
     $node = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => 'revision test',
+      'title' => $this->faker->words(3, TRUE),
       'revision' => TRUE,
     ]);
     for ($j = 0; $j < 10; $j++) {
