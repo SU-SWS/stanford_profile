@@ -30,36 +30,36 @@ trait TestFilesTrait {
   }
 
   protected function prepareImage() {
-    $data_directory = $this->getDataDirectory();
     $this->logoPath = $this->getUniqueFilePrefix() . '-logo.jpg';
-    $this->files[] = $this->logoPath;
-    copy(__DIR__ . '/assets/logo.jpg', "$data_directory/{$this->logoPath}");
+    $full_path = $this->getFullPath($this->logoPath);
+    $this->files[] = $full_path;
+    copy(__DIR__ . '/assets/logo.jpg', $full_path);
   }
 
   protected function removeFiles() {
-    $data_directory = $this->getDataDirectory();
     foreach ($this->files as $file) {
-      if (file_exists("$data_directory/$file")) {
-        unlink("$data_directory/$file");
+      if (file_exists($file)) {
+        unlink($file);
       }
     }
   }
 
-  protected function preparePdf() {
-    $data_directory = $this->getDataDirectory();
+  private function preparePdf() {
     $this->filePath = $this->getUniqueFilePrefix() . '-test.pdf';
-    copy(__DIR__ . '/assets/logo.jpg', "$data_directory/{$this->filePath}");
+    $full_path = $this->getFullPath($this->filePath);
+    $this->files[] = $full_path;
+    copy(__DIR__ . '/assets/logo.jpg', $full_path);
   }
 
-  protected function getDataDirectory() {
-    $data_directory = rtrim(codecept_data_dir(), '/\\');
-    if (!file_exists($data_directory)) {
-      mkdir($data_directory, 0777, TRUE);
+  private function getFullPath($file) {
+    $full_path = codecept_data_dir($file);
+    if (!file_exists(dirname($full_path))) {
+      mkdir(dirname($full_path), 0777, TRUE);
     }
-    return $data_directory;
+    return $full_path;
   }
 
-  protected function getUniqueFilePrefix() {
+  private function getUniqueFilePrefix() {
     return substr(md5(self::class . microtime()), 0, 5);
   }
 
