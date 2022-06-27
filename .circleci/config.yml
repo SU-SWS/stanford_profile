@@ -23,7 +23,7 @@ defaults: &defaults
 #    - run:
 #        name: Run PHP Unit Coverage Tests
 #        command: |
-#          composer global require su-sws/stanford-caravan:dev-8.x-2.x
+#          composer global require su-sws/stanford-caravan:dev-8.x-2.x -W
 #          ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
 #    - store_test_results:
 #        path: /var/www/html/artifacts/phpunit
