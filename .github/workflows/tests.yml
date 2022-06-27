@@ -56,7 +56,7 @@ jobs:
       - name: Run tests
         run: |
           composer global require su-sws/stanford-caravan:dev-parallel-tests -W
-          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance --parallel
 #  functional:
 #    name: Codeception Functional Tests
 #    runs-on: ubuntu-latest
