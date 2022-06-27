@@ -4,10 +4,9 @@ namespace Drupal\jumpstart_ui\Plugin\paragraphs\Behavior;
 
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\paragraphs\Entity\Paragraph;
-use Drupal\paragraphs\Entity\ParagraphsType;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\paragraphs\ParagraphsBehaviorBase;
+use Drupal\paragraphs\ParagraphsTypeInterface;
 
 /**
  * Class HeroPatternBehavior.
@@ -23,7 +22,7 @@ class HeroPatternBehavior extends ParagraphsBehaviorBase {
   /**
    * {@inheritDoc}
    */
-  public static function isApplicable(ParagraphsType $paragraphs_type) {
+  public static function isApplicable(ParagraphsTypeInterface $paragraphs_type) {
     $display_storage = \Drupal::entityTypeManager()
       ->getStorage('entity_view_display');
     $display_ids = $display_storage->getQuery()
@@ -70,7 +69,7 @@ class HeroPatternBehavior extends ParagraphsBehaviorBase {
   /**
    * {@inheritDoc}
    */
-  public function view(array &$build, Paragraph $paragraph, EntityViewDisplayInterface $display, $view_mode) {
+  public function view(array &$build, ParagraphInterface $paragraph, EntityViewDisplayInterface $display, $view_mode) {
     // FYI: this adds the class one level above than the pattern template.
     $build['#attributes']['class'][] = 'overlay-' . $paragraph->getBehaviorSetting('hero_pattern', 'overlay_position', 'left');
   }

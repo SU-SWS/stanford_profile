@@ -282,9 +282,8 @@ function stanford_profile_helper_form_alter(&$form, FormStateInterface $form_sta
  */
 function stanford_profile_helper_form_views_bulk_operations_configure_action_alter(&$form, FormStateInterface $form_state, $form_id) {
   if (!empty($form['node']['stanford_event']['su_event_date_time']['widget'])) {
-    $form['node']['stanford_event']['su_event_date_time']['widget']['#required'] = FALSE;
-    $form['node']['stanford_event']['su_event_date_time']['widget'][0]['#required'] = FALSE;
-    $form['node']['stanford_event']['su_event_date_time']['widget'][0]['end_value']['#required'] = FALSE;
+    $form['node']['stanford_event']['su_event_date_time']['widget'][0]['time_wrapper']['value']['#required'] = FALSE;
+    $form['node']['stanford_event']['su_event_date_time']['widget'][0]['time_wrapper']['end_value']['#required'] = FALSE;
   }
 }
 

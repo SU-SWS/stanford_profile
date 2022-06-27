@@ -3,6 +3,7 @@
 namespace Drupal\Tests\stanford_intranet\Kernel;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
+use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
 use Drupal\image\Entity\ImageStyle;
@@ -48,12 +49,18 @@ class StanfordIntranetManagerTest extends IntranetKernelTestBase {
 
     \Drupal::service('stanford_intranet.manager')->moveIntranetFiles();
     $moved_file = File::load($file->id());
-    $this->assertEquals($path, $moved_file->getFileUri());
+    $this->assertEquals('public', StreamWrapperManager::getScheme($moved_file->getFileUri()));
 
     \Drupal::state()->set('stanford_intranet', 1);
     \Drupal::service('stanford_intranet.manager')->moveIntranetFiles();
     $moved_file = File::load($file->id());
-    $this->assertEquals('private://testfile.txt', $moved_file->getFileUri());
+    $this->assertEquals('public', StreamWrapperManager::getScheme($moved_file->getFileUri()));
+
+
+    \Drupal::service('file.usage')->add($file, 'file', 'media', 1);
+    \Drupal::service('stanford_intranet.manager')->moveIntranetFiles();
+    $moved_file = File::load($file->id());
+    $this->assertEquals('private', StreamWrapperManager::getScheme($moved_file->getFileUri()));
   }
 
 }

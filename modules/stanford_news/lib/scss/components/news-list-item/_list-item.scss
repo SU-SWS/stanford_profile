@@ -48,11 +48,10 @@
   overflow: auto;
   padding-left: 0;
 
-  li {
-    &:first-of-type {
-      > article {
-        padding-top: 0;
-      }
+
+  &:first-of-type {
+    > article {
+      padding-top: 0;
     }
   }
 

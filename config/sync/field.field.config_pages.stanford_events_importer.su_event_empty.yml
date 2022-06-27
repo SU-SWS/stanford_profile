@@ -1,0 +1,25 @@
+uuid: 5db0b145-3c72-43af-971d-c1918dc9f111
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_events_importer
+    - field.storage.config_pages.su_event_empty
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats: {  }
+id: config_pages.stanford_events_importer.su_event_empty
+field_name: su_event_empty
+entity_type: config_pages
+bundle: stanford_events_importer
+label: 'No Results Message'
+description: 'Customize the message that is displayed where there are no events in the list.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

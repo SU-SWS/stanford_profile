@@ -5,7 +5,6 @@
   ul,
   ol {
     @include big-paragraph;
-    @include modular-spacing('margin', null null 2 null);
   }
 
   // When centered, allow the list indicator to follow the text.
