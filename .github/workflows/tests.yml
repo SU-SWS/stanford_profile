@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: unit-tests-results
-          path: artifacts
+          path: /var/www/html/artifacts
   acceptance:
     name: Codeception Acceptance Tests
     runs-on: ubuntu-latest
