@@ -64,7 +64,7 @@ jobs:
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance --parallel
       - name: Save Test Results
         uses: actions/upload-artifact@v3
-        if: failure()
+        if: always()
         with:
           name: acceptance-tests-results
           path: /var/www/html/artifacts
