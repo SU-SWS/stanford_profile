@@ -27,7 +27,11 @@ jobs:
         run: |
           composer global require su-sws/stanford-caravan:dev-parallel-tests -W
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
-
+      - name: Save Test Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit-tests-results
+          path: artifacts
   acceptance:
     name: Codeception Acceptance Tests
     runs-on: ubuntu-latest
@@ -57,6 +61,11 @@ jobs:
         run: |
           composer global require su-sws/stanford-caravan:dev-parallel-tests -W
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance --parallel
+      - name: Save Test Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: acceptance-tests-results
+          path: artifacts
 #  functional:
 #    name: Codeception Functional Tests
 #    runs-on: ubuntu-latest
