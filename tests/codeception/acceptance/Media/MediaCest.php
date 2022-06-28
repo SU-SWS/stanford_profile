@@ -128,11 +128,11 @@ class MediaCest {
     $I->canSee('The given embeddable code is not permitted');
 
     $allowed_codes = [
-      '<iframe src="https://calendar.google.com/foo-bar"></iframe>',
-      '<iframe src="https://airtable.com/foo-bar"></iframe>',
-      '<iframe src="https://outlook.office365.com/foo-bar"></iframe>',
-      '<iframe src="https://office365stanford.sharepoint.com/foo-bar"></iframe>',
-      '<iframe src="https://app.smartsheet.com/foo-bar"></iframe>',
+      '<iframe src="https://calendar.google.com/foo-bar" title="foobar"></iframe>',
+      '<iframe src="https://airtable.com/foo-bar" title="foobar"></iframe>',
+      '<iframe src="https://outlook.office365.com/foo-bar" title="foobar"></iframe>',
+      '<iframe src="https://office365stanford.sharepoint.com/foo-bar" title="foobar"></iframe>',
+      '<iframe src="https://app.smartsheet.com/foo-bar" title="foobar"></iframe>',
     ];
 
     foreach ($allowed_codes as $allowed_code) {
