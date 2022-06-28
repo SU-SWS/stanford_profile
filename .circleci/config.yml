@@ -23,7 +23,7 @@ defaults: &defaults
 #    - run:
 #        name: Run PHP Unit Coverage Tests
 #        command: |
-#          composer global require su-sws/stanford-caravan:dev-8.x-2.x -W
+#          composer global require su-sws/stanford-caravan:dev-8.x-2.x
 #          ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
 #    - store_test_results:
 #        path: /var/www/html/artifacts/phpunit
@@ -37,7 +37,7 @@ back_to_dev: &back_to_dev
     - run:
         name: Back to dev
         command: |
-          composer global require su-sws/stanford-caravan:dev-8.x-2.x -W
+          composer global require su-sws/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan back-to-dev ${CIRCLE_TAG} ${CIRCLE_WORKING_DIRECTORY} main
 
 d9_codeception: &d9_codeception
@@ -48,7 +48,7 @@ d9_codeception: &d9_codeception
     - run:
         name: Run Codeception Tests
         command: |
-          composer global require su-sws/stanford-caravan:dev-parallel-tests -W
+          composer global require su-sws/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test --suites=functional
 #          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
     - store_test_results:
