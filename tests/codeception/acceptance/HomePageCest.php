@@ -26,6 +26,7 @@ class HomePageCest {
     $I->amOnPage('/');
     $I->click('Edit', '.tabs');
     $I->cantSee('Published', 'label');
+    $I->assertFalse(TRUE);
   }
 
 }
