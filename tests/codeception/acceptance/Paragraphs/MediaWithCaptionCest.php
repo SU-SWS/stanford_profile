@@ -11,11 +11,23 @@ use Faker\Factory;
 class MediaWithCaptionCest {
 
   /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * A media with caption paragraph will display its fields.
    */
   public function testMediaParagraph(AcceptanceTester $I) {
-    $faker = Factory::create();
-
     $paragraph = $I->createEntity([
       'type' => 'stanford_media_caption',
       'su_media_caption_caption' => 'This is a super caption',
@@ -35,7 +47,7 @@ class MediaWithCaptionCest {
 
     $node = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => $faker->text(30),
+      'title' => $this->faker->text(30),
       'su_page_components' => [
         'target_id' => $row->id(),
         'entity' => $row,

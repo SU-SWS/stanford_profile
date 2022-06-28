@@ -1,9 +1,25 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Codeception tests on card paragraph type.
  */
 class StanfordCardCest {
+
+  /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
 
   /**
    * Test a card with a button link.
@@ -47,14 +63,13 @@ class StanfordCardCest {
 
     $node = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => 'Test Card Links',
+      'title' => $this->faker->words(3, TRUE),
       'su_page_components' => [
         'target_id' => $row->id(),
         'entity' => $row,
       ],
     ]);
-    // Clear router and menu cache so that the node urls work.
-    $I->runDrush('cache-clear router');
+
     return $node;
   }
 

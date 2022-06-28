@@ -833,6 +833,7 @@ function stanford_profile_helper_field_storage_config_presave(FieldStorageConfig
  * Implements hook_preprocess_HOOK().
  */
 function stanford_profile_helper_preprocess_menu(&$variables) {
+  $cache_tags = $variables['#cache']['tags'] ?? [];
   foreach ($variables['items'] as &$item) {
     // Taxonomy menu link items use the description from the term as the title
     // attribute. The description can be very long and could contain HTML. To
@@ -841,8 +842,15 @@ function stanford_profile_helper_preprocess_menu(&$variables) {
       $attributes = $item['url']->getOption('attributes');
       unset($attributes['title']);
       $item['url']->setOption('attributes', $attributes);
+
+      $term = \Drupal::entityTypeManager()
+        ->getStorage('taxonomy_term')
+        ->load($item['url']->getRouteParameters()['taxonomy_term']);
+      $cache_tags[] = 'taxonomy_term_list:' . $term->bundle();
+      $cache_tags = array_merge($cache_tags, $term->getCacheTags());
     }
   }
+  $variables['#cache']['tags'] = array_unique($cache_tags);
 }
 
 /**

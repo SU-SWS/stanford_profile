@@ -65,6 +65,7 @@ class PublicationsCest {
    */
   public function testAllPublicationListPage(AcceptanceTester $I) {
     $this->testBookCitation($I);
+
     $I->amOnPage('/publications');
     $I->canSee($this->values['node_title']);
     $I->click($this->values['term_name']);
@@ -76,8 +77,9 @@ class PublicationsCest {
       'vid' => 'stanford_publication_topics',
       'name' => $this->faker->text(10),
     ], 'taxonomy_term');
-    \Drupal::service('cache.render')->deleteAll();
-    \Drupal::service('router.builder')->rebuild();
+    $I->amOnPage($term->toUrl('edit-form')->toString());
+    $I->click('Save');
+
     $I->amOnPage('/publications');
     $I->canSeeLink($term->label());
   }
