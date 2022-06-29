@@ -1,6 +1,5 @@
 <?php
 
-use Drupal\Core\Cache\Cache;
 use Faker\Factory;
 
 /**
@@ -39,22 +38,20 @@ class PersonCest {
    */
   public function testVocabularyTermsExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $I->amOnPage("/admin/structure/taxonomy/manage/stanford_person_types/overview");
-    $I->canSeeNumberOfElements(".term-id", 14);
+    $I->amOnPage('/admin/structure/taxonomy/manage/stanford_person_types/overview');
+    $I->canSeeNumberOfElements('.term-id', 14);
   }
 
   /**
    * Test that the view pages exist.
    */
   public function testViewPagesExist(AcceptanceTester $I) {
-    Cache::invalidateTags(['node_list:stanford_person']);
-    $I->amOnPage("/people");
-    $I->see("Sorry, no results found");
+    $I->amOnPage('/people');
     $I->seeLink('Student');
-    $I->click("a[href='/people/staff']");
+    $I->seeLink('Staff');
+    $I->click('Staff');
     $I->canSeeResponseCodeIs(200);
-    $I->see("Sorry, no results found");
-    $I->see("Person Type");
+    $I->see('Person Type');
   }
 
   /**
@@ -62,16 +59,17 @@ class PersonCest {
    * up in the all view.
    */
   public function testCreatePerson(AcceptanceTester $I) {
+    $first_name = $this->faker->firstName;
+    $last_name = $this->faker->lastName;
     $node = $I->createEntity([
       'type' => 'stanford_person',
-      'su_person_first_name' => "John",
-      'su_person_last_name' => "Wick",
+      'su_person_first_name' => $first_name,
+      'su_person_last_name' => $last_name,
     ]);
     $I->amOnPage($node->toUrl()->toString());
-    $I->see("John Wick");
-    $I->runDrush('cr');
-    $I->amOnPage("/people");
-    $I->see("John Wick");
+    $I->see("$first_name $last_name", 'h1');
+    $I->amOnPage('/people');
+    $I->see("$first_name $last_name");
   }
 
   /**
@@ -82,22 +80,22 @@ class PersonCest {
 
     // Revision Delete is enabled.
     $I->amOnPage('/admin/structure/types/manage/stanford_person');
-    $I->seeCheckboxIsChecked("#edit-node-revision-delete-track");
-    $I->seeCheckboxIsChecked("#edit-options-revision");
-    $I->seeInField("#edit-minimum-revisions-to-keep", 5);
+    $I->seeCheckboxIsChecked('#edit-node-revision-delete-track');
+    $I->seeCheckboxIsChecked('#edit-options-revision');
+    $I->seeInField('#edit-minimum-revisions-to-keep', 5);
 
     // XML Sitemap.
-    $I->amOnPage("/admin/config/search/xmlsitemap/settings");
-    $I->see("Person");
-    $I->amOnPage("/admin/config/search/xmlsitemap/settings/node/stanford_person");
-    $I->selectOption("#edit-xmlsitemap-status", 1);
+    $I->amOnPage('/admin/config/search/xmlsitemap/settings');
+    $I->see('Person');
+    $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_person');
+    $I->selectOption('#edit-xmlsitemap-status', 1);
 
     // Metatags.
-    $I->amOnPage("/admin/config/search/metatag/page_variant__people-layout_builder-0");
+    $I->amOnPage('/admin/config/search/metatag/page_variant__people-layout_builder-0');
     $I->canSeeResponseCodeIs(200);
-    $I->amOnPage("/admin/config/search/metatag/page_variant__stanford_person_list-layout_builder-1");
+    $I->amOnPage('/admin/config/search/metatag/page_variant__stanford_person_list-layout_builder-1');
     $I->canSeeResponseCodeIs(200);
-    $I->amOnPage("/admin/config/search/metatag/node__stanford_person");
+    $I->amOnPage('/admin/config/search/metatag/node__stanford_person');
     $I->canSeeResponseCodeIs(200);
   }
 

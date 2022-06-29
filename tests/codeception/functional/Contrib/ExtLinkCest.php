@@ -26,15 +26,6 @@ class ExtLinkCest {
     if ($config_page = ConfigPages::load('stanford_local_footer')) {
       $config_page->delete();
     }
-
-    $config_page = ConfigPages::create([
-      'type' => 'stanford_local_footer',
-      'su_local_foot_use_loc' => TRUE,
-      'su_local_foot_use_logo' => TRUE,
-      'su_local_foot_loc_op' => 'a',
-      'context' => 'a:0:{}',
-    ]);
-    $config_page->save();
   }
 
   /**

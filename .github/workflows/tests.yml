@@ -25,9 +25,14 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         run: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          composer global require su-sws/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
-
+      - name: Save Test Results
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: unit-tests-results
+          path: /var/www/html/artifacts
   acceptance:
     name: Codeception Acceptance Tests
     runs-on: ubuntu-latest
@@ -55,8 +60,14 @@ jobs:
           path: project
       - name: Run tests
         run: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          composer global require su-sws/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance
+      - name: Save Test Results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: acceptance-tests-results
+          path: /var/www/html/artifacts
 #  functional:
 #    name: Codeception Functional Tests
 #    runs-on: ubuntu-latest
@@ -87,5 +98,5 @@ jobs:
 #          path: project
 #      - name: Run tests
 #        run: |
-#          composer global require SU-SWS/stanford-caravan:dev-gh-actions
+#          composer global require su-sws/stanford-caravan:dev-gh-actions
 #          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional

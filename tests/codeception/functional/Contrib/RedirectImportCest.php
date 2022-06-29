@@ -11,8 +11,8 @@ class RedirectImportCest {
    * Cleanup.
    */
   public function __after() {
-    if (file_exists(rtrim(codecept_data_dir(), '/') . '/redirects.csv')) {
-      unlink(rtrim(codecept_data_dir(), '/') . '/redirects.csv');
+    if (file_exists(codecept_data_dir('/redirects.csv'))) {
+      unlink(codecept_data_dir('/redirects.csv'));
     }
   }
 
@@ -21,7 +21,7 @@ class RedirectImportCest {
    */
   public function testRedirectImports(FunctionalTester $I) {
 
-    $file = fopen(rtrim(codecept_data_dir(), '/') . '/redirects.csv', 'w+');
+    $file = fopen(codecept_data_dir('/redirects.csv'), 'w+');
     fputcsv($file, ['from', 'to']);
     fputcsv($file, ['/foo', '/bar']);
     fclose($file);

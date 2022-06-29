@@ -24,11 +24,6 @@ class DefaultContentCest {
       $I->amOnPage($page);
       $I->canSeeResponseCodeIs(200);
     }
-
-    $I->amOnPage('/');
-    $I->canSee('Welcome to your site!');
-    $I->canSeeNumberOfElements('meta[property="og:image"][content*="/large/"]', 1);
-    $I->canSeeNumberOfElements('meta[property="og:image:url"][content*="/large/"]', 1);
   }
 
   /**
