@@ -4,10 +4,7 @@ namespace Drupal\stanford_text_editor\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginBase;
 use Drupal\ckeditor\CKEditorPluginContextualInterface;
-use Drupal\Core\Extension\ExtensionList;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\editor\Entity\Editor;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Defines the "fixed_toolbar" plugin.
