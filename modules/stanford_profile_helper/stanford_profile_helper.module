@@ -769,7 +769,7 @@ function stanford_profile_helper_preprocess_pattern_localfooter(&$variables) {
     // Check if there is a file.
     if (isset($file_field->entity)) {
       $file_uri = $file_field->entity->getFileUri();
-      $variables['site_logo'] = file_create_url($file_uri);
+      $variables['site_logo'] = \Drupal::service('file_url_generator')->generateAbsoluteString($file_uri);
     }
     else {
       $variables['use_logo'] = "1";

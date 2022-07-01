@@ -20,7 +20,7 @@ use Symfony\Component\Finder\Finder;
  */
 function stanford_publication_library_info_build() {
   $libraries = [];
-  $module_path = drupal_get_path('module', 'stanford_publication');
+  $module_path = \Drupal::service('extension.list.module')->getPath('stanford_publication');
 
   // Find all css files in the dist/css directory.
   $finder = new Finder();

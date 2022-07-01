@@ -51,8 +51,8 @@ class NotificationsControllerTest extends StanfordNotificationTestBase {
 
     $this->assertInstanceOf(AjaxResponse::class, $response);
     $commands = $response->getCommands();
-    $this->assertEqual($commands[0]['selector'], '[data-notification-id="' . $notification->id() . '"]');
-    $this->assertEqual($commands[1]['selector'], '.toolbar-icon-notifications');
+    $this->assertEquals$commands[0]['selector'], '[data-notification-id="' . $notification->id() . '"]');
+    $this->assertEquals$commands[1]['selector'], '.toolbar-icon-notifications');
   }
 
 }

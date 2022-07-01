@@ -79,7 +79,7 @@ function stanford_intranet_file_access(FileInterface $file, $operation, AccountI
  */
 function stanford_intranet_library_info_build() {
   $libraries = [];
-  $module_path = drupal_get_path('module', 'stanford_intranet');
+  $module_path = \Drupal::service('extension.list.module')->getPath('stanford_intranet');
 
   // Find all css files in the dist/css directory.
   $finder = new Finder();

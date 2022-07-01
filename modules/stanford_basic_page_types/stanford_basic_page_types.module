@@ -49,7 +49,7 @@ function stanford_basic_page_types_page_attachments(array &$attachments) {
  */
 function stanford_basic_page_types_library_info_build() {
   $libraries = [];
-  $module_path = drupal_get_path('module', 'stanford_basic_page_types');
+  $module_path = \Drupal::service('extension.list.module')->getPath('stanford_basic_page_types');
 
   // Find all css files in the dist/css directory.
   $finder = new Finder();

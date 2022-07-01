@@ -24,9 +24,9 @@ class NotificationTest extends StanfordNotificationTestBase {
     ]);
     $entity->save();
 
-    $this->assertEqual(123, $entity->userId());
-    $this->assertEqual('foo', $entity->message());
-    $this->assertEqual('foo-bar', $entity->status());
+    $this->assertEquals123, $entity->userId());
+    $this->assertEquals'foo', $entity->message());
+    $this->assertEquals'foo-bar', $entity->status());
   }
 
 }

@@ -41,7 +41,7 @@ class ThreeColLayoutTest extends KernelTestBase {
   public function testThreeColLayoutFullProps() {
     // Boot twig environment.
     $twig =  \Drupal::service('twig');
-    $template = drupal_get_path('module', 'jumpstart_ui') . '/templates/layouts/three-column.html.twig';
+    $template = \Drupal::service('extension.list.module')->getPath('jumpstart_ui') . '/templates/layouts/three-column.html.twig';
     $props = $this->getProps();
     $this->setRawContent((string) twig_render_template($template, $props));
     $this->assertText("Somebody once told me php unit is gonna rule me");

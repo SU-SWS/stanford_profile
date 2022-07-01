@@ -77,10 +77,10 @@ class JumpstartUITwigTest extends UnitTestCase {
   public function testsCleanFilter() {
     $markup = '<div><a><span><article><section>test</section></article></span></a>';
     $markup = Markup::create($markup);
-    $this->assertArrayEquals(['#markup' => 'test'], $this->twiggery->renderClean($markup));
+    $this->assertEquals(['#markup' => 'test'], $this->twiggery->renderClean($markup));
 
     $markup = '<div><a><span><article><section>test</section></article></span></a>';
-    $this->assertArrayEquals(['#markup' => '<span>test</span>'], $this->twiggery->renderClean($markup, '<span>'));
+    $this->assertEquals(['#markup' => '<span>test</span>'], $this->twiggery->renderClean($markup, '<span>'));
   }
 
 }

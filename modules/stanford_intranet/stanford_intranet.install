@@ -60,6 +60,6 @@ function stanford_intranet_update_8001() {
  * Re-copy any media icons that might not exist.
  */
 function stanford_intranet_update_8002() {
-  module_load_install('media');
+  \Drupal::moduleHandler()->loadInclude('media', 'install');
   media_install();
 }

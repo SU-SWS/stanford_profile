@@ -40,8 +40,9 @@ class OneColLayoutTest extends KernelTestBase {
    */
   public function testOneColLayoutFullProps() {
     // Boot twig environment.
-    $twig =  \Drupal::service('twig');
-    $template = drupal_get_path('module', 'jumpstart_ui') . '/templates/layouts/one-column.html.twig';
+    $twig = \Drupal::service('twig');
+    $template = \Drupal::service('extension.list.module')
+        ->getPath('jumpstart_ui') . '/templates/layouts/one-column.html.twig';
     $props = $this->getProps();
     $this->setRawContent((string) twig_render_template($template, $props));
     $this->assertText("Somebody once told me php unit is gonna rule me");
@@ -55,8 +56,9 @@ class OneColLayoutTest extends KernelTestBase {
    */
   public function testOneColLayoutColumnProps() {
     // Boot twig environment.
-    $twig =  \Drupal::service('twig');
-    $template = drupal_get_path('module', 'jumpstart_ui') . '/templates/layouts/one-column.html.twig';
+    $twig = \Drupal::service('twig');
+    $template = \Drupal::service('extension.list.module')
+        ->getPath('jumpstart_ui') . '/templates/layouts/one-column.html.twig';
     $props = $this->getProps();
     $props['settings']['columns'] = 'flex-6-of-12';
     $this->setRawContent((string) twig_render_template($template, $props));
@@ -71,8 +73,9 @@ class OneColLayoutTest extends KernelTestBase {
    */
   public function testOneColLayoutNoProps() {
     // Boot twig environment.
-    $twig =  \Drupal::service('twig');
-    $template = drupal_get_path('module', 'jumpstart_ui') . '/templates/layouts/one-column.html.twig';
+    $twig = \Drupal::service('twig');
+    $template = \Drupal::service('extension.list.module')
+        ->getPath('jumpstart_ui') . '/templates/layouts/one-column.html.twig';
     $this->setRawContent((string) twig_render_template($template, []));
     $this->assertNotEmpty($this->getRawContent());
     $this->assertStringNotContainsString("boy-is-this-a-neat-class", $this->getRawContent());
@@ -85,8 +88,9 @@ class OneColLayoutTest extends KernelTestBase {
    */
   public function testOneColLayoutBadProps() {
     // Boot twig environment.
-    $twig =  \Drupal::service('twig');
-    $template = drupal_get_path('module', 'jumpstart_ui') . '/templates/layouts/one-column.html.twig';
+    $twig = \Drupal::service('twig');
+    $template = \Drupal::service('extension.list.module')
+        ->getPath('jumpstart_ui') . '/templates/layouts/one-column.html.twig';
     $props = $this->getProps();
     unset($props['region_attributes']);
     $this->setRawContent((string) twig_render_template($template, $props));
@@ -103,12 +107,12 @@ class OneColLayoutTest extends KernelTestBase {
     return [
       'content' => ['main' => "Somebody once told me php unit is gonna rule me"],
       'region_attributes' => [
-        'main' =>  new Attribute(['class' => 'main-region-attribute']),
+        'main' => new Attribute(['class' => 'main-region-attribute']),
       ],
       'settings' => [
         'extra_classes' => "boy-is-this-a-neat-class",
         'centered' => 'centered-container',
-        'columns' => 'default'
+        'columns' => 'default',
       ],
       'attributes' => new Attribute(['class' => 'wrapper-test']),
     ];

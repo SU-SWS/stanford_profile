@@ -76,7 +76,7 @@ function stanford_person_views_post_render(ViewExecutable $view, &$output, Cache
  * @see stanford_person_views_post_render()
  */
 function stanford_person_node_presave(NodeInterface $entity) {
-  if ($entity->bundle() == "stanford_person") {
+  if ($entity->bundle() == 'stanford_person') {
     Cache::invalidateTags(["node_list:{$entity->bundle()}"]);
   }
 }
@@ -87,7 +87,7 @@ function stanford_person_node_presave(NodeInterface $entity) {
  * @see stanford_person_views_post_render()
  */
 function stanford_person_taxonomy_term_presave(TermInterface $entity) {
-  if ($entity->bundle() == "stanford_person_types") {
+  if ($entity->bundle() == 'stanford_person_types') {
     Cache::invalidateTags(["term_list:{$entity->bundle()}"]);
   }
 }
@@ -158,8 +158,8 @@ function _stanford_person_install_default_photo_file() {
   // Save the file to public.
   $destination = 'public://media/image';
   $source = $file_system->realpath(
-    drupal_get_path("module", "stanford_person") .
-    "/lib/assets/img/stanford-person-default-profile-image.png"
+    \Drupal::service('extension.list.module')->getPath('stanford_person') .
+    '/lib/assets/img/stanford-person-default-profile-image.png'
   );
   $file_system->prepareDirectory($destination, FileSystemInterface::CREATE_DIRECTORY);
   $saved = $file_system->copy($source, $destination, FileSystemInterface::EXISTS_REPLACE);

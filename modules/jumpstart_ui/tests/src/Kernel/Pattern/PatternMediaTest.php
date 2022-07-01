@@ -9,7 +9,6 @@ use Drupal\ui_patterns\Element\PatternContext;
 use Drupal\Component\Utility\Html;
 
 
-
 /**
  * Class PatternMediaTest.
  *
@@ -74,7 +73,8 @@ class PatternMediaTest extends KernelTestBase {
    * Pattern should not produce duplicate ids.
    */
   public function testMediaPatternIds() {
-    $template = drupal_get_path('module', 'jumpstart_ui') . "/templates/components/media/media.html.twig";
+    $template = \Drupal::service('extension.list.module')
+        ->getPath('jumpstart_ui') . "/templates/components/media/media.html.twig";
     $props = $this->getProps();
     $this->setRawContent((string) twig_render_template($template, $props));
 
@@ -93,6 +93,7 @@ class PatternMediaTest extends KernelTestBase {
 
   /**
    * [getProps description]
+   *
    * @return [type] [description]
    */
   protected function getProps() {

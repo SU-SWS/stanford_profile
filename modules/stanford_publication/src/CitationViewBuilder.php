@@ -2,9 +2,16 @@
 
 namespace Drupal\stanford_publication;
 
+use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
+use Drupal\Core\Entity\EntityRepositoryInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\EntityViewBuilder;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Theme\Registry;
 use Drupal\stanford_publication\Entity\CitationInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class CitationViewBuilder.
@@ -12,6 +19,35 @@ use Drupal\stanford_publication\Entity\CitationInterface;
  * @package Drupal\stanford_publication
  */
 class CitationViewBuilder extends EntityViewBuilder {
+
+  /**
+   * Rendering service.
+   *
+   * @var \Drupal\Core\Render\RendererInterface
+   */
+  protected $renderer;
+
+  /**
+   * {@inheritDoc}
+   */
+  public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
+    return new static(
+      $entity_type,
+      $container->get('entity.repository'),
+      $container->get('language_manager'),
+      $container->get('theme.registry'),
+      $container->get('entity_display.repository'),
+      $container->get('renderer')
+    );
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function __construct(EntityTypeInterface $entity_type, EntityRepositoryInterface $entity_repository, LanguageManagerInterface $language_manager, Registry $theme_registry, EntityDisplayRepositoryInterface $entity_display_repository, RendererInterface $renderer) {
+    parent::__construct($entity_type, $entity_repository, $language_manager, $theme_registry, $entity_display_repository);
+    $this->renderer = $renderer;
+  }
 
   /**
    * {@inheritDoc}
@@ -61,8 +97,8 @@ class CitationViewBuilder extends EntityViewBuilder {
 
     $month['#label_display'] = 'hidden';
     $day['#label_display'] = 'hidden';
-    $month = (int) trim(strip_tags(render($month)));
-    $day = (int) trim(strip_tags(render($day)));
+    $month = (int) trim(strip_tags($this->renderer->render($month)));
+    $day = (int) trim(strip_tags($this->renderer->render($day)));
 
     if ($month) {
       $date = date('F', strtotime("1-$month-2000"));

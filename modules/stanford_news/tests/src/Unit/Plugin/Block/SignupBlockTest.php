@@ -41,7 +41,7 @@ class SignupBlockTest extends UnitTestCase {
 
   public function testBuild() {
     $build = $this->blockObject->build();
-    $this->assertArrayEquals([
+    $this->assertEquals([
       '#theme' => 'signup_block',
       '#form_action' => 'my-form-action',
     ], $build);

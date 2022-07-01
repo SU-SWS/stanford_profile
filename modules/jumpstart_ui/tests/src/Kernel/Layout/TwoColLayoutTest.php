@@ -40,7 +40,7 @@ class TwoColLayoutTest extends KernelTestBase {
   public function testTwoColLayoutFullProps() {
     // Boot twig environment.
     $twig =  \Drupal::service('twig');
-    $template = drupal_get_path('module', 'jumpstart_ui') . '/templates/layouts/two-column.html.twig';
+    $template = \Drupal::service('extension.list.module')->getPath('jumpstart_ui') . '/templates/layouts/two-column.html.twig';
     $props = $this->getProps();
     $this->setRawContent((string) twig_render_template($template, $props));
     $this->assertText("Somebody once told me php unit is gonna rule me");
@@ -55,7 +55,7 @@ class TwoColLayoutTest extends KernelTestBase {
   public function testTwoColLayoutNoProps() {
     // Boot twig environment.
     $twig =  \Drupal::service('twig');
-    $template = drupal_get_path('module', 'jumpstart_ui') . '/templates/layouts/two-column.html.twig';
+    $template = \Drupal::service('extension.list.module')->getPath('jumpstart_ui') . '/templates/layouts/two-column.html.twig';
     $this->setRawContent((string) twig_render_template($template, []));
     $this->assertNotEmpty($this->getRawContent());
     $this->assertStringNotContainsString("boy-is-this-a-neat-class", $this->getRawContent());
@@ -69,7 +69,7 @@ class TwoColLayoutTest extends KernelTestBase {
   public function testTwoColLayoutBadProps() {
     // Boot twig environment.
     $twig =  \Drupal::service('twig');
-    $template = drupal_get_path('module', 'jumpstart_ui') . '/templates/layouts/two-column.html.twig';
+    $template = \Drupal::service('extension.list.module')->getPath('jumpstart_ui') . '/templates/layouts/two-column.html.twig';
     $props = $this->getProps();
     unset($props['region_attributes']);
     $this->setRawContent((string) twig_render_template($template, $props));

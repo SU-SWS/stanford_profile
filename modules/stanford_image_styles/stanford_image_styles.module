@@ -17,7 +17,7 @@ function stanford_image_styles_image_style_presave(ImageStyleInterface $image_st
     $effects = $image_style->get('effects');
     foreach ($effects as &$effect) {
       if ($effect['id'] == 'image_effects_mask') {
-        $effect['data']['mask_image'] = drupal_get_path('module', 'stanford_image_styles') . '/img/mask-image.png';
+        $effect['data']['mask_image'] = \Drupal::service('extension.list.module')->getPath('stanford_image_styles') . '/img/mask-image.png';
       }
     }
     $image_style->set('effects', $effects);
