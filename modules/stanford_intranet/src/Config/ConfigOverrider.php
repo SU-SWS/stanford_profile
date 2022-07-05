@@ -51,7 +51,7 @@ class ConfigOverrider implements ConfigFactoryOverrideInterface {
     if (!$this->state->get('stanford_intranet', FALSE)) {
       return $overrides;
     }
-
+    $overrides['system.file']['default_scheme'] = 'private';
     foreach ($names as $name) {
       if (strpos($name, 'field.storage.') === 0) {
         $scheme = $this->configFactory->getEditable($name)

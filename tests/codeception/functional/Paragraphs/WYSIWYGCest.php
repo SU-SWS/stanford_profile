@@ -88,7 +88,7 @@ class WYSIWYGCest {
     $I->waitForElementVisible('.dropzone');
     $I->dropFileInDropzone(__DIR__ . '/logo.jpg');
     $I->click('Upload and Continue');
-    $I->waitForText('Alternative text');
+    $I->waitForText('Decorative Image');
     $I->clickWithLeftButton(".ui-dialog-buttonset button:nth-child(2)");
     $I->waitForAjaxToFinish();
     $I->click('Continue');
@@ -113,6 +113,7 @@ class WYSIWYGCest {
     $I->waitForElementVisible('.dropzone');
     $I->click('Video', '.media-library-menu-video');
     $I->waitForElementVisible('.media-library-add-form-oembed-url');
+    $I->clickWithLeftButton('input.media-library-add-form-oembed-url[name="url"]');
     $I->fillField('Add Video via URL', 'https://www.youtube.com/watch?v=ktCgVopf7D0');
 
     // If the youtube api fails, lets try again after a few seconds.

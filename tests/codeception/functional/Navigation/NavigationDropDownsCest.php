@@ -24,7 +24,7 @@ class NavigationDropDownsCest {
     $I->fillField('Title', $node_title);
     $I->click('Menu settings');
     $I->checkOption('Provide a menu link');
-    $I->fillField('Menu link title', "$node_title");
+    $I->fillField('Menu link title', $node_title);
     // The label on the menu parent changes in D9 vs D8
     $I->selectOption('Parent link', '-- Resources');
     $I->waitForText('Change the weight of the links within the Resources menu');
