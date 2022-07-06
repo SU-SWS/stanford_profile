@@ -48,6 +48,7 @@ class StanfordNewsCest {
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->canSeeInField('Headline', $node->label());
+    $I->waitForElementVisible('.field--name-su-news-topics [data-shs-delta="0"] select');
     $I->selectOption('.field--name-su-news-topics [data-shs-delta="0"] select', $first_term->label());
     $I->click('Add another item', '.field--name-su-news-topics');
     $I->waitForElementVisible('.field--name-su-news-topics [data-shs-delta="1"] select');
