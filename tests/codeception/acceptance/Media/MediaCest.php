@@ -133,7 +133,6 @@ class MediaCest {
       '<iframe src="https://outlook.office365.com/foo-bar" title="foobar"></iframe>',
       '<iframe src="https://office365stanford.sharepoint.com/foo-bar" title="foobar"></iframe>',
       '<iframe src="https://app.smartsheet.com/foo-bar" title="foobar"></iframe>',
-      '<a></a> <aside></aside> <audio></audio> <b></b> <blockquote></blockquote> <br> <button></button> <caption></caption> <cite></cite> <code></code> <dd></dd> <dl></dl> <div></div> <drupal-media></drupal-media> <dt></dt> <em></em> <embed></embed> <form></form> <h1></h1> <h2></h2> <h3></h3> <h4></h4> <h5></h5> <hr> <i></i> <img /> <input /> <label></label> <li></li> <object></object> <ol></ol> <option></option> <p></p> <param /> <pre></pre> <s></s> <script></script> <select></select> <source></source> <span></span> <strong></strong> <sub></sub> <sup></sup> <table></table> <tbody></tbody> <textarea></textarea> <td></td> <tfoot></tfoot> <th></th> <thead></thead> <tr></tr> <ul></ul> <video></video>',
     ];
 
     foreach ($allowed_codes as $allowed_code) {
@@ -143,6 +142,17 @@ class MediaCest {
       $I->click('Save');
       $I->canSee('has been created');
     }
+
+    // Test allowed tags
+    $I->amOnPage('/media/add/embeddable');
+    $embed_name = $this->faker->words(3, TRUE);
+    $I->fillField('Name', $embed_name);
+    $I->fillField('Embed Code', '<a></a> <aside></aside> <audio></audio> <b></b> <blockquote></blockquote> <br> <button></button> <caption></caption> <cite></cite> <code></code> <dd></dd> <dl></dl> <div></div> <drupal-media></drupal-media> <dt></dt> <em></em> <embed></embed> <form></form> <h1></h1> <h2></h2> <h3></h3> <h4></h4> <h5></h5> <hr> <i></i> <img /> <input /> <label></label> <li></li> <object></object> <ol></ol> <option></option> <p></p> <param /> <pre></pre> <s></s> <script></script> <select></select> <source></source> <span></span> <strong></strong> <sub></sub> <sup></sup> <table></table> <tbody></tbody> <textarea></textarea> <td></td> <tfoot></tfoot> <th></th> <thead></thead> <tr></tr> <ul></ul> <video></video>');
+    $I->click('Save');
+    $I->canSee('has been created');
+    $I->click($embed_name);
+    $I->canSee('<a></a> <aside></aside> <audio></audio> <b></b> <blockquote></blockquote> <br> <button></button> <caption></caption> <cite></cite> <code></code> <dd></dd> <dl></dl> <div></div> <drupal-media></drupal-media> <dt></dt> <em></em> <embed></embed> <form></form> <h1></h1> <h2></h2> <h3></h3> <h4></h4> <h5></h5> <hr> <i></i> <img /> <input /> <label></label> <li></li> <object></object> <ol></ol> <option></option> <p></p> <param /> <pre></pre> <s></s> <script></script> <select></select> <source></source> <span></span> <strong></strong> <sub></sub> <sup></sup> <table></table> <tbody></tbody> <textarea></textarea> <td></td> <tfoot></tfoot> <th></th> <thead></thead> <tr></tr> <ul></ul> <video></video>');
+
   }
 
   /**
