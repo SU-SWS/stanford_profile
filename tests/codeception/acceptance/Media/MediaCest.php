@@ -144,6 +144,7 @@ class MediaCest {
     }
 
     // Test allowed tags
+    $I->logInWithRole('administrator');
     $I->amOnPage('/media/add/embeddable');
     $embed_name = $this->faker->words(3, TRUE);
     $I->fillField('Name', $embed_name);
