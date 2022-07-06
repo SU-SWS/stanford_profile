@@ -7,6 +7,8 @@ use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Url;
 use Drupal\taxonomy\TermInterface;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
@@ -17,6 +19,8 @@ use GuzzleHttp\Exception\GuzzleException;
  * @package Drupal\stanford_person_importer
  */
 class Cap implements CapInterface {
+
+  use StringTranslationTrait;
 
   /**
    * CAPx API username.
@@ -116,7 +120,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function setClientId($client_id) {
+  public function setClientId(string $client_id): self {
     $this->clientId = $client_id;
     return $this;
   }
@@ -124,7 +128,7 @@ class Cap implements CapInterface {
   /**
    * {@inheritDoc}
    */
-  public function setClientSecret($secret) {
+  public function setClientSecret(string $secret): self {
     $this->clientSecret = $secret;
     return $this;
   }
@@ -132,7 +136,7 @@ class Cap implements CapInterface {
   /**
    * Call the API and return the response.
    *
-   * @param string $url
+   * @param \Drupal\Core\Url $url
    *   API Url.
    * @param array $options
    *   Guzzle request options.
@@ -140,73 +144,77 @@ class Cap implements CapInterface {
    * @return bool|array
    *   Response string or false if failed.
    */
-  protected function getApiResponse($url, array $options = []) {
+  protected function getApiResponse(Url $url, array $options = []) {
     try {
-      $response = $this->client->request('GET', $url, $options);
+      $response = $this->client->request('GET', $url->toString(), $options);
     }
     catch (GuzzleException | \Exception $e) {
-      // Most errors originate from the API itself.
-      $this->logger->error($e->getMessage());
-      return FALSE;
+      $this->cache->delete('cap:access_token');
+      // Most errors originate from the API itself, log the error and let it
+      // fall over.
+      $this->logger->error($this->t('An unexpected error came from the API: %message'), ['%message' => $e->getMessage()]);
+      throw new \Exception($e->getMessage());
     }
-    return $response->getStatusCode() == 200 ? json_decode((string) $response->getBody(), TRUE) : FALSE;
+    return $response->getStatusCode() == 200 ? json_decode((string) $response->getBody(), TRUE, 512, JSON_THROW_ON_ERROR) : FALSE;
   }
 
   /**
    * {@inheritDoc}
    */
-  public function getOrganizationUrl($organizations, $children = FALSE) {
-    $organizations = preg_replace('/[^A-Z,0-9]/', '', strtoupper($organizations));
-    $url = self::CAP_URL . "?orgCodes=$organizations";
+  public function getOrganizationUrl(array $organizations, bool $children = FALSE): Url {
+    $organizations = preg_replace('/[^A-Z,0-9]/', '', strtoupper(implode(',', array_unique($organizations))));
+    $query = ['orgCodes' => $organizations];
     if ($children) {
-      $url .= '&includeChildren=true';
+      $query['includeChildren'] = 'true';
     }
-    return $url;
+    return Url::fromUri(self::CAP_URL, ['query' => $query]);
   }
 
   /**
    * {@inheritDoc}
    */
-  public function getWorkgroupUrl($workgroups) {
-    $workgroups = preg_replace('/[^A-Z,:~\-_0-9]/', '', strtoupper($workgroups));
-    return self::CAP_URL . "?privGroups=$workgroups";
+  public function getWorkgroupUrl(array $workgroups): Url {
+    $workgroups = preg_replace('/[^A-Z,:~\-_0-9]/', '', strtoupper(implode(',', array_unique($workgroups))));
+    return Url::fromUri(self::CAP_URL, ['query' => ['privGroups' => $workgroups]]);
   }
 
   /**
    * {@inheritDoc}
    */
-  public function getSunetUrl($sunetids) {
-    $count = substr_count($sunetids, ',') + 1;
-    $url = self::CAP_URL . "?uids=$sunetids";
-    // Cap API default to 10 results. Send the argument to collect more if
-    // there are more sunets to get results for.
-    if ($count > 10) {
-      $url .= "&ps=$count";
-    }
-    return $url;
+  public function getSunetUrl(array $sunetids): Url {
+    $sunetids = array_unique($sunetids);
+    $query = ['uids' => implode(',', $sunetids), 'ps' => count($sunetids)];
+    return Url::fromUri(self::CAP_URL, ['query' => $query]);
   }
 
   /**
    * {@inheritDoc}
    */
-  public function getTotalProfileCount($url) {
+  public function getTotalProfileCount(Url $url): int {
     $token = $this->getAccessToken();
-    $response = $this->getApiResponse("$url&ps=1&access_token=$token");
-    return $response['totalCount'] ?? 0;
+    $url->mergeOptions(['query' => ['ps' => 1, 'access_token' => $token]]);
+    $response = $this->getApiResponse($url);
+    return (int) ($response['totalCount'] ?? 0);
   }
 
   /**
    * {@inheritDoc}
    */
-  public function testConnection() {
+  public function testConnection(): bool {
     $this->cache->invalidate('cap:access_token');
-    return !empty($this->getAccessToken());
+    try {
+      return !empty($this->getAccessToken());
+    }
+    catch (\Throwable $e) {
+      $this->logger->error($this->t('Unable to connect to CAP Api: %message'), ['%message' => $e->getMessage()]);
+    }
+    return FALSE;
   }
 
   /**
    * {@inheritDoc}
    */
-  public function updateOrganizations() {
+  public function updateOrganizations(): void {
     $this->insertOrgData($this->getOrgData());
   }
 
@@ -220,7 +228,7 @@ class Cap implements CapInterface {
    *
    * @throws \Exception
    */
-  protected function insertOrgData(array $org_data, TermInterface $parent = NULL) {
+  protected function insertOrgData(array $org_data, TermInterface $parent = NULL): void {
     if (!isset($org_data['orgCodes'])) {
       return;
     }
@@ -262,14 +270,14 @@ class Cap implements CapInterface {
    * @return array
    *   Keyed array of all organization data.
    */
-  protected function getOrgData() {
+  protected function getOrgData(): array {
     if ($cache = $this->cache->get('cap:org_data')) {
       return $cache->data;
     }
 
     $options = ['query' => ['access_token' => $this->getAccessToken()]];
     // AA00 is the root level of all Stanford.
-    $result = $this->getApiResponse(self::API_URL . '/cap/v1/orgs/AA00', $options);
+    $result = $this->getApiResponse(Url::fromUri(self::API_URL . '/cap/v1/orgs/AA00', $options));
 
     if ($result) {
       $this->cache->set('cap:org_data', $result, time() + 60 * 60 * 24 * 7, [
@@ -284,25 +292,24 @@ class Cap implements CapInterface {
   /**
    * Get the API token for CAP.
    *
-   * @return string
+   * @return string|null
    *   API Token.
    */
-  protected function getAccessToken() {
+  protected function getAccessToken(): ?string {
     if ($cache = $this->cache->get('cap:access_token')) {
       return $cache->data['access_token'];
     }
 
-    $options = [
-      'query' => ['grant_type' => 'client_credentials'],
+    $options = ['query' => ['grant_type' => 'client_credentials']];
+    $result = $this->getApiResponse(Url::fromUri(self::AUTH_URL, $options), [
       'auth' => [$this->clientId, $this->clientSecret],
-    ];
-    if ($result = $this->getApiResponse(self::AUTH_URL, $options)) {
-      $this->cache->set('cap:access_token', $result, time() + $result['expires_in'], [
-        'cap',
-        'cap:token',
-      ]);
-      return $result['access_token'];
-    }
+    ]);
+    $this->cache->set('cap:access_token', $result, time() + $result['expires_in'] - 3600, [
+      'cap',
+      'cap:token',
+    ]);
+
+    return $result['access_token'] ?? NULL;
   }
 
 }

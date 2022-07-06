@@ -8,6 +8,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ConfigFactoryOverrideInterface;
 use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Url;
 use Drupal\stanford_person_importer\CapInterface;
 
 /**
@@ -105,7 +106,9 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
 
       $allowed_fields = $this->getAllowedFields();
       foreach ($urls as &$url) {
-        $url .= '&whitelist=' . implode(',', $allowed_fields);
+        $url = Url::fromUri($url);
+        $url->mergeOptions(['query' => ['whitelist' => implode(',', $allowed_fields)]]);
+        $url = $url->toString();
       }
       $overrides['migrate_plus.migration.su_stanford_person']['source']['urls'] = $urls;
       $overrides['migrate_plus.migration.su_stanford_person']['source']['authentication']['client_id'] = $this->getCapClientId();
@@ -143,7 +146,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    */
   protected function getOrgsUrls() {
     $org_tids = $this->configPages->getValue('stanford_person_importer', 'su_person_orgs', [], 'target_id');
-    $include_children = $this->configPages->getValue('stanford_person_importer', 'su_person_child_orgs', 0, 'value');
+    $include_children = (bool) $this->configPages->getValue('stanford_person_importer', 'su_person_child_orgs', 0, 'value');
 
     // No field values populated.
     if (empty($org_tids)) {
@@ -161,7 +164,6 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
         $org_codes[] = str_replace(' ', '', $org_code);
       }
     }
-    $org_codes = implode(',', $org_codes);
     return $this->getUrlChunks($this->cap->getOrganizationUrl($org_codes, $include_children));
   }
 
@@ -171,11 +173,11 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @return string[]
    *   List of urls.
    */
-  protected function getWorkgroupUrls() {
+  protected function getWorkgroupUrls():array {
     $workgroups = $this->configPages->getValue('stanford_person_importer', 'su_person_workgroup', [], 'value');
 
     if ($workgroups) {
-      return $this->getUrlChunks($this->cap->getWorkgroupUrl(implode(',', $workgroups)));
+      return $this->getUrlChunks($this->cap->getWorkgroupUrl($workgroups));
     }
     return [];
   }
@@ -186,12 +188,12 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @return string[]
    *   List of urls.
    */
-  protected function getSunetUrls() {
+  protected function getSunetUrls(): array {
     $sunets = $this->configPages->getValue('stanford_person_importer', 'su_person_sunetid', [], 'value') ?: [];
 
     $urls = [];
     foreach (array_chunk($sunets, self::URL_CHUNKS) as $chunk) {
-      $urls[] = $this->cap->getSunetUrl(implode(',', $chunk));
+      $urls[] = $this->cap->getSunetUrl($chunk)->toString();
     }
     return $urls;
   }
@@ -199,23 +201,24 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
   /**
    * Break up the url into multiple urls based on the number of results.
    *
-   * @param string $url
+   * @param \Drupal\Core\Url $url
    *   Cap API Url.
    *
    * @return string[]
    *   Array of Cap API Urls.
    */
-  protected function getUrlChunks($url) {
-    $count = (int) $this->cap->getTotalProfileCount($url);
+  protected function getUrlChunks(Url $url): array {
+    $count = $this->cap->getTotalProfileCount($url);
     $number_chunks = ceil($count / self::URL_CHUNKS);
-
     if ($number_chunks <= 1) {
-      return ["$url&ps=" . self::URL_CHUNKS];
+      $url->mergeOptions(['query' => ['ps' => self::URL_CHUNKS]]);
+      return [$url->toString()];
     }
 
     $urls = [];
     for ($i = 1; $i <= $number_chunks; $i++) {
-      $urls[] = "$url&p=$i&ps=" . self::URL_CHUNKS;
+      $url->mergeOptions(['query' => ['p' => $i, 'ps' => self::URL_CHUNKS]]);
+      $urls[] = $url->toString();
     }
     return $urls;
   }
@@ -223,23 +226,21 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
   /**
    * Get the username from the config pages field.
    *
-   * @return string|null
+   * @return string
    *   Client ID string.
    */
-  protected function getCapClientId() {
-    $field_value = $this->configPages->getValue('stanford_person_importer', 'su_person_cap_username');
-    return $field_value[0]['value'] ?? NULL;
+  protected function getCapClientId(): string {
+    return $this->configPages->getValue('stanford_person_importer', 'su_person_cap_username', 0, 'value') ?? '';
   }
 
   /**
    * Get the password from the config pages field.
    *
-   * @return string|null
+   * @return string
    *   Client secret string.
    */
-  protected function getCapClientSecret() {
-    $field_value = $this->configPages->getValue('stanford_person_importer', 'su_person_cap_password');
-    return $field_value[0]['value'] ?? NULL;
+  protected function getCapClientSecret(): string {
+    return $this->configPages->getValue('stanford_person_importer', 'su_person_cap_password', 0, 'value') ?? '';
   }
 
 }

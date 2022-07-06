@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Stanford_events.install.
+ */
+
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * Update the length of the event sponsors field.
+ */
+function stanford_events_update_8001() {
+  // Install the change_labels module.
+  \Drupal::service('module_installer')->install(['change_labels']);
+
+  // Update DB columns.
+  $database = \Drupal::database();
+  $database->query("ALTER TABLE node__su_event_sponsor MODIFY su_event_sponsor_value VARCHAR(255)");
+  $database->query("ALTER TABLE node_revision__su_event_sponsor MODIFY su_event_sponsor_value VARCHAR(255)");
+
+  // Update the storage schema.
+  $storage_key = 'node.field_schema_data.su_event_sponsor';
+  $storage_schema = \Drupal::keyValue('entity.storage_schema.sql');
+  $field_schema = $storage_schema->get($storage_key);
+  $field_schema['node__su_event_sponsor']['fields']['su_event_sponsor_value']['length'] = 255;
+  $field_schema['node_revision__su_event_sponsor']['fields']['su_event_sponsor_value']['length'] = 255;
+  $storage_schema->set($storage_key, $field_schema);
+
+  // Update field configuration.
+  $config = \Drupal::configFactory()
+    ->getEditable('field.storage.node.su_event_sponsor');
+  $config->set('settings.max_length', 255);
+  $config->save(TRUE);
+
+  // Update field storage configuration.
+  FieldStorageConfig::loadByName('node', 'su_event_sponsor')->save();
+}

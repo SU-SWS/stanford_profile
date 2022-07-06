@@ -55,3 +55,11 @@ function stanford_intranet_uninstall() {
 function stanford_intranet_update_8001() {
   \Drupal::service('stanford_intranet.manager')->moveIntranetFiles();
 }
+
+/**
+ * Re-copy any media icons that might not exist.
+ */
+function stanford_intranet_update_8002() {
+  module_load_install('media');
+  media_install();
+}

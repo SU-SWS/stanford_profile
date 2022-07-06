@@ -13,21 +13,31 @@ use Faker\Factory;
 class Issue2901390Cest {
 
   /**
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test Constructor
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * A user should be able to create a custom block in layout builder.
    */
   public function testLayoutBuilderParagraph(AcceptanceTester $I) {
-    $faker = Factory::create();
     $user = $I->createUserWithRoles(['site_manager', 'layout_builder_user']);
     $I->logInAs($user->id());
     $node = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => $faker->text(20),
+      'title' =>  $this->faker->text(20),
     ]);
     $I->amOnPage($node->toUrl()->toString());
     $I->click('Layout');
     $I->click('Add block');
-    // Clear cache since sometimes the paragraph type icon fails to generate.
-    $I->runDrush('cache:rebuild');
+
     $I->click('Create custom block');
     $I->fillField('Title', 'Custom Block');
     $I->fillField('Body', 'Lorem Ipsum Custom Block Text');

@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\file\FileRepositoryInterface;
+use Drupal\file\FileUsage\FileUsageInterface;
 
 /**
  * Intranet manager service class.
@@ -41,6 +42,13 @@ class StanfordIntranetManager implements StanfordIntranetManagerInterface {
   protected $state;
 
   /**
+   * File usage service.
+   *
+   * @var \Drupal\file\FileUsage\FileUsageInterface
+   */
+  protected $fileUsage;
+
+  /**
    * Service constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -51,12 +59,15 @@ class StanfordIntranetManager implements StanfordIntranetManagerInterface {
    *   File system service.
    * @param \Drupal\Core\State\StateInterface $state
    *   State service.
+   * @param \Drupal\file\FileUsage\FileUsageInterface $file_usage
+   *   File usage service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, FileRepositoryInterface $file_repository, FileSystemInterface $file_system, StateInterface $state) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, FileRepositoryInterface $file_repository, FileSystemInterface $file_system, StateInterface $state, FileUsageInterface $file_usage) {
     $this->entityTypeManager = $entity_type_manager;
     $this->fileRepository = $file_repository;
     $this->fileSystem = $file_system;
     $this->state = $state;
+    $this->fileUsage = $file_usage;
   }
 
   /**
@@ -75,7 +86,16 @@ class StanfordIntranetManager implements StanfordIntranetManagerInterface {
     foreach ($fids as $fid) {
       /** @var \Drupal\file\FileInterface $file */
       $file = $storage->load($fid);
+      $usage = $this->fileUsage->listUsage($file);
 
+      // Only move the files that are referenced in media entities. This will
+      // exclude icons for paragraph types and media library that don't need
+      // to be moved to private directory. There are no places where a file is
+      // used outside a media entity, and there are no forms that provide that
+      // type of access.
+      if (!isset($usage['file']['media'])) {
+        continue;
+      }
       $uri = $file->getFileUri();
       $new_uri = str_replace('public://', 'private://', $uri);
       $directory = dirname($new_uri);

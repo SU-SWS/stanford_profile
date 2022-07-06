@@ -6,6 +6,18 @@
 class GlobalMessageCest {
 
   /**
+   * Delete the config page after finishing.
+   */
+  public function _after(AcceptanceTester $I) {
+    $config_page = \Drupal::entityTypeManager()
+      ->getStorage('config_pages')
+      ->load('stanford_global_message');
+    if ($config_page) {
+      $config_page->delete();
+    }
+  }
+
+  /**
    * Test the block exists.
    */
   public function testBlockExists(AcceptanceTester $I) {

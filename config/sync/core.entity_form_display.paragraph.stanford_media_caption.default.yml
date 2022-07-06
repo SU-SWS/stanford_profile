@@ -8,7 +8,7 @@ dependencies:
     - field.field.paragraph.stanford_media_caption.su_media_caption_media
     - paragraphs.paragraphs_type.stanford_media_caption
   module:
-    - link
+    - link_attributes
     - media_library
     - text
 id: paragraph.stanford_media_caption.default
@@ -25,12 +25,21 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_media_caption_link:
-    type: link_default
+    type: link_attributes
     weight: 2
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      enabled_attributes:
+        aria-label: true
+        id: false
+        name: false
+        target: false
+        rel: false
+        class: false
+        accesskey: false
+        title: false
     third_party_settings: {  }
   su_media_caption_media:
     type: media_library_widget

@@ -299,7 +299,9 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      change_labels:
+        add_another: 'Add another sponsor'
   su_event_subheadline:
     type: string_textfield
     weight: 4
