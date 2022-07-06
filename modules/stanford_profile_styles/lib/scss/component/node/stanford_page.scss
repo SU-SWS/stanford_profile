@@ -67,7 +67,7 @@
         max-width: inherit;
 
         @include grid-media('xl') {
-          @include padding(null null null 37px);
+          @include padding(null null null 2em);
         }
       }
     }
@@ -93,7 +93,7 @@
       .stanford-news-block-1,
       .stanford-events-list-page.list-page {
         @include grid-media('xl') {
-          @include padding(null null null 37px);
+          @include padding(null null null 2em);
         }
       }
     }
