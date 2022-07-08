@@ -1,5 +1,15 @@
 # Stanford Profile
 
+8.x-4.6
+--------------------------------------------------------------------------------
+_Release Date: 2022-07-08_
+
+- Updated config from search_api module
+- D8CORE-5128 Enable embed code validators (#579)
+- D8CORE-6005 Allow Span tags in the wysiwyg
+- Drupal 9.4 support (#576)
+- D8CORE-5886 Enable ajax on people lists
+
 8.x-4.5
 --------------------------------------------------------------------------------
 _Release Date: 2022-05-27_

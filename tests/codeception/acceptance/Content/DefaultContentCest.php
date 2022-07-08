@@ -44,7 +44,7 @@ class DefaultContentCest {
    * XML Sitemap should exist after cron.
    */
   public function testXmlSitemap(AcceptanceTester $I) {
-    $I->runDrush('cron');
+    $I->runDrush('xmlsitemap:rebuild');
     $I->amOnPage('/sitemap.xml');
     $I->canSeeResponseCodeIs(200);
   }
