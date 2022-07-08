@@ -1,9 +1,17 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Tests for various media functionality.
  */
 class MediaCest {
+
+  protected $faker;
+
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
 
   /**
    * Documents can be embedded as links.
