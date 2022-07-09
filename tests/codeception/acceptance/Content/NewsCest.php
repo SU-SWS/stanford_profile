@@ -49,11 +49,10 @@ class NewsCest {
    */
   public function testViewPagesExist(AcceptanceTester $I) {
     $I->amOnPage("/news");
-    $I->see("No results found");
+    $I->canSeeResponseCodeIs(200);
     $I->seeLink('Faculty');
     $I->click("a[href='/news/staff']");
     $I->canSeeResponseCodeIs(200);
-    $I->see("No results found");
     $I->see("Topics Menu");
   }
 

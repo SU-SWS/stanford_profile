@@ -47,11 +47,10 @@ class PersonCest {
    */
   public function testViewPagesExist(AcceptanceTester $I) {
     $I->amOnPage("/people");
-    $I->see("Sorry, no results found");
+    $I->canSeeResponseCodeIs(200);
     $I->seeLink('Student');
     $I->click("a[href='/people/staff']");
     $I->canSeeResponseCodeIs(200);
-    $I->see("Sorry, no results found");
     $I->see("Person Type");
   }
 
