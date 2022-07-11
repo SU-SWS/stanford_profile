@@ -94,7 +94,7 @@ class SystemSiteConfigCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->selectOption('Home Page', $node->label());
     $I->click('Save');
-    $I->canSee('Site Settings Site Settings has been');
+    $I->canSee('Site Settings has been');
 
     \Drupal::configFactory()->reset('system.site');
     $setting = \Drupal::config('system.site')->get('page.front');
@@ -110,7 +110,7 @@ class SystemSiteConfigCest {
     $I->selectOption('404 Page', '- None -');
     $I->selectOption('403 Page', '- None -');
     $I->click('Save');
-    $I->canSee('Site Settings Site Settings has been');
+    $I->canSee('Site Settings has been');
 
     $I->amOnPage('/');
     $I->canSeeResponseCodeIs(200);

@@ -73,7 +73,7 @@ class EventsCest {
     $I->amOnPage('/admin/config/importers/events-importer');
     $I->fillField('No Results Message', $message);
     $I->click('Save');
-    $I->canSee('Events Importer Events Importer has been');
+    $I->canSee('Events Importer has been');
 
     $I->amOnPage($event->toUrl('delete-form')->toString());
     $I->click('Delete');
