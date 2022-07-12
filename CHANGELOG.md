@@ -1,5 +1,29 @@
 # Cardinal Service Profile
 
+8.x-3.3
+--------------------------------------------------------------------------------
+_Release Date: 2022-07-12_
+
+- D8CORE-1835: Added abbr buttons to ckeditor (#550)
+- D8CORE-4780 Changed search page button text to "Search"
+- D8CORE-5862: Removed obsolete checkbox from theme settings (#575)
+- D8CORE-6000: Added additional html elements to embeddables allow list (#584)
+- Updated config from search_api module
+- D8CORE-5128 Enable embed code validators (#579)
+- D8CORE-6005 Allow Span tags in the wysiwyg
+- fixed composer namespace to lowercase
+- Removed fzaninotto/faker workaround in CI tests
+- Fixed Test Configs
+- Adjusted functional tests (#577)
+- Drupal 9.4 support (#576)
+- Move some CircleCi to GH Actions (#568)
+- Fixup patches in composer
+- D8CORE-5886 Enable ajax on people lists
+- Adjusted stanford_profile dependency
+- Added and configured ckeditor_blockimagepaste to prevent inline base64 images
+- D8CORe-5871 Change order of filter processing to fix <picture><source> tags
+- D8CORE-5773: Added edit buttons on courses list page (#555)
+
 8.x-3.2
 --------------------------------------------------------------------------------
 _Release Date: 2022-05-26_

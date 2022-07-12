@@ -106,7 +106,7 @@
         "drupal/node_title_help_text": "^1.2",
         "drupal/views_field_view": "^1.0@beta",
         "michelf/php-markdown": "^1.9",
-        "su-sws/stanford_profile": "8.4.4"
+        "su-sws/stanford_profile": "^8.4"
     },
     "config": {
         "sort-packages": true
@@ -124,6 +124,9 @@
     },
     "extra": {
         "patches": {
+            "drupal/ckeditor_blockimagepaste": {
+                "https://www.drupal.org/project/ckeditor_blockimagepaste/issues/3272772": "https://www.drupal.org/files/issues/2022-04-14/prevent_js_alert_and_block_ms_word_paste-v2.patch"
+            },
             "drupal/core": {
                 "https://www.drupal.org/project/drupal/issues/3015152": "https://www.drupal.org/files/issues/2021-12-13/3015152-tps-9.3.x-128.patch"
             },

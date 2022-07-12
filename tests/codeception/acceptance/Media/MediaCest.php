@@ -1,9 +1,17 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Tests for various media functionality.
  */
 class MediaCest {
+
+  protected $faker;
+
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
 
   /**
    * Documents can be embedded as links.
@@ -86,6 +94,41 @@ class MediaCest {
 
     $I->amOnPage('/admin/content/media');
     $I->canSee("Hello World");
+  }
+
+  /**
+   * Specific embed codes are allowed for site managers.
+   *
+   * @group embed-codes
+   */
+  public function testAllowedEmbedCodes(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/media/add/embeddable');
+    $I->fillField('Name', $this->faker->words(3, true));
+    $I->fillField('Embed Code', '<iframe src="' . $this->faker->url. '"></iframe>');
+    $I->click('Save');
+    $I->canSee('The given embeddable code is not permitted');
+
+    $I->fillField('Embed Code', 'https://calendar.google.com/foo-bar');
+    $I->click('Save');
+    $I->canSee('The given embeddable code is not permitted');
+
+    $allowed_codes = [
+      '<iframe src="https://calendar.google.com/foo-bar" title="foobar"></iframe>',
+      '<iframe src="https://airtable.com/foo-bar" title="foobar"></iframe>',
+      '<iframe src="https://outlook.office365.com/foo-bar" title="foobar"></iframe>',
+      '<iframe src="https://office365stanford.sharepoint.com/foo-bar" title="foobar"></iframe>',
+      '<iframe src="https://app.smartsheet.com/foo-bar" title="foobar"></iframe>',
+    ];
+
+    foreach ($allowed_codes as $allowed_code) {
+      $I->amOnPage('/media/add/embeddable');
+      $I->fillField('Name', $this->faker->words(3, TRUE));
+      $I->fillField('Embed Code', $allowed_code);
+      $I->click('Save');
+      $I->canSee('has been created');
+    }
+
   }
 
   /**

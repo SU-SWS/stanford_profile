@@ -55,7 +55,7 @@ class ResourceFieldsValidatorTest extends UnitTestCase {
     $validator->initialize($this->getContext());
 
     $field_value = $this->createMock(FieldItemListInterface::class);
-    $field_value->method('count')->willReturn(NULL);
+    $field_value->method('count')->willReturn(0);
 
     $entity = $this->createMock(FieldableEntityInterface::class);
     $entity->method('hasField')->willReturn(TRUE);
