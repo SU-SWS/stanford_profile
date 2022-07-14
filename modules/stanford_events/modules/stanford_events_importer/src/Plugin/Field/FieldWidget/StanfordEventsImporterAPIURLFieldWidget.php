@@ -93,7 +93,7 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
       '#title' => $this->t("Organization"),
       '#field_parents' => ['other'],
       '#empty_option' => $this->t("- Select Organization -"),
-      '#options' => $this->getOrgOptions(),
+      '#options' => $this->getOrgOptions() ?: [],
       '#states' => [
         'visible' => [
           '#edit-su-event-xml-url-' . $delta . '-other-type' => ['value' => 'organization'],
@@ -107,7 +107,7 @@ class StanfordEventsImporterAPIURLFieldWidget extends LinkWidget {
       '#title' => $this->t("Category"),
       '#field_parents' => ['other'],
       '#empty_option' => $this->t("- Select Category -"),
-      '#options' => $this->getCatOptions(),
+      '#options' => $this->getCatOptions() ?: [],
       '#states' => [
         'visible' => [
           '#edit-su-event-xml-url-' . $delta . '-other-type' => ['value' => 'category'],
