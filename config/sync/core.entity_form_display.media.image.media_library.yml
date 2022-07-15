@@ -18,18 +18,24 @@ mode: media_library
 content:
   field_media_image:
     type: image_focal_point
-    weight: 26
+    weight: 1
     region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
       preview_link: false
       offsets: '50,50'
-      preview_link_modal: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
-  name: true
   path: true
   publish_on: true
   status: true

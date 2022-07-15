@@ -12,15 +12,9 @@ targetEntityType: media
 bundle: video
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_media_oembed_video:
     type: string_textfield
-    weight: 26
+    weight: 1
     region: content
     settings:
       size: 60
@@ -35,6 +29,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  created: true
   path: true
   publish_on: true
   status: true
