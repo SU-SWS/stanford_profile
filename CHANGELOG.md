@@ -1,5 +1,12 @@
 # Stanford Profile
 
+8.4.8
+--------------------------------------------------------------------------------
+_Release Date: 2022-07-15_
+
+- D8CORE-2215: Let editors sort content by author (#551)
+- D8CORE-5824: Added a second provider for Stanford University Library oEmbeds (#548)
+
 8.4.7
 --------------------------------------------------------------------------------
 _Release Date: 2022-07-12_
