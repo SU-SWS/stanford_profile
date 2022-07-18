@@ -71,61 +71,6 @@ function stanford_news_page_attachments(array &$attachments) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_presave().
- */
-function stanford_news_node_presave(EntityInterface $entity) {
-  if ($entity->bundle() != "stanford_news") {
-    return;
-  }
-  $rabbit_hole = \Drupal::config('rabbit_hole.behavior_settings.node_type_' . $entity->bundle());
-  $token_service = \Drupal::service('token');
-
-  // When the source field is filled out on a news item we want to set the
-  // redirect options so it doesn't get indexed.
-  if ($rabbit_hole) {
-    /** @var \Drupal\Core\Utility\Token $token_service */
-    $target = $token_service->replace("[node:su_news_source:uri]", ['node' => $entity]);
-
-    // Check if the token that was provided is actually a url. If it is, then we
-    // can set the rabbit hole action to redirect to that url.
-    if (is_string($target) && UrlHelper::isValid($target, TRUE)) {
-      $entity->set('rh_action', 'page_redirect');
-      $entity->set('rh_redirect', $target);
-      $entity->set('rh_redirect_response', 301);
-    }
-    else {
-      $entity->set('rh_action', 'bundle_default');
-      $entity->set('rh_redirect', '');
-    }
-  }
-
-  // If a news item is being edited or saved, clear out some cache tags.
-  Cache::invalidateTags(["node_list:{$entity->bundle()}"]);
-}
-
-/**
- * Implements hook_ENTITY_TYPE_view().
- */
-function stanford_news_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
-
-  // Only run on stanford news items.
-  if ($entity->bundle() !== "stanford_news" || !node_is_page($entity)) {
-    return;
-  }
-
-  $rh_action = $entity->get('rh_action')->getString();
-  $rh_redirect = $entity->get('rh_redirect')->getString();
-
-  // Display a message to the user that this page would redirect to another
-  // location for other users.
-  if ($rh_action == "page_redirect" && !empty($rh_redirect)) {
-    \Drupal::messenger()
-      ->addWarning(t('This page will redirect to @url for other visitors.', ['@url' => $rh_redirect]));
-  }
-
-}
-
-/**
  * Implements hook_views_post_render().
  *
  * Views render arrays contain a cache tag "node_list". This cache tag is

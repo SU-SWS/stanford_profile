@@ -2,6 +2,7 @@
 
 namespace Drupal\stanford_profile_helper\EventSubscriber;
 
+use Drupal\Component\Plugin\Exception\PluginException;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Link;
@@ -10,9 +11,12 @@ use Drupal\Core\State\StateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\core_event_dispatcher\EntityHookEvents;
 use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
+use Drupal\core_event_dispatcher\Event\Entity\EntityViewEvent;
 use Drupal\node\NodeInterface;
+use Drupal\rabbit_hole\BehaviorInvokerInterface;
 use Drupal\stanford_profile_helper\StanfordDefaultContentInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Entity event subscriber service.
@@ -44,10 +48,20 @@ class EntityEventSubscriber implements EventSubscriberInterface {
   protected $entityTypeManager;
 
   /**
+   * Rabbit hole behavior invoker service.
+   *
+   * @var \Drupal\rabbit_hole\BehaviorInvokerInterface
+   */
+  protected $rabbitHoleBehavior;
+
+  /**
    * {@inheritDoc}
    */
   public static function getSubscribedEvents() {
-    return [EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPresave'];
+    return [
+      EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPresave',
+      EntityHookEvents::ENTITY_VIEW => 'onEntityView',
+    ];
   }
 
   /**
@@ -60,10 +74,11 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   Core entity type manager service.
    */
-  public function __construct(StanfordDefaultContentInterface $stanford_default_content, StateInterface $state, EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(StanfordDefaultContentInterface $stanford_default_content, StateInterface $state, EntityTypeManagerInterface $entity_type_manager, BehaviorInvokerInterface $rabbit_hole_behavior) {
     $this->defaultContent = $stanford_default_content;
     $this->state = $state;
     $this->entityTypeManager = $entity_type_manager;
+    $this->rabbitHoleBehavior = $rabbit_hole_behavior;
   }
 
   /**
@@ -109,6 +124,19 @@ class EntityEventSubscriber implements EventSubscriberInterface {
                 ->toString(),
             ]));
         }
+      }
+    }
+  }
+
+  /**
+   * @param EntityViewEvent $event
+   * @return void
+   */
+  public function onEntityView(EntityViewEvent $event){
+    if($event->getEntity() instanceof NodeInterface && node_is_page($event->getEntity())){
+
+      if ($response = $this->rabbitHoleBehavior->processEntity($event->getEntity())) {
+        dpm($response);
       }
     }
   }
