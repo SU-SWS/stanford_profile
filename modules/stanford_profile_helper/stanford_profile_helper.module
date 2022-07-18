@@ -590,7 +590,20 @@ function stanford_profile_helper_xmlsitemap_link_alter(array &$link, array $cont
 function stanford_profile_helper_config_readonly_whitelist_patterns() {
   $default_theme = \Drupal::config('system.theme')->get('default');
   // Allow the theme settings to be changed in the UI.
-  return ["$default_theme.settings"];
+  $patterns = ["$default_theme.settings"];
+
+  // Allow the form to be submitted in the UI for specific routes that don't
+  // alter the configuration, such as resetting the order of taxonomy terms.
+  $routes_to_config = [
+    'entity.taxonomy_vocabulary.reset_form' => 'taxonomy.vocabulary.*',
+  ];
+  foreach ($routes_to_config as $route => $config_pattern) {
+    if (\Drupal::routeMatch()->getRouteName() == $route) {
+      $patterns[] = $config_pattern;
+    }
+  }
+
+  return $patterns;
 }
 
 /**
