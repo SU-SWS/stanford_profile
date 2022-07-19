@@ -2,21 +2,26 @@
 
 namespace Drupal\stanford_profile_helper\EventSubscriber;
 
-use Drupal\Component\Plugin\Exception\PluginException;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Link;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Messenger\MessengerTrait;
+use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\State\StateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Url;
 use Drupal\core_event_dispatcher\EntityHookEvents;
 use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
+use Drupal\core_event_dispatcher\Event\Entity\EntityViewAlterEvent;
 use Drupal\core_event_dispatcher\Event\Entity\EntityViewEvent;
 use Drupal\node\NodeInterface;
 use Drupal\rabbit_hole\BehaviorInvokerInterface;
+use Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginInterface;
+use Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager;
 use Drupal\stanford_profile_helper\StanfordDefaultContentInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Entity event subscriber service.
@@ -55,12 +60,19 @@ class EntityEventSubscriber implements EventSubscriberInterface {
   protected $rabbitHoleBehavior;
 
   /**
+   * Rabbit hole behavior plugin manager.
+   *
+   * @var \Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager
+   */
+  protected $rabbitHolePluginManager;
+
+  /**
    * {@inheritDoc}
    */
   public static function getSubscribedEvents() {
     return [
       EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPresave',
-      EntityHookEvents::ENTITY_VIEW => 'onEntityView',
+      EntityHookEvents::ENTITY_VIEW_ALTER => 'onEntityView',
     ];
   }
 
@@ -74,11 +86,12 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   Core entity type manager service.
    */
-  public function __construct(StanfordDefaultContentInterface $stanford_default_content, StateInterface $state, EntityTypeManagerInterface $entity_type_manager, BehaviorInvokerInterface $rabbit_hole_behavior) {
+  public function __construct(StanfordDefaultContentInterface $stanford_default_content, StateInterface $state, EntityTypeManagerInterface $entity_type_manager, BehaviorInvokerInterface $rabbit_hole_behavior, RabbitHoleBehaviorPluginManager $rabbit_hole_plugin_manager) {
     $this->defaultContent = $stanford_default_content;
     $this->state = $state;
     $this->entityTypeManager = $entity_type_manager;
     $this->rabbitHoleBehavior = $rabbit_hole_behavior;
+    $this->rabbitHolePluginManager = $rabbit_hole_plugin_manager;
   }
 
   /**
@@ -129,16 +142,44 @@ class EntityEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * @param EntityViewEvent $event
-   * @return void
+   * On entity node view, display the rabbit hole behavior message.
+   *
+   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityViewEvent $event
+   *   Triggered event.
    */
-  public function onEntityView(EntityViewEvent $event){
-    if($event->getEntity() instanceof NodeInterface && node_is_page($event->getEntity())){
+  public function onEntityView(EntityViewAlterEvent $event): void {
+    if ($event->getEntity() instanceof NodeInterface && node_is_page($event->getEntity())) {
+      if ($plugin = $this->getRabbitHolePlugin($event->getEntity())) {
+        $redirect_response = $plugin->performAction($event->getEntity());
 
-      if ($response = $this->rabbitHoleBehavior->processEntity($event->getEntity())) {
-        dpm($response);
+        // The action returned from the redirect plugin might be to show the
+        // page. If it is, we don't want to display the message.
+        if ($redirect_response instanceof TrustedRedirectResponse) {
+          $destination_url = $redirect_response->getTargetUrl();
+          $link = Link::fromTextAndUrl($destination_url, Url::fromUri($destination_url));
+
+          $this->messenger()
+            ->addMessage($this->t('You are seeing this page because you are logged in with appropriate permissions. For anonymous users, this page will redirect to @link.', ['@link' => $link->toString()]), MessengerInterface::TYPE_WARNING);
+        }
       }
     }
+  }
+
+  /**
+   * Get the rabbit hole behavior plugin for the given node.
+   *
+   * @param \Drupal\node\NodeInterface $entity
+   *   Node with rabbit hole.
+   *
+   * @return \Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginInterface|null
+   *   Redirect behavior plugin if applicable.
+   */
+  protected function getRabbitHolePlugin(NodeInterface $entity): ?RabbitHoleBehaviorPluginInterface {
+    $values = $this->rabbitHoleBehavior->getRabbitHoleValuesForEntity($entity);
+    if (isset($values['rh_action']) && $values['rh_action'] == 'page_redirect') {
+      return $this->rabbitHolePluginManager->createInstance($values['rh_action'], $values);
+    }
+    return NULL;
   }
 
 }
