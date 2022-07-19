@@ -2,21 +2,17 @@
 
 namespace Drupal\stanford_profile_helper\EventSubscriber;
 
-use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Link;
-use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\State\StateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\Core\Url;
 use Drupal\core_event_dispatcher\EntityHookEvents;
 use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
-use Drupal\core_event_dispatcher\Event\Entity\EntityViewAlterEvent;
-use Drupal\core_event_dispatcher\Event\Entity\EntityViewEvent;
 use Drupal\node\NodeInterface;
+use Drupal\preprocess_event_dispatcher\Event\NodePreprocessEvent;
 use Drupal\rabbit_hole\BehaviorInvokerInterface;
 use Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginInterface;
 use Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager;
@@ -72,7 +68,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
   public static function getSubscribedEvents() {
     return [
       EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPresave',
-      EntityHookEvents::ENTITY_VIEW_ALTER => 'onEntityView',
+      'preprocess_node' => 'preprocessNode',
     ];
   }
 
@@ -142,25 +138,27 @@ class EntityEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * On entity node view, display the rabbit hole behavior message.
+   * When preprocessing the node page, add the rabbit hole behavior message.
    *
-   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityViewEvent $event
-   *   Triggered event.
+   * @param \Drupal\preprocess_event_dispatcher\Event\NodePreprocessEvent $event
+   *   Triggered Event.
    */
-  public function onEntityView(EntityViewAlterEvent $event): void {
-    if ($event->getEntity() instanceof NodeInterface && node_is_page($event->getEntity())) {
-      if ($plugin = $this->getRabbitHolePlugin($event->getEntity())) {
-        $redirect_response = $plugin->performAction($event->getEntity());
+  public function preprocessNode(NodePreprocessEvent $event) {
+    $node = $event->getVariables()->get('node');
+    if ($event->getVariables()->get('page') && ($plugin = $this->getRabbitHolePlugin($node))) {
+      $redirect_response = $plugin->performAction($node);
 
-        // The action returned from the redirect plugin might be to show the
-        // page. If it is, we don't want to display the message.
-        if ($redirect_response instanceof TrustedRedirectResponse) {
-          $destination_url = $redirect_response->getTargetUrl();
-          $link = Link::fromTextAndUrl($destination_url, Url::fromUri($destination_url));
+      // The action returned from the redirect plugin might be to show the
+      // page. If it is, we don't want to display the message.
+      if ($redirect_response instanceof TrustedRedirectResponse) {
 
-          $this->messenger()
-            ->addMessage($this->t('You are seeing this page because you are logged in with appropriate permissions. For anonymous users, this page will redirect to @link.', ['@link' => $link->toString()]), MessengerInterface::TYPE_WARNING);
-        }
+        $content = $event->getVariables()->getByReference('content');
+        $message = [
+          '#theme' => 'rabbit_hole_message',
+          '#destination' => $redirect_response->getTargetUrl(),
+        ];
+        $event->getVariables()
+          ->set('content', ['rh_message' => $message] + $content);
       }
     }
   }

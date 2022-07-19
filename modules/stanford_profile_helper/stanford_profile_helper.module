@@ -167,6 +167,9 @@ function stanford_profile_helper_theme($existing, $type, $theme, $path) {
     'template' => 'block--stanford-basic-search',
     'original hook' => 'block',
   ];
+  $themes['rabbit_hole_message'] = [
+    'variables' => ['destination' => NULL],
+  ];
   return $themes;
 }
 
