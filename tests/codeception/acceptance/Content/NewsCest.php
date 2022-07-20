@@ -95,17 +95,17 @@ class NewsCest {
   public function testMoreNewsView(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
 
-   $first_news = $I->createEntity([
+    $first_news = $I->createEntity([
       'type' => 'stanford_news',
-      'title' => $this->faker->words(3, true),
+      'title' => $this->faker->words(3, TRUE),
     ]);
     $second_news = $I->createEntity([
       'type' => 'stanford_news',
-      'title' =>  $this->faker->words(3, true),
+      'title' => $this->faker->words(3, TRUE),
     ]);
-   $third_news = $I->createEntity([
+    $third_news = $I->createEntity([
       'type' => 'stanford_news',
-      'title' =>  $this->faker->words(3, true),
+      'title' => $this->faker->words(3, TRUE),
     ]);
 
     $I->amOnPage($second_news->toUrl()->toString());

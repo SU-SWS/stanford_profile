@@ -32,6 +32,48 @@
   }
 }
 
+// Publications, People & Courses List landing pages
+// This keeps the gutter from growing
+// and misaligning paragraphs.
+.page-publications,
+.page-courses,
+.page-people {
+  .su-page-components {
+    div[data-react-columns="12"] {
+      &.ptype-stanford-lists,
+      &.ptype-stanford-wysiwyg,
+      &.ptype-stanford-card,
+      &.ptype-stanford-media-caption,
+      &.ptype-stanford-entity,
+      &.ptype-stanford-gallery {
+        max-width: inherit;
+
+      }
+    }
+  }
+}
+
+// News and Events list pages need a little spacing.
+.page-news,
+.page-events {
+  .su-page-components {
+    div[data-react-columns="12"] {
+      &.ptype-stanford-lists,
+      &.ptype-stanford-wysiwyg,
+      &.ptype-stanford-card,
+      &.ptype-stanford-media-caption,
+      &.ptype-stanford-entity,
+      &.ptype-stanford-gallery {
+        max-width: inherit;
+
+        @include grid-media('xl') {
+          @include padding(null null null 2em);
+        }
+      }
+    }
+  }
+}
+
 .jumpstart-ui {
   &--three-column,
   &--two-column {
@@ -47,12 +89,30 @@
 
     // Add some extra space between the main-region and the left-region.
     > .left-region + .main-region {
-      @include grid-media('xl') {
-        @include padding(null null null 80px);
+      // Needed to add spacing for gutters for special all list page: News/events
+      .stanford-news-block-1,
+      .stanford-events-list-page.list-page {
+        @include grid-media('xl') {
+          @include padding(null null null 2em);
+        }
       }
     }
   }
 }
+
+// Setting the margin to 0 to remove the centering and keep the max-width for lists.
+// This fixes extra space on Pubs and Courses list pages and keeps a list contained to
+// the 980px max width when a paragraph in a page.
+.jumpstart-ui--two-column {
+  >.left-region {
+    &+.flex-lg-9-of-12 {
+      .ptype-stanford-lists {
+        margin: initial;
+      }
+    }
+  }
+}
+
 
 .node-stanford-page-su-page-banner {
   @include modular-spacing('margin-bottom', 4);

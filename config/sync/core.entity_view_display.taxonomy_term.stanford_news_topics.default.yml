@@ -148,7 +148,7 @@ third_party_settings:
         - jumpstart_ui_one_column
         - jumpstart_ui_two_column
         - jumpstart_ui_three_column
-      blacklisted_blocks:
+      denylisted_blocks:
         'Content fields':
           - 'field_block:taxonomy_term:stanford_news_topics:revision_default'
           - 'field_block:taxonomy_term:stanford_news_topics:default_langcode'
@@ -188,7 +188,7 @@ third_party_settings:
           - 'field_block:user:user:timezone'
           - 'field_block:user:user:uid'
           - 'field_block:user:user:status'
-      whitelisted_blocks:
+      allowlisted_blocks:
         Menus:
           - 'menu_block:news-topics'
           - 'system_menu_block:news-topics'

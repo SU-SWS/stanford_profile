@@ -119,7 +119,7 @@ class LocalFooterCest {
     $I->fillField('su_local_foot_primary[0][uri]', $node->label() . " ({$node->id()})");
     $I->fillField('su_local_foot_primary[0][title]', $node->label());
     $I->click('Save');
-    $I->canSee('Local Footer Local Footer has been');
+    $I->canSee('Local Footer has been');
     $I->amOnPage('/');
     $I->canSeeLink($node->label(), $node->toUrl()->toString());
 
@@ -129,7 +129,7 @@ class LocalFooterCest {
     $I->fillField('su_local_foot_primary[0][uri]', '<nolink>');
     $I->fillField('su_local_foot_primary[0][title]', 'NO LINK');
     $I->click('Save');
-    $I->canSee('Local Footer Local Footer has been');
+    $I->canSee('Local Footer has been');
     $I->amOnPage('/');
     $I->canSee('NO LINK', 'li span');
   }
