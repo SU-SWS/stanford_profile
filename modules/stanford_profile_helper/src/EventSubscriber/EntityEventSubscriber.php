@@ -81,6 +81,10 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *   Core state service.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   Core entity type manager service.
+   * @param \Drupal\rabbit_hole\BehaviorInvokerInterface $rabbit_hole_behavior
+   *   Rabbit hole behavior invoker service.
+   * @param \Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager $rabbit_hole_plugin_manager
+   *   Rabbit hole behavior plugin manager.
    */
   public function __construct(StanfordDefaultContentInterface $stanford_default_content, StateInterface $state, EntityTypeManagerInterface $entity_type_manager, BehaviorInvokerInterface $rabbit_hole_behavior, RabbitHoleBehaviorPluginManager $rabbit_hole_plugin_manager) {
     $this->defaultContent = $stanford_default_content;
