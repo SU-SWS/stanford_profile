@@ -26,6 +26,7 @@ abstract class IntranetKernelTestBase extends KernelTestBase {
     'stanford_profile_helper',
     'options',
     'image',
+    'rabbit_hole',
   ];
 
   /**
