@@ -30,6 +30,7 @@ class MenuLinkTreeOverrideTest extends KernelTestBase {
     'link',
     'user',
     'node',
+    'rabbit_hole',
   ];
 
   protected function setUp() {
