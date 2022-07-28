@@ -13,6 +13,7 @@ class StanfordTextEditorTest extends KernelTestBase {
     'ckeditor',
     'editor',
     'filter',
+    'file',
     'linkit',
     'stanford_text_editor',
     'system',
