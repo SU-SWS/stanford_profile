@@ -40,7 +40,9 @@ use Drupal\Core\Render\Element;
  * Implements hook_entity_type_alter().
  */
 function stanford_profile_helper_entity_type_alter(array &$entity_types) {
-  $entity_types['menu_link_content']->addConstraint('menu_link_item_url_constraint');
+  if (isset($entity_types['menu_link_content'])) {
+    $entity_types['menu_link_content']->addConstraint('menu_link_item_url_constraint');
+  }
 }
 
 /**
@@ -184,48 +186,6 @@ function stanford_profile_helper_library_info_alter(&$libraries, $extension) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_presave().
- */
-function stanford_profile_helper_user_role_presave(RoleInterface $role) {
-  /** @var \Drupal\Core\Config\StorageInterface $config_storage */
-  $config_storage = \Drupal::service('config.storage.sync');
-
-  // Only modify new roles if they are created through the UI and don't exist in
-  // the config management - Prefix them with "custm_" so they can be easily
-  // identifiable.
-  if (
-    PHP_SAPI != 'cli' &&
-    $role->isNew() &&
-    !in_array($role->getConfigDependencyName(), $config_storage->listAll())
-  ) {
-    $role->set('id', 'custm_' . $role->id());
-  }
-}
-
-/**
- * Implements hook_entity_presave().
- */
-function stanford_profile_helper_entity_presave(EntityInterface $entity) {
-  if ($entity instanceof ConfigEntityInterface && $entity->isNew()) {
-    /** @var \Drupal\Core\Config\StorageInterface $config_storage */
-    $config_storage = \Drupal::service('config.storage.sync');
-
-    // The entity exists in the config sync directory, lets check if it's uuid
-    // matches.
-    if (in_array($entity->getConfigDependencyName(), $config_storage->listAll())) {
-      $staged_config = $config_storage->read($entity->getConfigDependencyName());
-
-      // The uuid of the entity doesn't match that of the config in the sync
-      // directory. Make sure they match so that we don't get config sync
-      // issues.
-      if (isset($staged_config['uuid']) && $staged_config['uuid'] != $entity->uuid()) {
-        $entity->set('uuid', $staged_config['uuid']);
-      }
-    }
-  }
-}
-
-/**
  * Implements hook_form_alter().
  */
 function stanford_profile_helper_form_alter(&$form, FormStateInterface $form_state, $form_id) {
@@ -365,40 +325,6 @@ function stanford_profile_helper_help_section_info_alter(array &$info) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_insert().
- */
-function stanford_profile_helper_menu_link_content_presave(MenuLinkContent $entity) {
-  // For new menu link items created on a node form (normally), set the expanded
-  // attribute so all menu items are expanded by default.
-  if ($entity->isNew()) {
-    $entity->set('expanded', TRUE);
-  }
-
-  // When a menu item is added as a child of another menu item clear the parent
-  // pages cache so that the block shows up as it doesn't get invalidated just
-  // by the menu cache tags.
-  $parent_id = $entity->getParentId();
-  if (!empty($parent_id)) {
-    [$entity_name, $uuid] = explode(':', $parent_id);
-    $menu_link_content = \Drupal::entityTypeManager()
-      ->getStorage($entity_name)
-      ->loadByProperties(['uuid' => $uuid]);
-
-    if (is_array($menu_link_content)) {
-      $parent_item = array_pop($menu_link_content);
-      /** @var \Drupal\Core\Url $url */
-      $url = $parent_item->getUrlObject();
-      if (!$url->isExternal() && $url->isRouted()) {
-        $params = $url->getRouteParameters();
-        if (isset($params['node'])) {
-          Cache::invalidateTags(['node:' . $params['node']]);
-        }
-      }
-    }
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK().
  */
 function stanford_profile_helper_preprocess_input__submit__paragraph_action(&$variables) {
@@ -534,21 +460,6 @@ function stanford_profile_helper_config_pages_stanford_basic_site_settings_form_
 }
 
 /**
- * Implements hook_ENTITY_TYPE_presave().
- */
-function stanford_profile_helper_config_pages_presave(ConfigPagesInterface $entity) {
-  if ($entity->hasField('su_site_url') && ($url_field = $entity->get('su_site_url')
-      ->getValue())) {
-    // Set the xml sitemap module state to the new domain.
-    \Drupal::state()->set('xmlsitemap_base_url', $url_field[0]['uri']);
-  }
-
-  // Invalidate cache tags on config pages save. This is a blanket cache clear
-  // since config pages mostly affect the entire site.
-  Cache::invalidateTags(['system.site', 'block_view', 'node_view']);
-}
-
-/**
  * Alter the data of a sitemap link before the link is saved.
  *
  * @param array $link
@@ -643,18 +554,6 @@ function _stanford_profile_helper_get_lockup_states(array $opts, $input) {
     ];
   }
   return $ret;
-}
-
-/**
- * Clear cache after lockup config page form submit.
- *
- * @param array $form
- *   The form array.
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- *   The form state.
- */
-function stanford_profile_helper_form_config_pages_lockup_settings_form_alter_submit(array &$form, FormStateInterface $form_state) {
-  Cache::invalidateTags(['config:system.site']);
 }
 
 /**
@@ -826,18 +725,6 @@ function stanford_profile_helper_form_media_library_add_form_embeddable_alter(ar
 }
 
 /**
- * Implements hook_ENTITY_TYPE_presave().
- */
-function stanford_profile_helper_field_storage_config_presave(FieldStorageConfigInterface $field_storage) {
-  // If a field is saved and the field permissions are public, lets just remove
-  // those third party settings before save so that it keeps the config clean.
-  if ($field_storage->getThirdPartySetting('field_permissions', 'permission_type') === 'public') {
-    $field_storage->unsetThirdPartySetting('field_permissions', 'permission_type');
-    $field_storage->calculateDependencies();
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK().
  */
 function stanford_profile_helper_preprocess_menu(&$variables) {
@@ -1002,54 +889,6 @@ function stanford_profile_helper_views_pre_view(ViewExecutable $view, $display_i
     ];
     $display_options['cache'] = $cache;
     $default_options['cache'] = $cache;
-  }
-}
-
-/**
- * Implements hook_ENTITY_TYPE_presave().
- */
-function stanford_profile_helper_node_presave(NodeInterface $node) {
-  // Invalidate any search result cached so the updated/new content will be
-  // displayed for previously searched terms.
-  Cache::invalidateTags(['config:views.view.search']);
-}
-
-/**
- * Implements hook_ENTITY_TYPE_insert().
- */
-function stanford_profile_helper_menu_link_content_insert(MenuLinkContentInterface $entity) {
-  Cache::invalidateTags(['stanford_profile_helper:menu_links']);
-}
-
-/**
- * Implements hook_ENTITY_TYPE_delete().
- */
-function stanford_profile_helper_menu_link_content_delete(MenuLinkContentInterface $entity) {
-  Cache::invalidateTags(['stanford_profile_helper:menu_links']);
-}
-
-/**
- * Implements hook_ENTITY_TYPE_update().
- */
-function stanford_profile_helper_menu_link_content_update(MenuLinkContentInterface $entity) {
-  $original = [
-    $entity->original->get('title')->getValue(),
-    $entity->original->get('description')->getValue(),
-    $entity->original->get('link')->getValue(),
-    $entity->original->get('parent')->getValue(),
-    $entity->original->get('weight')->getValue(),
-    $entity->original->get('expanded')->getValue(),
-  ];
-  $updated = [
-    $entity->get('title')->getValue(),
-    $entity->get('description')->getValue(),
-    $entity->get('link')->getValue(),
-    $entity->get('parent')->getValue(),
-    $entity->get('weight')->getValue(),
-    $entity->get('expanded')->getValue(),
-  ];
-  if (md5(json_encode($original)) != md5(json_encode($updated))) {
-    Cache::invalidateTags(['stanford_profile_helper:menu_links']);
   }
 }
 
