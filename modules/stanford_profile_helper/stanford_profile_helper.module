@@ -37,6 +37,13 @@ use Drupal\views\ViewExecutable;
 use Drupal\Core\Render\Element;
 
 /**
+ * Implements hook_entity_type_alter().
+ */
+function stanford_profile_helper_entity_type_alter(array &$entity_types) {
+  $entity_types['menu_link_content']->addConstraint('menu_link_item_url_constraint');
+}
+
+/**
  * Implements hook_local_tasks_alter().
  */
 function stanford_profile_helper_local_tasks_alter(&$local_tasks) {
@@ -63,21 +70,6 @@ function stanford_profile_helper_form_taxonomy_overview_terms_alter(&$form, Form
  * Implements hook_ENTITY_TYPE_presave().
  */
 function stanford_profile_helper_redirect_presave(EntityInterface $redirect) {
-  $destination = $redirect->get('redirect_redirect')->getString();
-
-  // If a redirect is added to go to the aliased path of a node (often from
-  // importing redirect), change the destination to target the node instead.
-  // This works if the destination is `/about` or `/node/9`.
-  if (preg_match('/^internal:(\/.*)/', $destination, $matches)) {
-    // Find the internal path from the alias.
-    $path = \Drupal::service('path_alias.manager')->getPathByAlias($matches[1]);
-
-    // Grab the node id from the internal path and use that as the destination.
-    if (preg_match('/node\/(\d+)/', $path, $matches)) {
-      $redirect->set('redirect_redirect', 'entity:node/' . $matches[1]);
-    }
-  }
-
   // Purge everything for the source url so that it can redirect without any
   // intervention.
   if (\Drupal::moduleHandler()->moduleExists('purge_processor_lateruntime')) {
