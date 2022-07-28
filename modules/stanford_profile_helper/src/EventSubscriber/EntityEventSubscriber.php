@@ -6,11 +6,16 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Link;
 use Drupal\Core\Messenger\MessengerTrait;
+use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\State\StateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\core_event_dispatcher\EntityHookEvents;
 use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
 use Drupal\node\NodeInterface;
+use Drupal\preprocess_event_dispatcher\Event\NodePreprocessEvent;
+use Drupal\rabbit_hole\BehaviorInvokerInterface;
+use Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginInterface;
+use Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager;
 use Drupal\stanford_profile_helper\StanfordDefaultContentInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -44,10 +49,27 @@ class EntityEventSubscriber implements EventSubscriberInterface {
   protected $entityTypeManager;
 
   /**
+   * Rabbit hole behavior invoker service.
+   *
+   * @var \Drupal\rabbit_hole\BehaviorInvokerInterface
+   */
+  protected $rabbitHoleBehavior;
+
+  /**
+   * Rabbit hole behavior plugin manager.
+   *
+   * @var \Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager
+   */
+  protected $rabbitHolePluginManager;
+
+  /**
    * {@inheritDoc}
    */
   public static function getSubscribedEvents() {
-    return [EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPresave'];
+    return [
+      EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPresave',
+      'preprocess_node' => 'preprocessNode',
+    ];
   }
 
   /**
@@ -59,11 +81,17 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *   Core state service.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   Core entity type manager service.
+   * @param \Drupal\rabbit_hole\BehaviorInvokerInterface $rabbit_hole_behavior
+   *   Rabbit hole behavior invoker service.
+   * @param \Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager $rabbit_hole_plugin_manager
+   *   Rabbit hole behavior plugin manager.
    */
-  public function __construct(StanfordDefaultContentInterface $stanford_default_content, StateInterface $state, EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(StanfordDefaultContentInterface $stanford_default_content, StateInterface $state, EntityTypeManagerInterface $entity_type_manager, BehaviorInvokerInterface $rabbit_hole_behavior, RabbitHoleBehaviorPluginManager $rabbit_hole_plugin_manager) {
     $this->defaultContent = $stanford_default_content;
     $this->state = $state;
     $this->entityTypeManager = $entity_type_manager;
+    $this->rabbitHoleBehavior = $rabbit_hole_behavior;
+    $this->rabbitHolePluginManager = $rabbit_hole_plugin_manager;
   }
 
   /**
@@ -111,6 +139,49 @@ class EntityEventSubscriber implements EventSubscriberInterface {
         }
       }
     }
+  }
+
+  /**
+   * When preprocessing the node page, add the rabbit hole behavior message.
+   *
+   * @param \Drupal\preprocess_event_dispatcher\Event\NodePreprocessEvent $event
+   *   Triggered Event.
+   */
+  public function preprocessNode(NodePreprocessEvent $event) {
+    $node = $event->getVariables()->get('node');
+    if ($event->getVariables()->get('page') && ($plugin = $this->getRabbitHolePlugin($node))) {
+      $redirect_response = $plugin->performAction($node);
+
+      // The action returned from the redirect plugin might be to show the
+      // page. If it is, we don't want to display the message.
+      if ($redirect_response instanceof TrustedRedirectResponse) {
+
+        $content = $event->getVariables()->getByReference('content');
+        $message = [
+          '#theme' => 'rabbit_hole_message',
+          '#destination' => $redirect_response->getTargetUrl(),
+        ];
+        $event->getVariables()
+          ->set('content', ['rh_message' => $message] + $content);
+      }
+    }
+  }
+
+  /**
+   * Get the rabbit hole behavior plugin for the given node.
+   *
+   * @param \Drupal\node\NodeInterface $entity
+   *   Node with rabbit hole.
+   *
+   * @return \Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginInterface|null
+   *   Redirect behavior plugin if applicable.
+   */
+  protected function getRabbitHolePlugin(NodeInterface $entity): ?RabbitHoleBehaviorPluginInterface {
+    $values = $this->rabbitHoleBehavior->getRabbitHoleValuesForEntity($entity);
+    if (isset($values['rh_action']) && $values['rh_action'] == 'page_redirect') {
+      return $this->rabbitHolePluginManager->createInstance($values['rh_action'], $values);
+    }
+    return NULL;
   }
 
 }

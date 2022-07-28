@@ -32,6 +32,7 @@ class SamlRoleMappingWidgetTest extends KernelTestBase {
     'user',
     'text',
     'config_pages',
+    'rabbit_hole',
   ];
 
   /**
