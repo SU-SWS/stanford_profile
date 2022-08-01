@@ -211,8 +211,9 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *   Field storage being saved.
    */
   protected static function preSaveFieldStorageConfig(FieldStorageConfigInterface $field_storage) {
-    // If a field is saved and the field permissions are public, lets just remove
-    // those third party settings before save so that it keeps the config clean.
+    // If a field is saved and the field permissions are public, lets just
+    // remove those third party settings before save so that it keeps the
+    // config clean.
     if ($field_storage->getThirdPartySetting('field_permissions', 'permission_type') === 'public') {
       $field_storage->unsetThirdPartySetting('field_permissions', 'permission_type');
       $field_storage->calculateDependencies();
@@ -283,15 +284,15 @@ class EntityEventSubscriber implements EventSubscriberInterface {
       $entity->set('link', $internal_path);
     }
 
-    // For new menu link items created on a node form (normally), set the expanded
-    // attribute so all menu items are expanded by default.
+    // For new menu link items created on a node form (normally), set the
+    // expanded attribute so all menu items are expanded by default.
     if ($entity->isNew()) {
       $entity->set('expanded', TRUE);
     }
 
-    // When a menu item is added as a child of another menu item clear the parent
-    // pages cache so that the block shows up as it doesn't get invalidated just
-    // by the menu cache tags.
+    // When a menu item is added as a child of another menu item clear the
+    // parent pages cache so that the block shows up as it doesn't get
+    // invalidated just by the menu cache tags.
     $parent_id = $entity->getParentId();
     if (!empty($parent_id)) {
       [$entity_name, $uuid] = explode(':', $parent_id);
@@ -319,7 +320,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    * Before saving a redirect, adjust the path if an internal path exists.
    *
    * @param \Drupal\Core\Entity\ContentEntityInterface $entity
-   *  Redirect to be saved.
+   *   Redirect to be saved.
    */
   protected function preSaveRedirect(ContentEntityInterface $entity): void {
     $destination = $entity->get('redirect_redirect')->getString();
@@ -390,9 +391,9 @@ class EntityEventSubscriber implements EventSubscriberInterface {
     /** @var \Drupal\Core\Config\StorageInterface $config_storage */
     $config_storage = \Drupal::service('config.storage.sync');
 
-    // Only modify new roles if they are created through the UI and don't exist in
-    // the config management - Prefix them with "custm_" so they can be easily
-    // identifiable.
+    // Only modify new roles if they are created through the UI and don't exist
+    // in the config management - Prefix them with "custm_" so they can be
+    // easily identifiable.
     if (
       PHP_SAPI != 'cli' &&
       $role->isNew() &&
@@ -420,12 +421,12 @@ class EntityEventSubscriber implements EventSubscriberInterface {
       $path = \Drupal::service('path_alias.manager')
         ->getPathByAlias($matches[1]);
 
-      // Grab the node id from the internal path and use that as the destination.
+      // Grab the node id from the internal path and use that as destination.
       if (preg_match('/node\/(\d+)/', $path, $matches)) {
         return 'entity:node/' . $matches[1];
       }
     }
-    return FALSE;
+    return NULL;
   }
 
 }

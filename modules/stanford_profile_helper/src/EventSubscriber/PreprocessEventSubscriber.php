@@ -40,8 +40,12 @@ class PreprocessEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
+   * Event subscriber constructor.
+   *
    * @param \Drupal\rabbit_hole\BehaviorInvokerInterface $rabbitHoleBehavior
+   *   Rabbit hole behavior invoker service.
    * @param \Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager $rabbitHolePluginManager
+   *   Rabbit hole behavior plugin manager.
    */
   public function __construct(BehaviorInvokerInterface $rabbitHoleBehavior, RabbitHoleBehaviorPluginManager $rabbitHolePluginManager) {
     $this->rabbitHoleBehavior = $rabbitHoleBehavior;
@@ -56,8 +60,10 @@ class PreprocessEventSubscriber implements EventSubscriberInterface {
    */
   public function preprocessNode(NodePreprocessEvent $event) {
     $node = $event->getVariables()->get('node');
-    if ($event->getVariables()
-        ->get('page') && ($plugin = $this->getRabbitHolePlugin($node))) {
+    if (
+      $event->getVariables()->get('page') &&
+      ($plugin = $this->getRabbitHolePlugin($node))
+    ) {
       $redirect_response = $plugin->performAction($node);
 
       // The action returned from the redirect plugin might be to show the

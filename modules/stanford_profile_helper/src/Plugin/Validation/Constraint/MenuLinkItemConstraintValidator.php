@@ -38,6 +38,12 @@ class MenuLinkItemConstraintValidator extends ConstraintValidator implements Con
     );
   }
 
+  /**
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   Current request stack.
+   * @param \Drupal\path_alias\AliasManagerInterface $alias_manager
+   *   Path alias manager service.
+   */
   public function __construct(RequestStack $request_stack, AliasManagerInterface $alias_manager) {
     $this->request = $request_stack->getCurrentRequest();
     $this->aliasManager = $alias_manager;
@@ -46,10 +52,9 @@ class MenuLinkItemConstraintValidator extends ConstraintValidator implements Con
 
   /**
    * {@inheritdoc}
-   *
-   * @param \Drupal\menu_link_content\MenuLinkContentInterface $value
    */
   public function validate($value, Constraint $constraint) {
+    /** @var \Drupal\menu_link_content\MenuLinkContentInterface $value */
     /** @var \Drupal\Core\Field\FieldItemInterface $link_value */
     $link_value = $value->get('link')->get(0);
     $link_uri = $link_value->get('uri')->getString();
