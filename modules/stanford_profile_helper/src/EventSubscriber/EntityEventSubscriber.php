@@ -11,7 +11,6 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Link;
 use Drupal\Core\Messenger\MessengerTrait;
-use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\State\StateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\core_event_dispatcher\EntityHookEvents;
@@ -22,10 +21,6 @@ use Drupal\core_event_dispatcher\Event\Entity\EntityUpdateEvent;
 use Drupal\field\FieldStorageConfigInterface;
 use Drupal\menu_link_content\MenuLinkContentInterface;
 use Drupal\node\NodeInterface;
-use Drupal\preprocess_event_dispatcher\Event\NodePreprocessEvent;
-use Drupal\rabbit_hole\BehaviorInvokerInterface;
-use Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginInterface;
-use Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager;
 use Drupal\stanford_profile_helper\StanfordDefaultContentInterface;
 use Drupal\user\RoleInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -186,18 +181,27 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\config_pages\ConfigPagesInterface $config_page
    *   The configuration page being saved.
    */
-  protected static function preSaveConfigPages(ConfigPagesInterface $config_page){
+  protected static function preSaveConfigPages(ConfigPagesInterface $config_page) {
     if (
       $config_page->hasField('su_site_url') &&
       $config_page->get('su_site_url')->count()
     ) {
       // Set the xml sitemap module state to the new domain.
-      \Drupal::state()->set('xmlsitemap_base_url', $config_page->get('su_site_url')->get(0)->get('uri')->getString());
+      \Drupal::state()
+        ->set('xmlsitemap_base_url', $config_page->get('su_site_url')
+          ->get(0)
+          ->get('uri')
+          ->getString());
     }
 
     // Invalidate cache tags on config pages save. This is a blanket cache clear
     // since config pages mostly affect the entire site.
-    Cache::invalidateTags(['config:system.site', 'system.site', 'block_view', 'node_view']);
+    Cache::invalidateTags([
+      'config:system.site',
+      'system.site',
+      'block_view',
+      'node_view',
+    ]);
   }
 
   /**
@@ -206,7 +210,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\field\FieldStorageConfigInterface $field_storage
    *   Field storage being saved.
    */
-  protected static function preSaveFieldStorageConfig(FieldStorageConfigInterface $field_storage){
+  protected static function preSaveFieldStorageConfig(FieldStorageConfigInterface $field_storage) {
     // If a field is saved and the field permissions are public, lets just remove
     // those third party settings before save so that it keeps the config clean.
     if ($field_storage->getThirdPartySetting('field_permissions', 'permission_type') === 'public') {
@@ -221,7 +225,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\menu_link_content\MenuLinkContentInterface $entity
    *   Menu item being saved.
    */
-  protected function insertMenuLinkContent(MenuLinkContentInterface $entity){
+  protected function insertMenuLinkContent(MenuLinkContentInterface $entity) {
     Cache::invalidateTags(['stanford_profile_helper:menu_links']);
   }
 
@@ -231,7 +235,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\menu_link_content\MenuLinkContentInterface $entity
    *   Menu item being deleted.
    */
-  protected function deleteMenuLinkContent(MenuLinkContentInterface $entity){
+  protected function deleteMenuLinkContent(MenuLinkContentInterface $entity) {
     Cache::invalidateTags(['stanford_profile_helper:menu_links']);
   }
 
@@ -243,7 +247,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\menu_link_content\MenuLinkContentInterface $original_entity
    *   Original unmodified menu item.
    */
-  protected function updateMenuLinkContent(MenuLinkContentInterface $entity, MenuLinkContentInterface $original_entity){
+  protected function updateMenuLinkContent(MenuLinkContentInterface $entity, MenuLinkContentInterface $original_entity) {
     $original = [
       $original_entity->get('title')->getValue(),
       $original_entity->get('description')->getValue(),
@@ -382,7 +386,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\user\RoleInterface $role
    *   The role being saved.
    */
-  protected static function preSaveUserRole(RoleInterface $role){
+  protected static function preSaveUserRole(RoleInterface $role) {
     /** @var \Drupal\Core\Config\StorageInterface $config_storage */
     $config_storage = \Drupal::service('config.storage.sync');
 
