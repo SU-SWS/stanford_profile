@@ -90,6 +90,8 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *   The event.
    * @param string $action
    *   Entity event action: preSave, update, insert, delete.
+   * @param mixed ...$args
+   *   Other arguments to pass to the method.
    */
   protected function callIndividualEntityMethods(AbstractEntityEvent $event, string $action, ...$args): void {
     $entity = $event->getEntity();
@@ -243,6 +245,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    */
   protected function updateMenuLinkContent(MenuLinkContentInterface $entity, MenuLinkContentInterface $original_entity) {
     $compare_fields = ['title', 'link', 'parent', 'weight', 'expanded'];
+    $original = $updated = [];
     foreach ($compare_fields as $field_name) {
       $original[] = $original_entity->get($field_name)->getValue();
       $updated[] = $entity->get($field_name)->getValue();
