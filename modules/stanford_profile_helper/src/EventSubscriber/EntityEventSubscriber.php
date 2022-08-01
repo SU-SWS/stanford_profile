@@ -90,7 +90,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *   The event.
    * @param string $action
    *   Entity event action: preSave, update, insert, delete.
-   * @param mixed ...$args
+   * @param mixed $args
    *   Other arguments to pass to the method.
    */
   protected function callIndividualEntityMethods(AbstractEntityEvent $event, string $action, ...$args): void {
