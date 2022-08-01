@@ -39,6 +39,8 @@ class MenuLinkItemConstraintValidator extends ConstraintValidator implements Con
   }
 
   /**
+   * Validation constructor.
+   *
    * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
    *   Current request stack.
    * @param \Drupal\path_alias\AliasManagerInterface $alias_manager
@@ -48,7 +50,6 @@ class MenuLinkItemConstraintValidator extends ConstraintValidator implements Con
     $this->request = $request_stack->getCurrentRequest();
     $this->aliasManager = $alias_manager;
   }
-
 
   /**
    * {@inheritdoc}

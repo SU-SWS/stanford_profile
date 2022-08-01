@@ -15,6 +15,6 @@ use Symfony\Component\Validator\Constraint;
  */
 class MenuLinkItemConstraint extends Constraint {
 
-    public $absoluteLink = 'The link URL must not be an absolute URL. Please use relative links that start with "/" for local destinations.';
+  public $absoluteLink = 'The link URL must not be an absolute URL. Please use relative links that start with "/" for local destinations.';
 
 }

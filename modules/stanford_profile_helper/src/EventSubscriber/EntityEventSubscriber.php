@@ -14,6 +14,7 @@ use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\State\StateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\core_event_dispatcher\EntityHookEvents;
+use Drupal\core_event_dispatcher\Event\Entity\AbstractEntityEvent;
 use Drupal\core_event_dispatcher\Event\Entity\EntityDeleteEvent;
 use Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent;
 use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
@@ -54,7 +55,6 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    */
   protected $entityTypeManager;
 
-
   /**
    * {@inheritDoc}
    */
@@ -84,21 +84,33 @@ class EntityEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
+   * Call individual methods for each entity type for the events.
+   *
+   * @param \Drupal\core_event_dispatcher\Event\Entity\AbstractEntityEvent $event
+   *   The event.
+   *
+   * @param string $action
+   *   Entity event action: preSave, update, insert, delete.
+   */
+  protected function callIndividualEntityMethods(AbstractEntityEvent $event, string $action, ...$args): void {
+    $entity = $event->getEntity();
+    $entity_type = $entity->getEntityTypeId();
+    $method_name = $action . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
+    // Call individual methods for each entity type if one is available.
+    if (method_exists($this, $method_name)) {
+      call_user_func([$this, $method_name], $event->getEntity(), ...$args);
+    }
+  }
+
+  /**
    * Before saving a new node, if it's the first one, create a list page.
    *
    * @param \Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent $event
    *   Triggered Event.
    */
   public function onEntityPresave(EntityPresaveEvent $event): void {
-    $entity = $event->getEntity();
-    $entity_type = $entity->getEntityTypeId();
-    $method_name = 'preSave' . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
-    // Call individual methods for each entity type if one is available.
-    if (method_exists($this, $method_name)) {
-      $this->{$method_name}($entity);
-    }
-
-    self::fixEntityUuid($entity);
+    $this->callIndividualEntityMethods($event, 'preSave');
+    self::fixEntityUuid($event->getEntity());
   }
 
   /**
@@ -108,13 +120,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *   Triggered Event.
    */
   public function onEntityInsert(EntityInsertEvent $event): void {
-    $entity = $event->getEntity();
-    $entity_type = $entity->getEntityTypeId();
-    $method_name = 'insert' . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
-    // Call individual methods for each entity type if one is available.
-    if (method_exists($this, $method_name)) {
-      $this->{$method_name}($entity);
-    }
+    $this->callIndividualEntityMethods($event, 'insert');
   }
 
   /**
@@ -124,13 +130,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *   Triggered Event.
    */
   public function onEntityUpdate(EntityUpdateEvent $event): void {
-    $entity = $event->getEntity();
-    $entity_type = $entity->getEntityTypeId();
-    $method_name = 'update' . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
-    // Call individual methods for each entity type if one is available.
-    if (method_exists($this, $method_name)) {
-      $this->{$method_name}($entity, $event->getOriginalEntity());
-    }
+    $this->callIndividualEntityMethods($event, 'update', $event->getOriginalEntity());
   }
 
   /**
@@ -140,13 +140,7 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *   Triggered Event.
    */
   public function onEntityDelete(EntityDeleteEvent $event): void {
-    $entity = $event->getEntity();
-    $entity_type = $entity->getEntityTypeId();
-    $method_name = 'delete' . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
-    // Call individual methods for each entity type if one is available.
-    if (method_exists($this, $method_name)) {
-      $this->{$method_name}($entity);
-    }
+    $this->callIndividualEntityMethods($event, 'delete');
   }
 
   /**
@@ -286,33 +280,33 @@ class EntityEventSubscriber implements EventSubscriberInterface {
 
     // For new menu link items created on a node form (normally), set the
     // expanded attribute so all menu items are expanded by default.
-    if ($entity->isNew()) {
-      $entity->set('expanded', TRUE);
-    }
+    $expanded = $entity->isNew() ?: (bool) $entity->get('expanded')->getString();
+    $entity->set('expanded', $expanded);
 
     // When a menu item is added as a child of another menu item clear the
     // parent pages cache so that the block shows up as it doesn't get
     // invalidated just by the menu cache tags.
-    $parent_id = $entity->getParentId();
-    if (!empty($parent_id)) {
+    while ($entity && ($parent_id = $entity->getParentId())) {
+
       [$entity_name, $uuid] = explode(':', $parent_id);
-      $menu_link_content = \Drupal::entityTypeManager()
+      $entity = \Drupal::entityTypeManager()
         ->getStorage($entity_name)
         ->loadByProperties(['uuid' => $uuid]);
 
-      if (is_array($menu_link_content)) {
-        $parent_item = array_pop($menu_link_content);
-        /** @var \Drupal\Core\Url $url */
-        $url = $parent_item->getUrlObject();
-        if (!$url->isExternal() && $url->isRouted()) {
-          $params = $url->getRouteParameters();
-          if (isset($params['node'])) {
-            $cache_tags[] = 'node:' . $params['node'];
-          }
+      if (!$entity) {
+        break;
+      }
+
+      $entity = array_pop($entity);
+      /** @var \Drupal\Core\Url $url */
+      $url = $entity->getUrlObject();
+      if (!$url->isExternal() && $url->isRouted()) {
+        $params = $url->getRouteParameters();
+        if (isset($params['node'])) {
+          $cache_tags[] = 'node:' . $params['node'];
         }
       }
     }
-
     Cache::invalidateTags($cache_tags);
   }
 

@@ -81,7 +81,6 @@ class PreprocessEventSubscriber implements EventSubscriberInterface {
     }
   }
 
-
   /**
    * Get the rabbit hole behavior plugin for the given node.
    *
