@@ -83,7 +83,7 @@ class EntityEventSubscriberTest extends KernelTestBase {
    * Entity Pre-save event listener.
    */
   public function testNodePresave() {
-    $role = Role::create(['id' => 'foo', 'name' => 'Foo']);
+    $role = Role::create(['id' => 'foo', 'label' => 'Foo']);
     $role->save();
 
     $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple();
