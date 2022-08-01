@@ -88,7 +88,6 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *
    * @param \Drupal\core_event_dispatcher\Event\Entity\AbstractEntityEvent $event
    *   The event.
-   *
    * @param string $action
    *   Entity event action: preSave, update, insert, delete.
    */
@@ -243,22 +242,11 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *   Original unmodified menu item.
    */
   protected function updateMenuLinkContent(MenuLinkContentInterface $entity, MenuLinkContentInterface $original_entity) {
-    $original = [
-      $original_entity->get('title')->getValue(),
-      $original_entity->get('description')->getValue(),
-      $original_entity->get('link')->getValue(),
-      $original_entity->get('parent')->getValue(),
-      $original_entity->get('weight')->getValue(),
-      $original_entity->get('expanded')->getValue(),
-    ];
-    $updated = [
-      $entity->get('title')->getValue(),
-      $entity->get('description')->getValue(),
-      $entity->get('link')->getValue(),
-      $entity->get('parent')->getValue(),
-      $entity->get('weight')->getValue(),
-      $entity->get('expanded')->getValue(),
-    ];
+    $compare_fields = ['title', 'link', 'parent', 'weight', 'expanded'];
+    foreach ($compare_fields as $field_name) {
+      $original[] = $original_entity->get($field_name)->getValue();
+      $updated[] = $entity->get($field_name)->getValue();
+    }
     if (md5(json_encode($original)) != md5(json_encode($updated))) {
       Cache::invalidateTags(['stanford_profile_helper:menu_links']);
     }
