@@ -4,10 +4,13 @@ namespace Drupal\Tests\stanford_profile_helper\Kernel\EventSubscriber;
 
 use Drupal\Core\Render\RenderContext;
 use Drupal\KernelTests\KernelTestBase;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
 use Drupal\node\NodeInterface;
+use Drupal\path_alias\Entity\PathAlias;
 use Drupal\preprocess_event_dispatcher\Event\NodePreprocessEvent;
+use Drupal\redirect\Entity\Redirect;
 use Drupal\stanford_profile_helper\StanfordDefaultContentInterface;
 use Drupal\stanford_profile_helper\StanfordProfileHelper;
 
@@ -36,6 +39,9 @@ class EntityEventSubscriberTest extends KernelTestBase {
     'path_alias',
     'rabbit_hole',
     'rh_node',
+    'menu_link_content',
+    'link',
+    'redirect',
   ];
 
   /**
@@ -46,6 +52,8 @@ class EntityEventSubscriberTest extends KernelTestBase {
     $this->installEntitySchema('node');
     $this->installEntitySchema('user');
     $this->installEntitySchema('path_alias');
+    $this->installEntitySchema('menu_link_content');
+    $this->installEntitySchema('redirect');
     $this->installConfig('system');
     $this->setInstallProfile('test_stanford_profile_helper');
 
@@ -66,7 +74,7 @@ class EntityEventSubscriberTest extends KernelTestBase {
   /**
    * Entity Pre-save event listener.
    */
-  public function testEntityPresave() {
+  public function testNodePresave() {
     $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple();
     $this->assertEmpty($nodes);
     $node = Node::create(['type' => 'stanford_event', 'title' => 'Foo Bar']);
@@ -108,6 +116,60 @@ class EntityEventSubscriberTest extends KernelTestBase {
 
     $service->createAndDispatchKnownEvents('node', $variables);
     $this->assertArrayHasKey('rh_message', $variables['content']);
+  }
+
+  /**
+   * Test menu item events.
+   */
+  public function testMenuItems() {
+    $node = Node::create(['type' => 'stanford_event', 'title' => 'Foo Bar']);
+    $node->save();
+    PathAlias::create([
+      'path' => '/node/' . $node->id(),
+      'alias' => '/foo/bar',
+    ])->save();
+
+    $parent_item = MenuLinkContent::create([
+      'title' => 'Parent',
+      'description' => 'Llama Gabilondo',
+      'link' => 'entity:node/' . $node->id(),
+      'weight' => 0,
+      'menu_name' => 'main',
+    ]);
+    $parent_item->save();
+
+    $menu_item = MenuLinkContent::create([
+      'title' => 'Llama Gabilondo',
+      'description' => 'Llama Gabilondo',
+      'link' => 'internal:/foo/bar',
+      'weight' => 0,
+      'menu_name' => 'main',
+      'parent' => 'menu_link_content:' . $parent_item->uuid(),
+    ]);
+    $this->assertEquals(SAVED_NEW, $menu_item->save());
+    $this->assertEquals('entity:node/' . $node->id(), $menu_item->get('link')
+      ->get(0)
+      ->get('uri')
+      ->getString());
+    $this->assertEquals(SAVED_UPDATED, $menu_item->save());
+    $this->assertNull($menu_item->delete());
+  }
+
+  public function testRedirects(){
+    $node = Node::create(['type' => 'stanford_event', 'title' => 'Foo Bar']);
+    $node->save();
+    PathAlias::create([
+      'path' => '/node/' . $node->id(),
+      'alias' => '/foo/bar',
+    ])->save();
+
+    $redirect =Redirect::create([
+      'redirect_redirect' => 'internal:/foo/bar',
+      'redirect_source' => '/bar/foo',
+    ]);
+    $redirect->save();
+
+    $this->assertEquals('entity:node/' . $node->id(), $redirect->get('redirect_redirect')->getString());
   }
 
 }

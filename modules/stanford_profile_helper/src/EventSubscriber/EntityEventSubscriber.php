@@ -6,6 +6,7 @@ use Drupal\config_pages\ConfigPagesInterface;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Link;
@@ -58,19 +59,6 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    */
   protected $entityTypeManager;
 
-  /**
-   * Rabbit hole behavior invoker service.
-   *
-   * @var \Drupal\rabbit_hole\BehaviorInvokerInterface
-   */
-  protected $rabbitHoleBehavior;
-
-  /**
-   * Rabbit hole behavior plugin manager.
-   *
-   * @var \Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager
-   */
-  protected $rabbitHolePluginManager;
 
   /**
    * {@inheritDoc}
@@ -81,7 +69,6 @@ class EntityEventSubscriber implements EventSubscriberInterface {
       EntityHookEvents::ENTITY_INSERT => 'onEntityInsert',
       EntityHookEvents::ENTITY_UPDATE => 'onEntityUpdate',
       EntityHookEvents::ENTITY_DELETE => 'onEntityDelete',
-      'preprocess_node' => 'preprocessNode',
     ];
   }
 
@@ -94,17 +81,11 @@ class EntityEventSubscriber implements EventSubscriberInterface {
    *   Core state service.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   Core entity type manager service.
-   * @param \Drupal\rabbit_hole\BehaviorInvokerInterface $rabbit_hole_behavior
-   *   Rabbit hole behavior invoker service.
-   * @param \Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginManager $rabbit_hole_plugin_manager
-   *   Rabbit hole behavior plugin manager.
    */
-  public function __construct(StanfordDefaultContentInterface $stanford_default_content, StateInterface $state, EntityTypeManagerInterface $entity_type_manager, BehaviorInvokerInterface $rabbit_hole_behavior, RabbitHoleBehaviorPluginManager $rabbit_hole_plugin_manager) {
+  public function __construct(StanfordDefaultContentInterface $stanford_default_content, StateInterface $state, EntityTypeManagerInterface $entity_type_manager) {
     $this->defaultContent = $stanford_default_content;
     $this->state = $state;
     $this->entityTypeManager = $entity_type_manager;
-    $this->rabbitHoleBehavior = $rabbit_hole_behavior;
-    $this->rabbitHolePluginManager = $rabbit_hole_plugin_manager;
   }
 
   /**
@@ -122,6 +103,64 @@ class EntityEventSubscriber implements EventSubscriberInterface {
       $this->{$method_name}($entity);
     }
 
+    self::fixEntityUuid($entity);
+  }
+
+  /**
+   * On entity insert event listener.
+   *
+   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent $event
+   *   Triggered Event.
+   */
+  public function onEntityInsert(EntityInsertEvent $event): void {
+    $entity = $event->getEntity();
+    $entity_type = $entity->getEntityTypeId();
+    $method_name = 'insert' . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
+    // Call individual methods for each entity type if one is available.
+    if (method_exists($this, $method_name)) {
+      $this->{$method_name}($entity);
+    }
+  }
+
+  /**
+   * On entity update event listener.
+   *
+   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityUpdateEvent $event
+   *   Triggered Event.
+   */
+  public function onEntityUpdate(EntityUpdateEvent $event): void {
+    $entity = $event->getEntity();
+    $entity_type = $entity->getEntityTypeId();
+    $method_name = 'update' . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
+    // Call individual methods for each entity type if one is available.
+    if (method_exists($this, $method_name)) {
+      $this->{$method_name}($entity, $event->getOriginalEntity());
+    }
+  }
+
+  /**
+   * On entity delete event listener.
+   *
+   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityDeleteEvent $event
+   *   Triggered Event.
+   */
+  public function onEntityDelete(EntityDeleteEvent $event): void {
+    $entity = $event->getEntity();
+    $entity_type = $entity->getEntityTypeId();
+    $method_name = 'delete' . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
+    // Call individual methods for each entity type if one is available.
+    if (method_exists($this, $method_name)) {
+      $this->{$method_name}($entity);
+    }
+  }
+
+  /**
+   * For configuration entities, make sure the uuid matches the config file.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The entity to fix.
+   */
+  protected static function fixEntityUuid(EntityInterface $entity) {
     if ($entity instanceof ConfigEntityInterface && $entity->isNew()) {
       /** @var \Drupal\Core\Config\StorageInterface $config_storage */
       $config_storage = \Drupal::service('config.storage.sync');
@@ -142,60 +181,18 @@ class EntityEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Before saving a new node, if it's the first one, create a list page.
+   * Before saving a configuration page, set some state and clear caches.
    *
-   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent $event
-   *   Triggered Event.
+   * @param \Drupal\config_pages\ConfigPagesInterface $config_page
+   *   The configuration page being saved.
    */
-  public function onEntityInsert(EntityInsertEvent $event): void {
-    $entity = $event->getEntity();
-    $entity_type = $entity->getEntityTypeId();
-    $method_name = 'insert' . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
-    // Call individual methods for each entity type if one is available.
-    if (method_exists($this, $method_name)) {
-      $this->{$method_name}($entity);
-    }
-  }
-
-  /**
-   * Before saving a new node, if it's the first one, create a list page.
-   *
-   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityUpdateEvent $event
-   *   Triggered Event.
-   */
-  public function onEntityUpdate(EntityUpdateEvent $event): void {
-    $entity = $event->getEntity();
-    $entity_type = $entity->getEntityTypeId();
-    $method_name = 'update' . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
-    // Call individual methods for each entity type if one is available.
-    if (method_exists($this, $method_name)) {
-      $this->{$method_name}($entity, $event->getOriginalEntity());
-    }
-  }
-
-  /**
-   * Before saving a new node, if it's the first one, create a list page.
-   *
-   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityDeleteEvent $event
-   *   Triggered Event.
-   */
-  public function onEntityDelete(EntityDeleteEvent $event): void {
-    $entity = $event->getEntity();
-    $entity_type = $entity->getEntityTypeId();
-    $method_name = 'delete' . str_replace(' ', '', ucwords(str_replace('_', ' ', $entity_type)));
-    // Call individual methods for each entity type if one is available.
-    if (method_exists($this, $method_name)) {
-      $this->{$method_name}($entity);
-    }
-  }
-
   protected static function preSaveConfigPages(ConfigPagesInterface $config_page){
     if (
       $config_page->hasField('su_site_url') &&
-      ($url_field = $config_page->get('su_site_url')->getValue())
+      $config_page->get('su_site_url')->count()
     ) {
       // Set the xml sitemap module state to the new domain.
-      \Drupal::state()->set('xmlsitemap_base_url', $url_field[0]['uri']);
+      \Drupal::state()->set('xmlsitemap_base_url', $config_page->get('su_site_url')->get(0)->get('uri')->getString());
     }
 
     // Invalidate cache tags on config pages save. This is a blanket cache clear
@@ -203,6 +200,12 @@ class EntityEventSubscriber implements EventSubscriberInterface {
     Cache::invalidateTags(['config:system.site', 'system.site', 'block_view', 'node_view']);
   }
 
+  /**
+   * Before saving a field storage, adjust the third party settings.
+   *
+   * @param \Drupal\field\FieldStorageConfigInterface $field_storage
+   *   Field storage being saved.
+   */
   protected static function preSaveFieldStorageConfig(FieldStorageConfigInterface $field_storage){
     // If a field is saved and the field permissions are public, lets just remove
     // those third party settings before save so that it keeps the config clean.
@@ -212,14 +215,34 @@ class EntityEventSubscriber implements EventSubscriberInterface {
     }
   }
 
+  /**
+   * Before saving a menu item, clear caches.
+   *
+   * @param \Drupal\menu_link_content\MenuLinkContentInterface $entity
+   *   Menu item being saved.
+   */
   protected function insertMenuLinkContent(MenuLinkContentInterface $entity){
     Cache::invalidateTags(['stanford_profile_helper:menu_links']);
   }
 
+  /**
+   * When deleting a menu item, clear caches.
+   *
+   * @param \Drupal\menu_link_content\MenuLinkContentInterface $entity
+   *   Menu item being deleted.
+   */
   protected function deleteMenuLinkContent(MenuLinkContentInterface $entity){
     Cache::invalidateTags(['stanford_profile_helper:menu_links']);
   }
 
+  /**
+   * When updating a menu item, clear caches if necessary.
+   *
+   * @param \Drupal\menu_link_content\MenuLinkContentInterface $entity
+   *   Modified menu item.
+   * @param \Drupal\menu_link_content\MenuLinkContentInterface $original_entity
+   *   Original unmodified menu item.
+   */
   protected function updateMenuLinkContent(MenuLinkContentInterface $entity, MenuLinkContentInterface $original_entity){
     $original = [
       $original_entity->get('title')->getValue(),
@@ -353,6 +376,12 @@ class EntityEventSubscriber implements EventSubscriberInterface {
     }
   }
 
+  /**
+   * Before saving a user role, prepend it with `custm_`.
+   *
+   * @param \Drupal\user\RoleInterface $role
+   *   The role being saved.
+   */
   protected static function preSaveUserRole(RoleInterface $role){
     /** @var \Drupal\Core\Config\StorageInterface $config_storage */
     $config_storage = \Drupal::service('config.storage.sync');
@@ -367,49 +396,6 @@ class EntityEventSubscriber implements EventSubscriberInterface {
     ) {
       $role->set('id', 'custm_' . $role->id());
     }
-  }
-
-  /**
-   * When preprocessing the node page, add the rabbit hole behavior message.
-   *
-   * @param \Drupal\preprocess_event_dispatcher\Event\NodePreprocessEvent $event
-   *   Triggered Event.
-   */
-  public function preprocessNode(NodePreprocessEvent $event) {
-    $node = $event->getVariables()->get('node');
-    if ($event->getVariables()->get('page') && ($plugin = $this->getRabbitHolePlugin($node))) {
-      $redirect_response = $plugin->performAction($node);
-
-      // The action returned from the redirect plugin might be to show the
-      // page. If it is, we don't want to display the message.
-      if ($redirect_response instanceof TrustedRedirectResponse) {
-
-        $content = $event->getVariables()->getByReference('content');
-        $message = [
-          '#theme' => 'rabbit_hole_message',
-          '#destination' => $redirect_response->getTargetUrl(),
-        ];
-        $event->getVariables()
-          ->set('content', ['rh_message' => $message] + $content);
-      }
-    }
-  }
-
-  /**
-   * Get the rabbit hole behavior plugin for the given node.
-   *
-   * @param \Drupal\node\NodeInterface $entity
-   *   Node with rabbit hole.
-   *
-   * @return \Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginInterface|null
-   *   Redirect behavior plugin if applicable.
-   */
-  protected function getRabbitHolePlugin(NodeInterface $entity): ?RabbitHoleBehaviorPluginInterface {
-    $values = $this->rabbitHoleBehavior->getRabbitHoleValuesForEntity($entity);
-    if (isset($values['rh_action']) && $values['rh_action'] == 'page_redirect') {
-      return $this->rabbitHolePluginManager->createInstance($values['rh_action'], $values);
-    }
-    return NULL;
   }
 
   /**
