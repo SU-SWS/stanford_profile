@@ -97,6 +97,9 @@ class WYSIWYGCest {
     $I->click('Edit', '.inner-row-wrapper');
     $I->waitForElementVisible('.cke_inner');
 
+    // Wait a second for any click events to be applied.
+    $I->wait(1);
+
     $table_caption = $this->faker->words(4, TRUE);
     $I->click('.cke_button__table');
     $I->waitForText('Table Properties');
@@ -135,6 +138,9 @@ class WYSIWYGCest {
     $I->waitForElementVisible('#row-0');
     $I->click('Edit', '.inner-row-wrapper');
     $I->waitForElementVisible('.cke_inner');
+
+    // Wait a second for any click events to be applied.
+    $I->wait(1);
     $I->click('Insert from Media Library');
     $I->waitForElementVisible('.dropzone');
     $I->dropFileInDropzone(__DIR__ . '/logo.jpg');
@@ -160,6 +166,9 @@ class WYSIWYGCest {
     $I->waitForElementVisible('#row-0');
     $I->click('Edit', '.inner-row-wrapper');
     $I->waitForElementVisible('.cke_inner');
+
+    // Wait a second for any click events to be applied.
+    $I->wait(1);
     $I->click('Insert from Media Library');
     $I->waitForElementVisible('.dropzone');
     $I->click('Video', '.media-library-menu-video');
@@ -200,6 +209,9 @@ class WYSIWYGCest {
     $I->waitForElementVisible('#row-0');
     $I->click('Edit', '.inner-row-wrapper');
     $I->waitForElementVisible('.cke_inner');
+
+    // Wait a second for any click events to be applied.
+    $I->wait(1);
     $I->click('Insert from Media Library');
     $I->waitForElementVisible('.dropzone');
     $I->click('File', '.media-library-menu-file');
