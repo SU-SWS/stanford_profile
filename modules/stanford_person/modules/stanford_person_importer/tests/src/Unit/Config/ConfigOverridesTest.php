@@ -156,6 +156,8 @@ class ConfigOverridesTest extends UnitTestCase {
         }
       });
 
+    $this->configOverrides->loadOverrides(['migrate_plus.migration.su_stanford_person']);
+
     drupal_static_reset('cap_source_urls');
     $overrides = $this->configOverrides->loadOverrides(['migrate_plus.migration.su_stanford_person']);
 

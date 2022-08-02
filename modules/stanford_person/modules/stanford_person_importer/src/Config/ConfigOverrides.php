@@ -97,14 +97,11 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
   public function loadOverrides($names) {
     $overrides = [];
     if (in_array('migrate_plus.migration.su_stanford_person', $names)) {
-      $urls = &drupal_static('cap_source_urls');
+      $urls = $this->getImporterUrls();
 
       if ($urls === NULL) {
-        $urls = $this->getImporterUrls();
-        if ($urls === NULL) {
-          $overrides['migrate_plus.migration.su_stanford_person']['status'] = FALSE;
-          return $overrides;
-        }
+        $overrides['migrate_plus.migration.su_stanford_person']['status'] = FALSE;
+        return $overrides;
       }
 
       $overrides['migrate_plus.migration.su_stanford_person']['source']['urls'] = $urls;
@@ -121,6 +118,10 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    *   Array of urls or NULL if any errors occur.
    */
   protected function getImporterUrls(): ?array {
+    $urls = &drupal_static('cap_source_urls');
+    if ($urls !== NULL) {
+      return $urls;
+    }
     try {
       $this->cap->setClientId($this->getCapClientId());
       $this->cap->setClientSecret($this->getCapClientSecret());
