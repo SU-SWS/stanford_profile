@@ -11,6 +11,20 @@ use Faker\Factory;
 class WYSIWYGCest {
 
   /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * HTML should be properly stripped.
    */
   public function testFilteredHtml(FunctionalTester $I) {
@@ -70,6 +84,43 @@ class WYSIWYGCest {
     $I->canSeeNumberOfElements('tr', 3);
     $I->canSeeNumberOfElements('th[scope]', 2);
     $I->canSeeNumberOfElements('td', 4);
+  }
+
+  /**
+   * The wysiwyg buttons should work as expected at all times.
+   */
+  public function testWysiwygButtons(FunctionalTester $I) {
+    $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
+    $I->logInWithRole('contributor');
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->waitForElementVisible('#row-0');
+    $I->click('Edit', '.inner-row-wrapper');
+    $I->waitForElementVisible('.cke_inner');
+
+    $table_caption = $this->faker->words(4, TRUE);
+    $I->click('.cke_button__table');
+    $I->waitForText('Table Properties');
+    $I->fillField('Rows', 5);
+    $I->fillField('Columns', 3);
+    $I->fillField('Caption', $table_caption);
+    $I->click('OK');
+    $I->waitForElementNotVisible('.cke_dialog_container');
+
+    $I->click('.cke_button__drupallink');
+    $I->waitForText('Add Link');
+    $url = $this->faker->url;
+    $I->fillField('[name="attributes[href]"]', $url);
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
+
+    $I->click('Continue');
+    $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
+    $I->click('Save');
+    $I->canSeeLink($url);
+
+    $I->canSee($table_caption, 'table caption');
+    $I->canSeeNumberOfElements('.su-wysiwyg-text td', 15);
+    $I->canSeeNumberOfElements('.su-wysiwyg-text tr', 5);
   }
 
   /**
