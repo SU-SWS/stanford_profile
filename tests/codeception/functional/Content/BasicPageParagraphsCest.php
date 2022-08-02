@@ -23,8 +23,6 @@ class BasicPageParagraphsCest {
 
   /**
    * Test the card component data is displayed correctly.
-   *
-   * @group aria-label
    */
   public function testCardParagraph(FunctionalTester $I) {
     $card_values =[
@@ -32,7 +30,6 @@ class BasicPageParagraphsCest {
       'headline' => $this->faker->words(3, true),
       'uri' => $this->faker->url,
       'title' => $this->faker->words(3, true),
-      'aria-label' => $this->faker->words(5, true),
     ];
 
     $paragraph = $I->createEntity(['type' => 'stanford_card'], 'paragraph');
@@ -62,7 +59,6 @@ class BasicPageParagraphsCest {
     $I->fillField('Headline', $card_values['headline']);
     $I->fillField('URL', $card_values['uri']);
     $I->fillField('Link text', $card_values['title']);
-    $I->fillField('ARIA Label',$card_values['aria-label']);
     $I->click('Continue');
     $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
     $I->wait(1);
@@ -70,8 +66,6 @@ class BasicPageParagraphsCest {
     $I->canSee($card_values['superhead']);
     $I->canSee($card_values['headline']);
     $I->canSeeLink($card_values['title'], $card_values['uri']);
-    $aria_label = $I->grabAttributeFrom("a[href='{$card_values['uri']}']", 'aria-label');
-    $I->assertEquals($card_values['aria-label'], $aria_label, sprintf('Attribute aria-label `%s` does not match expected value `%s`', $aria_label, $card_values['aria-label']));
   }
 
   /**
