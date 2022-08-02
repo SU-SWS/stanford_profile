@@ -21,6 +21,7 @@ class StanfordTextEditorTest extends KernelTestBase {
     'media_library',
     'views',
     'stanford_media',
+    'file',
   ];
 
   /**

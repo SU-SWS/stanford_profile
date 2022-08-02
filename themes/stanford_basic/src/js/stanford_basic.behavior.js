@@ -10,7 +10,7 @@
 export default {
 
   // Attach Drupal Behavior.
-  attach(context, settings) {
+  attach(context, settings, once) {
     (function ($) {
       // Validate there is a skip link anchor for the main content. If not,
       // default to #page-content.
@@ -60,7 +60,7 @@ export default {
       backToTop();
       $(window).scroll(backToTop)
 
-      $('#back-to-top', context).once('back-to-top').click((e) => {
+      $(once('back-to-top', '#back-to-top', context)).click((e) => {
         e.preventDefault();
         $("html, body").animate({ scrollTop: 0 }, "slow");
         $('#page-content').attr('tabIndex', '-1').focus();

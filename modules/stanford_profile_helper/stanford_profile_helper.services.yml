@@ -4,7 +4,12 @@ services:
     arguments: ['@entity_type.manager', '@config.factory', '@extension.path.resolver']
   stanford_profile_helper.event_subscriber.entity:
     class: Drupal\stanford_profile_helper\EventSubscriber\EntityEventSubscriber
-    arguments: ['@stanford_profile_helper.default_content', '@state', '@entity_type.manager', '@rabbit_hole.behavior_invoker', '@plugin.manager.rabbit_hole_behavior_plugin']
+    arguments: ['@stanford_profile_helper.default_content', '@state', '@entity_type.manager']
+    tags:
+      - { name: 'event_subscriber' }
+  stanford_profile_helper.event_subscriber.preprocess:
+    class: Drupal\stanford_profile_helper\EventSubscriber\PreprocessEventSubscriber
+    arguments: ['@rabbit_hole.behavior_invoker', '@plugin.manager.rabbit_hole_behavior_plugin']
     tags:
       - { name: 'event_subscriber' }
   stanford_profile_helper.config_overrider:
