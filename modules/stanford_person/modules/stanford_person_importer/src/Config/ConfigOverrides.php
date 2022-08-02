@@ -97,24 +97,50 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
   public function loadOverrides($names) {
     $overrides = [];
     if (in_array('migrate_plus.migration.su_stanford_person', $names)) {
+      $urls = $this->getImporterUrls();
+
+      if ($urls === NULL) {
+        $overrides['migrate_plus.migration.su_stanford_person']['status'] = FALSE;
+        return $overrides;
+      }
+
+      $overrides['migrate_plus.migration.su_stanford_person']['source']['urls'] = $urls;
+      $overrides['migrate_plus.migration.su_stanford_person']['source']['authentication']['client_id'] = $this->getCapClientId();
+      $overrides['migrate_plus.migration.su_stanford_person']['source']['authentication']['client_secret'] = $this->getCapClientSecret();
+    }
+    return $overrides;
+  }
+
+  /**
+   * Get a list of urls for the importer.
+   *
+   * @return array|null
+   *   Array of urls or NULL if any errors occur.
+   */
+  protected function getImporterUrls(): ?array {
+    $urls = &drupal_static('cap_source_urls');
+    if ($urls !== NULL) {
+      return $urls;
+    }
+    try {
       $this->cap->setClientId($this->getCapClientId());
       $this->cap->setClientSecret($this->getCapClientSecret());
 
       $urls = $this->getOrgsUrls();
       $urls = array_merge($urls, $this->getWorkgroupUrls());
       $urls = array_merge($urls, $this->getSunetUrls());
-
-      $allowed_fields = $this->getAllowedFields();
-      foreach ($urls as &$url) {
-        $url = Url::fromUri($url);
-        $url->mergeOptions(['query' => ['whitelist' => implode(',', $allowed_fields)]]);
-        $url = $url->toString();
-      }
-      $overrides['migrate_plus.migration.su_stanford_person']['source']['urls'] = $urls;
-      $overrides['migrate_plus.migration.su_stanford_person']['source']['authentication']['client_id'] = $this->getCapClientId();
-      $overrides['migrate_plus.migration.su_stanford_person']['source']['authentication']['client_secret'] = $this->getCapClientSecret();
     }
-    return $overrides;
+    catch (\Exception $e) {
+      return NULL;
+    }
+
+    $allowed_fields = $this->getAllowedFields();
+    foreach ($urls as &$url) {
+      $url = Url::fromUri($url);
+      $url->mergeOptions(['query' => ['whitelist' => implode(',', $allowed_fields)]]);
+      $url = $url->toString();
+    }
+    return $urls;
   }
 
   /**
@@ -145,7 +171,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   protected function getOrgsUrls() {
-    $org_tids = $this->configPages->getValue('stanford_person_importer', 'su_person_orgs', [], 'target_id');
+    $org_tids = array_filter($this->configPages->getValue('stanford_person_importer', 'su_person_orgs', [], 'target_id') ?? []);
     $include_children = (bool) $this->configPages->getValue('stanford_person_importer', 'su_person_child_orgs', 0, 'value');
 
     // No field values populated.
@@ -173,8 +199,8 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @return string[]
    *   List of urls.
    */
-  protected function getWorkgroupUrls():array {
-    $workgroups = $this->configPages->getValue('stanford_person_importer', 'su_person_workgroup', [], 'value');
+  protected function getWorkgroupUrls(): array {
+    $workgroups = array_filter($this->configPages->getValue('stanford_person_importer', 'su_person_workgroup', [], 'value') ?? []);
 
     if ($workgroups) {
       return $this->getUrlChunks($this->cap->getWorkgroupUrl($workgroups));
