@@ -7,4 +7,4 @@
     }
   };
 
-})(jQuery, Drupal);
+})(jQuery, Drupal, once);
