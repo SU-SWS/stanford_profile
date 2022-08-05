@@ -1,0 +1,40 @@
+_meta:
+  version: '1.0'
+  entity_type: consumer
+  uuid: dc98f394-68ef-4e11-bab2-fd0e2931bca1
+  default_langcode: en
+  depends:
+    04a6aab5-6ec4-4262-ace6-2fb0bca71f5f: user
+default:
+  owner_id:
+    -
+      target_id: 0
+  label:
+    -
+      value: 'Default Consumer'
+  description:
+    -
+      value: 'This is the default consumer. This was created programmatically when the Consumers module was first installed. Feel free to edit, or delete this.'
+  third_party:
+    -
+      value: true
+  is_default:
+    -
+      value: true
+  secret:
+    -
+      value: replace-me-with-a-secret-string
+      existing: ''
+      pre_hashed: false
+  confidential:
+    -
+      value: false
+  roles:
+    -
+      target_id: decoupled_site_users
+  user_id:
+    -
+      entity: 04a6aab5-6ec4-4262-ace6-2fb0bca71f5f
+  pkce:
+    -
+      value: false
