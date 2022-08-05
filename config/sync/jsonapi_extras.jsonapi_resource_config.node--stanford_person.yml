@@ -11,6 +11,8 @@ third_party_settings:
     default_include:
       - su_person_components
       - su_person_photo.field_media_image
+      - su_person_type_group
+      - su_shared_tags
     default_filter:
       'filter:status': '1'
     page_limit: 50
@@ -216,7 +218,9 @@ resourceFields:
     fieldName: su_person_affiliations
     publicName: su_person_affiliations
     enhancer:
-      id: ''
+      id: url_link
+      settings:
+        absolute_url: 0
   su_person_components:
     disabled: false
     fieldName: su_person_components

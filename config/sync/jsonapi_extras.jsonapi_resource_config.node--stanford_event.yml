@@ -10,6 +10,13 @@ third_party_settings:
   jsonapi_defaults:
     default_include:
       - su_event_components
+      - su_event_audience
+      - su_event_groups
+      - su_event_type
+      - su_event_keywords
+      - su_event_schedule
+      - su_shared_tags
+      - su_event_subject
     default_filter:
       'filter:status': '1'
     page_limit: 50
@@ -279,7 +286,9 @@ resourceFields:
     fieldName: su_event_source
     publicName: su_event_source
     enhancer:
-      id: ''
+      id: url_link
+      settings:
+        absolute_url: 0
   su_event_sponsor:
     disabled: false
     fieldName: su_event_sponsor
