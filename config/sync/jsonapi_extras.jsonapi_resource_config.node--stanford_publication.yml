@@ -11,6 +11,11 @@ third_party_settings:
     default_include:
       - su_publication_components
       - su_publication_image.field_media_image
+      - su_publication_author_ref
+      - su_publication_citation
+      - su_publication_image
+      - su_publication_topics
+      - su_shared_tags
     default_filter:
       'filter:status': '1'
     page_limit: 50
@@ -191,6 +196,12 @@ resourceFields:
     disabled: false
     fieldName: stanford_intranet__access
     publicName: stanford_intranet__access
+    enhancer:
+      id: ''
+  su_publication_author_ref:
+    disabled: false
+    fieldName: su_publication_author_ref
+    publicName: su_publication_author_ref
     enhancer:
       id: ''
   su_publication_citation:

@@ -4,6 +4,11 @@ status: true
 dependencies:
   config:
     - paragraphs.paragraphs_type.stanford_lists
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
 id: paragraph--stanford_lists
 disabled: false
 path: paragraph/stanford_lists

@@ -102,12 +102,15 @@ process:
         - code
     -
       plugin: urlencode
-  su_course_link:
+  su_course_link/uri:
     -
       plugin: concat
       source:
         - constants/link
         - '@link_query'
+  su_course_link/title:
+    plugin: default_value
+    default_value: ''
   su_course_quarters:
     -
       plugin: explore_courses_quarters

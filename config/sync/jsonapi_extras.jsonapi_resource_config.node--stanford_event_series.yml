@@ -8,6 +8,11 @@ dependencies:
     - jsonapi_defaults
 third_party_settings:
   jsonapi_defaults:
+    default_include:
+      - su_event_series_components
+      - su_event_series_event
+      - su_event_series_type
+      - su_shared_tags
     default_filter:
       'filter:status': '1'
     page_limit: 50
