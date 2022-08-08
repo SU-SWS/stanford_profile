@@ -75,7 +75,7 @@ process:
     plugin: str_replace
     source: title
     search: '/^(.*) \([A-Z].*$/'
-    replace: '$1'
+    replace: $1
     regex: true
   body/value: description
   body/format: constants/stanford_html
