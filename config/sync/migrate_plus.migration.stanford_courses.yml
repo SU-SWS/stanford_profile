@@ -71,7 +71,12 @@ source:
 process:
   status: constants/status
   type: constants/type
-  title: title
+  title:
+    plugin: str_replace
+    source: title
+    search: '/^(.*) \([A-Z].*$/'
+    replace: '$1'
+    regex: true
   body/value: description
   body/format: constants/stanford_html
   su_course_code: code
