@@ -2,6 +2,8 @@
 
 use Drupal\config_pages\Entity\ConfigPages;
 
+require_once __DIR__ . '/../TestFilesTrait.php';
+
 /**
  * Test for the local lockup settings.
  *
@@ -9,19 +11,7 @@ use Drupal\config_pages\Entity\ConfigPages;
  */
 class LocalFooterLockupCest {
 
-  /**
-   * The path to the data dir where codeception wants the logo file.
-   *
-   * @var string
-   */
-  protected $DATA_DIR;
-
-  /**
-   * The logo file name.
-   *
-   * @var string
-   */
-  const LOGO_FILENAME = "logo.jpg";
+  use TestFilesTrait;
 
   /**
    * Setup work before running tests.
@@ -30,12 +20,7 @@ class LocalFooterLockupCest {
    *  The working class.
    */
   function _before(AcceptanceTester $I) {
-    $this->DATA_DIR = rtrim(codecept_data_dir(), '/\\');
-    // Copy our assets into place first.
-    if (!file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR)) {
-      mkdir($this->DATA_DIR, 0777, TRUE);
-    }
-    copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    $this->prepareImage();
   }
 
   /**
@@ -48,20 +33,7 @@ class LocalFooterLockupCest {
     if ($config_page = ConfigPages::load('stanford_local_footer')) {
       $config_page->delete();
     }
-
-    $config_page = ConfigPages::create([
-      'type' => 'stanford_local_footer',
-      'su_local_foot_use_loc' => TRUE,
-      'su_local_foot_use_logo' => TRUE,
-      'su_local_foot_loc_op' => 'a',
-      'context' => 'a:0:{}',
-    ]);
-    $config_page->save();
-
-    // Clean up our assets.
-    if (file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME)) {
-      unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
-    }
+    $this->removeFiles();
   }
 
   /**
@@ -343,7 +315,7 @@ class LocalFooterLockupCest {
       $I->click("Remove");
     }
 
-    $I->attachFile('input[name="files[su_local_foot_loc_img_0]"]', self::LOGO_FILENAME);
+    $I->attachFile('input[name="files[su_local_foot_loc_img_0]"]', $this->logoPath);
     $I->click('Upload');
 
     $I->click('Save');
@@ -377,7 +349,7 @@ class LocalFooterLockupCest {
     }
 
     // For CircleCI
-    $I->attachFile('input[name="files[su_local_foot_loc_img_0]"]', self::LOGO_FILENAME);
+    $I->attachFile('input[name="files[su_local_foot_loc_img_0]"]', $this->logoPath);
     $I->click('Upload');
 
     $I->click('Save');

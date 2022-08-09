@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.mailchimp-magazine-block {
+
+  &.flex-8-of-12 {
+    @include margin(0 auto);
+  }
+
+  #mc_embed_signup_scroll {
+    @include box-shadow('paper', '0');
+    @include modular-spacing('padding-bottom', 3);
+    @include modular-spacing('padding-left', 3);
+    @include modular-spacing('padding-right', 3);
+    @include modular-spacing('margin-bottom', 7);
+
+    background-color: $su-color-fog;
+    text-align: center;
+
+    p {
+      @include big-paragraph;
+      @include modular-spacing('margin-top', 0);
+    }
+
+    form {
+      @include modular-spacing('margin-bottom', 0);
+    }
+
+    h2 {
+      @include type-c;
+      @include modular-spacing('padding-top', 3);
+      @include margin(0);
+    }
+
+    .mc_signup_submission_wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .mc-field-group {
+      float: none;
+
+      input {
+        @include big-paragraph;
+      }
+    }
+
+    .button {
+      @include modular-spacing('margin-left', 0);
+    }
+
+    form {
+      margin-bottom: 0;
+    }
+
+  }
+}

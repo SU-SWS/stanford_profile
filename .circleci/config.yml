@@ -4,7 +4,7 @@ version: 2
 ## Defines images and working directory.
 defaults: &defaults
   docker:
-    - image: pookmish/drupal8ci:latest
+    - image: pookmish/drupal8ci:php8
     - image: selenium/standalone-chrome:latest
     - image: circleci/mysql:5.7
       environment:
@@ -15,20 +15,20 @@ defaults: &defaults
   working_directory: /var/www/html
 
 #Jobs
-code_coverage: &code_coverage
-  <<: *defaults
-  steps:
-    - checkout:
-        path: /var/www/test
-    - run:
-        name: Run PHP Unit Coverage Tests
-        command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
-          ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
-    - store_test_results:
-        path: /var/www/html/artifacts/phpunit
-    - store_artifacts:
-        path: /var/www/html/artifacts/phpunit/coverage
+#code_coverage: &code_coverage
+#  <<: *defaults
+#  steps:
+#    - checkout:
+#        path: /var/www/test
+#    - run:
+#        name: Run PHP Unit Coverage Tests
+#        command: |
+#          composer global require su-sws/stanford-caravan:dev-8.x-2.x
+#          ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
+#    - store_test_results:
+#        path: /var/www/html/artifacts/phpunit
+#    - store_artifacts:
+#        path: /var/www/html/artifacts/phpunit/coverage
 
 back_to_dev: &back_to_dev
   <<: *defaults
@@ -37,7 +37,7 @@ back_to_dev: &back_to_dev
     - run:
         name: Back to dev
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
+          composer global require su-sws/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan back-to-dev ${CIRCLE_TAG} ${CIRCLE_WORKING_DIRECTORY} main
 
 d9_codeception: &d9_codeception
@@ -48,8 +48,9 @@ d9_codeception: &d9_codeception
     - run:
         name: Run Codeception Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
-          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
+          composer global require su-sws/stanford-caravan:dev-8.x-2.x
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test --suites=functional
+#          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=/var/www/test
     - store_test_results:
         path: /var/www/html/artifacts/behat
     - store_artifacts:
@@ -57,8 +58,8 @@ d9_codeception: &d9_codeception
 
 # Declare all of the jobs we should run.
 jobs:
-  run-coverage:
-    <<: *code_coverage
+#  run-coverage:
+#    <<: *code_coverage
   run-back-to-dev:
     <<: *back_to_dev
   run-d9-codeception:
@@ -79,18 +80,18 @@ workflows:
                 - /.*/
   tests:
     jobs:
-      - run-coverage:
-          context: github-auth
+#      - run-coverage:
+#          context: github-auth
       - run-d9-codeception:
           context: github-auth
   # Re-test every sunday in case this code becomes stale.
-  sundays:
-    jobs:
-      - run-coverage
-    triggers:
-      - schedule:
-          cron: "0 0 * * 0"
-          filters:
-            branches:
-              only:
-                - 8.x-1.x
+#  sundays:
+#    jobs:
+#      - run-coverage
+#    triggers:
+#      - schedule:
+#          cron: "0 0 * * 0"
+#          filters:
+#            branches:
+#              only:
+#                - 9.x

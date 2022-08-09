@@ -1,0 +1,30 @@
+events_person_cta:
+  label: Person CTA
+  description: "A small person postcard like call out."
+  fields:
+    image:
+      type: text
+      label: "Image"
+      description: "Image"
+      preview: "<img src=\"https://placeimg.com/640/480/people\" alt />"
+    name:
+      type: text
+      label: "Person Name"
+      description: "Persons full name"
+      preview: "John Wick"
+    title:
+      type: text
+      label: "Title"
+      description: "Persons full position or title"
+      preview: "Director of the department of redundancy department"
+    link:
+      type: text
+      label: "Person Name Link"
+      description: "Add a link to the person name."
+      preview: "https://google.com/"
+  use: "@stanford_events/components/person-cta/person-cta.html.twig"
+  libraries:
+    - personcta:
+        css:
+          component:
+            ../../../dist/css/stanford_events.person-cta.css: { }

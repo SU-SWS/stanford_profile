@@ -11,10 +11,12 @@ class LocalFooterCest {
    * Tidy up after oneself.
    */
   public function _after(AcceptanceTester $I) {
-    $I->logInWithRole('administrator');
-    $I->amOnPage('/admin/config/system/local-footer');
-    $I->checkOption('Enabled');
-    $I->click('Save');
+    $config_page = \Drupal::entityTypeManager()
+      ->getStorage('config_pages')
+      ->load('stanford_local_footer');
+    if ($config_page) {
+      $config_page->delete();
+    }
   }
 
   /**
@@ -117,7 +119,7 @@ class LocalFooterCest {
     $I->fillField('su_local_foot_primary[0][uri]', $node->label() . " ({$node->id()})");
     $I->fillField('su_local_foot_primary[0][title]', $node->label());
     $I->click('Save');
-    $I->canSee('Local Footer Local Footer has been updated.');
+    $I->canSee('Local Footer has been');
     $I->amOnPage('/');
     $I->canSeeLink($node->label(), $node->toUrl()->toString());
 
@@ -127,7 +129,7 @@ class LocalFooterCest {
     $I->fillField('su_local_foot_primary[0][uri]', '<nolink>');
     $I->fillField('su_local_foot_primary[0][title]', 'NO LINK');
     $I->click('Save');
-    $I->canSee('Local Footer Local Footer has been updated.');
+    $I->canSee('Local Footer has been');
     $I->amOnPage('/');
     $I->canSee('NO LINK', 'li span');
   }

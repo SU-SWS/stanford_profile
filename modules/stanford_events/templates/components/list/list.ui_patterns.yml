@@ -1,0 +1,119 @@
+events_list:
+  label: Events List Item
+  description: "Building block component for the events list page."
+  fields:
+    start_month:
+      type: text
+      label: "Start Month"
+      description: "Event Month"
+      preview: "May"
+    start_date:
+      type: text
+      label: "Start Date"
+      description: "Event date"
+      preview: "01"
+    end_month:
+      type: text
+      label: "End Month"
+      description: "Event Month"
+      preview: "May"
+    end_date:
+      type: text
+      label: "End Date"
+      description: "Event ending date"
+      preview: "14"
+    event_type:
+      type: text
+      label: "Event Type"
+      description: "The type of the event."
+    headline:
+      type: text
+      label: "Headline"
+      description: "Text heading"
+      preview: "This is the headline."
+    subheadline:
+      type: text
+      label: "Subheadline"
+      description: "Text subheadline."
+      preview: "This is the subheadline."
+    dek:
+      type: text
+      label: "Dek"
+      description: "This is the dek specific to news items."
+      preview: "<p>Sample text goes here and this list should be able to handle a few lines.</p>"
+    url:
+      type: text
+      label: "URL for event"
+      description: "URL for event."
+      preview: "http://www.stanford.edu/"
+    date_time:
+      type: text
+      label: "Date and time for event"
+      description: "Date and time for the event."
+      preview: "Sunday, Aug 30 2020, 12:00 - 2:00pm PST"
+    location:
+      type: text
+      label: "Location for event"
+      description: "Location for the event."
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
+    address:
+      type: address
+      label: "Formatted location for event"
+      description: "Formatted location for the event."
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
+    location_organization:
+      type: address
+      label: "Company name"
+      description: "Manually entered address for event"
+      preview: "Company Name"
+    location_address_line1:
+      type: address
+      label: "Address Line 1"
+      description: "Manually entered address for event"
+      preview: "1234 Main Street"
+    location_address_line2:
+      type: address
+      label: "Address Line 2"
+      description: "Manually entered address for event"
+      preview: "Suite 10"
+    location_locality:
+      type: address
+      label: "Locality/City"
+      description: "Manually entered address for event"
+      preview: "Stanford"
+    location_administrative_area:
+      type: address
+      label: "Administrative Area/State"
+      description: "Manually entered address for event"
+      preview: "California"
+    location_dependent_locality:
+      type: address
+      label: "Dependent Locality"
+      description: "Manually entered address for event"
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
+    location_country_code:
+      type: address
+      label: "Country"
+      description: "Manually entered address for event"
+      preview: "United States"
+    location_postal_code:
+      type: address
+      label: "Postal Code"
+      description: "Manually entered address for event"
+      preview: "1234 Main Street, Stanford, CA 94305, United States"
+    location_sorting_code:
+      type: address
+      label: "Sorting Code"
+      description: "Manually entered address for event"
+      preview: "94305"
+    edit:
+      type: text
+      label: "Edit this Event"
+      description: "Button to edit the content."
+      preview: "http://www.stanford.edu"
+  use: "@events/list/list.html.twig"
+  libraries:
+    - eventslist:
+        css:
+          component:
+            ../../../dist/css/stanford_events.event-list.css: { }

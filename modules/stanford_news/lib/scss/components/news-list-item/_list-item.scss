@@ -1,0 +1,245 @@
+@charset "UTF-8";
+
+// When the view is placed via a view field center it and max it out.
+.field--name-su-news-view-field {
+  .stanford-news--list-any,
+  .stanford-news--cards-any {
+    @include margin(null auto);
+    max-width: 1100px;
+  }
+}
+
+.section-stanford-news-views-header {
+  h1 {
+    @include modular-spacing('margin', 6 null 5);
+  }
+}
+
+.section-news-views-views {
+  .main-region {
+    @include modular-spacing('padding-left', 2);
+  }
+}
+
+.menu--news-topics {
+  @include modular-spacing('margin-bottom', 4);
+}
+
+.su-news-list__item-date + .su-news-list__item {
+  .media {
+    @include margin(-29px null null null);
+  }
+}
+
+// List Items.
+// Removes the padding top for the first item.
+.views-infinite-scroll-content-wrapper {
+  div:first-child {
+    .su-news-list {
+      @include grid-media-min('xl') {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+.su-news-list {
+  list-style: none;
+  overflow: auto;
+  padding-left: 0;
+
+
+  &:first-of-type {
+    > article {
+      padding-top: 0;
+    }
+  }
+
+  //List grid set up
+  .su-news-list__item-date {
+    grid-area: date;
+  }
+
+  .image {
+    grid-area: article-image;
+  }
+
+  .su-news-list__headline-dek {
+    grid-area: headline;
+  }
+
+  .su-news-list__header {
+
+    @include grid-media-max('lg') {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-areas: "date" "headline" "dek";
+    }
+
+
+    @include grid-media-min('xl') {
+      display: grid;
+      grid-template-columns: 65% 35%;
+      grid-template-areas: "date date" "headline article-image" "headline article-image";
+    }
+  }
+
+  .su-news-list-image__empty {
+    .su-news-list__header {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-areas: "date" "headline" "dek";
+    }
+  }
+
+  .su-news-article {
+    @include margin(0);
+    @include padding(0);
+    @include modular-spacing('padding', 4 null);
+
+    border-bottom: 1px solid $su-color-cool-grey-25;
+  }
+
+
+  .su-news-list__item-date {
+    @include small-paragraph;
+
+    order: -1;
+  }
+
+  .image {
+    .media {
+      @include modular-spacing('margin-left', 3);
+
+      @include grid-media-max('lg') {
+        display: none;
+      }
+    }
+  }
+
+
+  a {
+    @include link;
+
+    color: $su-color-bright-red;
+    text-decoration: none;
+
+    &:focus,
+    &:visited,
+    &:active,
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  h2 {
+    @include modular-spacing('margin-bottom', 1);
+    @include modular-typography(2);
+
+    display: inline;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .su-link--external {
+    &::after {
+      background-color: $su-color-bright-red;
+      height: 1.8rem;
+      width: 1.8rem;
+    }
+  }
+
+  .su-news-list__dek {
+    @include big-paragraph;
+    @include modular-spacing('margin-bottom', 1);
+    @include modular-spacing('margin-top', -1);
+
+  }
+
+  ul {
+    list-style: none;
+    overflow: auto;
+    padding-bottom: 0;
+    padding-left: 0;
+
+    li {
+      @include responsive-spacing('padding-right', -1);
+
+      display: inline-block;
+
+      &::after {
+        content: ", ";
+      }
+    }
+
+    li:last-of-type {
+      &::after {
+        content: "";
+      }
+    }
+  }
+}
+
+// Unset the widths of h2 for paragraphs
+.container-2-items,
+.container-3-items {
+  .paragraph--type--stanford-lists {
+    .su-news-list {
+      h2 {
+        max-width: unset;
+      }
+    }
+  }
+}
+
+.views-infinite-scroll-content-wrapper {
+  @include modular-spacing('margin-bottom', 5);
+
+  & + .js-pager__items {
+    @include modular-spacing('margin-bottom', 8);
+  }
+}
+
+.su-news-external {
+  .su-news-list__item {
+    a {
+      @include link-icon(arrow-up-right, 10px, topright);
+
+      &::after {
+        background-color: $su-color-bright-red;
+        height: 1.8rem;
+        width: 1.8rem;
+      }
+    }
+  }
+}
+
+.su-news-edit-article {
+  a {
+    @include button-secondary;
+    text-align: right;
+  }
+}
+
+.stanford-news-terms--results-for {
+  @include modular-spacing('margin-bottom', 3);
+
+  span,
+  a {
+    @include small-paragraph;
+  }
+}
+
+// Changing the layout for the news filtered page.
+@include grid-media-max('lg') {
+  .section-news-views-views {
+    .left-region {
+      &.flex-lg-3-of-12 {
+        flex: auto;
+        max-width: 100%;
+      }
+    }
+  }
+}

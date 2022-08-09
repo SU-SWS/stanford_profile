@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+.su-wysiwyg-text {
+  table {
+    th,
+    td {
+      line-height: 1.2em;
+
+      &.vertical-align-top {
+        vertical-align: top;
+      }
+
+      &.vertical-align-bottom {
+        vertical-align: bottom;
+      }
+    }
+
+    &.su-table-striped-rows-odd {
+      tbody {
+        tr {
+          &:nth-child(odd) {
+            background-color: $su-color-black-10;
+          }
+        }
+      }
+    }
+
+    &.su-table-striped-cols-odd {
+      tr {
+        td {
+          &:nth-child(odd) {
+            background-color: $su-color-black-10;
+          }
+        }
+      }
+    }
+
+    &.su-table-striped-rows-even {
+      tbody {
+        tr {
+          &:nth-child(even) {
+            background-color: $su-color-black-10;
+          }
+        }
+      }
+    }
+
+    &.su-table-striped-cols-even {
+      tr {
+        td {
+          &:nth-child(even) {
+            background-color: $su-color-black-10;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 40em) {
+      &.horizontal-border {
+        td,
+        th {
+          border-bottom: 1px solid $su-color-black-60;
+        }
+      }
+
+      &.vertical-border {
+        td,
+        th {
+          border-right: 1px solid $su-color-black-60;
+        }
+
+        td:first-of-type,
+        th:first-of-type {
+          border-left: 1px solid $su-color-black-60;
+        }
+      }
+
+      &.vertical-border {
+        &.horizontal-border {
+          td,
+          th {
+            border-top: 1px solid $su-color-black-60;
+          }
+        }
+      }
+    }
+  }
+}

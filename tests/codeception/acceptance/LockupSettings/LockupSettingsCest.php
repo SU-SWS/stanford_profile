@@ -1,23 +1,13 @@
 <?php
 
+require_once __DIR__ . '/../TestFilesTrait.php';
+
 /**
- * Test for the lockup settings
+ * Test for the lockup settings.
  */
 class LockupSettingsCest {
 
-  /**
-   * The path to the data dir where codeception wants the logo file.
-   *
-   * @var string
-   */
-  protected $DATA_DIR;
-
-  /**
-   * The logo file name.
-   *
-   * @var string
-   */
-  const LOGO_FILENAME = "logo.jpg";
+  use TestFilesTrait;
 
   /**
    * Setup work before running tests.
@@ -26,13 +16,7 @@ class LockupSettingsCest {
    *  The working class.
    */
   function _before(AcceptanceTester $I) {
-    $this->DATA_DIR = rtrim(codecept_data_dir(), '/\\');
-
-    // Copy our assets into place first.
-    if (!file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR)) {
-      mkdir($this->DATA_DIR, 0777, TRUE);
-    }
-    copy(__DIR__ . DIRECTORY_SEPARATOR . self::LOGO_FILENAME, $this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
+    $this->prepareImage();
   }
 
   /**
@@ -42,21 +26,13 @@ class LockupSettingsCest {
    *   Tester.
    */
   public function _after(AcceptanceTester $I) {
-    $I->logInWithRole('administrator');
-    $I->amOnPage('/admin/config/system/lockup-settings');
-    $I->selectOption("su_lockup_options", "a");
-    $I->uncheckOption('#edit-su-use-theme-logo-value');
-    if ($I->grabMultiple('input[value="Remove"]')) {
-      $I->click("Remove");
+    $config_page = \Drupal::entityTypeManager()
+      ->getStorage('config_pages')
+      ->load('lockup_settings');
+    if ($config_page) {
+      $config_page->delete();
     }
-    $I->checkOption('#edit-su-use-theme-logo-value');
-    $I->checkOption('#edit-su-lockup-enabled-value');
-    $I->click('Save');
-
-    // Clean up our assets.
-    if (file_exists($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME)) {
-      unlink($this->DATA_DIR . DIRECTORY_SEPARATOR . self::LOGO_FILENAME);
-    }
+    $this->removeFiles();
   }
 
   /**
@@ -346,11 +322,10 @@ class LockupSettingsCest {
       $I->click("Remove");
     }
 
-    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', self::LOGO_FILENAME);
+    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', $this->logoPath);
     $I->click('Upload');
 
     $I->click('Save');
-    $I->runDrush('cr');
     $I->amOnPage('/');
     $I->seeElement(".su-lockup__custom-logo");
     $I->assertNotEmpty($I->grabAttributeFrom('.su-lockup__custom-logo', 'alt'));
@@ -381,11 +356,10 @@ class LockupSettingsCest {
     }
 
     // For CircleCI
-    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', self::LOGO_FILENAME);
+    $I->attachFile('input[name="files[su_upload_logo_image_0]"]', $this->logoPath);
     $I->click('Upload');
 
     $I->click('Save');
-    $I->runDrush('cr');
     $I->amOnPage('/');
     $I->seeElement(".su-lockup__custom-logo");
     $I->assertNotEmpty($I->grabAttributeFrom('.su-lockup__custom-logo', 'alt'));

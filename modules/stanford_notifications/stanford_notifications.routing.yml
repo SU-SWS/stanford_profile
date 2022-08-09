@@ -1,0 +1,10 @@
+stanford_notifications.clear:
+  path: '/notifications/{notification}/delete'
+  defaults:
+    _controller: '\Drupal\stanford_notifications\Controller\NotificationsController::clearNotification'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      notification:
+        type: entity:notification

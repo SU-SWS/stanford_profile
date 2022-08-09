@@ -1,6 +1,6 @@
 name: 'Stanford Profile'
 description: 'Jumpstart Website Profile'
-version: 8.x-4.1
+version: 9.1.0
 type: profile
 project: Jumpstart
 core_version_requirement: ^9
@@ -136,9 +136,10 @@ themes:
     - stanford_basic
 default_content:
   block_content:
+    - 2f343c04-f892-49bb-8d28-2c3f4653b02a
     - 5168834f-3271-4951-bd95-e75340ca5522
     - f7125c85-197d-4ba2-9f6f-1126bbda0466
-    - 2f343c04-f892-49bb-8d28-2c3f4653b02a
+    - fb905cf3-4bd3-4bcd-ad01-92d25e46ba32
   config_pages:
     - 5a3a16f1-adb6-4946-b957-49c5bb13ef8f
   file:
@@ -150,6 +151,7 @@ default_content:
     - 41fbadf3-ec59-419e-b1cb-a967a4d4d26b
     - 433e17b4-e705-4448-9467-93a03222e3f7
     - 48d41139-6cd4-47e8-9cad-17dfc3fb2819
+    - 4d5dde7e-f2c7-4d27-8ad1-99623b1308f8
     - 6fec2907-db67-4d42-bb09-9bee305a2580
     - 84d7eaff-e426-446f-a462-c06e48f7e11a
     - 88431155-a285-4dab-b3e3-84aefdc63338
@@ -173,45 +175,67 @@ default_content:
     - 6fac3713-f499-4750-a7bc-32c16a59043a
     - 81a60c63-7638-46d2-8fd9-b4de2cbc3554
     - 847af305-af5e-4cea-9175-8f40127a408c
+    - a4660e7f-d4bf-4a28-8030-9dc8576b1c9a
     - ad1e4d74-148a-43d7-a054-091dcd23ab33
     - da0afb6c-f753-4d8b-9aec-720e47983de3
   menu_link_content:
-    - 3e24cd94-5f2b-4fb2-806c-bcb830cdc2dc
-    - 26a314fe-33aa-4660-b06a-97b26dc75baf
     - 178b9e51-c3bb-4cd5-a3ac-fe241e27f083
+    - 26a314fe-33aa-4660-b06a-97b26dc75baf
+    - 3e24cd94-5f2b-4fb2-806c-bcb830cdc2dc
     - 752de90b-4130-402f-8601-57f8d916799c
+    - a5f9f185-b376-4cab-b3bd-dc3b03617cea
+    - bdf424e8-7106-414d-b333-7f5add6e8c8a
     - c2c22d8b-eb7c-4804-9332-4ec2aff3391a
+    - d7a33ad2-d9bf-499f-a244-cf0ee3696cad
+    - d91b714a-4609-41c5-a9c4-d8140ed3a764
     - e635159f-4b50-4016-bbf6-41113adbff65
   node:
+    - 139be5f7-983c-44e2-9b49-29287acdd5e2
     - 4b8018dc-49a6-4018-9c54-e8c3e462beee
+    - 5760692a-e336-4a77-a3f6-7ed5def2418f
     - 6d51339d-ff67-498d-98e9-d8228d36fd51
+    - 6df8090b-5dca-4386-9d72-d86e0156c0a9
     - 72f0069b-f1ec-4122-af73-6aa841faea90
     - bc484600-a21a-4497-b9f7-f928474b511c
+    - ce9cb7ca-6c59-4eea-9934-0a33057a7ff2
     - d21d84f0-22e7-4596-82cb-9209841a3276
     - e18a741f-7d86-492a-a02f-7ca73989ca13
-  paragraph:
-    - 8f7b2d0f-f883-43c8-9782-5e8b88fd98dc
-    - 9df33d0d-239e-4b51-9d97-8703187629b4
-    - 35b55d09-f3e6-4134-87c1-4a8ea132940f
-    - 79c98714-281a-450d-b574-2971426b1f3e
-    - 9954cc81-919b-4498-9151-bf930831fca7
-    - b7abb133-a21b-4a1a-a13c-f630aad2ce7e
-    - bf52b16d-03ef-41dc-b906-4a3a88c2e9ce
-    - c77c8f62-721c-475d-bd5f-ba5ddce96836
-    - cffc69b9-51a3-4e0e-a1b3-864202e42e6c
-    - d800e9c3-5a54-4241-983e-87c42f31b557
-    - fbbaaecc-80fc-494a-8bce-83638d1d668d
-  paragraph_row:
-    - 0427d80b-1f0a-43e1-b902-03d7df3d8523
-    - 27047c34-f161-45d4-ab65-c7d7c0e98765
-    - 4a607606-12f6-482c-8cd7-a57d64aeff6b
-    - 71b78295-dfd1-4eb3-8d20-2013d5b64f69
-    - 8f739f14-a899-4880-9c11-5929f0d4ddde
-    - 95514879-c3d0-44cc-a8bd-987f547fa1a8
-    - a9a54e9d-e433-408f-be3d-141d3cb3aad6
-    - b9027856-bb49-4c3b-9367-87a4e3731421
-    - ec2d0801-e418-4bec-a1f9-064c349148d7
-    - ed135145-45ed-4955-a1b6-1141bc869568
+    - fbd6c70d-fab6-4aae-956f-2df92610fad6
   shortcut:
     - 14f046ae-3f83-4a89-b967-5ee2965bf7e5
     - ca67a0aa-0cf1-4334-ac1e-be6372afecc5
+  taxonomy_term:
+    - 03d4f98a-d62c-47a2-85a5-71a47c7fe1ef
+    - 04c17e9e-df3a-49d1-b65e-21dd7c13d191
+    - 0da6a528-91d9-48d9-bbf0-7c1e70bf5873
+    - 12ea0561-87fb-4882-8e59-1e1e3adec10a
+    - 18fad5d5-356e-420c-83b0-6df80c1b6172
+    - 1eaae651-e131-4915-82af-847ad44d0544
+    - 2288b68b-04b4-43f4-9786-db54871a6e53
+    - 27f59ee7-d921-4c1a-8c32-175eed3b9d67
+    - 3d2804ba-b2d4-42f2-8723-74aefa5e98c8
+    - 459e190b-ab37-490a-b679-967dde57b5ce
+    - 5dc9098a-0307-4534-a651-37c476ef1934
+    - 74d939be-aef1-4b26-8ea3-91f6140fe9d6
+    - 849e72ee-29f5-481d-921f-769d99814af4
+    - 888c30d5-39de-4c44-b76a-8766f27309b4
+    - 896d41ff-faec-4ad0-81d1-3adb87c93b00
+    - 8a4adb57-81db-42f0-a047-17f93160018b
+    - 94f3c757-f2e9-4ac7-a61a-974406fdeb13
+    - 96efe870-d4da-44e4-a52b-b3eea9f670f9
+    - a4295782-6e2c-4bfe-873e-dbdc730844bb
+    - b1425aae-3d9b-4776-b617-485e54688d46
+    - b30bead1-2ee4-4883-aad8-1590a8877e9c
+    - bc30efe2-b577-4492-a806-1b941c56684f
+    - ca79456c-d2da-452a-aa0b-2faa285aec2e
+    - d08fb78b-7152-483a-8e3d-b27490638bac
+    - de41c434-c418-4afd-aab3-6cdb4d2a8ddd
+    - e774e945-7dae-45ca-869d-921c909ffe95
+    - e9601005-8d3b-4fe2-95de-0728eac3e6ed
+    - f25eec9d-acab-4bf4-a6ac-b84f684f5b8b
+  user:
+    - 04eed9d5-1f78-43d1-9ab2-93587a4b7119
+    - 3f3579fa-7334-43bf-b4e6-d9f20d05076a
+    - 5062f977-b418-4996-b658-cf56f41337cb
+    - 5d62490d-60a4-4a4e-b0f3-e19724ce321d
+    - 85c5eb62-ed20-4f6c-b00c-8919ea848a81

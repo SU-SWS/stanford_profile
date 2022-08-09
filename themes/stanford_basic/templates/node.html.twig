@@ -1,0 +1,80 @@
+{# Create classes array. The 'node' class is required for contextual edit links. #}
+{% set node_classes = ['node'] %}
+{% set node_classes = node_classes|merge([
+  node.type ? node.type.entity.label|clean_class,
+  view_mode ? 'node--layout-' ~ view_mode|clean_class
+]) %}
+{% set title_classes = [ node.bundle|clean_class ~ '__title'] %}
+{% set attributes = attributes.addClass(node_classes) %}
+{% set attributes = attributes.removeAttribute('role') %}
+
+{# Template Paths #}
+{%- if template_alert is empty -%}
+  {%- set template_alert = "@basic-dist/decanter/components/alert/alert.twig" -%}
+{%- endif -%}
+{# End Template Paths #}
+
+{% if page %}
+{# Node as a page should be a section. #}
+<section{{ attributes }}>
+  {# Unpublished Warning. #}
+  {%- if not node.published -%}
+
+    {% set message = "This page is currently unpublished and not visible to the public." %}
+    {% if node.publish_on and not node.publish_on.isEmpty %}
+      {% set message =message ~ " The page is also scheduled to publish in the future." %}
+    {% endif %}
+
+    {%- set data = {
+      'attributes': create_attribute({'class': 'su-alert su-alert--warning'}),
+      'alert_text': message|t,
+    } -%}
+    {%- include template_alert with data only -%}
+  {%- endif -%}
+
+{# Node in a list should be it's own article. #}
+{% else %}
+<article{{ attributes }}>
+{% endif %}
+  {% if title_prefix or title_suffix or display_submitted or unpublished or page is empty and label %}
+    <header>
+
+      {# Title Prefix #}
+      {{ title_prefix }}
+
+      {%- if not page and label -%}
+        <h2{{ title_attributes.addClass(title_classes) }}>
+          <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        </h2>
+      {%- endif -%}
+
+      {# Title Suffix #}
+      {{ title_suffix }}
+
+      {# Display Submitted #}
+      {%- if display_submitted -%}
+        <div class="submitted">
+          {{ author_picture }}
+          {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+          {{ metadata }}
+        </div>
+      {%- endif -%}
+    </header>
+  {%- endif -%}
+
+  {# Main content container. #}
+  <div{{ content_attributes.addClass('content') }}>
+    {{ content|without('links') }}
+  </div><!-- /.content -->
+
+  {%- if content.links -%}
+    <div class="links">
+      {{ content.links }}
+    </div><!-- /.links -->
+  {%- endif -%}
+
+{% if page %}
+</section><!-- /.node as page -->
+{% else %}
+</article><!-- /.node as a list -->
+{% endif %}

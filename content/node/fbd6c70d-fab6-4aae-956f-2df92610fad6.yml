@@ -1,0 +1,70 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: fbd6c70d-fab6-4aae-956f-2df92610fad6
+  bundle: stanford_news
+  default_langcode: en
+  depends:
+    9999fd33-d293-45b4-85b1-c7bac0d69a51: user
+    81a60c63-7638-46d2-8fd9-b4de2cbc3554: media
+    04c17e9e-df3a-49d1-b65e-21dd7c13d191: taxonomy_term
+default:
+  revision_uid:
+    -
+      entity: 9999fd33-d293-45b4-85b1-c7bac0d69a51
+  status:
+    -
+      value: false
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Sample: Smith Conference'
+  created:
+    -
+      value: 1587102588
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /news/sample-smith-conference
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  su_news_banner:
+    -
+      entity: 81a60c63-7638-46d2-8fd9-b4de2cbc3554
+  su_news_banner_media_caption:
+    -
+      value: 'This is your banner media caption'
+  su_news_byline:
+    -
+      value: 'Smith Conference is proin lacus lacus, eleifend tristique volutpat vitae.'
+  su_news_dek:
+    -
+      value: 'This is a news item. Here you can post an excerpt from the Stanford Report and link to the original article or add a story of your own.'
+  su_news_featured_media:
+    -
+      entity: 81a60c63-7638-46d2-8fd9-b4de2cbc3554
+  su_news_publishing_date:
+    -
+      value: '2025-09-30'
+  su_news_topics:
+    -
+      entity: 04c17e9e-df3a-49d1-b65e-21dd7c13d191

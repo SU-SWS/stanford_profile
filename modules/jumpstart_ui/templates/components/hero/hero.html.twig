@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Hero Component
+ *
+ * A big graphic for use as a focal point or a large video.
+ *
+ * Available variables:
+ * - attributes: For additional HTML attributes not already provided.
+ * - modifier_class: Additional css classes to change look and behaviour.
+ * - hero_media: iframe or HTML5 video players
+ * - hero_image: A full HTML entity for an image. Can be img or picture.
+ * - hero_super_headline: Text heading
+ * - hero_headline: Text heading
+ * - hero_body: An open variable for anything. Generally this would be for
+ *     WYSIWYG editor contents.
+ * - hero_cta_link: The href value for the cta field link
+ * - hero_cta_attributes: Any html attributes on the cta link that need to be
+ *     added. For example: _target.
+ * - hero_cta_label: The clickable text for the CTA link
+ * - hero_button_link: The href property of the button component.
+ * - hero_button_label: The text label of the button component.
+ */
+#}
+
+{#
+  Sanitize the Drupal
+#}
+{%- if hero_super_headline|render_clean is empty -%}
+  {%- set hero_super_headline = null -%}
+{%- endif -%}
+{%- if hero_headline|render_clean is empty -%}
+  {%- set hero_headline = null -%}
+{%- endif -%}
+{%- if hero_body|render_clean is empty -%}
+  {%- set hero_body = null -%}
+{%- endif -%}
+{%- if hero_cta_label|render_clean is empty -%}
+  {%- set hero_cta_label = null -%}
+{%- endif -%}
+{%- if hero_button_label|render_clean is empty -%}
+  {%- set hero_button_label = null -%}
+{%- endif -%}
+
+{#
+  Override the template path for card with our changes.
+#}
+{%- set template_path_card = "@jumpstart_ui/components/card/card.html.twig" -%}
+
+{% if attributes is not empty %}
+  {% set attributes = attributes.removeClass('su-hero') %}
+{% else %}
+  {% set attributes = create_attribute() %}
+{% endif %}
+
+{% if modifier_class is not empty %}
+  {% set attributes = attributes.addClass(modifier_class) %}
+{% endif %}
+
+{% set modifier_class = attributes.class %}
+{% set attributes = attributes|without('class') %}
+
+{% if hero_link is empty and hero_button_link|render_clean is not empty %}
+  {% set hero_link = hero_button_link|render_clean %}
+{% endif %}
+
+{#
+  Include the template.
+#}
+{% extends "@decanter/components/hero/hero.twig" %}

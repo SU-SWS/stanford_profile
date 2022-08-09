@@ -1,0 +1,105 @@
+@charset 'UTF-8';
+
+$su-image-path: "~decanter/core/src/img";
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+
+@import '~decanter/core/src/scss/decanter-no-markup',
+'~decanter/core/src/scss/components/alert';
+
+.notifications-tab {
+  .toolbar-item {
+    &:not([data-notification-count="0"])::after {
+      content: attr(data-notification-count);
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 10px;
+      background: #fff;
+      width: 10px;
+      border-radius: 5px;
+      color: #000;
+      text-align: center;
+    }
+  }
+
+  .toolbar-item {
+    padding-right: 1.3333em;
+    padding-left: 2.75em;
+  }
+
+  .toolbar-item {
+    &::before {
+      background: url('../assets/img/bell.png') no-repeat center center;
+    }
+  }
+
+}
+
+.toolbar-tray {
+  &.toolbar-tray-horizontal {
+    .notification-list {
+      color: #000;
+      display: flex;
+      flex-wrap: nowrap;
+      font-size: 15px;
+
+      li {
+        padding: 1em 1.3333em;
+        position: relative;
+        float: none;
+        margin: 0 10px 0 0;
+        flex: 1 0 auto;
+        max-width: 350px;
+        background-position: left 5px;
+
+        &.su-alert--success,
+        &.su-alert--error {
+          a {
+            color: #fff;
+          }
+        }
+      }
+
+      a {
+        padding: 0;
+        display: inline-block;
+      }
+
+      .use-ajax {
+        font-size: 0;
+
+        &::before {
+          content: "X";
+          height: 12px;
+          width: 12px;
+          display: block;
+          color: #000;
+          font-size: 12px;
+          position: absolute;
+          right: 4px;
+          top: 4px;
+          background: #fff;
+          border-radius: 10px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.notification-list {
+  .su-alert {
+    a {
+
+      &,
+      &:link {
+        text-decoration: underline;
+      }
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -12,9 +12,17 @@ targetEntityType: media
 bundle: google_form
 mode: media_library
 content:
+  field_media_google_form:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_media_google_form_hgt:
     type: number
-    weight: 1
+    weight: 2
     region: content
     settings:
       placeholder: ''
@@ -29,7 +37,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_media_google_form: true
   path: true
   publish_on: true
   status: true

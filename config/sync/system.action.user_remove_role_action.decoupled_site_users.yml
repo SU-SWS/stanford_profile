@@ -1,0 +1,14 @@
+uuid: b549f349-0acc-4317-b829-ff2c21c2de32
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.decoupled_site_users
+  module:
+    - user
+id: user_remove_role_action.decoupled_site_users
+label: 'Remove the Decoupled Site User role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: decoupled_site_users

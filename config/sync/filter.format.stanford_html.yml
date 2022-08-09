@@ -25,7 +25,7 @@ filters:
     id: editor_file_reference
     provider: editor
     status: false
-    weight: -40
+    weight: -39
     settings: {  }
   filter_caption:
     id: filter_caption
@@ -37,7 +37,7 @@ filters:
     id: filter_html_escape
     provider: filter
     status: false
-    weight: -41
+    weight: -40
     settings: {  }
   filter_align:
     id: filter_align
@@ -58,7 +58,7 @@ filters:
     status: true
     weight: -50
     settings:
-      allowed_html: '<br> <b> <em> <strong> <cite> <blockquote cite> <pre class> <code data-* class> <ul type class id> <ol start type class id> <li class id> <dl class> <dt> <dd class> <h2 id class> <h3 id class> <h4 id class> <h5 id class> <div class id> <table class id> <caption> <tbody class> <thead> <tfoot> <th scope class id> <td colspan rowspan class id> <tr id> <sup> <sub> <i class> <hr> <s> <aside class> <drupal-media data-entity-type data-entity-uuid data-align data-caption data-* alt data-view-mode title> <a href hreflang data-entity-substitution data-entity-type data-entity-uuid title name class> <p class id> <img class src alt title>'
+      allowed_html: '<br> <b> <em> <strong> <cite> <blockquote cite> <pre class> <code data-* class> <ul type class id> <ol start type class id> <li class id> <dl class> <dt> <dd class> <h2 id class> <h3 id class> <h4 id class> <h5 id class> <div class id> <table class id> <caption> <tbody class> <thead> <tfoot> <th scope class id> <td colspan rowspan class id> <tr id> <sup> <sub> <i class> <hr> <s> <aside class> <drupal-media data-entity-type data-entity-uuid data-align data-caption data-* alt data-view-mode title> <a href aria-label hreflang data-entity-substitution data-entity-type data-entity-uuid title name class> <p class id> <img class src alt title><abbr id title> <span class id>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -71,13 +71,13 @@ filters:
     id: filter_autop
     provider: filter
     status: false
-    weight: -39
+    weight: -38
     settings: {  }
   filter_html_image_secure:
     id: filter_html_image_secure
     provider: filter
     status: false
-    weight: -38
+    weight: -37
     settings: {  }
   linkit:
     id: linkit
@@ -112,7 +112,7 @@ filters:
     id: stanford_media_embed_markup
     provider: stanford_media
     status: true
-    weight: -42
+    weight: -41
     settings: {  }
   filter_mathjax:
     id: filter_mathjax
@@ -124,7 +124,7 @@ filters:
     id: filter_responsive_tables_filter
     provider: responsive_tables_filter
     status: true
-    weight: 0
+    weight: -42
     settings:
       tablesaw_type: stack
       tablesaw_persist: '1'

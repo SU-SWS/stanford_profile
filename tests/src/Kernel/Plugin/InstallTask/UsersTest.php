@@ -39,10 +39,11 @@ class UsersTest extends KernelTestBase {
    * The correct number of users should be created.
    */
   public function testUsers() {
+    User::create(['name' => 'admin'])->save();
     $user_plugin = Users::create($this->container, [], '', []);
     $install_state = [];
     $user_plugin->runTask($install_state);
-    $this->assertCount(5, User::loadMultiple());
+    $this->assertCount(1, User::loadMultiple());
   }
 
 }

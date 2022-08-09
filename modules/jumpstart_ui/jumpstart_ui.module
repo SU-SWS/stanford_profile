@@ -1,0 +1,140 @@
+<?php
+
+/**
+ * @file
+ * File description.
+ *
+ * Long description.
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
+use Drupal\ui_patterns\Element\PatternContext;
+use Drupal\ui_patterns\UiPatterns;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function jumpstart_ui_page_attachments(array &$page) {
+
+  // It is recommended that you don't just add a library to all pages but
+  // rather, conditionally require this library only where it is needed.
+  // See: https://www.drupal.org/node/2274843
+  // Only add on non-admin pages.
+  if (\Drupal::service('router.admin_context')->isAdminRoute() == FALSE) {
+    $page['#attached']['library'][] = 'jumpstart_ui/base';
+    $page['#attached']['library'][] = 'jumpstart_ui/layout';
+    $page['#attached']['library'][] = 'jumpstart_ui/jumpstart_ui';
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function jumpstart_ui_preprocess_ds_entity_view(&$variables) {
+  /** @var \Drupal\Core\Entity\FieldableEntityInterface $entity */
+  $entity = $variables['content']['#entity'];
+  if (isset($variables['content']['#type']) && $variables['content']['#type'] == 'pattern') {
+    $link_field = NULL;
+    $link_attributes_key = NULL;
+    switch ($variables['content']['#id']) {
+      case 'hero':
+
+        if (isset($variables['content']['#ds_configuration']['regions']['hero_button_link'])) {
+          $link_field = reset($variables['content']['#ds_configuration']['regions']['hero_button_link']);
+          $link_attributes_key = 'hero_cta_attributes';
+        }
+        break;
+
+      case 'card':
+        if (isset($variables['content']['#ds_configuration']['regions']['card_link'])) {
+          $link_field = reset($variables['content']['#ds_configuration']['regions']['card_link']);
+          $link_attributes_key = 'card_cta_attributes';
+        }
+        break;
+    }
+
+    if (
+      $link_field &&
+      $entity->hasField($link_field) &&
+      $entity->get($link_field)->count()
+    ) {
+      $link = $entity->get($link_field);
+      $options = $link->get(0)->get('options')->getValue();
+      $variables['content']['#fields'][$link_attributes_key] = new Attribute($options['attributes'] ?? []);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function jumpstart_ui_preprocess(&$variables, $hook) {
+
+  // Only want pattern contexts.
+  if (!(isset($variables['context']) && $variables['context'] instanceof PatternContext)) {
+    return;
+  }
+
+  // Match the hook with a strpos because it is not consistent.
+  foreach (UiPatterns::getPatternDefinitions() as $pattern_id => $pattern) {
+    if (strpos($hook, $pattern_id) !== FALSE) {
+
+      if (isset($variables['attributes']['id'])) {
+        $variables['attributes']['id'] = Html::getUniqueId($variables['attributes']['id']);
+      }
+
+      $definition = $pattern->toArray();
+      if (isset($variables['variant']) && isset($definition['variants'][$variables['variant']]['modifier_class'])) {
+        $variables['modifier_class'] = $definition['variants'][$variables['variant']]['modifier_class'];
+      }
+      break;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_patterns_overview_page().
+ */
+function jumpstart_ui_preprocess_patterns_overview_page(&$variables) {
+  uasort($variables['patterns'], function ($pattern_a, $pattern_b) {
+    return strcmp($pattern_a['label'], $pattern_b['label']);
+  });
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function jumpstart_ui_preprocess_pattern_localfooter(&$variables) {
+  if (!empty($variables['weblogin_text']) && \Drupal::currentUser()->isAnonymous()) {
+    if (\Drupal::moduleHandler()->moduleExists('simplesamlphp_auth')) {
+      $route = Url::fromRoute('simplesamlphp_auth.saml_login');
+    }
+    else {
+      $route = Url::fromRoute('user.login');
+    }
+    $variables['weblogin_url'] = $route->toString();
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function jumpstart_ui_preprocess_layout(&$variables) {
+  $current_route = \Drupal::routeMatch()->getRouteName();
+  if (strpos($current_route, 'layout_builder.') === 0) {
+    // Add a flag if the user is currently in layout builder. This allow the
+    // template to make it easier for users to move blocks in layout builder.
+    $variables['layout_builder_admin'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function jumpstart_ui_preprocess_media(&$variables) {
+  $variables['attributes']['class'][] = 'media-entity-wrapper';
+  $variables['attributes']['class'][] = $variables['elements']['#media']->bundle();
+}

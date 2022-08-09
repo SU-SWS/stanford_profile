@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * stanford_profile_helper.install
+ */
+
+/**
+ * Implements hook_install().
+ */
+function stanford_profile_helper_install() {
+  module_set_weight('stanford_profile_helper', 10);
+}
+
+/**
+ * Enable the new stable 9 theme.
+ */
+function stanford_profile_helper_update_8190() {
+  \Drupal::service('theme_installer')->install(['stable9']);
+}
+
+/**
+ * Enable the PDB module.
+ */
+function stanford_profile_helper_update_8191() {
+  \Drupal::service('module_installer')->install(['pdb']);
+}
+
+/**
+ * Update stanford_profile_helper weight.
+ */
+function stanford_profile_helper_update_8192() {
+  module_set_weight('stanford_profile_helper', 10);
+}
+
+/**
+ * Enable views_custom_cache_tag module.
+ */
+function stanford_profile_helper_update_8193() {
+  \Drupal::service('module_installer')->install(['views_custom_cache_tag']);
+}
+
+/**
+ * Enable minimally_branded_subtheme theme & 2 modules.
+ */
+function stanford_profile_helper_update_8194() {
+  \Drupal::service('module_installer')->install([
+    'ctools_views',
+    'views_custom_cache_tag',
+  ]);
+  \Drupal::service('theme_installer')->install(['minimally_branded_subtheme']);
+}
+
+/**
+ * Populate the title field on link tables.
+ */
+function stanford_profile_helper_update_8195() {
+  foreach (['su_course_link', 'su_event_source'] as $field_name) {
+    \Drupal::database()->update("node__$field_name")
+      ->fields(["{$field_name}_title" => ''])
+      ->condition("{$field_name}_title", NULL, 'IS NULL')
+      ->execute();
+    \Drupal::database()->update("node_revision__$field_name")
+      ->fields(["{$field_name}_title" => ''])
+      ->condition("{$field_name}_title", NULL, 'IS NULL')
+      ->execute();
+  }
+}

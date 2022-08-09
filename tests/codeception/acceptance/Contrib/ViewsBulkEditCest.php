@@ -16,6 +16,20 @@ class ViewsBulkEditCest {
   protected $nodes;
 
   /**
+   * Faker generator.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * Bulk editing content changes the field values.
    */
   public function testBulkEdits(AcceptanceTester $I) {
@@ -23,15 +37,15 @@ class ViewsBulkEditCest {
     $this->createEvents($I);
 
     $event_foo_bar_baz = $I->createEntity([
-      'name' => 'Foo Bar Baz',
+      'name' => $this->faker->words(3, true),
       'vid' => 'stanford_event_types',
     ], 'taxonomy_term');
     $news_foo_bar_baz= $I->createEntity([
-      'name' => 'Foo Bar Baz',
+      'name' => $this->faker->words(3, true),
       'vid' => 'stanford_news_topics',
     ], 'taxonomy_term');
     $pubs_foo_bar_baz = $I->createEntity([
-      'name' => 'Foo Bar Baz',
+      'name' => $this->faker->words(3, true),
       'vid' => 'stanford_publication_topics',
     ], 'taxonomy_term');
 
@@ -39,7 +53,7 @@ class ViewsBulkEditCest {
     $I->selectOption('Action', 'Modify field values');
     foreach ($this->nodes as $delta => $node) {
       $I->canSee($node->label(), 'tr');
-      $I->checkOption("views_bulk_operations_bulk_form[$delta]");
+      $I->checkOption('tr:contains("' . $node->label() . '") input[name^="views_bulk_operations_bulk_form"]');
     }
     $I->click('Apply to selected items');
     $I->canSee('Items selected');

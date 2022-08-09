@@ -1,0 +1,96 @@
+localfooter:
+  label: "Local Footer"
+  description: "Local footer element as specified by the Identity Guidelines."
+  use: "@jumpstart_ui/components/local-footer/local-footer.html.twig"
+  fields:
+    lockup_title:
+      label: 'lockup_title'
+      description: The text to use as line1 in the lockup unless
+      preview: 'lockup_title'
+    headercontent:
+      label: 'headercontent'
+      description: Optional open variable for placing arbitrary content
+      preview: 'headercontent'
+    cell1:
+      label: 'cell1'
+      description: Optional open variable for placing arbitrary content
+      preview: 'cell1'
+    cell2:
+      label: 'cell2'
+      description: Optional open variable for placing arbitrary content
+      preview: 'cell2'
+    cell3:
+      label: 'cell3'
+      description: Optional open variable for placing arbitrary content
+      preview: 'cell3'
+    address:
+      label: 'address'
+      description: Optional open variable for address content.
+      preview: 'address'
+    action_links:
+      label: 'action_links'
+      description: Either a structured array of links that get rendered
+      preview: '<ul><a href="#">action_links</a></ul>'
+    social_links:
+      label: 'social_links'
+      description: Either a structured array of links that get rendered
+      preview: '<ul><a href="#">social_links</a></ul>'
+    primary_links_header:
+      label: 'primary_links_header'
+      preview: 'primary_links_header'
+    primary_links:
+      label: 'primary_links'
+      description: Either a structured array of links that get rendered
+      preview: '<ul><a href="#">primary_links</a></ul>'
+    secondary_links_header:
+      label: 'secondary_links_header'
+      preview: 'secondary_links_header'
+    secondary_links:
+      label: 'secondary_links'
+      description: Either a structured array of links that get rendered
+      preview: '<ul><a href="#">secondary_links</a></ul>'
+    signup_form_content:
+      label: 'signup_form_content'
+      description: An open variable for placing content above the form.
+      preview: 'signup_form_content'
+    signup_form_action:
+      label: 'signup_form_action'
+      description: The url that the form should submit to.
+      preview: 'signup_form_action'
+    signup_form_method:
+      label: 'signup_form_method'
+      description: The http method in which the form should use (get|post)
+      preview: 'POST'
+    signup_form_field_email:
+      label: 'signup_form_field_email'
+      description: The name and id of the email field.
+      preview: 'signup_form_field_email'
+    signup_form_field_email_placeholder:
+      label: 'signup_form_field_email_placeholder'
+      description: The placeholder text for the field.
+      preview: 'signup_form_field_email_placeholder'
+    signup_form_field_submit:
+      label: 'signup_form_field_submit'
+      description: The name and id of the submit button.
+      preview: 'signup_form_field_submit'
+    signup_form_field_submit_value:
+      label: 'signup_form_field_submit_value'
+      description: The value of the submit button.
+      preview: 'signup_form_field_submit_value'
+    signup_form_fields:
+      label: 'signup_form_fields'
+      description: Option variable that allows you to put any additional
+      preview: 'signup_form_fields'
+    weblogin_url:
+      label: 'weblogin_url'
+      description: Optional - The url in which a user goes to login with.
+      preview: '/user'
+    weblogin_text:
+      label: 'weblogin_text'
+      description: The text to display for the weblogin button link.
+      preview: 'weblogin_text'
+  libraries:
+    - localfooter:
+       css:
+         component:
+           ../../../dist/css/local-footer.css: {}

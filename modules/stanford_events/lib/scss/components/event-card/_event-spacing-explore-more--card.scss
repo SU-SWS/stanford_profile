@@ -1,0 +1,12 @@
+@charset 'UTF-8';
+
+.su-event-card {
+  @include responsive-spacing('padding', 2 2 3);
+
+  .event_list_item__type {
+    @include responsive-spacing('padding-bottom', 0);
+
+    display: inline-block;
+  }
+
+}

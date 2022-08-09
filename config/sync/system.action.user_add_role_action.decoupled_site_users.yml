@@ -1,0 +1,14 @@
+uuid: e359ad67-d396-4132-962b-5e6ae50afe21
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.decoupled_site_users
+  module:
+    - user
+id: user_add_role_action.decoupled_site_users
+label: 'Add the Decoupled Site User role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: decoupled_site_users

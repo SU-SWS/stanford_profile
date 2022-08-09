@@ -1,0 +1,10 @@
+@charset 'UTF-8';
+
+@import "./stanford_courses.config";
+
+
+.section-stanford-courses-views-header {
+  h1 {
+    @include modular-spacing("margin", 6 null 5);
+  }
+}

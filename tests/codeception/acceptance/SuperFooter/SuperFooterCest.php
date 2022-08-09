@@ -5,6 +5,15 @@
  */
 class SuperFooterCest {
 
+  public function _after(AcceptanceTester $I){
+    $config_page = \Drupal::entityTypeManager()
+      ->getStorage('config_pages')
+      ->load('stanford_super_footer');
+    if ($config_page) {
+      $config_page->delete();
+    }
+  }
+
   /**
    * Test the block exists.
    */

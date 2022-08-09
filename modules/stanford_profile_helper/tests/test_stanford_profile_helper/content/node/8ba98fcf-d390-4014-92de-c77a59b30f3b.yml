@@ -1,0 +1,47 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 8ba98fcf-d390-4014-92de-c77a59b30f3b
+  bundle: stanford_event
+  default_langcode: en
+  depends:
+    bf34703d-5f52-4278-9f0a-7bd70c282542: user
+default:
+  revision_uid:
+    -
+      entity: bf34703d-5f52-4278-9f0a-7bd70c282542
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: bf34703d-5f52-4278-9f0a-7bd70c282542
+  title:
+    -
+      value: Events
+  created:
+    -
+      value: 1651861294
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /events
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default

@@ -94,7 +94,7 @@ class SystemSiteConfigCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->selectOption('Home Page', $node->label());
     $I->click('Save');
-    $I->canSee('Site Settings Site Settings has been');
+    $I->canSee('Site Settings has been');
 
     \Drupal::configFactory()->reset('system.site');
     $setting = \Drupal::config('system.site')->get('page.front');
@@ -110,7 +110,7 @@ class SystemSiteConfigCest {
     $I->selectOption('404 Page', '- None -');
     $I->selectOption('403 Page', '- None -');
     $I->click('Save');
-    $I->canSee('Site Settings Site Settings has been');
+    $I->canSee('Site Settings has been');
 
     $I->amOnPage('/');
     $I->canSeeResponseCodeIs(200);
@@ -128,7 +128,6 @@ class SystemSiteConfigCest {
     $I->canSee('1 error has been found: Google Analytics Account');
     $I->fillField('Google Analytics Account', 'UA-123456-12');
     $I->click('Save');
-    $I->runDrush('cache-rebuild');
     $I->amOnPage('/user/logout');
     $I->amOnPage('/');
     $I->canSee('UA-123456-12');
@@ -137,7 +136,6 @@ class SystemSiteConfigCest {
     $I->fillField('Google Analytics Account', '');
     $I->click('Save');
     $I->amOnPage('/user/logout');
-    $I->runDrush('cache-rebuild');
     $I->amOnPage('/');
     $I->cantSee('UA-12456-12');
   }

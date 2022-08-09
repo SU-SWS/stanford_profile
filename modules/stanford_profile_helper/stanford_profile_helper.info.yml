@@ -1,0 +1,24 @@
+name: 'Stanford Profile Helper'
+type: module
+description: 'Stanford Profile Helper Module.'
+core_version_requirement: ^8.8 || ^9
+package: Stanford
+version: 9.1.0
+dependencies:
+  - admin_toolbar:admin_toolbar
+  - admin_toolbar:admin_toolbar_tools
+  - config_pages:config_pages
+  - config_pages_overrides:config_pages_overrides
+  - core_event_dispatcher:core_event_dispatcher
+  - default_content:default_content
+  - drupal:block
+  - drupal:block_content
+  - drupal:config
+  - drupal:contextual
+  - drupal:help
+  - drupal:media
+  - drupal:media_library
+  - pdb:pdb
+  - rabbit_hole:rabbit_hole
+  - xmlsitemap:xmlsitemap
+  - xmlsitemap:xmlsitemap_engines

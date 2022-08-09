@@ -1,6 +1,6 @@
 uuid: 163413d7-ac79-4c21-9feb-8d9ff5ad23f1
 langcode: en
-status: true
+status: false
 dependencies: {  }
 id: stanford_course_depts
 class: null
@@ -15,8 +15,8 @@ source:
   data_fetcher_plugin: http
   urls:
     - 'https://explorecourses.stanford.edu/?view=xml-20200810'
-  data_parser_plugin: simple_xml
-  item_selector: //department
+  data_parser_plugin: xml
+  item_selector: /schools/school/department
   fields:
     -
       name: name

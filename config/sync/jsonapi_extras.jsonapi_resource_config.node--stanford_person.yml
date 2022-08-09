@@ -1,0 +1,361 @@
+uuid: 7b7f7ca0-fc0f-461e-a39c-23a476a1fe15
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_person
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_person_components
+      - su_person_photo.field_media_image
+      - su_person_type_group
+      - su_shared_tags
+    default_filter:
+      'filter:status': '1'
+    page_limit: 50
+id: node--stanford_person
+disabled: false
+path: node/stanford_person
+resourceType: node--stanford_person
+resourceFields:
+  nid:
+    disabled: false
+    fieldName: nid
+    publicName: nid
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  vid:
+    disabled: false
+    fieldName: vid
+    publicName: vid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  type:
+    disabled: false
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  revision_timestamp:
+    disabled: false
+    fieldName: revision_timestamp
+    publicName: revision_timestamp
+    enhancer:
+      id: ''
+  revision_uid:
+    disabled: false
+    fieldName: revision_uid
+    publicName: revision_uid
+    enhancer:
+      id: ''
+  revision_log:
+    disabled: false
+    fieldName: revision_log
+    publicName: revision_log
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  uid:
+    disabled: false
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  title:
+    disabled: false
+    fieldName: title
+    publicName: title
+    enhancer:
+      id: ''
+  created:
+    disabled: false
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: false
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  promote:
+    disabled: false
+    fieldName: promote
+    publicName: promote
+    enhancer:
+      id: ''
+  sticky:
+    disabled: false
+    fieldName: sticky
+    publicName: sticky
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: false
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  revision_default:
+    disabled: false
+    fieldName: revision_default
+    publicName: revision_default
+    enhancer:
+      id: ''
+  revision_translation_affected:
+    disabled: false
+    fieldName: revision_translation_affected
+    publicName: revision_translation_affected
+    enhancer:
+      id: ''
+  metatag:
+    disabled: false
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  path:
+    disabled: false
+    fieldName: path
+    publicName: path
+    enhancer:
+      id: ''
+  rh_action:
+    disabled: false
+    fieldName: rh_action
+    publicName: rh_action
+    enhancer:
+      id: ''
+  rh_redirect:
+    disabled: false
+    fieldName: rh_redirect
+    publicName: rh_redirect
+    enhancer:
+      id: ''
+  rh_redirect_response:
+    disabled: false
+    fieldName: rh_redirect_response
+    publicName: rh_redirect_response
+    enhancer:
+      id: ''
+  rh_redirect_fallback_action:
+    disabled: false
+    fieldName: rh_redirect_fallback_action
+    publicName: rh_redirect_fallback_action
+    enhancer:
+      id: ''
+  publish_on:
+    disabled: false
+    fieldName: publish_on
+    publicName: publish_on
+    enhancer:
+      id: ''
+  unpublish_on:
+    disabled: false
+    fieldName: unpublish_on
+    publicName: unpublish_on
+    enhancer:
+      id: ''
+  menu_link:
+    disabled: false
+    fieldName: menu_link
+    publicName: menu_link
+    enhancer:
+      id: ''
+  body:
+    disabled: false
+    fieldName: body
+    publicName: body
+    enhancer:
+      id: ''
+  layout_builder__layout:
+    disabled: false
+    fieldName: layout_builder__layout
+    publicName: layout_builder__layout
+    enhancer:
+      id: ''
+  stanford_intranet__access:
+    disabled: false
+    fieldName: stanford_intranet__access
+    publicName: stanford_intranet__access
+    enhancer:
+      id: ''
+  su_person_academic_appt:
+    disabled: false
+    fieldName: su_person_academic_appt
+    publicName: su_person_academic_appt
+    enhancer:
+      id: ''
+  su_person_admin_appts:
+    disabled: false
+    fieldName: su_person_admin_appts
+    publicName: su_person_admin_appts
+    enhancer:
+      id: ''
+  su_person_affiliations:
+    disabled: false
+    fieldName: su_person_affiliations
+    publicName: su_person_affiliations
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_person_components:
+    disabled: false
+    fieldName: su_person_components
+    publicName: su_person_components
+    enhancer:
+      id: ''
+  su_person_education:
+    disabled: false
+    fieldName: su_person_education
+    publicName: su_person_education
+    enhancer:
+      id: ''
+  su_person_email:
+    disabled: false
+    fieldName: su_person_email
+    publicName: su_person_email
+    enhancer:
+      id: ''
+  su_person_fax:
+    disabled: false
+    fieldName: su_person_fax
+    publicName: su_person_fax
+    enhancer:
+      id: ''
+  su_person_first_name:
+    disabled: false
+    fieldName: su_person_first_name
+    publicName: su_person_first_name
+    enhancer:
+      id: ''
+  su_person_full_title:
+    disabled: false
+    fieldName: su_person_full_title
+    publicName: su_person_full_title
+    enhancer:
+      id: ''
+  su_person_last_name:
+    disabled: false
+    fieldName: su_person_last_name
+    publicName: su_person_last_name
+    enhancer:
+      id: ''
+  su_person_links:
+    disabled: false
+    fieldName: su_person_links
+    publicName: su_person_links
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_person_location_address:
+    disabled: false
+    fieldName: su_person_location_address
+    publicName: su_person_location_address
+    enhancer:
+      id: ''
+  su_person_location_name:
+    disabled: false
+    fieldName: su_person_location_name
+    publicName: su_person_location_name
+    enhancer:
+      id: ''
+  su_person_mail_code:
+    disabled: false
+    fieldName: su_person_mail_code
+    publicName: su_person_mail_code
+    enhancer:
+      id: ''
+  su_person_map_url:
+    disabled: false
+    fieldName: su_person_map_url
+    publicName: su_person_map_url
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_person_mobile_phone:
+    disabled: false
+    fieldName: su_person_mobile_phone
+    publicName: su_person_mobile_phone
+    enhancer:
+      id: ''
+  su_person_photo:
+    disabled: false
+    fieldName: su_person_photo
+    publicName: su_person_photo
+    enhancer:
+      id: ''
+  su_person_profile_link:
+    disabled: false
+    fieldName: su_person_profile_link
+    publicName: su_person_profile_link
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_person_research:
+    disabled: false
+    fieldName: su_person_research
+    publicName: su_person_research
+    enhancer:
+      id: ''
+  su_person_research_interests:
+    disabled: false
+    fieldName: su_person_research_interests
+    publicName: su_person_research_interests
+    enhancer:
+      id: ''
+  su_person_scholarly_interests:
+    disabled: false
+    fieldName: su_person_scholarly_interests
+    publicName: su_person_scholarly_interests
+    enhancer:
+      id: ''
+  su_person_short_title:
+    disabled: false
+    fieldName: su_person_short_title
+    publicName: su_person_short_title
+    enhancer:
+      id: ''
+  su_person_telephone:
+    disabled: false
+    fieldName: su_person_telephone
+    publicName: su_person_telephone
+    enhancer:
+      id: ''
+  su_person_type_group:
+    disabled: false
+    fieldName: su_person_type_group
+    publicName: su_person_type_group
+    enhancer:
+      id: ''
+  su_shared_tags:
+    disabled: false
+    fieldName: su_shared_tags
+    publicName: su_shared_tags
+    enhancer:
+      id: ''

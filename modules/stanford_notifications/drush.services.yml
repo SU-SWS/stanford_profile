@@ -1,0 +1,6 @@
+services:
+  stanford_notifications.commands:
+    class: \Drupal\stanford_notifications\Commands\StanfordNotificationsCommands
+    arguments: ['@notification_service']
+    tags:
+      - { name: drush.command }

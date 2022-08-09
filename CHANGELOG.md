@@ -1,5 +1,93 @@
 # Stanford Profile
 
+9.1.0
+--------------------------------------------------------------------------------
+_Release Date: 2022-08-08_
+
+- D8CORE-6006 Disable link attributes module (#597)
+- Improve person importer url fetching with some error handeling
+- Add functional tests for wysiwyg button focus (#593)
+- Validate menu items for local absoluate urls (#594)
+- Update StanfordTextEditorTest unit test(#595)
+- D8CORE-5867 Simplify and unify rabbit hole message and action (#592)
+- D8CORE-5975 Allow resetting taxonomy term order to alphabetical with the button (#591)
+- Updated field encrypt module to version 3.0.0
+- Updated configs for latest core and contrib modules
+- Hide "Sticky" and "Promote" fields on node form
+- Fix duplicates in course lists
+- D8CORE-6035 Show image title field when uploading in media library.
+- Ensure events importer widget works when the API is empty
+- Removed entity_print from composer.json (#589)
+- D8CORE-5684: Underline buttons on the events mini calendar. (#586)
+- Updated config from search_api module
+- D8CORE-6000: Added additional html elements to embeddables allow list (#584)
+- D8CORE-4183: fix up to alignment. (#569)
+- D8CORE-6003 Save terms in the order they were chosen (#583)
+- D8CORE-6005 Allow Span tags in the wysiwyg
+- D8CORE-5128 Enable embed code validators (#579)
+- Refactored and improved codeception tests.
+- fixed composer namespace to lowercase
+- Removed fzaninotto/faker workaround in CI tests
+- D8CORE-5948: removing the li from the ch line limit (#578)
+- D8CORE-5862: Removed obsolete checkbox from theme settings (#575)
+- D8CORE-4972 Provide aria-label input for links on paragraphs (#573)
+- removed unwanted composer files
+- Updated drupal core 9.4
+- Improve event sponsor field update hook (#574)
+- D8CORE-3558 Fix error when the access token expires (#566)
+- Move some CircleCi to GH Actions (#568)
+- D8CORE-5860 Fix intranet icons for paragraphs and media
+- D8CORE-4780 Changed search page button text to "Search"
+- D8CORE-2274: Updated event sponsor field "Add More" button label (#570)
+- D8CORE-4489: fixing font sizes within tables (#564)
+- D8CORE-5598 D8CORE-5592: making margins even on OL and UL (#565)
+- D8CORE-5886 Enable ajax on people lists
+- Added and configured ckeditor_blockimagepaste to prevent inline base64 images
+- D8CORE-4858 Allow hiding paragraph and custom empty results message (#563)
+- D8CORE-5864: fixing the news alignment. (#559)
+- D8CORE-5859: changes to the font sizes in courses (#562)
+- Adjusted VBO form for event date fields that are required
+- D8CORE-4867 Publication lists on people pages (#561)
+- D8CORe-5871 Change order of filter processing to fix <picture><source> tags
+- D8CORE-5858 Add missing "All" courses menu item
+- Locked citeprocphp to version 2.4.1, pre ext-intl requirement. (#560)
+- D8CORE-5763 Updated default content (#558)
+- D8CORE-5680 Switch list landing pages to nodes with layout builder settings (#552)
+- D8CORE-5773: Added edit buttons on courses list page (#555)
+- Updated some codeception tests (#554)
+- D8CORE-1835: Added abbr buttons to ckeditor (#550)
+- Disabled courses department importer
+- D8CORE-2215: Let editors sort content by author (#551)
+- D8CORE-5824: Added a second provider for Stanford University Library oEmbeds (#548)
+
+
+
+9.0.1
+--------------------------------------------------------------------------------
+_Release Date: 2022-05-11_
+
+- Updated submodules with their latest code form their repos.
+
+9.0.0
+--------------------------------------------------------------------------------
+_Release Date: 2022-05-11_
+
+- Consolidated dependency modules for easier development.
+
+
+8.x-4.3
+--------------------------------------------------------------------------------
+_Release Date: 2022-05-11_
+
+- Fixup for "Results For" on people list pages.
+
+
+8.x-4.2
+--------------------------------------------------------------------------------
+_Release Date: 2022-05-10_
+
+- Enabled aggregation for duplicates in course view
+
 8.x-4.1
 --------------------------------------------------------------------------------
 _Release Date: 2022-05-10_

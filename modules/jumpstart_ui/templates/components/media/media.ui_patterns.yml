@@ -1,0 +1,66 @@
+media:
+  label: Media
+  description: "Media element"
+  variants:
+    default:
+      label: Default
+      description: "Default"
+    image:
+      label: "Image"
+      description: "An image type"
+      modifier_class: su-media--image
+    video:
+      label: "Video"
+      description: "A video type"
+      modifier_class: su-media--video
+    audio:
+      label: "Audio"
+      description: "An audio type"
+      modifier_class: su-media--audio
+  fields:
+    media_caption:
+      type: "text"
+      label: "Media caption text"
+      description: "Contains html markup"
+      preview: Caption <strong>Cat ipsum</strong> dolor sit amet, <a href='#'>sweet beast and see owner</a>, run in terror for howl <em>uncontrollably</em> for no reason a nice warm laptop for me to sit on. Prance along on top of the garden fence, annoy the neighbor's dog."
+    media_image_src:
+      type: "text"
+      label: "Image source"
+      description: "absolute or relative"
+      preview: "https://placeimg.com/2000/1333/any"
+    media_link:
+      type: "text"
+      label: "Media link"
+      description: "What to link the media to"
+      preview: '<a href="https://stanford.edu">Stanford Homepage</a>'
+    media_link_attributes:
+      type: "text"
+      label: "Wrapper link attributes"
+      description: "eg: rel='noopener'"
+      preview: "rel='noopener'"
+    media_video_src:
+      type: "text"
+      label: "Video Source"
+      description: "The source media file for a video type"
+      preview: "https://news-media.stanford.edu/wp-content/uploads/2018/01/18153719/palau_swimmerloop_final.mp4"
+    media_audio_src:
+      type: "text"
+      label: "Audio Source"
+      description: "The source media file for the audio type"
+      preview: "https://news-media.stanford.edu/wp-content/uploads/2019/06/27152807/volcano_1.mp3"
+    media_content_attributes:
+      type: "text"
+      label: "Content attributes"
+      description: "eg: autoplay loop muted"
+      preview: "autoplay loop muted"
+    media_custom:
+      type: "text"
+      label: "Custom embed"
+      description: "Usually an iframe"
+      preview: "<iframe width='560' height='315' src='https://www.youtube.com/embed/tZ2GZhND7s0' frameborder='0' allowfullscreen></iframe>"
+  use: "@jumpstart_ui/components/media/media.html.twig"
+  libraries:
+    - media:
+       css:
+         component:
+           ../../../dist/css/media.css: {}

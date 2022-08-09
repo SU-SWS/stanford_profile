@@ -1,0 +1,10 @@
+mathjax:
+  version: VERSION
+  js:
+    js/stanford_profile_helper.mathjax.js: {}
+siteimprove.analytics:
+  version: VERSION
+  js:
+    js/stanford_profile_helper.siteimprove.analytics.js: {}
+  dependencies:
+    - core/jquery

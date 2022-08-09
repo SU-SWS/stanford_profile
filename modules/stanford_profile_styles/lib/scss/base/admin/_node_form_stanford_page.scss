@@ -1,0 +1,54 @@
+@charset 'UTF-8';
+
+// Node form.
+.node-form {
+  .entity-meta {
+    details[open] {
+      background-image: none;
+    }
+  }
+
+  .entity-meta__header,
+  .entity-meta {
+    & details,
+    & {
+      border-top: 0 none transparent;
+      border-bottom: 0 none transparent;
+
+      &:first-child {
+        border-top-color: transparent;
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+
+    .layout-region-node-main,
+    .layout-region-node-footer {
+      float: inherit; /* LTR */
+      width: 100%;
+      padding-right: 0; /* LTR */
+      box-sizing: border-box;
+    }
+
+    [dir="rtl"] {
+      .layout-region-node-main,
+      .layout-region-node-footer {
+        float: inherit;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    .layout-region-node-secondary {
+      float: inherit; /* LTR */
+      width: 100%;
+    }
+
+    [dir="rtl"] {
+      .layout-region-node-secondary {
+        float: inherit;
+      }
+    }
+  }
+}

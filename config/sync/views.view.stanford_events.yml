@@ -526,7 +526,20 @@ display:
       cache:
         type: tag
         options: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: 'No events at this time. Please check back later.'
+            format: stanford_html
+          tokenize: false
       sorts:
         su_event_date_time_value:
           id: su_event_date_time_value

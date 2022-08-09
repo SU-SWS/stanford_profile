@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * stanford_intranet.install
+ */
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\node\Entity\NodeType;
+use Drupal\user\Entity\Role;
+
+/**
+ * Implements hook_install().
+ */
+function stanford_intranet_install() {
+  $node_types = NodeType::loadMultiple();
+
+  $field_storage = FieldStorageConfig::create([
+    'entity_type' => 'node',
+    'field_name' => 'stanford_intranet__access',
+    'type' => 'entity_access',
+    'locked' => TRUE,
+  ]);
+  $field_storage->save();
+
+  /** @var \Drupal\node\NodeTypeInterface $node_type */
+  foreach ($node_types as $node_type) {
+    FieldConfig::create([
+      'field_storage' => $field_storage,
+      'bundle' => $node_type->id(),
+      'label' => t('Access'),
+    ])->save();
+  }
+
+  $state_value = [];
+  foreach (Role::loadMultiple() as $role) {
+    $state_value[] = $role->id();
+  }
+  \Drupal::state()->set('stanford_intranet.rids', array_flip($state_value));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function stanford_intranet_uninstall() {
+  \Drupal::state()->delete('stanford_intranet');
+  \Drupal::state()->delete('stanford_intranet.rids');
+  \Drupal::state()->delete('stanford_intranet.allow_file_uploads');
+}
+
+/**
+ * Move files to private storage if the intranet is enabled.
+ */
+function stanford_intranet_update_8001() {
+  \Drupal::service('stanford_intranet.manager')->moveIntranetFiles();
+}
+
+/**
+ * Re-copy any media icons that might not exist.
+ */
+function stanford_intranet_update_8002() {
+  module_load_install('media');
+  media_install();
+}

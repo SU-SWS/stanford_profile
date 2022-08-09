@@ -1,0 +1,16 @@
+name: Events Mini Calendar
+machine_name: event-mini-cal
+type: pdb
+description: 'Mini Calendar for events display'
+package: React
+core_version_requirement: ^8.8 || ^9
+module_status: active
+presentation: react
+path: /jsonapi/node/stanford_event
+add_js:
+  footer:
+    'build/static/js/main.js': { }
+add_css:
+  header:
+    component:
+      'build/static/css/main.css': {}

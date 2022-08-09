@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Component\Utility\Unicode;
 use Faker\Factory;
 
 /**
@@ -11,13 +12,24 @@ use Faker\Factory;
 class BasicPageCest {
 
   /**
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test Constructor
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * Test placing a basic page in the menu with a child menu item.
    *
    * @group pathauto
    */
   public function testCreatingPage(AcceptanceTester $I) {
-    $faker = Factory::create();
-    $node_title = $faker->text(20);
+    $node_title = $this->faker->text(20);
 
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_page');
@@ -27,12 +39,14 @@ class BasicPageCest {
     // The label on the menu parent changes in D9 vs D8
     $I->selectOption('Parent link', ' <Main navigation>');
     $I->uncheckOption('Generate automatic URL alias');
-    $I->fillField('URL alias', '/foo-bar');
+    $alias = preg_replace('/[^a-z0-9]/', '-', strtolower($this->faker->words(3, TRUE)));
+    $I->fillField('URL alias', "/$alias");
     $I->click('Save');
     $I->canSeeLink("$node_title Item");
-    $I->assertStringContainsString('/foo-bar', $I->grabFromCurrentUrl());
+    $I->canSeeInCurrentUrl("/$alias");
+    $I->assertStringContainsString("/$alias", $I->grabFromCurrentUrl());
 
-    $child_title = $faker->text('15');
+    $child_title = $this->faker->text('15');
 
     $I->amOnPage('/node/add/stanford_page');
     $I->fillField('Title', $child_title);
@@ -42,16 +56,14 @@ class BasicPageCest {
     $I->click('Change parent (update list of weights)');
     $I->click('Save');
     $I->canSeeLink("$child_title Item");
-    $I->assertStringContainsString('/foo-bar', $I->grabFromCurrentUrl());
+    $I->canSeeInCurrentUrl("/$alias");
   }
 
   /**
    * Number of h1 tags should always be 1.
    */
   public function testH1Tags(AcceptanceTester $I) {
-    $faker = Factory::create();
-
-    $I->amOnPage('/' . $faker->text);
+    $I->amOnPage('/' . $this->faker->text);
     $I->canSeeResponseCodeIs(404);
     $I->canSeeNumberOfElements('h1', 1);
 
@@ -66,8 +78,7 @@ class BasicPageCest {
    * Regression test for D8CORE-1547.
    */
   public function testRevisionPage(AcceptanceTester $I) {
-    $faker = Factory::create();
-    $title = $faker->text(20);
+    $title = $this->faker->words(3, TRUE);
     $I->logInWithRole('site_manager');
     $node = $I->createEntity(['title' => $title, 'type' => 'stanford_page']);
     $I->amOnPage($node->toUrl()->toString());
@@ -79,9 +90,8 @@ class BasicPageCest {
    * There should be Page Metadata fields
    */
   public function testPageDescription(AcceptanceTester $I) {
-    $faker = Factory::create();
-    $title = $faker->text(20);
-    $description = $faker->text(100);
+    $title = $this->faker->words(3, TRUE);
+    $description = $this->faker->words(10, TRUE);
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_page');
     $I->see('Page Metadata');
@@ -89,7 +99,7 @@ class BasicPageCest {
     $I->see('Basic Page Type');
     $I->fillField('Title', $title);
     $I->fillField('Page Description', $description);
-    $I->selectOption('Basic Page Type', 'Research Project');
+    $I->selectOption('Basic Page Type', 'Research');
     $I->click('Save');
     $I->seeInSource('<meta name="description" content="' . $description . '" />');
   }
@@ -101,10 +111,10 @@ class BasicPageCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage("/admin/structure/taxonomy/manage/basic_page_types/overview");
     $I->canSeeResponseCodeIs(200);
-    $I->canSee('Research Project');
+    $I->canSee('Research');
     $I->amOnPage("/admin/structure/taxonomy/manage/basic_page_types/add");
     $I->canSeeResponseCodeIs(200);
-    $I->fillField('Name', 'Test Basic Page Term');
+    $I->fillField('Name', $this->faker->words(4, TRUE));
     $I->click('Save');
     $I->canSee('Created new term');
   }
@@ -113,46 +123,50 @@ class BasicPageCest {
    * A site manager should be able to place a page under an unpublished page.
    */
   public function testUnpublishedMenuItems(AcceptanceTester $I) {
+    $unpublished_title = $this->faker->words(5, TRUE);
+    $child_page_title = $this->faker->words(5, TRUE);
+
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_page');
-    $I->fillField('Title', 'Unpublished Parent');
+    $I->fillField('Title', $unpublished_title);
     $I->checkOption('Provide a menu link');
-    $I->fillField('Menu link title', 'Unpublished Parent');
+    $I->fillField('Menu link title', $unpublished_title);
     $I->uncheckOption('Published');
     $I->click('Save');
-    $I->canSee('Unpublished Parent', 'h1');
+    $I->canSee($unpublished_title, 'h1');
+    $unpublished_url = $I->grabFromCurrentUrl();
 
     $I->amOnPage('/node/add/stanford_page');
-    $I->fillField('Title', 'Child Page');
+    $I->fillField('Title', $child_page_title);
     $I->checkOption('Provide a menu link');
-    $I->fillField('Menu link title', 'Child Page');
-    $I->selectOption('Parent link', '-- Unpublished Parent');
+    $I->fillField('Menu link title', $child_page_title);
+    $I->selectOption('Parent link', '-- ' . Unicode::truncate($unpublished_title, 30, TRUE, FALSE));
     $I->click('Change parent (update list of weights)');
     $I->uncheckOption('Published');
     $I->click('Save');
-    $I->canSee('Child Page', 'h1');
+    $I->canSee($child_page_title, 'h1');
 
-    $I->click('Edit', '.tabs__tab');
-    $I->click('Save');
-    $I->assertEquals('/unpublished-parent/child-page', $I->grabFromCurrentUrl());
+    $I->canSeeInCurrentUrl("$unpublished_url/");
   }
 
   /**
    * Clone a basic page.
    */
   public function testClone(AcceptanceTester $I) {
+    $title = $this->faker->words(3, TRUE);
+
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_page');
-    $I->fillField('Title', 'Original Node');
+    $I->fillField('Title', $title);
     $I->click('Save');
     $I->amOnPage('/admin/content');
-    $I->canSee('Original Node');
-    $I->checkOption('[name="views_bulk_operations_bulk_form[0]"]');
+    $I->canSee($title);
+    $I->checkOption('tr:contains("' . $title . '") input[name^="views_bulk_operations_bulk_form"]');
     $I->selectOption('Action', 'Clone selected content');
     $I->click('Apply to selected items');
     $I->selectOption('Clone how many times', 2);
     $I->click('Apply');
-    $links = $I->grabMultiple('a:contains("Original Node")');
+    $links = $I->grabMultiple('a:contains("' . $title . '")');
     $I->assertCount(3, $links);
   }
 
@@ -169,7 +183,10 @@ class BasicPageCest {
     $timezone_resolver->setDefaultTimeZone();
 
     $I->logInWithRole('site_manager');
-    $node = $I->createEntity(['title' => 'Foo Bar', 'type' => 'stanford_page']);
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_page',
+    ]);
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->fillField('publish_on[0][value][date]', date('Y-m-d'));
     $I->fillField('publish_on[0][value][time]', date('H:i:s', $time->getCurrentTime() + 10));
@@ -182,6 +199,16 @@ class BasicPageCest {
     $I->cantSee('This page is currently unpublished');
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->canSeeCheckboxIsChecked('Published');
+  }
+
+  /**
+   * Validate the Spacer Paragraph type exists
+   */
+  public function testSpacerParagraph(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/structure/paragraphs_type');
+    $I->canSee('Spacer');
+    $I->canSee("stanford_spacer");
   }
 
 }

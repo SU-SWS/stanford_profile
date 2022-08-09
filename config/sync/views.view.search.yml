@@ -167,7 +167,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Search
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
@@ -178,7 +178,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: tag
+        type: none
         options: {  }
       empty:
         area_text_custom:
@@ -277,12 +277,12 @@ display:
           separator: ''
           hide_empty: false
       query:
-        type: views_query
+        type: search_api_query
         options:
-          contextual_filters_or: false
           bypass_access: false
           skip_access: false
           preserve_facet_query_args: false
+          contextual_filters_or: false
       relationships: {  }
       header: {  }
       footer: {  }

@@ -1,0 +1,15 @@
+stanford_publication.citation_type.*:
+  type: config_entity
+  label: 'Citation type config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    type:
+      type: string
+      label: 'Citation Type'
+    uuid:
+      type: string

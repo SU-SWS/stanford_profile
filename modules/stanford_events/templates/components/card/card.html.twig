@@ -1,0 +1,47 @@
+{#
+  Event list item
+
+  Template for an Event List Item.
+
+  * Available variables:
+  * - attributes: For additional HTML attributes not already provided.
+  * - modifier_class: Additional CSS classes to change look and behavior.
+  * - start_month: Starting month of the event.
+  * - start_date: Date of the event
+  * - end_month: Ending month of the event if it spans more than one day.
+  * - end_date: Ending day of the event if it spans more than one day.
+  * - audience: Optional audience for the event.
+  * - headline: Title of the event. Can be a link off to another website.
+  * - subheadline: Optional subtile for the event.
+  * - date_time: Date and time for the event.
+  * - location: Where it is being held.
+#}
+
+{%- set attributes = attributes.addClass(['su-card', 'su-event-card']) -%}
+
+
+{{ pattern('events_list', {
+  attributes: attributes,
+  modifier_class: modifier_class,
+  address: address,
+  date_time: date_time,
+  edit: edit,
+  end_date: end_date,
+  end_month: end_month,
+  event_type: event_type,
+  headline: headline,
+  location: location,
+  location_address_line1: location_address_line1,
+  location_address_line2: location_address_line2,
+  location_administrative_area: location_administrative_area,
+  location_country_code: location_country_code,
+  location_dependent_locality: location_dependent_locality,
+  location_locality: location_locality,
+  location_organization: location_organization,
+  location_postal_code: location_postal_code,
+  location_sorting_code: location_sorting_code,
+  start_date: start_date,
+  start_month: start_month,
+  subheadline: subheadline,
+  url: url
+}) }}

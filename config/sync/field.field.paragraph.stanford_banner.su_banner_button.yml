@@ -12,7 +12,7 @@ field_name: su_banner_button
 entity_type: paragraph
 bundle: stanford_banner
 label: Button
-description: 'A call to action link that shows up below the main body content.'
+description: "A call to action link that shows up below the main body content.<br>\r\nUse the \"Aria Label\" to provide more descriptive information to the user when the \"Link Text\" provide general or less specific information. For Example: If the link text is simply \"Read More\", set the Aria Label to something like \"Read more about the department policies\"."
 required: false
 translatable: false
 default_value: {  }

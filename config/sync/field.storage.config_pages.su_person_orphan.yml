@@ -1,0 +1,30 @@
+uuid: 4a38844c-2634-4dde-b6c3-988013c8d82d
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - options
+id: config_pages.su_person_orphan
+field_name: su_person_orphan
+entity_type: config_pages
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: forget
+      label: Nothing
+    -
+      value: unpublish
+      label: Unpublish
+    -
+      value: delete
+      label: Delete
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

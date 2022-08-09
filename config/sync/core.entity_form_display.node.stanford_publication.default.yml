@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.stanford_publication.layout_builder__layout
     - field.field.node.stanford_publication.stanford_intranet__access
+    - field.field.node.stanford_publication.su_publication_author_ref
     - field.field.node.stanford_publication.su_publication_citation
     - field.field.node.stanford_publication.su_publication_components
     - field.field.node.stanford_publication.su_publication_cta
@@ -27,27 +28,37 @@ mode: default
 content:
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 20
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   stanford_intranet__access:
     type: entity_access
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 6
+    weight: 7
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  su_publication_author_ref:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   su_publication_citation:
     type: inline_entity_form_complex
@@ -108,7 +119,7 @@ content:
     third_party_settings: {  }
   su_shared_tags:
     type: options_shs
-    weight: 31
+    weight: 11
     region: content
     settings:
       display_node_count: false

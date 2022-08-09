@@ -1,0 +1,38 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 5dc9098a-0307-4534-a651-37c476ef1934
+  bundle: stanford_person_types
+  default_langcode: en
+  depends:
+    e774e945-7dae-45ca-869d-921c909ffe95: taxonomy_term
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Alumni
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      entity: e774e945-7dae-45ca-869d-921c909ffe95
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /people/student/alumni
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default

@@ -26,12 +26,12 @@ class PersonCest {
    */
   public function testDefaultContentExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $I->amOnPage("/admin/content");
-    $I->see("Haley Jackson");
-    $I->amOnPage("/people/haley-jackson");
-    $I->see("This page is currently unpublished and not visible to the public.");
-    $I->see("Haley Jackson");
-    $I->see("People", ".su-multi-menu");
+    $I->amOnPage('/admin/content');
+    $I->see('Haley Jackson');
+    $I->amOnPage('/people/haley-jackson');
+    $I->see('This page is currently unpublished and not visible to the public.');
+    $I->see('Haley Jackson');
+    $I->see('People', '.su-multi-menu');
 
   }
 
@@ -40,21 +40,20 @@ class PersonCest {
    */
   public function testVocabularyTermsExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $I->amOnPage("/admin/structure/taxonomy/manage/stanford_person_types/overview");
-    $I->canSeeNumberOfElements(".term-id", 14);
+    $I->amOnPage('/admin/structure/taxonomy/manage/stanford_person_types/overview');
+    $I->canSeeNumberOfElements('.term-id', 14);
   }
 
   /**
    * Test that the view pages exist.
    */
   public function testViewPagesExist(AcceptanceTester $I) {
-    $I->amOnPage("/people");
-    $I->see("Sorry, no results found");
+    $I->amOnPage('/people');
     $I->seeLink('Student');
-    $I->click("a[href='/people/staff']");
+    $I->seeLink('Staff');
+    $I->click('Staff');
     $I->canSeeResponseCodeIs(200);
-    $I->see("Sorry, no results found");
-    $I->see("Person Type");
+    $I->see('Person Type');
   }
 
   /**
@@ -62,16 +61,17 @@ class PersonCest {
    * up in the all view.
    */
   public function testCreatePerson(AcceptanceTester $I) {
+    $first_name = $this->faker->firstName;
+    $last_name = $this->faker->lastName;
     $node = $I->createEntity([
       'type' => 'stanford_person',
-      'su_person_first_name' => "John",
-      'su_person_last_name' => "Wick",
+      'su_person_first_name' => $first_name,
+      'su_person_last_name' => $last_name,
     ]);
     $I->amOnPage($node->toUrl()->toString());
-    $I->see("John Wick");
-    $I->runDrush('cr');
-    $I->amOnPage("/people");
-    $I->see("John Wick");
+    $I->see("$first_name $last_name", 'h1');
+    $I->amOnPage('/people');
+    $I->see("$first_name $last_name");
   }
 
   /**
@@ -82,22 +82,22 @@ class PersonCest {
 
     // Revision Delete is enabled.
     $I->amOnPage('/admin/structure/types/manage/stanford_person');
-    $I->seeCheckboxIsChecked("#edit-node-revision-delete-track");
-    $I->seeCheckboxIsChecked("#edit-options-revision");
-    $I->seeInField("#edit-minimum-revisions-to-keep", 5);
+    $I->seeCheckboxIsChecked('#edit-node-revision-delete-track');
+    $I->seeCheckboxIsChecked('#edit-options-revision');
+    $I->seeInField('#edit-minimum-revisions-to-keep', 5);
 
     // XML Sitemap.
-    $I->amOnPage("/admin/config/search/xmlsitemap/settings");
-    $I->see("Person");
-    $I->amOnPage("/admin/config/search/xmlsitemap/settings/node/stanford_person");
-    $I->selectOption("#edit-xmlsitemap-status", 1);
+    $I->amOnPage('/admin/config/search/xmlsitemap/settings');
+    $I->see('Person');
+    $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_person');
+    $I->selectOption('#edit-xmlsitemap-status', 1);
 
     // Metatags.
-    $I->amOnPage("/admin/config/search/metatag/page_variant__people-layout_builder-0");
+    $I->amOnPage('/admin/config/search/metatag/page_variant__people-layout_builder-0');
     $I->canSeeResponseCodeIs(200);
-    $I->amOnPage("/admin/config/search/metatag/page_variant__stanford_person_list-layout_builder-1");
+    $I->amOnPage('/admin/config/search/metatag/page_variant__stanford_person_list-layout_builder-1');
     $I->canSeeResponseCodeIs(200);
-    $I->amOnPage("/admin/config/search/metatag/node__stanford_person");
+    $I->amOnPage('/admin/config/search/metatag/node__stanford_person');
     $I->canSeeResponseCodeIs(200);
   }
 
@@ -122,14 +122,17 @@ class PersonCest {
    * Special characters should stay.
    */
   public function testSpecialCharacters(AcceptanceTester $I) {
-    $faker = Factory::create();
+    $first_name = $this->faker->firstName;
+    $middle_name = $this->faker->firstName;
+    $last_name = $this->faker->lastName;
+
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_person');
-    $I->fillField('First Name', 'Foo');
-    $I->fillField('Last Name', 'Bar-Baz & Foo');
-    $I->fillField('Short Title', $faker->text);
+    $I->fillField('First Name', $first_name);
+    $I->fillField('Last Name', "$middle_name & $last_name");
+    $I->fillField('Short Title', $this->faker->text);
     $I->click('Save');
-    $I->canSee('Foo Bar-Baz & Foo', 'h1');
+    $I->canSee("$first_name $middle_name & $last_name", 'h1');
   }
 
   /**
@@ -141,20 +144,23 @@ class PersonCest {
     $I->logInWithRole('site_manager');
 
     $term1 = $I->createEntity([
-      'name' => $this->faker->words(2),
+      'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',
     ], 'taxonomy_term');
     $term2 = $I->createEntity([
-      'name' => $this->faker->words(2),
+      'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',
     ], 'taxonomy_term');
     $term3 = $I->createEntity([
-      'name' => $this->faker->words(2),
+      'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',
       'parent' => ['target_id' => $term1->id()],
     ], 'taxonomy_term');
+    $I->amOnPage($term3->toUrl('edit-form')->toString());
+    $I->click('Save');
+    $I->canSee('Updated term');
 
-    $I->amOnPage('/people');
+    $I->amOnPage($term3->toUrl()->toString());
     $I->canSeeLink($term1->label());
     $I->canSeeLink($term2->label());
     $I->cantSeeLink($term3->label());
@@ -232,7 +238,7 @@ class PersonCest {
     $I->logInWithRole('site_manager');
     $term = $I->createEntity([
       'vid' => 'stanford_person_types',
-      'name' => 'Foo',
+      'name' => $this->faker->word,
     ], 'taxonomy_term');
     $I->amOnPage($term->toUrl('edit-form')->toString());
     $I->cantSee('Published');
