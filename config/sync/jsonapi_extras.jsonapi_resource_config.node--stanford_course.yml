@@ -1,0 +1,253 @@
+uuid: 8f4afc26-7532-4eba-ba6c-c5324b434ee4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_course
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_course_quarters
+      - su_course_subject
+      - su_course_tags
+      - su_shared_tags
+    default_filter:
+      'filter:status': '1'
+    page_limit: 50
+id: node--stanford_course
+disabled: false
+path: node/stanford_course
+resourceType: node--stanford_course
+resourceFields:
+  nid:
+    disabled: false
+    fieldName: nid
+    publicName: nid
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  vid:
+    disabled: false
+    fieldName: vid
+    publicName: vid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  type:
+    disabled: false
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  revision_timestamp:
+    disabled: false
+    fieldName: revision_timestamp
+    publicName: revision_timestamp
+    enhancer:
+      id: ''
+  revision_uid:
+    disabled: false
+    fieldName: revision_uid
+    publicName: revision_uid
+    enhancer:
+      id: ''
+  revision_log:
+    disabled: false
+    fieldName: revision_log
+    publicName: revision_log
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  uid:
+    disabled: false
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  title:
+    disabled: false
+    fieldName: title
+    publicName: title
+    enhancer:
+      id: ''
+  created:
+    disabled: false
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: false
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  promote:
+    disabled: false
+    fieldName: promote
+    publicName: promote
+    enhancer:
+      id: ''
+  sticky:
+    disabled: false
+    fieldName: sticky
+    publicName: sticky
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: false
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  revision_default:
+    disabled: false
+    fieldName: revision_default
+    publicName: revision_default
+    enhancer:
+      id: ''
+  revision_translation_affected:
+    disabled: false
+    fieldName: revision_translation_affected
+    publicName: revision_translation_affected
+    enhancer:
+      id: ''
+  metatag:
+    disabled: false
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  path:
+    disabled: false
+    fieldName: path
+    publicName: path
+    enhancer:
+      id: ''
+  rh_action:
+    disabled: false
+    fieldName: rh_action
+    publicName: rh_action
+    enhancer:
+      id: ''
+  rh_redirect:
+    disabled: false
+    fieldName: rh_redirect
+    publicName: rh_redirect
+    enhancer:
+      id: ''
+  rh_redirect_response:
+    disabled: false
+    fieldName: rh_redirect_response
+    publicName: rh_redirect_response
+    enhancer:
+      id: ''
+  rh_redirect_fallback_action:
+    disabled: false
+    fieldName: rh_redirect_fallback_action
+    publicName: rh_redirect_fallback_action
+    enhancer:
+      id: ''
+  publish_on:
+    disabled: false
+    fieldName: publish_on
+    publicName: publish_on
+    enhancer:
+      id: ''
+  unpublish_on:
+    disabled: false
+    fieldName: unpublish_on
+    publicName: unpublish_on
+    enhancer:
+      id: ''
+  menu_link:
+    disabled: false
+    fieldName: menu_link
+    publicName: menu_link
+    enhancer:
+      id: ''
+  body:
+    disabled: false
+    fieldName: body
+    publicName: body
+    enhancer:
+      id: ''
+  su_course_academic_year:
+    disabled: false
+    fieldName: su_course_academic_year
+    publicName: su_course_academic_year
+    enhancer:
+      id: ''
+  su_course_code:
+    disabled: false
+    fieldName: su_course_code
+    publicName: su_course_code
+    enhancer:
+      id: ''
+  su_course_id:
+    disabled: false
+    fieldName: su_course_id
+    publicName: su_course_id
+    enhancer:
+      id: ''
+  su_course_instructors:
+    disabled: false
+    fieldName: su_course_instructors
+    publicName: su_course_instructors
+    enhancer:
+      id: ''
+  su_course_link:
+    disabled: false
+    fieldName: su_course_link
+    publicName: su_course_link
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_course_quarters:
+    disabled: false
+    fieldName: su_course_quarters
+    publicName: su_course_quarters
+    enhancer:
+      id: ''
+  su_course_section_units:
+    disabled: false
+    fieldName: su_course_section_units
+    publicName: su_course_section_units
+    enhancer:
+      id: ''
+  su_course_subject:
+    disabled: false
+    fieldName: su_course_subject
+    publicName: su_course_subject
+    enhancer:
+      id: ''
+  su_course_tags:
+    disabled: false
+    fieldName: su_course_tags
+    publicName: su_course_tags
+    enhancer:
+      id: ''
+  su_shared_tags:
+    disabled: false
+    fieldName: su_shared_tags
+    publicName: su_shared_tags
+    enhancer:
+      id: ''
