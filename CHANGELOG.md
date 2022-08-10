@@ -1,5 +1,12 @@
 # Stanford Profile
 
+9.1.1
+--------------------------------------------------------------------------------
+_Release Date: 2022-08-09_
+
+- Updated field validation for google analytics and allow multiple property ids (#600)
+
+
 9.1.0
 --------------------------------------------------------------------------------
 _Release Date: 2022-08-08_
