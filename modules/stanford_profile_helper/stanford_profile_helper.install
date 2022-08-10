@@ -44,6 +44,25 @@ function stanford_profile_helper_update_8193() {
  * Enable minimally_branded_subtheme theme & 2 modules.
  */
 function stanford_profile_helper_update_8194() {
-  \Drupal::service('module_installer')->install(['ctools_views', 'views_custom_cache_tag']);
+  \Drupal::service('module_installer')->install([
+    'ctools_views',
+    'views_custom_cache_tag',
+  ]);
   \Drupal::service('theme_installer')->install(['minimally_branded_subtheme']);
+}
+
+/**
+ * Populate the title field on link tables.
+ */
+function stanford_profile_helper_update_8195() {
+  foreach (['su_course_link', 'su_event_source'] as $field_name) {
+    \Drupal::database()->update("node__$field_name")
+      ->fields(["{$field_name}_title" => ''])
+      ->condition("{$field_name}_title", NULL, 'IS NULL')
+      ->execute();
+    \Drupal::database()->update("node_revision__$field_name")
+      ->fields(["{$field_name}_title" => ''])
+      ->condition("{$field_name}_title", NULL, 'IS NULL')
+      ->execute();
+  }
 }
