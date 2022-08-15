@@ -207,7 +207,7 @@ function stanford_profile_styles_preprocess_field__react_paragraph_row(&$variabl
     /** @var \Drupal\paragraphs\ParagraphInterface $entity */
     $entity = $item['content']['#paragraph'];
 
-    if ($width = $entity->getBehaviorSetting('react', 'width')) {
+    if ($width = $entity->getBehaviorSetting('react', 'width', 12)) {
       if ($item['attributes'] instanceof Attribute) {
         $item['attributes']->addClass("flex-$width-of-12");
         continue;
