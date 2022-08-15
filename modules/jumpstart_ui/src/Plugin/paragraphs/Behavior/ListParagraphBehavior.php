@@ -35,13 +35,13 @@ class ListParagraphBehavior extends ParagraphsBehaviorBase {
     $form['hide_empty'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Hide if empty'),
-      '#description' => $this->t('Hide the entire paragraph if the view has no results.'),
+      '#description' => $this->t('Disable paragraph if there are no items displayed in the list.<br>Disabled content will not be accessed by site visitors. This applies only if there are no items within the list.'),
       '#default_value' => $paragraph->getBehaviorSetting('list_paragraph', 'hide_empty', FALSE),
     ];
     $form['empty_message'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Empty list message.'),
-      '#description' => $this->t('Enter some text to display if the list is empty.'),
+      '#description' => $this->t('This message will appear for site visitors if there are no items displayed in the list.'),
       '#default_value' => $paragraph->getBehaviorSetting('list_paragraph', 'empty_message'),
     ];
     return $form;
