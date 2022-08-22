@@ -50,9 +50,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    * {@inheritDoc}.
    */
   public static function defaultSettings() {
-    $settings = [
-      'api_version' => '20200810',
-    ];
+    $settings = ['api_version' => '20200810'];
     return $settings + parent::defaultSettings();
   }
 
@@ -100,6 +98,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
     try {
       $response = $this->client->request('GET', 'search?view=xml-' . $input, ['base_uri' => 'https://explorecourses.stanford.edu/']);
       $response = (string) $response->getBody();
+      libxml_use_internal_errors();
       $xml = new \SimpleXMLElement($response);
       // Do this as a string, since SimpleXMLElement doesn't cast to bools.
       if ((string) $xml->deprecated == 'true') {
@@ -131,7 +130,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
-    $element['uri']['#element_validate'][] = [$this, 'validateExploreCourseUrl'];
+    $element['uri']['#element_validate'][] = [$this, 'validateUrl'];
     $element['uri']['#description'] = $this->t('This must be a valid ExplorerCourses URL. See: @url', ['@url' => 'https://explorecourses.stanford.edu']);
     $element['title']['#access'] = FALSE;
     $element['attributes']['#access'] = FALSE;
@@ -149,11 +148,10 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    * @param array $complete_form
    *   Complete form.
    */
-  public function validateExploreCourseUrl(array &$element, FormStateInterface $form_state, array &$complete_form) {
+  public function validateUrl(array &$element, FormStateInterface $form_state, array &$complete_form) {
     $url = UrlHelper::parse($element['#value']);
     if (!empty($url['path']) && !str_contains($url['path'], 'explorecourses')) {
       $form_state->setError($element, $this->t('The URL is not a valid ExploreCourses URL.'));
-      return;
     }
   }
 
@@ -170,10 +168,8 @@ class ExploreCoursesUrlWidget extends LinkWidget {
         // Parse the existing URL.
         $url = UrlHelper::parse($value['uri']);
 
-        // Check if the 'view' querystring doesn't exist, or if it's wrong.
-        if (empty($url['query']['view']) || $url['query']['view'] != '$xml_querystring') {
-          $url['query']['view'] = $xml_querystring;
-        }
+        // Ensure the view parameter is the proper value.
+        $url['query']['view'] = $xml_querystring;
 
         $massaged_url = Url::fromUri($url['path'], ['query' => $url['query']]);
         $values[$delta]['uri'] = $massaged_url->toString();
