@@ -39,6 +39,14 @@ function stanford_profile_helper_entity_type_alter(array &$entity_types) {
 }
 
 /**
+ * Implements hook_views_pre_render().
+ */
+function stanford_profile_helper_views_post_render(ViewExecutable $view, &$output) {
+//  dpm($output);
+//  $output['#attached']['library'][] = 'stanford_profile_helper/ajax_views';
+}
+
+/**
  * Implements hook_local_tasks_alter().
  */
 function stanford_profile_helper_local_tasks_alter(&$local_tasks) {
@@ -164,6 +172,10 @@ function stanford_profile_helper_theme($existing, $type, $theme, $path) {
  * Implements hook_library_info_alter().
  */
 function stanford_profile_helper_library_info_alter(&$libraries, $extension) {
+  if ($extension == 'views') {
+    $libraries['views.ajax']['dependencies'][] = 'stanford_profile_helper/ajax_views';
+  }
+
   if ($extension == 'mathjax') {
     $libraries['source']['dependencies'][] = 'stanford_profile_helper/mathjax';
     unset($libraries['setup'], $libraries['config']);
