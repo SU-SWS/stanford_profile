@@ -39,14 +39,6 @@ function stanford_profile_helper_entity_type_alter(array &$entity_types) {
 }
 
 /**
- * Implements hook_views_pre_render().
- */
-function stanford_profile_helper_views_post_render(ViewExecutable $view, &$output) {
-//  dpm($output);
-//  $output['#attached']['library'][] = 'stanford_profile_helper/ajax_views';
-}
-
-/**
  * Implements hook_local_tasks_alter().
  */
 function stanford_profile_helper_local_tasks_alter(&$local_tasks) {
