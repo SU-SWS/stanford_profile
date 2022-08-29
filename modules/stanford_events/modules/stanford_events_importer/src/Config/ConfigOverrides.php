@@ -9,7 +9,6 @@ use Drupal\Core\Config\StorageInterface;
 
 /**
  * Configuration overrides for events importer migration entity.
- *
  */
 class ConfigOverrides implements ConfigFactoryOverrideInterface {
 
@@ -19,7 +18,6 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface
    */
   protected $configPages;
-
 
   /**
    * ConfigOverrides constructor.
@@ -60,10 +58,9 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     if (in_array('migrate_plus.migration.stanford_localist_importer', $names)) {
       $bookmark_urls = $this->configPages->getValue('stanford_events_importer', 'su_localist_bookmark', [], 'uri');
       $feed_urls = $this->configPages->getValue('stanford_events_importer', 'su_localist_url', [], 'uri');
-      $overrides['migrate_plus.migration.stanford_localist_importer']['source']['urls'] = [
-        ...$bookmark_urls,
-        ...$feed_urls,
-      ];
+      $urls = [...$bookmark_urls, ...$feed_urls];
+      asort($urls);
+      $overrides['migrate_plus.migration.stanford_localist_importer']['source']['urls'] = array_values($urls);
     }
     return $overrides;
   }

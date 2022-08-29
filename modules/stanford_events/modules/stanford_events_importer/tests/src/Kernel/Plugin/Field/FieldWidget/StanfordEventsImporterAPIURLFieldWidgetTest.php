@@ -31,6 +31,7 @@ class StanfordEventsImporterAPIURLFieldWidgetTest extends KernelTestBase {
     'field',
     'stanford_events',
     'stanford_events_importer',
+    'config_pages',
   ];
 
   /**
