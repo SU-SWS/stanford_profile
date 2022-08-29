@@ -217,4 +217,29 @@ class PublicationsCest {
     $I->canSee($publication->label());
   }
 
+  /**
+   * Journal citations should include a field for journal publisher.
+   */
+  public function testJournalPublisher(AcceptanceTester $I) {
+    $this->values['node_title'] = $this->faker->words(3, TRUE);
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/node/add/stanford_publication');
+    $I->fillField('Title', $this->values['node_title']);
+    $I->selectOption('Publication Types', 'Journal Article');
+    $I->selectOption('su_publication_citation[actions][bundle]', 'Journal Article');
+    $I->click('Add Citation');
+    $I->fillField('First Name', $this->faker->firstName);
+    $I->fillField('Last Name/Company', $this->faker->lastName);
+    $I->fillField('Volume', "1");
+    $I->fillField('Issue', "1");
+    $I->fillField('Page(s)', "1-10");
+    $I->fillField('Publisher', $this->faker->text);
+    $I->fillField('Journal Name', $this->faker->text);
+    $I->fillField('Year', $this->faker->numberBetween(1900, 2020));
+    $I->click('Save');
+    $I->canSee($this->values['node_title'], 'h1');
+    $I->canSee('Journal Name');
+    $I->canSee('Publisher');
+  }
+
 }
