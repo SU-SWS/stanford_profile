@@ -7,8 +7,9 @@ _core:
 id: global
 label: Global
 tags:
-  title: '[current-page:title] | [site:name]'
   canonical_url: '[current-page:url]'
-  og_url: '[current-page:url:absolute]'
   og_site_name: '[site:name]'
   og_title: '[current-page:title]'
+  og_type: website
+  og_url: '[current-page:url:absolute]'
+  title: '[current-page:title] | [site:name]'

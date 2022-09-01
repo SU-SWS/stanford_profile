@@ -9,22 +9,6 @@ use Drupal\node\NodeInterface;
 use Symfony\Component\Finder\Finder;
 
 /**
- * Implements hook_metatags_alter().
- */
-function stanford_basic_page_types_metatags_alter(array &$metatags, array $context) {
-  if (!empty($context['entity']) && $context['entity'] instanceof NodeInterface && $context['entity']->bundle() == 'stanford_page') {
-    $entity = $context['entity'];
-
-    // If we have a page image, we want to use that for
-    // image-related metatags.
-    if ($entity->get('su_page_image')->count()) {
-      $metatags['og_image'] = "[node:su_page_image:entity:field_media_image:large]";
-      $metatags['og_image_url'] = "[node:su_page_image:entity:field_media_image:large]";
-    }
-  }
-}
-
-/**
  * Implements hook_page_attachments().
  */
 function stanford_basic_page_types_page_attachments(array &$attachments) {
