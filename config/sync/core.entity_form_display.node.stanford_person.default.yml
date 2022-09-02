@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.stanford_person.body
     - field.field.node.stanford_person.layout_builder__layout
     - field.field.node.stanford_person.stanford_intranet__access
+    - field.field.node.stanford_person.su_metatags
     - field.field.node.stanford_person.su_person_academic_appt
     - field.field.node.stanford_person.su_person_admin_appts
     - field.field.node.stanford_person.su_person_affiliations
@@ -37,6 +38,7 @@ dependencies:
     - field_group
     - link
     - media_library
+    - metatag
     - paragraphs
     - scheduler
     - shs
@@ -166,6 +168,14 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  su_metatags:
+    type: metatag_firehose
+    weight: 32
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   su_person_affiliations:
     type: link_default
