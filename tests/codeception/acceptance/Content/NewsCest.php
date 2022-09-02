@@ -136,10 +136,6 @@ class NewsCest {
     $I->selectOption("#edit-xmlsitemap-status", 1);
 
     // Metatags.
-    $I->amOnPage("/admin/config/search/metatag/page_variant__stanford_news_list-layout_builder-0");
-    $I->canSeeResponseCodeIs(200);
-    $I->amOnPage("/admin/config/search/metatag/page_variant__stanford_news_list_terms-layout_builder-0");
-    $I->canSeeResponseCodeIs(200);
     $I->amOnPage("/admin/config/search/metatag/node__stanford_news");
     $I->canSeeResponseCodeIs(200);
   }

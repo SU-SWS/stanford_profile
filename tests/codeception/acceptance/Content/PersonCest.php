@@ -92,10 +92,6 @@ class PersonCest {
     $I->selectOption('#edit-xmlsitemap-status', 1);
 
     // Metatags.
-    $I->amOnPage('/admin/config/search/metatag/page_variant__people-layout_builder-0');
-    $I->canSeeResponseCodeIs(200);
-    $I->amOnPage('/admin/config/search/metatag/page_variant__stanford_person_list-layout_builder-1');
-    $I->canSeeResponseCodeIs(200);
     $I->amOnPage('/admin/config/search/metatag/node__stanford_person');
     $I->canSeeResponseCodeIs(200);
   }
