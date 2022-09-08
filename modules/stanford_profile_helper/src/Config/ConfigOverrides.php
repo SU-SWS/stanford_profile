@@ -111,7 +111,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
       return;
     }
 
-    // Override the lockup settings
+    // Override the lockup settings.
     if ($lockup_overrides = $this->getLockupTextOverrides()) {
       $overrides[$default_theme . '.settings'] = $lockup_overrides;
     }
