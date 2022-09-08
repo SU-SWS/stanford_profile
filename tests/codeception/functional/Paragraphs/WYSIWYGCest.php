@@ -155,6 +155,72 @@ class WYSIWYGCest {
   }
 
   /**
+   * Test media category taxonomy field.
+   */
+  public function testImageCategory(FunctionalTester $I){
+    $node = $this->getNodeWithParagraph($I);
+
+    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+    $file_system = \Drupal::service('file_system');
+    $image_path = $file_system->copy(__DIR__ . '/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $file = $I->createEntity(['uri' => $image_path], 'file');
+
+    $unrelated_term = $I->createEntity([
+      'vid' => 'media_tags',
+      'name' => $this->faker->word,
+    ], 'taxonomy_term');
+
+    $parent_term = $I->createEntity([
+      'vid' => 'media_tags',
+      'name' => $this->faker->word,
+    ], 'taxonomy_term');
+    $child_term = $I->createEntity([
+      'vid' => 'media_tags',
+      'name' => $this->faker->word,
+      'parent' => $parent_term->id(),
+    ], 'taxonomy_term');
+
+    $media = $I->createEntity([
+      'bundle' => 'image',
+      'field_media_image' => $file->id(),
+      'name' => $this->faker->words(3, TRUE),
+      'su_media_category' => $child_term,
+    ], 'media');
+
+    $I->logInWithRole('site_manager');
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+
+    $I->waitForElementVisible('#row-0');
+    $I->click('Edit', '.inner-row-wrapper');
+    $I->waitForElementVisible('.cke_inner');
+
+    // Wait a second for any click events to be applied.
+    $I->wait(1);
+    $I->click('Insert from Media Library');
+    $I->waitForElementVisible('.dropzone');
+
+    $I->selectOption('Category', $unrelated_term->label());
+    $I->click('Apply filters');
+    $I->waitForAjaxToFinish();
+    $I->cantSee($media->label());
+
+    $I->selectOption('Category', $parent_term->label());
+    $I->click('Apply filters');
+    $I->waitForAjaxToFinish();
+    $I->canSee($media->label());
+
+    $I->selectOption('Category', $unrelated_term->label());
+    $I->click('Apply filters');
+    $I->waitForAjaxToFinish();
+    $I->cantSee($media->label());
+
+    $I->selectOption('Category', '-'. $child_term->label());
+    $I->click('Apply filters');
+    $I->waitForAjaxToFinish();
+    $I->canSee($media->label());
+  }
+
+  /**
    * Videos in the WYSIWYG should display correctly.
    */
   public function testEmbeddedVideo(FunctionalTester $I) {

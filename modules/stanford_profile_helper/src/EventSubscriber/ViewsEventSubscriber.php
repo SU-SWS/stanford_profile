@@ -2,12 +2,13 @@
 
 namespace Drupal\stanford_profile_helper\EventSubscriber;
 
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\views_event_dispatcher\Event\Views\ViewsPreViewEvent;
-use Drupal\views_event_dispatcher\Event\Views\ViewsQueryAlterEvent;
 use Drupal\views_event_dispatcher\ViewsHookEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * Views hook event subscriber.
+ */
 class ViewsEventSubscriber implements EventSubscriberInterface {
 
   /**
