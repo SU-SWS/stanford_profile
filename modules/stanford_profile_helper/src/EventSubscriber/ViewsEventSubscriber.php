@@ -30,6 +30,11 @@ class ViewsEventSubscriber implements EventSubscriberInterface {
     $view = $event->getView();
     $display_options = &$view->getDisplay()->options;
 
+    // When viewing the "default" view display, just escape out.
+    if (!isset($view->getDisplay()->default_display)) {
+      return;
+    }
+
     $default_options = &$view->getDisplay()->default_display->options;
     $filters = !empty($display_options['filters']) ? $display_options['filters'] : $default_options['filters'];
 
@@ -37,11 +42,13 @@ class ViewsEventSubscriber implements EventSubscriberInterface {
     // using the node type filters that exist on the view.
     // @see \Drupal\Core\Entity\EntityBase::getListCacheTagsToInvalidate().
     if (!empty($filters['type']['entity_type']) && $filters['type']['entity_type'] == 'node') {
+
       $tags = [];
       foreach ($filters['type']['value'] as $node_type) {
         $tags[] = 'node_list:' . $node_type;
       }
-      // If no node type tags are available, fall back to the general `node_list`.
+
+      // If no node type tags are available, fall back to general `node_list`.
       $tags = empty($tags) ? ['node_list'] : $tags;
       $cache = [
         'type' => 'custom_tag',
