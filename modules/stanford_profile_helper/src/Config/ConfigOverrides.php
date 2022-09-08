@@ -123,12 +123,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
   }
 
   /**
-   * Set the lockup text overrides.
-   *
-   * @param array $overrides
-   *   The array of overrides.
-   * @param string $theme_name
-   *   The name of the default theme.
+   * Get the lockup text overrides.
    */
   protected function getLockupTextOverrides() {
     $overrides = [
@@ -205,12 +200,11 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    */
   protected function setMainMenuOverrides(array $names, array &$overrides) {
     foreach ($names as $name) {
-      if (strpos($name, 'block.block') === 0) {
+      if (str_starts_with($name, 'block.block.')) {
         $block_plugin = $this->configFactory->getEditable($name)
           ->getOriginal('plugin', FALSE);
         $region = $this->configFactory->getEditable($name)
           ->getOriginal('region', FALSE);
-
 
         if ($block_plugin == 'system_menu_block:main' && $region == 'menu') {
           $menu_depth = (int) $this->configPagesLoader->getValue('stanford_basic_site_settings', 'su_site_menu_levels', 0, 'value');
