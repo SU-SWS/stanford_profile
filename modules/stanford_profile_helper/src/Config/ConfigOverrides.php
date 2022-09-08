@@ -69,11 +69,11 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    *   Stream wrapper manager interface.
    */
   public function __construct(
-    StateInterface $state,
+    StateInterface                    $state,
     ConfigPagesLoaderServiceInterface $config_pages_loader,
-    ConfigFactoryInterface $config_factory,
-    EntityTypeManagerInterface $entity_type_manager,
-    StreamWrapperManagerInterface $stream_wrapper_manager
+    ConfigFactoryInterface            $config_factory,
+    EntityTypeManagerInterface        $entity_type_manager,
+    StreamWrapperManagerInterface     $stream_wrapper_manager
   ) {
     $this->state = $state;
     $this->configPagesLoader = $config_pages_loader;
@@ -91,7 +91,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     // Theme settings override.
     $this->setLockupOverrides($names, $overrides);
     $this->setRolePermissionOverrides($names, $overrides);
-
+    $this->setMainMenuOverrides($names, $overrides);
     // Overrides.
     return $overrides;
   }
@@ -122,7 +122,8 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     $config_page = $this->configPagesLoader->load('lockup_settings');
 
     // Failed to load the config page or not enabled.
-    if (!$config_page || $config_page->get('su_lockup_enabled')->getString() == "1") {
+    if (!$config_page || $config_page->get('su_lockup_enabled')
+        ->getString() == "1") {
       return;
     }
 
@@ -155,7 +156,8 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
         'line5' => $config_page->get('su_line_5')->getString(),
       ],
       'logo' => [
-        'use_default' => ($config_page->get('su_use_theme_logo')->getString() == "1") ? TRUE : FALSE,
+        'use_default' => ($config_page->get('su_use_theme_logo')
+            ->getString() == "1") ? TRUE : FALSE,
       ],
     ];
   }
@@ -177,7 +179,8 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
       return;
     }
 
-    $file = $this->entityTypeManager->getStorage('file')->load($file_field[0]['target_id']);
+    $file = $this->entityTypeManager->getStorage('file')
+      ->load($file_field[0]['target_id']);
     if (!$file) {
       return;
     }
@@ -211,6 +214,32 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
         }
         $overrides['user.role.site_manager']['permissions'][$counter] = "assign $role_id role";
         $counter++;
+      }
+    }
+  }
+
+  /**
+   * Add main menu config overrides.
+   *
+   * @param array $names
+   *   Array of config names.
+   * @param array $overrides
+   *   Keyed array of config overrides.
+   */
+  protected function setMainMenuOverrides(array $names, array &$overrides) {
+    foreach ($names as $name) {
+      if (strpos($name, 'block.block') === 0) {
+        $block_plugin = $this->configFactory->getEditable($name)
+          ->getOriginal('plugin', FALSE);
+        $region = $this->configFactory->getEditable($name)
+          ->getOriginal('region', FALSE);
+
+        if ($block_plugin == 'system_menu_block:main' && $region == 'menu') {
+          $menu_depth = (int) $this->configPagesLoader->getValue('stanford_basic_site_settings', 'su_site_menu_levels', 0, 'value');
+          if ($menu_depth >= 1) {
+            $overrides[$name]['settings']['depth'] = $menu_depth;
+          }
+        }
       }
     }
   }
