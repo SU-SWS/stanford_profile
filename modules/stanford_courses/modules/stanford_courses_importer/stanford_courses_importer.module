@@ -6,12 +6,8 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\migrate\Plugin\MigrationInterface;
-use Drupal\migrate\MigrateMessage;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Cache\Cache;
-use Drupal\stanford_migrate\StanfordMigrateBatchExecutable;
-
 /**
  * Implements hook_form_FORM_ID_alter().
  *
