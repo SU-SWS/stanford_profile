@@ -24,6 +24,8 @@ class ConfigOverridesTest extends UnitTestCase {
 
   protected $logoFile;
 
+  protected $configPageValues = [];
+
   /**
    * Custom roles can be assigned by the site managers.
    */
@@ -43,14 +45,15 @@ class ConfigOverridesTest extends UnitTestCase {
     $overridder = $this->getOverrideService();
     $this->assertEmpty($overridder->loadOverrides(['barfoo.settings']));
     $this->assertEmpty($overridder->loadOverrides(['foobar.settings']));
+
     $this->configPageValues['lockup_settings'] = [
-      'su_lockup_enabled' => 1,
+      'su_lockup_enabled' => 0,
       'su_lockup_options' => 'a',
       'su_line_1' => 'Line 1',
       'su_line_2' => 'Line 2',
       'su_line_4' => 'Line 4',
       'su_line_5' => 'Line 5',
-      'su_use_theme_logo' => 1,
+      'su_use_theme_logo' => 0,
       'su_upload_logo_image' => NULL,
     ];
 
@@ -65,17 +68,18 @@ class ConfigOverridesTest extends UnitTestCase {
             'line5' => 'Line 5',
           ],
           'logo' => [
-            'use_default' => TRUE,
+            'use_default' => FALSE,
           ],
         ],
     ];
+
     $this->assertEquals($expected, $overridder->loadOverrides(['foobar.settings']));
 
     $this->configPageValues['lockup_settings']['su_upload_logo_image'] = 1;
     $this->assertEquals($expected, $overridder->loadOverrides(['foobar.settings']));
 
     $this->logoFile = $this->createMock(FileInterface::class);
-    $this->logoFile->method('getFileuri')->wilLReturn('public://foobar.jpg');
+    $this->logoFile->method('getFileUri')->wilLReturn('public://foobar.jpg');
 
     $expected['foobar.settings']['logo']['path'] = '/sites/default/files/logo.jpg';
     $this->assertEquals($expected, $overridder->loadOverrides(['foobar.settings']));

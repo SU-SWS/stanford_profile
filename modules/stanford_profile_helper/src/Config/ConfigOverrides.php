@@ -107,18 +107,13 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     }
 
     // The lockup isn't enabled, so bail out.
-    if (!$this->configPagesLoader->getValue('lockup_settings', 'su_lockup_enabled', 0, 'value')) {
+    if ($this->configPagesLoader->getValue('lockup_settings', 'su_lockup_enabled', 0, 'value')) {
       return;
     }
 
     // Override the lockup settings.
     if ($lockup_overrides = $this->getLockupTextOverrides()) {
       $overrides[$default_theme . '.settings'] = $lockup_overrides;
-    }
-
-    // Get and set a file path that is relative to the site base dir.
-    if ($logo = $this->getLogoUrl()) {
-      $overrides[$default_theme . '.settings']['logo']['path'] = $logo;
     }
   }
 
@@ -136,11 +131,15 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
         'line5' => $this->configPagesLoader->getValue('lockup_settings', 'su_line_5', 0, 'value'),
       ],
       'logo' => [
-        'use_default' => (bool) $this->configPagesLoader->getValue('lockup_settings', 'su_use_theme_logo', 0, 'value'),
+        'path' => $this->getLogoUrl(),
       ],
     ];
     $overrides['lockup'] = array_filter($overrides['lockup']);
     $overrides['logo'] = array_filter($overrides['logo']);
+
+    if (!empty($overrides['lockup']) && !$this->configPagesLoader->getValue('lockup_settings', 'su_use_theme_logo', 0, 'value')) {
+      $overrides['logo']['use_default'] = FALSE;
+    }
     return array_filter($overrides);
   }
 
