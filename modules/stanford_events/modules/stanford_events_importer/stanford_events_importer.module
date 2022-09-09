@@ -68,13 +68,10 @@ function stanford_events_importer_config_pages_presave(EntityInterface $entity) 
  *   The form state.
  */
 function stanford_events_importer_form_config_pages_stanford_events_importer_form_alter_submit(array &$form, FormStateInterface $form_state) {
-  $migrations = stanford_migrate_migration_list();
-  if (isset($migrations['stanford_events']['stanford_events_importer'])) {
-    stanford_migrate_execute_migration($migrations['stanford_events']['stanford_events_importer'], 'stanford_events_importer', [], TRUE);
-  }
-  if (isset($migrations['stanford_events']['stanford_localist_importer'])) {
-    stanford_migrate_execute_migration($migrations['stanford_events']['stanford_localist_importer'], 'stanford_localist_importer', [], TRUE);
-  }
+  $migration_service = \Drupal::service('stanford_migrate')
+    ->setBatchExecution(TRUE);
+  $migration_service->executeMigrationId('stanford_events_importer');
+  $migration_service->executeMigrationId('stanford_localist_importer');
 }
 
 /**
