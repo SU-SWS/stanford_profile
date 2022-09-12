@@ -211,4 +211,101 @@ class BasicPageCest {
     $I->canSee("stanford_spacer");
   }
 
+  /**
+   * Validate metadata information.
+   *
+   * @group metadata
+   */
+  public function testMetaData(AcceptanceTester $I) {
+    $values = [
+      'banner_image_alt' => $this->faker->words(3, TRUE),
+      'meta_image_alt' => $this->faker->words(3, TRUE),
+      'banner_header' => $this->faker->words(3, TRUE),
+      'page_description' => $this->faker->words(10, TRUE),
+    ];
+
+    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+    $file_system = \Drupal::service('file_system');
+    $banner_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $meta_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+
+    $file = $I->createEntity(['uri' => $banner_image_path], 'file');
+    $banner_media = $I->createEntity([
+      'bundle' => 'image',
+      'field_media_image' => [
+        'target_id' => $file->id(),
+        'alt' => $values['banner_image_alt'],
+      ],
+    ], 'media');
+
+    $banner_paragraph = $I->createEntity([
+      'type' => 'stanford_banner',
+      'su_banner_image' => $banner_media,
+      'su_banner_header' => $values['banner_header'],
+    ], 'paragraph');
+
+    $file = $I->createEntity(['uri' => $meta_image_path], 'file');
+    $meta_media = $I->createEntity([
+      'bundle' => 'image',
+      'field_media_image' => [
+        'target_id' => $file->id(),
+        'alt' => $values['meta_image_alt'],
+      ],
+    ], 'media');
+
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_page',
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+
+    $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[property="og:title"]', 'content'), 'Metadata "og:title" should match.');
+    $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[name="twitter:title"]', 'content'), 'Metadata "twitter:title" should match.');
+    $I->assertEquals('website', $I->grabAttributeFrom('meta[property="og:type"]', 'content'), 'Metadata "og:type" should match.');
+    $I->cantSeeElement('meta', ['name' => 'description']);
+    $I->cantSeeElement('meta', ['property' => 'og:image']);
+    $I->cantSeeElement('meta', ['property' => 'og:image:url']);
+    $I->cantSeeElement('meta', ['name' => 'twitter:image']);
+    $I->cantSeeElement('meta', ['name' => 'twitter:image:alt']);
+    $I->cantSeeElement('meta', ['name' => 'twitter:description']);
+
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_page',
+      'su_page_banner' => ['entity' => $banner_paragraph],
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+
+    $I->canSee($values['banner_header']);
+    $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[name="twitter:title"]', 'content'), 'Metadata "twitter:title" should match.');
+    $I->assertStringContainsString(basename($banner_image_path), $I->grabAttributeFrom('meta[property="og:image"]', 'content'), 'Metadata "og:image" should match.');
+    $I->assertStringContainsString(basename($banner_image_path), $I->grabAttributeFrom('meta[property="og:image:url"]', 'content'), 'Metadata "og:image:url" should match.');
+    $I->assertStringContainsString(basename($banner_image_path), $I->grabAttributeFrom('meta[name="twitter:image"]', 'content'), 'Metadata "twitter:image" should match.');
+    $I->assertEquals($values['banner_image_alt'], $I->grabAttributeFrom('meta[property="og:image:alt"]', 'content'), 'Metadata "og:image:alt" should match.');
+    $I->assertEquals($values['banner_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
+
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_page',
+      'su_page_banner' => ['entity' => $banner_paragraph],
+      'su_page_image' => $meta_media->id(),
+      'su_page_description' => $values['page_description'],
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+
+    $I->canSee($values['banner_header']);
+    $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[name="twitter:title"]', 'content'), 'Metadata "twitter:title" should match.');
+    $I->assertStringContainsString(basename($meta_image_path), $I->grabAttributeFrom('meta[property="og:image"]', 'content'), 'Metadata "og:image" should match.');
+    $I->assertStringContainsString(basename($meta_image_path), $I->grabAttributeFrom('meta[property="og:image:url"]', 'content'), 'Metadata "og:image:url" should match.');
+    $I->assertStringContainsString(basename($meta_image_path), $I->grabAttributeFrom('meta[name="twitter:image"]', 'content'), 'Metadata "twitter:image" should match.');
+    $I->assertEquals($values['meta_image_alt'], $I->grabAttributeFrom('meta[property="og:image:alt"]', 'content'), 'Metadata "og:image:alt" should match.');
+    $I->assertEquals($values['meta_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
+    $I->assertEquals($values['page_description'], $I->grabAttributeFrom('meta[name="twitter:description"]', 'content'), 'Metadata "twitter:description" should match.');
+    $I->assertEquals($values['page_description'], $I->grabAttributeFrom('meta[name="description"]', 'content'), 'Metadata "description" should match.');
+  }
+
 }

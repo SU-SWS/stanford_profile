@@ -32,7 +32,6 @@ class PersonCest {
     $I->see('This page is currently unpublished and not visible to the public.');
     $I->see('Haley Jackson');
     $I->see('People', '.su-multi-menu');
-
   }
 
   /**
@@ -93,10 +92,6 @@ class PersonCest {
     $I->selectOption('#edit-xmlsitemap-status', 1);
 
     // Metatags.
-    $I->amOnPage('/admin/config/search/metatag/page_variant__people-layout_builder-0');
-    $I->canSeeResponseCodeIs(200);
-    $I->amOnPage('/admin/config/search/metatag/page_variant__stanford_person_list-layout_builder-1');
-    $I->canSeeResponseCodeIs(200);
     $I->amOnPage('/admin/config/search/metatag/node__stanford_person');
     $I->canSeeResponseCodeIs(200);
   }
@@ -273,6 +268,64 @@ class PersonCest {
 
     $I->amOnPage($term->toUrl()->toString());
     $I->cantSee($node->label());
+  }
+
+  /**
+   * Validate metadata information.
+   *
+   * @group metadata
+   */
+  public function testMetaData(AcceptanceTester $I) {
+    $values = [
+      'image_alt' => $this->faker->words(3, TRUE),
+      'body' => $this->faker->paragraph,
+      'first_name' => $this->faker->firstName,
+      'last_name' => $this->faker->lastName,
+      'profile_link' => $this->faker->url,
+    ];
+
+    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+    $file_system = \Drupal::service('file_system');
+    $image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+
+    $file = $I->createEntity(['uri' => $image_path], 'file');
+    $media = $I->createEntity([
+      'bundle' => 'image',
+      'field_media_image' => [
+        'target_id' => $file->id(),
+        'alt' => $values['image_alt'],
+      ],
+    ], 'media');
+
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'su_person_first_name' => $values['first_name'],
+      'su_person_last_name' => $values['last_name'],
+      'su_person_photo' => $media->id(),
+      'type' => 'stanford_person',
+      'body' => $values['body'],
+      'su_person_profile_link' => [
+        'uri' => $values['profile_link'],
+        'title' => $this->faker->words(3, TRUE),
+      ],
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+
+    $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[property="og:title"]', 'content'), 'Metadata "og:title" should match.');
+    $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[name="twitter:title"]', 'content'), 'Metadata "twitter:title" should match.');
+    $I->assertEquals($values['body'], $I->grabAttributeFrom('meta[name="description"]', 'content'), 'Metadata "description" should match.');
+    $I->assertEquals('profile', $I->grabAttributeFrom('meta[property="og:type"]', 'content'), 'Metadata "og:type" should match.');
+    $I->assertStringContainsString(basename($image_path), $I->grabAttributeFrom('meta[property="og:image"]', 'content'), 'Metadata "og:image" should match.');
+    $I->assertStringContainsString(basename($image_path), $I->grabAttributeFrom('meta[property="og:image:url"]', 'content'), 'Metadata "og:image:url" should match.');
+    $I->assertStringContainsString($values['first_name'], $I->grabAttributeFrom('meta[property="profile:first_name"]', 'content'), 'Metadata "profile:first_name" should match.');
+    $I->assertStringContainsString($values['last_name'], $I->grabAttributeFrom('meta[property="profile:last_name"]', 'content'), 'Metadata "profile:last_name" should match.');
+    $I->assertStringContainsString(basename($image_path), $I->grabAttributeFrom('meta[name="twitter:image"]', 'content'), 'Metadata "twitter:image" should match.');
+    $I->assertEquals($values['image_alt'], $I->grabAttributeFrom('meta[property="og:image:alt"]', 'content'), 'Metadata "og:image:alt" should match.');
+    $I->assertEquals($values['image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
+    $I->assertEquals($values['body'], $I->grabAttributeFrom('meta[name="twitter:description"]', 'content'), 'Metadata "twitter:description" should match.');
+    $I->assertEquals($values['profile_link'], $I->grabAttributeFrom('link[rel="canonical"]', 'href'), 'Metadata "canonical" should match.');
   }
 
 }

@@ -136,10 +136,6 @@ class NewsCest {
     $I->selectOption("#edit-xmlsitemap-status", 1);
 
     // Metatags.
-    $I->amOnPage("/admin/config/search/metatag/page_variant__stanford_news_list-layout_builder-0");
-    $I->canSeeResponseCodeIs(200);
-    $I->amOnPage("/admin/config/search/metatag/page_variant__stanford_news_list_terms-layout_builder-0");
-    $I->canSeeResponseCodeIs(200);
     $I->amOnPage("/admin/config/search/metatag/node__stanford_news");
     $I->canSeeResponseCodeIs(200);
   }
@@ -156,5 +152,94 @@ class NewsCest {
     $I->amOnPage($term->toUrl('edit-form')->toString());
     $I->cantSee('Published');
   }
+
+  /**
+   * Validate metadata information.
+   *
+   * @group metadata
+   */
+  public function testMetaData(AcceptanceTester $I) {
+    $values = [
+      'featured_image_alt' => $this->faker->words(3, TRUE),
+      'banner_image_alt' => $this->faker->words(3, TRUE),
+    ];
+
+    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+    $file_system = \Drupal::service('file_system');
+    $banner_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $featured_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+
+    $file = $I->createEntity(['uri' => $banner_image_path], 'file');
+    $banner_media = $I->createEntity([
+      'bundle' => 'image',
+      'field_media_image' => [
+        'target_id' => $file->id(),
+        'alt' => $values['banner_image_alt'],
+      ],
+    ], 'media');
+
+    $file = $I->createEntity(['uri' => $featured_image_path], 'file');
+    $featured_media = $I->createEntity([
+      'bundle' => 'image',
+      'field_media_image' => [
+        'target_id' => $file->id(),
+        'alt' => $values['featured_image_alt'],
+      ],
+    ], 'media');
+
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'su_news_publishing_date' => date('Y-m-d', time()),
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+
+    $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[property="og:title"]', 'content'), 'Metadata "og:title" should match.');
+    $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[name="twitter:title"]', 'content'), 'Metadata "twitter:title" should match.');
+    $I->assertEquals('article', $I->grabAttributeFrom('meta[property="og:type"]', 'content'), 'Metadata "og:type" should match.');
+    $I->assertEquals(date('D, m/d/Y - 12:00', time()), $I->grabAttributeFrom('meta[property="article:published_time"]', 'content'), 'Metadata "article:published_time" should match.');
+    $I->cantSeeElement('meta', ['name' => 'description']);
+    $I->cantSeeElement('meta', ['property' => 'og:image']);
+    $I->cantSeeElement('meta', ['property' => 'og:image:url']);
+    $I->cantSeeElement('meta', ['name' => 'twitter:image']);
+    $I->cantSeeElement('meta', ['name' => 'twitter:image:alt']);
+    $I->cantSeeElement('meta', ['name' => 'twitter:description']);
+
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'su_news_banner' => $banner_media->id(),
+      'su_news_publishing_date' => date('Y-m-d', time()),
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+
+    $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[name="twitter:title"]', 'content'), 'Metadata "twitter:title" should match.');
+    $I->assertStringContainsString(basename($banner_image_path), $I->grabAttributeFrom('meta[property="og:image"]', 'content'), 'Metadata "og:image" should match.');
+    $I->assertStringContainsString(basename($banner_image_path), $I->grabAttributeFrom('meta[property="og:image:url"]', 'content'), 'Metadata "og:image:url" should match.');
+    $I->assertStringContainsString(basename($banner_image_path), $I->grabAttributeFrom('meta[name="twitter:image"]', 'content'), 'Metadata "twitter:image" should match.');
+    $I->assertEquals($values['banner_image_alt'], $I->grabAttributeFrom('meta[property="og:image:alt"]', 'content'), 'Metadata "og:image:alt" should match.');
+    $I->assertEquals($values['banner_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
+
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'su_news_banner' => $banner_media->id(),
+      'su_news_featured_media' => $featured_media,
+      'su_news_publishing_date' => date('Y-m-d', time()),
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+
+    $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[name="twitter:title"]', 'content'), 'Metadata "twitter:title" should match.');
+    $I->assertStringContainsString(basename($featured_image_path), $I->grabAttributeFrom('meta[property="og:image"]', 'content'), 'Metadata "og:image" should match.');
+    $I->assertStringContainsString(basename($featured_image_path), $I->grabAttributeFrom('meta[property="og:image:url"]', 'content'), 'Metadata "og:image:url" should match.');
+    $I->assertStringContainsString(basename($featured_image_path), $I->grabAttributeFrom('meta[name="twitter:image"]', 'content'), 'Metadata "twitter:image" should match.');
+    $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[property="og:image:alt"]', 'content'), 'Metadata "og:image:alt" should match.');
+    $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
+  }
+
 
 }
