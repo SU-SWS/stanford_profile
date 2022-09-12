@@ -11,6 +11,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
     - field.field.config_pages.stanford_basic_site_settings.su_site_email
     - field.field.config_pages.stanford_basic_site_settings.su_site_home
+    - field.field.config_pages.stanford_basic_site_settings.su_site_menu_levels
     - field.field.config_pages.stanford_basic_site_settings.su_site_name
     - field.field.config_pages.stanford_basic_site_settings.su_site_url
   module:
@@ -78,6 +79,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 6
+    region: content
+  su_site_menu_levels:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 9
     region: content
   su_site_name:
     type: string
