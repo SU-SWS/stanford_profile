@@ -341,15 +341,96 @@
     .su-event-list-item {
       display: block;
     }
+  }
 
-    .su-news-list,
-    .su-basic-page-types-list {
-      img,
-      picture {
-        display: none;
+  &:is([data-react-columns="12"]) {
+    @include grid-media('md') {
+
+      .su-news-list {
+        // border: 3px solid violet;
+        .media {
+          margin-left: 0;
+        }
+      }
+
+      .su-basic-page-types-list {
+        // border: 3px solid blue;
+      }
+
+    }
+
+    @include grid-media-max('sm') {
+
+      .su-news-list {
+        // border: 3px solid hotpink;
+
+        .media {
+          margin-left: 0;
+        }
+      }
+
+      .su-basic-page-types-list {
+        // border: 3px solid green;
+
+        h2 {
+          display: block;
+        }
+
+        .media {
+          float: none;
+          margin-left: 0;
+        }
+      }
+
+    }
+
+  }
+
+  &:is([data-react-columns="6"]),
+  &:is([data-react-columns="4"]) {
+    .su-news-list {
+      // border: 3px solid orange;
+
+      .su-news-list__header {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "date"
+            "article-image"
+            "headline";
+      }
+
+      .image {
+        @include responsive-spacing('margin-bottom', 0);
+      }
+
+      .media {
+        margin-left: 0;
       }
     }
   }
+
+  &:is([data-react-columns="6"]),
+  &:is([data-react-columns="4"]) {
+
+    .su-basic-page-types-list {
+      // border: 3px solid lime;
+
+      h2 {
+        display: block;
+      }
+
+      .media {
+        @include responsive-spacing('margin-bottom', 0);
+
+        float: none;
+        margin-left: 0;
+      }
+    }
+  }
+
 
   //adds margin for the basic page plus when a card in 12 across.
   .stanford-basic-pages {

@@ -110,10 +110,6 @@
   .image {
     .media {
       @include modular-spacing('margin-left', 3);
-
-      @include grid-media-max('lg') {
-        display: none;
-      }
     }
   }
 
@@ -243,3 +239,5 @@
     }
   }
 }
+
+

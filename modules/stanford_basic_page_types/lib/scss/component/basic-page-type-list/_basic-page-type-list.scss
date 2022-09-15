@@ -17,11 +17,8 @@
 
   .media {
     @include modular-spacing("margin-left", 3);
-    float: right;
 
-    @include grid-media-max("lg") {
-      display: none;
-    }
+    float: right;
   }
 
   .su-basic-page-list__category {
