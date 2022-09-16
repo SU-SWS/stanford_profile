@@ -1,0 +1,70 @@
+uuid: bf1b1a6a-54e1-4206-8e66-7283a4077aa1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.stanford_policy.body
+    - field.field.node.stanford_policy.layout_builder__layout
+    - field.field.node.stanford_policy.su_policy_related
+    - node.type.stanford_policy
+  module:
+    - path
+    - scheduler
+    - text
+id: node.stanford_policy.default
+targetEntityType: node
+bundle: stanford_policy
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  su_policy_related:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  layout_builder__layout: true
+  promote: true
+  scheduler_settings: true
+  sticky: true
+  uid: true
+  unpublish_on: true
+  url_redirects: true

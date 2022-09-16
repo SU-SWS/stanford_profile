@@ -1,0 +1,22 @@
+uuid: 98020fda-54fe-4bc0-b132-aaa9b2eeb7d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: stanford_policies
+label: Policies
+type: 'canonical_entities:node'
+pattern: '/[node:book:parents:join-path]/[node:title]'
+selection_criteria:
+  42d974ca-feb1-4919-913e-55155af7320b:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 42d974ca-feb1-4919-913e-55155af7320b
+    context_mapping:
+      node: node
+    bundles:
+      stanford_policy: stanford_policy
+selection_logic: and
+weight: -5
+relationships: {  }

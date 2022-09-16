@@ -1,0 +1,35 @@
+uuid: 009e5a9b-e0de-413b-91b6-8a331c209974
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.stanford_policy.body
+    - field.field.node.stanford_policy.layout_builder__layout
+    - field.field.node.stanford_policy.su_policy_related
+    - node.type.stanford_policy
+  module:
+    - text
+    - user
+id: node.stanford_policy.teaser
+targetEntityType: node
+bundle: stanford_policy
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  layout_builder__layout: true
+  search_api_excerpt: true
+  su_policy_related: true
