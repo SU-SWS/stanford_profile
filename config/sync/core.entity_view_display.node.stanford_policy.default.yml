@@ -5,7 +5,10 @@ dependencies:
   config:
     - field.field.node.stanford_policy.body
     - field.field.node.stanford_policy.layout_builder__layout
+    - field.field.node.stanford_policy.su_policy_authority
+    - field.field.node.stanford_policy.su_policy_effective
     - field.field.node.stanford_policy.su_policy_related
+    - field.field.node.stanford_policy.su_policy_updated
     - node.type.stanford_policy
   module:
     - book
@@ -14,6 +17,7 @@ dependencies:
     - layout_builder_restrictions
     - layout_library
     - printable
+    - stanford_fields
     - system
     - user
 third_party_settings:
@@ -101,7 +105,7 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 0
+            weight: 2
             additional: {  }
           4678072f-26f1-4620-ad43-13ef301bd28f:
             uuid: 4678072f-26f1-4620-ad43-13ef301bd28f
@@ -116,13 +120,13 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: hidden
+                label: above
                 settings:
                   link: true
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 1
+            weight: 2
             additional: {  }
           c634784e-9d4e-43eb-95d1-ebccadb9d448:
             uuid: c634784e-9d4e-43eb-95d1-ebccadb9d448
@@ -136,12 +140,90 @@ third_party_settings:
               max_age: '-1'
             weight: 0
             additional: {  }
+          0921d570-ecf6-46f4-a290-d38ea2f4b293:
+            uuid: 0921d570-ecf6-46f4-a290-d38ea2f4b293
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_policy:su_policy_updated'
+              label: 'Last Updated'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: datetime_default
+                label: inline
+                settings:
+                  timezone_override: ''
+                  format_type: stanford_month_two_digit_day_year
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 1
+            additional: {  }
+          8b8416cb-4f35-4acf-a3b1-4de250414cda:
+            uuid: 8b8416cb-4f35-4acf-a3b1-4de250414cda
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_policy:su_policy_effective'
+              label: 'Effective Date'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: datetime_default
+                label: inline
+                settings:
+                  timezone_override: ''
+                  format_type: stanford_month_two_digit_day_year
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 0
+            additional: {  }
+          0dbaf822-e3b3-4208-9bcd-5671f869467e:
+            uuid: 0dbaf822-e3b3-4208-9bcd-5671f869467e
+            region: right
+            configuration:
+              id: 'field_block:node:stanford_policy:su_policy_authority'
+              label: Authority
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 1
+            additional: {  }
+          a4678543-3256-4677-9c5d-3208e803bbd5:
+            uuid: a4678543-3256-4677-9c5d-3208e803bbd5
+            region: main
+            configuration:
+              id: book_forward_back
+              label: 'Book Forward & Back'
+              label_display: '0'
+              provider: stanford_fields
+              context_mapping:
+                node: layout_builder.entity
+            weight: 3
+            additional: {  }
         third_party_settings: {  }
   layout_library:
     enable: false
   layout_builder_restrictions:
     allowed_block_categories:
       - 'Basic Page Type Lists (Views)'
+      - Book
       - 'Chaos Tools'
       - 'Config Pages'
       - 'Content fields'
@@ -222,6 +304,8 @@ third_party_settings:
           - 'field_block:user:user:uid'
           - 'field_block:user:user:status'
       allowlisted_blocks:
+        Book:
+          - book_forward_back
         Menus:
           - book_navigation
           - 'menu_block:main'
@@ -254,4 +338,7 @@ hidden:
   layout_builder__layout: true
   links: true
   search_api_excerpt: true
+  su_policy_authority: true
+  su_policy_effective: true
   su_policy_related: true
+  su_policy_updated: true

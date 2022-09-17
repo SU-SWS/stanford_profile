@@ -7,12 +7,12 @@ dependencies:
 id: stanford_policies
 label: Policies
 type: 'canonical_entities:node'
-pattern: '/[node:book:parents:join-path]/[node:title]'
+pattern: '[node:book:parents:join-path|node:menu-link:parent:url:relative]/[node:title]'
 selection_criteria:
-  42d974ca-feb1-4919-913e-55155af7320b:
+  b8c422f8-5cf2-4cd5-858b-af39961a0d37:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 42d974ca-feb1-4919-913e-55155af7320b
+    uuid: b8c422f8-5cf2-4cd5-858b-af39961a0d37
     context_mapping:
       node: node
     bundles:
