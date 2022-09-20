@@ -20,6 +20,7 @@ dependencies:
     - book
     - content_lock
     - dropzonejs
+    - eck
     - editoria11y
     - media
     - menu_admin_per_menu
@@ -49,6 +50,7 @@ permissions:
   - 'create file media'
   - 'create google_form media'
   - 'create image media'
+  - 'create log entities'
   - 'create media'
   - 'create stanford_course content'
   - 'create stanford_event content'
@@ -65,6 +67,7 @@ permissions:
   - 'delete own file media'
   - 'delete own google_form media'
   - 'delete own image media'
+  - 'delete own log entities'
   - 'delete own stanford_course content'
   - 'delete own stanford_event content'
   - 'delete own stanford_event_series content'
@@ -91,6 +94,7 @@ permissions:
   - 'edit own file media'
   - 'edit own google_form media'
   - 'edit own image media'
+  - 'edit own log entities'
   - 'edit own stanford_course content'
   - 'edit own stanford_event content'
   - 'edit own stanford_event_series content'
@@ -104,6 +108,7 @@ permissions:
   - 'schedule publishing of nodes'
   - 'update media'
   - 'view all revisions'
+  - 'view any log entities'
   - 'view any unpublished stanford_course content'
   - 'view any unpublished stanford_event content'
   - 'view any unpublished stanford_event_series content'
@@ -112,6 +117,7 @@ permissions:
   - 'view any unpublished stanford_person content'
   - 'view any unpublished stanford_publication content'
   - 'view editoria11y checker'
+  - 'view own log entities'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view scheduled content'

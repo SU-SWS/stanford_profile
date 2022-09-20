@@ -31,6 +31,7 @@ dependencies:
     - content_lock
     - contextual
     - dropzonejs
+    - eck
     - editoria11y
     - field_permissions
     - media
@@ -94,6 +95,7 @@ permissions:
   - 'create file media'
   - 'create google_form media'
   - 'create image media'
+  - 'create log entities'
   - 'create media'
   - 'create new books'
   - 'create stanford_course content'
@@ -118,6 +120,7 @@ permissions:
   - 'delete any file media'
   - 'delete any google_form media'
   - 'delete any image media'
+  - 'delete any log entities'
   - 'delete any media'
   - 'delete any stanford_course content'
   - 'delete any stanford_event content'
@@ -135,6 +138,7 @@ permissions:
   - 'delete own file media'
   - 'delete own google_form media'
   - 'delete own image media'
+  - 'delete own log entities'
   - 'delete own stanford_course content'
   - 'delete own stanford_event content'
   - 'delete own stanford_event_series content'
@@ -165,6 +169,7 @@ permissions:
   - 'edit any file media'
   - 'edit any google_form media'
   - 'edit any image media'
+  - 'edit any log entities'
   - 'edit any stanford_course content'
   - 'edit any stanford_event content'
   - 'edit any stanford_event_series content'
@@ -184,6 +189,7 @@ permissions:
   - 'edit own file media'
   - 'edit own google_form media'
   - 'edit own image media'
+  - 'edit own log entities'
   - 'edit own stanford_course content'
   - 'edit own stanford_event content'
   - 'edit own stanford_event_series content'
@@ -228,6 +234,7 @@ permissions:
   - 'use views bulk edit'
   - 'view all media revisions'
   - 'view all revisions'
+  - 'view any log entities'
   - 'view any unpublished content'
   - 'view any unpublished stanford_course content'
   - 'view any unpublished stanford_event content'
@@ -237,6 +244,7 @@ permissions:
   - 'view any unpublished stanford_person content'
   - 'view any unpublished stanford_publication content'
   - 'view editoria11y checker'
+  - 'view own log entities'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view scheduled content'
