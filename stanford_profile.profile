@@ -5,8 +5,6 @@
  * stanford_profile.profile
  */
 
-use Drupal\Core\Site\Settings;
-
 /**
  * Implements hook_install_tasks().
  */
