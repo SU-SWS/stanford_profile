@@ -137,6 +137,13 @@ class PolicyCest {
     $I->click('Change book (update list of parents)');
     $I->selectOption('Parent item', '-- ' . $chapter_two->label());
     $I->click('Change book (update list of parents)');
+
+    $I->click('Add new change log');
+    $I->canSeeInField('[name="su_policy_changelog[form][0][title][0][value]"]', date('Y-m-d'));
+    $I->canSeeInField('[name="su_policy_changelog[form][0][su_policy_date][0][value][date]"]', date('Y-m-d'));
+    $change_notes = $this->faker->sentences(3, TRUE);
+    $I->fillField('Notes', $change_notes);
+
     $I->click('Save');
 
     $I->canSee($article_one->label(), 'h1');
@@ -148,6 +155,8 @@ class PolicyCest {
     $I->canSee(date('F d, Y', time() - 60 * 60 * 24 * 15));
     $I->canSee(date('F d, Y'));
     $I->canSee($authority);
+
+    $I->cantSee($change_notes);
   }
 
 }
