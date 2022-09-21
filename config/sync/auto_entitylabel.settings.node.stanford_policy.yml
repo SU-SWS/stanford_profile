@@ -1,0 +1,9 @@
+status: 1
+pattern: '[node:su_policy_title]'
+escape: false
+preserve_titles: false
+dependencies:
+  config:
+    - node.type.stanford_policy
+save: 0
+chunk: '50'

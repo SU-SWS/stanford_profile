@@ -33,9 +33,12 @@ class PolicyCest {
     $title = $this->faker->words(4, TRUE) . ' foo bar';
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_policy');
-    $I->fillField('Title', $title);
+    $I->fillField('Policy Title', $title);
+    $I->fillField('Chapter Number', 1);
+    $I->fillField('SubChapter Number', 2);
+    $I->fillField('Policy Number', 3);
     $I->click('Save');
-    $I->canSee($title, 'h1');
+    $I->canSee("1.2.3 $title", 'h1');
     $current_url = $I->grabFromCurrentUrl();
     $I->assertStringContainsString('-foo-bar', $current_url);
 
@@ -51,7 +54,7 @@ class PolicyCest {
 
     $book = $I->createEntity([
       'type' => 'stanford_policy',
-      'title' => $this->faker->words(2, TRUE) . '-baz-foo',
+      'su_policy_title' => $this->faker->words(2, TRUE) . '-baz-foo',
     ]);
     $I->amOnPage($book->toUrl('edit-form')->toString());
     $I->selectOption('Book', '- Create a new book -');
@@ -61,7 +64,7 @@ class PolicyCest {
 
     $node = $I->createEntity([
       'type' => 'stanford_policy',
-      'title' => $this->faker->words(4, TRUE) . '-foo-bar',
+      'su_policy_title' => $this->faker->words(4, TRUE) . '-foo-bar',
     ]);
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->checkOption('Provide a menu link');
@@ -89,7 +92,7 @@ class PolicyCest {
     $I->logInWithRole('site_manager');
     $book = $I->createEntity([
       'type' => 'stanford_policy',
-      'title' => $this->faker->words(2, TRUE),
+      'su_policy_title' => $this->faker->words(2, TRUE),
     ]);
     $I->amOnPage($book->toUrl('edit-form')->toString());
     $I->selectOption('Book', '- Create a new book -');
@@ -99,7 +102,7 @@ class PolicyCest {
 
     $chapter_one = $I->createEntity([
       'type' => 'stanford_policy',
-      'title' => $this->faker->words(2, TRUE),
+      'su_policy_title' => $this->faker->words(2, TRUE),
     ]);
     $I->amOnPage($chapter_one->toUrl('edit-form')->toString());
     $I->selectOption('Book', $book->label());
@@ -112,7 +115,7 @@ class PolicyCest {
 
     $chapter_two = $I->createEntity([
       'type' => 'stanford_policy',
-      'title' => $this->faker->words(2, TRUE),
+      'su_policy_title' => $this->faker->words(2, TRUE),
     ]);
     $I->amOnPage($chapter_two->toUrl('edit-form')->toString());
     $I->selectOption('Book', $book->label());
@@ -127,7 +130,7 @@ class PolicyCest {
 
     $article_one = $I->createEntity([
       'type' => 'stanford_policy',
-      'title' => $this->faker->words(2, TRUE),
+      'su_policy_title' => $this->faker->words(2, TRUE),
     ]);
     $I->amOnPage($article_one->toUrl('edit-form')->toString());
     $I->fillField('su_policy_effective[0][value][date]', date('Y-m-d', time() - 60 * 60 * 24 * 15));

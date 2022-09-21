@@ -1,0 +1,5 @@
+services:
+  stanford_policy.event_subscriber:
+    class: Drupal\stanford_policy\EventSubscriber\StanfordPolicySubscriber
+    tags:
+      - { name: event_subscriber }
