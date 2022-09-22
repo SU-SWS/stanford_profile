@@ -42,11 +42,12 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityLoadEvent $event
+   * Event listener to modify the policy node.
    *
-   * @return void
+   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityLoadEvent $event
+   *   Triggered event.
    */
-  public function onEntityLoad(EntityLoadEvent $event) {
+  public function onEntityLoad(EntityLoadEvent $event): void {
     $entities = $event->getEntities();
     /** @var \Drupal\Core\Entity\EntityInterface $entity */
     foreach ($entities as $entity) {
@@ -67,7 +68,7 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
    * @param \Drupal\node\NodeInterface $node
    *   Node entity.
    */
-  public function modifyPolicyEntity(NodeInterface $node) {
+  public function modifyPolicyEntity(NodeInterface $node): void {
     if ($node->get('su_policy_auto_prefix')->getString()) {
       $node->set('su_policy_chapter', NULL);
       $node->set('su_policy_subchapter', NULL);
@@ -89,8 +90,8 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
       $prefix[] = '';
     }
 
-    $title = implode('.', $prefix) . ' ' . $node->get('su_policy_title')
-        ->getString();
+    $title = implode('.', $prefix);
+    $title .= ' ' . $node->get('su_policy_title')->getString();
     $node->set('title', trim($title));
   }
 
@@ -131,7 +132,7 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
    * @return array
    *   Associative array of prefix strings.
    */
-  protected function getLinkPrefix(array $book_link, int $node_id) {
+  protected function getLinkPrefix(array $book_link, int $node_id): array {
     if (!$book_link['pid']) {
       return [];
     }
