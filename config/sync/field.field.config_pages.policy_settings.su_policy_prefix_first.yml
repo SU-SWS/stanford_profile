@@ -1,0 +1,23 @@
+uuid: 0485ab42-4d80-47c4-8973-3143f4751498
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.policy_settings
+    - field.storage.config_pages.su_policy_prefix_first
+  module:
+    - options
+id: config_pages.policy_settings.su_policy_prefix_first
+field_name: su_policy_prefix_first
+entity_type: config_pages
+bundle: policy_settings
+label: 'Prefix First Level'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: numbers
+default_value_callback: ''
+settings: {  }
+field_type: list_string
