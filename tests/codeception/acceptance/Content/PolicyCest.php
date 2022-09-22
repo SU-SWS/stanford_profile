@@ -10,12 +10,23 @@ use Faker\Factory;
  */
 class PolicyCest {
 
+  /**
+   * Faker provider.
+   *
+   * @var \Faker\Generator
+   */
   protected $faker;
 
+  /**
+   * Test constructor.
+   */
   public function __construct() {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Test field access.
+   */
   public function testPolicyAccess(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_policy');
@@ -29,11 +40,15 @@ class PolicyCest {
     $I->canSee('Create a new book');
   }
 
+  /**
+   * Test the path auto settings.
+   */
   public function testPolicyPathAuto(AcceptanceTester $I) {
     $title = $this->faker->words(4, TRUE) . ' foo bar';
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_policy');
     $I->fillField('Policy Title', $title);
+    $I->uncheckOption('Automatic Prefix');
     $I->fillField('Chapter Number', 1);
     $I->fillField('SubChapter Number', 2);
     $I->fillField('Policy Number', 3);
@@ -66,6 +81,7 @@ class PolicyCest {
       'type' => 'stanford_policy',
       'su_policy_title' => $this->faker->words(4, TRUE) . '-foo-bar',
     ]);
+
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', $node->label());
@@ -88,6 +104,9 @@ class PolicyCest {
     $I->assertStringContainsString('-foo-bar', $current_url);
   }
 
+  /**
+   * Test the heirarchy of the book.
+   */
   public function testPolicyHeirarcy(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $book = $I->createEntity([
@@ -138,7 +157,7 @@ class PolicyCest {
     $I->fillField('Authority', $authority);
     $I->selectOption('Book', $book->label());
     $I->click('Change book (update list of parents)');
-    $I->selectOption('Parent item', '-- ' . $chapter_two->label());
+    $I->selectOption('Parent item', '-- 2. ' . $chapter_two->label());
     $I->click('Change book (update list of parents)');
 
     $I->click('Add new change log');
