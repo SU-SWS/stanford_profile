@@ -35,7 +35,7 @@ third_party_settings:
       region: content
       parent_name: ''
       weight: 2
-      format_type: details
+      format_type: details_sidebar
       format_settings:
         classes: ''
         show_empty_fields: false
@@ -43,6 +43,7 @@ third_party_settings:
         open: false
         description: 'Leave these fields empty to build the prefix based on the hierarchy structure.'
         required_fields: true
+        weight: 0
 id: node.stanford_policy.default
 targetEntityType: node
 bundle: stanford_policy

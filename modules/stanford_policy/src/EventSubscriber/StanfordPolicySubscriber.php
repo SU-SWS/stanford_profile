@@ -4,6 +4,7 @@ namespace Drupal\stanford_policy\EventSubscriber;
 
 use Drupal\book\BookManagerInterface;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\core_event_dispatcher\EntityHookEvents;
 use Drupal\core_event_dispatcher\Event\Entity\EntityLoadEvent;
 use Drupal\node\NodeInterface;
@@ -38,7 +39,7 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
    * @param \Drupal\config_pages\ConfigPagesLoaderServiceInterface $configPagesLoader
    *   Config page loader service.
    */
-  public function __construct(protected BookManagerInterface $bookManager, protected ConfigPagesLoaderServiceInterface $configPagesLoader) {
+  public function __construct(protected BookManagerInterface $bookManager, protected ConfigPagesLoaderServiceInterface $configPagesLoader, protected EntityTypeManagerInterface $entityTypeManager) {
   }
 
   /**
@@ -147,7 +148,14 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
       $position++;
     }
 
-    $prefix = $this->getLinkPrefix($this->bookManager->loadBookLink($book_link['pid']), $parent_book_link['nid']);
+    if ($book_link['pid'] != $book_link['bid']) {
+      $parent_node = $this->entityTypeManager->getStorage('node')
+        ->load($book_link['pid']);
+
+      preg_match('/^.*? /', $parent_node->label(), $parent_prefix);
+      $prefix = [trim(reset($parent_prefix), ' .')];
+    }
+
     $prefix[] = $this->getPrefix($book_link['depth'], $position);
     return $prefix;
   }

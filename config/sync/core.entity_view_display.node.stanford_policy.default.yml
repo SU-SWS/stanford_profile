@@ -6,10 +6,17 @@ dependencies:
     - field.field.node.stanford_policy.body
     - field.field.node.stanford_policy.layout_builder__layout
     - field.field.node.stanford_policy.su_policy_authority
+    - field.field.node.stanford_policy.su_policy_auto_prefix
+    - field.field.node.stanford_policy.su_policy_changelog
+    - field.field.node.stanford_policy.su_policy_chapter
     - field.field.node.stanford_policy.su_policy_effective
+    - field.field.node.stanford_policy.su_policy_policy_num
     - field.field.node.stanford_policy.su_policy_related
+    - field.field.node.stanford_policy.su_policy_subchapter
+    - field.field.node.stanford_policy.su_policy_title
     - field.field.node.stanford_policy.su_policy_updated
     - node.type.stanford_policy
+    - views.view.change_logs
   module:
     - book
     - jumpstart_ui
@@ -20,6 +27,7 @@ dependencies:
     - stanford_fields
     - system
     - user
+    - views
 third_party_settings:
   layout_builder:
     enabled: true
@@ -217,6 +225,19 @@ third_party_settings:
                 node: layout_builder.entity
             weight: 3
             additional: {  }
+          6ac6e270-c11a-4919-8370-adf9a563ca85:
+            uuid: 6ac6e270-c11a-4919-8370-adf9a563ca85
+            region: main
+            configuration:
+              id: 'views_block:change_logs-node_page_changes'
+              label: ''
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 4
+            additional: {  }
         third_party_settings: {  }
   layout_library:
     enable: false
@@ -224,6 +245,7 @@ third_party_settings:
     allowed_block_categories:
       - 'Basic Page Type Lists (Views)'
       - Book
+      - 'Changelog (Views)'
       - 'Chaos Tools'
       - 'Config Pages'
       - 'Content fields'
@@ -306,6 +328,9 @@ third_party_settings:
       allowlisted_blocks:
         Book:
           - book_forward_back
+        'Changelog (Views)':
+          - 'views_block:change_logs-node_page_changes'
+          - 'views_block:change_logs-policy_changes'
         Menus:
           - book_navigation
           - 'menu_block:main'
