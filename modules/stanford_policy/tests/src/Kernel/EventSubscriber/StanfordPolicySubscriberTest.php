@@ -5,14 +5,20 @@ namespace Drupal\Tests\stanford_policy\Kernel\EventSubscriber;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\config_pages\Entity\ConfigPages;
 use Drupal\config_pages\Entity\ConfigPagesType;
+use Drupal\Core\Form\FormState;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Render\RenderContext;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
+use Drupal\stanford_fields\Form\StanfordFieldBookAdminEditForm;
+use Drupal\stanford_policy\EventSubscriber\StanfordPolicySubscriber;
 use Drupal\user\Entity\Role;
 use Drupal\user\RoleInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @coversDefaultClass \Drupal\stanford_policy\EventSubscriber\StanfordPolicySubscriber
@@ -246,5 +252,33 @@ class StanfordPolicySubscriberTest extends KernelTestBase {
     $reloaded_node = Node::load($this->childNode->id());
     $this->assertStringStartsWith('i.a', $reloaded_node->label());
   }
+
+  public function testFormAlter() {
+    $renderer = \Drupal::service('renderer');
+    /** @var \Drupal\Core\Form\FormBuilderInterface $form_builder */
+    $form_builder = \Drupal::service('form_builder');
+    $form_state = new FormState();
+    $form_state->setBuildInfo(['args' => [Node::load($this->book->id())]]);
+
+    $context = new RenderContext();
+    $form = $renderer->executeInRenderContext($context, function () use ($form_builder, $form_state) {
+      return $form_builder->buildForm(StanfordFieldBookAdminEditForm::class, $form_state);
+    });
+    $this->assertNotEmpty($form);
+
+    $this->assertEquals([
+      StanfordPolicySubscriber::class,
+      'onBookAdminEditSubmit',
+    ], end($form['#submit']));
+
+    $this->assertStringNotcontainsString('1.1 ', $form['table']['book-admin-' . $this->childNode->id()]['title']['#default_value']);
+
+    $form = $renderer->executeInRenderContext($context, function () use ($form_builder, $form_state) {
+      $form_builder->submitForm(StanfordFieldBookAdminEditForm::class, $form_state);
+      return $form_builder->buildForm(StanfordFieldBookAdminEditForm::class, $form_state);
+    });
+    $this->assertStringStartsWith('1.1 ', $form['table']['book-admin-' . $this->childNode->id()]['title']['#default_value']);
+  }
+
 
 }
