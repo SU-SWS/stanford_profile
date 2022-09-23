@@ -73,7 +73,8 @@ class PolicyCest {
     $I->fillField('SubChapter Number', 2);
     $I->fillField('Policy Number', 3);
     $I->click('Save');
-    $I->canSee("1.2.3 $title", 'h1');
+    $I->cantSee("1.2.3 $title", 'h1');
+
     $current_url = $I->grabFromCurrentUrl();
     $I->assertStringContainsString('-foo-bar', $current_url);
 
@@ -101,6 +102,7 @@ class PolicyCest {
 
     $node = $I->createEntity([
       'type' => 'stanford_policy',
+      'title' => $this->faker->words(3, true),
       'su_policy_title' => $this->faker->words(4, TRUE) . '-foo-bar',
       'su_policy_auto_prefix' => 1,
     ]);
@@ -219,7 +221,7 @@ class PolicyCest {
     $I->amOnPage($article_one->toUrl()->toString());
     $I->canSee('II.A ' . $article_one->get('su_policy_title')->getString());
 
-    $new_prefix = $this->faker->word;
+    $new_prefix = $this->faker->randomLetter;
     $I->amOnPage($chapter_two->toUrl('edit-form')->toString());
     $I->uncheckOption('Automatic Prefix');
     $I->fillField('Chapter Number', $new_prefix);

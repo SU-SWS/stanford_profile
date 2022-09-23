@@ -6,6 +6,8 @@ use Drupal\book\BookManagerInterface;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\core_event_dispatcher\EntityHookEvents;
+use Drupal\core_event_dispatcher\Event\Entity\AbstractEntityEvent;
 use Drupal\core_event_dispatcher\Event\Form\FormAlterEvent;
 use Drupal\core_event_dispatcher\FormHookEvents;
 use Drupal\node\NodeInterface;
@@ -31,6 +33,9 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
     return [
       BookOutlineUpdatedEvent::OUTLINE_UPDATED => 'onBookOutlineUpdate',
       FormHookEvents::FORM_ALTER => 'onFormAlter',
+      EntityHookEvents::ENTITY_UPDATE => 'afterConfigPageCrud',
+      EntityHookEvents::ENTITY_INSERT => 'afterConfigPageCrud',
+      EntityHookEvents::ENTITY_DELETE => 'afterConfigPageCrud',
     ];
   }
 
@@ -45,6 +50,22 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
    *   Entity type manager service.
    */
   public function __construct(protected BookManagerInterface $bookManager, protected ConfigPagesLoaderServiceInterface $configPagesLoader, protected EntityTypeManagerInterface $entityTypeManager) {
+  }
+
+  /**
+   * Resave all books if the policy config page was saved/deleted.
+   *
+   * @param \Drupal\core_event_dispatcher\Event\Entity\AbstractEntityEvent $event
+   *   Triggered event.
+   */
+  public function afterConfigPageCrud(AbstractEntityEvent $event) {
+    $entity = $event->getEntity();
+    if ($entity->getEntityTypeId() == 'config_pages' && $entity->bundle() == 'policy_settings') {
+      $book_node_ids = array_keys($this->bookManager->getAllBooks());
+      foreach ($book_node_ids as $node_id) {
+        $this->resaveBookNodes($node_id);
+      }
+    }
   }
 
   /**
@@ -63,7 +84,6 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
         $form['#submit'][] = [self::class, 'onBookAdminEditSubmit'];
       }
     }
-
   }
 
   /**
@@ -93,7 +113,19 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
     }
 
     $this->alreadyHere = TRUE;
-    $book_contents = $this->bookManager->getTableOfContents($event->getUpdatedBookId(), 9);
+    if ($book_id = $event->getUpdatedBookId()) {
+      $this->resaveBookNodes($book_id);
+    }
+  }
+
+  /**
+   * Traverse the book and modify and resave all nodes.
+   *
+   * @param int $book_id
+   *   Book node id.
+   */
+  protected function resaveBookNodes(int $book_id): void {
+    $book_contents = $this->bookManager->getTableOfContents($book_id, 9);
     foreach (array_keys($book_contents) as $nid) {
       $node = $this->entityTypeManager->getStorage('node')->load($nid);
       $previous_title = $node->label();
