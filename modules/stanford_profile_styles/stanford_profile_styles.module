@@ -95,6 +95,10 @@ function stanford_profile_styles_library_info_alter(&$libraries, $extension) {
     unset($libraries['field_formatter']['css']['component']['js/build/css/react_paragraphs.field_formatter.css']);
     $libraries['field_formatter']['dependencies'][] = "stanford_profile_styles/paragraph.react_paragraphs";
   }
+  // Disable confirm leave library during testing.
+  if ($extension == 'confirm_leave' && getenv('CI')) {
+    unset($libraries['confirm-leave']);
+  }
 }
 
 /**
