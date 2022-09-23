@@ -5,7 +5,6 @@ namespace Drupal\stanford_policy\EventSubscriber;
 use Drupal\book\BookManagerInterface;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
 use Drupal\node\NodeInterface;
 use Drupal\stanford_fields\Event\BookOutlineUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -45,6 +44,7 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
     $this->alreadyHere = TRUE;
 
     $book_contents = $this->bookManager->getTableOfContents($event->getUpdatedBookId(), 9);
+
     foreach (array_keys($book_contents) as $nid) {
       $node = $this->entityTypeManager->getStorage('node')->load($nid);
       $previous_title = $node->label();

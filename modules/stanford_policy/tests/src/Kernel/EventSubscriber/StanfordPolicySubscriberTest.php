@@ -3,6 +3,8 @@
 namespace Drupal\Tests\stanford_policy\Kernel\EventSubscriber;
 
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
+use Drupal\config_pages\Entity\ConfigPages;
+use Drupal\config_pages\Entity\ConfigPagesType;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
@@ -25,13 +27,10 @@ class StanfordPolicySubscriberTest extends KernelTestBase {
     'text',
     'book',
     'stanford_policy',
-    'stanford_fields',
     'config_pages',
     'hook_event_dispatcher',
     'core_event_dispatcher',
   ];
-
-  protected $configPageValues = [];
 
   /**
    * @var \Drupal\node\NodeInterface
@@ -52,13 +51,34 @@ class StanfordPolicySubscriberTest extends KernelTestBase {
     parent::setUp();
     $this->installEntitySchema('node');
     $this->installEntitySchema('user');
+    $this->installEntitySchema('config_pages');
+    $this->installSchema('node', ['node_access']);
     $this->installSchema('book', 'book');
 
-    $config_pages_loader = $this->createMock(ConfigPagesLoaderServiceInterface::class);
-    $config_pages_loader->method('getValue')
-      ->will($this->returnCallback([$this, 'getConfigPageValue']));
+    ConfigPagesType::create([
+      'id' => 'policy_settings',
+      'menu' => [],
+      'context' => [],
+    ])->save();
 
-    \Drupal::getContainer()->set('config_pages.loader', $config_pages_loader);
+    $fields = [
+      'su_policy_prefix_first',
+      'su_policy_prefix_sec',
+      'su_policy_prefix_third',
+    ];
+    foreach ($fields as $field_name) {
+      FieldStorageConfig::create([
+        'entity_type' => 'config_pages',
+        'field_name' => $field_name,
+        'type' => 'string',
+        'cardinality' => 1,
+      ])->save();
+      FieldConfig::create([
+        'field_name' => $field_name,
+        'entity_type' => 'config_pages',
+        'bundle' => 'policy_settings',
+      ])->save();
+    }
 
     Role::create(['id' => AccountInterface::ANONYMOUS_ROLE])->save();
     user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, ['access content']);
@@ -146,59 +166,85 @@ class StanfordPolicySubscriberTest extends KernelTestBase {
     $book_tree_data = $book_manager->bookSubtreeData($book_manager->loadBookLink($this->node->id()));
     $this->assertNotEmpty(reset($book_tree_data)['below']);
 
-    $reloaded_node = Node::load($this->node->id());
-    $this->assertStringStartsWith('1. ', $reloaded_node->label());
+    \Drupal::service('module_installer')->install(['stanford_fields']);
+    $this->childNode->save();
 
-    $child_node = Node::load($this->childNode->id());
-    $this->assertStringStartsWith('1.1 ', $child_node->label());
+    $this->assertStringStartsWith('1. ', Node::load($this->node->id())
+      ->label());
+    $this->assertStringStartsWith('1.1 ', Node::load($this->childNode->id())
+      ->label());
   }
 
-//  public function testUpperCaseAlpha() {
-//    $node_id = $this->node->id();
-//    $this->configPageValues['su_policy_prefix_first'] = 'alpha_uppercase';
-//    $this->configPageValues['su_policy_prefix_sec'] = 'roman_numeral_lowercase';
-//    $reloaded_node = Node::load($node_id);
-//    $this->assertStringStartsWith('A. ', $reloaded_node->label());
-//
-//    $reloaded_node = Node::load($this->childNode->id());
-//    $this->assertStringStartsWith('A.i ', $reloaded_node->label());
-//  }
-//
-//  public function testLowerCaseAlpha() {
-//    $node_id = $this->node->id();
-//    $this->configPageValues['su_policy_prefix_first'] = 'alpha_lowercase';
-//    $this->configPageValues['su_policy_prefix_sec'] = 'roman_numeral_uppercase';
-//    $reloaded_node = Node::load($node_id);
-//    $this->assertStringStartsWith('a. ', $reloaded_node->label());
-//
-//    $reloaded_node = Node::load($this->childNode->id());
-//    $this->assertStringStartsWith('a.I ', $reloaded_node->label());
-//  }
-//
-//  public function testUpperCaseRomanNumeral() {
-//    $node_id = $this->node->id();
-//    $this->configPageValues['su_policy_prefix_first'] = 'roman_numeral_uppercase';
-//    $this->configPageValues['su_policy_prefix_sec'] = 'alpha_uppercase';
-//    $reloaded_node = Node::load($node_id);
-//    $this->assertStringStartsWith('I. ', $reloaded_node->label());
-//
-//    $reloaded_node = Node::load($this->childNode->id());
-//    $this->assertStringStartsWith('I.A ', $reloaded_node->label());
-//  }
-//
-//  public function testLowerCaseRomanNumeral() {
-//    $node_id = $this->node->id();
-//    $this->configPageValues['su_policy_prefix_first'] = 'roman_numeral_lowercase';
-//    $this->configPageValues['su_policy_prefix_sec'] = 'alpha_lowercase';
-//    $reloaded_node = Node::load($node_id);
-//    $this->assertStringStartsWith('i. ', $reloaded_node->label());
-//
-//    $reloaded_node = Node::load($this->childNode->id());
-//    $this->assertStringStartsWith('i.a', $reloaded_node->label());
-//  }
+  public function testUpperCaseAlpha() {
+    ConfigPages::create([
+      'type' => 'policy_settings',
+      'su_policy_prefix_first' => 'alpha_uppercase',
+      'su_policy_prefix_sec' => 'roman_numeral_lowercase',
+      'context' => 'a:0:{}',
+    ])->save();
 
-  public function getConfigPageValue($page_type, $field_name, $delta = [], $column = NULL) {
-    return $this->configPageValues[$field_name] ?? NULL;
+    \Drupal::service('module_installer')->install(['stanford_fields']);
+    $this->node->save();
+
+    $reloaded_node = Node::load($this->node->id());
+    $this->assertStringStartsWith('A. ', $reloaded_node->label());
+
+    $reloaded_node = Node::load($this->childNode->id());
+    $this->assertStringStartsWith('A.i ', $reloaded_node->label());
+  }
+
+  public function testLowerCaseAlpha() {
+    ConfigPages::create([
+      'type' => 'policy_settings',
+      'su_policy_prefix_first' => 'alpha_lowercase',
+      'su_policy_prefix_sec' => 'roman_numeral_uppercase',
+      'context' => 'a:0:{}',
+    ])->save();
+
+    \Drupal::service('module_installer')->install(['stanford_fields']);
+    $this->node->save();
+
+    $reloaded_node = Node::load($this->node->id());
+    $this->assertStringStartsWith('a. ', $reloaded_node->label());
+
+    $reloaded_node = Node::load($this->childNode->id());
+    $this->assertStringStartsWith('a.I ', $reloaded_node->label());
+  }
+
+  public function testUpperCaseRomanNumeral() {
+    ConfigPages::create([
+      'type' => 'policy_settings',
+      'su_policy_prefix_first' => 'roman_numeral_uppercase',
+      'su_policy_prefix_sec' => 'alpha_uppercase',
+      'context' => 'a:0:{}',
+    ])->save();
+
+    \Drupal::service('module_installer')->install(['stanford_fields']);
+    $this->node->save();
+
+    $reloaded_node = Node::load($this->node->id());
+    $this->assertStringStartsWith('I. ', $reloaded_node->label());
+
+    $reloaded_node = Node::load($this->childNode->id());
+    $this->assertStringStartsWith('I.A ', $reloaded_node->label());
+  }
+
+  public function testLowerCaseRomanNumeral() {
+    ConfigPages::create([
+      'type' => 'policy_settings',
+      'su_policy_prefix_first' => 'roman_numeral_lowercase',
+      'su_policy_prefix_sec' => 'alpha_lowercase',
+      'context' => 'a:0:{}',
+    ])->save();
+
+    \Drupal::service('module_installer')->install(['stanford_fields']);
+    $this->node->save();
+
+    $reloaded_node = Node::load($this->node->id());
+    $this->assertStringStartsWith('i. ', $reloaded_node->label());
+
+    $reloaded_node = Node::load($this->childNode->id());
+    $this->assertStringStartsWith('i.a', $reloaded_node->label());
   }
 
 }
