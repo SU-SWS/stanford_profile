@@ -5,6 +5,9 @@ namespace Drupal\stanford_policy\EventSubscriber;
 use Drupal\book\BookManagerInterface;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\core_event_dispatcher\Event\Form\FormAlterEvent;
+use Drupal\core_event_dispatcher\FormHookEvents;
 use Drupal\node\NodeInterface;
 use Drupal\stanford_fields\Event\BookOutlineUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -14,6 +17,11 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class StanfordPolicySubscriber implements EventSubscriberInterface {
 
+  /**
+   * Flag to prevent recursion.
+   *
+   * @var bool
+   */
   protected $alreadyHere = FALSE;
 
   /**
@@ -22,6 +30,7 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
   public static function getSubscribedEvents(): array {
     return [
       BookOutlineUpdatedEvent::OUTLINE_UPDATED => 'onBookOutlineUpdate',
+      FormHookEvents::FORM_ALTER => 'onFormAlter',
     ];
   }
 
@@ -36,15 +45,53 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
   public function __construct(protected BookManagerInterface $bookManager, protected ConfigPagesLoaderServiceInterface $configPagesLoader, protected EntityTypeManagerInterface $entityTypeManager) {
   }
 
+  /**
+   * Alter the book admin form to add submit handler.
+   *
+   * @param \Drupal\core_event_dispatcher\Event\Form\FormAlterEvent $event
+   *   Triggered Event.
+   */
+  public function onFormAlter(FormAlterEvent $event): void {
+    if ($event->getFormId() == 'book_admin_edit') {
+      $build_args = $event->getFormState()->getBuildInfo()['args'];
+      $book_node = $build_args[0];
+
+      if ($book_node->bundle() == 'stanford_policy') {
+        $form = &$event->getForm();
+        $form['#submit'][] = [self::class, 'onBookAdminEditSubmit'];
+      }
+    }
+
+  }
+
+  /**
+   * Dispatch the event to update the book outline.
+   *
+   * @param array $form
+   *   Complete form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   Submitted form state.
+   */
+  public static function onBookAdminEditSubmit(array &$form, FormStateInterface $form_state): void {
+    $build_args = $form_state->getBuildInfo()['args'];
+    $book_node = $build_args[0];
+    \Drupal::service('event_dispatcher')
+      ->dispatch(new BookOutlineUpdatedEvent($book_node), BookOutlineUpdatedEvent::OUTLINE_UPDATED);
+  }
+
+  /**
+   * After the book outline is updated, re-save node titles to match.
+   *
+   * @param \Drupal\stanford_fields\Event\BookOutlineUpdatedEvent $event
+   *   Triggered event.
+   */
   public function onBookOutlineUpdate(BookOutlineUpdatedEvent $event) {
     if ($this->alreadyHere) {
       return;
     }
 
     $this->alreadyHere = TRUE;
-
     $book_contents = $this->bookManager->getTableOfContents($event->getUpdatedBookId(), 9);
-
     foreach (array_keys($book_contents) as $nid) {
       $node = $this->entityTypeManager->getStorage('node')->load($nid);
       $previous_title = $node->label();
