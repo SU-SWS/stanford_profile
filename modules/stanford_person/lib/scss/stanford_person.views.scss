@@ -17,7 +17,8 @@
 }
 
 // Grid set up
-.stanford-people-grid {
+.stanford-people-grid,
+.taxonomy-term-pages.people-terms {
   .su-list-unstyled {
     li {
       @include modular-spacing('margin-bottom', 3);
@@ -39,6 +40,14 @@
 
   // Name field
   .views-field-title {
+    h2 {
+      @include type-d;
+    }
+
+    h3 {
+      @include type-e;
+    }
+
     a {
       @include type-d;
 

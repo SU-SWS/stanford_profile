@@ -737,8 +737,11 @@ function stanford_profile_helper_preprocess_menu(&$variables) {
       $term = \Drupal::entityTypeManager()
         ->getStorage('taxonomy_term')
         ->load($item['url']->getRouteParameters()['taxonomy_term']);
-      $cache_tags[] = 'taxonomy_term_list:' . $term->bundle();
-      $cache_tags = array_merge($cache_tags, $term->getCacheTags());
+
+      if ($term) {
+        $cache_tags[] = 'taxonomy_term_list:' . $term->bundle();
+        $cache_tags = array_merge($cache_tags, $term->getCacheTags());
+      }
     }
   }
   $variables['#cache']['tags'] = array_unique($cache_tags);

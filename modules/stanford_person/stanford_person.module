@@ -57,6 +57,12 @@ function stanford_person_views_post_render(ViewExecutable $view, &$output, Cache
       $output['#attached']['library'][] = 'stanford_person/views';
       break;
 
+    case 'taxonomy_term_pages':
+      if ($view->current_display == 'people_terms') {
+        $output['#attached']['library'][] = 'stanford_person/views';
+      }
+      break;
+
     case 'stanford_person_list_terms_first':
       $output['#attached']['library'][] = 'stanford_person/views';
 
