@@ -41,6 +41,8 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
    *   Book manager service.
    * @param \Drupal\config_pages\ConfigPagesLoaderServiceInterface $configPagesLoader
    *   Config page loader service.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   Entity type manager service.
    */
   public function __construct(protected BookManagerInterface $bookManager, protected ConfigPagesLoaderServiceInterface $configPagesLoader, protected EntityTypeManagerInterface $entityTypeManager) {
   }
