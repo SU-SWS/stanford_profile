@@ -5,9 +5,9 @@ namespace Drupal\stanford_policy\EventSubscriber;
 use Drupal\book\BookManagerInterface;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\core_event_dispatcher\EntityHookEvents;
-use Drupal\core_event_dispatcher\Event\Entity\EntityLoadEvent;
+use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
 use Drupal\node\NodeInterface;
+use Drupal\stanford_fields\Event\BookOutlineUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -15,19 +15,14 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class StanfordPolicySubscriber implements EventSubscriberInterface {
 
-  /**
-   * List of previously modified entity ids.
-   *
-   * @var array
-   */
-  protected $previouslyModified = [];
+  protected $alreadyHere = FALSE;
 
   /**
    * {@inheritdoc}
    */
   public static function getSubscribedEvents(): array {
     return [
-      EntityHookEvents::ENTITY_LOAD => 'onEntityLoad',
+      BookOutlineUpdatedEvent::OUTLINE_UPDATED => 'onBookOutlineUpdate',
     ];
   }
 
@@ -42,23 +37,20 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
   public function __construct(protected BookManagerInterface $bookManager, protected ConfigPagesLoaderServiceInterface $configPagesLoader, protected EntityTypeManagerInterface $entityTypeManager) {
   }
 
-  /**
-   * Event listener to modify the policy node.
-   *
-   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityLoadEvent $event
-   *   Triggered event.
-   */
-  public function onEntityLoad(EntityLoadEvent $event): void {
-    $entities = $event->getEntities();
-    /** @var \Drupal\Core\Entity\EntityInterface $entity */
-    foreach ($entities as $entity) {
-      if (
-        !in_array($entity->id(), $this->previouslyModified) &&
-        $entity->getEntityTypeId() == 'node' &&
-        $entity->bundle() == 'stanford_policy'
-      ) {
-        $this->previouslyModified[] = $entity->id();
-        $this->modifyPolicyEntity($entity);
+  public function onBookOutlineUpdate(BookOutlineUpdatedEvent $event) {
+    if ($this->alreadyHere) {
+      return;
+    }
+
+    $this->alreadyHere = TRUE;
+
+    $book_contents = $this->bookManager->getTableOfContents($event->getUpdatedBookId(), 9);
+    foreach (array_keys($book_contents) as $nid) {
+      $node = $this->entityTypeManager->getStorage('node')->load($nid);
+      $previous_title = $node->label();
+      $this->modifyPolicyEntity($node);
+      if ($node->label() != $previous_title) {
+        $node->save();
       }
     }
   }
@@ -70,6 +62,11 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
    *   Node entity.
    */
   public function modifyPolicyEntity(NodeInterface $node): void {
+    // Book settings not set.
+    if (empty($node->book['pid'])) {
+      return;
+    }
+
     if ($node->get('su_policy_auto_prefix')->getString()) {
       $node->set('su_policy_chapter', NULL);
       $node->set('su_policy_subchapter', NULL);
