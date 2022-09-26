@@ -381,13 +381,3 @@ function stanford_basic_theme_suggestions_views_view_list_alter(array &$suggesti
   $suggestions[] = "views_view_list__$view_id";
   $suggestions[] = "views_view_list__{$view_id}__$display_id";
 }
-
-/**
- * Variant setting for the External Links.
- */
-function stanford_profile_helper_extlink_settings_alter(array &$settings){
-  $no_ext_links = theme_get_setting('hide_su_ext_links');
-  if ($no_ext_links) {
-      $settings['extlink_class'] = "";
-  }
-}
