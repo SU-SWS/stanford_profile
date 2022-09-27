@@ -273,9 +273,9 @@ function stanford_profile_styles_views_pre_render(ViewExecutable $view) {
 /**
  * Variant setting for the External Links.
  */
-function stanford_profile_helper_extlink_settings_alter(array &$settings){
+function stanford_profile_helper_extlink_settings_alter(array &$settings) {
   $no_ext_links = \Drupal::service('config_pages.loader')->getValue('stanford_basic_site_settings', 'su_hide_ext_link_icons', 0, 'value');
   if ($no_ext_links) {
-      $settings['extlink_class'] = "";
+    $settings['extlink_class'] = "";
   }
 }
