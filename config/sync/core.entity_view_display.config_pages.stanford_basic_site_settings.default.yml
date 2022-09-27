@@ -5,6 +5,7 @@ dependencies:
   config:
     - config_pages.type.stanford_basic_site_settings
     - field.field.config_pages.stanford_basic_site_settings.su_google_analytics
+    - field.field.config_pages.stanford_basic_site_settings.su_hide_ext_link_icons
     - field.field.config_pages.stanford_basic_site_settings.su_hide_site_search
     - field.field.config_pages.stanford_basic_site_settings.su_site_403
     - field.field.config_pages.stanford_basic_site_settings.su_site_404
@@ -28,6 +29,16 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 3
+    region: content
+  su_hide_ext_link_icons:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 10
     region: content
   su_hide_site_search:
     type: boolean
