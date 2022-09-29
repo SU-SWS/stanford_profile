@@ -1,0 +1,21 @@
+uuid: 7fd2647e-8378-4cef-ad5e-23fe6a8b7188
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_policy_updated
+    - node.type.stanford_policy
+  module:
+    - datetime
+id: node.stanford_policy.su_policy_updated
+field_name: su_policy_updated
+entity_type: node
+bundle: stanford_policy
+label: 'Last Updated'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

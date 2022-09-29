@@ -1,0 +1,17 @@
+uuid: 4fe29da1-cbb4-49dd-8e85-9e74ba0c638f
+langcode: en
+status: true
+dependencies: {  }
+id: policy_settings
+label: 'Policy Content Settings'
+token: false
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/config/content/policy
+  weight: 0
+  description: ''

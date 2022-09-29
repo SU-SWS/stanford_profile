@@ -9,7 +9,9 @@ dependencies:
   - admin_toolbar:admin_toolbar_tools
   - config_pages:config_pages
   - config_pages_overrides:config_pages_overrides
-  - core_event_dispatcher:core_event_dispatcher
+  - hook_event_dispatcher:core_event_dispatcher
+  - hook_event_dispatcher:preprocess_event_dispatcher
+  - hook_event_dispatcher:views_event_dispatcher
   - default_content:default_content
   - drupal:block
   - drupal:block_content

@@ -1,0 +1,6 @@
+services:
+  stanford_policy.event_subscriber:
+    class: Drupal\stanford_policy\EventSubscriber\StanfordPolicySubscriber
+    arguments: ['@book.manager', '@config_pages.loader', '@entity_type.manager']
+    tags:
+      - { name: event_subscriber }

@@ -96,7 +96,7 @@ class SystemSiteConfigCest {
     $I->click('Save');
     $I->canSee('Site Settings has been');
 
-    \Drupal::configFactory()->reset('system.site');
+    drupal_flush_all_caches();
     $setting = \Drupal::config('system.site')->get('page.front');
     $path = '/node/' . $node->id();
     $I->assertEquals($path, $setting);

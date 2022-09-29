@@ -1,0 +1,28 @@
+uuid: 54e37228-3059-4e75-bebc-1b5c29ef5f0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_policy_related
+    - node.type.stanford_policy
+id: node.stanford_policy.su_policy_related
+field_name: su_policy_related
+entity_type: node
+bundle: stanford_policy
+label: 'Related Policies'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      stanford_policy: stanford_policy
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

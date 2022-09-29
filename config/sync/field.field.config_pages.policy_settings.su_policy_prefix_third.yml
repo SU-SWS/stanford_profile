@@ -1,0 +1,23 @@
+uuid: 39ea2c39-bd79-4074-b9f3-b0236a8fa68b
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.policy_settings
+    - field.storage.config_pages.su_policy_prefix_third
+  module:
+    - options
+id: config_pages.policy_settings.su_policy_prefix_third
+field_name: su_policy_prefix_third
+entity_type: config_pages
+bundle: policy_settings
+label: 'Prefix Third Level'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: numbers
+default_value_callback: ''
+settings: {  }
+field_type: list_string
