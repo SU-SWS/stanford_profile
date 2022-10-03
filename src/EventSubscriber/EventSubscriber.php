@@ -91,8 +91,8 @@ class EventSubscriber implements EventSubscriberInterface {
    *   Local file path with schema.
    */
   protected function getFile($file_uri) {
-    $local_directory = substr($file_uri, 0, strrpos($file_uri, '/'));
-    $this->fileSystem->prepareDirectory($local_directory, FileSystemInterface::CREATE_DIRECTORY);
+    $local_directory = dirname($file_uri);
+    $this->fileSystem->prepareDirectory($local_directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
 
     $file_scheme = StreamWrapperManager::getScheme($file_uri);
     $file_path = str_replace("$file_scheme://", '', $file_uri);
