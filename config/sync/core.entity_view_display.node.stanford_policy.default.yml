@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.stanford_policy.su_policy_updated
     - node.type.stanford_policy
     - views.view.change_logs
+    - views.view.policies
   module:
     - book
     - jumpstart_ui
@@ -238,6 +239,19 @@ third_party_settings:
               items_per_page: none
             weight: 4
             additional: {  }
+          e41989aa-33de-4c81-877f-4839205895a2:
+            uuid: e41989aa-33de-4c81-877f-4839205895a2
+            region: main
+            configuration:
+              id: 'views_block:policies-child_pages'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 5
+            additional: {  }
         third_party_settings: {  }
   layout_library:
     enable: false
@@ -263,6 +277,7 @@ third_party_settings:
       - 'News Lists (Views)'
       - 'PDB React'
       - 'People Lists (Views)'
+      - 'Policy (Views)'
       - Printable
       - 'Publication (Views)'
       - React
@@ -335,6 +350,8 @@ third_party_settings:
           - book_navigation
           - 'menu_block:main'
           - 'system_menu_block:main'
+        'Policy (Views)':
+          - 'views_block:policies-child_pages'
         Printable:
           - 'printable_links_block:node'
         System:
