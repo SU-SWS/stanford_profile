@@ -79,6 +79,9 @@ class EventSubscriber implements EventSubscriberInterface {
       $file_uri = $entity->getFileUri();
 
       if (!file_exists($file_uri)) {
+        $this->logger->info('Fetching file from content import: %uri', [
+          '%uri' => $file_uri,
+        ]);
         $this->getFile($file_uri);
       }
     }
