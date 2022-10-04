@@ -104,8 +104,14 @@ class EventSubscriber implements EventSubscriberInterface {
     // @codeCoverageIgnoreStart
     if (file_exists($local_file)) {
       try {
-        $this->fileSystem->copy($local_file, $file_uri, FileSystemInterface::EXISTS_REPLACE);
         $real_path = $this->fileSystem->realpath($file_uri);
+        $this->logger->info('Copying file from %source to %destination', [
+          '%source' => $local_file,
+          '%destination' => $real_path,
+        ]);
+
+        $this->fileSystem->copy($local_file, $real_path, FileSystemInterface::EXISTS_REPLACE);
+
         if (!file_exists($real_path)) {
           throw new \Exception('File not found after copy attempt: ' . $real_path);
         }
@@ -118,6 +124,11 @@ class EventSubscriber implements EventSubscriberInterface {
         ]);
       }
     }
+
+    $this->logger->info('Downloading %source to %destination', [
+      '%source' => $this::FETCH_DOMAIN . $this::FETCH_DIR . $file_path,
+      '%destination' => $file_uri,
+    ]);
     // @codeCoverageIgnoreEnd
     $this->downloadFile($this::FETCH_DOMAIN . $this::FETCH_DIR . $file_path, $file_uri);
   }
