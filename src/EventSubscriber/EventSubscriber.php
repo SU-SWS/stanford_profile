@@ -81,7 +81,6 @@ class EventSubscriber implements EventSubscriberInterface {
 
       if (!file_exists($file_uri)) {
         $this->getFile($file_uri);
-        $entity->save();
       }
     }
   }
@@ -133,15 +132,18 @@ class EventSubscriber implements EventSubscriberInterface {
    * @param string $destination
    *   Local path with schema.
    *
+   * @return mixed
+   *   See system_retrieve_file().
+   *
    * @codeCoverageIgnore
    *   Ignore from unit tests.
    */
-  protected function downloadFile(string $source, string $destination): void {
+  protected function downloadFile(string $source, string $destination) {
     $this->logger->info('Downloading file %source to %destination', [
       '%source' => $source,
       '%destination' => $destination,
     ]);
-    system_retrieve_file($source, $destination, FALSE, FileSystemInterface::EXISTS_REPLACE);
+    return system_retrieve_file($source, $destination, FALSE, FileSystemInterface::EXISTS_REPLACE);
   }
 
 }
