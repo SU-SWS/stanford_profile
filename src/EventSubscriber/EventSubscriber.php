@@ -2,6 +2,7 @@
 
 namespace Drupal\stanford_profile\EventSubscriber;
 
+use Acquia\DrupalEnvironmentDetector\AcquiaDrupalEnvironmentDetector;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
@@ -69,7 +70,7 @@ class EventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\default_content\Event\ImportEvent $event
    *   Triggered event.
    */
-  public function onContentImport(ImportEvent $event) {
+  public function onContentImport(ImportEvent $event): void {
     /** @var \Drupal\file\FileInterface $entity */
     foreach ($event->getImportedEntities() as $entity) {
       if ($entity->getEntityTypeId() != 'file') {
@@ -79,9 +80,6 @@ class EventSubscriber implements EventSubscriberInterface {
       $file_uri = $entity->getFileUri();
 
       if (!file_exists($file_uri)) {
-        $this->logger->info('Fetching file from content import: %uri', [
-          '%uri' => $file_uri,
-        ]);
         $this->getFile($file_uri);
       }
     }
@@ -93,29 +91,30 @@ class EventSubscriber implements EventSubscriberInterface {
    * @param string $file_uri
    *   Local file path with schema.
    */
-  protected function getFile($file_uri) {
+  protected function getFile(string $file_uri): void {
     $local_directory = dirname($file_uri);
     $this->fileSystem->prepareDirectory($local_directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
 
     $file_scheme = StreamWrapperManager::getScheme($file_uri);
     $file_path = str_replace("$file_scheme://", '', $file_uri);
-    $local_file = DRUPAL_ROOT . $this::FETCH_DIR . $file_path;
+    $remote_url = $this::FETCH_DOMAIN . $this::FETCH_DIR . $file_path;
 
-    $this->logger->info('Using local file if available: %source', ['%source' => $local_file]);
+
+    if (!AcquiaDrupalEnvironmentDetector::isAcsfEnv()) {
+      $this->downloadFile($remote_url, $file_uri);
+      return;
+    }
+
+    $local_file = AcquiaDrupalEnvironmentDetector::getAhFilesRoot() . $this::FETCH_DIR . $file_path;
+
     // @codeCoverageIgnoreStart
     if (file_exists($local_file)) {
       try {
-        $real_path = $this->fileSystem->realpath($file_uri);
-        $this->logger->info('Copying file from %source to %destination', [
+        $this->logger->info('Copying local file %source to %destination', [
           '%source' => $local_file,
-          '%destination' => $real_path,
+          '%destination' => $file_uri,
         ]);
-
-        $this->fileSystem->copy($local_file, $real_path, FileSystemInterface::EXISTS_REPLACE);
-
-        if (!file_exists($real_path)) {
-          throw new \Exception('File not found after copy attempt: ' . $real_path);
-        }
+        $this->fileSystem->copy($local_file, $file_uri, FileSystemInterface::EXISTS_REPLACE);
         return;
       }
       catch (\Exception $e) {
@@ -126,12 +125,9 @@ class EventSubscriber implements EventSubscriberInterface {
       }
     }
 
-    $this->logger->info('Downloading %source to %destination', [
-      '%source' => $this::FETCH_DOMAIN . $this::FETCH_DIR . $file_path,
-      '%destination' => $file_uri,
-    ]);
     // @codeCoverageIgnoreEnd
-    $this->downloadFile($this::FETCH_DOMAIN . $this::FETCH_DIR . $file_path, $file_uri);
+    // Fallback to download the file from the remote url.
+    $this->downloadFile($remote_url, $file_uri);
   }
 
   /**
@@ -145,7 +141,11 @@ class EventSubscriber implements EventSubscriberInterface {
    * @codeCoverageIgnore
    *   Ignore from unit tests.
    */
-  protected function downloadFile($source, $destination) {
+  protected function downloadFile(string $source, string $destination): void {
+    $this->logger->info('Downloading file %source to %destination', [
+      '%source' => $source,
+      '%destination' => $destination,
+    ]);
     system_retrieve_file($source, $destination, FALSE, FileSystemInterface::EXISTS_REPLACE);
   }
 
