@@ -101,7 +101,11 @@ class EventSubscriber implements EventSubscriberInterface {
     // @codeCoverageIgnoreStart
     if (file_exists($local_file)) {
       try {
-        $this->fileSystem->copy($local_file, $file_path, FileSystemInterface::EXISTS_REPLACE);
+        $this->fileSystem->copy($local_file, $file_uri, FileSystemInterface::EXISTS_REPLACE);
+        $real_path = $this->fileSystem->realpath($file_uri);
+        if (!file_exists($real_path)) {
+          throw new \Exception('File not found after copy attempt: ' . $real_path);
+        }
         return;
       }
       catch (\Exception $e) {
