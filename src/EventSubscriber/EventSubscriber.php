@@ -101,6 +101,7 @@ class EventSubscriber implements EventSubscriberInterface {
     $file_path = str_replace("$file_scheme://", '', $file_uri);
     $local_file = DRUPAL_ROOT . $this::FETCH_DIR . $file_path;
 
+    $this->logger->info('Using local file if available: %source', ['%source' => $local_file]);
     // @codeCoverageIgnoreStart
     if (file_exists($local_file)) {
       try {
