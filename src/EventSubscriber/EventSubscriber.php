@@ -81,6 +81,7 @@ class EventSubscriber implements EventSubscriberInterface {
 
       if (!file_exists($file_uri)) {
         $this->getFile($file_uri);
+        $entity->save();
       }
     }
   }
@@ -98,12 +99,6 @@ class EventSubscriber implements EventSubscriberInterface {
     $file_scheme = StreamWrapperManager::getScheme($file_uri);
     $file_path = str_replace("$file_scheme://", '', $file_uri);
     $remote_url = $this::FETCH_DOMAIN . $this::FETCH_DIR . $file_path;
-
-
-    if (!AcquiaDrupalEnvironmentDetector::isAcsfEnv()) {
-      $this->downloadFile($remote_url, $file_uri);
-      return;
-    }
 
     $local_file = AcquiaDrupalEnvironmentDetector::getAhFilesRoot() . $this::FETCH_DIR . $file_path;
 
