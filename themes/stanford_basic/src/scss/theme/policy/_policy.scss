@@ -2,8 +2,10 @@
 
 .policy {
 
-  .jumpstart-ui--one-column {
-    // @include responsive-spacing('margin-top', 6);
+  .jumpstart-ui--two-column {
+    &.flex-container  {
+      align-items: baseline;
+    }
   }
 
   .book-forward-back {
@@ -12,6 +14,8 @@
 
   //Breadcrumbs.
   .breadcrumb {
+    @include responsive-spacing('padding-top', 0);
+
     li {
       &:before {
         content: " / ";
@@ -22,6 +26,14 @@
           content: " ";
         }
       }
+    }
+  }
+
+// Previous and Next
+  .book-forward-back {
+    a {
+      @include button-secondary;
+
     }
   }
 
@@ -80,15 +92,19 @@
     grid-area: change-logs-node-page-changes;
   }
 
-  .flex-lg-9-of-12.main-region {
-    display: grid;
-    grid-template-columns: repeat (1fr);
-    grid-template-rows: auto;
-    grid-template-areas:
-      "last-updated print"
-      "change-logs-node-page-changes change-logs-node-page-changes"
-      "policy-body policy-body"
-      "policies-child-pages policies-child-pages";
+  .flex-lg-9-of-12 {
+    &.main-region {
+      @include responsive-spacing('margin-bottom', 9);
+
+      display: grid;
+      grid-template-columns: repeat (1fr);
+      grid-template-rows: auto;
+      grid-template-areas:
+        "last-updated print"
+        "change-logs-node-page-changes change-logs-node-page-changes"
+        "policy-body policy-body"
+        "policies-child-pages policies-child-pages";
+    }
   }
 
   // Print
@@ -140,5 +156,53 @@
   // Main content area.
   .main-policy--content {
     @include responsive-spacing('padding-top', 7);
+  }
+
+  // Related policies in cards
+  .node-stanford-policy-su-policy-related {
+    @include responsive-spacing('margin-bottom', 9);
+
+  }
+
+  .block__title {
+    @include responsive-spacing('margin-bottom', 1);
+
+    text-align: center;
+  }
+
+  .su-policies--related {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr [col-start]);
+    gap: 45px;
+
+    h2 {
+      @include responsive-spacing('margin', 1 2);
+
+      a {
+        @include type-f;
+
+        color: $su-color-black;
+        display: inline-block;
+        font-weight: $su-font-bold;
+
+        &::after {
+          @include type-c;
+          @include modular-spacing('margin-left', -1);
+          background-color: $su-color-bright-red;
+        }
+
+        &:hover,
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .su-card {
+      @include modular-spacing('margin-bottom', 2);
+      @include margin(0 auto);
+
+      width: 100%;
+    }
   }
 }
