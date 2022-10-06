@@ -242,17 +242,6 @@ third_party_settings:
               items_per_page: none
             weight: 7
             additional: {  }
-          9239f3b1-86c9-4d97-8e6c-f1ded39f2a02:
-            uuid: 9239f3b1-86c9-4d97-8e6c-f1ded39f2a02
-            region: main
-            configuration:
-              id: book_forward_back
-              label: 'Book Forward & Back'
-              label_display: '0'
-              provider: stanford_fields
-              context_mapping: {  }
-            weight: 11
-            additional: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
@@ -282,6 +271,18 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
+            weight: 1
+            additional: {  }
+          9239f3b1-86c9-4d97-8e6c-f1ded39f2a02:
+            uuid: 9239f3b1-86c9-4d97-8e6c-f1ded39f2a02
+            region: main
+            configuration:
+              id: book_forward_back
+              label: 'Book Forward & Back'
+              label_display: '0'
+              provider: stanford_fields
+              context_mapping:
+                node: layout_builder.entity
             weight: 0
             additional: {  }
         third_party_settings: {  }

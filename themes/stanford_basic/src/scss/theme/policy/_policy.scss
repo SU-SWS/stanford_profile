@@ -9,7 +9,7 @@
   }
 
   .book-forward-back {
-    @include responsive-spacing('margin', 3 null);
+    // @include responsive-spacing('margin', 3 null);
   }
 
   //Breadcrumbs.
@@ -34,6 +34,11 @@
     a {
       @include button-secondary;
 
+    }
+
+    .su-list-unstyled.flex-container {
+      justify-content: flex-end;
+      gap: 25px;
     }
   }
 
@@ -160,7 +165,7 @@
 
   // Related policies in cards
   .node-stanford-policy-su-policy-related {
-    @include responsive-spacing('margin-bottom', 9);
+    @include responsive-spacing('margin', 9 null);
 
   }
 
