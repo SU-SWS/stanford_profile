@@ -8,8 +8,10 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\core_event_dispatcher\EntityHookEvents;
 use Drupal\core_event_dispatcher\Event\Entity\AbstractEntityEvent;
+use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
 use Drupal\core_event_dispatcher\Event\Form\FormAlterEvent;
 use Drupal\core_event_dispatcher\FormHookEvents;
+use Drupal\field_event_dispatcher\FieldHookEvents;
 use Drupal\node\NodeInterface;
 use Drupal\stanford_fields\Event\BookOutlineUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -33,9 +35,10 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
     return [
       BookOutlineUpdatedEvent::OUTLINE_UPDATED => 'onBookOutlineUpdate',
       FormHookEvents::FORM_ALTER => 'onFormAlter',
-      EntityHookEvents::ENTITY_UPDATE => 'afterConfigPageCrud',
-      EntityHookEvents::ENTITY_INSERT => 'afterConfigPageCrud',
-      EntityHookEvents::ENTITY_DELETE => 'afterConfigPageCrud',
+      EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPresave',
+      EntityHookEvents::ENTITY_UPDATE => 'onEntityCrud',
+      EntityHookEvents::ENTITY_INSERT => 'onEntityCrud',
+      EntityHookEvents::ENTITY_DELETE => 'onEntityCrud',
     ];
   }
 
@@ -58,13 +61,29 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
    * @param \Drupal\core_event_dispatcher\Event\Entity\AbstractEntityEvent $event
    *   Triggered event.
    */
-  public function afterConfigPageCrud(AbstractEntityEvent $event) {
+  public function onEntityCrud(AbstractEntityEvent $event) {
     $entity = $event->getEntity();
     if ($entity->getEntityTypeId() == 'config_pages' && $entity->bundle() == 'policy_settings') {
       $book_node_ids = array_keys($this->bookManager->getAllBooks());
       foreach ($book_node_ids as $node_id) {
         $this->resaveBookNodes($node_id);
       }
+    }
+  }
+
+  /**
+   * Reset the policy node label from the other field.
+   *
+   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent $event
+   *   Triggered event.
+   */
+  public function onEntityPresave(EntityPresaveEvent $event){
+    $entity = $event->getEntity();
+    // Since the settings for the auto entity label have to be "Preserve
+    // Existing" so that we don't get errors, we still need to update the node
+    // label if the field changed.
+    if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'stanford_policy') {
+      $entity->set('title', trim($entity->get('su_policy_title')->getString()));
     }
   }
 
