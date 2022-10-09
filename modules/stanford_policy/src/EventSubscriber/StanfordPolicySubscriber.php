@@ -103,6 +103,13 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
         $form['#submit'][] = [self::class, 'onBookAdminEditSubmit'];
       }
     }
+    if (in_array($event->getFormId(), [
+      'node_stanford_policy_form',
+      'node_stanford_policy_edit_form',
+    ])) {
+      $form = &$event->getForm();
+      $form['su_policy_title']['#attributes']['class'][] = 'js-form-item-title-0-value';
+    }
   }
 
   /**
