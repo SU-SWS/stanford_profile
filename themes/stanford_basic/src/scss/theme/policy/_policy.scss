@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 .policy {
+  @include responsive-spacing('padding-bottom', 9);
 
   .jumpstart-ui--two-column {
     &.flex-container  {
@@ -83,6 +84,9 @@
   }
 
   .node-stanford-policy-body {
+    @include responsive-spacing('padding-bottom', 5);
+
+    border-bottom: 1px solid $su-color-black-20;
     grid-area: policy-body;
   }
 
@@ -96,7 +100,7 @@
 
   .flex-lg-9-of-12 {
     &.main-region {
-      @include responsive-spacing('margin-bottom', 9);
+      @include responsive-spacing('margin-bottom', 1);
 
       display: grid;
       grid-template-columns: repeat (1fr);
@@ -138,6 +142,8 @@
 
     .block__title {
       @include type-d;
+
+      text-align: left;
     }
 
     .views-field-su-policy-date {
@@ -162,8 +168,7 @@
 
   // Related policies in cards
   .node-stanford-policy-su-policy-related {
-    @include responsive-spacing('margin', 9 null);
-
+    @include responsive-spacing('margin-top', 9);
   }
 
   .block__title {
@@ -182,8 +187,10 @@
 
       a {
         @include type-f;
+        @include link-icon(caret-right, 18px, right);
 
-        color: $su-color-black;
+
+        color: $su-color-bright-red;
         display: inline-block;
         font-weight: $su-font-bold;
 
@@ -195,7 +202,12 @@
 
         &:hover,
         &:focus {
+          color: $su-color-black;
           text-decoration: underline;
+
+          &::after {
+            background-color: $su-color-black;
+          }
         }
       }
     }
