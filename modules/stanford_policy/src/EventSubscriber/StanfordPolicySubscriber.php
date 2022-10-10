@@ -11,6 +11,8 @@ use Drupal\core_event_dispatcher\Event\Entity\AbstractEntityEvent;
 use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
 use Drupal\core_event_dispatcher\Event\Form\FormAlterEvent;
 use Drupal\core_event_dispatcher\FormHookEvents;
+use Drupal\field_event_dispatcher\Event\Field\WidgetSingleElementFormAlterEvent;
+use Drupal\field_event_dispatcher\FieldHookEvents;
 use Drupal\node\NodeInterface;
 use Drupal\stanford_fields\Event\BookOutlineUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -38,6 +40,7 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
       EntityHookEvents::ENTITY_UPDATE => 'onEntityCrud',
       EntityHookEvents::ENTITY_INSERT => 'onEntityCrud',
       EntityHookEvents::ENTITY_DELETE => 'onEntityCrud',
+      FieldHookEvents::WIDGET_SINGLE_ELEMENT_FORM_ALTER => 'onWidgetFormAlter',
     ];
   }
 
@@ -52,6 +55,21 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
    *   Entity type manager service.
    */
   public function __construct(protected BookManagerInterface $bookManager, protected ConfigPagesLoaderServiceInterface $configPagesLoader, protected EntityTypeManagerInterface $entityTypeManager) {
+  }
+
+  /**
+   * Alter the policy form widgets.
+   *
+   * @param \Drupal\field_event_dispatcher\Event\Field\WidgetSingleElementFormAlterEvent $event
+   *   Widget form alter event.
+   */
+  public function onWidgetFormAlter(WidgetSingleElementFormAlterEvent $event) {
+    /** @var \Drupal\Core\Field\FieldItemListInterface $field_items */
+    $field_items = $event->getContext()['items'];
+    $element = &$event->getElement();
+    if ($field_items->getName() == 'su_policy_related') {
+      $element['#chosen'] = TRUE;
+    }
   }
 
   /**
