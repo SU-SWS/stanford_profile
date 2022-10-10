@@ -8,21 +8,17 @@
     }
   }
 
-  .book-forward-back {
-    // @include responsive-spacing('margin', 3 null);
-  }
-
   //Breadcrumbs.
   .breadcrumb {
     @include responsive-spacing('padding-top', 0);
 
     li {
-      &:before {
+      &::before {
         content: " / ";
       }
 
       &:first-of-type {
-        &:before {
+        &::before {
           content: " ";
         }
       }
@@ -33,12 +29,13 @@
   .book-forward-back {
     a {
       @include button-secondary;
-
     }
 
-    .su-list-unstyled.flex-container {
-      justify-content: flex-end;
-      gap: 25px;
+    .su-list-unstyled {
+      &.flex-container {
+        justify-content: flex-end;
+        gap: 25px;
+      }
     }
   }
 
@@ -114,13 +111,13 @@
 
   // Print
   .printable-links-block {
-     ul {
+    ul {
       list-style: none;
       margin-top: 0;
 
       li {
         a {
-          &:after {
+          &::after {
             font-family: "Font Awesome 5 Free";
             font-weight: 900;
             content: "\f02f";
