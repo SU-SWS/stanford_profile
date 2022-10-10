@@ -11,7 +11,6 @@ use Drupal\core_event_dispatcher\Event\Entity\AbstractEntityEvent;
 use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
 use Drupal\core_event_dispatcher\Event\Form\FormAlterEvent;
 use Drupal\core_event_dispatcher\FormHookEvents;
-use Drupal\field_event_dispatcher\FieldHookEvents;
 use Drupal\node\NodeInterface;
 use Drupal\stanford_fields\Event\BookOutlineUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -101,12 +100,13 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
    *   Triggered Event.
    */
   public function onFormAlter(FormAlterEvent $event): void {
+    $form = &$event->getForm();
+
     if ($event->getFormId() == 'book_admin_edit') {
       $build_args = $event->getFormState()->getBuildInfo()['args'];
       $book_node = $build_args[0];
 
       if ($book_node->bundle() == 'stanford_policy') {
-        $form = &$event->getForm();
         $form['#submit'][] = [self::class, 'onBookAdminEditSubmit'];
       }
     }
@@ -114,7 +114,6 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
       'node_stanford_policy_form',
       'node_stanford_policy_edit_form',
     ])) {
-      $form = &$event->getForm();
       $form['su_policy_title']['#attributes']['class'][] = 'js-form-item-title-0-value';
     }
   }
