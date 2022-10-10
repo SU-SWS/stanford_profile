@@ -25,7 +25,7 @@
     }
   }
 
-// Previous and Next
+  // Previous and Next
   .book-forward-back {
     a {
       @include button-secondary;
@@ -102,10 +102,10 @@
       grid-template-columns: repeat (1fr);
       grid-template-rows: auto;
       grid-template-areas:
-        "last-updated print"
-        "change-logs-node-page-changes change-logs-node-page-changes"
-        "policy-body policy-body"
-        "policies-child-pages policies-child-pages";
+      "last-updated print"
+      "change-logs-node-page-changes change-logs-node-page-changes"
+      "policy-body policy-body"
+      "policies-child-pages policies-child-pages";
     }
   }
 
@@ -144,8 +144,8 @@
       h3 {
         @include type-e;
       }
-
     }
+
     .views-row {
       margin-bottom: 1.9em;
 
