@@ -61,6 +61,25 @@ class PolicyCest {
   }
 
   /**
+   * Test book title changes.
+   */
+  public function testPolicyTitle(AcceptanceTester $I){
+    $title = $this->faker->words(4, TRUE) . ' foo bar';
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/node/add/stanford_policy');
+    $I->fillField('Policy Title', $title);
+    $I->click('Save');
+    $I->canSee($title, 'h1');
+
+    $I->click('Edit', '.tabs');
+    $new_title = $this->faker->words(4, TRUE) . ' bar foo';
+    $I->fillField('Policy Title', $new_title);
+    $I->click('Save');
+    $I->canSee($new_title, 'h1');
+    $I->cantSee($title);
+  }
+
+  /**
    * Test the path auto settings.
    */
   public function testPolicyPathAuto(AcceptanceTester $I) {
@@ -231,6 +250,12 @@ class PolicyCest {
 
     $I->amOnPage($article_one->toUrl()->toString());
     $I->canSee($new_prefix . '.A ' . $article_one->get('su_policy_title')->getString());
+
+    $new_title = $this->faker->words(4, TRUE);
+    $I->amOnPage($article_one->toUrl('edit-form')->toString());
+    $I->fillField('Policy Title', $new_title);
+    $I->click('Save');
+    $I->canSee($new_title);
   }
 
 }

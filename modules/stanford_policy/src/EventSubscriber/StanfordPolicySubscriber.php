@@ -87,7 +87,7 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
     if (
       $entity->getEntityTypeId() == 'node' &&
       $entity->bundle() == 'stanford_policy' &&
-      $entity->getChangedTime() < time() - 5
+      (empty($entity->book['pid']) || $entity->book['pid'] == -1)
     ) {
       $entity->set('title', trim($entity->get('su_policy_title')->getString()));
       $entity->setChangedTime(time());
