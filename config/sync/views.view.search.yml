@@ -199,7 +199,7 @@ display:
           click_sort_column: value
           type: timestamp
           settings:
-            date_format: stanford_month_two_digit_day_year
+            date_format: stanford_month_date_year
             custom_date_format: ''
             timezone: ''
           group_column: value
@@ -281,6 +281,19 @@ display:
           expose:
             label: ''
             field_identifier: search_api_relevance
+          exposed: false
+        changed:
+          id: changed
+          table: search_api_index_full_site_content
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
           exposed: false
       arguments: {  }
       filters:
