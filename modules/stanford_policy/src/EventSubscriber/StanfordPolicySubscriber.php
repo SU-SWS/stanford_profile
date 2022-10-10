@@ -35,7 +35,7 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
     return [
       BookOutlineUpdatedEvent::OUTLINE_UPDATED => 'onBookOutlineUpdate',
       FormHookEvents::FORM_ALTER => 'onFormAlter',
-      EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPresave',
+      EntityHookEvents::ENTITY_PRE_SAVE => 'onEntityPreSave',
       EntityHookEvents::ENTITY_UPDATE => 'onEntityCrud',
       EntityHookEvents::ENTITY_INSERT => 'onEntityCrud',
       EntityHookEvents::ENTITY_DELETE => 'onEntityCrud',
@@ -77,13 +77,20 @@ class StanfordPolicySubscriber implements EventSubscriberInterface {
    * @param \Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent $event
    *   Triggered event.
    */
-  public function onEntityPresave(EntityPresaveEvent $event){
+  public function onEntityPreSave(EntityPresaveEvent $event): void {
     $entity = $event->getEntity();
     // Since the settings for the auto entity label have to be "Preserve
     // Existing" so that we don't get errors, we still need to update the node
-    // label if the field changed.
-    if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'stanford_policy') {
+    // label if the field changed. Use the "Changed" field to determine if this
+    // has already been done because the node will be re-saved with the book
+    // outline update.
+    if (
+      $entity->getEntityTypeId() == 'node' &&
+      $entity->bundle() == 'stanford_policy' &&
+      $entity->getChangedTime() < time() - 5
+    ) {
       $entity->set('title', trim($entity->get('su_policy_title')->getString()));
+      $entity->setChangedTime(time());
     }
   }
 

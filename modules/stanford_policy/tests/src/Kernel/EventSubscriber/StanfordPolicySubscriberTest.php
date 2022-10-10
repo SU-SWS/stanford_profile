@@ -280,5 +280,4 @@ class StanfordPolicySubscriberTest extends KernelTestBase {
     $this->assertStringStartsWith('1.1 ', $form['table']['book-admin-' . $this->childNode->id()]['title']['#default_value']);
   }
 
-
 }

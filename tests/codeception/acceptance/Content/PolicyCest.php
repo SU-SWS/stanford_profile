@@ -130,7 +130,7 @@ class PolicyCest {
   }
 
   /**
-   * Test the heirarchy of the book.
+   * Test the hierarchy of the book.
    */
   public function testPolicyHeirarcy(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
