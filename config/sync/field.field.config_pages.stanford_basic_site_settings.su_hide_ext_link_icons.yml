@@ -1,0 +1,23 @@
+uuid: cc184f07-8780-454f-80cd-91e72fea3300
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_hide_ext_link_icons
+id: config_pages.stanford_basic_site_settings.su_hide_ext_link_icons
+field_name: su_hide_ext_link_icons
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Hide External Link Icons'
+description: 'Check this box to disable the external link icons.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
