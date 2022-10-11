@@ -1,0 +1,222 @@
+@charset 'UTF-8';
+
+.policy {
+  @include responsive-spacing('padding-bottom', 9);
+
+  .jumpstart-ui--two-column {
+    &.flex-container  {
+      align-items: baseline;
+    }
+  }
+
+  //Breadcrumbs.
+  .breadcrumb {
+    @include responsive-spacing('padding-top', 0);
+
+    li {
+      &::before {
+        content: " / ";
+      }
+
+      &:first-of-type {
+        &::before {
+          content: " ";
+        }
+      }
+    }
+  }
+
+  // Previous and Next
+  .book-forward-back {
+    a {
+      @include button-secondary;
+    }
+
+    .su-list-unstyled {
+      &.flex-container {
+        justify-content: flex-end;
+        gap: 25px;
+      }
+    }
+  }
+
+  // Policy title
+  .node-stanford-policy-title {
+    @include responsive-spacing('padding-top', 4);
+  }
+
+  // Dates
+  .su-policy-effective,
+  .su-policy-updated {
+    div {
+      &:first-of-type {
+        font-weight: $su-font-bold;
+      }
+    }
+  }
+
+  .su-policy-effective {
+    @include responsive-spacing('padding-bottom', 0);
+
+  }
+
+  // Authority field
+  .su-policy-authority {
+    div {
+      display: inline;
+    }
+
+    div {
+      &:first-of-type {
+        font-weight: $su-font-bold;
+      }
+    }
+  }
+
+  // Grid setup
+  .node-stanford-policy-su-policy-updated {
+    grid-area: last-updated;
+  }
+
+  .printable-links-block {
+    grid-area: print;
+    justify-self: right;
+  }
+
+  .node-stanford-policy-body {
+    @include responsive-spacing('padding-bottom', 5);
+
+    border-bottom: 1px solid $su-color-black-20;
+    grid-area: policy-body;
+  }
+
+  .policies-child-pages {
+    grid-area: policies-child-pages;
+  }
+
+  .change-logs-node-page-changes {
+    grid-area: change-logs-node-page-changes;
+  }
+
+  .flex-lg-9-of-12 {
+    &.main-region {
+      @include responsive-spacing('margin-bottom', 1);
+
+      display: grid;
+      grid-template-columns: repeat (1fr);
+      grid-template-rows: auto;
+      grid-template-areas:
+      "last-updated print"
+      "change-logs-node-page-changes change-logs-node-page-changes"
+      "policy-body policy-body"
+      "policies-child-pages policies-child-pages";
+    }
+  }
+
+  // Print
+  .printable-links-block {
+    ul {
+      list-style: none;
+      margin-top: 0;
+
+      li {
+        a {
+          &::after {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f02f";
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  // Change log
+  .change-logs-node-page-changes {
+    @include responsive-spacing('padding', 4 2 2 2);
+    @include responsive-spacing('margin-bottom', 2);
+
+    background-color: $su-color-black-10;
+    border: 1px solid $su-color-black-40;
+
+    .block__title {
+      @include type-d;
+
+      text-align: left;
+    }
+
+    .views-field-su-policy-date {
+      h3 {
+        @include type-e;
+      }
+    }
+
+    .views-row {
+      margin-bottom: 1.9em;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Main content area.
+  .main-policy--content {
+    @include responsive-spacing('padding-top', 7);
+  }
+
+  // Related policies in cards
+  .node-stanford-policy-su-policy-related {
+    @include responsive-spacing('margin-top', 9);
+  }
+
+  .block__title {
+    @include responsive-spacing('margin-bottom', 1);
+
+    text-align: center;
+  }
+
+  .su-policies--related {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr [col-start]);
+    gap: 45px;
+
+    h2 {
+      @include responsive-spacing('margin', 1 2);
+
+      a {
+        @include type-f;
+        @include link-icon(caret-right, 18px, right);
+
+
+        color: $su-color-bright-red;
+        display: inline-block;
+        font-weight: $su-font-bold;
+
+        &::after {
+          @include type-c;
+          @include modular-spacing('margin-left', -1);
+          background-color: $su-color-bright-red;
+        }
+
+        &:hover,
+        &:focus {
+          color: $su-color-black;
+          text-decoration: underline;
+
+          &::after {
+            background-color: $su-color-black;
+          }
+        }
+      }
+    }
+
+    .su-card {
+      @include modular-spacing('margin-bottom', 2);
+      @include margin(0 auto);
+
+      width: 100%;
+    }
+  }
+}

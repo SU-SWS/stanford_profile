@@ -43,9 +43,30 @@ third_party_settings:
           centered: centered-container
           columns: default
         components:
+          350c64f9-fcab-4cf1-b5a0-999ed83696ed:
+            uuid: 350c64f9-fcab-4cf1-b5a0-999ed83696ed
+            region: main
+            configuration:
+              id: system_breadcrumb_block
+              label: Breadcrumbs
+              label_display: '0'
+              provider: system
+              context_mapping: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          orientation: left
+        components:
           e088bc90-d693-4c57-8c0a-0f2645df81c1:
             uuid: e088bc90-d693-4c57-8c0a-0f2645df81c1
-            region: main
+            region: left
             configuration:
               id: 'field_block:node:stanford_policy:title'
               label: Title
@@ -62,39 +83,85 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 1
+            weight: 0
             additional: {  }
-          350c64f9-fcab-4cf1-b5a0-999ed83696ed:
-            uuid: 350c64f9-fcab-4cf1-b5a0-999ed83696ed
+          a4678543-3256-4677-9c5d-3208e803bbd5:
+            uuid: a4678543-3256-4677-9c5d-3208e803bbd5
             region: main
             configuration:
-              id: system_breadcrumb_block
-              label: Breadcrumbs
+              id: book_forward_back
+              label: 'Book Forward & Back'
               label_display: '0'
-              provider: system
-              context_mapping: {  }
+              provider: stanford_fields
+              context_mapping:
+                node: layout_builder.entity
             weight: 0
+            additional: {  }
+          8b8416cb-4f35-4acf-a3b1-4de250414cda:
+            uuid: 8b8416cb-4f35-4acf-a3b1-4de250414cda
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_policy:su_policy_effective'
+              label: 'Effective Date'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: datetime_default
+                label: inline
+                settings:
+                  timezone_override: ''
+                  format_type: stanford_month_two_digit_day_year
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 1
+            additional: {  }
+          0dbaf822-e3b3-4208-9bcd-5671f869467e:
+            uuid: 0dbaf822-e3b3-4208-9bcd-5671f869467e
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_policy:su_policy_authority'
+              label: Authority
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 2
             additional: {  }
         third_party_settings: {  }
       -
-        layout_id: jumpstart_ui_three_column
+        layout_id: jumpstart_ui_two_column
         layout_settings:
           label: ''
           context_mapping: {  }
-          extra_classes: ''
+          extra_classes: main-policy--content
           centered: centered-container
+          orientation: right
         components:
-          ebfa287a-d7b3-4013-829f-345d63bafe72:
-            uuid: ebfa287a-d7b3-4013-829f-345d63bafe72
-            region: left
+          e41989aa-33de-4c81-877f-4839205895a2:
+            uuid: e41989aa-33de-4c81-877f-4839205895a2
+            region: main
             configuration:
-              id: book_navigation
-              label: 'Book navigation'
+              id: 'views_block:policies-child_pages'
+              label: ''
               label_display: '0'
-              provider: book
+              provider: views
               context_mapping: {  }
-              block_mode: 'book pages'
-            weight: 0
+              views_label: ''
+              items_per_page: none
+            weight: 9
             additional: {  }
           e5fdfbfd-b488-4d67-ae95-3d7ebce32699:
             uuid: e5fdfbfd-b488-4d67-ae95-3d7ebce32699
@@ -114,40 +181,7 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 2
-            additional: {  }
-          4678072f-26f1-4620-ad43-13ef301bd28f:
-            uuid: 4678072f-26f1-4620-ad43-13ef301bd28f
-            region: right
-            configuration:
-              id: 'field_block:node:stanford_policy:su_policy_related'
-              label: 'Related Policies'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-            weight: 2
-            additional: {  }
-          c634784e-9d4e-43eb-95d1-ebccadb9d448:
-            uuid: c634784e-9d4e-43eb-95d1-ebccadb9d448
-            region: right
-            configuration:
-              id: 'printable_links_block:node'
-              label: 'Printable Links Block (Content)'
-              label_display: '0'
-              provider: printable
-              context_mapping: {  }
-              max_age: '-1'
-            weight: 0
+            weight: 8
             additional: {  }
           0921d570-ecf6-46f4-a290-d38ea2f4b293:
             uuid: 0921d570-ecf6-46f4-a290-d38ea2f4b293
@@ -171,60 +205,29 @@ third_party_settings:
                     class: ''
             weight: 1
             additional: {  }
-          8b8416cb-4f35-4acf-a3b1-4de250414cda:
-            uuid: 8b8416cb-4f35-4acf-a3b1-4de250414cda
-            region: main
+          ebfa287a-d7b3-4013-829f-345d63bafe72:
+            uuid: ebfa287a-d7b3-4013-829f-345d63bafe72
+            region: left
             configuration:
-              id: 'field_block:node:stanford_policy:su_policy_effective'
-              label: 'Effective Date'
+              id: book_navigation
+              label: 'Book navigation'
               label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: datetime_default
-                label: inline
-                settings:
-                  timezone_override: ''
-                  format_type: stanford_month_two_digit_day_year
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
+              provider: book
+              context_mapping: {  }
+              block_mode: 'book pages'
             weight: 0
             additional: {  }
-          0dbaf822-e3b3-4208-9bcd-5671f869467e:
-            uuid: 0dbaf822-e3b3-4208-9bcd-5671f869467e
-            region: right
-            configuration:
-              id: 'field_block:node:stanford_policy:su_policy_authority'
-              label: Authority
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-            weight: 1
-            additional: {  }
-          a4678543-3256-4677-9c5d-3208e803bbd5:
-            uuid: a4678543-3256-4677-9c5d-3208e803bbd5
+          c634784e-9d4e-43eb-95d1-ebccadb9d448:
+            uuid: c634784e-9d4e-43eb-95d1-ebccadb9d448
             region: main
             configuration:
-              id: book_forward_back
-              label: 'Book Forward & Back'
+              id: 'printable_links_block:node'
+              label: 'Printable Links Block (Content)'
               label_display: '0'
-              provider: stanford_fields
-              context_mapping:
-                node: layout_builder.entity
-            weight: 3
+              provider: printable
+              context_mapping: {  }
+              max_age: '-1'
+            weight: 4
             additional: {  }
           6ac6e270-c11a-4919-8370-adf9a563ca85:
             uuid: 6ac6e270-c11a-4919-8370-adf9a563ca85
@@ -237,20 +240,50 @@ third_party_settings:
               context_mapping: {  }
               views_label: ''
               items_per_page: none
-            weight: 4
+            weight: 7
             additional: {  }
-          e41989aa-33de-4c81-877f-4839205895a2:
-            uuid: e41989aa-33de-4c81-877f-4839205895a2
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+        components:
+          4678072f-26f1-4620-ad43-13ef301bd28f:
+            uuid: 4678072f-26f1-4620-ad43-13ef301bd28f
             region: main
             configuration:
-              id: 'views_block:policies-child_pages'
-              label: ''
+              id: 'field_block:node:stanford_policy:su_policy_related'
+              label: 'Related Policies'
               label_display: '0'
-              provider: views
-              context_mapping: {  }
-              views_label: ''
-              items_per_page: none
-            weight: 5
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 1
+            additional: {  }
+          9239f3b1-86c9-4d97-8e6c-f1ded39f2a02:
+            uuid: 9239f3b1-86c9-4d97-8e6c-f1ded39f2a02
+            region: main
+            configuration:
+              id: book_forward_back
+              label: 'Book Forward & Back'
+              label_display: '0'
+              provider: stanford_fields
+              context_mapping:
+                node: layout_builder.entity
+            weight: 0
             additional: {  }
         third_party_settings: {  }
   layout_library:
