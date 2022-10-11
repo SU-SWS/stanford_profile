@@ -8,18 +8,6 @@
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 
 /**
- * Implements hook_install().
- */
-function stanford_publication_install() {
-  MenuLinkContent::create([
-    'title' => 'All',
-    'link' => 'internal:/publications',
-    'weight' => -99,
-    'menu_name' => 'stanford-publication-topics',
-  ])->save();
-}
-
-/**
  * Implements hook_uninstall().
  */
 function stanford_publication_uninstall() {
@@ -30,5 +18,28 @@ function stanford_publication_uninstall() {
  * Create the 'All' publication topic term.
  */
 function stanford_publication_update_8001() {
-  stanford_publication_install();
+  MenuLinkContent::create([
+    'title' => 'All',
+    'link' => 'internal:/publications',
+    'weight' => -99,
+    'menu_name' => 'stanford-publication-topics',
+  ])->save();
+}
+
+/**
+ * Delete duplicate "All" publication links.
+ */
+function stanford_publication_update_8002() {
+  $all_links = \Drupal::entityTypeManager()
+    ->getStorage('menu_link_content')
+    ->loadByProperties([
+      'menu_name' => 'stanford-publication-topics',
+      'title' => 'All',
+    ]);
+  if (count($all_links) >= 2) {
+    array_pop($all_links);
+    foreach ($all_links as $link) {
+      $link->delete();
+    }
+  }
 }
