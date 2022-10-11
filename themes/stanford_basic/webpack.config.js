@@ -59,6 +59,7 @@ var webpackConfig = {
     "state":         path.resolve(__dirname, srcSass, "state/index.scss"),
     "theme":         path.resolve(__dirname, srcSass, "theme/index.scss"),
     "user_login":    path.resolve(__dirname, srcSass, "admin/user_login.scss"),
+    "content/policy":path.resolve(__dirname, srcSass, "content/policy/index.scss"),
   },
   // Where put build?
   output: {
