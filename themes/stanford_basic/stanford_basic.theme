@@ -20,6 +20,35 @@ function stanford_basic_theme_suggestions_book_tree_alter(array &$suggestions, a
 /**
  * Implements hook_preprocess_HOOK().
  */
+function stanford_basic_preprocess_book_tree(&$variables, $hook) {
+  $current_url = Url::fromRoute('<current>')->toString();
+  _stanford_basic_set_active_book_item($variables['items'], $current_url);
+}
+
+/**
+ * Dive into the book tree to set the current active item.
+ *
+ * @param array $items
+ *   Book tree list.
+ * @param string $current_url
+ *   Current url path.
+ */
+function _stanford_basic_set_active_book_item(array &$items, string $current_url): void {
+  foreach ($items as &$item) {
+    if ($item['url']->toString() == $current_url) {
+      $item['is_active'] = TRUE;
+      return;
+    }
+
+    if (!empty($item['below'])) {
+      _stanford_basic_set_active_book_item($item['below'], $current_url);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
 function stanford_basic_preprocess_node(&$variables) {
   $node_bundle = $variables['node']->bundle();
   $variables['#attached']['library'][] = 'stanford_basic/content.' . $node_bundle;
