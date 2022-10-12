@@ -101,9 +101,21 @@ jobs:
         run: |
           composer global require su-sws/stanford-caravan:dev-gh-actions
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional
+      - name: debug
+        if: always()
+        run: |
+          ls /var/www/html/tests
+          ls /var/www/html/tests/functional
+          cat /var/www/html/codeception.yml
       - name: Save Test Results
         uses: actions/upload-artifact@v3
         if: always()
         with:
           name: functional-tests-results
           path: /var/www/html/artifacts
+      - name: Save Test dir
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: debug-tests-results
+          path: /var/www/html/tests
