@@ -55,7 +55,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 13
+    weight: 14
     region: content
   su_event_audience:
     type: entity_reference_label
@@ -67,7 +67,7 @@ content:
         class: ''
       ds:
         ds_limit: ''
-    weight: 10
+    weight: 11
     region: content
   su_event_components:
     type: entity_reference_revisions_entity_view
@@ -77,6 +77,14 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 5
+    region: content
+  su_event_contact_info:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
     region: content
   su_event_cta:
     type: link
@@ -88,7 +96,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 9
+    weight: 10
     region: content
   su_event_date_time:
     type: smartdate_default
@@ -98,8 +106,10 @@ content:
       format_type: medium
       format: default
       force_chronological: false
+      add_classes: false
+      time_wrapper: true
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   su_event_dek:
     type: string
@@ -133,7 +143,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   su_event_schedule:
     type: entity_reference_revisions_entity_view
@@ -142,7 +152,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: content
   su_event_source:
     type: link
@@ -154,7 +164,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 15
+    weight: 16
     region: content
   su_event_sponsor:
     type: string
@@ -195,7 +205,6 @@ hidden:
   links: true
   search_api_excerpt: true
   stanford_intranet__access: true
-  su_event_contact_info: true
   su_event_groups: true
   su_event_keywords: true
   su_event_subject: true
