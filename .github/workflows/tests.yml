@@ -105,5 +105,5 @@ jobs:
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: acceptance-tests-results
+          name: functional-tests-results
           path: /var/www/html/artifacts
