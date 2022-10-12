@@ -43,6 +43,7 @@ jobs:
       DRUPAL_DATABASE_HOST: mysql
     container:
       image: pookmish/drupal8ci:php8
+      options: '--network-alias drupal8ci'
     services:
       mysql:
         image: mysql:5.7
@@ -68,35 +69,41 @@ jobs:
         with:
           name: acceptance-tests-results
           path: /var/www/html/artifacts
-#  functional:
-#    name: Codeception Functional Tests
-#    runs-on: ubuntu-latest
-#    env:
-#      DRUPAL_DATABASE_NAME: drupal
-#      DRUPAL_DATABASE_USERNAME: drupal
-#      DRUPAL_DATABASE_PASSWORD: drupal
-#      DRUPAL_DATABASE_HOST: mysql
-#    container:
-#      image: pookmish/drupal8ci:php8
-#    services:
-#      selenium:
-#        image: selenium/standalone-chrome
-#        options: --health-cmd '/opt/bin/check-grid.sh'
-#      mysql:
-#        image: mysql:5.7
-#        env:
-#          MYSQL_DATABASE: drupal
-#          MYSQL_USER: drupal
-#          MYSQL_PASSWORD: drupal
-#          MYSQL_ROOT_PASSWORD: drupal
-#        ports:
-#          - 33306:3306
-#        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-#    steps:
-#      - uses: actions/checkout@v3
-#        with:
-#          path: project
-#      - name: Run tests
-#        run: |
-#          composer global require su-sws/stanford-caravan:dev-gh-actions
-#          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional
+  functional:
+    name: Codeception Functional Tests
+    runs-on: ubuntu-latest
+    env:
+      DRUPAL_DATABASE_NAME: drupal
+      DRUPAL_DATABASE_USERNAME: drupal
+      DRUPAL_DATABASE_PASSWORD: drupal
+      DRUPAL_DATABASE_HOST: mysql
+    container:
+      image: pookmish/drupal8ci:php8
+    services:
+      selenium:
+        image: selenium/standalone-chrome
+        options: '--shm-size="2g"'
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: drupal
+          MYSQL_USER: drupal
+          MYSQL_PASSWORD: drupal
+          MYSQL_ROOT_PASSWORD: drupal
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: project
+      - name: Run tests
+        run: |
+          composer global require su-sws/stanford-caravan:dev-gh-actions
+          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional
+      - name: Save Test Results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: acceptance-tests-results
+          path: /var/www/html/artifacts
