@@ -132,11 +132,12 @@ class EventsCest {
     $I->amOnPage($term->toUrl()->toString());
     $I->canSee($event_node->label());
     $I->canSee('San Francisco');
-    $I->canSee('This is additional contact information.');
     $text = $I->grabTextFrom('.su-event-list-item');
     $text = preg_replace('/[ ]+/', ' ', str_replace("\n", ' ', $text));
     preg_match_all('/San Francisco/', $text, $matches);
     $I->assertCount(1, $matches[0], 'More than 1 occurrence of "San Francisco" found on the page');
+    $I->amOnPage($event_node->toUrl()->toString());
+    $I->canSee('This is additional contact information.');
   }
 
   /**
