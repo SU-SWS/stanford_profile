@@ -100,7 +100,7 @@ jobs:
           path: project
       - name: Run tests
         run: |
-          composer global require su-sws/stanford-caravan:dev-gh-actions
+          composer global require su-sws/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional
       - name: Save Test Results
         uses: actions/upload-artifact@v3
