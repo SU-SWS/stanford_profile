@@ -121,6 +121,7 @@ class EventsCest {
     $I->amOnPage('/admin/structure/types/manage/stanford_event/fields');
     $I->canSee('body');
     $I->canSee('su_event_date_time');
+    $I->canSee('su_event_contact_info');
 
     $term = $I->createEntity([
       'name' => $this->faker->firstName,
@@ -135,6 +136,8 @@ class EventsCest {
     $text = preg_replace('/[ ]+/', ' ', str_replace("\n", ' ', $text));
     preg_match_all('/San Francisco/', $text, $matches);
     $I->assertCount(1, $matches[0], 'More than 1 occurrence of "San Francisco" found on the page');
+    $I->amOnPage($event_node->toUrl()->toString());
+    $I->canSee('This is additional contact information.');
   }
 
   /**
@@ -360,6 +363,7 @@ class EventsCest {
       ],
       'su_event_email' => 'noreply@stanford.edu',
       'su_event_telephone' => '555-555-5645',
+      'su_event_contact_info' => 'This is additional contact information.',
       'su_event_date_time' => [
         'value' => time(),
         'end_value' => time() + (60 * 60 * 24),
