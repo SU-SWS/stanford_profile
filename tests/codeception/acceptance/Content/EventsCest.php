@@ -121,6 +121,7 @@ class EventsCest {
     $I->amOnPage('/admin/structure/types/manage/stanford_event/fields');
     $I->canSee('body');
     $I->canSee('su_event_date_time');
+    $I->canSee('su_event_contact_info');
 
     $term = $I->createEntity([
       'name' => $this->faker->firstName,
@@ -131,6 +132,7 @@ class EventsCest {
     $I->amOnPage($term->toUrl()->toString());
     $I->canSee($event_node->label());
     $I->canSee('San Francisco');
+    $I->canSee('This is additional contact information.');
     $text = $I->grabTextFrom('.su-event-list-item');
     $text = preg_replace('/[ ]+/', ' ', str_replace("\n", ' ', $text));
     preg_match_all('/San Francisco/', $text, $matches);
@@ -360,6 +362,7 @@ class EventsCest {
       ],
       'su_event_email' => 'noreply@stanford.edu',
       'su_event_telephone' => '555-555-5645',
+      'su_event_contact_info' => 'This is additional contact information.',
       'su_event_date_time' => [
         'value' => time(),
         'end_value' => time() + (60 * 60 * 24),
