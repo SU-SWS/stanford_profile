@@ -10,18 +10,23 @@ dependencies:
     - field.field.node.stanford_event.su_event_alt_loc
     - field.field.node.stanford_event.su_event_audience
     - field.field.node.stanford_event.su_event_components
+    - field.field.node.stanford_event.su_event_contact_info
     - field.field.node.stanford_event.su_event_cta
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_groups
+    - field.field.node.stanford_event.su_event_keywords
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
     - field.field.node.stanford_event.su_event_schedule
     - field.field.node.stanford_event.su_event_source
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
+    - field.field.node.stanford_event.su_event_subject
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_metatags
     - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
   module:
@@ -190,6 +195,7 @@ hidden:
   links: true
   search_api_excerpt: true
   stanford_intranet__access: true
+  su_event_contact_info: true
   su_event_groups: true
   su_event_keywords: true
   su_event_subject: true
