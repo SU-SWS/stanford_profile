@@ -1,6 +1,6 @@
 @charset 'UTF-8';
 
-$caret-right: '/dist/assets/svg/caret-right.svg';
+// $caret-right: '/dist/assets/svg/caret-right.svg';
 
 .policy {
   @include responsive-spacing('padding-bottom', 9);
@@ -213,6 +213,8 @@ $caret-right: '/dist/assets/svg/caret-right.svg';
     @include type-d;
 
     a {
+      @include link-icon(caret-right, 18px, right);
+
       color: $su-color-bright-red;
 
       &:hover,
