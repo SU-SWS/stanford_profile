@@ -79,6 +79,7 @@ jobs:
       DRUPAL_DATABASE_HOST: mysql
     container:
       image: pookmish/drupal8ci:php8
+      options: '--network-alias=drupal8ci'
     services:
       selenium:
         image: selenium/standalone-chrome
