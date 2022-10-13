@@ -182,6 +182,9 @@ function stanford_basic_preprocess_views_view(&$variables) {
   $variables['attributes']['class'][] = Html::cleanCssIdentifier('view');
   $variables['attributes']['class'][] = Html::cleanCssIdentifier($variables['id']);
   $variables['attributes']['class'][] = Html::cleanCssIdentifier($variables['display_id']);
+  if ($variables['id'] == 'change_logs' && $variables['display_id'] == 'policy_changes') {
+    $variables['#attached']['library'][] = 'stanford_basic/content.stanford_policy';
+  }
 }
 
 /**
