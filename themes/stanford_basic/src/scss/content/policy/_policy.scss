@@ -44,6 +44,12 @@
 
   //layout for buttons on different display widths
   .su-policy--top {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "left main";
+
     .left-region {
       grid-area: left;
       flex: unset;
@@ -55,12 +61,6 @@
       flex: unset;
       max-width: unset;
     }
-
-    display: grid;
-    grid-template-columns: 75% 25%;
-    grid-template-rows: auto;
-    grid-template-areas:
-    "left main";
 
     @include grid-media-max('md') {
       grid-template-areas:
