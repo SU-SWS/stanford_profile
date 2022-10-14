@@ -73,6 +73,10 @@ class EventSubscriber implements EventSubscriberInterface {
   public function onContentImport(ImportEvent $event): void {
     /** @var \Drupal\file\FileInterface $entity */
     foreach ($event->getImportedEntities() as $entity) {
+      if ($entity->getEntityTypeId() == 'consumer') {
+        $entity->set('secret', md5(random_int(0, 99999)));
+        $entity->save();
+      }
       if ($entity->getEntityTypeId() != 'file') {
         continue;
       }

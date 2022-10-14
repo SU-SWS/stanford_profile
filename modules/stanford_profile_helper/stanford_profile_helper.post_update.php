@@ -250,7 +250,8 @@ function stanford_profile_helper_post_update_9000() {
       continue;
     }
 
-    $node = \Drupal::service('stanford_profile_helper.default_content')->createDefaultContent($uuid);
+    $node = \Drupal::service('stanford_profile_helper.default_content')
+      ->createDefaultContent($uuid);
     if ($node) {
       _stanford_profile_helper_add_block_contents($node, $info['block']);
       _stanford_profile_helper_fix_menu_items($node->id(), $info['path']);
@@ -325,4 +326,45 @@ function _stanford_profile_helper_fix_menu_items(int $node_id, string $destinati
     $link->set('uri', "internal:/node/$node_id");
     $menu_link_item->save();
   }
+}
+
+/**
+ * Install new modules.
+ */
+function stanford_profile_helper_post_update_9001() {
+  $consumers = \Drupal::entityTypeManager()
+    ->getStorage('consumer')
+    ->loadMultiple();
+  foreach ($consumers as $consumer) {
+    $consumer->set('secret', md5(random_int(0, 99999)));
+    $consumer->save();
+  }
+
+  try {
+    \Drupal::service('module_installer')->install(['book']);
+  }
+  catch (\Exception $e) {
+    // Do nothing. The modules often throws a message like "Table 'book' already
+    // exists".
+  }
+
+  try {
+    \Drupal::service('module_installer')->install(['taxonomy_entity_index']);
+  }
+  catch (\Exception $e) {
+    // Do nothing. The modules often throws a message like "Table 'book' already
+    // exists".
+  }
+  \Drupal::service('module_installer')->install([
+    'book',
+    'eck',
+    'fast_404_generator',
+    'stanford_policy',
+    'taxonomy_entity_index',
+    'token_or',
+  ]);
+  \Drupal::configFactory()
+    ->getEditable('taxonomy_entity_index.settings')
+    ->set('types', [])
+    ->save();
 }
