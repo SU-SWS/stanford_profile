@@ -161,7 +161,7 @@ third_party_settings:
               context_mapping: {  }
               views_label: ''
               items_per_page: none
-            weight: 9
+            weight: 6
             additional: {  }
           e5fdfbfd-b488-4d67-ae95-3d7ebce32699:
             uuid: e5fdfbfd-b488-4d67-ae95-3d7ebce32699
@@ -181,7 +181,7 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 8
+            weight: 5
             additional: {  }
           0921d570-ecf6-46f4-a290-d38ea2f4b293:
             uuid: 0921d570-ecf6-46f4-a290-d38ea2f4b293
@@ -203,7 +203,7 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 1
+            weight: 2
             additional: {  }
           ebfa287a-d7b3-4013-829f-345d63bafe72:
             uuid: ebfa287a-d7b3-4013-829f-345d63bafe72
@@ -227,7 +227,7 @@ third_party_settings:
               provider: printable
               context_mapping: {  }
               max_age: '-1'
-            weight: 4
+            weight: 3
             additional: {  }
           6ac6e270-c11a-4919-8370-adf9a563ca85:
             uuid: 6ac6e270-c11a-4919-8370-adf9a563ca85
@@ -240,7 +240,18 @@ third_party_settings:
               context_mapping: {  }
               views_label: ''
               items_per_page: none
-            weight: 7
+            weight: 4
+            additional: {  }
+          a613f02a-e91b-4ac0-83f9-2d950cd500f2:
+            uuid: a613f02a-e91b-4ac0-83f9-2d950cd500f2
+            region: main
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
