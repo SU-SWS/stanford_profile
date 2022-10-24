@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.stanford_policy.su_policy_updated
     - node.type.stanford_policy
   module:
+    - allowed_formats
     - datetime
     - field_group
     - inline_entity_form
@@ -57,8 +58,11 @@ content:
       rows: 9
       summary_rows: 3
       placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
+      show_summary: true
+    third_party_settings:
+      allowed_formats:
+        hide_help: '0'
+        hide_guidelines: '0'
   path:
     type: path
     weight: 7

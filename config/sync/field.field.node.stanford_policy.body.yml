@@ -6,13 +6,17 @@ dependencies:
     - field.storage.node.body
     - node.type.stanford_policy
   module:
+    - allowed_formats
     - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats: {  }
 id: node.stanford_policy.body
 field_name: body
 entity_type: node
 bundle: stanford_policy
 label: Body
-description: ''
+description: 'For the "Summary" field above, leave black to use the initial 250 characters from Body content at the summary.  <em>The "summary" is appears below the title - in smaller font - on the list and teaser display.</em>'
 required: false
 translatable: true
 default_value: {  }
