@@ -195,7 +195,8 @@
       grid-template-columns: 1fr;
     }
 
-    h2 {
+    h2,
+    p {
       @include responsive-spacing('margin', 1 2);
 
       a {
