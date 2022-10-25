@@ -10,18 +10,23 @@ dependencies:
     - field.field.node.stanford_event.su_event_alt_loc
     - field.field.node.stanford_event.su_event_audience
     - field.field.node.stanford_event.su_event_components
+    - field.field.node.stanford_event.su_event_contact_info
     - field.field.node.stanford_event.su_event_cta
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_groups
+    - field.field.node.stanford_event.su_event_keywords
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
     - field.field.node.stanford_event.su_event_schedule
     - field.field.node.stanford_event.su_event_source
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
+    - field.field.node.stanford_event.su_event_subject
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_metatags
     - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
   module:
@@ -50,7 +55,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 13
+    weight: 14
     region: content
   su_event_audience:
     type: entity_reference_label
@@ -62,7 +67,7 @@ content:
         class: ''
       ds:
         ds_limit: ''
-    weight: 10
+    weight: 11
     region: content
   su_event_components:
     type: entity_reference_revisions_entity_view
@@ -72,6 +77,14 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 5
+    region: content
+  su_event_contact_info:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
     region: content
   su_event_cta:
     type: link
@@ -83,7 +96,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 9
+    weight: 10
     region: content
   su_event_date_time:
     type: smartdate_default
@@ -93,8 +106,10 @@ content:
       format_type: medium
       format: default
       force_chronological: false
+      add_classes: false
+      time_wrapper: true
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   su_event_dek:
     type: string
@@ -128,7 +143,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   su_event_schedule:
     type: entity_reference_revisions_entity_view
@@ -137,7 +152,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: content
   su_event_source:
     type: link
@@ -149,7 +164,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 15
+    weight: 16
     region: content
   su_event_sponsor:
     type: string
@@ -193,4 +208,5 @@ hidden:
   su_event_groups: true
   su_event_keywords: true
   su_event_subject: true
+  su_metatags: true
   su_shared_tags: true

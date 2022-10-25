@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_alt_loc
     - field.field.node.stanford_event.su_event_audience
     - field.field.node.stanford_event.su_event_components
+    - field.field.node.stanford_event.su_event_contact_info
     - field.field.node.stanford_event.su_event_cta
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
@@ -24,12 +25,14 @@ dependencies:
     - field.field.node.stanford_event.su_event_subject
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_metatags
     - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
   module:
     - address
     - field_group
     - link
+    - metatag
     - paragraphs
     - readonly_field_widget
     - scheduler
@@ -78,6 +81,7 @@ third_party_settings:
         - su_event_map_link
         - su_event_email
         - su_event_telephone
+        - su_event_contact_info
         - su_event_audience
         - su_event_cta
       label: 'Event Details'
@@ -113,7 +117,7 @@ third_party_settings:
       label: Taxonomy
       region: content
       parent_name: ''
-      weight: 13
+      weight: 11
       format_type: details
       format_settings:
         classes: ''
@@ -139,18 +143,18 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   stanford_intranet__access:
     type: entity_access
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -171,7 +175,7 @@ content:
     third_party_settings: {  }
   su_event_audience:
     type: options_buttons
-    weight: 28
+    weight: 29
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -194,9 +198,17 @@ content:
         collapse_edit_all: '0'
         duplicate: duplicate
     third_party_settings: {  }
+  su_event_contact_info:
+    type: string_textfield
+    weight: 28
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   su_event_cta:
     type: link_default
-    weight: 29
+    weight: 30
     region: content
     settings:
       placeholder_url: ''
@@ -336,6 +348,14 @@ content:
       create_new_items: false
       create_new_levels: false
       force_deepest: false
+    third_party_settings: {  }
+  su_metatags:
+    type: metatag_firehose
+    weight: 12
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   su_shared_tags:
     type: options_shs

@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.field.media.stanford_gallery_images.su_gallery_caption
     - field.field.media.stanford_gallery_images.su_gallery_image
+    - field.field.media.stanford_gallery_images.su_media_category
     - image.style.thumbnail
     - media.type.stanford_gallery_images
   module:
     - focal_point
+    - shs
 id: media.stanford_gallery_images.default
 targetEntityType: media
 bundle: stanford_gallery_images
@@ -39,6 +41,16 @@ content:
       preview_image_style: thumbnail
       preview_link: true
       offsets: '50,50'
+    third_party_settings: {  }
+  su_media_category:
+    type: options_shs
+    weight: 27
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
 hidden:
   created: true

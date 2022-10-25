@@ -10,18 +10,24 @@ dependencies:
     - field.field.node.stanford_event.su_event_alt_loc
     - field.field.node.stanford_event.su_event_audience
     - field.field.node.stanford_event.su_event_components
+    - field.field.node.stanford_event.su_event_contact_info
     - field.field.node.stanford_event.su_event_cta
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_groups
+    - field.field.node.stanford_event.su_event_keywords
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
     - field.field.node.stanford_event.su_event_schedule
     - field.field.node.stanford_event.su_event_source
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
+    - field.field.node.stanford_event.su_event_subject
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_metatags
+    - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
     - views.view.stanford_events
   module:
@@ -323,7 +329,7 @@ third_party_settings:
                     class: su-event-audience
                   ds:
                     ds_limit: ''
-            weight: 4
+            weight: 5
             additional: {  }
           be4ceb41-1f4b-40f8-be69-c6714369f7bf:
             uuid: be4ceb41-1f4b-40f8-be69-c6714369f7bf
@@ -403,6 +409,27 @@ third_party_settings:
                   field_formatter_class:
                     class: 'su-event-cta su-button'
             weight: 0
+            additional: {  }
+          deac942f-07a6-42b2-9025-8082befff3ea:
+            uuid: deac942f-07a6-42b2-9025-8082befff3ea
+            region: right
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_contact_info'
+              label: 'Additional Contact Info'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-contact-info
+            weight: 4
             additional: {  }
         third_party_settings: {  }
       -
@@ -674,6 +701,14 @@ content:
     third_party_settings: {  }
     weight: 106
     region: content
+  su_event_contact_info:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 119
+    region: main
   su_event_cta:
     type: link
     label: above
@@ -782,4 +817,5 @@ hidden:
   su_event_keywords: true
   su_event_schedule: true
   su_event_subject: true
+  su_metatags: true
   su_shared_tags: true

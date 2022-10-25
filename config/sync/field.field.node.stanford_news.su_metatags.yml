@@ -1,0 +1,21 @@
+uuid: 84b884f0-a757-47a2-af87-bfd81d76a645
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_metatags
+    - node.type.stanford_news
+  module:
+    - metatag
+id: node.stanford_news.su_metatags
+field_name: su_metatags
+entity_type: node
+bundle: stanford_news
+label: 'Meta Tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

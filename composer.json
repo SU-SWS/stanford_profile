@@ -97,6 +97,7 @@
     ],
     "require": {
         "ext-imagick": "*",
+        "acquia/drupal-environment-detector": "^1.0",
         "citation-style-language/locales": "1.0.0",
         "citation-style-language/styles-distribution": "1.0.0",
         "ckeditor-plugin/a11ychecker": "^1.1.1",
@@ -115,15 +116,16 @@
         "drupal/ckeditor_a11ychecker": "^1.0",
         "drupal/ckeditor_balloonpanel": "^1.1",
         "drupal/ckeditor_blockimagepaste": "^1.4",
-        "drupal/colorbox": "^1.6",
+        "drupal/colorbox": "^2.0",
         "drupal/components": "^2.4",
         "drupal/conditional_fields": "^4.0",
-        "drupal/config_ignore": "^2.2",
+        "drupal/config_filter": "^2.0",
+        "drupal/config_ignore": "^3.0",
         "drupal/config_merge": "^1.0-rc",
         "drupal/config_pages": "^2.6",
-        "drupal/config_pages_overrides": "^1.0",
+        "drupal/config_pages_overrides": "^2.0",
         "drupal/config_readonly": "^1.0@beta",
-        "drupal/config_split": "^1.0",
+        "drupal/config_split": "^2.0",
         "drupal/config_update": "^1.7",
         "drupal/confirm_leave": "^1.0@beta",
         "drupal/content_lock": "^2.2",
@@ -133,12 +135,14 @@
         "drupal/display_field_copy": "^2.0",
         "drupal/domain_301_redirect": "^2.0",
         "drupal/ds": "^3.3",
+        "drupal/eck": "^1.0@beta",
         "drupal/editoria11y": "^1.0",
         "drupal/element_class_formatter": "^1.1",
         "drupal/encrypt": "^3.0",
         "drupal/environment_indicator": "^4.0",
         "drupal/extlink": "^1.3",
         "drupal/fakeobjects": "^1.1",
+        "drupal/fast_404_generator": "^1.0",
         "drupal/field_encrypt": "^3.0",
         "drupal/field_formatter_class": "^1.5",
         "drupal/field_group": "^3.0@rc",
@@ -150,7 +154,7 @@
         "drupal/fontawesome": "^2.19",
         "drupal/google_analytics": "^4.0",
         "drupal/google_tag": "^1.4",
-        "drupal/hook_event_dispatcher": "^3.0",
+        "drupal/hook_event_dispatcher": "~3.2.0",
         "drupal/image_effects": "^3.2",
         "drupal/imagemagick": "^3.1",
         "drupal/jsonapi_extras": "^3.20",
@@ -180,6 +184,7 @@
         "drupal/path_redirect_import": "^1.0@beta",
         "drupal/pathauto": "^1.6",
         "drupal/pdb": "^1.0@alpha",
+        "drupal/printable": "^2.1",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/real_aes": "^2.4",
         "drupal/redirect": "^1.0-beta1",
@@ -192,7 +197,9 @@
         "drupal/shs": "^2.0@RC",
         "drupal/smart_date": "^3.5",
         "drupal/smart_trim": "^1.3",
+        "drupal/taxonomy_entity_index": "^1.8",
         "drupal/taxonomy_menu": "^3.5",
+        "drupal/token_or": "^2.0",
         "drupal/transliterate_filenames": "^2.0",
         "drupal/ui_patterns": "^1.0",
         "drupal/view_unpublished": "^1.0",
@@ -208,13 +215,14 @@
         "onlyextart/colorbox": "dev-master#e58476becbc89dc671093d1bcd9f99b2167fa8f7",
         "sainsburys/guzzle-oauth2-plugin": "^3.0",
         "seboettg/citeproc-php": "2.4.1",
-        "su-sws/drupal-patches": "^8.0",
+        "su-sws/drupal-patches": "^8.1",
         "su-sws/nobots": "^8.2",
         "su-sws/react_paragraphs": "^8.2",
         "su-sws/stanford_actions": "^8.2",
-        "su-sws/stanford_fields": "^8.1",
+        "su-sws/stanford_fields": "^8.2",
         "su-sws/stanford_media": "^8.3",
-        "su-sws/stanford_migrate": "^8.2",
+        "su-sws/stanford_migrate": "^8.3",
+        "su-sws/stanford_profile_helper": "^9.0",
         "su-sws/stanford_ssp": "^8.2"
     },
     "config": {
@@ -222,36 +230,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Drupal\\jumpstart_ui\\": "modules/jumpstart_ui/src",
-            "Drupal\\stanford_events_importer\\": "modules/stanford_events/modules/stanford_events_importer/src",
-            "Drupal\\stanford_image_styles_preview\\": "modules/stanford_image_styles/modules/stanford_image_styles_preview/src",
-            "Drupal\\stanford_intranet\\": "modules/stanford_intranet/src",
-            "Drupal\\stanford_news\\": "modules/stanford_news/src",
-            "Drupal\\stanford_notifications\\": "modules/stanford_notifications/src",
-            "Drupal\\stanford_person_importer\\": "modules/stanford_person/modules/stanford_person_importer/src",
-            "Drupal\\stanford_profile\\": "src/",
-            "Drupal\\stanford_profile_admin\\": "modules/stanford_profile_admin/src",
-            "Drupal\\stanford_profile_drush\\": "modules/stanford_profile_drush/src",
-            "Drupal\\stanford_profile_helper\\": "modules/stanford_profile_helper/src",
-            "Drupal\\stanford_publication\\": "modules/stanford_publication/src",
-            "Drupal\\stanford_text_editor\\": "modules/stanford_text_editor/src"
+            "Drupal\\stanford_profile\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Drupal\\Tests\\jumpstart_ui\\": "modules/jumpstart_ui/tests/src",
-            "Drupal\\Tests\\stanford_events_importer\\": "modules/stanford_events/modules/stanford_events_importer/tests/src",
-            "Drupal\\Tests\\stanford_image_styles_preview\\": "modules/stanford_image_styles/modules/stanford_image_styles_preview/tests/src",
-            "Drupal\\Tests\\stanford_intranet\\": "modules/stanford_intranet/tests/src",
-            "Drupal\\Tests\\stanford_news\\": "modules/stanford_news/tests/src",
-            "Drupal\\Tests\\stanford_notifications\\": "modules/stanford_notifications/tests/src",
-            "Drupal\\Tests\\stanford_person_importer\\": "modules/stanford_person/modules/stanford_person_importer/tests/src",
-            "Drupal\\Tests\\stanford_profile\\": "tests/src",
-            "Drupal\\Tests\\stanford_profile_admin\\": "modules/stanford_profile_admin/tests/src",
-            "Drupal\\Tests\\stanford_profile_drush\\": "modules/stanford_profile_drush/tests/src",
-            "Drupal\\Tests\\stanford_profile_helper\\": "modules/stanford_profile_helper/tests/src",
-            "Drupal\\Tests\\stanford_publication\\": "modules/stanford_publication/tests/src",
-            "Drupal\\Tests\\stanford_text_editor\\": "modules/stanford_text_editor/tests/src"
+            "Drupal\\Tests\\stanford_profile\\": "tests/src"
         }
     },
     "extra": {
@@ -261,6 +245,10 @@
             }
         },
         "patches": {
+            "drupal/auto_entitylabel": {
+                "https://www.drupal.org/project/auto_entitylabel/issues/3076302": "https://www.drupal.org/files/issues/2021-01-09/3076302-19.patch",
+                "https://www.drupal.org/project/auto_entitylabel/issues/3239799": "https://www.drupal.org/files/issues/2021-09-29/issue-3239799.patch"
+            },
             "drupal/ckeditor_blockimagepaste": {
                 "https://www.drupal.org/project/ckeditor_blockimagepaste/issues/3272772": "https://www.drupal.org/files/issues/2022-04-14/prevent_js_alert_and_block_ms_word_paste-v2.patch"
             },

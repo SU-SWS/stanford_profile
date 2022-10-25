@@ -1,0 +1,39 @@
+uuid: 92e27a9b-cb81-4b2c-a586-2a0038a8c1a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.policy_settings
+    - field.field.config_pages.policy_settings.su_policy_prefix_first
+    - field.field.config_pages.policy_settings.su_policy_prefix_sec
+    - field.field.config_pages.policy_settings.su_policy_prefix_third
+  module:
+    - options
+id: config_pages.policy_settings.default
+targetEntityType: config_pages
+bundle: policy_settings
+mode: default
+content:
+  su_policy_prefix_first:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  su_policy_prefix_sec:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  su_policy_prefix_third:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  search_api_excerpt: true

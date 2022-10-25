@@ -13,6 +13,14 @@ name: 'Full Site Content'
 description: ''
 read_only: false
 field_settings:
+  changed:
+    label: Changed
+    datasource_id: 'entity:node'
+    property_path: changed
+    type: date
+    dependencies:
+      module:
+        - node
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -35,6 +43,7 @@ field_settings:
           stanford_news: search_indexing
           stanford_page: search_indexing
           stanford_person: search_indexing
+          stanford_policy: search_indexing
           stanford_publication: search_indexing
   role_access:
     label: 'Role-based access information'

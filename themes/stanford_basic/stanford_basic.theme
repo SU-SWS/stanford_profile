@@ -11,6 +11,62 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Url;
 
 /**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function stanford_basic_theme_suggestions_book_tree_alter(array &$suggestions, array $variables, $hook) {
+  $suggestions[] = $hook . '__secondary_nav';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_book_tree(&$variables, $hook) {
+  $current_url = Url::fromRoute('<current>')->toString();
+  _stanford_basic_set_active_book_item($variables['items'], $current_url);
+}
+
+/**
+ * Dive into the book tree to set the current active item.
+ *
+ * @param array $items
+ *   Book tree list.
+ * @param string $current_url
+ *   Current url path.
+ */
+function _stanford_basic_set_active_book_item(array &$items, string $current_url): void {
+  foreach ($items as &$item) {
+    if ($item['url']->toString() == $current_url) {
+      $item['is_active'] = TRUE;
+      return;
+    }
+
+    if (!empty($item['below'])) {
+      _stanford_basic_set_active_book_item($item['below'], $current_url);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_node(&$variables) {
+  $node_bundle = $variables['node']->bundle();
+  $variables['#attached']['library'][] = 'stanford_basic/content.' . $node_bundle;
+  unset($variables['content']['book_navigation']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_breadcrumb(&$variables) {
+  $request = \Drupal::request();
+  $route_match = \Drupal::routeMatch();
+  $page_title = \Drupal::service('title_resolver')
+    ->getTitle($request, $route_match->getRouteObject());
+  $variables['breadcrumb'][] = ['text' => $page_title];
+}
+
+/**
  * Implements hook_page_attachments_alter().
  *
  * Because hook_page_attachments() is only executed in modules, not themes.
@@ -126,6 +182,9 @@ function stanford_basic_preprocess_views_view(&$variables) {
   $variables['attributes']['class'][] = Html::cleanCssIdentifier('view');
   $variables['attributes']['class'][] = Html::cleanCssIdentifier($variables['id']);
   $variables['attributes']['class'][] = Html::cleanCssIdentifier($variables['display_id']);
+  if ($variables['id'] == 'change_logs' && $variables['display_id'] == 'policy_changes') {
+    $variables['#attached']['library'][] = 'stanford_basic/content.stanford_policy';
+  }
 }
 
 /**
@@ -139,7 +198,7 @@ function stanford_basic_preprocess_views_view(&$variables) {
  *   Cleaned string.
  */
 function _stanford_basic_change_characters($string) {
-  return preg_replace("/[^a-zA-Z\d\s]/", '-', $string);
+  return $string ? preg_replace("/[^a-zA-Z\d\s]/", '-', $string) : '';
 }
 
 /**
@@ -270,8 +329,11 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
 function _stanford_basic_menu_process_submenu(&$submenu, $current_path) {
   foreach ($submenu as &$item) {
     $item_path = (is_string($item['url'])) ? $item['url'] : $item['url']->toString();
-    if ($item_path == $current_path ||
-        (_stanford_basic_path_is_home($item_path) && \Drupal::service('path.matcher')->isFrontPage())) {
+    $is_front = \Drupal::service('path.matcher')->isFrontPage();
+    if (
+      $item_path == $current_path ||
+      (_stanford_basic_path_is_home($item_path) && $is_front)
+    ) {
       $item['is_active'] = TRUE;
     }
 
@@ -301,11 +363,13 @@ function _stanford_basic_path_is_home(string $path) {
   $front_uri = $config->get('page.front');
   $alias = \Drupal::service('path_alias.manager')->getAliasByPath($front_uri);
 
-  if ($normal_path == base_path() ||
-      $normal_path == $front_uri ||
-      $normal_path == $alias ||
-      $normal_path == '<front>') {
-        return TRUE;
+  if (
+    $normal_path == base_path() ||
+    $normal_path == $front_uri ||
+    $normal_path == $alias ||
+    $normal_path == '<front>'
+  ) {
+    return TRUE;
   }
   return FALSE;
 }
@@ -365,3 +429,14 @@ function stanford_basic_theme_suggestions_block_alter(array &$suggestions, array
   }
 }
 
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function stanford_basic_theme_suggestions_views_view_list_alter(array &$suggestions, array $variables) {
+  /** @var \Drupal\views\ViewExecutable $view */
+  $view = $variables['view'];
+  $view_id = $view->id();
+  $display_id = $view->current_display;
+  $suggestions[] = "views_view_list__$view_id";
+  $suggestions[] = "views_view_list__{$view_id}__$display_id";
+}

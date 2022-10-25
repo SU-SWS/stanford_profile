@@ -5,10 +5,12 @@ dependencies:
   config:
     - core.entity_form_mode.media.media_library
     - field.field.media.image.field_media_image
+    - field.field.media.image.su_media_category
     - image.style.thumbnail
     - media.type.image
   module:
     - focal_point
+    - shs
 _core:
   default_config_hash: BMLrK4zKp8-FFnMseBdT_6h6YipUsKRfbDf_3WUB5HA
 id: media.image.media_library
@@ -33,6 +35,16 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  su_media_category:
+    type: options_shs
+    weight: 2
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
 hidden:
   created: true

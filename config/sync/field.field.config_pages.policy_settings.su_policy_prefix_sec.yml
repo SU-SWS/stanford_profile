@@ -1,0 +1,23 @@
+uuid: fc7b3b28-62c2-45d1-b6ca-ac27046e2279
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.policy_settings
+    - field.storage.config_pages.su_policy_prefix_sec
+  module:
+    - options
+id: config_pages.policy_settings.su_policy_prefix_sec
+field_name: su_policy_prefix_sec
+entity_type: config_pages
+bundle: policy_settings
+label: 'Prefix Second Level'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: numbers
+default_value_callback: ''
+settings: {  }
+field_type: list_string

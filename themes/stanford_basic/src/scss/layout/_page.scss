@@ -17,3 +17,13 @@ body {
   width: 100%;
   @include sticky-footer("#footer");
 }
+
+.label-inline > * {
+  display: inline-block;
+
+  &:first-child {
+    &:after {
+      content: ':';
+    }
+  }
+}

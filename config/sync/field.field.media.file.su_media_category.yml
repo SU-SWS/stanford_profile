@@ -1,0 +1,29 @@
+uuid: eb9cd582-b361-4741-87ac-2dc9dba7929d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.su_media_category
+    - media.type.file
+    - taxonomy.vocabulary.media_tags
+id: media.file.su_media_category
+field_name: su_media_category
+entity_type: media
+bundle: file
+label: Category
+description: 'Categorize the media to help find the media at a later time.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media_tags: media_tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
