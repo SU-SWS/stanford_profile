@@ -62,7 +62,7 @@
     {% endif %}
     {% for item in items %}
       <article class="su-card" {{ item.attributes }}>
-      <h2 class='su-link su-card__link'>{{ item.content }}</h2>
+      <h2 class='su-link su-link--action su-card__link'>{{ item.content }}</h2>
       <p>{{ items[loop.index-1].content['#options'].entity.body.summary }}</p>
       </article>
     {% endfor %}

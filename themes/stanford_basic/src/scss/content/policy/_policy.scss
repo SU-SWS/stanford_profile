@@ -1,7 +1,5 @@
 @charset 'UTF-8';
 
-// $caret-right: '/dist/assets/svg/caret-right.svg';
-
 .policy {
   @include responsive-spacing('padding-bottom', 9);
 
@@ -199,20 +197,19 @@
     p {
       @include responsive-spacing('margin', 1 2);
 
+      &::after {
+        @include type-c;
+        @include modular-spacing('margin-left', -1);
+
+        background-color: $su-color-bright-red;
+      }
+
       a {
         @include type-f;
-        @include link-icon(caret-right, 18px, right);
-
 
         color: $su-color-bright-red;
         display: inline-block;
         font-weight: $su-font-bold;
-
-        &::after {
-          @include type-c;
-          @include modular-spacing('margin-left', -1);
-          background-color: $su-color-bright-red;
-        }
 
         &:hover,
         &:focus {
