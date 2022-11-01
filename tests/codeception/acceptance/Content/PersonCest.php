@@ -82,7 +82,7 @@ class PersonCest {
 
     $I->amOnPage($term->toUrl()->toString());
     $I->canSee($term->label(), 'h1');
-    $I->see("$first_name $last_name", 'h3');
+    $I->see("$first_name $last_name", 'h2');
     $I->seeLink("$first_name $last_name");
   }
 
