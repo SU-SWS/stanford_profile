@@ -60,11 +60,15 @@
     {% if multiple %}
       <div class='su-policies--related'>
     {% endif %}
+    <ul class="su-list-unstyled">
     {% for item in items %}
-      <article class="su-card" {{ item.attributes }}>
-      <h2 class='su-link su-card__link'>{{ item.content }}</h2>
-      </article>
+      <li>
+        <article class="su-card" {{ item.attributes }}>
+        <h2 class='su-link su-card__link'>{{ item.content }}</h2>
+        </article>
+      </li>
     {% endfor %}
+    </ul>
     {% if multiple %}
       </div>
     {% endif %}
