@@ -307,6 +307,13 @@ display:
           default_row_class: true
       row:
         type: fields
+        options:
+          default_field_elements: true
+          inline:
+            su_policy_date: su_policy_date
+            title: title
+          separator: '<span class="separator">|</span>'
+          hide_empty: true
       query:
         type: views_query
         options:

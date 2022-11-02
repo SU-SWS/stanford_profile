@@ -245,12 +245,21 @@
 
   .views-row {
     display: grid;
-    grid-template-columns:  20% 1fr;
+    grid-template-columns:  20% 4% 1fr;
     -ms-grid-rows: auto;
     grid-template-rows: auto;
     grid-template-areas:
-      "date title"
-      "notes notes";
+      "date pipe title"
+      "notes notes notes";
+
+    @include grid-media-max('md') {
+      grid-template-columns:  30% 4% 1fr;
+
+    }
+
+    @include grid-media-max('xs') {
+      display: block;
+    }
   }
 
   .block__title {
@@ -285,9 +294,13 @@
 
   .views-field-su-policy-date {
     grid-area: date;
+  }
 
-     h3:after {
-      content: ":";
+  .separator {
+    grid-area: pipe;
+
+    @include grid-media-max('xs') {
+      display: none;
     }
   }
 
