@@ -191,14 +191,14 @@
   }
 
   .su-policies--related {
-      ul {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr [col-start]);
-        gap: 45px;
+    ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr [col-start]);
+      gap: 45px;
 
-        @include grid-media-max('md') {
-          grid-template-columns: 1fr;
-        }
+      @include grid-media-max('md') {
+        grid-template-columns: 1fr;
+      }
 
       h2 {
         @include responsive-spacing('margin', 1 2);
