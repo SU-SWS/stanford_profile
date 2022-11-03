@@ -241,6 +241,25 @@
   background-color: $su-color-black-10;
   border: 1px solid $su-color-black-40;
 
+  .views-row {
+    display: grid;
+    grid-template-columns:  20% 4% 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "date pipe title"
+    "notes notes notes";
+
+    @include grid-media-max('md') {
+      grid-template-columns:  30% 4% 1fr;
+
+    }
+
+    @include grid-media-max('xs') {
+      display: block;
+    }
+  }
+
   .block__title {
     @include type-d;
 
@@ -267,7 +286,28 @@
     }
   }
 
+  .views-field-title {
+    grid-area: title;
+  }
+
   .views-field-su-policy-date {
+    grid-area: date;
+  }
+
+  .separator {
+    grid-area: pipe;
+
+    @include grid-media-max('xs') {
+      display: none;
+    }
+  }
+
+  .views-field-su-policy-notes {
+    grid-area: notes;
+  }
+
+  .views-field-su-policy-date,
+  .views-field-title {
     h3 {
       @include type-e;
     }
