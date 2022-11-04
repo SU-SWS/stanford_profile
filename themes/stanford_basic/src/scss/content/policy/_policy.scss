@@ -105,6 +105,10 @@
     div {
       &:first-of-type {
         font-weight: $su-font-bold;
+
+        &::after {
+          content: ':';
+        }
       }
     }
   }
@@ -184,32 +188,19 @@
     text-align: center;
   }
 
-  .su-policies--related {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr [col-start]);
-    gap: 45px;
+  .su-policy-related {
 
-    @include grid-media-max('md') {
-      grid-template-columns: 1fr;
-    }
-
-    h2,
-    p {
-      @include responsive-spacing('margin', 1 2);
-
-      &::after {
-        @include type-c;
-        @include modular-spacing('margin-left', -1);
-
-        background-color: $su-color-bright-red;
-      }
-
+    h3 {
       a {
         @include type-f;
 
         color: $su-color-bright-red;
         display: inline-block;
         font-weight: $su-font-bold;
+
+        &::after {
+          background-color: $su-color-bright-red;
+        }
 
         &:hover,
         &:focus {
@@ -221,13 +212,6 @@
           }
         }
       }
-    }
-
-    .su-card {
-      @include modular-spacing('margin-bottom', 2);
-      @include margin(0 auto);
-
-      width: 100%;
     }
   }
 }
