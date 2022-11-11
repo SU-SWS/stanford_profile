@@ -325,7 +325,6 @@ class EventsCest {
     $node_storage = \Drupal::entityTypeManager()->getStorage('node');
     $nids = $node_storage->getQuery()
       ->condition('type', 'stanford_event')
-      ->condition('nid', $node->id(), '!=')
       ->sort('nid', 'DESC')
       ->range(0, 1)
       ->accessCheck(FALSE)

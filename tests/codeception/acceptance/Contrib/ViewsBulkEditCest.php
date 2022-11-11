@@ -16,10 +16,17 @@ class ViewsBulkEditCest {
   protected $nodes;
 
   /**
-   * Rollback all migrations.
+   * Faker generator.
+   *
+   * @var \Faker\Generator
    */
-  public function _before(AcceptanceTester $I) {
-    $I->runDrush('migrate:rollback --group=courses,opportunities,stanford_events');
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
   }
 
   /**
