@@ -61,9 +61,11 @@ function stanford_basic_preprocess_node(&$variables) {
 function stanford_basic_preprocess_breadcrumb(&$variables) {
   $request = \Drupal::request();
   $route_match = \Drupal::routeMatch();
-  $page_title = \Drupal::service('title_resolver')
-    ->getTitle($request, $route_match->getRouteObject());
-  $variables['breadcrumb'][] = ['text' => $page_title];
+  if ($route_object = $route_match->getRouteObject()) {
+    $page_title = \Drupal::service('title_resolver')
+      ->getTitle($request, $route_object);
+    $variables['breadcrumb'][] = ['text' => $page_title];
+  }
 }
 
 /**
