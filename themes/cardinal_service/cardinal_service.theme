@@ -77,19 +77,6 @@ function cardinal_service_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_breadcrumb().
- */
-function cardinal_service_preprocess_breadcrumb(&$variables) {
-  // Add the current page title to the end of the breadcrumbs as a
-  // non-clickable link.
-  $request = \Drupal::request();
-  if ($route = \Drupal::routeMatch()->getRouteObject()) {
-    $title = \Drupal::service('title_resolver')->getTitle($request, $route);
-    $variables['breadcrumb'][] = ['text' => $title];
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK().
  */
 function cardinal_service_preprocess_pattern_quote(&$variables) {
