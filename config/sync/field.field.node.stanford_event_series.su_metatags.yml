@@ -1,0 +1,21 @@
+uuid: 950bd59c-48bf-4693-9b40-d05b1b052c46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_metatags
+    - node.type.stanford_event_series
+  module:
+    - metatag
+id: node.stanford_event_series.su_metatags
+field_name: su_metatags
+entity_type: node
+bundle: stanford_event_series
+label: 'Meta Tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

@@ -7,12 +7,12 @@ dependencies:
 id: person
 label: Person
 type: 'canonical_entities:node'
-pattern: 'people/[node:title]'
+pattern: 'people/[node:su_person_first_name]-[node:su_person_last_name]'
 selection_criteria:
-  9bb8a053-82fe-4ca7-8a84-452b1a42997e:
+  19fa6a2b-7ad8-48b7-9dea-2d4ec67ccfa0:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 9bb8a053-82fe-4ca7-8a84-452b1a42997e
+    uuid: 19fa6a2b-7ad8-48b7-9dea-2d4ec67ccfa0
     context_mapping:
       node: node
     bundles:

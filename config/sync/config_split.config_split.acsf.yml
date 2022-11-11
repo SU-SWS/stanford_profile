@@ -6,6 +6,8 @@ id: acsf
 label: ACSF
 description: ''
 weight: 0
+stackable: false
+storage: folder
 folder: ../config/envs/acsf
 module:
   acsf: 0
@@ -14,7 +16,5 @@ module:
   acsf_theme: 0
   acsf_variables: 0
 theme: {  }
-blacklist: {  }
-graylist: {  }
-graylist_dependents: true
-graylist_skip_equal: true
+complete_list: {  }
+partial_list: {  }

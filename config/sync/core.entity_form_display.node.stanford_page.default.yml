@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.stanford_page.layout_selection
     - field.field.node.stanford_page.stanford_intranet__access
     - field.field.node.stanford_page.su_basic_page_type
+    - field.field.node.stanford_page.su_metatags
     - field.field.node.stanford_page.su_page_banner
     - field.field.node.stanford_page.su_page_components
     - field.field.node.stanford_page.su_page_description
@@ -19,6 +20,7 @@ dependencies:
   module:
     - field_group
     - media_library
+    - metatag
     - paragraphs
     - path
     - react_paragraphs
@@ -117,6 +119,14 @@ content:
       create_new_items: false
       create_new_levels: false
       force_deepest: false
+    third_party_settings: {  }
+  su_metatags:
+    type: metatag_firehose
+    weight: 31
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   su_page_banner:
     type: paragraphs

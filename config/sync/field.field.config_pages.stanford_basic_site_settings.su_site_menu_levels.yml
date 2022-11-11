@@ -1,0 +1,23 @@
+uuid: 05de11e4-d05f-410d-99f0-a54170d51006
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_menu_levels
+id: config_pages.stanford_basic_site_settings.su_site_menu_levels
+field_name: su_site_menu_levels
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Maximum Menu Levels'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 2
+  max: 9
+  prefix: ''
+  suffix: ''
+field_type: integer

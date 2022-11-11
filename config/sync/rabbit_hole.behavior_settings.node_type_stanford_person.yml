@@ -9,6 +9,6 @@ entity_type_id: node_type
 entity_id: stanford_person
 action: display_page
 allow_override: 0
-redirect: ''
+redirect: '[node:su_person_profile_link:uri]'
 redirect_code: 301
-redirect_fallback_action: access_denied
+redirect_fallback_action: display_page

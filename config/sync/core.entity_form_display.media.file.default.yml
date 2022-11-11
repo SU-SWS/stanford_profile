@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.media.file.field_media_file
+    - field.field.media.file.su_media_category
     - media.type.file
   module:
     - file
+    - shs
 _core:
   default_config_hash: IZZZH3ZmZ5xpeUW2scF9RPSnKb3qnEKu-cBMQQOuHQk
 id: media.file.default
@@ -28,6 +30,16 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  su_media_category:
+    type: options_shs
+    weight: 27
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
 hidden:
   created: true

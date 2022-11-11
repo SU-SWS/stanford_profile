@@ -131,12 +131,19 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
     }
     $this->state->set('xmlsitemap_base_url', "https://$site_name.sites.stanford.edu");
 
-    $this->entityTypeManager->getStorage('config_pages')->create([
-      'type' => 'stanford_basic_site_settings',
-      'su_site_email' => $site_data['email'],
-      'su_site_name' => $site_data['webSiteTitle'],
-      'context' => 'a:0:{}',
-    ])->save();
+    $config_page = $this->entityTypeManager->getStorage('config_pages')
+      ->load('stanford_basic_site_settings');
+    if (!$config_page) {
+      $config_page = $this->entityTypeManager->getStorage('config_pages')
+        ->create([
+          'type' => 'stanford_basic_site_settings',
+          'context' => 'a:0:{}',
+          'su_hide_ext_link_icons' => TRUE,
+        ]);
+    }
+    $config_page->set('su_site_email', $site_data['email']);
+    $config_page->set('su_site_name', $site_data['webSiteTitle']);
+    $config_page->save();
 
     $this->addSiteOwner($site_data['sunetId'], $site_data['email']);
 

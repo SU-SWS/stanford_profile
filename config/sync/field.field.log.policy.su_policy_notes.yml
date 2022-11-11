@@ -1,0 +1,19 @@
+uuid: 88d34ead-21bb-44e2-abaf-5effcdb4697b
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.log.policy
+    - field.storage.log.su_policy_notes
+id: log.policy.su_policy_notes
+field_name: su_policy_notes
+entity_type: log
+bundle: policy
+label: Notes
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

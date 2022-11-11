@@ -1,0 +1,14 @@
+uuid: ff6ece97-1f19-4491-a20b-4695b234fe56
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_policy
+id: node_type_stanford_policy
+entity_type_id: node_type
+entity_id: stanford_policy
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

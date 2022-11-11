@@ -1,0 +1,19 @@
+uuid: 4ea80fa9-2e7c-46fb-8dd0-49daf6b1cf65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_policy_authority
+    - node.type.stanford_policy
+id: node.stanford_policy.su_policy_authority
+field_name: su_policy_authority
+entity_type: node
+bundle: stanford_policy
+label: Authority
+description: 'The person, department, and/or officials responsible for this policy. <em>The "authority" field will be displayed to site-visitors below the effective date.</em>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

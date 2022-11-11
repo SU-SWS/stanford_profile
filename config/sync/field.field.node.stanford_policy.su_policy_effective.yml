@@ -1,0 +1,21 @@
+uuid: d54f0fb8-172e-49b5-ab00-5a0e0d74aa05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_policy_effective
+    - node.type.stanford_policy
+  module:
+    - datetime
+id: node.stanford_policy.su_policy_effective
+field_name: su_policy_effective
+entity_type: node
+bundle: stanford_policy
+label: 'Effective Date'
+description: 'he day this policy will go into effect. <em>The "effective date" will be displayed to site-visitors below the page title.</em>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

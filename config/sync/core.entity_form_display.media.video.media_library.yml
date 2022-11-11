@@ -5,7 +5,10 @@ dependencies:
   config:
     - core.entity_form_mode.media.media_library
     - field.field.media.video.field_media_oembed_video
+    - field.field.media.video.su_media_category
     - media.type.video
+  module:
+    - shs
 id: media.video.media_library
 targetEntityType: media
 bundle: video
@@ -13,7 +16,7 @@ mode: media_library
 content:
   field_media_oembed_video:
     type: string_textfield
-    weight: 26
+    weight: 1
     region: content
     settings:
       size: 60
@@ -26,6 +29,16 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  su_media_category:
+    type: options_shs
+    weight: 2
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
 hidden:
   created: true

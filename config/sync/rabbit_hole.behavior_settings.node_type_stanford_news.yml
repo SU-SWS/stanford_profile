@@ -7,8 +7,8 @@ dependencies:
 id: node_type_stanford_news
 entity_type_id: node_type
 entity_id: stanford_news
-action: display_page
+action: page_redirect
 allow_override: 1
-redirect: ''
+redirect: '[node:su_news_source:uri]'
 redirect_code: 301
-redirect_fallback_action: access_denied
+redirect_fallback_action: display_page

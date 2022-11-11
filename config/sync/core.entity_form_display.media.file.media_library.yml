@@ -5,12 +5,23 @@ dependencies:
   config:
     - core.entity_form_mode.media.media_library
     - field.field.media.file.field_media_file
+    - field.field.media.file.su_media_category
     - media.type.file
+  module:
+    - file
+    - shs
 id: media.file.media_library
 targetEntityType: media
 bundle: file
 mode: media_library
 content:
+  field_media_file:
+    type: file_generic
+    weight: 8
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -19,9 +30,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  su_media_category:
+    type: options_shs
+    weight: 1
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
 hidden:
   created: true
-  field_media_file: true
   path: true
   publish_on: true
   status: true

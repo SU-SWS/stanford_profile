@@ -7,11 +7,19 @@ _core:
 id: front
 label: 'Front page'
 tags:
-  shortlink: '[site:url]'
-  title: '[site:name]'
   canonical_url: '[site:url]'
-  og_image: '[node:su_page_banner:entity:su_banner_image:0:entity:field_media_image:large]'
-  og_image_url: '[node:su_page_banner:entity:su_banner_image:0:entity:field_media_image:large]'
-  og_url: '[current-page:url:absolute]'
+  description: '[node:su_page_description|node:summary]'
+  og_image: '[node:su_page_image:entity:field_media_image:large|node:su_page_banner:entity:su_banner_image:0:entity:field_media_image:large]'
+  og_image_alt: '[node:su_page_image:entity:field_media_image:alt|node:su_page_banner:entity:su_banner_image:0:entity:field_media_image:alt]'
+  og_image_url: '[node:su_page_image:entity:field_media_image:large|node:su_page_banner:entity:su_banner_image:0:entity:field_media_image:large]'
   og_site_name: '[site:name]'
   og_title: '[site:name]'
+  og_type: website
+  og_url: '[site:url]'
+  shortlink: '[site:url]'
+  title: '[site:name]'
+  twitter_cards_description: '[node:su_page_description|node:summary]'
+  twitter_cards_image: '[node:su_page_image:entity:field_media_image:large|node:su_page_banner:entity:su_banner_image:0:entity:field_media_image:large]'
+  twitter_cards_image_alt: '[node:su_page_image:entity:field_media_image:alt|node:su_page_banner:entity:su_banner_image:0:entity:field_media_image:alt]'
+  twitter_cards_title: '[site:name]'
+  twitter_cards_type: photo

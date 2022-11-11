@@ -9,7 +9,7 @@ dependencies:
     - field.field.paragraph.stanford_lists.su_list_view
     - paragraphs.paragraphs_type.stanford_lists
   module:
-    - link_attributes
+    - link
     - text
     - viewfield
 id: paragraph.stanford_lists.default
@@ -18,21 +18,12 @@ bundle: stanford_lists
 mode: default
 content:
   su_list_button:
-    type: link_attributes
-    weight: 3
+    type: link_default
+    weight: 4
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
-      enabled_attributes:
-        aria-label: true
-        id: false
-        name: false
-        target: false
-        rel: false
-        class: false
-        accesskey: false
-        title: false
     third_party_settings: {  }
   su_list_description:
     type: text_textarea
@@ -58,4 +49,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  publish_on: true
   status: true
+  unpublish_on: true

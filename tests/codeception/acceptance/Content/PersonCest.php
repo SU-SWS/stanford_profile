@@ -59,17 +59,30 @@ class PersonCest {
    * up in the all view.
    */
   public function testCreatePerson(AcceptanceTester $I) {
-    $first_name = $this->faker->firstName;
-    $last_name = $this->faker->lastName;
+    $term = $I->createEntity([
+      'vid' => 'stanford_person_types',
+      'name' => $this->faker->word,
+    ], 'taxonomy_term');
+
+    // Use 1s in the name to be at the top of the lists.
+    $first_name = '111' . $this->faker->firstName;
+    $last_name = '111' . $this->faker->lastName;
     $node = $I->createEntity([
       'type' => 'stanford_person',
       'su_person_first_name' => $first_name,
       'su_person_last_name' => $last_name,
+      'su_person_type_group' => $term,
     ]);
     $I->amOnPage($node->toUrl()->toString());
     $I->see("$first_name $last_name", 'h1');
     $I->amOnPage('/people');
-    $I->see("$first_name $last_name");
+    $I->see("$first_name $last_name", 'h2');
+    $I->seeLink("$first_name $last_name");
+
+    $I->amOnPage($term->toUrl()->toString());
+    $I->canSee($term->label(), 'h1');
+    $I->see("$first_name $last_name", 'h3');
+    $I->seeLink("$first_name $last_name");
   }
 
   /**
@@ -91,10 +104,6 @@ class PersonCest {
     $I->selectOption('#edit-xmlsitemap-status', 1);
 
     // Metatags.
-    $I->amOnPage('/admin/config/search/metatag/page_variant__people-layout_builder-0');
-    $I->canSeeResponseCodeIs(200);
-    $I->amOnPage('/admin/config/search/metatag/page_variant__stanford_person_list-layout_builder-1');
-    $I->canSeeResponseCodeIs(200);
     $I->amOnPage('/admin/config/search/metatag/node__stanford_person');
     $I->canSeeResponseCodeIs(200);
   }

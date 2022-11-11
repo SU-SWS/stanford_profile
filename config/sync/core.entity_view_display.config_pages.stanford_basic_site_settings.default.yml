@@ -5,12 +5,14 @@ dependencies:
   config:
     - config_pages.type.stanford_basic_site_settings
     - field.field.config_pages.stanford_basic_site_settings.su_google_analytics
+    - field.field.config_pages.stanford_basic_site_settings.su_hide_ext_link_icons
     - field.field.config_pages.stanford_basic_site_settings.su_hide_site_search
     - field.field.config_pages.stanford_basic_site_settings.su_site_403
     - field.field.config_pages.stanford_basic_site_settings.su_site_404
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
     - field.field.config_pages.stanford_basic_site_settings.su_site_email
     - field.field.config_pages.stanford_basic_site_settings.su_site_home
+    - field.field.config_pages.stanford_basic_site_settings.su_site_menu_levels
     - field.field.config_pages.stanford_basic_site_settings.su_site_name
     - field.field.config_pages.stanford_basic_site_settings.su_site_url
   module:
@@ -27,6 +29,16 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 3
+    region: content
+  su_hide_ext_link_icons:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 10
     region: content
   su_hide_site_search:
     type: boolean
@@ -78,6 +90,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 6
+    region: content
+  su_site_menu_levels:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 9
     region: content
   su_site_name:
     type: string

@@ -26,8 +26,6 @@ class BannerCest {
 
   /**
    * The banner paragraph should display its fields.
-   *
-   * @group aria-label
    */
   public function testBannerBehaviors(FunctionalTester $I) {
     $field_values =[
@@ -36,7 +34,6 @@ class BannerCest {
       'body' => $this->faker->words(3, true),
       'uri' => $this->faker->url,
       'title' => $this->faker->words(3, true),
-      'aria-label' => $this->faker->words(5, true),
     ];
 
     $paragraph = $I->createEntity([
@@ -46,9 +43,7 @@ class BannerCest {
       'su_banner_button' => [
         'uri' => $field_values['uri'],
         'title' => $field_values['title'],
-        'options' => [
-          'attributes' => ['aria-label' => $field_values['aria-label']]
-        ],
+        'options' => [],
       ],
       'su_banner_body' => $field_values['body'],
     ], 'paragraph');
@@ -75,8 +70,6 @@ class BannerCest {
     $I->canSee($field_values['header']);
     $I->canSee($field_values['body']);
     $I->canSeeLink($field_values['title'], $field_values['uri']);
-    $aria_label = $I->grabAttributeFrom("a[href='{$field_values['uri']}']", 'aria-label');
-    $I->assertEquals($field_values['aria-label'], $aria_label, sprintf('Attribute aria-label `%s` does not match expected value `%s`', $aria_label, $field_values['aria-label']));
 
     $I->cantSeeElement('.overlay-right');
 

@@ -123,6 +123,9 @@ process:
       replace: events-legacy.stanford.edu
     search: events.stanford.edu
     replace: events-legacy.stanford.edu
+  su_event_source/title:
+    plugin: default_value
+    default_value: ''
   su_event_date_time/value:
     -
       plugin: format_date

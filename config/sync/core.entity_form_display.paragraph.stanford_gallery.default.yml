@@ -9,7 +9,7 @@ dependencies:
     - field.field.paragraph.stanford_gallery.su_gallery_images
     - paragraphs.paragraphs_type.stanford_gallery
   module:
-    - link_attributes
+    - link
     - media_library
     - text
 id: paragraph.stanford_gallery.default
@@ -18,21 +18,12 @@ bundle: stanford_gallery
 mode: default
 content:
   su_gallery_button:
-    type: link_attributes
-    weight: 3
+    type: link_default
+    weight: 4
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
-      enabled_attributes:
-        aria-label: true
-        id: false
-        name: false
-        target: false
-        rel: false
-        class: false
-        accesskey: false
-        title: false
     third_party_settings: {  }
   su_gallery_description:
     type: text_textarea
@@ -59,4 +50,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  publish_on: true
   status: true
+  unpublish_on: true

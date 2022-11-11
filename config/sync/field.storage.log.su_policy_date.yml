@@ -1,0 +1,20 @@
+uuid: 78a74d99-d1d9-4e97-a15d-fbe496e60916
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - eck
+id: log.su_policy_date
+field_name: su_policy_date
+entity_type: log
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

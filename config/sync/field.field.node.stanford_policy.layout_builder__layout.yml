@@ -1,0 +1,21 @@
+uuid: 9fe6e3e6-09f8-410b-948d-1417d9dccbfb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_builder__layout
+    - node.type.stanford_policy
+  module:
+    - layout_builder
+id: node.stanford_policy.layout_builder__layout
+field_name: layout_builder__layout
+entity_type: node
+bundle: stanford_policy
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_section

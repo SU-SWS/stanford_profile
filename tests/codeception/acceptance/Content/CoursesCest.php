@@ -75,8 +75,6 @@ class CoursesCest {
     $path = $node->toUrl()->toString();
     $I->amOnPage($path);
     $I->canSee('This page will redirect');
-    $I->amOnPage($node->toUrl('edit-form')->toString());
-    $I->seeInField('rh_redirect', 'https://google.com/');
   }
 
 

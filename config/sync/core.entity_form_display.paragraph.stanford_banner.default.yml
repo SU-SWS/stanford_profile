@@ -10,7 +10,7 @@ dependencies:
     - field.field.paragraph.stanford_banner.su_banner_sup_header
     - paragraphs.paragraphs_type.stanford_banner
   module:
-    - link_attributes
+    - link
     - media_library
     - text
 id: paragraph.stanford_banner.default
@@ -35,21 +35,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_banner_button:
-    type: link_attributes
-    weight: 4
+    type: link_default
+    weight: 5
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
-      enabled_attributes:
-        aria-label: true
-        id: false
-        name: false
-        target: false
-        rel: false
-        class: false
-        accesskey: false
-        title: false
     third_party_settings: {  }
   su_banner_header:
     type: string_textfield
@@ -76,4 +67,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  publish_on: true
   status: true
+  unpublish_on: true

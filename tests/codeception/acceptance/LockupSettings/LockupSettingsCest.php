@@ -4,6 +4,8 @@ require_once __DIR__ . '/../TestFilesTrait.php';
 
 /**
  * Test for the lockup settings.
+ *
+ * @group lockup
  */
 class LockupSettingsCest {
 
@@ -50,9 +52,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption('#edit-su-lockup-options', 'a');
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', 'a');
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -71,9 +73,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "b");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "b");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -92,9 +94,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "d");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "d");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -113,9 +115,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "e");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "e");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -135,9 +137,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "h");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "h");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -157,9 +159,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "i");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "i");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -179,9 +181,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "m");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "m");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -200,9 +202,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "o");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "o");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -220,9 +222,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "p");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "p");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -241,9 +243,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "r");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "r");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -261,9 +263,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "s");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "s");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -283,9 +285,9 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption("#edit-su-lockup-options", "t");
-    $I->checkOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption("Lockup Options", "t");
+    $I->checkOption('Use the logo supplied by the theme');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -306,8 +308,8 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption('#edit-su-lockup-options', 'a');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', 'a');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -315,7 +317,7 @@ class LockupSettingsCest {
     $I->fillField('Line 5', 'Last line full width option');
 
     // Add custom logo.
-    $I->uncheckOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use the logo supplied by the theme');
 
     // In case there was an image already.
     if ($I->grabMultiple('input[value="Remove"]')) {
@@ -339,8 +341,8 @@ class LockupSettingsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
-    $I->uncheckOption('#edit-su-lockup-enabled-value');
-    $I->selectOption('#edit-su-lockup-options', 'none');
+    $I->uncheckOption('Use Default Lockup');
+    $I->selectOption('Lockup Options', 'none');
     $I->fillField('Line 1', 'Site title line');
     $I->fillField('Line 2', 'Secondary title line');
     $I->fillField('Line 3', 'Tertiary title line');
@@ -348,7 +350,7 @@ class LockupSettingsCest {
     $I->fillField('Line 5', 'Last line full width option');
 
     // Add custom logo.
-    $I->uncheckOption('#edit-su-use-theme-logo-value');
+    $I->uncheckOption('Use the logo supplied by the theme');
 
     // In case there was an image already.
     if ($I->grabMultiple('input[value="Remove"]')) {

@@ -62,6 +62,10 @@ source:
   ids:
     course_id:
       type: string
+    subject:
+      type: string
+    code:
+      type: string
   constants:
     status: 1
     type: stanford_course
@@ -71,7 +75,12 @@ source:
 process:
   status: constants/status
   type: constants/type
-  title: title
+  title:
+    plugin: str_replace
+    source: title
+    search: '/^(.*) \([A-Z].*$/'
+    replace: $1
+    regex: true
   body/value: description
   body/format: constants/stanford_html
   su_course_code: code
@@ -102,12 +111,15 @@ process:
         - code
     -
       plugin: urlencode
-  su_course_link:
+  su_course_link/uri:
     -
       plugin: concat
       source:
         - constants/link
         - '@link_query'
+  su_course_link/title:
+    plugin: default_value
+    default_value: ''
   su_course_quarters:
     -
       plugin: explore_courses_quarters

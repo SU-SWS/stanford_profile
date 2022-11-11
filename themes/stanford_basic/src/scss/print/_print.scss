@@ -12,6 +12,7 @@
 
 .sidebar,
 #navigation,
+nav,
 #header-region,
 #footer,
 .breadcrumb,
@@ -49,5 +50,12 @@ a {
       font-size: 0.8em;
       font-weight: normal;
     }
+  }
+}
+
+// Policy print page
+img {
+  &.su-policy--print {
+    max-width: 10%;
   }
 }

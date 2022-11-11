@@ -1,0 +1,29 @@
+uuid: e5b29dce-c6c1-4a4b-b97b-f487e862dc7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.log.policy
+    - field.storage.node.su_policy_changelog
+    - node.type.stanford_policy
+id: node.stanford_policy.su_policy_changelog
+field_name: su_policy_changelog
+entity_type: node
+bundle: stanford_policy
+label: Changelog
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:log'
+  handler_settings:
+    target_bundles:
+      policy: policy
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
