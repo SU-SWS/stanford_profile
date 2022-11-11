@@ -13,6 +13,7 @@ dependencies:
     - media.type.file
     - media.type.google_form
     - media.type.image
+    - media.type.stanford_gallery_images
     - media.type.video
     - node.type.stanford_course
     - node.type.stanford_event
@@ -25,17 +26,40 @@ dependencies:
     - node.type.su_opportunity
     - node.type.su_spotlight
     - taxonomy.vocabulary.basic_page_types
+    - taxonomy.vocabulary.cap_org_codes
+    - taxonomy.vocabulary.cs_resource_audience
+    - taxonomy.vocabulary.cs_resource_type
     - taxonomy.vocabulary.event_audience
+    - taxonomy.vocabulary.media_tags
+    - taxonomy.vocabulary.spotlight_person
+    - taxonomy.vocabulary.stanford_event_groups
+    - taxonomy.vocabulary.stanford_event_keywords
+    - taxonomy.vocabulary.stanford_event_subject
     - taxonomy.vocabulary.stanford_event_types
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
     - taxonomy.vocabulary.stanford_publication_topics
+    - taxonomy.vocabulary.su_course_quarters
+    - taxonomy.vocabulary.su_course_subjects
+    - taxonomy.vocabulary.su_course_tags
+    - taxonomy.vocabulary.su_opportunity_commitment
+    - taxonomy.vocabulary.su_opportunity_deadline
+    - taxonomy.vocabulary.su_opportunity_dimension
+    - taxonomy.vocabulary.su_opportunity_location
+    - taxonomy.vocabulary.su_opportunity_open_to
+    - taxonomy.vocabulary.su_opportunity_pathway
+    - taxonomy.vocabulary.su_opportunity_placement_type
+    - taxonomy.vocabulary.su_opportunity_service_theme
+    - taxonomy.vocabulary.su_opportunity_sponsor
+    - taxonomy.vocabulary.su_opportunity_time
+    - taxonomy.vocabulary.su_opportunity_type
     - taxonomy.vocabulary.su_shared_tags
   module:
     - auto_entitylabel
     - block
     - block_content
     - block_content_permissions
+    - book
     - cardinal_service_profile
     - config_pages
     - content_lock
@@ -164,7 +188,6 @@ permissions:
   - 'administer shortcuts'
   - 'administer stanford-event-types menu items'
   - 'administer stanford-person-type menu items'
-  - 'administer taxonomy'
   - 'administer taxonomy_term display'
   - 'administer taxonomy_term fields'
   - 'administer taxonomy_term form display'
@@ -223,11 +246,34 @@ permissions:
   - 'create stanford_publication content'
   - 'create su_opportunity content'
   - 'create su_spotlight content'
+  - 'create terms in basic_page_types'
+  - 'create terms in cap_org_codes'
+  - 'create terms in cs_resource_audience'
+  - 'create terms in cs_resource_type'
   - 'create terms in event_audience'
+  - 'create terms in media_tags'
+  - 'create terms in spotlight_person'
+  - 'create terms in stanford_event_groups'
+  - 'create terms in stanford_event_keywords'
+  - 'create terms in stanford_event_subject'
   - 'create terms in stanford_event_types'
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'
   - 'create terms in stanford_publication_topics'
+  - 'create terms in su_course_quarters'
+  - 'create terms in su_course_subjects'
+  - 'create terms in su_course_tags'
+  - 'create terms in su_opportunity_commitment'
+  - 'create terms in su_opportunity_deadline'
+  - 'create terms in su_opportunity_dimension'
+  - 'create terms in su_opportunity_location'
+  - 'create terms in su_opportunity_open_to'
+  - 'create terms in su_opportunity_pathway'
+  - 'create terms in su_opportunity_placement_type'
+  - 'create terms in su_opportunity_service_theme'
+  - 'create terms in su_opportunity_sponsor'
+  - 'create terms in su_opportunity_time'
+  - 'create terms in su_opportunity_type'
   - 'create terms in su_shared_tags'
   - 'create url aliases'
   - 'create video media'
@@ -283,11 +329,33 @@ permissions:
   - 'delete su_opportunity revisions'
   - 'delete su_spotlight revisions'
   - 'delete terms in basic_page_types'
+  - 'delete terms in cap_org_codes'
+  - 'delete terms in cs_resource_audience'
+  - 'delete terms in cs_resource_type'
   - 'delete terms in event_audience'
+  - 'delete terms in media_tags'
+  - 'delete terms in spotlight_person'
+  - 'delete terms in stanford_event_groups'
+  - 'delete terms in stanford_event_keywords'
+  - 'delete terms in stanford_event_subject'
   - 'delete terms in stanford_event_types'
   - 'delete terms in stanford_news_topics'
   - 'delete terms in stanford_person_types'
   - 'delete terms in stanford_publication_topics'
+  - 'delete terms in su_course_quarters'
+  - 'delete terms in su_course_subjects'
+  - 'delete terms in su_course_tags'
+  - 'delete terms in su_opportunity_commitment'
+  - 'delete terms in su_opportunity_deadline'
+  - 'delete terms in su_opportunity_dimension'
+  - 'delete terms in su_opportunity_location'
+  - 'delete terms in su_opportunity_open_to'
+  - 'delete terms in su_opportunity_pathway'
+  - 'delete terms in su_opportunity_placement_type'
+  - 'delete terms in su_opportunity_service_theme'
+  - 'delete terms in su_opportunity_sponsor'
+  - 'delete terms in su_opportunity_time'
+  - 'delete terms in su_opportunity_type'
   - 'delete terms in su_shared_tags'
   - 'dropzone upload files'
   - 'edit any embeddable media'
@@ -340,11 +408,33 @@ permissions:
   - 'edit stanford_saml config page entity'
   - 'edit stanford_super_footer config page entity'
   - 'edit terms in basic_page_types'
+  - 'edit terms in cap_org_codes'
+  - 'edit terms in cs_resource_audience'
+  - 'edit terms in cs_resource_type'
   - 'edit terms in event_audience'
+  - 'edit terms in media_tags'
+  - 'edit terms in spotlight_person'
+  - 'edit terms in stanford_event_groups'
+  - 'edit terms in stanford_event_keywords'
+  - 'edit terms in stanford_event_subject'
   - 'edit terms in stanford_event_types'
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
   - 'edit terms in stanford_publication_topics'
+  - 'edit terms in su_course_quarters'
+  - 'edit terms in su_course_subjects'
+  - 'edit terms in su_course_tags'
+  - 'edit terms in su_opportunity_commitment'
+  - 'edit terms in su_opportunity_deadline'
+  - 'edit terms in su_opportunity_dimension'
+  - 'edit terms in su_opportunity_location'
+  - 'edit terms in su_opportunity_open_to'
+  - 'edit terms in su_opportunity_pathway'
+  - 'edit terms in su_opportunity_placement_type'
+  - 'edit terms in su_opportunity_service_theme'
+  - 'edit terms in su_opportunity_sponsor'
+  - 'edit terms in su_opportunity_time'
+  - 'edit terms in su_opportunity_type'
   - 'edit terms in su_shared_tags'
   - 'link to any page'
   - 'rabbit hole administer taxonomy_term'
