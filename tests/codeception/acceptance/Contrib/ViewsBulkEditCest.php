@@ -33,7 +33,11 @@ class ViewsBulkEditCest {
    * Bulk editing content changes the field values.
    */
   public function testBulkEdits(AcceptanceTester $I) {
-    $I->runDrush('migrate:rollback --all');
+    try {
+      $I->runDrush('migrate:rollback --all');
+    }catch (\Throwable $e){
+      // Do nothing.
+    }
 
     $I->logInWithRole('site_manager');
     $this->createEvents($I);
