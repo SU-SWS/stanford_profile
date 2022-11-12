@@ -400,15 +400,6 @@ third_party_settings:
             weight: 7
             additional: {  }
             third_party_settings: {  }
-        third_party_settings: {  }
-      -
-        layout_id: defaults
-        layout_settings:
-          label: 'Body Content - CTA signup'
-          extra_classes: su-events-details
-          centered: centered-container
-          columns: flex-8-of-12
-        components:
           2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350:
             uuid: 2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350
             region: cta
@@ -433,6 +424,28 @@ third_party_settings:
                   field_formatter_class:
                     class: 'su-event-cta su-button'
             weight: 0
+            additional: {  }
+            third_party_settings: {  }
+          deac942f-07a6-42b2-9025-8082befff3ea:
+            uuid: deac942f-07a6-42b2-9025-8082befff3ea
+            region: right
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_contact_info'
+              label: 'Additional Contact Info'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-contact-info
+            weight: 4
             additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
@@ -500,20 +513,6 @@ third_party_settings:
           centered: centered-container
           columns: flex-10-of-12
         components:
-          09d8b675-2bdf-45eb-a005-6279e9f81738:
-            uuid: 09d8b675-2bdf-45eb-a005-6279e9f81738
-            region: main
-            configuration:
-              id: 'views_block:stanford_events_schedule-event_schedule_block'
-              label: Schedule
-              label_display: visible
-              provider: views
-              context_mapping: {  }
-              views_label: Schedule
-              items_per_page: none
-            weight: 1
-            additional: {  }
-            third_party_settings: {  }
           d64439dc-f59e-4822-aba0-cdca5a9dc331:
             uuid: d64439dc-f59e-4822-aba0-cdca5a9dc331
             region: main
