@@ -205,8 +205,8 @@ class PolicyCest {
     $fifteen_days_ago = $time - 60 * 60 * 24 * 15;
 
     $I->amOnPage($article_one->toUrl('edit-form')->toString());
-    $I->fillField('su_policy_effective[0][value][date]', $data_formatter->format($fifteen_days_ago, 'custom', 'Y-m-d'));
-    $I->fillField('su_policy_updated[0][value][date]', $data_formatter->format($time, 'custom', 'Y-m-d'));
+    $I->fillField('su_policy_effective[0][value][date]', $data_formatter->format($fifteen_days_ago, 'custom', 'Y-m-d', self::getTimezone()));
+    $I->fillField('su_policy_updated[0][value][date]', $data_formatter->format($time, 'custom', 'Y-m-d', self::getTimezone()));
     $I->fillField('Authority', $authority);
     $I->selectOption('Book', $book->label());
     $I->click('Change book (update list of parents)');
@@ -214,8 +214,8 @@ class PolicyCest {
     $I->click('Change book (update list of parents)');
 
     $I->click('Add new change log');
-    $I->canSeeInField('[name="su_policy_changelog[form][0][title][0][value]"]', $data_formatter->format($time, 'custom', 'Y-m-d'));
-    $I->canSeeInField('[name="su_policy_changelog[form][0][su_policy_date][0][value][date]"]', $data_formatter->format($time, 'custom', 'Y-m-d'));
+    $I->canSeeInField('[name="su_policy_changelog[form][0][title][0][value]"]', $data_formatter->format($time, 'custom', 'Y-m-d', self::getTimezone()));
+    $I->canSeeInField('[name="su_policy_changelog[form][0][su_policy_date][0][value][date]"]', $data_formatter->format($time, 'custom', 'Y-m-d', self::getTimezone()));
     $change_notes = $this->faker->sentences(3, TRUE);
     $I->fillField('Notes', $change_notes);
 
@@ -227,8 +227,8 @@ class PolicyCest {
     $I->canSee($chapter_two->label(), '.breadcrumb');
     $I->canSee($article_one->label(), '.breadcrumb');
 
-    $I->canSee( $data_formatter->format($fifteen_days_ago, 'custom', 'F d, Y'));
-    $I->canSee($data_formatter->format($time, 'custom', 'F d, Y'));
+    $I->canSee( $data_formatter->format($fifteen_days_ago, 'custom', 'F d, Y', self::getTimezone()));
+    $I->canSee($data_formatter->format($time, 'custom', 'F d, Y', self::getTimezone()));
     $I->canSee($authority);
 
     $I->cantSee($change_notes);
@@ -259,6 +259,11 @@ class PolicyCest {
     $I->fillField('Policy Title', $new_title);
     $I->click('Save');
     $I->canSee($new_title);
+  }
+
+  protected static function getTimezone() {
+    return \Drupal::config('system.date')
+      ->get('timezone.default') ?: @date_default_timezone_get();
   }
 
 }

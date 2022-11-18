@@ -337,8 +337,14 @@ class BasicPageCest {
 
     $time = \Drupal::time()->getCurrentTime();
     $date_string = \Drupal::service('date.formatter')
-      ->format($time, 'custom', 'F j, Y');
+      ->format($time, 'custom', 'F j, Y', self::getTimezone());
     $I->canSee('Last Updated: ' . $date_string);
   }
+
+  protected static function getTimezone() {
+    return \Drupal::config('system.date')
+      ->get('timezone.default') ?: @date_default_timezone_get();
+  }
+
 
 }
