@@ -334,7 +334,7 @@ class BasicPageCest {
     $I->fillField('Search this site', $node->label());
     $I->click('Submit Search');
     $I->canSee($node->label(), 'h2');
-    $I->canSee('Last Updated: ' . date('F j, Y', \Drupal::time()->getCurrentTime()));
+    $I->canSee('Last Updated: ' . \Drupal::service('date.formatter')->format(\Drupal::time()->getCurrentTime(), 'custom', 'F j, Y'));
   }
 
 }
