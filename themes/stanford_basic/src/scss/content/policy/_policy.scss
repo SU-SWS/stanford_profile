@@ -116,12 +116,18 @@
   // Grid setup
   .node-stanford-policy-su-policy-updated {
     grid-area: last-updated;
+    padding-bottom: 1em;
   }
 
   .printable-links-block {
     grid-area: print;
     justify-self: right;
   }
+
+  .su-policy-authority {
+    grid-area: authority;
+  }
+
 
   .node-stanford-policy-body {
     @include responsive-spacing('padding-bottom', 5);
@@ -146,6 +152,7 @@
       grid-template-columns: repeat (1fr);
       grid-template-rows: auto;
       grid-template-areas:
+      "authority print"
       "last-updated print"
       "change-logs-node-page-changes change-logs-node-page-changes"
       "policy-body policy-body"
