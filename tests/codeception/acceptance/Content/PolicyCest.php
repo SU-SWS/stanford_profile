@@ -199,10 +199,14 @@ class PolicyCest {
       'su_policy_title' => $this->faker->words(2, TRUE),
       'su_policy_auto_prefix' => 1,
     ]);
+    $time = \Drupal::time()->getCurrentTime();
+    /** @var \Drupal\Core\Datetime\DateFormatterInterface $data_formatter */
+    $data_formatter = \Drupal::service('date.formatter');
+    $fifteen_days_ago = $time - 60 * 60 * 24 * 15;
 
     $I->amOnPage($article_one->toUrl('edit-form')->toString());
-    $I->fillField('su_policy_effective[0][value][date]', date('Y-m-d', time() - 60 * 60 * 24 * 15));
-    $I->fillField('su_policy_updated[0][value][date]', date('Y-m-d'));
+    $I->fillField('su_policy_effective[0][value][date]', $data_formatter->format($fifteen_days_ago, 'custom', 'Y-m-d'));
+    $I->fillField('su_policy_updated[0][value][date]', $data_formatter->format($time, 'custom', 'Y-m-d'));
     $I->fillField('Authority', $authority);
     $I->selectOption('Book', $book->label());
     $I->click('Change book (update list of parents)');
@@ -210,8 +214,8 @@ class PolicyCest {
     $I->click('Change book (update list of parents)');
 
     $I->click('Add new change log');
-    $I->canSeeInField('[name="su_policy_changelog[form][0][title][0][value]"]', date('Y-m-d'));
-    $I->canSeeInField('[name="su_policy_changelog[form][0][su_policy_date][0][value][date]"]', date('Y-m-d'));
+    $I->canSeeInField('[name="su_policy_changelog[form][0][title][0][value]"]', $data_formatter->format($time, 'custom', 'Y-m-d'));
+    $I->canSeeInField('[name="su_policy_changelog[form][0][su_policy_date][0][value][date]"]', $data_formatter->format($time, 'custom', 'Y-m-d'));
     $change_notes = $this->faker->sentences(3, TRUE);
     $I->fillField('Notes', $change_notes);
 
@@ -223,8 +227,8 @@ class PolicyCest {
     $I->canSee($chapter_two->label(), '.breadcrumb');
     $I->canSee($article_one->label(), '.breadcrumb');
 
-    $I->canSee(date('F d, Y', time() - 60 * 60 * 24 * 15));
-    $I->canSee(date('F d, Y'));
+    $I->canSee( $data_formatter->format($fifteen_days_ago, 'custom', 'F d, Y'));
+    $I->canSee($data_formatter->format($time, 'custom', 'F d, Y'));
     $I->canSee($authority);
 
     $I->cantSee($change_notes);
@@ -245,8 +249,7 @@ class PolicyCest {
     $I->uncheckOption('Automatic Prefix');
     $I->fillField('Chapter Number', $new_prefix);
     $I->click('Save');
-    $I->canSee($new_prefix . '. ' . $chapter_two->get('su_policy_title')
-        ->getString(), 'h1');
+    $I->canSee($new_prefix . '. ' . $chapter_two->get('su_policy_title')->getString(), 'h1');
 
     $I->amOnPage($article_one->toUrl()->toString());
     $I->canSee($new_prefix . '.A ' . $article_one->get('su_policy_title')->getString());
