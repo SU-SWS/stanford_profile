@@ -20,7 +20,6 @@ dependencies:
     - link
     - metatag
     - path
-    - scheduler
     - shs
     - text
 _core:
@@ -49,12 +48,6 @@ content:
   path:
     type: path
     weight: 10
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -171,12 +164,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 14
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
     weight: 11
     region: content
@@ -184,5 +171,7 @@ content:
     third_party_settings: {  }
 hidden:
   promote: true
+  publish_on: true
   sticky: true
   su_course_id: true
+  unpublish_on: true

@@ -59,6 +59,18 @@ class ConfigOverridesTest extends UnitTestCase {
    * Test the config ignore settings overrides.
    */
   public function testConfigIgnoreOverrides() {
+    // Fake like it's during installation time.
+    $GLOBALS['install_state'] = true;
+    $overrides = $this->overrideService->loadOverrides(['config_ignore.settings']);
+    $expected = [
+      'config_ignore.settings' => [
+        'ignored_config_entities' => ['foo', 'foo'],
+      ],
+    ];
+    $this->assertEquals($expected, $overrides);
+
+    // Flip back to not during install.
+    unset($GLOBALS['install_state']);
     $overrides = $this->overrideService->loadOverrides(['config_ignore.settings']);
     $expected = [
       'config_ignore.settings' => [

@@ -1,27 +1,18 @@
-uuid: 2506febb-7531-4f54-b0ca-87d013ed9ddf
+uuid: 2cf25db6-2fc0-470a-b8cc-9e8757ad6366
 langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.stanford_event_subject
-  module:
-    - text
-id: taxonomy_term.stanford_event_subject.default
+    - field.field.taxonomy_term.su_course_quarters.layout_builder__layout
+    - taxonomy.vocabulary.su_course_quarters
+id: taxonomy_term.su_course_quarters.default
 targetEntityType: taxonomy_term
-bundle: stanford_event_subject
+bundle: su_course_quarters
 mode: default
 content:
-  description:
-    type: text_textarea
-    weight: 0
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
   name:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
@@ -29,12 +20,14 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 100
+    weight: 1
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
 hidden:
+  description: true
+  layout_builder__layout: true
   path: true
   publish_on: true
   unpublish_on: true

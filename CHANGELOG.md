@@ -1,5 +1,20 @@
 # Stanford Profile
 
+9.2.1
+--------------------------------------------------------------------------------
+_Release Date: 2022-11-30_
+- D8CORE-6424 Hide legacy importer fields on importer form
+- D8CORE-6338 updated help text on policy changelog fields
+- D8CORE-6422 Allow news to hide social share icons
+- D8CORE-6370: Moved the authority field. (#647)
+- Improved tests for configuration ignore
+- Fix preprocess_breadcrumbs to prevent failure with drush
+- Add and enable memcache for dev, stage, and prod (#645)
+- D8CORE-2932 and D8CORE-6357: Fixed extra spacing on people list items. (#641)
+- D8CORE-6348: adding summary into the related policy cards (#640)
+- D8CORE-6345: Display policy change log title in the lists (#642)
+- Added and configured "Page Cache Query Ignore" module
+
 9.2.0
 --------------------------------------------------------------------------------
 _Release Date: 2022-10-25_
