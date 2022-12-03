@@ -98,6 +98,7 @@
     "require": {
         "ext-imagick": "*",
         "acquia/drupal-environment-detector": "^1.0",
+        "acquia/memcache-settings": "^1.2",
         "citation-style-language/locales": "1.0.0",
         "citation-style-language/styles-distribution": "1.0.0",
         "ckeditor-plugin/a11ychecker": "^1.1.1",
@@ -170,6 +171,7 @@
         "drupal/linkit": "^6.0",
         "drupal/markup": "^1.0",
         "drupal/mathjax": "^3.0",
+        "drupal/memcache": "^2.5",
         "drupal/menu_admin_per_menu": "^1.0",
         "drupal/menu_block": "dev-1.x#567becffbb0589e824fb053f15fb38a5846e7276",
         "drupal/menu_link_weight": "^1.0-beta3",
@@ -264,6 +266,9 @@
             },
             "drupal/subrequests": {
                 "Get same results on different request": "https://www.drupal.org/files/issues/2019-07-18/change_request_type-63049395-09.patch"
+            },
+            "drupal/environment_indicator": {
+                "getTitle() causes errors": "https://www.drupal.org/files/issues/2022-11-30/issue-3324429.patch"
             }
         }
     }
