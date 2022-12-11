@@ -6,6 +6,7 @@ use Faker\Factory;
  * Test for the lockup settings.
  *
  * @group navigation
+ * @group testme
  */
 class NavigationDropDownsCest {
 
@@ -45,7 +46,7 @@ class NavigationDropDownsCest {
       'link' => ['uri' => 'route:<front>'],
     ], 'menu_link_content');
 
-    $I->logInWithRole('Administrator');
+    $I->logInWithRole('site_manager');
     $I->resizeWindow(1400, 700);
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->uncheckOption('Use drop down menus');
@@ -65,7 +66,7 @@ class NavigationDropDownsCest {
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', $node_title);
     // The label on the menu parent changes in D9 vs D8
-    $I->selectOption('#edit-field-menulink-0-menu-parent--level-1', $parent_menu_title);
+    $I->selectOption('Parent link', "-- $parent_menu_title");
     $I->waitForText("Change the weight of the links within the $parent_menu_title menu");
     $I->click('Save');
     $I->canSeeLink($node_title);
