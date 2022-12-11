@@ -159,6 +159,7 @@
         "drupal/image_effects": "^3.2",
         "drupal/imagemagick": "^3.1",
         "drupal/jsonapi_extras": "^3.20",
+        "drupal/jsonapi_hypermedia": "^1.9",
         "drupal/jsonapi_image_styles": "^3.0",
         "drupal/jsonapi_menu_items": "^1.2",
         "drupal/jsonapi_views": "^1.0",
@@ -247,14 +248,6 @@
                 "drush.services.yml": "^9"
             }
         },
-        "patches": {
-            "drupal/auto_entitylabel": {
-                "https://www.drupal.org/project/auto_entitylabel/issues/3076302": "https://www.drupal.org/files/issues/2021-01-09/3076302-19.patch",
-                "https://www.drupal.org/project/auto_entitylabel/issues/3239799": "https://www.drupal.org/files/issues/2021-09-29/issue-3239799.patch"
-            },
-            "drupal/ckeditor_blockimagepaste": {
-                "https://www.drupal.org/project/ckeditor_blockimagepaste/issues/3272772": "https://www.drupal.org/files/issues/2022-04-14/prevent_js_alert_and_block_ms_word_paste-v2.patch"
-            }
-        }
+        "patches": {}
     }
 }
