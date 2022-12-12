@@ -258,19 +258,19 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_policy:su_policy_related'
               label: 'Related Policies'
-              label_display: '0'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_label
-                label: above
+                type: entity_reference_entity_view
+                label: hidden
                 settings:
-                  link: true
+                  view_mode: stanford_card
                 third_party_settings:
                   field_formatter_class:
-                    class: ''
+                    class: grid-container-3
             weight: 1
             additional: {  }
           9239f3b1-86c9-4d97-8e6c-f1ded39f2a02:
