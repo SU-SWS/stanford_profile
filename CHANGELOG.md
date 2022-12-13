@@ -1,5 +1,11 @@
 # Stanford Profile
 
+9.2.4
+--------------------------------------------------------------------------------
+_Release Date: 2022-12-13_
+- Added missing drupal/jsonapi_hypermedia module
+- Fixed related policies display
+
 9.2.3
 --------------------------------------------------------------------------------
 _Release Date: 2022-12-03_
