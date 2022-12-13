@@ -1,5 +1,11 @@
 # Stanford Profile
 
+9.2.4
+--------------------------------------------------------------------------------
+_Release Date: 2022-12-13_
+- Added missing drupal/jsonapi_hypermedia module
+- Fixed related policies display
+
 9.2.3
 --------------------------------------------------------------------------------
 _Release Date: 2022-12-03_
@@ -19,7 +25,7 @@ _Release Date: 2022-11-30_
 - D8CORE-6370: Moved the authority field. (#647)
 - Improved tests for configuration ignore
 - Fix preprocess_breadcrumbs to prevent failure with drush
-- Add and enable memcache for dev, stage, and prod (#645) remove?
+- Add and enable memcache for dev, stage, and prod (#645) (remove?)
 - D8CORE-2932 and D8CORE-6357: Fixed extra spacing on people list items. (#641)
 - D8CORE-6348: adding summary into the related policy cards (#640)
 - D8CORE-6345: Display policy change log title in the lists (#642)
