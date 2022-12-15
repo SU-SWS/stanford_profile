@@ -15,11 +15,12 @@ dependencies:
     - field.field.node.stanford_publication.su_shared_tags
     - node.type.stanford_publication
   module:
+    - change_labels
     - inline_entity_form
+    - layout_paragraphs
     - link
     - media_library
     - metatag
-    - react_paragraphs
     - scheduler
     - shs
     - stanford_intranet
@@ -88,20 +89,17 @@ content:
       revision: false
     third_party_settings: {  }
   su_publication_components:
-    type: react_paragraphs
+    type: layout_paragraphs
     weight: 4
     region: content
     settings:
-      resizable: false
-      sizes:
-        stanford_banner: 12
-        stanford_card: 1
-        stanford_entity: 1
-        stanford_gallery: 1
-        stanford_lists: 1
-        stanford_media_caption: 1
-        stanford_wysiwyg: 1
-    third_party_settings: {  }
+      preview_view_mode: default
+      nesting_depth: 0
+      require_layouts: 1
+      empty_message: ''
+    third_party_settings:
+      change_labels:
+        add_another: ''
   su_publication_cta:
     type: link_default
     weight: 5

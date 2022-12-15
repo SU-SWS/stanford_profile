@@ -453,15 +453,13 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_revisions_entity_view
+                type: layout_paragraphs
                 label: hidden
                 settings:
                   view_mode: default
                 third_party_settings:
                   field_formatter_class:
                     class: su-event-components
-                  ds:
-                    ds_limit: ''
             weight: 1
             additional: {  }
           7a80c779-6c87-49fd-94e0-68ae37fa1cd4:

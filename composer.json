@@ -167,6 +167,7 @@
         "drupal/layout_builder_modal": "^1.0",
         "drupal/layout_builder_restrictions": "^2.2",
         "drupal/layout_library": "^1.0-beta1",
+        "drupal/layout_paragraphs": "^2.0",
         "drupal/link_attributes": "^1.11",
         "drupal/link_title_formatter": "^2.0",
         "drupal/linkit": "^6.0",
@@ -248,6 +249,13 @@
                 "drush.services.yml": "^9"
             }
         },
-        "patches": {}
+        "patches": {
+            "drupal/core": {
+                "https://www.drupal.org/project/ckeditor/issues/3065095": "https://www.drupal.org/files/issues/2022-08-23/3065095-64-9.5.x.patch"
+            },
+            "drupal/layout_paragraphs": {
+                "https://www.drupal.org/project/layout_paragraphs/issues/3309551": "https://git.drupalcode.org/project/layout_paragraphs/-/merge_requests/105.patch"
+            }
+        }
     }
 }
