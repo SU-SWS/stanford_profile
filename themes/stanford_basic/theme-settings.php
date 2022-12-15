@@ -6,7 +6,6 @@ use Drupal\Core\Link;
 
 // @codeCoverageIgnoreStart
 
-
 // Set theme name to use in the key values.
 $theme_name = \Drupal::theme()->getActiveTheme()->getName();
 
@@ -228,3 +227,5 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
   ];
 
 }
+
+// @codeCoverageIgnoreEnd
