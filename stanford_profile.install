@@ -48,6 +48,20 @@ function stanford_profile_update_9000(&$sandbox) {
 }
 
 /**
+ * Install Claro theme and uninstall Seven.
+ */
+function stanford_profile_update_9001(){
+  /** @var \Drupal\Core\Extension\ThemeInstallerInterface $theme_installer */
+  $theme_installer = \Drupal::service('theme_installer');
+  $theme_installer->install(['claro']);
+  \Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('admin', 'claro')
+    ->save();
+  $theme_installer->uninstall(['seven']);
+}
+
+/**
  * Migrate Basic Page react paragraphs to layout paragraphs.
  */
 function stanford_profile_update_9005(&$sandbox) {
