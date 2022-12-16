@@ -196,6 +196,17 @@ function stanford_profile_update_9006(&$sandbox) {
   $sandbox['#finished'] = empty($sandbox['nids']) ? 1 : ($sandbox['count'] - count($sandbox['nids'])) / $sandbox['count'];
 }
 
+/**
+ * Get the items new region in the layout paragraphs layout.
+ *
+ * @param int $delta
+ *   Position of the item in the row.
+ * @param string $layout_id
+ *   Parent layout id.
+ *
+ * @return string
+ *   New region.
+ */
 function _stanford_profile_update_9005_get_item_region(int $delta, string $layout_id): string {
   switch ($layout_id) {
     case 'layout_paragraphs_2_column':
@@ -206,4 +217,54 @@ function _stanford_profile_update_9005_get_item_region(int $delta, string $layou
       return $delta_regions[$delta];
   }
   return 'main';
+}
+
+/**
+ * Update pages with custom layout builder settings.
+ */
+function stanford_profile_update_9007(&$sandbox) {
+  $node_storage = \Drupal::entityTypeManager()
+    ->getStorage('node');
+  if (!isset($sandbox['count'])) {
+    $nids = $node_storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('layout_builder__layout', NULL, 'IS NOT NULL')
+      ->execute();
+    $sandbox['nids'] = $nids;
+    $sandbox['count'] = count($sandbox['nids']);
+  }
+
+  $node_ids = array_splice($sandbox['nids'], 0, 25);
+  $nodes = $node_storage->loadMultiple($node_ids);
+
+  $convert_fields = [
+    'field_block:node:stanford_event:su_event_components',
+    'field_block:node:stanford_event_series:su_event_series_components',
+    'field_block:node:stanford_news:su_news_components',
+    'field_block:node:stanford_page:su_page_components',
+    'field_block:node:stanford_person:su_person_components',
+    'field_block:node:stanford_person:su_person_components',
+    'field_block:node:stanford_publication:su_publication_components'
+  ];
+  foreach ($nodes as $node) {
+    $save_node = FALSE;
+    /** @var \Drupal\layout_builder\Field\LayoutSectionItemList $layout */
+    $layout = $node->get('layout_builder__layout');
+    foreach ($layout->getSections() as $section) {
+      foreach ($section->getComponents() as $component) {
+        $config = $component->get('configuration');
+        if (in_array($config['id'], $convert_fields)) {
+          $config['formatter']['type'] = 'layout_paragraphs';
+          $config['formatter']['settings'] = ['view_mode' => 'default'];
+          $component->setConfiguration($config);
+          $save_node = TRUE;
+        }
+      }
+    }
+    if ($save_node) {
+      $node->save();
+    }
+  }
+
+  $sandbox['#finished'] = empty($sandbox['nids']) ? 1 : ($sandbox['count'] - count($sandbox['nids'])) / $sandbox['count'];
 }
