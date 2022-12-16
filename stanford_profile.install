@@ -25,7 +25,7 @@ function stanford_profile_update_9000(&$sandbox) {
   ]);
   $plugins = [
     'layout_paragraphs' => [
-      'enabled' => true,
+      'enabled' => TRUE,
       'available_layouts' => [
         'layout_paragraphs_1_column' => '1 Column',
         'layout_paragraphs_2_column' => '2 Column',
@@ -35,29 +35,34 @@ function stanford_profile_update_9000(&$sandbox) {
   ];
 
   /** @var \Drupal\paragraphs\ParagraphsTypeInterface $paragraph_type */
-  $paragraph_type = \Drupal::entityTypeManager()->getStorage('paragraphs_type')->create([
-    'uuid' => 'c935e784-07eb-4fbf-afab-f687901abe5a',
-    'id' => 'stanford_layout',
-    'label' => 'Layout',
-  ]);
+  $paragraph_type = \Drupal::entityTypeManager()
+    ->getStorage('paragraphs_type')
+    ->create([
+      'uuid' => 'c935e784-07eb-4fbf-afab-f687901abe5a',
+      'id' => 'stanford_layout',
+      'label' => 'Layout',
+    ]);
   $paragraph_type->set('behavior_plugins', $plugins);
   $paragraph_type->save();
 
 }
 
 /**
- * Migrate react paragraphs to layout paragraphs.
+ * Migrate Basic Page react paragraphs to layout paragraphs.
  */
 function stanford_profile_update_9005(&$sandbox) {
   $node_storage = \Drupal::entityTypeManager()
     ->getStorage('node');
   if (!isset($sandbox['count'])) {
-    $sandbox['nids'] = $node_storage->getQuery()
+    $nids = $node_storage->getQuery()
       ->accessCheck(FALSE)
       ->condition('type', 'stanford_page')
+      ->sort('created', 'ASC')
       ->execute();
+    $sandbox['nids'] = $nids;
     $sandbox['count'] = count($sandbox['nids']);
   }
+  drupal_static_reset();
   $row_storage = \Drupal::entityTypeManager()->getStorage('paragraph_row');
   $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
   $node_ids = array_splice($sandbox['nids'], 0, 25);
@@ -110,6 +115,80 @@ function stanford_profile_update_9005(&$sandbox) {
     }
 
     $node->set('su_page_components', $new_components)->save();
+  }
+  foreach ($delete_entities as $entity) {
+    $entity->delete();
+  }
+  $sandbox['#finished'] = empty($sandbox['nids']) ? 1 : ($sandbox['count'] - count($sandbox['nids'])) / $sandbox['count'];
+}
+
+/**
+ * Migrate Publications react paragraphs to layout paragraphs.
+ */
+function stanford_profile_update_9006(&$sandbox) {
+  $node_storage = \Drupal::entityTypeManager()
+    ->getStorage('node');
+  if (!isset($sandbox['count'])) {
+    $nids = $node_storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('type', 'stanford_publication')
+      ->execute();
+    $sandbox['nids'] = $nids;
+    $sandbox['count'] = count($sandbox['nids']);
+  }
+
+  $row_storage = \Drupal::entityTypeManager()->getStorage('paragraph_row');
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  $node_ids = array_splice($sandbox['nids'], 0, 25);
+  /** @var \Drupal\node\NodeInterface[] $nodes */
+  $nodes = $node_storage->loadMultiple($node_ids);
+  $delete_entities = [];
+  foreach ($nodes as $node) {
+    $new_components = [];
+    /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $row */
+    foreach ($node->get('su_publication_components') as $row) {
+      $row_entity = $row_storage->load($row->get('target_id')->getString());
+      $delete_entities[] = $row_entity;
+      $number_of_items = $row_entity->get('su_pubs_components')->count();
+      $layout_id = "layout_paragraphs_{$number_of_items}_column";
+
+      $new_row_entity = $paragraph_storage->create(['type' => 'stanford_layout']);
+      $new_row_entity->setBehaviorSettings('layout_paragraphs', [
+        'layout' => $layout_id,
+        'config' => ['label' => ''],
+        'parent_uuid' => NULL,
+        'region' => NULL,
+      ]);
+      $new_row_entity->save();
+
+      $new_components[] = [
+        'target_id' => $new_row_entity->id(),
+        'target_revision_id' => $new_row_entity->getRevisionId(),
+      ];
+
+      /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $row_item */
+      foreach ($row_entity->get('su_pubs_components') as $delta => $row_item) {
+        /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+        $paragraph = $paragraph_storage->load($row_item->get('target_id')
+          ->getString());
+        $behaviors = $paragraph->getAllBehaviorSettings();
+        unset($behaviors['react']);
+        $behaviors['layout_paragraphs'] = [
+          'parent_uuid' => $new_row_entity->uuid(),
+          'region' => _stanford_profile_update_9005_get_item_region($delta, $layout_id),
+        ];
+        $paragraph->setParentEntity($node, 'su_publication_components');
+        $paragraph->setAllBehaviorSettings($behaviors);
+        $paragraph->save();
+
+        $new_components[] = [
+          'target_id' => $paragraph->id(),
+          'target_revision_id' => $paragraph->getRevisionId(),
+        ];
+      }
+    }
+
+    $node->set('su_publication_components', $new_components)->save();
   }
   foreach ($delete_entities as $entity) {
     $entity->delete();

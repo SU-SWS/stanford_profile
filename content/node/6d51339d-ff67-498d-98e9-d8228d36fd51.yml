@@ -39,9 +39,9 @@ default:
       entity:
         _meta:
           version: '1.0'
-          entity_type: paragraph_row
-          uuid: 71b78295-dfd1-4eb3-8d20-2013d5b64f69
-          bundle: node_stanford_page_row
+          entity_type: paragraph
+          uuid: e5f9ac3e-7fef-4b96-a3e5-6f3afe62bca0
+          bundle: stanford_layout
           default_langcode: en
         default:
           status:
@@ -49,39 +49,44 @@ default:
               value: true
           created:
             -
-              value: 1598294778
+              value: 1671144889
           behavior_settings:
             -
-              value: {  }
+              value:
+                layout_paragraphs:
+                  layout: layout_paragraphs_1_column
+                  config:
+                    label: ''
+                  parent_uuid: null
+                  region: null
           revision_translation_affected:
             -
               value: true
-          su_page_components:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: bf52b16d-03ef-41dc-b906-4a3a88c2e9ce
+          bundle: stanford_wysiwyg
+          default_langcode: en
+        default:
+          status:
             -
-              entity:
-                _meta:
-                  version: '1.0'
-                  entity_type: paragraph
-                  uuid: bf52b16d-03ef-41dc-b906-4a3a88c2e9ce
-                  bundle: stanford_wysiwyg
-                  default_langcode: en
-                default:
-                  status:
-                    -
-                      value: true
-                  created:
-                    -
-                      value: 1566506186
-                  behavior_settings:
-                    -
-                      value:
-                        react:
-                          width: 12
-                          label: 'Text Area'
-                  revision_translation_affected:
-                    -
-                      value: true
-                  su_wysiwyg_text:
-                    -
-                      value: "<p class=\"summary\">Oops! We can't find that page!</p>\r\n<p class=\"summary\">We have a new site and things have moved around a bit. Here are some good places to start.</p>\r\n<h2>Starting points</h2>\r\n<p><a class=\"su-button\" href=\"/\">Homepage</a></p>\r\n<p><a class=\"su-button\" href=\"/search\">Search this site... </a></p>"
-                      format: stanford_html
+              value: true
+          created:
+            -
+              value: 1566506186
+          behavior_settings:
+            -
+              value:
+                layout_paragraphs:
+                  parent_uuid: e5f9ac3e-7fef-4b96-a3e5-6f3afe62bca0
+                  region: main
+          revision_translation_affected:
+            -
+              value: true
+          su_wysiwyg_text:
+            -
+              value: "<p class=\"summary\">Oops! We can't find that page!</p>\r\n<p class=\"summary\">We have a new site and things have moved around a bit. Here are some good places to start.</p>\r\n<h2>Starting points</h2>\r\n<p><a class=\"su-button\" href=\"/\">Homepage</a></p>\r\n<p><a class=\"su-button\" href=\"/search\">Search this site... </a></p>"
+              format: stanford_html
