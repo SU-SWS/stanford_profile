@@ -4,10 +4,14 @@ namespace Drupal\stanford_profile\EventSubscriber;
 
 use Acquia\DrupalEnvironmentDetector\AcquiaDrupalEnvironmentDetector;
 use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
+use Drupal\core_event_dispatcher\EntityHookEvents;
+use Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent;
 use Drupal\default_content\Event\DefaultContentEvents;
 use Drupal\default_content\Event\ImportEvent;
+use Drupal\file\FileInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -48,7 +52,10 @@ class EventSubscriber implements EventSubscriberInterface {
    * {@inheritDoc}
    */
   public static function getSubscribedEvents() {
-    return [DefaultContentEvents::IMPORT => 'onContentImport'];
+    return [
+      DefaultContentEvents::IMPORT => 'onContentImport',
+      EntityHookEvents::ENTITY_PRE_SAVE => 'preSaveEntity',
+    ];
   }
 
   /**
@@ -65,6 +72,43 @@ class EventSubscriber implements EventSubscriberInterface {
   }
 
   /**
+   * During installation, fetch media images files.
+   *
+   * @param \Drupal\core_event_dispatcher\Event\Entity\EntityPresaveEvent $event
+   *   Triggered event.
+   */
+  public function preSaveEntity(EntityPresaveEvent $event):void {
+    $entity = $event->getEntity();
+    if (
+      $entity->getEntityTypeId() != 'media' ||
+      !$entity->isNew() ||
+      !InstallerKernel::installationAttempted()
+    ) {
+      return;
+    }
+
+    foreach ($entity->getFieldDefinitions() as $field) {
+      if ($field->getType() == 'image') {
+        foreach ($entity->get($field->getName()) as $item) {
+          if (!$item->entity instanceof FileInterface) {
+            continue;
+          }
+
+          $file_uri = $item->entity->getFileUri();
+
+          if (!file_exists($file_uri)) {
+            $this->getFile($file_uri);
+          }
+
+          [$width, $height] = @getimagesize($file_uri);
+          $item->set('width', (int) $width);
+          $item->set('height', (int) $height);
+        }
+      }
+    }
+  }
+
+  /**
    * When content is imported, download the images.
    *
    * @param \Drupal\default_content\Event\ImportEvent $event
@@ -73,18 +117,10 @@ class EventSubscriber implements EventSubscriberInterface {
   public function onContentImport(ImportEvent $event): void {
     /** @var \Drupal\file\FileInterface $entity */
     foreach ($event->getImportedEntities() as $entity) {
+
       if ($entity->getEntityTypeId() == 'consumer') {
         $entity->set('secret', md5(random_int(0, 99999)));
         $entity->save();
-      }
-      if ($entity->getEntityTypeId() != 'file') {
-        continue;
-      }
-
-      $file_uri = $entity->getFileUri();
-
-      if (!file_exists($file_uri)) {
-        $this->getFile($file_uri);
       }
     }
   }
