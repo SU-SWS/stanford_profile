@@ -8,7 +8,6 @@ dependencies:
     - taxonomy.vocabulary.su_course_subjects
   module:
     - path
-    - scheduler
     - text
 id: taxonomy_term.su_course_subjects.default
 targetEntityType: taxonomy_term
@@ -37,12 +36,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 4
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   status:
     type: boolean_checkbox
     weight: 6
@@ -58,11 +51,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 5
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   layout_builder__layout: true
+  publish_on: true
+  unpublish_on: true

@@ -166,7 +166,7 @@ third_party_settings:
               context_mapping: {  }
               views_label: ''
               items_per_page: none
-            weight: 6
+            weight: 7
             additional: {  }
             third_party_settings: {  }
           e5fdfbfd-b488-4d67-ae95-3d7ebce32699:
@@ -236,7 +236,7 @@ third_party_settings:
               provider: printable
               context_mapping: {  }
               max_age: '-1'
-            weight: 3
+            weight: 4
             additional: {  }
             third_party_settings: {  }
           6ac6e270-c11a-4919-8370-adf9a563ca85:
@@ -250,7 +250,50 @@ third_party_settings:
               context_mapping: {  }
               views_label: ''
               items_per_page: none
-            weight: 4
+            weight: 5
+            additional: {  }
+          0921d570-ecf6-46f4-a290-d38ea2f4b293:
+            uuid: 0921d570-ecf6-46f4-a290-d38ea2f4b293
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_policy:su_policy_updated'
+              label: 'Last Updated'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: datetime_default
+                label: inline
+                settings:
+                  timezone_override: ''
+                  format_type: stanford_month_two_digit_day_year
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 3
+            additional: {  }
+          0dbaf822-e3b3-4208-9bcd-5671f869467e:
+            uuid: 0dbaf822-e3b3-4208-9bcd-5671f869467e
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_policy:su_policy_authority'
+              label: Authority
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 2
             additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
@@ -311,8 +354,6 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
-      - Devel
-      - 'Devel PHP'
       - 'Events Lists (Views)'
       - Forms
       - Help
