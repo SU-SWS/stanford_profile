@@ -5,6 +5,8 @@ use Faker\Factory;
 
 /**
  * Test the events + importer functionality.
+ *
+ * @group content
  */
 class EventsCest {
 

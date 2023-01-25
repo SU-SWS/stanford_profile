@@ -1,0 +1,107 @@
+.ck-content {
+  font-size: 21px;
+  line-height: 31px;
+
+  h2 {
+    font-size: 42px;
+  }
+
+  h3 {
+    font-size: 37px;
+  }
+
+  h4 {
+    font-size: 30px;
+  }
+
+  h5 {
+    font-size: 24px;
+  }
+
+  h6 {
+    font-size: 19px;
+  }
+
+  figure.table, table {
+    width: 100%;
+  }
+
+  .su-intro-text {
+    font-size: 33px;
+    line-height: 49px;
+  }
+
+  .su-font-splash {
+    font-size: 51px;
+    font-weight: 700;
+    line-height: 77px;
+  }
+
+  .su-quote-text {
+    font-size: 41px;
+    font-style: italic;
+    line-height: 61px;
+  }
+
+  .su-quote-text:before {
+    content: '"';
+  }
+
+  .su-quote-text:after {
+    content: '"';
+  }
+
+  .su-drop-cap:first-letter {
+    font-weight: 700;
+    font-size: 40px;
+  }
+
+  .su-related-text {
+    padding: 30px;
+    box-shadow: black 0 0 0 0, black 0 0 0 0, black 0 10px 15px -3px, rgba(0, 0, 0, 0.1) 0 4px 6px -4px;
+  }
+
+  .su-callout-text {
+    font-weight: 700;
+  }
+
+  .su-subheading {
+    font-size: 26px;
+    line-height: 40px;
+  }
+
+  a[href] {
+    color: #006cb8
+  }
+
+  a.su-button[href] {
+    display: inline-block;
+    padding: 13px 26px;
+    background-color: #830000;
+    color: white;
+  }
+
+  a.su-button--big[href] {
+    display: inline-block;
+    padding: 16px 36px;
+    background-color: #830000;
+    color: white;
+  }
+
+  a.su-button--secondary[href] {
+    display: inline-block;
+    border: 2px solid #830000;
+    padding: 13px 26px;
+    color: #830000;
+  }
+
+  a.su-link--action[href]:after {
+    content: '>'
+  }
+
+  div:after, p:after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}
