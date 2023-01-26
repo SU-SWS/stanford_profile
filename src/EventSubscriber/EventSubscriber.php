@@ -79,6 +79,7 @@ class EventSubscriber implements EventSubscriberInterface {
    */
   public function preSaveEntity(EntityPresaveEvent $event):void {
     $entity = $event->getEntity();
+
     if (
       $entity->getEntityTypeId() != 'media' ||
       !$entity->isNew() ||

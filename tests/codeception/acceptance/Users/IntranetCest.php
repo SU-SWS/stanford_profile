@@ -112,30 +112,25 @@ class IntranetCest {
   /**
    * Content should be indexed and results displayed.
    */
-  public function testSearchResults(AcceptanceTester $I){
+  public function testSearchResults(AcceptanceTester $I) {
     $I->runDrush('sset stanford_intranet 1');
     $I->runDrush('sapi-c');
     $quote = 'Life is like a box of chocolates. You never know what you’re going to get.';
     $text_area = $I->createEntity([
       'type' => 'stanford_wysiwyg',
-      'su_wysiwyg_text' => [[
-        'value' => "<p>$quote</p>",
-        'format' => 'stanford_html',
-      ]],
-    ], 'paragraph');
-    $row = $I->createEntity([
-      'type' => 'node_stanford_page_row',
-      'su_page_components' => [
-        'target_id' => $text_area->id(),
-        'target_revision_id' => $text_area->getRevisionId(),
+      'su_wysiwyg_text' => [
+        [
+          'value' => "<p>$quote</p>",
+          'format' => 'stanford_html',
+        ],
       ],
-    ], 'paragraph_row');
+    ], 'paragraph');
     $node = $I->createEntity([
       'title' => 'Forest Gump',
       'type' => 'stanford_page',
       'su_page_components' => [
-        'target_id' => $row->id(),
-        'target_revision_id' => $row->getRevisionId(),
+        'target_id' => $text_area->id(),
+        'target_revision_id' => $text_area->getRevisionId(),
       ],
     ]);
     $I->runDrush('sapi-i');

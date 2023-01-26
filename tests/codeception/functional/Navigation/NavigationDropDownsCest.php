@@ -6,7 +6,6 @@ use Faker\Factory;
  * Test for the lockup settings.
  *
  * @group navigation
- * @group testme
  */
 class NavigationDropDownsCest {
 
