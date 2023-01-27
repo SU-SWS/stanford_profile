@@ -159,10 +159,8 @@ class NewsCest {
    * Validate metadata information.
    *
    * @group metadata
-   * @group testme
    */
   public function testMetaData(AcceptanceTester $I) {
-    $I->logInWithRole('site_manager');
     $values = [
       'featured_image_alt' => $this->faker->words(3, TRUE),
       'banner_image_alt' => $this->faker->words(3, TRUE),
@@ -203,8 +201,7 @@ class NewsCest {
       'type' => 'stanford_news',
       'su_news_publishing_date' => $date_string,
     ]);
-    $I->amOnPage($node->toUrl('edit-form')->toString());
-    $I->click('Save');
+
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($node->label(), 'h1');
 
