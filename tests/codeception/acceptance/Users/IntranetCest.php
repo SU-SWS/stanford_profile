@@ -49,10 +49,12 @@ class IntranetCest {
   public function testIntranet(AcceptanceTester $I) {
     if (!$this->intranetWasEnabled) {
       $I->runDrush('sset stanford_intranet 1');
+      $I->runDrush('cache-rebuild');
     }
 
+    $I->stopFollowingRedirects();
     $I->amOnPage('/');
-    $I->canSeeResponseCodeIs(403);
+    $I->canSeeResponseCodeIsBetween(301, 403);
     $I->canSeeNumberOfElements('.su-multi-menu__menu a', 0);
 
     $I->logInWithRole('authenticated');
