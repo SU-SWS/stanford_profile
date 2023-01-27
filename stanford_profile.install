@@ -50,7 +50,7 @@ function stanford_profile_update_9000(&$sandbox) {
 /**
  * Install Claro theme and uninstall Seven.
  */
-function stanford_profile_update_9001(){
+function stanford_profile_update_9001() {
   /** @var \Drupal\Core\Extension\ThemeInstallerInterface $theme_installer */
   $theme_installer = \Drupal::service('theme_installer');
   $theme_installer->install(['claro']);
@@ -258,7 +258,7 @@ function stanford_profile_update_9007(&$sandbox) {
     'field_block:node:stanford_page:su_page_components',
     'field_block:node:stanford_person:su_person_components',
     'field_block:node:stanford_person:su_person_components',
-    'field_block:node:stanford_publication:su_publication_components'
+    'field_block:node:stanford_publication:su_publication_components',
   ];
   foreach ($nodes as $node) {
     $save_node = FALSE;
