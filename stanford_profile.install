@@ -282,3 +282,10 @@ function stanford_profile_update_9007(&$sandbox) {
 
   $sandbox['#finished'] = empty($sandbox['nids']) ? 1 : ($sandbox['count'] - count($sandbox['nids'])) / $sandbox['count'];
 }
+
+/**
+ * Uninstall Stable theme.
+ */
+function stanford_profile_update_9100(&$sandbox) {
+  \Drupal::service('theme_installer')->uninstall(['stable']);
+}

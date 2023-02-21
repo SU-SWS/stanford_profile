@@ -22,12 +22,12 @@
   {% block multimenubutton %}
   <button class="su-multi-menu__nav-toggle su-multi-menu__nav-toggle--right {{ toggle_modifier_class }}" aria-expanded="false">{{ toggle_text|default('Menu') }}</button>
   {% endblock %}
-  {% spaceless %}
+  {% apply spaceless %}
   {% if items is iterable %}
     {{ menus.nav_menu(items, 1, 'su-multi-menu') }}
   {% else %}
     {# If custom markup is provided, emit it as is #}
     {{ items }}
   {% endif %}
-  {% endspaceless %}
+  {% endapply %}
 </nav>
