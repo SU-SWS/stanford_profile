@@ -1,0 +1,20 @@
+uuid: 441da9d9-dcdf-40ab-9965-8116c9f4f14f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.su_policy_log.su_policy_title
+  module:
+    - stanford_policy
+id: su_policy_log.su_policy_log.su_policy_title
+field_name: su_policy_title
+entity_type: su_policy_log
+bundle: su_policy_log
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

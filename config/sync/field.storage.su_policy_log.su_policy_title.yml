@@ -1,15 +1,17 @@
-uuid: 6343a212-1edb-4c93-bb5f-7ad2149c59c1
+uuid: 00a2d2f9-b4a8-44c1-bd1a-f6122462f4f6
 langcode: en
 status: true
 dependencies:
   module:
-    - eck
-id: log.su_policy_notes
-field_name: su_policy_notes
-entity_type: log
-type: string_long
+    - stanford_policy
+id: su_policy_log.su_policy_title
+field_name: su_policy_title
+entity_type: su_policy_log
+type: string
 settings:
+  max_length: 255
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1
