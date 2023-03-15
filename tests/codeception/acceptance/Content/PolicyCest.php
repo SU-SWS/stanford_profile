@@ -213,8 +213,8 @@ class PolicyCest {
     $I->selectOption('Parent item', '-- 2. ' . $chapter_two->label());
     $I->click('Change book (update list of parents)');
 
-    $I->click('Add new change log');
-    $I->canSeeInField('[name="su_policy_changelog[form][0][title][0][value]"]', $data_formatter->format($time, 'custom', 'Y-m-d', self::getTimezone()));
+    $I->click('Add new policy log');
+    $I->fillField('[name="su_policy_changelog[form][0][su_policy_title][0][value]"]', $data_formatter->format($time, 'custom', 'Y-m-d', self::getTimezone()));
     $I->canSeeInField('[name="su_policy_changelog[form][0][su_policy_date][0][value][date]"]', $data_formatter->format($time, 'custom', 'Y-m-d', self::getTimezone()));
     $change_notes = $this->faker->sentences(3, TRUE);
     $I->fillField('Notes', $change_notes);
