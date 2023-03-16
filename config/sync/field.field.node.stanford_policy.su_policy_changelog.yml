@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - eck.eck_type.log.policy
     - field.storage.node.su_policy_changelog
     - node.type.stanford_policy
 id: node.stanford_policy.su_policy_changelog
@@ -17,13 +16,11 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:log'
+  handler: 'default:su_policy_log'
   handler_settings:
-    target_bundles:
-      policy: policy
+    target_bundles: null
     sort:
       field: _none
       direction: ASC
     auto_create: true
-    auto_create_bundle: ''
 field_type: entity_reference

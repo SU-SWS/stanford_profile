@@ -1,0 +1,24 @@
+uuid: de05decc-78dd-4aac-9903-7188d09a4422
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.su_policy_log.su_policy_date
+  module:
+    - datetime
+    - stanford_policy
+id: su_policy_log.su_policy_log.su_policy_date
+field_name: su_policy_date
+entity_type: su_policy_log
+bundle: su_policy_log
+label: Date
+description: 'The day this change log occurs. The "date" will appear above the change log notes.'
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

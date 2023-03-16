@@ -1,17 +1,18 @@
-uuid: ef98afc7-80e0-4e80-be22-31ae490aa032
+uuid: 273f2336-a482-4a11-974e-20d8ada5b9c7
 langcode: en
 status: true
 dependencies:
   config:
-    - eck.eck_type.log.policy
-    - field.field.log.policy.su_policy_date
-    - field.field.log.policy.su_policy_notes
-    - field.field.log.policy.su_policy_public
+    - field.field.su_policy_log.su_policy_log.su_policy_date
+    - field.field.su_policy_log.su_policy_log.su_policy_notes
+    - field.field.su_policy_log.su_policy_log.su_policy_public
+    - field.field.su_policy_log.su_policy_log.su_policy_title
   module:
     - datetime
-id: log.policy.default
-targetEntityType: log
-bundle: policy
+    - stanford_policy
+id: su_policy_log.su_policy_log.default
+targetEntityType: su_policy_log
+bundle: su_policy_log
 mode: default
 content:
   su_policy_date:
@@ -35,7 +36,7 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  title:
+  su_policy_title:
     type: string_textfield
     weight: 1
     region: content
@@ -45,4 +46,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  status: true
   uid: true

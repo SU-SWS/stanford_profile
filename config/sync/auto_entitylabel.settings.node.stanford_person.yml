@@ -2,8 +2,8 @@ status: 2
 pattern: '[node:su_person_first_name] [node:su_person_last_name]'
 escape: false
 preserve_titles: false
+save: false
+chunk: 50
 dependencies:
   config:
     - node.type.stanford_person
-save: 0
-chunk: '50'
