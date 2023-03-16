@@ -1,0 +1,53 @@
+uuid: 3b7ff7ed-9d71-420c-b710-68ec8826ba29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.su_policy_log.su_policy_log.su_policy_date
+    - field.field.su_policy_log.su_policy_log.su_policy_notes
+    - field.field.su_policy_log.su_policy_log.su_policy_public
+    - field.field.su_policy_log.su_policy_log.su_policy_title
+  module:
+    - datetime
+    - empty_fields
+    - field_formatter_class
+    - stanford_policy
+id: su_policy_log.su_policy_log.default
+targetEntityType: su_policy_log
+bundle: su_policy_log
+mode: default
+content:
+  su_policy_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: stanford_month_two_digit_day_year
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+    weight: 1
+    region: content
+  su_policy_notes:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  su_policy_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  search_api_excerpt: true
+  status: true
+  su_policy_public: true
+  uid: true

@@ -1,14 +1,15 @@
-uuid: 049316b6-49ad-4156-820a-0e768b0095af
+uuid: 732df83b-647c-43b6-aaf5-8ec94162799c
 langcode: en
 status: true
 dependencies:
   config:
-    - eck.eck_type.log.policy
-    - field.storage.log.su_policy_public
-id: log.policy.su_policy_public
+    - field.storage.su_policy_log.su_policy_public
+  module:
+    - stanford_policy
+id: su_policy_log.su_policy_log.su_policy_public
 field_name: su_policy_public
-entity_type: log
-bundle: policy
+entity_type: su_policy_log
+bundle: su_policy_log
 label: 'Show on Policy Page'
 description: 'Check this box to display this change log on the policy''s detail page'
 required: false

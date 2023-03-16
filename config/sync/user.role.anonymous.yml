@@ -5,6 +5,7 @@ dependencies:
   module:
     - field_permissions
     - media
+    - stanford_policy
     - system
     - ui_patterns_library
 _core:
@@ -28,6 +29,7 @@ permissions:
   - 'view own su_site_404'
   - 'view own su_site_home'
   - 'view own su_site_url'
+  - 'view policy log'
   - 'view su_metatags'
   - 'view su_policy_auto_prefix'
   - 'view su_policy_chapter'
