@@ -1,5 +1,11 @@
 # Stanford Profile
 
+9.2.5
+--------------------------------------------------------------------------------
+- Replace log entity type and remove ECK (#656)
+- Enabled empty_fields module
+- DEVOPS-000: SMRT quotes R dumb (#655)
+
 9.2.4
 --------------------------------------------------------------------------------
 _Release Date: 2022-12-13_
