@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.stanford_html
+    - filter.format.stanford_minimal_html
     - media.type.file
     - media.type.google_form
     - media.type.image
@@ -21,10 +23,12 @@ dependencies:
     - content_lock
     - dropzonejs
     - editoria11y
+    - filter
     - media
     - menu_admin_per_menu
     - node
     - paragraphs
+    - pathauto
     - scheduler
     - stanford_policy
     - stanford_publication
@@ -105,8 +109,12 @@ permissions:
   - 'edit own video media'
   - 'edit policy log'
   - 'mark as hidden in editoria11y'
+  - 'mark as ok in editoria11y'
+  - 'notify of path changes'
   - 'schedule publishing of nodes'
   - 'update media'
+  - 'use text format stanford_html'
+  - 'use text format stanford_minimal_html'
   - 'view all revisions'
   - 'view any unpublished stanford_course content'
   - 'view any unpublished stanford_event content'
@@ -114,6 +122,7 @@ permissions:
   - 'view any unpublished stanford_news content'
   - 'view any unpublished stanford_page content'
   - 'view any unpublished stanford_person content'
+  - 'view any unpublished stanford_policy content'
   - 'view any unpublished stanford_publication content'
   - 'view editoria11y checker'
   - 'view own unpublished content'

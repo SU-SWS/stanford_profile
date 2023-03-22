@@ -8,7 +8,10 @@ dependencies:
     - core.entity_view_display.node.stanford_news.default
     - core.entity_view_display.node.stanford_page.default
     - core.entity_view_display.node.stanford_person.default
+    - core.entity_view_display.node.stanford_policy.default
     - core.entity_view_display.node.stanford_publication.default
+    - filter.format.stanford_html
+    - filter.format.stanford_minimal_html
     - media.type.embeddable
     - media.type.file
     - media.type.google_form
@@ -25,6 +28,7 @@ dependencies:
     - node.type.stanford_publication
     - taxonomy.vocabulary.basic_page_types
     - taxonomy.vocabulary.event_audience
+    - taxonomy.vocabulary.media_tags
     - taxonomy.vocabulary.stanford_event_types
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
@@ -192,7 +196,6 @@ permissions:
   - 'bypass embed field validation'
   - 'bypass node access'
   - 'cancel account'
-  - 'change own username'
   - 'choose layout for node stanford_page'
   - 'configure all stanford_page node layout overrides'
   - 'configure any layout'
@@ -201,6 +204,7 @@ permissions:
   - 'configure editable stanford_news node layout overrides'
   - 'configure editable stanford_page node layout overrides'
   - 'configure editable stanford_person node layout overrides'
+  - 'configure editable stanford_policy node layout overrides'
   - 'configure editable stanford_publication node layout overrides'
   - 'configure layout builder restrictions'
   - 'create and edit custom blocks'
@@ -223,6 +227,7 @@ permissions:
   - 'create stanford_publication content'
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
+  - 'create terms in media_tags'
   - 'create terms in stanford_event_types'
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'
@@ -276,6 +281,7 @@ permissions:
   - 'delete stanford_publication revisions'
   - 'delete terms in basic_page_types'
   - 'delete terms in event_audience'
+  - 'delete terms in media_tags'
   - 'delete terms in stanford_event_types'
   - 'delete terms in stanford_news_topics'
   - 'delete terms in stanford_person_types'
@@ -328,6 +334,7 @@ permissions:
   - 'edit stanford_super_footer config page entity'
   - 'edit terms in basic_page_types'
   - 'edit terms in event_audience'
+  - 'edit terms in media_tags'
   - 'edit terms in stanford_event_types'
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
@@ -335,6 +342,8 @@ permissions:
   - 'edit terms in su_shared_tags'
   - 'link to any page'
   - 'mark as hidden in editoria11y'
+  - 'mark as ok in editoria11y'
+  - 'notify of path changes'
   - 'rabbit hole administer taxonomy_term'
   - 'rabbit hole bypass node'
   - 'rabbit hole bypass taxonomy_term'
@@ -353,6 +362,8 @@ permissions:
   - 'update any media'
   - 'update any stanford_component_block block content'
   - 'update media'
+  - 'use text format stanford_html'
+  - 'use text format stanford_minimal_html'
   - 'use views bulk edit'
   - 'view all media revisions'
   - 'view all revisions'
@@ -363,6 +374,7 @@ permissions:
   - 'view any unpublished stanford_news content'
   - 'view any unpublished stanford_page content'
   - 'view any unpublished stanford_person content'
+  - 'view any unpublished stanford_policy content'
   - 'view any unpublished stanford_publication content'
   - 'view config_pages entity'
   - 'view editoria11y checker'

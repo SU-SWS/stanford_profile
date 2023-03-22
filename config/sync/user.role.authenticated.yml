@@ -2,13 +2,10 @@ uuid: ccb69bd8-1bb9-4122-861e-0d75be7eb22d
 langcode: en
 status: true
 dependencies:
-  config:
-    - filter.format.stanford_html
-    - filter.format.stanford_minimal_html
   module:
     - field_permissions
-    - filter
     - media
+    - printable
     - shortcut
     - stanford_policy
     - system
@@ -23,8 +20,6 @@ permissions:
   - 'access content'
   - 'access patterns page'
   - 'access shortcuts'
-  - 'use text format stanford_html'
-  - 'use text format stanford_minimal_html'
   - 'view field_media_embeddable_code'
   - 'view media'
   - 'view own field_media_embeddable_code'
@@ -38,6 +33,7 @@ permissions:
   - 'view own su_site_home'
   - 'view own su_site_url'
   - 'view policy log'
+  - 'view printer friendly versions'
   - 'view su_metatags'
   - 'view su_policy_auto_prefix'
   - 'view su_policy_chapter'
