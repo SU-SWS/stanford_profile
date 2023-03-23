@@ -172,8 +172,6 @@ class AuthenticatedPermissionsCest {
 
   /**
    * Vocabs aren't seen if there are no permissions for them.
-   *
-   * @group mikes
    */
   public function testTaxonomyOverviewPage(AcceptanceTester $I) {
     $name = $this->faker->firstName;
