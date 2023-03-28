@@ -47,7 +47,8 @@ class PersonCest {
    * Test that the view pages exist.
    */
   public function testViewPagesExist(AcceptanceTester $I) {
-    $I->amOnPage('/people');
+    $I->amOnPage("/people");
+    $I->canSeeResponseCodeIs(200);
     $I->seeLink('Student');
     $I->seeLink('Staff');
     $I->click('Staff');

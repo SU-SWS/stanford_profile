@@ -1,18 +1,58 @@
 # Cardinal Service Profile
 
-8.x-3.1-alpha
+8.x-3.3
 --------------------------------------------------------------------------------
+_Release Date: 2022-07-12_
+
+- D8CORE-1835: Added abbr buttons to ckeditor (#550)
+- D8CORE-4780 Changed search page button text to "Search"
+- D8CORE-5862: Removed obsolete checkbox from theme settings (#575)
+- D8CORE-6000: Added additional html elements to embeddables allow list (#584)
+- Updated config from search_api module
+- D8CORE-5128 Enable embed code validators (#579)
+- D8CORE-6005 Allow Span tags in the wysiwyg
+- fixed composer namespace to lowercase
+- Removed fzaninotto/faker workaround in CI tests
+- Fixed Test Configs
+- Adjusted functional tests (#577)
+- Drupal 9.4 support (#576)
+- Move some CircleCi to GH Actions (#568)
+- Fixup patches in composer
+- D8CORE-5886 Enable ajax on people lists
+- Adjusted stanford_profile dependency
+- Added and configured ckeditor_blockimagepaste to prevent inline base64 images
+- D8CORe-5871 Change order of filter processing to fix <picture><source> tags
+- D8CORE-5773: Added edit buttons on courses list page (#555)
+
+8.x-3.2
+--------------------------------------------------------------------------------
+_Release Date: 2022-05-26_
+- CS-87: Adjusted grid styles for more uniform rows. (#258)
+- Change the branch to pull from for 8.x branch (#261)
+- CS-86: Disabled event opportunities importer (#257)
+- Changed Events page menu block. (#254)
+- Locked stanford_profile to 8.4.4 constraint for 8.x branch (#255)
+- Stanford Profile updates 2022-05-04
+- Added courses department importer for long name population
+- D8CORE-2331: Updated help on media caption field text (#542)
+- Allow admins to change the home page via site settings (#540)
+- D8CORE-5833: Fix for courses view to respect chosen limit in card grid list paragraph (#539)
+
+8.x-3.1
+--------------------------------------------------------------------------------
+_Release Date: 2022-04-27_
 - Locked migrate_plus version to 5.2. (#249)
 - CS-79: Opportunities grid (#245)
 - CS-79: Added opportunity grid component and styles.
 - CS-79: Change CS opportunity view to use opportunity grid component and styled view.
 - CS-79: Added and enabled smart_trim module.
 - CS-79: Updated administer opportunities view.
-* Updated circleci caravan version.
-* Enabled transliterate_filenames module.
+- Updated circleci caravan version.
+- Enabled transliterate_filenames module.
 
 8.x-3.0
 --------------------------------------------------------------------------------
+_Release Date: 2022-04-08_
 - D8CORE-5172: Updated references to localist and events-legacy urls
 - DO not require lockup option select, prevent requiring lockup fields
 - updated circleci and composer branches

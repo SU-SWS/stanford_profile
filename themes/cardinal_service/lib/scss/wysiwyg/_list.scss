@@ -9,7 +9,7 @@ ol {
       grid-gap: 0 25px;
       list-style: none;
       counter-increment: inst;
-      @include modular-spacing('margin-bottom', 2);
+      @include responsive-spacing('margin-bottom', 2);
 
       &::before {
         @include modular-typography(2);
@@ -40,7 +40,7 @@ ol {
   ul,
   ol {
     @include big-paragraph;
-    @include modular-spacing('margin', null null 2 null);
+    @include responsive-spacing('margin', null null 2 null);
   }
 
   // When centered, allow the list indicator to follow the text.

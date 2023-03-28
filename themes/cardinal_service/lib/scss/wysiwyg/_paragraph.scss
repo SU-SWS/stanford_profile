@@ -25,7 +25,7 @@
   p {
     @include big-paragraph;
     @include margin(0 null null null);
-    @include modular-spacing('margin', null null 2 null);
+    @include responsive-spacing('margin', null null 2 null);
     @include padding(0 null 0 null);
   }
 
@@ -42,8 +42,8 @@
     @at-root #{selector-unify(&, p)},
     & {
       @include margin(0 auto 1em 0);
-      @include modular-spacing('margin', null null 3 null);
-      @include modular-spacing('padding', 0 null null null);
+      @include responsive-spacing('margin', null null 3 null);
+      @include responsive-spacing('padding', 0 null null null);
       display: block;
       font-size: 2.8rem;
       font-style: normal;
@@ -111,7 +111,7 @@
     & {
       @include intro-text;
       @include modular-typography(2);
-      @include modular-spacing('margin-bottom', 2);
+      @include responsive-spacing('margin-bottom', 2);
       // 70 character line length.
       max-width: 55ch;
 
@@ -138,8 +138,8 @@
     @at-root #{selector-unify(&, p)},
     & {
       @include font-splash;
-      @include modular-spacing('margin', null null 2 null);
-      @include modular-spacing('padding', -1 null null null);
+      @include responsive-spacing('margin', null null 2 null);
+      @include responsive-spacing('padding', -1 null null null);
       @include type-a;
 
       &:first-child {
@@ -191,7 +191,7 @@
   // A shadowy type.
   .su-related-text {
     @include box-shadow('paper');
-    @include modular-spacing('margin-bottom', 3);
+    @include responsive-spacing('margin-bottom', 3);
     @include padding(25px);
     border: 1px solid #e3e3e3;
 

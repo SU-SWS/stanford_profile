@@ -22,12 +22,12 @@
   }
 
   .views-row {
-    @include modular-spacing('margin-bottom', 4);
+    @include responsive-spacing('margin-bottom', 4);
   }
 
   .su-card {
     padding: 30px 30px 0;
-    @include modular-spacing('padding-bottom', 3);
+    @include responsive-spacing('padding-bottom', 3);
     height: 100%;
 
     @include grid-media-max('sm') {
@@ -35,7 +35,7 @@
     }
 
     .views-field-su-spotlight-feature-image {
-      @include modular-spacing('padding-bottom', 3);
+      @include responsive-spacing('padding-bottom', 3);
       display: flex;
       justify-content: center;
 
@@ -65,15 +65,15 @@
 }
 
 .su-spotlights-related-stories {
-  @include modular-spacing('padding-top', 9);
-  @include modular-spacing('margin-bottom', 9);
+  @include responsive-spacing('padding-top', 9);
+  @include responsive-spacing('margin-bottom', 9);
 
   .block__title {
     text-align: center;
   }
 
   footer {
-    @include modular-spacing('margin-top', 7);
+    @include responsive-spacing('margin-top', 7);
     width: 100%;
     display: flex;
     justify-content: space-around;
