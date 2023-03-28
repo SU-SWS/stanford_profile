@@ -1,4 +1,7 @@
 name: PHPUnit and Acceptance Tests
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 on: [push]
 jobs:
   phpunit:
