@@ -1,6 +1,6 @@
 uuid: 640d3919-ab6d-428f-b75c-49ecff050a85
 langcode: en
-status: true
+status: false
 dependencies: {  }
 _core:
   default_config_hash: 4qTDR2Nt_YKYiCUdGBFC6022pSdZDbjKSWH2mplvPv8
@@ -15,6 +15,8 @@ source:
   track_changes: true
   plugin: url
   data_fetcher_plugin: http
+  request_options:
+    timeout: 60
   urls: {  }
   data_parser_plugin: json
   item_selector: events
@@ -297,7 +299,28 @@ source:
 process:
   status: constants/one
   type: constants/type
-  title: title
+  canceled:
+    -
+      plugin: str_replace
+      source: status
+      regex: true
+      search: '/\b(?!canceled\b)\w+/'
+      replace: ''
+    -
+      plugin: callback
+      callable: ucfirst
+  title:
+    -
+      plugin: concat
+      source:
+        - '@canceled'
+        - title
+      delimiter: ': '
+    -
+      plugin: str_replace
+      regex: true
+      search: '/^: /'
+      replace: ''
   body/value:
     -
       plugin: skip_on_empty

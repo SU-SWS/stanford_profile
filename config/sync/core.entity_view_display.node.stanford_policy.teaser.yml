@@ -1,0 +1,223 @@
+uuid: 6ea98c71-cdb1-4896-81cd-5af8f617ca01
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.stanford_policy.body
+    - field.field.node.stanford_policy.layout_builder__layout
+    - field.field.node.stanford_policy.su_policy_authority
+    - field.field.node.stanford_policy.su_policy_auto_prefix
+    - field.field.node.stanford_policy.su_policy_changelog
+    - field.field.node.stanford_policy.su_policy_chapter
+    - field.field.node.stanford_policy.su_policy_effective
+    - field.field.node.stanford_policy.su_policy_policy_num
+    - field.field.node.stanford_policy.su_policy_related
+    - field.field.node.stanford_policy.su_policy_subchapter
+    - field.field.node.stanford_policy.su_policy_title
+    - field.field.node.stanford_policy.su_policy_updated
+    - node.type.stanford_policy
+  module:
+    - datetime
+    - ds
+    - field_formatter_class
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - smart_trim
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    allowed_block_categories:
+      - 'Basic Page Type Lists (Views)'
+      - Book
+      - 'Changelog (Views)'
+      - 'Chaos Tools'
+      - 'Config Pages'
+      - 'Content fields'
+      - 'Custom block types'
+      - 'Custom blocks'
+      - Devel
+      - 'Devel PHP'
+      - 'Events Lists (Views)'
+      - Forms
+      - Help
+      - 'Inline blocks'
+      - 'Jumpstart UI'
+      - 'Lists (Views)'
+      - Menus
+      - 'News Lists (Views)'
+      - 'PDB React'
+      - 'People Lists (Views)'
+      - Printable
+      - 'Publication (Views)'
+      - React
+      - 'SimpleSAMLphp Authentication'
+      - 'Stanford News'
+      - 'Stanford Profile Helper'
+      - 'Stanford SimpleSAML PHP'
+      - System
+      - 'Taxonomy Terms (Views)'
+      - Views
+      - core
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+      denylisted_blocks:
+        'Content fields':
+          - 'field_block:node:stanford_policy:uid'
+          - 'field_block:node:stanford_policy:created'
+          - 'field_block:node:stanford_policy:changed'
+          - 'field_block:node:stanford_policy:type'
+          - 'field_block:node:stanford_policy:revision_default'
+          - 'field_block:node:stanford_policy:default_langcode'
+          - 'field_block:node:stanford_policy:nid'
+          - 'field_block:node:stanford_policy:langcode'
+          - 'extra_field_block:node:stanford_policy:links'
+          - 'field_block:node:stanford_policy:menu_link'
+          - 'field_block:node:stanford_policy:promote'
+          - 'field_block:node:stanford_policy:status'
+          - 'field_block:node:stanford_policy:publish_on'
+          - 'field_block:node:stanford_policy:rh_action'
+          - 'field_block:node:stanford_policy:rh_redirect_fallback_action'
+          - 'field_block:node:stanford_policy:rh_redirect'
+          - 'field_block:node:stanford_policy:rh_redirect_response'
+          - 'field_block:node:stanford_policy:revision_timestamp'
+          - 'field_block:node:stanford_policy:vid'
+          - 'field_block:node:stanford_policy:revision_log'
+          - 'field_block:node:stanford_policy:revision_translation_affected'
+          - 'field_block:node:stanford_policy:revision_uid'
+          - 'extra_field_block:node:stanford_policy:search_api_excerpt'
+          - 'field_block:node:stanford_policy:sticky'
+          - 'field_block:node:stanford_policy:unpublish_on'
+          - 'field_block:user:user:changed'
+          - 'field_block:user:user:created'
+          - 'field_block:user:user:default_langcode'
+          - 'field_block:user:user:su_display_name'
+          - 'field_block:user:user:mail'
+          - 'field_block:user:user:init'
+          - 'field_block:user:user:langcode'
+          - 'field_block:user:user:access'
+          - 'field_block:user:user:login'
+          - 'extra_field_block:user:user:member_for'
+          - 'field_block:user:user:name'
+          - 'field_block:user:user:preferred_admin_langcode'
+          - 'field_block:user:user:preferred_langcode'
+          - 'field_block:user:user:roles'
+          - 'field_block:user:user:role_change'
+          - 'extra_field_block:user:user:search_api_excerpt'
+          - 'field_block:user:user:timezone'
+          - 'field_block:user:user:uid'
+          - 'field_block:user:user:status'
+      allowlisted_blocks:
+        Book:
+          - book_forward_back
+        'Changelog (Views)':
+          - 'views_block:change_logs-node_page_changes'
+          - 'views_block:change_logs-policy_changes'
+        Menus:
+          - book_navigation
+          - 'menu_block:main'
+          - 'system_menu_block:main'
+        Printable:
+          - 'printable_links_block:node'
+        System:
+          - system_breadcrumb_block
+        core:
+          - page_title_block
+      restricted_categories:
+        - 'Chaos Tools'
+        - 'Config Pages'
+        - Forms
+        - Help
+        - 'Lists (Views)'
+        - React
+        - 'SimpleSAMLphp Authentication'
+        - 'Stanford Profile Helper'
+        - 'Stanford SimpleSAML PHP'
+        - 'Taxonomy Terms (Views)'
+        - Views
+  ds:
+    layout:
+      id: pattern_news-list
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      news_list_headline:
+        - node_title
+      news_list_dek:
+        - su_policy_updated
+      news_list_footer:
+        - body
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          wrapper: ''
+          class: ''
+id: node.stanford_policy.teaser
+targetEntityType: node
+bundle: stanford_policy
+mode: teaser
+content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 250
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: trim
+      trim_options:
+        text: true
+        trim_zero: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 2
+    region: news_list_footer
+  su_policy_updated:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: stanford_month_date_year
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 1
+    region: news_list_dek
+hidden:
+  layout_builder__layout: true
+  links: true
+  search_api_excerpt: true
+  su_policy_authority: true
+  su_policy_auto_prefix: true
+  su_policy_changelog: true
+  su_policy_chapter: true
+  su_policy_effective: true
+  su_policy_policy_num: true
+  su_policy_related: true
+  su_policy_subchapter: true
+  su_policy_title: true

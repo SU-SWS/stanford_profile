@@ -251,7 +251,7 @@ third_party_settings:
         - jumpstart_ui_one_column
         - jumpstart_ui_two_column
         - jumpstart_ui_three_column
-      blacklisted_blocks:
+      denylisted_blocks:
         'Content fields':
           - 'field_block:node:stanford_publication:uid'
           - 'field_block:node:stanford_publication:created'
@@ -295,7 +295,7 @@ third_party_settings:
           - 'field_block:user:user:timezone'
           - 'field_block:user:user:uid'
           - 'field_block:user:user:status'
-      whitelisted_blocks:
+      allowlisted_blocks:
         Menus:
           - 'system_menu_block:stanford-event-types'
           - 'menu_block:stanford-event-types'
@@ -333,6 +333,8 @@ hidden:
   links: true
   search_api_excerpt: true
   stanford_intranet__access: true
+  su_metatags: true
+  su_publication_author_ref: true
   su_publication_citation: true
   su_publication_components: true
   su_publication_cta: true

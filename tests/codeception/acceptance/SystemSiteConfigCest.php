@@ -96,7 +96,7 @@ class SystemSiteConfigCest {
     $I->click('Save');
     $I->canSee('Site Settings has been');
 
-    \Drupal::configFactory()->reset('system.site');
+    drupal_flush_all_caches();
     $setting = \Drupal::config('system.site')->get('page.front');
     $path = '/node/' . $node->id();
     $I->assertEquals($path, $setting);
@@ -128,7 +128,6 @@ class SystemSiteConfigCest {
     $I->canSee('1 error has been found: Google Analytics Account');
     $I->fillField('Google Analytics Account', 'UA-123456-12');
     $I->click('Save');
-    $I->runDrush('cache-rebuild');
     $I->amOnPage('/user/logout');
     $I->amOnPage('/');
     $I->canSee('UA-123456-12');
@@ -137,7 +136,6 @@ class SystemSiteConfigCest {
     $I->fillField('Google Analytics Account', '');
     $I->click('Save');
     $I->amOnPage('/user/logout');
-    $I->runDrush('cache-rebuild');
     $I->amOnPage('/');
     $I->cantSee('UA-12456-12');
   }

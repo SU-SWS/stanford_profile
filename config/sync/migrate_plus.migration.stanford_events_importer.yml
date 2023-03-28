@@ -1,6 +1,6 @@
 uuid: f12377a6-f9c4-4050-8493-87df53c70bae
 langcode: en
-status: true
+status: false
 dependencies: {  }
 _core:
   default_config_hash: cGwmz8ZjzFcJd_ygOCdIMWZpXlLTbA3JM3CN-rniTws
@@ -123,6 +123,9 @@ process:
       replace: events-legacy.stanford.edu
     search: events.stanford.edu
     replace: events-legacy.stanford.edu
+  su_event_source/title:
+    plugin: default_value
+    default_value: ''
   su_event_date_time/value:
     -
       plugin: format_date

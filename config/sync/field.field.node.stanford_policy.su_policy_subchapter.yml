@@ -1,0 +1,19 @@
+uuid: 56f70d5b-b9b6-454a-879e-7f26145f49c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_policy_subchapter
+    - node.type.stanford_policy
+id: node.stanford_policy.su_policy_subchapter
+field_name: su_policy_subchapter
+entity_type: node
+bundle: stanford_policy
+label: 'SubChapter Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

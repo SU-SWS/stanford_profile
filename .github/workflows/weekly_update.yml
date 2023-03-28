@@ -1,0 +1,28 @@
+# .github/workflows/release.yml
+name: Weekly Updates
+on:
+  schedule:
+    - cron: '0 0 * * 2'
+jobs:
+  update:
+    name: Pull latest from stanford profile
+    runs-on: ubuntu-latest
+    container:
+      image: pookmish/drupal8ci:latest
+    steps:
+      - uses: actions/checkout@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull Updates
+        run: |
+          git config --global user.email "sws-developers@lists.stanford.edu"
+          git config --global user.name "CircleCI"
+          git config pull.rebase false
+          git pull https://github.com/SU-SWS/stanford_profile.git 9.x -X ours --no-edit
+          if [[ $(git diff origin/${CIRCLE_BRANCH} --name-only) ]]; then
+            DATE=`date +%Y-%m-%d`
+            git checkout -b ${DATE}-9.x
+            git push ${DATE}-9.x
+            sleep 5
+            gh pr create --title=${DATE} --base=9.x --body="Updates from stanford_profile" --assignee=pookmish,imonroe
+          fi

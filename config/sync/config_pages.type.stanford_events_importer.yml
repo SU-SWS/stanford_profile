@@ -6,18 +6,30 @@ dependencies:
     - config_pages_overrides
 third_party_settings:
   config_pages_overrides:
-    509e9b09-d57c-40b0-8771-797f021b29d8:
-      field: su_event_xml_url
-      delta: -1
-      column: uri
-      config_name: migrate_plus.migration.stanford_events_importer
-      config_item: source.urls
-    5f10a282-2cf4-4291-9a20-bf17f182885e:
+    23a634c7-34bc-4926-b068-87c93e47eb10:
+      field: su_event_empty
+      delta: 0
+      column: value
+      config_name: views.view.stanford_events
+      config_item: display.default.display_options.empty.area.content.value
+      prefix: ''
+      suffix: ''
+    30c698e6-3386-4481-bd16-0aa9d8b29ae0:
       field: su_localist_url
-      delta: -1
+      delta: 0
       column: uri
       config_name: migrate_plus.migration.stanford_localist_importer
-      config_item: source.urls
+      config_item: status
+      prefix: ''
+      suffix: ''
+    4e51a456-df70-4dc1-95d3-a58fb5c3b509:
+      field: su_localist_bookmark
+      delta: 0
+      column: uri
+      config_name: migrate_plus.migration.stanford_localist_importer
+      config_item: status
+      prefix: ''
+      suffix: ''
 id: stanford_events_importer
 label: 'Events Importer'
 token: null

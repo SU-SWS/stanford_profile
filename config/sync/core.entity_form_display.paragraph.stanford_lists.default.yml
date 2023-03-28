@@ -19,7 +19,7 @@ mode: default
 content:
   su_list_button:
     type: link_default
-    weight: 3
+    weight: 4
     region: content
     settings:
       placeholder_url: ''
@@ -49,4 +49,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  publish_on: true
   status: true
+  unpublish_on: true

@@ -4,15 +4,25 @@ status: true
 dependencies:
   config:
     - config_pages.type.stanford_events_importer
+    - field.field.config_pages.stanford_events_importer.su_event_empty
     - field.field.config_pages.stanford_events_importer.su_event_xml_url
+    - field.field.config_pages.stanford_events_importer.su_localist_bookmark
     - field.field.config_pages.stanford_events_importer.su_localist_url
   module:
     - link
+    - text
 id: config_pages.stanford_events_importer.default
 targetEntityType: config_pages
 bundle: stanford_events_importer
 mode: default
 content:
+  su_event_empty:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
   su_event_xml_url:
     type: link
     label: above
@@ -24,6 +34,18 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 0
+    region: content
+  su_localist_bookmark:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
     region: content
   su_localist_url:
     type: link

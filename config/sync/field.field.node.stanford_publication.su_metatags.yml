@@ -1,0 +1,21 @@
+uuid: 787c70bc-abe8-43f7-8e12-9fd3d51f368d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_metatags
+    - node.type.stanford_publication
+  module:
+    - metatag
+id: node.stanford_publication.su_metatags
+field_name: su_metatags
+entity_type: node
+bundle: stanford_publication
+label: 'Meta Tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

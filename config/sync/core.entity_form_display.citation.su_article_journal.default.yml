@@ -7,6 +7,7 @@ dependencies:
     - field.field.citation.su_article_journal.su_day
     - field.field.citation.su_article_journal.su_doi
     - field.field.citation.su_article_journal.su_issue
+    - field.field.citation.su_article_journal.su_journal_publisher
     - field.field.citation.su_article_journal.su_month
     - field.field.citation.su_article_journal.su_page
     - field.field.citation.su_article_journal.su_publisher
@@ -106,6 +107,14 @@ content:
     weight: 4
     region: content
     settings:
+      placeholder: ''
+    third_party_settings: {  }
+  su_journal_publisher:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   su_month:

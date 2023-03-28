@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.su-secondary-nav--light {
+  .su-secondary-nav__link {
+    color: $su-color-digital-blue;
+  }
+}
+
+a {
+  &.su-link--external {
+    &.su-secondary-nav__link {
+      &:after {
+        background-color: $su-color-digital-blue;
+      }
+    }
+  }
+}
+
+// before bar in the secondary navigation has a blue focus 
+.su-secondary-nav--light {
+  .su-secondary-nav__link {
+    &:focus {
+      &::before {
+        background-color: $su-color-digital-blue;
+      }
+    }
+    &:hover {
+      &::before {
+        background-color: $su-color-digital-blue;
+      }
+    }
+  }
+}

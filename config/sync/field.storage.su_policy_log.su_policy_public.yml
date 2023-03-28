@@ -1,0 +1,18 @@
+uuid: ac433979-128d-41eb-98fe-013b3d5563aa
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_policy
+id: su_policy_log.su_policy_public
+field_name: su_policy_public
+entity_type: su_policy_log
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

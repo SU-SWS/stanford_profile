@@ -1,0 +1,20 @@
+uuid: 16afa11a-0c16-425a-a491-9cb99300af1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.su_policy_log.su_policy_notes
+  module:
+    - stanford_policy
+id: su_policy_log.su_policy_log.su_policy_notes
+field_name: su_policy_notes
+entity_type: su_policy_log
+bundle: su_policy_log
+label: Notes
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

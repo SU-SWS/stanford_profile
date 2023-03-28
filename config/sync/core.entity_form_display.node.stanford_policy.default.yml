@@ -1,0 +1,287 @@
+uuid: bf1b1a6a-54e1-4206-8e66-7283a4077aa1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.stanford_policy.body
+    - field.field.node.stanford_policy.layout_builder__layout
+    - field.field.node.stanford_policy.su_policy_authority
+    - field.field.node.stanford_policy.su_policy_auto_prefix
+    - field.field.node.stanford_policy.su_policy_changelog
+    - field.field.node.stanford_policy.su_policy_chapter
+    - field.field.node.stanford_policy.su_policy_effective
+    - field.field.node.stanford_policy.su_policy_policy_num
+    - field.field.node.stanford_policy.su_policy_related
+    - field.field.node.stanford_policy.su_policy_subchapter
+    - field.field.node.stanford_policy.su_policy_title
+    - field.field.node.stanford_policy.su_policy_updated
+    - node.type.stanford_policy
+  module:
+    - allowed_formats
+    - datetime
+    - field_group
+    - inline_entity_form
+    - path
+    - scheduler
+    - text
+third_party_settings:
+  field_group:
+    group_policy_prefix:
+      children:
+        - su_policy_auto_prefix
+        - su_policy_chapter
+        - su_policy_subchapter
+        - su_policy_policy_num
+      label: 'Policy Prefix'
+      region: content
+      parent_name: ''
+      weight: 6
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: 'Leave these fields empty to build the prefix based on the hierarchy structure.'
+        required_fields: true
+        weight: 0
+id: node.stanford_policy.default
+targetEntityType: node
+bundle: stanford_policy
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 5
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: true
+    third_party_settings:
+      allowed_formats:
+        hide_help: '0'
+        hide_guidelines: '0'
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 52
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  su_policy_authority:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_policy_auto_prefix:
+    type: boolean_checkbox
+    weight: 26
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  su_policy_changelog:
+    type: inline_entity_form_complex
+    weight: 11
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  su_policy_chapter:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        be741834-2444-470c-8a59-f7d5fb6e1c07:
+          entity_type: node
+          bundle: stanford_policy
+          dependee: su_policy_subchapter
+          settings:
+            state: required
+            condition: '!empty'
+            grouping: OR
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: ''
+            effect: show
+            effect_options: {  }
+            selector: ''
+        ca29a4a4-feb4-43d7-96ad-633e06abf76a:
+          entity_type: node
+          bundle: stanford_policy
+          dependee: su_policy_policy_num
+          settings:
+            state: required
+            condition: '!empty'
+            grouping: OR
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: ''
+            effect: show
+            effect_options: {  }
+            selector: ''
+        665be20e-fe41-40b0-881c-e44c599d68ab:
+          entity_type: node
+          bundle: stanford_policy
+          dependee: su_policy_auto_prefix
+          settings:
+            state: disabled
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: 1
+            effect: show
+            effect_options: {  }
+            selector: ''
+  su_policy_effective:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  su_policy_policy_num:
+    type: string_textfield
+    weight: 29
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        29b376a1-5f59-42ba-b916-0698e854dd1a:
+          entity_type: node
+          bundle: stanford_policy
+          dependee: su_policy_auto_prefix
+          settings:
+            state: disabled
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: show
+            effect_options: {  }
+            selector: ''
+  su_policy_related:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  su_policy_subchapter:
+    type: string_textfield
+    weight: 28
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        c13f81c4-f1d4-4ded-96ce-e2c55457d2e5:
+          entity_type: node
+          bundle: stanford_policy
+          dependee: su_policy_policy_num
+          settings:
+            state: required
+            condition: '!empty'
+            grouping: OR
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: ''
+            effect: show
+            effect_options: {  }
+            selector: ''
+        a443ab34-e207-4a9c-81c2-efe4d967a119:
+          entity_type: node
+          bundle: stanford_policy
+          dependee: su_policy_auto_prefix
+          settings:
+            state: disabled
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: show
+            effect_options: {  }
+            selector: ''
+  su_policy_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_policy_updated:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  layout_builder__layout: true
+  promote: true
+  sticky: true
+  uid: true
+  unpublish_on: true
+  url_redirects: true

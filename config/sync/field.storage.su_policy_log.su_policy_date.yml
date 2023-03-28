@@ -1,0 +1,20 @@
+uuid: 27707d94-7b67-4d0f-b323-f1a579672156
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - stanford_policy
+id: su_policy_log.su_policy_date
+field_name: su_policy_date
+entity_type: su_policy_log
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

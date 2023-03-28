@@ -1,0 +1,19 @@
+uuid: c97da15b-f3c1-4d95-b7d7-6a68c5451e05
+langcode: en
+status: true
+dependencies: {  }
+name: config_pages_stanford_events_importer
+label: 'config_pages stanford_events_importer validation'
+entity_type: config_pages
+bundle: stanford_events_importer
+field_validation_rules:
+  40e20165-85e8-40f2-bb3f-40b23d710bba:
+    id: regex_field_validation_rule
+    title: 'Bookmarked Feed'
+    data:
+      setting: '/https:\/\/events-legacy\.stanford.edu\/bookmark\/feed\.php\?slug=/'
+    weight: 1
+    uuid: 40e20165-85e8-40f2-bb3f-40b23d710bba
+    field_name: su_localist_bookmark
+    column: uri
+    error_message: 'Url must be a bookmark feed url.'

@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.media.video.field_media_oembed_video
+    - field.field.media.video.su_media_category
     - media.type.video
+  module:
+    - shs
 _core:
   default_config_hash: 7asQaGZMyJ5EtC9GHpp-bYEGCmfCKgCZhEcDl4wsU6w
 id: media.video.default
@@ -12,15 +15,9 @@ targetEntityType: media
 bundle: video
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_media_oembed_video:
     type: string_textfield
-    weight: 26
+    weight: 1
     region: content
     settings:
       size: 60
@@ -34,7 +31,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  su_media_category:
+    type: options_shs
+    weight: 26
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
 hidden:
+  created: true
   path: true
   publish_on: true
   status: true

@@ -380,7 +380,7 @@ third_party_settings:
         - jumpstart_ui_two_column
         - jumpstart_ui_three_column
         - stanford_news_byline
-      blacklisted_blocks:
+      denylisted_blocks:
         'Content fields':
           - 'field_block:node:stanford_news:uid'
           - 'field_block:node:stanford_news:created'
@@ -424,7 +424,7 @@ third_party_settings:
           - 'field_block:user:user:timezone'
           - 'field_block:user:user:uid'
           - 'field_block:user:user:status'
-      whitelisted_blocks:
+      allowlisted_blocks:
         Menus:
           - 'menu_block:stanford-event-types'
           - 'system_menu_block:stanford-event-types'
@@ -534,5 +534,7 @@ hidden:
   links: true
   search_api_excerpt: true
   stanford_intranet__access: true
+  su_metatags: true
+  su_news_hide_social: true
   su_news_source: true
   su_shared_tags: true

@@ -1,6 +1,6 @@
 uuid: cd2aa68d-2559-468a-81e4-2a78a180d44b
 langcode: en
-status: true
+status: false
 dependencies: {  }
 id: su_stanford_person
 class: null
@@ -10,6 +10,7 @@ migration_tags: {  }
 migration_group: su_stanford_person
 label: 'Stanford Person Importer'
 source:
+  orphan_action: forget
   plugin: url
   constants:
     status: 1

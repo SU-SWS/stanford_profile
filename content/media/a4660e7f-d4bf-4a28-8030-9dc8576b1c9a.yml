@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: a4660e7f-d4bf-4a28-8030-9dc8576b1c9a
+  bundle: image
+  default_langcode: en
+  depends:
+    4d5dde7e-f2c7-4d27-8ad1-99623b1308f8: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: stanford-person-default-profile-image.png
+  created:
+    -
+      value: 1592860984
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 4d5dde7e-f2c7-4d27-8ad1-99623b1308f8
+      alt: ''
+      title: ''
+      width: 200
+      height: 200

@@ -1,0 +1,23 @@
+uuid: e33a9a1b-ac60-40ad-8ee0-6bd25513b8c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - metatag
+    - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: node.su_metatags
+field_name: su_metatags
+entity_type: node
+type: metatag
+settings: {  }
+module: metatag
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -6,6 +6,8 @@ id: dev
 label: 'Development Environment'
 description: ''
 weight: 0
+stackable: false
+storage: folder
 folder: ../config/envs/dev
 module:
   acquia_purge: 0
@@ -18,7 +20,5 @@ module:
   purge_tokens: 0
   update: 0
 theme: {  }
-blacklist: {  }
-graylist: {  }
-graylist_dependents: true
-graylist_skip_equal: false
+complete_list: {  }
+partial_list: {  }

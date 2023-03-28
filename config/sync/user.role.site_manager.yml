@@ -3,10 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.stanford_html
+    - filter.format.stanford_minimal_html
     - media.type.embeddable
     - media.type.file
     - media.type.google_form
     - media.type.image
+    - media.type.stanford_gallery_images
     - media.type.video
     - node.type.stanford_course
     - node.type.stanford_event
@@ -14,18 +17,42 @@ dependencies:
     - node.type.stanford_news
     - node.type.stanford_page
     - node.type.stanford_person
+    - node.type.stanford_policy
     - node.type.stanford_publication
     - node.type.su_opportunity
     - node.type.su_spotlight
     - taxonomy.vocabulary.basic_page_types
+    - taxonomy.vocabulary.cap_org_codes
+    - taxonomy.vocabulary.cs_resource_audience
+    - taxonomy.vocabulary.cs_resource_type
     - taxonomy.vocabulary.event_audience
+    - taxonomy.vocabulary.media_tags
+    - taxonomy.vocabulary.spotlight_person
+    - taxonomy.vocabulary.stanford_event_groups
+    - taxonomy.vocabulary.stanford_event_keywords
+    - taxonomy.vocabulary.stanford_event_subject
     - taxonomy.vocabulary.stanford_event_types
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
     - taxonomy.vocabulary.stanford_publication_topics
+    - taxonomy.vocabulary.su_course_quarters
+    - taxonomy.vocabulary.su_course_subjects
+    - taxonomy.vocabulary.su_course_tags
+    - taxonomy.vocabulary.su_opportunity_commitment
+    - taxonomy.vocabulary.su_opportunity_deadline
+    - taxonomy.vocabulary.su_opportunity_dimension
+    - taxonomy.vocabulary.su_opportunity_location
+    - taxonomy.vocabulary.su_opportunity_open_to
+    - taxonomy.vocabulary.su_opportunity_pathway
+    - taxonomy.vocabulary.su_opportunity_placement_type
+    - taxonomy.vocabulary.su_opportunity_service_theme
+    - taxonomy.vocabulary.su_opportunity_sponsor
+    - taxonomy.vocabulary.su_opportunity_time
+    - taxonomy.vocabulary.su_opportunity_type
     - taxonomy.vocabulary.su_shared_tags
   module:
     - block_content_permissions
+    - book
     - cardinal_service_profile
     - config_pages
     - content_lock
@@ -33,11 +60,13 @@ dependencies:
     - dropzonejs
     - editoria11y
     - field_permissions
+    - filter
     - media
     - menu_admin_per_menu
     - node
     - paragraphs
     - path
+    - pathauto
     - rabbit_hole
     - redirect
     - role_delegation
@@ -67,6 +96,8 @@ permissions:
   - 'access toolbar'
   - 'access user profiles'
   - 'add citation entities'
+  - 'add content to books'
+  - 'administer book outlines'
   - 'administer citation entities'
   - 'administer course importer settings'
   - 'administer main menu items'
@@ -75,7 +106,6 @@ permissions:
   - 'administer redirects'
   - 'administer stanford-event-types menu items'
   - 'administer stanford-person-type menu items'
-  - 'administer taxonomy'
   - 'administer url aliases'
   - 'administer users'
   - 'assign contributor role'
@@ -87,7 +117,6 @@ permissions:
   - 'assign stanford_student role'
   - 'break content lock'
   - 'cancel account'
-  - 'change own username'
   - 'choose layout for node stanford_page'
   - 'create embeddable media'
   - 'create field_media_embeddable_code'
@@ -95,6 +124,8 @@ permissions:
   - 'create google_form media'
   - 'create image media'
   - 'create media'
+  - 'create new books'
+  - 'create policy log'
   - 'create stanford_course content'
   - 'create stanford_event content'
   - 'create stanford_event_series content'
@@ -102,15 +133,38 @@ permissions:
   - 'create stanford_news content'
   - 'create stanford_page content'
   - 'create stanford_person content'
+  - 'create stanford_policy content'
   - 'create stanford_publication content'
   - 'create su_opportunity content'
   - 'create su_spotlight content'
   - 'create terms in basic_page_types'
+  - 'create terms in cap_org_codes'
+  - 'create terms in cs_resource_audience'
+  - 'create terms in cs_resource_type'
   - 'create terms in event_audience'
+  - 'create terms in media_tags'
+  - 'create terms in spotlight_person'
+  - 'create terms in stanford_event_groups'
+  - 'create terms in stanford_event_keywords'
+  - 'create terms in stanford_event_subject'
   - 'create terms in stanford_event_types'
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'
   - 'create terms in stanford_publication_topics'
+  - 'create terms in su_course_quarters'
+  - 'create terms in su_course_subjects'
+  - 'create terms in su_course_tags'
+  - 'create terms in su_opportunity_commitment'
+  - 'create terms in su_opportunity_deadline'
+  - 'create terms in su_opportunity_dimension'
+  - 'create terms in su_opportunity_location'
+  - 'create terms in su_opportunity_open_to'
+  - 'create terms in su_opportunity_pathway'
+  - 'create terms in su_opportunity_placement_type'
+  - 'create terms in su_opportunity_service_theme'
+  - 'create terms in su_opportunity_sponsor'
+  - 'create terms in su_opportunity_time'
+  - 'create terms in su_opportunity_type'
   - 'create terms in su_shared_tags'
   - 'create url aliases'
   - 'create video media'
@@ -126,6 +180,7 @@ permissions:
   - 'delete any stanford_news content'
   - 'delete any stanford_page content'
   - 'delete any stanford_person content'
+  - 'delete any stanford_policy content'
   - 'delete any stanford_publication content'
   - 'delete any su_opportunity content'
   - 'delete any su_spotlight content'
@@ -143,26 +198,51 @@ permissions:
   - 'delete own stanford_news content'
   - 'delete own stanford_page content'
   - 'delete own stanford_person content'
+  - 'delete own stanford_policy content'
   - 'delete own stanford_publication content'
   - 'delete own su_opportunity content'
   - 'delete own su_spotlight content'
   - 'delete own su_spotlight content'
   - 'delete own video media'
+  - 'delete policy log'
   - 'delete stanford_course revisions'
   - 'delete stanford_event revisions'
   - 'delete stanford_event_series revisions'
   - 'delete stanford_news revisions'
   - 'delete stanford_page revisions'
   - 'delete stanford_person revisions'
+  - 'delete stanford_policy revisions'
   - 'delete stanford_publication revisions'
   - 'delete su_opportunity revisions'
   - 'delete su_spotlight revisions'
   - 'delete terms in basic_page_types'
+  - 'delete terms in cap_org_codes'
+  - 'delete terms in cs_resource_audience'
+  - 'delete terms in cs_resource_type'
   - 'delete terms in event_audience'
+  - 'delete terms in media_tags'
+  - 'delete terms in spotlight_person'
+  - 'delete terms in stanford_event_groups'
+  - 'delete terms in stanford_event_keywords'
+  - 'delete terms in stanford_event_subject'
   - 'delete terms in stanford_event_types'
   - 'delete terms in stanford_news_topics'
   - 'delete terms in stanford_person_types'
   - 'delete terms in stanford_publication_topics'
+  - 'delete terms in su_course_quarters'
+  - 'delete terms in su_course_subjects'
+  - 'delete terms in su_course_tags'
+  - 'delete terms in su_opportunity_commitment'
+  - 'delete terms in su_opportunity_deadline'
+  - 'delete terms in su_opportunity_dimension'
+  - 'delete terms in su_opportunity_location'
+  - 'delete terms in su_opportunity_open_to'
+  - 'delete terms in su_opportunity_pathway'
+  - 'delete terms in su_opportunity_placement_type'
+  - 'delete terms in su_opportunity_service_theme'
+  - 'delete terms in su_opportunity_sponsor'
+  - 'delete terms in su_opportunity_time'
+  - 'delete terms in su_opportunity_type'
   - 'delete terms in su_shared_tags'
   - 'dropzone upload files'
   - 'edit any embeddable media'
@@ -176,6 +256,7 @@ permissions:
   - 'edit any stanford_news content'
   - 'edit any stanford_page content'
   - 'edit any stanford_person content'
+  - 'edit any stanford_policy content'
   - 'edit any stanford_publication content'
   - 'edit any su_opportunity content'
   - 'edit any su_spotlight content'
@@ -196,10 +277,12 @@ permissions:
   - 'edit own stanford_news content'
   - 'edit own stanford_page content'
   - 'edit own stanford_person content'
+  - 'edit own stanford_policy content'
   - 'edit own stanford_publication content'
   - 'edit own su_opportunity content'
   - 'edit own su_spotlight content'
   - 'edit own video media'
+  - 'edit policy log'
   - 'edit stanford_basic_site_settings config page entity'
   - 'edit stanford_courses_importer config page entity'
   - 'edit stanford_events_importer config page entity'
@@ -209,15 +292,40 @@ permissions:
   - 'edit stanford_saml config page entity'
   - 'edit stanford_super_footer config page entity'
   - 'edit terms in basic_page_types'
+  - 'edit terms in cap_org_codes'
+  - 'edit terms in cs_resource_audience'
+  - 'edit terms in cs_resource_type'
   - 'edit terms in event_audience'
+  - 'edit terms in media_tags'
+  - 'edit terms in spotlight_person'
+  - 'edit terms in stanford_event_groups'
+  - 'edit terms in stanford_event_keywords'
+  - 'edit terms in stanford_event_subject'
   - 'edit terms in stanford_event_types'
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
   - 'edit terms in stanford_publication_topics'
+  - 'edit terms in su_course_quarters'
+  - 'edit terms in su_course_subjects'
+  - 'edit terms in su_course_tags'
+  - 'edit terms in su_opportunity_commitment'
+  - 'edit terms in su_opportunity_deadline'
+  - 'edit terms in su_opportunity_dimension'
+  - 'edit terms in su_opportunity_location'
+  - 'edit terms in su_opportunity_open_to'
+  - 'edit terms in su_opportunity_pathway'
+  - 'edit terms in su_opportunity_placement_type'
+  - 'edit terms in su_opportunity_service_theme'
+  - 'edit terms in su_opportunity_sponsor'
+  - 'edit terms in su_opportunity_time'
+  - 'edit terms in su_opportunity_type'
   - 'edit terms in su_shared_tags'
   - 'import stanford_events_importer migration'
   - 'import stanford_publications migration'
   - 'import su_stanford_person migration'
+  - 'mark as hidden in editoria11y'
+  - 'mark as ok in editoria11y'
+  - 'notify of path changes'
   - 'rabbit hole bypass node'
   - 'revert stanford_course revisions'
   - 'revert stanford_event revisions'
@@ -225,6 +333,7 @@ permissions:
   - 'revert stanford_news revisions'
   - 'revert stanford_page revisions'
   - 'revert stanford_person revisions'
+  - 'revert stanford_policy revisions'
   - 'revert stanford_publication revisions'
   - 'revert su_opportunity revisions'
   - 'revert su_spotlight revisions'
@@ -232,6 +341,8 @@ permissions:
   - 'update any media'
   - 'update any stanford_component_block block content'
   - 'update media'
+  - 'use text format stanford_html'
+  - 'use text format stanford_minimal_html'
   - 'use views bulk edit'
   - 'view all media revisions'
   - 'view all revisions'
@@ -242,12 +353,14 @@ permissions:
   - 'view any unpublished stanford_news content'
   - 'view any unpublished stanford_page content'
   - 'view any unpublished stanford_person content'
+  - 'view any unpublished stanford_policy content'
   - 'view any unpublished stanford_publication content'
   - 'view any unpublished su_opportunity content'
   - 'view any unpublished su_spotlight content'
   - 'view editoria11y checker'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view policy log'
   - 'view scheduled content'
   - 'view stanford_course revisions'
   - 'view stanford_event revisions'
@@ -255,6 +368,7 @@ permissions:
   - 'view stanford_news revisions'
   - 'view stanford_page revisions'
   - 'view stanford_person revisions'
+  - 'view stanford_policy revisions'
   - 'view stanford_publication revisions'
   - 'view su_opportunity revisions'
   - 'view su_spotlight revisions'

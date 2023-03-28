@@ -1,0 +1,36 @@
+uuid: e5f94786-1c70-4482-b3e9-397353177de8
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - options
+id: config_pages.su_policy_prefix_sec
+field_name: su_policy_prefix_sec
+entity_type: config_pages
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: numbers
+      label: Numbers
+    -
+      value: alpha_uppercase
+      label: 'Uppercase Alphabetic'
+    -
+      value: alpha_lowercase
+      label: 'Lowercase Alphabetic'
+    -
+      value: roman_numeral_uppercase
+      label: 'Uppercase Roman Numerals'
+    -
+      value: roman_numeral_lowercase
+      label: 'Lowercase Roman Numerals'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

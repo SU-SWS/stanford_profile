@@ -1,9 +1,23 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Tests for various media access functionality.
  */
 class MediaPermissionsCest {
+
+  /**
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test Constructor
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
 
   /**
    * Test admin perms
@@ -26,7 +40,7 @@ class MediaPermissionsCest {
     $I->canSee('oEmbed URL');
     $I->canSee('Embed Code');
 
-    $I->fillField('Name', 'Foo Bar');
+    $I->fillField('Name', $this->faker->words(3, TRUE));
     $I->fillField('Embed Code', 'Lorem Ipsum');
     $I->click('Save');
     $I->canSee('The given embeddable code is not permitted.');
@@ -36,7 +50,7 @@ class MediaPermissionsCest {
     ];
     $I->fillField('Embed Code', implode("\n", $code));
     $I->click('Save');
-    $I->canSee('Embeddable Foo Bar has been created.');
+    $I->canSee('has been created.');
   }
 
   /**
@@ -49,7 +63,7 @@ class MediaPermissionsCest {
     $I->canSee('oEmbed URL');
     $I->canSee('Embed Code');
 
-    $I->fillField('Name', 'Foo Bar');
+    $I->fillField('Name', $this->faker->words(3, TRUE));
     $I->fillField('Embed Code', 'Lorem Ipsum');
     $I->click('Save');
     $I->canSee('The given embeddable code is not permitted.');

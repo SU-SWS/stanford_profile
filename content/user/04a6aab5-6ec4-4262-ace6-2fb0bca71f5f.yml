@@ -1,0 +1,52 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: 04a6aab5-6ec4-4262-ace6-2fb0bca71f5f
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  preferred_admin_langcode:
+    -
+      value: en
+  name:
+    -
+      value: nextjs
+  pass:
+    -
+      value: ''
+      existing: ''
+      pre_hashed: false
+  mail:
+    -
+      value: nextjs@localhost.com
+  timezone:
+    -
+      value: America/Los_Angeles
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1659650863
+  access:
+    -
+      value: 1659657617
+  login:
+    -
+      value: 0
+  init:
+    -
+      value: nextjs@localhost.com
+  roles:
+    -
+      target_id: decoupled_site_users
+  role_change:
+    -
+      target_id: __role_delegation_empty_field_value__
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0

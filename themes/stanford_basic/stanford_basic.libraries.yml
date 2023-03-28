@@ -1,0 +1,147 @@
+# Drupal 8 uses the SMACSS system to conceptually categorize CSS rules. Note
+# that some SMACSS nomenclature has been changed to avoid confusion with
+# existing Drupal terminology.
+#
+# Base
+# Base rules consist of styling for HTML elements only, such as used in a CSS
+# reset or Normalize.css. Base rules should never include class selectors.
+#
+# To avoid ‘undoing’ styles in components, base styles should reflect the
+# simplest possible appearance of each element. For example, the simplest usage
+# of the ul element may be completely unstyled, removing list markers and
+# indents and relying on a component class for other applications.
+#
+# Layout
+# Arrangement of elements on the page, including grid systems.
+#
+# " Grid systems should be thought of as shelves. They contain content but are
+# not content in themselves. You put up your shelves then fill them with your
+# stuff [i.e. components]. – Harry Roberts, CSS Guidelines "
+#
+# Component (SMACSS “module”)
+# Reusable, discrete UI elements; components should form the bulk of
+# Drupal’s CSS.
+#
+# State
+# Styles that deal with transient changes to a component’s appearance. Often,
+# these are client-side changes that occur as the user interacts with the page,
+# such as hovering links or opening a modal dialog. In some cases, states are
+# static for the life of the page and are set from the server, such as the
+# active element in main navigation. The main ways to style state are:
+#  * Custom classes, often but not always applied via JavaScript. These should be
+#    prefixed with .is-, e.g. .is-transitioning, .is-open;
+#  * pseudo-classes, such as :hover and :checked;
+#  * HTML attributes with state semantics, such as details[open];
+#  * media queries: styles that alter appearance based on the immediate browser
+#    environment.
+#
+# Theme
+# Purely visual styling, such as border, box-shadow, colors and backgrounds,
+# font properties, etc. Ideally, these should be separated enough from a
+# component’s structure to be “swappable”, and omitting these entirely should
+# not break the component’s functionality or basic usability.
+#
+# EXAMPLE:
+#
+# nameoflibrarygroup:
+#   version: VERSION
+#   css:
+#     base:
+#       css/drupal/all.css:
+#       css/drupal/print.css: { media: print }
+#     layout:
+#       css/layout/all.css: {}
+#     component:
+#       css/components/components.css: {}
+#     state:
+#       css/state/states.css: {}
+#     theme:
+#       css/pattern-library/all.css: {}
+#   js:
+#     js/build/scripts.js: {}
+#   dependencies:
+#     - core/jquery
+#
+# Uncomment the code below to load scripts.js file on all pages. This file also requires JQuery to be
+# loaded on all pages. Consider implimenting your scripts through theme libraries if you wish to
+# avoid this. https://www.drupal.org/developing/api/8/assets
+#
+#   js/build/scripts.js: {}
+# dependencies:
+#   - core/drupal
+#   - core/jquery
+#
+# patternlibrary:
+#   version: VERSION
+#   css:
+#     base:
+#       css/pattern-library/base/base.css: {}
+#     layout:
+#       css/pattern-library/layout/layout.css: {}
+#     component:
+#       css/pattern-library/components/components.css: {}
+#     state:
+#       css/pattern-library/states/states.css: {}
+#     theme:
+#       css/pattern-library/theme/theme.css: {}
+#       css/pattern-library/theme/print.css: { media: print }
+admin:
+  version: VERSION
+  css:
+    base:
+      dist/css/admin.css: {  }
+
+basic:
+  version: VERSION
+  css:
+    base:
+      dist/css/base.css: { weight: 100 }
+    layout:
+      dist/css/layout.css: {}
+    component:
+      dist/css/components.css: {}
+    state:
+      dist/css/state.css: {}
+    theme:
+      dist/css/theme.css: {}
+      dist/css/print.css: { media: print }
+  js:
+    dist/js/base.js: { scope: footer }
+    dist/js/behaviors.js: { scope: footer }
+  dependencies:
+    - classy/base
+    - classy/messages
+    - classy/progress
+    - core/drupal
+    - core/jquery
+    - core/once
+    - core/modernizr
+    - stanford_basic/fontawesome
+
+search-page:
+  version: VERSION
+  css:
+    theme:
+      dist/css/search-page.css: {  }
+
+user_login:
+  version: VERSION
+  css:
+    base:
+      dist/css/user_login.css: {  }
+
+fontawesome:
+  version: 5.15.4
+  remote: https://use.fontawesome.com/releases/v5.15.4/css/all.css
+  license:
+    name: FontAwesome
+    url: http://fontawesome.io/license/
+  css:
+    base:
+      //use.fontawesome.com/releases/v5.15.4/css/all.css: {}
+
+content.stanford_policy:
+  version: VERSION
+  css:
+    theme:
+      dist/css/content/policy.css: { }

@@ -43,6 +43,7 @@ class BannerCest {
       'su_banner_button' => [
         'uri' => $field_values['uri'],
         'title' => $field_values['title'],
+        'options' => [],
       ],
       'su_banner_body' => $field_values['body'],
     ], 'paragraph');

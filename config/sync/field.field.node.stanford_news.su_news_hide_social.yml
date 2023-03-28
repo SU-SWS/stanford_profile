@@ -1,0 +1,23 @@
+uuid: b7ada95c-9010-4f7a-98a5-b94d22fe5a47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_hide_social
+    - node.type.stanford_news
+id: node.stanford_news.su_news_hide_social
+field_name: su_news_hide_social
+entity_type: node
+bundle: stanford_news
+label: 'Hide Social Share Icons'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

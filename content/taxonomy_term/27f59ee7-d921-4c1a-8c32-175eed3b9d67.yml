@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 27f59ee7-d921-4c1a-8c32-175eed3b9d67
+  bundle: stanford_publication_topics
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Thesis
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /publications/thesis
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default

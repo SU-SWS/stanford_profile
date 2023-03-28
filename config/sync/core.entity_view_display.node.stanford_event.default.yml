@@ -10,18 +10,24 @@ dependencies:
     - field.field.node.stanford_event.su_event_alt_loc
     - field.field.node.stanford_event.su_event_audience
     - field.field.node.stanford_event.su_event_components
+    - field.field.node.stanford_event.su_event_contact_info
     - field.field.node.stanford_event.su_event_cta
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_groups
+    - field.field.node.stanford_event.su_event_keywords
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
     - field.field.node.stanford_event.su_event_schedule
     - field.field.node.stanford_event.su_event_source
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
+    - field.field.node.stanford_event.su_event_subject
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_metatags
+    - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
     - views.view.stanford_events
   module:
@@ -334,7 +340,7 @@ third_party_settings:
                     class: su-event-audience
                   ds:
                     ds_limit: ''
-            weight: 4
+            weight: 5
             additional: {  }
             third_party_settings: {  }
           be4ceb41-1f4b-40f8-be69-c6714369f7bf:
@@ -394,15 +400,6 @@ third_party_settings:
             weight: 7
             additional: {  }
             third_party_settings: {  }
-        third_party_settings: {  }
-      -
-        layout_id: defaults
-        layout_settings:
-          label: 'Body Content - CTA signup'
-          extra_classes: su-events-details
-          centered: centered-container
-          columns: flex-8-of-12
-        components:
           2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350:
             uuid: 2c0a8fa6-3605-4f9e-8fb3-8ee46faf4350
             region: cta
@@ -427,6 +424,28 @@ third_party_settings:
                   field_formatter_class:
                     class: 'su-event-cta su-button'
             weight: 0
+            additional: {  }
+            third_party_settings: {  }
+          deac942f-07a6-42b2-9025-8082befff3ea:
+            uuid: deac942f-07a6-42b2-9025-8082befff3ea
+            region: right
+            configuration:
+              id: 'field_block:node:stanford_event:su_event_contact_info'
+              label: 'Additional Contact Info'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  field_formatter_class:
+                    class: su-event-contact-info
+            weight: 4
             additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
@@ -494,20 +513,6 @@ third_party_settings:
           centered: centered-container
           columns: flex-10-of-12
         components:
-          09d8b675-2bdf-45eb-a005-6279e9f81738:
-            uuid: 09d8b675-2bdf-45eb-a005-6279e9f81738
-            region: main
-            configuration:
-              id: 'views_block:stanford_events_schedule-event_schedule_block'
-              label: Schedule
-              label_display: visible
-              provider: views
-              context_mapping: {  }
-              views_label: Schedule
-              items_per_page: none
-            weight: 1
-            additional: {  }
-            third_party_settings: {  }
           d64439dc-f59e-4822-aba0-cdca5a9dc331:
             uuid: d64439dc-f59e-4822-aba0-cdca5a9dc331
             region: main
@@ -605,7 +610,7 @@ third_party_settings:
         - jumpstart_ui_one_column
         - jumpstart_ui_two_column
         - jumpstart_ui_three_column
-      blacklisted_blocks:
+      denylisted_blocks:
         'Content fields':
           - 'field_block:node:stanford_event:uid'
           - 'field_block:node:stanford_event:created'
@@ -649,7 +654,7 @@ third_party_settings:
           - 'field_block:user:user:timezone'
           - 'field_block:user:user:uid'
           - 'field_block:user:user:status'
-      whitelisted_blocks:
+      allowlisted_blocks:
         Menus:
           - 'menu_block:stanford-event-types'
           - 'system_menu_block:stanford-event-types'
@@ -718,6 +723,14 @@ content:
     third_party_settings: {  }
     weight: 106
     region: content
+  su_event_contact_info:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 119
+    region: main
   su_event_cta:
     type: link
     label: above
@@ -826,4 +839,5 @@ hidden:
   su_event_keywords: true
   su_event_schedule: true
   su_event_subject: true
+  su_metatags: true
   su_shared_tags: true

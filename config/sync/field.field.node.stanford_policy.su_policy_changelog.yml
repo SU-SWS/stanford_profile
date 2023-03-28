@@ -1,0 +1,26 @@
+uuid: e5b29dce-c6c1-4a4b-b97b-f487e862dc7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_policy_changelog
+    - node.type.stanford_policy
+id: node.stanford_policy.su_policy_changelog
+field_name: su_policy_changelog
+entity_type: node
+bundle: stanford_policy
+label: Changelog
+description: 'Add all prominent changes associated with this policy. Note: Only three most recently edited changelogs will be displayed to the site-visitors on the policy detail page. The complete list of changelogs will be available in the authoring experience.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:su_policy_log'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+field_type: entity_reference

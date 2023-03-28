@@ -16,29 +16,42 @@ class ViewsBulkEditCest {
   protected $nodes;
 
   /**
-   * Rollback all migrations.
+   * Faker generator.
+   *
+   * @var \Faker\Generator
    */
-  public function _before(AcceptanceTester $I) {
-    $I->runDrush('migrate:rollback --group=courses,opportunities,stanford_events');
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
   }
 
   /**
    * Bulk editing content changes the field values.
    */
   public function testBulkEdits(AcceptanceTester $I) {
+    try {
+      $I->runDrush('migrate:rollback --all');
+    }catch (\Throwable $e){
+      // Do nothing.
+    }
+
     $I->logInWithRole('site_manager');
     $this->createEvents($I);
 
     $event_foo_bar_baz = $I->createEntity([
-      'name' => 'Foo Bar Baz',
+      'name' => $this->faker->words(3, true),
       'vid' => 'stanford_event_types',
     ], 'taxonomy_term');
     $news_foo_bar_baz= $I->createEntity([
-      'name' => 'Foo Bar Baz',
+      'name' => $this->faker->words(3, true),
       'vid' => 'stanford_news_topics',
     ], 'taxonomy_term');
     $pubs_foo_bar_baz = $I->createEntity([
-      'name' => 'Foo Bar Baz',
+      'name' => $this->faker->words(3, true),
       'vid' => 'stanford_publication_topics',
     ], 'taxonomy_term');
 
@@ -46,7 +59,7 @@ class ViewsBulkEditCest {
     $I->selectOption('Action', 'Modify field values');
     foreach ($this->nodes as $delta => $node) {
       $I->canSee($node->label(), 'tr');
-      $I->checkOption("views_bulk_operations_bulk_form[$delta]");
+      $I->checkOption('tr:contains("' . $node->label() . '") input[name^="views_bulk_operations_bulk_form"]');
     }
     $I->click('Apply to selected items');
     $I->canSee('Items selected');

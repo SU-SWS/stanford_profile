@@ -5,6 +5,8 @@ use Faker\Factory;
 
 /**
  * Class SubThemeCest.
+ *
+ * @group no-parallel
  */
 class SubThemeCest {
 
@@ -47,16 +49,6 @@ class SubThemeCest {
    *   Tester.
    */
   public function _after(AcceptanceTester $I) {
-    $this->_failed($I);
-  }
-
-  /**
-   * Always cleanup the config after testing.
-   *
-   * @param \AcceptanceTester $I
-   *   Tester.
-   */
-  public function _failed(AcceptanceTester $I) {
     $this->runConfigImport($I, TRUE);
     $info_path = $this->themePath . '/' . strtolower($this->themeName) . '.info.yml';
     if (file_exists($info_path)){
@@ -100,7 +92,6 @@ class SubThemeCest {
    * @group minimal-subtheme-test
    */
   public function testMinimalSubtheme(AcceptanceTester $I) {
-    $I->runDrush('theme:enable -y minimally_branded_subtheme');
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');

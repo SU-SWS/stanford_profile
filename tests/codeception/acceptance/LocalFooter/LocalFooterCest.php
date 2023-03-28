@@ -11,10 +11,12 @@ class LocalFooterCest {
    * Tidy up after oneself.
    */
   public function _after(AcceptanceTester $I) {
-    $I->logInWithRole('administrator');
-    $I->amOnPage('/admin/config/system/local-footer');
-    $I->checkOption('Enabled');
-    $I->click('Save');
+    $config_page = \Drupal::entityTypeManager()
+      ->getStorage('config_pages')
+      ->load('stanford_local_footer');
+    if ($config_page) {
+      $config_page->delete();
+    }
   }
 
   /**

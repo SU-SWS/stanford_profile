@@ -13,12 +13,13 @@ dependencies:
     - field.field.node.stanford_course.su_course_section_units
     - field.field.node.stanford_course.su_course_subject
     - field.field.node.stanford_course.su_course_tags
+    - field.field.node.stanford_course.su_metatags
     - field.field.node.stanford_course.su_shared_tags
     - node.type.stanford_course
   module:
     - link
+    - metatag
     - path
-    - scheduler
     - shs
     - text
 _core:
@@ -50,29 +51,9 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    weight: 7
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 13
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   status:
     type: boolean_checkbox
     weight: 12
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    weight: 8
     region: content
     settings:
       display_label: true
@@ -147,6 +128,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  su_metatags:
+    type: metatag_firehose
+    weight: 32
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   su_shared_tags:
     type: options_shs
     weight: 29
@@ -175,16 +164,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 14
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
     weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  promote: true
+  publish_on: true
+  sticky: true
   su_course_id: true
+  unpublish_on: true

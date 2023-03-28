@@ -5,13 +5,19 @@ dependencies: {  }
 id: node__stanford_person
 label: 'Content: Person'
 tags:
+  canonical_url: '[node:su_person_profile_link:uri]'
   description: '[node:summary]'
   image_src: '[node:su_person_photo:entity:field_media_image:large]'
   keywords: '[node:su_person_type]'
-  title: '[node:title] | [site:name]'
   og_image: '[node:su_person_photo:entity:field_media_image:large]'
+  og_image_alt: '[node:su_person_photo:entity:field_media_image:alt]'
   og_image_url: '[node:su_person_photo:entity:field_media_image:large]'
+  og_type: profile
+  profile_first_name: '[node:su_person_first_name]'
+  profile_last_name: '[node:su_person_last_name]'
+  title: '[node:title] | [site:name]'
   twitter_cards_description: '[node:summary]'
   twitter_cards_image: '[node:su_person_photo:entity:field_media_image:large]'
+  twitter_cards_image_alt: '[node:su_person_photo:entity:field_media_image:alt]'
   twitter_cards_title: '[node:title]'
   twitter_cards_type: photo

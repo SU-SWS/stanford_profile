@@ -1,0 +1,38 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 459e190b-ab37-490a-b679-967dde57b5ce
+  bundle: basic_page_types
+  default_langcode: en
+  depends:
+    03d4f98a-d62c-47a2-85a5-71a47c7fe1ef: taxonomy_term
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Active
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      entity: 03d4f98a-d62c-47a2-85a5-71a47c7fe1ef
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default

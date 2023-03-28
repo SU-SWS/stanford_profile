@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.stanford_page.layout_selection
     - field.field.node.stanford_page.stanford_intranet__access
     - field.field.node.stanford_page.su_basic_page_type
+    - field.field.node.stanford_page.su_metatags
     - field.field.node.stanford_page.su_page_banner
     - field.field.node.stanford_page.su_page_components
     - field.field.node.stanford_page.su_page_description
@@ -19,6 +20,7 @@ dependencies:
   module:
     - field_group
     - media_library
+    - metatag
     - paragraphs
     - path
     - react_paragraphs
@@ -84,13 +86,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    weight: 3
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
     weight: 12
@@ -115,13 +110,6 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    weight: 4
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   su_basic_page_type:
     type: options_shs
     weight: 2
@@ -131,6 +119,14 @@ content:
       create_new_items: false
       create_new_levels: false
       force_deepest: false
+    third_party_settings: {  }
+  su_metatags:
+    type: metatag_firehose
+    weight: 31
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   su_page_banner:
     type: paragraphs
@@ -236,4 +232,6 @@ content:
     third_party_settings: {  }
 hidden:
   layout_builder__layout: true
+  promote: true
+  sticky: true
   unpublish_on: true

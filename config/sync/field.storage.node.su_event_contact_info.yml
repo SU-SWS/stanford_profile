@@ -1,0 +1,21 @@
+uuid: 34e3b8b1-42e0-433e-a6d8-8aee37612333
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.su_event_contact_info
+field_name: su_event_contact_info
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

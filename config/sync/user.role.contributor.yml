@@ -3,9 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.stanford_html
+    - filter.format.stanford_minimal_html
     - media.type.file
     - media.type.google_form
     - media.type.image
+    - media.type.stanford_gallery_images
     - media.type.video
     - node.type.stanford_course
     - node.type.stanford_event
@@ -13,17 +16,22 @@ dependencies:
     - node.type.stanford_news
     - node.type.stanford_page
     - node.type.stanford_person
+    - node.type.stanford_policy
     - node.type.stanford_publication
     - node.type.su_opportunity
     - node.type.su_spotlight
   module:
+    - book
     - content_lock
     - dropzonejs
     - editoria11y
+    - filter
     - media
     - menu_admin_per_menu
     - node
     - paragraphs
+    - pathauto
+    - scheduler
     - shortcut
     - stanford_publication
     - system
@@ -43,12 +51,14 @@ permissions:
   - 'access toolbar'
   - 'access user profiles'
   - 'add citation entities'
+  - 'add content to books'
   - 'administer main menu items'
   - 'break content lock'
   - 'create file media'
   - 'create google_form media'
   - 'create image media'
   - 'create media'
+  - 'create policy log'
   - 'create stanford_course content'
   - 'create stanford_event content'
   - 'create stanford_event_series content'
@@ -56,6 +66,7 @@ permissions:
   - 'create stanford_news content'
   - 'create stanford_page content'
   - 'create stanford_person content'
+  - 'create stanford_policy content'
   - 'create stanford_publication content'
   - 'create su_opportunity content'
   - 'create su_spotlight content'
@@ -72,6 +83,7 @@ permissions:
   - 'delete own stanford_news content'
   - 'delete own stanford_page content'
   - 'delete own stanford_person content'
+  - 'delete own stanford_policy content'
   - 'delete own stanford_publication content'
   - 'delete own su_opportunity content'
   - 'delete own su_spotlight content'
@@ -85,6 +97,7 @@ permissions:
   - 'edit any stanford_news content'
   - 'edit any stanford_page content'
   - 'edit any stanford_person content'
+  - 'edit any stanford_policy content'
   - 'edit any stanford_publication content'
   - 'edit any su_opportunity content'
   - 'edit any su_spotlight content'
@@ -100,12 +113,19 @@ permissions:
   - 'edit own stanford_news content'
   - 'edit own stanford_page content'
   - 'edit own stanford_person content'
+  - 'edit own stanford_policy content'
   - 'edit own stanford_publication content'
   - 'edit own su_opportunity content'
   - 'edit own su_spotlight content'
   - 'edit own video media'
+  - 'edit policy log'
+  - 'mark as hidden in editoria11y'
+  - 'mark as ok in editoria11y'
+  - 'notify of path changes'
   - 'schedule publishing of nodes'
   - 'update media'
+  - 'use text format stanford_html'
+  - 'use text format stanford_minimal_html'
   - 'view all revisions'
   - 'view any unpublished stanford_course content'
   - 'view any unpublished stanford_event content'
@@ -113,10 +133,12 @@ permissions:
   - 'view any unpublished stanford_news content'
   - 'view any unpublished stanford_page content'
   - 'view any unpublished stanford_person content'
+  - 'view any unpublished stanford_policy content'
   - 'view any unpublished stanford_publication content'
   - 'view editoria11y checker'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view policy log'
   - 'view scheduled content'
   - 'view stanford_course revisions'
   - 'view stanford_event revisions'
@@ -124,6 +146,7 @@ permissions:
   - 'view stanford_news revisions'
   - 'view stanford_page revisions'
   - 'view stanford_person revisions'
+  - 'view stanford_policy revisions'
   - 'view stanford_publication revisions'
   - 'view su_opportunity revisions'
   - 'view su_spotlight revisions'
