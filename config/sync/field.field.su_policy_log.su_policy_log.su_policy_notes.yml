@@ -1,14 +1,15 @@
-uuid: 88d34ead-21bb-44e2-abaf-5effcdb4697b
+uuid: 16afa11a-0c16-425a-a491-9cb99300af1c
 langcode: en
 status: true
 dependencies:
   config:
-    - eck.eck_type.log.policy
-    - field.storage.log.su_policy_notes
-id: log.policy.su_policy_notes
+    - field.storage.su_policy_log.su_policy_notes
+  module:
+    - stanford_policy
+id: su_policy_log.su_policy_log.su_policy_notes
 field_name: su_policy_notes
-entity_type: log
-bundle: policy
+entity_type: su_policy_log
+bundle: su_policy_log
 label: Notes
 description: ''
 required: true
