@@ -1,9 +1,0 @@
-status: 3
-pattern: '[log:su_policy_date:date:html_date]'
-escape: false
-preserve_titles: false
-save: false
-chunk: 50
-dependencies:
-  config:
-    - eck.eck_type.log.policy
