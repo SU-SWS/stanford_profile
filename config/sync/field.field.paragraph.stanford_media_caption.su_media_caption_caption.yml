@@ -10,9 +10,8 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    stanford_minimal_html: stanford_minimal_html
-    stanford_html: '0'
-    plain_text: '0'
+    allowed_formats:
+      - stanford_minimal_html
 id: paragraph.stanford_media_caption.su_media_caption_caption
 field_name: su_media_caption_caption
 entity_type: paragraph
