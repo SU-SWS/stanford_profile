@@ -53,10 +53,10 @@ function stanford_profile_update_9000(&$sandbox) {
 function stanford_profile_update_9001() {
   /** @var \Drupal\Core\Extension\ThemeInstallerInterface $theme_installer */
   $theme_installer = \Drupal::service('theme_installer');
-  $theme_installer->install(['claro']);
+  $theme_installer->install(['claro', 'stanford_profile_admin']);
   \Drupal::configFactory()
     ->getEditable('system.theme')
-    ->set('admin', 'claro')
+    ->set('admin', 'stanford_profile_admin')
     ->save();
   $theme_installer->uninstall(['seven']);
 }
@@ -71,7 +71,7 @@ function stanford_profile_update_9005(&$sandbox) {
     $nids = $node_storage->getQuery()
       ->accessCheck(FALSE)
       ->condition('type', 'stanford_page')
-      ->sort('created', 'ASC')
+      ->sort('created')
       ->execute();
     $sandbox['nids'] = $nids;
     $sandbox['count'] = count($sandbox['nids']);
