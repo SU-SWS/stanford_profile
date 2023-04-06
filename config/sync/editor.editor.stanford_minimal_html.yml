@@ -17,9 +17,12 @@ settings:
       - '|'
       - link
       - '|'
-      - sourceEditing
+      - bulletedList
+      - numberedList
       - '|'
       - blockQuote
+      - '|'
+      - sourceEditing
       - code
   plugins:
     ckeditor5_style:
@@ -44,6 +47,12 @@ settings:
         - '<blockquote cite>'
         - '<p id class>'
         - '<a aria-label hreflang data-entity-substitution data-entity-type data-entity-uuid title id class>'
+    ckeditor5_list:
+      reversed: true
+      startIndex: true
+    linkit_extension:
+      linkit_enabled: true
+      linkit_profile: default
 image_upload:
   status: false
   scheme: public
