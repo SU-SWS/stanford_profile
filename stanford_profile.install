@@ -87,7 +87,8 @@ function stanford_profile_update_9005(&$sandbox) {
     $new_components = [];
     /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $row */
     foreach ($node->get('su_page_components') as $row) {
-      $row_entity = $row_storage->load($row->get('target_id')->getString());
+      $row_entity = $row_storage->loadRevision($row->get('target_revision_id')->getString());
+
       $delete_entities[] = $row_entity;
       $number_of_items = $row_entity->get('su_page_components')->count();
       $layout_id = "layout_paragraphs_{$number_of_items}_column";
@@ -103,14 +104,13 @@ function stanford_profile_update_9005(&$sandbox) {
 
       $new_components[] = [
         'target_id' => $new_row_entity->id(),
-        'target_revision_id' => $new_row_entity->getRevisionId(),
+        'entity' => $new_row_entity,
       ];
 
       /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $row_item */
       foreach ($row_entity->get('su_page_components') as $delta => $row_item) {
         /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
-        $paragraph = $paragraph_storage->load($row_item->get('target_id')
-          ->getString());
+        $paragraph = $paragraph_storage->loadRevision($row_item->get('target_revision_id')->getString());
         $behaviors = $paragraph->getAllBehaviorSettings();
         unset($behaviors['react']);
         $behaviors['layout_paragraphs'] = [
@@ -123,7 +123,7 @@ function stanford_profile_update_9005(&$sandbox) {
 
         $new_components[] = [
           'target_id' => $paragraph->id(),
-          'target_revision_id' => $paragraph->getRevisionId(),
+          'entity' => $paragraph,
         ];
       }
     }
@@ -287,5 +287,10 @@ function stanford_profile_update_9007(&$sandbox) {
  * Uninstall Stable theme.
  */
 function stanford_profile_update_9100(&$sandbox) {
-  \Drupal::service('theme_installer')->uninstall(['stable']);
+  try {
+    \Drupal::service('theme_installer')->uninstall(['stable']);
+  }
+  catch (\Exception $e) {
+    // Theme is already uninstalled.
+  }
 }
