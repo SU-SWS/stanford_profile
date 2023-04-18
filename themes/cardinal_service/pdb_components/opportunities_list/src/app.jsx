@@ -41,6 +41,7 @@ ReactDOM.render(
     wrapperAttributes={{className: "flex-12-of-12"}}
   >
     <div className="flex-12-of-12 sort-links">
+      <span style={{ fontWeight: 'bold' }} aria-hidden={true}>Sort By:</span>
       <a
         href={getSortUrl('su_opp_application_deadline_value')}
         className={sortedByField('su_opp_application_deadline_value') ? 'active':''}
