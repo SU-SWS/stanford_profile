@@ -1,12 +1,12 @@
 <?php
 
-use Drupal\config_pages\Entity\ConfigPages;
-use Drupal\Core\Installer\InstallerKernel;
-
 /**
  * @file
  * stanford_profile.profile
  */
+
+use Drupal\config_pages\Entity\ConfigPages;
+use Drupal\Core\Installer\InstallerKernel;
 
 /**
  * Implements hook_install_tasks().
