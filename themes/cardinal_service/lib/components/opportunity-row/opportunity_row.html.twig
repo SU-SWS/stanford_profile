@@ -3,13 +3,19 @@
 {% set time_commitment = time_commitment|render_clean %}
 {% set service_theme = service_theme|render_clean %}
 
-
+{# Add comma "," after program if type is not empty. #}
 {% if program is not empty and type_list is not empty %}
   {% set program = program|merge({'#markup': program['#markup'] ~ ', '}) %}
 {% endif %}
 
+{# Add "in" between time_commitment and service_theme if both aren't empty. #}
 {% if time_commitment is not empty and service_theme is not empty %}
   {% set time_commitment = time_commitment|merge({'#markup': time_commitment['#markup'] ~ ' in '}) %}
+
+  {# Add "comma "," after time_commitment if program or type aren't empty. #}
+  {% if program is not empty or type_list is not empty %}
+    {% set time_commitment = time_commitment|merge({'#markup': time_commitment['#markup'] ~ ', '}) %}
+  {% endif %}
 {% endif %}
 
 {% set date_label = 'Application Deadline'|t %}
@@ -45,24 +51,17 @@
   <div class="flex-container su-card__contents">
     <div class="{% if image %}flex-8-of-12{% else %}flex-12-of-12{% endif %}">
       <div class="su-opportunity-header">
-        {% if program is not empty or type_list is not empty %}
+
+        {% if time_commitment is not empty or service_theme is not empty or program is not empty or type_list is not empty %}
           <div class="su-opportunity-row-program-type-list">
-            <div aria-label="{{ 'Opportunity Program and Type'|t }}">
-              <div>{{ program }}{{ type_list }}</div>
+            <div aria-label="{{ 'Time Commitment, Service Theme, Opportunity Program, and Type'|t }}">
+              <div>{{ time_commitment }}{{ service_theme }}{{ program }}{{ type_list }}</div>
             </div>
           </div>
         {% endif %}
         <h3>
           {{ title }}
         </h3>
-
-        {% if time_commitment is not empty or service_theme is not empty %}
-          <div class="su-opportunity-row-time-commitment-service-theme">
-            <div aria-label="{{ 'Time Commitment and Service Theme'|t }}">
-              <div>{{ time_commitment }}{{ service_theme }}</div>
-            </div>
-          </div>
-        {% endif %}
 
         {% if summary %}
           <div class="su-opportunity-row-summary">
