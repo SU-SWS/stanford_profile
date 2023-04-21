@@ -350,5 +350,4 @@ class BasicPageCest {
       ->get('timezone.default') ?: @date_default_timezone_get();
   }
 
-
 }
