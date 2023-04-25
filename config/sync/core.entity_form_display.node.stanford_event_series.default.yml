@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.stanford_event_series.field_menulink
     - field.field.node.stanford_event_series.layout_builder__layout
     - field.field.node.stanford_event_series.stanford_intranet__access
     - field.field.node.stanford_event_series.su_event_series_components
@@ -18,6 +19,7 @@ dependencies:
     - change_labels
     - field_group
     - layout_paragraphs
+    - menu_link
     - metatag
     - scheduler
     - shs
@@ -83,6 +85,12 @@ targetEntityType: node
 bundle: stanford_event_series
 mode: default
 content:
+  field_menulink:
+    type: menu_link_default
+    weight: 53
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
     weight: 52
