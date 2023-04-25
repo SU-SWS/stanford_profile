@@ -4,18 +4,16 @@ _meta:
   uuid: 0b83d1e9-688a-4475-9673-a4c385f26247
   bundle: stanford_page
   default_langcode: en
-  depends:
-    bf34703d-5f52-4278-9f0a-7bd70c282542: user
 default:
   revision_uid:
     -
-      entity: b5fe9b53-01b0-487f-81cc-c068274d05b2
+      target_id: 1
   status:
     -
       value: true
   uid:
     -
-      entity: bf34703d-5f52-4278-9f0a-7bd70c282542
+      target_id: 1
   title:
     -
       value: News
@@ -45,6 +43,13 @@ default:
   rh_redirect_fallback_action:
     -
       value: bundle_default
+  field_menulink:
+    -
+      menu_name: main
+      title: News
+      description: News
+      parent: ''
+      weight: -45
   layout_builder__layout:
     -
       section:

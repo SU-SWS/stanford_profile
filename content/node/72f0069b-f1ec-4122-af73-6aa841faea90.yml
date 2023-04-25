@@ -5,13 +5,14 @@ _meta:
   bundle: stanford_page
   default_langcode: en
   depends:
+    fbe85a0d-e89c-41b6-a681-e0ffce6f2fcc: user
     6fac3713-f499-4750-a7bc-32c16a59043a: media
     66286339-4f00-4994-8c0d-921b519ea4e4: media
     39cadd28-7a7e-4648-868d-d5e4f0a69bf7: media
 default:
   revision_uid:
     -
-      target_id: 1
+      entity: fbe85a0d-e89c-41b6-a681-e0ffce6f2fcc
   status:
     -
       value: true
@@ -38,6 +39,22 @@ default:
       alias: /home
       langcode: en
       pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  field_menulink:
+    -
+      menu_name: main
+      title: Home
+      description: ''
+      parent: ''
+      weight: -50
   layout_selection:
     -
       target_id: stanford_basic_page_full
@@ -60,9 +77,6 @@ default:
           behavior_settings:
             -
               value: {  }
-          revision_translation_affected:
-            -
-              value: true
           su_banner_body:
             -
               value: "<p>To edit this page, <a href=\"/saml_login\">log in with your SUNetID</a>. After you log in, return to the homepage, and use it as a template to begin building your site.</p>\r\n"
@@ -101,9 +115,6 @@ default:
                     label: ''
                   parent_uuid: null
                   region: null
-          revision_translation_affected:
-            -
-              value: true
     -
       entity:
         _meta:
@@ -125,9 +136,6 @@ default:
                 layout_paragraphs:
                   parent_uuid: 3459ca09-9824-408e-875d-3dcc39833b95
                   region: main
-          revision_translation_affected:
-            -
-              value: true
           su_wysiwyg_text:
             -
               value: "<h2 class=\"text-align-center\">Aliquam Tempus Libero Orci Lorem Didum</h2>\r\n\r\n<p class=\"su-intro-text text-align-center\">Praesent tincidunt, justo in suscipit semper, quam nunc porttitor lorem, eget hendrerit dolor ligula eu nunc. Fusce id urna ut sapien malesuada aliquam. Quisque dictum enim ac leo ornare a molestie leo sodales</p>\r\n"
@@ -156,9 +164,6 @@ default:
                     label: ''
                   parent_uuid: null
                   region: null
-          revision_translation_affected:
-            -
-              value: true
     -
       entity:
         _meta:
@@ -180,9 +185,6 @@ default:
                 layout_paragraphs:
                   parent_uuid: 5ebb4472-8287-4c7c-bfdf-e322aebd630c
                   region: main
-          revision_translation_affected:
-            -
-              value: true
           su_card_body:
             -
               value: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae dignissim felis. Nullam nulla leo, venenatis at feugiat sit amet, ultricies non lorem.</p>\r\n"
@@ -195,9 +197,6 @@ default:
               uri: 'internal:/'
               title: Button
               options: {  }
-          su_card_link_display:
-            -
-              value: button
           su_card_media:
             -
               entity: 66286339-4f00-4994-8c0d-921b519ea4e4
@@ -228,9 +227,6 @@ default:
                     label: ''
                   parent_uuid: null
                   region: null
-          revision_translation_affected:
-            -
-              value: true
     -
       entity:
         _meta:
@@ -252,9 +248,6 @@ default:
                 layout_paragraphs:
                   parent_uuid: 1d294569-5115-4630-b08a-907649e6473f
                   region: main
-          revision_translation_affected:
-            -
-              value: true
           su_wysiwyg_text:
             -
               value: "<h2 class=\"text-align-center\">Pellentesque ultricies tristique augue</h2>\r\n\r\n<p class=\"text-align-center\">Vestibulum sed dui facilisis, semper tortor ut, scelerisque est. Nullam porttitor cursus odio, vel feugiat ante laoreet vel. Quisque at dolor vitae mi consectetur vestibulum in ac augue. Sed ante purus, laoreet ac facilisis vel, porttitor varius arcu. Etiam id mi vel est rhoncus tempus. Duis placerat risus nisl.</p>\r\n\r\n<p class=\"text-align-center\"><a class=\"su-button\" href=\"/\">Vestibulum eget ullamcorper</a></p>\r\n"
@@ -283,9 +276,6 @@ default:
                     label: ''
                   parent_uuid: null
                   region: null
-          revision_translation_affected:
-            -
-              value: true
     -
       entity:
         _meta:
@@ -307,9 +297,6 @@ default:
                 layout_paragraphs:
                   parent_uuid: e9dfbef6-2c26-4901-9928-18ff36257d42
                   region: main
-          revision_translation_affected:
-            -
-              value: true
           su_banner_image:
             -
               entity: 39cadd28-7a7e-4648-868d-d5e4f0a69bf7
@@ -337,9 +324,6 @@ default:
                     label: ''
                   parent_uuid: null
                   region: null
-          revision_translation_affected:
-            -
-              value: true
     -
       entity:
         _meta:
@@ -361,9 +345,6 @@ default:
                 layout_paragraphs:
                   parent_uuid: cd78a429-5a7e-4769-beaf-d2b5fda69ef6
                   region: main
-          revision_translation_affected:
-            -
-              value: true
           su_wysiwyg_text:
             -
               value: "<h2>Sample Content</h2>\r\n\r\n<p><strong>Academic Department</strong><br />\r\nBuilding 100<br />\r\nStanford University<br />\r\nStanford, CA 94305</p>\r\n\r\n<p>email: sunet@stanford.edu<br />\r\nphone: (650) 723-xxxx<br />\r\nfax: (650) 723-xxxx</p>\r\n\r\n<p><strong>Officer Name</strong><br />\r\nCampus address, office number<br />\r\nphone: (650) 123-4567<br />\r\nemail: sunet@stanford.edu</p>\r\n\r\n<p>Officer Name<br />\r\nCampus address, office number<br />\r\nphone: (650) 123-4567<br />\r\nemail: sunet@stanford.edu</p>\r\n\r\n<p><strong>The accessibility content below is required by University Communications for all large units at Stanford:</strong></p>\r\n\r\n<h2>Web Accessibility</h2>\r\n\r\n<p>Stanford University is committed to providing an online environment that is accessible to everyone, including individuals with disabilities.&nbsp;</p>\r\n\r\n<p>Having trouble accessing any of this content due to a disability?&nbsp;<a href=\"http://www.stanford.edu/site/accessibility\">Learn more about accessibility at Stanford and report accessibility issues&nbsp;</a></p>\r\n"
