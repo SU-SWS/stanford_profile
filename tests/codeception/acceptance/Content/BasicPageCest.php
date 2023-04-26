@@ -27,17 +27,19 @@ class BasicPageCest {
    * Test placing a basic page in the menu with a child menu item.
    *
    * @group pathauto
+   * @group menu_link_weight
    */
   public function testCreatingPage(AcceptanceTester $I) {
     $node_title = $this->faker->text(20);
+    $node = $I->createEntity(['type' => 'stanford_page', 'title' => $node_title]);
 
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/node/add/stanford_page');
-    $I->fillField('Title', $node_title);
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', "$node_title Item");
     // The label on the menu parent changes in D9 vs D8
-    $I->selectOption('Parent link', ' <Main navigation>');
+    $I->selectOption('Parent item', 'main:');
     $I->uncheckOption('Generate automatic URL alias');
     $alias = preg_replace('/[^a-z0-9]/', '-', strtolower($this->faker->words(3, TRUE)));
     $I->fillField('URL alias', "/$alias");
@@ -52,9 +54,11 @@ class BasicPageCest {
     $I->fillField('Title', $child_title);
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', "$child_title Item");
-    $I->selectOption('Parent link', "-- $node_title Item");
-    $I->click('Change parent (update list of weights)');
+
+    $I->selectOption('Parent item', 'main:menu_link_field:node_field_menulink_' . $node->uuid() . '_und');
     $I->click('Save');
+
+    $I->canSee($child_title, 'h1');
     $I->canSeeLink("$child_title Item");
     $I->canSeeInCurrentUrl("/$alias");
   }
@@ -125,31 +129,40 @@ class BasicPageCest {
 
   /**
    * A site manager should be able to place a page under an unpublished page.
+   *
+   * @group menu_link_weight
    */
   public function testUnpublishedMenuItems(AcceptanceTester $I) {
     $unpublished_title = $this->faker->words(5, TRUE);
+    $unpublished_node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $unpublished_title,
+      'status' => 0,
+    ]);
     $child_page_title = $this->faker->words(5, TRUE);
+    $child_node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $child_page_title,
+      'status' => 0,
+    ]);
 
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/node/add/stanford_page');
-    $I->fillField('Title', $unpublished_title);
+    $I->amOnPage($unpublished_node->toUrl('edit-form')->toString());
+    $I->cantSeeCheckboxIsChecked('Published');
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', $unpublished_title);
-    $I->uncheckOption('Published');
     $I->click('Save');
     $I->canSee($unpublished_title, 'h1');
     $unpublished_url = $I->grabFromCurrentUrl();
 
-    $I->amOnPage('/node/add/stanford_page');
-    $I->fillField('Title', $child_page_title);
+    $I->amOnPage($child_node->toUrl('edit-form')->toString());
+    $I->cantSeeCheckboxIsChecked('Published');
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', $child_page_title);
-    $I->selectOption('Parent link', '-- ' . Unicode::truncate($unpublished_title, 30, TRUE, FALSE));
-    $I->click('Change parent (update list of weights)');
-    $I->uncheckOption('Published');
+    $I->selectOption('Parent item', 'main:menu_link_field:node_field_menulink_' . $unpublished_node->uuid() . '_und');
     $I->click('Save');
-    $I->canSee($child_page_title, 'h1');
 
+    $I->canSee($child_page_title, 'h1');
     $I->canSeeInCurrentUrl("$unpublished_url/");
   }
 
