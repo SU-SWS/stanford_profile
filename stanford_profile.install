@@ -5,6 +5,8 @@
  * stanford_profile.install
  */
 
+use Drupal\menu_link_content\MenuLinkContentInterface;
+
 /**
  * Save the system pages from the original config values into state.
  */
@@ -44,7 +46,6 @@ function stanford_profile_update_9000(&$sandbox) {
     ]);
   $paragraph_type->set('behavior_plugins', $plugins);
   $paragraph_type->save();
-
 }
 
 /**
@@ -87,7 +88,8 @@ function stanford_profile_update_9005(&$sandbox) {
     $new_components = [];
     /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $row */
     foreach ($node->get('su_page_components') as $row) {
-      $row_entity = $row_storage->loadRevision($row->get('target_revision_id')->getString());
+      $row_entity = $row_storage->loadRevision($row->get('target_revision_id')
+        ->getString());
 
       $delete_entities[] = $row_entity;
       $number_of_items = $row_entity->get('su_page_components')->count();
@@ -110,7 +112,8 @@ function stanford_profile_update_9005(&$sandbox) {
       /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $row_item */
       foreach ($row_entity->get('su_page_components') as $delta => $row_item) {
         /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
-        $paragraph = $paragraph_storage->loadRevision($row_item->get('target_revision_id')->getString());
+        $paragraph = $paragraph_storage->loadRevision($row_item->get('target_revision_id')
+          ->getString());
         $behaviors = $paragraph->getAllBehaviorSettings();
         unset($behaviors['react']);
         $behaviors['layout_paragraphs'] = [
@@ -292,5 +295,131 @@ function stanford_profile_update_9100(&$sandbox) {
   }
   catch (\Exception $e) {
     // Theme is already uninstalled.
+  }
+}
+
+/**
+ * Install menu_link module and configure the field.
+ */
+function stanford_profile_update_9101() {
+  \Drupal::service('module_installer')->install(['menu_link']);
+  \Drupal::entityTypeManager()
+    ->getStorage('field_storage_config')
+    ->create([
+      'uuid' => '963caf4a-7a55-4ed6-961d-765ea7594192',
+      'field_name' => 'field_menulink',
+      'type' => 'menu_link',
+      'entity_type' => 'node',
+      'cardinality' => 1,
+    ])->save();
+  $field_config_storage = \Drupal::entityTypeManager()
+    ->getStorage('field_config');
+  $bundles = [
+    'stanford_page',
+    'stanford_event_series',
+    'stanford_person',
+    'stanford_policy',
+  ];
+  foreach ($bundles as $bundle) {
+    $field_config_storage->create([
+      'entity_type' => 'node',
+      'field_name' => 'field_menulink',
+      'bundle' => $bundle,
+      'label' => 'Menu Link',
+    ])->save();
+  }
+  $menu_items = \Drupal::entityTypeManager()
+    ->getStorage('menu_link_content')
+    ->loadByProperties(['menu_name' => 'main']);
+
+  // Re-save all menu items to update their link uris.
+  // @see \Drupal\stanford_profile_helper\EventSubscriber\EntityEventSubscriber::preSaveMenuLinkContent()
+  foreach ($menu_items as $menu_item) {
+    $menu_item->save();
+  }
+}
+
+/**
+ * Update menu links on nodes for the updated version of menu_link_weight.
+ */
+function stanford_profile_update_9102() {
+  $menu_items = \Drupal::entityTypeManager()
+    ->getStorage('menu_link_content')
+    ->loadByProperties(['menu_name' => 'main']);
+
+  /** @var \Drupal\menu_link_content\Entity\MenuLinkContent $menu_item */
+  foreach ($menu_items as $menu_item) {
+    _stanford_profile_update_fix_menu_item($menu_item);
+  }
+}
+
+function _stanford_profile_get_parent_menu_item_id($link_id) {
+  if (!$link_id) {
+    return;
+  }
+
+  $entity_type_manager = \Drupal::entityTypeManager();
+  [$type, $uuid] = explode(':', $link_id);
+  if (!$entity_type_manager->hasDefinition($type)) {
+    return $link_id;
+  }
+
+  $menu_item = $entity_type_manager->getStorage($type)
+    ->loadByProperties(['uuid' => $uuid]);
+
+  return $menu_item ? _stanford_profile_update_fix_menu_item(reset($menu_item)) : $link_id;
+}
+
+/**
+ * Move the menu link data into the node and return the new menu link id.
+ *
+ * @param \Drupal\menu_link_content\MenuLinkContentInterface $menu_item
+ *   Menu link entity.
+ *
+ * @return string
+ *   Updated link id.
+ */
+function _stanford_profile_update_fix_menu_item(MenuLinkContentInterface $menu_item): string {
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+
+  /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link_item */
+  $link_url = $menu_item->get('link')->get(0)->get('uri')->getString();
+  [$schema, $path] = explode(':', $link_url);
+
+  if ($schema == 'entity' && str_starts_with($path, 'node/')) {
+    $node_id = preg_replace('/[^0-9+]/', '', $path);
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $node_storage->load($node_id);
+    $parent_id = _stanford_profile_get_parent_menu_item_id($menu_item->get('parent')->getString());
+
+    $menu_field_data = [
+      'menu_name' => $menu_item->get('menu_name')->getString(),
+      'title' => $menu_item->get('title')->getString(),
+      'description' => $menu_item->get('description')->getString(),
+      'parent' => $parent_id,
+      'weight' => $menu_item->get('weight')->getString(),
+    ];
+    $node->set('field_menulink', $menu_field_data)->save();
+    return 'menu_link_field:node_field_menulink_' . $node->uuid() . '_und';
+  }
+  return 'menu_link_content:' . $menu_item->uuid();
+}
+
+/**
+ * Update menu links on nodes for the updated version of menu_link_weight.
+ */
+function stanford_profile_update_9103() {
+  $menu_items = \Drupal::entityTypeManager()
+    ->getStorage('menu_link_content')
+    ->loadByProperties(['menu_name' => 'main']);
+
+  /** @var \Drupal\menu_link_content\Entity\MenuLinkContent $menu_item */
+  foreach ($menu_items as $menu_item) {
+    $link_url = $menu_item->get('link')->get(0)->get('uri')->getString();
+    [$schema, $path] = explode(':', $link_url);
+
+    if ($schema == 'entity' && str_starts_with($path, 'node/')) {
+      $menu_item->delete();
+    }
   }
 }
