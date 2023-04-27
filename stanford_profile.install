@@ -358,17 +358,28 @@ function _stanford_profile_get_parent_menu_item_id($link_id) {
     return;
   }
 
+  $entity_type_manager = \Drupal::entityTypeManager();
   [$type, $uuid] = explode(':', $link_id);
-  $menu_item = \Drupal::entityTypeManager()
-    ->getStorage($type)
+  if (!$entity_type_manager->hasDefinition($type)) {
+    return $link_id;
+  }
+
+  $menu_item = $entity_type_manager->getStorage($type)
     ->loadByProperties(['uuid' => $uuid]);
 
-  if ($menu_item) {
-    return _stanford_profile_update_fix_menu_item(reset($menu_item));
-  }
+  return $menu_item ? _stanford_profile_update_fix_menu_item(reset($menu_item)) : $link_id;
 }
 
-function _stanford_profile_update_fix_menu_item(MenuLinkContentInterface $menu_item) {
+/**
+ * Move the menu link data into the node and return the new menu link id.
+ *
+ * @param \Drupal\menu_link_content\MenuLinkContentInterface $menu_item
+ *   Menu link entity.
+ *
+ * @return string
+ *   Updated link id.
+ */
+function _stanford_profile_update_fix_menu_item(MenuLinkContentInterface $menu_item): string {
   $node_storage = \Drupal::entityTypeManager()->getStorage('node');
 
   /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link_item */
@@ -391,6 +402,7 @@ function _stanford_profile_update_fix_menu_item(MenuLinkContentInterface $menu_i
     $node->set('field_menulink', $menu_field_data)->save();
     return 'menu_link_field:node_field_menulink_' . $node->uuid() . '_und';
   }
+  return 'menu_link_content:' . $menu_item->uuid();
 }
 
 /**
