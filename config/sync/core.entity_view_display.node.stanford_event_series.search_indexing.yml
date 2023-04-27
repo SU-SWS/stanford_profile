@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.stanford_event_series.su_event_series_subheadline
     - field.field.node.stanford_event_series.su_event_series_type
     - field.field.node.stanford_event_series.su_event_series_weight
+    - field.field.node.stanford_event_series.su_metatags
     - field.field.node.stanford_event_series.su_shared_tags
     - node.type.stanford_event_series
   module:
@@ -73,6 +74,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_menulink: true
   layout_builder__layout: true
   links: true
   search_api_excerpt: true

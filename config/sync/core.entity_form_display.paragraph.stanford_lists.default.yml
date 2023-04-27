@@ -17,9 +17,16 @@ targetEntityType: paragraph
 bundle: stanford_lists
 mode: default
 content:
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   su_list_button:
     type: link_default
-    weight: 4
+    weight: 3
     region: content
     settings:
       placeholder_url: ''
@@ -50,5 +57,4 @@ content:
 hidden:
   created: true
   publish_on: true
-  status: true
   unpublish_on: true

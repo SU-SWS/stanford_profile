@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.stanford_event_series.field_menulink
     - field.field.node.stanford_event_series.layout_builder__layout
     - field.field.node.stanford_event_series.stanford_intranet__access
     - field.field.node.stanford_event_series.su_event_series_components
@@ -15,9 +16,11 @@ dependencies:
     - field.field.node.stanford_event_series.su_shared_tags
     - node.type.stanford_event_series
   module:
+    - change_labels
     - field_group
+    - layout_paragraphs
+    - menu_link
     - metatag
-    - paragraphs
     - scheduler
     - shs
     - stanford_intranet
@@ -82,6 +85,12 @@ targetEntityType: node
 bundle: stanford_event_series
 mode: default
 content:
+  field_menulink:
+    type: menu_link_default
+    weight: 53
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
     weight: 52
@@ -107,17 +116,17 @@ content:
       display_label: true
     third_party_settings: {  }
   su_event_series_components:
-    type: entity_reference_paragraphs
+    type: layout_paragraphs
     weight: 4
     region: content
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: closed
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: _none
-    third_party_settings: {  }
+      preview_view_mode: default
+      nesting_depth: 0
+      require_layouts: 1
+      empty_message: ''
+    third_party_settings:
+      change_labels:
+        add_another: ''
   su_event_series_dek:
     type: string_textfield
     weight: 6

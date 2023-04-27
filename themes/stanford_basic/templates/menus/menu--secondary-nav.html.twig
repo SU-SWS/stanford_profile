@@ -21,12 +21,12 @@
 <a href="#main-content" class="visually-hidden focusable su-skipnav su-skipnav--content">{{ 'Skip to main content'|t }}</a>
 <nav{{ attributes }}>
   <div id="secondary-navigation" tabindex="-1" class="visually-hidden focusable">{{ 'Secondary Navigation'|t }}</div>
-  {% spaceless %}
+  {% apply spaceless %}
   {% if items is iterable %}
     {{ menus.secondary_nav_menu(items, 1, 'su-secondary-nav') }}
   {% else %}
     {# If custom markup is provided, emit it as is #}
     {{ items }}
   {% endif %}
-  {% endspaceless %}
+  {% endapply %}
 </nav>

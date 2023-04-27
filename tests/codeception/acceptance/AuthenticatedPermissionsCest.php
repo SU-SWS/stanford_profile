@@ -1,9 +1,26 @@
 <?php
 
+use Drupal\user\Entity\Role;
+use Faker\Factory;
+
 /**
  * Test the restrictions on authenticated users.
  */
 class AuthenticatedPermissionsCest {
+
+  /**
+   * Faker generator.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test consturctor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
 
   /**
    * Set up a file to test PHP injection.
@@ -151,6 +168,26 @@ class AuthenticatedPermissionsCest {
     $I->see('The image file is invalid or the image type is not allowed.');
     $I->checkOption('#edit-default-logo');
     $I->click('#edit-submit');
+  }
+
+  /**
+   * Vocabs aren't seen if there are no permissions for them.
+   */
+  public function testTaxonomyOverviewPage(AcceptanceTester $I) {
+    $name = $this->faker->firstName;
+    $vocab = $I->createEntity([
+      'vid' => strtolower($name),
+      'name' => $name,
+    ], 'taxonomy_vocabulary');
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/structure/taxonomy');
+    $I->cantSee($vocab->label());
+
+    Role::load('site_manager')
+      ->grantPermission('create terms in ' . $vocab->id())
+      ->save();
+    $I->amOnPage('/admin/structure/taxonomy');
+    $I->canSee($vocab->label());
   }
 
 }

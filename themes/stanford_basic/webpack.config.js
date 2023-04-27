@@ -52,6 +52,7 @@ var webpackConfig = {
     "base":          path.resolve(__dirname, srcJS,   "base.js"),
     "behaviors":     path.resolve(__dirname, srcJS,   "behaviors.js"),
     "ckeditor":      path.resolve(__dirname, srcSass, "ckeditor.scss"),
+    "ckeditor5":      path.resolve(__dirname, srcSass, "ckeditor5.scss"),
     "components":    path.resolve(__dirname, srcSass, "components/index.scss"),
     "layout":        path.resolve(__dirname, srcSass, "layout/index.scss"),
     "print":         path.resolve(__dirname, srcSass, "print/index.scss"),

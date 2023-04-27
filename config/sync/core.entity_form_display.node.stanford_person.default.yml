@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.stanford_person.body
+    - field.field.node.stanford_person.field_menulink
     - field.field.node.stanford_person.layout_builder__layout
     - field.field.node.stanford_person.stanford_intranet__access
     - field.field.node.stanford_person.su_metatags
@@ -36,11 +37,13 @@ dependencies:
     - node.type.stanford_person
   module:
     - allowed_formats
+    - change_labels
     - field_group
+    - layout_paragraphs
     - link
     - media_library
+    - menu_link
     - metatag
-    - paragraphs
     - scheduler
     - shs
     - stanford_intranet
@@ -147,6 +150,12 @@ content:
       allowed_formats:
         hide_help: '0'
         hide_guidelines: '0'
+  field_menulink:
+    type: menu_link_default
+    weight: 53
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
     weight: 52
@@ -188,17 +197,17 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   su_person_components:
-    type: entity_reference_paragraphs
+    type: layout_paragraphs
     weight: 7
     region: content
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: closed
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: stanford_wysiwyg
-    third_party_settings: {  }
+      preview_view_mode: default
+      nesting_depth: 0
+      require_layouts: 1
+      empty_message: ''
+    third_party_settings:
+      change_labels:
+        add_another: ''
   su_person_education:
     type: string_textfield
     weight: 8

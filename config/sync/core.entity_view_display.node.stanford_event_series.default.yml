@@ -11,6 +11,8 @@ dependencies:
     - field.field.node.stanford_event_series.su_event_series_subheadline
     - field.field.node.stanford_event_series.su_event_series_type
     - field.field.node.stanford_event_series.su_event_series_weight
+    - field.field.node.stanford_event_series.su_metatags
+    - field.field.node.stanford_event_series.su_shared_tags
     - node.type.stanford_event_series
   module:
     - entity_reference_revisions
@@ -129,15 +131,13 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_revisions_entity_view
+                type: layout_paragraphs
                 label: hidden
                 settings:
                   view_mode: default
                 third_party_settings:
                   field_formatter_class:
                     class: su-event-series-components
-                  ds:
-                    ds_limit: ''
             weight: 0
             additional: {  }
         third_party_settings: {  }
@@ -343,6 +343,7 @@ content:
     weight: 106
     region: main
 hidden:
+  field_menulink: true
   layout_builder__layout: true
   search_api_excerpt: true
   stanford_intranet__access: true

@@ -46,6 +46,8 @@ class DefaultContentCest {
 
   /**
    * Test the default menu items exist with proper destinations.
+   *
+   * @group menu_link_weight
    */
   public function testMenuItems(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -62,10 +64,7 @@ class DefaultContentCest {
       $I->canSeeLink($title, $path);
 
       $I->click('Edit', '#menu-overview tr:contains("' . $title . '")');
-      $link_url = $I->grabValueFrom('[name="link[0][uri]"]');
-      preg_match('/(\w+) \((\d+)\)/', $link_url, $matches);
-      $I->assertCount(3, $matches, 'Link URL should be in the format "page_name (page_id)"');
-
+      $I->canSee('The path cannot be edited');
       $I->amOnPage('/admin/structure/menu/manage/main');
     }
   }
