@@ -353,6 +353,15 @@ function stanford_profile_update_9102() {
   }
 }
 
+/**
+ * Get the parent menu link id after updating it and it's parents.
+ *
+ * @param string $link_id
+ *   The original menu link id.
+ *
+ * @return string|null
+ *   Updated menu link id.
+ */
 function _stanford_profile_get_parent_menu_item_id($link_id) {
   if (!$link_id) {
     return;
@@ -390,7 +399,8 @@ function _stanford_profile_update_fix_menu_item(MenuLinkContentInterface $menu_i
     $node_id = preg_replace('/[^0-9+]/', '', $path);
     /** @var \Drupal\node\NodeInterface $node */
     $node = $node_storage->load($node_id);
-    $parent_id = _stanford_profile_get_parent_menu_item_id($menu_item->get('parent')->getString());
+    $parent_id = _stanford_profile_get_parent_menu_item_id($menu_item->get('parent')
+      ->getString());
 
     $menu_field_data = [
       'menu_name' => $menu_item->get('menu_name')->getString(),
