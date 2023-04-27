@@ -44,7 +44,9 @@ class BasicPageCest {
     $alias = preg_replace('/[^a-z0-9]/', '-', strtolower($this->faker->words(3, TRUE)));
     $I->fillField('URL alias', "/$alias");
     $I->click('Save');
+    $I->canSee($node_title, 'h1');
     $I->canSeeLink("$node_title Item");
+
     $I->canSeeInCurrentUrl("/$alias");
     $I->assertStringContainsString("/$alias", $I->grabFromCurrentUrl());
 
@@ -56,6 +58,7 @@ class BasicPageCest {
     $I->fillField('Menu link title', "$child_title Item");
 
     $I->selectOption('Parent item', 'main:menu_link_field:node_field_menulink_' . $node->uuid() . '_und');
+    $I->click('Change parent (update list of weights)');
     $I->click('Save');
 
     $I->canSee($child_title, 'h1');
@@ -65,8 +68,6 @@ class BasicPageCest {
 
   /**
    * Test deleting menu items clears them from the main menu.
-   *
-   * @group foobar
    */
   public function testDeletedMenuItems(AcceptanceTester $I){
     $node_title = $this->faker->text(20);
@@ -157,6 +158,7 @@ class BasicPageCest {
    * A site manager should be able to place a page under an unpublished page.
    *
    * @group menu_link_weight
+   * @group foobar
    */
   public function testUnpublishedMenuItems(AcceptanceTester $I) {
     $unpublished_title = $this->faker->words(5, TRUE);
@@ -186,6 +188,7 @@ class BasicPageCest {
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', $child_page_title);
     $I->selectOption('Parent item', 'main:menu_link_field:node_field_menulink_' . $unpublished_node->uuid() . '_und');
+    $I->click('Change parent (update list of weights)');
     $I->click('Save');
 
     $I->canSee($child_page_title, 'h1');
