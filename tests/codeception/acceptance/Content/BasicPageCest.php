@@ -64,6 +64,32 @@ class BasicPageCest {
   }
 
   /**
+   * Test deleting menu items clears them from the main menu.
+   *
+   * @group foobar
+   */
+  public function testDeletedMenuItems(AcceptanceTester $I){
+    $node_title = $this->faker->text(20);
+    $node = $I->createEntity(['type' => 'stanford_page', 'title' => $node_title]);
+
+    $I->logInWithRole('site_manager');
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+
+    $I->checkOption('Provide a menu link');
+    $I->fillField('Menu link title', $node_title);
+    // The label on the menu parent changes in D9 vs D8
+    $I->selectOption('Parent item', 'main:');
+    $I->click('Save');
+    $I->canSee($node_title, 'h1');
+    $I->canSeeLink($node_title, $node->toUrl()->toString());
+
+    $node->delete();
+
+    $I->amOnPage('/');
+    $I->cantSeeLink($node_title);
+  }
+
+  /**
    * Number of h1 tags should always be 1.
    */
   public function testH1Tags(AcceptanceTester $I) {
