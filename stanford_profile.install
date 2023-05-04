@@ -428,8 +428,8 @@ function _stanford_profile_update_fix_menu_item(MenuLinkContentInterface $menu_i
  * Update menu links on nodes for the updated version of menu_link_weight.
  */
 function stanford_profile_update_9103() {
-  $menu_items = \Drupal::entityTypeManager()
-    ->getStorage('menu_link_content')
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $menu_items = $entity_type_manager->getStorage('menu_link_content')
     ->loadByProperties(['menu_name' => 'main']);
 
   /** @var \Drupal\menu_link_content\Entity\MenuLinkContent $menu_item */
@@ -440,5 +440,19 @@ function stanford_profile_update_9103() {
     if ($schema == 'entity' && str_starts_with($path, 'node/')) {
       $menu_item->delete();
     }
+  }
+
+  // Instantiate the path alias path processor because it doesn't get added in
+  // this update hook.
+  \Drupal::service('path_processor_manager')
+    ->addOutbound(\Drupal::service('path_alias.path_processor'), 300);
+  $nids = $entity_type_manager->getStorage('node')
+    ->getQuery()
+    ->accessCheck(FALSE)
+    ->condition('field_menulink.parent', NULL, 'IS NOT NULL')
+    ->execute();
+  $nodes = $entity_type_manager->getStorage('node')->loadMultiple($nids);
+  foreach ($nodes as $node) {
+    $node->save();
   }
 }
