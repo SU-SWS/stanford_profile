@@ -7,7 +7,7 @@ dependencies:
 id: stanford_policies
 label: Policies
 type: 'canonical_entities:node'
-pattern: '[node:book:parent:url:relative|node:menu-link:parent:url:relative]/[node:su_policy_title]'
+pattern: '[node:book:parent:url:relative|node:menu-link:parents:join-path]/[node:su_policy_title]'
 selection_criteria:
   ab61ebc7-31dc-4efc-b1c9-80422f08548c:
     id: 'entity_bundle:node'

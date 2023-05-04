@@ -302,9 +302,19 @@ function stanford_profile_update_9100(&$sandbox) {
  * Install menu_link module and configure the field.
  */
 function stanford_profile_update_9101() {
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $path_patterns = $entity_type_manager->getStorage('pathauto_pattern')
+    ->loadMultiple();
+  /** @var \Drupal\pathauto\PathautoPatternInterface $pattern */
+  foreach ($path_patterns as $pattern) {
+    if (str_contains($pattern->getPattern(), 'node:menu-link:parent:url:relative')) {
+      $pattern->setPattern(str_replace('node:menu-link:parent:url:relative', 'node:menu-link:parents:join-path', $pattern->getPattern()));
+      $pattern->save();
+    }
+  }
+
   \Drupal::service('module_installer')->install(['menu_link']);
-  \Drupal::entityTypeManager()
-    ->getStorage('field_storage_config')
+  $entity_type_manager->getStorage('field_storage_config')
     ->create([
       'uuid' => '963caf4a-7a55-4ed6-961d-765ea7594192',
       'field_name' => 'field_menulink',
@@ -312,8 +322,7 @@ function stanford_profile_update_9101() {
       'entity_type' => 'node',
       'cardinality' => 1,
     ])->save();
-  $field_config_storage = \Drupal::entityTypeManager()
-    ->getStorage('field_config');
+  $field_config_storage = $entity_type_manager->getStorage('field_config');
   $bundles = [
     'stanford_page',
     'stanford_event_series',
@@ -328,8 +337,7 @@ function stanford_profile_update_9101() {
       'label' => 'Menu Link',
     ])->save();
   }
-  $menu_items = \Drupal::entityTypeManager()
-    ->getStorage('menu_link_content')
+  $menu_items = $entity_type_manager->getStorage('menu_link_content')
     ->loadByProperties(['menu_name' => 'main']);
 
   // Re-save all menu items to update their link uris.
@@ -403,11 +411,12 @@ function _stanford_profile_update_fix_menu_item(MenuLinkContentInterface $menu_i
       ->getString());
 
     $menu_field_data = [
-      'menu_name' => $menu_item->get('menu_name')->getString(),
-      'title' => $menu_item->get('title')->getString(),
-      'description' => $menu_item->get('description')->getString(),
+      'menu_name' => $menu_item->getMenuName(),
+      'title' => $menu_item->getTitle(),
+      'description' => $menu_item->getDescription(),
       'parent' => $parent_id,
-      'weight' => $menu_item->get('weight')->getString(),
+      'weight' => $menu_item->getweight(),
+      'expanded' => $menu_item->isExpanded(),
     ];
     $node->set('field_menulink', $menu_field_data)->save();
     return 'menu_link_field:node_field_menulink_' . $node->uuid() . '_und';
