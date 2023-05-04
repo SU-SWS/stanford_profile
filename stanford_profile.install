@@ -441,18 +441,31 @@ function stanford_profile_update_9103() {
       $menu_item->delete();
     }
   }
+}
+
+/**
+ * Re-save nodes in the main menu.
+ */
+function stanford_profile_update_9104(&$sandbox) {
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+
+  if (!isset($sandbox['count'])) {
+    $sandbox['entities'] = $node_storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('field_menulink.parent', NULL, 'IS NOT NULL')
+      ->execute();
+    $sandbox['count'] = count($sandbox['entities']);
+  }
 
   // Instantiate the path alias path processor because it doesn't get added in
   // this update hook.
   \Drupal::service('path_processor_manager')
     ->addOutbound(\Drupal::service('path_alias.path_processor'), 300);
-  $nids = $entity_type_manager->getStorage('node')
-    ->getQuery()
-    ->accessCheck(FALSE)
-    ->condition('field_menulink.parent', NULL, 'IS NOT NULL')
-    ->execute();
-  $nodes = $entity_type_manager->getStorage('node')->loadMultiple($nids);
-  foreach ($nodes as $node) {
+
+  $nids = array_splice($sandbox['entities'], 0, 25);
+  foreach ($node_storage->loadMultiple($nids) as $node) {
     $node->save();
   }
+
+  $sandbox['#finished'] = empty($sandbox['entities']) ? 1 : ($sandbox['count'] - count($sandbox['entities'])) / $sandbox['count'];
 }
