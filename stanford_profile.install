@@ -5,6 +5,7 @@
  * stanford_profile.install
  */
 
+use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\menu_link_content\MenuLinkContentInterface;
 
 /**
@@ -351,121 +352,71 @@ function stanford_profile_update_9101() {
  * Update menu links on nodes for the updated version of menu_link_weight.
  */
 function stanford_profile_update_9102() {
-  $menu_items = \Drupal::entityTypeManager()
-    ->getStorage('menu_link_content')
-    ->loadByProperties(['menu_name' => 'main']);
+  /** @var \Drupal\Core\Menu\MenuLinkTree $menu_link_tree */
+  $menu_link_tree = \Drupal::service('menu.link_tree');
+  $parameters = new MenuTreeParameters();
 
-  /** @var \Drupal\menu_link_content\Entity\MenuLinkContent $menu_item */
-  foreach ($menu_items as $menu_item) {
-    _stanford_profile_update_fix_menu_item($menu_item);
-  }
-}
-
-/**
- * Get the parent menu link id after updating it and it's parents.
- *
- * @param string $link_id
- *   The original menu link id.
- *
- * @return string|null
- *   Updated menu link id.
- */
-function _stanford_profile_get_parent_menu_item_id($link_id) {
-  if (!$link_id) {
-    return;
-  }
-
-  $entity_type_manager = \Drupal::entityTypeManager();
-  [$type, $uuid] = explode(':', $link_id);
-  if (!$entity_type_manager->hasDefinition($type)) {
-    return $link_id;
-  }
-
-  $menu_item = $entity_type_manager->getStorage($type)
-    ->loadByProperties(['uuid' => $uuid]);
-
-  return $menu_item ? _stanford_profile_update_fix_menu_item(reset($menu_item)) : $link_id;
-}
-
-/**
- * Move the menu link data into the node and return the new menu link id.
- *
- * @param \Drupal\menu_link_content\MenuLinkContentInterface $menu_item
- *   Menu link entity.
- *
- * @return string
- *   Updated link id.
- */
-function _stanford_profile_update_fix_menu_item(MenuLinkContentInterface $menu_item): string {
-  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
-
-  /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link_item */
-  $link_url = $menu_item->get('link')->get(0)->get('uri')->getString();
-  [$schema, $path] = explode(':', $link_url);
-
-  if ($schema == 'entity' && str_starts_with($path, 'node/')) {
-    $node_id = preg_replace('/[^0-9+]/', '', $path);
-    /** @var \Drupal\node\NodeInterface $node */
-    $node = $node_storage->load($node_id);
-    $parent_id = _stanford_profile_get_parent_menu_item_id($menu_item->get('parent')
-      ->getString());
-
-    $menu_field_data = [
-      'menu_name' => $menu_item->getMenuName(),
-      'title' => $menu_item->getTitle(),
-      'description' => $menu_item->getDescription(),
-      'parent' => $parent_id,
-      'weight' => $menu_item->getweight(),
-      'expanded' => $menu_item->isExpanded(),
-    ];
-    $node->set('field_menulink', $menu_field_data)->save();
-    return 'menu_link_field:node_field_menulink_' . $node->uuid() . '_und';
-  }
-  return 'menu_link_content:' . $menu_item->uuid();
+  $menu = $menu_link_tree->load('main', $parameters);
+  _stanford_profile_fix_menu($menu);
 }
 
 /**
  * Update menu links on nodes for the updated version of menu_link_weight.
+ *
+ * @param array $menu_items
+ *   Menu items.
+ * @param string|null $parent
+ *   Parent menu id.
  */
-function stanford_profile_update_9103() {
-  $entity_type_manager = \Drupal::entityTypeManager();
-  $menu_items = $entity_type_manager->getStorage('menu_link_content')
-    ->loadByProperties(['menu_name' => 'main']);
+function _stanford_profile_fix_menu(array $menu_items = [], string $parent = NULL): void {
+  $node_storage = \Drupal::entityTypeManager()
+    ->getStorage('node');
 
-  /** @var \Drupal\menu_link_content\Entity\MenuLinkContent $menu_item */
-  foreach ($menu_items as $menu_item) {
-    $link_url = $menu_item->get('link')->get(0)->get('uri')->getString();
-    [$schema, $path] = explode(':', $link_url);
+  foreach ($menu_items as $id => $menu_item) {
+    /** @var \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent $link */
+    $link = $menu_item->link;
+    $url = $link->getUrlObject();
 
-    if ($schema == 'entity' && str_starts_with($path, 'node/')) {
-      $menu_item->delete();
+    if (
+      $url->isRouted() &&
+      $url->getRouteName() == 'entity.node.canonical'
+    ) {
+      $node_id = preg_replace('/[^0-9+]/', '', $link->getUrlObject()
+        ->getRouteParameters()['node']);
+
+      /** @var \Drupal\node\NodeInterface $node */
+      $node = $node_storage->load($node_id);
+
+      $menu_field_data = [
+        'menu_name' => $link->getMenuName(),
+        'title' => $link->getTitle(),
+        'description' => $link->getDescription(),
+        'parent' => $parent,
+        'weight' => $link->getweight(),
+        'expanded' => $link->isExpanded(),
+      ];
+      $node->set('field_menulink', $menu_field_data)->save();
+      $new_parent = 'menu_link_field:node_field_menulink_' . $node->uuid() . '_und';
+
+      if ($menu_item->subtree) {
+        _stanford_profile_fix_menu($menu_item->subtree, $new_parent);
+      }
+
+      if (!$link->isEnabled()) {
+        \Drupal::database()
+          ->update('menu_tree')
+          ->fields(['enabled' => 0])
+          ->condition('id', $new_parent)
+          ->execute();
+      }
+
+      $link->deleteLink();
+      continue;
+    }
+    $link->updateLink(['parent' => $parent], TRUE);
+
+    if ($menu_item->subtree) {
+      _stanford_profile_fix_menu($menu_item->subtree, $id);
     }
   }
-}
-
-/**
- * Re-save nodes in the main menu.
- */
-function stanford_profile_update_9104(&$sandbox) {
-  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
-
-  if (!isset($sandbox['count'])) {
-    $sandbox['entities'] = $node_storage->getQuery()
-      ->accessCheck(FALSE)
-      ->condition('field_menulink.parent', NULL, 'IS NOT NULL')
-      ->execute();
-    $sandbox['count'] = count($sandbox['entities']);
-  }
-
-  // Instantiate the path alias path processor because it doesn't get added in
-  // this update hook.
-  \Drupal::service('path_processor_manager')
-    ->addOutbound(\Drupal::service('path_alias.path_processor'), 300);
-
-  $nids = array_splice($sandbox['entities'], 0, 25);
-  foreach ($node_storage->loadMultiple($nids) as $node) {
-    $node->save();
-  }
-
-  $sandbox['#finished'] = empty($sandbox['entities']) ? 1 : ($sandbox['count'] - count($sandbox['entities'])) / $sandbox['count'];
 }
