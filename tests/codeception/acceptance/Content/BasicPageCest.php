@@ -158,7 +158,6 @@ class BasicPageCest {
    * A site manager should be able to place a page under an unpublished page.
    *
    * @group menu_link_weight
-   * @group foobar
    */
   public function testUnpublishedMenuItems(AcceptanceTester $I) {
     $unpublished_title = $this->faker->words(5, TRUE);
