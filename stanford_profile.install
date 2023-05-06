@@ -353,6 +353,10 @@ function stanford_profile_update_9101() {
  * Update menu links on nodes for the updated version of menu_link_weight.
  */
 function stanford_profile_update_9102() {
+  // Instantiate the path alias path processor because it doesn't get added in
+  // this update hook.
+  \Drupal::service('path_processor_manager')
+    ->addOutbound(\Drupal::service('path_alias.path_processor'), 300);
 
   /** @var \Drupal\Core\Menu\MenuLinkTree $menu_link_tree */
   $menu_link_tree = \Drupal::service('menu.link_tree');
@@ -385,7 +389,6 @@ function _stanford_profile_fix_menu(array $menu_items = [], string $parent = NUL
         $url->getRouteName() == 'entity.node.canonical'
       ) {
         $node_id = $link->getUrlObject()->getRouteParameters()['node'] ?? NULL;
-
         /** @var \Drupal\node\NodeInterface $node */
         $node = $node_storage->load($node_id);
 
