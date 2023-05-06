@@ -68,7 +68,6 @@ class BasicPageCest {
 
   /**
    * Test deleting menu items clears them from the main menu.
-   * @group testme
    */
   public function testDeletedMenuItems(AcceptanceTester $I){
     $node_title = $this->faker->text(20);

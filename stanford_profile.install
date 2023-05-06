@@ -346,12 +346,14 @@ function stanford_profile_update_9101() {
   foreach ($menu_items as $menu_item) {
     $menu_item->save();
   }
+  drupal_flush_all_caches();
 }
 
 /**
  * Update menu links on nodes for the updated version of menu_link_weight.
  */
 function stanford_profile_update_9102() {
+
   /** @var \Drupal\Core\Menu\MenuLinkTree $menu_link_tree */
   $menu_link_tree = \Drupal::service('menu.link_tree');
   $parameters = new MenuTreeParameters();
@@ -377,44 +379,53 @@ function _stanford_profile_fix_menu(array $menu_items = [], string $parent = NUL
     $link = $menu_item->link;
     $url = $link->getUrlObject();
 
-    if (
-      $url->isRouted() &&
-      $url->getRouteName() == 'entity.node.canonical'
-    ) {
-      $node_id = preg_replace('/[^0-9+]/', '', $link->getUrlObject()
-        ->getRouteParameters()['node']);
+    try {
+      if (
+        $url->isRouted() &&
+        $url->getRouteName() == 'entity.node.canonical'
+      ) {
+        $node_id = $link->getUrlObject()->getRouteParameters()['node'] ?? NULL;
 
-      /** @var \Drupal\node\NodeInterface $node */
-      $node = $node_storage->load($node_id);
+        /** @var \Drupal\node\NodeInterface $node */
+        $node = $node_storage->load($node_id);
 
-      $menu_field_data = [
-        'menu_name' => $link->getMenuName(),
-        'title' => $link->getTitle(),
-        'description' => $link->getDescription(),
-        'parent' => $parent,
-        'weight' => $link->getweight(),
-        'expanded' => $link->isExpanded(),
-      ];
-      $node->set('field_menulink', $menu_field_data)->save();
-      $new_parent = 'menu_link_field:node_field_menulink_' . $node->uuid() . '_und';
+        $menu_field_data = [
+          'menu_name' => $link->getMenuName(),
+          'title' => $link->getTitle(),
+          'description' => $link->getDescription(),
+          'parent' => $parent,
+          'weight' => $link->getweight(),
+          'expanded' => $link->isExpanded(),
+        ];
+        $node->set('field_menulink', $menu_field_data)->save();
+        $new_parent = 'menu_link_field:node_field_menulink_' . $node->uuid() . '_und';
 
-      if ($menu_item->subtree) {
-        _stanford_profile_fix_menu($menu_item->subtree, $new_parent);
+        if ($menu_item->subtree) {
+          _stanford_profile_fix_menu($menu_item->subtree, $new_parent);
+        }
+
+        if (!$link->isEnabled()) {
+          \Drupal::database()
+            ->update('menu_tree')
+            ->fields(['enabled' => 0])
+            ->condition('id', $new_parent)
+            ->execute();
+        }
+
+        $link->deleteLink();
+        continue;
       }
-
-      if (!$link->isEnabled()) {
-        \Drupal::database()
-          ->update('menu_tree')
-          ->fields(['enabled' => 0])
-          ->condition('id', $new_parent)
-          ->execute();
-      }
-
-      $link->deleteLink();
-      continue;
     }
-    $link->updateLink(['parent' => $parent], TRUE);
-
+    catch (\Throwable $e) {
+      \Drupal::logger('stanford_profile')
+        ->error('Unable to update link %title. Error: %error', [
+          '%title' => $link->getTitle(),
+          '%error' => $e->getMessage(),
+        ]);
+    }
+    if ($parent) {
+      $link->updateLink(['parent' => $parent], TRUE);
+    }
     if ($menu_item->subtree) {
       _stanford_profile_fix_menu($menu_item->subtree, $id);
     }

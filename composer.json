@@ -13,66 +13,6 @@
         {
             "type": "package",
             "package": {
-                "name": "ckeditor-plugin/a11ychecker",
-                "version": "1.1.1",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/a11ychecker/releases/a11ychecker_1.1.1.zip",
-                    "type": "zip"
-                },
-                "require": {
-                    "composer/installers": "~1.0"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "ckeditor-plugin/balloonpanel",
-                "version": "4.14.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/balloonpanel/releases/balloonpanel_4.14.0.zip",
-                    "type": "zip"
-                },
-                "require": {
-                    "composer/installers": "~1.0"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "ckeditor-plugin/link",
-                "version": "4.14.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/link/releases/link_4.14.0.zip",
-                    "type": "zip"
-                },
-                "require": {
-                    "composer/installers": "~1.0"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "ckeditor-plugin/fakeobjects",
-                "version": "4.14.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.14.0.zip",
-                    "type": "zip"
-                },
-                "require": {
-                    "composer/installers": "~1.0"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
                 "name": "citation-style-language/locales",
                 "version": "1.0.0",
                 "source": {
@@ -101,22 +41,14 @@
         "acquia/memcache-settings": "^1.2",
         "citation-style-language/locales": "1.0.0",
         "citation-style-language/styles-distribution": "1.0.0",
-        "ckeditor-plugin/a11ychecker": "^1.1.1",
-        "ckeditor-plugin/balloonpanel": "^4.14.0",
-        "ckeditor-plugin/fakeobjects": "^4.14.0",
-        "ckeditor-plugin/link": "^4.14.0",
         "composer/installers": ">=1.2",
         "drupal/address": "^1.2",
         "drupal/admin_toolbar": "^3.1",
         "drupal/allowed_formats": "^2.0",
-        "drupal/anchor_link": "^2.5",
         "drupal/auto_entitylabel": "^3.0@beta",
         "drupal/block_content_permissions": "^1.8",
         "drupal/change_labels": "^1.0",
         "drupal/chosen": "^4.0",
-        "drupal/ckeditor_a11ychecker": "^1.0",
-        "drupal/ckeditor_balloonpanel": "^1.1",
-        "drupal/ckeditor_blockimagepaste": "^1.4",
         "drupal/colorbox": "^2.0",
         "drupal/components": "^3.0",
         "drupal/conditional_fields": "^4.0",
@@ -137,13 +69,11 @@
         "drupal/display_field_copy": "^2.0",
         "drupal/domain_301_redirect": "^2.0",
         "drupal/ds": "^3.3",
-        "drupal/eck": "^1.0@beta",
         "drupal/editoria11y": "^2.0",
         "drupal/element_class_formatter": "^2.0@beta",
         "drupal/encrypt": "^3.0",
         "drupal/environment_indicator": "^4.0",
         "drupal/extlink": "^1.3",
-        "drupal/fakeobjects": "^1.1",
         "drupal/fast_404_generator": "^1.0",
         "drupal/field_encrypt": "^3.0",
         "drupal/field_formatter_class": "^1.5",
@@ -253,9 +183,6 @@
             }
         },
         "patches": {
-            "drupal/core": {
-                "https://www.drupal.org/project/ckeditor/issues/3065095": "https://www.drupal.org/files/issues/2022-08-23/3065095-64-9.5.x.patch"
-            },
             "drupal/hook_event_dispatcher": {
                 "https://www.drupal.org/project/hook_event_dispatcher/issues/3354751": "https://www.drupal.org/files/issues/2023-04-17/hook_event_dispatcher-4.x-3354751.patch"
             },

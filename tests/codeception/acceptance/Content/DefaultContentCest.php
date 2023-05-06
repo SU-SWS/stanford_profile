@@ -8,6 +8,26 @@
 class DefaultContentCest {
 
   /**
+   * Test default images.
+   */
+  public function testDefaultImages(AcceptanceTester $I) {
+    $files = \Drupal::entityTypeManager()->getStorage('file')->loadMultiple();
+
+    /** @var \Drupal\file\FileInterface $file */
+    foreach ($files as $file) {
+      $real_path = \Drupal::service('file_system')
+        ->realpath($file->getFileUri());
+      $I->assertTrue(file_exists($real_path), 'File exists: ' . $real_path);
+    }
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/content/media');
+    $I->click('default-homepage_card-image.jpg');
+    $I->click('default-homepage_card-image.jpg');
+    $I->canSeeInCurrentUrl('files/media/image/default-homepage_card-image.jpg');
+    $I->canSeeResponseCodeIs(200);
+  }
+
+  /**
    * Default content pages and meta data exist.
    */
   public function testExistingContent(AcceptanceTester $I) {
