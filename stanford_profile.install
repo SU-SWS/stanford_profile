@@ -304,15 +304,6 @@ function stanford_profile_update_9100(&$sandbox) {
  */
 function stanford_profile_update_9101() {
   $entity_type_manager = \Drupal::entityTypeManager();
-  $path_patterns = $entity_type_manager->getStorage('pathauto_pattern')
-    ->loadMultiple();
-  /** @var \Drupal\pathauto\PathautoPatternInterface $pattern */
-  foreach ($path_patterns as $pattern) {
-    if (str_contains($pattern->getPattern(), 'node:menu-link:parent:url:relative')) {
-      $pattern->setPattern(str_replace('node:menu-link:parent:url:relative', 'node:menu-link:parents:join-path', $pattern->getPattern()));
-      $pattern->save();
-    }
-  }
 
   \Drupal::service('module_installer')->install(['menu_link']);
   $entity_type_manager->getStorage('field_storage_config')
