@@ -1,29 +1,23 @@
-uuid: 6d984644-2448-4eb0-bcb8-269c6266c694
+uuid: 6c064315-4f80-4e44-8d55-32b103b5acea
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.stanford_page
+    - taxonomy.vocabulary.stanford_news_topics
   module:
     - jsonapi_defaults
 third_party_settings:
   jsonapi_defaults:
-    default_include:
-      - su_page_components.su_page_components
-      - su_page_banner.su_banner_image.field_media_image
-      - su_page_image.field_media_image
-    default_filter:
-      'filter:status': '1'
     page_limit: 50
-id: node--stanford_page
+id: taxonomy_term--stanford_news_topics
 disabled: false
-path: node/stanford_page
-resourceType: node--stanford_page
+path: taxonomy_term/stanford_news_topics
+resourceType: taxonomy_term--stanford_news_topics
 resourceFields:
-  nid:
+  tid:
     disabled: true
-    fieldName: nid
-    publicName: nid
+    fieldName: tid
+    publicName: tid
     enhancer:
       id: ''
   uuid:
@@ -32,10 +26,10 @@ resourceFields:
     publicName: uuid
     enhancer:
       id: ''
-  vid:
+  revision_id:
     disabled: true
-    fieldName: vid
-    publicName: vid
+    fieldName: revision_id
+    publicName: revision_id
     enhancer:
       id: ''
   langcode:
@@ -44,28 +38,28 @@ resourceFields:
     publicName: langcode
     enhancer:
       id: ''
-  type:
+  vid:
     disabled: false
-    fieldName: type
-    publicName: type
+    fieldName: vid
+    publicName: vid
     enhancer:
       id: ''
-  revision_timestamp:
+  revision_created:
     disabled: true
-    fieldName: revision_timestamp
-    publicName: revision_timestamp
+    fieldName: revision_created
+    publicName: revision_created
     enhancer:
       id: ''
-  revision_uid:
+  revision_user:
     disabled: true
-    fieldName: revision_uid
-    publicName: revision_uid
+    fieldName: revision_user
+    publicName: revision_user
     enhancer:
       id: ''
-  revision_log:
+  revision_log_message:
     disabled: true
-    fieldName: revision_log
-    publicName: revision_log
+    fieldName: revision_log_message
+    publicName: revision_log_message
     enhancer:
       id: ''
   status:
@@ -74,40 +68,36 @@ resourceFields:
     publicName: status
     enhancer:
       id: ''
-  uid:
+  name:
+    disabled: false
+    fieldName: name
+    publicName: name
+    enhancer:
+      id: ''
+  description:
+    disabled: false
+    fieldName: description
+    publicName: description
+    enhancer:
+      id: nested
+      settings:
+        path: processed
+  weight:
+    disabled: false
+    fieldName: weight
+    publicName: weight
+    enhancer:
+      id: ''
+  parent:
     disabled: true
-    fieldName: uid
-    publicName: uid
-    enhancer:
-      id: ''
-  title:
-    disabled: false
-    fieldName: title
-    publicName: title
-    enhancer:
-      id: ''
-  created:
-    disabled: false
-    fieldName: created
-    publicName: created
+    fieldName: parent
+    publicName: parent
     enhancer:
       id: ''
   changed:
-    disabled: false
+    disabled: true
     fieldName: changed
     publicName: changed
-    enhancer:
-      id: ''
-  promote:
-    disabled: true
-    fieldName: promote
-    publicName: promote
-    enhancer:
-      id: ''
-  sticky:
-    disabled: true
-    fieldName: sticky
-    publicName: sticky
     enhancer:
       id: ''
   default_langcode:
@@ -178,75 +168,9 @@ resourceFields:
     publicName: unpublish_on
     enhancer:
       id: ''
-  menu_link:
-    disabled: true
-    fieldName: menu_link
-    publicName: menu_link
-    enhancer:
-      id: ''
-  field_menulink:
-    disabled: true
-    fieldName: field_menulink
-    publicName: field_menulink
-    enhancer:
-      id: ''
   layout_builder__layout:
     disabled: true
     fieldName: layout_builder__layout
     publicName: layout_builder__layout
-    enhancer:
-      id: ''
-  layout_selection:
-    disabled: false
-    fieldName: layout_selection
-    publicName: layout_selection
-    enhancer:
-      id: ''
-  stanford_intranet__access:
-    disabled: true
-    fieldName: stanford_intranet__access
-    publicName: stanford_intranet__access
-    enhancer:
-      id: ''
-  su_basic_page_type:
-    disabled: false
-    fieldName: su_basic_page_type
-    publicName: su_basic_page_type
-    enhancer:
-      id: ''
-  su_metatags:
-    disabled: true
-    fieldName: su_metatags
-    publicName: su_metatags
-    enhancer:
-      id: ''
-  su_page_banner:
-    disabled: false
-    fieldName: su_page_banner
-    publicName: su_page_banner
-    enhancer:
-      id: ''
-  su_page_components:
-    disabled: false
-    fieldName: su_page_components
-    publicName: su_page_components
-    enhancer:
-      id: ''
-  su_page_description:
-    disabled: false
-    fieldName: su_page_description
-    publicName: su_page_description
-    enhancer:
-      id: ''
-  su_page_image:
-    disabled: false
-    fieldName: su_page_image
-    publicName: su_page_image
-    enhancer:
-      id: ''
-  su_shared_tags:
-    disabled: false
-    fieldName: su_shared_tags
-    publicName: su_shared_tags
     enhancer:
       id: ''

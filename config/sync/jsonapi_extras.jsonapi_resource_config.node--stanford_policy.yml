@@ -1,24 +1,22 @@
-uuid: 6d984644-2448-4eb0-bcb8-269c6266c694
+uuid: b30ce652-ae29-4e58-88d4-b233979b072d
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.stanford_page
+    - node.type.stanford_policy
   module:
     - jsonapi_defaults
 third_party_settings:
   jsonapi_defaults:
     default_include:
-      - su_page_components.su_page_components
-      - su_page_banner.su_banner_image.field_media_image
-      - su_page_image.field_media_image
+      - su_policy_changelog
     default_filter:
       'filter:status': '1'
     page_limit: 50
-id: node--stanford_page
+id: node--stanford_policy
 disabled: false
-path: node/stanford_page
-resourceType: node--stanford_page
+path: node/stanford_policy
+resourceType: node--stanford_policy
 resourceFields:
   nid:
     disabled: true
@@ -184,6 +182,12 @@ resourceFields:
     publicName: menu_link
     enhancer:
       id: ''
+  body:
+    disabled: false
+    fieldName: body
+    publicName: body
+    enhancer:
+      id: ''
   field_menulink:
     disabled: true
     fieldName: field_menulink
@@ -196,57 +200,63 @@ resourceFields:
     publicName: layout_builder__layout
     enhancer:
       id: ''
-  layout_selection:
+  su_policy_authority:
     disabled: false
-    fieldName: layout_selection
-    publicName: layout_selection
+    fieldName: su_policy_authority
+    publicName: su_policy_authority
     enhancer:
       id: ''
-  stanford_intranet__access:
-    disabled: true
-    fieldName: stanford_intranet__access
-    publicName: stanford_intranet__access
-    enhancer:
-      id: ''
-  su_basic_page_type:
+  su_policy_auto_prefix:
     disabled: false
-    fieldName: su_basic_page_type
-    publicName: su_basic_page_type
+    fieldName: su_policy_auto_prefix
+    publicName: su_policy_auto_prefix
     enhancer:
       id: ''
-  su_metatags:
-    disabled: true
-    fieldName: su_metatags
-    publicName: su_metatags
-    enhancer:
-      id: ''
-  su_page_banner:
+  su_policy_changelog:
     disabled: false
-    fieldName: su_page_banner
-    publicName: su_page_banner
+    fieldName: su_policy_changelog
+    publicName: su_policy_changelog
     enhancer:
       id: ''
-  su_page_components:
+  su_policy_chapter:
     disabled: false
-    fieldName: su_page_components
-    publicName: su_page_components
+    fieldName: su_policy_chapter
+    publicName: su_policy_chapter
     enhancer:
       id: ''
-  su_page_description:
+  su_policy_effective:
     disabled: false
-    fieldName: su_page_description
-    publicName: su_page_description
+    fieldName: su_policy_effective
+    publicName: su_policy_effective
     enhancer:
       id: ''
-  su_page_image:
+  su_policy_policy_num:
     disabled: false
-    fieldName: su_page_image
-    publicName: su_page_image
+    fieldName: su_policy_policy_num
+    publicName: su_policy_policy_num
     enhancer:
       id: ''
-  su_shared_tags:
+  su_policy_related:
     disabled: false
-    fieldName: su_shared_tags
-    publicName: su_shared_tags
+    fieldName: su_policy_related
+    publicName: su_policy_related
+    enhancer:
+      id: ''
+  su_policy_subchapter:
+    disabled: false
+    fieldName: su_policy_subchapter
+    publicName: su_policy_subchapter
+    enhancer:
+      id: ''
+  su_policy_title:
+    disabled: false
+    fieldName: su_policy_title
+    publicName: su_policy_title
+    enhancer:
+      id: ''
+  su_policy_updated:
+    disabled: false
+    fieldName: su_policy_updated
+    publicName: su_policy_updated
     enhancer:
       id: ''

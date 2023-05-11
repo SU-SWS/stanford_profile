@@ -1,0 +1,100 @@
+uuid: e015c348-ef19-441b-b3ec-a8c6876b169f
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_super_footer
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
+id: config_pages--stanford_super_footer
+disabled: false
+path: config_pages/stanford_super_footer
+resourceType: config_pages--stanford_super_footer
+resourceFields:
+  id:
+    disabled: true
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  label:
+    disabled: true
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  type:
+    disabled: true
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  context:
+    disabled: true
+    fieldName: context
+    publicName: context
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  encrypted_field_storage:
+    disabled: true
+    fieldName: encrypted_field_storage
+    publicName: encrypted_field_storage
+    enhancer:
+      id: ''
+  metatag:
+    disabled: true
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  su_super_foot_enabled:
+    disabled: false
+    fieldName: su_super_foot_enabled
+    publicName: su_super_foot_enabled
+    enhancer:
+      id: ''
+  su_super_foot_intranet:
+    disabled: false
+    fieldName: su_super_foot_intranet
+    publicName: su_super_foot_intranet
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_super_foot_link:
+    disabled: false
+    fieldName: su_super_foot_link
+    publicName: su_super_foot_link
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_super_foot_text:
+    disabled: false
+    fieldName: su_super_foot_text
+    publicName: su_super_foot_text
+    enhancer:
+      id: nested
+      settings:
+        path: processed
+  su_super_foot_title:
+    disabled: false
+    fieldName: su_super_foot_title
+    publicName: su_super_foot_title
+    enhancer:
+      id: ''

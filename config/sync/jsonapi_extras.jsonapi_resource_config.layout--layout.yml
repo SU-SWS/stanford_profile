@@ -1,0 +1,81 @@
+uuid: 89fab672-c55a-44b0-a22e-32dcfbc71309
+langcode: en
+status: true
+dependencies:
+  module:
+    - jsonapi_defaults
+    - layout_library
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
+id: layout--layout
+disabled: false
+path: layout/layout
+resourceType: layout--layout
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: true
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: true
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: true
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: true
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: true
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  targetEntityType:
+    disabled: true
+    fieldName: targetEntityType
+    publicName: targetEntityType
+    enhancer:
+      id: ''
+  targetBundle:
+    disabled: true
+    fieldName: targetBundle
+    publicName: targetBundle
+    enhancer:
+      id: ''
+  layout:
+    disabled: true
+    fieldName: layout
+    publicName: layout
+    enhancer:
+      id: ''
