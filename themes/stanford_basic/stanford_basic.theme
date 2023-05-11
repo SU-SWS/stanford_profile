@@ -186,6 +186,10 @@ function stanford_basic_preprocess_field(&$variables, $hook) {
 function stanford_basic_preprocess_block(&$variables) {
   $variables['attributes']['class'][] = Html::cleanCssIdentifier(_stanford_basic_change_characters($variables['base_plugin_id']));
   $variables['attributes']['class'][] = Html::cleanCssIdentifier(_stanford_basic_change_characters($variables['derivative_plugin_id']));
+
+  if ($variables['base_plugin_id'] == 'system_menu_block') {
+    $variables['#attached']['library'][] = 'stanford_basic/decoupled_menu';
+  }
 }
 
 /**

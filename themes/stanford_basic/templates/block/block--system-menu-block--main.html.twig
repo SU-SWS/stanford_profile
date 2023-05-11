@@ -32,6 +32,8 @@
  */
 #}
 {# Menu. #}
-{% block content %}
-  {{ content }}
-{% endblock %}
+<div{{ attributes.setAttribute('data-island', 'main-menu-island') }}>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>
