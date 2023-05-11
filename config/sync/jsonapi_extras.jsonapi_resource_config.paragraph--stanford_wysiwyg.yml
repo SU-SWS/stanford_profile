@@ -1,18 +1,18 @@
-uuid: dce4283f-ab7a-4ea9-bb56-c2751b945843
+uuid: 0294bd9c-56de-4089-ad35-d69bd689866b
 langcode: en
 status: true
 dependencies:
   config:
-    - paragraphs.paragraphs_type.stanford_lists
+    - paragraphs.paragraphs_type.stanford_wysiwyg
   module:
     - jsonapi_defaults
 third_party_settings:
   jsonapi_defaults:
     page_limit: 50
-id: paragraph--stanford_lists
+id: paragraph--stanford_wysiwyg
 disabled: false
-path: paragraph/stanford_lists
-resourceType: paragraph--stanford_lists
+path: paragraph/stanford_wysiwyg
+resourceType: paragraph--stanford_wysiwyg
 resourceFields:
   id:
     disabled: true
@@ -98,31 +98,11 @@ resourceFields:
     publicName: revision_translation_affected
     enhancer:
       id: ''
-  su_list_button:
+  su_wysiwyg_text:
     disabled: false
-    fieldName: su_list_button
-    publicName: su_list_button
-    enhancer:
-      id: url_link
-      settings:
-        absolute_url: 0
-  su_list_description:
-    disabled: false
-    fieldName: su_list_description
-    publicName: su_list_description
+    fieldName: su_wysiwyg_text
+    publicName: su_wysiwyg_text
     enhancer:
       id: nested
       settings:
         path: processed
-  su_list_headline:
-    disabled: false
-    fieldName: su_list_headline
-    publicName: su_list_headline
-    enhancer:
-      id: ''
-  su_list_view:
-    disabled: false
-    fieldName: su_list_view
-    publicName: su_list_view
-    enhancer:
-      id: ''

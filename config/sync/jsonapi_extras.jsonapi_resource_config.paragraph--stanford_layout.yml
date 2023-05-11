@@ -1,18 +1,18 @@
-uuid: dce4283f-ab7a-4ea9-bb56-c2751b945843
+uuid: 5db537c4-1604-43c8-8736-bc8be1d41a51
 langcode: en
 status: true
 dependencies:
   config:
-    - paragraphs.paragraphs_type.stanford_lists
+    - paragraphs.paragraphs_type.stanford_layout
   module:
     - jsonapi_defaults
 third_party_settings:
   jsonapi_defaults:
     page_limit: 50
-id: paragraph--stanford_lists
+id: paragraph--stanford_layout
 disabled: false
-path: paragraph/stanford_lists
-resourceType: paragraph--stanford_lists
+path: paragraph/stanford_layout
+resourceType: paragraph--stanford_layout
 resourceFields:
   id:
     disabled: true
@@ -96,33 +96,5 @@ resourceFields:
     disabled: true
     fieldName: revision_translation_affected
     publicName: revision_translation_affected
-    enhancer:
-      id: ''
-  su_list_button:
-    disabled: false
-    fieldName: su_list_button
-    publicName: su_list_button
-    enhancer:
-      id: url_link
-      settings:
-        absolute_url: 0
-  su_list_description:
-    disabled: false
-    fieldName: su_list_description
-    publicName: su_list_description
-    enhancer:
-      id: nested
-      settings:
-        path: processed
-  su_list_headline:
-    disabled: false
-    fieldName: su_list_headline
-    publicName: su_list_headline
-    enhancer:
-      id: ''
-  su_list_view:
-    disabled: false
-    fieldName: su_list_view
-    publicName: su_list_view
     enhancer:
       id: ''

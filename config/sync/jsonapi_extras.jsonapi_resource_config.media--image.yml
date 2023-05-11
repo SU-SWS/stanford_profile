@@ -1,0 +1,157 @@
+uuid: a8d0f3a3-7684-4b25-a0c9-f08fa5446a01
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.image
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - field_media_image
+      - su_media_category
+    page_limit: 50
+id: media--image
+disabled: false
+path: media/image
+resourceType: media--image
+resourceFields:
+  mid:
+    disabled: true
+    fieldName: mid
+    publicName: mid
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  vid:
+    disabled: true
+    fieldName: vid
+    publicName: vid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: true
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  bundle:
+    disabled: false
+    fieldName: bundle
+    publicName: bundle
+    enhancer:
+      id: ''
+  revision_created:
+    disabled: true
+    fieldName: revision_created
+    publicName: revision_created
+    enhancer:
+      id: ''
+  revision_user:
+    disabled: true
+    fieldName: revision_user
+    publicName: revision_user
+    enhancer:
+      id: ''
+  revision_log_message:
+    disabled: true
+    fieldName: revision_log_message
+    publicName: revision_log_message
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  uid:
+    disabled: true
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  name:
+    disabled: false
+    fieldName: name
+    publicName: name
+    enhancer:
+      id: ''
+  thumbnail:
+    disabled: true
+    fieldName: thumbnail
+    publicName: thumbnail
+    enhancer:
+      id: ''
+  created:
+    disabled: true
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: true
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  revision_default:
+    disabled: true
+    fieldName: revision_default
+    publicName: revision_default
+    enhancer:
+      id: ''
+  revision_translation_affected:
+    disabled: true
+    fieldName: revision_translation_affected
+    publicName: revision_translation_affected
+    enhancer:
+      id: ''
+  metatag:
+    disabled: true
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  path:
+    disabled: true
+    fieldName: path
+    publicName: path
+    enhancer:
+      id: ''
+  publish_on:
+    disabled: true
+    fieldName: publish_on
+    publicName: publish_on
+    enhancer:
+      id: ''
+  unpublish_on:
+    disabled: true
+    fieldName: unpublish_on
+    publicName: unpublish_on
+    enhancer:
+      id: ''
+  field_media_image:
+    disabled: false
+    fieldName: field_media_image
+    publicName: field_media_image
+    enhancer:
+      id: ''
+  su_media_category:
+    disabled: false
+    fieldName: su_media_category
+    publicName: su_media_category
+    enhancer:
+      id: ''
