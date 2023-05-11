@@ -5,6 +5,7 @@ import {deserialize} from "./tools/deserialize";
 import {buildMenuTree} from "./tools/build-menu-tree";
 import {DRUPAL_DOMAIN} from './config/env'
 import OutsideClickHandler from "./components/outside-click-handler";
+import Caret from "./components/caret";
 
 const islandName = 'main-menu-island'
 
@@ -30,7 +31,7 @@ export const MainMenu = ({}) => {
 
   return (
     <nav>
-      <ul style={{display: "flex"}}>
+      <ul style={{display: "flex", flexWrap: "wrap", justifyContent: "flex-end"}}>
         {menuTree.items.map(item => <MenuItem key={item.id} {...item}/>)}
       </ul>
     </nav>
@@ -43,24 +44,40 @@ const MenuItem = ({title, url, items = [], level = 0}) => {
   return (
     <OutsideClickHandler
       onOutsideFocus={() => setSubmenuOpen(false)}
-      style={{display: "flex", position: "relative"}}
+      style={{
+        display: "flex",
+        position: "relative",
+        marginRight: level === 0 ? "43px" : ""
+    }}
       component="li"
     >
-      <a href={url}>{title}</a>
+      <a href={url} style={{color: "#b1040e"}}>
+        {title}
+      </a>
+
       {items.length > 0 &&
         <>
+          <div style={{width: "1px", margin: "0 5px", background: "#766253"}}/>
           <button
             onclick={() => setSubmenuOpen(!submenuOpen)}
             aria-expanded={submenuOpen}
+            style={{background: "transparent"}}
           >
-            <span className="su-visually-hidden">Open {title} Submenu</span>
+            <Caret style={{
+              transform: submenuOpen ? "rotate(180deg)": "",
+              transition: "transform 0.2s ease-in-out",
+            }}
+            />
+            <span className="visually-hidden">{submenuOpen ? "Close" : "Open"} {title} Submenu</span>
           </button>
 
           <ul style={{
             display: submenuOpen ? "block" : "none",
             position: "absolute",
             top: "100%",
-            border: "1px solid black",
+            background: "white",
+            boxShadow: "0 10px 20px rgba(0,0,0,.15),0 6px 6px rgba(0,0,0,.2)",
+            zIndex: level + 1,
           }}>
 
             {items.map(item =>
