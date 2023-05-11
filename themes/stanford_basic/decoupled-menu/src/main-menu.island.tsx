@@ -1,9 +1,10 @@
 import {useWebComponentEvents} from "./hooks/useWebComponentEvents";
 import {createIslandWebComponent} from 'preact-island'
-import {useState, useEffect, useRef} from 'preact/hooks';
+import {useState, useEffect} from 'preact/hooks';
 import {deserialize} from "./tools/deserialize";
 import {buildMenuTree} from "./tools/build-menu-tree";
 import {DRUPAL_DOMAIN} from './config/env'
+import OutsideClickHandler from "./components/outside-click-handler";
 
 const islandName = 'main-menu-island'
 
@@ -72,47 +73,6 @@ const MenuItem = ({title, url, items = [], level = 0}) => {
   )
 }
 
-const OutsideClickHandler = ({component, onOutsideFocus, children, ...props}) => {
-  const clickCaptured = useRef(false)
-  const focusCaptured = useRef(false)
-
-  const documentClick = (event) => {
-    if (!clickCaptured.current && onOutsideFocus) {
-      onOutsideFocus(event);
-    }
-    clickCaptured.current = false;
-  }
-
-  const documentFocus = (event) => {
-    if (!focusCaptured.current && onOutsideFocus) {
-      onOutsideFocus(event);
-    }
-    focusCaptured.current = false;
-  }
-
-  useEffect(() => {
-    document.addEventListener("mousedown", documentClick);
-    document.addEventListener("focusin", documentFocus);
-    document.addEventListener("touchstart", documentClick);
-    return () => {
-      document.removeEventListener("mousedown", documentClick);
-      document.removeEventListener("focusin", documentFocus);
-      document.removeEventListener("touchstart", documentClick);
-    }
-  }, [])
-
-  const Element = component || "div"
-  return (
-    <Element
-      onMouseDown={() => clickCaptured.current = true}
-      onFocus={() => focusCaptured.current = true}
-      onTouchStart={() => clickCaptured.current = true}
-      {...props}
-    >
-      {children}
-    </Element>
-  )
-}
 
 const island = createIslandWebComponent(islandName, MainMenu)
 island.render({
