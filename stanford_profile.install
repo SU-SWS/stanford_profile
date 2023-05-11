@@ -368,6 +368,8 @@ function stanford_profile_update_9102() {
 function _stanford_profile_fix_menu(array $menu_items = [], string $parent = NULL): void {
   $node_storage = \Drupal::entityTypeManager()
     ->getStorage('node');
+  /** @var \Drupal\Core\Menu\MenuLinkManagerInterface $menu_link_manager */
+  $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
 
   foreach ($menu_items as $id => $menu_item) {
     /** @var \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent $link */
@@ -382,6 +384,9 @@ function _stanford_profile_fix_menu(array $menu_items = [], string $parent = NUL
         $node_id = $link->getUrlObject()->getRouteParameters()['node'] ?? NULL;
         /** @var \Drupal\node\NodeInterface $node */
         $node = $node_storage->load($node_id);
+        if (!$node->get('field_menulink')->isEmpty()) {
+          throw new \Exception('Menu link already exists on node ' . $node->label());
+        }
 
         $menu_field_data = [
           'menu_name' => $link->getMenuName(),
@@ -417,9 +422,15 @@ function _stanford_profile_fix_menu(array $menu_items = [], string $parent = NUL
           '%error' => $e->getMessage(),
         ]);
     }
+
     if ($parent) {
       $link->updateLink(['parent' => $parent], TRUE);
+
+      // Saving the link above, updates the entity, but it doesn't update the
+      // menu tree. So we need to update the menu tree manually.
+      $menu_link_manager->updateDefinition($link->getPluginId(), $link->getPluginDefinition(), FALSE);
     }
+
     if ($menu_item->subtree) {
       _stanford_profile_fix_menu($menu_item->subtree, $id);
     }
