@@ -3,10 +3,12 @@ langcode: en
 status: true
 dependencies:
   module:
+    - config_pages
     - field_permissions
     - media
     - printable
     - stanford_policy
+    - subrequests
     - system
     - ui_patterns_library
 _core:
@@ -18,7 +20,9 @@ is_admin: false
 permissions:
   - 'access content'
   - 'access patterns page'
+  - 'issue subrequests'
   - 'view field_media_embeddable_code'
+  - 'view lockup_settings config page entity'
   - 'view media'
   - 'view own field_media_embeddable_code'
   - 'view own su_metatags'
@@ -31,7 +35,12 @@ permissions:
   - 'view own su_site_home'
   - 'view own su_site_url'
   - 'view policy log'
+  - 'view policy_settings config page entity'
   - 'view printer friendly versions'
+  - 'view stanford_basic_site_settings config page entity'
+  - 'view stanford_global_message config page entity'
+  - 'view stanford_local_footer config page entity'
+  - 'view stanford_super_footer config page entity'
   - 'view su_metatags'
   - 'view su_policy_auto_prefix'
   - 'view su_policy_chapter'
