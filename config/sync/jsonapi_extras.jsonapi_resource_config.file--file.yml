@@ -48,7 +48,9 @@ resourceFields:
     fieldName: uri
     publicName: uri
     enhancer:
-      id: ''
+      id: base64_image
+      settings:
+        style: tiny_blur
   filemime:
     disabled: false
     fieldName: filemime
