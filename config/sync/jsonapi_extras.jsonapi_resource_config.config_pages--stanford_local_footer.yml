@@ -73,7 +73,9 @@ resourceFields:
     fieldName: su_local_foot_action
     publicName: su_local_foot_action
     enhancer:
-      id: ''
+      id: url_link
+      settings:
+        absolute_url: 0
   su_local_foot_address:
     disabled: false
     fieldName: su_local_foot_address
@@ -166,14 +168,6 @@ resourceFields:
     publicName: su_local_foot_loc_op
     enhancer:
       id: ''
-  su_local_foot_pr_co:
-    disabled: false
-    fieldName: su_local_foot_pr_co
-    publicName: su_local_foot_pr_co
-    enhancer:
-      id: nested
-      settings:
-        path: processed
   su_local_foot_primary:
     disabled: false
     fieldName: su_local_foot_primary
@@ -188,10 +182,10 @@ resourceFields:
     publicName: su_local_foot_prime_h
     enhancer:
       id: ''
-  su_local_foot_se_co:
+  su_local_foot_pr_co:
     disabled: false
-    fieldName: su_local_foot_se_co
-    publicName: su_local_foot_se_co
+    fieldName: su_local_foot_pr_co
+    publicName: su_local_foot_pr_co
     enhancer:
       id: nested
       settings:
@@ -210,6 +204,14 @@ resourceFields:
     publicName: su_local_foot_second_h
     enhancer:
       id: ''
+  su_local_foot_se_co:
+    disabled: false
+    fieldName: su_local_foot_se_co
+    publicName: su_local_foot_se_co
+    enhancer:
+      id: nested
+      settings:
+        path: processed
   su_local_foot_social:
     disabled: false
     fieldName: su_local_foot_social

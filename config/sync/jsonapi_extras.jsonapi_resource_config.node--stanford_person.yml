@@ -346,7 +346,9 @@ resourceFields:
     fieldName: su_person_research
     publicName: su_person_research
     enhancer:
-      id: ''
+      id: nested
+      settings:
+        path: processed
   su_person_research_interests:
     disabled: false
     fieldName: su_person_research_interests
