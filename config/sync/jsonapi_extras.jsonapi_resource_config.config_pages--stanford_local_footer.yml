@@ -8,6 +8,8 @@ dependencies:
     - jsonapi_defaults
 third_party_settings:
   jsonapi_defaults:
+    default_include:
+      - su_local_foot_loc_img
     page_limit: 50
 id: config_pages--stanford_local_footer
 disabled: false

@@ -8,6 +8,8 @@ dependencies:
     - jsonapi_defaults
 third_party_settings:
   jsonapi_defaults:
+    default_include:
+      - su_upload_logo_image
     page_limit: 50
 id: config_pages--lockup_settings
 disabled: false
