@@ -21,10 +21,6 @@
 {%- endif -%}
 {# End Template Paths. #}
 
-{# Brand Bar #}
-{%- block block_brandbar -%}
-  {%- include template_brand_bar with { modifier_class : brand_bar_variant } -%}
-{%- endblock -%}
 
 {# Help Section #}
 {%- block block_help -%}
@@ -35,6 +31,12 @@
 {%- block block_header -%}
   {%- if page.header or page.search or page.menu -%}
     <header class="su-masthead su-masthead--right">
+
+      {# Brand Bar #}
+      {%- block block_brandbar -%}
+        {%- include template_brand_bar with { modifier_class : brand_bar_variant } -%}
+      {%- endblock -%}
+      
       <section>
         {{ page.header }}
         {{ page.search }}
