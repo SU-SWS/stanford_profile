@@ -216,7 +216,7 @@ module.exports = ({ dev, prod }) => {
 
             .preview {
               width: 100%;
-              max-width: 1100px;
+              max-width: 1500px;
               margin: 80px auto;
               border: 1px dashed rgba(0, 0, 0, 0.2);
               position: relative;

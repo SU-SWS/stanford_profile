@@ -1,5 +1,12 @@
+export interface MenuContentItem {
+  id: string
+  title: string
+  url: string
+  parent: string
+  items?: MenuContentItem[]
+}
 
-export const buildMenuTree = (links, parent = "")  => {
+export const buildMenuTree = (links: MenuContentItem[], parent = ""): { items?: MenuContentItem[] } => {
   if (!links?.length) {
     return {
       items: [],
