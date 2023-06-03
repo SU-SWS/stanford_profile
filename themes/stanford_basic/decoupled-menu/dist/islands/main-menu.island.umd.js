@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: flex-end;
   list-style: none;
   margin: 0;
   background: #2e2d29;
@@ -42,14 +42,13 @@
   @media (min-width: 991px) {
     display: none;
   }
-`,qr=({})=>{var e,t,r;oe((()=>{const e=new CustomEvent("web-component-mount",{detail:{target:t,parent:r},bubbles:!0});return dispatchEvent(e),()=>{const e=new CustomEvent("web-component-unmount",{detail:{target:t,parent:r},bubbles:!0});dispatchEvent(e)}}),[t=Vr]);const[n,o]=te([]),[i,a]=te(!1);ne((()=>{fetch(Lr+"/jsonapi/menu_items/main").then((e=>e.json())).then((e=>{return o((t=e)?Dr.deserialize(t,r):null);var t,r})).catch((e=>console.error(e)))}),[]);const s=zr(n);if(!s.items||0===(null===(e=s.items)||void 0===e?void 0:e.length))return Fr("div",{});const l=document.getElementsByClassName("su-multi-menu");return l.length>0&&l[0].remove(),Fr("nav",{style:{position:"relative"},children:[Fr(Jr,{onClick:()=>a(!i),"aria-expanded":i,children:[Fr(i?Wr:Ur,{}),i?"Close":"Menu"]}),Fr(Gr,{open:i,children:s.items.map((e=>Fr(tn,{...e},e.id)))})]})},Yr=xr.button`
+`,qr=({})=>{var e,t,r;oe((()=>{const e=new CustomEvent("web-component-mount",{detail:{target:t,parent:r},bubbles:!0});return dispatchEvent(e),()=>{const e=new CustomEvent("web-component-unmount",{detail:{target:t,parent:r},bubbles:!0});dispatchEvent(e)}}),[t=Vr]);const[n,o]=te([]),[i,a]=te(!1);ne((()=>{fetch(Lr+"/jsonapi/menu_items/main").then((e=>e.json())).then((e=>{return o((t=e)?Dr.deserialize(t,r):null);var t,r})).catch((e=>console.error(e)))}),[]);const s=zr(n);if(!s.items||0===(null===(e=s.items)||void 0===e?void 0:e.length))return Fr("div",{});const l=document.getElementsByClassName("su-multi-menu");return l.length>0&&l[0].remove(),Fr("nav",{style:{position:"relative"},children:[Fr(Jr,{onClick:()=>a(!i),"aria-expanded":i,children:[Fr(i?Wr:Ur,{}),i?"Close":"Menu"]}),Fr(Gr,{open:i,children:s.items.map((e=>Fr(rn,{...e},e.id)))})]})},Yr=xr.button`
   color: #ffffff;
   background: transparent;
   border: none;
   border-bottom: 2px solid transparent;
   padding: 0;
   margin: 0;
-  margin-bottom: -2px;
   box-shadow: none;
 
   &:hover, &:focus {
@@ -80,37 +79,59 @@
   color: #ffffff;
   font-weight: 600;
   text-decoration: none;
-  padding: 16px 0;
+  padding: 16px 0 16px 16px;
+  transition: all 0.2s ease-in-out;
+  border-left: ${({isCurrent:e})=>e?"6px solid #b1040e":"6px solid transparent"};
+  width: 100%;
 
   &:hover, &:focus {
     text-decoration: underline;
     color: #ffffff;
+    border-left: 6px solid #ffffff;
   }
 
   @media (min-width: 991px) {
     color: #b1040e;
+    padding: ${({level:e})=>0!=e?"16px 0 16px 16px":"16px 0"};
+    border-bottom: ${({level:e,inTrail:t,isCurrent:r})=>0===e?r?"6px solid #000000":t?"6px solid #b6b1a9":"6px solid transparent":""};
+    border-left: ${({level:e,isCurrent:t})=>0!=e?t?"6px solid #b1040e":"6px solid transparent":"none"};
 
     &:hover, &:focus {
       color: #2e2d29;
+      border-left: ${({level:e})=>0!=e?"6px solid #000000":"none"};
     }
   }
-`,Kr=xr.ul`
+`,Kr=xr.span`
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 16px 0 16px 16px;
+
+  @media (min-width: 991px) {
+    color: #b1040e;
+    padding: ${({level:e})=>0!=e?"16px 0 16px 16px":"16px 0"};
+  }
+`,Qr=xr.ul`
   display: ${e=>e.open?"block":"none"};
   z-index: ${e=>e.level+1};
   list-style: none;
   padding: 0;
   margin: 0;
-  border-top: 1px solid #d9d9d9;
+  border-top: 1px solid #53565a;
+  min-width: 300px;
 
   @media (min-width: 991px) {
     box-shadow: ${e=>0===e.level?"0 10px 20px rgba(0,0,0,.15),0 6px 6px rgba(0,0,0,.2)":""};
     position: ${e=>0===e.level?"absolute":"relative"};
     top: 100%;
     background: white;
+    border-top: 1px solid #d9d9d9;
   }
-`,Qr=xr.li`
-  border-bottom: 1px solid #d9d9d9;
-  padding: ${e=>e.level>0?"0 22px":"0"};
+`,en=xr.li`
+  position: relative;
+  border-bottom: 1px solid #53565a;
+  padding: ${e=>e.level>0?"0 10px":"0"};
+  margin: 0;
 
   &:last-child {
     border-bottom: none;
@@ -119,7 +140,7 @@
   @media (min-width: 991px) {
     border-bottom: ${e=>0===e.level?"none":"1px solid #d9d9d9"};
   }
-`,en=xr.div`
+`,tn=xr.div`
   width: 1px;
   height: 20px;
   margin: 0 12px;
@@ -129,4 +150,4 @@
   @media (min-width: 991px) {
     display: block;
   }
-`,tn=({title:e,url:t,items:r,level:n=0})=>{const[o,i]=te(!1),a=window.location.protocol+"//"+window.location.host,s=new URL(t.startsWith("/")?`${a}${t}`:t),l=s.pathname===window.location.pathname,c=window.location.pathname.startsWith(s.pathname);return Fr(Hr,{onOutsideFocus:()=>i(!1),component:Qr,level:n,children:[Fr(Zr,{level:n,children:[Fr(Xr,{href:t,"aria-current":l?"page":void 0,inTrail:c,children:e}),r&&Fr(m,{children:[0===n&&Fr(en,{}),Fr(Yr,{onClick:()=>i(!o),"aria-expanded":o,"aria-label":(o?"Close":"Open")+`${e} Submenu`,children:Fr(Br,{style:{transform:o?"rotate(180deg)":"",transition:"transform 0.2s ease-in-out",width:"16px"}})})]})]}),r&&Fr(Kr,{open:o,level:n,children:r.map((e=>Fr(tn,{...e,level:n+1},e.id)))})]})},rn=((e,t)=>{if(null==customElements.get(e)){class t extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}}customElements.define(e,t)}const r=(e=>{const t={_rootsToObservers:new WeakMap,_roots:[],_executedScript:document.currentScript,props:{},render:({selector:r,clean:n=!1,replace:o=!1,inline:i=!1,initialProps:a={},propsSelector:s,elementName:l})=>{let c=!1;const u=()=>{if(!0===c)return;const u=(({selector:e,inline:t,elementName:r})=>{const n=document.currentScript;if(t&&null!=n&&n.parentNode)return[n.parentNode];const o=null==n?void 0:n.dataset.mountIn;return o?Array.from(document.querySelectorAll(o)).map((e=>{if(null!=r){const t=document.createElement(r),n=e.appendChild(t);return null!=n.shadowRoot?n.shadowRoot:n}return e})):e?Array.from(document.querySelectorAll(e)).map((e=>null!=e.shadowRoot?e.shadowRoot:e)):[]})({selector:r,inline:i,elementName:l});if(0===u.length)return;const{rootFragments:p}=(({island:e,widget:t,hostElements:r,clean:n,replace:o,initialProps:i,propsSelector:a})=>{const s=[];return r.forEach((r=>{const l=Ir(e,r,i,a);let c;if(n&&r.replaceChildren(),o)c=Tr(r.parentElement||document.body,r);else{const e=document.createElement("div");r.appendChild(e),c=Tr(r,e)}s.push(c),Nr({island:e,widget:t,rootFragment:c,props:l});const u=(({island:e,hostElement:t,initialProps:r,onNewProps:n,propsSelector:o})=>{const i=new MutationObserver((function(i){i.forEach((function(){n(Ir(e,t,r,o))}))})),a={attributes:!0,childList:!0,characterData:!0};return e._executedScript&&i.observe(e._executedScript,a),Er(t).forEach((e=>{i.observe(e,Or({},a,{subtree:!0}))})),o&&Rr(o).forEach((e=>{i.observe(e,Or({},a,{subtree:!0}))})),i.observe(Pr(t)?t.host:t,a),i})({island:e,hostElement:r,initialProps:i,onNewProps:r=>{Nr({island:e,widget:t,rootFragment:c,props:r})},propsSelector:a});e._rootsToObservers.set(c,u)})),{rootFragments:s}})({island:t,widget:e,clean:n,hostElements:u,replace:o,initialProps:a,propsSelector:s});t._roots=t._roots.concat(p),c=!0};u(),document.addEventListener("DOMContentLoaded",u),document.addEventListener("load",u)},rerender:r=>{t._roots.forEach((n=>{Nr({island:t,widget:e,rootFragment:n,props:Or({},t.props,r)})}))},destroy:()=>{t._roots.forEach((e=>{var r;null==(r=t._rootsToObservers.get(e))||r.disconnect(),$(null,e)}))}};return t})(t);return Or({},r,{render:t=>r.render(Or({elementName:e},t)),injectStyles:e=>{r._roots.forEach((t=>{const r=document.createElement("style");r.innerHTML=e,t.parentNode.prepend(r)}))}})})(Vr,qr);rn.render({selector:`[data-island="${Vr}"]`})})(),n})()));
+`,rn=({title:e,url:t,items:r,level:n=0})=>{const[o,i]=te(!1),a=window.location.protocol+"//"+window.location.host;let s,l=new URL(a),c=!0,u=!1;return t&&(c=!1,l=new URL(t.startsWith("/")?`${a}${t}`:t),s=l.pathname===window.location.pathname,u="/"!=t&&window.location.pathname.startsWith(l.pathname)&&!s),Fr(Hr,{onOutsideFocus:()=>i(!1),component:en,level:n,children:[Fr(Zr,{level:n,children:[!c&&Fr(Xr,{href:t,"aria-current":s?"page":void 0,level:n,isCurrent:s,inTrail:u,children:e}),c&&Fr(Kr,{children:e}),r&&Fr(m,{children:[0===n&&Fr(tn,{}),Fr(Yr,{onClick:()=>i(!o),"aria-expanded":o,"aria-label":(o?"Close":"Open")+` ${e} Submenu`,children:Fr(Br,{style:{transform:o?"rotate(180deg)":"",transition:"transform 0.2s ease-in-out",width:"16px"}})})]})]}),r&&Fr(Qr,{open:o,level:n,children:r.map((e=>Fr(rn,{...e,level:n+1},e.id)))})]})},nn=((e,t)=>{if(null==customElements.get(e)){class t extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}}customElements.define(e,t)}const r=(e=>{const t={_rootsToObservers:new WeakMap,_roots:[],_executedScript:document.currentScript,props:{},render:({selector:r,clean:n=!1,replace:o=!1,inline:i=!1,initialProps:a={},propsSelector:s,elementName:l})=>{let c=!1;const u=()=>{if(!0===c)return;const u=(({selector:e,inline:t,elementName:r})=>{const n=document.currentScript;if(t&&null!=n&&n.parentNode)return[n.parentNode];const o=null==n?void 0:n.dataset.mountIn;return o?Array.from(document.querySelectorAll(o)).map((e=>{if(null!=r){const t=document.createElement(r),n=e.appendChild(t);return null!=n.shadowRoot?n.shadowRoot:n}return e})):e?Array.from(document.querySelectorAll(e)).map((e=>null!=e.shadowRoot?e.shadowRoot:e)):[]})({selector:r,inline:i,elementName:l});if(0===u.length)return;const{rootFragments:p}=(({island:e,widget:t,hostElements:r,clean:n,replace:o,initialProps:i,propsSelector:a})=>{const s=[];return r.forEach((r=>{const l=Ir(e,r,i,a);let c;if(n&&r.replaceChildren(),o)c=Tr(r.parentElement||document.body,r);else{const e=document.createElement("div");r.appendChild(e),c=Tr(r,e)}s.push(c),Nr({island:e,widget:t,rootFragment:c,props:l});const u=(({island:e,hostElement:t,initialProps:r,onNewProps:n,propsSelector:o})=>{const i=new MutationObserver((function(i){i.forEach((function(){n(Ir(e,t,r,o))}))})),a={attributes:!0,childList:!0,characterData:!0};return e._executedScript&&i.observe(e._executedScript,a),Er(t).forEach((e=>{i.observe(e,Or({},a,{subtree:!0}))})),o&&Rr(o).forEach((e=>{i.observe(e,Or({},a,{subtree:!0}))})),i.observe(Pr(t)?t.host:t,a),i})({island:e,hostElement:r,initialProps:i,onNewProps:r=>{Nr({island:e,widget:t,rootFragment:c,props:r})},propsSelector:a});e._rootsToObservers.set(c,u)})),{rootFragments:s}})({island:t,widget:e,clean:n,hostElements:u,replace:o,initialProps:a,propsSelector:s});t._roots=t._roots.concat(p),c=!0};u(),document.addEventListener("DOMContentLoaded",u),document.addEventListener("load",u)},rerender:r=>{t._roots.forEach((n=>{Nr({island:t,widget:e,rootFragment:n,props:Or({},t.props,r)})}))},destroy:()=>{t._roots.forEach((e=>{var r;null==(r=t._rootsToObservers.get(e))||r.disconnect(),$(null,e)}))}};return t})(t);return Or({},r,{render:t=>r.render(Or({elementName:e},t)),injectStyles:e=>{r._roots.forEach((t=>{const r=document.createElement("style");r.innerHTML=e,t.parentNode.prepend(r)}))}})})(Vr,qr);nn.render({selector:`[data-island="${Vr}"]`})})(),n})()));

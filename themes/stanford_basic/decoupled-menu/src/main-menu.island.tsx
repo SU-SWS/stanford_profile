@@ -19,7 +19,7 @@ const TopList = styled.ul<{ open?: boolean }>`
   left: 0;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: flex-end;
   list-style: none;
   margin: 0;
   background: #2e2d29;
@@ -101,7 +101,6 @@ const Button = styled.button`
   border-bottom: 2px solid transparent;
   padding: 0;
   margin: 0;
-  margin-bottom: -2px;
   box-shadow: none;
 
   &:hover, &:focus {
@@ -132,23 +131,43 @@ const MenuItemContainer = styled.div<{ level?: number }>`
   }
 `
 
-const MenuLink = styled.a<{ inTrail?: boolean, level?: number }>`
+const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: number }>`
   color: #ffffff;
   font-weight: 600;
   text-decoration: none;
-  padding: 16px 0;
+  padding: 16px 0 16px 16px;
+  transition: all 0.2s ease-in-out;
+  border-left: ${({isCurrent}) => isCurrent ? "6px solid #b1040e" : "6px solid transparent"};
+  width: 100%;
 
   &:hover, &:focus {
     text-decoration: underline;
     color: #ffffff;
+    border-left: 6px solid #ffffff;
   }
 
   @media (min-width: 991px) {
     color: #b1040e;
+    padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "16px 0"};
+    border-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "6px solid #000000" : (inTrail ? "6px solid #b6b1a9" : "6px solid transparent")) : ""};
+    border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #b1040e" : "6px solid transparent") : "none"};
 
     &:hover, &:focus {
       color: #2e2d29;
+      border-left: ${({level}) => level != 0 ? "6px solid #000000" : "none"};
     }
+  }
+`
+
+const NoLink = styled.span<{level?: number}>`
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 16px 0 16px 16px;
+
+  @media (min-width: 991px) {
+    color: #b1040e;
+    padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "16px 0"};
   }
 `
 
@@ -158,19 +177,23 @@ const MenuList = styled.ul<{ open?: boolean, level?: number }>`
   list-style: none;
   padding: 0;
   margin: 0;
-  border-top: 1px solid #d9d9d9;
+  border-top: 1px solid #53565a;
+  min-width: 300px;
 
   @media (min-width: 991px) {
     box-shadow: ${props => props.level === 0 ? "0 10px 20px rgba(0,0,0,.15),0 6px 6px rgba(0,0,0,.2)" : ""};
     position: ${props => props.level === 0 ? "absolute" : "relative"};
     top: 100%;
     background: white;
+    border-top: 1px solid #d9d9d9;
   }
 `
 
 const ListItem = styled.li<{ level?: number }>`
-  border-bottom: 1px solid #d9d9d9;
-  padding: ${props => props.level > 0 ? "0 22px" : "0"};
+  position: relative;
+  border-bottom: 1px solid #53565a;
+  padding: ${props => props.level > 0 ? "0 10px" : "0"};
+  margin: 0;
 
   &:last-child {
     border-bottom: none;
@@ -196,9 +219,17 @@ const MenuItemDivider = styled.div`
 const MenuItem = ({title, url, items, level = 0}: { title: string, url: string, items?: MenuContentItem[], level?: number }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false)
   const basePath = window.location.protocol + "//" + window.location.host;
-  const linkUrl = new URL(url.startsWith('/') ? `${basePath}${url}` : url);
-  const isCurrent = linkUrl.pathname === window.location.pathname;
-  const inTrail = window.location.pathname.startsWith(linkUrl.pathname);
+  let linkUrl = new URL(basePath);
+  let isNoLink = true;
+  let isCurrent, inTrail = false;
+
+  if (url) {
+    isNoLink = false;
+    linkUrl = new URL(url.startsWith('/') ? `${basePath}${url}` : url);
+    isCurrent = linkUrl.pathname === window.location.pathname;
+    inTrail = url != '/' && window.location.pathname.startsWith(linkUrl.pathname) && !isCurrent;
+  }
+
   return (
     <OutsideClickHandler
       onOutsideFocus={() => setSubmenuOpen(false)}
@@ -206,9 +237,20 @@ const MenuItem = ({title, url, items, level = 0}: { title: string, url: string, 
       level={level}
     >
       <MenuItemContainer level={level}>
-        <MenuLink href={url} aria-current={isCurrent ? "page" : undefined} inTrail={inTrail}>
+        {!isNoLink &&
+        <MenuLink
+          href={url}
+          aria-current={isCurrent ? "page" : undefined}
+          level={level}
+          isCurrent={isCurrent}
+          inTrail={inTrail}
+        >
           {title}
         </MenuLink>
+        }
+        {isNoLink &&
+        <NoLink>{title}</NoLink>
+        }
 
         {items &&
           <>
@@ -218,7 +260,7 @@ const MenuItem = ({title, url, items, level = 0}: { title: string, url: string, 
             <Button
               onClick={() => setSubmenuOpen(!submenuOpen)}
               aria-expanded={submenuOpen}
-              aria-label={(submenuOpen ? "Close" : "Open") + `${title} Submenu`}
+              aria-label={(submenuOpen ? "Close" : "Open") + ` ${title} Submenu`}
             >
               <Caret style={{
                 transform: submenuOpen ? "rotate(180deg)" : "",
