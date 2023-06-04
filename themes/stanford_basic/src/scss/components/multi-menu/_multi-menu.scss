@@ -396,9 +396,11 @@
 
   // The button to toggle or close the mobile menu.
   .su-multi-menu__nav-toggle {
+    position: absolute;
+    top: -60px;
+    right: 0;
 
     @include grid-media-max('md') {
-      @include fancy-hover(color(h--border-hover, $su-multi-menu-colors), color(border--active, $su-multi-menu-colors));
       @include padding(0 0 2rem);
       @include margin(0);
       display: flex;
