@@ -60,7 +60,12 @@ function stanford_profile_update_9001() {
     ->getEditable('system.theme')
     ->set('admin', 'stanford_profile_admin')
     ->save();
-  $theme_installer->uninstall(['seven']);
+  try {
+    $theme_installer->uninstall(['seven']);
+  }
+  catch (\Exception $e) {
+    // Theme was already uninstalled.
+  }
 }
 
 /**
