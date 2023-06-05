@@ -29,7 +29,7 @@ const TopList = styled.ul<{ open?: boolean }>`
   padding: 24px;
   font-size: 18px;
 
-  @media (min-width: 991px) {
+  @media (min-width: 992px) {
     display: flex;
     background: transparent;
     padding: 0;
@@ -61,7 +61,7 @@ const MobileMenuButton = styled.button`
     box-shadow: none;
   }
 
-  @media (min-width: 991px) {
+  @media (min-width: 992px) {
     display: none;
   }
 `
@@ -112,7 +112,7 @@ const SearchContainer = styled.li`
     }
   }
 
-  @media (min-width: 991px) {
+  @media (min-width: 992px) {
     display: none;
   }
 `
@@ -202,7 +202,7 @@ const Button = styled.button`
     background: transparent;
   }
 
-  @media (min-width: 991px) {
+  @media (min-width: 992px) {
     color: #b1040e;
 
     &:hover, &:focus {
@@ -220,7 +220,7 @@ const MenuItemContainer = styled.div<{ level?: number }>`
 
   width: 100%;
 
-  @media (min-width: 991px) {
+  @media (min-width: 992px) {
     width: ${props => props.level === 0 ? "fit-content" : "100%"};
     margin-bottom: ${props => props.level === 0 ? "6px" : ""};
   }
@@ -241,7 +241,7 @@ const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: numb
     border-left: 6px solid #ffffff;
   }
 
-  @media (min-width: 991px) {
+  @media (min-width: 992px) {
     color: #b1040e;
     padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "16px 0"};
     border-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "6px solid #000000" : (inTrail ? "6px solid #b6b1a9" : "6px solid transparent")) : ""};
@@ -261,7 +261,7 @@ const NoLink = styled.span<{ level?: number }>`
   text-decoration: none;
   padding: 16px 0 16px 16px;
 
-  @media (min-width: 991px) {
+  @media (min-width: 992px) {
     color: #b1040e;
     padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "16px 0"};
   }
@@ -276,7 +276,7 @@ const MenuList = styled.ul<{ open?: boolean, level?: number }>`
   border-top: 1px solid #53565a;
   min-width: 300px;
 
-  @media (min-width: 991px) {
+  @media (min-width: 992px) {
     box-shadow: ${props => props.level === 0 ? "0 10px 20px rgba(0,0,0,.15),0 6px 6px rgba(0,0,0,.2)" : ""};
     position: ${props => props.level === 0 ? "absolute" : "relative"};
     top: 100%;
@@ -295,7 +295,7 @@ const ListItem = styled.li<{ level?: number }>`
     border-bottom: none;
   }
 
-  @media (min-width: 991px) {
+  @media (min-width: 992px) {
     border-bottom: ${props => props.level === 0 ? "none" : "1px solid #d9d9d9"};
   }
 `
@@ -308,7 +308,7 @@ const MenuItemDivider = styled.div`
   display: none;
   flex-shrink: 0;
 
-  @media (min-width: 991px) {
+  @media (min-width: 992px) {
     display: block;
   }
 `
