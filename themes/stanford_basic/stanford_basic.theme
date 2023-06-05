@@ -187,12 +187,18 @@ function stanford_basic_preprocess_block(&$variables) {
   $variables['attributes']['class'][] = Html::cleanCssIdentifier(_stanford_basic_change_characters($variables['base_plugin_id']));
   $variables['attributes']['class'][] = Html::cleanCssIdentifier(_stanford_basic_change_characters($variables['derivative_plugin_id']));
 
-  if (
-    $variables['base_plugin_id'] == 'system_menu_block' &&
-    \Drupal::state()->get('stanford_basic.decouple_menu', FALSE)
-  ) {
-    $variables['attributes']['data-island'] =  'main-menu-island';
-    $variables['#attached']['library'][] = 'stanford_basic/decoupled_menu';
+  if (\Drupal::hasService('config_pages.loader')) {
+
+    /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_pages */
+    $config_pages = \Drupal::service('config_pages.loader');
+    $new_menu = (bool) $config_pages->getValue('stanford_basic_site_settings', 'su_site_new_menu', 0, 'value');
+    if (
+      $variables['base_plugin_id'] == 'system_menu_block' &&
+      $new_menu
+    ) {
+      $variables['attributes']['data-island'] = 'main-menu-island';
+      $variables['#attached']['library'][] = 'stanford_basic/decoupled_menu';
+    }
   }
 }
 
