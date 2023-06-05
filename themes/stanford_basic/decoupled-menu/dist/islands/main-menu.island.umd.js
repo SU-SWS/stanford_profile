@@ -127,11 +127,12 @@
   justify-content: space-between;
   align-items: center;
   margin-right: ${e=>0===e.level?"32px":"0"};
-  margin-bottom: 6px;
+
   width: 100%;
 
   @media (min-width: 991px) {
     width: ${e=>0===e.level?"fit-content":"100%"};
+    margin-bottom: ${e=>0===e.level?"6px":""};
   }
 `,en=Or.a`
   color: #ffffff;

@@ -217,11 +217,12 @@ const MenuItemContainer = styled.div<{ level?: number }>`
   justify-content: space-between;
   align-items: center;
   margin-right: ${props => props.level === 0 ? "32px" : "0"};
-  margin-bottom: 6px;
+
   width: 100%;
 
   @media (min-width: 991px) {
     width: ${props => props.level === 0 ? "fit-content" : "100%"};
+    margin-bottom: ${props => props.level === 0 ? "6px" : ""};
   }
 `
 
