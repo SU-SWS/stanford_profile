@@ -48,16 +48,17 @@ const MobileMenuButton = styled.button`
   background: transparent;
   border: 0;
   border-bottom: 2px solid transparent;
-  color: #000000;
+  color: #2e2d29;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 1.6rem;
 
   &:hover, &:focus {
-    border-bottom: 2px solid #000000;
+    border-bottom: 2px solid #2e2d29;
     background: transparent;
-    color: #000000;
+    color: #2e2d29;
     box-shadow: none;
   }
 
@@ -108,7 +109,20 @@ const SearchContainer = styled.li`
     margin: 0;
 
     &:hover, &:focus {
-      border: 1px solid #b1040e;
+      border: 1px solid #2e2d29;
+    }
+
+    &:after {
+      content: '';
+      background-color: red;
+      border-radius: 19px;
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      position: absolute;
+      right: -10px;
+      top: 9px;
+      z-index: 1;
     }
   }
 
@@ -189,7 +203,7 @@ const Button = styled.button`
   color: #ffffff;
   background: transparent;
   border: none;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
   padding: 0;
   margin: 0 0 -4px;
   box-shadow: none;
@@ -198,7 +212,7 @@ const Button = styled.button`
 
   &:hover, &:focus {
     box-shadow: none;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
     background: transparent;
   }
 
@@ -206,8 +220,8 @@ const Button = styled.button`
     color: #b1040e;
 
     &:hover, &:focus {
-      border-bottom: 2px solid #000000;
-      color: #000000;
+      border-bottom: 1px solid #2e2d29;
+      color: #2e2d29;
     }
   }
 `
@@ -244,13 +258,13 @@ const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: numb
   @media (min-width: 992px) {
     color: #b1040e;
     padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "16px 0"};
-    border-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "6px solid #000000" : (inTrail ? "6px solid #b6b1a9" : "6px solid transparent")) : ""};
+    border-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "6px solid #2e2d29" : (inTrail ? "6px solid #b6b1a9" : "6px solid transparent")) : ""};
     border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #b1040e" : "6px solid transparent") : "none"};
     margin-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "-6px" : (inTrail ? "-6px" : "-6px")) : ""};
 
     &:hover, &:focus {
       color: #2e2d29;
-      border-left: ${({level}) => level != 0 ? "6px solid #000000" : "none"};
+      border-left: ${({level}) => level != 0 ? "6px solid #2e2d29" : "none"};
     }
   }
 `
@@ -297,6 +311,10 @@ const ListItem = styled.li<{ level?: number }>`
 
   @media (min-width: 992px) {
     border-bottom: ${props => props.level === 0 ? "none" : "1px solid #d9d9d9"};
+  }
+  
+  @media (max-width: 992px) {
+    padding: ${props => props.level > 0 ? "0 0 0 10px" : "0"};
   }
 `
 
