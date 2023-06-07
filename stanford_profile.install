@@ -258,8 +258,10 @@ function stanford_profile_update_9007(&$sandbox) {
   }
 
   $node_ids = array_splice($sandbox['nids'], 0, 25);
+  /** @var \Drupal\node\NodeInterface[] $nodes */
   $nodes = $node_storage->loadMultiple($node_ids);
 
+  $database = \Drupal::database();
   $convert_fields = [
     'field_block:node:stanford_event:su_event_components',
     'field_block:node:stanford_event_series:su_event_series_components',
@@ -270,6 +272,7 @@ function stanford_profile_update_9007(&$sandbox) {
     'field_block:node:stanford_publication:su_publication_components',
   ];
   foreach ($nodes as $node) {
+    $changed_time = $node->getChangedTime();
     $save_node = FALSE;
     /** @var \Drupal\layout_builder\Field\LayoutSectionItemList $layout */
     $layout = $node->get('layout_builder__layout');
@@ -286,6 +289,16 @@ function stanford_profile_update_9007(&$sandbox) {
     }
     if ($save_node) {
       $node->save();
+
+      // Reset the changed time to the value before this process.
+      $database->update('node_field_data')
+        ->fields(['changed' => $changed_time])
+        ->condition('nid', $node->id())
+        ->execute();
+      $database->update('node_field_revision')
+        ->fields(['changed' => $changed_time])
+        ->condition('vid', $node->getRevisionId())
+        ->execute();
     }
   }
 
@@ -375,6 +388,7 @@ function _stanford_profile_fix_menu(array $menu_items = [], string $parent = NUL
     ->getStorage('node');
   /** @var \Drupal\Core\Menu\MenuLinkManagerInterface $menu_link_manager */
   $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
+  $database = \Drupal::database();
 
   foreach ($menu_items as $id => $menu_item) {
     /** @var \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent $link */
@@ -401,16 +415,26 @@ function _stanford_profile_fix_menu(array $menu_items = [], string $parent = NUL
           'weight' => $link->getweight(),
           'expanded' => $link->isExpanded(),
         ];
+        $changed_time = $node->getChangedTime();
         $node->set('field_menulink', $menu_field_data)->save();
         $new_parent = 'menu_link_field:node_field_menulink_' . $node->uuid() . '_und';
+
+        // Reset the changed time to the value before this process.
+        $database->update('node_field_data')
+          ->fields(['changed' => $changed_time])
+          ->condition('nid', $node->id())
+          ->execute();
+        $database->update('node_field_revision')
+          ->fields(['changed' => $changed_time])
+          ->condition('vid', $node->getRevisionId())
+          ->execute();
 
         if ($menu_item->subtree) {
           _stanford_profile_fix_menu($menu_item->subtree, $new_parent);
         }
 
         if (!$link->isEnabled()) {
-          \Drupal::database()
-            ->update('menu_tree')
+          $database->update('menu_tree')
             ->fields(['enabled' => 0])
             ->condition('id', $new_parent)
             ->execute();
