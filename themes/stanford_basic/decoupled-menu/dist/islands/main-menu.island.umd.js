@@ -93,19 +93,6 @@
     &:hover, &:focus {
       border: 1px solid #2e2d29;
     }
-
-    &:after {
-      content: '';
-      background-color: red;
-      border-radius: 19px;
-      width: 40px;
-      height: 40px;
-      display: inline-block;
-      position: absolute;
-      right: -10px;
-      top: 9px;
-      z-index: 1;
-    }
   }
 
   @media (min-width: 992px) {
@@ -126,6 +113,20 @@
     box-shadow: none;
     border-bottom: 1px solid #ffffff;
     background: transparent;
+  }
+
+  @media (max-width: 992px) {
+    height: 38px;
+    background-color: #b1040e;
+    background-size: contain;
+    width: 38px;
+    border-radius: 38px;
+
+    &:hover, &:focus {
+      box-shadow: none;
+      border-bottom: none;
+      background: #b1040e;
+    }
   }
 
   @media (min-width: 992px) {
