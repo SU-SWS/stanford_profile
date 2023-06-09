@@ -185,8 +185,9 @@
     box-shadow: ${e=>0===e.level?"0 10px 20px rgba(0,0,0,.15),0 6px 6px rgba(0,0,0,.2)":""};
     position: ${e=>0===e.level?"absolute":"relative"};
     top: 100%;
-    background: white;
+    background: #ffffff;
     border-top: 1px solid #d9d9d9;
+    right: 0;
   }
 `,nn=Or.li`
   position: relative;
