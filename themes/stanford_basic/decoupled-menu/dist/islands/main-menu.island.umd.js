@@ -100,27 +100,34 @@
   }
 `,Kr=({})=>{var e,t,r;oe((()=>{const e=new CustomEvent("web-component-mount",{detail:{target:t,parent:r},bubbles:!0});return dispatchEvent(e),()=>{const e=new CustomEvent("web-component-unmount",{detail:{target:t,parent:r},bubbles:!0});dispatchEvent(e)}}),[t=Jr]);const[n,o]=te([]),[i,a]=te(!1),s=ie(null);ne((()=>{fetch($r+"/jsonapi/menu_items/main").then((e=>e.json())).then((e=>{return o((t=e)?zr.deserialize(t,r):null);var t,r})).catch((e=>console.error(e)))}),[]);const l=se((e=>{"Escape"===e.key&&i&&(a(!1),s.current.focus())}),[i]);ne((()=>{i&&document.addEventListener("keydown",l),i||document.removeEventListener("keydown",l)}),[i]);const c=Lr(n);if(!c.items||0===(null===(e=c.items)||void 0===e?void 0:e.length))return Hr("div",{});const u=document.getElementsByClassName("su-multi-menu");return u.length>0&&u[0].remove(),Hr("nav",{style:{position:"relative"},children:[Hr(Yr,{ref:s,onClick:()=>a(!i),"aria-expanded":i,children:[Hr(i?Vr:Wr,{}),i?"Close":"Menu"]}),Hr(qr,{open:i,children:[Hr(Zr,{children:Hr("form",{action:"/search",method:"get",children:[Hr("label",{htmlFor:"mobile-search-input",children:"Keyword Search"}),Hr("div",{style:{position:"relative"},children:[Hr("input",{id:"mobile-search-input",type:"text",placeholder:"Search this site",name:"key"}),Hr("button",{type:"submit",children:[Hr(Gr,{style:{width:"25px",height:"25px"}}),Hr("span",{className:"visually-hidden",children:"Submit Search"})]})]})]})}),c.items.map((e=>Hr(an,{...e},e.id)))]})]})},Xr=Or.button`
   color: #ffffff;
-  background: transparent;
+  background: #b1040e;
   border: none;
   border-bottom: 1px solid transparent;
   padding: 0;
   margin: 0 0 -4px;
   box-shadow: none;
-  height: 100%;
   flex-shrink: 0;
+  border-radius: 999px;
+  transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border 0.2s ease-in-out;
+  width: 38px;
+  height: 38px;
 
   &:hover, &:focus {
     box-shadow: none;
-    border-bottom: 1px solid #ffffff;
-    background: transparent;
+    border-bottom: 1px solid #b1040e;
+    background: #f4f4f4;
+    color: #000000;
   }
 
   @media (min-width: 992px) {
     color: #b1040e;
+    background: transparent;
+    border-radius: 0;
 
     &:hover, &:focus {
       border-bottom: 1px solid #2e2d29;
       color: #2e2d29;
+      background: transparent;
     }
   }
 `,Qr=Or.div`

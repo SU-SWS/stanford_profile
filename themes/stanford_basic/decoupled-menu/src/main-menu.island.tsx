@@ -188,27 +188,34 @@ export const MainMenu = ({}) => {
 
 const Button = styled.button`
   color: #ffffff;
-  background: transparent;
+  background: #b1040e;
   border: none;
   border-bottom: 1px solid transparent;
   padding: 0;
   margin: 0 0 -4px;
   box-shadow: none;
-  height: 100%;
   flex-shrink: 0;
+  border-radius: 999px;
+  transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border 0.2s ease-in-out;
+  width: 38px;
+  height: 38px;
 
   &:hover, &:focus {
     box-shadow: none;
-    border-bottom: 1px solid #ffffff;
-    background: transparent;
+    border-bottom: 1px solid #b1040e;
+    background: #f4f4f4;
+    color: #000000;
   }
 
   @media (min-width: 992px) {
     color: #b1040e;
+    background: transparent;
+    border-radius: 0;
 
     &:hover, &:focus {
       border-bottom: 1px solid #2e2d29;
       color: #2e2d29;
+      background: transparent;
     }
   }
 `
