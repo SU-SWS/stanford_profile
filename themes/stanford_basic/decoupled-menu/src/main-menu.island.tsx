@@ -42,22 +42,23 @@ const TopList = styled.ul<{ open?: boolean }>`
 
 const MobileMenuButton = styled.button`
   position: absolute;
-  top: -70px;
+  top: -60px;
   right: 10px;
   box-shadow: none;
   background: transparent;
   border: 0;
   border-bottom: 2px solid transparent;
-  color: #000000;
+  color: #2e2d29;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 1.6rem;
 
   &:hover, &:focus {
-    border-bottom: 2px solid #000000;
+    border-bottom: 2px solid #2e2d29;
     background: transparent;
-    color: #000000;
+    color: #2e2d29;
     box-shadow: none;
   }
 
@@ -108,7 +109,7 @@ const SearchContainer = styled.li`
     margin: 0;
 
     &:hover, &:focus {
-      border: 1px solid #b1040e;
+      border: 1px solid #2e2d29;
     }
   }
 
@@ -189,7 +190,7 @@ const Button = styled.button`
   color: #ffffff;
   background: transparent;
   border: none;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
   padding: 0;
   margin: 0 0 -4px;
   box-shadow: none;
@@ -198,7 +199,7 @@ const Button = styled.button`
 
   &:hover, &:focus {
     box-shadow: none;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
     background: transparent;
   }
 
@@ -206,8 +207,8 @@ const Button = styled.button`
     color: #b1040e;
 
     &:hover, &:focus {
-      border-bottom: 2px solid #000000;
-      color: #000000;
+      border-bottom: 1px solid #2e2d29;
+      color: #2e2d29;
     }
   }
 `
@@ -244,13 +245,13 @@ const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: numb
   @media (min-width: 992px) {
     color: #b1040e;
     padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "16px 0"};
-    border-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "6px solid #000000" : (inTrail ? "6px solid #b6b1a9" : "6px solid transparent")) : ""};
+    border-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "6px solid #2e2d29" : (inTrail ? "6px solid #b6b1a9" : "6px solid transparent")) : ""};
     border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #b1040e" : "6px solid transparent") : "none"};
     margin-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "-6px" : (inTrail ? "-6px" : "-6px")) : ""};
 
     &:hover, &:focus {
       color: #2e2d29;
-      border-left: ${({level}) => level != 0 ? "6px solid #000000" : "none"};
+      border-left: ${({level}) => level != 0 ? "6px solid #2e2d29" : "none"};
     }
   }
 `
@@ -280,15 +281,16 @@ const MenuList = styled.ul<{ open?: boolean, level?: number }>`
     box-shadow: ${props => props.level === 0 ? "0 10px 20px rgba(0,0,0,.15),0 6px 6px rgba(0,0,0,.2)" : ""};
     position: ${props => props.level === 0 ? "absolute" : "relative"};
     top: 100%;
-    background: white;
+    background: #ffffff;
     border-top: 1px solid #d9d9d9;
+    right: 0;
   }
 `
 
 const ListItem = styled.li<{ level?: number }>`
   position: relative;
   border-bottom: 1px solid #53565a;
-  padding: ${props => props.level > 0 ? "0 10px" : "0"};
+  padding: ${props => props.level > 0 ? "0 0 0 10px" : "0"};
   margin: 0;
 
   &:last-child {
@@ -297,6 +299,7 @@ const ListItem = styled.li<{ level?: number }>`
 
   @media (min-width: 992px) {
     border-bottom: ${props => props.level === 0 ? "none" : "1px solid #d9d9d9"};
+    padding: ${props => props.level > 0 ? "0 10px" : "0"};
   }
 `
 
