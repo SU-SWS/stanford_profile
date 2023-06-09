@@ -42,7 +42,7 @@ const TopList = styled.ul<{ open?: boolean }>`
 
 const MobileMenuButton = styled.button`
   position: absolute;
-  top: -70px;
+  top: -60px;
   right: 10px;
   box-shadow: none;
   background: transparent;
@@ -203,20 +203,6 @@ const Button = styled.button`
     background: transparent;
   }
 
-  @media (max-width: 992px) {
-    height: 38px;
-    background-color: #b1040e;
-    background-size: contain;
-    width: 38px;
-    border-radius: 38px;
-
-    &:hover, &:focus {
-      box-shadow: none;
-      border-bottom: none;
-      background: #b1040e;
-    }
-  }
-
   @media (min-width: 992px) {
     color: #b1040e;
 
@@ -303,7 +289,7 @@ const MenuList = styled.ul<{ open?: boolean, level?: number }>`
 const ListItem = styled.li<{ level?: number }>`
   position: relative;
   border-bottom: 1px solid #53565a;
-  padding: ${props => props.level > 0 ? "0 10px" : "0"};
+  padding: ${props => props.level > 0 ? "0 0 0 10px" : "0"};
   margin: 0;
 
   &:last-child {
@@ -312,10 +298,7 @@ const ListItem = styled.li<{ level?: number }>`
 
   @media (min-width: 992px) {
     border-bottom: ${props => props.level === 0 ? "none" : "1px solid #d9d9d9"};
-  }
-  
-  @media (max-width: 992px) {
-    padding: ${props => props.level > 0 ? "0 0 0 10px" : "0"};
+    padding: ${props => props.level > 0 ? "0 10px" : "0"};
   }
 `
 
