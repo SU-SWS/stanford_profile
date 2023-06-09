@@ -6,7 +6,7 @@
  */
 
 use Drupal\Core\Menu\MenuTreeParameters;
-use Drupal\menu_link_content\MenuLinkContentInterface;
+use Drupal\node\NodeInterface;
 
 /**
  * Save the system pages from the original config values into state.
@@ -87,10 +87,12 @@ function stanford_profile_update_9005(&$sandbox) {
   $row_storage = \Drupal::entityTypeManager()->getStorage('paragraph_row');
   $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
   $node_ids = array_splice($sandbox['nids'], 0, 25);
+
   /** @var \Drupal\node\NodeInterface[] $nodes */
   $nodes = $node_storage->loadMultiple($node_ids);
   $delete_entities = [];
   foreach ($nodes as $node) {
+    $changed_time = $node->getChangedTime();
     $new_components = [];
     /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $row */
     foreach ($node->get('su_page_components') as $row) {
@@ -138,6 +140,7 @@ function stanford_profile_update_9005(&$sandbox) {
     }
 
     $node->set('su_page_components', $new_components)->save();
+    _stanford_profile_reset_node_changed_time($node, $changed_time);
   }
   foreach ($delete_entities as $entity) {
     $entity->delete();
@@ -163,10 +166,12 @@ function stanford_profile_update_9006(&$sandbox) {
   $row_storage = \Drupal::entityTypeManager()->getStorage('paragraph_row');
   $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
   $node_ids = array_splice($sandbox['nids'], 0, 25);
+
   /** @var \Drupal\node\NodeInterface[] $nodes */
   $nodes = $node_storage->loadMultiple($node_ids);
   $delete_entities = [];
   foreach ($nodes as $node) {
+    $changed_time = $node->getChangedTime();
     $new_components = [];
     /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $row */
     foreach ($node->get('su_publication_components') as $row) {
@@ -212,6 +217,7 @@ function stanford_profile_update_9006(&$sandbox) {
     }
 
     $node->set('su_publication_components', $new_components)->save();
+    _stanford_profile_reset_node_changed_time($node, $changed_time);
   }
   foreach ($delete_entities as $entity) {
     $entity->delete();
@@ -290,15 +296,7 @@ function stanford_profile_update_9007(&$sandbox) {
     if ($save_node) {
       $node->save();
 
-      // Reset the changed time to the value before this process.
-      $database->update('node_field_data')
-        ->fields(['changed' => $changed_time])
-        ->condition('nid', $node->id())
-        ->execute();
-      $database->update('node_field_revision')
-        ->fields(['changed' => $changed_time])
-        ->condition('vid', $node->getRevisionId())
-        ->execute();
+      _stanford_profile_reset_node_changed_time($node, $changed_time);
     }
   }
 
@@ -419,15 +417,7 @@ function _stanford_profile_fix_menu(array $menu_items = [], string $parent = NUL
         $node->set('field_menulink', $menu_field_data)->save();
         $new_parent = 'menu_link_field:node_field_menulink_' . $node->uuid() . '_und';
 
-        // Reset the changed time to the value before this process.
-        $database->update('node_field_data')
-          ->fields(['changed' => $changed_time])
-          ->condition('nid', $node->id())
-          ->execute();
-        $database->update('node_field_revision')
-          ->fields(['changed' => $changed_time])
-          ->condition('vid', $node->getRevisionId())
-          ->execute();
+        _stanford_profile_reset_node_changed_time($node, $changed_time);
 
         if ($menu_item->subtree) {
           _stanford_profile_fix_menu($menu_item->subtree, $new_parent);
@@ -464,4 +454,25 @@ function _stanford_profile_fix_menu(array $menu_items = [], string $parent = NUL
       _stanford_profile_fix_menu($menu_item->subtree, $id);
     }
   }
+}
+
+/**
+ * Update the node tables to reset the changed time.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   Node entity.
+ * @param int $changed
+ *   Changed time.
+ */
+function _stanford_profile_reset_node_changed_time(NodeInterface $node, int $changed) {
+  $database = \Drupal::database();
+  // Reset the changed time to the value before this process.
+  $database->update('node_field_data')
+    ->fields(['changed' => $changed])
+    ->condition('nid', $node->id())
+    ->execute();
+  $database->update('node_field_revision')
+    ->fields(['changed' => $changed])
+    ->condition('vid', $node->getRevisionId())
+    ->execute();
 }
