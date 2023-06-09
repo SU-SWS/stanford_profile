@@ -8,6 +8,8 @@ dependencies:
     - jsonapi_defaults
 third_party_settings:
   jsonapi_defaults:
+    default_include:
+      - parent
     page_limit: 50
 id: taxonomy_term--stanford_event_keywords
 disabled: false
@@ -89,7 +91,7 @@ resourceFields:
     enhancer:
       id: ''
   parent:
-    disabled: true
+    disabled: false
     fieldName: parent
     publicName: parent
     enhancer:
