@@ -14,6 +14,8 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_home
     - field.field.config_pages.stanford_basic_site_settings.su_site_menu_levels
     - field.field.config_pages.stanford_basic_site_settings.su_site_name
+    - field.field.config_pages.stanford_basic_site_settings.su_site_new_menu
+    - field.field.config_pages.stanford_basic_site_settings.su_site_nobots
     - field.field.config_pages.stanford_basic_site_settings.su_site_url
   module:
     - link
@@ -107,6 +109,26 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
+    region: content
+  su_site_new_menu:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  su_site_nobots:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 12
     region: content
   su_site_url:
     type: link
