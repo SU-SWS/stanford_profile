@@ -44,7 +44,7 @@ class PublicationsCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_publication');
     $I->fillField('Title', $this->values['node_title']);
-    $I->selectOption('Publication Types', $term->label());
+    $I->fillField('Publication Types', $term->id());
     $I->selectOption('su_publication_citation[actions][bundle]', 'Book');
     $I->click('Add Citation');
     $I->fillField('First Name', $this->faker->firstName);
@@ -221,11 +221,16 @@ class PublicationsCest {
    * Journal citations should include a field for journal publisher.
    */
   public function testJournalPublisher(AcceptanceTester $I) {
+    $term = $I->createEntity([
+      'vid' => 'stanford_publication_topics',
+      'name' => $this->faker->word,
+    ], 'taxonomy_term');
+
     $this->values['node_title'] = $this->faker->words(3, TRUE);
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_publication');
     $I->fillField('Title', $this->values['node_title']);
-    $I->selectOption('Publication Types', 'Journal Article');
+    $I->fillField('Publication Types', $term->id());
     $I->selectOption('su_publication_citation[actions][bundle]', 'Journal Article');
     $I->click('Add Citation');
     $I->fillField('First Name', $this->faker->firstName);
