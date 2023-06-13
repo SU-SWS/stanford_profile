@@ -19,6 +19,9 @@
 // Style guide: Components.Multi Menu
 //
 
+.system-menu-block {
+  width: 100%;
+}
 
 .su-multi-menu {
   @include font-smoothing;
@@ -26,6 +29,7 @@
   display: block;
   position: relative;
   z-index: 100;
+  width: 100%;
 
   // Hide stuff.
   .mobile-hidden {
