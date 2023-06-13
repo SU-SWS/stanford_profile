@@ -102,15 +102,15 @@ class ListsCest {
 
     $I->logInWithRole('contributor');
     $I->amOnPage($basic_page->toUrl('edit-form')->toString());
-    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->canSeeInField('Shared Tags', $shared_tag->id());
     $I->amOnPage($news->toUrl('edit-form')->toString());
-    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->canSeeInField('Shared Tags', $shared_tag->id());
     $I->amOnPage($event->toUrl('edit-form')->toString());
-    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->canSeeInField('Shared Tags', $shared_tag->id());
     $I->amOnPage($person->toUrl('edit-form')->toString());
-    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->canSeeInField('Shared Tags', $shared_tag->id());
     $I->amOnPage($publication->toUrl('edit-form')->toString());
-    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->canSeeInField('Shared Tags', $shared_tag->id());
   }
 
   /**

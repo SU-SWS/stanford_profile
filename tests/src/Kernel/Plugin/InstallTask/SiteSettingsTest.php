@@ -34,6 +34,7 @@ class SiteSettingsTest extends KernelTestBase {
     'externalauth',
     'simplesamlphp_auth',
     'stanford_ssp',
+    'path_alias',
     'user',
     'field',
     'node',

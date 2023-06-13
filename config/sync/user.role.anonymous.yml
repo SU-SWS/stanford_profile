@@ -5,6 +5,7 @@ dependencies:
   module:
     - field_permissions
     - media
+    - printable
     - stanford_policy
     - system
     - ui_patterns_library
@@ -30,6 +31,7 @@ permissions:
   - 'view own su_site_home'
   - 'view own su_site_url'
   - 'view policy log'
+  - 'view printer friendly versions'
   - 'view su_metatags'
   - 'view su_policy_auto_prefix'
   - 'view su_policy_chapter'

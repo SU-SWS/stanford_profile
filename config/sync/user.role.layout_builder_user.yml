@@ -8,12 +8,16 @@ dependencies:
     - core.entity_view_display.node.stanford_news.default
     - core.entity_view_display.node.stanford_page.default
     - core.entity_view_display.node.stanford_person.default
+    - core.entity_view_display.node.stanford_policy.default
     - core.entity_view_display.node.stanford_publication.default
     - core.entity_view_display.taxonomy_term.stanford_event_types.default
     - core.entity_view_display.taxonomy_term.stanford_news_topics.default
     - core.entity_view_display.taxonomy_term.stanford_person_types.default
     - core.entity_view_display.taxonomy_term.stanford_publication_topics.default
+    - filter.format.stanford_html
+    - filter.format.stanford_minimal_html
   module:
+    - filter
     - layout_builder
 id: layout_builder_user
 label: 'Layout Builder User'
@@ -28,6 +32,9 @@ permissions:
   - 'configure editable stanford_page node layout overrides'
   - 'configure editable stanford_person node layout overrides'
   - 'configure editable stanford_person_types taxonomy_term layout overrides'
+  - 'configure editable stanford_policy node layout overrides'
   - 'configure editable stanford_publication node layout overrides'
   - 'configure editable stanford_publication_topics taxonomy_term layout overrides'
   - 'create and edit custom blocks'
+  - 'use text format stanford_html'
+  - 'use text format stanford_minimal_html'

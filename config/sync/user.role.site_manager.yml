@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.stanford_html
+    - filter.format.stanford_minimal_html
     - media.type.embeddable
     - media.type.file
     - media.type.google_form
@@ -19,6 +21,7 @@ dependencies:
     - node.type.stanford_publication
     - taxonomy.vocabulary.basic_page_types
     - taxonomy.vocabulary.event_audience
+    - taxonomy.vocabulary.media_tags
     - taxonomy.vocabulary.stanford_event_types
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
@@ -33,11 +36,13 @@ dependencies:
     - dropzonejs
     - editoria11y
     - field_permissions
+    - filter
     - media
     - menu_admin_per_menu
     - node
     - paragraphs
     - path
+    - pathauto
     - rabbit_hole
     - redirect
     - role_delegation
@@ -88,7 +93,6 @@ permissions:
   - 'assign stanford_student role'
   - 'break content lock'
   - 'cancel account'
-  - 'change own username'
   - 'choose layout for node stanford_page'
   - 'create embeddable media'
   - 'create field_media_embeddable_code'
@@ -109,6 +113,7 @@ permissions:
   - 'create stanford_publication content'
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
+  - 'create terms in media_tags'
   - 'create terms in stanford_event_types'
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'
@@ -158,6 +163,7 @@ permissions:
   - 'delete stanford_publication revisions'
   - 'delete terms in basic_page_types'
   - 'delete terms in event_audience'
+  - 'delete terms in media_tags'
   - 'delete terms in stanford_event_types'
   - 'delete terms in stanford_news_topics'
   - 'delete terms in stanford_person_types'
@@ -208,6 +214,7 @@ permissions:
   - 'edit stanford_super_footer config page entity'
   - 'edit terms in basic_page_types'
   - 'edit terms in event_audience'
+  - 'edit terms in media_tags'
   - 'edit terms in stanford_event_types'
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
@@ -217,6 +224,8 @@ permissions:
   - 'import stanford_publications migration'
   - 'import su_stanford_person migration'
   - 'mark as hidden in editoria11y'
+  - 'mark as ok in editoria11y'
+  - 'notify of path changes'
   - 'rabbit hole bypass node'
   - 'revert stanford_course revisions'
   - 'revert stanford_event revisions'
@@ -230,6 +239,8 @@ permissions:
   - 'update any media'
   - 'update any stanford_component_block block content'
   - 'update media'
+  - 'use text format stanford_html'
+  - 'use text format stanford_minimal_html'
   - 'use views bulk edit'
   - 'view all media revisions'
   - 'view all revisions'
@@ -240,6 +251,7 @@ permissions:
   - 'view any unpublished stanford_news content'
   - 'view any unpublished stanford_page content'
   - 'view any unpublished stanford_person content'
+  - 'view any unpublished stanford_policy content'
   - 'view any unpublished stanford_publication content'
   - 'view editoria11y checker'
   - 'view own unpublished content'

@@ -262,7 +262,7 @@ class MediaCest {
     $I->logInWithRole('site_manager');
 
     $I->amOnPage($media->toUrl('edit-form')->toString());
-    $I->canSeeInField('Category', '-' . $child_term->label());
+    $I->canSeeInField('Category', $child_term->id());
     $I->click('Save');
 
     $I->amOnPage('/admin/content/media');

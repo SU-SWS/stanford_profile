@@ -65,21 +65,17 @@
       {% if add_global_ga %}
         {% if not ga_module_enabled %}
         <!-- Global analytics tag (gtag.js) - Google Analytics -->
-        <script async
-                src="https://www.googletagmanager.com/gtag/js?id=UA-26605114-1"></script>
+        <script async src="//www.googletagmanager.com/gtag/js?id=G-BECJQXLNCY"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
-
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-
+          function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'UA-26605114-1');
+
+          gtag('config', 'G-BECJQXLNCY');
         </script>
         {% else %}
         <script>
-          ga("create", "UA-26605114-1", {"cookieDomain":"auto"}, 'globalTracker');
+          gtag('config', 'G-BECJQXLNCY');
         </script>
         {% endif %}
       {% endif %}
@@ -89,15 +85,6 @@
     {% set classes = classes|merge(['role--' ~ role|clean_class]) %}
   {% endfor %}
   <body{{ attributes.addClass(classes) }}>
-    {% block block_skiplinks %}
-      <a href="#main-content" class="visually-hidden focusable su-skipnav su-skipnav--content">
-        {{ 'Skip to main content'|t }}
-      </a>
-      <a href="#secondary-navigation" class="visually-hidden focusable su-skipnav su-skipnav--secondary">
-        {{ 'Skip to secondary navigation'|t }}
-      </a>
-    {% endblock %}
-
     {{ page_top }}
     {{ page }}
     {{ page_bottom }}
