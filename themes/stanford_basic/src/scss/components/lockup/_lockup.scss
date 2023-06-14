@@ -33,12 +33,23 @@
 }
 
 .su-lockup__cell2 {
-  max-width: 380px;
+  max-width: 475px;
 }
 
 .su-lockup__cell1 {
   .su-lockup__line4 {
     overflow-wrap: break-word;
     word-break: break-all;
+  }
+}
+
+.su-lockup--option-d,
+.su-lockup--option-e,
+.su-lockup--option-h,
+.su-lockup--option-i,
+.su-lockup--option-q,
+.su-lockup--option-t {
+  .su-lockup__line3 {
+    line-height: 1.5;
   }
 }
