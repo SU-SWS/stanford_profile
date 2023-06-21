@@ -24,6 +24,8 @@ settings:
       - '|'
       - sourceEditing
       - code
+      - undo
+      - redo
   plugins:
     ckeditor5_style:
       styles:
@@ -41,6 +43,11 @@ settings:
           element: '<a class="su-link--action">'
     ckeditor5_sourceEditing:
       allowed_tags:
+        - '<h2 id class>'
+        - '<h3 id class>'
+        - '<h4 id class>'
+        - '<h5 id class>'
+        - '<h6 id class>'
         - '<cite>'
         - '<dd>'
         - '<div id class>'
