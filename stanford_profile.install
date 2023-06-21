@@ -7,6 +7,7 @@
 
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\node\NodeInterface;
+use Drupal\pathauto\PathautoState;
 
 /**
  * Save the system pages from the original config values into state.
@@ -65,6 +66,42 @@ function stanford_profile_update_9001() {
   }
   catch (\Exception $e) {
     // Theme was already uninstalled.
+  }
+}
+
+/**
+ * Correct path aliases that somehow are incorrectly formatted.
+ */
+function stanford_profile_update_9004() {
+  $database = \Drupal::database();
+  $query = $database->select('path_alias', 'p')
+    ->fields('p');
+  $conditions = $query->orConditionGroup()
+    ->condition('alias', '%http:/%', 'LIKE')
+    ->condition('alias', '%https:/%', 'LIKE');
+  $query->condition($conditions);
+  $results = $query->execute();
+
+  while ($row = $results->fetchAssoc()) {
+    $new_alias = trim(preg_replace('/:\/([a-z0-9])/', '://$1', $row['alias']), '/');
+    if (!str_starts_with($new_alias, 'http')) {
+      throw new \Exception('Unknown path alias pattern to correct');
+    }
+    $new_alias = parse_url($new_alias);
+
+    if (empty($new_alias['path'])) {
+      throw new \Exception('Unknown path alias pattern to correct');
+    }
+    $new_alias = $new_alias['path'];
+
+    $database->update('path_alias')
+      ->fields(['alias' => $new_alias])
+      ->condition('id', $row['id'])
+      ->execute();
+    $database->update('path_alias_revision')
+      ->fields(['alias' => $new_alias])
+      ->condition('id', $row['id'])
+      ->execute();
   }
 }
 
