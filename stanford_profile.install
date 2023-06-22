@@ -137,7 +137,7 @@ function stanford_profile_update_9005(&$sandbox) {
         ->getString());
 
       $delete_entities[] = $row_entity;
-      $number_of_items = $row_entity->get('su_page_components')->count();
+      $number_of_items = min($row_entity->get('su_page_components')->count(), 3);
       $layout_id = "layout_paragraphs_{$number_of_items}_column";
 
       $new_row_entity = $paragraph_storage->create(['type' => 'stanford_layout']);
@@ -279,7 +279,7 @@ function _stanford_profile_update_9005_get_item_region(int $delta, string $layou
       return $delta ? 'right' : 'left';
 
     case 'layout_paragraphs_3_column':
-      $delta_regions = ['left', 'main', 'right'];
+      $delta_regions = ['left', 'main', 'right', 'right', 'right'];
       return $delta_regions[$delta];
   }
   return 'main';
