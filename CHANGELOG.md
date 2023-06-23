@@ -1,5 +1,9 @@
 # Stanford Profile
 
+9.2.8
+--------------------------------------------------------------------------------
+- Don't replace attributes on menu link items.
+
 9.2.7
 --------------------------------------------------------------------------------
 - Moved the help region below the brand bar.
