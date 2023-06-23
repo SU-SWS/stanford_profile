@@ -1,5 +1,24 @@
 # Stanford Profile
 
+9.2.8
+--------------------------------------------------------------------------------
+- Don't replace attributes on menu link items.
+
+9.2.7
+--------------------------------------------------------------------------------
+- Moved the help region below the brand bar.
+
+9.2.6
+--------------------------------------------------------------------------------
+- Exported configs after db updates
+- D8CORE-6416 Update google analytics tracking for stanford_basic theme
+- Added better tag and release action
+- Fix policy typo (#662)
+- D8CORE-2622, D8CORE-4494 Move brand bar and skip-links into header landmark banner (#665)
+- D8CORE-6654 Update stanford_basic package-lock (#667)
+- D8CORE-6336: changing hover on print icon for policy CT (#661)
+- Updated permissions to allow site managers create media taxonomy
+
 9.2.5
 --------------------------------------------------------------------------------
 - Replace log entity type and remove ECK (#656)
