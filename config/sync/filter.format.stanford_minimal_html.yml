@@ -42,17 +42,17 @@ filters:
     settings:
       tablesaw_type: stack
       tablesaw_persist: '1'
-  filter_html_image_secure:
-    id: filter_html_image_secure
-    provider: filter
-    status: false
-    weight: 50
-    settings: {  }
   filter_html_escape:
     id: filter_html_escape
     provider: filter
     status: false
     weight: 0
+    settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: 50
     settings: {  }
   filter_mathjax:
     id: filter_mathjax
