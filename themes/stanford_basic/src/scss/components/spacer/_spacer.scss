@@ -1,17 +1,17 @@
 @charset "UTF-8";
 
 .paragraph--type--stanford-spacer {
-    margin-bottom: 0;
+  margin-bottom: 0;
 
-    &.su-spacer-default {
-        @include responsive-spacing('margin-bottom', 2);
-    }
+  &.su-spacer-default {
+    @include responsive-spacing("margin-bottom", 2);
+  }
 
-    &.su-spacer-reduced {
-        @include responsive-spacing('margin-bottom', 1);
-    }
+  &.su-spacer-reduced {
+    @include responsive-spacing("margin-bottom", 1);
+  }
 
-    &.su-spacer-minimal {
-        @include responsive-spacing('margin-bottom', -1);
-    }
+  &.su-spacer-minimal {
+    @include responsive-spacing("margin-bottom", -1);
+  }
 }
