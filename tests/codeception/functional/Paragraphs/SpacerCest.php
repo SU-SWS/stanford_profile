@@ -50,8 +50,9 @@ class SpacerCest {
     $I->click('Edit', '.lpb-controls');
     $I->waitForText('Spacer Size');
     $I->selectOption('form select[name=su_spacer_size]', 'Reduced');
-    $I->click('form button[class=lbp-btn--save]');
-    $I->click('input[id=edit-submit]');
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
+    $I->click('Save');
     $I->seeElementInDOM('.su-spacer-reduced');
 
     $I->amOnPage($page->toUrl('edit-form')->toString());
@@ -59,8 +60,9 @@ class SpacerCest {
     $I->click('Edit', '.lpb-controls');
     $I->waitForText('Spacer Size');
     $I->selectOption('form select[name=su_spacer_size]', 'Minimal');
-    $I->click('form button[class=lbp-btn--save]');
-    $I->click('input[id=edit-submit]');
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
+    $I->click('Save');
     $I->seeElementInDOM('.su-spacer-minimal');
 
   }
