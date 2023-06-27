@@ -20,7 +20,7 @@ id: node.stanford_page.su_page_components
 field_name: su_page_components
 entity_type: node
 bundle: stanford_page
-label: Components
+label: Paragraphs
 description: ''
 required: false
 translatable: false
@@ -30,51 +30,51 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      stanford_banner: stanford_banner
+      stanford_wysiwyg: stanford_wysiwyg
       stanford_card: stanford_card
+      stanford_banner: stanford_banner
+      stanford_media_caption: stanford_media_caption
       stanford_entity: stanford_entity
       stanford_gallery: stanford_gallery
       stanford_layout: stanford_layout
       stanford_lists: stanford_lists
-      stanford_media_caption: stanford_media_caption
       stanford_spacer: stanford_spacer
-      stanford_wysiwyg: stanford_wysiwyg
     negate: 0
     target_bundles_drag_drop:
       stanford_accordion:
-        weight: 13
+        weight: -25
         enabled: false
       stanford_banner:
-        weight: 14
+        weight: -22
         enabled: true
       stanford_card:
-        weight: 15
+        weight: -23
         enabled: true
       stanford_entity:
-        weight: 16
+        weight: -20
         enabled: true
       stanford_gallery:
-        weight: 17
+        weight: -19
         enabled: true
       stanford_layout:
-        weight: 18
+        weight: -18
         enabled: true
       stanford_lists:
-        weight: 19
+        weight: -17
         enabled: true
       stanford_media_caption:
-        weight: 20
+        weight: -21
         enabled: true
       stanford_person_cta:
-        weight: 21
+        weight: -16
         enabled: false
       stanford_schedule:
-        weight: 22
+        weight: -15
         enabled: false
       stanford_spacer:
-        weight: 23
+        weight: -14
         enabled: true
       stanford_wysiwyg:
-        weight: 24
+        weight: -24
         enabled: true
 field_type: entity_reference_revisions
