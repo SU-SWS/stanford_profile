@@ -468,3 +468,21 @@ function stanford_basic_theme_suggestions_views_view_list_alter(array &$suggesti
   $suggestions[] = "views_view_list__$view_id";
   $suggestions[] = "views_view_list__{$view_id}__$display_id";
 }
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function stanford_basic_preprocess_paragraph(&$vars) {
+  $paragraph = $vars['elements']['#paragraph'];
+  if ($paragraph->getType() == 'stanford_spacer') {
+   if ($paragraph->hasField('su_spacer_size') && !$paragraph->get('su_spacer_size')->isEmpty()) {
+      $vars['attributes']['class'][] = 'paragraph';
+      $vars['attributes']['class'][] = 'paragraph--view-mode--default';
+      $vars['attributes']['class'][] = 'paragraph--type--stanford-spacer';
+      if (!$paragraph->isPublished()) {
+        $vars['attributes']['class'][] = 'paragraph--unpublished';
+      }
+      $vars['attributes']['class'][] = str_replace('_', '-', $paragraph->get('su_spacer_size')->getString());
+    }
+  }
+}
