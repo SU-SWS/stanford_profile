@@ -49,7 +49,7 @@ class SpacerCest {
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForText('Spacer Size');
-    $I->selectOption('su-spacer-size', 'Reduced');
+    $I->selectOption('form select[name=su_spacer_size]', 'Reduced');
     $I->click('.lbp-btn--save');
     $I->click('.form-submit');
     $I->seeElementInDOM('.su-spacer-reduced');
@@ -58,10 +58,10 @@ class SpacerCest {
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForText('Spacer Size');
-    $I->selectOption('su-spacer-size', '-default-');
+    $I->selectOption('form select[name=su_spacer_size]', 'Minimal');
     $I->click('.lbp-btn--save');
     $I->click('.form-submit');
-    $I->seeElementInDOM('.su-spacer-default');
+    $I->seeElementInDOM('.su-spacer-minimal');
 
   }
 

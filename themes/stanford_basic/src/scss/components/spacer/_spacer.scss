@@ -1,11 +1,7 @@
 @charset "UTF-8";
 
 .paragraph--type--stanford-spacer {
-  margin-bottom: 0;
-
-  &.su-spacer-default {
-    @include responsive-spacing("margin-bottom", 2);
-  }
+  @include responsive-spacing("margin-bottom", 2);
 
   &.su-spacer-reduced {
     @include responsive-spacing("margin-bottom", 1);

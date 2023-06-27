@@ -476,10 +476,12 @@ function stanford_basic_preprocess_paragraph(&$vars) {
   $paragraph = $vars['elements']['#paragraph'];
   if ($paragraph->getType() == 'stanford_spacer') {
    $vars['attributes']['class'][] = 'paragraph--type--stanford-spacer';
-   if ($paragraph->hasField('su_spacer_size') && !$paragraph->get('su_spacer_size')->isEmpty()) {
-      if (!$paragraph->isPublished()) {
-        $vars['attributes']['class'][] = 'paragraph--unpublished';
-      }
+    if (!$paragraph->isPublished()) {
+      $vars['attributes']['class'][] = 'paragraph--unpublished';
+    }
+    if ($paragraph->hasField('su_spacer_size') &&
+      !$paragraph->get('su_spacer_size')->isEmpty() &&
+      $paragraph->get('su_spacer_size')->getString() != '_none' ) {
       $vars['attributes']['class'][] = $paragraph->get('su_spacer_size')->getString();
     } else {
       $vars['attributes']['class'][] = 'su-spacer-default';
