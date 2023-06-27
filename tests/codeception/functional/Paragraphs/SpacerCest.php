@@ -1,4 +1,5 @@
 <?php
+  use Faker\Factory;
 
 /**
  * Class SpacerCest.
@@ -7,6 +8,21 @@
  * @group spacer
  */
 class SpacerCest {
+
+  /**
+  * Faker service.
+  *
+  * @var \Faker\Generator
+  */
+  protected $faker;
+
+  /**
+   * Test constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
 
   /**
    * The spacer paragraph has one custom field, to set the size of the bottom margin.
