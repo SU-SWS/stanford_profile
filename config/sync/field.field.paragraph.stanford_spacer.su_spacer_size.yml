@@ -12,12 +12,10 @@ field_name: su_spacer_size
 entity_type: paragraph
 bundle: stanford_spacer
 label: 'Spacer Size'
-description: 'Select the size for the spacer.'
+description: 'Select the size for the spacer.  Choosing None will apply the standard spacer height.'
 required: false
 translatable: false
-default_value:
-  -
-    value: su-spacer-default
+default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: list_string
