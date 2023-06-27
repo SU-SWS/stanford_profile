@@ -13,11 +13,11 @@ entity_type: paragraph
 bundle: stanford_spacer
 label: 'Spacer Size'
 description: 'Select the size for the spacer.'
-required: true
+required: false
 translatable: false
 default_value:
   -
-    value: su_spacer_default
+    value: su-spacer-default
 default_value_callback: ''
 settings: {  }
 field_type: list_string
