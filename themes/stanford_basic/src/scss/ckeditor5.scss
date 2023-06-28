@@ -1,25 +1,60 @@
-.ck-content {
+.ck.ck-editor__editable_inline>:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.ck.ck-content {
+  font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;
   font-size: 21px;
   line-height: 31px;
 
+  a[href] {
+    color: #006cb8;
+    font-weight: 600;
+
+    &:hover, &:focus, &:active {
+      color: #000;
+    }
+  }
+
+  h2, h3, h4, h5, h6 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-top: 0;
+    clear: both;
+    font-weight: 700;
+    line-height: 1.2;
+
+    a[href] {
+      color: #b1040e;
+    }
+  }
+
   h2 {
-    font-size: 42px;
+    font-size: 1.953125em;
+    letter-spacing: -.016em;
+    padding-top: 3.8rem;
+    margin-bottom: 1.9rem;
   }
 
   h3 {
-    font-size: 37px;
+    font-size: 1.5625em;
+    letter-spacing: -.012em;
+    padding-top: 1.9rem;
+    margin-bottom: 1.27rem;
   }
 
   h4 {
-    font-size: 30px;
+    font-size: 1.25em;
+    letter-spacing: -.01em;
+    padding-top: 1.9rem;
+    margin-bottom: 1.27rem;
   }
 
   h5 {
-    font-size: 24px;
-  }
-
-  h6 {
-    font-size: 19px;
+    font-size: 1em;
+    padding-top: 1.27rem;
+    margin-bottom: 1.27rem;
   }
 
   figure.table, table {
@@ -27,14 +62,28 @@
   }
 
   .su-intro-text {
-    font-size: 33px;
-    line-height: 49px;
+    margin-bottom: 3.6rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 85rem;
+    letter-spacing: -.012em;
+    font-size: 1.5625em;
   }
 
   .su-font-splash {
-    font-size: 51px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-top: 0;
+    clear: both;
     font-weight: 700;
-    line-height: 77px;
+    line-height: 1.2;
+    font-size: 3.0517578125em;
+    font-size: 2.44140625em;
+    letter-spacing: -.016em;
+    padding-top: 1.2rem;
+    margin-bottom: 3.6rem;
   }
 
   .su-quote-text {
@@ -49,6 +98,16 @@
 
   .su-quote-text:after {
     content: '"';
+  }
+
+  .su-drop-cap {
+    font-size: 1.5625em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 85rem;
+    letter-spacing: -.012em;
   }
 
   .su-drop-cap:first-letter {
@@ -70,33 +129,36 @@
     line-height: 40px;
   }
 
-  a[href] {
-    color: #006cb8
-  }
-
   a.su-button[href] {
     display: inline-block;
     padding: 13px 26px;
-    background-color: #830000;
+    background-color: #b1040e;
     color: white;
   }
 
   a.su-button--big[href] {
     display: inline-block;
     padding: 16px 36px;
-    background-color: #830000;
+    background-color: #b1040e;
     color: white;
   }
 
   a.su-button--secondary[href] {
     display: inline-block;
-    border: 2px solid #830000;
+    border: 2px solid #b1040e;
     padding: 13px 26px;
-    color: #830000;
+    color: #b1040e;
   }
 
-  a.su-link--action[href]:after {
-    content: '>'
+  a.su-link--action[href] {
+    text-decoration: underline;
+
+    &::after {
+      content: '>';
+      margin-right: 0.3em;
+      margin-left: 0.4em;
+      text-decoration: none;
+    }
   }
 
   div:after, p:after {
