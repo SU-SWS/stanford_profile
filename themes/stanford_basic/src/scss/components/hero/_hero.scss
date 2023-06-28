@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+// Banner aspect ratio
+
+.su-hero__media {
+  @include grid-media-max('sm') {
+    aspect-ratio: 30/11;
+  }
+}
