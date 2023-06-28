@@ -45,6 +45,14 @@
     }
   }
 
+  li.su-mobile-site-search {
+    display: none;
+
+    @include grid-media-max('md') {
+      display: block;
+    }
+  }
+
   .su-site-search__input {
     @include padding(0.6rem 2rem 0.8rem);
     font-family: $su-font-sans;
