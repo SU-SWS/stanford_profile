@@ -6,14 +6,14 @@
 .ck.ck-content {
   font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;
   font-size: 21px;
-  line-height: 31px;
+  line-height: 1.7;
 
   a[href] {
     color: #006cb8;
     font-weight: 600;
 
     &:hover, &:focus, &:active {
-      color: #000;
+      color: #2e2d29;;
     }
   }
 
@@ -27,34 +27,47 @@
 
     a[href] {
       color: #b1040e;
+      text-decoration: none;
+
+      &:hover, &:focus, &:active {
+        text-decoration: underline;
+      }
+
+      &::after {
+        content: '>';
+        margin-right: 0.3em;
+        margin-left: 0.4em;
+        text-decoration: none;
+      }
+
     }
   }
 
   h2 {
-    font-size: 1.953125em;
+    font-size: 37px;
     letter-spacing: -.016em;
-    padding-top: 3.8rem;
-    margin-bottom: 1.9rem;
+    padding-top: 3rem;
+    margin-bottom: 1.5rem;
   }
 
   h3 {
-    font-size: 1.5625em;
+    font-size: 30px;
     letter-spacing: -.012em;
-    padding-top: 1.9rem;
-    margin-bottom: 1.27rem;
+    padding-top: 1.8rem;
+    margin-bottom: 1.25rem;
   }
 
   h4 {
-    font-size: 1.25em;
+    font-size: 24px;
     letter-spacing: -.01em;
-    padding-top: 1.9rem;
-    margin-bottom: 1.27rem;
+    padding-top: 1.8rem;
+    margin-bottom: 1.25rem;
   }
 
   h5 {
-    font-size: 1em;
-    padding-top: 1.27rem;
-    margin-bottom: 1.27rem;
+    font-size: 19px;
+    padding-top: 1.25rem;
+    margin-bottom: 1.25rem;
   }
 
   figure.table, table {
@@ -90,14 +103,14 @@
   }
 
   .su-intro-text {
-    margin-bottom: 3.6rem;
+    margin-bottom: 2.5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 400;
     line-height: 1.5;
     max-width: 85rem;
     letter-spacing: -.012em;
-    font-size: 1.5625em;
+    font-size: 30px;
   }
 
   .su-font-splash {
@@ -107,11 +120,10 @@
     clear: both;
     font-weight: 700;
     line-height: 1.2;
-    font-size: 3.0517578125em;
-    font-size: 2.44140625em;
+    font-size: 46px;
     letter-spacing: -.016em;
     padding-top: 1.2rem;
-    margin-bottom: 3.6rem;
+    margin-bottom: 3.2rem;
   }
 
   blockquote {
@@ -119,24 +131,26 @@
   }
 
   .su-quote-text {
-    font-size: 1.953125em;
+    font-size: 37px;
     letter-spacing: -.016em;
     line-height: 1.7;
+    font-style: italic;
   }
 
   .su-drop-cap {
-    font-size: 1.5625em;
+    font-size: 30px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 400;
     line-height: 1.5;
     max-width: 85rem;
     letter-spacing: -.012em;
+    margin-top: 0;
   }
 
   .su-drop-cap:first-letter {
     font-weight: 700;
-    font-size: 40px;
+    font-size: 60px;
   }
 
   .su-related-text {
@@ -148,11 +162,15 @@
   }
 
   .su-callout-text {
+    padding-top: 1.9rem;
+    font-size: 28px;
+    margin-bottom: 3.5rem;
+    line-height: 1.3;
     font-weight: 700;
   }
 
   .su-subheading {
-    font-size: 1.25em;
+    font-size: 24px;
   }
 
   ul {
@@ -171,41 +189,51 @@
 
   a.su-button[href] {
     display: inline-block;
-    padding: 1rem 2rem 1.15rem;
+    padding: .5rem 1rem 0.575rem;
     background-color: #b1040e;
     color: white;
     text-decoration: none;
     font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 1.75rem;
 
     &:hover, &:focus, &:active {
       text-decoration: underline;
+      background-color: #2e2d29;;
     }
     
   }
 
   a.su-button--big[href] {
     display: inline-block;
-    padding: 1.5rem 3rem 1.8rem;
+    padding: 0.75rem 1.5rem 0.9rem;
     background-color: #b1040e;
     color: white;
     text-decoration: none;
     font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 1.75rem;
 
     &:hover, &:focus, &:active {
       text-decoration: underline;
+      background-color: #2e2d29;;
     }
   }
 
   a.su-button--secondary[href] {
     display: inline-block;
-    padding: 1rem 2rem 1.15rem;
+    padding: .5rem 1rem 0.575rem;
     border: 2px solid #b1040e;
     color: #b1040e;
     text-decoration: none;
     font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 1.75rem;
 
     &:hover, &:focus, &:active {
       text-decoration: underline;
+      color: #2e2d29;
+      border: 2px solid #2e2d29;
     }
   }
 
