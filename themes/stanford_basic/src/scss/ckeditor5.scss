@@ -1,10 +1,10 @@
-.ck.ck-editor__editable_inline>:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
-
 .ck.ck-content {
-  font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+  :first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 21px;
   line-height: 1.7;
 
@@ -12,12 +12,18 @@
     color: #006cb8;
     font-weight: 600;
 
-    &:hover, &:focus, &:active {
-      color: #2e2d29;;
+    &:hover,
+    &:focus,
+    &:active {
+      color: #2e2d29;
     }
   }
 
-  h2, h3, h4, h5, h6 {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-top: 0;
@@ -29,7 +35,9 @@
       color: #b1040e;
       text-decoration: none;
 
-      &:hover, &:focus, &:active {
+      &:hover,
+      &:focus,
+      &:active {
         text-decoration: underline;
       }
 
@@ -45,21 +53,21 @@
 
   h2 {
     font-size: 37px;
-    letter-spacing: -.016em;
+    letter-spacing: -0.016em;
     padding-top: 3rem;
     margin-bottom: 1.5rem;
   }
 
   h3 {
     font-size: 30px;
-    letter-spacing: -.012em;
+    letter-spacing: -0.012em;
     padding-top: 1.8rem;
     margin-bottom: 1.25rem;
   }
 
   h4 {
     font-size: 24px;
-    letter-spacing: -.01em;
+    letter-spacing: -0.01em;
     padding-top: 1.8rem;
     margin-bottom: 1.25rem;
   }
@@ -70,7 +78,8 @@
     margin-bottom: 1.25rem;
   }
 
-  figure.table, table {
+  figure.table,
+  table {
     width: 100%;
   }
 
@@ -81,7 +90,7 @@
       tr:last-of-type {
         border-bottom: 0;
       }
-
+      
       th {
         background: #fff;
         border: 0;
@@ -197,9 +206,11 @@
     font-size: 20px;
     margin-bottom: 1.75rem;
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       text-decoration: underline;
-      background-color: #2e2d29;;
+      background-color: #2e2d29;
     }
     
   }
@@ -214,9 +225,11 @@
     font-size: 30px;
     margin-bottom: 1.75rem;
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       text-decoration: underline;
-      background-color: #2e2d29;;
+      background-color: #2e2d29;
     }
   }
 
