@@ -1,8 +1,23 @@
 .ck {
+  &.ck-style-grid__button__preview > * {
+    margin: 0;
+    padding: 0;
+  }
+
   &.ck-content {
     font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 21px;
     line-height: 1.7;
+
+    p {
+      font-size: 21px;
+      line-height: 35px;
+      margin-bottom: 38px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
 
     :first-child {
       margin-top: 0;
@@ -158,8 +173,13 @@
     }
 
     .su-drop-cap:first-letter {
+      margin: 11px 12px 0 0;
+      float: left;
+      font-style: normal;
       font-weight: 700;
-      font-size: 60px;
+      font-size: 90px;
+      line-height: .6;
+      text-transform: uppercase
     }
 
     .su-related-text {
@@ -185,15 +205,37 @@
     ul {
       list-style-type: disc;
       line-height: 1.7;
+
+      ul {
+        list-style-type:circle;
+
+        ul {
+          list-style-type: square;
+        }
+      }
     }
 
     ol {
       line-height: 1.7;
+      list-style-type: number;
+
+      &[type="a"] {
+        list-style-type: lower-alpha
+      }
+      &[type="A"] {
+        list-style-type: upper-alpha
+      }
+      &[type="i"] {
+        list-style-type: lower-roman;
+      }
+      &[type="I"] {
+        list-style-type: upper-roman
+      }
     }
 
     li {
       line-height: 1.4;
-      margin-bottom: 0.5em;
+      margin-bottom: 10px;
     }
 
     a.su-button {
