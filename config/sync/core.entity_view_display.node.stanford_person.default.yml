@@ -557,15 +557,13 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_revisions_entity_view
+                type: layout_paragraphs
                 label: hidden
                 settings:
                   view_mode: default
                 third_party_settings:
                   field_formatter_class:
                     class: su-person-components
-                  ds:
-                    ds_limit: ''
             weight: 1
             additional: {  }
           091088b1-a703-4427-bc0e-9b627205b671:
@@ -919,6 +917,7 @@ content:
     weight: 126
     region: content
 hidden:
+  field_menulink: true
   layout_builder__layout: true
   search_api_excerpt: true
   stanford_intranet__access: true

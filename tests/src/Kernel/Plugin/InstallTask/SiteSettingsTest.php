@@ -224,7 +224,7 @@ class SiteSettingsTest extends KernelTestBase {
       ->getStorage('user')
       ->loadByProperties(['name' => ['barfoo', 'bazbar']]);
     $this->assertCount(2, $users);
-    $this->assertEqual('https://foo bar.sites.stanford.edu', \Drupal::state()->get('xmlsitemap_base_url'));
+    $this->assertEquals('https://foo bar.sites.stanford.edu', \Drupal::state()->get('xmlsitemap_base_url'));
   }
 
   /**

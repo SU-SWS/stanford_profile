@@ -2,9 +2,12 @@
 
 use Drupal\config_pages\Entity\ConfigPages;
 use Faker\Factory;
+use Drupal\Core\Cache\Cache;
 
 /**
  * Test the events + importer functionality.
+ *
+ * @group content
  */
 class EventsCest {
 
@@ -70,6 +73,12 @@ class EventsCest {
     $I->cantSee('No events at this time');
 
     $message = $this->faker->sentence;
+    // Set the cache to avoid any unwanted API issues.
+    \Drupal::cache()->set('localist_api:https://events.stanford.edu', [
+      'data' => [],
+      'expires' => time() + 60,
+    ], Cache::PERMANENT);
+
     $I->amOnPage('/admin/config/importers/events-importer');
     $I->fillField('No Results Message', $message);
     $I->click('Save');

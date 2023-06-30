@@ -1,0 +1,104 @@
+uuid: 41f5a5ee-d1dd-43b8-9383-6f9d02650429
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_global_message
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
+id: config_pages--stanford_global_message
+disabled: false
+path: config_pages/stanford_global_message
+resourceType: config_pages--stanford_global_message
+resourceFields:
+  id:
+    disabled: true
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  label:
+    disabled: true
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  type:
+    disabled: true
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  context:
+    disabled: true
+    fieldName: context
+    publicName: context
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  encrypted_field_storage:
+    disabled: true
+    fieldName: encrypted_field_storage
+    publicName: encrypted_field_storage
+    enhancer:
+      id: ''
+  metatag:
+    disabled: true
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  su_global_msg_enabled:
+    disabled: false
+    fieldName: su_global_msg_enabled
+    publicName: su_global_msg_enabled
+    enhancer:
+      id: ''
+  su_global_msg_header:
+    disabled: false
+    fieldName: su_global_msg_header
+    publicName: su_global_msg_header
+    enhancer:
+      id: ''
+  su_global_msg_label:
+    disabled: false
+    fieldName: su_global_msg_label
+    publicName: su_global_msg_label
+    enhancer:
+      id: ''
+  su_global_msg_link:
+    disabled: false
+    fieldName: su_global_msg_link
+    publicName: su_global_msg_link
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_global_msg_message:
+    disabled: false
+    fieldName: su_global_msg_message
+    publicName: su_global_msg_message
+    enhancer:
+      id: nested
+      settings:
+        path: processed
+  su_global_msg_type:
+    disabled: false
+    fieldName: su_global_msg_type
+    publicName: su_global_msg_type
+    enhancer:
+      id: ''

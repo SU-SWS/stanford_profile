@@ -1,0 +1,25 @@
+uuid: 493712de-d034-41d8-987e-88ef104ec88f
+langcode: en
+status: true
+dependencies:
+  module:
+    - jumpstart_ui
+    - system
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_main_anchor
+theme: minimally_branded_subtheme
+region: content
+weight: -3
+provider: null
+plugin: jumpstart_ui_skipnav_main_anchor
+settings:
+  id: jumpstart_ui_skipnav_main_anchor
+  label: 'Main content anchor target'
+  label_display: '0'
+  provider: jumpstart_ui
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search

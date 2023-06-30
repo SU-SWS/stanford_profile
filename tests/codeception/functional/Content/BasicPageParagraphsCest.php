@@ -34,33 +34,25 @@ class BasicPageParagraphsCest {
 
     $paragraph = $I->createEntity(['type' => 'stanford_card'], 'paragraph');
 
-    $row = $I->createEntity([
-      'type' => 'node_stanford_page_row',
-      'su_page_components' => [
-        'target_id' => $paragraph->id(),
-        'entity' => $paragraph,
-      ],
-    ], 'paragraph_row');
-
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->words(3, true),
       'su_page_components' => [
-        'target_id' => $row->id(),
-        'entity' => $row,
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
       ],
     ]);
     $I->logInWithRole('contributor');
     $I->amOnPage($node->toUrl('edit-form')->toString());
-    $I->waitForElementVisible('#row-0');
-    $I->click('Edit', '#row-0');
+    $I->moveMouseOver('.js-lpb-component', 10, 10);
+    $I->click('Edit', '.lpb-controls');
     $I->waitForText('Superhead');
     $I->fillField('Superhead', $card_values['superhead']);
     $I->fillField('Headline', $card_values['headline']);
     $I->fillField('URL', $card_values['uri']);
     $I->fillField('Link text', $card_values['title']);
-    $I->click('Continue');
-    $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
     $I->wait(1);
     $I->click('Save', '#edit-actions');
     $I->canSee($card_values['superhead']);
@@ -77,20 +69,12 @@ class BasicPageParagraphsCest {
       'su_card_super_header' => 'Foo Bar',
     ], 'paragraph');
 
-    $row = $I->createEntity([
-      'type' => 'node_stanford_page_row',
-      'su_page_components' => [
-        'target_id' => $paragraph->id(),
-        'entity' => $paragraph,
-      ],
-    ], 'paragraph_row');
-
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->text(30),
       'su_page_components' => [
-        'target_id' => $row->id(),
-        'entity' => $row,
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
       ],
     ]);
 
@@ -105,12 +89,12 @@ class BasicPageParagraphsCest {
     $I->canSeeNumberOfElements('.diff-revisions tbody tr', 2);
 
     $I->amOnPage("/node/{$node->id()}/edit");
-    $I->waitForElementVisible('#row-0');
-    $I->click('Edit', '.inner-row-wrapper');
+    $I->moveMouseOver('.js-lpb-component', 10, 10);
+    $I->click('Edit', '.lpb-controls');
     $I->waitForText('Superhead');
     $I->fillField('Superhead', $this->faker->text(10));
-    $I->click('Continue');
-    $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
     $I->click('Save');
 
     $I->amOnPage("/node/{$node->id()}/revisions");

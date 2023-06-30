@@ -8,6 +8,26 @@
 class DefaultContentCest {
 
   /**
+   * Test default images.
+   */
+  public function testDefaultImages(AcceptanceTester $I) {
+    $files = \Drupal::entityTypeManager()->getStorage('file')->loadMultiple();
+
+    /** @var \Drupal\file\FileInterface $file */
+    foreach ($files as $file) {
+      $real_path = \Drupal::service('file_system')
+        ->realpath($file->getFileUri());
+      $I->assertTrue(file_exists($real_path), 'File exists: ' . $real_path);
+    }
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/content/media');
+    $I->click('default-homepage_card-image.jpg');
+    $I->click('default-homepage_card-image.jpg');
+    $I->canSeeInCurrentUrl('files/media/image/default-homepage_card-image.jpg');
+    $I->canSeeResponseCodeIs(200);
+  }
+
+  /**
    * Default content pages and meta data exist.
    */
   public function testExistingContent(AcceptanceTester $I) {
@@ -46,6 +66,8 @@ class DefaultContentCest {
 
   /**
    * Test the default menu items exist with proper destinations.
+   *
+   * @group menu_link_weight
    */
   public function testMenuItems(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -62,10 +84,7 @@ class DefaultContentCest {
       $I->canSeeLink($title, $path);
 
       $I->click('Edit', '#menu-overview tr:contains("' . $title . '")');
-      $link_url = $I->grabValueFrom('[name="link[0][uri]"]');
-      preg_match('/(\w+) \((\d+)\)/', $link_url, $matches);
-      $I->assertCount(3, $matches, 'Link URL should be in the format "page_name (page_id)"');
-
+      $I->canSee('The path cannot be edited');
       $I->amOnPage('/admin/structure/menu/manage/main');
     }
   }

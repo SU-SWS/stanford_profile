@@ -3,12 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.stanford_spacer.su_spacer_size
     - paragraphs.paragraphs_type.stanford_spacer
 id: paragraph.stanford_spacer.default
 targetEntityType: paragraph
 bundle: stanford_spacer
 mode: default
-content: {  }
+content:
+  su_spacer_size:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   publish_on: true

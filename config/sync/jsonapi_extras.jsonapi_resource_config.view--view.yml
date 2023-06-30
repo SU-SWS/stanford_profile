@@ -1,0 +1,99 @@
+uuid: b4bfde9d-d42a-4cae-89da-4ff1dd57c657
+langcode: en
+status: true
+dependencies:
+  module:
+    - jsonapi_defaults
+    - views
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
+id: view--view
+disabled: false
+path: view/view
+resourceType: view--view
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: true
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: true
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: true
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: true
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  module:
+    disabled: true
+    fieldName: module
+    publicName: module
+    enhancer:
+      id: ''
+  description:
+    disabled: false
+    fieldName: description
+    publicName: description
+    enhancer:
+      id: ''
+  tag:
+    disabled: true
+    fieldName: tag
+    publicName: tag
+    enhancer:
+      id: ''
+  base_table:
+    disabled: true
+    fieldName: base_table
+    publicName: base_table
+    enhancer:
+      id: ''
+  base_field:
+    disabled: true
+    fieldName: base_field
+    publicName: base_field
+    enhancer:
+      id: ''
+  display:
+    disabled: false
+    fieldName: display
+    publicName: display
+    enhancer:
+      id: ''

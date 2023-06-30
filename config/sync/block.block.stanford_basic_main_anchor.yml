@@ -1,0 +1,25 @@
+uuid: 8dd2e644-9bc6-4d59-8d81-7dc228e4b35b
+langcode: en
+status: true
+dependencies:
+  module:
+    - jumpstart_ui
+    - system
+  theme:
+    - stanford_basic
+id: stanford_basic_main_anchor
+theme: stanford_basic
+region: content
+weight: -3
+provider: null
+plugin: jumpstart_ui_skipnav_main_anchor
+settings:
+  id: jumpstart_ui_skipnav_main_anchor
+  label: 'Main content anchor target'
+  label_display: '0'
+  provider: jumpstart_ui
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search

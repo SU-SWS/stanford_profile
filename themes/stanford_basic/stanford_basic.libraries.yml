@@ -91,6 +91,11 @@ admin:
     base:
       dist/css/admin.css: {  }
 
+decoupled_menu:
+  version: VERSION
+  js:
+    decoupled-menu/dist/islands/main-menu.island.umd.js: { minified: true }
+
 basic:
   version: VERSION
   css:

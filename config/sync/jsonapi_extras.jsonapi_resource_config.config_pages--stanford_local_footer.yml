@@ -1,0 +1,258 @@
+uuid: 8035fe36-ff7d-4e03-b9b7-235d125f459b
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_local_footer
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_local_foot_loc_img
+    page_limit: 50
+id: config_pages--stanford_local_footer
+disabled: false
+path: config_pages/stanford_local_footer
+resourceType: config_pages--stanford_local_footer
+resourceFields:
+  id:
+    disabled: true
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  label:
+    disabled: true
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  type:
+    disabled: true
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  context:
+    disabled: true
+    fieldName: context
+    publicName: context
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  encrypted_field_storage:
+    disabled: true
+    fieldName: encrypted_field_storage
+    publicName: encrypted_field_storage
+    enhancer:
+      id: ''
+  metatag:
+    disabled: true
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  su_footer_enabled:
+    disabled: false
+    fieldName: su_footer_enabled
+    publicName: su_footer_enabled
+    enhancer:
+      id: ''
+  su_local_foot_action:
+    disabled: false
+    fieldName: su_local_foot_action
+    publicName: su_local_foot_action
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_local_foot_address:
+    disabled: false
+    fieldName: su_local_foot_address
+    publicName: su_local_foot_address
+    enhancer:
+      id: ''
+  su_local_foot_f_button:
+    disabled: false
+    fieldName: su_local_foot_f_button
+    publicName: su_local_foot_f_button
+    enhancer:
+      id: ''
+  su_local_foot_f_intro:
+    disabled: false
+    fieldName: su_local_foot_f_intro
+    publicName: su_local_foot_f_intro
+    enhancer:
+      id: nested
+      settings:
+        path: processed
+  su_local_foot_f_method:
+    disabled: false
+    fieldName: su_local_foot_f_method
+    publicName: su_local_foot_f_method
+    enhancer:
+      id: ''
+  su_local_foot_f_url:
+    disabled: false
+    fieldName: su_local_foot_f_url
+    publicName: su_local_foot_f_url
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_local_foot_help:
+    disabled: false
+    fieldName: su_local_foot_help
+    publicName: su_local_foot_help
+    enhancer:
+      id: ''
+  su_local_foot_line_1:
+    disabled: false
+    fieldName: su_local_foot_line_1
+    publicName: su_local_foot_line_1
+    enhancer:
+      id: ''
+  su_local_foot_line_2:
+    disabled: false
+    fieldName: su_local_foot_line_2
+    publicName: su_local_foot_line_2
+    enhancer:
+      id: ''
+  su_local_foot_line_3:
+    disabled: false
+    fieldName: su_local_foot_line_3
+    publicName: su_local_foot_line_3
+    enhancer:
+      id: ''
+  su_local_foot_line_4:
+    disabled: false
+    fieldName: su_local_foot_line_4
+    publicName: su_local_foot_line_4
+    enhancer:
+      id: ''
+  su_local_foot_line_5:
+    disabled: false
+    fieldName: su_local_foot_line_5
+    publicName: su_local_foot_line_5
+    enhancer:
+      id: ''
+  su_local_foot_loc_img:
+    disabled: false
+    fieldName: su_local_foot_loc_img
+    publicName: su_local_foot_loc_img
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_local_foot_loc_link:
+    disabled: false
+    fieldName: su_local_foot_loc_link
+    publicName: su_local_foot_loc_link
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_local_foot_loc_op:
+    disabled: false
+    fieldName: su_local_foot_loc_op
+    publicName: su_local_foot_loc_op
+    enhancer:
+      id: ''
+  su_local_foot_primary:
+    disabled: false
+    fieldName: su_local_foot_primary
+    publicName: su_local_foot_primary
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_local_foot_prime_h:
+    disabled: false
+    fieldName: su_local_foot_prime_h
+    publicName: su_local_foot_prime_h
+    enhancer:
+      id: ''
+  su_local_foot_pr_co:
+    disabled: false
+    fieldName: su_local_foot_pr_co
+    publicName: su_local_foot_pr_co
+    enhancer:
+      id: nested
+      settings:
+        path: processed
+  su_local_foot_second:
+    disabled: false
+    fieldName: su_local_foot_second
+    publicName: su_local_foot_second
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_local_foot_second_h:
+    disabled: false
+    fieldName: su_local_foot_second_h
+    publicName: su_local_foot_second_h
+    enhancer:
+      id: ''
+  su_local_foot_se_co:
+    disabled: false
+    fieldName: su_local_foot_se_co
+    publicName: su_local_foot_se_co
+    enhancer:
+      id: nested
+      settings:
+        path: processed
+  su_local_foot_social:
+    disabled: false
+    fieldName: su_local_foot_social
+    publicName: su_local_foot_social
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  su_local_foot_sunet_t:
+    disabled: false
+    fieldName: su_local_foot_sunet_t
+    publicName: su_local_foot_sunet_t
+    enhancer:
+      id: ''
+  su_local_foot_tr2_co:
+    disabled: false
+    fieldName: su_local_foot_tr2_co
+    publicName: su_local_foot_tr2_co
+    enhancer:
+      id: nested
+      settings:
+        path: processed
+  su_local_foot_tr_co:
+    disabled: false
+    fieldName: su_local_foot_tr_co
+    publicName: su_local_foot_tr_co
+    enhancer:
+      id: nested
+      settings:
+        path: processed
+  su_local_foot_use_loc:
+    disabled: false
+    fieldName: su_local_foot_use_loc
+    publicName: su_local_foot_use_loc
+    enhancer:
+      id: ''
+  su_local_foot_use_logo:
+    disabled: false
+    fieldName: su_local_foot_use_logo
+    publicName: su_local_foot_use_logo
+    enhancer:
+      id: ''

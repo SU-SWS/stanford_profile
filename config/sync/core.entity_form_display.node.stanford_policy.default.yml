@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.stanford_policy.body
+    - field.field.node.stanford_policy.field_menulink
     - field.field.node.stanford_policy.layout_builder__layout
     - field.field.node.stanford_policy.su_policy_authority
     - field.field.node.stanford_policy.su_policy_auto_prefix
@@ -21,6 +22,7 @@ dependencies:
     - datetime
     - field_group
     - inline_entity_form
+    - menu_link
     - path
     - scheduler
     - text
@@ -63,6 +65,12 @@ content:
       allowed_formats:
         hide_help: '0'
         hide_guidelines: '0'
+  field_menulink:
+    type: menu_link_default
+    weight: 53
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 7

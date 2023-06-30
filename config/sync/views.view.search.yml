@@ -353,11 +353,14 @@ display:
           fields:
             - rendered_item
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
           row_class: su-margin-bottom-3
           default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: su-list-unstyled
       row:
         type: fields
         options:
@@ -386,6 +389,7 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.full_site_content'
+        - 'search_api_list:full_site_content'
   results:
     id: results
     display_title: Page
@@ -405,3 +409,4 @@ display:
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.full_site_content'
+        - 'search_api_list:full_site_content'

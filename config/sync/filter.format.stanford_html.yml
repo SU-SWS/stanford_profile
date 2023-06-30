@@ -17,6 +17,7 @@ dependencies:
     - media
     - responsive_tables_filter
     - stanford_media
+    - stanford_profile_helper
 name: HTML
 format: stanford_html
 weight: 0
@@ -58,7 +59,7 @@ filters:
     status: true
     weight: -50
     settings:
-      allowed_html: '<br> <b> <em> <strong> <cite> <blockquote cite> <pre class> <code data-* class> <ul type class id> <ol start type class id> <li class id> <dl class> <dt> <dd class> <h2 id class> <h3 id class> <h4 id class> <h5 id class> <div class id> <table class id> <caption> <tbody class> <thead> <tfoot> <th colspan rowspan scope class id> <td colspan rowspan class id> <tr id> <sup> <sub> <i class> <hr> <s> <aside class> <drupal-media data-entity-type data-entity-uuid data-align data-caption data-* alt data-view-mode title> <a href aria-label hreflang data-entity-substitution data-entity-type data-entity-uuid title name class> <p class id> <img class src alt title><abbr id title> <span class id>'
+      allowed_html: '<br> <p class id> <h2 id class> <h3 id class> <h4 id class> <h5 id class> <a class aria-label hreflang data-entity-substitution data-entity-type data-entity-uuid title name href> <b> <cite> <dt> <pre class> <code data-* class> <dl class> <dd class> <div id class> <i class> <aside class> <img src alt title class> <abbr id title> <span id class> <blockquote cite> <ul id type class> <ol id type class start> <li id class> <table id class> <tbody class> <th scope id class rowspan colspan> <td id class rowspan colspan> <tr id> <drupal-media data-* title alt> <strong> <em> <s> <sub> <sup> <hr> <thead> <tfoot> <caption>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -128,3 +129,9 @@ filters:
     settings:
       tablesaw_type: stack
       tablesaw_persist: '1'
+  su_clean_html:
+    id: su_clean_html
+    provider: stanford_profile_helper
+    status: true
+    weight: 99
+    settings: {  }

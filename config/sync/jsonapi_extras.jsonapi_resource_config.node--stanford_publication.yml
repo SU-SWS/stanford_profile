@@ -25,7 +25,7 @@ path: node/stanford_publication
 resourceType: node--stanford_publication
 resourceFields:
   nid:
-    disabled: false
+    disabled: true
     fieldName: nid
     publicName: nid
     enhancer:
@@ -37,13 +37,13 @@ resourceFields:
     enhancer:
       id: ''
   vid:
-    disabled: false
+    disabled: true
     fieldName: vid
     publicName: vid
     enhancer:
       id: ''
   langcode:
-    disabled: false
+    disabled: true
     fieldName: langcode
     publicName: langcode
     enhancer:
@@ -55,19 +55,19 @@ resourceFields:
     enhancer:
       id: ''
   revision_timestamp:
-    disabled: false
+    disabled: true
     fieldName: revision_timestamp
     publicName: revision_timestamp
     enhancer:
       id: ''
   revision_uid:
-    disabled: false
+    disabled: true
     fieldName: revision_uid
     publicName: revision_uid
     enhancer:
       id: ''
   revision_log:
-    disabled: false
+    disabled: true
     fieldName: revision_log
     publicName: revision_log
     enhancer:
@@ -79,7 +79,7 @@ resourceFields:
     enhancer:
       id: ''
   uid:
-    disabled: false
+    disabled: true
     fieldName: uid
     publicName: uid
     enhancer:
@@ -103,37 +103,37 @@ resourceFields:
     enhancer:
       id: ''
   promote:
-    disabled: false
+    disabled: true
     fieldName: promote
     publicName: promote
     enhancer:
       id: ''
   sticky:
-    disabled: false
+    disabled: true
     fieldName: sticky
     publicName: sticky
     enhancer:
       id: ''
   default_langcode:
-    disabled: false
+    disabled: true
     fieldName: default_langcode
     publicName: default_langcode
     enhancer:
       id: ''
   revision_default:
-    disabled: false
+    disabled: true
     fieldName: revision_default
     publicName: revision_default
     enhancer:
       id: ''
   revision_translation_affected:
-    disabled: false
+    disabled: true
     fieldName: revision_translation_affected
     publicName: revision_translation_affected
     enhancer:
       id: ''
   metatag:
-    disabled: false
+    disabled: true
     fieldName: metatag
     publicName: metatag
     enhancer:
@@ -145,57 +145,63 @@ resourceFields:
     enhancer:
       id: ''
   rh_action:
-    disabled: false
+    disabled: true
     fieldName: rh_action
     publicName: rh_action
     enhancer:
       id: ''
   rh_redirect:
-    disabled: false
+    disabled: true
     fieldName: rh_redirect
     publicName: rh_redirect
     enhancer:
       id: ''
   rh_redirect_response:
-    disabled: false
+    disabled: true
     fieldName: rh_redirect_response
     publicName: rh_redirect_response
     enhancer:
       id: ''
   rh_redirect_fallback_action:
-    disabled: false
+    disabled: true
     fieldName: rh_redirect_fallback_action
     publicName: rh_redirect_fallback_action
     enhancer:
       id: ''
   publish_on:
-    disabled: false
+    disabled: true
     fieldName: publish_on
     publicName: publish_on
     enhancer:
       id: ''
   unpublish_on:
-    disabled: false
+    disabled: true
     fieldName: unpublish_on
     publicName: unpublish_on
     enhancer:
       id: ''
   menu_link:
-    disabled: false
+    disabled: true
     fieldName: menu_link
     publicName: menu_link
     enhancer:
       id: ''
   layout_builder__layout:
-    disabled: false
+    disabled: true
     fieldName: layout_builder__layout
     publicName: layout_builder__layout
     enhancer:
       id: ''
   stanford_intranet__access:
-    disabled: false
+    disabled: true
     fieldName: stanford_intranet__access
     publicName: stanford_intranet__access
+    enhancer:
+      id: ''
+  su_metatags:
+    disabled: true
+    fieldName: su_metatags
+    publicName: su_metatags
     enhancer:
       id: ''
   su_publication_author_ref:

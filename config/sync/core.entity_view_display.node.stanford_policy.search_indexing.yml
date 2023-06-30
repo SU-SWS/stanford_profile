@@ -7,8 +7,14 @@ dependencies:
     - field.field.node.stanford_policy.body
     - field.field.node.stanford_policy.layout_builder__layout
     - field.field.node.stanford_policy.su_policy_authority
+    - field.field.node.stanford_policy.su_policy_auto_prefix
+    - field.field.node.stanford_policy.su_policy_changelog
+    - field.field.node.stanford_policy.su_policy_chapter
     - field.field.node.stanford_policy.su_policy_effective
+    - field.field.node.stanford_policy.su_policy_policy_num
     - field.field.node.stanford_policy.su_policy_related
+    - field.field.node.stanford_policy.su_policy_subchapter
+    - field.field.node.stanford_policy.su_policy_title
     - field.field.node.stanford_policy.su_policy_updated
     - node.type.stanford_policy
   module:
@@ -171,6 +177,7 @@ content:
     weight: 2
     region: content
 hidden:
+  field_menulink: true
   layout_builder__layout: true
   links: true
   search_api_excerpt: true

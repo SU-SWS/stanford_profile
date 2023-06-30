@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.stanford_person.body
     - field.field.node.stanford_person.layout_builder__layout
     - field.field.node.stanford_person.stanford_intranet__access
+    - field.field.node.stanford_person.su_metatags
     - field.field.node.stanford_person.su_person_academic_appt
     - field.field.node.stanford_person.su_person_admin_appts
     - field.field.node.stanford_person.su_person_affiliations
@@ -25,6 +26,7 @@ dependencies:
     - field.field.node.stanford_person.su_person_mobile_phone
     - field.field.node.stanford_person.su_person_photo
     - field.field.node.stanford_person.su_person_profile_link
+    - field.field.node.stanford_person.su_person_pronouns
     - field.field.node.stanford_person.su_person_research
     - field.field.node.stanford_person.su_person_research_interests
     - field.field.node.stanford_person.su_person_scholarly_interests
@@ -34,7 +36,7 @@ dependencies:
     - field.field.node.stanford_person.su_shared_tags
     - node.type.stanford_person
   module:
-    - entity_reference_revisions
+    - layout_paragraphs
     - link
     - text
     - user
@@ -84,7 +86,7 @@ content:
     weight: 7
     region: content
   su_person_components:
-    type: entity_reference_revisions_entity_view
+    type: layout_paragraphs
     label: hidden
     settings:
       view_mode: default
@@ -261,6 +263,7 @@ content:
     weight: 19
     region: content
 hidden:
+  field_menulink: true
   layout_builder__layout: true
   search_api_excerpt: true
   stanford_intranet__access: true

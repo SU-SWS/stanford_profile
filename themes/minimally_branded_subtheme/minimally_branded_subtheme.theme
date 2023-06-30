@@ -8,7 +8,7 @@
  * Prepares variables for the html.html.twig template.
  */
 function minimally_branded_subtheme_preprocess_html(&$variables) {
-  $variables['stanford_basic_path'] = drupal_get_path('theme', 'stanford_basic');
+  $variables['stanford_basic_path'] = \Drupal::service('extension.list.theme')->getPath('stanford_basic');
 }
 
 /**

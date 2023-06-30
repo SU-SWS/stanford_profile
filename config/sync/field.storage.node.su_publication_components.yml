@@ -5,13 +5,13 @@ dependencies:
   module:
     - entity_reference_revisions
     - node
-    - react_paragraphs
+    - paragraphs
 id: node.su_publication_components
 field_name: su_publication_components
 entity_type: node
 type: entity_reference_revisions
 settings:
-  target_type: paragraph_row
+  target_type: paragraph
 module: entity_reference_revisions
 locked: false
 cardinality: -1

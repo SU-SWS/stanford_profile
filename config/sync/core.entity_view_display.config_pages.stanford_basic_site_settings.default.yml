@@ -9,14 +9,18 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_hide_site_search
     - field.field.config_pages.stanford_basic_site_settings.su_site_403
     - field.field.config_pages.stanford_basic_site_settings.su_site_404
+    - field.field.config_pages.stanford_basic_site_settings.su_site_admin_notes
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
     - field.field.config_pages.stanford_basic_site_settings.su_site_email
     - field.field.config_pages.stanford_basic_site_settings.su_site_home
     - field.field.config_pages.stanford_basic_site_settings.su_site_menu_levels
     - field.field.config_pages.stanford_basic_site_settings.su_site_name
+    - field.field.config_pages.stanford_basic_site_settings.su_site_new_menu
+    - field.field.config_pages.stanford_basic_site_settings.su_site_nobots
     - field.field.config_pages.stanford_basic_site_settings.su_site_url
   module:
     - link
+    - text
 id: config_pages.stanford_basic_site_settings.default
 targetEntityType: config_pages
 bundle: stanford_basic_site_settings
@@ -66,6 +70,13 @@ content:
     third_party_settings: {  }
     weight: 7
     region: content
+  su_site_admin_notes:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
   su_site_dropdowns:
     type: boolean
     label: above
@@ -107,6 +118,26 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
+    region: content
+  su_site_new_menu:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  su_site_nobots:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 12
     region: content
   su_site_url:
     type: link

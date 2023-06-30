@@ -34,7 +34,7 @@ jobs:
           makeLatest: true
       - uses: actions/checkout@v3
         with:
-          ref: '9.x'
+          ref: '10.x'
           fetch-depth: 0
       - name: Back to Dev
         if: ${{ steps.tag.outputs.tag }}

@@ -4,13 +4,18 @@ status: true
 dependencies:
   config:
     - stanford_publication.citation_type.su_book
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
 id: citation--su_book
 disabled: false
 path: citation/su_book
 resourceType: citation--su_book
 resourceFields:
   id:
-    disabled: false
+    disabled: true
     fieldName: id
     publicName: id
     enhancer:
@@ -22,7 +27,7 @@ resourceFields:
     enhancer:
       id: ''
   langcode:
-    disabled: false
+    disabled: true
     fieldName: langcode
     publicName: langcode
     enhancer:
@@ -40,37 +45,37 @@ resourceFields:
     enhancer:
       id: ''
   created:
-    disabled: false
+    disabled: true
     fieldName: created
     publicName: created
     enhancer:
       id: ''
   changed:
-    disabled: false
+    disabled: true
     fieldName: changed
     publicName: changed
     enhancer:
       id: ''
   parent_id:
-    disabled: false
+    disabled: true
     fieldName: parent_id
     publicName: parent_id
     enhancer:
       id: ''
   parent_type:
-    disabled: false
+    disabled: true
     fieldName: parent_type
     publicName: parent_type
     enhancer:
       id: ''
   parent_field_name:
-    disabled: false
+    disabled: true
     fieldName: parent_field_name
     publicName: parent_field_name
     enhancer:
       id: ''
   default_langcode:
-    disabled: false
+    disabled: true
     fieldName: default_langcode
     publicName: default_langcode
     enhancer:
