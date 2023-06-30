@@ -1,5 +1,39 @@
 # Stanford Profile
 
+10.0.0
+--------------------------------------------------------------------------------
+
+- Updating to new decanter version (#682)
+- CAP-67 Import profile phone number to the non-mobile phone field
+- D8CORE-4539 Removed "Role" attribute on figure element
+- D8CORE-6760 | Update ckeditor5 styles (#679)
+- D8CORE-6629 use list elements on search result page
+- D8CORE-6628 Hide `li` element for mobile search field when on desktop
+- D8CORE-6368 Use list elements for related policy display
+- D8CORE-5950 Fixed aspect ratio of youtube videos on event pages
+- D8CORE-6633 Add skip link anchor to the search page (#681)
+- D8CORE-6339 Added main content anchor link destination
+- Update banner aspect ratio for small breakpoint (#680)
+- D8CORE-6695, 6694 Updated spacer paragraph with optional sizes (#677)
+- Fixed typo in "Experimental"
+- D8CORE-6770 Change lables from "Components" to "Paragraphs"
+- Added "Admin notes" to the site settings config page
+- D8CORE-6457 D8CORE-6476 D8CORE-6477 Tweaks to policy content fields
+- Added undo and redo buttons to ckeditor
+- Move help section to be below brand bar in header (#674)
+- Revert "D8CORE-4495: changing past events text (#669)" (#673)
+- D8CORE-4495: changing past events text (#669)
+- D8CORE-5407 | @jdwjdwjdw | A11y: Update lockup cell2 max-width, line3 line-height (#672)
+- Provide a new replacement menu with a decoupled main menu (#663)
+- D8CORE-6416 Update google analytics tracking for stanford_basic theme
+- D8CORE-2622, D8CORE-4494 | Move brand bar and skip-links into header landmark banner (#665)
+- D8CORE-6654 | Update stanford_basic package-lock (#667)
+- Added tiny base64 blur image to json api data
+- D8CORE-6336: changing hover on print icon for policy CT (#661)
+- Updated jsonapi endpoints (#664)
+- Migrate everything to layout paragraphs and upgrade all modules/themes (#654)
+
+
 9.2.8
 --------------------------------------------------------------------------------
 - Don't replace attributes on menu link items.
