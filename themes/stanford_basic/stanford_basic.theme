@@ -470,11 +470,19 @@ function stanford_basic_theme_suggestions_views_view_list_alter(array &$suggesti
 /**
  * Implements hook_preprocess_paragraph().
  */
-function stanford_basic_preprocess_paragraph(&$vars) {
-  $paragraph = $vars['elements']['#paragraph'];
-  if ($paragraph->getType() == 'stanford_spacer') {
-    if ($paragraph->hasField('su_spacer_size') && !$paragraph->get('su_spacer_size')->isEmpty()) {
-      $vars['attributes']['class'][] = $paragraph->get('su_spacer_size')->getString();
-    }
+function stanford_basic_preprocess_paragraph(&$variables) {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+  $ptype = Html::cleanCssIdentifier("ptype-" . $paragraph->bundle());
+  $variables['attributes']['class'][] = $ptype;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_paragraph__stanford_spacer(&$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+  if ($paragraph->hasField('su_spacer_size') && !$paragraph->get('su_spacer_size')->isEmpty()) {
+    $variables['attributes']['class'][] = $paragraph->get('su_spacer_size')->getString();
   }
 }
