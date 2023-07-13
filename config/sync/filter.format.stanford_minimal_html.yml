@@ -4,7 +4,10 @@ status: true
 dependencies:
   module:
     - linkit
+    - mathjax
     - responsive_tables_filter
+    - stanford_media
+    - stanford_profile_helper
 name: 'Minimal HTML'
 format: stanford_minimal_html
 weight: 0
@@ -13,22 +16,22 @@ filters:
     id: filter_html
     provider: filter
     status: true
-    weight: -10
+    weight: 0
     settings:
-      allowed_html: '<br> <p class id> <div class id> <em> <strong> <cite> <blockquote cite> <code> <dd> <a href aria-label hreflang data-entity-substitution data-entity-type data-entity-uuid title class id>'
+      allowed_html: '<br> <p id class> <a class aria-label hreflang data-entity-substitution data-entity-type data-entity-uuid title id href> <h2 id class> <h3 id class> <h4 id class> <h5 id class> <h6 id class> <cite> <dd> <div id class> <blockquote cite> <strong> <em> <code> <ul> <ol reversed start> <li>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
     id: filter_htmlcorrector
     provider: filter
     status: true
-    weight: 10
+    weight: -10
     settings: {  }
   linkit:
     id: linkit
     provider: linkit
     status: true
-    weight: 0
+    weight: 10
     settings:
       title: true
   filter_responsive_tables_filter:
@@ -39,3 +42,33 @@ filters:
     settings:
       tablesaw_type: stack
       tablesaw_persist: '1'
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: 0
+    settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: 50
+    settings: {  }
+  filter_mathjax:
+    id: filter_mathjax
+    provider: mathjax
+    status: false
+    weight: -50
+    settings: {  }
+  stanford_media_embed_markup:
+    id: stanford_media_embed_markup
+    provider: stanford_media
+    status: false
+    weight: 9
+    settings: {  }
+  su_clean_html:
+    id: su_clean_html
+    provider: stanford_profile_helper
+    status: true
+    weight: 99
+    settings: {  }

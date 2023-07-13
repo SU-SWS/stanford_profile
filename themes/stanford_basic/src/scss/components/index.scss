@@ -21,15 +21,15 @@
 @import 'decanter/core/src/scss/decanter-no-markup';
 
 // Then we override the variables, mixins, and functions.
-@import
-'../config/index',
+@import '../config/index',
 '../utilities/index';
 
 // Stanford Basic components
-@import
-'all/index', // All comes first so others can override.
+@import 'all/index',
+// All comes first so others can override.
 'alert/index',
 'filter-menu/index',
+'hero/index',
 'link/index.scss',
 'lockup/index',
 'masthead/index',
@@ -37,5 +37,5 @@
 'paragraphs/paragraph--people',
 'secondary-nav/index',
 'stanford-page/index',
-'wysiwyg/index';
-
+'wysiwyg/index',
+'spacer/index';

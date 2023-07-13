@@ -37,8 +37,10 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
     '#default_value' => theme_get_setting('brand_bar_variant'),
   ];
 
-  $img = '<img src="' . base_path() . drupal_get_path('theme', 'stanford_basic') . '/dist/assets/img/lockup-example.png" />';
-  $decanter = Link::fromTextAndUrl('Decanter Lockup Component', Url::fromUri('https://decanter.stanford.edu/component/identity-lockup/'))->toString();
+  $img = '<img src="' . base_path() . \Drupal::service('extension.list.theme')
+      ->getPath('stanford_basic') . '/dist/assets/img/lockup-example.png" />';
+  $decanter = Link::fromTextAndUrl('Decanter Lockup Component', Url::fromUri('https://decanter.stanford.edu/component/identity-lockup/'))
+    ->toString();
 
   $form['options_settings']['stanford_basic_lockup'] = [
     '#type' => 'fieldset',

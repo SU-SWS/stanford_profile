@@ -11,6 +11,15 @@
       &.file {
         text-align: center;
       }
+
+      &.video {
+        aspect-ratio: 16/9;
+
+        iframe {
+          height: 100%;
+          width: 100%;
+        }
+      }
     }
   }
 

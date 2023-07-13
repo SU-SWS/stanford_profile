@@ -1,0 +1,35 @@
+uuid: 41c50d8c-53e4-4ed3-b1e0-516915ddeb14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_menulink
+    - node.type.stanford_page
+  module:
+    - menu_link
+id: node.stanford_page.field_menulink
+field_name: field_menulink
+entity_type: node
+bundle: stanford_page
+label: 'Menu Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_menus:
+    main: main
+    admin: '0'
+    courses-menu: '0'
+    devel: '0'
+    stanford-event-types: '0'
+    footer: '0'
+    stanford-person-type: '0'
+    stanford-publication-topics: '0'
+    tools: '0'
+    news-topics: '0'
+    account: '0'
+  default_menu_parent: 'main:'
+  default_expanded: true
+field_type: menu_link

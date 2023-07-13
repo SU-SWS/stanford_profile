@@ -19,6 +19,9 @@
 // Style guide: Components.Multi Menu
 //
 
+.system-menu-block {
+  width: 100%;
+}
 
 .su-multi-menu {
   @include font-smoothing;
@@ -26,6 +29,7 @@
   display: block;
   position: relative;
   z-index: 100;
+  width: 100%;
 
   // Hide stuff.
   .mobile-hidden {
@@ -396,9 +400,11 @@
 
   // The button to toggle or close the mobile menu.
   .su-multi-menu__nav-toggle {
+    position: absolute;
+    top: -60px;
+    right: 0;
 
     @include grid-media-max('md') {
-      @include fancy-hover(color(h--border-hover, $su-multi-menu-colors), color(border--active, $su-multi-menu-colors));
       @include padding(0 0 2rem);
       @include margin(0);
       display: flex;

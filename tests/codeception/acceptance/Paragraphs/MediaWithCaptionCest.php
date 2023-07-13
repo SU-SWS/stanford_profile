@@ -37,20 +37,12 @@ class MediaWithCaptionCest {
       ],
     ], 'paragraph');
 
-    $row = $I->createEntity([
-      'type' => 'node_stanford_page_row',
-      'su_page_components' => [
-        'target_id' => $paragraph->id(),
-        'entity' => $paragraph,
-      ],
-    ], 'paragraph_row');
-
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->text(30),
       'su_page_components' => [
-        'target_id' => $row->id(),
-        'entity' => $row,
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
       ],
     ]);
     $I->amOnPage($node->toUrl()->toString());

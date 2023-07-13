@@ -23,3 +23,15 @@ function cardinal_service_profile_install_tasks(&$install_state) {
 function cardinal_service_profile_final_task(array &$install_state) {
   \Drupal::service('plugin.manager.install_tasks')->runTasks($install_state);
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function stanford_profile_config_pages_presave(ConfigPages $config_page) {
+  // During install, rebuild the router when saving a config page. This prevents
+  // an error if the config page route doesn't exist for it yet. Event
+  // subscriber doesn't work for this since it's during installation.
+  if (InstallerKernel::installationAttempted()) {
+    \Drupal::service('router.builder')->rebuild();
+  }
+}

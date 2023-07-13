@@ -3,6 +3,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 on: [push]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   phpunit:
     name: PHPUnit Coverage Tests
@@ -28,7 +31,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         run: |
-          composer global require su-sws/stanford-caravan:dev-8.x-2.x
+          composer global require su-sws/stanford-caravan:dev-8.x-3.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
       - name: Save Test Results
         uses: actions/upload-artifact@v3

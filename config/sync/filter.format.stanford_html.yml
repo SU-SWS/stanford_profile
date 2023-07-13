@@ -17,6 +17,7 @@ dependencies:
     - media
     - responsive_tables_filter
     - stanford_media
+    - stanford_profile_helper
 name: HTML
 format: stanford_html
 weight: 0
@@ -128,3 +129,9 @@ filters:
     settings:
       tablesaw_type: stack
       tablesaw_persist: '1'
+  su_clean_html:
+    id: su_clean_html
+    provider: stanford_profile_helper
+    status: true
+    weight: 99
+    settings: {  }

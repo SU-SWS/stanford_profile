@@ -12,6 +12,13 @@ targetEntityType: paragraph
 bundle: stanford_wysiwyg
 mode: default
 content:
+  status:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   su_wysiwyg_text:
     type: text_textarea
     weight: 0
@@ -23,5 +30,4 @@ content:
 hidden:
   created: true
   publish_on: true
-  status: true
   unpublish_on: true

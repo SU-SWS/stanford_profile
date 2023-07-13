@@ -32,6 +32,8 @@
  */
 #}
 {# Menu. #}
-{% block content %}
-  {{ content }}
-{% endblock %}
+<div{{ attributes }}>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>

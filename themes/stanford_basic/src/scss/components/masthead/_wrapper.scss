@@ -5,19 +5,6 @@
 .su-masthead {
   z-index: 11;
 
-  @include grid-media-max('sm') {
-    .su-multi-menu {
-      @include margin(-57px null null);
-    }
-  }
-
-  @include grid-media-only('md') {
-    .su-multi-menu {
-      @include flex-column(2);
-      @include margin(auto null null);
-    }
-  }
-
   .su-multi-menu {
     @include grid-media-max('md') {
       > ul {
@@ -25,21 +12,15 @@
       }
     }
 
-    @include grid-media('lg') {
-      width: 100%;
-    }
-
     .su-multi-menu__nav-toggle[aria-expanded=true] + .su-multi-menu__menu-lv1 {
-      @include grid-media-only('xs') {
-        right: -20px;
-      }
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
 
-      @include grid-media-only('sm') {
-        right: -30px;
-      }
-
-      @include grid-media-only('md') {
-        right: 0;
+      @include grid-media('lg') {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 
@@ -52,19 +33,6 @@
     }
   }
 
-  .su-multi-menu,
-  .su-multi-menu > ul,
-  .su-multi-menu .su-multi-menu__nav-toggle[aria-expanded="true"] + .su-multi-menu__menu-lv1 + .su-site-search {
-    @include grid-media-only('xs') {
-      // We can't use 100vw for this because it doesn't work with OSX system preference to always show scrollbar
-      width: calc(100% + #{map-get($su-screen-margins, 'xs') * 2});
-    }
-
-    @include grid-media-only('sm') {
-      width: calc(100% + #{map-get($su-screen-margins, 'sm') * 2});
-    }
-  }
-
   > section:last-of-type {
     @include grid-media('lg') {
       @include padding(3.6rem null null null);
@@ -74,6 +42,14 @@
   .su-lockup {
     @include grid-media('lg') {
       @include margin(null null 2.2rem null);
+    }
+  }
+
+  li.su-mobile-site-search {
+    display: none;
+
+    @include grid-media-max('md') {
+      display: block;
     }
   }
 

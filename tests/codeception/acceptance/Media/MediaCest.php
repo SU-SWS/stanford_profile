@@ -170,7 +170,7 @@ class MediaCest {
 
     $name = $this->faker->words(2, TRUE);
     $I->fillField('Name', $name);
-    $I->attachFile('File', $this->filePath);
+    $I->attachFile('Add a new file', $this->filePath);
     $I->click('Save');
     $I->canSee('has been created.');
     $I->amOnPage('/admin/content/files');
@@ -259,7 +259,7 @@ class MediaCest {
     $I->logInWithRole('site_manager');
 
     $I->amOnPage($media->toUrl('edit-form')->toString());
-    $I->canSeeInField('Category', '-' . $child_term->label());
+    $I->canSeeInField('Category', $child_term->id());
     $I->click('Save');
 
     $I->amOnPage('/admin/content/media');

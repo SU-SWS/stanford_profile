@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.stanford_page.field_menulink
     - field.field.node.stanford_page.layout_builder__layout
     - field.field.node.stanford_page.layout_selection
     - field.field.node.stanford_page.stanford_intranet__access
@@ -18,12 +19,14 @@ dependencies:
     - field.field.node.stanford_page.su_shared_tags
     - node.type.stanford_page
   module:
+    - change_labels
     - field_group
+    - layout_paragraphs
     - media_library
+    - menu_link
     - metatag
     - paragraphs
     - path
-    - react_paragraphs
     - scheduler
     - shs
     - stanford_intranet
@@ -74,15 +77,21 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_menulink:
+    type: menu_link_default
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   layout_selection:
     type: options_select
-    weight: 9
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 5
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -105,7 +114,7 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 7
+    weight: 5
     region: content
     settings:
       display_label: true
@@ -122,7 +131,7 @@ content:
     third_party_settings: {  }
   su_metatags:
     type: metatag_firehose
-    weight: 31
+    weight: 11
     region: content
     settings:
       sidebar: true
@@ -130,7 +139,7 @@ content:
     third_party_settings: {  }
   su_page_banner:
     type: paragraphs
-    weight: 8
+    weight: 6
     region: content
     settings:
       title: Paragraph
@@ -148,8 +157,8 @@ content:
         duplicate: '0'
     third_party_settings: {  }
   su_page_components:
-    type: react_paragraphs
-    weight: 10
+    type: layout_paragraphs
+    weight: 7
     region: content
     settings:
       resizable: false
@@ -226,7 +235,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 6
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -29,7 +29,8 @@ class SubThemeCest {
    */
   public function __construct() {
     $this->themeName = Factory::create()->firstName;
-    $this->themePath = realpath(dirname(drupal_get_path('theme', 'stanford_basic'))) . '/' . strtolower($this->themeName);
+    $path = \Drupal::service('extension.list.theme')->getPath('stanford_basic');
+    $this->themePath = realpath(dirname($path)) . '/' . strtolower($this->themeName);
   }
 
   /**
@@ -132,7 +133,7 @@ class SubThemeCest {
   protected function createTheme() {
     if (!file_exists("{$this->themePath}/{$this->themeName}.info.yml")) {
       mkdir($this->themePath, 0777, TRUE);
-      $info = file_get_contents(drupal_get_path('theme', 'stanford_basic') . '/stanford_basic.info.yml');
+      $info = file_get_contents(\Drupal::service('extension.list.theme')->getPath('stanford_basic') . '/stanford_basic.info.yml');
       $info = Yaml::decode($info);
       $info['name'] = $this->themeName;
       $info['base theme'] = 'stanford_basic';

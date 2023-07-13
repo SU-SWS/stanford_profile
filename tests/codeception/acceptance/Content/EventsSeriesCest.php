@@ -4,6 +4,8 @@ use Faker\Factory;
 
 /**
  * Test the event series functionality.
+ *
+ * @group content
  */
 class EventsSeriesCest {
 

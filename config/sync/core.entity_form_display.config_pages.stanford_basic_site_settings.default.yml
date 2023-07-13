@@ -9,15 +9,38 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_hide_site_search
     - field.field.config_pages.stanford_basic_site_settings.su_site_403
     - field.field.config_pages.stanford_basic_site_settings.su_site_404
+    - field.field.config_pages.stanford_basic_site_settings.su_site_admin_notes
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
     - field.field.config_pages.stanford_basic_site_settings.su_site_email
     - field.field.config_pages.stanford_basic_site_settings.su_site_home
     - field.field.config_pages.stanford_basic_site_settings.su_site_menu_levels
     - field.field.config_pages.stanford_basic_site_settings.su_site_name
+    - field.field.config_pages.stanford_basic_site_settings.su_site_new_menu
+    - field.field.config_pages.stanford_basic_site_settings.su_site_nobots
     - field.field.config_pages.stanford_basic_site_settings.su_site_url
   module:
     - conditional_fields
+    - field_group
     - link
+    - text
+third_party_settings:
+  field_group:
+    group_experimental:
+      children:
+        - su_site_new_menu
+        - su_site_admin_notes
+      label: Experimental
+      region: content
+      parent_name: ''
+      weight: 12
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
 id: config_pages.stanford_basic_site_settings.default
 targetEntityType: config_pages
 bundle: stanford_basic_site_settings
@@ -56,6 +79,14 @@ content:
     weight: 9
     region: content
     settings: {  }
+    third_party_settings: {  }
+  su_site_admin_notes:
+    type: text_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   su_site_dropdowns:
     type: boolean_checkbox
@@ -109,6 +140,20 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  su_site_new_menu:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  su_site_nobots:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   su_site_url:
     type: link_default

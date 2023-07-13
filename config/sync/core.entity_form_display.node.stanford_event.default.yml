@@ -30,7 +30,9 @@ dependencies:
     - node.type.stanford_event
   module:
     - address
+    - change_labels
     - field_group
+    - layout_paragraphs
     - link
     - metatag
     - paragraphs
@@ -180,24 +182,17 @@ content:
     settings: {  }
     third_party_settings: {  }
   su_event_components:
-    type: paragraphs
+    type: layout_paragraphs
     weight: 3
     region: content
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: closed
-      closed_mode: summary
-      autocollapse: all
-      closed_mode_threshold: 0
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: _none
-      features:
-        add_above: '0'
-        collapse_edit_all: '0'
-        duplicate: duplicate
-    third_party_settings: {  }
+      preview_view_mode: default
+      nesting_depth: 0
+      require_layouts: 1
+      empty_message: ''
+    third_party_settings:
+      change_labels:
+        add_another: ''
   su_event_contact_info:
     type: string_textfield
     weight: 28

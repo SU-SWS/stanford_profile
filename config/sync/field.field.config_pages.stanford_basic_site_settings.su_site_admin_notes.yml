@@ -1,0 +1,26 @@
+uuid: 9714a94b-aa9b-443f-91cf-7592f72dac5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_admin_notes
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - stanford_minimal_html
+id: config_pages.stanford_basic_site_settings.su_site_admin_notes
+field_name: su_site_admin_notes
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Admin Notes'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

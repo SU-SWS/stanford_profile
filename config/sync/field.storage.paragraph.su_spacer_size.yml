@@ -1,0 +1,27 @@
+uuid: 97dd4d2d-9b81-4285-a846-fe1c5fb44d54
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.su_spacer_size
+field_name: su_spacer_size
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: su-spacer-reduced
+      label: Reduced
+    -
+      value: su-spacer-minimal
+      label: Minimal
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

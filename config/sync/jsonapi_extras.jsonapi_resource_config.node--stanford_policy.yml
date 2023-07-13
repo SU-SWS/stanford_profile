@@ -1,0 +1,260 @@
+uuid: b30ce652-ae29-4e58-88d4-b233979b072d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_policy
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_policy_changelog
+    default_filter:
+      'filter:status': '1'
+    page_limit: 50
+id: node--stanford_policy
+disabled: false
+path: node/stanford_policy
+resourceType: node--stanford_policy
+resourceFields:
+  nid:
+    disabled: true
+    fieldName: nid
+    publicName: nid
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  vid:
+    disabled: true
+    fieldName: vid
+    publicName: vid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: true
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  type:
+    disabled: false
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  revision_timestamp:
+    disabled: true
+    fieldName: revision_timestamp
+    publicName: revision_timestamp
+    enhancer:
+      id: ''
+  revision_uid:
+    disabled: true
+    fieldName: revision_uid
+    publicName: revision_uid
+    enhancer:
+      id: ''
+  revision_log:
+    disabled: true
+    fieldName: revision_log
+    publicName: revision_log
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  uid:
+    disabled: true
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  title:
+    disabled: false
+    fieldName: title
+    publicName: title
+    enhancer:
+      id: ''
+  created:
+    disabled: false
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: false
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  promote:
+    disabled: true
+    fieldName: promote
+    publicName: promote
+    enhancer:
+      id: ''
+  sticky:
+    disabled: true
+    fieldName: sticky
+    publicName: sticky
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: true
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  revision_default:
+    disabled: true
+    fieldName: revision_default
+    publicName: revision_default
+    enhancer:
+      id: ''
+  revision_translation_affected:
+    disabled: true
+    fieldName: revision_translation_affected
+    publicName: revision_translation_affected
+    enhancer:
+      id: ''
+  metatag:
+    disabled: true
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  path:
+    disabled: false
+    fieldName: path
+    publicName: path
+    enhancer:
+      id: ''
+  rh_action:
+    disabled: true
+    fieldName: rh_action
+    publicName: rh_action
+    enhancer:
+      id: ''
+  rh_redirect:
+    disabled: true
+    fieldName: rh_redirect
+    publicName: rh_redirect
+    enhancer:
+      id: ''
+  rh_redirect_response:
+    disabled: true
+    fieldName: rh_redirect_response
+    publicName: rh_redirect_response
+    enhancer:
+      id: ''
+  rh_redirect_fallback_action:
+    disabled: true
+    fieldName: rh_redirect_fallback_action
+    publicName: rh_redirect_fallback_action
+    enhancer:
+      id: ''
+  publish_on:
+    disabled: true
+    fieldName: publish_on
+    publicName: publish_on
+    enhancer:
+      id: ''
+  unpublish_on:
+    disabled: true
+    fieldName: unpublish_on
+    publicName: unpublish_on
+    enhancer:
+      id: ''
+  menu_link:
+    disabled: true
+    fieldName: menu_link
+    publicName: menu_link
+    enhancer:
+      id: ''
+  body:
+    disabled: false
+    fieldName: body
+    publicName: body
+    enhancer:
+      id: ''
+  field_menulink:
+    disabled: true
+    fieldName: field_menulink
+    publicName: field_menulink
+    enhancer:
+      id: ''
+  layout_builder__layout:
+    disabled: true
+    fieldName: layout_builder__layout
+    publicName: layout_builder__layout
+    enhancer:
+      id: ''
+  su_policy_authority:
+    disabled: false
+    fieldName: su_policy_authority
+    publicName: su_policy_authority
+    enhancer:
+      id: ''
+  su_policy_auto_prefix:
+    disabled: false
+    fieldName: su_policy_auto_prefix
+    publicName: su_policy_auto_prefix
+    enhancer:
+      id: ''
+  su_policy_changelog:
+    disabled: false
+    fieldName: su_policy_changelog
+    publicName: su_policy_changelog
+    enhancer:
+      id: ''
+  su_policy_chapter:
+    disabled: false
+    fieldName: su_policy_chapter
+    publicName: su_policy_chapter
+    enhancer:
+      id: ''
+  su_policy_effective:
+    disabled: false
+    fieldName: su_policy_effective
+    publicName: su_policy_effective
+    enhancer:
+      id: ''
+  su_policy_policy_num:
+    disabled: false
+    fieldName: su_policy_policy_num
+    publicName: su_policy_policy_num
+    enhancer:
+      id: ''
+  su_policy_related:
+    disabled: false
+    fieldName: su_policy_related
+    publicName: su_policy_related
+    enhancer:
+      id: ''
+  su_policy_subchapter:
+    disabled: false
+    fieldName: su_policy_subchapter
+    publicName: su_policy_subchapter
+    enhancer:
+      id: ''
+  su_policy_title:
+    disabled: false
+    fieldName: su_policy_title
+    publicName: su_policy_title
+    enhancer:
+      id: ''
+  su_policy_updated:
+    disabled: false
+    fieldName: su_policy_updated
+    publicName: su_policy_updated
+    enhancer:
+      id: ''

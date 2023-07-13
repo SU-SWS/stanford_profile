@@ -1,0 +1,130 @@
+uuid: 00e7c30b-c653-43c8-8548-8bb67377e21a
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
+id: config_pages--stanford_basic_site_settings
+disabled: false
+path: config_pages/stanford_basic_site_settings
+resourceType: config_pages--stanford_basic_site_settings
+resourceFields:
+  id:
+    disabled: true
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  label:
+    disabled: true
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  type:
+    disabled: true
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  context:
+    disabled: true
+    fieldName: context
+    publicName: context
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  encrypted_field_storage:
+    disabled: true
+    fieldName: encrypted_field_storage
+    publicName: encrypted_field_storage
+    enhancer:
+      id: ''
+  metatag:
+    disabled: true
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  su_google_analytics:
+    disabled: false
+    fieldName: su_google_analytics
+    publicName: su_google_analytics
+    enhancer:
+      id: ''
+  su_hide_ext_link_icons:
+    disabled: false
+    fieldName: su_hide_ext_link_icons
+    publicName: su_hide_ext_link_icons
+    enhancer:
+      id: ''
+  su_hide_site_search:
+    disabled: false
+    fieldName: su_hide_site_search
+    publicName: su_hide_site_search
+    enhancer:
+      id: ''
+  su_site_403:
+    disabled: true
+    fieldName: su_site_403
+    publicName: su_site_403
+    enhancer:
+      id: ''
+  su_site_404:
+    disabled: true
+    fieldName: su_site_404
+    publicName: su_site_404
+    enhancer:
+      id: ''
+  su_site_dropdowns:
+    disabled: false
+    fieldName: su_site_dropdowns
+    publicName: su_site_dropdowns
+    enhancer:
+      id: ''
+  su_site_email:
+    disabled: true
+    fieldName: su_site_email
+    publicName: su_site_email
+    enhancer:
+      id: ''
+  su_site_home:
+    disabled: false
+    fieldName: su_site_home
+    publicName: su_site_home
+    enhancer:
+      id: ''
+  su_site_menu_levels:
+    disabled: false
+    fieldName: su_site_menu_levels
+    publicName: su_site_menu_levels
+    enhancer:
+      id: ''
+  su_site_name:
+    disabled: false
+    fieldName: su_site_name
+    publicName: su_site_name
+    enhancer:
+      id: ''
+  su_site_url:
+    disabled: true
+    fieldName: su_site_url
+    publicName: su_site_url
+    enhancer:
+      id: ''

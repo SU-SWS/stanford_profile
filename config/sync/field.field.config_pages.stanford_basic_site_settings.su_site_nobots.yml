@@ -1,0 +1,23 @@
+uuid: 12aed8a3-91ac-4123-ba3c-5ade1527ff19
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_nobots
+id: config_pages.stanford_basic_site_settings.su_site_nobots
+field_name: su_site_nobots
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Block Search Engines'
+description: 'Emit metadata that tells <em>well behaved</em> search engines to not crawl this site. This is useful when the site is being built. Remember to disable upon the site launching.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

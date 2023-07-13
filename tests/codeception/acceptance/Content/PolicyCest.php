@@ -81,6 +81,8 @@ class PolicyCest {
 
   /**
    * Test the path auto settings.
+   *
+   * @group menu_link_weight
    */
   public function testPolicyPathAuto(AcceptanceTester $I) {
     $title = $this->faker->words(4, TRUE) . ' foo bar';
@@ -129,7 +131,7 @@ class PolicyCest {
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', $node->label());
-    $I->selectOption('Parent link', '-- ' . $parent_page->label());
+    $I->selectOption('Parent item', 'main:menu_link_field:node_field_menulink_' . $parent_page->uuid() . '_und');
     $I->click('Change parent (update list of weights)');
     $I->click('Save');
 
@@ -150,6 +152,8 @@ class PolicyCest {
 
   /**
    * Test the hierarchy of the book.
+   *
+   * @group menu_link_weight
    */
   public function testPolicyHeirarcy(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
@@ -210,7 +214,7 @@ class PolicyCest {
     $I->fillField('Authority', $authority);
     $I->selectOption('Book', $book->label());
     $I->click('Change book (update list of parents)');
-    $I->selectOption('Parent item', '-- 2. ' . $chapter_two->label());
+    $I->selectOption('book[pid]', '-- 2. ' . $chapter_two->label());
     $I->click('Change book (update list of parents)');
 
     $I->click('Add new policy log');

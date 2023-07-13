@@ -19,12 +19,13 @@ dependencies:
     - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
   module:
+    - change_labels
     - datetime
     - field_group
+    - layout_paragraphs
     - link
     - media_library
     - metatag
-    - paragraphs
     - path
     - scheduler
     - shs
@@ -142,17 +143,17 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_news_components:
-    type: entity_reference_paragraphs
+    type: layout_paragraphs
     weight: 4
     region: content
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: closed
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: stanford_wysiwyg
-    third_party_settings: {  }
+      preview_view_mode: default
+      nesting_depth: 0
+      require_layouts: 1
+      empty_message: ''
+    third_party_settings:
+      change_labels:
+        add_another: ''
   su_news_dek:
     type: string_textfield
     weight: 2

@@ -1,0 +1,17 @@
+uuid: ae52bab3-2887-499e-a53a-2a96d1eb55b6
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: tiny_blur
+label: 'Tiny Blur'
+effects:
+  be274aa1-e231-45e3-9032-9c00a0148d40:
+    uuid: be274aa1-e231-45e3-9032-9c00a0148d40
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 10
+      height: 10
+      crop_type: focal_point

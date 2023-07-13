@@ -1,0 +1,75 @@
+uuid: 79f7cf07-4c46-4965-8fc4-221790393cec
+langcode: en
+status: true
+dependencies:
+  module:
+    - jsonapi_defaults
+    - stanford_policy
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
+id: su_policy_log--su_policy_log
+disabled: false
+path: su_policy_log/su_policy_log
+resourceType: su_policy_log--su_policy_log
+resourceFields:
+  id:
+    disabled: true
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  uuid:
+    disabled: true
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  uid:
+    disabled: true
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  created:
+    disabled: true
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  su_policy_date:
+    disabled: false
+    fieldName: su_policy_date
+    publicName: su_policy_date
+    enhancer:
+      id: ''
+  su_policy_notes:
+    disabled: false
+    fieldName: su_policy_notes
+    publicName: su_policy_notes
+    enhancer:
+      id: ''
+  su_policy_public:
+    disabled: false
+    fieldName: su_policy_public
+    publicName: su_policy_public
+    enhancer:
+      id: ''
+  su_policy_title:
+    disabled: false
+    fieldName: su_policy_title
+    publicName: su_policy_title
+    enhancer:
+      id: ''
