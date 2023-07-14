@@ -5,6 +5,9 @@
  * cardinal_service_profile.profile
  */
 
+use Drupal\config_pages\Entity\ConfigPages;
+use Drupal\Core\Installer\InstallerKernel;
+
 require_once 'cardinal_service_profile.inc';
 
 /**
@@ -27,7 +30,7 @@ function cardinal_service_profile_final_task(array &$install_state) {
 /**
  * Implements hook_ENTITY_TYPE_presave().
  */
-function stanford_profile_config_pages_presave(ConfigPages $config_page) {
+function cardinal_service_profile_config_pages_presave(ConfigPages $config_page) {
   // During install, rebuild the router when saving a config page. This prevents
   // an error if the config page route doesn't exist for it yet. Event
   // subscriber doesn't work for this since it's during installation.

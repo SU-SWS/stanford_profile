@@ -85,8 +85,13 @@ class OpportunitiesFilterCest {
     $I->waitForAjaxToFinish();
     $I->fillField('Form action URL', $filter_url);
 
-    $I->click('Add block');
-    $I->waitForAjaxToFinish();
+    $tries = 0;
+    while ($I->grabMultiple('.layout-builder-add-block') && $tries < 5) {
+      $I->click('Add block', '.layout-builder-add-block');
+      $I->wait(1);
+      $tries++;
+    }
+
     $I->scrollTo('.su-masthead');
     $I->click('Save layout');
     $I->click('Apply');

@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.su_page_components
     - node.type.stanford_page
+    - paragraphs.paragraphs_type.cardinal_mission_statement
+    - paragraphs.paragraphs_type.cs_opportunity_list
     - paragraphs.paragraphs_type.stanford_banner
     - paragraphs.paragraphs_type.stanford_card
     - paragraphs.paragraphs_type.stanford_entity
@@ -12,8 +14,10 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_layout
     - paragraphs.paragraphs_type.stanford_lists
     - paragraphs.paragraphs_type.stanford_media_caption
+    - paragraphs.paragraphs_type.stanford_resource_list
     - paragraphs.paragraphs_type.stanford_spacer
     - paragraphs.paragraphs_type.stanford_wysiwyg
+    - paragraphs.paragraphs_type.su_minimal_card
   module:
     - entity_reference_revisions
 id: node.stanford_page.su_page_components
@@ -30,9 +34,67 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      node_stanford_page_row: node_stanford_page_row
-    sort:
-      field: _none
-    auto_create: false
-    auto_create_bundle: ''
+      cardinal_mission_statement: cardinal_mission_statement
+      cs_opportunity_list: cs_opportunity_list
+      stanford_banner: stanford_banner
+      stanford_card: stanford_card
+      stanford_entity: stanford_entity
+      stanford_gallery: stanford_gallery
+      stanford_layout: stanford_layout
+      stanford_lists: stanford_lists
+      stanford_media_caption: stanford_media_caption
+      stanford_resource_list: stanford_resource_list
+      stanford_spacer: stanford_spacer
+      stanford_wysiwyg: stanford_wysiwyg
+      su_minimal_card: su_minimal_card
+    negate: 0
+    target_bundles_drag_drop:
+      cardinal_mission_statement:
+        weight: 17
+        enabled: true
+      cs_opportunity_list:
+        weight: 18
+        enabled: true
+      stanford_accordion:
+        weight: 19
+        enabled: false
+      stanford_banner:
+        weight: 20
+        enabled: true
+      stanford_card:
+        weight: 21
+        enabled: true
+      stanford_entity:
+        weight: 22
+        enabled: true
+      stanford_gallery:
+        weight: 23
+        enabled: true
+      stanford_layout:
+        weight: 24
+        enabled: true
+      stanford_lists:
+        weight: 25
+        enabled: true
+      stanford_media_caption:
+        weight: 26
+        enabled: true
+      stanford_person_cta:
+        weight: 27
+        enabled: false
+      stanford_resource_list:
+        weight: 28
+        enabled: true
+      stanford_schedule:
+        weight: 29
+        enabled: false
+      stanford_spacer:
+        weight: 30
+        enabled: true
+      stanford_wysiwyg:
+        weight: 31
+        enabled: true
+      su_minimal_card:
+        weight: 32
+        enabled: true
 field_type: entity_reference_revisions

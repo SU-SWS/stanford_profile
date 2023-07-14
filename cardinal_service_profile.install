@@ -414,19 +414,7 @@ function cardinal_service_profile_update_9102() {
  * Re-run stanford_card update.
  */
 function cardinal_service_profile_update_9103(&$sandbox) {
-  if ($field = FieldConfig::loadByName('paragraph', 'stanford_card', 'su_card_link_display')) {
-    module_load_install('stanford_paragraph_card');
-    stanford_paragraph_card_update_8001($sandbox);
-    /** @var \Drupal\paragraphs\ParagraphsTypeInterface $paragraph_type */
-    $paragraph_type = \Drupal::entityTypeManager()
-      ->getStorage('paragraphs_type')
-      ->load('stanford_card');
-    $behaviors = $paragraph_type->get('behavior_plugins');
-    $behaviors['su_card_styles'] = ['enabeld' => true];
-    $paragraph_type->set('behavior_plugins', $behaviors);
-    $paragraph_type->save();
-    $field->delete();
-  }
+
 }
 
 /**

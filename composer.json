@@ -48,10 +48,7 @@
         "drupal/auto_entitylabel": "^3.0@beta",
         "drupal/block_content_permissions": "^1.8",
         "drupal/change_labels": "^1.0",
-        "drupal/chosen": "^3.0",
-        "drupal/ckeditor_a11ychecker": "^1.0",
-        "drupal/ckeditor_balloonpanel": "^1.1",
-        "drupal/ckeditor_blockimagepaste": "^1.4",
+        "drupal/chosen": "^4.0",
         "drupal/color_field": "dev-2.x",
         "drupal/colorbox": "^2.0",
         "drupal/components": "^3.0",
@@ -86,11 +83,11 @@
         "drupal/file_mdm_exif": "^2.4",
         "drupal/file_mdm_font": "^2.4",
         "drupal/flag": "^4.0@beta",
-        "drupal/flat_taxonomy": "^1.2",
+        "drupal/flat_taxonomy": "^2.0",
         "drupal/fontawesome": "^2.19",
         "drupal/google_analytics": "^4.0",
-        "drupal/google_tag": "^1.4",
-        "drupal/hook_event_dispatcher": "^3.0",
+        "drupal/google_tag": "^2.0",
+        "drupal/hook_event_dispatcher": "^4.0@beta",
         "drupal/hotjar": "^2.0",
         "drupal/image_effects": "^3.2",
         "drupal/imagemagick": "^3.1",
@@ -162,14 +159,14 @@
         "onlyextart/colorbox": "dev-master#e58476becbc89dc671093d1bcd9f99b2167fa8f7",
         "sainsburys/guzzle-oauth2-plugin": "^3.0",
         "seboettg/citeproc-php": "2.4.1",
-        "su-sws/drupal-patches": "^8.0",
-        "su-sws/nobots": "^8.2",
+        "su-sws/ckeditor5_plugins": "^1.0",
+        "su-sws/drupal-patches": "^8.1",
         "su-sws/react_paragraphs": "^8.2",
         "su-sws/stanford_actions": "^8.2",
-        "su-sws/stanford_fields": "^8.1",
-        "su-sws/stanford_media": "^8.3",
-        "su-sws/stanford_migrate": "^8.4",
-        "su-sws/stanford_profile_helper": "^9.0",
+        "su-sws/stanford_fields": "^8.2",
+        "su-sws/stanford_media": "^9.0",
+        "su-sws/stanford_migrate": "^8.3",
+        "su-sws/stanford_profile_helper": "^9.2",
         "su-sws/stanford_ssp": "^8.2"
     },
     "config": {
@@ -187,15 +184,29 @@
         }
     },
     "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^9"
+            }
+        },
         "patches": {
             "drupal/core": {
-                "https://www.drupal.org/project/drupal/issues/3015152": "https://www.drupal.org/files/issues/2021-12-13/3015152-tps-9.3.x-128.patch"
+                "https://www.drupal.org/project/drupal/issues/3015152": "https://www.drupal.org/files/issues/2023-02-03/3015152-191.patch"
             },
             "drupal/field_delimiter": {
                 "https://www.drupal.org/project/field_delimiter/issues/3099580": "https://www.drupal.org/files/issues/2020-04-08/field_delimiter-3099580-7.patch"
             },
+            "drupal/hook_event_dispatcher": {
+                "https://www.drupal.org/project/hook_event_dispatcher/issues/3354751": "https://www.drupal.org/files/issues/2023-04-17/hook_event_dispatcher-4.x-3354751.patch"
+            },
             "drupal/menu_block": {
-                "https://www.drupal.org/project/menu_block/issues/3082445": "https://www.drupal.org/files/issues/2020-05-06/menu_block-render-parent-3082445-17.patch"
+                "https://www.drupal.org/project/menu_block/issues/3271218": "https://www.drupal.org/files/issues/2022-04-29/menu_block_rendered_empty-3271218-17.patch"
+            },
+            "drupal/menu_link": {
+                "https://www.drupal.org/project/menu_link/issues/3358081": "https://git.drupalcode.org/project/menu_link/-/merge_requests/9.patch"
+            },
+            "drupal/menu_link_weight": {
+                "https://www.drupal.org/project/menu_link_weight/issues/2875984": "https://git.drupalcode.org/project/menu_link_weight/-/merge_requests/2.diff"
             }
         }
     }

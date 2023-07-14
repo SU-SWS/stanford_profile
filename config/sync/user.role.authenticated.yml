@@ -2,6 +2,9 @@ uuid: ccb69bd8-1bb9-4122-861e-0d75be7eb22d
 langcode: en
 status: true
 dependencies:
+  config:
+    - filter.format.stanford_html
+    - filter.format.stanford_minimal_html
   module:
     - field_permissions
     - filter
@@ -10,7 +13,6 @@ dependencies:
     - printable
     - shortcut
     - stanford_policy
-    - subrequests
     - system
     - ui_patterns_library
 _core:

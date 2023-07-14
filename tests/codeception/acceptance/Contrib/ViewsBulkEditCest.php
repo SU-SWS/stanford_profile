@@ -35,7 +35,8 @@ class ViewsBulkEditCest {
   public function testBulkEdits(AcceptanceTester $I) {
     try {
       $I->runDrush('migrate:rollback --all');
-    }catch (\Throwable $e){
+    }
+    catch (\Throwable $e){
       // Do nothing.
     }
 

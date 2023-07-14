@@ -1,0 +1,25 @@
+uuid: 7200142b-8775-4a2e-ad07-27498eb22a97
+langcode: en
+status: true
+dependencies:
+  module:
+    - jumpstart_ui
+    - system
+  theme:
+    - cardinal_service
+id: cardinal_service_main_anchor
+theme: cardinal_service
+region: content
+weight: -5
+provider: null
+plugin: jumpstart_ui_skipnav_main_anchor
+settings:
+  id: jumpstart_ui_skipnav_main_anchor
+  label: 'Main content anchor target'
+  label_display: '0'
+  provider: jumpstart_ui
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search
