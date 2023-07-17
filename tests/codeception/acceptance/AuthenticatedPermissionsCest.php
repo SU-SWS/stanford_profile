@@ -96,6 +96,9 @@ class AuthenticatedPermissionsCest {
     $I->dontSee('Administrator');
     $I->dontSee('Site Builder');
     $I->dontSee('Site Developer');
+    $I->click('Add user');
+    $I->canSeeInCurrentUrl('/admin/users/create/saml');
+    $I->seeResponseCodeIs(200);
   }
 
   /**
