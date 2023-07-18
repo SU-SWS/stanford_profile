@@ -130,19 +130,19 @@ third_party_settings:
             configuration:
               id: 'menu_block:main'
               label: 'Main navigation'
-              label_display: '0'
+              label_display: visible
               provider: menu_block
               context_mapping: {  }
               follow: false
               follow_parent: child
-              label_link: false
-              label_type: block
+              label_link: true
+              label_type: parent
               level: 2
               depth: 0
+              expand_all_items: true
               parent: 'main:'
+              render_parent: false
               suggestion: secondary_nav
-              render_parent: true
-              expand: true
             weight: 0
             additional: {  }
             third_party_settings: {  }
