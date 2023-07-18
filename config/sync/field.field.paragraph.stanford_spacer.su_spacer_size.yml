@@ -1,0 +1,21 @@
+uuid: e1e8f6c2-0706-45b3-b60e-972b168a41c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_spacer_size
+    - paragraphs.paragraphs_type.stanford_spacer
+  module:
+    - options
+id: paragraph.stanford_spacer.su_spacer_size
+field_name: su_spacer_size
+entity_type: paragraph
+bundle: stanford_spacer
+label: 'Spacer Size'
+description: 'Select the size for the spacer.  Choosing None will apply the standard spacer height.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

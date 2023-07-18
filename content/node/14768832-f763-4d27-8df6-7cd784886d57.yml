@@ -4,18 +4,16 @@ _meta:
   uuid: 14768832-f763-4d27-8df6-7cd784886d57
   bundle: stanford_page
   default_langcode: en
-  depends:
-    fd5a05d4-90ed-4081-a0c2-f46aa239f995: user
 default:
   revision_uid:
     -
-      entity: fd5a05d4-90ed-4081-a0c2-f46aa239f995
+      target_id: 1
   status:
     -
       value: true
   uid:
     -
-      entity: fd5a05d4-90ed-4081-a0c2-f46aa239f995
+      target_id: 1
   title:
     -
       value: Courses
@@ -119,19 +117,21 @@ default:
             configuration:
               id: 'field_block:node:stanford_page:su_page_components'
               label: Paragraphs
-              label_display: '0'
+              label_display: 0
               provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
               formatter:
-                type: entity_reference_revisions_entity_view
                 label: hidden
+                type: layout_paragraphs
                 settings:
                   view_mode: default
                 third_party_settings:
-                  ds:
-                    ds_limit: ''
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             weight: -9
             additional: {  }
           c40ac234-fff7-4c9d-8a34-03fb9d335617:

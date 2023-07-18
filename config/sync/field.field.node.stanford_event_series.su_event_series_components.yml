@@ -8,13 +8,14 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_person_cta
     - paragraphs.paragraphs_type.stanford_schedule
     - paragraphs.paragraphs_type.stanford_spacer
+    - paragraphs.paragraphs_type.stanford_wysiwyg
   module:
     - entity_reference_revisions
 id: node.stanford_event_series.su_event_series_components
 field_name: su_event_series_components
 entity_type: node
 bundle: stanford_event_series
-label: Components
+label: Paragraphs
 description: 'Add additional content that displays under the body text on the series node page. '
 required: false
 translatable: false
@@ -24,6 +25,9 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      stanford_banner: stanford_banner
+      stanford_card: stanford_card
+      stanford_media_caption: stanford_media_caption
       stanford_spacer: stanford_spacer
       stanford_person_cta: stanford_person_cta
       stanford_schedule: stanford_schedule
@@ -31,32 +35,35 @@ settings:
     target_bundles_drag_drop:
       stanford_banner:
         weight: 6
-        enabled: false
+        enabled: true
       stanford_card:
         weight: 7
-        enabled: false
+        enabled: true
       stanford_entity:
         weight: 13
-        enabled: false
+        enabled: true
       stanford_gallery:
         weight: 14
-        enabled: false
+        enabled: true
+      stanford_layout:
+        weight: 18
+        enabled: true
       stanford_lists:
         weight: 15
-        enabled: false
+        enabled: true
       stanford_media_caption:
         weight: 8
-        enabled: false
+        enabled: true
       stanford_person_cta:
         weight: 11
-        enabled: true
+        enabled: false
       stanford_schedule:
         weight: 12
-        enabled: true
+        enabled: false
       stanford_spacer:
         weight: 9
         enabled: true
       stanford_wysiwyg:
         weight: 10
-        enabled: false
+        enabled: true
 field_type: entity_reference_revisions

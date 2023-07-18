@@ -1,8 +1,8 @@
 name: PHPUnit and Acceptance Tests
+on: [push]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-on: [push]
 jobs:
   phpunit:
     name: PHPUnit Coverage Tests
@@ -28,7 +28,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         run: |
-          composer global require su-sws/stanford-caravan:dev-8.x-2.x
+          composer global require su-sws/stanford-caravan:dev-8.x-3.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
       - name: Save Test Results
         uses: actions/upload-artifact@v3
@@ -65,7 +65,7 @@ jobs:
       - name: Run tests
         run: |
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;'
-          composer global require su-sws/stanford-caravan:dev-8.x-2.x
+          composer global require su-sws/stanford-caravan:dev-8.x-3.x
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance
       - name: Save Test Results
         uses: actions/upload-artifact@v3
@@ -105,7 +105,7 @@ jobs:
       - name: Run tests
         run: |
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;'
-          composer global require su-sws/stanford-caravan:dev-8.x-2.x
+          composer global require su-sws/stanford-caravan:dev-8.x-3.x
           ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional
       - name: Save Test Results
         uses: actions/upload-artifact@v3

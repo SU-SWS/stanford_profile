@@ -6,7 +6,6 @@ dependencies:
     - field.field.paragraph.stanford_card.su_card_body
     - field.field.paragraph.stanford_card.su_card_header
     - field.field.paragraph.stanford_card.su_card_link
-    - field.field.paragraph.stanford_card.su_card_link_display
     - field.field.paragraph.stanford_card.su_card_media
     - field.field.paragraph.stanford_card.su_card_super_header
     - paragraphs.paragraphs_type.stanford_card
@@ -19,6 +18,13 @@ targetEntityType: paragraph
 bundle: stanford_card
 mode: default
 content:
+  status:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   su_card_body:
     type: text_textarea
     weight: 3
@@ -37,17 +43,11 @@ content:
     third_party_settings: {  }
   su_card_link:
     type: link_default
-    weight: 6
+    weight: 5
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
-  su_card_link_display:
-    type: options_select
-    weight: 5
-    region: content
-    settings: {  }
     third_party_settings: {  }
   su_card_media:
     type: media_library_widget
@@ -67,5 +67,4 @@ content:
 hidden:
   created: true
   publish_on: true
-  status: true
   unpublish_on: true

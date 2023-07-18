@@ -6,7 +6,6 @@ use Faker\Factory;
  * Test for the lockup settings.
  *
  * @group navigation
- * @group testme
  */
 class NavigationDropDownsCest {
 
@@ -37,6 +36,8 @@ class NavigationDropDownsCest {
 
   /**
    * Create some content and test the dropdown menu.
+   *
+   * @group menu_link_weight
    */
   public function testDropdownMenus(FunctionalTester $I) {
     $parent_menu_title = $this->faker->word;
@@ -66,8 +67,10 @@ class NavigationDropDownsCest {
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', $node_title);
     // The label on the menu parent changes in D9 vs D8
-    $I->selectOption('Parent link', "-- $parent_menu_title");
+    $I->selectOption('.menu-link-form .select-wrapper--level-0 select', '<main>');
+    $I->selectOption('.menu-link-form .select-wrapper--level-1 select', $parent_menu_title);
     $I->waitForText("Change the weight of the links within the $parent_menu_title menu");
+
     $I->click('Save');
     $I->canSeeLink($node_title);
 

@@ -1,0 +1,35 @@
+uuid: 7bf0fdd9-3c86-4662-af99-4076b4bb1f0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_menulink
+    - node.type.stanford_person
+  module:
+    - menu_link
+id: node.stanford_person.field_menulink
+field_name: field_menulink
+entity_type: node
+bundle: stanford_person
+label: 'Menu Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_menus:
+    main: main
+    stanford-person-type: stanford-person-type
+    admin: '0'
+    courses-menu: '0'
+    devel: '0'
+    stanford-event-types: '0'
+    footer: '0'
+    stanford-publication-topics: '0'
+    tools: '0'
+    news-topics: '0'
+    account: '0'
+  default_menu_parent: 'main:'
+  default_expanded: true
+field_type: menu_link

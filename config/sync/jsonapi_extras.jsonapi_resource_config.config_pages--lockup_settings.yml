@@ -1,0 +1,126 @@
+uuid: b91881db-ec5e-4511-9443-6158db77c33c
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.lockup_settings
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    default_include:
+      - su_upload_logo_image
+    page_limit: 50
+id: config_pages--lockup_settings
+disabled: false
+path: config_pages/lockup_settings
+resourceType: config_pages--lockup_settings
+resourceFields:
+  id:
+    disabled: true
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  label:
+    disabled: true
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  type:
+    disabled: true
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  context:
+    disabled: true
+    fieldName: context
+    publicName: context
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  encrypted_field_storage:
+    disabled: true
+    fieldName: encrypted_field_storage
+    publicName: encrypted_field_storage
+    enhancer:
+      id: ''
+  metatag:
+    disabled: true
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  su_intro:
+    disabled: false
+    fieldName: su_intro
+    publicName: su_intro
+    enhancer:
+      id: ''
+  su_line_1:
+    disabled: false
+    fieldName: su_line_1
+    publicName: su_line_1
+    enhancer:
+      id: ''
+  su_line_2:
+    disabled: false
+    fieldName: su_line_2
+    publicName: su_line_2
+    enhancer:
+      id: ''
+  su_line_3:
+    disabled: false
+    fieldName: su_line_3
+    publicName: su_line_3
+    enhancer:
+      id: ''
+  su_line_4:
+    disabled: false
+    fieldName: su_line_4
+    publicName: su_line_4
+    enhancer:
+      id: ''
+  su_line_5:
+    disabled: false
+    fieldName: su_line_5
+    publicName: su_line_5
+    enhancer:
+      id: ''
+  su_lockup_enabled:
+    disabled: false
+    fieldName: su_lockup_enabled
+    publicName: su_lockup_enabled
+    enhancer:
+      id: ''
+  su_lockup_options:
+    disabled: false
+    fieldName: su_lockup_options
+    publicName: su_lockup_options
+    enhancer:
+      id: ''
+  su_upload_logo_image:
+    disabled: false
+    fieldName: su_upload_logo_image
+    publicName: su_upload_logo_image
+    enhancer:
+      id: ''
+  su_use_theme_logo:
+    disabled: false
+    fieldName: su_use_theme_logo
+    publicName: su_use_theme_logo
+    enhancer:
+      id: ''

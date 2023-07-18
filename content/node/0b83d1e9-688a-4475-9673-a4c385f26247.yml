@@ -4,18 +4,16 @@ _meta:
   uuid: 0b83d1e9-688a-4475-9673-a4c385f26247
   bundle: stanford_page
   default_langcode: en
-  depends:
-    bf34703d-5f52-4278-9f0a-7bd70c282542: user
 default:
   revision_uid:
     -
-      entity: bf34703d-5f52-4278-9f0a-7bd70c282542
+      target_id: 1
   status:
     -
       value: true
   uid:
     -
-      entity: bf34703d-5f52-4278-9f0a-7bd70c282542
+      target_id: 1
   title:
     -
       value: News
@@ -45,6 +43,13 @@ default:
   rh_redirect_fallback_action:
     -
       value: bundle_default
+  field_menulink:
+    -
+      menu_name: main
+      title: News
+      description: News
+      parent: ''
+      weight: -45
   layout_builder__layout:
     -
       section:
@@ -119,19 +124,21 @@ default:
             configuration:
               id: 'field_block:node:stanford_page:su_page_components'
               label: Paragraphs
-              label_display: '0'
+              label_display: 0
               provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
               formatter:
-                type: entity_reference_revisions_entity_view
                 label: hidden
+                type: layout_paragraphs
                 settings:
                   view_mode: default
                 third_party_settings:
-                  ds:
-                    ds_limit: ''
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             weight: -9
             additional: {  }
           c40ac234-fff7-4c9d-8a34-03fb9d335617:

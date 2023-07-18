@@ -1,8 +1,8 @@
 name: Cardinal Service Profile
 description: Jumpstart Website Profile
-version: 9.0.0
+version: 10.0.0
 type: profile
-project: Jumpstart
+project: Stanford
 core_version_requirement: ^9 || ^10
 install:
   - 'address:address'
@@ -10,19 +10,14 @@ install:
   - 'admin_toolbar:admin_toolbar_links_access_filter'
   - 'admin_toolbar:admin_toolbar_tools'
   - 'allowed_formats:allowed_formats'
-  - 'anchor_link:anchor_link'
   - 'chosen:chosen'
   - 'chosen:chosen_lib'
-  - 'ckeditor_a11ychecker:ckeditor_a11ychecker'
-  - 'ckeditor_a11ychecker:ckeditor_balloonpanel'
   - 'components:components'
   - 'config_filter:config_filter'
-  - 'config_merge:config_merge'
   - 'config_pages:config_pages'
   - 'config_pages_overrides:config_pages_overrides'
   - 'config_readonly:config_readonly'
   - 'config_split:config_split'
-  - 'config_update:config_update'
   - 'crop:crop'
   - 'ctools:ctools'
   - 'default_content:default_content'
@@ -32,7 +27,6 @@ install:
   - 'drupal:block'
   - 'drupal:block_content'
   - 'drupal:breakpoint'
-  - 'drupal:ckeditor'
   - 'drupal:color'
   - 'drupal:config'
   - 'drupal:contextual'
@@ -77,7 +71,6 @@ install:
   - 'environment_indicator:environment_indicator'
   - 'externalauth:externalauth'
   - 'extlink:extlink'
-  - 'fakeobjects:fakeobjects'
   - 'field_group:field_group'
   - 'field_validation:field_validation'
   - 'file_mdm:file_mdm'
@@ -178,21 +171,13 @@ default_content:
     - a4660e7f-d4bf-4a28-8030-9dc8576b1c9a
     - ad1e4d74-148a-43d7-a054-091dcd23ab33
     - da0afb6c-f753-4d8b-9aec-720e47983de3
-  menu_link_content:
-    - 178b9e51-c3bb-4cd5-a3ac-fe241e27f083
-    - 26a314fe-33aa-4660-b06a-97b26dc75baf
-    - 3e24cd94-5f2b-4fb2-806c-bcb830cdc2dc
-    - 752de90b-4130-402f-8601-57f8d916799c
-    - a5f9f185-b376-4cab-b3bd-dc3b03617cea
-    - bdf424e8-7106-414d-b333-7f5add6e8c8a
-    - c2c22d8b-eb7c-4804-9332-4ec2aff3391a
-    - d7a33ad2-d9bf-499f-a244-cf0ee3696cad
-    - d91b714a-4609-41c5-a9c4-d8140ed3a764
-    - e635159f-4b50-4016-bbf6-41113adbff65
   node:
+    - 0b83d1e9-688a-4475-9673-a4c385f26247
     - 139be5f7-983c-44e2-9b49-29287acdd5e2
+    - 14768832-f763-4d27-8df6-7cd784886d57
     - 4b8018dc-49a6-4018-9c54-e8c3e462beee
     - 5760692a-e336-4a77-a3f6-7ed5def2418f
+    - 673a8fb8-39ac-49df-94c2-ed8d04db16a7
     - 6d51339d-ff67-498d-98e9-d8228d36fd51
     - 6df8090b-5dca-4386-9d72-d86e0156c0a9
     - 72f0069b-f1ec-4122-af73-6aa841faea90

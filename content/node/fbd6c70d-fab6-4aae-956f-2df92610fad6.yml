@@ -5,13 +5,12 @@ _meta:
   bundle: stanford_news
   default_langcode: en
   depends:
-    9999fd33-d293-45b4-85b1-c7bac0d69a51: user
     81a60c63-7638-46d2-8fd9-b4de2cbc3554: media
     04c17e9e-df3a-49d1-b65e-21dd7c13d191: taxonomy_term
 default:
   revision_uid:
     -
-      entity: 9999fd33-d293-45b4-85b1-c7bac0d69a51
+      target_id: 1
   status:
     -
       value: false
@@ -62,6 +61,9 @@ default:
   su_news_featured_media:
     -
       entity: 81a60c63-7638-46d2-8fd9-b4de2cbc3554
+  su_news_hide_social:
+    -
+      value: false
   su_news_publishing_date:
     -
       value: '2025-09-30'

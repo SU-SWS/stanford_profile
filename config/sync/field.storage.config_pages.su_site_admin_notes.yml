@@ -1,0 +1,23 @@
+uuid: 6693525d-1455-4f56-8347-b9058bb8adee
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - field_permissions
+    - text
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: config_pages.su_site_admin_notes
+field_name: su_site_admin_notes
+entity_type: config_pages
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

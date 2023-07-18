@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.paragraph {
+  &.paragraph--type--stanford-spacer {
+    @include responsive-spacing("margin-bottom", 2);
+
+    &.su-spacer-reduced {
+      @include responsive-spacing("margin-bottom", 1);
+    }
+
+    &.su-spacer-minimal {
+      @include responsive-spacing("margin-bottom", -1);
+    }
+  }
+}

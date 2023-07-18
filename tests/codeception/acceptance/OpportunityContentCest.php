@@ -10,26 +10,40 @@ use Faker\Factory;
 class OpportunityContentCest {
 
   /**
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
+   * Test Constructor
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
+
+  /**
    * Create a new piece of Opportunity content.
    */
   public function testOpportunityContentCreation(\AcceptanceTester $I) {
-    $I->createEntity([
-      'name' => 'Foo Bar',
+    $theme = $I->createEntity([
+      'name' => $this->faker->words(3, TRUE),
       'vid' => 'su_opportunity_service_theme',
     ], 'taxonomy_term');
-    $I->createEntity([
-      'name' => 'Foo Bar',
+    $dimension = $I->createEntity([
+      'name' => $this->faker->words(3, TRUE),
       'vid' => 'su_opportunity_dimension',
     ], 'taxonomy_term');
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/su_opportunity');
-    $I->fillField('Title', 'Test Opportunity');
-    $I->fillField('Body', 'Lorem Ipsum');
-    $I->selectOption('Service Theme', 'Foo Bar');
-    $I->selectOption('Program', 'Foo Bar');
+    $title = $this->faker->words(3, TRUE);
+    $I->fillField('Title', $title);
+    $body = $this->faker->words(20, TRUE);
+    $I->fillField('Body', $body);
+    $I->selectOption('Service Theme', $theme->label());
+    $I->selectOption('Program', $dimension->label());
     $I->click('Save');
-    $I->canSee('Test Opportunity');
-    $I->canSee('Lorem Ipsum');
+    $I->canSee($title, 'h1');
+    $I->canSee($body);
   }
 
   /**
@@ -54,31 +68,31 @@ class OpportunityContentCest {
    */
   public function testRelatedOpportunities(AcceptanceTester $I) {
     $terms = $this->createTaxonomyTerms($I, [
-      'Foo Bar Baz',
+      $this->faker->words(2, TRUE),
     ], 'su_opportunity_type');
     /** @var \Drupal\taxonomy\TermInterface $term */
     $term = reset($terms);
-    $I->createEntity([
+    $related = $I->createEntity([
       'type' => 'su_opportunity',
-      'title' => 'Foo Bar',
+      'title' => $this->faker->words(3, TRUE),
       'su_opp_type' => $term->id(),
     ]);
     $dimensions = $this->createTaxonomyTerms($I, [
-      'Foo Bar Baz',
+      $this->faker->words(3, TRUE),
     ], 'su_opportunity_dimension');
     $node = $I->createEntity([
       'type' => 'su_opportunity',
-      'title' => 'Bar Foo',
+      'title' => $this->faker->words(3, true),
       'su_opp_type' => $term->id(),
       'su_opp_dimension' => reset($dimensions)->id(),
     ]);
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee(reset($dimensions)->getDescription());
-    $I->canSee('Bar Foo', 'h1');
+    $I->canSee($node->label(), 'h1');
     $I->canSee('Related Opportunities', 'h2');
     $I->canSeeNumberOfElements('.flex-md-4-of-12.views-row .su-card', [1, 3]);
-    $I->canSee('Foo Bar', 'h2');
+    $I->canSee($related->label(), 'h2');
   }
 
   /**

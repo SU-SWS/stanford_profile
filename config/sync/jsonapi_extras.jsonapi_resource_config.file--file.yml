@@ -1,0 +1,89 @@
+uuid: fb76e257-9c56-43a3-bf72-9a40822b3f20
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
+id: file--file
+disabled: false
+path: file/file
+resourceType: file--file
+resourceFields:
+  fid:
+    disabled: true
+    fieldName: fid
+    publicName: fid
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: true
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  uid:
+    disabled: true
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  filename:
+    disabled: false
+    fieldName: filename
+    publicName: filename
+    enhancer:
+      id: ''
+  uri:
+    disabled: false
+    fieldName: uri
+    publicName: uri
+    enhancer:
+      id: base64_image
+      settings:
+        style: tiny_blur
+  filemime:
+    disabled: false
+    fieldName: filemime
+    publicName: filemime
+    enhancer:
+      id: ''
+  filesize:
+    disabled: false
+    fieldName: filesize
+    publicName: filesize
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  created:
+    disabled: true
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  image_style_uri:
+    disabled: false
+    fieldName: image_style_uri
+    publicName: image_style_uri
+    enhancer:
+      id: ''

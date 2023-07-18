@@ -1,5 +1,36 @@
 # Cardinal Service Profile
 
+10.0.0
+--------------------------------------------------------------------------------
+_Release Date: 2023-07-18_
+
+- Updating to new decanter version (#682)
+- CAP-67 Import profile phone number to the non-mobile phone field
+- D8CORE-4539 Removed "Role" attribute on figure element
+- D8CORE-6760 | Update ckeditor5 styles (#679)
+- D8CORE-6629 use list elements on search result page
+- D8CORE-6628 Hide `li` element for mobile search field when on desktop
+- D8CORE-6368 Use list elements for related policy display
+- D8CORE-5950 Fixed aspect ratio of youtube videos on event pages
+- D8CORE-6633 Add skip link anchor to the search page (#681)
+- D8CORE-6339 Added main content anchor link destination
+- Update banner aspect ratio for small breakpoint (#680)
+- D8CORE-6695, 6694 Updated spacer paragraph with optional sizes (#677)
+- Added "Admin notes" to the site settings config page
+- D8CORE-6457 D8CORE-6476 D8CORE-6477 Tweaks to policy content fields
+- Move help section to be below brand bar in header (#674)
+- D8CORE-5407 | A11y: Update lockup cell2 max-width, line3 line-height (#672)
+- Provide a new replacement menu with a decoupled main menu (#663)
+- D8CORE-6416 Update google analytics tracking for stanford_basic theme
+- Fix policy typo (#662)
+- D8CORE-2622, D8CORE-4494 | Move brand bar and skip-links into header landmark banner (#665)
+- D8CORE-6336: changing hover on print icon for policy CT (#661)
+- Updated jsonapi endpoints (#664)
+- Migrate everything to layout paragraphs and upgrade all modules/themes (#654)
+- CS-93: Updated opportunity displays. (#288)
+- CS-92: Added sort by label to opportunities list filters (#291)
+
+
 9.0.0
 --------------------------------------------------------------------------------
 _Release Date: 2023-03-28_

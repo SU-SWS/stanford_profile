@@ -22,6 +22,13 @@
         $('.node-su-opportunity-su-opp-dimension').siblings('.node-su-opportunity-su-opp-type').before('<span>, </span>');
         $('.node-su-opportunity-su-opp-commitment').siblings('.node-su-opportunity-su-opp-service-theme').before('<span> in </span>');
       });
+
+      $('.su-secondary-nav', context).once('secondary-nav').each(function () {
+        const rightColumn = $(this).closest('.jumpstart-ui--two-column').children('.flex-lg-9-of-12');
+        if (rightColumn.find('.node-stanford-page-title').length === 0) {
+          $(this).css('margin-top', '0');
+        }
+      });
     }
   };
 

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.stanford_page.field_menulink
     - field.field.node.stanford_page.layout_builder__layout
     - field.field.node.stanford_page.layout_selection
     - field.field.node.stanford_page.stanford_intranet__access
@@ -15,6 +16,7 @@ dependencies:
     - field.field.node.stanford_page.su_page_resource_audience
     - field.field.node.stanford_page.su_page_resource_dimension
     - field.field.node.stanford_page.su_page_resource_type
+    - field.field.node.stanford_page.su_shared_tags
     - node.type.stanford_page
     - system.menu.main
     - views.view.cs_resources
@@ -128,19 +130,19 @@ third_party_settings:
             configuration:
               id: 'menu_block:main'
               label: 'Main navigation'
-              label_display: '0'
+              label_display: visible
               provider: menu_block
               context_mapping: {  }
               follow: false
               follow_parent: child
-              label_link: false
-              label_type: block
+              label_link: true
+              label_type: parent
               level: 2
               depth: 0
+              expand_all_items: true
               parent: 'main:'
-              render_parent: true
+              render_parent: false
               suggestion: secondary_nav
-              expand: true
             weight: 0
             additional: {  }
             third_party_settings: {  }
@@ -149,20 +151,24 @@ third_party_settings:
             region: main
             configuration:
               id: 'field_block:node:stanford_page:su_page_components'
-              label: Paragraphs
+              label: Components
               label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_revisions_entity_view
+                type: layout_paragraphs
                 label: hidden
                 settings:
                   view_mode: default
                 third_party_settings:
-                  ds:
-                    ds_limit: ''
+                  empty_fields:
+                    handler: ''
+                  field_delimiter:
+                    delimiter: ''
+                  field_formatter_class:
+                    class: ''
             weight: -6
             additional: {  }
             third_party_settings: {  }
@@ -390,13 +396,13 @@ content:
     region: first
   su_page_components:
     type: entity_reference_revisions_entity_view
-    label: hidden
+    label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 3
-    region: content
+    weight: 8
+    region: main
   su_page_description:
     type: string
     label: above
@@ -415,6 +421,7 @@ content:
     weight: 5
     region: main
 hidden:
+  field_menulink: true
   layout_builder__layout: true
   layout_selection: true
   search_api_excerpt: true

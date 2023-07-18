@@ -33,6 +33,7 @@ dependencies:
     - address
     - entity_reference_revisions
     - field_formatter_class
+    - layout_paragraphs
     - link
     - smart_date
     - text
@@ -70,7 +71,7 @@ content:
     weight: 11
     region: content
   su_event_components:
-    type: entity_reference_revisions_entity_view
+    type: layout_paragraphs
     label: hidden
     settings:
       view_mode: default

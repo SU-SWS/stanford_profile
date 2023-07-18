@@ -16,6 +16,13 @@ targetEntityType: paragraph
 bundle: stanford_media_caption
 mode: default
 content:
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   su_media_caption_caption:
     type: text_textarea
     weight: 1
@@ -26,7 +33,7 @@ content:
     third_party_settings: {  }
   su_media_caption_link:
     type: link_default
-    weight: 3
+    weight: 2
     region: content
     settings:
       placeholder_url: ''
@@ -42,5 +49,4 @@ content:
 hidden:
   created: true
   publish_on: true
-  status: true
   unpublish_on: true

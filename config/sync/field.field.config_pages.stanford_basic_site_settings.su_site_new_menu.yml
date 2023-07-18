@@ -1,0 +1,23 @@
+uuid: d50d6402-2b0c-4c49-9d7b-f014b117e409
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_new_menu
+id: config_pages.stanford_basic_site_settings.su_site_new_menu
+field_name: su_site_new_menu
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Decoupled Main Menu'
+description: 'Enable a new main menu functionality that uses more modern libraries. The look and feel should be very similar but it has improve accessibility and active trail handling.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

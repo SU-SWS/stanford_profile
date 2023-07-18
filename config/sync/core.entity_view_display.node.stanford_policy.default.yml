@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.stanford_policy.body
+    - field.field.node.stanford_policy.field_menulink
     - field.field.node.stanford_policy.layout_builder__layout
     - field.field.node.stanford_policy.su_policy_authority
     - field.field.node.stanford_policy.su_policy_auto_prefix
@@ -144,7 +145,7 @@ third_party_settings:
               context_mapping: {  }
               views_label: ''
               items_per_page: none
-            weight: 7
+            weight: 9
             additional: {  }
             third_party_settings: {  }
           e5fdfbfd-b488-4d67-ae95-3d7ebce32699:
@@ -165,7 +166,7 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 6
+            weight: 8
             additional: {  }
             third_party_settings: {  }
           ebfa287a-d7b3-4013-829f-345d63bafe72:
@@ -191,7 +192,7 @@ third_party_settings:
               provider: printable
               context_mapping: {  }
               max_age: '-1'
-            weight: 4
+            weight: 6
             additional: {  }
             third_party_settings: {  }
           6ac6e270-c11a-4919-8370-adf9a563ca85:
@@ -205,7 +206,7 @@ third_party_settings:
               context_mapping: {  }
               views_label: ''
               items_per_page: none
-            weight: 5
+            weight: 7
             additional: {  }
             third_party_settings: {  }
           0921d570-ecf6-46f4-a290-d38ea2f4b293:
@@ -228,7 +229,7 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 3
+            weight: 4
             additional: {  }
             third_party_settings: {  }
           0dbaf822-e3b3-4208-9bcd-5671f869467e:
@@ -250,7 +251,7 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 2
+            weight: 3
             additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
@@ -267,22 +268,35 @@ third_party_settings:
             uuid: 4678072f-26f1-4620-ad43-13ef301bd28f
             region: main
             configuration:
-              id: 'field_block:node:stanford_policy:su_policy_related'
-              label: 'Related Policies'
-              label_display: visible
+              id: 'field_block:node:stanford_policy:su_policy_effective'
+              label: 'Effective Date'
+              label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_entity_view
-                label: hidden
+                type: datetime_default
+                label: inline
                 settings:
-                  view_mode: stanford_card
+                  timezone_override: ''
+                  format_type: stanford_month_two_digit_day_year
                 third_party_settings:
                   field_formatter_class:
-                    class: grid-container-3
-            weight: 1
+                    class: ''
+            weight: 5
+            additional: {  }
+            third_party_settings: {  }
+          8fd73788-8732-49f3-aeb0-9bbe5db84ea8:
+            uuid: 8fd73788-8732-49f3-aeb0-9bbe5db84ea8
+            region: main
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+            weight: 2
             additional: {  }
             third_party_settings: {  }
           9239f3b1-86c9-4d97-8e6c-f1ded39f2a02:
@@ -311,6 +325,8 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
+      - Devel
+      - 'Devel PHP'
       - 'Events Lists (Views)'
       - Forms
       - Help
@@ -396,6 +412,7 @@ third_party_settings:
           - 'system_menu_block:main'
         'Policy (Views)':
           - 'views_block:policies-child_pages'
+          - 'views_block:policies-related_policies'
         Printable:
           - 'printable_links_block:node'
         System:
@@ -405,6 +422,8 @@ third_party_settings:
       restricted_categories:
         - 'Chaos Tools'
         - 'Config Pages'
+        - Devel
+        - 'Devel PHP'
         - Forms
         - Help
         - 'Lists (Views)'
@@ -421,6 +440,7 @@ mode: default
 content: {  }
 hidden:
   body: true
+  field_menulink: true
   layout_builder__layout: true
   links: true
   search_api_excerpt: true

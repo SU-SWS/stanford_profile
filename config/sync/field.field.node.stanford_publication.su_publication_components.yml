@@ -5,27 +5,76 @@ dependencies:
   config:
     - field.storage.node.su_publication_components
     - node.type.stanford_publication
-    - react_paragraphs.paragraphs_row_type.su_pub_rows
+    - paragraphs.paragraphs_type.stanford_banner
+    - paragraphs.paragraphs_type.stanford_card
+    - paragraphs.paragraphs_type.stanford_entity
+    - paragraphs.paragraphs_type.stanford_gallery
+    - paragraphs.paragraphs_type.stanford_layout
+    - paragraphs.paragraphs_type.stanford_lists
+    - paragraphs.paragraphs_type.stanford_media_caption
+    - paragraphs.paragraphs_type.stanford_spacer
+    - paragraphs.paragraphs_type.stanford_wysiwyg
   module:
     - entity_reference_revisions
 id: node.stanford_publication.su_publication_components
 field_name: su_publication_components
 entity_type: node
 bundle: stanford_publication
-label: Components
+label: Paragraphs
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:paragraph_row'
+  handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      su_pub_rows: su_pub_rows
-    sort:
-      field: _none
-      direction: ASC
-    auto_create: false
-    auto_create_bundle: ''
+      stanford_banner: stanford_banner
+      stanford_card: stanford_card
+      stanford_entity: stanford_entity
+      stanford_gallery: stanford_gallery
+      stanford_layout: stanford_layout
+      stanford_lists: stanford_lists
+      stanford_media_caption: stanford_media_caption
+      stanford_spacer: stanford_spacer
+      stanford_wysiwyg: stanford_wysiwyg
+    negate: 0
+    target_bundles_drag_drop:
+      stanford_accordion:
+        weight: 13
+        enabled: false
+      stanford_banner:
+        weight: 14
+        enabled: true
+      stanford_card:
+        weight: 15
+        enabled: true
+      stanford_entity:
+        weight: 16
+        enabled: true
+      stanford_gallery:
+        weight: 17
+        enabled: true
+      stanford_layout:
+        weight: 18
+        enabled: true
+      stanford_lists:
+        weight: 19
+        enabled: true
+      stanford_media_caption:
+        weight: 20
+        enabled: true
+      stanford_person_cta:
+        weight: 21
+        enabled: false
+      stanford_schedule:
+        weight: 22
+        enabled: false
+      stanford_spacer:
+        weight: 23
+        enabled: true
+      stanford_wysiwyg:
+        weight: 24
+        enabled: true
 field_type: entity_reference_revisions

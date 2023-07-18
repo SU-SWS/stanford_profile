@@ -102,15 +102,15 @@ class ListsCest {
 
     $I->logInWithRole('contributor');
     $I->amOnPage($basic_page->toUrl('edit-form')->toString());
-    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->canSeeInField('Shared Tags', $shared_tag->id());
     $I->amOnPage($news->toUrl('edit-form')->toString());
-    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->canSeeInField('Shared Tags', $shared_tag->id());
     $I->amOnPage($event->toUrl('edit-form')->toString());
-    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->canSeeInField('Shared Tags', $shared_tag->id());
     $I->amOnPage($person->toUrl('edit-form')->toString());
-    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->canSeeInField('Shared Tags', $shared_tag->id());
     $I->amOnPage($publication->toUrl('edit-form')->toString());
-    $I->canSeeOptionIsSelected('Shared Tags', $shared_tag->label());
+    $I->canSeeInField('Shared Tags', $shared_tag->id());
   }
 
   /**
@@ -256,20 +256,20 @@ class ListsCest {
       ],
       'su_list_button' => ['uri' => 'http://google.com', 'title' => 'Google'],
     ], 'paragraph');
-    $row = $I->createEntity([
-      'type' => 'node_stanford_page_row',
-      'su_page_components' => [
-        'target_id' => $paragraph->id(),
-        'entity' => $paragraph,
-      ],
-    ], 'paragraph_row');
+    //    $row = $I->createEntity([
+    //      'type' => 'node_stanford_page_row',
+    //      'su_page_components' => [
+    //        'target_id' => $paragraph->id(),
+    //        'entity' => $paragraph,
+    //      ],
+    //    ], 'paragraph_row');
 
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->text(30),
       'su_page_components' => [
-        'target_id' => $row->id(),
-        'entity' => $row,
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
       ],
     ]);
 
@@ -296,20 +296,13 @@ class ListsCest {
     ], 'paragraph');
     $paragraph->setBehaviorSettings('list_paragraph', ['empty_message' => $message]);
     $paragraph->save();
-    $row = $I->createEntity([
-      'type' => 'node_stanford_page_row',
-      'su_page_components' => [
-        'target_id' => $paragraph->id(),
-        'entity' => $paragraph,
-      ],
-    ], 'paragraph_row');
 
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->text(30),
       'su_page_components' => [
-        'target_id' => $row->id(),
-        'entity' => $row,
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
       ],
     ]);
 
@@ -338,20 +331,13 @@ class ListsCest {
       'hide_empty' => TRUE,
     ]);
     $paragraph->save();
-    $row = $I->createEntity([
-      'type' => 'node_stanford_page_row',
-      'su_page_components' => [
-        'target_id' => $paragraph->id(),
-        'entity' => $paragraph,
-      ],
-    ], 'paragraph_row');
 
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->text(30),
       'su_page_components' => [
-        'target_id' => $row->id(),
-        'entity' => $row,
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
       ],
     ]);
 
@@ -800,20 +786,13 @@ class ListsCest {
       ],
       'su_list_button' => ['uri' => 'http://google.com', 'title' => 'Google'],
     ], 'paragraph');
-    $row = $I->createEntity([
-      'type' => 'node_stanford_page_row',
-      'su_page_components' => [
-        'target_id' => $paragraph->id(),
-        'entity' => $paragraph,
-      ],
-    ], 'paragraph_row');
 
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->text(30),
       'su_page_components' => [
-        'target_id' => $row->id(),
-        'entity' => $row,
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
       ],
     ]);
 

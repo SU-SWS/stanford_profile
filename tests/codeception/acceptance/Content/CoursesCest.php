@@ -4,6 +4,8 @@ use Faker\Factory;
 
 /**
  * Test the Course functionality.
+ *
+ * @group content
  */
 class CoursesCest {
 

@@ -117,19 +117,21 @@ default:
             configuration:
               id: 'field_block:node:stanford_page:su_page_components'
               label: Paragraphs
-              label_display: '0'
+              label_display: 0
               provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
               formatter:
-                type: entity_reference_revisions_entity_view
                 label: hidden
+                type: layout_paragraphs
                 settings:
                   view_mode: default
                 third_party_settings:
-                  ds:
-                    ds_limit: ''
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
             weight: -9
             additional: {  }
           c40ac234-fff7-4c9d-8a34-03fb9d335617:
@@ -163,9 +165,9 @@ default:
       entity:
         _meta:
           version: '1.0'
-          entity_type: paragraph_row
-          uuid: e9158340-cb5c-494e-9c66-a959208fe4a8
-          bundle: node_stanford_page_row
+          entity_type: paragraph
+          uuid: 7ae1336b-4404-4762-a499-70289133b9f7
+          bundle: stanford_layout
           default_langcode: en
         default:
           status:
@@ -173,41 +175,46 @@ default:
               value: true
           created:
             -
-              value: 1614191154
+              value: 1671144889
           behavior_settings:
             -
-              value: {  }
+              value:
+                layout_paragraphs:
+                  layout: layout_paragraphs_1_column
+                  config:
+                    label: ''
+                  parent_uuid: null
+                  region: null
           revision_translation_affected:
             -
               value: true
-          su_page_components:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 9939d5e0-a261-4f99-b08a-9ba5b43908c1
+          bundle: stanford_lists
+          default_langcode: en
+        default:
+          status:
             -
-              entity:
-                _meta:
-                  version: '1.0'
-                  entity_type: paragraph
-                  uuid: 9939d5e0-a261-4f99-b08a-9ba5b43908c1
-                  bundle: stanford_lists
-                  default_langcode: en
-                default:
-                  status:
-                    -
-                      value: true
-                  created:
-                    -
-                      value: 1614211983
-                  behavior_settings:
-                    -
-                      value:
-                        react:
-                          width: 12
-                          label: Lists
-                  revision_translation_affected:
-                    -
-                      value: true
-                  su_list_view:
-                    -
-                      target_id: stanford_publications
-                      display_id: apa_list
-                      arguments: ''
-                      items_to_display: ''
+              value: true
+          created:
+            -
+              value: 1614211983
+          behavior_settings:
+            -
+              value:
+                layout_paragraphs:
+                  parent_uuid: 7ae1336b-4404-4762-a499-70289133b9f7
+                  region: main
+          revision_translation_affected:
+            -
+              value: true
+          su_list_view:
+            -
+              target_id: stanford_publications
+              display_id: apa_list
+              arguments: ''
+              items_to_display: ''

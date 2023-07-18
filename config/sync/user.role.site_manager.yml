@@ -73,6 +73,7 @@ dependencies:
     - scheduler
     - shortcut
     - stanford_migrate
+    - stanford_policy
     - stanford_publication
     - system
     - taxonomy
@@ -99,7 +100,6 @@ permissions:
   - 'add content to books'
   - 'administer book outlines'
   - 'administer citation entities'
-  - 'administer course importer settings'
   - 'administer main menu items'
   - 'administer news-topics menu items'
   - 'administer nodes'
@@ -320,9 +320,7 @@ permissions:
   - 'edit terms in su_opportunity_time'
   - 'edit terms in su_opportunity_type'
   - 'edit terms in su_shared_tags'
-  - 'import stanford_events_importer migration'
   - 'import stanford_publications migration'
-  - 'import su_stanford_person migration'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
   - 'notify of path changes'
