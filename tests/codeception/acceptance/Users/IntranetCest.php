@@ -159,4 +159,23 @@ class IntranetCest {
     $I->canSeeResponseCodeIs(403);
   }
 
+  /**
+   * Sitemap is not accessible.
+   *
+   * @group sitemap
+   */
+  public function testSiteMapAccess(AcceptanceTester $I) {
+    $I->runDrush('sdel stanford_intranet');
+    $I->runDrush('cache:rebuild');
+    $I->runDrush('xmlsitemap:rebuild');
+    $I->amOnPage('/sitemap.xml');
+    $I->canSeeResponseCodeIs(200);
+    $I->canSeeInCurrentUrl('/sitemap.xml');
+
+    $I->runDrush('sset stanford_intranet 1');
+    $I->runDrush('cache:rebuild');
+    $I->amOnPage('/sitemap.xml');
+    $I->canSeeInCurrentUrl('/user');
+  }
+
 }
