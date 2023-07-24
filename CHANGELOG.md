@@ -1,5 +1,16 @@
 # Cardinal Service Profile
 
+10.0.1
+--------------------------------------------------------------------------------
+_Release Date: 2023-07-24_
+
+- Cleaned up automation
+- Tweak to the update hook for inheritance
+- D8CORE-6816 Restored permissions to run importers for site managers
+- Adjust test to run a little faster (#688)
+- Add missing chosen library
+- Updated google tag settings
+
 10.0.0
 --------------------------------------------------------------------------------
 _Release Date: 2023-07-18_
