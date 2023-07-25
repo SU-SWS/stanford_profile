@@ -6,10 +6,11 @@ prefetch_aliases: 1
 chunk_size: auto
 batch_limit: 100
 path: xmlsitemap
-frontpage_priority: 0.5
+frontpage_priority: !!float 1
 frontpage_changefreq: 604800
 lastmod_format: 'Y-m-d\TH:i\Z'
 gz: false
 clean_url: 0
 disable_cron_regeneration: false
 i18n_selection_mode: simple
+metatag_exclude_noindex: false
