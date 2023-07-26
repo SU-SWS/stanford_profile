@@ -42,13 +42,7 @@ class NodeRevisionDeleteCest {
     $I->amOnPage("/node/{$node->id()}/revisions");
     $I->canSeeNumberOfElements('.diff-revisions tbody tr', 11);
 
-    // Force ultimate cron to run again.
-    \Drupal::database()
-      ->delete('ultimate_cron_log')
-      ->condition('name', 'node_revision_delete_cron')
-      ->execute();
-
-    $I->runDrush('cron');
+    $I->runDrush('cron:run node_revision_delete_cron --force');
     $I->amOnPage("/node/{$node->id()}/revisions");
     $I->canSeeNumberOfElements('.diff-revisions tbody tr', 5);
   }

@@ -147,6 +147,7 @@ function stanford_profile_update_9005(&$sandbox) {
         'parent_uuid' => NULL,
         'region' => NULL,
       ]);
+      $new_row_entity->setParentEntity($node, 'su_page_components');
       $new_row_entity->save();
 
       $new_components[] = [
@@ -165,17 +166,19 @@ function stanford_profile_update_9005(&$sandbox) {
           'parent_uuid' => $new_row_entity->uuid(),
           'region' => _stanford_profile_update_9005_get_item_region($delta, $layout_id),
         ];
-        $paragraph->setParentEntity($node, 'su_page_components');
-        $paragraph->setAllBehaviorSettings($behaviors);
-        $paragraph->save();
+        $new_paragraph = $paragraph->createDuplicate();
+        $new_paragraph->enforceIsNew();
+        $new_paragraph->setParentEntity($node, 'su_page_components');
+        $new_paragraph->setAllBehaviorSettings($behaviors);
+        $new_paragraph->save();
 
         $new_components[] = [
-          'target_id' => $paragraph->id(),
-          'entity' => $paragraph,
+          'target_id' => $new_paragraph->id(),
+          'entity' => $new_paragraph,
         ];
+        $delete_entities[] = $paragraph;
       }
     }
-
     $node->set('su_page_components', $new_components)->save();
     _stanford_profile_reset_node_changed_time($node, $changed_time);
   }
@@ -224,6 +227,7 @@ function stanford_profile_update_9006(&$sandbox) {
         'parent_uuid' => NULL,
         'region' => NULL,
       ]);
+      $new_row_entity->setParentEntity($node, 'su_publication_components');
       $new_row_entity->save();
 
       $new_components[] = [
@@ -242,14 +246,17 @@ function stanford_profile_update_9006(&$sandbox) {
           'parent_uuid' => $new_row_entity->uuid(),
           'region' => _stanford_profile_update_9005_get_item_region($delta, $layout_id),
         ];
-        $paragraph->setParentEntity($node, 'su_publication_components');
-        $paragraph->setAllBehaviorSettings($behaviors);
-        $paragraph->save();
+        $new_paragraph = $paragraph->createDuplicate();
+        $new_paragraph->enforceIsNew();
+        $new_paragraph->setParentEntity($node, 'su_publication_components');
+        $new_paragraph->setAllBehaviorSettings($behaviors);
+        $new_paragraph->save();
 
         $new_components[] = [
-          'target_id' => $paragraph->id(),
-          'target_revision_id' => $paragraph->getRevisionId(),
+          'target_id' => $new_paragraph->id(),
+          'target_revision_id' => $new_paragraph->getRevisionId(),
         ];
+        $delete_entities[] = $paragraph;
       }
     }
 
@@ -426,6 +433,21 @@ function stanford_profile_update_9103(&$sandbox) {
     $paragraph_type->set('behavior_plugins', $behaviors);
     $paragraph_type->save();
     $field->delete();
+  }
+return;
+  $ns = \Drupal::entityTypeManager()->getStorage('node');
+  $ps = \Drupal::entityTypeManager()->getStorage('paragraph');
+  $ids = $ns->getQuery()
+    ->accessCheck(FALSE)
+    ->condition('type', 'stanford_page')
+    ->execute();
+  foreach ($ns->loadMultiple($ids) as $node) {
+    foreach ($node->get('su_page_components') as $item) {
+      if ($p = $ps->load($item->getValue()['target_id'])) {
+        $p->setParentEntity($node, 'su_page_components');
+        $p->save();
+      }
+    }
   }
 }
 
