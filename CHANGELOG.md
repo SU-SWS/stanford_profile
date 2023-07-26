@@ -1,5 +1,9 @@
 # Stanford Profile
 
+10.0.4
+-------------------------------------------------------------------------------
+- Update hook to update field storage definitions.
+
 10.0.3
 -------------------------------------------------------------------------------
 - Update decoupled menu to recognize "Expanded" menu setting
