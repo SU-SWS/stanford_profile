@@ -63,6 +63,8 @@ jobs:
         with:
           path: project
       - name: Run tests
+        env:
+          STANFORD_ENCRYPT: ${{ secrets.STANFORD_ENCRYPT }}
         run: |
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;'
           composer global require su-sws/stanford-caravan:dev-8.x-3.x
@@ -103,6 +105,8 @@ jobs:
         with:
           path: project
       - name: Run tests
+        env:
+          STANFORD_ENCRYPT: ${{ secrets.STANFORD_ENCRYPT }}=
         run: |
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;'
           composer global require su-sws/stanford-caravan:dev-8.x-3.x
