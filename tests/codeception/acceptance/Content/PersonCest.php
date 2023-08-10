@@ -171,6 +171,7 @@ class PersonCest {
     $I->click('Save');
     $I->canSee('Updated term');
 
+    drupal_flush_all_caches();
     $I->amOnPage($term3->toUrl()->toString());
     $I->canSeeLink($term1->label());
     $I->canSeeLink($term2->label());
@@ -180,6 +181,7 @@ class PersonCest {
     $I->selectOption('Parent term', '<root>');
     $I->click('Save');
 
+    drupal_flush_all_caches();
     $I->amOnPage('/people');
     $I->canSeeLink($term3->label());
 
@@ -187,6 +189,7 @@ class PersonCest {
     $I->selectOption('Parent term', $term2->label());
     $I->click('Save');
 
+    drupal_flush_all_caches();
     $I->amOnPage('/people');
     $I->cantSeeLink($term3->label());
 
@@ -231,6 +234,7 @@ class PersonCest {
       ],
     ]);
 
+    drupal_flush_all_caches();
     $I->amOnPage($great_grandchild->toUrl()->toString());
     $I->canSee($node->label());
     $I->amOnPage($grandchild->toUrl()->toString());

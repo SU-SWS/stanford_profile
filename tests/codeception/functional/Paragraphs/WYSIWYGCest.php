@@ -94,6 +94,7 @@ class WYSIWYGCest {
     $I->logInWithRole('contributor');
     $I->resizeWindow(1700, 1000);
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElementVisible('.ck-toolbar');
@@ -129,6 +130,7 @@ class WYSIWYGCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSeeElement('.su-wysiwyg-text img');
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElementVisible('.ck-toolbar');
@@ -188,6 +190,7 @@ class WYSIWYGCest {
     $I->resizeWindow(1700, 1000);
     $I->amOnPage($node->toUrl('edit-form')->toString());
 
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElementVisible('.ck-toolbar');
@@ -228,6 +231,7 @@ class WYSIWYGCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSeeElement('iframe');
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElementVisible('.ck-toolbar');
@@ -264,6 +268,7 @@ class WYSIWYGCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSeeElement('.su-wysiwyg-text a');
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElementVisible('.ck-toolbar');
