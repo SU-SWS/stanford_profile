@@ -1,5 +1,15 @@
 # Cardinal Service Profile
 
+10.0.2
+--------------------------------------------------------------------------------
+_Release Date: 2023-08-10_
+
+- Refactored patterns to be in the modules (#298)
+- D8CORE-4495 | Update past events text on node view
+- CS-98: Changed contact email on opportunity page to a mailto link. (#296)
+- Updated publication importer for layout paragraphs instead of react paragraphs
+- Update decoupled menu to recognize "Expanded" menu setting
+
 10.0.1
 --------------------------------------------------------------------------------
 _Release Date: 2023-07-24_
