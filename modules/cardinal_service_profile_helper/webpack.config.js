@@ -1,23 +1,26 @@
-const config = require("./lib/config");
+const path = require("path");
+const glob = require('glob')
 const Webpack = require("webpack");
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const glob = require('glob')
-const path = require('path');
 
+config = {
+  isProd: process.env.NODE_ENV === "production",
+  hmrEnabled: process.env.NODE_ENV !== "production" && !process.env.NO_HMR,
+  distFolder: path.resolve(__dirname, "dist"),
+  publicPath: "/assets",
+  wdsPort: 3001,
+};
 
-const styleSheets = glob.sync('./lib/scss/*.scss').reduce((acc, file) => {
-  if (file.indexOf('_') > 0) {
-    return acc;
-  }
-  const entry =  path.basename(file).split('.').slice(0, -1).join('.');
-  acc[entry] = file
+const componentStyles = glob.sync('./templates/components/**/*.scss').reduce((acc, path) => {
+  const entry = path.replace('.scss', '').replace('./templates/', '');
+  acc[entry] = path
   return acc
 }, {});
 
 var webpackConfig = {
-  entry: styleSheets,
+  entry: componentStyles,
   output: {
     path: config.distFolder,
     filename: '[name].js',

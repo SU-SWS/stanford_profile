@@ -323,7 +323,7 @@ const MenuItemDivider = styled.div`
   }
 `
 
-const MenuItem = ({title, url, items, level = 0}: { title: string, url: string, items?: MenuContentItem[], level?: number }) => {
+const MenuItem = ({title, url, items, expanded, level = 0}: { title: string, url: string, items?: MenuContentItem[], expanded: boolean, level?: number }) => {
   const buttonRef = useRef(null)
   const [submenuOpen, setSubmenuOpen] = useState(false)
   const basePath = window.location.protocol + "//" + window.location.host;
@@ -374,7 +374,7 @@ const MenuItem = ({title, url, items, level = 0}: { title: string, url: string, 
           <NoLink>{title}</NoLink>
         }
 
-        {items &&
+        {(items && expanded) &&
           <>
             {level === 0 &&
               <MenuItemDivider/>
@@ -396,7 +396,7 @@ const MenuItem = ({title, url, items, level = 0}: { title: string, url: string, 
         }
       </MenuItemContainer>
 
-      {items &&
+      {(items && expanded) &&
         <MenuList open={submenuOpen} level={level}>
 
           {items.map(item =>

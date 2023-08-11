@@ -48,6 +48,10 @@ class MissionStatementCest {
     $I->canSee($node->label(), 'h1');
     $I->canSee('This is the mission statement whether you choose to accept it or not');
     $I->canSeeLink('Verify your identity', 'http://google.com');
+
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->canSee('This is the mission statement whether you choose to accept it or not');
+    $I->canSeeLink('Verify your identity', 'http://google.com');
   }
 
 }
