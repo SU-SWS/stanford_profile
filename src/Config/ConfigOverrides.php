@@ -95,7 +95,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
       ->getOriginal('role_mapping.mapping');
 
     $config_page_mapping = self::getConfigPageValue('stanford_saml', 'su_simplesaml_roles', 0, 'value');
-    foreach (explode('|', $config_page_mapping) as $mapping) {
+    foreach (array_filter(explode('|', $config_page_mapping)) as $mapping) {
       [$role, $conditions] = explode(':', $mapping, 2);
       [$attribute, , $value] = explode(',', $conditions, 3);
       $original_mapping[] = [
