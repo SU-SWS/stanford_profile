@@ -6,50 +6,44 @@ dependencies:
     - config_pages_overrides
 third_party_settings:
   config_pages_overrides:
-    adb68721-a642-41a8-a15e-0f54da3f2dac:
-      field: su_simplesaml_roles
-      delta: 0
-      column: value
-      config_name: simplesamlphp_auth.settings
-      config_item: role.population
     2b719076-004b-4596-9f49-6987ce0b5a04:
       field: su_simplesaml_allowed
       delta: -1
       column: value
-      config_name: stanford_ssp.settings
+      config_name: stanford_samlauth.settings
       config_item: allowed.groups
     3c6bbd4f-d697-408a-b12e-544c6b740b8d:
       field: su_simplesaml_users
       delta: -1
       column: value
-      config_name: stanford_ssp.settings
+      config_name: stanford_samlauth.settings
       config_item: allowed.users
     b4145a0d-796c-418e-b71a-83c365aa27e2:
       field: su_simplesaml_users
       delta: 0
       column: value
-      config_name: stanford_ssp.settings
-      config_item: restriction
+      config_name: stanford_samlauth.settings
+      config_item: restrict
     50bcbb65-445c-410a-9c93-5d5a88870d2c:
       field: su_simplesaml_allowed
       delta: 0
       column: value
-      config_name: stanford_ssp.settings
-      config_item: restriction
+      config_name: stanford_samlauth.settings
+      config_item: restrict
     2e223afa-8768-41f6-acdd-cfe15114b930:
       field: su_simplesaml_affil
       delta: 0
       column: value
-      config_name: stanford_ssp.settings
-      config_item: restriction
+      config_name: stanford_samlauth.settings
+      config_item: restrict
     576fa6f9-1295-4d86-b639-0e6cac675d35:
       field: su_simplesaml_affil
       delta: -1
       column: value
-      config_name: stanford_ssp.settings
+      config_name: stanford_samlauth.settings
       config_item: allowed.affiliations
 id: stanford_saml
-label: SimpleSAML
+label: SAML
 token: null
 context:
   show_warning: true
@@ -58,6 +52,6 @@ context:
   fallback:
     language: ''
 menu:
-  path: /admin/config/people/simplesaml
+  path: /admin/config/people/saml
   weight: -10
   description: ''
