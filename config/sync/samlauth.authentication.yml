@@ -1,0 +1,38 @@
+_core:
+  default_config_hash: oDGEkhP0h5rXXqlDplxeBDre0goLigOJupHKMDMwcqM
+local_login_saml_error: false
+sp_entity_id: ''
+sp_name_id_format: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient'
+sp_x509_certificate: 'file:/path/to/file.crt'
+sp_private_key: 'file:/path/to/file.key'
+metadata_valid_secs: 60
+metadata_cache_http: false
+idp_entity_id: 'https://idp.stanford.edu/'
+idp_single_sign_on_service: 'https://login.stanford.edu/idp/profile/SAML2/Redirect/SSO'
+idp_certs: {  }
+unique_id_attribute: uid
+map_users_roles:
+  administrator: administrator
+  stanford_faculty: stanford_faculty
+  stanford_staff: stanford_staff
+  stanford_student: stanford_student
+  contributor: contributor
+  site_manager: site_manager
+  site_editor: site_editor
+  site_builder: site_builder
+  site_developer: site_developer
+  layout_builder_user: layout_builder_user
+  decoupled_site_users: decoupled_site_users
+create_users: true
+user_name_attribute: uid
+user_mail_attribute: mail
+request_set_name_id_policy: true
+strict: true
+security_authn_requests_sign: true
+security_logout_requests_sign: true
+security_logout_responses_sign: true
+security_messages_sign: true
+security_want_name_id: true
+security_request_authn_context: true
+security_lowercase_url_encoding: true
+use_base_url: true
