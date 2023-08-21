@@ -3,8 +3,8 @@ _core:
 local_login_saml_error: false
 sp_entity_id: ''
 sp_name_id_format: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient'
-sp_x509_certificate: 'file:/path/to/file.crt'
-sp_private_key: 'file:/path/to/file.key'
+sp_x509_certificate: ''
+sp_private_key: ''
 metadata_valid_secs: 60
 metadata_cache_http: false
 idp_entity_id: 'https://idp.stanford.edu/'
