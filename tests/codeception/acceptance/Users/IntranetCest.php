@@ -94,11 +94,12 @@ class IntranetCest {
     $page_url = $I->grabFromCurrentUrl();
     $I->amOnPage('/user/logout');
 
-    // Anonymous users will get denied access.
+    // Anonymous users will get redirected to the login page.
     $I->amOnPage($page_url);
+    $I->canSeeInCurrentUrl('/user/login?destination=' . $page_url);
     $I->canSeeResponseCodeIs(403);
 
-    // Staff will be denied access.
+    // Logged in staff will be denied access.
     $I->logInWithRole('stanford_staff');
     $I->amOnPage($page_url);
     $I->canSeeResponseCodeIs(403);
