@@ -222,6 +222,8 @@ class WYSIWYGCest {
 
   /**
    * Videos in the WYSIWYG should display correctly.
+   *
+   * @group foobar
    */
   public function testEmbeddedVideo(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
