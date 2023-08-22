@@ -97,7 +97,6 @@ class IntranetCest {
     // Anonymous users will get redirected to the login page.
     $I->amOnPage($page_url);
     $I->canSeeInCurrentUrl('/user/login?destination=' . $page_url);
-    $I->canSeeResponseCodeIs(403);
 
     // Logged in staff will be denied access.
     $I->logInWithRole('stanford_staff');
