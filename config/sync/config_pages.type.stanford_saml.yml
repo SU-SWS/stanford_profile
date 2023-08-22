@@ -44,7 +44,7 @@ third_party_settings:
       config_item: allowed.affiliations
 id: stanford_saml
 label: SAML
-token: null
+token: false
 context:
   show_warning: true
   group:
@@ -52,6 +52,6 @@ context:
   fallback:
     language: ''
 menu:
-  path: /admin/config/people/saml
+  path: /admin/config/people/stanford-saml
   weight: -10
   description: ''
