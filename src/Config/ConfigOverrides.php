@@ -94,7 +94,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     $original_mapping = $this->configFactory->getEditable('stanford_samlauth.settings')
       ->getOriginal('role_mapping.mapping');
 
-    $config_page_mapping = self::getConfigPageValue('stanford_saml', 'su_simplesaml_roles', 0, 'value');
+    $config_page_mapping = self::getConfigPageValue('stanford_saml', 'su_simplesaml_roles', 0, 'value', '');
     foreach (array_filter(explode('|', $config_page_mapping)) as $mapping) {
       [$role, $conditions] = explode(':', $mapping, 2);
       [$attribute, , $value] = explode(',', $conditions, 3);
@@ -119,14 +119,16 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    *   Delta to fetch the field value.
    * @param string|null $key
    *   Column key on the field.
+   * @param mixed|null $default
+   *   Optional default value if the config page value is empty.
    *
    * @return array|mixed|null
    *   Config page field value.
    */
-  protected static function getConfigPageValue($config_id, $field_name, $deltas = [], $key = NULL) {
+  protected static function getConfigPageValue($config_id, $field_name, $deltas = [], $key = NULL, $default = null) {
     /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $cp_loader */
     $cp_loader = \Drupal::service('config_pages.loader');
-    return $cp_loader->getValue($config_id, $field_name, $deltas, $key);
+    return $cp_loader->getValue($config_id, $field_name, $deltas, $key)?: $default;
   }
 
   /**
