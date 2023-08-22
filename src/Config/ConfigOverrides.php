@@ -104,7 +104,6 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
         'value' => $value,
       ];
     }
-
     $overrides['stanford_samlauth.settings']['role_mapping']['mapping'] = $original_mapping;
   }
 
@@ -125,10 +124,10 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
    * @return array|mixed|null
    *   Config page field value.
    */
-  protected static function getConfigPageValue($config_id, $field_name, $deltas = [], $key = NULL, $default = null) {
+  protected static function getConfigPageValue($config_id, $field_name, $deltas = [], $key = NULL, $default = NULL) {
     /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $cp_loader */
     $cp_loader = \Drupal::service('config_pages.loader');
-    return $cp_loader->getValue($config_id, $field_name, $deltas, $key)?: $default;
+    return $cp_loader->getValue($config_id, $field_name, $deltas, $key) ?: $default;
   }
 
   /**
