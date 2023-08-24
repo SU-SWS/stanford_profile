@@ -94,6 +94,7 @@ class WYSIWYGCest {
     $I->logInWithRole('contributor');
     $I->resizeWindow(1700, 1000);
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElementVisible('.ck-toolbar');
@@ -129,6 +130,7 @@ class WYSIWYGCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSeeElement('.su-wysiwyg-text img');
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElementVisible('.ck-toolbar');
@@ -187,7 +189,7 @@ class WYSIWYGCest {
     $I->logInWithRole('site_manager');
     $I->resizeWindow(1700, 1000);
     $I->amOnPage($node->toUrl('edit-form')->toString());
-
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElementVisible('.ck-toolbar');
@@ -228,6 +230,7 @@ class WYSIWYGCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSeeElement('iframe');
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElementVisible('.ck-toolbar');
@@ -251,6 +254,8 @@ class WYSIWYGCest {
     $I->click('Save', '.ui-dialog-buttonpane');
     $I->waitForElementNotVisible('.ui-dialog');
     $I->click('Save');
+    $I->scrollTo('.oembed-lazyload', 0, 100);
+    $I->waitForElementVisible('iframe');
     $I->canSeeNumberOfElements('iframe', 1);
   }
 
@@ -264,6 +269,7 @@ class WYSIWYGCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSeeElement('.su-wysiwyg-text a');
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElementVisible('.ck-toolbar');

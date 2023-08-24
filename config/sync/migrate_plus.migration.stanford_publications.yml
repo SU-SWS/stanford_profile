@@ -179,7 +179,7 @@ process:
       values:
         su_wysiwyg_text/value: '@text_body'
         su_wysiwyg_text/format: constants/basic_html
-  text_area_target_id:
+  su_publication_components/target_id:
     -
       plugin: skip_on_empty
       source: '@su_publication_text_area'
@@ -188,7 +188,7 @@ process:
       plugin: extract
       index:
         - 0
-  text_area_target_revision_id:
+  su_publication_components/target_revision_id:
     -
       plugin: skip_on_empty
       source: '@su_publication_text_area'
@@ -197,21 +197,6 @@ process:
       plugin: extract
       index:
         - 1
-  su_publication_components:
-    -
-      plugin: skip_on_empty
-      source: '@text_area_target_id'
-      method: process
-    -
-      plugin: entity_revision_generate
-      entity_type: paragraph_row
-      bundle_key: type
-      bundle: su_pub_rows
-      value_key: su_pubs_components
-      ignore_case: true
-      values:
-        su_pubs_components/target_id: '@text_area_target_id'
-        su_pubs_components/target_revision_id: '@text_area_target_revision_id'
   citation_url:
     plugin: url_check
     source: url

@@ -4,9 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.media.video.field_media_oembed_video
+    - field.field.media.video.su_media_category
     - media.type.video
   module:
-    - media
+    - oembed_lazyload
 _core:
   default_config_hash: Lcpr93rB3W6kcI48KJ3MhzP4Kg3HObfdAS8RDpoIyTg
 id: media.video.default
@@ -15,11 +16,13 @@ bundle: video
 mode: default
 content:
   field_media_oembed_video:
-    type: oembed
+    type: lazyload_oembed
     label: hidden
     settings:
       max_width: 0
       max_height: 0
+      strategy: intersection_observer
+      intersection_observer_margin: ''
     third_party_settings: {  }
     weight: 0
     region: content

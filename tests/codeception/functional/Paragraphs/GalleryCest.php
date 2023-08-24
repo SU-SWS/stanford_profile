@@ -33,6 +33,7 @@ class GalleryCest {
     $node = $this->getNode($I);
     $I->amOnPage($node->toUrl('edit-form')->toString());
 
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForText('No media items are selected');

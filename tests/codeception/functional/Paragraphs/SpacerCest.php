@@ -46,6 +46,7 @@ class SpacerCest {
     $I->amOnPage($page->toUrl()->toString());
     $I->seeElementInDOM('.paragraph--type--stanford-spacer');
     $I->amOnPage($page->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForText('Spacer Size');
@@ -56,6 +57,7 @@ class SpacerCest {
     $I->seeElementInDOM('.su-spacer-reduced');
 
     $I->amOnPage($page->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForText('Spacer Size');
