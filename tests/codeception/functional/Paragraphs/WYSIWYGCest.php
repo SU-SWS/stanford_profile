@@ -254,6 +254,8 @@ class WYSIWYGCest {
     $I->click('Save', '.ui-dialog-buttonpane');
     $I->waitForElementNotVisible('.ui-dialog');
     $I->click('Save');
+    $I->scrollTo('.oembed-lazyload', 0, 100);
+    $I->waitForElementVisible('iframe');
     $I->canSeeNumberOfElements('iframe', 1);
   }
 
