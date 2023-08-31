@@ -42,6 +42,8 @@ dependencies:
     - node
     - paragraphs
     - path
+    - pathauto
+    - rabbit_hole
     - redirect
     - role_delegation
     - scheduler
@@ -110,6 +112,7 @@ permissions:
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
   - 'create terms in media_tags'
+  - 'create terms in media_tags'
   - 'create terms in stanford_event_types'
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'
@@ -159,6 +162,13 @@ permissions:
   - 'delete stanford_publication revisions'
   - 'delete terms in basic_page_types'
   - 'delete terms in event_audience'
+  - 'delete terms in media_tags'
+  - 'delete terms in media_tags'
+  - 'delete terms in stanford_event_types'
+  - 'delete terms in stanford_news_topics'
+  - 'delete terms in stanford_person_types'
+  - 'delete terms in stanford_publication_topics'
+  - 'delete terms in su_shared_tags'
   - 'dropzone upload files'
   - 'edit any embeddable media'
   - 'edit any file media'
@@ -204,6 +214,8 @@ permissions:
   - 'edit stanford_super_footer config page entity'
   - 'edit terms in basic_page_types'
   - 'edit terms in event_audience'
+  - 'edit terms in media_tags'
+  - 'edit terms in media_tags'
   - 'edit terms in stanford_event_types'
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
@@ -215,6 +227,9 @@ permissions:
   - 'import su_stanford_person migration'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
+  - 'notify of path changes'
+  - 'rabbit hole bypass node'
+  - 'revert stanford_course revisions'
   - 'revert stanford_event revisions'
   - 'revert stanford_event_series revisions'
   - 'revert stanford_news revisions'
