@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - filter.format.stanford_html
-    - filter.format.stanford_minimal_html
     - media.type.embeddable
     - media.type.file
     - media.type.google_form
@@ -56,7 +55,6 @@ dependencies:
     - toolbar
     - ui_patterns_library
     - view_unpublished
-    - views_bulk_edit
 id: site_manager
 label: 'Site Manager'
 weight: -3
@@ -83,6 +81,8 @@ permissions:
   - 'administer url aliases'
   - 'administer users'
   - 'assign contributor role'
+  - 'assign custm_site_embedder role'
+  - 'assign custm_site_embedder role'
   - 'assign layout_builder_user role'
   - 'assign site_editor role'
   - 'assign site_manager role'
@@ -111,6 +111,9 @@ permissions:
   - 'create stanford_publication content'
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
+  - 'create terms in media_tags'
+  - 'create terms in media_tags'
+  - 'create terms in media_tags'
   - 'create terms in media_tags'
   - 'create terms in media_tags'
   - 'create terms in media_tags'
@@ -169,6 +172,9 @@ permissions:
   - 'delete stanford_publication revisions'
   - 'delete terms in basic_page_types'
   - 'delete terms in event_audience'
+  - 'delete terms in media_tags'
+  - 'delete terms in media_tags'
+  - 'delete terms in media_tags'
   - 'delete terms in media_tags'
   - 'delete terms in media_tags'
   - 'delete terms in media_tags'
@@ -237,6 +243,9 @@ permissions:
   - 'edit terms in media_tags'
   - 'edit terms in media_tags'
   - 'edit terms in media_tags'
+  - 'edit terms in media_tags'
+  - 'edit terms in media_tags'
+  - 'edit terms in media_tags'
   - 'edit terms in stanford_event_types'
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
@@ -256,16 +265,16 @@ permissions:
   - 'revert stanford_news revisions'
   - 'revert stanford_page revisions'
   - 'revert stanford_person revisions'
-  - 'revert stanford_policy revisions'
-  - 'revert stanford_publication revisions'
-  - 'schedule publishing of nodes'
   - 'update any media'
   - 'update any stanford_component_block block content'
   - 'update media'
   - 'use text format stanford_html'
-  - 'use text format stanford_minimal_html'
-  - 'use views bulk edit'
-  - 'view all media revisions'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view any unpublished stanford_course content'
+  - 'view any unpublished stanford_event content'
+  - 'view any unpublished stanford_event_series content'
+  - 'view any unpublished stanford_news content'
   - 'view any unpublished stanford_page content'
   - 'view any unpublished stanford_person content'
   - 'view any unpublished stanford_policy content'
