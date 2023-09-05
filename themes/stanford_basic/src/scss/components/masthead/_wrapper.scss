@@ -17,8 +17,9 @@
       margin-left: calc(50% - 50vw);
       margin-right: calc(50% - 50vw);
 
-      @include grid-media('lg') {
+      @include grid-media('md') {
         width: 100%;
+        max-width: 100%;
         margin-left: auto;
         margin-right: auto;
       }
