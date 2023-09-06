@@ -57,6 +57,7 @@ class IntranetCest {
     $I->canSeeResponseCodeIsBetween(301, 403);
     $I->canSeeNumberOfElements('.su-multi-menu__menu a', 0);
 
+    $I->startFollowingRedirects();
     $I->logInWithRole('authenticated');
     $I->amOnPage('/');
     $I->canSeeResponseCodeIsSuccessful();
