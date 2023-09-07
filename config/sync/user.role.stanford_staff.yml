@@ -1,11 +1,14 @@
 uuid: 95eaa25c-e070-41e2-bd5e-c4773de5870a
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - file
 _core:
   default_config_hash: C2n7EnkHLysQyQE7c3q09n0J3HDC5lK94cvVPBzKWA4
 id: stanford_staff
 label: 'Stanford Staff'
 weight: -6
 is_admin: false
-permissions: {  }
+permissions:
+  - 'delete own files'

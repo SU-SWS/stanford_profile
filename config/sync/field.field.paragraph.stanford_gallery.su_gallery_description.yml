@@ -4,14 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.su_gallery_description
+    - filter.format.stanford_minimal_html
     - paragraphs.paragraphs_type.stanford_gallery
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - stanford_minimal_html
 id: paragraph.stanford_gallery.su_gallery_description
 field_name: su_gallery_description
 entity_type: paragraph
@@ -22,5 +18,7 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - stanford_minimal_html
 field_type: text_long

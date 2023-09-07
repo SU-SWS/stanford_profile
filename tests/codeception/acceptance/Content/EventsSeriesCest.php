@@ -40,7 +40,7 @@ class EventsSeriesCest {
     $I->logInWithRole('administrator');
     // Todo: make theme name dynamic.
     $I->amOnPage('/admin/structure/block/manage/stanford_basic_pagetitle');
-    $values = $I->grabTextFrom('#edit-visibility-request-path-pages');
+    $values = $I->grabValueFrom('#edit-visibility-request-path-pages');
     if (is_string($values)) {
       $values = explode("\n", $values);
     }

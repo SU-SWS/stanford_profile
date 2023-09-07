@@ -39,5 +39,5 @@ jobs:
       - name: Back to Dev
         if: ${{ steps.tag.outputs.tag }}
         run: |
-          composer global require su-sws/stanford-caravan:dev-8.x-3.x
+          composer global require su-sws/stanford-caravan:10.x-dev
           ~/.composer/vendor/bin/sws-caravan back-to-dev ${{ steps.tag.outputs.tag }} ${{ github.workspace }} main

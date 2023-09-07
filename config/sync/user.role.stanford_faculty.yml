@@ -1,11 +1,14 @@
 uuid: 4a4466a6-a883-4db9-96c6-9b3fa6be2da4
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - file
 _core:
   default_config_hash: 5Vm5wwYvL9cixzOqX2aUdfHLoZhPTJr0oHrLgP-vrV0
 id: stanford_faculty
 label: 'Stanford Faculty'
 weight: -7
 is_admin: false
-permissions: {  }
+permissions:
+  - 'delete own files'

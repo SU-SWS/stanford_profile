@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.media.full
     - field.field.media.video.field_media_oembed_video
+    - field.field.media.video.su_media_category
     - media.type.video
   module:
     - media
@@ -21,6 +22,8 @@ content:
     settings:
       max_width: 0
       max_height: 0
+      loading:
+        attribute: eager
     third_party_settings: {  }
     weight: 0
     region: content

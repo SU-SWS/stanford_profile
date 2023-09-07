@@ -211,7 +211,7 @@ class BasicPageCest {
     $I->checkOption('tr:contains("' . $title . '") input[name^="views_bulk_operations_bulk_form"]');
     $I->selectOption('Action', 'Clone selected content');
     $I->click('Apply to selected items');
-    $I->selectOption('Clone how many times', 2);
+    $I->selectOption('Clone how many times', '2');
     $I->click('Apply');
     $links = $I->grabMultiple('a:contains("' . $title . '")');
     $I->assertCount(3, $links);
