@@ -131,7 +131,7 @@ processor_settings:
     fields:
       - rendered_item
       - title
-    ignorable: '[''¿¡!?,.:;]'
+    ignorable: "['¿¡!?,.:;]"
     ignorable_classes:
       - Pc
       - Pd
@@ -203,9 +203,9 @@ processor_settings:
       preprocess_index: 0
     boosts:
       'entity:node':
-        datasource_boost: !!float 1
+        datasource_boost: 1.0
         bundle_boosts:
-          stanford_page: !!float 3
+          stanford_page: 3.0
 tracker_settings:
   default:
     indexing_order: fifo

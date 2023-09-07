@@ -104,7 +104,7 @@ class PersonCest {
     $I->amOnPage('/admin/config/search/xmlsitemap/settings');
     $I->see('Person');
     $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_person');
-    $I->selectOption('#edit-xmlsitemap-status', 1);
+    $I->selectOption('#edit-xmlsitemap-status', '1');
 
     // Metatags.
     $I->amOnPage('/admin/config/search/metatag/node__stanford_person');

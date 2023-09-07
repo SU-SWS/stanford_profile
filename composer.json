@@ -8,7 +8,8 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://packages.drupal.org/8"
+            "url": "https://packages.drupal.org/8",
+            "exclude": ["drupal/display_field_copy"]
         },
         {
             "type": "package",
@@ -33,6 +34,10 @@
                     "reference": "master"
                 }
             }
+        },
+        {
+            "type": "vcs",
+            "url": "https://git.drupalcode.org/issue/display_field_copy-3287010.git"
         }
     ],
     "require": {
@@ -44,7 +49,7 @@
         "composer/installers": ">=1.2",
         "drupal/address": "^1.2",
         "drupal/admin_toolbar": "^3.1",
-        "drupal/allowed_formats": "^2.0",
+        "drupal/allowed_formats": "^3.0",
         "drupal/auto_entitylabel": "^3.0@beta",
         "drupal/block_content_permissions": "^1.8",
         "drupal/change_labels": "^1.0",
@@ -64,7 +69,7 @@
         "drupal/cshs": "^4.0",
         "drupal/default_content": "^2.0@alpha",
         "drupal/diff": "^1.0@RC",
-        "drupal/display_field_copy": "^2.0",
+        "drupal/display_field_copy": "dev-3287010-automated-drupal-10 as 2.0.0",
         "drupal/domain_301_redirect": "^2.0",
         "drupal/ds": "^3.3",
         "drupal/editoria11y": "^2.0",
@@ -154,11 +159,11 @@
         "sainsburys/guzzle-oauth2-plugin": "^3.0",
         "seboettg/citeproc-php": "2.4.1",
         "su-sws/ckeditor5_plugins": "^1.0",
-        "su-sws/drupal-patches": "^8.1",
+        "su-sws/drupal-patches": "^10.1",
         "su-sws/react_paragraphs": "^8.2",
         "su-sws/stanford_actions": "^8.2",
         "su-sws/stanford_fields": "^8.2",
-        "su-sws/stanford_media": "^9.0",
+        "su-sws/stanford_media": "^10.0",
         "su-sws/stanford_migrate": "^8.3",
         "su-sws/stanford_profile_helper": "^9.3",
         "su-sws/stanford_samlauth": "^1.0"
@@ -183,6 +188,9 @@
             }
         },
         "patches": {
+            "drupal/google_analytics": {
+                "https://www.drupal.org/project/google_analytics/issues/3373921": "https://www.drupal.org/files/issues/2023-08-07/google-analytics-issues-3373921-cannot-install-from-existing-config-11.patch"
+            },
             "drupal/hook_event_dispatcher": {
                 "https://www.drupal.org/project/hook_event_dispatcher/issues/3354751": "https://www.drupal.org/files/issues/2023-04-17/hook_event_dispatcher-4.x-3354751.patch"
             },

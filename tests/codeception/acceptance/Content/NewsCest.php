@@ -135,7 +135,7 @@ class NewsCest {
     $I->amOnPage("/admin/config/search/xmlsitemap/settings");
     $I->see("News");
     $I->amOnPage("/admin/config/search/xmlsitemap/settings/node/stanford_news");
-    $I->selectOption("#edit-xmlsitemap-status", 1);
+    $I->selectOption("#edit-xmlsitemap-status", '1');
 
     // Metatags.
     $I->amOnPage("/admin/config/search/metatag/node__stanford_news");
