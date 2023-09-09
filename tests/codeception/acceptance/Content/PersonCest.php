@@ -151,8 +151,6 @@ class PersonCest {
    * @group 4704
    */
   public function testD8Core2613Terms(AcceptanceTester $I) {
-    $I->logInWithRole('site_manager');
-
     $term1 = $I->createEntity([
       'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',
@@ -166,25 +164,26 @@ class PersonCest {
       'vid' => 'stanford_person_types',
       'parent' => ['target_id' => $term1->id()],
     ], 'taxonomy_term');
-    $I->amOnPage($term3->toUrl('edit-form')->toString());
-    $I->click('Save');
-    $I->canSee('Updated term');
 
     $I->amOnPage($term3->toUrl()->toString());
     $I->canSeeLink($term1->label());
     $I->canSeeLink($term2->label());
     $I->cantSeeLink($term3->label());
 
+    $I->logInWithRole('site_manager');
     $I->amOnPage($term3->toUrl('edit-form')->toString());
     $I->selectOption('Parent term', '<root>');
     $I->click('Save');
+    $I->amOnPage('/user/logout');
 
     $I->amOnPage('/people');
     $I->canSeeLink($term3->label());
 
+    $I->logInWithRole('site_manager');
     $I->amOnPage($term3->toUrl('edit-form')->toString());
     $I->selectOption('Parent term', $term2->label());
     $I->click('Save');
+    $I->amOnPage('/user/logout');
 
     $I->amOnPage('/people');
     $I->cantSeeLink($term3->label());
