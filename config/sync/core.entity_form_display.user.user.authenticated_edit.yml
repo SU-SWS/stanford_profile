@@ -9,6 +9,8 @@ dependencies:
     - field.field.user.user.su_user_graduate
     - field.field.user.user.su_user_org_leader
   module:
+    - change_labels
+    - readonly_field_widget
     - stanford_fields
     - user
 id: user.user.authenticated_edit
@@ -16,9 +18,63 @@ targetEntityType: user
 bundle: user
 mode: authenticated_edit
 content:
+  su_display_name:
+    type: readonly_field_widget
+    weight: 0
+    region: content
+    settings:
+      label: hidden
+      formatter_type: wrapper_class
+      formatter_settings:
+        wrapper_class:
+          class: ''
+          tag: h1
+          link: false
+          link_class: ''
+          summary: false
+          trim: 200
+        link_ally_class:
+          class: ''
+          link_text: ''
+          screenreader_text: ''
+          tag: ''
+        string_list_class:
+          class: ''
+          list_type: ul
+        smart_trim:
+          trim_length: 600
+          trim_type: chars
+          trim_suffix: ''
+          wrap_output: false
+          wrap_class: trimmed
+          more:
+            display_link: false
+            target_blank: false
+            link_trim_only: false
+            class: more-link
+            text: More
+            aria_label: 'Read more about [node:title]'
+            token_browser: ''
+          trim_options:
+            text: false
+            trim_zero: false
+            replace_tokens: false
+        entity_title_heading:
+          tag: h2
+        string:
+          link_to_entity: false
+      formatter_third_party_settings:
+        empty_fields:
+          handler: ''
+        field_formatter_class:
+          class: ''
+      show_description: false
+    third_party_settings:
+      change_labels:
+        field_label_overwrite: ''
   su_user_class_year:
     type: datetime_year_only
-    weight: 0
+    weight: 1
     region: content
     settings:
       increment: 15
@@ -29,13 +85,13 @@ content:
     third_party_settings: {  }
   su_user_graduate:
     type: options_buttons
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   su_user_org_leader:
     type: string_textfield
-    weight: 2
+    weight: 3
     region: content
     settings:
       size: 60
@@ -47,5 +103,4 @@ hidden:
   language: true
   path: true
   simplesamlphp_auth_user_enable: true
-  su_display_name: true
   timezone: true

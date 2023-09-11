@@ -9,6 +9,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\user\UserInterface;
 
 /**
  * Implements hook_migration_plugins_alter().
@@ -42,4 +43,14 @@ function cardinal_service_profile_helper_entity_field_access($operation, FieldDe
     return AccessResult::forbidden();
   }
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function cardinal_service_profile_helper_user_presave(UserInterface $user) {
+  // Make sure the user entity always has a display name.
+  if (!$user->get('su_display_name')->count()) {
+    $user->set('su_display_name', $user->getAccountName());
+  }
 }
