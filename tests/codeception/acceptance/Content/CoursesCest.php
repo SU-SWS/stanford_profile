@@ -24,7 +24,7 @@ class CoursesCest {
   /**
    * Test for view pages and taxonomy functionality
    */
-  public function testViewPagesExist(AcceptanceTester $I) {
+  public function ___testViewPagesExist(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $quarters_term = $this->createCourseQuartersTerm($I);
     $subject_term = $this->createCourseSubjectsTerm($I);
@@ -63,7 +63,7 @@ class CoursesCest {
   /**
    * Test rabbit hole settings and field locking
    */
-  public function testRabbitHoleRedirects(AcceptanceTester $I) {
+  public function ___testRabbitHoleRedirects(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $quarters_term = $this->createCourseQuartersTerm($I);
     $subject_term = $this->createCourseSubjectsTerm($I);

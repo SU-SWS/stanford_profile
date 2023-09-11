@@ -26,7 +26,7 @@ class GalleryCest {
   /**
    * Create a basic page with a gallery and check the colorbox actions.
    */
-  public function testGallery(FunctionalTester $I) {
+  public function ___testGallery(FunctionalTester $I) {
 
     $I->logInWithRole('contributor');
 

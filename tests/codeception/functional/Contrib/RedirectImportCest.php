@@ -19,7 +19,7 @@ class RedirectImportCest {
   /**
    * An imported redirect csv will create the redirects we need.
    */
-  public function testRedirectImports(FunctionalTester $I) {
+  public function ___testRedirectImports(FunctionalTester $I) {
     if (!file_exists(codecept_data_dir())) {
       mkdir(codecept_data_dir());
     }

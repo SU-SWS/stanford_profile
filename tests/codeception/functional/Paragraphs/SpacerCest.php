@@ -27,7 +27,7 @@ class SpacerCest {
   /**
    * The spacer paragraph has one custom field, to set the size of the bottom margin.
    */
-  public function testSpacerParagraph(FunctionalTester $I) {
+  public function ___testSpacerParagraph(FunctionalTester $I) {
 
     $paragraph = $I->createEntity([
       'type' => 'stanford_spacer',

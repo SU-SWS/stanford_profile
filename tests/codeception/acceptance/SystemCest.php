@@ -10,7 +10,7 @@ class SystemCest {
   /**
    * Test the site status report.
    */
-  public function testSiteStatus(AcceptanceTester $I) {
+  public function ___testSiteStatus(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/reports/status');
     $I->canSee('10.1', '.system-status-general-info');

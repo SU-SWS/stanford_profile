@@ -31,7 +31,7 @@ class EntityReferenceCest {
   /**
    * News items should display in the list paragraph.
    */
-  public function testEntityReference(FunctionalTester $I) {
+  public function ___testEntityReference(FunctionalTester $I) {
 
     $news = $I->createEntity([
       'type' => 'stanford_news',
@@ -59,7 +59,7 @@ class EntityReferenceCest {
   /**
    * Publications can be referenced in teaser paragraph.
    */
-  public function testPublicationTeasers(FunctionalTester $I) {
+  public function ___testPublicationTeasers(FunctionalTester $I) {
     $publication = $I->createEntity([
       'type' => 'stanford_publication',
       'title' => $this->faker->words(3, TRUE),

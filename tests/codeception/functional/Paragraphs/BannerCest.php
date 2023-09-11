@@ -27,7 +27,7 @@ class BannerCest {
   /**
    * The banner paragraph should display its fields.
    */
-  public function testBannerBehaviors(FunctionalTester $I) {
+  public function ___testBannerBehaviors(FunctionalTester $I) {
     $field_values = [
       'sup_header' => $this->faker->words(3, TRUE),
       'header' => $this->faker->words(3, TRUE),

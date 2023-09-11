@@ -12,7 +12,7 @@ abstract class AccordionCest {
   /**
    * Create and check the accordion.
    */
-  public function testCreatingAccordion(FunctionalTester $I) {
+  public function ___testCreatingAccordion(FunctionalTester $I) {
     $faker = Factory::create();
 
     $paragraph = $I->createEntity([

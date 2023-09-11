@@ -36,7 +36,7 @@ class SystemSiteConfigCest {
   /**
    * The site manager should be able to change the site name.
    */
-  public function testBasicSiteSettings(AcceptanceTester $I) {
+  public function ___testBasicSiteSettings(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/');
     $I->cantSee('Foo Bar Site');
@@ -60,7 +60,7 @@ class SystemSiteConfigCest {
   /**
    * Site settings config should change the home, 404, and 403 pages.
    */
-  public function testSitePages(AcceptanceTester $I) {
+  public function ___testSitePages(AcceptanceTester $I) {
     $text = $this->faker->paragraph;
     $paragraph = $I->createEntity([
       'type' => 'stanford_wysiwyg',

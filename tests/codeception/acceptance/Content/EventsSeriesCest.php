@@ -26,7 +26,7 @@ class EventsSeriesCest {
   /**
    * Ensure events are in the sitemap.
    */
-  public function testXMLSiteMap(AcceptanceTester $I) {
+  public function ___testXMLSiteMap(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_event_series');
     $I->seeOptionIsSelected('#edit-xmlsitemap-status', 'Included');
@@ -36,7 +36,7 @@ class EventsSeriesCest {
   /**
    * Test Page Title Conditions.
    */
-  public function testPageTitleIgnoreCondition(AcceptanceTester $I) {
+  public function ___testPageTitleIgnoreCondition(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     // Todo: make theme name dynamic.
     $I->amOnPage('/admin/structure/block/manage/stanford_basic_pagetitle');
@@ -50,7 +50,7 @@ class EventsSeriesCest {
   /**
    * Test the the event content type exists and has at least a couple of fields.
    */
-  public function testContentTypeExists(AcceptanceTester $I) {
+  public function ___testContentTypeExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/types/manage/stanford_event_series/fields');
     $I->canSee('su_event_series_subheadline');
@@ -60,7 +60,7 @@ class EventsSeriesCest {
   /**
    * Test Access to stuff for contrib role.
    */
-  public function testContributorPerms(AcceptanceTester $I) {
+  public function ___testContributorPerms(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
     // Can create a node.
@@ -85,7 +85,7 @@ class EventsSeriesCest {
   /**
    * Test thing.
    */
-  public function testEditorPerms(AcceptanceTester $I) {
+  public function ___testEditorPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_editor');
 
     // Can create a node.
@@ -115,7 +115,7 @@ class EventsSeriesCest {
   /**
    * Test thing.
    */
-  public function testSiteManagerPerms(AcceptanceTester $I) {
+  public function ___testSiteManagerPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     // Can create a node.

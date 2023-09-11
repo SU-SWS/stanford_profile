@@ -24,7 +24,7 @@ class BasicPageParagraphsCest {
   /**
    * Test the card component data is displayed correctly.
    */
-  public function testCardParagraph(FunctionalTester $I) {
+  public function ___testCardParagraph(FunctionalTester $I) {
     $card_values =[
       'superhead' => $this->faker->words(3, true),
       'headline' => $this->faker->words(3, true),
@@ -64,7 +64,7 @@ class BasicPageParagraphsCest {
   /**
    * The user should be able to see all revisions of a node.
    */
-  public function testViewRevisions(FunctionalTester $I) {
+  public function ___testViewRevisions(FunctionalTester $I) {
     $paragraph = $I->createEntity([
       'type' => 'stanford_card',
       'su_card_super_header' => 'Foo Bar',

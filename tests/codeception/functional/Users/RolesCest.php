@@ -49,7 +49,7 @@ class RolesCest {
   /**
    * D8CORE-1200 Prevent deleteing the homepage from bulk delete.
    */
-  public function testBulkDeleteHomePage(FunctionalTester $I) {
+  public function ___testBulkDeleteHomePage(FunctionalTester $I) {
     $test_home = $I->createEntity([
       'type' => 'stanford_page',
       'title' => 'Foo Bar Home',

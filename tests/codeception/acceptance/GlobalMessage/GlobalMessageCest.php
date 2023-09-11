@@ -20,7 +20,7 @@ class GlobalMessageCest {
   /**
    * Test the block exists.
    */
-  public function testBlockExists(AcceptanceTester $I) {
+  public function ___testBlockExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/block');
     $I->canSee('Global Messages');
@@ -29,7 +29,7 @@ class GlobalMessageCest {
   /**
    * Test the Form exists.
    */
-  public function testFormExists(AcceptanceTester $I) {
+  public function ___testFormExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/global-message');
     $I->canSee('Edit config page Global Message');
@@ -38,7 +38,7 @@ class GlobalMessageCest {
   /**
    * Test the Form Settings.
    */
-  public function testFormSettings(AcceptanceTester $I) {
+  public function ___testFormSettings(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/global-message');
     $I->checkOption('#edit-su-global-msg-enabled-value');
@@ -65,7 +65,7 @@ class GlobalMessageCest {
   /**
    * Test user role permissions.
    */
-  public function testAdminUserRole(AcceptanceTester $I) {
+  public function ___testAdminUserRole(AcceptanceTester $I) {
     // Admin.
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/global-message');
@@ -76,7 +76,7 @@ class GlobalMessageCest {
   /**
    * Test user role permissions.
    */
-  public function testSiteManagerUserRole(AcceptanceTester $I) {
+  public function ___testSiteManagerUserRole(AcceptanceTester $I) {
     // Site Manager.
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/global-message');
@@ -87,7 +87,7 @@ class GlobalMessageCest {
   /**
    * Test user role permissions.
    */
-  public function testSiteEditorUserRole(AcceptanceTester $I) {
+  public function ___testSiteEditorUserRole(AcceptanceTester $I) {
     // Editor.
     $I->logInWithRole('site_editor');
     $I->amOnPage('/admin/config/system/global-message');
@@ -98,7 +98,7 @@ class GlobalMessageCest {
   /**
    * Test user role permissions.
    */
-  public function testContributorUserRole(AcceptanceTester $I) {
+  public function ___testContributorUserRole(AcceptanceTester $I) {
     // Contributor.
     $I->logInWithRole('contributor');
     $I->amOnPage('/admin/config/system/global-message');

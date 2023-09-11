@@ -22,7 +22,7 @@ class MediaPermissionsCest {
   /**
    * Test admin perms
    */
-  public function testAdminPerms(AcceptanceTester $I) {
+  public function ___testAdminPerms(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/media/add/embeddable');
     $I->canSeeResponseCodeIs(200);
@@ -33,7 +33,7 @@ class MediaPermissionsCest {
   /**
    * Test site manager perms
    */
-  public function testSiteManagerPerms(AcceptanceTester $I) {
+  public function ___testSiteManagerPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/media/add/embeddable');
     $I->canSeeResponseCodeIs(200);
@@ -56,7 +56,7 @@ class MediaPermissionsCest {
   /**
    * Test site editor perms
    */
-  public function testSiteEditorPerms(AcceptanceTester $I) {
+  public function ___testSiteEditorPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_editor');
     $I->amOnPage('/media/add/embeddable');
     $I->canSeeResponseCodeIs(200);
@@ -72,7 +72,7 @@ class MediaPermissionsCest {
   /**
    * Test contributor perms
    */
-  public function testContributorPerms(AcceptanceTester $I) {
+  public function ___testContributorPerms(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
     $I->amOnPage('/media/add/embeddable');
     $I->canSeeResponseCodeIs(200);

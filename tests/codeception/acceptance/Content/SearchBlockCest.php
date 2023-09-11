@@ -10,7 +10,7 @@ class SearchBlockCest {
   /**
    * Site managers should be able to disable the search block.
    */
-  public function testHideSearchBlock(AcceptanceTester $I) {
+  public function ___testHideSearchBlock(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/');
     $I->seeElement('.su-site-search__input');

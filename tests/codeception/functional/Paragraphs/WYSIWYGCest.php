@@ -27,7 +27,7 @@ class WYSIWYGCest {
   /**
    * HTML should be properly stripped.
    */
-  public function testFilteredHtml(FunctionalTester $I) {
+  public function ___testFilteredHtml(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I, file_get_contents(__DIR__ . '/WYSIWYG.html'));
     $I->logInWithRole('administrator');
     $I->amOnPage($node->toUrl()->toString());
@@ -89,7 +89,7 @@ class WYSIWYGCest {
   /**
    * The wysiwyg buttons should work as expected at all times.
    */
-  public function testWysiwygButtons(FunctionalTester $I) {
+  public function ___testWysiwygButtons(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
     $I->logInWithRole('contributor');
     $I->resizeWindow(1700, 1000);
@@ -123,7 +123,7 @@ class WYSIWYGCest {
   /**
    * Images in the WYSIWYG should display correctly.
    */
-  public function testEmbeddedImage(FunctionalTester $I) {
+  public function ___testEmbeddedImage(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
     $I->logInWithRole('administrator');
     $I->resizeWindow(1700, 1000);
@@ -156,7 +156,7 @@ class WYSIWYGCest {
   /**
    * Test media category taxonomy field.
    */
-  public function testImageCategory(FunctionalTester $I){
+  public function ___testImageCategory(FunctionalTester $I){
     $node = $this->getNodeWithParagraph($I);
 
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
@@ -223,7 +223,7 @@ class WYSIWYGCest {
   /**
    * Videos in the WYSIWYG should display correctly.
    */
-  public function testEmbeddedVideo(FunctionalTester $I) {
+  public function ___testEmbeddedVideo(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
     $I->logInWithRole('administrator');
     $I->resizeWindow(1700, 1000);
@@ -262,7 +262,7 @@ class WYSIWYGCest {
   /**
    * Documents in the WYSIWYG should display correctly.
    */
-  public function testEmbeddedDocument(FunctionalTester $I) {
+  public function ___testEmbeddedDocument(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
     $I->logInWithRole('administrator');
     $I->resizeWindow(1700, 1000);

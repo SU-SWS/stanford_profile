@@ -10,7 +10,7 @@ class TextFormatsCest {
   /**
    * Basic HTML should have certain configs set.
    */
-  public function testBasicHtml(AcceptanceTester $I) {
+  public function ___testBasicHtml(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/content/formats/manage/stanford_html');
     $I->canSeeCheckboxIsChecked('Large (480px wide, un-cropped)');

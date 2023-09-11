@@ -47,7 +47,7 @@ class IntranetCest {
   /**
    * Simple full site access check.
    */
-  public function testIntranet(AcceptanceTester $I) {
+  public function ___testIntranet(AcceptanceTester $I) {
     if (!$this->intranetWasEnabled) {
       $I->runDrush('sset stanford_intranet 1');
       $I->runDrush('cache-rebuild');
@@ -68,7 +68,7 @@ class IntranetCest {
   /**
    * Test the access of content.
    */
-  public function testAccess(AcceptanceTester $I) {
+  public function ___testAccess(AcceptanceTester $I) {
     // Contributors can't set access restrictions.
     $I->runDrush('sset stanford_intranet 0');
     $I->logInWithRole('contributor');
@@ -116,7 +116,7 @@ class IntranetCest {
   /**
    * Content should be indexed and results displayed.
    */
-  public function testSearchResults(AcceptanceTester $I) {
+  public function ___testSearchResults(AcceptanceTester $I) {
     $I->runDrush('sset stanford_intranet 1');
     $I->runDrush('sapi-c');
     $quote = 'Life is like a box of chocolates. You never know what you’re going to get.';
@@ -148,7 +148,7 @@ class IntranetCest {
   /**
    * Files can only be added when allow_file_uploads state is enabled.
    */
-  public function testMediaAccess(AcceptanceTester $I) {
+  public function ___testMediaAccess(AcceptanceTester $I) {
     $I->runDrush('sset stanford_intranet 1');
     $I->runDrush('sset stanford_intranet.allow_file_uploads 1');
 

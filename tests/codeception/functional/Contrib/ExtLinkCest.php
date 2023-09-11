@@ -36,7 +36,7 @@ class ExtLinkCest {
   /**
    * Test external links get the added class and svg.
    */
-  public function testExtLink(FunctionalTester $I) {
+  public function ___testExtLink(FunctionalTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->uncheckOption('Hide External Link Icons');

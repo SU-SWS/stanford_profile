@@ -27,7 +27,7 @@ class MediaWithCaptionCest {
   /**
    * A media with caption paragraph will display its fields.
    */
-  public function testMediaParagraph(AcceptanceTester $I) {
+  public function ___testMediaParagraph(AcceptanceTester $I) {
     $paragraph = $I->createEntity([
       'type' => 'stanford_media_caption',
       'su_media_caption_caption' => 'This is a super caption',

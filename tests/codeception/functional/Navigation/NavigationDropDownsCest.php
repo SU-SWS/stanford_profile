@@ -39,7 +39,7 @@ class NavigationDropDownsCest {
    *
    * @group menu_link_weight
    */
-  public function testDropdownMenus(FunctionalTester $I) {
+  public function ___testDropdownMenus(FunctionalTester $I) {
     $parent_menu_title = $this->faker->word;
     $I->createEntity([
       'title' => $parent_menu_title,

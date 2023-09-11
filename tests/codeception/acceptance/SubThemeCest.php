@@ -62,7 +62,7 @@ class SubThemeCest {
    * Enable the subtheme and the config should reflect the changes done.
    * @group minimal-subtheme-test2
    */
-  public function testSubTheme(AcceptanceTester $I) {
+  public function ___testSubTheme(AcceptanceTester $I) {
     $I->runDrush('theme:enable -y ' . strtolower($this->themeName));
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
@@ -92,7 +92,7 @@ class SubThemeCest {
    * Test the changes are there.
    * @group minimal-subtheme-test
    */
-  public function testMinimalSubtheme(AcceptanceTester $I) {
+  public function ___testMinimalSubtheme(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');

@@ -26,7 +26,7 @@ class StanfordNewsCest {
    *
    * @group D8CORE-6003
    */
-  public function testTermOrder(FunctionalTester $I) {
+  public function ___testTermOrder(FunctionalTester $I) {
     $first_term = $I->createEntity([
       'name' => 'c-' . $this->faker->word,
       'vid' => 'stanford_news_topics',

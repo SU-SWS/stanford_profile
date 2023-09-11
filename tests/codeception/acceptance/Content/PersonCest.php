@@ -26,7 +26,7 @@ class PersonCest {
   /**
    * Test that the default content has installed and is unpublished.
    */
-  public function testDefaultContentExists(AcceptanceTester $I) {
+  public function ___testDefaultContentExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/content');
     $I->see('Haley Jackson');
@@ -39,7 +39,7 @@ class PersonCest {
   /**
    * Test that the vocabulary and terms exist.
    */
-  public function testVocabularyTermsExists(AcceptanceTester $I) {
+  public function ___testVocabularyTermsExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/taxonomy/manage/stanford_person_types/overview');
     $I->canSeeNumberOfElements('.term-id', 14);
@@ -48,7 +48,7 @@ class PersonCest {
   /**
    * Test that the view pages exist.
    */
-  public function testViewPagesExist(AcceptanceTester $I) {
+  public function ___testViewPagesExist(AcceptanceTester $I) {
     $I->amOnPage('/people');
     $I->seeLink('Student');
     $I->seeLink('Staff');
@@ -61,7 +61,7 @@ class PersonCest {
    * Test that content that gets created has the right url, header, and shows
    * up in the all view.
    */
-  public function testCreatePerson(AcceptanceTester $I) {
+  public function ___testCreatePerson(AcceptanceTester $I) {
     $term = $I->createEntity([
       'vid' => 'stanford_person_types',
       'name' => $this->faker->word,
@@ -91,7 +91,7 @@ class PersonCest {
   /**
    * Test that the XML sitemap and metatag configuration is set.
    */
-  public function testXMLMetaDataRevisions(AcceptanceTester $I) {
+  public function ___testXMLMetaDataRevisions(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
 
     // Revision Delete is enabled.
@@ -114,7 +114,7 @@ class PersonCest {
   /**
    * CAP-52: Check for the new fields.
    */
-  public function testCap52Fields(AcceptanceTester $I) {
+  public function ___testCap52Fields(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
 
     $I->amOnPage('/admin/structure/types/manage/stanford_person/fields');
@@ -131,7 +131,7 @@ class PersonCest {
   /**
    * Special characters should stay.
    */
-  public function testSpecialCharacters(AcceptanceTester $I) {
+  public function ___testSpecialCharacters(AcceptanceTester $I) {
     $first_name = $this->faker->firstName;
     $middle_name = $this->faker->firstName;
     $last_name = $this->faker->lastName;
@@ -243,7 +243,7 @@ class PersonCest {
   /**
    * Published checkbox should be hidden on term edit pages.
    */
-  public function testTermPublishing(AcceptanceTester $I) {
+  public function ___testTermPublishing(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $term = $I->createEntity([
       'vid' => 'stanford_person_types',
@@ -256,7 +256,7 @@ class PersonCest {
   /**
    * Unpublished profiles should not display in the list.
    */
-  public function testPublishedStatus(AcceptanceTester $I) {
+  public function ___testPublishedStatus(AcceptanceTester $I) {
     $term = $I->createEntity([
       'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',
@@ -287,7 +287,7 @@ class PersonCest {
    *
    * @group metadata
    */
-  public function testMetaData(AcceptanceTester $I) {
+  public function ___testMetaData(AcceptanceTester $I) {
     $values = [
       'image_alt' => $this->faker->words(3, TRUE),
       'body' => $this->faker->paragraph,

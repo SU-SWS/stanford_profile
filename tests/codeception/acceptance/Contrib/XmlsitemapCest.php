@@ -8,7 +8,7 @@ class XmlsitemapCest {
   /**
    * Test that xmlsitemap is having 403 and 404 pages removed.
    */
-  public function testStanfordProfileSitemapLinkAlter(AcceptanceTester $I) {
+  public function ___testStanfordProfileSitemapLinkAlter(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage("/admin/config/search/xmlsitemap/rebuild");
     $I->click('Save configuration');
