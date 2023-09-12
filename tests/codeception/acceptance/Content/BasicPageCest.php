@@ -8,6 +8,7 @@ use Faker\Factory;
  *
  * @group content
  * @group basic_page
+ * 
  */
 class BasicPageCest {
 
