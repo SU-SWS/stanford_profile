@@ -42,6 +42,14 @@ class PolicyCest {
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_policy');
     $I->cantSee('Create a new book');
+    // D8CORE-4551 - removed create policy permission for contributors
+    $I->canSee('Access Denied');
+    $book = $I->createEntity([
+      'type' => 'stanford_policy',
+      'su_policy_title' => $this->faker->words(2, TRUE) . '-baz-foo',
+      'su_policy_auto_prefix' => 1,
+    ]);
+    $I->amOnPage($book->toUrl('edit-form')->toString());
     // This indicates they can add to an existing book.
     $I->canSeeOptionIsSelected('Book', '- None -');
     $I->cantSee('Policy Prefix');
@@ -63,7 +71,7 @@ class PolicyCest {
   /**
    * Test book title changes.
    */
-  public function testPolicyTitle(AcceptanceTester $I){
+  public function testPolicyTitle(AcceptanceTester $I) {
     $title = $this->faker->words(4, TRUE) . ' foo bar';
     $I->logInWithRole('administrator');
     $I->amOnPage('/node/add/stanford_policy');
@@ -231,7 +239,7 @@ class PolicyCest {
     $I->canSee($chapter_two->label(), '.breadcrumb');
     $I->canSee($article_one->label(), '.breadcrumb');
 
-    $I->canSee( $data_formatter->format($fifteen_days_ago, 'custom', 'F d, Y', self::getTimezone()));
+    $I->canSee($data_formatter->format($fifteen_days_ago, 'custom', 'F d, Y', self::getTimezone()));
     $I->canSee($data_formatter->format($time, 'custom', 'F d, Y', self::getTimezone()));
     $I->canSee($authority);
 
