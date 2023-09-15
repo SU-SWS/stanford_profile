@@ -1,5 +1,21 @@
 # Stanford Profile
 
+10.1.0
+-------------------------------------------------------------------------------
+- Use components field instead of layout builder for list pages (#709)
+- D8CORE-4551: updated permissions for contributors and site editors (#690)
+- D8CORE-6843: Update bad user guide links in help text (#694)
+- Fixed styles for login page when on intranets
+- D8CORE-6896: changed the non discrimination link (#707)
+- D8CORE-6842 Added and configured stanford_samlauth (#701)
+- D8CORE-6844 Fixup mobile menu at medium breakpoint (#703)
+- Update localist importer to use the localist json data parser
+- D8CORE-6786: Updating to the new font through a Decanter update (#695)
+- Added and configured Oembed lazyload for video media
+- D8CORE-4495 Update past events text on node view
+- Updated publication importer for layout paragraphs instead of react paragraphs
+
+
 10.0.4
 -------------------------------------------------------------------------------
 - Update hook to update field storage definitions.
