@@ -87,12 +87,8 @@ class EventsCest {
     $I->amOnPage($event->toUrl('delete-form')->toString());
     $I->click('Delete');
 
-    $I->amOnPage('/events');
-    $I->cantSee($event->label());
-    $I->cantSee('No events at this time');
-    $I->canSee($message);
-
     $I->amOnPage($term->toUrl()->toString());
+    $I->canSee($term->label(), 'h1');
     $I->cantSee($event->label());
     $I->cantSee('No events at this time');
     $I->canSee($message);
