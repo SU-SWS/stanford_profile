@@ -12,7 +12,6 @@ use Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent;
 use Drupal\default_content\Event\DefaultContentEvents;
 use Drupal\default_content\Event\ImportEvent;
 use Drupal\file\FileInterface;
-use Drupal\user\UserInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -76,6 +75,7 @@ class EventSubscriber implements EventSubscriberInterface {
       self::updateSamlauthRoles();
     }
   }
+
   /**
    * On entity delete event.
    *
@@ -96,14 +96,13 @@ class EventSubscriber implements EventSubscriberInterface {
       return;
     }
 
-    $roles = user_role_names(TRUE);
-    unset($roles[UserInterface::AUTHENTICATED_ROLE]);
+    $role_ids = array_keys(user_role_names(TRUE));
+    $role_ids = array_combine($role_ids, $role_ids);
+    unset($role_ids[RoleInterface::AUTHENTICATED_ID]);
+    asort($role_ids);
+
     $config = \Drupal::configFactory()->getEditable('samlauth.authentication');
-    ksort($roles);
-    foreach ($roles as $role_id => &$label) {
-      $label = $role_id;
-    }
-    $config->set('map_users_roles', $roles)->save();
+    $config->set('map_users_roles', $role_ids)->save();
   }
 
   /**

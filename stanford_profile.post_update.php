@@ -96,5 +96,5 @@ function stanford_profile_post_update_samlauth() {
   $ignored = $ignore_settings->get('ignored_config_entities');
   $ignored[] = 'samlauth.authentication:map_users_roles';
   $ignore_settings->set('ignored_config_entities', $ignored)->save();
-  \Drupal::service('module_installer')->install(['stnaford_samlauth']);
+  \Drupal::service('module_installer')->install(['stanford_samlauth']);
 }
