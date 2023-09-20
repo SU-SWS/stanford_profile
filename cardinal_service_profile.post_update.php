@@ -77,3 +77,18 @@ function cardinal_service_profile_post_update_8202() {
     ])->save();
   }
 }
+
+/**
+ * Enable samlauth.
+ */
+function cardinal_service_profile_post_update_samlauth() {
+  if (\Drupal::moduleHandler()->moduleExists('stanford_samlauth')) {
+    return;
+  }
+  $ignore_settings = \Drupal::configFactory()
+    ->getEditable('config_ignore.settings');
+  $ignored = $ignore_settings->get('ignored_config_entities');
+  $ignored[] = 'samlauth.authentication:map_users_roles';
+  $ignore_settings->set('ignored_config_entities', $ignored)->save();
+  \Drupal::service('module_installer')->install(['stanford_samlauth']);
+}

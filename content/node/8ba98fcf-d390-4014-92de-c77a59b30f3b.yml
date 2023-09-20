@@ -7,7 +7,7 @@ _meta:
 default:
   revision_uid:
     -
-      target_id: 1
+      entity: d0e13834-0146-4391-a465-51c822000aa7
   status:
     -
       value: true
@@ -159,17 +159,61 @@ default:
               context_mapping: {  }
             weight: 0
             additional: {  }
-          d2b55c40-1d7f-44c1-a6f5-6aa6db128e29:
-            uuid: d2b55c40-1d7f-44c1-a6f5-6aa6db128e29
-            region: main
-            configuration:
-              id: 'views_block:stanford_events-list_page'
-              label: ''
-              label_display: 0
-              provider: views
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            weight: -8
-            additional: {  }
         third_party_settings: {  }
+  su_page_components:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: baa69328-f537-441e-8ad5-fe66a3ba944d
+          bundle: stanford_layout
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1694548885
+          behavior_settings:
+            -
+              value:
+                layout_paragraphs:
+                  layout: layout_paragraphs_1_column
+                  config:
+                    label: ''
+                  parent_uuid: null
+                  region: null
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 522c2a2d-52c5-4ada-b886-eac9779ecb91
+          bundle: stanford_lists
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1694548890
+          behavior_settings:
+            -
+              value:
+                list_paragraph:
+                  empty_message: 'No events at this time.'
+                layout_paragraphs:
+                  parent_uuid: baa69328-f537-441e-8ad5-fe66a3ba944d
+                  region: main
+          revision_translation_affected:
+            -
+              value: true
+          su_list_view:
+            -
+              target_id: stanford_events
+              display_id: list_page
+              arguments: ''
+              items_to_display: ''

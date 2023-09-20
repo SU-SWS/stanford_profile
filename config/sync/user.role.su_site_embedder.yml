@@ -1,0 +1,14 @@
+uuid: 9dedbe8e-27b6-40de-95fd-29e4efe67be4
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+id: su_site_embedder
+label: 'Site Embedder'
+weight: 1
+is_admin: false
+permissions:
+  - 'create field_media_embeddable_code'
+  - 'edit field_media_embeddable_code'
+  - 'edit own field_media_embeddable_code'

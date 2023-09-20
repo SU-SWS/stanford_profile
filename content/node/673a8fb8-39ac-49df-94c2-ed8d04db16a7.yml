@@ -7,7 +7,7 @@ _meta:
 default:
   revision_uid:
     -
-      target_id: 1
+      entity: d0e13834-0146-4391-a465-51c822000aa7
   status:
     -
       value: true
@@ -49,7 +49,8 @@ default:
       title: People
       description: 'A listing of people types'
       parent: ''
-      weight: -44
+      weight: -45
+      expanded: 0
   layout_builder__layout:
     -
       section:
@@ -166,17 +167,57 @@ default:
               context_mapping: {  }
             weight: 0
             additional: {  }
-          fd6d5014-63fc-4ac2-858c-199f77a5b8d8:
-            uuid: fd6d5014-63fc-4ac2-858c-199f77a5b8d8
-            region: main
-            configuration:
-              id: 'views_block:stanford_person-grid_list_all'
-              label: ''
-              label_display: 0
-              provider: views
-              views_label: ''
-              items_per_page: none
-              context_mapping: {  }
-            weight: -8
-            additional: {  }
         third_party_settings: {  }
+  su_page_components:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 901576db-04e5-46c2-ab4c-ac64980a578e
+          bundle: stanford_layout
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1694548795
+          behavior_settings:
+            -
+              value:
+                layout_paragraphs:
+                  layout: layout_paragraphs_1_column
+                  config:
+                    label: ''
+                  parent_uuid: null
+                  region: null
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 463b0956-f7e4-47da-83f6-fb9fab53c14f
+          bundle: stanford_lists
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1694548801
+          behavior_settings:
+            -
+              value:
+                list_paragraph: {  }
+                layout_paragraphs:
+                  parent_uuid: 901576db-04e5-46c2-ab4c-ac64980a578e
+                  region: main
+          su_list_view:
+            -
+              target_id: stanford_person
+              display_id: grid_list_all
+              arguments: ''
+              items_to_display: ''

@@ -5,6 +5,7 @@ dependencies:
   config:
     - filter.format.stanford_html
     - filter.format.stanford_minimal_html
+    - media.type.embeddable
     - media.type.file
     - media.type.google_form
     - media.type.image
@@ -27,7 +28,6 @@ dependencies:
     - editoria11y
     - filter
     - media
-    - menu_admin_per_menu
     - node
     - paragraphs
     - pathauto
@@ -53,21 +53,17 @@ permissions:
   - 'access user profiles'
   - 'add citation entities'
   - 'add content to books'
-  - 'administer main menu items'
   - 'break content lock'
   - 'create file media'
   - 'create google_form media'
   - 'create image media'
   - 'create media'
   - 'create policy log'
-  - 'create stanford_course content'
   - 'create stanford_event content'
-  - 'create stanford_event_series content'
   - 'create stanford_gallery_images media'
   - 'create stanford_news content'
   - 'create stanford_page content'
   - 'create stanford_person content'
-  - 'create stanford_policy content'
   - 'create stanford_publication content'
   - 'create su_opportunity content'
   - 'create su_spotlight content'
@@ -90,6 +86,9 @@ permissions:
   - 'delete own su_spotlight content'
   - 'delete own video media'
   - 'dropzone upload files'
+  - 'edit any embeddable media'
+  - 'edit any file media'
+  - 'edit any google_form media'
   - 'edit any image media'
   - 'edit any stanford_course content'
   - 'edit any stanford_event content'
@@ -104,6 +103,7 @@ permissions:
   - 'edit any su_spotlight content'
   - 'edit behavior plugin settings'
   - 'edit citation entities'
+  - 'edit own embeddable media'
   - 'edit own file media'
   - 'edit own google_form media'
   - 'edit own image media'
@@ -124,6 +124,7 @@ permissions:
   - 'mark as ok in editoria11y'
   - 'notify of path changes'
   - 'schedule publishing of nodes'
+  - 'update any media'
   - 'update media'
   - 'use text format stanford_html'
   - 'use text format stanford_minimal_html'

@@ -41,7 +41,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
   protected function getUserGuide() {
     $help = '<h3>' . $this->t('Stanford Sites User Guide') . '</h3>';
     $help .= '<p>' . $this->t('Everything you need to know about how to use, maintain, and launch your Website.') . '</p>';
-    $help .= self::getLinkString($this->t('User Guide'), 'https://userguide.sites.stanford.edu', TRUE);
+    $help .= self::getLinkString($this->t('User Guide'), 'https://sitesuserguide.stanford.edu', TRUE);
     return ['#markup' => $help];
   }
 
@@ -55,7 +55,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     $help = '<h3>' . $this->t('Ready to Launch?') . '</h3>';
     // @TODO: Update link when launch process guide is available.
     $help .= '<p>' . $this->t('Learn about the launch process, review the final checklist, and submit a request to launch.') . '</p>';
-    $help .= self::getLinkString($this->t('Website launch process'), 'https://userguide.sites.stanford.edu/support/launching-your-site', TRUE);
+    $help .= self::getLinkString($this->t('Website launch process'), 'https://sitesuserguide.stanford.edu/support/site-launch-checklist', TRUE);
     return ['#markup' => $help];
   }
 

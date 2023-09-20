@@ -19,6 +19,7 @@ class RolesCest {
     $I->canSee('Site Builder');
     $I->canSee('Site Developer');
     $I->canSee('Administrator');
+    $I->canSee('Site Embedder');
   }
 
   /**
