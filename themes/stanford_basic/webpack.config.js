@@ -156,6 +156,31 @@ module.exports = {
           }
         ]
       },
+      // Apply plugins to image assets.
+      {
+        test: /\.(png|jpg|gif)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: '../assets/img/[name][ext][query]',
+        },
+      },
+      // Apply plugins to svg assets.
+      {
+        test: /\.(svg)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: '../assets/svg/[name][ext][query]',
+        },
+      },
+      // Apply plugins to font assets.
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: '../assets/fonts/[name][ext][query]',
+        },
+      },
+
       {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
