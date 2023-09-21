@@ -25,13 +25,13 @@ class UsersTest extends KernelTestBase {
   /**
    * {@inheritDoc}
    */
-  protected function setUp(): void {
+  public function setup(): void {
     parent::setUp();
     $this->setInstallProfile('stanford_profile');
 
     $this->installEntitySchema('user');
     $this->installEntitySchema('user_role');
-    $this->installSchema('system', ['key_value_expire', 'sequences']);
+    $this->installSchema('system', ['sequences']);
     Role::create(['label' => 'Owner', 'id' => "site_manager"])->save();
   }
 

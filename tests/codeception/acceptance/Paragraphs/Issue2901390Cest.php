@@ -38,7 +38,7 @@ class Issue2901390Cest {
     $I->click('Layout');
     $I->click('Add block');
 
-    $I->click('Create custom block');
+    $I->click('Create content block');
     $I->fillField('Title', 'Custom Block');
     $I->fillField('Body', 'Lorem Ipsum Custom Block Text');
     $I->click('Add block');

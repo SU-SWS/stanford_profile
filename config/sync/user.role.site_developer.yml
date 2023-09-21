@@ -94,6 +94,7 @@ weight: 0
 is_admin: false
 permissions:
   - 'access administration pages'
+  - 'access block library'
   - 'access config_pages overview'
   - 'access content overview'
   - 'access contextual links'
@@ -113,6 +114,8 @@ permissions:
   - 'admin fields'
   - 'administer account menu items'
   - 'administer admin menu items'
+  - 'administer block content'
+  - 'administer block types'
   - 'administer block_content display'
   - 'administer block_content fields'
   - 'administer block_content form display'
@@ -129,7 +132,6 @@ permissions:
   - 'administer content types'
   - 'administer crop'
   - 'administer crop types'
-  - 'administer devel menu items'
   - 'administer display modes'
   - 'administer entity usage'
   - 'administer environment indicator settings'
@@ -256,6 +258,7 @@ permissions:
   - 'delete orphan revisions'
   - 'delete own embeddable media'
   - 'delete own file media'
+  - 'delete own files'
   - 'delete own google_form media'
   - 'delete own image media'
   - 'delete own stanford_course content'

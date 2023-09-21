@@ -17,6 +17,7 @@ dependencies:
     - filter.format.stanford_html
     - filter.format.stanford_minimal_html
   module:
+    - file
     - filter
     - layout_builder
 id: layout_builder_user
@@ -36,5 +37,6 @@ permissions:
   - 'configure editable stanford_publication node layout overrides'
   - 'configure editable stanford_publication_topics taxonomy_term layout overrides'
   - 'create and edit custom blocks'
+  - 'delete own files'
   - 'use text format stanford_html'
   - 'use text format stanford_minimal_html'

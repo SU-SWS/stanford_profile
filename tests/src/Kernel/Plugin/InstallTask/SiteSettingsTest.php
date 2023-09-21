@@ -13,6 +13,7 @@ use Drupal\user\Entity\Role;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Psr7\Stream;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Drupal\stanford_profile\Plugin\InstallTask\SiteSettings;
@@ -41,14 +42,14 @@ class SiteSettingsTest extends KernelTestBase {
   /**
    * The response guzzle mock object will return.
    *
-   * @var mixed
+   * @var \GuzzleHttp\Psr7\Stream
    */
   protected $guzzleResponse;
 
   /**
    * {@inheritDoc}
    */
-  protected function setUp(): void {
+  public function setup(): void {
     parent::setUp();
     $this->setInstallProfile('stanford_profile');
 
@@ -60,7 +61,7 @@ class SiteSettingsTest extends KernelTestBase {
     $this->installEntitySchema('config_pages');
     $this->installEntitySchema('node');
     $this->installSchema('externalauth', 'authmap');
-    $this->installSchema('system', ['key_value_expire', 'sequences']);
+    $this->installSchema('system', ['sequences']);
     $this->installConfig('system');
 
     Role::create(['label' => 'Owner', 'id' => "site_manager"])->save();
@@ -115,7 +116,7 @@ class SiteSettingsTest extends KernelTestBase {
 
     drupal_flush_all_caches();
 
-    $this->guzzleResponse = json_encode([
+    $data = json_encode([
       'result' => [
         [
           [
@@ -140,6 +141,11 @@ class SiteSettingsTest extends KernelTestBase {
         ],
       ],
     ]);
+
+    $resource = fopen('php://memory', 'r+');
+    fwrite($resource, $data);
+    rewind($resource);
+    $this->guzzleResponse = new Stream($resource);
   }
 
   /**
@@ -182,11 +188,12 @@ class SiteSettingsTest extends KernelTestBase {
   protected function getMockGuzzle($throw_guzzle_exception = NULL) {
     $client = $this->createMock(ClientInterface::class);
     $response = $this->createMock(ResponseInterface::class);
+    $request = $this->createMock(RequestInterface::class);
 
     switch ($throw_guzzle_exception) {
       case GuzzleException::class:
         $response->method('getBody')
-          ->willThrowException(new ClientException('Failed here', $this->createMock(RequestInterface::class)));
+          ->willThrowException(new ClientException('Failed here', $request, $response));
         break;
 
       case Exception::class:
@@ -222,14 +229,20 @@ class SiteSettingsTest extends KernelTestBase {
       ->getStorage('user')
       ->loadByProperties(['name' => ['barfoo', 'bazbar']]);
     $this->assertCount(2, $users);
-    $this->assertEquals('https://foo bar.sites.stanford.edu', \Drupal::state()->get('xmlsitemap_base_url'));
+    $this->assertEquals('https://foo bar.sites.stanford.edu', \Drupal::state()
+      ->get('xmlsitemap_base_url'));
   }
 
   /**
    * When the API can't find the site, no changes will be made.
    */
   public function testSiteNotFound() {
-    $this->guzzleResponse = json_encode(['result' => [['message' => 'no records found']]]);
+    $data = json_encode(['result' => [['message' => 'no records found']]]);
+    $resource = fopen('php://memory', 'r+');
+    fwrite($resource, $data);
+    rewind($resource);
+    $this->guzzleResponse = new Stream($resource);
+
     $this->runInstallTask();
 
     drupal_flush_all_caches();
@@ -241,7 +254,11 @@ class SiteSettingsTest extends KernelTestBase {
    * When the API doesn't return a json object, no changes will be made.
    */
   public function testIncorrectApiResponse() {
-    $this->guzzleResponse = $this->randomString();
+    $resource = fopen('php://memory', 'r+');
+    fwrite($resource, $this->randomString());
+    rewind($resource);
+    $this->guzzleResponse = new Stream($resource);
+
     $this->runInstallTask();
 
     drupal_flush_all_caches();

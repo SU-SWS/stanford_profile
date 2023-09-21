@@ -1,11 +1,14 @@
 uuid: a7834da8-717b-487e-96e8-bdd687da6efa
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - file
 _core:
   default_config_hash: utSJJ9cSylZEVzqaBr7cYV5wyXdC4xubL0L3QevhYRg
 id: stanford_student
 label: 'Stanford Student'
 weight: -5
 is_admin: false
-permissions: {  }
+permissions:
+  - 'delete own files'

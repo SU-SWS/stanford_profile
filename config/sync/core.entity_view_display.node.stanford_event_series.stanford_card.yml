@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
+    - field.field.node.stanford_event_series.field_menulink
     - field.field.node.stanford_event_series.layout_builder__layout
     - field.field.node.stanford_event_series.stanford_intranet__access
     - field.field.node.stanford_event_series.su_event_series_components
@@ -12,6 +13,7 @@ dependencies:
     - field.field.node.stanford_event_series.su_event_series_subheadline
     - field.field.node.stanford_event_series.su_event_series_type
     - field.field.node.stanford_event_series.su_event_series_weight
+    - field.field.node.stanford_event_series.su_metatags
     - field.field.node.stanford_event_series.su_shared_tags
     - node.type.stanford_event_series
   module:

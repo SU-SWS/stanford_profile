@@ -4,14 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.su_card_body
+    - filter.format.stanford_minimal_html
     - paragraphs.paragraphs_type.stanford_card
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - stanford_minimal_html
 id: paragraph.stanford_card.su_card_body
 field_name: su_card_body
 entity_type: paragraph
@@ -22,5 +18,7 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - stanford_minimal_html
 field_type: text_long

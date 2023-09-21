@@ -207,6 +207,16 @@ third_party_settings:
                   allday_label: ''
                   date_first: '1'
                   ampm_reduce: 0
+                  site_time_toggle: '1'
+                  tooltip:
+                    date_format: ''
+                    custom_date_format: ''
+                  time_diff:
+                    enabled: false
+                    future_format: '@interval hence'
+                    past_format: '@interval ago'
+                    granularity: 2
+                    refresh: 60
                 third_party_settings:
                   field_formatter_class:
                     class: su-event-date
@@ -237,6 +247,16 @@ third_party_settings:
                   allday_label: ''
                   date_first: '0'
                   ampm_reduce: 0
+                  site_time_toggle: '1'
+                  tooltip:
+                    date_format: ''
+                    custom_date_format: ''
+                  time_diff:
+                    enabled: false
+                    future_format: '@interval hence'
+                    past_format: '@interval ago'
+                    granularity: 2
+                    refresh: 60
                 third_party_settings:
                   field_formatter_class:
                     class: su-event-time
@@ -560,8 +580,6 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
-      - Devel
-      - 'Devel PHP'
       - 'Events Lists (Views)'
       - Forms
       - Help
