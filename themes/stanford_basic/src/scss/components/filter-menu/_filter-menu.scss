@@ -5,9 +5,13 @@
 //
 
 .filter-menu {
-  @include modular-spacing('padding', 3);
+  @include responsive-spacing('padding', 3);
 
   border: 1px solid $su-color-cool-grey-25;
+
+  @include grid-media-only('lg') {
+    @include responsive-spacing('padding', 1);
+  }
 
   .topics__collapsable-menu {
     @include type-e;
@@ -23,11 +27,11 @@
     width: 100%;
 
     @include grid-media('xl') {
-      @include modular-spacing('margin-bottom', 2);
+      @include responsive-spacing('margin-bottom', 2);
     }
 
     &.show {
-      @include modular-spacing('margin-bottom', 2);
+      @include responsive-spacing('margin-bottom', 2);
 
       @include grid-media('xl') {
         margin-bottom: 0;
@@ -53,7 +57,7 @@
       float: right;
     }
 
-    @include grid-media-max('lg') {
+    @include grid-media-max('md') {
       &::before {
         @include small-paragraph;
         @include padding(null 15px null null);
@@ -71,8 +75,8 @@
     @include padding(0);
 
     .menu-item {
-      @include modular-spacing('padding-bottom', 2);
-      @include modular-spacing('padding-left', 0);
+      @include responsive-spacing('padding-bottom', 2);
+      @include responsive-spacing('padding-left', 0);
       @include small-paragraph;
 
       a {
@@ -102,7 +106,7 @@
         content: "\f00c"; ///* Need to switch to the SU icons.
         font-family: 'Font Awesome 5 Free';
         font-weight: $su-font-semi-bold; // Need this for the new version of FA. Will go away later.
-        left: 35px;
+        left: 20px;
         position: absolute;
       }
 
