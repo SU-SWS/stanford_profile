@@ -48,7 +48,7 @@ shared_configuration:
       -
         name: time_of_year
         label: 'Time of Year'
-        selector: './/attributes/attribute/name[text()=''NQTR'']/following-sibling::description'
+        selector: ".//attributes/attribute/name[text()='NQTR']/following-sibling::description"
       -
         name: academic_career
         label: 'Academic Career'

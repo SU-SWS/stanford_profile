@@ -44,7 +44,7 @@ class CardinalServiceSection extends HelpSectionPluginBase {
    *   Path to the CS profile
    */
   protected static function getProfilePath() {
-    return drupal_get_path('profile', 'cardinal_service_profile');
+    return \Drupal::service('extension.list.profile')->getPath('cardinal_service_profile');
   }
 
 }

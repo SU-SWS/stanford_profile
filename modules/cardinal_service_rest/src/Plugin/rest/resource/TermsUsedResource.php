@@ -142,6 +142,7 @@ class TermsUsedResource extends ResourceBase {
       $term_ids = $include_children ? $this->getChildrenIds($term) : [$term->id()];
 
       $query = $node_storage->getQuery()
+        ->accessCheck()
         ->condition('status', 1)
         ->condition('type', $field->getTargetBundle())
         ->condition($field->getName(), $term_ids, 'IN');

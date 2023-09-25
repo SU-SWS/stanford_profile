@@ -42,7 +42,7 @@ class UserLinksBlockTest extends KernelTestBase {
   /**
    * {@inheritDoc}
    */
-  protected function setUp() {
+  public function setup(): void {
     parent::setUp();
     $this->installSchema('system', ['sequences']);
     $this->installEntitySchema('user');
@@ -84,8 +84,8 @@ class UserLinksBlockTest extends KernelTestBase {
    */
   public function testLoggedOutUser() {
     $build = $this->block->build();
-    $this->assertEqual($build['#type'], 'link');
-    $this->assertEqual($build['#url']->getRouteName(), 'user.login');
+    $this->assertEquals($build['#type'], 'link');
+    $this->assertEquals($build['#url']->getRouteName(), 'user.login');
     $this->assertEmpty($build['#url']->getOption('query'));
 
     $destination = '/opportunities?foo=bar';
@@ -94,7 +94,7 @@ class UserLinksBlockTest extends KernelTestBase {
 
     $build = $this->block->build();
     $this->assertNotEmpty($build['#url']->getOption('query'));
-    $this->assertEqual($build['#url']->getOption('query')['destination'], htmlspecialchars('/opportunities?foo=bar'));
+    $this->assertEquals($build['#url']->getOption('query')['destination'], htmlspecialchars('/opportunities?foo=bar'));
   }
 
   /**
@@ -103,7 +103,7 @@ class UserLinksBlockTest extends KernelTestBase {
   public function testAuthenticatedUser() {
     \Drupal::currentUser()->setAccount($this->createUser([]));
     $build = $this->block->build();
-    $this->assertEqual($build['#type'], 'dropbutton');
+    $this->assertEquals($build['#type'], 'dropbutton');
     $this->assertCount(4, $build['#links']);
   }
 

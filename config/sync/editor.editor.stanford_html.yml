@@ -42,10 +42,10 @@ settings:
   plugins:
     ckeditor5_alignment:
       enabled_alignments:
-        - center
-        - justify
         - left
+        - center
         - right
+        - justify
     ckeditor5_codeBlock:
       languages:
         -
@@ -177,48 +177,6 @@ settings:
         -
           label: '1/2 Table'
           element: '<table class="cs-table--span6">'
-    ckeditor5_sourceEditing:
-      allowed_tags:
-        - '<b>'
-        - '<cite>'
-        - '<dt>'
-        - '<pre class>'
-        - '<code data-* class>'
-        - '<dl class>'
-        - '<dd class>'
-        - '<div id class>'
-        - '<i class>'
-        - '<aside class>'
-        - '<img src alt title class>'
-        - '<abbr id title>'
-        - '<span id class>'
-        - '<blockquote cite>'
-        - '<ul id type class>'
-        - '<ol id type class>'
-        - '<li id class>'
-        - '<h2 id class>'
-        - '<h3 id class>'
-        - '<h4 id class>'
-        - '<h5 id class>'
-        - '<table id class>'
-        - '<tbody class>'
-        - '<th scope id class>'
-        - '<td id class>'
-        - '<tr id>'
-        - '<drupal-media data-* title>'
-        - '<a aria-label hreflang data-entity-substitution data-entity-type data-entity-uuid title name class>'
-        - '<p id class>'
-    ckeditor5_list:
-      reversed: false
-      startIndex: true
-    ckeditor5_alignment:
-      enabled_alignments:
-        - left
-        - center
-        - right
-        - justify
-    media_media:
-      allow_view_mode_override: true
     linkit_extension:
       linkit_enabled: true
       linkit_profile: default

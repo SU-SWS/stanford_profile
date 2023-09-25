@@ -15,7 +15,7 @@ function cardinal_service_blocks_form_layout_builder_configure_block_alter(&$for
   $component = $form_state->getFormObject()->getCurrentComponent();
 
   // We only want to modify views exposed filters.
-  if (strpos($component->get('configuration')['id'], 'views_exposed_filter_block') !== 0) {
+  if (!str_starts_with($component->get('configuration')['id'], 'views_exposed_filter_block')) {
     return;
   }
 

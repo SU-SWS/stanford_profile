@@ -1,4 +1,4 @@
-(function ($, Drupal) {
+(function ($, Drupal, once) {
   'use strict';
   Drupal.behaviors.HoverMenu = {
     attach: function (context, settings) {
@@ -12,18 +12,20 @@
         $('.back-to-top', context).fadeOut();
       });
 
-      $(".back-to-top", context).once('back-top').click(function (e) {
+
+      $(once('back-top', '.back-to-top', context)).click(function (e) {
         e.preventDefault();
         $("html, body").animate({scrollTop: 0}, "slow");
       });
 
 
-      $(".opportunity-header-content-container", context).once('opportunity-tags-separator').each(function() {
+      $(once('opportunity-tags-separator', '.opportunity-header-content-container', context)).each(function() {
         $('.node-su-opportunity-su-opp-dimension').siblings('.node-su-opportunity-su-opp-type').before('<span>, </span>');
         $('.node-su-opportunity-su-opp-commitment').siblings('.node-su-opportunity-su-opp-service-theme').before('<span> in </span>');
       });
 
-      $('.su-secondary-nav', context).once('secondary-nav').each(function () {
+
+      $(once('secondary-nav', '.su-secondary-nav', context)).each(function () {
         const rightColumn = $(this).closest('.jumpstart-ui--two-column').children('.flex-lg-9-of-12');
         if (rightColumn.find('.node-stanford-page-title').length === 0) {
           $(this).css('margin-top', '0');
@@ -33,5 +35,5 @@
   };
 
 
-})(jQuery, Drupal);
+})(jQuery, Drupal, once);
 

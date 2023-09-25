@@ -44,7 +44,7 @@ class SkipOnExistTest extends UnitTestCase {
   /**
    * {@inheritDoc}
    */
-  protected function setUp() {
+  public function setUp(): void {
     parent::setUp();
 
     $config_factory = $this->createMock(ConfigFactoryInterface::class);

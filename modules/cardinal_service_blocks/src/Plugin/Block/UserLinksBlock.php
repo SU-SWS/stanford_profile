@@ -189,7 +189,7 @@ class UserLinksBlock extends BlockBase implements ContainerFactoryPluginInterfac
       }
     }
     // Different routes for saml and core.
-    $route = $this->moduleHandler->moduleExists('simplesamlphp_auth') ? 'simplesamlphp_auth.saml_login' : 'user.login';
+    $route = $this->moduleHandler->moduleExists('samlauth') ? 'samlauth.saml_controller_login' : 'user.login';
     return Url::fromRoute($route, [], $options);
   }
 

@@ -45,7 +45,7 @@ class CsvImporterFormTest extends KernelTestBase {
   /**
    * {@inheritDoc}
    */
-  protected function setUp() {
+  public function setup(): void {
     parent::setUp();
     $this->installEntitySchema('file');
     $this->installEntitySchema('node');

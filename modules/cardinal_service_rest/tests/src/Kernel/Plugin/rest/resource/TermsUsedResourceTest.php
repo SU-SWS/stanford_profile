@@ -28,12 +28,11 @@ class TermsUsedResourceTest extends KernelTestBase {
     'cardinal_service_rest',
     'rest',
     'field',
-    'entity_reference',
     'serialization',
     'text',
   ];
 
-  protected function setUp() {
+  public function setup(): void {
     parent::setUp();
     $this->installEntitySchema('node');
     $this->installEntitySchema('user');

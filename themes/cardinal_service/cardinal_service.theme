@@ -87,9 +87,12 @@ function cardinal_service_preprocess_pattern_quote(&$variables) {
     'src' => '<img>',
     'link' => '<a>',
   ];
+  /** @var \Drupal\Core\Render\RendererInterface $renderer */
+  $renderer = \Drupal::service('renderer');
   foreach ($fields as $field => $keep_tags) {
-    if (!empty($variables[$field])) {
-      $variables[$field] = trim(strip_tags(render($variables[$field]), $keep_tags));
+    if (!empty($variables[$field]) && is_array($variables[$field])) {
+      $field_render = $renderer->renderPlain($variables[$field]);
+      $variables[$field] = trim(strip_tags($field_render, $keep_tags));
     }
   }
 }

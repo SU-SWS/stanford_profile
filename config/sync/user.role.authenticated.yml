@@ -7,6 +7,7 @@ dependencies:
     - filter.format.stanford_minimal_html
   module:
     - field_permissions
+    - file
     - filter
     - flag
     - media
@@ -25,6 +26,7 @@ permissions:
   - 'access content'
   - 'access patterns page'
   - 'access shortcuts'
+  - 'delete own files'
   - 'flag cs_favorites'
   - 'flag cs_resources'
   - 'unflag cs_favorites'

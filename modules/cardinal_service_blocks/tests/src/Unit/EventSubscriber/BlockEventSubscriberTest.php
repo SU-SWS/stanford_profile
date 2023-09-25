@@ -19,7 +19,7 @@ class BlockEventSubscriberTest extends UnitTestCase {
    * The event subscriber should only listen to certain events.
    */
   public function testSubscribedEvents() {
-    $this->assertArrayEquals([
+    $this->assertEquals([
       'section_component.build.render_array' => [
         'onBuildRender',
         1,
@@ -41,7 +41,7 @@ class BlockEventSubscriberTest extends UnitTestCase {
     $subscriber = new BlockEventSubscriber();
     $subscriber->onBuildRender($event);
 
-    $this->assertArrayEquals(['#configuration' => ['action_url' => 'http://foo.bar']], $event->getBuild());
+    $this->assertEquals(['#configuration' => ['action_url' => 'http://foo.bar']], $event->getBuild());
   }
 
 }

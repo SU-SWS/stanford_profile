@@ -37,13 +37,13 @@ class NewsletterBlockTest extends KernelTestBase {
     ]);
 
     $block->blockSubmit($form, $form_state);
-    $this->assertEqual('http://google.com', $block->getConfiguration()['url']);
-    $this->assertEqual('Lorem Ipsum', $block->getConfiguration()['intro']['value']);
-    $this->assertEqual('html', $block->getConfiguration()['intro']['format']);
+    $this->assertEquals('http://google.com', $block->getConfiguration()['url']);
+    $this->assertEquals('Lorem Ipsum', $block->getConfiguration()['intro']['value']);
+    $this->assertEquals('html', $block->getConfiguration()['intro']['format']);
 
     $build = $block->build();
     $this->assertCount(2, $build);
-    $this->assertEqual('http://google.com', $build['form']['#action']);
+    $this->assertEquals('http://google.com', $build['form']['#action']);
   }
 
 }

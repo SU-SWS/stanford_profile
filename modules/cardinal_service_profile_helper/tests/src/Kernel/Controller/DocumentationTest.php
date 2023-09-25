@@ -32,7 +32,7 @@ class DocumentationTest extends KernelTestBase {
   /**
    * {@inheritDoc}
    */
-  protected function setUp() {
+  public function setup(): void {
     parent::setUp();
     $this->controller = new Documentation();
   }

@@ -8,6 +8,7 @@ use Drupal\Core\Form\FormState;
 use Drupal\KernelTests\KernelTestBase;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Stream;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -28,10 +29,8 @@ class NewsletterFormTest extends KernelTestBase {
 
   /**
    * The guzzle response body.
-   *
-   * @var string
    */
-  protected $responseBody = '';
+  protected $responseBody;
 
   /**
    * {@inheritDoc}
@@ -42,8 +41,10 @@ class NewsletterFormTest extends KernelTestBase {
     'block',
   ];
 
-  protected function setUp() {
+  public function setup(): void {
     parent::setUp();
+    $resource = fopen('php://memory','r+');
+    $this->responseBody = new Stream($resource);
 
     $client = $this->createMock(ClientInterface::class);
     $client->method('request')
@@ -74,7 +75,11 @@ class NewsletterFormTest extends KernelTestBase {
     $this->assertStringContainsString('Thank you', $commands[0]['data']);
 
     // Form Submission Failure
-    $this->responseBody = '<div>There are errors below</div>';
+    $resource = fopen('php://memory','r+');
+    fwrite($resource, '<div>There are errors below</div>');
+    rewind($resource);
+
+    $this->responseBody = new Stream($resource);
     $commands = $form_object->ajaxSubmit($form, $form_state)->getCommands();
     $this->assertStringContainsString('su-alert--error', $commands[0]['data']);
     $this->assertStringContainsString('Unable to sign up', $commands[0]['data']);
@@ -92,7 +97,8 @@ class NewsletterFormTest extends KernelTestBase {
   public function guzzleRequestCallback() {
     if ($this->failGuzzle) {
       $request = $this->createMock(RequestInterface::class);
-      throw new ClientException('Failed', $request);
+      $response = $this->createMock(ResponseInterface::class);
+      throw new ClientException('Failed', $request, $response);
     }
 
     $response = $this->createMock(ResponseInterface::class);

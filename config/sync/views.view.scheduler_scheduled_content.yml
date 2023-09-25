@@ -5,6 +5,7 @@ dependencies:
   module:
     - node
     - scheduler
+    - smart_date
     - user
 _core:
   default_config_hash: 72DaOXTPi--s-2ge-SRzJzYnqnoD2SAKPkUKXOvpxlU
@@ -1112,7 +1113,7 @@ display:
         arguments: false
         filters: true
         filter_groups: true
-      display_description: 'Scheduled content tab on user profile, showing just that user''s scheduled content'
+      display_description: "Scheduled content tab on user profile, showing just that user's scheduled content"
       display_extenders: {  }
       path: user/%user/scheduled
       menu:

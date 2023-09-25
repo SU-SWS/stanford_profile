@@ -1889,7 +1889,7 @@ display:
           exclude: true
           alter:
             alter_text: true
-            text: '{{ su_dimension_color|replace({''#'': ''''}) }}'
+            text: "{{ su_dimension_color|replace({'#': ''}) }}"
             make_link: false
             path: ''
             absolute: false

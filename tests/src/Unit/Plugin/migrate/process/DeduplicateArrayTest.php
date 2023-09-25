@@ -29,7 +29,7 @@ class DeduplicateArrayTest extends UnitTestCase {
     $migration = $this->createMock(MigrateExecutable::class);
     $row = $this->createMock(Row::class);
     $new_value = $plugin->transform($value, $migration, $row, NULL);
-    $this->assertArrayEquals(['foo', 'bar', 'baz'], $new_value);
+    $this->assertEquals(['foo', 'bar', 'baz'], $new_value);
   }
 
 }

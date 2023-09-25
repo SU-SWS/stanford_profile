@@ -50,7 +50,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    boost: !!float 5
+    boost: 5.0
     dependencies:
       module:
         - node
@@ -183,16 +183,16 @@ processor_settings:
       preprocess_index: 0
     boosts:
       'entity:node':
-        datasource_boost: !!float 0
+        datasource_boost: 0.0
         bundle_boosts:
-          stanford_event: !!float 0
-          stanford_event_series: !!float 0
-          stanford_news: !!float 0
-          stanford_page: !!float 3
-          stanford_person: !!float 0
-          stanford_publication: !!float 0
-          su_opportunity: !!float 0
-          su_spotlight: !!float 0
+          stanford_event: 0.0
+          stanford_event_series: 0.0
+          stanford_news: 0.0
+          stanford_page: 3.0
+          stanford_person: 0.0
+          stanford_publication: 0.0
+          su_opportunity: 0.0
+          su_spotlight: 0.0
 tracker_settings:
   default:
     indexing_order: fifo
