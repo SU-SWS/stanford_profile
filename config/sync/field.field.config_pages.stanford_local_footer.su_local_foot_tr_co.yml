@@ -6,11 +6,7 @@ dependencies:
     - config_pages.type.stanford_local_footer
     - field.storage.config_pages.su_local_foot_tr_co
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats: {  }
 id: config_pages.stanford_local_footer.su_local_foot_tr_co
 field_name: su_local_foot_tr_co
 entity_type: config_pages
@@ -21,5 +17,6 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

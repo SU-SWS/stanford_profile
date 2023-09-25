@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - file
     - node
     - subrequests
 id: decoupled_site_users
@@ -12,4 +13,5 @@ is_admin: null
 permissions:
   - 'access user profiles'
   - 'bypass node access'
+  - 'delete own files'
   - 'issue subrequests'

@@ -107,12 +107,14 @@ class EventsCest {
 
   /**
    * Test Page Title Conditions.
+   *
+   * @group foobar
    */
   public function testPageTitleIgnoreCondition(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     // Todo: make theme name dynamic.
     $I->amOnPage('/admin/structure/block/manage/stanford_basic_pagetitle');
-    $values = $I->grabTextFrom('#edit-visibility-request-path-pages');
+    $values = $I->grabValueFrom('#edit-visibility-request-path-pages');
     if (is_string($values)) {
       $values = explode("\n", $values);
     }
@@ -323,7 +325,7 @@ class EventsCest {
     $I->checkOption('tr:contains("' . $node->label() . '") input[name^="views_bulk_operations_bulk_form"]');
     $I->selectOption('Action', 'Clone selected content');
     $I->click('Apply to selected items');
-    $I->selectOption('Clone how many times', 2);
+    $I->selectOption('Clone how many times', '2');
     $I->selectOption('Increment Amount', '3');
     $I->selectOption('Units', 'Month');
     $I->click('Apply');

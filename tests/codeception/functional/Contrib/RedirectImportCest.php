@@ -20,6 +20,9 @@ class RedirectImportCest {
    * An imported redirect csv will create the redirects we need.
    */
   public function testRedirectImports(FunctionalTester $I) {
+    if (!file_exists(codecept_data_dir())) {
+      mkdir(codecept_data_dir());
+    }
 
     $file = fopen(codecept_data_dir('redirects.csv'), 'w+');
     fputcsv($file, ['source', 'destination', 'language', 'status_code']);

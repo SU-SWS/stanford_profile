@@ -6,6 +6,7 @@ use Faker\Factory;
  * Class ListsCest.
  *
  * @group paragraphs
+ * @group lists
  */
 class ListsCest {
 

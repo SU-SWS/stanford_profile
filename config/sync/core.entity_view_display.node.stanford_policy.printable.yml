@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.printable
     - field.field.node.stanford_policy.body
+    - field.field.node.stanford_policy.field_menulink
     - field.field.node.stanford_policy.layout_builder__layout
     - field.field.node.stanford_policy.su_policy_authority
     - field.field.node.stanford_policy.su_policy_auto_prefix
@@ -41,8 +42,6 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
-      - Devel
-      - 'Devel PHP'
       - 'Events Lists (Views)'
       - Forms
       - Help
