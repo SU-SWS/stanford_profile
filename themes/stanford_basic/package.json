@@ -18,7 +18,7 @@
     "lint:sass": "sass-lint -c .sass-lint.yml '**/*.scss' -v -q -i 'vendor/**/*.scss, node_modules/**/*.scss'"
   },
   "devDependencies": {
-    "decanter": "github:SU-SWS/decanter#task/package-updates",
+    "decanter": "^6.3.0",
     "postcss-preset-env": "^8.4.2",
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
