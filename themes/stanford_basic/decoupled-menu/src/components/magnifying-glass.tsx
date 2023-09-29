@@ -1,7 +1,7 @@
 const MagnifyingGlass = ({...props}) => {
   return (
 
-    <svg fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 390.704 390.704" {...props}>
+    <svg fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 390.704 390.704" aria-hidden={true} {...props}>
       <g>
         <g>
           <path d="M379.711,326.556L265.343,212.188c30.826-54.189,23.166-124.495-23.001-170.663c-55.367-55.366-145.453-55.366-200.818,0
