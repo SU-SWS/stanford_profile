@@ -28,7 +28,7 @@ const getIslands = () => {
     // }
 
     return {
-      path,
+      path: './' + path,
       name,
       elementName,
       layer: name,
