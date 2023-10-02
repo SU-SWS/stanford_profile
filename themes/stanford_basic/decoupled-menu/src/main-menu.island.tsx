@@ -13,18 +13,28 @@ import MagnifyingGlass from "./components/magnifying-glass";
 
 const islandName = 'main-menu-island'
 
-const TopList = styled.ul<{ open?: boolean }>`
+const MenuWrapper = styled.div<{ open?: boolean }>`
   display: ${props => props.open ? "block" : "none"};
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  @media (min-width: 992px) {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+`
+
+const TopList = styled.ul`
   flex-wrap: wrap;
   justify-content: flex-end;
   list-style: none;
   margin: 0;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
   background: #2e2d29;
   padding: 24px;
   font-size: 18px;
@@ -33,10 +43,9 @@ const TopList = styled.ul<{ open?: boolean }>`
     display: flex;
     background: transparent;
     padding: 0;
-    position: relative;
     font-size: 19px;
     width: 100%;
-    margin: 0 auto;
+
   }
 `
 
@@ -67,9 +76,10 @@ const MobileMenuButton = styled.button`
   }
 `
 
-const SearchContainer = styled.li`
-  padding: 0;
-  margin: 0 0 20px;
+const SearchContainer = styled.div`
+  padding: 10px 30px 0;
+  margin: 0;
+  background: #2e2d29;
 
   form {
     display: flex;
@@ -155,13 +165,13 @@ export const MainMenu = ({}) => {
   }
 
   return (
-    <nav style={{position: "relative"}}>
+    <OutsideClickHandler component="nav" style={{position: "relative"}} onOutsideFocus={() => setMenuOpen(false)}>
       <MobileMenuButton ref={buttonRef} onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen}>
         {menuOpen ? <Close/> : <Hamburger/>}
         {menuOpen ? "Close" : "Menu"}
       </MobileMenuButton>
 
-      <TopList open={menuOpen}>
+      <MenuWrapper open={menuOpen}>
         <SearchContainer>
           <form action="/search" method="get">
             <label htmlFor="mobile-search-input">Keyword Search</label>
@@ -180,9 +190,11 @@ export const MainMenu = ({}) => {
           </form>
 
         </SearchContainer>
-        {menuTree.items.map(item => <MenuItem key={item.id} {...item}/>)}
-      </TopList>
-    </nav>
+        <TopList>
+          {menuTree.items.map(item => <MenuItem key={item.id} {...item}/>)}
+        </TopList>
+      </MenuWrapper>
+    </OutsideClickHandler>
   )
 }
 
