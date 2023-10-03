@@ -148,7 +148,7 @@ class EventSubscriber implements EventSubscriberInterface {
     $site_manager = $current_user->hasPermission('edit stanford_basic_site_settings config page entity') && !in_array('administrator', $current_user->getRoles());
 
     // If the renewal date has passed, they should be redirected.
-    $needs_renewal = $site_manager && strtotime($renewal_date) - time();
+    $needs_renewal = $site_manager && (strtotime($renewal_date) - time() < 60 * 60 * 24);
     $cache->set('su_renew_site', $needs_renewal, time() + 60 * 60 * 24);
 
     return $needs_renewal;

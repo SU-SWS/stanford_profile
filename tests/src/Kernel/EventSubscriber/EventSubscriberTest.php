@@ -2,13 +2,21 @@
 
 namespace Drupal\Tests\stanford_profile\Kernel\EventSubscriber;
 
+use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\consumers\Entity\Consumer;
+use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent;
 use Drupal\default_content\Event\ImportEvent;
 use Drupal\file\Entity\File;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\media\Entity\Media;
 use Drupal\media\Entity\MediaType;
 use Drupal\stanford_profile\EventSubscriber\EventSubscriber as StanfordEventSubscriber;
+use Drupal\user\Entity\Role;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
  * Class EventSubscriberTest.
@@ -33,6 +41,7 @@ class EventSubscriberTest extends KernelTestBase {
     'simple_oauth',
     'serialization',
     'media',
+    'test_stanford_profile',
   ];
 
   /**
@@ -111,6 +120,44 @@ class EventSubscriberTest extends KernelTestBase {
     $this->eventSubscriber->onContentImport($event);
 
     $this->assertFileExists('public://foobar.jpg');
+  }
+
+  public function testUserInsert() {
+    \Drupal::service('module_installer')->install(['samlauth']);
+    $role = Role::create(['id' => 'test_role1', 'label' => 'Test role 1']);
+    $role->save();
+
+    $event = new EntityInsertEvent($role);
+    $this->eventSubscriber->onEntityInsert($event);
+    $saml_setting = \Drupal::config('samlauth.authentication')
+      ->get('map_users_roles');
+
+    $this->assertContains('test_role1', $saml_setting);
+  }
+
+  public function testKernelRequest() {
+    $config_page_loader = $this->createMock(ConfigPagesLoaderServiceInterface::class);
+
+    \Drupal::getContainer()->set('config_pages.loader', $config_page_loader);
+
+    $account = $this->createMock(AccountProxyInterface::class);
+    $account->method('hasPermission')->willReturn(TRUE);
+    $account->method('getRoles')->willReturn([]);
+
+    \Drupal::currentUser()->setAccount($account);
+
+    $ci = getenv('CI');
+    $request = Request::create('/foo/bar', 'GET', [], [], [], ['SCRIPT_NAME' => 'index.php']);
+
+    $http_kernel = $this->createMock(HttpKernelInterface::class);
+    $event = new RequestEvent($http_kernel, $request, HttpKernelInterface::MAIN_REQUEST);
+
+    $this->eventSubscriber->onKernelRequest($event);
+    $this->assertInstanceOf(RedirectResponse::class, $event->getResponse());
+
+    if ($ci) {
+      putenv("CI=$ci");
+    }
   }
 
 }
