@@ -136,6 +136,9 @@ class EventSubscriberTest extends KernelTestBase {
   }
 
   public function testKernelRequest() {
+    $ci = getenv('CI');
+    putenv('CI');
+
     $config_page_loader = $this->createMock(ConfigPagesLoaderServiceInterface::class);
 
     \Drupal::getContainer()->set('config_pages.loader', $config_page_loader);
@@ -145,8 +148,6 @@ class EventSubscriberTest extends KernelTestBase {
     $account->method('getRoles')->willReturn([]);
 
     \Drupal::currentUser()->setAccount($account);
-
-    $ci = getenv('CI');
     $request = Request::create('/foo/bar', 'GET', [], [], [], ['SCRIPT_NAME' => 'index.php']);
 
     $http_kernel = $this->createMock(HttpKernelInterface::class);
