@@ -9,6 +9,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_hide_site_search
     - field.field.config_pages.stanford_basic_site_settings.su_site_403
     - field.field.config_pages.stanford_basic_site_settings.su_site_404
+    - field.field.config_pages.stanford_basic_site_settings.su_site_a11y_contact
     - field.field.config_pages.stanford_basic_site_settings.su_site_admin_notes
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
     - field.field.config_pages.stanford_basic_site_settings.su_site_email
@@ -17,9 +18,15 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_name
     - field.field.config_pages.stanford_basic_site_settings.su_site_new_menu
     - field.field.config_pages.stanford_basic_site_settings.su_site_nobots
+    - field.field.config_pages.stanford_basic_site_settings.su_site_org
+    - field.field.config_pages.stanford_basic_site_settings.su_site_owner_contact
+    - field.field.config_pages.stanford_basic_site_settings.su_site_renewal_due
+    - field.field.config_pages.stanford_basic_site_settings.su_site_tech_contact
     - field.field.config_pages.stanford_basic_site_settings.su_site_url
   module:
+    - change_labels
     - conditional_fields
+    - cshs
     - field_group
     - link
     - text
@@ -31,8 +38,8 @@ third_party_settings:
         - su_site_admin_notes
       label: Experimental
       region: content
-      parent_name: ''
-      weight: 12
+      parent_name: group_site_details
+      weight: 13
       format_type: details
       format_settings:
         classes: ''
@@ -41,6 +48,66 @@ third_party_settings:
         open: false
         description: ''
         required_fields: false
+    group_tabs:
+      children:
+        - group_site_details
+        - group_contact_details
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_site_details:
+      children:
+        - su_site_name
+        - su_site_email
+        - su_site_url
+        - su_google_analytics
+        - su_site_dropdowns
+        - su_site_menu_levels
+        - su_hide_site_search
+        - su_hide_ext_link_icons
+        - su_site_home
+        - su_site_404
+        - su_site_403
+        - su_site_nobots
+        - group_experimental
+      label: 'Site Settings/Features'
+      region: content
+      parent_name: group_tabs
+      weight: 19
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_contact_details:
+      children:
+        - su_site_owner_contact
+        - su_site_tech_contact
+        - su_site_a11y_contact
+        - su_site_org
+      label: 'Contact Details'
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
 id: config_pages.stanford_basic_site_settings.default
 targetEntityType: config_pages
 bundle: stanford_basic_site_settings
@@ -48,7 +115,7 @@ mode: default
 content:
   su_google_analytics:
     type: string_textfield
-    weight: 3
+    weight: 4
     region: content
     settings:
       size: 60
@@ -56,29 +123,37 @@ content:
     third_party_settings: {  }
   su_hide_ext_link_icons:
     type: boolean_checkbox
-    weight: 7
+    weight: 8
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_hide_site_search:
     type: boolean_checkbox
-    weight: 6
+    weight: 7
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_site_403:
     type: options_select
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   su_site_404:
     type: options_select
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  su_site_a11y_contact:
+    type: email_default
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
     third_party_settings: {  }
   su_site_admin_notes:
     type: text_textarea
@@ -90,14 +165,14 @@ content:
     third_party_settings: {  }
   su_site_dropdowns:
     type: boolean_checkbox
-    weight: 4
+    weight: 5
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_site_email:
     type: email_default
-    weight: 1
+    weight: 2
     region: content
     settings:
       placeholder: ''
@@ -105,13 +180,13 @@ content:
     third_party_settings: {  }
   su_site_home:
     type: options_select
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   su_site_menu_levels:
     type: number
-    weight: 5
+    weight: 6
     region: content
     settings:
       placeholder: ''
@@ -135,7 +210,7 @@ content:
             selector: ''
   su_site_name:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60
@@ -150,14 +225,45 @@ content:
     third_party_settings: {  }
   su_site_nobots:
     type: boolean_checkbox
-    weight: 11
+    weight: 12
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
+  su_site_org:
+    type: cshs
+    weight: 7
+    region: content
+    settings:
+      save_lineage: false
+      force_deepest: false
+      parent: null
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
+    third_party_settings:
+      change_labels:
+        field_label_overwrite: ''
+  su_site_owner_contact:
+    type: email_default
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  su_site_tech_contact:
+    type: email_default
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
   su_site_url:
     type: link_default
-    weight: 2
+    weight: 3
     region: content
     settings:
       placeholder_url: ''
@@ -165,3 +271,4 @@ content:
     third_party_settings: {  }
 hidden:
   label: true
+  su_site_renewal_due: true

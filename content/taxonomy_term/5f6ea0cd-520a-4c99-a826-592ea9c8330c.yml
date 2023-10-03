@@ -1,0 +1,55 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 5f6ea0cd-520a-4c99-a826-592ea9c8330c
+  bundle: site_owner_orgs
+  default_langcode: en
+  depends:
+    0041f7fa-7608-4a39-9165-eb0fb9c592d5: taxonomy_term
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Student Group'
+  weight:
+    -
+      value: 2
+  parent:
+    -
+      entity: 0041f7fa-7608-4a39-9165-eb0fb9c592d5
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Student Group | University'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: 'http://default/taxonomy/term/59'
+    -
+      tag: meta
+      attributes:
+        property: 'og:site_name'
+        content: University
+    -
+      tag: meta
+      attributes:
+        property: 'og:type'
+        content: website
+    -
+      tag: meta
+      attributes:
+        property: 'og:url'
+        content: 'http://default/home'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1

@@ -4,7 +4,7 @@ services:
     parent: default_plugin_manager
   stanford_profile.event_subscriber:
     class: '\Drupal\stanford_profile\EventSubscriber\EventSubscriber'
-    arguments: ['@file_system', '@logger.factory']
+    arguments: ['@file_system', '@logger.factory', '@messenger']
     tags:
       - { name: 'event_subscriber' }
   stanford_profile.config_overrider:

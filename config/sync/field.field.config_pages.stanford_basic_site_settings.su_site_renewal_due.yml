@@ -1,0 +1,24 @@
+uuid: 457df835-c159-430b-9ef7-ce150124f017
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_renewal_due
+  module:
+    - datetime
+id: config_pages.stanford_basic_site_settings.su_site_renewal_due
+field_name: su_site_renewal_due
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Renewal Due'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: relative
+    default_date: 'now + 12months'
+default_value_callback: ''
+settings: {  }
+field_type: datetime
