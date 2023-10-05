@@ -70,6 +70,8 @@
     @include margin(0);
     @include padding(0);
 
+    list-style: none;
+
     .menu-item {
       @include modular-spacing('padding-bottom', 2);
       @include modular-spacing('padding-left', 0);
