@@ -7,7 +7,7 @@ dependencies:
     - field.field.media.video.su_media_category
     - media.type.video
   module:
-    - shs
+    - cshs
 _core:
   default_config_hash: 7asQaGZMyJ5EtC9GHpp-bYEGCmfCKgCZhEcDl4wsU6w
 id: media.video.default
@@ -32,14 +32,17 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_media_category:
-    type: options_shs
+    type: cshs
     weight: 26
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
 hidden:
   created: true

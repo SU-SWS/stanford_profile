@@ -8,11 +8,15 @@ visibility:
   request_path_pages: "/admin\r\n/admin/*\r\n/batch\r\n/node/add*\r\n/node/*/*\r\n/user/*/*"
   user_role_mode: 1
   user_role_roles:
+    administrator: administrator
     contributor: contributor
     site_manager: site_manager
     site_editor: site_editor
     site_builder: site_builder
     site_developer: site_developer
+    layout_builder_user: layout_builder_user
+    su_site_embedder: su_site_embedder
+    decoupled_site_users: decoupled_site_users
   user_account_mode: 0
 track:
   outbound: true

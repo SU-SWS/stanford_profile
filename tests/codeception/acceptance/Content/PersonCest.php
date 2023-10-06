@@ -340,4 +340,30 @@ class PersonCest {
     $I->assertEquals($values['profile_link'], $I->grabAttributeFrom('link[rel="canonical"]', 'href'), 'Metadata "canonical" should match.');
   }
 
+  /**
+   * Deleting the taxonomy term doesn't break the form.
+   */
+  public function testDeletedTerm(AcceptanceTester $I){
+    $term = $I->createEntity([
+      'name' => $this->faker->words(2, TRUE),
+      'vid' => 'stanford_person_types',
+    ], 'taxonomy_term');
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_short_title' => $this->faker->title,
+      'su_person_first_name' => $this->faker->firstName,
+      'su_person_last_name' => $this->faker->lastName,
+      'su_person_type_group' => $term->id(),
+    ]);
+    $term->delete();
+
+    $I->logInWithRole('site_manager');
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->click('Save');
+
+    $I->canSeeInCurrentUrl($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+  }
+
 }

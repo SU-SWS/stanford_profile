@@ -8,8 +8,8 @@ dependencies:
     - image.style.thumbnail
     - media.type.image
   module:
+    - cshs
     - focal_point
-    - shs
 _core:
   default_config_hash: VlvGpKQnaptFys0SJOZOeTnEs8B561SwPjIy-uFSiJE
 id: media.image.default
@@ -36,14 +36,17 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_media_category:
-    type: options_shs
+    type: cshs
     weight: 27
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
 hidden:
   created: true

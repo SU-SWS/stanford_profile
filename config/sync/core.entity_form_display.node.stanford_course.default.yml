@@ -17,10 +17,10 @@ dependencies:
     - field.field.node.stanford_course.su_shared_tags
     - node.type.stanford_course
   module:
+    - cshs
     - link
     - metatag
     - path
-    - shs
     - text
 _core:
   default_config_hash: QDRdEfbaTCodBKx86SPI4kztwbpL9XOi2KleL66-Oqc
@@ -137,14 +137,17 @@ content:
       use_details: true
     third_party_settings: {  }
   su_shared_tags:
-    type: options_shs
+    type: cshs
     weight: 29
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   title:
     type: string_textfield

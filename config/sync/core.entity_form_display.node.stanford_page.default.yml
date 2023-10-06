@@ -17,6 +17,7 @@ dependencies:
     - node.type.stanford_page
   module:
     - change_labels
+    - cshs
     - field_group
     - layout_paragraphs
     - media_library
@@ -25,7 +26,6 @@ dependencies:
     - paragraphs
     - path
     - scheduler
-    - shs
     - stanford_intranet
 third_party_settings:
   field_group:
@@ -101,14 +101,17 @@ content:
       display_label: true
     third_party_settings: {  }
   su_basic_page_type:
-    type: options_shs
+    type: cshs
     weight: 2
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   su_metatags:
     type: metatag_firehose
@@ -167,14 +170,17 @@ content:
       media_types: {  }
     third_party_settings: {  }
   su_shared_tags:
-    type: options_shs
+    type: cshs
     weight: 3
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   title:
     type: string_textfield
