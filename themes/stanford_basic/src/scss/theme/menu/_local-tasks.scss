@@ -39,10 +39,6 @@
 
     li {
       line-height: unset;
-
-      a {
-       padding: 15px;
-      }
     }
   }
 
@@ -104,12 +100,18 @@
   }
 
   a {
-    @include padding(10px null);
+    @include padding(15px);
     font-weight: 400;
     color: $su-color-white;
     background-color: $su-color-bright-blue;
     border-right: 1px solid #00548f;
     border-bottom: 1px solid #00548f;
+    text-decoration: none;
+    text-wrap: nowrap;
+
+    @include grid-media-max('sm') {
+      padding: 10px 5px;
+    }
   }
 
   a {
