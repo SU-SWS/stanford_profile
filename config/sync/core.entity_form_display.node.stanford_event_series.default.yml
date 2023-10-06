@@ -17,12 +17,12 @@ dependencies:
     - node.type.stanford_event_series
   module:
     - change_labels
+    - cshs
     - field_group
     - layout_paragraphs
     - menu_link
     - metatag
     - scheduler
-    - shs
     - stanford_intranet
 third_party_settings:
   field_group:
@@ -154,14 +154,17 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_event_series_type:
-    type: options_shs
+    type: cshs
     weight: 4
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   su_event_series_weight:
     type: number
@@ -179,14 +182,17 @@ content:
       use_details: true
     third_party_settings: {  }
   su_shared_tags:
-    type: options_shs
+    type: cshs
     weight: 31
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   title:
     type: string_textfield
