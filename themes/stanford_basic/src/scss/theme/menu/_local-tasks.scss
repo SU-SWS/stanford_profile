@@ -33,6 +33,13 @@
   ul {
     display: flex;
     flex-direction: row;
+    list-style: none;
+    margin-top: 15px;
+    padding-left: 0;
+
+    li {
+      line-height: unset;
+    }
   }
 
   &.sticky {
@@ -54,7 +61,6 @@
     order: 4;
 
     a {
-      font-size: 0;
 
       &::before {
         @include padding(null 1em);
@@ -94,12 +100,18 @@
   }
 
   a {
-    @include padding(10px null);
+    @include padding(15px);
     font-weight: 400;
     color: $su-color-white;
     background-color: $su-color-bright-blue;
     border-right: 1px solid #00548f;
     border-bottom: 1px solid #00548f;
+    text-decoration: none;
+    text-wrap: nowrap;
+
+    @include grid-media-max('sm') {
+      padding: 10px 5px;
+    }
   }
 
   a {
