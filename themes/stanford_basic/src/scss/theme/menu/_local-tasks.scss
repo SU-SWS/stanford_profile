@@ -3,22 +3,24 @@
 .stanford-basic--outline {
   outline: 0;
   position: relative;
-  transition: outline 0.5s ease-in-out;
 
-  .block--local-tasks {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
+  // Comment out the bhautton hover show/hide on the edit buttons.
+  // transition: outline 0.5s ease-in-out;
 
-  &:focus,
-  &:hover {
-    outline: 5px solid rgb(137, 206, 255);
-    outline-offset: -5px;
+  // .block--local-tasks {
+  //   opacity: 0;
+  //   transition: opacity 0.5s ease-in-out;
+  // }
 
-    .block--local-tasks {
-      opacity: 1;
-    }
-  }
+  // &:focus,
+  // &:hover {
+  //   outline: 5px solid rgb(137, 206, 255);
+  //   outline-offset: -5px;
+
+  //   .block--local-tasks {
+  //     opacity: 1;
+  //   }
+  // }
 }
 
 .block--local-tasks {
@@ -36,6 +38,11 @@
     list-style: none;
     margin-top: 15px;
     padding-left: 0;
+
+    @include grid-media-max('sm') {
+      flex-direction: column;
+      margin-top: 8px;
+    }
 
     li {
       line-height: unset;
@@ -60,6 +67,10 @@
   .delete {
     order: 4;
 
+    @include grid-media-max('sm') {
+      order: 7; // Moved to the end when in a block list.
+    }
+
     a {
 
       &::before {
@@ -83,6 +94,10 @@
   .manage-display {
     margin-left: auto;
     order: 5;
+
+    @include grid-media-max('sm') {
+      margin-left: initial;
+    }
   }
 
   .layout,
@@ -110,8 +125,9 @@
     text-wrap: nowrap;
 
     @include grid-media-max('sm') {
-      padding: 10px 5px;
+      display: block;
     }
+
   }
 
   a {
