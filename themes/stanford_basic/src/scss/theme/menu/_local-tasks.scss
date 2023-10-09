@@ -4,7 +4,7 @@
   outline: 0;
   position: relative;
 
-  // Comment out the bhautton hover show/hide on the edit buttons.
+  // Comment out the button hover show/hide on the edit buttons.
   // transition: outline 0.5s ease-in-out;
 
   // .block--local-tasks {
@@ -26,6 +26,7 @@
 .block--local-tasks {
   @include margin(0 auto 10px auto);
   z-index: 10;
+
 
   ul,
   li {
@@ -54,6 +55,16 @@
     top: 0;
     width: 100%;
     z-index: 15;
+
+    ul {
+      @include grid-media-max('md') {
+        margin-top: 15px;
+      }
+
+      @include grid-media-max('sm') {
+        margin-top: 0;
+      }
+    }
   }
 
   .page-content-label {
