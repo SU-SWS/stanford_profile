@@ -45,6 +45,10 @@
       margin-top: 8px;
     }
 
+    @media (max-width: 609px) {
+      margin-top: 0;
+    }
+
     li {
       line-height: unset;
     }
@@ -61,8 +65,8 @@
         margin-top: 15px;
       }
 
-      @include grid-media-max('sm') {
-        margin-top: 0;
+      @media (max-width: 609px) {
+        margin-top: -39px;
       }
     }
   }
