@@ -1,0 +1,14 @@
+uuid: d8fba16a-7d29-4c7f-89de-a0e7b78671f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.site_owner_orgs
+id: taxonomy_term.site_owner_orgs.default
+targetEntityType: taxonomy_term
+bundle: site_owner_orgs
+mode: default
+content: {  }
+hidden:
+  description: true
+  search_api_excerpt: true

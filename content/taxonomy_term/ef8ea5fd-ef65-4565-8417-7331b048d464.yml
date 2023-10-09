@@ -1,0 +1,53 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: ef8ea5fd-ef65-4565-8417-7331b048d464
+  bundle: site_owner_orgs
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Board of Trustees'
+  weight:
+    -
+      value: 7
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Board of Trustees | University'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: 'http://default/taxonomy/term/48'
+    -
+      tag: meta
+      attributes:
+        property: 'og:site_name'
+        content: University
+    -
+      tag: meta
+      attributes:
+        property: 'og:type'
+        content: website
+    -
+      tag: meta
+      attributes:
+        property: 'og:url'
+        content: 'http://default/home'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1

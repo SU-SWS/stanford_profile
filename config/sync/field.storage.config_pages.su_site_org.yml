@@ -1,0 +1,20 @@
+uuid: c7097cac-531a-4faa-949f-d91ebaff5e29
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - taxonomy
+id: config_pages.su_site_org
+field_name: su_site_org
+entity_type: config_pages
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

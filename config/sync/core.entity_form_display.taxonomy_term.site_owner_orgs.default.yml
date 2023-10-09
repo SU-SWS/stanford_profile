@@ -1,0 +1,25 @@
+uuid: 8552a374-507c-4d34-9c9c-459d268cbe57
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.site_owner_orgs
+id: taxonomy_term.site_owner_orgs.default
+targetEntityType: taxonomy_term
+bundle: site_owner_orgs
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true
+  publish_on: true
+  status: true
+  unpublish_on: true
