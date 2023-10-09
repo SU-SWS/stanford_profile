@@ -6,6 +6,7 @@ use Faker\Factory;
  * Test for the lockup settings.
  *
  * @group navigation
+ * @group foobar
  */
 class NavigationDropDownsCest {
 
@@ -53,13 +54,16 @@ class NavigationDropDownsCest {
     ], 'menu_link_content');
 
     $I->logInWithRole('site_manager');
-    $I->resizeWindow(1400, 700);
+    $I->resizeWindow(1400, 2000);
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->uncheckOption('Use drop down menus');
+
+    $I->click('Contact Details');
+    $I->waitForElementVisible('[data-drupal-selector="edit-group-contact-details"]');
     $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
     $I->fillField('Technical Contact (value 1)', $this->faker->email);
     $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
-    $I->selectOption('Organization', $org_term->id());
+    $I->selectOption('Org Code', $org_term->id());
     $I->click('Save');
     $I->amOnPage('/');
     $I->cantSeeElement('button', ['class' => 'su-nav-toggle']);
