@@ -45,6 +45,11 @@
       margin-top: 8px;
     }
 
+    @media screen and (max-width: 767px) and (min-width: 610px) {
+    // max-width of 767px to 610px when menu is at the top.
+      margin-top : 0;
+    }
+
     @media (max-width: 609px) {
       margin-top: 0;
     }
@@ -67,6 +72,16 @@
 
       @media (max-width: 609px) {
         margin-top: -39px;
+      }
+
+      @media screen and (max-width: 699px) and (min-width: 609px) {
+        // max-width of 699px to 609px when scrolling and menu is at the top.
+          margin-top: 39px;
+        }
+
+      @media screen and (max-width: 767px) and (min-width: 700px) {
+      // max-width of 767px to 700px when scrolling and menu is at the top.
+        margin-top: 0;
       }
     }
   }
