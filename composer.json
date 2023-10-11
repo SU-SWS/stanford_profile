@@ -8,8 +8,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://packages.drupal.org/8",
-            "exclude": ["drupal/display_field_copy"]
+            "url": "https://packages.drupal.org/8"
         },
         {
             "type": "package",
@@ -34,10 +33,6 @@
                     "reference": "master"
                 }
             }
-        },
-        {
-            "type": "vcs",
-            "url": "https://git.drupalcode.org/issue/display_field_copy-3287010.git"
         }
     ],
     "require": {
@@ -69,7 +64,7 @@
         "drupal/cshs": "^4.0",
         "drupal/default_content": "^2.0@alpha",
         "drupal/diff": "^1.0@RC",
-        "drupal/display_field_copy": "dev-3287010-automated-drupal-10 as 2.0.0",
+        "drupal/display_field_copy": "^2.0.",
         "drupal/domain_301_redirect": "^2.0",
         "drupal/ds": "^3.3",
         "drupal/editoria11y": "^2.0",
