@@ -1,0 +1,29 @@
+uuid: 1deaeb31-cb9f-4513-abce-bb83bc0743ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_org
+    - taxonomy.vocabulary.site_owner_orgs
+id: config_pages.stanford_basic_site_settings.su_site_org
+field_name: su_site_org
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: Organization
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      site_owner_orgs: site_owner_orgs
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

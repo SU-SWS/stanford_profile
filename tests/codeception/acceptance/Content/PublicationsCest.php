@@ -44,7 +44,7 @@ class PublicationsCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_publication');
     $I->fillField('Title', $this->values['node_title']);
-    $I->fillField('Publication Types', $term->id());
+    $I->selectOption('Publication Types (value 1)', $term->id());
     $I->selectOption('su_publication_citation[actions][bundle]', 'Book');
     $I->click('Add new Citation');
     $I->fillField('First Name', $this->faker->firstName);
@@ -230,7 +230,7 @@ class PublicationsCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_publication');
     $I->fillField('Title', $this->values['node_title']);
-    $I->fillField('Publication Types', $term->id());
+    $I->selectOption('Publication Types (value 1)', $term->id());
     $I->selectOption('su_publication_citation[actions][bundle]', 'Journal Article');
     $I->click('Add new Citation');
     $I->fillField('First Name', $this->faker->firstName);

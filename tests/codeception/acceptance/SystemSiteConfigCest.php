@@ -37,12 +37,21 @@ class SystemSiteConfigCest {
    * The site manager should be able to change the site name.
    */
   public function testBasicSiteSettings(AcceptanceTester $I) {
+    $org_term = $I->createEntity([
+      'vid' => 'site_owner_orgs',
+      'name' => $this->faker->words(2, TRUE),
+    ], 'taxonomy_term');
+
     $I->logInWithRole('site_manager');
     $I->amOnPage('/');
     $I->cantSee('Foo Bar Site');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->cantSee('Site URL');
     $I->fillField('Site Name', 'Foo Bar Site');
+    $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
+    $I->fillField('Technical Contact (value 1)', $this->faker->email);
+    $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
+    $I->selectOption('Organization', $org_term->id());
     $I->click('Save');
 
     $I->amOnPage('/user/logout');
@@ -61,6 +70,11 @@ class SystemSiteConfigCest {
    * Site settings config should change the home, 404, and 403 pages.
    */
   public function testSitePages(AcceptanceTester $I) {
+    $org_term = $I->createEntity([
+      'vid' => 'site_owner_orgs',
+      'name' => $this->faker->words(2, TRUE),
+    ], 'taxonomy_term');
+
     $text = $this->faker->paragraph;
     $paragraph = $I->createEntity([
       'type' => 'stanford_wysiwyg',
@@ -85,6 +99,10 @@ class SystemSiteConfigCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->selectOption('Home Page', $node->label());
+    $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
+    $I->fillField('Technical Contact (value 1)', $this->faker->email);
+    $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
+    $I->selectOption('Organization', $org_term->id());
     $I->click('Save');
     $I->canSee('Site Settings has been');
 

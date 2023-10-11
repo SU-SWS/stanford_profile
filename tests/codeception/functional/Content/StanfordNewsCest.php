@@ -48,44 +48,45 @@ class StanfordNewsCest {
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->canSeeInField('Headline', $node->label());
-    $I->waitForElementVisible('.field--name-su-news-topics [data-shs-delta="0"] select');
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="0"] select', $first_term->label());
+
+    $I->waitForElementVisible('.form-item--su-news-topics-0-target-id select.simpler-select');
+    $I->selectOption('.form-item--su-news-topics-0-target-id select.simpler-select', $first_term->id());
     $I->click('Add another item', '.field--name-su-news-topics');
-    $I->waitForElementVisible('.field--name-su-news-topics [data-shs-delta="1"] select');
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="1"] select', $second_term->label());
+    $I->waitForElementVisible('.form-item--su-news-topics-1-target-id select.simpler-select');
+    $I->selectOption('.form-item--su-news-topics-1-target-id select.simpler-select', $second_term->id());
     $I->click('Add another item', '.field--name-su-news-topics');
-    $I->waitForElementVisible('.field--name-su-news-topics [data-shs-delta="2"] select');
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="2"] select', $third_term->label());
+    $I->waitForElementVisible('.form-item--su-news-topics-2-target-id select.simpler-select');
+    $I->selectOption('.form-item--su-news-topics-2-target-id select.simpler-select', $third_term->id());
 
     $I->click('Save');
     $I->canSee($node->label(), 'h1');
     $I->canSee($first_term->label() . ', ' . $second_term->label() . ', '. $third_term->label());
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
-    $I->waitForElementVisible('.field--name-su-news-topics [data-shs-delta="2"] select');
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="0"] select', $second_term->label());
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="1"] select', $first_term->label());
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="2"] select', $third_term->label());
+    $I->waitForElementVisible('.form-item--su-news-topics-2-target-id select.simpler-select');
+    $I->selectOption('.form-item--su-news-topics-0-target-id select.simpler-select', $second_term->id());
+    $I->selectOption('.form-item--su-news-topics-1-target-id select.simpler-select', $first_term->id());
+    $I->selectOption('.form-item--su-news-topics-2-target-id select.simpler-select', $third_term->id());
 
     $I->click('Save');
     $I->canSee($node->label(), 'h1');
     $I->canSee($second_term->label() . ', ' . $first_term->label() . ', '. $third_term->label());
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
-    $I->waitForElementVisible('.field--name-su-news-topics [data-shs-delta="2"] select');
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="0"] select', $third_term->label());
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="1"] select', $second_term->label());
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="2"] select', $first_term->label());
+    $I->waitForElementVisible('.form-item--su-news-topics-2-target-id select.simpler-select');
+    $I->selectOption('.form-item--su-news-topics-0-target-id select.simpler-select', $third_term->id());
+    $I->selectOption('.form-item--su-news-topics-1-target-id select.simpler-select', $second_term->id());
+    $I->selectOption('.form-item--su-news-topics-2-target-id select.simpler-select', $first_term->id());
 
     $I->click('Save');
     $I->canSee($node->label(), 'h1');
     $I->canSee($third_term->label() . ', ' . $second_term->label() . ', '. $first_term->label());
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
-    $I->waitForElementVisible('.field--name-su-news-topics [data-shs-delta="2"] select');
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="0"] select', $third_term->label());
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="1"] select', $first_term->label());
-    $I->selectOption('.field--name-su-news-topics [data-shs-delta="2"] select', $second_term->label());
+    $I->waitForElementVisible('.form-item--su-news-topics-2-target-id select.simpler-select');
+    $I->selectOption('.form-item--su-news-topics-0-target-id select.simpler-select', $third_term->id());
+    $I->selectOption('.form-item--su-news-topics-1-target-id select.simpler-select', $first_term->id());
+    $I->selectOption('.form-item--su-news-topics-2-target-id select.simpler-select', $second_term->id());
 
     $I->click('Save');
     $I->canSee($node->label(), 'h1');

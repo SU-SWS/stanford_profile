@@ -1,0 +1,19 @@
+uuid: aee406a9-b807-4dc9-ae82-749b10952948
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_tech_contact
+id: config_pages.stanford_basic_site_settings.su_site_tech_contact
+field_name: su_site_tech_contact
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Technical Contact'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email
