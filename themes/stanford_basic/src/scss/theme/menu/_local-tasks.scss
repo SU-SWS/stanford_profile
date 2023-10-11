@@ -65,24 +65,8 @@
     width: 100%;
     z-index: 15;
 
-    ul {
-      @include grid-media-max('md') {
-        margin-top: 15px;
-      }
-
-      @media (max-width: 609px) {
-        margin-top: -39px;
-      }
-
-      @media screen and (max-width: 699px) and (min-width: 609px) {
-        // max-width of 699px to 609px when scrolling and menu is at the top.
-          margin-top: 39px;
-        }
-
-      @media screen and (max-width: 767px) and (min-width: 700px) {
-      // max-width of 767px to 700px when scrolling and menu is at the top.
-        margin-top: 0;
-      }
+    @include grid-media-max('md') {
+      position: relative;
     }
   }
 
