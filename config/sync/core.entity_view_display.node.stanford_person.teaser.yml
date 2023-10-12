@@ -5,8 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.stanford_person.body
+    - field.field.node.stanford_person.field_menulink
     - field.field.node.stanford_person.layout_builder__layout
     - field.field.node.stanford_person.stanford_intranet__access
+    - field.field.node.stanford_person.su_metatags
     - field.field.node.stanford_person.su_person_academic_appt
     - field.field.node.stanford_person.su_person_admin_appts
     - field.field.node.stanford_person.su_person_affiliations
@@ -25,6 +27,7 @@ dependencies:
     - field.field.node.stanford_person.su_person_mobile_phone
     - field.field.node.stanford_person.su_person_photo
     - field.field.node.stanford_person.su_person_profile_link
+    - field.field.node.stanford_person.su_person_pronouns
     - field.field.node.stanford_person.su_person_research
     - field.field.node.stanford_person.su_person_research_interests
     - field.field.node.stanford_person.su_person_scholarly_interests
@@ -34,29 +37,72 @@ dependencies:
     - field.field.node.stanford_person.su_shared_tags
     - node.type.stanford_person
   module:
-    - text
+    - ds
+    - empty_fields
+    - field_formatter_class
+    - stanford_media
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: minimal
+    regions:
+      card_image:
+        - su_person_photo
+      card_headline:
+        - node_title
+      card_body:
+        - su_person_short_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: ''
+          class: ''
 id: node.stanford_person.teaser
 targetEntityType: node
 bundle: stanford_person
 mode: teaser
 content:
-  body:
-    type: text_summary_or_trimmed
+  su_person_photo:
+    type: media_responsive_image_formatter
     label: hidden
     settings:
-      trim_length: 600
+      view_mode: default
+      link: false
+      image_style: responsive_1_1
+      remove_alt: '1'
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+    weight: 0
+    region: card_image
+  su_person_short_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
-    weight: 101
-    region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
-    region: content
+    weight: 2
+    region: card_body
 hidden:
+  body: true
   field_menulink: true
   layout_builder__layout: true
+  links: true
   search_api_excerpt: true
   stanford_intranet__access: true
   su_metatags: true
@@ -76,13 +122,11 @@ hidden:
   su_person_mail_code: true
   su_person_map_url: true
   su_person_mobile_phone: true
-  su_person_photo: true
   su_person_profile_link: true
   su_person_pronouns: true
   su_person_research: true
   su_person_research_interests: true
   su_person_scholarly_interests: true
-  su_person_short_title: true
   su_person_telephone: true
   su_person_type_group: true
   su_shared_tags: true
