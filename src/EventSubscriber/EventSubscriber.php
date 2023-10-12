@@ -61,8 +61,7 @@ class EventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
    *   Logger factory service.
    */
-  public function __construct(FileSystemInterface $file_system, LoggerChannelFactoryInterface $logger_factory) {
-    $this->fileSystem = $file_system;
+  public function __construct(protected FileSystemInterface $fileSystem, LoggerChannelFactoryInterface $logger_factory) {
     $this->logger = $logger_factory->get('cardinal_service_profile');
   }
 

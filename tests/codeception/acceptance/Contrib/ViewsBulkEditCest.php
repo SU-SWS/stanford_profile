@@ -67,17 +67,17 @@ class ViewsBulkEditCest {
     foreach ($this->nodes as $node) {
       $I->canSee($node->label());
     }
-    $I->checkOption('News Types');
-    $I->fillField('node[stanford_news][su_news_topics]', $news_foo_bar_baz->id());
-    $I->checkOption('Event Types');
-    $I->fillField('node[stanford_event][su_event_type]', $event_foo_bar_baz->id());
+    $I->checkOption('News Types (value 1)');
+    $I->selectOption('node[stanford_news][su_news_topics][0][target_id]', $news_foo_bar_baz->id());
+    $I->checkOption('Event Types (value 1)');
+    $I->selectOption('node[stanford_event][su_event_type][0][target_id]', $event_foo_bar_baz->id());
     $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][value][date]', date('Y-m-d'));
     $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][value][time]', '12:00:00');
     $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][end_value][date]', date('Y-m-d'));
     $I->fillField('node[stanford_event][su_event_date_time][0][time_wrapper][end_value][time]', '12:00:00');
 
-    $I->checkOption('Publication Types');
-    $I->fillField('node[stanford_publication][su_publication_topics]', $pubs_foo_bar_baz->id());
+    $I->checkOption('Publication Types (value 1)');
+    $I->selectOption('node[stanford_publication][su_publication_topics][0][target_id]', $pubs_foo_bar_baz->id());
     $I->click('Apply');
     $I->canSee('Action processing results');
 
@@ -86,15 +86,15 @@ class ViewsBulkEditCest {
 
       switch ($node->bundle()) {
         case 'stanford_event':
-          $I->canSeeInField('Event Types', $event_foo_bar_baz->id());
+          $I->canSeeOptionIsSelected('Event Types (value 1)', $event_foo_bar_baz->label());
           break;
 
         case 'stanford_news':
-          $I->canSeeInField('News Types', $news_foo_bar_baz->id());
+          $I->canSeeOptionIsSelected('News Types (value 1)', $news_foo_bar_baz->label());
           break;
 
         case 'stanford_publication':
-          $I->canSeeInField('Publication Types', $pubs_foo_bar_baz->id());
+          $I->canSeeOptionIsSelected('Publication Types (value 1)', $pubs_foo_bar_baz->label());
           break;
       }
     }

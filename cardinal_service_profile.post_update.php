@@ -6,6 +6,7 @@
  */
 
 use Drupal\block\Entity\Block;
+use Drupal\Core\Serialization\Yaml;
 
 /**
  * Implements hook_removed_post_updates().
@@ -91,4 +92,36 @@ function cardinal_service_profile_post_update_samlauth() {
   $ignored[] = 'samlauth.authentication:map_users_roles';
   $ignore_settings->set('ignored_config_entities', $ignored)->save();
   \Drupal::service('module_installer')->install(['stanford_samlauth']);
+}
+
+/**
+ * Create site org vocab and terms.
+ */
+function cardinal_service_profile_post_update_site_orgs() {
+  $vocab_storage = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary');
+  if (!$vocab_storage->load('site_owner_orgs')) {
+    $vocab_storage->create([
+      'uuid' => '0611ae1d-2ab4-46c3-9cc8-2259355f0852',
+      'vid' => 'site_owner_orgs',
+      'name' => 'Site Owner Orgs',
+    ])->save();
+
+    $profile_name = \Drupal::config('core.extension')->get('profile');
+    $profile_path = \Drupal::service('extension.list.profile')
+      ->getPath($profile_name);
+
+    /** @var \Drupal\default_content\Normalizer\ContentEntityNormalizer $importer */
+    $normalizer = \Drupal::service('default_content.content_entity_normalizer');
+
+    $files = \Drupal::service('default_content.content_file_storage')
+      ->scan("$profile_path/content/taxonomy_term");
+
+    foreach ($files as $file) {
+      $term = Yaml::decode(file_get_contents($file->uri));
+      if ($term['_meta']['bundle'] == 'site_owner_orgs') {
+        $normalizer->denormalize($term)->save();
+      }
+    }
+  }
 }

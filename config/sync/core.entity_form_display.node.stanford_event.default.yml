@@ -31,6 +31,7 @@ dependencies:
   module:
     - address
     - change_labels
+    - cshs
     - field_group
     - layout_paragraphs
     - link
@@ -38,7 +39,6 @@ dependencies:
     - paragraphs
     - readonly_field_widget
     - scheduler
-    - shs
     - smart_date
     - stanford_intranet
     - telephone
@@ -335,14 +335,17 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_event_type:
-    type: options_shs
+    type: cshs
     weight: 0
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   su_metatags:
     type: metatag_firehose
@@ -353,14 +356,17 @@ content:
       use_details: true
     third_party_settings: {  }
   su_shared_tags:
-    type: options_shs
+    type: cshs
     weight: 10
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   title:
     type: string_textfield

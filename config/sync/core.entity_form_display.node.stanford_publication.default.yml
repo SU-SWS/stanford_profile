@@ -16,6 +16,7 @@ dependencies:
     - node.type.stanford_publication
   module:
     - change_labels
+    - cshs
     - inline_entity_form
     - layout_paragraphs
     - link
@@ -23,7 +24,6 @@ dependencies:
     - path
     - react_paragraphs
     - scheduler
-    - shs
     - stanford_intranet
 id: node.stanford_publication.default
 targetEntityType: node
@@ -130,24 +130,30 @@ content:
       media_types: {  }
     third_party_settings: {  }
   su_publication_topics:
-    type: options_shs
+    type: cshs
     weight: 2
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   su_shared_tags:
-    type: options_shs
+    type: cshs
     weight: 11
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
+      save_lineage: false
       force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   title:
     type: string_textfield

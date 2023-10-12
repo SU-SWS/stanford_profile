@@ -51,10 +51,10 @@ map_users_roles:
   layout_builder_user: layout_builder_user
   decoupled_site_users: decoupled_site_users
 create_users: true
-sync_name: false
-sync_mail: false
+sync_name: true
+sync_mail: true
 user_name_attribute: ''
-user_mail_attribute: mail
+user_mail_attribute: eduPersonPrincipalName
 request_set_name_id_policy: true
 strict: true
 security_metadata_sign: false

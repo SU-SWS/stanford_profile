@@ -1,0 +1,20 @@
+uuid: de4bf1cb-94f5-493f-9bfb-7ab1ac10e3fb
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - datetime
+id: config_pages.su_site_renewal_due
+field_name: su_site_renewal_due
+entity_type: config_pages
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

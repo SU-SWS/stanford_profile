@@ -3,27 +3,30 @@
 .stanford-basic--outline {
   outline: 0;
   position: relative;
-  transition: outline 0.5s ease-in-out;
 
-  .block--local-tasks {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
+  // Comment out the button hover show/hide on the edit buttons.
+  // transition: outline 0.5s ease-in-out;
 
-  &:focus,
-  &:hover {
-    outline: 5px solid rgb(137, 206, 255);
-    outline-offset: -5px;
+  // .block--local-tasks {
+  //   opacity: 0;
+  //   transition: opacity 0.5s ease-in-out;
+  // }
 
-    .block--local-tasks {
-      opacity: 1;
-    }
-  }
+  // &:focus,
+  // &:hover {
+  //   outline: 5px solid rgb(137, 206, 255);
+  //   outline-offset: -5px;
+
+  //   .block--local-tasks {
+  //     opacity: 1;
+  //   }
+  // }
 }
 
 .block--local-tasks {
   @include margin(0 auto 10px auto);
   z-index: 10;
+
 
   ul,
   li {
@@ -33,6 +36,27 @@
   ul {
     display: flex;
     flex-direction: row;
+    list-style: none;
+    margin-top: 15px;
+    padding-left: 0;
+
+    @include grid-media-max('sm') {
+      flex-direction: column;
+      margin-top: 8px;
+    }
+
+    @media screen and (max-width: 767px) and (min-width: 610px) {
+    // max-width of 767px to 610px when menu is at the top.
+      margin-top : 0;
+    }
+
+    @media (max-width: 609px) {
+      margin-top: 0;
+    }
+
+    li {
+      line-height: unset;
+    }
   }
 
   &.sticky {
@@ -40,6 +64,10 @@
     top: 0;
     width: 100%;
     z-index: 15;
+
+    @include grid-media-max('md') {
+      position: relative;
+    }
   }
 
   .page-content-label {
@@ -53,8 +81,11 @@
   .delete {
     order: 4;
 
+    @include grid-media-max('sm') {
+      order: 7; // Moved to the end when in a block list.
+    }
+
     a {
-      font-size: 0;
 
       &::before {
         @include padding(null 1em);
@@ -77,6 +108,10 @@
   .manage-display {
     margin-left: auto;
     order: 5;
+
+    @include grid-media-max('sm') {
+      margin-left: initial;
+    }
   }
 
   .layout,
@@ -94,12 +129,19 @@
   }
 
   a {
-    @include padding(10px null);
+    @include padding(15px);
     font-weight: 400;
     color: $su-color-white;
     background-color: $su-color-bright-blue;
     border-right: 1px solid #00548f;
     border-bottom: 1px solid #00548f;
+    text-decoration: none;
+    text-wrap: nowrap;
+
+    @include grid-media-max('sm') {
+      display: block;
+    }
+
   }
 
   a {

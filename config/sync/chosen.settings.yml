@@ -6,13 +6,14 @@ disable_search_threshold: 0
 minimum_width: 150
 max_shown_results: null
 use_relative_width: false
-jquery_selector: 'select:visible'
+jquery_selector: "select:not([class*='simpler-select']):visible"
 search_contains: false
 disable_search: false
 allow_single_deselect: false
 disabled_themes:
   seven: '0'
   stanford_basic: '0'
+  stanford_profile_admin: '0'
 chosen_include: 2
 placeholder_text_multiple: 'Choose some options'
 placeholder_text_single: 'Choose an option'

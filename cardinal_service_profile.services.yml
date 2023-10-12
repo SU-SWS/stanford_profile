@@ -4,7 +4,7 @@ services:
     parent: default_plugin_manager
   cardinal_service_profile.event_subscriber:
     class: '\Drupal\cardinal_service_profile\EventSubscriber\EventSubscriber'
-    arguments: ['@file_system', '@logger.factory']
+    arguments: ['@file_system', '@logger.factory', '@messenger']
     tags:
       - { name: 'event_subscriber' }
   cardinal_service_profile.config_overrider:
