@@ -11,6 +11,3 @@ import 'decanter/core/src/js/components/components.js';
 // Import this theme's components.
 import './polyfills/index.js';
 import './components/index.js';
-
-// MY Base SCSS styles.
-import '../scss/base/index.scss';
