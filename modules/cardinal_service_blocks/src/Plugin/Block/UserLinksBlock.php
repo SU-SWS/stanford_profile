@@ -93,7 +93,7 @@ class UserLinksBlock extends BlockBase implements ContainerFactoryPluginInterfac
     $context = parent::getCacheContexts();
     // Make the block cache different for each page since the login link has a
     // destination parameter.
-    return Cache::mergeContexts($context, ['user', 'url.path', 'url.query_args']);
+    return Cache::mergeContexts($context, ['url.path']);
   }
 
   /**
@@ -182,7 +182,7 @@ class UserLinksBlock extends BlockBase implements ContainerFactoryPluginInterfac
       // Only add the destination if the user was on the list of opportunities.
       // All other login urls will push the user to their dashboard upon logging
       // in.
-      if (strpos($destination, '/opportunities') === 0) {
+      if (str_starts_with($destination, '/opportunities')) {
         $options = [
           'query' => ['destination' => htmlspecialchars($destination)],
         ];
