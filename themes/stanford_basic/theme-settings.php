@@ -37,6 +37,22 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
     '#default_value' => theme_get_setting('brand_bar_variant'),
   ];
 
+  // Global footer support.
+  $form['options_settings']['stanford_basic_global_footer'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Global Footer Settings'),
+  ];
+
+  $form['options_settings']['stanford_basic_global_footer']['global_footer_variant'] = [
+    '#type' => 'select',
+    '#title' => t('Global Footer Variant'),
+    '#options' => [
+      'default' => '- Default -',
+      'dark' => t('Dark'),
+    ],
+    '#default_value' => theme_get_setting('global_footer_variant'),
+  ];
+
   $img = '<img src="' . base_path() . \Drupal::service('extension.list.theme')
       ->getPath('stanford_basic') . '/dist/assets/img/lockup-example.png" />';
   $decanter = Link::fromTextAndUrl('Decanter Lockup Component', Url::fromUri('https://decanter.stanford.edu/component/identity-lockup/'))
