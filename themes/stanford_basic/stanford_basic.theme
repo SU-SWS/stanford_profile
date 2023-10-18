@@ -257,8 +257,7 @@ function stanford_basic_preprocess_page(&$vars) {
     $vars['brand_bar_variant'] = 'su-brand-bar--' . $bbv;
   }
   // Variant setting for the global footer.
-  $global_footer_variant = theme_get_setting('global_footer_variant');
-  if ($global_footer_variant !== "none") {
+  if ($global_footer_variant = theme_get_setting('global_footer_variant')) {
     $vars['global_footer_variant'] = 'su-global-footer--' . $global_footer_variant;
   }
 

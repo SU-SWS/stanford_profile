@@ -47,9 +47,9 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
     '#type' => 'select',
     '#title' => t('Global Footer Variant'),
     '#options' => [
-      'default' => '- Default -',
       'dark' => t('Dark'),
     ],
+    '#empty_option' => t('- Default -'),
     '#default_value' => theme_get_setting('global_footer_variant'),
   ];
 
