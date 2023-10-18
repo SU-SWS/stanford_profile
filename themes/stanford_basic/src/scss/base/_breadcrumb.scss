@@ -1,0 +1,24 @@
+@charset 'UTF-8';
+
+//Breadcrumbs.
+.breadcrumb {
+  @include responsive-spacing('padding-top', 0);
+
+  ol {
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+
+    &::before {
+      content: " / ";
+    }
+
+    &:first-of-type {
+      &::before {
+        content: " ";
+      }
+    }
+  }
+}
