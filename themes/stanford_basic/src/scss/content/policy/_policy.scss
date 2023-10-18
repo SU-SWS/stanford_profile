@@ -9,23 +9,6 @@
     }
   }
 
-  //Breadcrumbs.
-  .breadcrumb {
-    @include responsive-spacing('padding-top', 0);
-
-    li {
-      &::before {
-        content: " / ";
-      }
-
-      &:first-of-type {
-        &::before {
-          content: " ";
-        }
-      }
-    }
-  }
-
   // Previous and Next
   .book-forward-back {
     a {

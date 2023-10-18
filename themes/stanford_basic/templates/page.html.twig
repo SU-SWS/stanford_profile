@@ -44,8 +44,8 @@
       {%- block block_help -%}
         {{ page.help }}
       {%- endblock -%}
-      
-      <section>
+
+      <section class="su-masthead--inner">
         {{ page.header }}
         {{ page.search }}
         {{ page.menu }}
@@ -65,7 +65,7 @@
 {%- block block_footer -%}
   <footer id="footer">
     {{ page.footer }}
-    {%- include template_global_footer -%}
+    {%- include template_global_footer with { modifier_class : global_footer_variant }  -%}
   </footer>
 {%- endblock -%}
 
