@@ -1,0 +1,39 @@
+uuid: 7e6155a8-4062-4894-9e8e-f673b4eb7e01
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.variant_1
+    - field.field.paragraph.stanford_top_banner.su_banner_body
+    - field.field.paragraph.stanford_top_banner.su_banner_button
+    - field.field.paragraph.stanford_top_banner.su_banner_header
+    - field.field.paragraph.stanford_top_banner.su_banner_image
+    - field.field.paragraph.stanford_top_banner.su_banner_sup_header
+    - paragraphs.paragraphs_type.stanford_top_banner
+  module:
+    - field_formatter_class
+    - stanford_media
+id: paragraph.stanford_top_banner.variant_1
+targetEntityType: paragraph
+bundle: stanford_top_banner
+mode: variant_1
+content:
+  su_banner_image:
+    type: media_responsive_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      image_style: card_2_1
+      remove_alt: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true
+  su_banner_body: true
+  su_banner_button: true
+  su_banner_header: true
+  su_banner_sup_header: true

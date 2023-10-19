@@ -1,0 +1,19 @@
+uuid: b1e1f65b-d41f-46f4-bc8f-c259214e020f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_banner_sup_header
+    - paragraphs.paragraphs_type.stanford_top_banner
+id: paragraph.stanford_top_banner.su_banner_sup_header
+field_name: su_banner_sup_header
+entity_type: paragraph
+bundle: stanford_top_banner
+label: Superhead
+description: 'Smaller heading above the main headline'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

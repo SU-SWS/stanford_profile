@@ -1,0 +1,105 @@
+uuid: 5c8b4160-65a4-4138-8815-7830bc9fc0a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_top_banner.su_banner_body
+    - field.field.paragraph.stanford_top_banner.su_banner_button
+    - field.field.paragraph.stanford_top_banner.su_banner_header
+    - field.field.paragraph.stanford_top_banner.su_banner_image
+    - field.field.paragraph.stanford_top_banner.su_banner_sup_header
+    - paragraphs.paragraphs_type.stanford_top_banner
+  module:
+    - ds
+    - empty_fields
+    - field_formatter_class
+    - link
+    - stanford_fields
+    - stanford_media
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_hero
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      hero_image:
+        - su_banner_image
+      hero_super_headline:
+        - su_banner_sup_header
+      hero_body:
+        - su_banner_header
+        - su_banner_body
+        - su_banner_button
+id: paragraph.stanford_top_banner.default
+targetEntityType: paragraph
+bundle: stanford_top_banner
+mode: default
+content:
+  su_banner_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: hero_body
+  su_banner_button:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+    weight: 4
+    region: hero_body
+  su_banner_header:
+    type: entity_title_heading
+    label: hidden
+    settings:
+      tag: h1
+      linked: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+    weight: 2
+    region: hero_body
+  su_banner_image:
+    type: media_responsive_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      image_style: stanford_hero_block_wide
+      remove_alt: 0
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+    weight: 0
+    region: hero_image
+  su_banner_sup_header:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: hero_super_headline
+hidden:
+  search_api_excerpt: true

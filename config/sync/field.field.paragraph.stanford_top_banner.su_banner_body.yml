@@ -1,0 +1,24 @@
+uuid: c6db971b-1811-453c-a85d-dfd57c6cc677
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_banner_body
+    - filter.format.stanford_minimal_html
+    - paragraphs.paragraphs_type.stanford_top_banner
+  module:
+    - text
+id: paragraph.stanford_top_banner.su_banner_body
+field_name: su_banner_body
+entity_type: paragraph
+bundle: stanford_top_banner
+label: Body
+description: 'The main content area for the banner. Shows up in an opaque box over the image. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - stanford_minimal_html
+field_type: text_long

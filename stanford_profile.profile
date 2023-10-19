@@ -36,3 +36,28 @@ function stanford_profile_config_pages_presave(ConfigPages $config_page) {
     \Drupal::service('router.builder')->rebuild();
   }
 }
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function stanford_profile_entity_field_access($operation, \Drupal\Core\Field\FieldDefinitionInterface $field_definition, \Drupal\Core\Session\AccountInterface $account, \Drupal\Core\Field\FieldItemListInterface $items = NULL) {
+  if (
+    $field_definition->getName() == 'title' &&
+    $items?->getEntity() instanceof \Drupal\node\NodeInterface &&
+    $items?->getEntity()->bundle() == 'stanford_page' &&
+    $items?->getEntity()->get('su_page_banner')->count()
+  ) {
+    $banner_id = $items->getEntity()
+      ->get('su_page_banner')
+      ->get(0)
+      ->get('target_id')
+      ->getString();
+
+    $top_banner = \Drupal::entityTYpeManager()
+      ->getStorage('paragraph')
+      ->load($banner_id);
+
+    return \Drupal\Core\Access\AccessResult::forbiddenIf($top_banner?->bundle() == 'stanford_top_banner' && $operation == 'view');
+  }
+  return \Drupal\Core\Access\AccessResult::neutral();
+}
