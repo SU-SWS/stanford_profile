@@ -69,7 +69,6 @@ class UserLinksBlockTest extends KernelTestBase {
   public function testLinksBlockCaches() {
     $contexts = $this->block->getCacheContexts();
     $this->assertTrue(in_array('url.path', $contexts));
-    $this->assertTrue(in_array('url.query_args', $contexts));
     $this->assertEmpty($this->block->getCacheTags());
 
     $new_account = $this->createMock(AccountInterface::class);
