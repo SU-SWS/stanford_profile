@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const FileManagerPlugin = require('filemanager-webpack-plugin');
+const autoprefixer = require('autoprefixer')({ grid: true });
 
 const config = {
   isProd: process.env.NODE_ENV === "production",
@@ -57,7 +58,15 @@ var webpackConfig = {
         use: [
           config.isProd ? { loader: MiniCssExtractPlugin.loader } : 'style-loader',
           {loader:'css-loader', options: {}},
-          {loader:'postcss-loader', options: {}},
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                sourceMap: true,
+                plugins: [autoprefixer],
+              },
+            }
+          },
           {loader:'sass-loader', options: {}}
         ]
       },
