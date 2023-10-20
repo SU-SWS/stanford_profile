@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Factory;
 use Drupal\config_pages\Entity\ConfigPages;
 
 /**
@@ -8,6 +9,12 @@ use Drupal\config_pages\Entity\ConfigPages;
  * @group ext_links
  */
 class ExtLinkCest {
+
+  /**
+   * @var Faker
+   */
+  protected $faker;
+
   /**
    * Start with a clean config page.
    *
@@ -16,6 +23,13 @@ class ExtLinkCest {
    */
   public function _before(FunctionalTester $I){
     $this->_after($I);
+  }
+
+  /**
+   * Test Constructor.
+   */
+  public function __construct() {
+    $this->faker = Factory::create();
   }
 
   /**
@@ -37,10 +51,22 @@ class ExtLinkCest {
    * Test external links get the added class and svg.
    */
   public function testExtLink(FunctionalTester $I) {
+    $org_term = $I->createEntity([
+      'vid' => 'site_owner_orgs',
+      'name' => $this->faker->words(2, TRUE),
+    ], 'taxonomy_term');
+
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->uncheckOption('Hide External Link Icons');
+
+    $I->click('Contact Details');
+    $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
+    $I->fillField('Technical Contact (value 1)', $this->faker->email);
+    $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
+    $I->selectOption('Org Code', $org_term->id());
     $I->click('Save');
+    $I->cansee('has been updated');
 
     $I->amOnPage('/admin/config/system/local-footer');
     $I->checkOption('#edit-su-footer-enabled-value');
