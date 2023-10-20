@@ -1,5 +1,6 @@
 _core:
   default_config_hash: v7E8C8wJWeAW2BGohMNY1tZSBc4bexM6O62tGxecTfE
+mode: simple
 ignored_config_entities:
   - 'core.extension:theme'
   - 'system.theme:default'
@@ -9,10 +10,15 @@ ignored_config_entities:
   - '~block.block.cardinal_service_*'
   - '~block.block.minimally_branded_subtheme_*'
   - 'block.block.*'
+  - 'core.extension:theme'
   - 'google_tag.container.*'
-  - 'user.role.custm_*'
-  - 'system.action.user_add_role_action.custm_*'
-  - 'system.action.user_remove_role_action.custm_*'
   - 'next.next_site.*'
   - 'samlauth.authentication:map_users_roles'
-enable_export_filtering: false
+  - 'system.action.user_add_role_action.custm_*'
+  - 'system.action.user_remove_role_action.custm_*'
+  - 'system.theme:default'
+  - 'user.role.custm_*'
+  - '~block.block.claro_*'
+  - '~block.block.minimally_branded_subtheme_*'
+  - '~block.block.stanford_basic_*'
+  - '~block.block.stanford_profile_admin_*'
