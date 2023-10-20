@@ -21,6 +21,7 @@ use Drupal\user\RoleInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
@@ -116,6 +117,7 @@ class EventSubscriber implements EventSubscriberInterface {
     $current_uri = $event->getRequest()->getRequestUri();
 
     if (
+      $event->getRequestType() == HttpKernelInterface::MAIN_REQUEST &&
       $current_uri != '/admin/config/system/basic-site-settings' &&
       self::redirectUser()
     ) {
@@ -132,10 +134,15 @@ class EventSubscriber implements EventSubscriberInterface {
    *   Redirect the user.
    */
   protected static function redirectUser() {
+    $current_user = \Drupal::currentUser();
     $cache = \Drupal::cache();
-    if ($cache_data = $cache->get('su_renew_site')) {
+    if ($cache_data = $cache->get('su_renew_site:' . $current_user->id())) {
       return $cache_data->data;
     }
+
+    /** @var \Drupal\Core\Routing\CurrentRouteMatch $route_match */
+    $route_match = \Drupal::service('current_route_match');
+    $name = $route_match->getCurrentRouteMatch()->getRouteName();
 
     /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_page_loader */
     $config_page_loader = \Drupal::service('config_pages.loader');
@@ -143,12 +150,13 @@ class EventSubscriber implements EventSubscriberInterface {
 
     // Check for config page edit access and ignore if the user is an
     // administrator. That way devs don't get forced into submitting the form.
-    $current_user = \Drupal::currentUser();
+
     $site_manager = $current_user->hasPermission('edit stanford_basic_site_settings config page entity') && !in_array('administrator', $current_user->getRoles());
 
+    $ignore_routes = ['system.css_asset', 'system.js_asset'];
     // If the renewal date has passed, they should be redirected.
-    $needs_renewal = !getenv('CI') && $site_manager && (strtotime($renewal_date) - time() < 60 * 60 * 24);
-    $cache->set('su_renew_site', $needs_renewal, time() + 60 * 60 * 24);
+    $needs_renewal = !in_array($name, $ignore_routes) && !getenv('CI') && $site_manager && (strtotime($renewal_date) - time() < 60 * 60 * 24);
+    $cache->set('su_renew_site:' . $current_user->id(), $needs_renewal, time() + 60 * 60 * 24);
 
     return $needs_renewal;
   }
