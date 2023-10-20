@@ -143,7 +143,7 @@ class WYSIWYGCest {
     $I->waitForText('Decorative Image');
     $I->click('Save and insert', '.media-library-widget-modal .ui-dialog-buttonset');
     $I->waitForElementNotVisible('.media-library-widget-modal');
-    $I->wait(1);
+    $I->wait(2);
 
     $I->click('Save', '.ui-dialog-buttonpane');
     $I->waitForAjaxToFinish();
