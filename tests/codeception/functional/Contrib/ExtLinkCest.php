@@ -66,7 +66,7 @@ class ExtLinkCest {
     $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
     $I->selectOption('Org Code', $org_term->id());
     $I->click('Save');
-    $I->cansee('has been updated');
+    $I->canSee('Site Settings has been');
 
     $I->amOnPage('/admin/config/system/local-footer');
     $I->checkOption('#edit-su-footer-enabled-value');

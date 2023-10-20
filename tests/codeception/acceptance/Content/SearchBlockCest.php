@@ -44,6 +44,7 @@ class SearchBlockCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->uncheckOption('Hide Site Search');
     $I->click('Save');
+    $I->canSee('Site Settings has been');
     $I->amOnPage('/');
     $I->seeElement('.su-site-search__input');
   }

@@ -53,6 +53,7 @@ class SystemSiteConfigCest {
     $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
     $I->selectOption('Organization', $org_term->id());
     $I->click('Save');
+    $I->canSee('Site Settings has been');
 
     $I->amOnPage('/user/logout');
     $I->amOnPage('/');
@@ -62,6 +63,7 @@ class SystemSiteConfigCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->fillField('Site Name', '');
     $I->click('Save');
+    $I->canSee('Site Settings has been');
     $I->amOnPage('/');
     $I->cantSee('Foo Bar Site');
   }
@@ -131,13 +133,26 @@ class SystemSiteConfigCest {
    * Google Analytics account should be added for anonymous users.
    */
   protected function experimentalTestGoogleAnalytics(AcceptanceTester $I) {
+    $org_term = $I->createEntity([
+      'vid' => 'site_owner_orgs',
+      'name' => $this->faker->words(2, TRUE),
+    ], 'taxonomy_term');
+
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->fillField('Google Analytics Account', 'abcdefg');
+
+    $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
+    $I->fillField('Technical Contact (value 1)', $this->faker->email);
+    $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
+    $I->selectOption('Org Code', $org_term->id());
+
     $I->click('Save');
     $I->canSee('1 error has been found: Google Analytics Account');
     $I->fillField('Google Analytics Account', 'UA-123456-12');
     $I->click('Save');
+    $I->canSee('Site Settings has been');
+
     $I->amOnPage('/user/logout');
     $I->amOnPage('/');
     $I->canSee('UA-123456-12');
@@ -145,6 +160,7 @@ class SystemSiteConfigCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->fillField('Google Analytics Account', '');
     $I->click('Save');
+    $I->canSee('Site Settings has been');
     $I->amOnPage('/user/logout');
     $I->amOnPage('/');
     $I->cantSee('UA-12456-12');

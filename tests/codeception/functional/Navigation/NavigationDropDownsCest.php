@@ -65,12 +65,14 @@ class NavigationDropDownsCest {
     $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
     $I->selectOption('Org Code', $org_term->id());
     $I->click('Save');
+    $I->canSee('Site Settings has been');
     $I->amOnPage('/');
     $I->cantSeeElement('button', ['class' => 'su-nav-toggle']);
 
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->checkOption('Use drop down menus');
     $I->click('Save');
+    $I->canSee('Site Settings has been');
 
     $node_title = Factory::create()->text(20);
 
