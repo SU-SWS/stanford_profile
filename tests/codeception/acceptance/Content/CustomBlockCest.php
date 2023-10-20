@@ -25,7 +25,7 @@ class CustomBlockCest {
   public function testCustomBlockAccess(AcceptanceTester $I) {
     $block = $I->createEntity([
       'type' => 'stanford_component_block',
-      'info' => $this->faker->word(3, true),
+      'info' => $this->faker->word(3, TRUE),
     ], 'block_content');
     $I->logInWithRole('site_manager');
     $I->amOnPage($block->toUrl()->toString());

@@ -343,7 +343,7 @@ class PersonCest {
   /**
    * Deleting the taxonomy term doesn't break the form.
    */
-  public function testDeletedTerm(AcceptanceTester $I){
+  public function testDeletedTerm(AcceptanceTester $I) {
     $term = $I->createEntity([
       'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',

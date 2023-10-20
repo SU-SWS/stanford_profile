@@ -21,7 +21,7 @@ class ExtLinkCest {
    * @param \AcceptanceTester $I
    *   Tester.
    */
-  public function _before(FunctionalTester $I){
+  public function _before(FunctionalTester $I) {
     $this->_after($I);
   }
 
@@ -66,7 +66,7 @@ class ExtLinkCest {
     $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
     $I->selectOption('Org Code', $org_term->id());
     $I->click('Save');
-    $I->canSee('Site Settings has been');
+    $I->canSee('Site Settings has been', '.messages-list');
 
     $I->amOnPage('/admin/config/system/local-footer');
     $I->checkOption('#edit-su-footer-enabled-value');
@@ -88,6 +88,7 @@ class ExtLinkCest {
     $I->fillField('su_local_foot_second[1][title]', 'Another secondary link');
 
     $I->click('Save');
+    $I->see('Local Footer has been', '.messages-list');
 
     // Validate email links.
     $I->amOnPage('/');

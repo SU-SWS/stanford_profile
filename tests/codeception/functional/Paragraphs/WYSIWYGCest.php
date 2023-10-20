@@ -54,7 +54,6 @@ class WYSIWYGCest {
     $I->canSee('Level 05 Heading', 'h5');
     $I->cantSeeElement('h6');
 
-
     # Text Tags
     $I->canSee('A small paragraph', 'p');
     $I->canSee('Normal Link', 'a');
@@ -156,7 +155,7 @@ class WYSIWYGCest {
   /**
    * Test media category taxonomy field.
    */
-  public function testImageCategory(FunctionalTester $I){
+  public function testImageCategory(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I);
 
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
@@ -214,7 +213,7 @@ class WYSIWYGCest {
     $I->waitForAjaxToFinish();
     $I->cantSee($media->label());
 
-    $I->selectOption('Category', '-'. $child_term->label());
+    $I->selectOption('Category', '-' . $child_term->label());
     $I->click('Apply filters');
     $I->waitForAjaxToFinish();
     $I->canSee($media->label());

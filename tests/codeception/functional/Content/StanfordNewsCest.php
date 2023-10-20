@@ -60,7 +60,7 @@ class StanfordNewsCest {
 
     $I->click('Save');
     $I->canSee($node->label(), 'h1');
-    $I->canSee($first_term->label() . ', ' . $second_term->label() . ', '. $third_term->label());
+    $I->canSee($first_term->label() . ', ' . $second_term->label() . ', ' . $third_term->label());
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->waitForElementVisible('.form-item--su-news-topics-2-target-id select.simpler-select');
@@ -70,7 +70,7 @@ class StanfordNewsCest {
 
     $I->click('Save');
     $I->canSee($node->label(), 'h1');
-    $I->canSee($second_term->label() . ', ' . $first_term->label() . ', '. $third_term->label());
+    $I->canSee($second_term->label() . ', ' . $first_term->label() . ', ' . $third_term->label());
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->waitForElementVisible('.form-item--su-news-topics-2-target-id select.simpler-select');
@@ -80,7 +80,7 @@ class StanfordNewsCest {
 
     $I->click('Save');
     $I->canSee($node->label(), 'h1');
-    $I->canSee($third_term->label() . ', ' . $second_term->label() . ', '. $first_term->label());
+    $I->canSee($third_term->label() . ', ' . $second_term->label() . ', ' . $first_term->label());
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->waitForElementVisible('.form-item--su-news-topics-2-target-id select.simpler-select');
@@ -90,7 +90,7 @@ class StanfordNewsCest {
 
     $I->click('Save');
     $I->canSee($node->label(), 'h1');
-    $I->canSee($third_term->label() . ', ' . $first_term->label() . ', '. $second_term->label());
+    $I->canSee($third_term->label() . ', ' . $first_term->label() . ', ' . $second_term->label());
   }
 
 }

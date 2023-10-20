@@ -32,7 +32,6 @@ class EntityReferenceCest {
    * News items should display in the list paragraph.
    */
   public function testEntityReference(FunctionalTester $I) {
-
     $news = $I->createEntity([
       'type' => 'stanford_news',
       'title' => $this->faker->words(3, TRUE),
@@ -47,7 +46,7 @@ class EntityReferenceCest {
     $I->click('Edit', '.lpb-controls');
 
     $I->waitForText('Content Item(s)');
-    $I->fillField('[name="su_entity_item[0][target_id]"]', $news->label() . ' (' .$news->id(). ')');
+    $I->fillField('[name="su_entity_item[0][target_id]"]', $news->label() . ' (' . $news->id() . ')');
 
     $I->click('Save', '.ui-dialog-buttonpane');
     $I->waitForElementNotVisible('.ui-dialog');
@@ -85,7 +84,7 @@ class EntityReferenceCest {
     $I->click('Edit', '.lpb-controls');
 
     $I->waitForText('Content Item(s)');
-    $I->fillField('[name="su_entity_item[0][target_id]"]', $publication->label() . ' (' .$publication->id(). ')');
+    $I->fillField('[name="su_entity_item[0][target_id]"]', $publication->label() . ' (' . $publication->id() . ')');
 
     $I->click('Save', '.ui-dialog-buttonpane');
     $I->waitForElementNotVisible('.ui-dialog');

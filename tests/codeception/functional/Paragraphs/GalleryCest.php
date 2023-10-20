@@ -27,7 +27,6 @@ class GalleryCest {
    * Create a basic page with a gallery and check the colorbox actions.
    */
   public function testGallery(FunctionalTester $I) {
-
     $I->logInWithRole('contributor');
 
     $node = $this->getNode($I);
@@ -76,7 +75,7 @@ class GalleryCest {
     $I->assertNotEquals($first_image_src, $second_image_src);
   }
 
-  protected function getNode(FunctionalTester $I){
+  protected function getNode(FunctionalTester $I) {
     $paragraph = $I->createEntity([
       'type' => 'stanford_gallery',
     ], 'paragraph');
