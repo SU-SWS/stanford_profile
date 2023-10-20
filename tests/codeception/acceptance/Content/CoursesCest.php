@@ -79,7 +79,6 @@ class CoursesCest {
     $I->canSee('This page will redirect');
   }
 
-
   /**
    * Create a Course Node.
    *

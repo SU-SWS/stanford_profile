@@ -31,7 +31,10 @@ class BasicPageCest {
    */
   public function testCreatingPage(AcceptanceTester $I) {
     $node_title = $this->faker->text(20);
-    $node = $I->createEntity(['type' => 'stanford_page', 'title' => $node_title]);
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $node_title,
+    ]);
 
     $I->logInWithRole('site_manager');
     $I->amOnPage($node->toUrl('edit-form')->toString());
@@ -69,9 +72,12 @@ class BasicPageCest {
   /**
    * Test deleting menu items clears them from the main menu.
    */
-  public function testDeletedMenuItems(AcceptanceTester $I){
+  public function testDeletedMenuItems(AcceptanceTester $I) {
     $node_title = $this->faker->text(20);
-    $node = $I->createEntity(['type' => 'stanford_page', 'title' => $node_title]);
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $node_title,
+    ]);
 
     $I->logInWithRole('site_manager');
     $I->amOnPage($node->toUrl('edit-form')->toString());

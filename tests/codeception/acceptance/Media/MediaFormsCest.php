@@ -30,7 +30,7 @@ class MediaFormsCest {
     $I->amOnPage('/user/logout');
     $I->logInWithRole('administrator');
     $I->amOnPage('/media/add/embeddable');
-    $name = $this->faker->words(3, true);
+    $name = $this->faker->words(3, TRUE);
     $I->fillField('Name', $name);
     $I->fillField('Embed Code', '<div>test</div>');
     $I->click('Save');

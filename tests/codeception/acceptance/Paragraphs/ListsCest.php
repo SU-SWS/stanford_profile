@@ -279,7 +279,6 @@ class ListsCest {
     $I->canSee($headline_text);
     $I->cantSee($message);
 
-
     /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
     $paragraph = $I->createEntity([
       'type' => 'stanford_lists',
@@ -491,7 +490,6 @@ class ListsCest {
       'items_to_display' => 100,
     ]);
 
-
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($event->label());
   }
@@ -526,7 +524,6 @@ class ListsCest {
       'items_to_display' => 100,
       'arguments' => $random_term->label(),
     ]);
-
 
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSee($event->label());
@@ -654,7 +651,6 @@ class ListsCest {
       'items_to_display' => 100,
     ]);
 
-
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($news->label());
   }
@@ -684,7 +680,6 @@ class ListsCest {
       'items_to_display' => 100,
       'arguments' => $random_term->label(),
     ]);
-
 
     $I->amOnPage($node->toUrl()->toString());
     $I->cantSee($news->label());
@@ -717,7 +712,6 @@ class ListsCest {
       'items_to_display' => 100,
       'arguments' => $type_term->label(),
     ]);
-
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($news->label());
@@ -776,7 +770,6 @@ class ListsCest {
    * @return bool|\Drupal\node\NodeInterface
    */
   protected function getNodeWithList(AcceptanceTester $I, array $view) {
-
     $paragraph = $I->createEntity([
       'type' => 'stanford_lists',
       'su_list_view' => $view,

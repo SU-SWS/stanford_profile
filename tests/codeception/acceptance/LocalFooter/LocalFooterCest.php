@@ -41,6 +41,8 @@ class LocalFooterCest {
     $I->checkOption('Enabled');
     $I->selectOption('Country', 'United States');
     $I->click('Save');
+    $I->see('Local Footer has been', '.messages-list');
+
     $I->selectOption('State', 'New York');
     $fields = [
       'Company' => 'Drupal',
@@ -67,6 +69,7 @@ class LocalFooterCest {
     }
 
     $I->click('Save');
+    $I->see('Local Footer has been', '.messages-list');
 
     $I->amOnPage('/');
     $I->canSee('123 Drupal Dr');
@@ -83,6 +86,7 @@ class LocalFooterCest {
     $I->amOnPage('/admin/config/system/local-footer');
     $I->uncheckOption('Enabled');
     $I->click('Save');
+    $I->see('Local Footer has been', '.messages-list');
 
     $I->amOnPage('/');
     $I->cantSee('123 Drupal Dr');
@@ -99,6 +103,8 @@ class LocalFooterCest {
     $I->fillField("#edit-su-local-foot-se-co-0-value", "<p>Block two</p>");
     $I->fillField("#edit-su-local-foot-tr-co-0-value", "<p>Block three</p>");
     $I->click('Save');
+    $I->see('Local Footer has been', '.messages-list');
+
     $I->amOnPage('/');
     $I->canSee('Block one');
     $I->canSee('Block two');
@@ -119,17 +125,18 @@ class LocalFooterCest {
     $I->fillField('su_local_foot_primary[0][uri]', $node->label() . " ({$node->id()})");
     $I->fillField('su_local_foot_primary[0][title]', $node->label());
     $I->click('Save');
-    $I->canSee('Local Footer has been');
+    $I->see('Local Footer has been', '.messages-list');
+
     $I->amOnPage('/');
     $I->canSeeLink($node->label(), $node->toUrl()->toString());
-
 
     $I->amOnPage('/admin/config/system/local-footer');
     $I->checkOption('Enabled');
     $I->fillField('su_local_foot_primary[0][uri]', '<nolink>');
     $I->fillField('su_local_foot_primary[0][title]', 'NO LINK');
     $I->click('Save');
-    $I->canSee('Local Footer has been');
+    $I->see('Local Footer has been', '.messages-list');
+
     $I->amOnPage('/');
     $I->canSee('NO LINK', 'li span');
   }

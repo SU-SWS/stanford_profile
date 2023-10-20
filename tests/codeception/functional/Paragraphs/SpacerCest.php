@@ -1,5 +1,6 @@
 <?php
-  use Faker\Factory;
+
+use Faker\Factory;
 
 /**
  * Class SpacerCest.
@@ -10,10 +11,10 @@
 class SpacerCest {
 
   /**
-  * Faker service.
-  *
-  * @var \Faker\Generator
-  */
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
   protected $faker;
 
   /**
@@ -23,12 +24,11 @@ class SpacerCest {
     $this->faker = Factory::create();
   }
 
-
   /**
-   * The spacer paragraph has one custom field, to set the size of the bottom margin.
+   * The spacer paragraph has one custom field, to set the size of the bottom
+   * margin.
    */
   public function testSpacerParagraph(FunctionalTester $I) {
-
     $paragraph = $I->createEntity([
       'type' => 'stanford_spacer',
     ], 'paragraph');
@@ -66,7 +66,6 @@ class SpacerCest {
     $I->waitForElementNotVisible('.ui-dialog');
     $I->click('Save');
     $I->seeElementInDOM('.su-spacer-minimal');
-
   }
 
 }

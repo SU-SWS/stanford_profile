@@ -38,7 +38,6 @@ class TextFormatsCest {
     $I->canSee('Image style: Thumbnail Square (100x100)');
     $I->amOnPage('/admin/structure/media/manage/image/display/thumbnail');
     $I->canSee('Image style: Thumbnail (100 wide)');
-
   }
 
 }

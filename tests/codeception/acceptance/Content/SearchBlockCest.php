@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\config_pages\Entity\ConfigPages;
 use Faker\Factory;
 
 /**
@@ -16,6 +17,12 @@ class SearchBlockCest {
     $this->faker = Factory::create();
   }
 
+  public function __before() {
+    if ($cp = ConfigPages::load('stanford_basic_site_settings')) {
+      $cp->delete();
+    }
+  }
+
   /**
    * Site managers should be able to disable the search block.
    */
@@ -26,8 +33,7 @@ class SearchBlockCest {
     ], 'taxonomy_term');
 
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/');
-    $I->seeElement('.su-site-search__input');
+
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->see('Hide Site Search');
     $I->checkOption('Hide Site Search');
@@ -37,13 +43,14 @@ class SearchBlockCest {
     $I->selectOption('Organization', $org_term->id());
     $I->click('Save');
     // The settings might have been created or updated.
-    $I->see('Site Settings has been');
+    $I->see('Site Settings has been', '.messages-list');
     $I->amOnPage('/');
     $I->dontSeeElement('.su-site-search__input');
 
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->uncheckOption('Hide Site Search');
     $I->click('Save');
+    $I->canSee('Site Settings has been', '.messages-list');
     $I->amOnPage('/');
     $I->seeElement('.su-site-search__input');
   }
