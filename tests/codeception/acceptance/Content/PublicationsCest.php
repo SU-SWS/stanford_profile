@@ -139,7 +139,6 @@ class PublicationsCest {
     $I->click('Save');
     $I->canSee($this->values['a_node_title'], 'h1');
 
-
     $I->amOnPage('/node/add/stanford_publication');
     $I->fillField('Title', $this->values['b_node_title']);
     $I->selectOption('su_publication_citation[actions][bundle]', 'Other');

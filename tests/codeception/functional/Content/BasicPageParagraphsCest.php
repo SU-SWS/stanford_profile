@@ -25,18 +25,18 @@ class BasicPageParagraphsCest {
    * Test the card component data is displayed correctly.
    */
   public function testCardParagraph(FunctionalTester $I) {
-    $card_values =[
-      'superhead' => $this->faker->words(3, true),
-      'headline' => $this->faker->words(3, true),
+    $card_values = [
+      'superhead' => $this->faker->words(3, TRUE),
+      'headline' => $this->faker->words(3, TRUE),
       'uri' => $this->faker->url,
-      'title' => $this->faker->words(3, true),
+      'title' => $this->faker->words(3, TRUE),
     ];
 
     $paragraph = $I->createEntity(['type' => 'stanford_card'], 'paragraph');
 
     $node = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => $this->faker->words(3, true),
+      'title' => $this->faker->words(3, TRUE),
       'su_page_components' => [
         'target_id' => $paragraph->id(),
         'entity' => $paragraph,

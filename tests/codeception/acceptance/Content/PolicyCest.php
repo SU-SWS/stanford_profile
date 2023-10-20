@@ -131,7 +131,7 @@ class PolicyCest {
 
     $node = $I->createEntity([
       'type' => 'stanford_policy',
-      'title' => $this->faker->words(3, true),
+      'title' => $this->faker->words(3, TRUE),
       'su_policy_title' => $this->faker->words(4, TRUE) . '-foo-bar',
       'su_policy_auto_prefix' => 1,
     ]);
@@ -261,10 +261,12 @@ class PolicyCest {
     $I->uncheckOption('Automatic Prefix');
     $I->fillField('Chapter Number', $new_prefix);
     $I->click('Save');
-    $I->canSee($new_prefix . '. ' . $chapter_two->get('su_policy_title')->getString(), 'h1');
+    $I->canSee($new_prefix . '. ' . $chapter_two->get('su_policy_title')
+        ->getString(), 'h1');
 
     $I->amOnPage($article_one->toUrl()->toString());
-    $I->canSee($new_prefix . '.A ' . $article_one->get('su_policy_title')->getString());
+    $I->canSee($new_prefix . '.A ' . $article_one->get('su_policy_title')
+        ->getString());
 
     $new_title = $this->faker->words(4, TRUE);
     $I->amOnPage($article_one->toUrl('edit-form')->toString());

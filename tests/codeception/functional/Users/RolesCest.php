@@ -1,5 +1,7 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Class RolesCest.
  *
@@ -34,6 +36,11 @@ class RolesCest {
     foreach ($this->state as $key => $value) {
       \Drupal::state()->set($key, $value);
     }
+    drupal_flush_all_caches();
+  }
+
+  public function __construct() {
+    $this->faker = Factory::create();
   }
 
   /**
@@ -52,11 +59,11 @@ class RolesCest {
   public function testBulkDeleteHomePage(FunctionalTester $I) {
     $test_home = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => 'Foo Bar Home',
+      'title' => $this->faker->words(3, true),
     ]);
     $I->createEntity([
       'type' => 'stanford_page',
-      'title' => 'Another Page',
+      'title' => $this->faker->words(3, true),
     ]);
     $test_home_url = $test_home->toUrl()->toString();
     \Drupal::state()->set('stanford_profile.front_page', $test_home_url);
@@ -74,7 +81,7 @@ class RolesCest {
     $I->canSee('Access denied (1)');
     $I->runDrush('cache-rebuild');
     $I->amOnPage('/');
-    $I->canSee('Foo Bar Home', 'h1');
+    $I->canSee($test_home->label(), 'h1');
   }
 
   /**

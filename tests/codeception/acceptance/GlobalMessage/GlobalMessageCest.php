@@ -49,6 +49,8 @@ class GlobalMessageCest {
     $I->fillField('URL', '<front>');
     $I->fillField('Link text', 'Action link');
     $I->click('Save');
+    $I->see('Global Message has been', '.messages-list');
+
     $I->amOnPage("/");
     $I->seeElement(".su-alert--success");
     $I->canSee("MESSAGE LABEL");
@@ -58,6 +60,8 @@ class GlobalMessageCest {
     $I->amOnPage('/admin/config/system/global-message');
     $I->selectOption("#edit-su-global-msg-type", "error");
     $I->click('Save');
+    $I->see('Global Message has been', '.messages-list');
+
     $I->amOnPage("/");
     $I->seeElement(".su-alert--error");
   }

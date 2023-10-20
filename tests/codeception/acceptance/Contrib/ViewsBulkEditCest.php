@@ -44,15 +44,15 @@ class ViewsBulkEditCest {
     $this->createEvents($I);
 
     $event_foo_bar_baz = $I->createEntity([
-      'name' => $this->faker->words(3, true),
+      'name' => $this->faker->words(3, TRUE),
       'vid' => 'stanford_event_types',
     ], 'taxonomy_term');
-    $news_foo_bar_baz= $I->createEntity([
-      'name' => $this->faker->words(3, true),
+    $news_foo_bar_baz = $I->createEntity([
+      'name' => $this->faker->words(3, TRUE),
       'vid' => 'stanford_news_topics',
     ], 'taxonomy_term');
     $pubs_foo_bar_baz = $I->createEntity([
-      'name' => $this->faker->words(3, true),
+      'name' => $this->faker->words(3, TRUE),
       'vid' => 'stanford_publication_topics',
     ], 'taxonomy_term');
 

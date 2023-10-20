@@ -5,7 +5,7 @@
  */
 class SuperFooterCest {
 
-  public function _after(AcceptanceTester $I){
+  public function _after(AcceptanceTester $I) {
     $config_page = \Drupal::entityTypeManager()
       ->getStorage('config_pages')
       ->load('stanford_super_footer');
@@ -47,6 +47,8 @@ class SuperFooterCest {
     $I->fillField('#edit-su-super-foot-intranet-0-uri', 'https://stanford.edu/');
     $I->fillField('#edit-su-super-foot-intranet-0-title', 'Intranet Link');
     $I->click('Save');
+    $I->see('Super Footer has been', '.messages-list');
+
     $I->amOnPage("/");
     $I->seeElement(".block-config-pages-super-footer");
     $I->canSee("Super Footer Title");

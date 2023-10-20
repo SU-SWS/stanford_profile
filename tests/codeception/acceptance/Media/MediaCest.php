@@ -139,7 +139,6 @@ class MediaCest {
       $I->click('Save');
       $I->canSee('has been created');
     }
-
   }
 
   /**

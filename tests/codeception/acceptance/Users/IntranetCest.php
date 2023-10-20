@@ -24,7 +24,6 @@ abstract class IntranetCest {
    */
   protected $fileUploadsWasEnabled = FALSE;
 
-
   /**
    * Save the original state.
    */
