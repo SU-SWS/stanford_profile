@@ -48,6 +48,45 @@ class MediaCest {
   }
 
   /**
+   * Embedded media should not have a </source> tag.
+   */
+  public function testSourceTag(AcceptanceTester $I) {
+    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+    $file_system = \Drupal::service('file_system');
+    $image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+
+    $file = $I->createEntity(['uri' => $image_path], 'file');
+    $image_media = $I->createEntity([
+      'bundle' => 'image',
+      'field_media_image' => [
+        'target_id' => $file->id(),
+        'alt' => '',
+      ],
+    ], 'media');
+    $wysiwyg = $I->createEntity([
+      'type' => 'stanford_wysiwyg',
+      'su_wysiwyg_text' => [
+        'value' => '<drupal-media data-entity-type="media" data-entity-uuid="' . $image_media->uuid() . '">&nbsp;</drupal-media>',
+        'format' => 'stanford_html',
+      ],
+    ], 'paragraph');
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, true),
+      'su_page_components' => [
+        [
+          'target_id' => $wysiwyg->id(),
+          'entity' => $wysiwyg,
+        ],
+      ],
+    ], 'node');
+    $I->amOnPage($node->toUrl()->toString());
+    $page = $I->grabPageSource();
+    preg_match('/<\/source>/', $page, $source_tags);
+    $I->assertEmpty($source_tags);
+  }
+
+  /**
    * Embeddable types enabled.
    */
   public function testForEmbeddableOptions(AcceptanceTester $I) {
