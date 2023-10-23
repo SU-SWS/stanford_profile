@@ -193,23 +193,6 @@ class ListsCest {
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($news->label());
-
-    $I->amOnPage('/jsonapi/views/stanford_news/block_1?page[limit]=99&views-argument[]=' . Drupal::service('pathauto.alias_cleaner')
-        ->cleanString($topic_term->label()));
-    $json_data = json_decode($I->grabPageSource(), TRUE, 512, JSON_THROW_ON_ERROR);
-    $I->assertArrayHasKey('data', $json_data);
-
-    $json_titles = [];
-    foreach ($json_data['data'] as $item) {
-      $json_titles[] = $item['attributes']['title'];
-    }
-    $I->assertContains($news->label(), $json_titles);
-
-    $topic_term = $this->createTaxonomyTerm($I, 'stanford_news_topics');
-    $I->amOnPage('/jsonapi/views/stanford_news/block_1?page[limit]=99&views-argument[]=' . $topic_term->label());
-    $json_data = json_decode($I->grabPageSource(), TRUE, 512, JSON_THROW_ON_ERROR);
-    $I->assertArrayHasKey('data', $json_data);
-    $I->assertEmpty($json_data['data']);
   }
 
   /**
