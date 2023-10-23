@@ -6,6 +6,7 @@ dependencies:
     - file
     - node
     - subrequests
+    - view_unpublished
 id: decoupled_site_users
 label: 'Decoupled Site User'
 weight: 2
@@ -15,3 +16,4 @@ permissions:
   - 'bypass node access'
   - 'delete own files'
   - 'issue subrequests'
+  - 'view any unpublished content'
