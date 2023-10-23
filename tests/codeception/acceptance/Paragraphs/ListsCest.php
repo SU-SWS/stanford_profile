@@ -117,6 +117,8 @@ class ListsCest {
 
     $I->amOnPage('/jsonapi/views/stanford_shared_tags/card_grid?page[limit]=50&views-argument[]=' . preg_replace('/[^a-z0-9-]/', '-', strtolower($shared_tag->label())));
     $json_data = json_decode($I->grabPageSource(), TRUE, 512, JSON_THROW_ON_ERROR);
+    $I->assertArrayHasKey('data', $json_data);
+
     $json_ids = [];
     foreach ($json_data['data'] as $item) {
       $json_ids[] = $item['id'];
@@ -154,6 +156,8 @@ class ListsCest {
 
     $I->amOnPage('/jsonapi/views/stanford_news/block_1?page[limit]=99');
     $json_data = json_decode($I->grabPageSource(), TRUE, 512, JSON_THROW_ON_ERROR);
+    $I->assertArrayHasKey('data', $json_data);
+
     $json_titles = [];
     foreach ($json_data['data'] as $item) {
       $json_titles[] = $item['attributes']['title'];
@@ -190,8 +194,11 @@ class ListsCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($news->label());
 
-    $I->amOnPage('/jsonapi/views/stanford_news/block_1?page[limit]=99&views-argument[]=' . Drupal::service('pathauto.alias_cleaner')->cleanString($topic_term->label()));
+    $I->amOnPage('/jsonapi/views/stanford_news/block_1?page[limit]=99&views-argument[]=' . Drupal::service('pathauto.alias_cleaner')
+        ->cleanString($topic_term->label()));
     $json_data = json_decode($I->grabPageSource(), TRUE, 512, JSON_THROW_ON_ERROR);
+    $I->assertArrayHasKey('data', $json_data);
+
     $json_titles = [];
     foreach ($json_data['data'] as $item) {
       $json_titles[] = $item['attributes']['title'];
@@ -201,6 +208,7 @@ class ListsCest {
     $topic_term = $this->createTaxonomyTerm($I, 'stanford_news_topics');
     $I->amOnPage('/jsonapi/views/stanford_news/block_1?page[limit]=99&views-argument[]=' . $topic_term->label());
     $json_data = json_decode($I->grabPageSource(), TRUE, 512, JSON_THROW_ON_ERROR);
+    $I->assertArrayHasKey('data', $json_data);
     $I->assertEmpty($json_data['data']);
   }
 
@@ -495,6 +503,8 @@ class ListsCest {
 
     $I->amOnPage('/jsonapi/views/stanford_events/list_page?page[limit]=99');
     $json_data = json_decode($I->grabPageSource(), TRUE, 512, JSON_THROW_ON_ERROR);
+    $I->assertArrayHasKey('data', $json_data);
+
     $json_titles = [];
     foreach ($json_data['data'] as $item) {
       $json_titles[] = $item['attributes']['title'];
