@@ -165,6 +165,7 @@ class PersonCest {
       'parent' => ['target_id' => $term1->id()],
     ], 'taxonomy_term');
 
+    $I->runDrush('cache:rebuild');
     $I->amOnPage($term3->toUrl()->toString());
     $I->canSeeLink($term1->label());
     $I->canSeeLink($term2->label());
