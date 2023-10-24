@@ -342,6 +342,37 @@ class EventsCest {
   }
 
   /**
+   * Test event card markup.
+   */
+  public function testEventCard(AcceptanceTester $I) {
+    $event = $this->createEventNode($I);
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+    $pre_render = $view_builder->view($event, 'stanford_card');
+    $render_output = \Drupal::service('renderer')->renderPlain($pre_render);
+
+    libxml_use_internal_errors(TRUE);
+    $dom = new DOMDocument();
+    $dom->loadHTML($render_output);
+    $xpath = new DOMXPath($dom);
+
+    $month = $xpath->query('//span[@class="su-event-start-month"]');
+    $I->assertNotEmpty($month);
+    $I->assertEquals(date('M', time()), $month->item(0)->nodeValue, 'Start Month does not match');
+
+    $day = $xpath->query('//span[@class="su-event-start-date"]');
+    $I->assertNotEmpty($day);
+    $I->assertEquals(date('j', time()), $day->item(0)->nodeValue, 'Start Date does not match');
+
+    $month = $xpath->query('//span[@class="su-event-end-month"]');
+    $I->assertNotEmpty($month);
+    $I->assertEquals(date('M', time() + (60 * 60 * 24)), $month->item(0)->nodeValue, 'End Month does not match');
+
+    $day = $xpath->query('//span[@class="su-event-end-date"]');
+    $I->assertNotEmpty($day);
+    $I->assertEquals(date('j', time() + (60 * 60 * 24)), $day->item(0)->nodeValue, 'End Date does not match');
+  }
+
+  /**
    * Create an Event Node.
    *
    * @param AcceptanceTester $I
