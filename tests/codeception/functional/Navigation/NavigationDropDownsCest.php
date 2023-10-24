@@ -62,7 +62,7 @@ class NavigationDropDownsCest {
     $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
     $I->fillField('Technical Contact (value 1)', $this->faker->email);
     $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
-    $I->selectOption('Org Code', $org_term->id());
+    $I->selectOption('.js-form-item-su-site-org-0-target-id select.simpler-select', $org_term->id());
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
 
