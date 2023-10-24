@@ -1,0 +1,9 @@
+id: event_date_time_4
+label: 'Date Time 4'
+ui_limit: 'stanford_event|*'
+type: display_field_copy
+type_label: 'Copy field'
+entities:
+  node: node
+properties:
+  field_id: node.stanford_event.su_event_date_time

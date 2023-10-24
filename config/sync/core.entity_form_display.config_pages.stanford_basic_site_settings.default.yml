@@ -238,13 +238,16 @@ content:
       save_lineage: false
       force_deepest: false
       parent: null
-      level_labels: 'Org Code, Group'
+      level_labels: ''
       hierarchy_depth: 0
       required_depth: 0
       none_label: '- Please select -'
     third_party_settings:
       change_labels:
+        add_another: ''
         field_label_overwrite: ''
+        hide_add_another: 0
+        force_single_cardinality: 0
   su_site_owner_contact:
     type: email_default
     weight: 4
