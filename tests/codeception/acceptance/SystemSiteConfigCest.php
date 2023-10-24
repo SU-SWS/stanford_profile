@@ -51,7 +51,7 @@ class SystemSiteConfigCest {
     $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
     $I->fillField('Technical Contact (value 1)', $this->faker->email);
     $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
-    $I->selectOption('Organization', $org_term->id());
+    $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
 
@@ -104,7 +104,7 @@ class SystemSiteConfigCest {
     $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
     $I->fillField('Technical Contact (value 1)', $this->faker->email);
     $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
-    $I->selectOption('Organization', $org_term->id());
+    $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
 
@@ -145,7 +145,7 @@ class SystemSiteConfigCest {
     $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
     $I->fillField('Technical Contact (value 1)', $this->faker->email);
     $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
-    $I->selectOption('Org Code', $org_term->id());
+    $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
 
     $I->click('Save');
     $I->canSee('1 error has been found: Google Analytics Account');

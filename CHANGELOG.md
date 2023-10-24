@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.0.4
+-------------------------------------------------------------------------------
+- D8CORE-7051 Use display field copy instead of token fields
+
 11.0.3
 -------------------------------------------------------------------------------
 - Next site settings and config ignores (#735)

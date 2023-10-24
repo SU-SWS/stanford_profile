@@ -40,7 +40,7 @@ class SearchBlockCest {
     $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
     $I->fillField('Technical Contact (value 1)', $this->faker->email);
     $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
-    $I->selectOption('Organization', $org_term->id());
+    $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
     $I->click('Save');
     // The settings might have been created or updated.
     $I->see('Site Settings has been', '.messages-list');
