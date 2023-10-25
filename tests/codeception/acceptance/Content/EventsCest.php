@@ -343,6 +343,8 @@ class EventsCest {
 
   /**
    * Test event card markup.
+   *
+   * @group eventcard
    */
   public function testEventCard(AcceptanceTester $I) {
     $event = $this->createEventNode($I);
