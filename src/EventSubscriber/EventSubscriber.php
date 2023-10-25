@@ -3,6 +3,7 @@
 namespace Drupal\stanford_profile\EventSubscriber;
 
 use Acquia\DrupalEnvironmentDetector\AcquiaDrupalEnvironmentDetector;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -104,6 +105,7 @@ class EventSubscriber implements EventSubscriberInterface {
     ) {
       $renewal_date = time() + (InstallerKernel::installationAttempted() ? 0 : 60 * 60 * 24 * 365);
       $entity->set('su_site_renewal_due', date(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $renewal_date));
+      Cache::invalidateTags(['site-renew-date']);
     }
   }
 
@@ -159,7 +161,7 @@ class EventSubscriber implements EventSubscriberInterface {
 
     // If the renewal date has passed, they should be redirected.
     $needs_renewal = !getenv('CI') && $site_manager && (strtotime($renewal_date) - time() < 60 * 60 * 24);
-    $cache->set('su_renew_site:' . $current_user->id(), $needs_renewal, time() + 60 * 60 * 24);
+    $cache->set('su_renew_site:' . $current_user->id(), $needs_renewal, time() + 60 * 60 * 24, ['site-renew-date']);
 
     return $needs_renewal;
   }
