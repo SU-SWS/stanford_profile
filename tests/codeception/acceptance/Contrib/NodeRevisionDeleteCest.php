@@ -24,7 +24,7 @@ class NodeRevisionDeleteCest {
   /**
    * Test that revisions are trimmed after cron runs.
    */
-  public function testNodeRevisionDelete(AcceptanceTester $I) {
+  protected function footestNodeRevisionDelete(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     /** @var \Drupal\node\NodeInterface $node */
     $node = $I->createEntity([

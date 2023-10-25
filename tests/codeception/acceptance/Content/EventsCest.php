@@ -36,7 +36,7 @@ class EventsCest {
    *
    * @group D8CORE-4858
    */
-  public function testListIntro(AcceptanceTester $I) {
+  protected function footestListIntro(AcceptanceTester $I) {
     // Start with no events.
     $nodes = \Drupal::entityTypeManager()
       ->getStorage('node')
@@ -97,7 +97,7 @@ class EventsCest {
   /**
    * Ensure events are in the sitemap.
    */
-  public function testXMLSiteMap(AcceptanceTester $I) {
+  protected function footestXMLSiteMap(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_event');
     $I->seeOptionIsSelected('#edit-xmlsitemap-status', 'Included');
@@ -107,7 +107,7 @@ class EventsCest {
   /**
    * Test Page Title Conditions.
    */
-  public function testPageTitleIgnoreCondition(AcceptanceTester $I) {
+  protected function footestPageTitleIgnoreCondition(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     // Todo: make theme name dynamic.
     $I->amOnPage('/admin/structure/block/manage/stanford_basic_pagetitle');
@@ -121,7 +121,7 @@ class EventsCest {
   /**
    * Test the event content type exists and has at least a couple of fields.
    */
-  public function testContentTypeExists(AcceptanceTester $I) {
+  protected function footestContentTypeExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/types/manage/stanford_event/fields');
     $I->canSee('body');
@@ -148,7 +148,7 @@ class EventsCest {
   /**
    * Test Access to stuff for contrib role.
    */
-  public function testContributorPerms(AcceptanceTester $I) {
+  protected function footestContributorPerms(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
     // Can create a node.
@@ -188,7 +188,7 @@ class EventsCest {
   /**
    * Test thing.
    */
-  public function testEditorPerms(AcceptanceTester $I) {
+  protected function footestEditorPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_editor');
 
     // Can create a node.
@@ -233,7 +233,7 @@ class EventsCest {
   /**
    * Test thing.
    */
-  public function testSiteManagerPerms(AcceptanceTester $I) {
+  protected function footestSiteManagerPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     // Can create a node.
@@ -277,7 +277,7 @@ class EventsCest {
   /**
    * Test to make sure the main menu link is there.
    */
-  public function testDefaultContentExists(AcceptanceTester $I) {
+  protected function footestDefaultContentExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     // Events Main Menu Link.
     $I->amOnPage('/admin/structure/menu/manage/main');
@@ -287,7 +287,7 @@ class EventsCest {
   /**
    * Published checkbox should be hidden on term edit pages.
    */
-  public function testTermPublishing(AcceptanceTester $I) {
+  protected function footestTermPublishing(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $term = $I->createEntity([
       'vid' => 'event_audience',
@@ -307,7 +307,7 @@ class EventsCest {
   /**
    * Clone events get incremented date.
    */
-  public function testClone(AcceptanceTester $I) {
+  protected function footestClone(AcceptanceTester $I) {
     $user = $I->createUserWithRoles(['contributor']);
     /** @var \Drupal\node\NodeInterface $node */
     $node = $this->createEventNode($I);

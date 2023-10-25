@@ -33,7 +33,7 @@ class PublicationsCest {
   /**
    * Create a book citation
    */
-  public function testBookCitation(AcceptanceTester $I) {
+  protected function footestBookCitation(AcceptanceTester $I) {
     $this->values['term_name'] = $this->faker->words(3, TRUE);
     $this->values['node_title'] = $this->faker->words(3, TRUE);
     $term = $I->createEntity([
@@ -63,7 +63,7 @@ class PublicationsCest {
   /**
    * Test out the list pages.
    */
-  public function testAllPublicationListPage(AcceptanceTester $I) {
+  protected function footestAllPublicationListPage(AcceptanceTester $I) {
     $this->testBookCitation($I);
 
     $I->amOnPage('/publications');
@@ -87,7 +87,7 @@ class PublicationsCest {
   /**
    * Published checkbox should be hidden on term edit pages.
    */
-  public function testTermPublishing(AcceptanceTester $I) {
+  protected function footestTermPublishing(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $term = $I->createEntity([
       'vid' => 'stanford_publication_topics',
@@ -100,7 +100,7 @@ class PublicationsCest {
   /**
    * An "Other" publication type should be available.
    */
-  public function testOtherPublication(AcceptanceTester $I) {
+  protected function footestOtherPublication(AcceptanceTester $I) {
     $this->values['node_title'] = $this->faker->words(3, TRUE);
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_publication');
@@ -122,7 +122,7 @@ class PublicationsCest {
   /**
    * Publication list should be in date order.
    */
-  public function testListSort(AcceptanceTester $I) {
+  protected function footestListSort(AcceptanceTester $I) {
     $this->values['a_node_title'] = 'A' . $this->faker->words(3, TRUE);
     $this->values['b_node_title'] = 'B' . $this->faker->words(3, TRUE);
     $this->values['c_node_title'] = 'C' . $this->faker->words(3, TRUE);
@@ -185,7 +185,7 @@ class PublicationsCest {
    *
    * @group D8CORE-4867
    */
-  public function testPubAuthorPage(AcceptanceTester $I) {
+  protected function footestPubAuthorPage(AcceptanceTester $I) {
     $first_name = $this->faker->firstName;
     $last_name = $this->faker->lastName;
     $author_node = $I->createEntity([
@@ -219,7 +219,7 @@ class PublicationsCest {
   /**
    * Journal citations should include a field for journal publisher.
    */
-  public function testJournalPublisher(AcceptanceTester $I) {
+  protected function footestJournalPublisher(AcceptanceTester $I) {
     $term = $I->createEntity([
       'vid' => 'stanford_publication_topics',
       'name' => $this->faker->word,

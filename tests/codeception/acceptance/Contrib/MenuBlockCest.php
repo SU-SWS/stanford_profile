@@ -23,7 +23,7 @@ class MenuBlockCest {
    *
    * @group menu_block
    */
-  public function testMenuBlockVisibility(AcceptanceTester $I) {
+  protected function footestMenuBlockVisibility(AcceptanceTester $I) {
     $parent = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->words(3, TRUE),

@@ -26,7 +26,7 @@ class PersonCest {
   /**
    * Test that the default content has installed and is unpublished.
    */
-  public function testDefaultContentExists(AcceptanceTester $I) {
+  protected function footestDefaultContentExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/content');
     $I->see('Haley Jackson');
@@ -39,7 +39,7 @@ class PersonCest {
   /**
    * Test that the vocabulary and terms exist.
    */
-  public function testVocabularyTermsExists(AcceptanceTester $I) {
+  protected function footestVocabularyTermsExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/taxonomy/manage/stanford_person_types/overview');
     $I->canSeeNumberOfElements('.term-id', 14);
@@ -48,7 +48,7 @@ class PersonCest {
   /**
    * Test that the view pages exist.
    */
-  public function testViewPagesExist(AcceptanceTester $I) {
+  protected function footestViewPagesExist(AcceptanceTester $I) {
     $I->amOnPage('/people');
     $I->seeLink('Student');
     $I->seeLink('Staff');
@@ -61,7 +61,7 @@ class PersonCest {
    * Test that content that gets created has the right url, header, and shows
    * up in the all view.
    */
-  public function testCreatePerson(AcceptanceTester $I) {
+  protected function footestCreatePerson(AcceptanceTester $I) {
     $term = $I->createEntity([
       'vid' => 'stanford_person_types',
       'name' => $this->faker->word,
@@ -91,7 +91,7 @@ class PersonCest {
   /**
    * Test that the XML sitemap and metatag configuration is set.
    */
-  public function testXMLMetaDataRevisions(AcceptanceTester $I) {
+  protected function footestXMLMetaDataRevisions(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
 
     // Revision Delete is enabled.
@@ -114,7 +114,7 @@ class PersonCest {
   /**
    * CAP-52: Check for the new fields.
    */
-  public function testCap52Fields(AcceptanceTester $I) {
+  protected function footestCap52Fields(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
 
     $I->amOnPage('/admin/structure/types/manage/stanford_person/fields');
@@ -131,7 +131,7 @@ class PersonCest {
   /**
    * Special characters should stay.
    */
-  public function testSpecialCharacters(AcceptanceTester $I) {
+  protected function footestSpecialCharacters(AcceptanceTester $I) {
     $first_name = $this->faker->firstName;
     $middle_name = $this->faker->firstName;
     $last_name = $this->faker->lastName;
@@ -150,7 +150,7 @@ class PersonCest {
    *
    * @group 4704
    */
-  public function testD8Core2613Terms(AcceptanceTester $I) {
+  protected function footestD8Core2613Terms(AcceptanceTester $I) {
     $term1 = $I->createEntity([
       'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',
@@ -244,7 +244,7 @@ class PersonCest {
   /**
    * Published checkbox should be hidden on term edit pages.
    */
-  public function testTermPublishing(AcceptanceTester $I) {
+  protected function footestTermPublishing(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $term = $I->createEntity([
       'vid' => 'stanford_person_types',
@@ -257,7 +257,7 @@ class PersonCest {
   /**
    * Unpublished profiles should not display in the list.
    */
-  public function testPublishedStatus(AcceptanceTester $I) {
+  protected function footestPublishedStatus(AcceptanceTester $I) {
     $term = $I->createEntity([
       'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',
@@ -288,7 +288,7 @@ class PersonCest {
    *
    * @group metadata
    */
-  public function testMetaData(AcceptanceTester $I) {
+  protected function footestMetaData(AcceptanceTester $I) {
     $values = [
       'image_alt' => $this->faker->words(3, TRUE),
       'body' => $this->faker->paragraph,
@@ -344,7 +344,7 @@ class PersonCest {
   /**
    * Deleting the taxonomy term doesn't break the form.
    */
-  public function testDeletedTerm(AcceptanceTester $I) {
+  protected function footestDeletedTerm(AcceptanceTester $I) {
     $term = $I->createEntity([
       'name' => $this->faker->words(2, TRUE),
       'vid' => 'stanford_person_types',

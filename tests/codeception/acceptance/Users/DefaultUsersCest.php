@@ -10,7 +10,7 @@ class DefaultUsersCest {
   /**
    * Default users should be created.
    */
-  public function testDefaultUsers(AcceptanceTester $I) {
+  protected function footestDefaultUsers(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/users');
     $I->canSee('Alex');

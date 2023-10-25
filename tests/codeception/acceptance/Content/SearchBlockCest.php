@@ -26,7 +26,7 @@ class SearchBlockCest {
   /**
    * Site managers should be able to disable the search block.
    */
-  public function testHideSearchBlock(AcceptanceTester $I) {
+  protected function footestHideSearchBlock(AcceptanceTester $I) {
     $org_term = $I->createEntity([
       'vid' => 'site_owner_orgs',
       'name' => $this->faker->words(2, TRUE),

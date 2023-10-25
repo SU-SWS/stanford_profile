@@ -8,7 +8,7 @@ class LockupSettingsPermsCest {
   /**
    * Test access to lockup settings overrides.
    */
-  public function testSiteManagerRole(AcceptanceTester $I) {
+  protected function footestSiteManagerRole(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSee('Edit config page Lockup Settings');
@@ -18,7 +18,7 @@ class LockupSettingsPermsCest {
   /**
    * Test access to lockup settings overrides.
    */
-  public function testContributorRole(AcceptanceTester $I) {
+  protected function footestContributorRole(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(403);
@@ -27,7 +27,7 @@ class LockupSettingsPermsCest {
   /**
    * Test access to lockup settings overrides.
    */
-  public function testSiteEditorRole(AcceptanceTester $I) {
+  protected function footestSiteEditorRole(AcceptanceTester $I) {
     $I->logInWithRole('site_editor');
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(403);

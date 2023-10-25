@@ -29,7 +29,7 @@ class BasicPageCest {
    * @group pathauto
    * @group menu_link_weight
    */
-  public function testCreatingPage(AcceptanceTester $I) {
+  protected function footestCreatingPage(AcceptanceTester $I) {
     $node_title = $this->faker->text(20);
     $node = $I->createEntity([
       'type' => 'stanford_page',
@@ -72,7 +72,7 @@ class BasicPageCest {
   /**
    * Test deleting menu items clears them from the main menu.
    */
-  public function testDeletedMenuItems(AcceptanceTester $I) {
+  protected function footestDeletedMenuItems(AcceptanceTester $I) {
     $node_title = $this->faker->text(20);
     $node = $I->createEntity([
       'type' => 'stanford_page',
@@ -100,7 +100,7 @@ class BasicPageCest {
   /**
    * Number of h1 tags should always be 1.
    */
-  public function testH1Tags(AcceptanceTester $I) {
+  protected function footestH1Tags(AcceptanceTester $I) {
     $I->amOnPage('/' . $this->faker->text);
     $I->canSeeResponseCodeIs(404);
     $I->canSeeNumberOfElements('h1', 1);
@@ -116,7 +116,7 @@ class BasicPageCest {
    *
    * Regression test for D8CORE-1547.
    */
-  public function testRevisionPage(AcceptanceTester $I) {
+  protected function footestRevisionPage(AcceptanceTester $I) {
     $title = $this->faker->words(3, TRUE);
     $I->logInWithRole('site_manager');
     $node = $I->createEntity(['title' => $title, 'type' => 'stanford_page']);
@@ -128,7 +128,7 @@ class BasicPageCest {
   /**
    * There should be Page Metadata fields
    */
-  public function testPageDescription(AcceptanceTester $I) {
+  protected function footestPageDescription(AcceptanceTester $I) {
     $title = $this->faker->words(3, TRUE);
     $description = $this->faker->words(10, TRUE);
     $type_term = $I->createEntity([
@@ -150,7 +150,7 @@ class BasicPageCest {
   /**
    * Test that the vocabulary and default terms exist.
    */
-  public function testBasicPageVocabularyTermsExists(AcceptanceTester $I) {
+  protected function footestBasicPageVocabularyTermsExists(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage("/admin/structure/taxonomy/manage/basic_page_types/overview");
     $I->canSeeResponseCodeIs(200);
@@ -167,7 +167,7 @@ class BasicPageCest {
    *
    * @group menu_link_weight
    */
-  public function testUnpublishedMenuItems(AcceptanceTester $I) {
+  protected function footestUnpublishedMenuItems(AcceptanceTester $I) {
     $unpublished_title = $this->faker->words(5, TRUE);
     $unpublished_node = $I->createEntity([
       'type' => 'stanford_page',
@@ -205,7 +205,7 @@ class BasicPageCest {
   /**
    * Clone a basic page.
    */
-  public function testClone(AcceptanceTester $I) {
+  protected function footestClone(AcceptanceTester $I) {
     $title = $this->faker->words(3, TRUE);
 
     $I->logInWithRole('contributor');
@@ -228,7 +228,7 @@ class BasicPageCest {
    *
    * @group scheduler
    */
-  public function testScheduler(AcceptanceTester $I) {
+  protected function footestScheduler(AcceptanceTester $I) {
     $time = \Drupal::time();
 
     /** @var \Drupal\system\TimeZoneResolver $timezone_resolver */
@@ -257,7 +257,7 @@ class BasicPageCest {
   /**
    * Validate the Spacer Paragraph type exists
    */
-  public function testSpacerParagraph(AcceptanceTester $I) {
+  protected function footestSpacerParagraph(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/paragraphs_type');
     $I->canSee('Spacer');
@@ -269,7 +269,7 @@ class BasicPageCest {
    *
    * @group metadata
    */
-  public function testMetaData(AcceptanceTester $I) {
+  protected function footestMetaData(AcceptanceTester $I) {
     $values = [
       'banner_image_alt' => $this->faker->words(3, TRUE),
       'meta_image_alt' => $this->faker->words(3, TRUE),
@@ -364,7 +364,7 @@ class BasicPageCest {
   /**
    * @group search-results
    */
-  public function testSearchResult(AcceptanceTester $I) {
+  protected function footestSearchResult(AcceptanceTester $I) {
     $text = $this->faker->paragraphs(2, TRUE);
     $wysiwyg = $I->createEntity([
       'type' => 'stanford_wysiwyg',

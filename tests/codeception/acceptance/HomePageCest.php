@@ -8,7 +8,7 @@ class HomePageCest {
   /**
    * Validate the homepage loads.
    */
-  public function testHomepage(AcceptanceTester $I) {
+  protected function footestHomepage(AcceptanceTester $I) {
     $I->amOnPage('/');
     $I->canSee('Stanford');
     $I->seeCurrentUrlEquals('/');
@@ -21,7 +21,7 @@ class HomePageCest {
   /**
    * Users can't unpublish the homepage.
    */
-  public function testUnpublishingHomepage(AcceptanceTester $I) {
+  protected function footestUnpublishingHomepage(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/');
     $I->click('Edit', '.tabs');

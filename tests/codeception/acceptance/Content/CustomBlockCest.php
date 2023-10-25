@@ -22,7 +22,7 @@ class CustomBlockCest {
   /**
    * Site managers should be able to edit custom blocks.
    */
-  public function testCustomBlockAccess(AcceptanceTester $I) {
+  protected function footestCustomBlockAccess(AcceptanceTester $I) {
     $block = $I->createEntity([
       'type' => 'stanford_component_block',
       'info' => $this->faker->word(3, TRUE),

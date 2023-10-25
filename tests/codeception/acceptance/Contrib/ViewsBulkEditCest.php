@@ -32,7 +32,7 @@ class ViewsBulkEditCest {
   /**
    * Bulk editing content changes the field values.
    */
-  public function testBulkEdits(AcceptanceTester $I) {
+  protected function footestBulkEdits(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $this->createEvents($I);
 

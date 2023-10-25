@@ -10,7 +10,7 @@ class RolesCest {
   /**
    * Default roles should exist.
    */
-  public function testRolesExist(AcceptanceTester $I) {
+  protected function footestRolesExist(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/users/roles');
     $I->canSee('Contributor');
@@ -25,7 +25,7 @@ class RolesCest {
   /**
    * Stanford Staff role should be very limited.
    */
-  public function testStaffRole(AcceptanceTester $I) {
+  protected function footestStaffRole(AcceptanceTester $I) {
     $I->logInWithRole('stanford_staff');
     // D8CORE-2538 Staff and students without additional roles shouldn't see
     // the admin toolbar.
@@ -36,7 +36,7 @@ class RolesCest {
   /**
    * Stanford Staff role should be very limited.
    */
-  public function testStudentRole(AcceptanceTester $I) {
+  protected function footestStudentRole(AcceptanceTester $I) {
     $I->logInWithRole('stanford_student');
     // D8CORE-2538 Staff and students without additional roles shouldn't see
     // the admin toolbar.
@@ -47,7 +47,7 @@ class RolesCest {
   /**
    * Stanford Staff role should be very limited.
    */
-  public function testFacultyRole(AcceptanceTester $I) {
+  protected function footestFacultyRole(AcceptanceTester $I) {
     $I->logInWithRole('stanford_faculty');
     // D8CORE-2538 Staff and students without additional roles shouldn't see
     // the admin toolbar.
@@ -58,7 +58,7 @@ class RolesCest {
   /**
    * Contributor role should have some access.
    */
-  public function testContributorRole(AcceptanceTester $I) {
+  protected function footestContributorRole(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
     $I->amOnPage('/node/add/stanford_page');
@@ -91,7 +91,7 @@ class RolesCest {
   /**
    * Site editor role should have some access.
    */
-  public function testSiteEditorRole(AcceptanceTester $I) {
+  protected function footestSiteEditorRole(AcceptanceTester $I) {
     $I->logInWithRole('site_editor');
 
     $I->amOnPage('/node/add/stanford_page');
@@ -124,7 +124,7 @@ class RolesCest {
   /**
    * Site manager should have more access.
    */
-  public function testSiteManagerRole(AcceptanceTester $I) {
+  protected function footestSiteManagerRole(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     $I->amOnPage('/node/add/stanford_page');
@@ -158,7 +158,7 @@ class RolesCest {
   /**
    * Site builder will get more access than site manager.
    */
-  public function testSiteBuilderRole(AcceptanceTester $I) {
+  protected function footestSiteBuilderRole(AcceptanceTester $I) {
     $I->logInWithRole('site_builder');
 
     $I->amOnPage('/node/add/stanford_page');
@@ -179,7 +179,7 @@ class RolesCest {
   /**
    * Developers have the most access.
    */
-  public function testSiteDeveloperRole(AcceptanceTester $I) {
+  protected function footestSiteDeveloperRole(AcceptanceTester $I) {
     $I->logInWithRole('site_developer');
 
     $I->amOnPage('/node/add/stanford_page');

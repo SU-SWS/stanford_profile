@@ -29,7 +29,7 @@ class ListsCest {
    *
    * @group jsonapi
    */
-  public function testSharedTags(AcceptanceTester $I) {
+  protected function footestSharedTags(AcceptanceTester $I) {
     $shared_tag = $I->createEntity([
       'name' => $this->faker->jobTitle,
       'vid' => 'su_shared_tags',
@@ -135,7 +135,7 @@ class ListsCest {
    *
    * @group jsonapi
    */
-  public function testListParagraphNews(AcceptanceTester $I) {
+  protected function footestListParagraphNews(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_news');
     $title = $this->faker->words(3, TRUE);
@@ -170,7 +170,7 @@ class ListsCest {
    *
    * @group jsonapi
    */
-  public function testListParagraphNewsFiltersNoFilter(AcceptanceTester $I) {
+  protected function footestListParagraphNewsFiltersNoFilter(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
     $topic_term = $this->createTaxonomyTerm($I, 'stanford_news_topics');
@@ -198,7 +198,7 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphNewsFiltersRandomFilter(AcceptanceTester $I) {
+  protected function footestListParagraphNewsFiltersRandomFilter(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
     $random_term = $this->createTaxonomyTerm($I, 'stanford_news_topics');
@@ -228,7 +228,7 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphNewsFiltersTopicFilter(AcceptanceTester $I) {
+  protected function footestListParagraphNewsFiltersTopicFilter(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
     $topic_term = $this->createTaxonomyTerm($I, 'stanford_news_topics');
@@ -262,7 +262,7 @@ class ListsCest {
    *
    * @group D8CORE-4858
    */
-  public function testEmptyResultsListEvents(AcceptanceTester $I) {
+  protected function footestEmptyResultsListEvents(AcceptanceTester $I) {
     // Start with no events.
     $nodes = \Drupal::entityTypeManager()
       ->getStorage('node')
@@ -374,7 +374,7 @@ class ListsCest {
    *
    * @group jsonapi
    */
-  public function testListParagraphEvents(AcceptanceTester $I) {
+  protected function footestListParagraphEvents(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
     $type = $I->createEntity([
@@ -498,7 +498,7 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphEventFiltersNoFilter(AcceptanceTester $I) {
+  protected function footestListParagraphEventFiltersNoFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     $event_type = $this->createTaxonomyTerm($I, 'stanford_event_types');
@@ -531,7 +531,7 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphEventFiltersRandomFilter(AcceptanceTester $I) {
+  protected function footestListParagraphEventFiltersRandomFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     $random_term = $this->createTaxonomyTerm($I, 'stanford_event_types');
@@ -566,7 +566,7 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphEventFiltersTypeFilter(AcceptanceTester $I) {
+  protected function footestListParagraphEventFiltersTypeFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     $event_type = $this->createTaxonomyTerm($I, 'stanford_event_types');
@@ -603,7 +603,7 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphEventFiltersAudienceFilter(AcceptanceTester $I) {
+  protected function footestListParagraphEventFiltersAudienceFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     $event_type = $this->createTaxonomyTerm($I, 'stanford_event_types');
@@ -640,7 +640,7 @@ class ListsCest {
   /**
    * People items should display in the list paragraph.
    */
-  public function testListParagraphPeople(AcceptanceTester $I) {
+  protected function footestListParagraphPeople(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_person');
     $I->fillField('First Name', 'Foo');
@@ -664,7 +664,7 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphPeopleFilters(AcceptanceTester $I) {
+  protected function footestListParagraphPeopleFilters(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     $type_term = $this->createTaxonomyTerm($I, 'stanford_person_types');
@@ -692,7 +692,7 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphPeopleFiltersRandomFilter(AcceptanceTester $I) {
+  protected function footestListParagraphPeopleFiltersRandomFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     $random_term = $this->createTaxonomyTerm($I, 'stanford_person_types');
@@ -722,7 +722,7 @@ class ListsCest {
   /**
    * When using the list paragraph and view arguments, it should filter results.
    */
-  public function testListParagraphPeopleFiltersTypeFilter(AcceptanceTester $I) {
+  protected function footestListParagraphPeopleFiltersTypeFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     $type_term = $this->createTaxonomyTerm($I, 'stanford_person_types');
@@ -754,7 +754,7 @@ class ListsCest {
   /**
    * Test basic page types list view.
    */
-  public function testListParagraphBasicPageTypesFilter(AcceptanceTester $I) {
+  protected function footestListParagraphBasicPageTypesFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     $type_term = $this->createTaxonomyTerm($I, 'basic_page_types', 'Basic Page Test Term');

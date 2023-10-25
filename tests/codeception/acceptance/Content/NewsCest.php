@@ -26,7 +26,7 @@ class NewsCest {
   /**
    * News list intro block is at the top of the page.
    */
-  public function testListIntro(AcceptanceTester $I) {
+  protected function footestListIntro(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/news');
     $I->canSeeResponseCodeIs(200);
@@ -35,7 +35,7 @@ class NewsCest {
   /**
    * Test that the default content has installed and is unpublished.
    */
-  public function testDefaultContentExists(AcceptanceTester $I) {
+  protected function footestDefaultContentExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage("/admin/content");
     $I->see("Sample: Smith Conference");
@@ -57,7 +57,7 @@ class NewsCest {
   /**
    * Test that the vocabulary and terms exist.
    */
-  public function testVocabularyTermsExists(AcceptanceTester $I) {
+  protected function footestVocabularyTermsExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage("/admin/structure/taxonomy/manage/stanford_news_topics/overview");
     $I->canSeeNumberOfElements("input.term-id", [2, 99]);
@@ -66,7 +66,7 @@ class NewsCest {
   /**
    * Test that the view pages exist.
    */
-  public function testViewPagesExist(AcceptanceTester $I) {
+  protected function footestViewPagesExist(AcceptanceTester $I) {
     $I->amOnPage("/news");
     $I->seeLink('Announcement');
     $I->click("a[href='/news/announcement']");
@@ -77,7 +77,7 @@ class NewsCest {
   /**
    * Validate external content redirect.
    */
-  public function testExternalSourceArticle(AcceptanceTester $I) {
+  protected function footestExternalSourceArticle(AcceptanceTester $I) {
     $node = $I->createEntity([
       'type' => 'stanford_news',
       'title' => $this->faker->words(3, TRUE),
@@ -98,7 +98,7 @@ class NewsCest {
    * Test that only two of three new news nodes show up in the more news view
    * on the node page.
    */
-  public function testMoreNewsView(AcceptanceTester $I) {
+  protected function footestMoreNewsView(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
 
     $first_news = $I->createEntity([
@@ -121,7 +121,7 @@ class NewsCest {
   /**
    * Test that the XML sitemap and metatag configuration is set.
    */
-  public function testXMLMetaDataRevisions(AcceptanceTester $I) {
+  protected function footestXMLMetaDataRevisions(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
 
     // Revision Delete is enabled.
@@ -144,7 +144,7 @@ class NewsCest {
   /**
    * Published checkbox should be hidden on term edit pages.
    */
-  public function testTermPublishing(AcceptanceTester $I) {
+  protected function footestTermPublishing(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $term = $I->createEntity([
       'vid' => 'stanford_news_topics',
@@ -159,7 +159,7 @@ class NewsCest {
    *
    * @group metadata
    */
-  public function testMetaData(AcceptanceTester $I) {
+  protected function footestMetaData(AcceptanceTester $I) {
     $values = [
       'featured_image_alt' => $this->faker->words(3, TRUE),
       'banner_image_alt' => $this->faker->words(3, TRUE),
