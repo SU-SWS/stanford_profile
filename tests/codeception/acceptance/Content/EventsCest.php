@@ -36,7 +36,7 @@ class EventsCest {
    *
    * @group D8CORE-4858
    */
-  protected function footestListIntro(AcceptanceTester $I) {
+  public function testListIntro(AcceptanceTester $I) {
     // Start with no events.
     $nodes = \Drupal::entityTypeManager()
       ->getStorage('node')
@@ -97,7 +97,7 @@ class EventsCest {
   /**
    * Ensure events are in the sitemap.
    */
-  protected function footestXMLSiteMap(AcceptanceTester $I) {
+  public function testXMLSiteMap(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_event');
     $I->seeOptionIsSelected('#edit-xmlsitemap-status', 'Included');
@@ -107,7 +107,7 @@ class EventsCest {
   /**
    * Test Page Title Conditions.
    */
-  protected function footestPageTitleIgnoreCondition(AcceptanceTester $I) {
+  public function testPageTitleIgnoreCondition(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     // Todo: make theme name dynamic.
     $I->amOnPage('/admin/structure/block/manage/stanford_basic_pagetitle');
@@ -121,7 +121,7 @@ class EventsCest {
   /**
    * Test the event content type exists and has at least a couple of fields.
    */
-  protected function footestContentTypeExists(AcceptanceTester $I) {
+  public function testContentTypeExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/types/manage/stanford_event/fields');
     $I->canSee('body');
@@ -148,7 +148,7 @@ class EventsCest {
   /**
    * Test Access to stuff for contrib role.
    */
-  protected function footestContributorPerms(AcceptanceTester $I) {
+  public function testContributorPerms(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
     // Can create a node.
@@ -188,7 +188,7 @@ class EventsCest {
   /**
    * Test thing.
    */
-  protected function footestEditorPerms(AcceptanceTester $I) {
+  public function testEditorPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_editor');
 
     // Can create a node.
@@ -233,7 +233,7 @@ class EventsCest {
   /**
    * Test thing.
    */
-  protected function footestSiteManagerPerms(AcceptanceTester $I) {
+  public function testSiteManagerPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     // Can create a node.
@@ -277,7 +277,7 @@ class EventsCest {
   /**
    * Test to make sure the main menu link is there.
    */
-  protected function footestDefaultContentExists(AcceptanceTester $I) {
+  public function testDefaultContentExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     // Events Main Menu Link.
     $I->amOnPage('/admin/structure/menu/manage/main');
@@ -287,7 +287,7 @@ class EventsCest {
   /**
    * Published checkbox should be hidden on term edit pages.
    */
-  protected function footestTermPublishing(AcceptanceTester $I) {
+  public function testTermPublishing(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $term = $I->createEntity([
       'vid' => 'event_audience',
@@ -307,7 +307,7 @@ class EventsCest {
   /**
    * Clone events get incremented date.
    */
-  protected function footestClone(AcceptanceTester $I) {
+  public function testClone(AcceptanceTester $I) {
     $user = $I->createUserWithRoles(['contributor']);
     /** @var \Drupal\node\NodeInterface $node */
     $node = $this->createEventNode($I);
@@ -359,19 +359,26 @@ class EventsCest {
 
     $month = $xpath->query('//span[@class="su-event-start-month"]');
     $I->assertNotEmpty($month);
-    $I->assertEquals(date('M', time()), $month->item(0)->nodeValue, 'Start Month does not match');
+    $I->assertEquals(self::getDateTimeString('M', time()), preg_replace('/(\r\n|\n|\r)/', '', $month->item(0)->nodeValue), 'Start Month does not match');
 
     $day = $xpath->query('//span[@class="su-event-start-date"]');
     $I->assertNotEmpty($day);
-    $I->assertEquals(date('j', time()), $day->item(0)->nodeValue, 'Start Date does not match');
+    $I->assertEquals(self::getDateTimeString('j', time()), preg_replace('/(\r\n|\n|\r)/', '', $day->item(0)->nodeValue), 'Start Date does not match');
 
     $month = $xpath->query('//span[@class="su-event-end-month"]');
     $I->assertNotEmpty($month);
-    $I->assertEquals(date('M', time() + (60 * 60 * 24)), $month->item(0)->nodeValue, 'End Month does not match');
+    $I->assertEquals(self::getDateTimeString('M', time() + (60 * 60 * 24)), preg_replace('/(\r\n|\n|\r)/', '', $month->item(0)->nodeValue), 'End Month does not match');
 
     $day = $xpath->query('//span[@class="su-event-end-date"]');
     $I->assertNotEmpty($day);
-    $I->assertEquals(date('j', time() + (60 * 60 * 24)), $day->item(0)->nodeValue, 'End Date does not match');
+    $I->assertEquals(self::getDateTimeString('j', time() + (60 * 60 * 24)), preg_replace('/(\r\n|\n|\r)/', '', $day->item(0)->nodeValue), 'End Date does not match');
+  }
+
+  protected static function getDateTimeString($format, $time) {
+    $timezone = \Drupal::config('system.date')
+      ->get('timezone.default') ?: @date_default_timezone_get();
+    return \Drupal::service('date.formatter')
+      ->format($time, 'custom', $format, $timezone);
   }
 
   /**

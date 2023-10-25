@@ -17,7 +17,7 @@ class SuperFooterCest {
   /**
    * Test the block exists.
    */
-  protected function footestBlockExists(AcceptanceTester $I) {
+  public function testBlockExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/block');
     $I->canSee('Super Footer');
@@ -26,7 +26,7 @@ class SuperFooterCest {
   /**
    * Test the Form exists.
    */
-  protected function footestFormExists(AcceptanceTester $I) {
+  public function testFormExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/super-footer');
     $I->canSee('Edit config page Super Footer');
@@ -35,7 +35,7 @@ class SuperFooterCest {
   /**
    * Test the Form Settings.
    */
-  protected function footestFormSettings(AcceptanceTester $I) {
+  public function testFormSettings(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/super-footer');
     $I->checkOption('#edit-su-super-foot-enabled-value');
@@ -60,7 +60,7 @@ class SuperFooterCest {
   /**
    * Test user role permissions.
    */
-  protected function footestAdminUserRole(AcceptanceTester $I) {
+  public function testAdminUserRole(AcceptanceTester $I) {
     // Admin.
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/super-footer');
@@ -71,7 +71,7 @@ class SuperFooterCest {
   /**
    * Test user role permissions.
    */
-  protected function footestSiteManagerUserRole(AcceptanceTester $I) {
+  public function testSiteManagerUserRole(AcceptanceTester $I) {
     // Site Manager.
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/super-footer');
@@ -82,7 +82,7 @@ class SuperFooterCest {
   /**
    * Test user role permissions.
    */
-  protected function footestSiteEditorUserRole(AcceptanceTester $I) {
+  public function testSiteEditorUserRole(AcceptanceTester $I) {
     // Editor.
     $I->logInWithRole('site_editor');
     $I->amOnPage('/admin/config/system/super-footer');
@@ -93,7 +93,7 @@ class SuperFooterCest {
   /**
    * Test user role permissions.
    */
-  protected function footestContributorUserRole(AcceptanceTester $I) {
+  public function testContributorUserRole(AcceptanceTester $I) {
     // Contributor.
     $I->logInWithRole('contributor');
     $I->amOnPage('/admin/config/system/super-footer');

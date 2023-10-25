@@ -10,7 +10,7 @@ class DefaultContentCest {
   /**
    * Test default images.
    */
-  protected function footestDefaultImages(AcceptanceTester $I) {
+  public function testDefaultImages(AcceptanceTester $I) {
     $files = \Drupal::entityTypeManager()->getStorage('file')->loadMultiple();
 
     /** @var \Drupal\file\FileInterface $file */
@@ -30,7 +30,7 @@ class DefaultContentCest {
   /**
    * Default content pages and meta data exist.
    */
-  protected function footestExistingContent(AcceptanceTester $I) {
+  public function testExistingContent(AcceptanceTester $I) {
     $pages = [
       '/',
       '/resources',
@@ -49,7 +49,7 @@ class DefaultContentCest {
   /**
    * There should be at least 15 media items.
    */
-  protected function footestMedia(AcceptanceTester $I) {
+  public function testMedia(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/content/media');
     $I->canSeeNumberOfElements('table img, form img', [15, 999]);
@@ -58,7 +58,7 @@ class DefaultContentCest {
   /**
    * XML Sitemap should exist after cron.
    */
-  protected function footestXmlSitemap(AcceptanceTester $I) {
+  public function testXmlSitemap(AcceptanceTester $I) {
     $I->runDrush('cron');
     $I->amOnPage('/sitemap.xml');
     $I->canSeeResponseCodeIs(200);
@@ -69,7 +69,7 @@ class DefaultContentCest {
    *
    * @group menu_link_weight
    */
-  protected function footestMenuItems(AcceptanceTester $I) {
+  public function testMenuItems(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/structure/menu/manage/main');
 

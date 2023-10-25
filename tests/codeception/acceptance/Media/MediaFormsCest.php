@@ -22,7 +22,7 @@ class MediaFormsCest {
   /**
    * Test embeddables form alters
    */
-  protected function footestFormAlters(AcceptanceTester $I) {
+  public function testFormAlters(AcceptanceTester $I) {
     $support_url = 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a';
     $I->logInWithRole('site_manager');
     $I->amOnPage('/media/add/embeddable');

@@ -27,7 +27,7 @@ class Issue2901390Cest {
   /**
    * A user should be able to create a custom block in layout builder.
    */
-  protected function footestLayoutBuilderParagraph(AcceptanceTester $I) {
+  public function testLayoutBuilderParagraph(AcceptanceTester $I) {
     $user = $I->createUserWithRoles(['site_manager', 'layout_builder_user']);
     $I->logInAs($user->id());
     $node = $I->createEntity([

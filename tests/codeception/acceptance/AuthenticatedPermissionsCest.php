@@ -49,7 +49,7 @@ class AuthenticatedPermissionsCest {
   /**
    * Make sure authenticated users can't access things they should not.
    */
-  protected function footestAuthenticatedUserRestrictions(AcceptanceTester $I) {
+  public function testAuthenticatedUserRestrictions(AcceptanceTester $I) {
     $I->logInWithRole('authenticated');
     $I->amOnPage('/');
     $I->canSeeResponseCodeIs(200);
@@ -76,7 +76,7 @@ class AuthenticatedPermissionsCest {
   /**
    * Make sure authenticated users can access things they should.
    */
-  protected function footestAuthenticatedUserPermissions(AcceptanceTester $I) {
+  public function testAuthenticatedUserPermissions(AcceptanceTester $I) {
     $I->logInWithRole('authenticated');
     $I->amOnPage('/patterns');
     $I->canSeeResponseCodeIs(200);
@@ -85,7 +85,7 @@ class AuthenticatedPermissionsCest {
   /**
    * Site Manager cannot escalate their own role above Site Manager.
    */
-  protected function footestSiteManagerEscalationSelf(AcceptanceTester $I) {
+  public function testSiteManagerEscalationSelf(AcceptanceTester $I) {
     $site_manager = $I->logInWithRole('site_manager');
     $site_manager_id = $site_manager->id();
     $I->amOnPage('/admin/users');
@@ -101,7 +101,7 @@ class AuthenticatedPermissionsCest {
   /**
    * Site Manager cannot escalate others' role above Site Manager.
    */
-  protected function footestSiteManagerEscalationOthers(AcceptanceTester $I) {
+  public function testSiteManagerEscalationOthers(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/users');
     $I->canSee('Morgan');
@@ -115,7 +115,7 @@ class AuthenticatedPermissionsCest {
   /**
    * PHP code is not allowed in redirects.
    */
-  protected function footestPhpInRedirect(AcceptanceTester $I) {
+  public function testPhpInRedirect(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/search/redirect/add');
     $I->fillField('#edit-redirect-source-0-path', 'home');
@@ -128,7 +128,7 @@ class AuthenticatedPermissionsCest {
   /**
    * PHP code is escaped and not run when added to content.
    */
-  protected function footestPhpInContent(AcceptanceTester $I) {
+  public function testPhpInContent(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_page');
     $I->fillField('#edit-title-0-value', '<?php echo("injection test"); die(); ?>');
@@ -140,7 +140,7 @@ class AuthenticatedPermissionsCest {
   /**
    * PHP files are not allowed as uploads for favicons.
    */
-  protected function footestPhpUploadInFavicon(AcceptanceTester $I) {
+  public function testPhpUploadInFavicon(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance/settings');
     $I->seeCheckboxIsChecked('#edit-default-favicon');
@@ -156,7 +156,7 @@ class AuthenticatedPermissionsCest {
   /**
    * PHP files are not allowed as uploads for the logo.
    */
-  protected function footestPhpUploadInLogo(AcceptanceTester $I) {
+  public function testPhpUploadInLogo(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance/settings');
     $I->seeCheckboxIsChecked('#edit-default-logo');
@@ -173,7 +173,7 @@ class AuthenticatedPermissionsCest {
   /**
    * Vocabs aren't seen if there are no permissions for them.
    */
-  protected function footestTaxonomyOverviewPage(AcceptanceTester $I) {
+  public function testTaxonomyOverviewPage(AcceptanceTester $I) {
     $name = $this->faker->firstName;
     $vocab = $I->createEntity([
       'vid' => strtolower($name),

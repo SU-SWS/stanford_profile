@@ -22,7 +22,7 @@ class LocalFooterCest {
   /**
    * Only site manager and higher should have access.
    */
-  protected function footestAccess(AcceptanceTester $I) {
+  public function testAccess(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(403);
@@ -35,7 +35,7 @@ class LocalFooterCest {
   /**
    * Changes to the local footer should display correctly.
    */
-  protected function footestCustomLocalFooter(AcceptanceTester $I) {
+  public function testCustomLocalFooter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->checkOption('Enabled');
@@ -95,7 +95,7 @@ class LocalFooterCest {
   /**
    * Content blocks.
    */
-  protected function footestCustomContentLocalFooter(AcceptanceTester $I) {
+  public function testCustomContentLocalFooter(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->checkOption('Enabled');
@@ -114,7 +114,7 @@ class LocalFooterCest {
   /**
    * Route urls and no link urls should function correctly in the footer.
    */
-  protected function footestNodeRoutesAndNoLink(AcceptanceTester $I) {
+  public function testNodeRoutesAndNoLink(AcceptanceTester $I) {
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => 'Test Page',

@@ -36,7 +36,7 @@ class SystemSiteConfigCest {
   /**
    * The site manager should be able to change the site name.
    */
-  protected function footestBasicSiteSettings(AcceptanceTester $I) {
+  public function testBasicSiteSettings(AcceptanceTester $I) {
     $org_term = $I->createEntity([
       'vid' => 'site_owner_orgs',
       'name' => $this->faker->words(2, TRUE),
@@ -71,7 +71,7 @@ class SystemSiteConfigCest {
   /**
    * Site settings config should change the home, 404, and 403 pages.
    */
-  protected function footestSitePages(AcceptanceTester $I) {
+  public function testSitePages(AcceptanceTester $I) {
     $org_term = $I->createEntity([
       'vid' => 'site_owner_orgs',
       'name' => $this->faker->words(2, TRUE),

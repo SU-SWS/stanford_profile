@@ -28,7 +28,7 @@ class MediaCest {
   /**
    * Documents can be embedded as links.
    */
-  protected function footestFileLinks(AcceptanceTester $I) {
+  public function testFileLinks(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/content/linkit/manage/default/matchers');
     $I->canSee('Metadata: [media:field_media_file:entity:basename]: [media:field_media_file:entity:mime]');
@@ -37,7 +37,7 @@ class MediaCest {
   /**
    * Media Types Exist.
    */
-  protected function footestForMediaTypes(AcceptanceTester $I) {
+  public function testForMediaTypes(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/media');
     $I->canSee('Embeddable');
@@ -50,7 +50,7 @@ class MediaCest {
   /**
    * Embedded media should not have a </source> tag.
    */
-  protected function footestSourceTag(AcceptanceTester $I) {
+  public function testSourceTag(AcceptanceTester $I) {
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
     $image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
@@ -89,7 +89,7 @@ class MediaCest {
   /**
    * Embeddable types enabled.
    */
-  protected function footestForEmbeddableOptions(AcceptanceTester $I) {
+  public function testForEmbeddableOptions(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/media/manage/embeddable');
     $I->canSeeCheckboxIsChecked('ArcGIS StoryMaps');
@@ -115,7 +115,7 @@ class MediaCest {
   /**
    * Embeddable fields set right.
    */
-  protected function footestForEmbeddableFields(AcceptanceTester $I) {
+  public function testForEmbeddableFields(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/media/manage/embeddable');
     $I->seeOptionIsSelected('Field for unstructured embed codes', 'media.field_media_embeddable_code');
@@ -124,7 +124,7 @@ class MediaCest {
   /**
    * Embeddable form fields.
    */
-  protected function footestForEmbeddableFormFields(AcceptanceTester $I) {
+  public function testForEmbeddableFormFields(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/media/add/embeddable');
     $I->canSee('Name');
@@ -154,7 +154,7 @@ class MediaCest {
    *
    * @group embed-codes
    */
-  protected function footestAllowedEmbedCodes(AcceptanceTester $I) {
+  public function testAllowedEmbedCodes(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/media/add/embeddable');
     $I->fillField('Name', $this->faker->words(3, TRUE));
@@ -186,7 +186,7 @@ class MediaCest {
   /**
    * Google Form additional field
    */
-  protected function footestForGoogleFormFields(AcceptanceTester $I) {
+  public function testForGoogleFormFields(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/media/add/google_form');
     $I->canSee('Form Height');
@@ -195,7 +195,7 @@ class MediaCest {
   /**
    * Administrative file listing can delete files.
    */
-  protected function footestDeleteFiles(AcceptanceTester $I) {
+  public function testDeleteFiles(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/content/files');
     $I->canSeeResponseCodeIs(403);
@@ -256,7 +256,7 @@ class MediaCest {
   /**
    * SUL Embeddables can be saved.
    */
-  protected function footestArcGis(AcceptanceTester $I) {
+  public function testArcGis(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/media/add/embeddable');
     $name = $this->faker->words(2, TRUE);
@@ -269,7 +269,7 @@ class MediaCest {
   /**
    * Test media category taxonomy field.
    */
-  protected function footestCategoryField(AcceptanceTester $I) {
+  public function testCategoryField(AcceptanceTester $I) {
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
     $image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');

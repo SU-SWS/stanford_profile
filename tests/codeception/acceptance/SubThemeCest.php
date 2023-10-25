@@ -63,7 +63,7 @@ class SubThemeCest {
    *
    * @group minimal-subtheme-test2
    */
-  protected function footestSubTheme(AcceptanceTester $I) {
+  public function testSubTheme(AcceptanceTester $I) {
     $I->runDrush('theme:enable -y ' . strtolower($this->themeName));
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
@@ -94,7 +94,7 @@ class SubThemeCest {
    *
    * @group minimal-subtheme-test
    */
-  protected function footestMinimalSubtheme(AcceptanceTester $I) {
+  public function testMinimalSubtheme(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');

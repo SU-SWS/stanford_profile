@@ -26,7 +26,7 @@ class EventsSeriesCest {
   /**
    * Ensure events are in the sitemap.
    */
-  protected function footestXMLSiteMap(AcceptanceTester $I) {
+  public function testXMLSiteMap(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_event_series');
     $I->seeOptionIsSelected('#edit-xmlsitemap-status', 'Included');
@@ -36,7 +36,7 @@ class EventsSeriesCest {
   /**
    * Test Page Title Conditions.
    */
-  protected function footestPageTitleIgnoreCondition(AcceptanceTester $I) {
+  public function testPageTitleIgnoreCondition(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     // Todo: make theme name dynamic.
     $I->amOnPage('/admin/structure/block/manage/stanford_basic_pagetitle');
@@ -50,7 +50,7 @@ class EventsSeriesCest {
   /**
    * Test the the event content type exists and has at least a couple of fields.
    */
-  protected function footestContentTypeExists(AcceptanceTester $I) {
+  public function testContentTypeExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/types/manage/stanford_event_series/fields');
     $I->canSee('su_event_series_subheadline');
@@ -60,7 +60,7 @@ class EventsSeriesCest {
   /**
    * Test Access to stuff for contrib role.
    */
-  protected function footestContributorPerms(AcceptanceTester $I) {
+  public function testContributorPerms(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
     // D8CORE-4551: Can NOT create a node.
@@ -85,7 +85,7 @@ class EventsSeriesCest {
   /**
    * Test thing.
    */
-  protected function footestEditorPerms(AcceptanceTester $I) {
+  public function testEditorPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_editor');
 
     // Can create a node.
@@ -115,7 +115,7 @@ class EventsSeriesCest {
   /**
    * Test thing.
    */
-  protected function footestSiteManagerPerms(AcceptanceTester $I) {
+  public function testSiteManagerPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
     // Can create a node.

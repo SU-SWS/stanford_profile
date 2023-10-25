@@ -10,7 +10,8 @@ class SystemCest {
   /**
    * Test the site status report.
    */
-  protected function footestSiteStatus(AcceptanceTester $I) {
+  public function testSiteStatus(AcceptanceTester $I) {
+    $I->runDrush('xmlsitemap:rebuild');
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/reports/status');
     $I->canSee('10.1', '.system-status-general-info');

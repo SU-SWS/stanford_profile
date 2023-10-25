@@ -38,7 +38,7 @@ class PolicyCest {
   /**
    * Test field access.
    */
-  protected function footestPolicyAccess(AcceptanceTester $I) {
+  public function testPolicyAccess(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_policy');
     $I->cantSee('Create a new book');
@@ -71,7 +71,7 @@ class PolicyCest {
   /**
    * Test book title changes.
    */
-  protected function footestPolicyTitle(AcceptanceTester $I) {
+  public function testPolicyTitle(AcceptanceTester $I) {
     $title = $this->faker->words(4, TRUE) . ' foo bar';
     $I->logInWithRole('administrator');
     $I->amOnPage('/node/add/stanford_policy');
@@ -92,7 +92,7 @@ class PolicyCest {
    *
    * @group menu_link_weight
    */
-  protected function footestPolicyPathAuto(AcceptanceTester $I) {
+  public function testPolicyPathAuto(AcceptanceTester $I) {
     $title = $this->faker->words(4, TRUE) . ' foo bar';
     $I->logInWithRole('administrator');
     $I->amOnPage('/node/add/stanford_policy');
@@ -163,7 +163,7 @@ class PolicyCest {
    *
    * @group menu_link_weight
    */
-  protected function footestPolicyHeirarcy(AcceptanceTester $I) {
+  public function testPolicyHeirarcy(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $book = $I->createEntity([
       'type' => 'stanford_policy',
