@@ -46,6 +46,7 @@ class SystemSiteConfigCest {
     $I->amOnPage('/');
     $I->cantSee('Foo Bar Site');
     $I->amOnPage('/admin/config/system/basic-site-settings');
+    $I->canSeeElement('#contact');
     $I->cantSee('Site URL');
     $I->fillField('Site Name', 'Foo Bar Site');
     $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
