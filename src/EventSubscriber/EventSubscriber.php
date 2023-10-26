@@ -124,7 +124,7 @@ class EventSubscriber implements EventSubscriberInterface {
       self::redirectUser()
     ) {
       $config_page_url = Url::fromRoute('config_pages.stanford_basic_site_settings');
-      $this->messenger->addWarning('Please update or verify the site contact information.');
+      $this->messenger->addWarning('Please update or verify the site contact information on the "Contact Details" tab.');
       $event->setResponse(new RedirectResponse($config_page_url->toString() . '#contact'));
     }
   }
