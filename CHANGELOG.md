@@ -1,5 +1,12 @@
 # Stanford Profile
 
+11.0.8
+-------------------------------------------------------------------------------
+- D8CORE-7066 Adjust site contact fields & language (#741)
+- Update contact field labels
+- Adjusted access denied message
+- Added the anchor for contact details on site settings
+
 11.0.7
 -------------------------------------------------------------------------------
 - Invalidate cache tag when saving site contact details
