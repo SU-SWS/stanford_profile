@@ -55,13 +55,13 @@ class NavigationDropDownsCest {
     $I->logInWithRole('site_manager');
     $I->resizeWindow(1400, 2000);
     $I->amOnPage('/admin/config/system/basic-site-settings');
-    $I->uncheckOption('Use drop down menus');
+    $I->uncheckOption('Use Drop Down Menus');
 
-    $I->click('Contact Details');
-    $I->waitForElementVisible('[data-drupal-selector="edit-group-contact-details"]');
-    $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
-    $I->fillField('Technical Contact (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
+    $I->click('Site Contacts');
+    $I->waitForText('Site Owner Contact Email');
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
     $I->selectOption('.js-form-item-su-site-org-0-target-id select.simpler-select', $org_term->id());
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
@@ -70,7 +70,7 @@ class NavigationDropDownsCest {
     $I->cantSeeElement('button', ['class' => 'su-nav-toggle']);
 
     $I->amOnPage('/admin/config/system/basic-site-settings');
-    $I->checkOption('Use drop down menus');
+    $I->checkOption('Use Drop Down Menus');
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
 
