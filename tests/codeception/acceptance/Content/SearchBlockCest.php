@@ -37,9 +37,9 @@ class SearchBlockCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->see('Hide Site Search');
     $I->checkOption('Hide Site Search');
-    $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
-    $I->fillField('Technical Contact (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
     $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
     $I->click('Save');
     // The settings might have been created or updated.

@@ -46,11 +46,12 @@ class SystemSiteConfigCest {
     $I->amOnPage('/');
     $I->cantSee('Foo Bar Site');
     $I->amOnPage('/admin/config/system/basic-site-settings');
+    $I->canSeeElement('#contact');
     $I->cantSee('Site URL');
     $I->fillField('Site Name', 'Foo Bar Site');
-    $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
-    $I->fillField('Technical Contact (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
     $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
@@ -101,9 +102,9 @@ class SystemSiteConfigCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->selectOption('Home Page', $node->label());
-    $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
-    $I->fillField('Technical Contact (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
     $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
@@ -142,9 +143,9 @@ class SystemSiteConfigCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->fillField('Google Analytics Account', 'abcdefg');
 
-    $I->fillField('Site Owner Contact (value 1)', $this->faker->email);
-    $I->fillField('Technical Contact (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact (value 1)', $this->faker->email);
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
     $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
 
     $I->click('Save');
