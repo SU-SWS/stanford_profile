@@ -4,6 +4,10 @@ status: true
 dependencies:
   module:
     - config_pages
+    - field_permissions
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: config_pages.su_site_email
 field_name: su_site_email
 entity_type: config_pages
