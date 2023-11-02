@@ -10,7 +10,7 @@ field_name: su_site_algolia_key
 entity_type: config_pages
 bundle: stanford_basic_site_settings
 label: 'Algolia API Key'
-description: ''
+description: 'This is the ADMIN API key. Please keep it secret and use it ONLY from your backend: this key is used to create, update and DELETE your indices. Find this key in <a href="https://dashboard.algolia.com/account/api-keys/all>Algolia dashboard</a>.'
 required: false
 translatable: false
 default_value: {  }
