@@ -1,0 +1,19 @@
+uuid: 06f67944-3df4-4ef6-87e3-fed9ae4d1898
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_algolia_key
+id: config_pages.stanford_basic_site_settings.su_site_algolia_key
+field_name: su_site_algolia_key
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Algolia API Key'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
