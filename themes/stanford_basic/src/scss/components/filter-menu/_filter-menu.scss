@@ -20,7 +20,7 @@
     background-color: transparent;
     color: $su-color-bright-blue;
     cursor: pointer;
-    display: inline-block;
+    display: flex;
     font-weight: $su-font-semi-bold;
     text-align: left;
     text-decoration: none;
@@ -54,7 +54,7 @@
     }
 
     .su-link--jump {
-      float: right;
+      margin-left: auto;
     }
 
     @include grid-media-max('md') {
