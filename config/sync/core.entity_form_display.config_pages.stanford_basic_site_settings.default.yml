@@ -14,7 +14,6 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_id
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_index
-    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_item
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_key
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_search
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
@@ -211,14 +210,6 @@ content:
     region: content
     settings:
       size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  su_site_algolia_item:
-    type: string_textarea
-    weight: 14
-    region: content
-    settings:
-      rows: 5
       placeholder: ''
     third_party_settings: {  }
   su_site_algolia_key:
