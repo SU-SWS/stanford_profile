@@ -14,6 +14,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_id
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_index
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_item
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_key
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_search
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
@@ -120,6 +121,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 22
+    region: content
+  su_site_algolia_item:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 24
     region: content
   su_site_algolia_key:
     type: string

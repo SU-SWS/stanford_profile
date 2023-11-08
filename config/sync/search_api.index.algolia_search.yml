@@ -4,6 +4,7 @@ status: false
 dependencies:
   config:
     - search_api.server.algolia_search
+    - core.entity_view_mode.node.search_indexing
   module:
     - node
     - search_api
@@ -83,14 +84,14 @@ field_settings:
         - authenticated
       view_mode:
         'entity:node':
-          stanford_course: default
-          stanford_event: default
-          stanford_event_series: default
-          stanford_news: default
-          stanford_page: default
-          stanford_person: default
-          stanford_policy: default
-          stanford_publication: default
+          stanford_course: search_indexing
+          stanford_event: search_indexing
+          stanford_event_series: search_indexing
+          stanford_news: search_indexing
+          stanford_page: search_indexing
+          stanford_person: search_indexing
+          stanford_policy: search_indexing
+          stanford_publication: search_indexing
   status:
     label: status
     datasource_id: 'entity:node'
@@ -153,6 +154,37 @@ processor_settings:
   custom_value: {  }
   entity_status: {  }
   entity_type: {  }
+  html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: true
+    fields:
+      - byline
+      - dek
+      - email
+      - event_end
+      - event_start
+      - person_full_title
+      - person_short_title
+      - phone
+      - photo
+      - rendered
+      - subheadline
+      - summary
+      - title
+      - type
+      - url
+    title: true
+    alt: true
+    tags:
+      b: 2
+      em: 1
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+      u: 1
   language_with_fallback: {  }
   rendered_item: {  }
 tracker_settings:
