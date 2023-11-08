@@ -157,6 +157,6 @@ algolia-instant-search:
 algolia-search:
   version: VERSION
   js:
-    src/js/algolia-search.js: { }
+    algolia-search/dist/islands/algolia-search.island.js: { }
   dependencies:
     - stanford_basic/algolia-instant-search
