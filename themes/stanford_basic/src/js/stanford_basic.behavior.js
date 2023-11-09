@@ -26,6 +26,8 @@ export default {
         $('.su-skipnav--secondary', context).remove();
       }
 
+      // Put an aria-hidden=true on the visually hidden block block title
+      // for the secondary navigation menu.
       $('#menu-blockmain-menu').attr('aria-hidden', 'true');
 
       // Check for search box and move the second block to the mobile navigation.
