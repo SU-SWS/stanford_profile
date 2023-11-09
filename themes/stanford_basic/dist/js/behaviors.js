@@ -64,6 +64,7 @@ window.Drupal.behaviors.stanford_basic = {
       if (!$sn) {
         $('.su-skipnav--secondary', context).remove();
       }
+      $('#menu-blockmain-menu').attr('aria-hidden', 'true');
 
       // Check for search box and move the second block to the mobile navigation.
       // Hide it and then only show for mobile sites.
