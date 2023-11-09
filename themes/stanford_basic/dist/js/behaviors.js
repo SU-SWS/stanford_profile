@@ -65,10 +65,6 @@ window.Drupal.behaviors.stanford_basic = {
         $('.su-skipnav--secondary', context).remove();
       }
 
-      // Put an aria-hidden=true on the visually hidden block block title
-      // for the secondary navigation menu.
-      $('#menu-blockmain-menu').attr('aria-hidden', 'true');
-
       // Check for search box and move the second block to the mobile navigation.
       // Hide it and then only show for mobile sites.
       var $search = $('.su-masthead .su-site-search', context);
