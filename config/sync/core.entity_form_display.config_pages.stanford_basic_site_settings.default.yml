@@ -12,6 +12,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_a11y_contact
     - field.field.config_pages.stanford_basic_site_settings.su_site_admin_notes
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_file
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_id
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_index
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_key
@@ -119,9 +120,9 @@ third_party_settings:
         - su_site_algolia
         - su_site_algolia_id
         - su_site_algolia_key
-        - su_site_algolia_index
         - su_site_algolia_search
-        - su_site_algolia_item
+        - su_site_algolia_index
+        - su_site_algolia_file
       label: Search
       region: content
       parent_name: group_tabs
@@ -196,6 +197,14 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  su_site_algolia_file:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   su_site_algolia_id:
     type: string_textfield
     weight: 10
@@ -206,7 +215,7 @@ content:
     third_party_settings: {  }
   su_site_algolia_index:
     type: string_textfield
-    weight: 12
+    weight: 13
     region: content
     settings:
       size: 60
@@ -222,7 +231,7 @@ content:
     third_party_settings: {  }
   su_site_algolia_search:
     type: string_textfield
-    weight: 13
+    weight: 12
     region: content
     settings:
       size: 60

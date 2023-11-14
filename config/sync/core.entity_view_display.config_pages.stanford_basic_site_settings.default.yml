@@ -12,6 +12,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_a11y_contact
     - field.field.config_pages.stanford_basic_site_settings.su_site_admin_notes
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_file
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_id
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_index
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_key
@@ -104,6 +105,14 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 19
+    region: content
+  su_site_algolia_file:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 24
     region: content
   su_site_algolia_id:
     type: string
