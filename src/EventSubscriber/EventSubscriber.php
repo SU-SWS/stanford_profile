@@ -120,6 +120,7 @@ class EventSubscriber implements EventSubscriberInterface {
 
     if (
       $event->getRequestType() == HttpKernelInterface::MAIN_REQUEST &&
+      !getenv('LANDO') &&
       !str_starts_with($current_uri, '/admin/config/system/basic-site-settings') &&
       self::redirectUser()
     ) {

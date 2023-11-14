@@ -63,6 +63,7 @@ class GalleryCest {
     $I->canSee($node->label(), 'h1');
     $I->canSeeNumberOfElements('.stanford-gallery-images img', 2);
     $I->canSeeNumberOfElements('.colorbox', 2);
+    $I->dontSeeElement('a.colorbox',['aria-label'] );
     $I->click('a.colorbox');
     $I->waitForElementVisible('#cboxLoadedContent');
     $I->canSeeNumberOfElements('#cboxContent img', 1);
