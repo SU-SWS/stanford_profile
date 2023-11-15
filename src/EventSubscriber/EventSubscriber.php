@@ -121,7 +121,7 @@ class EventSubscriber implements EventSubscriberInterface {
 
     if (
       $event->getRequestType() == HttpKernelInterface::MAIN_REQUEST &&
-      (Settings::get('stanford_capture_ownership', FALSE) || getenv('GITHUB_ACTIONS')) &&
+      (Settings::get('stanford_capture_ownership', FALSE)) &&
       !str_starts_with($current_uri, '/admin/config/system/basic-site-settings') &&
       self::redirectUser()
     ) {
