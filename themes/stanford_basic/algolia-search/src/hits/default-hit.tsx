@@ -37,15 +37,13 @@ const DefaultHit = ({hit}) => {
         <div>
           <h2>
             <a href={hit.url}>
-              <Highlight hit={hit} attribute="title">
-                {hit.title}
-              </Highlight>
+              {hit.title}
             </a>
           </h2>
 
           <p>
             {hit.summary &&
-              <Highlight hit={hit} attribute="summary">{hit.summary}</Highlight>
+              <Highlight hit={hit} attribute="summary"/>
             }
 
             {!hit.summary &&

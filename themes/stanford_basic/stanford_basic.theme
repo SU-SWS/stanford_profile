@@ -214,13 +214,11 @@ function stanford_basic_preprocess_block(&$variables) {
       $variables['attributes']['data-island'] = 'main-menu-island';
       $variables['#attached']['library'][] = 'stanford_basic/decoupled_menu';
     }
+  }
 
-    if ($variables['plugin_id'] == 'views_exposed_filter_block:search-results') {
-      $algolia_app = $config_pages->getValue('stanford_basic_site_settings', 'su_site_algolia_id', 0, 'value');
-      $algolia_search_key = $config_pages->getValue('stanford_basic_site_settings', 'su_site_algolia_search', 0, 'value');
-      if ($algolia_search_key && $algolia_app) {
-        unset($variables['content']);
-      }
+  if ($variables['plugin_id'] == 'views_exposed_filter_block:search-results') {
+    if (_stanford_basic_algolia_settings()) {
+      unset($variables['content']);
     }
   }
 }
@@ -467,48 +465,59 @@ function stanford_basic_preprocess_menu_local_task(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Get the user entered Algolia search settings.
+ *
+ * @return array|bool
+ *   Keyed array of algolia settings, false if not configured.
  */
-function stanford_basic_preprocess_page__search(&$variables) {
+function _stanford_basic_algolia_settings(): array|bool {
+  $settings = &drupal_static(__DIR__);
+  if ($settings != NULL) {
+    return $settings;
+  }
+
   if (!\Drupal::hasService('config_pages.loader')) {
-    return;
+    return $settings = FALSE;
   }
   /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_page */
   $config_page = \Drupal::service('config_pages.loader');
+
+  $use_algolia = (bool) $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia', 0, 'value');
+  if (!$use_algolia) {
+    return $settings = FALSE;
+  }
   $algolia_app = $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_id', 0, 'value');
   $algolia_search_key = $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_search', 0, 'value');
   $search_index = $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_index', 0, 'value');
-  if (!$algolia_app || !$algolia_search_key) {
-    return;
-  }
-  $variables['#attached']['library'][] = 'stanford_basic/algolia-search';
-  $variables['#attached']['drupalSettings']['stanfordAlgolia'] = [
+  $settings = [
     'appId' => $algolia_app,
     'searchKey' => $algolia_search_key,
     'index' => $search_index,
   ];
+  return $settings;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_page__search(&$variables) {
+  $algolia_settings = _stanford_basic_algolia_settings();
+  if (!$algolia_settings) {
+    return;
+  }
+  $variables['#attached']['library'][] = 'stanford_basic/algolia-search';
+  $variables['#attached']['drupalSettings']['stanfordAlgolia'] = $algolia_settings;
 
   foreach (Element::children($variables['page']['content']) as $child_key) {
     $element = &$variables['page']['content'][$child_key];
     if (isset($element['#plugin_id']) && $element['#plugin_id'] == 'system_main_block') {
       $variables['page']['content'][$child_key] = [
-        'search' => [
-          '#type' => 'html_tag',
-          '#tag' => 'div',
-          '#value' => '',
-          '#attributes' => [
-            'id' => 'algolia-search',
-            'class' => ['centered-container'],
-          ],
-        ],
-        'results' => [
-          '#type' => 'html_tag',
-          '#tag' => 'div',
-          '#value' => '',
-          '#attributes' => [
-            'id' => 'algolia-results',
-            'class' => ['centered-container'],
-          ],
+        '#type' => 'html_tag',
+        '#tag' => 'div',
+        '#value' => '',
+        '#attributes' => [
+          'id' => 'algolia-search',
+          'class' => ['centered-container'],
         ],
       ];
     }
