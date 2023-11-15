@@ -8,9 +8,9 @@ use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Site\Settings;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\Core\Url;
-use Drupal\Core\Site\Settings;
 use Drupal\core_event_dispatcher\EntityHookEvents;
 use Drupal\core_event_dispatcher\Event\Entity\EntityDeleteEvent;
 use Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent;
@@ -121,7 +121,7 @@ class EventSubscriber implements EventSubscriberInterface {
 
     if (
       $event->getRequestType() == HttpKernelInterface::MAIN_REQUEST &&
-      Settings::get('stanford_capture_ownership', FALSE) &&
+      (Settings::get('stanford_capture_ownership', FALSE) || getenv('GITHUB_ACTIONS')) &&
       !str_starts_with($current_uri, '/admin/config/system/basic-site-settings') &&
       self::redirectUser()
     ) {
@@ -158,7 +158,6 @@ class EventSubscriber implements EventSubscriberInterface {
 
     // Check for config page edit access and ignore if the user is an
     // administrator. That way devs don't get forced into submitting the form.
-
     $site_manager = $current_user->hasPermission('edit stanford_basic_site_settings config page entity') && !in_array('administrator', $current_user->getRoles());
 
     // If the renewal date has passed, they should be redirected.
