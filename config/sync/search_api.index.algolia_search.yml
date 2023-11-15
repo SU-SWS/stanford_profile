@@ -8,6 +8,7 @@ dependencies:
   module:
     - node
     - search_api
+    - stanford_profile_helper
 id: algolia_search
 name: 'Algolia Search'
 description: ''
@@ -154,11 +155,11 @@ processor_settings:
   custom_value: {  }
   entity_status: {  }
   entity_type: {  }
-  html_filter:
+  language_with_fallback: {  }
+  remove_tags:
     weights:
-      preprocess_index: -15
-      preprocess_query: -15
-    all_fields: true
+      preprocess_index: 0
+    all_fields: 1
     fields:
       - byline
       - dek
@@ -175,18 +176,18 @@ processor_settings:
       - title
       - type
       - url
-    title: true
-    alt: true
     tags:
-      b: 2
-      em: 1
-      h1: 5
-      h2: 3
-      h3: 2
-      strong: 2
-      u: 1
-  language_with_fallback: {  }
+      - div
+      - span
   rendered_item: {  }
+  type_boost:
+    weights:
+      preprocess_index: 0
+    boosts:
+      'entity:node':
+        datasource_boost: 0.0
+        bundle_boosts:
+          stanford_news: 3.0
 tracker_settings:
   default:
     indexing_order: fifo
