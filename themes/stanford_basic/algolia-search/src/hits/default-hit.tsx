@@ -44,12 +44,21 @@ const DefaultHit = ({hit}) => {
           </h2>
 
           <p>
-            ...<Snippet hit={hit} attribute="rendered"/>...
+            {hit.summary &&
+              <Highlight hit={hit} attribute="summary">{hit.summary}</Highlight>
+            }
+
+            {!hit.summary &&
+              <>
+                ...<Snippet hit={hit} attribute="rendered"/>...
+              </>
+            }
           </p>
         </div>
 
         {hit.updated &&
-          <div>Last Updated: {new Date(hit.updated * 1000).toLocaleDateString('en-us', {month: "long", day: "numeric", year: "numeric"})}</div>
+          <div>Last
+            Updated: {new Date(hit.updated * 1000).toLocaleDateString('en-us', {month: "long", day: "numeric", year: "numeric"})}</div>
         }
       </DetailsContainer>
     </HitContainer>
