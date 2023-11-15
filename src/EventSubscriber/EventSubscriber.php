@@ -10,6 +10,7 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\Core\Url;
+use Drupal\Core\Site\Settings;
 use Drupal\core_event_dispatcher\EntityHookEvents;
 use Drupal\core_event_dispatcher\Event\Entity\EntityDeleteEvent;
 use Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent;
@@ -24,6 +25,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
+
 
 /**
  * Class EventSubscriber.
@@ -120,7 +122,7 @@ class EventSubscriber implements EventSubscriberInterface {
 
     if (
       $event->getRequestType() == HttpKernelInterface::MAIN_REQUEST &&
-      !getenv('LANDO') &&
+      Settings::get('stanford_capture_ownership', FALSE) &&
       !str_starts_with($current_uri, '/admin/config/system/basic-site-settings') &&
       self::redirectUser()
     ) {
