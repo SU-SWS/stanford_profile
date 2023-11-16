@@ -15,7 +15,7 @@ source:
   data_fetcher_plugin: file
   data_parser_plugin: simple_xml
   urls:
-    - 'https://solo.stanford.edu/data/opportunities.xml?type=236'
+    - 'https://haas-2023-solo-backdrop.pantheonsite.io/data/cardinalservice.xml'
   constants:
     status: 1
     type: su_opportunity
@@ -25,7 +25,7 @@ source:
     apply_link_title: Apply
     learn_more_link_title: 'Learn More'
     image_alt: ''
-  item_selector: /OPPORTUNITIES/OPPORTUNITY
+  item_selector: /CSPrograms/CSPrograms
   fields:
     -
       name: id
@@ -34,35 +34,23 @@ source:
     -
       name: title
       label: Title
-      selector: TITLE
+      selector: ProgramName
     -
       name: url
       label: URL
-      selector: URL
-    -
-      name: submission_open
-      label: 'Submission Open Date'
-      selector: SUBMISSIONS_OPEN
+      selector: CanonicalLink
     -
       name: application_deadline
       label: 'Application Deadline'
-      selector: APPLICATION_DEADLINE
-    -
-      name: start
-      label: Start
-      selector: DURATION/START
-    -
-      name: end
-      label: End
-      selector: DURATION/END
+      selector: ApplicationDeadline
     -
       name: sponsor
       label: Sponsor
-      selector: SPONSOR
+      selector: SponsoredBy
     -
       name: teaser
       label: Teaser
-      selector: TEASER
+      selector: Summary
     -
       name: body
       label: Body
@@ -70,7 +58,7 @@ source:
     -
       name: image
       label: Image
-      selector: IMAGE
+      selector: Image
     -
       name: eligibility
       label: Eligibility
