@@ -1,0 +1,22 @@
+uuid: 94cd8ac9-b12b-4def-8b58-98c89efa7a4e
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - field_permissions
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: config_pages.su_site_algolia
+field_name: su_site_algolia
+entity_type: config_pages
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

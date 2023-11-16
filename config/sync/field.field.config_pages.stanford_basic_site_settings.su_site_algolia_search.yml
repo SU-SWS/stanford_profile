@@ -1,0 +1,19 @@
+uuid: d72a1450-7955-4295-88eb-82cb8438be47
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_algolia_search
+id: config_pages.stanford_basic_site_settings.su_site_algolia_search
+field_name: su_site_algolia_search
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Algolia Search Only Key'
+description: 'This is the public API key to use in your frontend code. This key is only usable for search queries and sending data to the Insights API. Find this key in <a href="https://dashboard.algolia.com/account/api-keys/all>Algolia dashboard</a>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

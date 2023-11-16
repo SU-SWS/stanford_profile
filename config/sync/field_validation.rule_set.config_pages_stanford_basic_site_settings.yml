@@ -19,3 +19,18 @@ field_validation_rules:
     error_message: 'A valid Google Analytics Web Property ID is case sensitive and formatted like UA-xxxxxxx-yy or G-xxxxxxxxxx.'
     roles: {  }
     condition: {  }
+  56d4b822-4038-43ef-864b-0465236bd395:
+    id: regex_field_validation_rule
+    title: 'Algolia JS File Path'
+    data:
+      setting: /^(\/|http)/
+    weight: 2
+    uuid: 56d4b822-4038-43ef-864b-0465236bd395
+    field_name: su_site_algolia_file
+    column: value
+    error_message: 'Js file must be either an absolute server path or a url.'
+    roles: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''
