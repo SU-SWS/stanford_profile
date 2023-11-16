@@ -25,7 +25,7 @@ source:
     apply_link_title: Apply
     learn_more_link_title: 'Learn More'
     image_alt: ''
-  item_selector: /CSPrograms/CSPrograms
+  item_selector: /CSPrograms/CSProgram
   fields:
     -
       name: id
@@ -143,14 +143,6 @@ process:
   su_opp_summary/format: constants/minimal_html
   su_opp_contact_email: contact_email
   su_opp_contact_name: contact_name
-  su_opp_contact_phone:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: contact_phone
-    -
-      plugin: callback
-      callable: strip_tags
   su_opp_eligibility/value: eligibility
   su_opp_eligibility/format: constants/basic_html
   su_opp_solo_url/uri: url
@@ -313,19 +305,6 @@ process:
         field_media_image/target_id: '@image_file'
         field_media_image/alt: constants/image_alt
         field_media_image/title: constants/image_alt
-  su_opp_submissions_open:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: submission_open
-    -
-      plugin: format_date
-      from_format: U
-      to_format: 'Y-m-d\TH:i:s'
-      from_timezone: America/Los_Angeles
-      to_timezone: UTC
-      settings:
-        validate_format: false
   su_opp_application_deadline:
     -
       plugin: skip_on_empty
@@ -339,10 +318,6 @@ process:
       to_timezone: UTC
       settings:
         validate_format: false
-    -
-      plugin: skip_on_equal
-      value: '@su_opp_submissions_open'
-      method: process
     -
       plugin: skip_on_time_compare
       compare: '>'
@@ -363,35 +338,6 @@ process:
       bundle: su_opportunity_deadline
       entity_type: taxonomy_term
       ignore_case: true
-  su_opp_duration/value:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: start
-    -
-      plugin: format_date
-      from_format: U
-      to_format: 'Y-m-d\TH:i:s'
-      from_timezone: America/Los_Angeles
-      to_timezone: UTC
-      settings:
-        validate_format: false
-  su_opp_duration/end_value:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: start
-    -
-      plugin: format_date
-      from_format: U
-      to_format: 'Y-m-d\TH:i:s'
-      from_timezone: America/Los_Angeles
-      to_timezone: UTC
-      settings:
-        validate_format: false
-    -
-      plugin: default_value
-      default_value: '@su_opp_duration/value'
   su_opp_sponsor:
     -
       plugin: skip_on_empty
@@ -417,7 +363,6 @@ destination:
     - body/format
     - su_opp_contact_email
     - su_opp_contact_name
-    - su_opp_contact_phone
     - su_opp_eligibility/value
     - su_opp_eligibility/format
     - su_opp_solo_url/uri
@@ -430,11 +375,8 @@ destination:
     - su_opp_open_to
     - su_opp_time_year
     - su_opp_image/target_id
-    - su_opp_submissions_open
     - su_opp_application_deadline
     - su_opp_deadline_time
-    - su_opp_duration/value
-    - su_opp_duration/end_value
     - su_opp_sponsor
     - su_opp_summary/value
     - su_opp_summary/format
