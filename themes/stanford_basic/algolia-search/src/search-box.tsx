@@ -9,6 +9,7 @@ const SearchBox = (props) => {
   const inputId = useId();
 
   const isSearchStalled = status === 'stalled';
+  const isLoading = status === 'loading'
 
   return (
     <form
@@ -63,8 +64,18 @@ const SearchBox = (props) => {
           Reset
         </button>
       </div>
-      <span hidden={!isSearchStalled}>Searching…</span>
+      <StatusMessage status={status} query={query}/>
     </form>
   );
+}
+
+const StatusMessage = ({status, query}) => {
+  let message = status === 'loading' ? 'Loading' : null;
+  if (status != 'loading' && query) {
+    message = `Showing results for "${query}"`
+  }
+  return (
+    <div className="visually-hidden" aria-live="polite">{message}</div>
+  )
 }
 export default SearchBox;
