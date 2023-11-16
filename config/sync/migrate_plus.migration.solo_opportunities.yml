@@ -54,7 +54,7 @@ source:
     -
       name: body
       label: Body
-      selector: DESCRIPTION
+      selector: Description
     -
       name: image
       label: Image
@@ -62,47 +62,39 @@ source:
     -
       name: eligibility
       label: Eligibility
-      selector: ELIGIBILITY
-    -
-      name: type
-      label: Type
-      selector: TYPE
+      selector: Eligibility
     -
       name: time_of_year
       label: 'Time of the Year'
-      selector: TIME_OF_YEAR
+      selector: TimeCommitment
     -
       name: open_to
       label: 'Open To'
-      selector: OPEN_TO
+      selector: OpenTo
     -
       name: location
       label: Location
-      selector: LOCATION
+      selector: Location
     -
       name: contact_name
       label: 'Contact Name'
-      selector: CONTACT_NAME
+      selector: ContactName
     -
       name: contact_email
       label: 'Contact Email'
-      selector: CONTACT_EMAIL
-    -
-      name: contact_phone
-      label: 'Contact Phone Number'
-      selector: CONTACT_PHONE
+      selector: Email
     -
       name: learn_more
       label: 'Learn More Link'
-      selector: LEARN_MORE
+      selector: Link
     -
       name: service_theme
       label: 'Service Theme'
-      selector: SERVICE_THEME
+      selector: ServiceTheme
     -
       name: dimension
       label: 'CS Dimension'
-      selector: CARDINAL_SERVICE
+      selector: CardinalServiceDimension
   ids:
     id:
       type: string
