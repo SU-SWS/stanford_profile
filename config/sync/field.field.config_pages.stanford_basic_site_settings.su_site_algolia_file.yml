@@ -5,15 +5,23 @@ dependencies:
   config:
     - config_pages.type.stanford_basic_site_settings
     - field.storage.config_pages.su_site_algolia_file
+  module:
+    - file
 id: config_pages.stanford_basic_site_settings.su_site_algolia_file
 field_name: su_site_algolia_file
 entity_type: config_pages
 bundle: stanford_basic_site_settings
-label: 'Path to Algolia JS File'
-description: 'Override the default search results by providing a path to a local or remote JS file. If the file is local, either provide the absolute path. Leave empty to use the one provided by the platform.'
+label: 'Override Algolia Results File'
+description: 'Upload a compiled JS file to replace the provided display of search results. Leave empty to use the default results display.'
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
-field_type: string
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: algolia-search
+  file_extensions: js
+  max_filesize: 1MB
+  description_field: false
+field_type: file

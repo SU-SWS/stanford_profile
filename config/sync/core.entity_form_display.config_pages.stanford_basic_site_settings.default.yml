@@ -34,6 +34,7 @@ dependencies:
     - conditional_fields
     - cshs
     - field_group
+    - file
     - link
     - text
 third_party_settings:
@@ -198,12 +199,11 @@ content:
       display_label: true
     third_party_settings: {  }
   su_site_algolia_file:
-    type: string_textfield
+    type: file_generic
     weight: 14
     region: content
     settings:
-      size: 60
-      placeholder: ''
+      progress_indicator: throbber
     third_party_settings: {  }
   su_site_algolia_id:
     type: string_textfield

@@ -5,18 +5,20 @@ dependencies:
   module:
     - config_pages
     - field_permissions
+    - file
 third_party_settings:
   field_permissions:
     permission_type: custom
 id: config_pages.su_site_algolia_file
 field_name: su_site_algolia_file
 entity_type: config_pages
-type: string
+type: file
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
-module: core
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
 locked: false
 cardinality: 1
 translatable: true

@@ -18,10 +18,15 @@ function stanford_basic_library_info_alter(&$libraries, $extension) {
   if ($extension == 'stanford_basic' && \Drupal::hasService('config_pages.loader')) {
     /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_pages */
     $config_pages = \Drupal::service('config_pages.loader');
-    $js_file = $config_pages->getValue('stanford_basic_site_settings', 'su_site_algolia_file', 0, 'value');
-    $absolute_js_file = str_starts_with($js_file, 'http') ? $js_file : DRUPAL_ROOT . $js_file;
-    if ($js_file && file_exists($absolute_js_file)) {
-      $libraries['algolia-search']['js'] = [$js_file => ['minified' => TRUE]];
+    $js_file_id = $config_pages->getValue('stanford_basic_site_settings', 'su_site_algolia_file', 0, 'target_id');
+    if (!$js_file_id) {
+      return;
+    }
+
+    /** @var \Drupal\file\FileInterface $file */
+    $file = \Drupal::entityTypeManager()->getStorage('file')->load($js_file_id);
+    if ($file) {
+      $libraries['algolia-search']['js'] = [$file->createFileUrl() => ['minified' => TRUE]];
     }
   }
 }

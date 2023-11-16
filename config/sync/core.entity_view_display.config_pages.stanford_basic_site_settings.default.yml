@@ -31,6 +31,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_url
   module:
     - datetime
+    - file
     - link
     - text
 id: config_pages.stanford_basic_site_settings.default
@@ -107,10 +108,10 @@ content:
     weight: 19
     region: content
   su_site_algolia_file:
-    type: string
+    type: file_default
     label: above
     settings:
-      link_to_entity: false
+      use_description_as_link_text: true
     third_party_settings: {  }
     weight: 24
     region: content

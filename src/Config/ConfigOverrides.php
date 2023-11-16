@@ -81,7 +81,23 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
     if (in_array('stanford_samlauth.settings', $names)) {
       $this->setSamlOverrides($overrides);
     }
+
+    if (in_array('system.file', $names)) {
+      $overrides['system.file']['allow_insecure_uploads'] = self::canUploadJs();
+    }
     return $overrides;
+  }
+
+  /**
+   * Allow js files to be uploaded only on the one route and only for admins.
+   *
+   * @return bool
+   *   If allowed to uplaod JS.
+   */
+  protected static function canUploadJs(): bool {
+    $route = \Drupal::routeMatch()->getRouteName();
+    return $route == 'config_pages.stanford_basic_site_settings' &&
+      in_array('administrator', \Drupal::currentUser()->getRoles());
   }
 
   /**
