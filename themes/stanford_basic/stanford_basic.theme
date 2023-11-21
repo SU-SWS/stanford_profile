@@ -226,6 +226,10 @@ function stanford_basic_preprocess_block(&$variables) {
       unset($variables['content']);
     }
   }
+
+  if (isset($variables['configuration']['label_display '])) {
+    $variables['attributes']['aria-hidden'] = 'true';
+  }
 }
 
 /**
