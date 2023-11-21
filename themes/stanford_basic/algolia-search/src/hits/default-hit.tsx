@@ -28,15 +28,17 @@ const DetailsContainer = styled.div`
 `
 
 const DefaultHit = ({hit}) => {
+  const hitUrl = new URL(hit.url);
+
   return (
     <HitContainer className="su-card">
       {hit.photo &&
-        <img src={hit.photo} alt=""/>
+        <img src={hit.photo.replace(hitUrl.origin, '')} alt=""/>
       }
       <DetailsContainer>
         <div>
           <h2>
-            <a href={hit.url}>
+            <a href={hit.url.replace(hitUrl.origin, '')}>
               {hit.title}
             </a>
           </h2>
@@ -46,7 +48,7 @@ const DefaultHit = ({hit}) => {
               <Highlight hit={hit} attribute="summary"/>
             }
 
-            {!hit.summary &&
+            {(!hit.summary && hit.rendered) &&
               <>
                 ...<Snippet hit={hit} attribute="rendered"/>...
               </>
@@ -55,8 +57,9 @@ const DefaultHit = ({hit}) => {
         </div>
 
         {hit.updated &&
-          <div>Last
-            Updated: {new Date(hit.updated * 1000).toLocaleDateString('en-us', {month: "long", day: "numeric", year: "numeric"})}</div>
+          <div>
+            Last Updated: {new Date(hit.updated * 1000).toLocaleDateString('en-us', {month: "long", day: "numeric", year: "numeric"})}
+          </div>
         }
       </DetailsContainer>
     </HitContainer>
