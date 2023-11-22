@@ -4,20 +4,19 @@ import {Highlight, Snippet} from "react-instantsearch";
 const HitContainer = styled.article`
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  justify-content: left;
-  padding: 20px;
-  margin-bottom: 20px;
+  justify-content: space-between;
+  gap: 4rem;
+  padding: 2rem 2rem 2rem 0;
+  margin-bottom: 2rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
   }
 
   img {
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 300px;
+    max-height: 300px;
     object-fit: cover;
-    aspect-ratio: 1;
   }
 `
 
@@ -31,10 +30,7 @@ const DefaultHit = ({hit}) => {
   const hitUrl = new URL(hit.url);
 
   return (
-    <HitContainer className="su-card">
-      {hit.photo &&
-        <img src={hit.photo.replace(hitUrl.origin, '')} alt=""/>
-      }
+    <HitContainer>
       <DetailsContainer>
         <div>
           <h2>
@@ -62,6 +58,9 @@ const DefaultHit = ({hit}) => {
           </div>
         }
       </DetailsContainer>
+      {hit.photo &&
+        <img src={hit.photo.replace(hitUrl.origin, '')} alt=""/>
+      }
     </HitContainer>
   )
 }

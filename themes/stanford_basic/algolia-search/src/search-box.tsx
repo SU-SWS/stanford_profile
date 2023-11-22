@@ -55,7 +55,7 @@ const SearchBox = (props) => {
           autoFocus
         />
       </div>
-      <div style={{display: "flex", gap: "10px"}}>
+      <div style={{display: "flex", gap: "1rem", marginTop: "1rem"}}>
         <button type="submit">Submit</button>
         <button
           type="reset"

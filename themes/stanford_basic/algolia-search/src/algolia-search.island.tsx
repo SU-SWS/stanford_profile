@@ -22,7 +22,12 @@ const Hit = ({hit}) => {
 
 const Container = styled.div`
   li {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid black;
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 `
 
