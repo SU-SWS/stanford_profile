@@ -52,6 +52,23 @@ field_settings:
     type: string
     configuration:
       value: '[node:su_event_date_time:value]'
+  html:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: string
+    configuration:
+      roles:
+        - authenticated
+      view_mode:
+        'entity:node':
+          stanford_course: search_indexing
+          stanford_event: search_indexing
+          stanford_event_series: search_indexing
+          stanford_news: search_indexing
+          stanford_page: search_indexing
+          stanford_person: search_indexing
+          stanford_policy: search_indexing
+          stanford_publication: search_indexing
   person_full_title:
     label: 'Person Full Title'
     property_path: custom_value
@@ -76,23 +93,6 @@ field_settings:
     type: string
     configuration:
       value: '[node:su_page_image:entity:field_media_image:large|node:su_page_banner:entity:su_banner_image:entity:field_media_image:large|node:su_person_photo:entity:field_media_image:large|node:su_news_featured_media:entity:field_media_image:large|node:su_news_banner:entity:field_media_image:large]'
-  rendered:
-    label: 'Rendered HTML output'
-    property_path: rendered_item
-    type: string
-    configuration:
-      roles:
-        - authenticated
-      view_mode:
-        'entity:node':
-          stanford_course: search_indexing
-          stanford_event: search_indexing
-          stanford_event_series: search_indexing
-          stanford_news: search_indexing
-          stanford_page: search_indexing
-          stanford_person: search_indexing
-          stanford_policy: search_indexing
-          stanford_publication: search_indexing
   status:
     label: status
     datasource_id: 'entity:node'
@@ -166,11 +166,11 @@ processor_settings:
       - email
       - event_end
       - event_start
+      - html
       - person_full_title
       - person_short_title
       - phone
       - photo
-      - rendered
       - subheadline
       - summary
       - title
@@ -179,15 +179,10 @@ processor_settings:
     tags:
       - div
       - span
+      - picture
+      - source
+      - br
   rendered_item: {  }
-  type_boost:
-    weights:
-      preprocess_index: 0
-    boosts:
-      'entity:node':
-        datasource_boost: 0.0
-        bundle_boosts:
-          stanford_news: 3.0
 tracker_settings:
   default:
     indexing_order: fifo
