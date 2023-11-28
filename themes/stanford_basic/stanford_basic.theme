@@ -228,7 +228,7 @@ function stanford_basic_preprocess_block(&$variables) {
   }
 
   if (!isset($variables['configuration']['label_display'])) {
-    $variables['attributes']['aria-hidden'] = 'true';
+    $variables['title_attributes']['aria-hidden'] = 'true';
   }
 }
 
