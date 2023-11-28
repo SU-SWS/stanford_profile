@@ -99,6 +99,10 @@ source:
       name: when
       label: 'When'
       selector: When
+    -
+      name: placement_type
+      label: 'Placement Type'
+      selector: PlacementType
   ids:
     id:
       type: string
@@ -348,6 +352,21 @@ process:
       bundle: su_opportunity_sponsor
       entity_type: taxonomy_term
       ignore_case: true
+  su_opp_placement_type:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: placement_type
+    -
+      plugin: explode
+      delimiter: ', '
+    -
+      plugin: entity_generate
+      value_key: name
+      bundle_key: vid
+      bundle: su_opportunity_placement_type
+      entity_type: taxonomy_term
+      ignore_case: true
 destination:
   plugin: 'entity:node'
   overwrite_properties:
@@ -373,5 +392,6 @@ destination:
     - su_opp_sponsor
     - su_opp_summary/value
     - su_opp_summary/format
+    - su_opp_placement_type
 migration_dependencies:
   required: {  }
