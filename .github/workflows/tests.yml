@@ -29,7 +29,7 @@ jobs:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         run: |
           composer global require su-sws/stanford-caravan:10.x-dev
-          ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
+          ~/.config/composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
       - name: Save Test Results
         uses: actions/upload-artifact@v3
         if: failure()
@@ -67,7 +67,7 @@ jobs:
           STANFORD_ENCRYPT: ${{ secrets.STANFORD_ENCRYPT }}
         run: |
           composer global require su-sws/stanford-caravan:10.x-dev
-          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance
+          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance
       - name: Save Test Results
         uses: actions/upload-artifact@v3
         if: always()
@@ -108,7 +108,7 @@ jobs:
           STANFORD_ENCRYPT: ${{ secrets.STANFORD_ENCRYPT }}=
         run: |
           composer global require su-sws/stanford-caravan:10.x-dev
-          ~/.composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional
+          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional
       - name: Save Test Results
         uses: actions/upload-artifact@v3
         if: always()

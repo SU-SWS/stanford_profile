@@ -44,9 +44,9 @@ const DefaultHit = ({hit}) => {
               <Highlight hit={hit} attribute="summary"/>
             }
 
-            {(!hit.summary && hit.rendered) &&
+            {(!hit.summary && hit.html) &&
               <>
-                ...<Snippet hit={hit} attribute="rendered"/>...
+                ...<Snippet hit={hit} attribute="html"/>...
               </>
             }
           </p>
@@ -54,7 +54,12 @@ const DefaultHit = ({hit}) => {
 
         {hit.updated &&
           <div>
-            Last Updated: {new Date(hit.updated * 1000).toLocaleDateString('en-us', {month: "long", day: "numeric", year: "numeric"})}
+            Last
+            Updated: {new Date(hit.updated * 1000).toLocaleDateString('en-us', {
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+          })}
           </div>
         }
       </DetailsContainer>
