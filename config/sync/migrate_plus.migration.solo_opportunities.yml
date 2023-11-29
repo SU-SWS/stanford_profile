@@ -325,6 +325,7 @@ process:
   su_opp_deadline_time:
     -
       plugin: skip_on_empty
+      method: process
       source: application_deadline
     -
       plugin: entity_lookup
