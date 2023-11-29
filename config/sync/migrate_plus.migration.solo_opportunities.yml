@@ -324,12 +324,8 @@ process:
         field_media_image/title: constants/image_alt
   su_opp_deadline_time:
     -
-      plugin: default_value
-      default_value:
-        - Autumn
-        - Winter
-        - Spring
-        - Summer
+      plugin: skip_on_empty
+      source: application_deadline
     -
       plugin: entity_lookup
       value_key: name
@@ -379,6 +375,7 @@ destination:
     - su_opp_contact_name
     - su_opp_eligibility/value
     - su_opp_eligibility/format
+    - su_opp_deadline_time
     - su_opp_solo_url/uri
     - su_opp_dimension
     - su_opp_service_theme
