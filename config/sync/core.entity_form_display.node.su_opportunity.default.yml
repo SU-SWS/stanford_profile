@@ -76,7 +76,7 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 29
+    weight: 28
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -102,13 +102,13 @@ content:
     third_party_settings: {  }
   su_opp_commitment:
     type: options_select
-    weight: 28
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
   su_opp_contact_email:
     type: email_default
-    weight: 21
+    weight: 20
     region: content
     settings:
       placeholder: ''
@@ -116,7 +116,7 @@ content:
     third_party_settings: {  }
   su_opp_contact_name:
     type: string_textfield
-    weight: 20
+    weight: 19
     region: content
     settings:
       size: 60
@@ -124,7 +124,7 @@ content:
     third_party_settings: {  }
   su_opp_contact_phone:
     type: telephone_default
-    weight: 22
+    weight: 21
     region: content
     settings:
       placeholder: ''
@@ -155,7 +155,7 @@ content:
             selector: ''
   su_opp_dimension:
     type: options_select
-    weight: 24
+    weight: 23
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -176,7 +176,7 @@ content:
     third_party_settings: {  }
   su_opp_location:
     type: entity_reference_autocomplete
-    weight: 19
+    weight: 18
     region: content
     settings:
       match_operator: CONTAINS
@@ -193,25 +193,25 @@ content:
     third_party_settings: {  }
   su_opp_open_to:
     type: options_select
-    weight: 18
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   su_opp_pathway:
     type: options_select
-    weight: 25
+    weight: 24
     region: content
     settings: {  }
     third_party_settings: {  }
   su_opp_placement_type:
     type: options_select
-    weight: 26
+    weight: 25
     region: content
     settings: {  }
     third_party_settings: {  }
   su_opp_service_theme:
     type: options_select
-    weight: 23
+    weight: 22
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -225,7 +225,7 @@ content:
     third_party_settings: {  }
   su_opp_sponsor:
     type: options_select
-    weight: 27
+    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -243,12 +243,6 @@ content:
   su_opp_time_year:
     type: options_select
     weight: 14
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  su_opp_type:
-    type: options_select
-    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -282,4 +276,5 @@ hidden:
   su_opp_event_date: true
   su_opp_learn_more: true
   su_opp_submissions_open: true
+  su_opp_type: true
   unpublish_on: true
