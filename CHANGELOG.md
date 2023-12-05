@@ -1,5 +1,13 @@
 # Stanford Profile
 
+11.1.0
+-------------------------------------------------------------------------------
+- D8CORE-7096 Update algolia search results styles and structure (#747)
+- D8CORE-7074 Implement Search API Algolia (#743)
+- D8CORE-6726: Overrode the colorbox formatter template to remove aria-label (#746)
+- Update alert styles (#744)
+- D8CORE-2761: reduced padding on filterby menu (#728)
+
 11.0.8
 -------------------------------------------------------------------------------
 - D8CORE-7066 Adjust site contact fields & language (#741)
