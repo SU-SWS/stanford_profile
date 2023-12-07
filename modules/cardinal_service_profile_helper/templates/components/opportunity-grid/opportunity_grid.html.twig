@@ -16,7 +16,16 @@
 	{% if program is not empty or type_list is not empty %}
     {% set service_theme = service_theme|merge({'#markup': service_theme['#markup'] ~ ', '}) %}
 	{% endif %}
+{% endif %}
 
+{# Add "comma" between time_commitment is not empty and service_theme is. #}
+{% if time_commitment is not empty and service_theme is empty %}
+	{% set time_commitment = time_commitment|merge({'#markup': time_commitment['#markup'] ~ ', '}) %}
+{% endif %}
+
+{# Add "comma" between time_commitment is not empty and service_theme is. #}
+{% if time_commitment is empty and service_theme is not empty %}
+  {% set service_theme = service_theme|merge({'#markup': service_theme['#markup'] ~ ', '}) %}
 {% endif %}
 
 {% if event_date|render_clean is not empty %}
