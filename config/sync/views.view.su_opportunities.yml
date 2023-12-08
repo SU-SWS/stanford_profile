@@ -504,63 +504,6 @@ display:
           limit: true
           error_message: true
           depth: 1
-        term_node_tid_depth_5:
-          id: term_node_tid_depth_5
-          table: node_field_data
-          field: term_node_tid_depth
-          relationship: none
-          group_type: group
-          admin_label: 'Content: Taxonomy Terms - Type'
-          entity_type: node
-          plugin_id: taxonomy_index_tid_depth
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: term_node_tid_depth_5_op
-            label: Type
-            description: ''
-            use_operator: false
-            operator: term_node_tid_depth_5_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: su_opp_type
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              authenticated: authenticated
-              administrator: '0'
-              anonymous: '0'
-              stanford_faculty: '0'
-              stanford_staff: '0'
-              stanford_student: '0'
-              contributor: '0'
-              site_manager: '0'
-              site_editor: '0'
-              site_builder: '0'
-              site_developer: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          vid: su_opportunity_type
-          type: select
-          hierarchy: true
-          limit: true
-          error_message: true
-          depth: 1
         term_node_tid_depth_6:
           id: term_node_tid_depth_6
           table: node_field_data
