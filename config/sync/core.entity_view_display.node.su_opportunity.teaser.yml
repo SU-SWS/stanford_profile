@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.su_opportunity.body
+    - field.field.node.su_opportunity.su_open_opportunities
     - field.field.node.su_opportunity.su_opp_application_deadline
     - field.field.node.su_opportunity.su_opp_commitment
     - field.field.node.su_opportunity.su_opp_contact_email
@@ -60,6 +61,7 @@ content:
     region: content
 hidden:
   search_api_excerpt: true
+  su_open_opportunities: true
   su_opp_application_deadline: true
   su_opp_commitment: true
   su_opp_contact_email: true

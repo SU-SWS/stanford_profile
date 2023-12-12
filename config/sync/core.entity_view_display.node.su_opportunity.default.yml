@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.su_opportunity.body
+    - field.field.node.su_opportunity.su_open_opportunities
     - field.field.node.su_opportunity.su_opp_application_deadline
     - field.field.node.su_opportunity.su_opp_commitment
     - field.field.node.su_opportunity.su_opp_contact_email
@@ -48,10 +49,10 @@ third_party_settings:
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
+          label: ''
           extra_classes: opportunity-header-content-container
           centered: null
           orientation: right
-          label: ''
         components:
           fcd2a988-e62a-4a12-8a88-5db19895ab61:
             uuid: fcd2a988-e62a-4a12-8a88-5db19895ab61
@@ -216,14 +217,30 @@ third_party_settings:
             weight: 6
             additional: {  }
             third_party_settings: {  }
+          2c9b001e-1862-484a-9be5-9ab107a894c7:
+            uuid: 2c9b001e-1862-484a-9be5-9ab107a894c7
+            region: main
+            configuration:
+              id: 'field_block:node:su_opportunity:su_open_opportunities'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 8
+            additional: {  }
+            third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
         layout_settings:
+          label: ''
           extra_classes: opportunity-body-content-container
           centered: centered-container
           orientation: left
-          label: ''
         components:
           e0be445d-a28e-4cf2-9d7a-157bdf27b391:
             uuid: e0be445d-a28e-4cf2-9d7a-157bdf27b391
@@ -502,10 +519,10 @@ third_party_settings:
       -
         layout_id: jumpstart_ui_one_column
         layout_settings:
+          label: ''
           extra_classes: ''
           centered: centered-container
           columns: default
-          label: ''
         components:
           08b590fe-3342-4941-bcd7-66ee72b2fc0e:
             uuid: 08b590fe-3342-4941-bcd7-66ee72b2fc0e
@@ -541,6 +558,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 10
+    region: main
+  su_open_opportunities:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
     region: main
   su_opp_commitment:
     type: entity_reference_label
