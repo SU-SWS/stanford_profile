@@ -5,6 +5,7 @@ dependencies:
   module:
     - config_pages
     - field_permissions
+    - graphql
     - media
     - printable
     - stanford_policy
@@ -20,6 +21,8 @@ is_admin: false
 permissions:
   - 'access content'
   - 'access patterns page'
+  - 'execute graphql_compose_server arbitrary graphql requests'
+  - 'execute graphql_compose_server persisted graphql requests'
   - 'issue subrequests'
   - 'view field_media_embeddable_code'
   - 'view lockup_settings config page entity'
