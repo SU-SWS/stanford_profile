@@ -218,22 +218,6 @@ third_party_settings:
             weight: 6
             additional: {  }
             third_party_settings: {  }
-          bd2ac555-9f28-481d-94f3-50a2c1d2b55a:
-            uuid: bd2ac555-9f28-481d-94f3-50a2c1d2b55a
-            region: main
-            configuration:
-              id: 'field_block:node:su_opportunity:su_open_opportunities'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 8
-            additional: {  }
-            third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
@@ -262,7 +246,7 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-            weight: 2
+            weight: 3
             additional: {  }
             third_party_settings: {  }
           ac4cff86-d454-4ff1-8bef-3208d91c95b2:
@@ -513,19 +497,25 @@ third_party_settings:
               context_mapping: {  }
               views_label: When
               items_per_page: none
-            weight: 1
+            weight: 2
             additional: {  }
             third_party_settings: {  }
-        third_party_settings: {  }
-      -
-        layout_id: defaults
-        layout_settings:
-          label: 'Open Opportunities'
-          context_mapping: {  }
-          extra_classes: ''
-          centered: centered-container
-          columns: default
-        components: {  }
+          bd2ac555-9f28-481d-94f3-50a2c1d2b55a:
+            uuid: bd2ac555-9f28-481d-94f3-50a2c1d2b55a
+            region: left
+            configuration:
+              id: 'field_block:node:su_opportunity:su_open_opportunities'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 8
+            additional: {  }
+            third_party_settings: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
