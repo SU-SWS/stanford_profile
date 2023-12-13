@@ -4,13 +4,13 @@ status: true
 dependencies:
   module:
     - node
+    - text
 id: node.su_open_opportunities
 field_name: su_open_opportunities
 entity_type: node
-type: string_long
-settings:
-  case_sensitive: false
-module: core
+type: text_long
+settings: {  }
+module: text
 locked: false
 cardinality: 1
 translatable: true

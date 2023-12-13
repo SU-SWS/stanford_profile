@@ -1,0 +1,8 @@
+name: Cardinal Service Migrate
+type: module
+description: A module to provide custom plugins for migration to Cardinal Service
+package: Custom
+version: 1.0.0
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:migrate

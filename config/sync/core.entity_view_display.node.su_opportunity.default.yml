@@ -39,6 +39,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - text
     - user
     - views
 third_party_settings:
@@ -217,8 +218,8 @@ third_party_settings:
             weight: 6
             additional: {  }
             third_party_settings: {  }
-          2c9b001e-1862-484a-9be5-9ab107a894c7:
-            uuid: 2c9b001e-1862-484a-9be5-9ab107a894c7
+          bd2ac555-9f28-481d-94f3-50a2c1d2b55a:
+            uuid: bd2ac555-9f28-481d-94f3-50a2c1d2b55a
             region: main
             configuration:
               id: 'field_block:node:su_opportunity:su_open_opportunities'
@@ -226,7 +227,7 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
               formatter:
-                type: basic_string
+                type: text_default
                 label: above
                 settings: {  }
                 third_party_settings: {  }
@@ -517,6 +518,16 @@ third_party_settings:
             third_party_settings: {  }
         third_party_settings: {  }
       -
+        layout_id: defaults
+        layout_settings:
+          label: 'Open Opportunities'
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+        components: {  }
+        third_party_settings: {  }
+      -
         layout_id: jumpstart_ui_one_column
         layout_settings:
           label: ''
@@ -535,7 +546,7 @@ third_party_settings:
               context_mapping: {  }
               views_label: 'Related Opportunities'
               items_per_page: none
-            weight: 0
+            weight: 8
             additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
@@ -560,7 +571,7 @@ content:
     weight: 10
     region: main
   su_open_opportunities:
-    type: basic_string
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }

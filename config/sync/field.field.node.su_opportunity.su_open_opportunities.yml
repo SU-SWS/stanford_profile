@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.node.su_open_opportunities
+    - filter.format.stanford_html
     - node.type.su_opportunity
+  module:
+    - text
 id: node.su_opportunity.su_open_opportunities
 field_name: su_open_opportunities
 entity_type: node
@@ -15,5 +18,7 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
-field_type: string_long
+settings:
+  allowed_formats:
+    - stanford_html
+field_type: text_long
