@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_api
     - field.field.node.su_opportunity.body
+    - field.field.node.su_opportunity.su_open_opportunities
     - field.field.node.su_opportunity.su_opp_application_deadline
     - field.field.node.su_opportunity.su_opp_commitment
     - field.field.node.su_opportunity.su_opp_contact_email
@@ -349,4 +350,5 @@ hidden:
   flag_cs_favorites: true
   links: true
   search_api_excerpt: true
+  su_open_opportunities: true
   su_opp_not_eligible: true

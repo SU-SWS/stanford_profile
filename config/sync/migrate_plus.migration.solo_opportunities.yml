@@ -32,6 +32,10 @@ source:
       label: ID
       selector: ID
     -
+      name: open_opportunities
+      label: OpenOpportunities
+      selector: Opportunities
+    -
       name: title
       label: Title
       selector: ProgramName
@@ -153,6 +157,8 @@ process:
   su_opp_contact_name: contact_name
   su_opp_eligibility/value: eligibility
   su_opp_eligibility/format: constants/basic_html
+  su_open_opportunities/value: open_opportunities
+  su_open_opportunities/format: constants/minimal_html
   su_opp_solo_url/uri: url
   su_opp_dimension:
     source: dimension

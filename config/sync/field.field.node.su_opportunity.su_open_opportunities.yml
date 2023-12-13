@@ -1,0 +1,24 @@
+uuid: 03e51491-6adb-498c-969c-49c6a53be135
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_open_opportunities
+    - filter.format.stanford_html
+    - node.type.su_opportunity
+  module:
+    - text
+id: node.su_opportunity.su_open_opportunities
+field_name: su_open_opportunities
+entity_type: node
+bundle: su_opportunity
+label: 'Open Opportunities'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - stanford_html
+field_type: text_long
