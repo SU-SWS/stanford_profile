@@ -79,11 +79,12 @@ class CustomSkipEmptyDivs extends ProcessPluginBase implements ContainerFactoryP
       $xpath = new \DOMXPath($dom);
       $divs = $xpath->query('//div[@class and not(node())]');
       if ($divs->length == 0) {
-        return NULL; // Skip processing if empty divs with a class are found.
+        // Skip processing if empty divs with a class are found.
+        return NULL;
       }
     }
 
-    // Return the original value if no empty divs are detected.}
+    // Return the original value if no empty divs are detected.}.
     return $this->transliteration->transliterate($value, LanguageInterface::LANGCODE_DEFAULT);
   }
 
