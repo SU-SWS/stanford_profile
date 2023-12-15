@@ -9,6 +9,7 @@ dependencies:
     - field.storage.paragraph.su_banner_image
     - node.type.stanford_page
   module:
+    - graphql_compose_views
     - node
     - paragraphs
     - stanford_fields
@@ -607,6 +608,32 @@ display:
         - 'config:field.storage.node.su_page_description'
         - 'config:field.storage.node.su_page_image'
         - 'config:field.storage.paragraph.su_banner_image'
+  basic_page_type_list_graphql:
+    id: basic_page_type_list_graphql
+    display_title: '- Default List -: GraphQL'
+    display_plugin: graphql
+    position: 1
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 20
+      display_description: ''
+      display_extenders: {  }
+      graphql_query_name: stanfordBasicPages
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.su_page_description'
+        - 'config:field.storage.node.su_page_image'
+        - 'config:field.storage.paragraph.su_banner_image'
   viewfield_block_1:
     id: viewfield_block_1
     display_title: 'Card Grid'
@@ -634,6 +661,43 @@ display:
           relationship: none
           view_mode: stanford_card
       block_category: 'Basic Page Type Lists (Views)'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.su_page_description'
+        - 'config:field.storage.node.su_page_image'
+        - 'config:field.storage.paragraph.su_banner_image'
+  viewfield_block_1_graphql:
+    id: viewfield_block_1_graphql
+    display_title: 'Card Grid: GraphQL'
+    display_plugin: graphql
+    position: 2
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      style:
+        type: graphql
+        options:
+          uses_fields: false
+      row:
+        type: graphql_entity
+        options: null
+      defaults:
+        style: false
+        row: false
+        arguments: true
+      display_description: ''
+      display_extenders: {  }
+      graphql_query_name: stanfordBasicPagesCards
     cache_metadata:
       max-age: -1
       contexts:

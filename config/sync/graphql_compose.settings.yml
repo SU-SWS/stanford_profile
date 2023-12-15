@@ -112,6 +112,9 @@ entity_config:
     stanford_entity:
       enabled: true
       query_load_enabled: true
+    stanford_gallery:
+      enabled: true
+      query_load_enabled: true
     stanford_layout:
       enabled: true
       query_load_enabled: true
@@ -156,20 +159,25 @@ entity_config:
     stanford_event_types:
       enabled: true
       query_load_enabled: true
+      routes_enabled: true
     stanford_news_topics:
       enabled: true
       query_load_enabled: true
+      routes_enabled: true
     stanford_person_types:
       enabled: true
+      routes_enabled: true
     stanford_publication_topics:
       enabled: true
       query_load_enabled: true
+      routes_enabled: true
     su_course_quarters:
       enabled: true
       query_load_enabled: true
     su_course_subjects:
       enabled: true
       query_load_enabled: true
+      routes_enabled: true
     su_course_tags:
       enabled: true
     su_shared_tags:
@@ -177,6 +185,8 @@ entity_config:
 field_config:
   citation:
     su_article_journal:
+      su_author:
+        enabled: true
       su_day:
         enabled: true
       su_doi:
@@ -198,6 +208,8 @@ field_config:
       su_year:
         enabled: true
     su_article_newspaper:
+      su_author:
+        enabled: true
       su_day:
         enabled: true
       su_month:
@@ -209,6 +221,8 @@ field_config:
       su_year:
         enabled: true
     su_book:
+      su_author:
+        enabled: true
       su_doi:
         enabled: true
       su_edition:
@@ -226,6 +240,8 @@ field_config:
       su_year:
         enabled: true
     su_other:
+      su_author:
+        enabled: true
       su_day:
         enabled: true
       su_month:
@@ -239,6 +255,8 @@ field_config:
       su_year:
         enabled: true
     su_thesis:
+      su_author:
+        enabled: true
       su_day:
         enabled: true
       su_doi:
@@ -615,6 +633,8 @@ field_config:
       su_banner_sup_header:
         enabled: true
     stanford_card:
+      su_card_body:
+        enabled: true
       su_card_header:
         enabled: true
       su_card_link:
@@ -650,6 +670,7 @@ field_config:
         enabled: true
       su_list_view:
         enabled: true
+        viewfield_query: true
     stanford_media_caption:
       su_media_caption_caption:
         enabled: true
@@ -667,6 +688,8 @@ field_config:
       su_person_cta_title:
         enabled: true
     stanford_schedule:
+      su_schedule_date_time:
+        enabled: true
       su_schedule_description:
         enabled: true
       su_schedule_headline:

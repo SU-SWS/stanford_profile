@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
   module:
+    - graphql_compose_views
     - node
     - stanford_fields
     - user
@@ -283,6 +284,29 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  card_grid_graphql:
+    id: card_grid_graphql
+    display_title: 'Card Grid: GraphQL'
+    display_plugin: graphql
+    position: 1
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      display_description: ''
+      display_extenders: {  }
+      graphql_query_name: stanfordSharedTags
     cache_metadata:
       max-age: -1
       contexts:
