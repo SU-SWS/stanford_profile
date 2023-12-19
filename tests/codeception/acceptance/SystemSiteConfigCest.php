@@ -35,6 +35,8 @@ class SystemSiteConfigCest {
 
   /**
    * The site manager should be able to change the site name.
+   *
+   * @group site-settings
    */
   public function testBasicSiteSettings(AcceptanceTester $I) {
     $org_term = $I->createEntity([
