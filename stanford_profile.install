@@ -137,7 +137,8 @@ function stanford_profile_update_9005(&$sandbox) {
         ->getString());
 
       $delete_entities[] = $row_entity;
-      $number_of_items = min($row_entity->get('su_page_components')->count(), 3);
+      $number_of_items = min($row_entity->get('su_page_components')
+        ->count(), 3);
       $layout_id = "layout_paragraphs_{$number_of_items}_column";
 
       $new_row_entity = $paragraph_storage->create(['type' => 'stanford_layout']);
@@ -429,12 +430,12 @@ function stanford_profile_update_9103(&$sandbox) {
       ->getStorage('paragraphs_type')
       ->load('stanford_card');
     $behaviors = $paragraph_type->get('behavior_plugins');
-    $behaviors['su_card_styles'] = ['enabeld' => true];
+    $behaviors['su_card_styles'] = ['enabeld' => TRUE];
     $paragraph_type->set('behavior_plugins', $behaviors);
     $paragraph_type->save();
     $field->delete();
   }
-return;
+  return;
   $ns = \Drupal::entityTypeManager()->getStorage('node');
   $ps = \Drupal::entityTypeManager()->getStorage('paragraph');
   $ids = $ns->getQuery()
@@ -593,4 +594,38 @@ function _stanford_profile_reset_node_changed_time(NodeInterface $node, int $cha
     ->fields(['changed' => $changed])
     ->condition('vid', $node->getRevisionId())
     ->execute();
+}
+
+/**
+ * Update configs 'stanford_profile_admin' with 'stanford_profile_admin_theme'.
+ */
+function stanford_profile_update_9104() {
+  $config_factory = \Drupal::configFactory();
+  foreach ($config_factory->listAll() as $config_name) {
+    $config = $config_factory->getEditable($config_name);
+    // Delete the admin theme blocks first.
+    if (str_starts_with($config_name, 'block.block.stanford_profile_admin_')) {
+      $config->delete();
+      continue;
+    }
+
+    // Change the dependencies to the new theme name.
+    if ($theme_dependencies = $config->get('dependencies.theme')) {
+      $position = array_search('stanford_profile_admin', $theme_dependencies);
+      if ($position !== FALSE) {
+        $config->set("dependencies.theme.$position", 'stanford_profile_admin_theme')
+          ->save(TRUE);
+      }
+    }
+  }
+
+  $core_extension = $config_factory->getEditable('core.extension');
+  $core_extension->clear('theme.stanford_profile_admin')
+    ->set('theme.stanford_profile_admin_theme', 0)
+    ->save();
+
+  $system_theme = $config_factory->getEditable('system.theme');
+  if ($system_theme->get('admin') == 'stanford_profile_admin') {
+    $system_theme->set('admin', 'stanford_profile_admin_theme')->save();
+  }
 }
