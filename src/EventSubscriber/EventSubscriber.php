@@ -127,7 +127,7 @@ class EventSubscriber implements EventSubscriberInterface {
     ) {
       $config_page_url = Url::fromRoute('config_pages.stanford_basic_site_settings', [], ['query' => ['destination' => $current_uri]]);
       $this->messenger->addWarning('Please update or verify the site contact information on the "Site Contacts" tab.');
-      $event->setResponse(new RedirectResponse($config_page_url->toString() . '#contact'));
+      $event->setResponse(new RedirectResponse($config_page_url->toString(TRUE)->getGeneratedUrl() . '#contact'));
     }
   }
 

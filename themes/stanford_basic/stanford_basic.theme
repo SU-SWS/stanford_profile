@@ -55,7 +55,7 @@ function stanford_basic_theme_suggestions_book_tree_alter(array &$suggestions, a
  * Implements hook_preprocess_HOOK().
  */
 function stanford_basic_preprocess_book_tree(&$variables, $hook) {
-  $current_url = Url::fromRoute('<current>')->toString();
+  $current_url = Url::fromRoute('<current>')->toString(TRUE)->getGeneratedUrl();
   _stanford_basic_set_active_book_item($variables['items'], $current_url);
 }
 
@@ -69,7 +69,7 @@ function stanford_basic_preprocess_book_tree(&$variables, $hook) {
  */
 function _stanford_basic_set_active_book_item(array &$items, string $current_url): void {
   foreach ($items as &$item) {
-    if ($item['url']->toString() == $current_url) {
+    if ($item['url']->toString(TRUE)->getGeneratedUrl() == $current_url) {
       $item['is_active'] = TRUE;
       return;
     }
@@ -355,7 +355,7 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
   $items = $variables['items'];
   foreach ($items as $key => $item) {
     // If path is current_path, add aria-current to the link.
-    if (parse_url($item['url']->toString(), PHP_URL_PATH) == $current_path) {
+    if (parse_url($item['url']->toString(TRUE)->getGeneratedUrl(), PHP_URL_PATH) == $current_path) {
       $link_options = $variables['items'][$key]['url']->getOptions();
       $link_options['attributes']['aria-current'] = 'true';
       $variables['items'][$key]['url']->setOptions($link_options);
@@ -390,7 +390,7 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
  */
 function _stanford_basic_menu_process_submenu(&$submenu, $current_path) {
   foreach ($submenu as &$item) {
-    $item_path = (is_string($item['url'])) ? $item['url'] : $item['url']->toString();
+    $item_path = (is_string($item['url'])) ? $item['url'] : $item['url']->toString(TRUE)->getGeneratedUrl();
     $is_front = \Drupal::service('path.matcher')->isFrontPage();
     if (
       $item_path == $current_path ||
