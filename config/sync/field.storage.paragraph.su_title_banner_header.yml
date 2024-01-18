@@ -1,0 +1,21 @@
+uuid: 1ea13c10-f46a-41da-9b2a-421dfb8020ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.su_title_banner_header
+field_name: su_title_banner_header
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
