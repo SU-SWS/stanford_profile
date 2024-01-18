@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.su_page_banner
     - node.type.stanford_page
     - paragraphs.paragraphs_type.stanford_banner
+    - paragraphs.paragraphs_type.stanford_page_title_banner
   module:
     - entity_reference_revisions
 id: node.stanford_page.su_page_banner
@@ -23,13 +24,44 @@ settings:
   handler_settings:
     target_bundles:
       stanford_banner: stanford_banner
+      stanford_page_title_banner: stanford_page_title_banner
     negate: 0
     target_bundles_drag_drop:
+      stanford_accordion:
+        weight: 14
+        enabled: false
       stanford_banner:
         weight: 4
         enabled: true
       stanford_card:
         weight: 5
+        enabled: false
+      stanford_entity:
+        weight: 17
+        enabled: false
+      stanford_gallery:
+        weight: 18
+        enabled: false
+      stanford_layout:
+        weight: 19
+        enabled: false
+      stanford_lists:
+        weight: 20
+        enabled: false
+      stanford_media_caption:
+        weight: 21
+        enabled: false
+      stanford_page_title_banner:
+        weight: 22
+        enabled: true
+      stanford_person_cta:
+        weight: 23
+        enabled: false
+      stanford_schedule:
+        weight: 24
+        enabled: false
+      stanford_spacer:
+        weight: 25
         enabled: false
       stanford_wysiwyg:
         weight: 6
