@@ -514,9 +514,9 @@ display:
         - 'config:field.storage.node.su_publication_citation'
   apa_list_graphql:
     id: apa_list_graphql
-    display_title: 'APA List: GraphQL'
+    display_title: 'GraphQL: APA List'
     display_plugin: graphql
-    position: 1
+    position: 99
     display_options:
       fields:
         title:
@@ -984,9 +984,9 @@ display:
         - 'config:field.storage.node.su_publication_citation'
   chicago_list_graphql:
     id: chicago_list_graphql
-    display_title: 'Chicago List: GraphQL'
+    display_title: 'GraphQL: Chicago List'
     display_plugin: graphql
-    position: 2
+    position: 99
     display_options:
       fields:
         title:

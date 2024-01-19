@@ -1410,9 +1410,9 @@ display:
         - 'config:field.storage.node.su_course_subject'
   default_list_viewfield_block_graphql:
     id: default_list_viewfield_block_graphql
-    display_title: '- Default List View -: GraphQL'
+    display_title: 'GraphQL: - Default List View -'
     display_plugin: graphql
-    position: 1
+    position: 99
     display_options:
       fields:
         su_course_subject:
@@ -3296,9 +3296,9 @@ display:
         - 'config:field.storage.node.su_course_subject'
   vertical_teaser_viewfield_block_graphql:
     id: vertical_teaser_viewfield_block_graphql
-    display_title: 'Card Grid: GraphQL'
+    display_title: 'GraphQL: Card Grid'
     display_plugin: graphql
-    position: 1
+    position: 99
     display_options:
       fields:
         su_course_subject:

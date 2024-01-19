@@ -959,9 +959,9 @@ display:
       tags: {  }
   cards_graphql:
     id: cards_graphql
-    display_title: 'Card Grid: GraphQL'
+    display_title: 'GraphQL: Card Grid'
     display_plugin: graphql
-    position: 2
+    position: 99
     display_options:
       fields:
         title:
@@ -3335,9 +3335,9 @@ display:
         - 'config:field.storage.node.su_event_type'
   list_page_graphql:
     id: list_page_graphql
-    display_title: '- Default List -: GraphQL'
+    display_title: 'GraphQL: - Default List -'
     display_plugin: graphql
-    position: 1
+    position: 99
     display_options:
       fields:
         view_node:
@@ -6334,9 +6334,9 @@ display:
         - 'config:field.storage.node.su_event_type'
   past_events_list_block_graphql:
     id: past_events_list_block_graphql
-    display_title: 'Past Events List: GraphQL'
+    display_title: 'GraphQL: Past Events List'
     display_plugin: graphql
-    position: 6
+    position: 99
     display_options:
       title: 'Past Events'
       fields:

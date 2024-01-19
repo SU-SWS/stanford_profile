@@ -721,7 +721,7 @@ settings:
   schema_description: 'GraphQL Compose'
   schema_version: '1'
   simple_queries: true
-  simple_unions: true
+  simple_unions: false
   site_name: true
   site_slogan: false
   site_front: true
@@ -730,3 +730,4 @@ settings:
   inflector_langcode: en
   inflector_singularize: true
   custom: {  }
+  edge_max_limit: 100
