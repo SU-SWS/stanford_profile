@@ -13,14 +13,6 @@ targetEntityType: paragraph
 bundle: stanford_page_title_banner
 mode: default
 content:
-  su_title_banner_header:
-    type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   su_title_banner_image:
     type: media_library_widget
     weight: 0
@@ -31,3 +23,4 @@ content:
 hidden:
   created: true
   status: true
+  su_title_banner_header: true
