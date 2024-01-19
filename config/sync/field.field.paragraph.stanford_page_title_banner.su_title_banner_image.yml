@@ -1,13 +1,13 @@
-uuid: 6b166d99-d405-411e-bad8-42b0b3f2f4b5
+uuid: 01f81126-912e-40c4-9607-fc318ca24a0b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.su_image
+    - field.storage.paragraph.su_title_banner_image
     - media.type.image
     - paragraphs.paragraphs_type.stanford_page_title_banner
-id: paragraph.stanford_page_title_banner.su_image
-field_name: su_image
+id: paragraph.stanford_page_title_banner.su_title_banner_image
+field_name: su_title_banner_image
 entity_type: paragraph
 bundle: stanford_page_title_banner
 label: Image

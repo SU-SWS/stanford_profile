@@ -9,48 +9,46 @@
 
 // Page Title Banner styles
 .ptype-stanford-page-title-banner {
-  .su-hero {
 
-    @include grid-media-min('md') {
+  @include grid-media-min('md') {
+    .su-card {
+      max-width: 100%;
+      width: fit-content;
+      margin-right: 4.5rem;
+      margin-left: 4.5rem;
+      left: unset;
+      right: unset;
+    }
+
+    &.overlay-right {
       .su-card {
-        max-width: 100%;
-        width: fit-content;
-        margin-right: 4.5rem;
-        margin-left: 4.5rem;
-        left: unset;
-        right: unset;
-      }
+        align-self: flex-end;
 
-      &.overlay-right {
-        .su-card {
-          align-self: flex-end;
-
-          h1 {
-            text-align: end;
-          }
+        h1 {
+          text-align: end;
         }
       }
     }
+  }
 
-    @include grid-media-min('xl') {
-      .su-card {
-        max-width: 67%;
-        margin-right: 4.8rem;
-        margin-left: 4.8rem;
-      }
+  @include grid-media-min('xl') {
+    .su-card {
+      max-width: 67%;
+      margin-right: 4.8rem;
+      margin-left: 4.8rem;
+    }
+  }
+
+  h1 {
+    margin-bottom: 0;
+    font-size: 3.9rem;
+
+    @include grid-media-min('md') {
+      font-size: 4.4rem;
     }
 
-    h1 {
-      margin-bottom: 0;
-      font-size: 3.9rem;
-
-      @include grid-media-min('md') {
-        font-size: 4.4rem;
-      }
-
-      @include grid-media-min('2xl') {
-        font-size: 5.6rem;
-      }
+    @include grid-media-min('2xl') {
+      font-size: 5.6rem;
     }
   }
 }
