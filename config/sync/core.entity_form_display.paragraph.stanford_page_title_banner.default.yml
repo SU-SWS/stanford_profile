@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.stanford_page_title_banner.su_title_banner_header
     - field.field.paragraph.stanford_page_title_banner.su_title_banner_image
     - paragraphs.paragraphs_type.stanford_page_title_banner
   module:
@@ -23,4 +22,3 @@ content:
 hidden:
   created: true
   status: true
-  su_title_banner_header: true
