@@ -26,4 +26,15 @@ class SystemCest {
     }
   }
 
+  /**
+   * Test the login page.
+   *
+   * @group 403-redirect
+   */
+  public function testLoginPage(AcceptanceTester $I){
+    $I->amOnPage('/admin/config');
+    $I->canSeeInCurrentUrl('/user/login');
+    $I->canSeeNumberOfElements('h1', 1);
+  }
+
 }
