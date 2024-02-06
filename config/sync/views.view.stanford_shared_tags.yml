@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
   module:
+    - graphql_compose_views
     - node
     - stanford_fields
     - user
@@ -131,7 +132,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true
@@ -171,7 +171,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true
@@ -211,7 +210,6 @@ display:
           title: ''
           default_argument_type: node
           default_argument_options: {  }
-          default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true
@@ -286,6 +284,29 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  card_grid_graphql:
+    id: card_grid_graphql
+    display_title: 'GraphQL: Card Grid'
+    display_plugin: graphql
+    position: 99
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      display_description: ''
+      display_extenders: {  }
+      graphql_query_name: stanfordSharedTags
     cache_metadata:
       max-age: -1
       contexts:

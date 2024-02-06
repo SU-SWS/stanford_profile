@@ -1,0 +1,22 @@
+uuid: d2b3e7e0-1428-42a3-a166-01b05d421323
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - stanford_profile_admin_theme
+_core:
+  default_config_hash: jgggdNqu50_Ny2fZl8mszrzRpX2lo74UXhfThCBVr3A
+id: stanford_profile_admin_theme_content
+theme: stanford_profile_admin_theme
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

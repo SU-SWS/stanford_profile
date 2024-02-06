@@ -6,6 +6,7 @@ use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\consumers\Entity\Consumer;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent;
+use Drupal\Core\Site\Settings;
 use Drupal\default_content\Event\ImportEvent;
 use Drupal\file\Entity\File;
 use Drupal\KernelTests\KernelTestBase;
@@ -139,8 +140,12 @@ class EventSubscriberTest extends KernelTestBase {
     $ci = getenv('CI');
     putenv('CI');
 
-    $config_page_loader = $this->createMock(ConfigPagesLoaderServiceInterface::class);
+    $site_settings = [
+      'stanford_capture_ownership' => TRUE,
+    ];
+    new Settings($site_settings);
 
+    $config_page_loader = $this->createMock(ConfigPagesLoaderServiceInterface::class);
     \Drupal::getContainer()->set('config_pages.loader', $config_page_loader);
 
     $account = $this->createMock(AccountProxyInterface::class);

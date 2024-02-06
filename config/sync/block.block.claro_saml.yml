@@ -1,0 +1,34 @@
+uuid: fd0a976c-de2d-48ae-a691-642daaab9e88
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_samlauth
+    - system
+    - user
+  theme:
+    - claro
+id: claro_saml
+theme: claro
+region: header
+weight: 0
+provider: null
+plugin: stanford_samlauth_login_block
+settings:
+  id: stanford_samlauth_login_block
+  label: 'SAML SUNetID Block'
+  label_display: '0'
+  provider: stanford_samlauth
+  link_text: 'SUNetID Login'
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/user/*'
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      anonymous: anonymous

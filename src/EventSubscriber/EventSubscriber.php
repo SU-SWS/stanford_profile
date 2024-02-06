@@ -8,6 +8,7 @@ use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Site\Settings;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\Core\Url;
 use Drupal\core_event_dispatcher\EntityHookEvents;
@@ -120,12 +121,13 @@ class EventSubscriber implements EventSubscriberInterface {
 
     if (
       $event->getRequestType() == HttpKernelInterface::MAIN_REQUEST &&
+      (Settings::get('stanford_capture_ownership', FALSE)) &&
       !str_starts_with($current_uri, '/admin/config/system/basic-site-settings') &&
       self::redirectUser()
     ) {
       $config_page_url = Url::fromRoute('config_pages.stanford_basic_site_settings', [], ['query' => ['destination' => $current_uri]]);
       $this->messenger->addWarning('Please update or verify the site contact information on the "Site Contacts" tab.');
-      $event->setResponse(new RedirectResponse($config_page_url->toString() . '#contact'));
+      $event->setResponse(new RedirectResponse($config_page_url->toString(TRUE)->getGeneratedUrl() . '#contact'));
     }
   }
 
@@ -156,7 +158,6 @@ class EventSubscriber implements EventSubscriberInterface {
 
     // Check for config page edit access and ignore if the user is an
     // administrator. That way devs don't get forced into submitting the form.
-
     $site_manager = $current_user->hasPermission('edit stanford_basic_site_settings config page entity') && !in_array('administrator', $current_user->getRoles());
 
     // If the renewal date has passed, they should be redirected.

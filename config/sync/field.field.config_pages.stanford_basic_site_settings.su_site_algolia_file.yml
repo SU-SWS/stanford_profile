@@ -1,0 +1,27 @@
+uuid: c97426e2-6519-40d3-ada2-1c3b78ec6273
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_algolia_file
+  module:
+    - file
+id: config_pages.stanford_basic_site_settings.su_site_algolia_file
+field_name: su_site_algolia_file
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Override Algolia Results File'
+description: 'Upload a compiled JS file to replace the provided display of search results. Leave empty to use the default results display.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: algolia-search
+  file_extensions: js
+  max_filesize: 1MB
+  description_field: false
+field_type: file

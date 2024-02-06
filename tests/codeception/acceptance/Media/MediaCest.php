@@ -252,6 +252,8 @@ class MediaCest {
 
   /**
    * SUL Embeddables can be saved.
+   *
+   * @group arcgis
    */
   public function testArcGis(AcceptanceTester $I) {
     $I->logInWithRole('administrator');

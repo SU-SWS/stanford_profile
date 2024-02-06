@@ -25,12 +25,20 @@ class SubThemeCest {
   protected $themePath;
 
   /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  /**
    * SubThemeCest constructor.
    */
   public function __construct() {
     $this->themeName = Factory::create()->firstName;
     $path = \Drupal::service('extension.list.theme')->getPath('stanford_basic');
     $this->themePath = realpath(dirname($path)) . '/' . strtolower($this->themeName);
+    $this->faker = Factory::create();
   }
 
   /**
@@ -50,7 +58,13 @@ class SubThemeCest {
    *   Tester.
    */
   public function _after(AcceptanceTester $I) {
-    $this->runConfigImport($I, TRUE);
+    $I->runDrush('config:set system.theme default stanford_basic -y');
+    try {
+      $I->runDrush('theme:uninstall ' . strtolower($this->themeName));
+    }
+    catch (\Throwable $e) {
+      // Nothing to do if the theme wasn't enabled to begin.
+    }
     $info_path = $this->themePath . '/' . strtolower($this->themeName) . '.info.yml';
     if (file_exists($info_path)) {
       unlink($info_path);
@@ -61,40 +75,71 @@ class SubThemeCest {
   /**
    * Enable the subtheme and the config should reflect the changes done.
    *
-   * @group minimal-subtheme-test2
+   * @group subtheme
    */
   public function testSubTheme(AcceptanceTester $I) {
+    $paragraph_text = $this->faker->paragraph;
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_wysiwyg',
+      'su_wysiwyg_text' => [
+        'value' => $paragraph_text,
+        'format' => 'stanford_html',
+      ],
+    ], 'paragraph');
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+
+    $I->canSee($paragraph_text);
+
     $I->runDrush('theme:enable -y ' . strtolower($this->themeName));
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', sprintf('a[title="Set %s as default theme"]', $this->themeName));
-    $I->amOnPage('/');
-    $I->canSeeResponseCodeIs(200);
+    $I->canSee("{$this->themeName} 1.0.0 (default theme)");
+    $I->runDrush('cache:rebuild');
 
-    $this->runConfigImport($I);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+    $I->canSee($paragraph_text);
+
+    $I->runDrush('config-import -y');
     $result = $I->runDrush('config-get system.theme default --format=json');
     $result = json_decode($result, TRUE);
     $I->assertEquals(strtolower($this->themeName), $result['system.theme:default']);
 
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', sprintf('a[title="Set %s as default theme"]', 'Stanford Basic'));
-    $this->runConfigImport($I);
+    $I->runDrush('config-import -y');
 
     $result = $I->runDrush('config-get system.theme default --format=json');
     $result = json_decode($result, TRUE);
     $I->assertEquals('stanford_basic', $result['system.theme:default']);
 
-    $I->amOnPage('/');
-    $I->canSeeResponseCodeIs(200);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+    $I->canSee($paragraph_text);
   }
 
   /**
    * Enable the minimally branded subtheme and the config should reflect the
    * changes done. Test the changes are there.
    *
-   * @group minimal-subtheme-test
+   * @group minimal-theme
    */
   public function testMinimalSubtheme(AcceptanceTester $I) {
+    $I->amOnPage('/');
+    $I->seeElement('.su-brand-bar__logo');
+    $I->seeElement('.su-global-footer__container');
+    $I->seeElement('.su-brand-bar--default');
+
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');
@@ -107,21 +152,6 @@ class SubThemeCest {
   }
 
   /**
-   * Run config import and adjust saml module if necessary.
-   *
-   * @param \AcceptanceTester $I
-   *   Tester.
-   * @param bool $disable_config_ignore
-   *   If config ignore module should be disabled first.
-   */
-  protected function runConfigImport(AcceptanceTester $I, $disable_config_ignore = FALSE) {
-    if ($disable_config_ignore) {
-      $I->runDrush('pmu config_ignore');
-    }
-    $I->runDrush('config-import -y');
-  }
-
-  /**
    * Create a stub of a subtheme based on stanford_basic.
    */
   protected function createTheme() {
@@ -129,10 +159,17 @@ class SubThemeCest {
       mkdir($this->themePath, 0777, TRUE);
       $info = file_get_contents(\Drupal::service('extension.list.theme')
           ->getPath('stanford_basic') . '/stanford_basic.info.yml');
-      $info = Yaml::decode($info);
-      $info['name'] = $this->themeName;
-      $info['base theme'] = 'stanford_basic';
-      unset($info['component-libraries']);
+      $stanford_basic_info = Yaml::decode($info);
+      $info = [
+        'name' => $this->themeName,
+        'type' => 'theme',
+        'description' => $this->themeName,
+        'package' => 'testing',
+        'version' => '1.0.0',
+        'core_version_requirement' => '^10',
+        'base theme' => 'stanford_basic',
+        'regions' => $stanford_basic_info['regions'],
+      ];
 
       $info_path = $this->themePath . '/' . strtolower($this->themeName) . '.info.yml';
       file_put_contents($info_path, Yaml::encode($info));

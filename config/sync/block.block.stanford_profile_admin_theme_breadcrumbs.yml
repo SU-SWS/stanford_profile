@@ -1,0 +1,22 @@
+uuid: 3159d3b5-295e-404d-92b8-7ab35fcd5d88
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - stanford_profile_admin_theme
+_core:
+  default_config_hash: SwnldptIou9q4oHNPhlB3l98-TLpVWf_Luj2xPy5sbc
+id: stanford_profile_admin_theme_breadcrumbs
+theme: stanford_profile_admin_theme
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

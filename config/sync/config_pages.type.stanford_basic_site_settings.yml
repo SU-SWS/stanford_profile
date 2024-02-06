@@ -74,6 +74,46 @@ third_party_settings:
       config_item: settings.depth
       prefix: ''
       suffix: ''
+    c4beaf76-95bc-43de-a5b8-dc94351690ae:
+      field: su_site_algolia
+      delta: 0
+      column: value
+      config_name: search_api.server.algolia_search
+      config_item: status
+      prefix: ''
+      suffix: ''
+    06ad5b8d-698a-4c3b-a217-b71f986255ad:
+      field: su_site_algolia
+      delta: 0
+      column: value
+      config_name: search_api.index.algolia_search
+      config_item: status
+      prefix: ''
+      suffix: ''
+    b130f719-a257-4303-88b8-a20cfd06a4d7:
+      field: su_site_algolia_id
+      delta: 0
+      column: value
+      config_name: search_api.server.algolia_search
+      config_item: backend_config.application_id
+      prefix: ''
+      suffix: ''
+    bedb41db-a366-4e0e-a5c1-1dc6b39b76c3:
+      field: su_site_algolia_key
+      delta: 0
+      column: value
+      config_name: search_api.server.algolia_search
+      config_item: backend_config.api_key
+      prefix: ''
+      suffix: ''
+    b8e438b9-828c-41e2-bbfb-84c5a9c61637:
+      field: su_site_algolia_index
+      delta: 0
+      column: value
+      config_name: search_api.index.algolia_search
+      config_item: options.algolia_index_name
+      prefix: ''
+      suffix: ''
 id: stanford_basic_site_settings
 label: 'Site Settings'
 token: null

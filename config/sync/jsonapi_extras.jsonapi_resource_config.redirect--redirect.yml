@@ -1,0 +1,83 @@
+uuid: de8f2269-5964-49a3-8b69-ed8955aa7e9d
+langcode: en
+status: true
+dependencies:
+  module:
+    - jsonapi_defaults
+    - redirect
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 500
+id: redirect--redirect
+disabled: false
+path: redirect/redirect
+resourceType: redirect--redirect
+resourceFields:
+  rid:
+    disabled: true
+    fieldName: rid
+    publicName: rid
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  hash:
+    disabled: true
+    fieldName: hash
+    publicName: hash
+    enhancer:
+      id: ''
+  type:
+    disabled: true
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  uid:
+    disabled: true
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  redirect_source:
+    disabled: false
+    fieldName: redirect_source
+    publicName: redirect_source
+    enhancer:
+      id: ''
+  redirect_redirect:
+    disabled: false
+    fieldName: redirect_redirect
+    publicName: redirect_redirect
+    enhancer:
+      id: url_link
+      settings:
+        absolute_url: 0
+  language:
+    disabled: true
+    fieldName: language
+    publicName: language
+    enhancer:
+      id: ''
+  status_code:
+    disabled: false
+    fieldName: status_code
+    publicName: status_code
+    enhancer:
+      id: ''
+  created:
+    disabled: true
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  metatag:
+    disabled: true
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''

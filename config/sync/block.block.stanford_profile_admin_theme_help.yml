@@ -1,0 +1,22 @@
+uuid: f47eb930-9278-48a7-9281-526881933312
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - stanford_profile_admin_theme
+_core:
+  default_config_hash: dG9OciTVvWopPKuUXP5eMez2i2tr7byANDwzSzokkF4
+id: stanford_profile_admin_theme_help
+theme: stanford_profile_admin_theme
+region: help
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

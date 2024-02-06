@@ -57,6 +57,8 @@ class EventsCest {
     $I->amOnPage($term->toUrl()->toString());
     $I->canSeeResponseCodeIs(200);
     $I->canSee('No events at this time');
+    $ariaHidden = $I->grabAttributeFrom('button.topics__collapsable-menu', 'aria-hidden');
+    $I->assertEmpty($ariaHidden, 'Topic menu button should not have aria-hidden attribute');
 
     $event = $this->createEventNode($I);
     $event->set('su_event_type', $term->id())->save();

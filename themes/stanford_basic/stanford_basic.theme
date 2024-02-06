@@ -5,10 +5,32 @@
  * Preprocess functions for Stanford Basic.
  */
 
-use Drupal\Core\Cache\CacheableMetadata;
-use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
+use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function stanford_basic_library_info_alter(&$libraries, $extension) {
+  if ($extension == 'stanford_basic' && \Drupal::hasService('config_pages.loader')) {
+    /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_pages */
+    $config_pages = \Drupal::service('config_pages.loader');
+    $js_file_id = $config_pages->getValue('stanford_basic_site_settings', 'su_site_algolia_file', 0, 'target_id');
+    if (!$js_file_id) {
+      return;
+    }
+
+    /** @var \Drupal\file\FileInterface $file */
+    $file = \Drupal::entityTypeManager()->getStorage('file')->load($js_file_id);
+    if ($file) {
+      $libraries['algolia-search']['js'] = [$file->createFileUrl() => ['minified' => TRUE]];
+    }
+  }
+}
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -33,7 +55,7 @@ function stanford_basic_theme_suggestions_book_tree_alter(array &$suggestions, a
  * Implements hook_preprocess_HOOK().
  */
 function stanford_basic_preprocess_book_tree(&$variables, $hook) {
-  $current_url = Url::fromRoute('<current>')->toString();
+  $current_url = Url::fromRoute('<current>')->toString(TRUE)->getGeneratedUrl();
   _stanford_basic_set_active_book_item($variables['items'], $current_url);
 }
 
@@ -47,7 +69,7 @@ function stanford_basic_preprocess_book_tree(&$variables, $hook) {
  */
 function _stanford_basic_set_active_book_item(array &$items, string $current_url): void {
   foreach ($items as &$item) {
-    if ($item['url']->toString() == $current_url) {
+    if ($item['url']->toString(TRUE)->getGeneratedUrl() == $current_url) {
       $item['is_active'] = TRUE;
       return;
     }
@@ -188,7 +210,6 @@ function stanford_basic_preprocess_block(&$variables) {
   $variables['attributes']['class'][] = Html::cleanCssIdentifier(_stanford_basic_change_characters($variables['derivative_plugin_id']));
 
   if (\Drupal::hasService('config_pages.loader')) {
-
     /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_pages */
     $config_pages = \Drupal::service('config_pages.loader');
     $new_menu = (bool) $config_pages->getValue('stanford_basic_site_settings', 'su_site_new_menu', 0, 'value');
@@ -199,6 +220,19 @@ function stanford_basic_preprocess_block(&$variables) {
       $variables['attributes']['data-island'] = 'main-menu-island';
       $variables['#attached']['library'][] = 'stanford_basic/decoupled_menu';
     }
+  }
+
+  if ($variables['plugin_id'] == 'views_exposed_filter_block:search-results') {
+    if (_stanford_basic_algolia_settings()) {
+      unset($variables['content']);
+    }
+  }
+
+  if (
+    !isset($variables['configuration']['label_display']) ||
+    $variables['configuration']['label_display'] != BlockPluginInterface::BLOCK_LABEL_VISIBLE
+  ) {
+    $variables['title_attributes']['aria-hidden'] = 'true';
   }
 }
 
@@ -321,7 +355,7 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
   $items = $variables['items'];
   foreach ($items as $key => $item) {
     // If path is current_path, add aria-current to the link.
-    if (parse_url($item['url']->toString(), PHP_URL_PATH) == $current_path) {
+    if (parse_url($item['url']->toString(TRUE)->getGeneratedUrl(), PHP_URL_PATH) == $current_path) {
       $link_options = $variables['items'][$key]['url']->getOptions();
       $link_options['attributes']['aria-current'] = 'true';
       $variables['items'][$key]['url']->setOptions($link_options);
@@ -356,7 +390,7 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
  */
 function _stanford_basic_menu_process_submenu(&$submenu, $current_path) {
   foreach ($submenu as &$item) {
-    $item_path = (is_string($item['url'])) ? $item['url'] : $item['url']->toString();
+    $item_path = (is_string($item['url'])) ? $item['url'] : $item['url']->toString(TRUE)->getGeneratedUrl();
     $is_front = \Drupal::service('path.matcher')->isFrontPage();
     if (
       $item_path == $current_path ||
@@ -444,6 +478,66 @@ function stanford_basic_preprocess_menu_local_task(&$variables) {
 }
 
 /**
+ * Get the user entered Algolia search settings.
+ *
+ * @return array|bool
+ *   Keyed array of algolia settings, false if not configured.
+ */
+function _stanford_basic_algolia_settings(): array|bool {
+  $settings = &drupal_static(__DIR__);
+  if ($settings != NULL) {
+    return $settings;
+  }
+
+  if (!\Drupal::hasService('config_pages.loader')) {
+    return $settings = FALSE;
+  }
+  /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_page */
+  $config_page = \Drupal::service('config_pages.loader');
+
+  $use_algolia = (bool) $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia', 0, 'value');
+  if (!$use_algolia) {
+    return $settings = FALSE;
+  }
+  $algolia_app = $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_id', 0, 'value');
+  $algolia_search_key = $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_search', 0, 'value');
+  $search_index = $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_index', 0, 'value');
+  $settings = [
+    'appId' => $algolia_app,
+    'searchKey' => $algolia_search_key,
+    'index' => $search_index,
+  ];
+  return $settings;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_page__search(&$variables) {
+  $algolia_settings = _stanford_basic_algolia_settings();
+  if (!$algolia_settings) {
+    return;
+  }
+  $variables['#attached']['library'][] = 'stanford_basic/algolia-search';
+  $variables['#attached']['drupalSettings']['stanfordAlgolia'] = $algolia_settings;
+
+  foreach (Element::children($variables['page']['content']) as $child_key) {
+    $element = &$variables['page']['content'][$child_key];
+    if (isset($element['#plugin_id']) && $element['#plugin_id'] == 'system_main_block') {
+      $variables['page']['content'][$child_key] = [
+        '#type' => 'html_tag',
+        '#tag' => 'div',
+        '#value' => '',
+        '#attributes' => [
+          'id' => 'algolia-search',
+          'class' => ['centered-container'],
+        ],
+      ];
+    }
+  }
+}
+
+/**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
 function stanford_basic_theme_suggestions_block_alter(array &$suggestions, array $variables) {
@@ -486,7 +580,9 @@ function stanford_basic_preprocess_paragraph(&$variables) {
  */
 function stanford_basic_preprocess_paragraph__stanford_spacer(&$variables) {
   $paragraph = $variables['elements']['#paragraph'];
-  if ($paragraph->hasField('su_spacer_size') && !$paragraph->get('su_spacer_size')->isEmpty()) {
-    $variables['attributes']['class'][] = $paragraph->get('su_spacer_size')->getString();
+  if ($paragraph->hasField('su_spacer_size') && !$paragraph->get('su_spacer_size')
+      ->isEmpty()) {
+    $variables['attributes']['class'][] = $paragraph->get('su_spacer_size')
+      ->getString();
   }
 }
