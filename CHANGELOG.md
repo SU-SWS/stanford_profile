@@ -1,5 +1,35 @@
 # Cardinal Service Profile
 
+11.0.6
+-------------------------------------------------------------------------------
+
+- Update GH Actions checkout (#759)
+- Exclude page title on login page
+- Add permission to view algolia config settings
+- D8CORE-7215 Test to Display the topic menu label on list pages (#758)
+- Update address fields for local footer test (#757)
+- Update imagemagick config from db update
+- Added "fields" to page cache query ignore for jsonapi
+- D8CORE-7111 Add local footer social icons for mastodon and google scholar (#756)
+- Increase jsonapi page limit to 500 for nodes
+- Adjust graphql settings for easier type checking
+- Updated DS config for module update
+- D8CORE-7205 Trim all html before sending index data to Algolia
+- Replaced transliterate_filenames module functionality
+- Add and configure graphql compose module (#751)
+- Drupal 11.2.0 upgrade (#752)
+- D8CORE-7055: added an aria-hidden is true (#745)
+- D8CORE-7096 Update algolia search results styles and structure (#747)
+- Update github actions (#748)
+- Strip more html from algolia indexed items
+- Fixed absolute urls for algolia results
+- D8CORE-7074 Implement Search API Algolia (#743)
+- D8CORE-6726: Overrode the colorbox formatter template to remove aria-label (#746)
+- Update alert styles (#744)
+- Added cron job config
+- D8CORE-2761: reduced padding on filterby menu (#728)
+- Updated config split settings
+
 11.0.5
 -------------------------------------------------------------------------------
 - D8CORE-7066 Adjust site contact fields & language (#741)

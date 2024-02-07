@@ -8,7 +8,7 @@ use Faker\Factory;
  *
  * @group no-parallel
  */
-class SubThemeCest {
+abstract class SubThemeCest {
 
   /**
    * Human readable name for the theme.
