@@ -572,7 +572,7 @@ function _cardinal_service_profile_reset_node_changed_time(NodeInterface $node, 
 /**
  * Update configs 'stanford_profile_admin' with 'stanford_profile_admin_theme'.
  */
-function stanford_profile_update_9104() {
+function cardinal_service_profile_update_9104() {
   $config_factory = \Drupal::configFactory();
   foreach ($config_factory->listAll() as $config_name) {
     $config = $config_factory->getEditable($config_name);
