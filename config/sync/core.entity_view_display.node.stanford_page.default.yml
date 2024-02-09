@@ -156,6 +156,7 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
+      - Editoria11y
       - 'Events Lists (Views)'
       - Forms
       - Help
@@ -166,13 +167,16 @@ third_party_settings:
       - 'News Lists (Views)'
       - 'PDB React'
       - 'People Lists (Views)'
+      - 'Policy (Views)'
       - Printable
       - 'Publication (Views)'
       - React
       - 'Stanford News'
       - 'Stanford Profile Helper'
+      - 'Stanford SAML Authentication'
       - System
       - 'Taxonomy Terms (Views)'
+      - User
       - Views
       - core
     entity_view_mode_restriction:
@@ -230,15 +234,10 @@ third_party_settings:
         'Changelog (Views)':
           - 'views_block:change_logs-policy_changes'
         Menus:
-          - 'menu_block:stanford-event-types'
           - 'system_menu_block:stanford-event-types'
           - 'menu_block:main'
-          - 'system_menu_block:main'
-          - 'menu_block:stanford-person-type'
           - 'system_menu_block:stanford-person-type'
-          - 'menu_block:stanford-publication-topics'
           - 'system_menu_block:stanford-publication-topics'
-          - 'menu_block:news-topics'
           - 'system_menu_block:news-topics'
         System:
           - system_breadcrumb_block
@@ -248,13 +247,17 @@ third_party_settings:
         - Book
         - 'Chaos Tools'
         - 'Config Pages'
+        - Editoria11y
         - Forms
         - Help
         - 'Lists (Views)'
+        - 'Policy (Views)'
         - Printable
         - React
         - 'Stanford Profile Helper'
+        - 'Stanford SAML Authentication'
         - 'Taxonomy Terms (Views)'
+        - User
         - Views
 id: node.stanford_page.default
 targetEntityType: node
