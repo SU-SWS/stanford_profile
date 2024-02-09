@@ -10,6 +10,7 @@ dependencies:
     - node.type.stanford_news
     - node.type.stanford_page
     - node.type.stanford_person
+    - node.type.stanford_policy
     - node.type.stanford_publication
     - paragraphs.paragraphs_type.stanford_entity
 id: paragraph.stanford_entity.su_entity_item
@@ -32,6 +33,7 @@ settings:
       stanford_event_series: stanford_event_series
       stanford_news: stanford_news
       stanford_person: stanford_person
+      stanford_policy: stanford_policy
       stanford_publication: stanford_publication
     sort:
       field: _none
