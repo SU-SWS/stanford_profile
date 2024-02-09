@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Default theme implementation of a an oembed lazyload placeholder.
+ *
+ * Available variables:
+ * - title: The oembed resource title.
+ * - url: The oembed resource url.
+ * - provider: The provider of the oembed content.
+ * - settings: The configured formatter settings.
+ * - third_party_settings: Any third party settings passed on by a specific provider.
+ *
+ * @see template_preprocess_oembed_lazyload_placeholder()
+ *
+ * @ingroup themeable
+ */
+#}
+{% apply spaceless %}
+  {% if title is empty %}
+    {% set title = '' %}
+  {% endif %}
+  {% if settings['strategy'] == 'onclick' %}
+    <button class="oembed-lazyload__button" title="{% trans %}Watch {{ title }}{% endtrans %}">
+      <span class="oembed-lazyload__visible-label">{% trans %}Load video{% endtrans %}</span>
+      {% if title %}
+      <span class="visually-hidden">{{ title }}</span>
+      {% endif %}
+      <span class="oembed-lazyload__thumbnail" style="background-image: url('{{ thumbnail }}')"></span>
+    </button>
+  {% else %}
+    <a class="oembed-lazyload__button" href="{{ url }}" aria-label="{% trans %}Watch {{ title }}{% endtrans %}" rel="nofollow">
+      <span class="oembed-lazyload__thumbnail" style="background-image: url('{{ thumbnail }}')"></span>
+    </a>
+  {% endif %}
+{% endapply %}
