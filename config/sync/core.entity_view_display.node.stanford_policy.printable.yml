@@ -20,6 +20,8 @@ dependencies:
     - node.type.stanford_policy
   module:
     - datetime
+    - ds
+    - empty_fields
     - field_formatter_class
     - layout_builder
     - layout_builder_restrictions
@@ -145,6 +147,41 @@ third_party_settings:
         - 'Stanford SimpleSAML PHP'
         - 'Taxonomy Terms (Views)'
         - Views
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - node_title
+        - su_policy_authority
+        - su_policy_updated
+        - su_policy_effective
+        - body
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          link_target: ''
+          wrapper: h1
+          class: ''
 id: node.stanford_policy.printable
 targetEntityType: node
 bundle: stanford_policy
@@ -155,38 +192,38 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 3
-    region: content
+    weight: 4
+    region: ds_content
   su_policy_authority:
     type: string
-    label: above
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 2
-    region: content
+    weight: 1
+    region: ds_content
   su_policy_effective:
     type: datetime_default
-    label: above
+    label: inline
     settings:
       timezone_override: ''
       format_type: stanford_month_date_year
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-    weight: 0
-    region: content
+    third_party_settings: {  }
+    weight: 3
+    region: ds_content
   su_policy_updated:
     type: datetime_default
-    label: above
+    label: inline
     settings:
       timezone_override: ''
       format_type: stanford_month_date_year
     third_party_settings:
+      empty_fields:
+        handler: ''
       field_formatter_class:
         class: ''
-    weight: 1
-    region: content
+    weight: 2
+    region: ds_content
 hidden:
   field_menulink: true
   layout_builder__layout: true
