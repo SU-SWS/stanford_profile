@@ -305,8 +305,14 @@ third_party_settings:
                   rel: '0'
                   target: '0'
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: su-person-map-link
+                  field_label:
+                    label_class: ''
+                    label_value: ''
+                    label_tag: h3
             weight: 9
             additional: {  }
           a69dd40a-c1a3-4266-b0ce-7efdaaa137fe:
@@ -346,8 +352,14 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: su-person-location-name
+                  field_label:
+                    label_class: ''
+                    label_value: ''
+                    label_tag: h3
             weight: 6
             additional: {  }
           8222e428-abc1-40e2-9309-e6ca03530c1f:
@@ -367,8 +379,14 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: su-person-mail-code
+                  field_label:
+                    label_class: ''
+                    label_value: ''
+                    label_tag: h3
             weight: 5
             additional: {  }
           0cff0fa4-edcc-4bae-93bf-865242051b35:
