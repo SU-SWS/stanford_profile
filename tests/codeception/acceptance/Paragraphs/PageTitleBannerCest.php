@@ -56,6 +56,7 @@ class PageTitleBannerCest {
     $I->fillField('Title', $new_title);
     $I->click('Save');
     $I->canSee($new_title, '.ptype-stanford-page-title-banner h1');
+    $I->canSeeNumberOfElements('h1', 1);
   }
 
 }
