@@ -51,9 +51,6 @@
   Template Include Paths
   Override these if you want to include a different template.
 #}
-{%- if template_path_skiplink is empty -%}
-  {%- set template_path_skiplink = "@decanter/components/skiplinks/link.twig" -%}
-{%- endif -%}
 {%- if template_path_brandbar is empty -%}
   {%- set template_path_brandbar = "@decanter/components/brand-bar/brand-bar.twig" -%}
 {%- endif -%}
@@ -74,14 +71,7 @@
     {% set masthead_nav_modifier_class = "su-main-nav--dark su-main-nav--mobile-search" %}
   {% endif %}
 
-  {% include template_path_skiplink with
-    {
-      "attributes": masthead_skiplinks_attributes,
-      "modifier_class": masthead_skiplinks_modifier_class,
-      "target_id": masthead_skiplinks_target_id,
-      "link_text": masthead_skiplinks_link_text
-    }
-  %}
+  <a{{ masthead_skiplinks_attributes }} href="#{{ masthead_skiplinks_target_id|default('su-main-content-1891') }}" class="su-skiplinks {{ masthead_skiplinks_modifier_class }}">{{ masthead_skiplinks_link_text|default('Skip to main content') }}</a>
 
   {% if "su-masthead--stroke" not in modifier_class %}
     {% include template_path_brandbar with

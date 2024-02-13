@@ -24,23 +24,12 @@
   Template Include Paths
   Override these if you want to include a different template.
 #}
-{%- if template_path_skiplink is empty -%}
-  {%- set template_path_skiplink = "@decanter/components/skiplinks/link.twig" -%}
-{%- endif -%}
 {%- if template_path_skiptarget is empty -%}
   {%- set template_path_skiptarget = "@decanter/components/skiplinks/target.twig" -%}
 {%- endif -%}
 
 <header>
-  {% include template_path_skiplink with
-    {
-      "target_id": target_id,
-      "link_text": link_text,
-      "attributes": attributes,
-      "modifier_class": modifier_class
-    }
-    only
-  %}
+  <a{{ attributes }} href="#{{ target_id|default('su-main-content-1891') }}" class="su-skiplinks {{ modifier_class }}">{{ link_text|default('Skip to main content') }}</a>
 </header>
 <main>
   {% include template_path_skiptarget with

@@ -65,10 +65,6 @@
  {%- set lockup_options = { "modifier_class": 'su-lockup--option-a', "line1": lockup_title, "attributes": attributes|without('id') } -%}
 {%- endif -%}
 
-{%- if template_path_link is empty -%}
-  {%- set template_path_link = "@decanter/components/link/link.twig" -%}
-{%- endif %}
-
 {%- if template_path_signup_form is empty -%}
   {%- set template_path_signup_form = "@decanter/components/signup-form/signup-form.twig" -%}
 {%- endif %}
@@ -88,11 +84,9 @@
     {% endblock %}
     {# Web login button #}
     {% if weblogin_url is not empty %}
-      {% include template_path_link with {
-        "modifier_class": "su-link--internal",
-        "link_href": weblogin_url,
-        "link_content": weblogin_text|default('Web Login')
-      } only %}
+      <a{{ weblogin_attributes }} href="{{ weblogin_url }}" class="su-link su-link--internal">
+        {{ weblogin_text|default('Web Login') }}
+      </a>
     {% endif %}
     {# Optional content area for the header. #}
     {{ headercontent }}

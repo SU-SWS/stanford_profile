@@ -44,10 +44,6 @@
   Template Include Paths
   Override these if you want to include a different template.
 #}
-{%- if template_path_link is empty -%}
-  {%- set template_path_link = "@decanter/components/link/link.twig" -%}
-{%- endif -%}
-
 {%- if template_path_media is empty -%}
   {%- set template_path_media = "@decanter/components/media/media.twig" -%}
 {%- endif -%}
@@ -165,29 +161,17 @@
     {%- block block_card_cta %}
       {# Card CTA Link #}
       {%- if card_cta_label is not empty and allow_links %}
-        {%- include template_path_link with
-          {
-            "link_href": card_link,
-            "link_content": card_cta_label,
-            "attributes": card_cta_attributes,
-            "modifier_class": "su-card__link su-link--action"
-          }
-          only
-        -%}
+        <a{{ card_cta_attributes }} href="{{ card_link }}" class="su-link su-card__link su-link--action">
+          {{ card_cta_label }}
+        </a>
       {% endif -%}
 
       {# Big ol link button. Adds a BEM class for targeting. #}
       {%- if card_button_label is not empty and allow_links %}
         <div class="su-card__button">
-          {%- include template_path_link with
-            {
-              "link_href": card_link,
-              "link_content": card_button_label,
-              "attributes": card_cta_attributes,
-              "modifier_class": "su-button"
-            }
-            only
-          -%}
+          <a{{ card_cta_attributes }} href="{{ card_link }}" class="su-link su-button">
+            {{ card_button_label }}
+          </a>
         </div>
       {% endif -%}
     {% endblock -%}

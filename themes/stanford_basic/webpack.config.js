@@ -105,14 +105,16 @@ var webpackConfig = {
         onStart: {
           delete: ["dist"]
         },
-        onEnd: {
-          copy: [
-            {
-              source: "node_modules/decanter/core/src/templates/**/*.twig",
-              destination: "dist/templates/decanter/"
-            }
-          ],
-        },
+        // No longer copy from decanter during the builds so that we can
+        // customize the templates to what we desire.
+        // onEnd: {
+        //   copy: [
+        //     {
+        //       source: "node_modules/decanter/core/src/templates/**/*.twig",
+        //       destination: "dist/templates/decanter/"
+        //     }
+        //   ],
+        // },
       }
     }),
   ],
