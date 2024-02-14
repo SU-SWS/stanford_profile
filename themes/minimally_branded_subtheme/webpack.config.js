@@ -36,14 +36,6 @@ var webpackConfig = {
   module: {
     rules: [
       {
-        test: /\.behavior.js$/,
-        exclude: /node_modules/,
-        options: {
-          enableHmr: false
-        },
-        loader: 'drupal-behaviors-loader'
-      },
-      {
         test: /\.m?js$/,
         exclude: /(node_modules)/,
         use: {

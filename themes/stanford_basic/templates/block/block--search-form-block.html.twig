@@ -1,6 +1,6 @@
 {% set attributes = attributes.addClass('su-site-search') %}
 
-{% include "@basic-dist/decanter/components/site-search/site-search.twig" with
+{% include "@decanter/components/site-search/site-search.twig" with
   {
     "attributes": attributes|without('class', 'role'),
     "modifier_class": attributes.class,

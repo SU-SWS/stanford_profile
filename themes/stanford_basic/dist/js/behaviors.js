@@ -1,7 +1,7 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 903:
+/***/ 7496:
 /***/ (function() {
 
 var header = document.getElementById('block-stanford-basic-local-tasks');
@@ -35,7 +35,7 @@ function stickyHeaderOnScroll() {
 
 /***/ }),
 
-/***/ 5741:
+/***/ 2696:
 /***/ (function() {
 
 /**
@@ -167,7 +167,7 @@ var __webpack_exports__ = {};
 "use strict";
 
 // EXTERNAL MODULE: ./src/js/theme/menu/StickyHeaderOnScroll.js
-var StickyHeaderOnScroll = __webpack_require__(903);
+var StickyHeaderOnScroll = __webpack_require__(7496);
 ;// CONCATENATED MODULE: ./src/js/theme/menu/index.js
 
 ;// CONCATENATED MODULE: ./src/js/theme/index.js
@@ -178,7 +178,7 @@ var StickyHeaderOnScroll = __webpack_require__(903);
 // The Local Task Menu
 
 // EXTERNAL MODULE: ./src/js/stanford_basic.behavior.js
-var stanford_basic_behavior = __webpack_require__(5741);
+var stanford_basic_behavior = __webpack_require__(2696);
 ;// CONCATENATED MODULE: ./src/js/behaviors.js
 // Theme code.
 
