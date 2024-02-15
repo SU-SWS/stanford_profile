@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.2.1
+-------------------------------------------------------------------------------
+- Fixed logger syntax during site install.
+
 11.2.0
 -------------------------------------------------------------------------------
 - Removed decanter from stanford_basic in favor of jumpstart_ui templates
