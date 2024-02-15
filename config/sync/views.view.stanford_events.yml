@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
+    - core.entity_view_mode.node.stanford_h3_card
     - field.storage.node.su_event_alt_loc
     - field.storage.node.su_event_date_time
     - field.storage.node.su_event_dek
@@ -787,7 +788,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: stanford_card
+          view_mode: stanford_h3_card
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -1371,50 +1372,50 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: 0
           alter:
-            alter_text: true
+            alter_text: 1
             text: "<a class=\"su-link{% if su_event_source %} su-link--external{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
-            make_link: false
+            make_link: 0
             path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
+            absolute: 0
+            external: 0
+            replace_spaces: 0
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: 0
             alt: ''
             rel: ''
             link_class: ''
             prefix: ''
             suffix: ''
             target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
+            nl2br: 0
+            max_length: '0'
+            word_boundary: 0
+            ellipsis: 0
+            more_link: 0
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
-            trim: false
+            strip_tags: 0
+            trim: 0
             preserve_tags: ''
-            html: false
-          element_type: h2
+            html: 0
+          element_type: h3
           element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: 1
           empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
+          hide_empty: 0
+          empty_zero: 0
+          hide_alter_empty: 1
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: false
+            link_to_entity: 0
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1424,7 +1425,7 @@ display:
           delta_first_last: false
           multi_type: separator
           separator: ', '
-          field_api_classes: false
+          field_api_classes: 0
           entity_type: node
           entity_field: title
           plugin_id: field
@@ -2104,17 +2105,6 @@ display:
           separator: ''
           hide_empty: 1
           pattern: events_list
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            link: default
-            lockup: a
-            media: default
           pattern_mapping:
             'views_row:title':
               destination: headline
@@ -2176,6 +2166,7 @@ display:
               weight: 11
               plugin: views_row
               source: edit_node
+          pattern_variant: h3_header
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth

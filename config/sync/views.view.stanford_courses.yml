@@ -665,17 +665,6 @@ display:
           separator: ''
           hide_empty: 0
           pattern: course_list
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            link: default
-            lockup: a
-            media: default
           pattern_mapping:
             'views_row:title':
               destination: course_list_title
@@ -722,6 +711,7 @@ display:
               weight: 8
               plugin: views_row
               source: edit_node
+          pattern_variant: h3_header
       query:
         type: views_query
         options:
@@ -2749,25 +2739,17 @@ display:
         options:
           default_field_elements: 0
           inline:
-            title: 0
-            su_course_academic_year: 0
-            su_course_code: 0
-            su_course_link: 0
             su_course_subject: 0
+            su_course_code: 0
+            su_course_academic_year: 0
+            title: 0
+            body: 0
+            su_course_instructors: 0
+            view_node: 0
+            su_course_id: 0
           separator: ''
           hide_empty: 0
           pattern: course_vertical_teaser
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            link: default
-            lockup: a
-            media: default
           pattern_mapping:
             'views_row:title':
               destination: course_title
@@ -2789,11 +2771,7 @@ display:
               weight: 3
               plugin: views_row
               source: su_course_code
-            'views_row:su_course_link':
-              destination: course_url
-              weight: 4
-              plugin: views_row
-              source: su_course_link
+          pattern_variant: h3_header
       fields:
         su_course_subject:
           id: su_course_subject

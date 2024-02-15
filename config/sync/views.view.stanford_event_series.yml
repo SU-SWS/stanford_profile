@@ -529,17 +529,6 @@ display:
           separator: ''
           hide_empty: 1
           pattern: events_list
-          variants:
-            media: default
-            lockup: a
-            hero: default
-            brandbar: default
-            link: default
-            button: default
-            date-stacked: default
-            cta: default
-            alert: default
-            card: default
           pattern_mapping:
             'views_row:su_event_series_type':
               destination: event_type
@@ -571,6 +560,7 @@ display:
               weight: 5
               plugin: views_row
               source: su_event_series_dek
+          pattern_variant: h3_header
       query:
         type: views_query
         options:

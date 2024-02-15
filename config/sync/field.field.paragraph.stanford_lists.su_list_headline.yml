@@ -10,8 +10,8 @@ field_name: su_list_headline
 entity_type: paragraph
 bundle: stanford_lists
 label: Headline
-description: 'This is the main headline for the list paragraph. The headline will appear above the list view in large font.'
-required: false
+description: 'This is the main headline for the list paragraph. The headline will appear above the list view in large font. This heading is required to build correct heading structure for accessibility purposes.'
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

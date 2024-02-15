@@ -79,7 +79,7 @@ class PersonCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->see("$first_name $last_name", 'h1');
     $I->amOnPage('/people');
-    $I->see("$first_name $last_name", 'h2');
+    $I->see("$first_name $last_name", 'h3');
     $I->seeLink("$first_name $last_name");
 
     $I->amOnPage($term->toUrl()->toString());
