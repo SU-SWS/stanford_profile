@@ -7,6 +7,7 @@ use Faker\Factory;
  * Class SubThemeCest.
  *
  * @group no-parallel
+ * @group subthemes
  */
 class SubThemeCest {
 
@@ -32,6 +33,11 @@ class SubThemeCest {
   protected $faker;
 
   /**
+   * @var string
+   */
+  protected $originalTheme = 'stanford_basic';
+
+  /**
    * SubThemeCest constructor.
    */
   public function __construct() {
@@ -48,6 +54,7 @@ class SubThemeCest {
    *   Tester.
    */
   public function _before(AcceptanceTester $I) {
+    $this->originalTheme = \Drupal::config('system.theme')->get('default');
     $this->createTheme();
   }
 
@@ -58,7 +65,7 @@ class SubThemeCest {
    *   Tester.
    */
   public function _after(AcceptanceTester $I) {
-    $I->runDrush('config:set system.theme default stanford_basic -y');
+    $I->runDrush('config:set system.theme default ' . $this->originalTheme . ' -y');
     try {
       $I->runDrush('theme:uninstall ' . strtolower($this->themeName));
     }
