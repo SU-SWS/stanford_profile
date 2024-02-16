@@ -205,12 +205,13 @@ default:
               value:
                 list_paragraph:
                   empty_message: 'No events at this time.'
+                  hide_heading: true
                 layout_paragraphs:
                   parent_uuid: baa69328-f537-441e-8ad5-fe66a3ba944d
                   region: main
-          revision_translation_affected:
+          su_list_headline:
             -
-              value: true
+              value: "Events"
           su_list_view:
             -
               target_id: stanford_events

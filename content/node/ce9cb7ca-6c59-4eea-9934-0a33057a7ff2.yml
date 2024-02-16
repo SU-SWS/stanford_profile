@@ -206,12 +206,14 @@ default:
           behavior_settings:
             -
               value:
+                list_paragraph:
+                  hide_heading: true
                 layout_paragraphs:
                   parent_uuid: 7ae1336b-4404-4762-a499-70289133b9f7
                   region: main
-          revision_translation_affected:
+          su_list_headline:
             -
-              value: true
+              value: "Publications"
           su_list_view:
             -
               target_id: stanford_publications
