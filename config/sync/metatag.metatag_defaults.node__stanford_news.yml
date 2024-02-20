@@ -5,8 +5,10 @@ dependencies: {  }
 id: node__stanford_news
 label: 'Content: News'
 tags:
-  article_published_time: '[node:su_news_publishing_date]'
+  article_published_time: '[node:su_news_publishing_date:date:custom:c]'
   article_tag: '[node:su_news_topics]'
+  canonical_url: '[node:su_news_source:uri]'
+  description: '[node:su_news_dek|node:su_news_byline]'
   image_src: '[node:su_news_featured_media:entity:field_media_image:large|node:su_news_banner:entity:field_media_image:large]'
   og_image: '[node:su_news_featured_media:entity:field_media_image:large|node:su_news_banner:entity:field_media_image:large]'
   og_image_alt: '[node:su_news_featured_media:entity:field_media_image:alt|node:su_news_banner:entity:field_media_image:alt]'

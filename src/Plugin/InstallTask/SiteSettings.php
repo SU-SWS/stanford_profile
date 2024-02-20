@@ -216,13 +216,13 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
       return reset($response['result'][0]);
     }
     catch (GuzzleException $e) {
-      $this->logger->alert($this->t('Unable to fetch SNOW data for %site. Message: %message'), [
+      $this->logger->alert('Unable to fetch SNOW data for %site. Message: %message', [
         '%site' => $site_name,
         '%message' => $e->getMessage(),
       ]);
     }
     catch (\Exception $e) {
-      $this->logger->alert($this->t('Unable to fetch SNOW data for %site. Message: %message'), [
+      $this->logger->alert('Unable to fetch SNOW data for %site. Message: %message', [
         '%site' => $site_name,
         '%message' => $e->getMessage(),
       ]);

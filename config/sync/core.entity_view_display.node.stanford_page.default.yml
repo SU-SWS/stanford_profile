@@ -252,6 +252,7 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
+      - Editoria11y
       - 'Events Lists (Views)'
       - Forms
       - Help
@@ -263,6 +264,7 @@ third_party_settings:
       - 'Opportunities (Views)'
       - 'PDB React'
       - 'People Lists (Views)'
+      - 'Policy (Views)'
       - Printable
       - 'Publication (Views)'
       - React
@@ -270,8 +272,10 @@ third_party_settings:
       - 'Spotlights (Views)'
       - 'Stanford News'
       - 'Stanford Profile Helper'
+      - 'Stanford SAML Authentication'
       - System
       - 'Taxonomy Terms (Views)'
+      - User
       - Views
       - core
     entity_view_mode_restriction:
@@ -330,11 +334,8 @@ third_party_settings:
         'Changelog (Views)':
           - 'views_block:change_logs-policy_changes'
         Menus:
-          - 'menu_block:stanford-event-types'
           - 'system_menu_block:stanford-event-types'
           - 'menu_block:main'
-          - 'system_menu_block:main'
-          - 'menu_block:stanford-person-type'
           - 'system_menu_block:stanford-person-type'
           - 'menu_block:stanford-publication-topics'
           - 'menu_block:news-topics'
@@ -352,9 +353,11 @@ third_party_settings:
         - 'Cardinal Service Blocks'
         - 'Chaos Tools'
         - 'Config Pages'
+        - Editoria11y
         - Forms
         - Help
         - 'Lists (Views)'
+        - 'Policy (Views)'
         - Printable
         - React
         - 'Resources (Views)'

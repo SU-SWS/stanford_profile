@@ -104,15 +104,7 @@ var webpackConfig = {
       events: {
         onStart: {
           delete: ["dist"]
-        },
-        onEnd: {
-          copy: [
-            {
-              source: "node_modules/decanter/core/src/templates/**/*.twig",
-              destination: "dist/templates/decanter/"
-            }
-          ],
-        },
+        }
       }
     }),
   ],

@@ -672,16 +672,11 @@ third_party_settings:
           - 'field_block:user:user:status'
       allowlisted_blocks:
         Menus:
-          - 'menu_block:stanford-event-types'
           - 'system_menu_block:stanford-event-types'
           - 'menu_block:main'
-          - 'system_menu_block:main'
           - 'system_menu_block:stanford-person-type'
-          - 'menu_block:stanford-person-type'
           - 'system_menu_block:stanford-publication-topics'
-          - 'menu_block:stanford-publication-topics'
           - 'system_menu_block:news-topics'
-          - 'menu_block:news-topics'
         System:
           - system_breadcrumb_block
         core:
@@ -851,6 +846,7 @@ hidden:
   layout_builder__layout: true
   search_api_excerpt: true
   stanford_intranet__access: true
+  su_event_ext_image: true
   su_event_groups: true
   su_event_keywords: true
   su_event_schedule: true

@@ -1,0 +1,24 @@
+uuid: 554a856c-2ed0-402b-8538-20e3560ae942
+langcode: en
+status: true
+dependencies: {  }
+name: citation_su_book
+label: 'citation su_book validation'
+entity_type: citation
+bundle: su_book
+field_validation_rules:
+  7358cbb2-1a51-4ad6-a16d-b3fc1a55438e:
+    id: regex_field_validation_rule
+    title: 'DOI does not include http'
+    data:
+      setting: '/^((?!http).)*$/'
+    weight: 1
+    uuid: 7358cbb2-1a51-4ad6-a16d-b3fc1a55438e
+    field_name: su_doi
+    column: value
+    error_message: 'DOI must not be the full url.'
+    roles: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''

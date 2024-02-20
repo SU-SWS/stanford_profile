@@ -1,0 +1,18 @@
+
+{% set attributes = attributes.addClass([
+  'block-' ~ configuration.provider|clean_class,
+  attributes.id
+]) %}
+{% set title_attributes = title_attributes.addClass('block__title') %}
+{% set label_tag = elements['#configuration']['formatter']['third_party_settings']['field_label']['label_tag']|default('h2') %}
+
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {% if label %}
+    <{{ label_tag }}{{ title_attributes }}>{{ label }}</{{ label_tag }}>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>

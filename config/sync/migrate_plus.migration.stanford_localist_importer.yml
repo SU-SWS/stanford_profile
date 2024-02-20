@@ -494,6 +494,7 @@ process:
           entity_type: taxonomy_term
           ignore_case: true
           source: name
+  su_event_ext_image: photo_url
 destination:
   plugin: 'entity:node'
   overwrite_properties:
@@ -511,6 +512,7 @@ destination:
     - su_event_date_time/end_value
     - su_event_date_time/timezone
     - su_event_date_time/value
+    - su_event_ext_image
     - su_event_groups
     - su_event_keywords
     - su_event_map_link/title
