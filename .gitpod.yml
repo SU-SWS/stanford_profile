@@ -1,1 +1,54 @@
-mainConfiguration: https://github.com/SU-SWS/acsf-cardinalsites-public
+ports:
+  - port: 3306
+    onOpen: ignore
+    visibility: private
+  - port: 33060
+    onOpen: ignore
+    visibility: private
+  - port: 8001
+    onOpen: open-preview
+    visibility: public
+image: pookmish/drupal8ci:gitpod
+tasks:
+  - before: |
+      mkdir -p ~/.ssh
+      if [[ ! -z $SSH_PUBLIC_KEY  ]]; then
+          echo $SSH_PUBLIC_KEY | base64 -d > ~/.ssh/id_rsa.pub && chmod 644 ~/.ssh/id_rsa.pub
+      fi
+      if [[ ! -z $SSH_PRIVATE_KEY ]]; then
+          echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+      fi
+      if [[ ! -z $GITCONFIG ]]; then
+          echo $GITCONFIG | base64 -d > ~/.gitconfig && chmod 644 ~/.gitconfig
+      fi
+    init: >
+      cd /workspace &&
+      mv $GITPOD_REPO_ROOT profile &&
+      git clone https://github.com/SU-SWS/acsf-cardinalsites-public.git $GITPOD_REPO_ROOT &&
+      cd $GITPOD_REPO_ROOT &&
+      export PREVIEW_FULL_URL=`gp url 8001` &&
+      export PREVIEW_URL=${PREVIEW_FULL_URL#"https://"} &&
+      export PROFILE_BRANCH=`cd ../profile && git rev-parse --abbrev-ref HEAD` &&
+      composer require su-sws/stanford_profile:"dev-$PROFILE_BRANCH || $PROFILE_BRANCH-dev" --no-update &&
+      composer update --no-interaction &&
+      rm -rf docroot/*/custom/* &&
+      composer install --prefer-source --no-interaction &&
+      cd $GITPOD_REPO_ROOT/docroot/profiles/custom/stanford_profile &&
+      git remote set-url origin git@github.com:SU-SWS/stanford_profile.git &&
+      cd $GITPOD_REPO_ROOT &&
+      cp .gitpod/blt.yml blt/local.blt.yml &&
+      mkdir -p docroot/sites/settings &&
+      find docroot/sites/ -name 'local*' | xargs rm &&
+      cp .gitpod/global.settings.php docroot/sites/settings/global.settings.php &&
+      cp .gitpod/default.local.services.yml docroot/sites/local.services.yml &&
+      blt blt:telemetry:disable --no-interaction &&
+      blt settings &&
+      drush si stanford_profile -v -y
+      drush cr
+      drush cim -y
+    command: |
+      apache2ctl restart
+      drush uli
+      drush uli | xargs gp preview --external
+      git config core.fileMode false
+      blt blt:telemetry:disable --no-interaction
