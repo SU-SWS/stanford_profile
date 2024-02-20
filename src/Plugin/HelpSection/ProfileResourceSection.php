@@ -23,9 +23,9 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    */
   public function listTopics() {
     return [
+      $this->getSupport(),
+      $this->getSoda(),
       $this->getTechTraining(),
-      $this->getBlog(),
-      $this->getMorningOfCode(),
     ];
   }
 
@@ -37,7 +37,7 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    */
   protected function getTechTraining() {
     $help = '<h3>' . self::getLinkString($this->t('University IT Technology Training'), 'https://itservices.stanford.edu/service/techtraining/schedule') . '</h3>';
-    $help .= '<p>' . $this->t('Check the upcoming courses schedule for training courses offered to Stanford faculty and staff.') . '</p>';
+    $help .= '<p>' . $this->t('See upcoming courses on site editing offered to Stanford faculty and staff.') . '</p>';
     return ['#markup' => $help];
   }
 
@@ -47,9 +47,9 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    * @return array
    *   Markup render array.
    */
-  protected function getBlog() {
-    $help = '<h3>' . self::getLinkString($this->t('Stanford Web Services Blog'), 'https://swsblog.stanford.edu/') . '</h3>';
-    $help .= '<p>' . $this->t('The Stanford Web Services team blogs about all things related to Stanford Sites, Drupal, design, site building, and many other topics. This is a great resource for SWS clients.') . '</p>';
+  protected function getSoda() {
+    $help = '<h3>' . self::getLinkString($this->t('Stanford Office of Digital Accessibility'), 'https://uit.stanford.edu/accessibility') . '</h3>';
+    $help .= '<p>' . $this->t('Get assistance with identifying issues and improving the accessibility of your site.') . '</p>';
     return ['#markup' => $help];
   }
 
@@ -59,9 +59,9 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    * @return array
    *   Markup render array.
    */
-  protected function getMorningOfCode() {
-    $help = '<h3>' . self::getLinkString($this->t("Mornings o' Code, Drupallers Drop-in Help, Drupallers Co-Working Sessions"), 'https://opensource.stanford.edu/moc') . '</h3>';
-    $help .= '<p>' . $this->t("Stanford Drupallers (new and experienced) meet regularly to collaborate and troubleshoot issues. Check the schedule for upcoming co-working sessions.") . '</p>';
+  protected function getSupport() {
+    $help = '<h3>' . self::getLinkString($this->t("Stanford Web Services Support"), 'https://sitesuserguide.stanford.edu/support') . '</h3>';
+    $help .= '<p>' . $this->t("See upcoming onboarding sessions for editors or book office hours to get hands-on assistance with your site.") . '</p>';
     return ['#markup' => $help];
   }
 
