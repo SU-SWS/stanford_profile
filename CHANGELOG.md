@@ -1,5 +1,17 @@
 # Cardinal Service Profile
 
+11.1.0
+-------------------------------------------------------------------------------
+
+- Added external image url for events content from Localist
+- D8CORE-7125 Use field_label module to choose which heading element for field labels (#761)
+- D8CORE-6982 Add validation to publication DOI fields to avoid full urls
+- D8CORE-7203 Some improvements to metatags on some content types
+- Add empty alt text to logo in policy print page
+- D8CORE-7088 Replace policy print page h2 with h1 tag
+- D8CORE-7132 Add policy content types to teasser paragraph field
+- D8CORE-7255 exclude lazy load oembed links from external links
+
 11.0.7
 -------------------------------------------------------------------------------
 

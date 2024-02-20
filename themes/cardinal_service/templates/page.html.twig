@@ -1,4 +1,4 @@
-{%- include "@basic-dist/decanter/components/brand-bar/brand-bar.twig" with { modifier_class : brand_bar_variant } only -%}
+{%- include "@decanter/components/brand-bar/brand-bar.twig" with { modifier_class : brand_bar_variant } only -%}
 
 <div{{ attributes }}>
   {%- if page.help -%}
@@ -25,6 +25,6 @@
 
   <footer id="footer">
     {{ page.footer }}
-    {%- include "@basic-dist/decanter/components/global-footer/global-footer.twig" -%}
+    {%- include "@decanter/components/global-footer/global-footer.twig" -%}
   </footer>
 </div>
