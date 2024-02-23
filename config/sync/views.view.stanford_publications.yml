@@ -701,10 +701,26 @@ display:
           output_url_as_text: true
           absolute: true
       pager:
-        type: some
+        type: full
         options:
           offset: 0
-          items_per_page: 20
+          items_per_page: 21
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: true
+            items_per_page_label: items
+            items_per_page_options: '3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84,87,90,93,96,99'
+            items_per_page_options_all: true
+            items_per_page_options_all_label: all
+            offset: true
+            offset_label: offset
+          quantity: 9
       defaults:
         fields: false
       display_description: ''
@@ -716,6 +732,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
