@@ -57,6 +57,8 @@ class RolesCest {
 
   /**
    * Contributor role should have some access.
+   *
+   * @group testme
    */
   public function testContributorRole(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
@@ -86,10 +88,15 @@ class RolesCest {
     // the admin toolbar.
     $I->amOnPage('/');
     $I->canSeeElement('#toolbar-administration');
+
+    $I->amOnPage('/admin/structure');
+    $I->canSeeResponseCodeIs(403);
   }
 
   /**
    * Site editor role should have some access.
+   *
+   * @group testme
    */
   public function testSiteEditorRole(AcceptanceTester $I) {
     $I->logInWithRole('site_editor');
@@ -119,10 +126,15 @@ class RolesCest {
     // the admin toolbar.
     $I->amOnPage('/');
     $I->canSeeElement('#toolbar-administration');
+
+    $I->amOnPage('/admin/structure');
+    $I->canSeeResponseCodeIs(403);
   }
 
   /**
    * Site manager should have more access.
+   *
+   * @group testme
    */
   public function testSiteManagerRole(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -138,6 +150,7 @@ class RolesCest {
     $I->amOnPage('/');
     $links = [
       '/admin/content' => 'All Content',
+      '/admin/structure' => 'Structure',
       '/admin/content/media' => 'All Media',
       '/admin/config/system/local-footer' => 'Local Footer',
       '/admin/config/system/basic-site-settings' => 'Site Settings',
@@ -153,6 +166,9 @@ class RolesCest {
     // the admin toolbar.
     $I->amOnPage('/');
     $I->canSeeElement('#toolbar-administration');
+
+    $I->amOnPage('/admin/structure');
+    $I->canSeeResponseCodeIs(200);
   }
 
   /**
