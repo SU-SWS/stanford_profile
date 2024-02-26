@@ -40,7 +40,7 @@ const CustomHits = (props) => {
   )
 
   return (
-    <ul>
+    <ul style={{listStyle: "none", padding: 0}}>
       {hits.map(hit =>
         <li key={hit.objectID}>
           <Hit hit={hit}/>
