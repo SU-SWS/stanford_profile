@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.stanford_card
+    - core.entity_view_mode.node.stanford_h3_card
     - core.entity_view_mode.node.teaser
     - node.type.stanford_policy
   module:
@@ -322,7 +322,8 @@ display:
       row:
         type: 'entity:node'
         options:
-          view_mode: stanford_card
+          relationship: none
+          view_mode: stanford_h3_card
       defaults:
         title: false
         css_class: false
