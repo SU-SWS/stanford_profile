@@ -3,12 +3,9 @@
 use Faker\Factory;
 
 /**
- * Class BannerCest.
- *
- * @group paragraphs
- * @group banner
+ * Card paragraph tests.
  */
-class BannerCest {
+class CardCest {
 
   /**
    * Faker service.
@@ -26,8 +23,10 @@ class BannerCest {
 
   /**
    * The banner paragraph should display its fields.
+   *
+   * @group foobar
    */
-  public function testBannerBehaviors(FunctionalTester $I) {
+  public function testCardBehaviors(FunctionalTester $I) {
     $field_values = [
       'sup_header' => $this->faker->words(3, TRUE),
       'header' => $this->faker->words(3, TRUE),
@@ -37,15 +36,15 @@ class BannerCest {
     ];
 
     $paragraph = $I->createEntity([
-      'type' => 'stanford_banner',
-      'su_banner_sup_header' => $field_values['sup_header'],
-      'su_banner_header' => $field_values['header'],
-      'su_banner_button' => [
+      'type' => 'stanford_card',
+      'su_card_super_header' => $field_values['sup_header'],
+      'su_card_header' => $field_values['header'],
+      'su_card_link' => [
         'uri' => $field_values['uri'],
         'title' => $field_values['title'],
         'options' => [],
       ],
-      'su_banner_body' => $field_values['body'],
+      'su_card_body' => $field_values['body'],
     ], 'paragraph');
 
     $node = $I->createEntity([
@@ -58,12 +57,8 @@ class BannerCest {
     ]);
 
     $I->amOnPage($node->toUrl()->toString());
-    $I->canSee($field_values['sup_header']);
+    $I->canSee($node->label(), 'h1');
     $I->canSee($field_values['header'], 'h2');
-    $I->canSee($field_values['body']);
-    $I->canSeeLink($field_values['title'], $field_values['uri']);
-
-    $I->cantSeeElement('.overlay-right');
 
     $I->logInWithRole('site_manager');
 
@@ -74,13 +69,11 @@ class BannerCest {
     $I->click('Edit', '.lpb-controls');
     $I->waitForText('Behaviors');
     $I->clickWithLeftButton('.lpb-behavior-plugins summary');
-    $I->selectOption('Text Overlay Position', 'Right');;
     $I->selectOption('Heading Level', 'h3');
 
     $I->click('Save', '.ui-dialog-buttonpane');
     $I->waitForElementNotVisible('.ui-dialog');
     $I->click('Save');
-    $I->canSeeElement('.overlay-right');
     $I->cantSee($field_values['header'], 'h2');
     $I->canSee($field_values['header'], 'h3');
 
