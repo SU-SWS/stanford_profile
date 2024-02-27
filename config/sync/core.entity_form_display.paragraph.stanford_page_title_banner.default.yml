@@ -1,0 +1,24 @@
+uuid: 1c6a81c7-d849-4420-bfcf-f87a8160b5d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_page_title_banner.su_title_banner_image
+    - paragraphs.paragraphs_type.stanford_page_title_banner
+  module:
+    - media_library
+id: paragraph.stanford_page_title_banner.default
+targetEntityType: paragraph
+bundle: stanford_page_title_banner
+mode: default
+content:
+  su_title_banner_image:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

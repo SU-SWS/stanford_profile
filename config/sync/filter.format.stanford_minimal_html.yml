@@ -6,11 +6,10 @@ dependencies:
     - linkit
     - mathjax
     - responsive_tables_filter
-    - stanford_media
-    - stanford_profile_helper
+    - stanford_decoupled
 name: 'Minimal HTML'
 format: stanford_minimal_html
-weight: 0
+weight: -9
 filters:
   filter_html:
     id: filter_html

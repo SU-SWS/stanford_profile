@@ -1,0 +1,57 @@
+uuid: 701c5dca-9f80-4e9c-8323-46f88a98e618
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_page_title_banner.su_title_banner_image
+    - paragraphs.paragraphs_type.stanford_page_title_banner
+  module:
+    - ds
+    - empty_fields
+    - field_formatter_class
+    - stanford_media
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_hero
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      hero_body:
+        - 'dynamic_token_field:paragraph-page_title'
+        - su_title_banner_header
+      hero_image:
+        - su_title_banner_image
+    fields:
+      'dynamic_token_field:paragraph-page_title':
+        plugin_id: 'dynamic_token_field:paragraph-page_title'
+        weight: 0
+        label: hidden
+        formatter: default
+id: paragraph.stanford_page_title_banner.default
+targetEntityType: paragraph
+bundle: stanford_page_title_banner
+mode: default
+content:
+  su_title_banner_image:
+    type: media_responsive_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      image_style: stanford_hero_block_wide
+      remove_alt: 0
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+    weight: 2
+    region: hero_image
+hidden:
+  search_api_excerpt: true

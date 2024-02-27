@@ -124,6 +124,8 @@ entity_config:
     stanford_media_caption:
       enabled: true
       query_load_enabled: true
+    stanford_page_title_banner:
+      enabled: true
     stanford_person_cta:
       enabled: true
       query_load_enabled: true
@@ -678,6 +680,9 @@ field_config:
       su_media_caption_link:
         enabled: true
       su_media_caption_media:
+        enabled: true
+    stanford_page_title_banner:
+      su_title_banner_image:
         enabled: true
     stanford_person_cta:
       su_person_cta_image:
