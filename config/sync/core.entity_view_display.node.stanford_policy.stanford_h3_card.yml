@@ -1,9 +1,9 @@
-uuid: 8e8058a1-5532-4671-b2ec-99348cf631c9
+uuid: fd3bbb8c-e4ac-4fd8-9fdc-d90d36bbb13b
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.stanford_card
+    - core.entity_view_mode.node.stanford_h3_card
     - field.field.node.stanford_policy.body
     - field.field.node.stanford_policy.field_menulink
     - field.field.node.stanford_policy.layout_builder__layout
@@ -156,9 +156,8 @@ third_party_settings:
           field_templates: default
           variant: default
     regions:
-      card_super_headline:
-        - node_title
       card_body:
+        - node_title
         - body
     fields:
       node_title:
@@ -170,12 +169,12 @@ third_party_settings:
           link: true
           'link class': su-link--action
           link_target: ''
-          wrapper: h2
+          wrapper: h3
           class: ''
-id: node.stanford_policy.stanford_card
+id: node.stanford_policy.stanford_h3_card
 targetEntityType: node
 bundle: stanford_policy
-mode: stanford_card
+mode: stanford_h3_card
 content:
   body:
     type: smart_trim

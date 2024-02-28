@@ -1,0 +1,87 @@
+uuid: 8aa211d5-955e-4ced-972f-9b2e6aa5236c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.stanford_h3_card
+    - field.field.node.stanford_event_series.field_menulink
+    - field.field.node.stanford_event_series.layout_builder__layout
+    - field.field.node.stanford_event_series.stanford_intranet__access
+    - field.field.node.stanford_event_series.su_event_series_components
+    - field.field.node.stanford_event_series.su_event_series_dek
+    - field.field.node.stanford_event_series.su_event_series_event
+    - field.field.node.stanford_event_series.su_event_series_subheadline
+    - field.field.node.stanford_event_series.su_event_series_type
+    - field.field.node.stanford_event_series.su_event_series_weight
+    - field.field.node.stanford_event_series.su_metatags
+    - field.field.node.stanford_event_series.su_shared_tags
+    - node.type.stanford_event_series
+  module:
+    - ds
+    - layout_builder
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      card_super_headline:
+        - su_event_series_dek
+      card_body:
+        - node_title
+        - su_event_series_subheadline
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          link_target: ''
+          wrapper: h3
+          class: ''
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.stanford_event_series.stanford_h3_card
+targetEntityType: node
+bundle: stanford_event_series
+mode: stanford_h3_card
+content:
+  su_event_series_dek:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: card_super_headline
+  su_event_series_subheadline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: card_body
+hidden:
+  field_menulink: true
+  layout_builder__layout: true
+  links: true
+  search_api_excerpt: true
+  stanford_intranet__access: true
+  su_event_series_components: true
+  su_event_series_event: true
+  su_event_series_type: true
+  su_event_series_weight: true
+  su_metatags: true
+  su_shared_tags: true

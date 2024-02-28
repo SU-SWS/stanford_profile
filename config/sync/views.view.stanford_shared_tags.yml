@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.stanford_card
+    - core.entity_view_mode.node.stanford_h3_card
   module:
     - graphql_compose_views
     - node
@@ -253,7 +253,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: stanford_card
+          view_mode: stanford_h3_card
       query:
         type: views_query
         options:

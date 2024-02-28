@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
+    - core.entity_view_mode.node.stanford_h3_card
     - field.storage.node.su_news_dek
     - field.storage.node.su_news_featured_media
     - field.storage.node.su_news_publishing_date
@@ -851,17 +852,6 @@ display:
           separator: ''
           hide_empty: 0
           pattern: news-list
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            link: default
-            lockup: a
-            media: default
           pattern_mapping:
             'views_row:view_node':
               destination: news_url
@@ -903,6 +893,7 @@ display:
               weight: 7
               plugin: views_row
               source: edit_node
+          pattern_variant: h3_header
       block_category: 'News Lists (Views)'
       block_description: ''
       css_class: ''
@@ -1607,7 +1598,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: stanford_card
+          view_mode: stanford_h3_card
       pager:
         type: some
         options:
@@ -1876,7 +1867,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: stanford_card
+          view_mode: stanford_h3_card
       defaults:
         css_class: false
         pager: false

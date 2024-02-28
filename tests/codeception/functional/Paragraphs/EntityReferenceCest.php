@@ -90,7 +90,7 @@ class EntityReferenceCest {
     $I->waitForElementNotVisible('.ui-dialog');
     $I->click('Save');
     $I->canSee('has been updated');
-    $I->canSee($publication->label(), 'h2');
+    $I->canSee($publication->label(), 'h3');
     $I->canSee('Journal Article');
   }
 

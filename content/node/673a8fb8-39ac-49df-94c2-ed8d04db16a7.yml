@@ -211,10 +211,14 @@ default:
           behavior_settings:
             -
               value:
-                list_paragraph: {  }
+                list_paragraph:
+                  hide_heading: true
                 layout_paragraphs:
                   parent_uuid: 901576db-04e5-46c2-ab4c-ac64980a578e
                   region: main
+          su_list_headline:
+            -
+              value: "People"
           su_list_view:
             -
               target_id: stanford_person
