@@ -6033,6 +6033,7 @@ __metadata:
     styled-components: "npm:^6.1.8"
     ts-node: "npm:~10.9.2"
     typescript: "npm:^5.3.3"
+    usehooks-ts: "npm:^2.16.0"
     webpack: "npm:^5.90.3"
     webpack-cli: "npm:^5.1.4"
     webpack-dev-server: "npm:^5.0.2"
@@ -7246,6 +7247,17 @@ __metadata:
   dependencies:
     punycode: "npm:^2.1.0"
   checksum: 10c0/4ef57b45aa820d7ac6496e9208559986c665e49447cb072744c13b66925a362d96dd5a46c4530a6b8e203e5db5fe849369444440cb22ecfc26c679359e5dfa3c
+  languageName: node
+  linkType: hard
+
+"usehooks-ts@npm:^2.16.0":
+  version: 2.16.0
+  resolution: "usehooks-ts@npm:2.16.0"
+  dependencies:
+    lodash.debounce: "npm:^4.0.8"
+  peerDependencies:
+    react: ^16.8.0  || ^17 || ^18
+  checksum: 10c0/0b7babf09b587cf7af71644dd603ee2efd820ec173c414af1c2afc2c61decc357738b093cabb6a881ac97d8a4e614723ee20096bddd459779f3a0786f4e6b2bf
   languageName: node
   linkType: hard
 
