@@ -156,6 +156,16 @@ class RolesCest {
   }
 
   /**
+   * Site Manager and Site embedder should play well together.
+   */
+  public function testSiteEmbedderStacking(AcceptanceTester $I){
+    $user = $I->createUserWithRoles(['site_manager', 'site_embedder']);
+    $I->logInAs($user->name);
+    $I->amOnPage('/node/add/stanford_page');
+    $I->canSee('Layout');
+  }
+
+  /**
    * Site builder will get more access than site manager.
    */
   public function testSiteBuilderRole(AcceptanceTester $I) {
