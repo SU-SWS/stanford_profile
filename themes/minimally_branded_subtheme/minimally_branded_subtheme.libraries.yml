@@ -44,7 +44,6 @@
 # EXAMPLE:
 #
 # nameoflibrarygroup:
-#   version: VERSION
 #   css:
 #     base:
 #       css/drupal/all.css:
@@ -72,7 +71,6 @@
 #   - core/jquery
 #
 # patternlibrary:
-#   version: VERSION
 #   css:
 #     base:
 #       css/pattern-library/base/base.css: {}
@@ -87,7 +85,6 @@
 #       css/pattern-library/theme/print.css: { media: print }
 
 allpages:
-  version: VERSION
   css:
    theme:
      dist/css/minimally_branded_subtheme.css: {minified: true }

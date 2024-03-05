@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch/lite';
 import {createIslandWebComponent} from 'preact-island'
-import {Hits, HitsProps, InstantSearch, useHits} from 'react-instantsearch';
+import {HitsProps, InstantSearch, useHits} from 'react-instantsearch';
 import SearchBox from "./search-box";
 import EventHit from "./hits/events";
 import NewsHit from "./hits/news";
