@@ -17,6 +17,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_index
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_key
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_search
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_ui
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
     - field.field.config_pages.stanford_basic_site_settings.su_site_email
     - field.field.config_pages.stanford_basic_site_settings.su_site_home
@@ -119,6 +120,7 @@ third_party_settings:
         - su_hide_site_search
         - su_site_nobots
         - su_site_algolia
+        - su_site_algolia_ui
         - su_site_algolia_id
         - su_site_algolia_key
         - su_site_algolia_search
@@ -200,28 +202,12 @@ content:
     third_party_settings: {  }
   su_site_algolia_file:
     type: file_generic
-    weight: 14
+    weight: 15
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   su_site_algolia_id:
-    type: string_textfield
-    weight: 10
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  su_site_algolia_index:
-    type: string_textfield
-    weight: 13
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  su_site_algolia_key:
     type: string_textfield
     weight: 11
     region: content
@@ -229,13 +215,36 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  su_site_algolia_search:
+  su_site_algolia_index:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_site_algolia_key:
     type: string_textfield
     weight: 12
     region: content
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  su_site_algolia_search:
+    type: string_textfield
+    weight: 13
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_site_algolia_ui:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   su_site_dropdowns:
     type: boolean_checkbox
