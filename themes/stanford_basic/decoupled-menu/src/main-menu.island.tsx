@@ -335,7 +335,7 @@ const MenuItemDivider = styled.div`
   }
 `
 
-const MenuItem = ({title, url, items, expanded, level = 0}: { title: string, url: string, items?: MenuContentItem[], expanded: boolean, level?: number }) => {
+const MenuItem = ({id, title, url, items, expanded, level = 0}: { title: string, url: string, items?: MenuContentItem[], expanded: boolean, level?: number }) => {
   const buttonRef = useRef(null)
   const [submenuOpen, setSubmenuOpen] = useState(false)
   const basePath = window.location.protocol + "//" + window.location.host;
@@ -373,6 +373,7 @@ const MenuItem = ({title, url, items, expanded, level = 0}: { title: string, url
       <MenuItemContainer level={level}>
         {!isNoLink &&
           <MenuLink
+            id={id}
             href={url}
             aria-current={isCurrent ? "page" : undefined}
             level={level}
@@ -395,7 +396,7 @@ const MenuItem = ({title, url, items, expanded, level = 0}: { title: string, url
               ref={buttonRef}
               onClick={() => setSubmenuOpen(!submenuOpen)}
               aria-expanded={submenuOpen}
-              aria-label={(submenuOpen ? "Close" : "Open") + ` ${title} Submenu`}
+              aria-labelledby={id}
             >
               <Caret style={{
                 transform: submenuOpen ? "rotate(180deg)" : "",
