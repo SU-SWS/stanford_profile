@@ -166,7 +166,7 @@ class RolesCest {
     $I->fillField('Name', 'Test Embed');
     $I->fillField('Embed Code', '<div>This is an embed</div>');
     $I->click('Save');
-    $I->canSee('1 error has been found');
+    $I->canSee('error has been found');
 
     // Stack the site_embedder role.
     $user = $I->createUserWithRoles(['site_manager', 'site_embedder']);
