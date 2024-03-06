@@ -183,6 +183,7 @@ class RolesCest {
     $I->fillField('Embed Code', '<iframe src="https://calendar.google.com/foo-bar" title="foobar"></iframe>');
     $I->click('Save');
     $I->cantSee('error has been found');
+    $I->canSee('Embeddable test embed has been created');
   }
 
   /**
