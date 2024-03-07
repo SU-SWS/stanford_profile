@@ -12,7 +12,6 @@ dependencies:
     - stanford_policy
     - subrequests
     - system
-    - ui_patterns_library
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
@@ -21,7 +20,6 @@ weight: -8
 is_admin: false
 permissions:
   - 'access content'
-  - 'access patterns page'
   - 'access shortcuts'
   - 'delete own files'
   - 'execute graphql_compose_server arbitrary graphql requests'

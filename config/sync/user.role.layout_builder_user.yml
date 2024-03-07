@@ -20,11 +20,13 @@ dependencies:
     - file
     - filter
     - layout_builder
+    - ui_patterns_library
 id: layout_builder_user
 label: 'Layout Builder User'
 weight: 1
 is_admin: null
 permissions:
+  - 'access patterns page'
   - 'configure editable stanford_event node layout overrides'
   - 'configure editable stanford_event_series node layout overrides'
   - 'configure editable stanford_event_types taxonomy_term layout overrides'
