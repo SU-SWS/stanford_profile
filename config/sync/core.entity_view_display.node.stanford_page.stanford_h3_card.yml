@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.stanford_page.su_shared_tags
     - node.type.stanford_page
   module:
-    - cshs
     - ds
     - entity_reference_revisions
     - field_formatter_class
@@ -39,15 +38,13 @@ third_party_settings:
       card_image:
         - su_page_banner
         - su_page_image
-      card_super_headline:
-        - su_basic_page_type
       card_body:
         - node_title
         - su_page_description
     fields:
       node_title:
         plugin_id: node_title
-        weight: 3
+        weight: 2
         label: hidden
         formatter: default
         settings:
@@ -64,17 +61,6 @@ targetEntityType: node
 bundle: stanford_page
 mode: stanford_h3_card
 content:
-  su_basic_page_type:
-    type: cshs_flexible_hierarchy
-    label: above
-    settings:
-      linked: false
-      reverse: false
-      format: '[term:name]'
-      clear: true
-    third_party_settings: {  }
-    weight: 2
-    region: card_super_headline
   su_page_banner:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -94,7 +80,7 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-basic-page-types__description
-    weight: 4
+    weight: 3
     region: card_body
   su_page_image:
     type: media_multimedia_formatter
@@ -124,6 +110,7 @@ hidden:
   links: true
   search_api_excerpt: true
   stanford_intranet__access: true
+  su_basic_page_type: true
   su_metatags: true
   su_page_components: true
   su_shared_tags: true
