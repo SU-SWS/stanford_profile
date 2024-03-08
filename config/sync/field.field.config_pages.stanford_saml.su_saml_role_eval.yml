@@ -1,0 +1,23 @@
+uuid: d8903c97-ecd6-4320-bcb9-581edb921860
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_saml
+    - field.storage.config_pages.su_saml_role_eval
+  module:
+    - options
+id: config_pages.stanford_saml.su_saml_role_eval
+field_name: su_saml_role_eval
+entity_type: config_pages
+bundle: stanford_saml
+label: 'Reevaluate roles when the user logs in'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: new
+default_value_callback: ''
+settings: {  }
+field_type: list_string

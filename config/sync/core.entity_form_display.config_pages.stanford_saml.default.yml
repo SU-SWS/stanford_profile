@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - config_pages.type.stanford_saml
+    - field.field.config_pages.stanford_saml.su_saml_role_eval
     - field.field.config_pages.stanford_saml.su_simplesaml_affil
     - field.field.config_pages.stanford_saml.su_simplesaml_allowed
     - field.field.config_pages.stanford_saml.su_simplesaml_roles
@@ -21,7 +22,7 @@ third_party_settings:
       label: 'Login Restrictions'
       region: content
       parent_name: ''
-      weight: 1
+      weight: 2
       format_type: details
       format_settings:
         classes: ''
@@ -34,6 +35,12 @@ targetEntityType: config_pages
 bundle: stanford_saml
 mode: default
 content:
+  su_saml_role_eval:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   su_simplesaml_affil:
     type: options_select
     weight: 4

@@ -42,6 +42,14 @@ third_party_settings:
       column: value
       config_name: stanford_samlauth.settings
       config_item: allowed.affiliations
+    a2134b74-d1d3-464c-b4a6-88045d6edb91:
+      field: su_saml_role_eval
+      delta: 0
+      column: value
+      config_name: stanford_samlauth.settings
+      config_item: role_mapping.reevaluate
+      prefix: ''
+      suffix: ''
 id: stanford_saml
 label: SAML
 token: false
