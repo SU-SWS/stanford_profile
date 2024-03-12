@@ -1,11 +1,19 @@
 _core:
   default_config_hash: 8d0nv-vvXs9MZkqD1mhxm8mPeF4yF9fqLLIcVp4cnLQ
-content_root: '#page-content'
-assertiveness: smart
+content_root: '#page-content, .block-config-pages-super-footer, .ds-entity--stanford-local-footer'
+assertiveness: assertive
 no_load: ''
-embedded_content_warning: ''
+ignore_all_if_absent: ''
+ignore_elements: nav
+embedded_content_warning: .media.embeddable
 download_links: ''
+ignore_link_strings: ''
+link_ignore_selector: 'svg.ext, svg.mailto, .link-purpose-text'
 hidden_handlers: ''
+ed11y_theme: sleekTheme
+shadow_components: ''
+disable_sync: false
+preserve_params: ''
+custom_tests: 0
 ignore_containers: .su-secondary-nav
 allow_overflow: ''
-link_ignore_selector: 'svg.ext, svg.mailto, .link-purpose-text'

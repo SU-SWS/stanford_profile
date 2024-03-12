@@ -211,10 +211,14 @@ default:
           behavior_settings:
             -
               value:
-                list_paragraph: {  }
+                list_paragraph:
+                  hide_heading: true
                 layout_paragraphs:
                   parent_uuid: 57582f54-3af7-45d0-a930-8977f8b05be8
                   region: main
+          su_list_headline:
+            -
+              value: "Courses"
           su_list_view:
             -
               target_id: stanford_courses

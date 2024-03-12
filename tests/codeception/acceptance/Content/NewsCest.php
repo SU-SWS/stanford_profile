@@ -155,6 +155,17 @@ class NewsCest {
    * @group metadata
    */
   public function testMetaData(AcceptanceTester $I) {
+    $time = \Drupal::time()->getCurrentTime();
+    $now = DateTime::createFromFormat('U', $time);
+    $now->setTime(12, 0, 0);
+    $now = $now->getTimestamp();
+
+    /** @var \Drupal\Core\Datetime\DateFormatterInterface $date_time_formatter */
+    $date_time_formatter = \Drupal::service('date.formatter');
+
+    $date_string = $date_time_formatter->format($now, 'custom', 'Y-m-d');
+    $metadata_date = $date_time_formatter->format($now, 'custom', 'c', 'America/Los_Angeles');
+
     $values = [
       'featured_image_alt' => $this->faker->words(3, TRUE),
       'banner_image_alt' => $this->faker->words(3, TRUE),
@@ -183,12 +194,6 @@ class NewsCest {
       ],
     ], 'media');
 
-    $time = \Drupal::time()->getCurrentTime();
-    $date_string = \Drupal::service('date.formatter')
-      ->format($time, 'custom', 'Y-m-d');
-    $metadata_date = \Drupal::service('date.formatter')
-      ->format($time, 'custom', 'Y-m-d');
-
     /** @var \Drupal\node\NodeInterface $node */
     $node = $I->createEntity([
       'title' => $this->faker->words(3, TRUE),
@@ -202,7 +207,8 @@ class NewsCest {
     $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[property="og:title"]', 'content'), 'Metadata "og:title" should match.');
     $I->assertEquals($node->label(), $I->grabAttributeFrom('meta[name="twitter:title"]', 'content'), 'Metadata "twitter:title" should match.');
     $I->assertEquals('article', $I->grabAttributeFrom('meta[property="og:type"]', 'content'), 'Metadata "og:type" should match.');
-    $I->assertEquals("{$metadata_date}T04:00:00-08:00", $I->grabAttributeFrom('meta[property="article:published_time"]', 'content'), 'Metadata "article:published_time" should match.');
+
+    $I->assertEquals($metadata_date, $I->grabAttributeFrom('meta[property="article:published_time"]', 'content'), 'Metadata "article:published_time" should match.');
 
     $I->cantSeeElement('meta', ['name' => 'description']);
     $I->cantSeeElement('meta', ['property' => 'og:image']);

@@ -59,7 +59,7 @@ class BannerCest {
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($field_values['sup_header']);
-    $I->canSee($field_values['header']);
+    $I->canSee($field_values['header'], 'h2');
     $I->canSee($field_values['body']);
     $I->canSeeLink($field_values['title'], $field_values['uri']);
 
@@ -67,6 +67,7 @@ class BannerCest {
 
     $I->logInWithRole('site_manager');
 
+    // Overlay position and h3 heading.
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->scrollTo('.js-lpb-component', 0, -100);
     $I->moveMouseOver('.js-lpb-component', 10, 10);
@@ -74,11 +75,61 @@ class BannerCest {
     $I->waitForText('Behaviors');
     $I->clickWithLeftButton('.lpb-behavior-plugins summary');
     $I->selectOption('Text Overlay Position', 'Right');;
+    $I->selectOption('Heading Level', 'h3');
 
     $I->click('Save', '.ui-dialog-buttonpane');
     $I->waitForElementNotVisible('.ui-dialog');
     $I->click('Save');
     $I->canSeeElement('.overlay-right');
+    $I->cantSee($field_values['header'], 'h2');
+    $I->canSee($field_values['header'], 'h3');
+
+    // H4 heading.
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
+    $I->moveMouseOver('.js-lpb-component', 10, 10);
+    $I->click('Edit', '.lpb-controls');
+    $I->waitForText('Behaviors');
+    $I->clickWithLeftButton('.lpb-behavior-plugins summary');
+    $I->selectOption('Heading Level', 'h4');
+
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
+    $I->click('Save');
+    $I->cantSee($field_values['header'], 'h2');
+    $I->canSee($field_values['header'], 'h4');
+
+    // Splash Text heading.
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
+    $I->moveMouseOver('.js-lpb-component', 10, 10);
+    $I->click('Edit', '.lpb-controls');
+    $I->waitForText('Behaviors');
+    $I->clickWithLeftButton('.lpb-behavior-plugins summary');
+    $I->selectOption('Heading Level', 'Splash Text');
+
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
+    $I->click('Save');
+    $I->cantSee($field_values['header'], 'h2');
+    $I->cantSee($field_values['header'], 'h3');
+    $I->cantSee($field_values['header'], 'h4');
+    $I->canSee($field_values['header'], 'div.su-font-splash');
+
+    // Visually hidden heading.
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
+    $I->moveMouseOver('.js-lpb-component', 10, 10);
+    $I->click('Edit', '.lpb-controls');
+    $I->waitForText('Behaviors');
+    $I->clickWithLeftButton('.lpb-behavior-plugins summary');
+    $I->selectOption('Heading Level', 'h2');
+    $I->checkOption('Visually Hide Heading');
+
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
+    $I->click('Save');
+    $I->canSee($field_values['header'], 'h2.visually-hidden');
   }
 
 }

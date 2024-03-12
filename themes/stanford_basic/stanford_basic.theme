@@ -495,7 +495,7 @@ function _stanford_basic_algolia_settings(): array|bool {
   /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_page */
   $config_page = \Drupal::service('config_pages.loader');
 
-  $use_algolia = (bool) $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia', 0, 'value');
+  $use_algolia = (bool) $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_ui', 0, 'value');
   if (!$use_algolia) {
     return $settings = FALSE;
   }

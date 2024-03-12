@@ -3,9 +3,22 @@ langcode: en
 status: false
 dependencies:
   config:
+    - field.storage.node.su_event_audience
+    - field.storage.node.su_basic_page_type
+    - field.storage.node.su_course_subject
+    - field.storage.node.su_event_date_time
+    - field.storage.node.su_event_type
+    - field.storage.node.su_person_full_title
+    - field.storage.node.su_news_topics
+    - field.storage.node.su_person_type_group
+    - field.storage.node.su_publication_topics
+    - field.storage.node.su_shared_tags
+    - field.storage.node.su_person_short_title
+    - field.storage.node.su_event_subject
     - search_api.server.algolia_search
     - core.entity_view_mode.node.search_indexing
   module:
+    - taxonomy
     - node
     - search_api
 id: algolia_search
@@ -13,12 +26,32 @@ name: 'Algolia Search'
 description: ''
 read_only: true
 field_settings:
+  basic_page_type:
+    label: 'Basic Page Type » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'su_basic_page_type:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_basic_page_type
+      module:
+        - taxonomy
   byline:
     label: Byline
     property_path: custom_value
     type: string
     configuration:
       value: '[node:su_news_byline]'
+  course_subject:
+    label: 'Course Subject » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'su_course_subject:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_course_subject
+      module:
+        - taxonomy
   created:
     label: 'Authored on'
     datasource_id: 'entity:node'
@@ -39,18 +72,52 @@ field_settings:
     type: string
     configuration:
       value: '[node:su_event_email|node:su_person_email]'
+  event_audience:
+    label: 'Audience » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'su_event_audience:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_event_audience
+      module:
+        - taxonomy
   event_end:
-    label: 'Event End Date and Time'
-    property_path: custom_value
-    type: string
-    configuration:
-      value: '[node:su_event_date_time:end_value]'
+    label: 'Date & Time » End timestamp value'
+    datasource_id: 'entity:node'
+    property_path: 'su_event_date_time:end_value'
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.su_event_date_time
   event_start:
-    label: 'Event Start Date and Time'
-    property_path: custom_value
+    label: 'Date & Time'
+    datasource_id: 'entity:node'
+    property_path: su_event_date_time
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.su_event_date_time
+  event_subject:
+    label: 'Subject » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'su_event_subject:entity:name'
     type: string
-    configuration:
-      value: '[node:su_event_date_time:value]'
+    dependencies:
+      config:
+        - field.storage.node.su_event_subject
+      module:
+        - taxonomy
+  event_type:
+    label: 'Event Types » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'su_event_type:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_event_type
+      module:
+        - taxonomy
   html:
     label: 'Rendered HTML output'
     property_path: rendered_item
@@ -68,18 +135,42 @@ field_settings:
           stanford_person: search_indexing
           stanford_policy: search_indexing
           stanford_publication: search_indexing
+  news_type:
+    label: 'News Types » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'su_news_topics:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_news_topics
+      module:
+        - taxonomy
   person_full_title:
-    label: 'Person Full Title'
-    property_path: custom_value
+    label: 'Full Title'
+    datasource_id: 'entity:node'
+    property_path: su_person_full_title
     type: string
-    configuration:
-      value: '[node:su_person_full_title]'
+    dependencies:
+      config:
+        - field.storage.node.su_person_full_title
   person_short_title:
-    label: 'Person Short Title'
-    property_path: custom_value
+    label: 'Short Title'
+    datasource_id: 'entity:node'
+    property_path: su_person_short_title
     type: string
-    configuration:
-      value: '[node:su_person_short_title]'
+    dependencies:
+      config:
+        - field.storage.node.su_person_short_title
+  person_type:
+    label: 'Person Types & Groups » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'su_person_type_group:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_person_type_group
+      module:
+        - taxonomy
   phone:
     label: Phone
     property_path: custom_value
@@ -92,6 +183,26 @@ field_settings:
     type: string
     configuration:
       value: '[node:su_page_image:entity:field_media_image:large|node:su_page_banner:entity:su_banner_image:entity:field_media_image:large|node:su_person_photo:entity:field_media_image:large|node:su_news_featured_media:entity:field_media_image:large|node:su_news_banner:entity:field_media_image:large]'
+  publication_type:
+    label: 'Publication Types » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'su_publication_topics:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_publication_topics
+      module:
+        - taxonomy
+  shared_tags:
+    label: 'Shared Tags » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'su_shared_tags:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_shared_tags
+      module:
+        - taxonomy
   status:
     label: status
     datasource_id: 'entity:node'
@@ -139,7 +250,7 @@ field_settings:
     property_path: custom_value
     type: string
     configuration:
-      value: '[node:url]'
+      value: '[config_page:stanford_basic_site_settings:su_site_url:uri|site:base-url][node:url:relative]'
 datasource_settings:
   'entity:node':
     bundles:
@@ -160,16 +271,23 @@ processor_settings:
       preprocess_query: -15
     all_fields: true
     fields:
+      - basic_page_type
       - byline
+      - course_subject
       - dek
       - email
-      - event_end
-      - event_start
+      - event_audience
+      - event_subject
+      - event_type
       - html
+      - news_type
       - person_full_title
       - person_short_title
+      - person_type
       - phone
       - photo
+      - publication_type
+      - shared_tags
       - subheadline
       - summary
       - title

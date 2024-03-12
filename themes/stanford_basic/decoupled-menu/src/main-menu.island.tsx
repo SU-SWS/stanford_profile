@@ -5,11 +5,12 @@ import {useState, useEffect, useRef, useCallback} from 'preact/hooks';
 import {deserialize} from "./tools/deserialize";
 import {buildMenuTree, MenuContentItem} from "./tools/build-menu-tree";
 import {DRUPAL_DOMAIN} from './config/env'
-import OutsideClickHandler from "./components/outside-click-handler";
 import Caret from "./components/caret";
 import Hamburger from "./components/hamburger";
 import Close from "./components/close";
 import MagnifyingGlass from "./components/magnifying-glass";
+import useOutsideClick from "./hooks/useOutsideClick";
+import {useEventListener} from "usehooks-ts";
 
 const islandName = 'main-menu-island'
 
@@ -90,7 +91,7 @@ const SearchContainer = styled.div`
   label {
     padding: 0 10px;
     margin: 0;
-    color: #ffffff;
+    color: #fff;
   }
 
   input {
@@ -130,10 +131,11 @@ const SearchContainer = styled.div`
 
 export const MainMenu = ({}) => {
   useWebComponentEvents(islandName)
-
   const [menuItems, setMenuItems] = useState<MenuContentItem[]>([]);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const navRef = useRef<HTMLElement | null>(null);
+  useOutsideClick(navRef, () => setMenuOpen(false));
 
   useEffect(() => {
     fetch(DRUPAL_DOMAIN + '/jsonapi/menu_items/main')
@@ -145,15 +147,11 @@ export const MainMenu = ({}) => {
   const handleEscape = useCallback((event: KeyboardEvent) => {
     if (event.key === "Escape" && menuOpen) {
       setMenuOpen(false);
-      buttonRef.current.focus();
+      buttonRef.current?.focus();
     }
   }, [menuOpen]);
 
-  useEffect(() => {
-    // Add keydown listener for escape button if the submenu is open.
-    if (menuOpen) document.addEventListener("keydown", handleEscape);
-    if (!menuOpen) document.removeEventListener("keydown", handleEscape);
-  }, [menuOpen]);
+  useEventListener("keydown", handleEscape);
 
   const menuTree = buildMenuTree(menuItems);
   if (!menuTree.items || menuTree.items?.length === 0) return <div/>;
@@ -165,8 +163,15 @@ export const MainMenu = ({}) => {
   }
 
   return (
-    <OutsideClickHandler component="nav" style={{position: "relative"}} onOutsideFocus={() => setMenuOpen(false)}>
-      <MobileMenuButton ref={buttonRef} onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen}>
+    <nav
+      ref={navRef}
+      style={{position: "relative"}}
+    >
+      <MobileMenuButton
+        ref={buttonRef}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-expanded={menuOpen}
+      >
         {menuOpen ? <Close/> : <Hamburger/>}
         {menuOpen ? "Close" : "Menu"}
       </MobileMenuButton>
@@ -194,12 +199,12 @@ export const MainMenu = ({}) => {
           {menuTree.items.map(item => <MenuItem key={item.id} {...item}/>)}
         </TopList>
       </MenuWrapper>
-    </OutsideClickHandler>
+    </nav>
   )
 }
 
 const Button = styled.button`
-  color: #ffffff;
+  color: #fff;
   background: #b1040e;
   border: none;
   border-bottom: 1px solid transparent;
@@ -216,7 +221,7 @@ const Button = styled.button`
     box-shadow: none;
     border-bottom: 1px solid #b1040e;
     background: #f4f4f4;
-    color: #000000;
+    color: #000;
   }
 
   @media (min-width: 992px) {
@@ -257,8 +262,8 @@ const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: numb
 
   &:hover, &:focus {
     text-decoration: underline;
-    color: #ffffff;
-    border-left: 6px solid #ffffff;
+    color: #fff;
+    border-left: 6px solid #fff;
   }
 
   @media (min-width: 992px) {
@@ -276,7 +281,7 @@ const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: numb
 `
 
 const NoLink = styled.span<{ level?: number }>`
-  color: #ffffff;
+  color: #fff;
   font-weight: 600;
   text-decoration: none;
   padding: 16px 0 16px 16px;
@@ -300,7 +305,7 @@ const MenuList = styled.ul<{ open?: boolean, level?: number }>`
     box-shadow: ${props => props.level === 0 ? "0 10px 20px rgba(0,0,0,.15),0 6px 6px rgba(0,0,0,.2)" : ""};
     position: ${props => props.level === 0 ? "absolute" : "relative"};
     top: 100%;
-    background: #ffffff;
+    background: #fff;
     border-top: 1px solid #d9d9d9;
     right: 0;
   }
@@ -335,44 +340,47 @@ const MenuItemDivider = styled.div`
   }
 `
 
-const MenuItem = ({title, url, items, expanded, level = 0}: { title: string, url: string, items?: MenuContentItem[], expanded: boolean, level?: number }) => {
-  const buttonRef = useRef(null)
+const MenuItem = ({id, title, url, items, expanded, level = 0}: {
+  title: string,
+  url: string,
+  items?: MenuContentItem[],
+  expanded: boolean,
+  level?: number
+}) => {
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
   const [submenuOpen, setSubmenuOpen] = useState(false)
-  const basePath = window.location.protocol + "//" + window.location.host;
-  let linkUrl = new URL(basePath);
+  const menuItemRef = useRef<HTMLLIElement | null>(null);
+  useOutsideClick(menuItemRef, () => setSubmenuOpen(false));
+
+  const handleEscape = (event: KeyboardEvent) => {
+    if (event.key === "Escape" && submenuOpen) {
+      setSubmenuOpen(false);
+      if (level === 0) buttonRef.current?.focus();
+    }
+  };
+
+  useEventListener("keydown", handleEscape);
+
+  let linkUrl: URL;
   let isNoLink = true;
   let isCurrent, inTrail = false;
 
   if (url) {
     isNoLink = false;
-    linkUrl = new URL(url.startsWith('/') ? `${basePath}${url}` : url);
-    isCurrent = linkUrl.pathname === window.location.pathname;
-    inTrail = url != '/' && window.location.pathname.startsWith(linkUrl.pathname) && !isCurrent;
+    linkUrl = new URL(url.startsWith('/') ? `${window.location.origin}${url}` : url);
+    isCurrent = linkUrl.pathname === window.location.pathname && linkUrl.host === window.location.host;
+    inTrail = linkUrl.host === window.location.host && url != '/' && window.location.pathname.startsWith(linkUrl.pathname) && !isCurrent;
   }
 
-  const handleEscape = useCallback((event: KeyboardEvent) => {
-    if (event.key === "Escape" && submenuOpen) {
-      setSubmenuOpen(false);
-      buttonRef.current.focus();
-    }
-  }, [submenuOpen]);
-
-
-  useEffect(() => {
-    // Add keydown listener for escape button if the submenu is open.
-    if (submenuOpen) document.addEventListener("keydown", handleEscape);
-    if (!submenuOpen) document.removeEventListener("keydown", handleEscape);
-  }, [submenuOpen]);
-
   return (
-    <OutsideClickHandler
-      onOutsideFocus={() => setSubmenuOpen(false)}
-      component={ListItem}
+    <ListItem
+      ref={menuItemRef}
       level={level}
     >
       <MenuItemContainer level={level}>
         {!isNoLink &&
           <MenuLink
+            id={id}
             href={url}
             aria-current={isCurrent ? "page" : undefined}
             level={level}
@@ -395,7 +403,7 @@ const MenuItem = ({title, url, items, expanded, level = 0}: { title: string, url
               ref={buttonRef}
               onClick={() => setSubmenuOpen(!submenuOpen)}
               aria-expanded={submenuOpen}
-              aria-label={(submenuOpen ? "Close" : "Open") + ` ${title} Submenu`}
+              aria-labelledby={id}
             >
               <Caret style={{
                 transform: submenuOpen ? "rotate(180deg)" : "",
@@ -416,7 +424,7 @@ const MenuItem = ({title, url, items, expanded, level = 0}: { title: string, url
           )}
         </MenuList>
       }
-    </OutsideClickHandler>
+    </ListItem>
 
   )
 }

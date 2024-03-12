@@ -2,6 +2,8 @@ uuid: bcb0e656-856b-452d-9fb0-bf54090db73c
 langcode: en
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - stanford_profile_admin_theme
 _core:
@@ -17,4 +19,8 @@ settings:
   label: 'Page title'
   label_display: '0'
   provider: core
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: /user/login

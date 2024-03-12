@@ -44,7 +44,6 @@
 # EXAMPLE:
 #
 # nameoflibrarygroup:
-#   version: VERSION
 #   css:
 #     base:
 #       css/drupal/all.css:
@@ -72,7 +71,6 @@
 #   - core/jquery
 #
 # patternlibrary:
-#   version: VERSION
 #   css:
 #     base:
 #       css/pattern-library/base/base.css: {}
@@ -86,18 +84,15 @@
 #       css/pattern-library/theme/theme.css: {}
 #       css/pattern-library/theme/print.css: { media: print }
 admin:
-  version: VERSION
   css:
     base:
       dist/css/admin.css: { }
 
 decoupled_menu:
-  version: VERSION
   js:
     decoupled-menu/dist/islands/main-menu.island.umd.js: { minified: true }
 
 basic:
-  version: VERSION
   css:
     base:
       dist/css/base.css: { weight: 100 }
@@ -121,13 +116,11 @@ basic:
     - stanford_basic/fontawesome
 
 search-page:
-  version: VERSION
   css:
     theme:
       dist/css/search-page.css: { }
 
 user_login:
-  version: VERSION
   css:
     base:
       dist/css/user_login.css: { }
@@ -143,13 +136,11 @@ fontawesome:
       //use.fontawesome.com/releases/v5.15.4/css/all.css: { }
 
 content.stanford_policy:
-  version: VERSION
   css:
     theme:
       dist/css/content/policy.css: { }
 
 algolia-search:
-  version: VERSION
   js:
     algolia-search/dist/islands/algolia-search.island.js: { minified: true }
   dependencies:

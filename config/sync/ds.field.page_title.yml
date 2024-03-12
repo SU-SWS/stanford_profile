@@ -1,0 +1,14 @@
+id: page_title
+label: 'Page Title'
+ui_limit: 'stanford_page_title_banner|*'
+type: token
+type_label: 'Token field'
+entities:
+  paragraph: paragraph
+properties:
+  content:
+    value: '<h1>[current-page:title]</h1>'
+    format: administrative_html
+  force_global_entity: false
+  use_global_entity: false
+  use_global_view_token: false

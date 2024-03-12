@@ -71,15 +71,8 @@ class AuthenticatedPermissionsCest {
     $I->canSeeResponseCodeIs(403);
     $I->amOnPage('/admin/reports/status');
     $I->canSeeResponseCodeIs(403);
-  }
-
-  /**
-   * Make sure authenticated users can access things they should.
-   */
-  public function testAuthenticatedUserPermissions(AcceptanceTester $I) {
-    $I->logInWithRole('authenticated');
-    $I->amOnPage('/patterns');
-    $I->canSeeResponseCodeIs(200);
+    $I->amOnPage('/admin/patterns');
+    $I->canSeeResponseCodeIs(403);
   }
 
   /**

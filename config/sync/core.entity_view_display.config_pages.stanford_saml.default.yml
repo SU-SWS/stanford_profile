@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - config_pages.type.stanford_saml
+    - field.field.config_pages.stanford_saml.su_saml_role_eval
     - field.field.config_pages.stanford_saml.su_simplesaml_affil
     - field.field.config_pages.stanford_saml.su_simplesaml_allowed
     - field.field.config_pages.stanford_saml.su_simplesaml_roles
@@ -15,6 +16,13 @@ targetEntityType: config_pages
 bundle: stanford_saml
 mode: default
 content:
+  su_saml_role_eval:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
   su_simplesaml_affil:
     type: list_default
     label: above

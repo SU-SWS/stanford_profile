@@ -15,7 +15,6 @@ dependencies:
     - shortcut
     - stanford_policy
     - system
-    - ui_patterns_library
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
@@ -24,7 +23,6 @@ weight: -8
 is_admin: false
 permissions:
   - 'access content'
-  - 'access patterns page'
   - 'access shortcuts'
   - 'delete own files'
   - 'flag cs_favorites'
@@ -47,6 +45,7 @@ permissions:
   - 'view own su_site_algolia_id'
   - 'view own su_site_algolia_index'
   - 'view own su_site_algolia_search'
+  - 'view own su_site_algolia_ui'
   - 'view own su_site_home'
   - 'view own su_site_url'
   - 'view policy log'
@@ -63,5 +62,6 @@ permissions:
   - 'view su_site_algolia_id'
   - 'view su_site_algolia_index'
   - 'view su_site_algolia_search'
+  - 'view su_site_algolia_ui'
   - 'view su_site_home'
   - 'view su_site_url'

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
+    - core.entity_view_mode.node.stanford_h3_card
     - field.storage.node.su_event_alt_loc
     - field.storage.node.su_event_date_time
     - field.storage.node.su_event_dek
@@ -787,7 +788,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: stanford_card
+          view_mode: stanford_h3_card
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -1030,10 +1031,26 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: some
+        type: full
         options:
           offset: 0
           items_per_page: 3
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: true
+            items_per_page_label: items
+            items_per_page_options: '3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84,87,90,93,96,99'
+            items_per_page_options_all: true
+            items_per_page_options_all_label: all
+            offset: true
+            offset_label: offset
+          quantity: 9
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -1211,6 +1228,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
@@ -1234,34 +1252,34 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: 1
           alter:
-            alter_text: false
+            alter_text: 0
             text: ''
-            make_link: false
+            make_link: 0
             path: ''
-            absolute: false
+            absolute: 0
             external: false
-            replace_spaces: false
+            replace_spaces: 0
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: 0
             alt: ''
             rel: ''
             link_class: ''
             prefix: ''
             suffix: ''
             target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
+            nl2br: 0
+            max_length: '0'
+            word_boundary: 1
+            ellipsis: 1
+            more_link: 0
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
-            trim: false
+            strip_tags: 0
+            trim: 0
             preserve_tags: ''
-            html: false
+            html: 0
           element_type: ''
           element_class: ''
           element_label_type: ''
@@ -1269,14 +1287,14 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: false
+          element_default_classes: 1
           empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
+          hide_empty: 0
+          empty_zero: 0
+          hide_alter_empty: 1
           text: view
-          output_url_as_text: true
-          absolute: false
+          output_url_as_text: 1
+          absolute: 0
           entity_type: node
           plugin_id: entity_link
         su_event_source:
@@ -1287,34 +1305,34 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: 0
           alter:
-            alter_text: false
+            alter_text: 0
             text: ''
-            make_link: false
+            make_link: 0
             path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
+            absolute: 0
+            external: 0
+            replace_spaces: 0
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: 0
             alt: ''
             rel: ''
             link_class: ''
             prefix: ''
             suffix: ''
             target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
+            nl2br: 0
+            max_length: '0'
+            word_boundary: 1
+            ellipsis: 1
+            more_link: 0
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
-            trim: false
+            strip_tags: 0
+            trim: 0
             preserve_tags: ''
-            html: false
+            html: 0
           element_type: ''
           element_class: ''
           element_label_type: ''
@@ -1322,19 +1340,19 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
+          element_default_classes: 1
+          empty: '{{ view_node }}'
+          hide_empty: 0
+          empty_zero: 0
+          hide_alter_empty: 1
           click_sort_column: uri
           type: link
           settings:
-            trim_length: null
-            url_only: true
-            url_plain: true
-            rel: '0'
-            target: '0'
+            trim_length: '80'
+            url_only: 1
+            url_plain: 1
+            rel: 0
+            target: 0
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -1344,7 +1362,7 @@ display:
           delta_first_last: false
           multi_type: separator
           separator: ', '
-          field_api_classes: false
+          field_api_classes: 0
           plugin_id: field
         title:
           id: title
@@ -1354,50 +1372,50 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: 0
           alter:
-            alter_text: true
-            text: "<a class=\"su-link{% if su_event_source %} su-link--external{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
-            make_link: false
+            alter_text: 0
+            text: ''
+            make_link: 0
             path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
+            absolute: 0
+            external: 0
+            replace_spaces: 0
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: 0
             alt: ''
             rel: ''
             link_class: ''
             prefix: ''
             suffix: ''
             target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
+            nl2br: 0
+            max_length: '0'
+            word_boundary: 0
+            ellipsis: 0
+            more_link: 0
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
-            trim: false
+            strip_tags: 0
+            trim: 0
             preserve_tags: ''
-            html: false
-          element_type: h2
+            html: 0
+          element_type: h3
           element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: 1
           empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
+          hide_empty: 0
+          empty_zero: 0
+          hide_alter_empty: 1
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: false
+            link_to_entity: 1
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1407,7 +1425,7 @@ display:
           delta_first_last: false
           multi_type: separator
           separator: ', '
-          field_api_classes: false
+          field_api_classes: 0
           entity_type: node
           entity_field: title
           plugin_id: field
@@ -1482,34 +1500,34 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: 0
           alter:
-            alter_text: false
+            alter_text: 0
             text: ''
-            make_link: false
+            make_link: 0
             path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
+            absolute: 0
+            external: 0
+            replace_spaces: 0
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: 0
             alt: ''
             rel: ''
             link_class: ''
             prefix: ''
             suffix: ''
             target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
+            nl2br: 0
+            max_length: '0'
+            word_boundary: 1
+            ellipsis: 1
+            more_link: 0
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
-            trim: false
+            strip_tags: 0
+            trim: 0
             preserve_tags: ''
-            html: false
+            html: 0
           element_type: ''
           element_class: ''
           element_label_type: ''
@@ -1517,15 +1535,15 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: 1
           empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
+          hide_empty: 0
+          empty_zero: 0
+          hide_alter_empty: 1
           click_sort_column: value
-          type: entity_title_heading
+          type: string
           settings:
-            tag: h3
+            link_to_entity: 0
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1535,7 +1553,7 @@ display:
           delta_first_last: false
           multi_type: separator
           separator: ', '
-          field_api_classes: false
+          field_api_classes: 0
           plugin_id: field
         su_event_dek:
           id: su_event_dek
@@ -2087,78 +2105,73 @@ display:
           separator: ''
           hide_empty: 1
           pattern: events_list
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            link: default
-            lockup: a
-            media: default
           pattern_mapping:
+            'views_row:su_event_source':
+              destination: url
+              weight: 0
+              plugin: views_row
+              source: su_event_source
             'views_row:title':
               destination: headline
-              weight: 0
+              weight: 1
               plugin: views_row
               source: title
             'views_row:su_event_date_time':
               destination: date_time
-              weight: 1
+              weight: 2
               plugin: views_row
               source: su_event_date_time
             'views_row:su_event_date_time_value_1':
               destination: start_month
-              weight: 2
+              weight: 3
               plugin: views_row
               source: su_event_date_time_value_1
             'views_row:su_event_alt_loc':
               destination: location
-              weight: 3
+              weight: 4
               plugin: views_row
               source: su_event_alt_loc
             'views_row:su_event_date_time_value':
               destination: start_date
-              weight: 4
+              weight: 5
               plugin: views_row
               source: su_event_date_time_value
             'views_row:su_event_date_time_end_value_1':
               destination: end_date
-              weight: 5
+              weight: 6
               plugin: views_row
               source: su_event_date_time_end_value_1
             'views_row:su_event_date_time_end_value':
               destination: end_month
-              weight: 6
+              weight: 7
               plugin: views_row
               source: su_event_date_time_end_value
             'views_row:su_event_type':
               destination: event_type
-              weight: 7
+              weight: 8
               plugin: views_row
               source: su_event_type
             'views_row:su_event_subheadline':
               destination: subheadline
-              weight: 8
+              weight: 9
               plugin: views_row
               source: su_event_subheadline
             'views_row:su_event_dek':
               destination: dek
-              weight: 9
+              weight: 10
               plugin: views_row
               source: su_event_dek
             'views_row:su_event_location':
               destination: address
-              weight: 10
+              weight: 11
               plugin: views_row
               source: su_event_location
             'views_row:edit_node':
               destination: edit
-              weight: 11
+              weight: 12
               plugin: views_row
               source: edit_node
+          pattern_variant: h3_header
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -4166,10 +4179,26 @@ display:
           output_url_as_text: false
           absolute: false
       pager:
-        type: some
+        type: full
         options:
           offset: 0
-          items_per_page: 20
+          items_per_page: 21
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: true
+            items_per_page_label: items
+            items_per_page_options: '3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84,87,90,93,96,99'
+            items_per_page_options_all: true
+            items_per_page_options_all_label: all
+            offset: true
+            offset_label: offset
+          quantity: 9
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -4344,6 +4373,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -5228,50 +5258,50 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: 0
           alter:
-            alter_text: true
+            alter_text: 1
             text: "<a class=\"su-link{% if su_event_source %} su-link--external{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
-            make_link: false
+            make_link: 0
             path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
+            absolute: 0
+            external: 0
+            replace_spaces: 0
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: 0
             alt: ''
             rel: ''
             link_class: ''
             prefix: ''
             suffix: ''
             target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
+            nl2br: 0
+            max_length: '0'
+            word_boundary: 0
+            ellipsis: 0
+            more_link: 0
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
-            trim: false
+            strip_tags: 0
+            trim: 0
             preserve_tags: ''
-            html: false
-          element_type: h2
+            html: 0
+          element_type: h3
           element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: 1
           empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
+          hide_empty: 0
+          empty_zero: 0
+          hide_alter_empty: 1
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: false
+            link_to_entity: 0
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -5281,7 +5311,7 @@ display:
           delta_first_last: false
           multi_type: separator
           separator: ', '
-          field_api_classes: false
+          field_api_classes: 0
           entity_type: node
           entity_field: title
           plugin_id: field
@@ -6071,17 +6101,6 @@ display:
           separator: ''
           hide_empty: 1
           pattern: events_list
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            link: default
-            lockup: a
-            media: default
           pattern_mapping:
             'views_row:title':
               destination: headline
@@ -6153,6 +6172,7 @@ display:
               weight: 13
               plugin: views_row
               source: past_event_label
+          pattern_variant: h3_header
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -7267,10 +7287,26 @@ display:
           output_url_as_text: false
           absolute: false
       pager:
-        type: some
+        type: full
         options:
           offset: 0
-          items_per_page: 20
+          items_per_page: 21
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: true
+            items_per_page_label: items
+            items_per_page_options: '3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84,87,90,93,96,99'
+            items_per_page_options_all: true
+            items_per_page_options_all_label: all
+            offset: true
+            offset_label: offset
+          quantity: 9
       empty:
         area:
           id: area
@@ -7459,6 +7495,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:

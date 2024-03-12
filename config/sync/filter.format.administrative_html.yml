@@ -1,0 +1,31 @@
+uuid: 5878ed4c-98dc-49fe-9fbb-fd1c4449faa8
+langcode: en
+status: true
+dependencies:
+  module:
+    - responsive_tables_filter
+    - stanford_decoupled
+name: 'Administrative HTML'
+format: administrative_html
+weight: -7
+filters:
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: true
+    weight: 9
+    settings: {  }
+  filter_responsive_tables_filter:
+    id: filter_responsive_tables_filter
+    provider: responsive_tables_filter
+    status: false
+    weight: 0
+    settings:
+      tablesaw_type: stack
+      tablesaw_persist: '1'
+  su_clean_html:
+    id: su_clean_html
+    provider: stanford_decoupled
+    status: true
+    weight: 99
+    settings: {  }

@@ -39,17 +39,17 @@ const DefaultHit = ({hit}) => {
             </a>
           </h2>
 
-          <p>
-            {hit.summary &&
+          {hit.summary &&
+            <p className="summary">
               <Highlight hit={hit} attribute="summary"/>
-            }
+            </p>
+          }
 
-            {(!hit.summary && hit.html) &&
-              <>
-                ...<Snippet hit={hit} attribute="html"/>...
-              </>
-            }
-          </p>
+          {(!hit.summary && hit.html) &&
+            <p>
+              <Snippet hit={hit} attribute="html"/>
+            </p>
+          }
         </div>
 
         {hit.updated &&

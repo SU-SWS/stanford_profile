@@ -602,3 +602,22 @@ function cardinal_service_profile_update_9104() {
     $system_theme->set('admin', 'stanford_profile_admin_theme')->save();
   }
 }
+
+/**
+ * Remove data for paragraph rows.
+ */
+function stanford_profile_update_9105() {
+  $tables = [
+    'paragraph_row__su_page_components',
+    'paragraph_row__su_pubs_components',
+    'paragraph_row_revision__su_page_components',
+    'paragraph_row_revision__su_pubs_components',
+    'paragraph_rows_field_revision',
+    'paragraph_rows_item',
+    'paragraph_rows_item_field_data',
+    'paragraph_rows_revision',
+  ];
+  foreach ($tables as $table) {
+    \Drupal::database()->truncate($table)->execute();
+  }
+}

@@ -1,0 +1,21 @@
+uuid: ec46c75b-d6eb-4675-9e28-9142830375ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_algolia_ui
+id: config_pages.stanford_basic_site_settings.su_site_algolia_ui
+field_name: su_site_algolia_ui
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Algolia Searching UI'
+description: 'Enable Algolia searching on the <a href="/search">search page</a>.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

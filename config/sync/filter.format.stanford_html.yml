@@ -16,11 +16,10 @@ dependencies:
     - mathjax
     - media
     - responsive_tables_filter
-    - stanford_media
-    - stanford_profile_helper
+    - stanford_decoupled
 name: HTML
 format: stanford_html
-weight: 0
+weight: -10
 filters:
   editor_file_reference:
     id: editor_file_reference

@@ -19,13 +19,143 @@ printable_entities:
   shortcut: '0'
   oauth2_token: '0'
   notification: '0'
+  su_policy_log: '0'
   citation: '0'
   citation_type: '0'
   taxonomy_term: '0'
   user: '0'
   menu_link_content: '0'
   paragraph: '0'
-  log: '0'
+printable_entities_bundles:
+  node:
+    stanford_policy: true
+    _all: false
+    stanford_course: false
+    stanford_event: false
+    stanford_event_series: false
+    stanford_news: false
+    stanford_page: false
+    stanford_person: false
+    stanford_publication: false
+  block:
+    _all: false
+    block: false
+  block_content:
+    _all: false
+    stanford_component_block: false
+  config_pages:
+    _all: false
+    stanford_basic_site_settings: false
+    lockup_settings: false
+    policy_settings: false
+    stanford_courses_importer: false
+    stanford_events_importer: false
+    stanford_global_message: false
+    stanford_local_footer: false
+    stanford_person_importer: false
+    stanford_saml: false
+    stanford_super_footer: false
+  config_split:
+    _all: false
+    config_split: false
+  consumer:
+    _all: false
+    consumer: false
+  crop:
+    _all: false
+    focal_point: false
+  file:
+    _all: false
+    file: false
+  media:
+    _all: false
+    embeddable: false
+    file: false
+    google_form: false
+    image: false
+    stanford_gallery_images: false
+    video: false
+  page_variant:
+    _all: false
+    page_variant: false
+  path_alias:
+    _all: false
+    path_alias: false
+  paragraph_row:
+    _all: false
+    node_stanford_page_row: false
+    su_pub_rows: false
+  paragraphs_row_type:
+    _all: false
+    paragraphs_row_type: false
+  redirect:
+    _all: false
+    redirect: false
+  search_api_task:
+    _all: false
+    search_api_task: false
+  shortcut:
+    _all: false
+    default: false
+  oauth2_token:
+    _all: false
+    access_token: false
+    auth_code: false
+    refresh_token: false
+  notification:
+    _all: false
+    notification: false
+  su_policy_log:
+    _all: true
+    su_policy_log: false
+  citation:
+    _all: false
+    su_article_journal: false
+    su_article_newspaper: false
+    su_book: false
+    su_other: false
+    su_thesis: false
+  citation_type:
+    _all: false
+    citation_type: false
+  taxonomy_term:
+    _all: false
+    basic_page_types: false
+    cap_org_codes: false
+    event_audience: false
+    media_tags: false
+    site_owner_orgs: false
+    stanford_event_groups: false
+    stanford_event_keywords: false
+    stanford_event_subject: false
+    stanford_event_types: false
+    stanford_news_topics: false
+    stanford_person_types: false
+    stanford_publication_topics: false
+    su_course_quarters: false
+    su_course_subjects: false
+    su_course_tags: false
+    su_shared_tags: false
+  user:
+    _all: false
+    user: false
+  menu_link_content:
+    _all: false
+    menu_link_content: false
+  paragraph:
+    _all: false
+    stanford_accordion: false
+    stanford_banner: false
+    stanford_card: false
+    stanford_entity: false
+    stanford_gallery: false
+    stanford_layout: false
+    stanford_lists: false
+    stanford_media_caption: false
+    stanford_person_cta: false
+    stanford_schedule: false
+    stanford_spacer: false
+    stanford_wysiwyg: false
 open_target_blank: false
 css_include: profiles/custom/cardinal_service_profile/themes/stanford_basic/dist/css/print.css
 extract_links: ''
@@ -45,4 +175,6 @@ printable_print_link_locations:
 printable_pdf_link_locations:
   - ''
 print_pdf_use_xvfb_run: false
-path_to_xvfb_run: ''
+path_to_xvfb_run: null
+ignore_warnings: false
+exclude_printable_links: false

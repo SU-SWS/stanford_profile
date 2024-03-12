@@ -86,6 +86,9 @@ class RolesCest {
     // the admin toolbar.
     $I->amOnPage('/');
     $I->canSeeElement('#toolbar-administration');
+
+    $I->amOnPage('/admin/patterns');
+    $I->canSeeResponseCodeIs(200);
   }
 
   /**
@@ -153,6 +156,40 @@ class RolesCest {
     // the admin toolbar.
     $I->amOnPage('/');
     $I->canSeeElement('#toolbar-administration');
+
+    $I->amOnPage('/admin/patterns');
+    $I->canSeeResponseCodeIs(200);
+  }
+
+  /**
+   * D8CORE-6983: Site Manager and Site embedder should play well together.
+   */
+  public function testSiteEmbedderStacking(AcceptanceTester $I){
+    // Site manager cannot create custom embeddables.
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/media/add/embeddable');
+    $I->canSee('Embed Code');
+    $I->fillField('Name', 'Test Embed');
+    $I->fillField('Embed Code', '<div>This is an embed</div>');
+    $I->click('Save');
+    $I->canSee('error has been found');
+
+    // Stack the site_embedder role.
+    $user = $I->createUserWithRoles(['site_manager', 'site_embedder']);
+    $I->logInAs($user->id());
+
+    // Site managers should be able to see basic site settings.
+    $I->amOnPage('/admin/config/system/basic-site-settings');
+    $I->canSeeResponseCodeIs(200);
+    $I->amOnPage('/media/add/embeddable');
+    $I->canSee('Embed Code');
+
+    // Site embedders can create custom embeds.
+    $I->fillField('Name', 'Test Embed');
+    $I->fillField('Embed Code', '<iframe src="https://calendar.google.com/foo-bar" title="foobar"></iframe>');
+    $I->click('Save');
+    $I->cantSee('error has been found');
+    $I->canSee('Embeddable test embed has been created');
   }
 
   /**

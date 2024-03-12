@@ -211,10 +211,14 @@ default:
           behavior_settings:
             -
               value:
-                list_paragraph: {  }
+                list_paragraph:
+                  hide_heading: true
                 layout_paragraphs:
                   parent_uuid: 251bde6a-fb54-459c-bfe8-a612830e0f34
                   region: main
+          su_list_headline:
+            -
+              value: "News"
           su_list_view:
             -
               target_id: stanford_news
