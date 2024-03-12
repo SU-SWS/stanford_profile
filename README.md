@@ -37,6 +37,12 @@ Configuration
 
 Nothing special needed.
 
+Inheriting From Stanford Profile
+---
+1. `git pull https://github.com/SU-SWS/stanford_profile.git 11.x -X ours --no-edit`
+2. Fix any conflicts if they occur and commit those changes
+3. Some adjustments are possible, resolve those until the automated tests pass.
+
 Releases
 ---
 
