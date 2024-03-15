@@ -8,6 +8,9 @@ dependencies:
     - media.type.image
     - responsive_image.styles.full_responsive
   module:
+    - empty_fields
+    - field_formatter_class
+    - field_label
     - responsive_image
 _core:
   default_config_hash: 4Ny-qpsNb-KZOCogLHV8JHe6zj4XdpwpDi_eu-qFVCs
@@ -23,8 +26,15 @@ content:
       responsive_image_style: full_responsive
       image_link: ''
       image_loading:
-        attribute: eager
-    third_party_settings: {  }
+        attribute: lazy
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 0
     region: content
 hidden:
