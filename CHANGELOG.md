@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.3.1
+-------------------------------------------------------------------------------
+- Fix images and oembed videos to be lazy loading
+
 11.3.0
 -------------------------------------------------------------------------------
 - Add taxonomy terms to algolia search indexing
