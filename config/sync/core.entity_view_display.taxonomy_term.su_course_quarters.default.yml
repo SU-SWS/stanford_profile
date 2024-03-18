@@ -96,7 +96,7 @@ third_party_settings:
               context_mapping: {  }
               views_label: ''
               items_per_page: none
-            weight: 2
+            weight: 3
             additional: {  }
           12eb9655-d749-407c-90ba-0ca685c1c048:
             uuid: 12eb9655-d749-407c-90ba-0ca685c1c048
@@ -117,6 +117,20 @@ third_party_settings:
                   field_formatter_class:
                     class: ''
             weight: 1
+            additional: {  }
+          d6717298-1620-4e79-a4ef-cb03ac35cd5e:
+            uuid: d6717298-1620-4e79-a4ef-cb03ac35cd5e
+            region: main
+            configuration:
+              id: jumpstart_ui_page_heading
+              label: 'Heading Block'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+              heading_text: Courses
+              wrapper: h2
+              hide_heading: 1
+            weight: 2
             additional: {  }
         third_party_settings: {  }
   layout_library:
