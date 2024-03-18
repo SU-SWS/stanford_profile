@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.3.2
+-------------------------------------------------------------------------------
+- D8CORE-7341 Add h2 headings to past events and courses term pages
+
 11.3.1
 -------------------------------------------------------------------------------
 - Fix images and oembed videos to be lazy loading
