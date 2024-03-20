@@ -63,7 +63,7 @@ const CustomRefinementList = (props) => {
   }
   return (
     <ul style={{listStyle: "none"}}>
-      {items.sort((a, b) => a.value < b.value ? -1 : 1).map((item, i) =>
+      {items.sort((a, b) => a.count < b.count ? 1: (a.count === b.count ? (a.value < b.value ? -1 : 1): -1)).map((item, i) =>
         <li key={i}>
           <label>
             <input
@@ -72,7 +72,7 @@ const CustomRefinementList = (props) => {
               checked={item.isRefined}
               onChange={() => onChange(item)}
             />
-            {item.value}
+            {item.value} ({item.count})
           </label>
         </li>
       )}
