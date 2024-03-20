@@ -1,6 +1,11 @@
 import algoliasearch from 'algoliasearch/lite';
 import {createIslandWebComponent} from 'preact-island'
-import {HitsProps, InstantSearch, useHits} from 'react-instantsearch';
+import {
+  CurrentRefinements,
+  HitsProps,
+  InstantSearch, useCurrentRefinements,
+  useHits, useRefinementList
+} from 'react-instantsearch';
 import SearchBox from "./search-box";
 import EventHit from "./hits/events";
 import NewsHit from "./hits/news";
@@ -50,6 +55,48 @@ const CustomHits = (props) => {
   )
 }
 
+const CustomRefinementList = (props) => {
+  const {items, refine, canRefine, createURL} = useRefinementList(props);
+
+  const onChange = (item) => {
+    refine(item.value)
+  }
+  return (
+    <ul style={{listStyle: "none"}}>
+      {items.sort((a, b) => a.value < b.value ? -1 : 1).map((item, i) =>
+        <li key={i}>
+          <label>
+            <input
+              type="checkbox"
+              disabled={!canRefine}
+              checked={item.isRefined}
+              onChange={() => onChange(item)}
+            />
+            {item.value}
+          </label>
+        </li>
+      )}
+    </ul>
+  )
+}
+
+const CustomCurrentRefinements = (props)=> {
+  const { items, canRefine, refine } = useCurrentRefinements(props);
+
+  return (
+    <ul style={{listStyle:"none", display: "flex", flexWrap: "wrap", gap:"10px"}}>
+      {items.map(refinement => {
+       return refinement.refinements.map((item, i) =>
+          <li key={`refinement-${i}`}>
+            {item.value}
+            <button disabled={!canRefine} onClick={() => refine(item)}>Clear</button>
+          </li>
+        )
+      })}
+    </ul>
+  );
+}
+
 const Search = () => {
   const currentUrl = new URL(window.location.href);
   const initialSearch = currentUrl.searchParams.get('key');
@@ -65,6 +112,8 @@ const Search = () => {
     >
       <Container>
         <SearchBox/>
+        <CustomRefinementList attribute="news_type"/>
+        <CustomCurrentRefinements/>
         <CustomHits/>
       </Container>
     </InstantSearch>
