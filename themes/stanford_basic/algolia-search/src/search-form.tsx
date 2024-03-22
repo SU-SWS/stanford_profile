@@ -76,31 +76,34 @@ const SearchForm = (props) => {
         />
       </div>
 
-      <ul style={{listStyle: "none"}}>
-        {newsTypeRefinements.sort((a, b) => a.count < b.count ? 1 : (a.count === b.count ? (a.value < b.value ? -1 : 1) : -1)).map((item, i) =>
-          <li key={i}>
-            <label>
-              <input
-                type="checkbox"
-                checked={chosenNewsTypes.findIndex(value => value === item.value) >= 0}
-                onChange={(e) => {
-                  setChosenNewsTypes(prevTypes => {
-                    const newTypes = [...prevTypes];
-                    if (e.currentTarget.checked) {
-                      newTypes.push(item.value);
-                    } else {
-                      newTypes.splice(prevTypes.findIndex(value => value === item.value), 1)
-                    }
-                    return newTypes;
-                  });
-                }}
-              />
-              {item.value} ({item.count})
-            </label>
-          </li>
-        )}
-      </ul>
+      <fieldset>
+        <legend>News Type</legend>
 
+        <ul style={{listStyle: "none"}}>
+          {newsTypeRefinements.sort((a, b) => a.count < b.count ? 1 : (a.count === b.count ? (a.value < b.value ? -1 : 1) : -1)).map((item, i) =>
+            <li key={i}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={chosenNewsTypes.findIndex(value => value === item.value) >= 0}
+                  onChange={(e) => {
+                    setChosenNewsTypes(prevTypes => {
+                      const newTypes = [...prevTypes];
+                      if (e.currentTarget.checked) {
+                        newTypes.push(item.value);
+                      } else {
+                        newTypes.splice(prevTypes.findIndex(value => value === item.value), 1)
+                      }
+                      return newTypes;
+                    });
+                  }}
+                />
+                {item.value} ({item.count})
+              </label>
+            </li>
+          )}
+        </ul>
+      </fieldset>
       <div style={{display: "flex", gap: "1rem", marginTop: "1rem"}}>
         <button type="submit">Submit</button>
         <button type="reset">
