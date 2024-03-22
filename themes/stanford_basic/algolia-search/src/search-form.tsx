@@ -4,14 +4,22 @@ import {
   useRefinementList,
   useSearchBox
 } from "react-instantsearch";
-import {useRef, useState} from "preact/compat";
+import {useEffect, useRef, useState} from "preact/compat";
 
 const SearchForm = (props) => {
+  const ref = useRef(false)
+  const windowSearchParams = new URLSearchParams(window.location.search)
   const {query, refine} = useSearchBox(props);
   const {items: newsTypeRefinements, refine: refineNewsType} = useRefinementList({attribute: "news_type"});
-  const [chosenNewsTypes, setChosenNewsTypes] = useState<string[]>([]);
+  const [chosenNewsTypes, setChosenNewsTypes] = useState<string[]>(windowSearchParams.get('news-types')?.split(',') || []);
   const {status} = useInstantSearch();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (ref.current) return
+    ref.current = true;
+    chosenNewsTypes.map(newsType => refineNewsType(newsType));
+  }, [ref, chosenNewsTypes])
 
   return (
     <form
@@ -29,7 +37,9 @@ const SearchForm = (props) => {
         [...addRefinements, ...removeRefinements].map(newsType => refineNewsType(newsType))
 
         const searchParams = new URLSearchParams(window.location.search)
-        searchParams.set('key', inputRef.current?.value)
+        inputRef.current?.value.length > 0 ? searchParams.set('key', inputRef.current?.value): searchParams.delete('key');
+        chosenNewsTypes.length > 0 ? searchParams.set('news-types', chosenNewsTypes.join(',')) : searchParams.delete('news-types')
+
         window.history.replaceState(null, '', `?${searchParams.toString()}`)
       }}
       onReset={e => {
@@ -41,6 +51,10 @@ const SearchForm = (props) => {
 
         newsTypeRefinements.filter(refinement => refinement.isRefined).map(refinement => refineNewsType(refinement.value));
         setChosenNewsTypes([]);
+        const searchParams = new URLSearchParams(window.location.search)
+        searchParams.delete('key')
+        searchParams.delete('news-types');
+        window.history.replaceState(null, '', `?${searchParams.toString()}`)
       }}
       style={{marginBottom: "20px"}}
     >

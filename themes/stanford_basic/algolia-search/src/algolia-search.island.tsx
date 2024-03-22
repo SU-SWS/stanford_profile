@@ -52,8 +52,8 @@ const CustomHits = (props) => {
 
 
 const Search = () => {
-  const currentUrl = new URL(window.location.href);
-  const initialSearch = currentUrl.searchParams.get('key');
+  const currentSearchParams = new URLSearchParams(window.location.search)
+  const initialSearch = currentSearchParams.get('key');
   const searchIndex = window.drupalSettings?.stanfordAlgolia.index || process.env.ALGOLIA_INDEX;
 
   return (
