@@ -1,7 +1,7 @@
 import algoliasearch from 'algoliasearch/lite';
 import {createIslandWebComponent} from 'preact-island'
 import {HitsProps, InstantSearch, useHits} from 'react-instantsearch';
-import SearchBox from "./search-box";
+import SearchForm from "./search-form";
 import EventHit from "./hits/events";
 import NewsHit from "./hits/news";
 import DefaultHit from "./hits/default-hit";
@@ -50,9 +50,10 @@ const CustomHits = (props) => {
   )
 }
 
+
 const Search = () => {
-  const currentUrl = new URL(window.location.href);
-  const initialSearch = currentUrl.searchParams.get('key');
+  const currentSearchParams = new URLSearchParams(window.location.search)
+  const initialSearch = currentSearchParams.get('key');
   const searchIndex = window.drupalSettings?.stanfordAlgolia.index || process.env.ALGOLIA_INDEX;
 
   return (
@@ -64,7 +65,7 @@ const Search = () => {
       }}
     >
       <Container>
-        <SearchBox/>
+        <SearchForm/>
         <CustomHits/>
       </Container>
     </InstantSearch>
