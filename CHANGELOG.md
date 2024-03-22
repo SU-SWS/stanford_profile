@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.3.5
+-------------------------------------------------------------------------------
+- Disabled link trimming on content type displays and view settings.
+
 11.3.4
 -------------------------------------------------------------------------------
 - Index algolia items only during cron
