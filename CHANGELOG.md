@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.3.6
+-------------------------------------------------------------------------------
+- D8CORE-000 Update Past Event List
+
 11.3.5
 -------------------------------------------------------------------------------
 - Disabled link trimming on content type displays and view settings.
