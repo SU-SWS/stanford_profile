@@ -5261,7 +5261,7 @@ display:
           exclude: 0
           alter:
             alter_text: 1
-            text: "<h3>\r\n  <a class=\"su-link{% if su_event_source %} su-link--external{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n  </a>\r\n</h3>"
+            text: "<a class=\"su-link{% if su_event_source %} su-link--external{% endif %}\" href=\"{% if su_event_source %}{{ su_event_source }}{% else %}{{ view_node }}{% endif %}\">\r\n  {{ title }}\r\n</a>"
             make_link: 0
             path: ''
             absolute: 0
@@ -5286,7 +5286,7 @@ display:
             trim: 0
             preserve_tags: ''
             html: 0
-          element_type: ''
+          element_type: h3
           element_class: ''
           element_label_type: ''
           element_label_class: ''
