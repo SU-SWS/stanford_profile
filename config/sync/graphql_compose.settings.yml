@@ -138,6 +138,11 @@ entity_config:
     stanford_wysiwyg:
       enabled: true
       query_load_enabled: true
+  redirect:
+    redirect:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
   su_policy_log:
     su_policy_log:
       enabled: true
