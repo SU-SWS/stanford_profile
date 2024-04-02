@@ -278,10 +278,13 @@ third_party_settings:
                   rel: nofollow
                   target: '0'
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: su-person-links
-                  ds:
-                    ds_limit: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: h3
             weight: 10
             additional: {  }
           82a532c7-d73f-491e-8ce3-3fd27c29a815:
