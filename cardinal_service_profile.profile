@@ -5,7 +5,7 @@
  * cardinal_service_profile.profile
  */
 
-use Drupal\config_pages\Entity\ConfigPages;
+use Drupal\config_pages\ConfigPagesInterface;
 use Drupal\Core\Installer\InstallerKernel;
 
 require_once 'cardinal_service_profile.inc';

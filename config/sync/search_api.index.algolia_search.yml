@@ -182,7 +182,7 @@ field_settings:
     property_path: custom_value
     type: string
     configuration:
-      value: '[node:su_page_image:entity:field_media_image:large|node:su_page_banner:entity:su_banner_image:entity:field_media_image:large|node:su_person_photo:entity:field_media_image:large|node:su_news_featured_media:entity:field_media_image:large|node:su_news_banner:entity:field_media_image:large]'
+      value: '[node:su_page_image:entity:field_media_image:large|node:su_page_banner:entity:su_banner_image:entity:field_media_image:large|node:su_person_photo:entity:field_media_image:large|node:su_news_featured_media:entity:field_media_image:large|node:su_news_banner:entity:field_media_image:large|node:su_event_ext_image]'
   publication_type:
     label: 'Publication Types » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -250,7 +250,7 @@ field_settings:
     property_path: custom_value
     type: string
     configuration:
-      value: '[config_page:stanford_basic_site_settings:su_site_url:uri|site:base-url][node:url:relative]'
+      value: '[node:url:absolute]'
 datasource_settings:
   'entity:node':
     bundles:
@@ -303,7 +303,7 @@ tracker_settings:
     indexing_order: fifo
 options:
   cron_limit: 50
-  index_directly: true
+  index_directly: false
   track_changes_in_references: true
   algolia_index_name: ''
   algolia_index_batch_deletion: '1'

@@ -2560,10 +2560,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: string_list_class
+          type: string
           settings:
-            class: su-list-unstyled
-            list_type: ul
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true

@@ -4,6 +4,10 @@ status: true
 dependencies:
   config:
     - page_manager.page.stanford_events_past
+    - views.view.stanford_events
+  module:
+    - jumpstart_ui
+    - views
 id: stanford_events_past-layout_builder-0
 label: 'Layout Builder'
 weight: 0
@@ -77,7 +81,7 @@ variant_settings:
             context_mapping: {  }
             views_label: ''
             items_per_page: none
-          weight: 1
+          weight: 2
           additional: {  }
           third_party_settings: {  }
         6963d6b3-e3f1-48ae-9e7f-4b90a22c453e:

@@ -266,6 +266,8 @@ third_party_settings:
                   rel: nofollow
                   target: '0'
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: su-person-links
                   ds:
@@ -723,7 +725,7 @@ content:
     type: link
     label: above
     settings:
-      trim_length: 80
+      trim_length: null
       url_only: false
       url_plain: false
       rel: ''
@@ -790,7 +792,7 @@ content:
     type: link
     label: above
     settings:
-      trim_length: 80
+      trim_length: null
       url_only: false
       url_plain: false
       rel: ''
@@ -825,7 +827,7 @@ content:
     type: link
     label: above
     settings:
-      trim_length: 80
+      trim_length: null
       url_only: false
       url_plain: false
       rel: ''
@@ -854,7 +856,7 @@ content:
     type: link
     label: above
     settings:
-      trim_length: 80
+      trim_length: null
       url_only: false
       url_plain: false
       rel: ''

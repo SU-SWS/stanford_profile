@@ -7,7 +7,10 @@ dependencies:
     - field.field.media.video.su_media_category
     - media.type.video
   module:
-    - oembed_lazyload
+    - empty_fields
+    - field_formatter_class
+    - field_label
+    - media
 _core:
   default_config_hash: Lcpr93rB3W6kcI48KJ3MhzP4Kg3HObfdAS8RDpoIyTg
 id: media.video.default
@@ -16,14 +19,21 @@ bundle: video
 mode: default
 content:
   field_media_oembed_video:
-    type: lazyload_oembed
+    type: oembed
     label: hidden
     settings:
       max_width: 0
       max_height: 0
-      strategy: intersection_observer
-      intersection_observer_margin: ''
-    third_party_settings: {  }
+      loading:
+        attribute: lazy
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 0
     region: content
 hidden:
