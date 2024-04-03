@@ -1,5 +1,27 @@
 # Cardinal Service Profile
 
+11.2.0
+-------------------------------------------------------------------------------
+
+- D8CORE-7360 Adjust Person  node detail page heading structure for "Links" field
+- uninstall page cache query ignore
+- D8CORE-000 Update Past Event List (#783)
+- Added event image to algolia index data
+- D8CORE-7295 D8CORE-7301 Enable rabbit hole for publications content type
+- D8CORE-7341 Fixed course term page headings
+- D8CORE-7341 Add h2 headings to past events and courses term pages
+- Fix images and oembed videos to be lazy loading
+- Add taxonomy terms to algolia search indexing
+- Change past events headings to h3
+- D8CORE-7333 Change paragraph behaviors for teaser and lists (#774)
+- D8CORE-7307 Remove anonymous access to /patterns or /admin/patterns page
+- D8CORE-6983: added test for stacking site_embedder role (#773)
+- D8CORE-7331 Use aria-labelledby on the submenu buttons in the decoupled menu
+- D8CORE-7300 Add Algolia checkbox to allow indexing separate from search results
+- D8CORE-7212 Use h3 header for cards in teasers when appropriate (#765)
+- D8CORE-7207 Add Page Title Banner Paragraph (#754)
+- D8CORE-7211 Header behaviors for card and banners (#763)
+
 11.1.0
 -------------------------------------------------------------------------------
 
