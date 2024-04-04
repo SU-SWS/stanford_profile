@@ -20,6 +20,10 @@
 
   .su-lockup__custom-logo {
     max-width: 300px;
+    @include grid-media('xs') {
+      max-width: -moz-available;
+      max-width: -webkit-fill-available;
+    }
   }
 }
 
