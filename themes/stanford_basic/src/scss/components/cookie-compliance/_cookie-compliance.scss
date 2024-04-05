@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.sliding-popup-bottom {
+  width: 100%;
+  background: #fff;
+  padding: 10px 0;
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, .13), 0 -3px 6px rgba(0, 0, 0, .1);
+  border-top: 1px solid #e3e3e3;
+}
+
+.eu-cookie-compliance-content {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+
+  @include grid-media-max("md") {
+    flex-direction: column;
+  }
+
+  .eu-cookie-compliance-message {
+    float: none;
+    max-width: 100%;
+  }
+
+  .eu-cookie-compliance-buttons {
+    float: none;
+    max-width: 100%;
+    display: flex;
+    gap: 15px;
+  }
+
+  button {
+    float: none;
+    display: block;
+  }
+}
+

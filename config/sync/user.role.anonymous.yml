@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - config_pages
+    - eu_cookie_compliance
     - field_permissions
     - graphql
     - media
@@ -19,6 +20,7 @@ weight: -9
 is_admin: false
 permissions:
   - 'access content'
+  - 'display eu cookie compliance popup'
   - 'execute graphql_compose_server arbitrary graphql requests'
   - 'execute graphql_compose_server persisted graphql requests'
   - 'issue subrequests'
