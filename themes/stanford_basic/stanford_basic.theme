@@ -525,9 +525,12 @@ function stanford_basic_preprocess_page__search(&$variables) {
     $element = &$variables['page']['content'][$child_key];
     if (isset($element['#plugin_id']) && $element['#plugin_id'] == 'system_main_block') {
       $variables['page']['content'][$child_key] = [
-        '#type' => 'html_tag',
-        '#tag' => 'div',
-        '#value' => '',
+        '#type' => 'container',
+        'noscript' => [
+          '#type' => 'html_tag',
+          '#tag' => 'noscript',
+          '#value' => t('Enable Javascript to view search results.'),
+        ],
         '#attributes' => [
           'id' => 'algolia-search',
           'class' => ['centered-container'],
