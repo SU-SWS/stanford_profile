@@ -9,6 +9,6 @@ entity_type_id: node_type
 entity_id: stanford_publication
 action: page_redirect
 allow_override: 0
-redirect: '[node:su_publication_citation:entity:su_url]'
+redirect: '[node:su_publication_citation:entity:su_url:uri]'
 redirect_code: 301
 redirect_fallback_action: display_page
