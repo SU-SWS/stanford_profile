@@ -4,11 +4,13 @@ status: true
 dependencies:
   module:
     - field_permissions
+    - stanford_media
 id: su_site_embedder
 label: 'Site Embedder'
 weight: 1
 is_admin: false
 permissions:
+  - 'bypass embed field validation'
   - 'create field_media_embeddable_code'
   - 'edit field_media_embeddable_code'
   - 'edit own field_media_embeddable_code'
