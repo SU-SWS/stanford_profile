@@ -1,6 +1,10 @@
 _core:
   default_config_hash: oByYyT7KZRYvM2OyziogSW_YrSDodQiFDEkUfxI20eM
 entity_config:
+  block_content:
+    stanford_component_block:
+      enabled: true
+      query_load_enabled: true
   citation:
     su_article_journal:
       enabled: true
@@ -33,6 +37,85 @@ entity_config:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
+  image_style:
+    breakpoint_2xl_1x:
+      enabled: true
+    breakpoint_2xl_2x:
+      enabled: true
+    breakpoint_lg_1x:
+      enabled: true
+    breakpoint_lg_2x:
+      enabled: true
+    breakpoint_md_1x:
+      enabled: true
+    breakpoint_md_2x:
+      enabled: true
+    breakpoint_sm_1x:
+      enabled: true
+    breakpoint_sm_2x:
+      enabled: true
+    breakpoint_xl_1x:
+      enabled: true
+    breakpoint_xl_2x:
+      enabled: true
+    card_1192x596:
+      enabled: true
+    card_1900x950:
+      enabled: true
+    card_1x_478x318:
+      enabled: true
+    card_2x_956x636:
+      enabled: true
+    card_478x239:
+      enabled: true
+    card_956x478:
+      enabled: true
+    cta_1x_507x338:
+      enabled: true
+    cta_1x_596x397:
+      enabled: true
+    cta_2x_1014x676:
+      enabled: true
+    cta_2x_1192x794:
+      enabled: true
+    large:
+      enabled: true
+    large_square:
+      enabled: true
+    linkit_result_thumbnail:
+      enabled: true
+    media_library:
+      enabled: true
+    medium:
+      enabled: true
+    medium_square:
+      enabled: true
+    news_full_width_banner_tall:
+      enabled: true
+    responsive_large:
+      enabled: true
+    responsive_medium:
+      enabled: true
+    responsive_small:
+      enabled: true
+    square_1192:
+      enabled: true
+    square_1900:
+      enabled: true
+    square_478:
+      enabled: true
+    square_956:
+      enabled: true
+    stanford_circle:
+      enabled: true
+    su_news_list:
+      enabled: true
+    thumbnail:
+      enabled: true
+    thumbnail_square:
+      enabled: true
+    tiny_blur:
+      enabled: true
   layout:
     stanford_basic_page_full:
       enabled: true
@@ -190,6 +273,10 @@ entity_config:
     su_shared_tags:
       enabled: true
 field_config:
+  block_content:
+    stanford_component_block:
+      su_component:
+        enabled: true
   citation:
     su_article_journal:
       su_author:
