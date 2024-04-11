@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {useWebComponentEvents} from "./hooks/useWebComponentEvents";
 import {createIslandWebComponent} from 'preact-island'
-import {useState, useEffect, useRef, useCallback} from 'preact/hooks';
+import {useState, useEffect, useRef, useCallback, useMemo} from 'preact/hooks';
 import {deserialize} from "./tools/deserialize";
 import {buildMenuTree, MenuContentItem} from "./tools/build-menu-tree";
 import {DRUPAL_DOMAIN} from './config/env'
@@ -155,7 +155,7 @@ export const MainMenu = ({}) => {
 
   useEventListener("keydown", handleEscape);
 
-  const menuTree = buildMenuTree(menuItems);
+  const menuTree = useMemo(() => buildMenuTree(menuItems), [menuItems]);
   if (!menuTree.items || menuTree.items?.length === 0) return;
 
   // Remove the default menu.
