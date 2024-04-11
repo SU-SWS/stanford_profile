@@ -8,6 +8,7 @@
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
 use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
@@ -219,6 +220,10 @@ function stanford_basic_preprocess_block(&$variables) {
     ) {
       $variables['attributes']['data-island'] = 'main-menu-island';
       $variables['#attached']['library'][] = 'stanford_basic/decoupled_menu';
+      $menu = \Drupal::menuTree()->load('main', new MenuTreeParameters());
+      $links = [];
+      _stanford_basic_get_menu_tree_links($menu, $links);
+      $variables['#attached']['drupalSettings']['stanford_basic']['decoupledMenuItems'] = $links;
     }
   }
 
@@ -233,6 +238,31 @@ function stanford_basic_preprocess_block(&$variables) {
     $variables['configuration']['label_display'] != BlockPluginInterface::BLOCK_LABEL_VISIBLE
   ) {
     $variables['title_attributes']['aria-hidden'] = 'true';
+  }
+}
+
+/**
+ * Using a nested menu tree, recursively build a list of all menu links.
+ *
+ * @param \Drupal\Core\Menu\MenuLinkTreeElement[] $items
+ *   Menu tree.
+ * @param array $tree
+ *   Array of menu link data to be used in the decoupled menu.
+ */
+function _stanford_basic_get_menu_tree_links(array $items, array &$tree) {
+  foreach ($items as $id => $item) {
+    if (!$item->link->isEnabled()) {
+      continue;
+    }
+    $tree[] = [
+      'id' => $id,
+      'url' => $item->link->getUrlObject()->toString(),
+      'title' => $item->link->getTitle(),
+      'expanded' => $item->link->isExpanded(),
+      'parent' => $item->link->getParent(),
+      'weight' => (int) $item->link->getWeight(),
+    ];
+    _stanford_basic_get_menu_tree_links($item->subtree, $tree);
   }
 }
 
