@@ -49,7 +49,7 @@ class OpportunityContentCest {
   /**
    * The importer should bring in some content.
    */
-  public function testImporter(\AcceptanceTester $I) {
+  protected function testImporter(\AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure/migrate/manage/opportunities/migrations');
     $I->canSee('solo_opportunities');

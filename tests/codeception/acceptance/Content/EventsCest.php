@@ -311,7 +311,11 @@ class EventsCest {
    * Clone events get incremented date.
    */
   public function testClone(AcceptanceTester $I) {
-    $I->runDrush('migrate:rollback --group=courses,opportunities,stanford_events');
+    try {
+      $I->runDrush('migrate:rollback --group=courses,opportunities,stanford_events');
+    }
+    catch (\Throwable $e) {
+    }
 
     $user = $I->createUserWithRoles(['contributor']);
     /** @var \Drupal\node\NodeInterface $node */

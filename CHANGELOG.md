@@ -1,5 +1,19 @@
 # Cardinal Service Profile
 
+11.2.1
+-------------------------------------------------------------------------------
+
+- Updated scheduler config
+- minor improvement to performance on decouple menu
+- Improve decoupled menu by using js data on the page instead of json api
+- Removed acquia memcache settings composer dependency. (#788)
+- Enabled image styles and blocks to graphql endpoint
+- D8CORE-7362 Add necessary permission for site embedder role (#786)
+- Fixed publication url rabbit hole
+- D8CORE-6981: Fix lockup on very small screen size (#785)
+- Added noscript on algolia search results page
+
+
 11.2.0
 -------------------------------------------------------------------------------
 
