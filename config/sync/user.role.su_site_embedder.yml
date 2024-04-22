@@ -10,6 +10,7 @@ label: 'Site Embedder'
 weight: 1
 is_admin: false
 permissions:
+  - 'bypass embed field validation'
   - 'create field_media_embeddable_code'
   - 'delete own files'
   - 'edit field_media_embeddable_code'

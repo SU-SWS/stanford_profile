@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {useWebComponentEvents} from "./hooks/useWebComponentEvents";
 import {createIslandWebComponent} from 'preact-island'
-import {useState, useEffect, useRef, useCallback} from 'preact/hooks';
+import {useState, useEffect, useRef, useCallback, useMemo} from 'preact/hooks';
 import {deserialize} from "./tools/deserialize";
 import {buildMenuTree, MenuContentItem} from "./tools/build-menu-tree";
 import {DRUPAL_DOMAIN} from './config/env'
@@ -131,13 +131,15 @@ const SearchContainer = styled.div`
 
 export const MainMenu = ({}) => {
   useWebComponentEvents(islandName)
-  const [menuItems, setMenuItems] = useState<MenuContentItem[]>([]);
+  const [menuItems, setMenuItems] = useState<MenuContentItem[]>(window.drupalSettings?.stanford_basic?.decoupledMenuItems || []);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
   useOutsideClick(navRef, () => setMenuOpen(false));
 
   useEffect(() => {
+    if (menuItems.length) return;
+
     fetch(DRUPAL_DOMAIN + '/jsonapi/menu_items/main')
       .then(res => res.json())
       .then(data => setMenuItems(deserialize(data)))
@@ -153,14 +155,12 @@ export const MainMenu = ({}) => {
 
   useEventListener("keydown", handleEscape);
 
-  const menuTree = buildMenuTree(menuItems);
-  if (!menuTree.items || menuTree.items?.length === 0) return <div/>;
+  const menuTree = useMemo(() => buildMenuTree(menuItems), [menuItems]);
+  if (!menuTree.items || menuTree.items?.length === 0) return;
 
   // Remove the default menu.
   const existingMenu = document.getElementsByClassName('su-multi-menu');
-  if (existingMenu.length > 0) {
-    existingMenu[0].remove();
-  }
+  if (existingMenu.length > 0) existingMenu[0].remove();
 
   return (
     <nav
@@ -196,7 +196,7 @@ export const MainMenu = ({}) => {
 
         </SearchContainer>
         <TopList>
-          {menuTree.items.map(item => <MenuItem key={item.id} {...item}/>)}
+          {menuTree.items.sort((a, b) => a.weight < b.weight ? -1 : 1).map(item => <MenuItem key={item.id} {...item}/>)}
         </TopList>
       </MenuWrapper>
     </nav>
@@ -419,7 +419,7 @@ const MenuItem = ({id, title, url, items, expanded, level = 0}: {
       {(items && expanded) &&
         <MenuList open={submenuOpen} level={level}>
 
-          {items.map(item =>
+          {items.sort((a, b) => a.weight < b.weight ? -1 : 1).map(item =>
             <MenuItem key={item.id} {...item} level={level + 1}/>
           )}
         </MenuList>
