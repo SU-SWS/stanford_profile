@@ -1,5 +1,10 @@
 # Stanford Profile
 
+11.3.8
+-------------------------------------------------------------------------------
+
+- Updated stanford_samlauth.settings timeout.
+
 11.3.7
 -------------------------------------------------------------------------------
 - Improve decoupled menu by using js data on the page instead of json api
