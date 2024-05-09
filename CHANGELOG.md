@@ -1,5 +1,12 @@
 # Cardinal Service Profile
 
+11.2.2
+-------------------------------------------------------------------------------
+- Removed menu_block patches
+  - menu_block-render-parent-3082445-53.patch
+  - menu_block_rendered_empty-3271218-17.patch
+- Remove solo opportunity feed/importer
+
 11.2.1
 -------------------------------------------------------------------------------
 
