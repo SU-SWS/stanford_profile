@@ -753,7 +753,7 @@ display:
         - 'config:field.storage.paragraph.su_banner_image'
   viewfield_block_1:
     id: viewfield_block_1
-    display_title: 'Card Grid'
+    display_title: 'Card Grid, Creation Date Sort (desc)'
     display_plugin: viewfield_block
     position: 2
     display_options:
@@ -877,6 +877,62 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.su_page_description'
+        - 'config:field.storage.node.su_page_image'
+        - 'config:field.storage.paragraph.su_banner_image'
+  viewfield_block_2:
+    id: viewfield_block_2
+    display_title: 'Card Grid, Alphabetical Title Sort (asc)'
+    display_plugin: viewfield_block
+    position: 2
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      style:
+        type: html_list
+        options:
+          row_class: ''
+          default_row_class: 1
+          uses_fields: 0
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
+      defaults:
+        style: false
+        row: false
+        arguments: true
+        sorts: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: stanford_h3_card
+      block_category: 'Basic Page Type Lists (Views)'
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+            field_identifier: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
