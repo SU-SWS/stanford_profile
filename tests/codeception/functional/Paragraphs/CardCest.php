@@ -23,8 +23,6 @@ class CardCest {
 
   /**
    * The banner paragraph should display its fields.
-   *
-   * @group foobar
    */
   public function testCardBehaviors(FunctionalTester $I) {
     $field_values = [

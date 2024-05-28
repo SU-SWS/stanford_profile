@@ -4,6 +4,8 @@ use Faker\Factory;
 
 /**
  * Test the node revision delete module functionality.
+ *
+ * @group node_revision_delete
  */
 class NodeRevisionDeleteCest {
 
