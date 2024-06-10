@@ -66,7 +66,7 @@ class EventsCest {
     ]);
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee('Mini Calendar', 'h2');
-    $I->canSee(date('F Y'), '.react-calendar');
+    $I->canSee(date('F Y'), '.mini-calendar');
 
     foreach ($events as $event) {
       $start_timestamp = $event->get('su_event_date_time')
@@ -74,17 +74,15 @@ class EventsCest {
         ->get('value')
         ->getString();
 
-      $start_day = date('j', $start_timestamp);
+      $button_label = date('M jS Y', $start_timestamp);
 
-      // The button element is disabled until the calendar is loaded.
-      $I->waitForElementChange('//abbr[contains(text(), "' . $start_day . '")]/..', function(WebDriverElement $element) {
-        return is_null($element->getAttribute('disabled'));
-      });
-      $I->click($start_day);
+      $I->waitForElementClickable("button[aria-label='$button_label']");
+      $I->wait(1);
+      $I->click("[aria-label='$button_label']");
       $I->waitForText($event->label(), 5);
-      $I->canSee($event->label(), '.popover-list');
-      $I->click('Close', '.MuiPaper-root');
-      $I->click('Next Month');
+      $I->canSee($event->label(), 'dialog');
+      $I->click('Close Dialog');
+      $I->click('Next Month');;
     }
   }
 
