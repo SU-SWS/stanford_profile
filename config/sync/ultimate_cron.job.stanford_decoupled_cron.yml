@@ -1,0 +1,17 @@
+uuid: 587c5f00-aef5-4516-865d-3bbeed9aecd0
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_decoupled
+title: 'Default cron handler'
+id: stanford_decoupled_cron
+weight: 0
+module: stanford_decoupled
+callback: stanford_decoupled_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
