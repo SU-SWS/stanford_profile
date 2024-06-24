@@ -721,6 +721,7 @@ display:
             offset: true
             offset_label: offset
           quantity: 9
+          pagination_heading_level: h4
       defaults:
         fields: false
       display_description: ''
@@ -751,7 +752,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: numeric
+          plugin_id: entity_target_id
           default_action: default
           exception:
             value: all
@@ -777,6 +778,7 @@ display:
           validate_options: {  }
           break_phrase: false
           not: false
+          target_entity_type_id: node
       defaults:
         arguments: false
       display_description: ''
@@ -1208,6 +1210,7 @@ display:
             offset: true
             offset_label: offset
           quantity: 9
+          pagination_heading_level: h4
       defaults:
         fields: false
       display_description: ''
