@@ -27,6 +27,7 @@ class LocalFooterCest {
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(403);
     $I->amOnPage('/user/logout');
+    $I->click('Log out', '#user-logout-confirm');
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/local-footer');
     $I->canSeeResponseCodeIs(200);

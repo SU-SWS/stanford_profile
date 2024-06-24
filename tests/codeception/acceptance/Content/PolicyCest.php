@@ -55,12 +55,14 @@ class PolicyCest {
     $I->cantSee('Policy Prefix');
 
     $I->amOnPage('/user/logout');
+    $I->click('Log out', '#user-logout-confirm');
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_policy');
     $I->canSee('Create a new book');
     $I->cantSee('Policy Prefix');
 
     $I->amOnPage('/user/logout');
+    $I->click('Log out', '#user-logout-confirm');
     $I->logInWithRole('administrator');
     $I->amOnPage('/node/add/stanford_policy');
     $I->canSee('Create a new book');
