@@ -28,6 +28,7 @@ class MediaFormsCest {
     $I->amOnPage('/media/add/embeddable');
     $I->seeLink('request support.', $support_url);
     $I->amOnPage('/user/logout');
+    $I->click('Log out', 'form');
     $I->logInWithRole('administrator');
     $I->amOnPage('/media/add/embeddable');
     $name = $this->faker->words(3, TRUE);
@@ -36,6 +37,7 @@ class MediaFormsCest {
     $I->click('Save');
     $I->seeInCurrentUrl('/admin/content/media');
     $I->amOnPage('/user/logout');
+    $I->click('Log out', 'form');
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/content/media');
     $I->click($name);
@@ -43,9 +45,9 @@ class MediaFormsCest {
     $I->seeLink('request support.', $support_url);
     $I->click('Delete');
     $I->seeInCurrentUrl('delete');
-    $I->click('Delete');
-    $I->dontSeeLink($name);
+    $I->click('Delete', 'form');
     $I->seeInCurrentUrl('/admin/content/media');
+    $I->dontSeeLink($name);
   }
 
 }

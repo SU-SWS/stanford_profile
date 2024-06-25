@@ -7,6 +7,8 @@ jobs:
   phpunit:
     name: PHPUnit Coverage Tests
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     container:
       image: pookmish/drupal8ci:latest
     services:
@@ -39,6 +41,8 @@ jobs:
   acceptance:
     name: Codeception Acceptance Tests
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     env:
       DRUPAL_DATABASE_NAME: drupal
       DRUPAL_DATABASE_USERNAME: drupal
@@ -77,6 +81,8 @@ jobs:
   functional:
     name: Codeception Functional Tests
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     env:
       DRUPAL_DATABASE_NAME: drupal
       DRUPAL_DATABASE_USERNAME: drupal

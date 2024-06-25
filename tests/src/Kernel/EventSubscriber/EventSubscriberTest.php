@@ -43,6 +43,8 @@ class EventSubscriberTest extends KernelTestBase {
     'serialization',
     'media',
     'test_stanford_profile',
+    'samlauth',
+    'externalauth'
   ];
 
   /**
@@ -124,7 +126,6 @@ class EventSubscriberTest extends KernelTestBase {
   }
 
   public function testUserInsert() {
-    \Drupal::service('module_installer')->install(['samlauth']);
     $role = Role::create(['id' => 'test_role1', 'label' => 'Test role 1']);
     $role->save();
 

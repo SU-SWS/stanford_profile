@@ -173,6 +173,8 @@ class RolesCest {
     $I->fillField('Embed Code', '<div>This is an embed</div>');
     $I->click('Save');
     $I->canSee('error has been found');
+    $I->amOnPage('/user/logout');
+    $I->click('Log out', 'form');
 
     // Stack the site_embedder role.
     $user = $I->createUserWithRoles(['site_manager', 'site_embedder']);
