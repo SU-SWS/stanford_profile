@@ -77,7 +77,7 @@ class IntranetCest {
     $I->amOnPage('/node/add/stanford_page');
     $I->cantSee('Access', '.entity-meta__header');
     $I->amOnPage('/user/logout');
-    $I->click('Log out', '#user-logout-confirm');
+    $I->click('Log out', 'form');
 
     // Site managers can set access restrictions.
     $I->logInWithRole('site_manager');
@@ -95,7 +95,7 @@ class IntranetCest {
     $I->canSeeResponseCodeIs(200);
     $page_url = $I->grabFromCurrentUrl();
     $I->amOnPage('/user/logout');
-    $I->click('Log out', '#user-logout-confirm');
+    $I->click('Log out', 'form');
 
     // Anonymous users will get redirected to the login page.
     $I->amOnPage($page_url);
@@ -106,7 +106,7 @@ class IntranetCest {
     $I->amOnPage($page_url);
     $I->canSeeResponseCodeIs(403);
     $I->amOnPage('/user/logout');
-    $I->click('Log out', '#user-logout-confirm');
+    $I->click('Log out', 'form');
 
     // Students should be able to see the content.
     $I->logInWithRole('stanford_student');
@@ -158,7 +158,7 @@ class IntranetCest {
     $I->amOnPage('/media/add/file');
     $I->canSeeResponseCodeIs(200);
     $I->amOnPage('/user/logout');
-    $I->click('Log out', '#user-logout-confirm');
+    $I->click('Log out', 'form');
 
     $I->runDrush('sset stanford_intranet.allow_file_uploads 0');
     $I->logInWithRole('site_manager');

@@ -176,7 +176,7 @@ class PersonCest {
     $I->selectOption('Parent term', '<root>');
     $I->click('Save');
     $I->amOnPage('/user/logout');
-    $I->click('Log out', '#user-logout-confirm');
+    $I->click('Log out', 'form');
 
     $I->amOnPage('/people');
     $I->canSeeLink($term3->label());
@@ -186,7 +186,7 @@ class PersonCest {
     $I->selectOption('Parent term', $term2->label());
     $I->click('Save');
     $I->amOnPage('/user/logout');
-    $I->click('Log out', '#user-logout-confirm');
+    $I->click('Log out', 'form');
 
     $I->amOnPage('/people');
     $I->cantSeeLink($term3->label());

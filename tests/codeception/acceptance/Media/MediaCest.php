@@ -200,7 +200,7 @@ class MediaCest {
     $I->amOnPage('/admin/content/files');
     $I->canSeeResponseCodeIs(403);
     $I->amOnPage('/user/logout');
-    $I->click('Log out', '#user-logout-confirm');
+    $I->click('Log out', 'form');
 
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/content/files');

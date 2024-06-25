@@ -59,7 +59,7 @@ class SystemSiteConfigCest {
     $I->canSee('Site Settings has been', '.messages-list');
 
     $I->amOnPage('/user/logout');
-    $I->click('Log out', '#user-logout-confirm');
+    $I->click('Log out', 'form');
     $I->amOnPage('/');
     $I->canSee('Foo Bar Site');
 
@@ -158,7 +158,7 @@ class SystemSiteConfigCest {
     $I->canSee('Site Settings has been', '.messages-list');
 
     $I->amOnPage('/user/logout');
-    $I->click('Log out', '#user-logout-confirm');
+    $I->click('Log out', 'form');
     $I->amOnPage('/');
     $I->canSee('UA-123456-12');
     $I->logInWithRole('site_manager');
@@ -167,7 +167,7 @@ class SystemSiteConfigCest {
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
     $I->amOnPage('/user/logout');
-    $I->click('Log out', '#user-logout-confirm');
+    $I->click('Log out', 'form');
     $I->amOnPage('/');
     $I->cantSee('UA-12456-12');
   }

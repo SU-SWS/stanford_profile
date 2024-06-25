@@ -86,8 +86,7 @@ class EventsCest {
     $I->click('Save');
     $I->canSee('Events Importer has been', '.messages-list');
 
-    $I->amOnPage($event->toUrl('delete-form')->toString());
-    $I->click('Delete');
+    $event->delete();
 
     $I->amOnPage($term->toUrl()->toString());
     $I->canSee($term->label(), 'h1');
