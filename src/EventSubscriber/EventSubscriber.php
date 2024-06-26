@@ -4,6 +4,7 @@ namespace Drupal\stanford_profile\EventSubscriber;
 
 use Acquia\DrupalEnvironmentDetector\AcquiaDrupalEnvironmentDetector;
 use Drupal\Core\Cache\Cache;
+use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -19,7 +20,9 @@ use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\default_content\Event\DefaultContentEvents;
 use Drupal\default_content\Event\ImportEvent;
 use Drupal\file\FileInterface;
+use Drupal\user\Entity\Role;
 use Drupal\user\RoleInterface;
+use GuzzleHttp\ClientInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -71,12 +74,14 @@ class EventSubscriber implements EventSubscriberInterface {
    *
    * @param \Drupal\Core\File\FileSystemInterface $fileSystem
    *   File system service.
+   * @param \GuzzleHttp\ClientInterface $client
+   *   Guzzle client service.
    * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
    *   Logger factory service.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   Messenger service.
    */
-  public function __construct(protected FileSystemInterface $fileSystem, LoggerChannelFactoryInterface $logger_factory, protected MessengerInterface $messenger) {
+  public function __construct(protected FileSystemInterface $fileSystem, protected ClientInterface $client, LoggerChannelFactoryInterface $logger_factory, protected MessengerInterface $messenger) {
     $this->logger = $logger_factory->get('stanford_profile');
   }
 
@@ -187,7 +192,7 @@ class EventSubscriber implements EventSubscriberInterface {
       return;
     }
 
-    $role_ids = array_keys(user_role_names(TRUE));
+    $role_ids = array_keys(Role::loadMultiple());
     $role_ids = array_combine($role_ids, $role_ids);
     unset($role_ids[RoleInterface::AUTHENTICATED_ID]);
     asort($role_ids);
@@ -257,7 +262,7 @@ class EventSubscriber implements EventSubscriberInterface {
           '%source' => $local_file,
           '%destination' => $file_uri,
         ]);
-        $this->fileSystem->copy($local_file, $file_uri, FileSystemInterface::EXISTS_REPLACE);
+        $this->fileSystem->copy($local_file, $file_uri, FileExists::Replace);
         return;
       }
       catch (\Exception $e) {
@@ -292,7 +297,8 @@ class EventSubscriber implements EventSubscriberInterface {
       '%source' => $source,
       '%destination' => $destination,
     ]);
-    return system_retrieve_file($source, $destination, FALSE, FileSystemInterface::EXISTS_REPLACE);
+    $data = (string) $this->client->get($source)->getBody();
+    return $this->fileSystem->saveData($data, $destination, FileExists::Replace);
   }
 
 }

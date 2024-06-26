@@ -14,6 +14,7 @@ use Drupal\media\Entity\Media;
 use Drupal\media\Entity\MediaType;
 use Drupal\stanford_profile\EventSubscriber\EventSubscriber as StanfordEventSubscriber;
 use Drupal\user\Entity\Role;
+use GuzzleHttp\ClientInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -70,8 +71,9 @@ class EventSubscriberTest extends KernelTestBase {
     $file_system = \Drupal::service('file_system');
     $logger_factory = \Drupal::service('logger.factory');
     $messenger = \Drupal::messenger();
+    $client = $this->createMock(ClientInterface::class);
 
-    $this->eventSubscriber = new TestStanfordEventSubscriber($file_system, $logger_factory, $messenger);
+    $this->eventSubscriber = new TestStanfordEventSubscriber($file_system, $client, $logger_factory, $messenger);
 
     /** @var \Drupal\media\MediaTypeInterface $media_type */
     $media_type = MediaType::create([
