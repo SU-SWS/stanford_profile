@@ -7,9 +7,10 @@
     "build": "npx tailwindcss -i ./src/base.scss -o ./dist/base.css"
   },
   "dependencies": {
-    "@tailwindcss/forms": "^0.4.0-alpha.2",
-    "decanter": "^7.0.0-beta.2",
-    "tailwindcss": "^3.0.24",
+    "@tailwindcss/forms": "^0.5.7",
+    "decanter": "^7.3.0",
+    "tailwindcss": "^3.4.4",
     "tailwindcss-debug-screens": "^2.2.1"
-  }
+  },
+  "packageManager": "yarn@4.3.1"
 }

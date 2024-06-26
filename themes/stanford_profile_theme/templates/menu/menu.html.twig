@@ -5,11 +5,11 @@
 
 {% macro nav_menu(items, menu_level = 1) %}
   {% import _self as menus %}
-  <ul class="su-list-unstyled">
+  <ul class="list-unstyled">
     {% for item in items %}
       <li>
         <a href="{{ item.url }}">
-          <span class="su-multi-menu__link-text-wrapper">{{ item.title }}</span>
+          <span class="multi-menu__link-text-wrapper">{{ item.title }}</span>
           {% if item.unpublished %}
             <span class="unpublished-indicator">{{ "Unpublished Page"|t }}</span>
           {% endif %}

@@ -4,15 +4,15 @@
 
 {% set main_class = '' %}
 {% if left and right %}
-  {% set main_class = 'su-w-6/12' %}
+  {% set main_class = 'w-6/12' %}
 {% elseif left or right %}
-  {% set main_class = 'su-w-9/12' %}
+  {% set main_class = 'w-9/12' %}
 {% endif %}
 
-<div class="su-flex su-flex-col md:su-flex-row {{ settings.centered ? 'su-cc' : '' }}">
+<div class="flex flex-col md:flex-row {{ settings.centered ? 'cc' : '' }}">
 
   {% if left %}
-    <div {{ region_attributes.left.addClass('su-w-3/12') }}>
+    <div {{ region_attributes.left.addClass('w-3/12') }}>
       {{ content.left }}
     </div>
   {% endif %}
@@ -24,7 +24,7 @@
   {% endif %}
 
   {% if right %}
-    <div {{ region_attributes.right.addClass('su-w-3/12') }}>
+    <div {{ region_attributes.right.addClass('w-3/12') }}>
       {{ content.right }}
     </div>
   {% endif %}

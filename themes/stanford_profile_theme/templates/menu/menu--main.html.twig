@@ -7,7 +7,7 @@
 
 {% macro nav_menu(items, menu_level = 1) %}
   {% import _self as menus %}
-  <ul class="su-list-unstyled su-flex {{ menu_level==1?'su-float-right':'' }}">
+  <ul class="list-unstyled flex {{ menu_level==1?'float-right':'' }}">
     {% for item in items %}
       <li>
         <a href="{{ item.url }}">

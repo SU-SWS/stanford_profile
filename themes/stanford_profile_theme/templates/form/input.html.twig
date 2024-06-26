@@ -1,19 +1,19 @@
 {% set classes = [
-  'su-button',
-  'su-group',
-  'su-leading-display',
-  'su-text-white',
-  'su-border-2',
-  'su-border-solid',
-  'hover:su-border-black',
-  'focus:su-border-black',
-  'su-transition-colors',
-  'su-px-26',
-  'su-pt-10',
-  'su-pb-11',
-  'su-text-16',
-  'md:su-text-20',
-  attributes.hasClass('button--primary') ? 'su-bg-digital-red su-border-digital-red' : 'su-bg-digital-blue su-border-digital-blue-light'
+  'button',
+  'group',
+  'leading-display',
+  'text-white',
+  'border-2',
+  'border-solid',
+  'hover:border-black',
+  'focus:border-black',
+  'transition-colors',
+  'px-26',
+  'pt-10',
+  'pb-11',
+  'text-16',
+  'md:text-20',
+  attributes.hasClass('button--primary') ? 'bg-digital-red border-digital-red' : 'bg-digital-blue border-digital-blue-light'
 ] %}
 
 {% if attributes.type == 'submit' %}
