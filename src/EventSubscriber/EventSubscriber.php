@@ -22,6 +22,7 @@ use Drupal\default_content\Event\ImportEvent;
 use Drupal\file\FileInterface;
 use Drupal\user\Entity\Role;
 use Drupal\user\RoleInterface;
+use GuzzleHttp\ClientInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -73,12 +74,14 @@ class EventSubscriber implements EventSubscriberInterface {
    *
    * @param \Drupal\Core\File\FileSystemInterface $fileSystem
    *   File system service.
+   * @param \GuzzleHttp\ClientInterface $client
+   *   Guzzle client service.
    * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
    *   Logger factory service.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   Messenger service.
    */
-  public function __construct(protected FileSystemInterface $fileSystem, LoggerChannelFactoryInterface $logger_factory, protected MessengerInterface $messenger) {
+  public function __construct(protected FileSystemInterface $fileSystem, protected ClientInterface $client, LoggerChannelFactoryInterface $logger_factory, protected MessengerInterface $messenger) {
     $this->logger = $logger_factory->get('stanford_profile');
   }
 
@@ -294,9 +297,8 @@ class EventSubscriber implements EventSubscriberInterface {
       '%source' => $source,
       '%destination' => $destination,
     ]);
-    $data = (string) \Drupal::httpClient()->get($source)->getBody();
-    return \Drupal::service('file_system')
-      ->saveData($data, $destination, FileExists::Replace);
+    $data = (string) $this->client->get($source)->getBody();
+    return $this->fileSystem->saveData($data, $destination, FileExists::Replace);
   }
 
 }
