@@ -351,7 +351,7 @@ class EventsCest {
     $event = $this->createEventNode($I);
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
     $pre_render = $view_builder->view($event, 'stanford_card');
-    $render_output = \Drupal::service('renderer')->renderPlain($pre_render);
+    $render_output = \Drupal::service('renderer')->renderInIsolation($pre_render);
 
     libxml_use_internal_errors(TRUE);
     $dom = new DOMDocument();

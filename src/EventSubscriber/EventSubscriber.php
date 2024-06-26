@@ -4,6 +4,7 @@ namespace Drupal\stanford_profile\EventSubscriber;
 
 use Acquia\DrupalEnvironmentDetector\AcquiaDrupalEnvironmentDetector;
 use Drupal\Core\Cache\Cache;
+use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -19,6 +20,7 @@ use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\default_content\Event\DefaultContentEvents;
 use Drupal\default_content\Event\ImportEvent;
 use Drupal\file\FileInterface;
+use Drupal\user\Entity\Role;
 use Drupal\user\RoleInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -187,7 +189,7 @@ class EventSubscriber implements EventSubscriberInterface {
       return;
     }
 
-    $role_ids = array_keys(user_role_names(TRUE));
+    $role_ids = array_keys(Role::loadMultiple());
     $role_ids = array_combine($role_ids, $role_ids);
     unset($role_ids[RoleInterface::AUTHENTICATED_ID]);
     asort($role_ids);
@@ -257,7 +259,7 @@ class EventSubscriber implements EventSubscriberInterface {
           '%source' => $local_file,
           '%destination' => $file_uri,
         ]);
-        $this->fileSystem->copy($local_file, $file_uri, FileSystemInterface::EXISTS_REPLACE);
+        $this->fileSystem->copy($local_file, $file_uri, FileExists::Replace);
         return;
       }
       catch (\Exception $e) {
@@ -292,7 +294,9 @@ class EventSubscriber implements EventSubscriberInterface {
       '%source' => $source,
       '%destination' => $destination,
     ]);
-    return system_retrieve_file($source, $destination, FALSE, FileSystemInterface::EXISTS_REPLACE);
+    $data = (string) \Drupal::httpClient()->get($source)->getBody();
+    return \Drupal::service('file_system')
+      ->saveData($data, $destination, FileExists::Replace);
   }
 
 }
