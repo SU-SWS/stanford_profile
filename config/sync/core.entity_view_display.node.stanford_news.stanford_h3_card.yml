@@ -90,24 +90,21 @@ content:
     weight: 3
     region: dek
   su_news_featured_media:
-    type: media_multimedia_formatter
+    type: media_responsive_image_formatter
     label: hidden
     settings:
       view_mode: default
       link: false
-      image:
-        image_formatter: responsive_image_style
-        image_formatter_image_style: cta_2x_1014x676
-        image_formatter_responsive_image_style: card_2_1
-        image_formatter_view_mode: default
-      video:
-        video_formatter: entity
-        video_formatter_view_mode: default
-      other:
-        view_mode: default
+      image_style: card_2_1
+      remove_alt: '1'
     third_party_settings:
+      empty_fields:
+        handler: ''
       field_formatter_class:
         class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 0
     region: news_vertical_teaser_image
   su_news_publishing_date:
