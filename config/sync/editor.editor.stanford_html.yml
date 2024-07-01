@@ -29,6 +29,7 @@ settings:
       - '|'
       - blockQuote
       - drupalMedia
+      - icon
       - '|'
       - superscript
       - subscript
@@ -96,6 +97,15 @@ settings:
         - heading3
         - heading4
         - heading5
+    ckeditor5_icons_icon:
+      fa_version: '5'
+      fa_styles:
+        - solid
+        - regular
+        - brands
+      custom_metadata: false
+      async_metadata: true
+      recommended_enabled: false
     ckeditor5_list:
       properties:
         reversed: false

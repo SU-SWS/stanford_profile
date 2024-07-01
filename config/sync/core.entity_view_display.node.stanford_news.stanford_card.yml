@@ -36,11 +36,16 @@ third_party_settings:
       settings:
         pattern:
           field_templates: only_content
+          variant: default
     regions:
       news_vertical_teaser_image:
         - su_news_featured_media
       news_vertical_teaser_headline:
         - node_title
+      date:
+        - node_post_date
+      dek:
+        - su_news_dek
       news_topics:
         - su_news_topics
       news_source:
@@ -50,7 +55,7 @@ third_party_settings:
     fields:
       'dynamic_token_field:node-news_content_url':
         plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 4
+        weight: 6
         label: hidden
         formatter: default
       node_title:
@@ -62,11 +67,24 @@ third_party_settings:
           link: false
           wrapper: ''
           class: ''
+      node_post_date:
+        plugin_id: node_post_date
+        weight: 2
+        label: hidden
+        formatter: ds_post_date_stanford_month_date_year
 id: node.stanford_news.stanford_card
 targetEntityType: node
 bundle: stanford_news
 mode: stanford_card
 content:
+  su_news_dek:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: dek
   su_news_featured_media:
     type: media_multimedia_formatter
     label: hidden
@@ -100,7 +118,7 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    weight: 3
+    weight: 5
     region: news_source
   su_news_topics:
     type: entity_reference_list_label_class
@@ -114,7 +132,7 @@ content:
         class: ''
       ds:
         ds_limit: '3'
-    weight: 2
+    weight: 4
     region: news_topics
 hidden:
   layout_builder__layout: true
@@ -127,7 +145,6 @@ hidden:
   su_news_banner_media_caption: true
   su_news_byline: true
   su_news_components: true
-  su_news_dek: true
   su_news_hide_social: true
   su_news_publishing_date: true
   su_shared_tags: true
