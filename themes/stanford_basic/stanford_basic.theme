@@ -337,12 +337,12 @@ function stanford_basic_preprocess_page(&$vars) {
 function _stanford_basic_preprocess_not_nodes(&$vars) {
   $pbag = \Drupal::routeMatch()->getParameters();
   $pkeys = $pbag->keys();
-  $blacklist = [
+  $block_list = [
     'node', // Node Types.
     'page_manager_page', // Panels.
   ];
 
-  foreach ($blacklist as $key) {
+  foreach ($block_list as $key) {
     if (in_array($key, $pkeys)) {
       return;
     }

@@ -1,0 +1,92 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 86a411a2-0b05-41bc-ae15-2184b8e81ea4
+  bundle: stanford_page
+  default_langcode: en
+  depends:
+    2475bc7f-528d-4e91-b546-ef2021c8f44d: user
+default:
+  revision_uid:
+    -
+      entity: 2475bc7f-528d-4e91-b546-ef2021c8f44d
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: 2475bc7f-528d-4e91-b546-ef2021c8f44d
+  title:
+    -
+      value: 'Past events'
+  created:
+    -
+      value: 1719854848
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  path:
+    -
+      alias: /events/past
+      langcode: en
+      pathauto: 0
+  su_page_components:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: c1729c68-8fa5-466c-af6e-d03b6fbc5faa
+          bundle: stanford_layout
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1719854864
+          behavior_settings:
+            -
+              value:
+                layout_paragraphs:
+                  layout: layout_paragraphs_1_column
+                  config:
+                    label: ''
+                  parent_uuid: null
+                  region: null
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 15eb97ca-3a1c-47e7-86db-e188b2596f4c
+          bundle: stanford_lists
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1719854870
+          behavior_settings:
+            -
+              value:
+                list_paragraph:
+                  heading_behavior: hide
+                layout_paragraphs:
+                  parent_uuid: c1729c68-8fa5-466c-af6e-d03b6fbc5faa
+                  region: main
+          su_list_headline:
+            -
+              value: 'Events that have occurred'
+          su_list_view:
+            -
+              target_id: stanford_events
+              display_id: past_events_list_block
+              arguments: ''
+              items_to_display: ''
