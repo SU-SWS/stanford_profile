@@ -1,7 +1,7 @@
 _meta:
   version: '1.0'
   entity_type: node
-  uuid: 8ba98fcf-d390-4014-92de-c77a59b30f3b
+  uuid: 673a8fb8-39ac-49df-94c2-ed8d04db16a7
   bundle: stanford_page
   default_langcode: en
 default:
@@ -11,15 +11,12 @@ default:
   status:
     -
       value: true
-  uid:
-    -
-      target_id: 1
   title:
     -
-      value: Events
+      value: People
   created:
     -
-      value: 1651861294
+      value: 1651861307
   promote:
     -
       value: false
@@ -31,7 +28,7 @@ default:
       value: true
   path:
     -
-      alias: /events
+      alias: /people
       langcode: en
       pathauto: 1
   rh_action:
@@ -43,6 +40,14 @@ default:
   rh_redirect_fallback_action:
     -
       value: bundle_default
+  field_menulink:
+    -
+      menu_name: main
+      title: People
+      description: 'A listing of people types'
+      parent: ''
+      weight: -45
+      expanded: 0
   layout_builder__layout:
     -
       section:
@@ -145,12 +150,12 @@ default:
               context_mapping: {  }
             weight: -10
             additional: {  }
-          96030d90-798c-4801-9cd0-1a26d812a991:
-            uuid: 96030d90-798c-4801-9cd0-1a26d812a991
+          69ac2b3d-4ce0-400d-83e4-09a200b89a82:
+            uuid: 69ac2b3d-4ce0-400d-83e4-09a200b89a82
             region: left
             configuration:
-              id: 'system_menu_block:stanford-event-types'
-              label: 'Event Types'
+              id: 'system_menu_block:stanford-person-type'
+              label: 'Person Types'
               label_display: visible
               provider: system
               level: '1'
@@ -166,7 +171,7 @@ default:
         _meta:
           version: '1.0'
           entity_type: paragraph
-          uuid: baa69328-f537-441e-8ad5-fe66a3ba944d
+          uuid: 901576db-04e5-46c2-ab4c-ac64980a578e
           bundle: stanford_layout
           default_langcode: en
         default:
@@ -175,7 +180,7 @@ default:
               value: true
           created:
             -
-              value: 1694548885
+              value: 1694548795
           behavior_settings:
             -
               value:
@@ -190,7 +195,7 @@ default:
         _meta:
           version: '1.0'
           entity_type: paragraph
-          uuid: 522c2a2d-52c5-4ada-b886-eac9779ecb91
+          uuid: 463b0956-f7e4-47da-83f6-fb9fab53c14f
           bundle: stanford_lists
           default_langcode: en
         default:
@@ -199,22 +204,21 @@ default:
               value: true
           created:
             -
-              value: 1694548890
+              value: 1694548801
           behavior_settings:
             -
               value:
                 list_paragraph:
-                  empty_message: 'No events at this time.'
                   hide_heading: true
                 layout_paragraphs:
-                  parent_uuid: baa69328-f537-441e-8ad5-fe66a3ba944d
+                  parent_uuid: 901576db-04e5-46c2-ab4c-ac64980a578e
                   region: main
           su_list_headline:
             -
-              value: "Events"
+              value: "People"
           su_list_view:
             -
-              target_id: stanford_events
-              display_id: list_page
+              target_id: stanford_person
+              display_id: grid_list_all
               arguments: ''
               items_to_display: ''
