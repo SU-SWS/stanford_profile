@@ -753,6 +753,8 @@ class ListsCest {
 
   /**
    * Test basic page types list view.
+   *
+   * @group D8CORE-7422
    */
   public function testListParagraphBasicPageTypesFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -761,8 +763,15 @@ class ListsCest {
 
     $basic_page_entity = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => $this->faker->text(15),
+      'title' => 'B' . $this->faker->text(15),
       'su_basic_page_type' => $type_term->id(),
+    ]);
+
+    $second_basic_page_entity = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => 'A' . $this->faker->text(15),
+      'su_basic_page_type' => $type_term->id(),
+      'created' => time() - 120,
     ]);
 
     $I->amOnPage("/node/{$basic_page_entity->id()}/edit");
@@ -777,20 +786,62 @@ class ListsCest {
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($basic_page_entity->label(), 'h3');
+    $I->canSee($second_basic_page_entity->label(), 'h3');
+
+    $headings = $I->grabMultiple('.ptype-stanford-lists h3');
+    $headings = array_map('trim', $headings);
+    $I->assertEquals($basic_page_entity->label(), $headings[0], $basic_page_entity->label()  . ' should be first.');
+    $I->assertEquals($second_basic_page_entity->label(), $headings[1], $second_basic_page_entity->label()  . ' should be second.');
+
     $I->cantSee($type_term->label());
 
     $layout_changed_page = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => $this->faker->text(15),
+      'title' => 'Z' . $this->faker->text(15),
       'su_basic_page_type' => $type_term->id(),
       'su_page_description' => $this->faker->text,
       'layout_selection' => 'stanford_basic_page_full',
+      'created' => time() - 1000,
     ]);
     $I->amOnPage($layout_changed_page->toUrl('edit-form')->toString());
     $I->click('Save');
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($layout_changed_page->label(), 'h3');
     $I->canSee($layout_changed_page->get('su_page_description')->getString());
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_basic_pages',
+      'display_id' => 'viewfield_block_1',
+      'items_to_display' => 100,
+      'arguments' => 'Basic-Page-Test-Term',
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($basic_page_entity->label(), 'h3');
+    $I->canSee($second_basic_page_entity->label(), 'h3');
+
+    $headings = $I->grabMultiple('.ptype-stanford-lists h3');
+    $headings = array_map('trim', $headings);
+
+    $I->assertEquals($basic_page_entity->label(), $headings[0], $basic_page_entity->label()  . ' should be first.');
+    $I->assertEquals($second_basic_page_entity->label(), $headings[1], $second_basic_page_entity->label()  . ' should be second.');
+
+    $node = $this->getNodeWithList($I, [
+      'target_id' => 'stanford_basic_pages',
+      'display_id' => 'card_grid_alpha',
+      'items_to_display' => 100,
+      'arguments' => 'Basic-Page-Test-Term',
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($basic_page_entity->label(), 'h3');
+    $I->canSee($second_basic_page_entity->label(), 'h3');
+
+    $headings = $I->grabMultiple('.ptype-stanford-lists h3');
+    $headings = array_map('trim', $headings);
+
+    $I->assertEquals($second_basic_page_entity->label(), $headings[0], $second_basic_page_entity->label()  . ' should be first.');
+    $I->assertEquals($basic_page_entity->label(), $headings[1], $basic_page_entity->label()  . ' should be second.');
   }
 
   /**

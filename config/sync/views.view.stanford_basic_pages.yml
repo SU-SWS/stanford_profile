@@ -752,48 +752,9 @@ display:
         - 'config:field.storage.node.su_page_description'
         - 'config:field.storage.node.su_page_image'
         - 'config:field.storage.paragraph.su_banner_image'
-  viewfield_block_1:
-    id: viewfield_block_1
-    display_title: 'Card Grid, Creation Date Sort (desc)'
-    display_plugin: viewfield_block
-    position: 2
-    display_options:
-      display_extenders: {  }
-      display_description: ''
-      style:
-        type: html_list
-        options:
-          row_class: ''
-          default_row_class: 1
-          uses_fields: 0
-          type: ul
-          wrapper_class: ''
-          class: 'su-list-unstyled grid-container-3'
-      defaults:
-        style: false
-        row: false
-        arguments: true
-      row:
-        type: 'entity:node'
-        options:
-          relationship: none
-          view_mode: stanford_h3_card
-      block_category: 'Basic Page Type Lists (Views)'
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - 'user.node_grants:view'
-        - user.permissions
-      tags:
-        - 'config:field.storage.node.su_page_description'
-        - 'config:field.storage.node.su_page_image'
-        - 'config:field.storage.paragraph.su_banner_image'
-  viewfield_block_1_graphql:
-    id: viewfield_block_1_graphql
-    display_title: 'GraphQL: Card Grid'
+  basic_page_types_graphql_alphabetical:
+    id: basic_page_types_graphql_alphabetical
+    display_title: 'GraphQL: Alphabetical Title'
     display_plugin: graphql
     position: 99
     display_options:
@@ -819,6 +780,22 @@ display:
             offset: true
             offset_label: offset
           quantity: 9
+      sorts:
+        title:
+          id: title
+          table: node_field_revision
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -868,10 +845,11 @@ display:
       defaults:
         style: false
         row: false
+        sorts: false
         arguments: false
       display_description: ''
       display_extenders: {  }
-      graphql_query_name: stanfordBasicPagesCards
+      graphql_query_name: stanfordBasicPagesAlpha
     cache_metadata:
       max-age: -1
       contexts:
@@ -885,8 +863,8 @@ display:
         - 'config:field.storage.node.su_page_description'
         - 'config:field.storage.node.su_page_image'
         - 'config:field.storage.paragraph.su_banner_image'
-  viewfield_block_2:
-    id: viewfield_block_2
+  card_grid_alpha:
+    id: card_grid_alpha
     display_title: 'Card Grid, Alphabetical Title Sort (asc)'
     display_plugin: viewfield_block
     position: 2
@@ -929,6 +907,45 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: standard
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.su_page_description'
+        - 'config:field.storage.node.su_page_image'
+        - 'config:field.storage.paragraph.su_banner_image'
+  viewfield_block_1:
+    id: viewfield_block_1
+    display_title: 'Card Grid, Creation Date Sort (desc)'
+    display_plugin: viewfield_block
+    position: 2
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      style:
+        type: html_list
+        options:
+          row_class: ''
+          default_row_class: 1
+          uses_fields: 0
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
+      defaults:
+        style: false
+        row: false
+        arguments: true
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: stanford_h3_card
+      block_category: 'Basic Page Type Lists (Views)'
     cache_metadata:
       max-age: -1
       contexts:
