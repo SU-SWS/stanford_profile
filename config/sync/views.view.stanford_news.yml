@@ -912,8 +912,8 @@ display:
         - 'config:field.storage.node.su_news_publishing_date'
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
-  block_1_graphql:
-    id: block_1_graphql
+  graphql_list:
+    id: graphql_list
     display_title: 'GraphQL: List'
     display_plugin: graphql
     position: 9
@@ -1084,7 +1084,7 @@ display:
       use_ajax: true
       display_description: 'List of all content'
       display_extenders: {  }
-      graphql_query_name: stanfordNewsDefaultList
+      graphql_query_name: stanfordNews
     cache_metadata:
       max-age: -1
       contexts:
