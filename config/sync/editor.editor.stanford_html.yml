@@ -38,6 +38,7 @@ settings:
       - '|'
       - codeBlock
       - code
+      - textPartLanguage
       - undo
       - redo
   plugins:
@@ -106,9 +107,11 @@ settings:
       custom_metadata: false
       async_metadata: true
       recommended_enabled: false
+    ckeditor5_language:
+      language_list: un
     ckeditor5_list:
       properties:
-        reversed: false
+        reversed: true
         startIndex: true
       multiBlock: true
     ckeditor5_sourceEditing:
