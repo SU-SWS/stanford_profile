@@ -34,17 +34,17 @@ settings:
       multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags:
-        - '<h2 id class>'
-        - '<h3 id class>'
-        - '<h4 id class>'
-        - '<h5 id class>'
-        - '<h6 id class>'
+        - '<h2 aria-* class dir id lang title>'
+        - '<h3 aria-* class dir id lang title>'
+        - '<h4 aria-* class dir id lang title>'
+        - '<h5 aria-* class dir id lang title>'
+        - '<h6 aria-* class dir id lang title>'
         - '<cite>'
         - '<dd>'
-        - '<div id class>'
+        - '<div aria-* class dir id lang title>'
         - '<blockquote cite>'
-        - '<p id class>'
-        - '<a aria-label hreflang data-entity-substitution data-entity-type data-entity-uuid title id class>'
+        - '<p aria-* class dir id lang title>'
+        - '<a hreflang data-entity-substitution data-entity-type data-entity-uuid aria-* class dir id lang title>'
     ckeditor5_style:
       styles:
         -
