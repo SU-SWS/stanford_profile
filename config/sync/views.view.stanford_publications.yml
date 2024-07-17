@@ -148,9 +148,9 @@ display:
           plugin_id: standard
           order: DESC
           expose:
-            label: ''
+            label: 'Year (su_year)'
             field_identifier: su_year_value
-          exposed: false
+          exposed: true
         su_month_value:
           id: su_month_value
           table: citation__su_month
@@ -303,6 +303,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -508,6 +510,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -566,6 +570,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -771,6 +777,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -985,8 +993,106 @@ display:
             offset: true
             offset_label: offset
           quantity: 9
+      exposed_form:
+        type: graphql
+        options:
+          submit_button: Apply
+          reset_button: 0
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: 1
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      sorts:
+        su_year_value:
+          id: su_year_value
+          table: citation__su_year
+          field: su_year_value
+          relationship: su_publication_citation
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: DESC
+          expose:
+            label: 'Year (su_year)'
+            field_identifier: year
+          exposed: true
+        su_month_value:
+          id: su_month_value
+          table: citation__su_month
+          field: su_month_value
+          relationship: su_publication_citation
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: DESC
+          expose:
+            label: 'Month (su_month)'
+            field_identifier: month
+          exposed: true
+        su_day_value:
+          id: su_day_value
+          table: citation__su_day
+          field: su_day_value
+          relationship: su_publication_citation
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: DESC
+          expose:
+            label: 'Day (su_day)'
+            field_identifier: day
+          exposed: true
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: Title
+            field_identifier: title
+          exposed: true
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: ASC
+          expose:
+            label: 'Authored on'
+            field_identifier: created
+          exposed: true
+          granularity: second
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+          order: ASC
+          expose:
+            label: Changed
+            field_identifier: changed
+          exposed: true
+          granularity: second
       defaults:
         fields: false
+        sorts: false
       display_description: ''
       display_extenders: {  }
       graphql_query_name: stanfordPublications
@@ -997,6 +1103,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1967,6 +2075,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:

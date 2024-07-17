@@ -553,9 +553,9 @@ display:
           plugin_id: date
           order: ASC
           expose:
-            label: ''
+            label: 'Date & Time - Start'
             field_identifier: su_event_date_time_value
-          exposed: false
+          exposed: true
           granularity: second
         created:
           id: created
@@ -683,6 +683,8 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -955,6 +957,8 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
@@ -2059,6 +2063,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -3062,6 +3068,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -3926,6 +3934,78 @@ display:
             offset: true
             offset_label: offset
           quantity: 9
+      exposed_form:
+        type: graphql
+        options:
+          submit_button: Apply
+          reset_button: 0
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: 1
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      sorts:
+        su_event_date_time_value:
+          id: su_event_date_time_value
+          table: node__su_event_date_time
+          field: su_event_date_time_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          order: ASC
+          expose:
+            label: 'Date & Time - Start'
+            field_identifier: startTime
+          exposed: true
+          granularity: second
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: 'Authored on'
+            field_identifier: created
+          exposed: true
+          granularity: second
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: Title
+            field_identifier: title
+          exposed: true
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+          order: ASC
+          expose:
+            label: Changed
+            field_identifier: changed
+          exposed: true
+          granularity: second
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -4090,6 +4170,7 @@ display:
         style: false
         row: false
         fields: false
+        sorts: false
         arguments: false
       display_description: 'List - All Items'
       display_extenders: {  }
@@ -4101,6 +4182,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -4838,6 +4921,8 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -7060,9 +7145,9 @@ display:
           plugin_id: date
           order: DESC
           expose:
-            label: ''
-            field_identifier: su_event_date_time_value
-          exposed: false
+            label: 'Date & Time - Start'
+            field_identifier: startTime
+          exposed: true
           granularity: second
         created:
           id: created
@@ -7076,10 +7161,41 @@ display:
           plugin_id: date
           order: DESC
           expose:
-            label: ''
+            label: 'Authored on'
             field_identifier: created
-          exposed: false
+          exposed: true
           granularity: second
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+          order: ASC
+          expose:
+            label: Changed
+            field_identifier: changed
+          exposed: true
+          granularity: second
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: Title
+            field_identifier: title
+          exposed: true
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -7224,6 +7340,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
