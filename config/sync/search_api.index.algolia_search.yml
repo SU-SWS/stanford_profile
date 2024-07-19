@@ -264,11 +264,38 @@ processor_settings:
   add_url: {  }
   aggregated_field: {  }
   custom_value: {  }
+  decode_html_entities:
+    weights:
+      preprocess_index: -50
+    all_fields: 1
+    fields:
+      - basic_page_type
+      - byline
+      - course_subject
+      - dek
+      - email
+      - event_audience
+      - event_subject
+      - event_type
+      - html
+      - news_type
+      - person_full_title
+      - person_short_title
+      - person_type
+      - phone
+      - photo
+      - publication_type
+      - shared_tags
+      - subheadline
+      - summary
+      - title
+      - type
+      - url
   entity_status: {  }
   entity_type: {  }
   html_filter:
     weights:
-      preprocess_index: -49
+      preprocess_index: -48
       preprocess_query: -6
     all_fields: true
     fields:
@@ -301,7 +328,7 @@ processor_settings:
   rendered_item: {  }
   space_tags:
     weights:
-      preprocess_index: -50
+      preprocess_index: -49
     all_fields: 1
     fields:
       - basic_page_type
