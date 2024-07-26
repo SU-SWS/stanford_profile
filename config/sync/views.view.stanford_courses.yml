@@ -571,7 +571,7 @@ display:
           expose:
             label: Title
             field_identifier: title
-          exposed: true
+          exposed: false
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -732,8 +732,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1391,8 +1389,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -2768,8 +2764,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -3347,8 +3341,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:

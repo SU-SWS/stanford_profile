@@ -110,7 +110,7 @@ display:
           expose:
             label: Changed
             field_identifier: changed
-          exposed: true
+          exposed: false
           granularity: second
       arguments:
         term_node_taxonomy_name_depth:
@@ -273,8 +273,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
@@ -292,8 +290,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }

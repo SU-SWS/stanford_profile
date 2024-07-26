@@ -455,7 +455,7 @@ display:
           expose:
             label: 'Last Name (su_person_last_name)'
             field_identifier: su_person_last_name_value
-          exposed: true
+          exposed: false
         su_person_first_name_value:
           id: su_person_first_name_value
           table: node__su_person_first_name
@@ -578,8 +578,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -946,8 +944,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1788,8 +1784,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
