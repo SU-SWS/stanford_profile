@@ -1,7 +1,7 @@
 _meta:
   version: '1.0'
   entity_type: node
-  uuid: 14768832-f763-4d27-8df6-7cd784886d57
+  uuid: 8ba98fcf-d390-4014-92de-c77a59b30f3b
   bundle: stanford_page
   default_langcode: en
 default:
@@ -11,15 +11,12 @@ default:
   status:
     -
       value: true
-  uid:
-    -
-      target_id: 1
   title:
     -
-      value: Courses
+      value: Events
   created:
     -
-      value: 1652135917
+      value: 1651861294
   promote:
     -
       value: false
@@ -31,7 +28,7 @@ default:
       value: true
   path:
     -
-      alias: /courses
+      alias: /events
       langcode: en
       pathauto: 1
   rh_action:
@@ -43,14 +40,6 @@ default:
   rh_redirect_fallback_action:
     -
       value: bundle_default
-  field_menulink:
-    -
-      menu_name: ''
-      title: ''
-      description: ''
-      parent: ''
-      weight: -50
-      expanded: 1
   layout_builder__layout:
     -
       section:
@@ -153,12 +142,12 @@ default:
               context_mapping: {  }
             weight: -10
             additional: {  }
-          b1d05ff5-d345-4b46-9a82-cca9c82a530f:
-            uuid: b1d05ff5-d345-4b46-9a82-cca9c82a530f
+          96030d90-798c-4801-9cd0-1a26d812a991:
+            uuid: 96030d90-798c-4801-9cd0-1a26d812a991
             region: left
             configuration:
-              id: 'system_menu_block:courses-menu'
-              label: 'Courses Menu'
+              id: 'system_menu_block:stanford-event-types'
+              label: 'Event Types'
               label_display: visible
               provider: system
               level: '1'
@@ -174,7 +163,7 @@ default:
         _meta:
           version: '1.0'
           entity_type: paragraph
-          uuid: 57582f54-3af7-45d0-a930-8977f8b05be8
+          uuid: baa69328-f537-441e-8ad5-fe66a3ba944d
           bundle: stanford_layout
           default_langcode: en
         default:
@@ -183,7 +172,7 @@ default:
               value: true
           created:
             -
-              value: 1694548906
+              value: 1694548885
           behavior_settings:
             -
               value:
@@ -198,7 +187,7 @@ default:
         _meta:
           version: '1.0'
           entity_type: paragraph
-          uuid: 87adf26e-8152-4041-b1ae-60ba0bb0af3e
+          uuid: 522c2a2d-52c5-4ada-b886-eac9779ecb91
           bundle: stanford_lists
           default_langcode: en
         default:
@@ -207,21 +196,22 @@ default:
               value: true
           created:
             -
-              value: 1694548915
+              value: 1694548890
           behavior_settings:
             -
               value:
                 list_paragraph:
+                  empty_message: 'No events at this time.'
                   hide_heading: true
                 layout_paragraphs:
-                  parent_uuid: 57582f54-3af7-45d0-a930-8977f8b05be8
+                  parent_uuid: baa69328-f537-441e-8ad5-fe66a3ba944d
                   region: main
           su_list_headline:
             -
-              value: "Courses"
+              value: "Events"
           su_list_view:
             -
-              target_id: stanford_courses
-              display_id: default_list_viewfield_block
+              target_id: stanford_events
+              display_id: list_page
               arguments: ''
               items_to_display: ''
