@@ -40,16 +40,19 @@ map_users_name: true
 map_users_mail: true
 map_users_roles:
   administrator: administrator
+  anonymous: anonymous
+  contributor: contributor
+  opportunity_editor: opportunity_editor
+  decoupled_site_users: decoupled_site_users
+  layout_builder_user: layout_builder_user
+  site_builder: site_builder
+  site_developer: site_developer
+  site_editor: site_editor
+  site_manager: site_manager
   stanford_faculty: stanford_faculty
   stanford_staff: stanford_staff
   stanford_student: stanford_student
-  contributor: contributor
-  site_manager: site_manager
-  site_editor: site_editor
-  site_builder: site_builder
-  site_developer: site_developer
-  layout_builder_user: layout_builder_user
-  decoupled_site_users: decoupled_site_users
+  su_site_embedder: su_site_embedder
 create_users: true
 sync_name: true
 sync_mail: true

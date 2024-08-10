@@ -1,0 +1,14 @@
+uuid: 51fe3b5b-b3d2-43d5-9cfb-f0aacefa51b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.opportunity_editor
+  module:
+    - user
+id: user_add_role_action.opportunity_editor
+label: 'Add the Opportunity Editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: opportunity_editor
