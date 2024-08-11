@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - node.type.stanford_opportunity
+    - taxonomy.vocabulary.opportunity_sponsor
+    - taxonomy.vocabulary.opportunity_type
   module:
     - node
     - role_delegation
+    - taxonomy
     - view_unpublished
 id: opportunity_editor
 label: 'Opportunity Editor'
@@ -15,9 +18,13 @@ is_admin: null
 permissions:
   - 'assign opportunity_editor role'
   - 'create stanford_opportunity content'
+  - 'create terms in opportunity_sponsor'
+  - 'create terms in opportunity_type'
   - 'delete any stanford_opportunity content'
   - 'delete own stanford_opportunity content'
   - 'delete stanford_opportunity revisions'
+  - 'delete terms in opportunity_sponsor'
+  - 'delete terms in opportunity_type'
   - 'edit any stanford_opportunity content'
   - 'edit own stanford_opportunity content'
   - 'revert stanford_opportunity revisions'
