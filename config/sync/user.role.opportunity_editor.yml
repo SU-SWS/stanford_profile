@@ -6,9 +6,15 @@ dependencies:
     - node.type.stanford_opportunity
     - taxonomy.vocabulary.opportunity_sponsor
     - taxonomy.vocabulary.opportunity_tag_1
+    - taxonomy.vocabulary.opportunity_tag_10
     - taxonomy.vocabulary.opportunity_tag_2
     - taxonomy.vocabulary.opportunity_tag_3
     - taxonomy.vocabulary.opportunity_tag_4
+    - taxonomy.vocabulary.opportunity_tag_5
+    - taxonomy.vocabulary.opportunity_tag_6
+    - taxonomy.vocabulary.opportunity_tag_7
+    - taxonomy.vocabulary.opportunity_tag_8
+    - taxonomy.vocabulary.opportunity_tag_9
     - taxonomy.vocabulary.opportunity_type
   module:
     - node
@@ -24,25 +30,43 @@ permissions:
   - 'create stanford_opportunity content'
   - 'create terms in opportunity_sponsor'
   - 'create terms in opportunity_tag_1'
+  - 'create terms in opportunity_tag_10'
   - 'create terms in opportunity_tag_2'
   - 'create terms in opportunity_tag_3'
   - 'create terms in opportunity_tag_4'
+  - 'create terms in opportunity_tag_5'
+  - 'create terms in opportunity_tag_6'
+  - 'create terms in opportunity_tag_7'
+  - 'create terms in opportunity_tag_8'
+  - 'create terms in opportunity_tag_9'
   - 'create terms in opportunity_type'
   - 'delete any stanford_opportunity content'
   - 'delete own stanford_opportunity content'
   - 'delete stanford_opportunity revisions'
   - 'delete terms in opportunity_sponsor'
   - 'delete terms in opportunity_tag_1'
+  - 'delete terms in opportunity_tag_10'
   - 'delete terms in opportunity_tag_2'
   - 'delete terms in opportunity_tag_3'
   - 'delete terms in opportunity_tag_4'
+  - 'delete terms in opportunity_tag_5'
+  - 'delete terms in opportunity_tag_6'
+  - 'delete terms in opportunity_tag_7'
+  - 'delete terms in opportunity_tag_8'
+  - 'delete terms in opportunity_tag_9'
   - 'delete terms in opportunity_type'
   - 'edit any stanford_opportunity content'
   - 'edit own stanford_opportunity content'
   - 'edit terms in opportunity_tag_1'
+  - 'edit terms in opportunity_tag_10'
   - 'edit terms in opportunity_tag_2'
   - 'edit terms in opportunity_tag_3'
   - 'edit terms in opportunity_tag_4'
+  - 'edit terms in opportunity_tag_5'
+  - 'edit terms in opportunity_tag_6'
+  - 'edit terms in opportunity_tag_7'
+  - 'edit terms in opportunity_tag_8'
+  - 'edit terms in opportunity_tag_9'
   - 'revert stanford_opportunity revisions'
   - 'view any unpublished stanford_opportunity content'
   - 'view stanford_opportunity revisions'
