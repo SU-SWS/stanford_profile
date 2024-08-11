@@ -14,7 +14,9 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_eligibility
     - field.field.node.stanford_opportunity.su_opp_image
     - field.field.node.stanford_opportunity.su_opp_learn_more
+    - field.field.node.stanford_opportunity.su_opp_source
     - field.field.node.stanford_opportunity.su_opp_start_date
+    - field.field.node.stanford_opportunity.su_opp_status
     - node.type.stanford_opportunity
   module:
     - text
@@ -48,4 +50,6 @@ hidden:
   su_opp_eligibility: true
   su_opp_image: true
   su_opp_learn_more: true
+  su_opp_source: true
   su_opp_start_date: true
+  su_opp_status: true
