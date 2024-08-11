@@ -1,0 +1,21 @@
+uuid: 4cbc49d4-caff-4bc2-acc7-bec8ec2bfd97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_contact_phone
+    - node.type.stanford_opportunity
+  module:
+    - telephone
+id: node.stanford_opportunity.su_opp_contact_phone
+field_name: su_opp_contact_phone
+entity_type: node
+bundle: stanford_opportunity
+label: 'Contact Phone'
+description: 'Enter the phone number for the main contact for this Opportunity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

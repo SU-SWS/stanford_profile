@@ -4,8 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.stanford_opportunity.body
+    - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_contact_email
+    - field.field.node.stanford_opportunity.su_opp_contact_name
+    - field.field.node.stanford_opportunity.su_opp_contact_phone
+    - field.field.node.stanford_opportunity.su_opp_cta_url
     - node.type.stanford_opportunity
   module:
+    - datetime
+    - link
     - text
     - user
 id: node.stanford_opportunity.default
@@ -24,6 +31,49 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 100
+    region: content
+  su_opp_application_deadline:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  su_opp_contact_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  su_opp_contact_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  su_opp_contact_phone:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  su_opp_cta_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 103
     region: content
 hidden:
   search_api_excerpt: true

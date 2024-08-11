@@ -1,0 +1,23 @@
+uuid: 491d8b27-49a7-4d16-be2f-f87b6bf9a17e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_cta_url
+    - node.type.stanford_opportunity
+  module:
+    - link
+id: node.stanford_opportunity.su_opp_cta_url
+field_name: su_opp_cta_url
+entity_type: node
+bundle: stanford_opportunity
+label: 'Call to Action'
+description: 'Enter a URL to the main Call to Action for this opportunity. This could be the registration link, application form, page to schedule an appointment, etc.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link
