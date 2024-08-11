@@ -1,28 +1,25 @@
-uuid: 239d0417-271d-4acf-adb7-414be7d3e428
+uuid: 8cc4d029-0e2f-405c-bae1-9220b871ef78
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.stanford_opportunity.body
+    - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_contact_email
+    - field.field.node.stanford_opportunity.su_opp_contact_name
+    - field.field.node.stanford_opportunity.su_opp_contact_phone
+    - field.field.node.stanford_opportunity.su_opp_cta_url
     - node.type.stanford_opportunity
   module:
+    - datetime
+    - link
     - path
-    - text
+    - telephone
 id: node.stanford_opportunity.default
 targetEntityType: node
 bundle: stanford_opportunity
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 121
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 10
@@ -56,6 +53,43 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  su_opp_application_deadline:
+    type: datetime_default
+    weight: 121
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  su_opp_contact_email:
+    type: email_default
+    weight: 123
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  su_opp_contact_name:
+    type: string_textfield
+    weight: 124
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_opp_contact_phone:
+    type: telephone_default
+    weight: 125
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  su_opp_cta_url:
+    type: link_default
+    weight: 122
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   title:
     type: string_textfield
     weight: -5
@@ -80,5 +114,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  body: true
   publish_on: true
   unpublish_on: true

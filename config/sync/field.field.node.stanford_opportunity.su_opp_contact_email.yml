@@ -1,0 +1,19 @@
+uuid: 5a7773ab-650c-4ae8-a93d-fbff005a3b4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_contact_email
+    - node.type.stanford_opportunity
+id: node.stanford_opportunity.su_opp_contact_email
+field_name: su_opp_contact_email
+entity_type: node
+bundle: stanford_opportunity
+label: 'Contact Email'
+description: 'Enter the primary contact email for this opportunity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

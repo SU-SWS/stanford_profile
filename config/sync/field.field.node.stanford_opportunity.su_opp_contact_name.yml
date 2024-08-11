@@ -1,0 +1,19 @@
+uuid: 9a1e4694-1e0c-4e27-a704-701ebc23cc44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_contact_name
+    - node.type.stanford_opportunity
+id: node.stanford_opportunity.su_opp_contact_name
+field_name: su_opp_contact_name
+entity_type: node
+bundle: stanford_opportunity
+label: 'Contact Name'
+description: 'Enter the name of the main contact for this Opportunity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
