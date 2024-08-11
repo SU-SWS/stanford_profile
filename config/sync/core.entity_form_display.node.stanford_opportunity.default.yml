@@ -8,13 +8,20 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_contact_email
     - field.field.node.stanford_opportunity.su_opp_contact_name
     - field.field.node.stanford_opportunity.su_opp_contact_phone
+    - field.field.node.stanford_opportunity.su_opp_course_code
     - field.field.node.stanford_opportunity.su_opp_cta_url
+    - field.field.node.stanford_opportunity.su_opp_eligibility
+    - field.field.node.stanford_opportunity.su_opp_image
+    - field.field.node.stanford_opportunity.su_opp_learn_more
+    - field.field.node.stanford_opportunity.su_opp_start_date
     - node.type.stanford_opportunity
   module:
     - datetime
     - link
+    - media_library
     - path
     - telephone
+    - text
 id: node.stanford_opportunity.default
 targetEntityType: node
 bundle: stanford_opportunity
@@ -82,6 +89,14 @@ content:
     settings:
       placeholder: ''
     third_party_settings: {  }
+  su_opp_course_code:
+    type: string_textfield
+    weight: 126
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   su_opp_cta_url:
     type: link_default
     weight: 122
@@ -89,6 +104,35 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  su_opp_eligibility:
+    type: text_textarea
+    weight: 128
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  su_opp_image:
+    type: media_library_widget
+    weight: 129
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  su_opp_learn_more:
+    type: link_default
+    weight: 130
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  su_opp_start_date:
+    type: datetime_default
+    weight: 127
+    region: content
+    settings: {  }
     third_party_settings: {  }
   title:
     type: string_textfield

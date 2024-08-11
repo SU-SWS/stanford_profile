@@ -1,0 +1,24 @@
+uuid: a06f34fd-d3a1-4cbf-bce1-5f29a01a578b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_eligibility
+    - filter.format.stanford_minimal_html
+    - node.type.stanford_opportunity
+  module:
+    - text
+id: node.stanford_opportunity.su_opp_eligibility
+field_name: su_opp_eligibility
+entity_type: node
+bundle: stanford_opportunity
+label: Eligibility
+description: 'Who is eligible to apply or take part in this opportunity?'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - stanford_minimal_html
+field_type: text_long
