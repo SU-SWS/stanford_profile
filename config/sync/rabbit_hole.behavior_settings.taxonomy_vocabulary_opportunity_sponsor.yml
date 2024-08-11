@@ -1,0 +1,14 @@
+uuid: 7c6683e3-37ed-4976-819b-78d7f756afca
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.opportunity_sponsor
+id: taxonomy_vocabulary_opportunity_sponsor
+entity_type_id: taxonomy_vocabulary
+entity_id: opportunity_sponsor
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied
