@@ -5,6 +5,10 @@ dependencies:
   config:
     - node.type.stanford_opportunity
     - taxonomy.vocabulary.opportunity_sponsor
+    - taxonomy.vocabulary.opportunity_tag_1
+    - taxonomy.vocabulary.opportunity_tag_2
+    - taxonomy.vocabulary.opportunity_tag_3
+    - taxonomy.vocabulary.opportunity_tag_4
     - taxonomy.vocabulary.opportunity_type
   module:
     - node
@@ -19,11 +23,19 @@ permissions:
   - 'assign opportunity_editor role'
   - 'create stanford_opportunity content'
   - 'create terms in opportunity_sponsor'
+  - 'create terms in opportunity_tag_1'
+  - 'create terms in opportunity_tag_2'
+  - 'create terms in opportunity_tag_3'
+  - 'create terms in opportunity_tag_4'
   - 'create terms in opportunity_type'
   - 'delete any stanford_opportunity content'
   - 'delete own stanford_opportunity content'
   - 'delete stanford_opportunity revisions'
   - 'delete terms in opportunity_sponsor'
+  - 'delete terms in opportunity_tag_1'
+  - 'delete terms in opportunity_tag_2'
+  - 'delete terms in opportunity_tag_3'
+  - 'delete terms in opportunity_tag_4'
   - 'delete terms in opportunity_type'
   - 'edit any stanford_opportunity content'
   - 'edit own stanford_opportunity content'
