@@ -9,7 +9,12 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_contact_email
     - field.field.node.stanford_opportunity.su_opp_contact_name
     - field.field.node.stanford_opportunity.su_opp_contact_phone
+    - field.field.node.stanford_opportunity.su_opp_course_code
     - field.field.node.stanford_opportunity.su_opp_cta_url
+    - field.field.node.stanford_opportunity.su_opp_eligibility
+    - field.field.node.stanford_opportunity.su_opp_image
+    - field.field.node.stanford_opportunity.su_opp_learn_more
+    - field.field.node.stanford_opportunity.su_opp_start_date
     - node.type.stanford_opportunity
   module:
     - text
@@ -38,4 +43,9 @@ hidden:
   su_opp_contact_email: true
   su_opp_contact_name: true
   su_opp_contact_phone: true
+  su_opp_course_code: true
   su_opp_cta_url: true
+  su_opp_eligibility: true
+  su_opp_image: true
+  su_opp_learn_more: true
+  su_opp_start_date: true

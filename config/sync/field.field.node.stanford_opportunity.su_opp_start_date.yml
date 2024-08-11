@@ -1,0 +1,21 @@
+uuid: 1ef26b12-a39c-4663-9df3-bbda41af11da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_start_date
+    - node.type.stanford_opportunity
+  module:
+    - datetime
+id: node.stanford_opportunity.su_opp_start_date
+field_name: su_opp_start_date
+entity_type: node
+bundle: stanford_opportunity
+label: 'Start Date'
+description: 'The date the Opportunity starts.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
