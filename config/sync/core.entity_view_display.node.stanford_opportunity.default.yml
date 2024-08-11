@@ -13,7 +13,9 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_eligibility
     - field.field.node.stanford_opportunity.su_opp_image
     - field.field.node.stanford_opportunity.su_opp_learn_more
+    - field.field.node.stanford_opportunity.su_opp_source
     - field.field.node.stanford_opportunity.su_opp_start_date
+    - field.field.node.stanford_opportunity.su_opp_status
     - node.type.stanford_opportunity
   module:
     - datetime
@@ -116,6 +118,18 @@ content:
     third_party_settings: {  }
     weight: 111
     region: content
+  su_opp_source:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 112
+    region: content
   su_opp_start_date:
     type: datetime_default
     label: above
@@ -124,6 +138,16 @@ content:
       format_type: medium
     third_party_settings: {  }
     weight: 108
+    region: content
+  su_opp_status:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 113
     region: content
 hidden:
   search_api_excerpt: true
