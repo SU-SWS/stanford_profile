@@ -1,0 +1,24 @@
+uuid: da62aa94-53e8-4e78-bbd0-dff404d4bb6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_prerequisites
+    - filter.format.stanford_minimal_html
+    - node.type.stanford_opportunity
+  module:
+    - text
+id: node.stanford_opportunity.su_opp_prerequisites
+field_name: su_opp_prerequisites
+entity_type: node
+bundle: stanford_opportunity
+label: Prerequisites
+description: 'What are the prerequisites to participate in this opportunity?'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - stanford_minimal_html
+field_type: text_long

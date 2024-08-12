@@ -6,17 +6,22 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.stanford_opportunity.body
     - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_components
     - field.field.node.stanford_opportunity.su_opp_contact_email
     - field.field.node.stanford_opportunity.su_opp_contact_name
     - field.field.node.stanford_opportunity.su_opp_contact_phone
+    - field.field.node.stanford_opportunity.su_opp_contact_url
     - field.field.node.stanford_opportunity.su_opp_course_code
     - field.field.node.stanford_opportunity.su_opp_cta_url
     - field.field.node.stanford_opportunity.su_opp_eligibility
     - field.field.node.stanford_opportunity.su_opp_image
     - field.field.node.stanford_opportunity.su_opp_learn_more
+    - field.field.node.stanford_opportunity.su_opp_open_date
+    - field.field.node.stanford_opportunity.su_opp_prerequisites
     - field.field.node.stanford_opportunity.su_opp_source
     - field.field.node.stanford_opportunity.su_opp_start_date
     - field.field.node.stanford_opportunity.su_opp_status
+    - field.field.node.stanford_opportunity.su_opp_summary
     - node.type.stanford_opportunity
   module:
     - text
@@ -42,14 +47,19 @@ content:
 hidden:
   search_api_excerpt: true
   su_opp_application_deadline: true
+  su_opp_components: true
   su_opp_contact_email: true
   su_opp_contact_name: true
   su_opp_contact_phone: true
+  su_opp_contact_url: true
   su_opp_course_code: true
   su_opp_cta_url: true
   su_opp_eligibility: true
   su_opp_image: true
   su_opp_learn_more: true
+  su_opp_open_date: true
+  su_opp_prerequisites: true
   su_opp_source: true
   su_opp_start_date: true
   su_opp_status: true
+  su_opp_summary: true

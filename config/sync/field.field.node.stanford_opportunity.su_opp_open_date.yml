@@ -1,0 +1,21 @@
+uuid: 42483861-2075-4ed8-9a6e-0f755ada5246
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_open_date
+    - node.type.stanford_opportunity
+  module:
+    - datetime
+id: node.stanford_opportunity.su_opp_open_date
+field_name: su_opp_open_date
+entity_type: node
+bundle: stanford_opportunity
+label: 'Applications Open '
+description: 'The date that applications or registration is first available.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
