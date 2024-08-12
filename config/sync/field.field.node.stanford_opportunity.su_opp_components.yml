@@ -1,0 +1,83 @@
+uuid: 78c24825-ee7e-498d-99bb-523a0d3d1280
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_components
+    - node.type.stanford_opportunity
+    - paragraphs.paragraphs_type.stanford_banner
+    - paragraphs.paragraphs_type.stanford_card
+    - paragraphs.paragraphs_type.stanford_entity
+    - paragraphs.paragraphs_type.stanford_gallery
+    - paragraphs.paragraphs_type.stanford_layout
+    - paragraphs.paragraphs_type.stanford_lists
+    - paragraphs.paragraphs_type.stanford_media_caption
+    - paragraphs.paragraphs_type.stanford_spacer
+    - paragraphs.paragraphs_type.stanford_wysiwyg
+  module:
+    - entity_reference_revisions
+id: node.stanford_opportunity.su_opp_components
+field_name: su_opp_components
+entity_type: node
+bundle: stanford_opportunity
+label: Paragraphs
+description: 'Add additional content that displays under the body text on the Opportunity page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      stanford_banner: stanford_banner
+      stanford_card: stanford_card
+      stanford_entity: stanford_entity
+      stanford_gallery: stanford_gallery
+      stanford_layout: stanford_layout
+      stanford_lists: stanford_lists
+      stanford_media_caption: stanford_media_caption
+      stanford_spacer: stanford_spacer
+      stanford_wysiwyg: stanford_wysiwyg
+    negate: 0
+    target_bundles_drag_drop:
+      stanford_accordion:
+        weight: 14
+        enabled: false
+      stanford_banner:
+        weight: 15
+        enabled: true
+      stanford_card:
+        weight: 16
+        enabled: true
+      stanford_entity:
+        weight: 17
+        enabled: true
+      stanford_gallery:
+        weight: 18
+        enabled: true
+      stanford_layout:
+        weight: 19
+        enabled: true
+      stanford_lists:
+        weight: 20
+        enabled: true
+      stanford_media_caption:
+        weight: 21
+        enabled: true
+      stanford_page_title_banner:
+        weight: 22
+        enabled: false
+      stanford_person_cta:
+        weight: 23
+        enabled: false
+      stanford_schedule:
+        weight: 24
+        enabled: false
+      stanford_spacer:
+        weight: 25
+        enabled: true
+      stanford_wysiwyg:
+        weight: 26
+        enabled: true
+field_type: entity_reference_revisions

@@ -5,20 +5,26 @@ dependencies:
   config:
     - field.field.node.stanford_opportunity.body
     - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_components
     - field.field.node.stanford_opportunity.su_opp_contact_email
     - field.field.node.stanford_opportunity.su_opp_contact_name
     - field.field.node.stanford_opportunity.su_opp_contact_phone
+    - field.field.node.stanford_opportunity.su_opp_contact_url
     - field.field.node.stanford_opportunity.su_opp_course_code
     - field.field.node.stanford_opportunity.su_opp_cta_url
     - field.field.node.stanford_opportunity.su_opp_eligibility
     - field.field.node.stanford_opportunity.su_opp_image
     - field.field.node.stanford_opportunity.su_opp_learn_more
+    - field.field.node.stanford_opportunity.su_opp_open_date
+    - field.field.node.stanford_opportunity.su_opp_prerequisites
     - field.field.node.stanford_opportunity.su_opp_source
     - field.field.node.stanford_opportunity.su_opp_start_date
     - field.field.node.stanford_opportunity.su_opp_status
+    - field.field.node.stanford_opportunity.su_opp_summary
     - node.type.stanford_opportunity
   module:
     - datetime
+    - entity_reference_revisions
     - link
     - text
     - user
@@ -48,6 +54,15 @@ content:
     third_party_settings: {  }
     weight: 102
     region: content
+  su_opp_components:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 116
+    region: content
   su_opp_contact_email:
     type: basic_string
     label: above
@@ -69,6 +84,18 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 106
+    region: content
+  su_opp_contact_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 117
     region: content
   su_opp_course_code:
     type: string
@@ -118,6 +145,22 @@ content:
     third_party_settings: {  }
     weight: 111
     region: content
+  su_opp_open_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  su_opp_prerequisites:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 118
+    region: content
   su_opp_source:
     type: link
     label: above
@@ -148,6 +191,13 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 113
+    region: content
+  su_opp_summary:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 115
     region: content
 hidden:
   search_api_excerpt: true

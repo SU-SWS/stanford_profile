@@ -5,22 +5,28 @@ dependencies:
   config:
     - field.field.node.stanford_opportunity.body
     - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_components
     - field.field.node.stanford_opportunity.su_opp_contact_email
     - field.field.node.stanford_opportunity.su_opp_contact_name
     - field.field.node.stanford_opportunity.su_opp_contact_phone
+    - field.field.node.stanford_opportunity.su_opp_contact_url
     - field.field.node.stanford_opportunity.su_opp_course_code
     - field.field.node.stanford_opportunity.su_opp_cta_url
     - field.field.node.stanford_opportunity.su_opp_eligibility
     - field.field.node.stanford_opportunity.su_opp_image
     - field.field.node.stanford_opportunity.su_opp_learn_more
+    - field.field.node.stanford_opportunity.su_opp_open_date
+    - field.field.node.stanford_opportunity.su_opp_prerequisites
     - field.field.node.stanford_opportunity.su_opp_source
     - field.field.node.stanford_opportunity.su_opp_start_date
     - field.field.node.stanford_opportunity.su_opp_status
+    - field.field.node.stanford_opportunity.su_opp_summary
     - node.type.stanford_opportunity
   module:
     - datetime
     - link
     - media_library
+    - paragraphs
     - path
     - telephone
     - text
@@ -68,6 +74,24 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  su_opp_components:
+    type: paragraphs
+    weight: 135
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
   su_opp_contact_email:
     type: email_default
     weight: 123
@@ -90,6 +114,14 @@ content:
     region: content
     settings:
       placeholder: ''
+    third_party_settings: {  }
+  su_opp_contact_url:
+    type: link_default
+    weight: 136
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   su_opp_course_code:
     type: string_textfield
@@ -130,6 +162,20 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  su_opp_open_date:
+    type: datetime_default
+    weight: 133
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  su_opp_prerequisites:
+    type: text_textarea
+    weight: 137
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   su_opp_source:
     type: link_default
     weight: 131
@@ -150,6 +196,14 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  su_opp_summary:
+    type: text_textarea
+    weight: 134
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   title:
     type: string_textfield

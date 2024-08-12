@@ -1,0 +1,23 @@
+uuid: 3d82c39a-14ce-497b-a9c0-66946ac3236b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_contact_url
+    - node.type.stanford_opportunity
+  module:
+    - link
+id: node.stanford_opportunity.su_opp_contact_url
+field_name: su_opp_contact_url
+entity_type: node
+bundle: stanford_opportunity
+label: 'Contact Link'
+description: "Enter the site URL for the contact. Often this is the Opportunity Sponsor's site."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link
