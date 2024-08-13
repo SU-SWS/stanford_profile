@@ -18,9 +18,11 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_open_date
     - field.field.node.stanford_opportunity.su_opp_prerequisites
     - field.field.node.stanford_opportunity.su_opp_source
+    - field.field.node.stanford_opportunity.su_opp_sponsor
     - field.field.node.stanford_opportunity.su_opp_start_date
     - field.field.node.stanford_opportunity.su_opp_status
     - field.field.node.stanford_opportunity.su_opp_summary
+    - field.field.node.stanford_opportunity.su_opp_type
     - node.type.stanford_opportunity
   module:
     - datetime
@@ -184,6 +186,16 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  su_opp_sponsor:
+    type: entity_reference_autocomplete
+    weight: 138
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   su_opp_start_date:
     type: datetime_default
     weight: 127
@@ -203,6 +215,16 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  su_opp_type:
+    type: entity_reference_autocomplete
+    weight: 139
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   title:
