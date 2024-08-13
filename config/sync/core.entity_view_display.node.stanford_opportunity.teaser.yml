@@ -19,9 +19,11 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_open_date
     - field.field.node.stanford_opportunity.su_opp_prerequisites
     - field.field.node.stanford_opportunity.su_opp_source
+    - field.field.node.stanford_opportunity.su_opp_sponsor
     - field.field.node.stanford_opportunity.su_opp_start_date
     - field.field.node.stanford_opportunity.su_opp_status
     - field.field.node.stanford_opportunity.su_opp_summary
+    - field.field.node.stanford_opportunity.su_opp_type
     - node.type.stanford_opportunity
   module:
     - text
@@ -60,6 +62,8 @@ hidden:
   su_opp_open_date: true
   su_opp_prerequisites: true
   su_opp_source: true
+  su_opp_sponsor: true
   su_opp_start_date: true
   su_opp_status: true
   su_opp_summary: true
+  su_opp_type: true
