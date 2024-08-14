@@ -22,9 +22,12 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_start_date
     - field.field.node.stanford_opportunity.su_opp_status
     - field.field.node.stanford_opportunity.su_opp_summary
+    - field.field.node.stanford_opportunity.su_opp_tags
     - field.field.node.stanford_opportunity.su_opp_type
     - node.type.stanford_opportunity
   module:
+    - change_labels
+    - cshs
     - datetime
     - link
     - media_library
@@ -217,6 +220,24 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  su_opp_tags:
+    type: cshs
+    weight: 140
+    region: content
+    settings:
+      save_lineage: false
+      force_deepest: false
+      parent: null
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
+    third_party_settings:
+      change_labels:
+        add_another: ''
+        field_label_overwrite: ''
+        hide_add_another: 0
+        force_single_cardinality: 0
   su_opp_type:
     type: entity_reference_autocomplete
     weight: 139
