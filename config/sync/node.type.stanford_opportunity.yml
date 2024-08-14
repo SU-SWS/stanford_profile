@@ -8,8 +8,9 @@ dependencies:
     - scheduler
 third_party_settings:
   menu_ui:
-    available_menus: {  }
-    parent: ''
+    available_menus:
+      - main
+    parent: 'main:'
   node_revision_delete:
     minimum_revisions_to_keep: 5
     minimum_age_to_delete: 0
