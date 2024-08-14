@@ -27,10 +27,50 @@ dependencies:
     - node.type.stanford_opportunity
   module:
     - datetime
+    - element_class_formatter
     - entity_reference_revisions
+    - field_group
     - link
     - text
     - user
+third_party_settings:
+  field_group:
+    group_su_opp_details:
+      children:
+        - su_opp_image
+        - su_opp_status
+        - su_opp_open_date
+        - su_opp_application_deadline
+        - su_opp_eligibility
+        - su_opp_start_date
+        - su_opp_type
+        - su_opp_course_code
+        - su_opp_tags
+      label: 'Opportunity Details Card'
+      parent_name: group_su_opp_sidebar
+      region: content
+      weight: 5
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        label_as_html: false
+        description: ''
+    group_su_opp_sidebar:
+      children:
+        - group_su_opp_details
+        - su_opp_learn_more
+      label: 'Opportunity Sidebar'
+      parent_name: ''
+      region: content
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
 id: node.stanford_opportunity.default
 targetEntityType: node
 bundle: stanford_opportunity
@@ -41,12 +81,12 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
   su_opp_application_deadline:
     type: datetime_default
@@ -55,7 +95,7 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 102
+    weight: 8
     region: content
   su_opp_components:
     type: entity_reference_revisions_entity_view
@@ -64,14 +104,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 116
+    weight: 10
     region: content
   su_opp_contact_email:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 104
+    weight: 13
     region: content
   su_opp_contact_name:
     type: string
@@ -79,14 +119,16 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 105
+    weight: 11
     region: content
   su_opp_contact_phone:
-    type: basic_string
+    type: telephone_link_class
     label: above
-    settings: {  }
+    settings:
+      title: ''
+      class: ''
     third_party_settings: {  }
-    weight: 106
+    weight: 12
     region: content
   su_opp_contact_url:
     type: link
@@ -98,7 +140,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 117
+    weight: 14
     region: content
   su_opp_course_code:
     type: string
@@ -106,7 +148,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 107
+    weight: 12
     region: content
   su_opp_cta_url:
     type: link
@@ -118,14 +160,14 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 103
+    weight: 3
     region: content
   su_opp_eligibility:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 109
+    weight: 9
     region: content
   su_opp_image:
     type: entity_reference_entity_view
@@ -134,7 +176,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 110
+    weight: 5
     region: content
   su_opp_learn_more:
     type: link
@@ -146,7 +188,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 111
+    weight: 6
     region: content
   su_opp_open_date:
     type: datetime_default
@@ -155,14 +197,14 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 114
+    weight: 7
     region: content
   su_opp_prerequisites:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 118
+    weight: 8
     region: content
   su_opp_source:
     type: link
@@ -174,7 +216,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 112
+    weight: 7
     region: content
   su_opp_sponsor:
     type: entity_reference_label
@@ -182,7 +224,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 119
+    weight: 9
     region: content
   su_opp_start_date:
     type: datetime_default
@@ -191,7 +233,7 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 108
+    weight: 10
     region: content
   su_opp_status:
     type: boolean
@@ -201,14 +243,14 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 113
+    weight: 6
     region: content
   su_opp_summary:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 115
+    weight: 2
     region: content
   su_opp_tags:
     type: entity_reference_label
@@ -216,7 +258,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 121
+    weight: 13
     region: content
   su_opp_type:
     type: entity_reference_label
@@ -224,7 +266,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 120
+    weight: 11
     region: content
 hidden:
   search_api_excerpt: true
