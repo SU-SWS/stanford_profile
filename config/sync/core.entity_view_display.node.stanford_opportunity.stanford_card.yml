@@ -1,0 +1,127 @@
+uuid: 7818cf80-84ee-4ad6-a830-eefdf9719702
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.stanford_card
+    - field.field.node.stanford_opportunity.body
+    - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_components
+    - field.field.node.stanford_opportunity.su_opp_contact_email
+    - field.field.node.stanford_opportunity.su_opp_contact_name
+    - field.field.node.stanford_opportunity.su_opp_contact_phone
+    - field.field.node.stanford_opportunity.su_opp_contact_url
+    - field.field.node.stanford_opportunity.su_opp_course_code
+    - field.field.node.stanford_opportunity.su_opp_cta_url
+    - field.field.node.stanford_opportunity.su_opp_eligibility
+    - field.field.node.stanford_opportunity.su_opp_image
+    - field.field.node.stanford_opportunity.su_opp_learn_more
+    - field.field.node.stanford_opportunity.su_opp_open_date
+    - field.field.node.stanford_opportunity.su_opp_prerequisites
+    - field.field.node.stanford_opportunity.su_opp_source
+    - field.field.node.stanford_opportunity.su_opp_sponsor
+    - field.field.node.stanford_opportunity.su_opp_start_date
+    - field.field.node.stanford_opportunity.su_opp_status
+    - field.field.node.stanford_opportunity.su_opp_summary
+    - field.field.node.stanford_opportunity.su_opp_tags
+    - field.field.node.stanford_opportunity.su_opp_type
+    - node.type.stanford_opportunity
+  module:
+    - field_group
+    - layout_builder
+    - stanford_media
+    - text
+    - user
+third_party_settings:
+  field_group:
+    group_su_opp_details:
+      children:
+        - su_opp_image
+        - su_opp_sponsor
+        - su_opp_type
+        - su_opp_summary
+      label: 'Opportunity Details Card'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        label_as_html: false
+        description: ''
+    group_su_opp_sidebar:
+      children: {  }
+      label: 'Opportunity Sidebar'
+      parent_name: ''
+      region: hidden
+      weight: 11
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.stanford_opportunity.stanford_card
+targetEntityType: node
+bundle: stanford_opportunity
+mode: stanford_card
+content:
+  su_opp_image:
+    type: media_responsive_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      image_style: null
+      remove_alt: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  su_opp_sponsor:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  su_opp_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  su_opp_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+hidden:
+  body: true
+  links: true
+  search_api_excerpt: true
+  su_opp_application_deadline: true
+  su_opp_components: true
+  su_opp_contact_email: true
+  su_opp_contact_name: true
+  su_opp_contact_phone: true
+  su_opp_contact_url: true
+  su_opp_course_code: true
+  su_opp_cta_url: true
+  su_opp_eligibility: true
+  su_opp_learn_more: true
+  su_opp_open_date: true
+  su_opp_prerequisites: true
+  su_opp_source: true
+  su_opp_start_date: true
+  su_opp_status: true
+  su_opp_tags: true
