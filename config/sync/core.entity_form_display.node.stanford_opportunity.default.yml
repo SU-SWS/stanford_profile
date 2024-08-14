@@ -29,77 +29,163 @@ dependencies:
     - change_labels
     - cshs
     - datetime
+    - field_group
+    - layout_paragraphs
     - link
     - media_library
-    - paragraphs
     - path
     - telephone
     - text
+third_party_settings:
+  field_group:
+    group_contact_information:
+      children:
+        - su_opp_contact_name
+        - su_opp_contact_email
+        - su_opp_contact_phone
+        - su_opp_contact_url
+      label: 'Contact Information'
+      region: content
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: 'Contact information for this opportunity. Displays on the individual opportunity page.'
+        required_fields: true
+    group_taxonomy:
+      children:
+        - su_opp_type
+        - su_opp_prerequisites
+        - su_opp_eligibility
+        - su_opp_course_code
+        - su_opp_cta_url
+        - su_opp_learn_more
+      label: 'Opportunity Sidebar'
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: 'This will be displayed on the sidebar'
+        required_fields: true
+    group_dates:
+      children:
+        - su_opp_status
+        - su_opp_open_date
+        - su_opp_application_deadline
+        - su_opp_start_date
+      label: 'Opportunity Dates & Deadlines'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_basics:
+      children:
+        - su_opp_image
+        - su_opp_sponsor
+        - su_opp_summary
+        - su_opp_source
+        - su_opp_tags
+      label: Basics
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
 id: node.stanford_opportunity.default
 targetEntityType: node
 bundle: stanford_opportunity
 mode: default
 content:
+  body:
+    type: text_textarea_with_summary
+    weight: 5
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 15
+    weight: 10
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 120
+    weight: 7
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 16
+    weight: 11
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_opp_application_deadline:
     type: datetime_default
-    weight: 121
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   su_opp_components:
-    type: paragraphs
-    weight: 135
+    type: layout_paragraphs
+    weight: 6
     region: content
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      closed_mode: summary
-      autocollapse: none
-      closed_mode_threshold: 0
-      add_mode: dropdown
+      view_mode: default
+      preview_view_mode: default
       form_display_mode: default
-      default_paragraph_type: ''
-      features:
-        collapse_edit_all: collapse_edit_all
-        duplicate: duplicate
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
     third_party_settings: {  }
   su_opp_contact_email:
     type: email_default
-    weight: 123
+    weight: 16
     region: content
     settings:
       placeholder: ''
@@ -107,7 +193,7 @@ content:
     third_party_settings: {  }
   su_opp_contact_name:
     type: string_textfield
-    weight: 124
+    weight: 15
     region: content
     settings:
       size: 60
@@ -115,14 +201,14 @@ content:
     third_party_settings: {  }
   su_opp_contact_phone:
     type: telephone_default
-    weight: 125
+    weight: 17
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   su_opp_contact_url:
     type: link_default
-    weight: 136
+    weight: 18
     region: content
     settings:
       placeholder_url: ''
@@ -130,7 +216,7 @@ content:
     third_party_settings: {  }
   su_opp_course_code:
     type: string_textfield
-    weight: 126
+    weight: 12
     region: content
     settings:
       size: 60
@@ -138,7 +224,7 @@ content:
     third_party_settings: {  }
   su_opp_cta_url:
     type: link_default
-    weight: 122
+    weight: 13
     region: content
     settings:
       placeholder_url: ''
@@ -146,7 +232,7 @@ content:
     third_party_settings: {  }
   su_opp_eligibility:
     type: text_textarea
-    weight: 128
+    weight: 11
     region: content
     settings:
       rows: 5
@@ -154,14 +240,14 @@ content:
     third_party_settings: {  }
   su_opp_image:
     type: media_library_widget
-    weight: 129
+    weight: 2
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   su_opp_learn_more:
     type: link_default
-    weight: 130
+    weight: 15
     region: content
     settings:
       placeholder_url: ''
@@ -169,13 +255,13 @@ content:
     third_party_settings: {  }
   su_opp_open_date:
     type: datetime_default
-    weight: 133
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   su_opp_prerequisites:
     type: text_textarea
-    weight: 137
+    weight: 10
     region: content
     settings:
       rows: 5
@@ -183,7 +269,7 @@ content:
     third_party_settings: {  }
   su_opp_source:
     type: link_default
-    weight: 131
+    weight: 5
     region: content
     settings:
       placeholder_url: ''
@@ -191,7 +277,7 @@ content:
     third_party_settings: {  }
   su_opp_sponsor:
     type: entity_reference_autocomplete
-    weight: 138
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS
@@ -201,20 +287,20 @@ content:
     third_party_settings: {  }
   su_opp_start_date:
     type: datetime_default
-    weight: 127
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   su_opp_status:
     type: boolean_checkbox
-    weight: 132
+    weight: 11
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_opp_summary:
     type: text_textarea
-    weight: 134
+    weight: 4
     region: content
     settings:
       rows: 5
@@ -222,7 +308,7 @@ content:
     third_party_settings: {  }
   su_opp_tags:
     type: cshs
-    weight: 140
+    weight: 6
     region: content
     settings:
       save_lineage: false
@@ -240,7 +326,7 @@ content:
         force_single_cardinality: 0
   su_opp_type:
     type: entity_reference_autocomplete
-    weight: 139
+    weight: 9
     region: content
     settings:
       match_operator: CONTAINS
@@ -250,7 +336,7 @@ content:
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
@@ -258,7 +344,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
@@ -267,11 +353,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  body: true
   publish_on: true
   unpublish_on: true
