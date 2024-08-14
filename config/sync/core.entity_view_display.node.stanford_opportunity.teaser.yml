@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_start_date
     - field.field.node.stanford_opportunity.su_opp_status
     - field.field.node.stanford_opportunity.su_opp_summary
+    - field.field.node.stanford_opportunity.su_opp_tags
     - field.field.node.stanford_opportunity.su_opp_type
     - node.type.stanford_opportunity
   module:
@@ -66,4 +67,5 @@ hidden:
   su_opp_start_date: true
   su_opp_status: true
   su_opp_summary: true
+  su_opp_tags: true
   su_opp_type: true

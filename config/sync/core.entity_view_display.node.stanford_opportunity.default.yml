@@ -22,6 +22,7 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_start_date
     - field.field.node.stanford_opportunity.su_opp_status
     - field.field.node.stanford_opportunity.su_opp_summary
+    - field.field.node.stanford_opportunity.su_opp_tags
     - field.field.node.stanford_opportunity.su_opp_type
     - node.type.stanford_opportunity
   module:
@@ -208,6 +209,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 115
+    region: content
+  su_opp_tags:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 121
     region: content
   su_opp_type:
     type: entity_reference_label
