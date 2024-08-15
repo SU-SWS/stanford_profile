@@ -5,6 +5,7 @@ export interface MenuContentItem {
   parent: string
   items?: MenuContentItem[]
   weight: number
+  expanded?: boolean
 }
 
 export const buildMenuTree = (links: MenuContentItem[], parent = ""): { items?: MenuContentItem[] } => {

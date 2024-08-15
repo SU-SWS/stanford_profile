@@ -1,4 +1,4 @@
-import algoliasearch from 'algoliasearch/lite';
+import {liteClient} from 'algoliasearch/lite';
 import {createIslandWebComponent} from 'preact-island'
 import {HitsProps, InstantSearch, useHits} from 'react-instantsearch';
 import SearchBox from "./search-box";
@@ -10,12 +10,13 @@ import {StanfordHit} from "./hits/hit.types";
 
 const islandName = 'algolia-search'
 
+/* global window */
 const appId = window.drupalSettings?.stanfordAlgolia.appId || process.env.ALGOLIA_APP_ID
 const key = window.drupalSettings?.stanfordAlgolia.searchKey || process.env.ALGOLIA_KEY
 
-const searchClient = algoliasearch(appId, key);
+const searchClient = liteClient(appId, key);
 
-const Hit = ({hit}: HitsProps<StanfordHit>) => {
+const Hit = ({hit}: HitsProps< StanfordHit>) => {
   if (hit.type === 'Event') return <EventHit hit={hit}/>
   if (hit.type === 'News') return <NewsHit hit={hit}/>
 
@@ -34,7 +35,7 @@ const Container = styled.div`
 `
 
 const CustomHits = (props) => {
-  const {hits} = useHits(props);
+  const {items: hits} = useHits(props);
   if (hits.length === 0) return (
     <p>No results for your search. Please try another search.</p>
   )

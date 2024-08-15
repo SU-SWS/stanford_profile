@@ -341,10 +341,11 @@ const MenuItemDivider = styled.div`
 `
 
 const MenuItem = ({id, title, url, items, expanded, level = 0}: {
+  id: string
   title: string,
   url: string,
   items?: MenuContentItem[],
-  expanded: boolean,
+  expanded?: boolean,
   level?: number
 }) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null)
@@ -368,8 +369,8 @@ const MenuItem = ({id, title, url, items, expanded, level = 0}: {
   if (url) {
     isNoLink = false;
     linkUrl = new URL(url.startsWith('/') ? `${window.location.origin}${url}` : url);
-    isCurrent = linkUrl.pathname === window.location.pathname && linkUrl.host === window.location.host;
-    inTrail = linkUrl.host === window.location.host && url != '/' && window.location.pathname.startsWith(linkUrl.pathname) && !isCurrent;
+    isCurrent = linkUrl.pathname === window.location.pathname && linkUrl.host === window.location.host && linkUrl.hash === window.location.hash;
+    inTrail = linkUrl.pathname != "/" && linkUrl.host === window.location.host && url != '/' && window.location.pathname.startsWith(linkUrl.pathname) && !isCurrent;
   }
 
   return (
