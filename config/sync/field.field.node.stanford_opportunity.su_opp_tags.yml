@@ -6,15 +6,6 @@ dependencies:
     - field.storage.node.su_opp_tags
     - node.type.stanford_opportunity
     - taxonomy.vocabulary.opportunity_tag_1
-    - taxonomy.vocabulary.opportunity_tag_10
-    - taxonomy.vocabulary.opportunity_tag_2
-    - taxonomy.vocabulary.opportunity_tag_3
-    - taxonomy.vocabulary.opportunity_tag_4
-    - taxonomy.vocabulary.opportunity_tag_5
-    - taxonomy.vocabulary.opportunity_tag_6
-    - taxonomy.vocabulary.opportunity_tag_7
-    - taxonomy.vocabulary.opportunity_tag_8
-    - taxonomy.vocabulary.opportunity_tag_9
 id: node.stanford_opportunity.su_opp_tags
 field_name: su_opp_tags
 entity_type: node
@@ -30,15 +21,6 @@ settings:
   handler_settings:
     target_bundles:
       opportunity_tag_1: opportunity_tag_1
-      opportunity_tag_2: opportunity_tag_2
-      opportunity_tag_3: opportunity_tag_3
-      opportunity_tag_4: opportunity_tag_4
-      opportunity_tag_5: opportunity_tag_5
-      opportunity_tag_6: opportunity_tag_6
-      opportunity_tag_7: opportunity_tag_7
-      opportunity_tag_8: opportunity_tag_8
-      opportunity_tag_9: opportunity_tag_9
-      opportunity_tag_10: opportunity_tag_10
     sort:
       field: name
       direction: asc
