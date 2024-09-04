@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.stanford_opportunity.body
+    - field.field.node.stanford_opportunity.layout_builder__layout
     - field.field.node.stanford_opportunity.su_opp_application_deadline
     - field.field.node.stanford_opportunity.su_opp_components
     - field.field.node.stanford_opportunity.su_opp_contact_email
@@ -28,6 +29,7 @@ dependencies:
   module:
     - change_labels
     - datetime
+    - field_formatter_class
     - field_group
     - layout_paragraphs
     - link
@@ -139,6 +141,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  layout_builder__layout:
+    type: null
+    weight: 53
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 12
@@ -192,9 +200,16 @@ content:
       preview_view_mode: default
       form_display_mode: default
       nesting_depth: 0
-      require_layouts: 0
+      require_layouts: 1
       empty_message: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      change_labels:
+        add_another: ''
+        field_label_overwrite: ''
+        hide_add_another: 0
+        force_single_cardinality: 0
   su_opp_contact_email:
     type: email_default
     weight: 16
@@ -288,14 +303,10 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   su_opp_sponsor:
-    type: entity_reference_autocomplete
+    type: options_select
     weight: 3
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   su_opp_start_date:
     type: datetime_default

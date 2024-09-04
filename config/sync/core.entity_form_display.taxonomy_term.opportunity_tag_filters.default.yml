@@ -3,13 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.opportunity_tag_1
+    - taxonomy.vocabulary.opportunity_tag_filters
   module:
     - path
     - text
-id: taxonomy_term.opportunity_tag_1.default
+id: taxonomy_term.opportunity_tag_filters.default
 targetEntityType: taxonomy_term
-bundle: opportunity_tag_1
+bundle: opportunity_tag_filters
 mode: default
 content:
   description:

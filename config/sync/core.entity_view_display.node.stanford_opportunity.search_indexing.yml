@@ -1,9 +1,9 @@
-uuid: eacf0e3e-0783-44c6-9012-4c4c9e2b7c47
+uuid: 1916634a-c65b-4f14-a373-226322fb5d44
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.search_indexing
     - field.field.node.stanford_opportunity.body
     - field.field.node.stanford_opportunity.layout_builder__layout
     - field.field.node.stanford_opportunity.su_opp_application_deadline
@@ -28,31 +28,51 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_type
     - node.type.stanford_opportunity
   module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - layout_paragraphs
     - text
     - user
-id: node.stanford_opportunity.teaser
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+id: node.stanford_opportunity.search_indexing
 targetEntityType: node
 bundle: stanford_opportunity
-mode: teaser
+mode: search_indexing
 content:
   body:
-    type: text_summary_or_trimmed
+    type: text_default
     label: hidden
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    weight: 101
-    region: content
-  links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
+    region: content
+  su_opp_components:
+    type: layout_paragraphs
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   layout_builder__layout: true
+  links: true
   search_api_excerpt: true
   su_opp_application_deadline: true
-  su_opp_components: true
   su_opp_contact_email: true
   su_opp_contact_name: true
   su_opp_contact_phone: true
