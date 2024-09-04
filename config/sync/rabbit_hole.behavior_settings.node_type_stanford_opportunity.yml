@@ -8,7 +8,7 @@ id: node_type_stanford_opportunity
 entity_type_id: node_type
 entity_id: stanford_opportunity
 action: page_redirect
-allow_override: 1
+allow_override: 0
 redirect: '[node:su_opp_source:uri]'
 redirect_code: 301
 redirect_fallback_action: display_page

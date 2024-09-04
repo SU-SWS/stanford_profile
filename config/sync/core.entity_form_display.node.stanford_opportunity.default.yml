@@ -27,13 +27,14 @@ dependencies:
     - node.type.stanford_opportunity
   module:
     - change_labels
-    - cshs
     - datetime
     - field_group
     - layout_paragraphs
     - link
     - media_library
     - path
+    - scheduler
+    - stanford_fields
     - telephone
     - text
 third_party_settings:
@@ -150,6 +151,17 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 52
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -307,17 +319,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_opp_tags:
-    type: cshs
+    type: taxonomy_label_hierarchy
     weight: 6
     region: content
-    settings:
-      save_lineage: false
-      force_deepest: false
-      parent: null
-      level_labels: ''
-      hierarchy_depth: 0
-      required_depth: 0
-      none_label: '- Please select -'
+    settings: {  }
     third_party_settings:
       change_labels:
         add_another: ''
@@ -358,5 +363,4 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  publish_on: true
   unpublish_on: true
