@@ -1,0 +1,29 @@
+uuid: 848ec136-e08f-4e62-a7a6-c427c9248333
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_type
+    - taxonomy.vocabulary.site_type
+id: config_pages.stanford_basic_site_settings.su_site_type
+field_name: su_site_type
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Site Type'
+description: 'What type of site is this? Choose the closest one. Used for reporting Stanford Sites use.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      site_type: site_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

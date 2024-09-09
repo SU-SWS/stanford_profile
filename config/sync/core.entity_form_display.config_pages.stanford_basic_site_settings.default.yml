@@ -29,6 +29,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_owner_contact
     - field.field.config_pages.stanford_basic_site_settings.su_site_renewal_due
     - field.field.config_pages.stanford_basic_site_settings.su_site_tech_contact
+    - field.field.config_pages.stanford_basic_site_settings.su_site_type
     - field.field.config_pages.stanford_basic_site_settings.su_site_url
   module:
     - change_labels
@@ -103,6 +104,7 @@ third_party_settings:
         - su_site_tech_contact
         - su_site_a11y_contact
         - su_site_org
+        - su_site_type
       label: 'Site Contacts'
       region: content
       parent_name: group_tabs
@@ -160,7 +162,7 @@ content:
     third_party_settings: {  }
   su_hide_site_search:
     type: boolean_checkbox
-    weight: 7
+    weight: 12
     region: content
     settings:
       display_label: true
@@ -195,21 +197,21 @@ content:
     third_party_settings: {  }
   su_site_algolia:
     type: boolean_checkbox
-    weight: 9
+    weight: 14
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_site_algolia_file:
     type: file_generic
-    weight: 15
+    weight: 20
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   su_site_algolia_id:
     type: string_textfield
-    weight: 11
+    weight: 16
     region: content
     settings:
       size: 60
@@ -217,7 +219,7 @@ content:
     third_party_settings: {  }
   su_site_algolia_index:
     type: string_textfield
-    weight: 14
+    weight: 19
     region: content
     settings:
       size: 60
@@ -225,7 +227,7 @@ content:
     third_party_settings: {  }
   su_site_algolia_key:
     type: string_textfield
-    weight: 12
+    weight: 17
     region: content
     settings:
       size: 60
@@ -233,7 +235,7 @@ content:
     third_party_settings: {  }
   su_site_algolia_search:
     type: string_textfield
-    weight: 13
+    weight: 18
     region: content
     settings:
       size: 60
@@ -241,7 +243,7 @@ content:
     third_party_settings: {  }
   su_site_algolia_ui:
     type: boolean_checkbox
-    weight: 10
+    weight: 15
     region: content
     settings:
       display_label: true
@@ -308,7 +310,7 @@ content:
     third_party_settings: {  }
   su_site_nobots:
     type: boolean_checkbox
-    weight: 8
+    weight: 13
     region: content
     settings:
       display_label: true
@@ -346,6 +348,12 @@ content:
     settings:
       placeholder: ''
       size: 60
+    third_party_settings: {  }
+  su_site_type:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
     third_party_settings: {  }
   su_site_url:
     type: link_default
