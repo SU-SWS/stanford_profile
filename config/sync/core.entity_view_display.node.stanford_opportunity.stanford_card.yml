@@ -1,0 +1,159 @@
+uuid: 7fcf8863-6439-478b-9c8e-412b0de21623
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.stanford_card
+    - field.field.node.stanford_opportunity.body
+    - field.field.node.stanford_opportunity.layout_builder__layout
+    - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_components
+    - field.field.node.stanford_opportunity.su_opp_contact_email
+    - field.field.node.stanford_opportunity.su_opp_contact_name
+    - field.field.node.stanford_opportunity.su_opp_contact_phone
+    - field.field.node.stanford_opportunity.su_opp_contact_url
+    - field.field.node.stanford_opportunity.su_opp_course_code
+    - field.field.node.stanford_opportunity.su_opp_cta_url
+    - field.field.node.stanford_opportunity.su_opp_eligibility
+    - field.field.node.stanford_opportunity.su_opp_image
+    - field.field.node.stanford_opportunity.su_opp_learn_more
+    - field.field.node.stanford_opportunity.su_opp_open_date
+    - field.field.node.stanford_opportunity.su_opp_prerequisites
+    - field.field.node.stanford_opportunity.su_opp_source
+    - field.field.node.stanford_opportunity.su_opp_sponsor
+    - field.field.node.stanford_opportunity.su_opp_start_date
+    - field.field.node.stanford_opportunity.su_opp_status
+    - field.field.node.stanford_opportunity.su_opp_summary
+    - field.field.node.stanford_opportunity.su_opp_tags
+    - field.field.node.stanford_opportunity.su_opp_type
+    - node.type.stanford_opportunity
+  module:
+    - ds
+    - empty_fields
+    - field_formatter_class
+    - field_label
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - smart_trim
+    - stanford_media
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+  ds:
+    layout:
+      id: pattern_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      card_image:
+        - su_opp_image
+      card_headline:
+        - node_title
+      card_body:
+        - su_opp_summary
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          link_target: ''
+          wrapper: ''
+          class: su-card__link
+id: node.stanford_opportunity.stanford_card
+targetEntityType: node
+bundle: stanford_opportunity
+mode: stanford_card
+content:
+  su_opp_image:
+    type: media_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+      image_style: card_1192x596
+      remove_alt: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 0
+    region: card_image
+  su_opp_summary:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 50
+      trim_type: words
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+        replace_tokens: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 2
+    region: card_body
+hidden:
+  body: true
+  layout_builder__layout: true
+  links: true
+  search_api_excerpt: true
+  su_opp_application_deadline: true
+  su_opp_components: true
+  su_opp_contact_email: true
+  su_opp_contact_name: true
+  su_opp_contact_phone: true
+  su_opp_contact_url: true
+  su_opp_course_code: true
+  su_opp_cta_url: true
+  su_opp_eligibility: true
+  su_opp_learn_more: true
+  su_opp_open_date: true
+  su_opp_prerequisites: true
+  su_opp_source: true
+  su_opp_sponsor: true
+  su_opp_start_date: true
+  su_opp_status: true
+  su_opp_tags: true
+  su_opp_type: true

@@ -1,0 +1,22 @@
+uuid: df51e9ce-8c30-45df-b567-5a684958ceeb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: opportunity_nodes
+label: 'Opportunity Nodes'
+type: 'canonical_entities:node'
+pattern: 'opportunities/[node:title]'
+selection_criteria:
+  11c425f0-6864-4af2-868f-f9a89ebb71df:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 11c425f0-6864-4af2-868f-f9a89ebb71df
+    context_mapping:
+      node: node
+    bundles:
+      stanford_opportunity: stanford_opportunity
+selection_logic: and
+weight: -5
+relationships: {  }

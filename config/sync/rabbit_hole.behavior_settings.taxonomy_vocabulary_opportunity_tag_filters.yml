@@ -1,0 +1,14 @@
+uuid: 29e1229f-e17f-4166-b6f8-dcfc5aaa6c5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.opportunity_tag_filters
+id: taxonomy_vocabulary_opportunity_tag_filters
+entity_type_id: taxonomy_vocabulary
+entity_id: opportunity_tag_filters
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

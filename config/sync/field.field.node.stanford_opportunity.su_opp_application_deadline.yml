@@ -1,0 +1,21 @@
+uuid: dd0ddf8c-7c09-4139-b75c-daac2d1d3508
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_application_deadline
+    - node.type.stanford_opportunity
+  module:
+    - datetime
+id: node.stanford_opportunity.su_opp_application_deadline
+field_name: su_opp_application_deadline
+entity_type: node
+bundle: stanford_opportunity
+label: 'Application Deadline'
+description: 'Enter the deadline for applying or signing up for this opportunity'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,21 @@
+uuid: 7091fe46-7873-4630-bc58-f619b4b9ac4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_status
+    - node.type.stanford_opportunity
+id: node.stanford_opportunity.su_opp_status
+field_name: su_opp_status
+entity_type: node
+bundle: stanford_opportunity
+label: Closed
+description: 'Status of the Opportunity. Check this box if the Opportunity should be listed as "Closed."'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Closed
+  off_label: Open
+field_type: boolean

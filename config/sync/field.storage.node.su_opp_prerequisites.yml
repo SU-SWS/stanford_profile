@@ -1,0 +1,19 @@
+uuid: bdad7f4d-8bb6-45ee-940a-c001c4846611
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.su_opp_prerequisites
+field_name: su_opp_prerequisites
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: 3376ba45-5607-478a-af76-2db2e3c7a6ac
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - telephone
+id: node.su_opp_contact_phone
+field_name: su_opp_contact_phone
+entity_type: node
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

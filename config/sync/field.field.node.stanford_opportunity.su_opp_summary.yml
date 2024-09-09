@@ -1,0 +1,24 @@
+uuid: ea4cad2c-4a77-470a-a008-b7468ca339b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_summary
+    - filter.format.stanford_minimal_html
+    - node.type.stanford_opportunity
+  module:
+    - text
+id: node.stanford_opportunity.su_opp_summary
+field_name: su_opp_summary
+entity_type: node
+bundle: stanford_opportunity
+label: Summary
+description: 'Give a short summary about the Opportunity. This will appear on lists and teasers.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - stanford_minimal_html
+field_type: text_long

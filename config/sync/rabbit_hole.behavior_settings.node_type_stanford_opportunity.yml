@@ -1,0 +1,14 @@
+uuid: d5881470-2bfa-4ba5-8cee-36d504c3ab8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_opportunity
+id: node_type_stanford_opportunity
+entity_type_id: node_type
+entity_id: stanford_opportunity
+action: page_redirect
+allow_override: 0
+redirect: '[node:su_opp_source:uri]'
+redirect_code: 301
+redirect_fallback_action: display_page

@@ -1,0 +1,20 @@
+uuid: b2c36db3-7f3f-4e31-b057-abb00545a512
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.su_opp_sponsor
+field_name: su_opp_sponsor
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

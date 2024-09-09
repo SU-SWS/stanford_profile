@@ -1,0 +1,19 @@
+uuid: 4d96a1ed-369e-4e41-a294-a76872e0bcee
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.su_opp_eligibility
+field_name: su_opp_eligibility
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

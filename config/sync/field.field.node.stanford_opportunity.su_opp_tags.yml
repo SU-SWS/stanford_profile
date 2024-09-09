@@ -1,0 +1,29 @@
+uuid: b9e4751b-1713-490a-8406-055325df60bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_tags
+    - node.type.stanford_opportunity
+    - taxonomy.vocabulary.opportunity_tag_filters
+id: node.stanford_opportunity.su_opp_tags
+field_name: su_opp_tags
+entity_type: node
+bundle: stanford_opportunity
+label: 'Opportunity Tags/Filters'
+description: 'Enter the tags associated with this Opportunity. These will be used in cases where there is a filtered list of Opportunities.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      opportunity_tag_filters: opportunity_tag_filters
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: opportunity_tag_filters
+field_type: entity_reference

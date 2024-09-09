@@ -1,0 +1,36 @@
+uuid: 484eba31-f5a6-43f2-a22f-dce16500c1c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_opportunity
+    - taxonomy.vocabulary.opportunity_sponsor
+    - taxonomy.vocabulary.opportunity_tag_filters
+    - taxonomy.vocabulary.opportunity_type
+  module:
+    - node
+    - role_delegation
+    - taxonomy
+    - view_unpublished
+id: opportunity_editor
+label: 'Opportunity Editor'
+weight: 3
+is_admin: null
+permissions:
+  - 'assign opportunity_editor role'
+  - 'create stanford_opportunity content'
+  - 'create terms in opportunity_sponsor'
+  - 'create terms in opportunity_tag_filters'
+  - 'create terms in opportunity_type'
+  - 'delete any stanford_opportunity content'
+  - 'delete own stanford_opportunity content'
+  - 'delete stanford_opportunity revisions'
+  - 'delete terms in opportunity_sponsor'
+  - 'delete terms in opportunity_tag_filters'
+  - 'delete terms in opportunity_type'
+  - 'edit any stanford_opportunity content'
+  - 'edit own stanford_opportunity content'
+  - 'edit terms in opportunity_tag_filters'
+  - 'revert stanford_opportunity revisions'
+  - 'view any unpublished stanford_opportunity content'
+  - 'view stanford_opportunity revisions'

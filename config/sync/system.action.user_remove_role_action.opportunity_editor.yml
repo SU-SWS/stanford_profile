@@ -1,0 +1,14 @@
+uuid: 1c657bca-791f-400c-9c22-775d9fc71b39
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.opportunity_editor
+  module:
+    - user
+id: user_remove_role_action.opportunity_editor
+label: 'Remove the Opportunity Editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: opportunity_editor
