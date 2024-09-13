@@ -7,6 +7,10 @@ dependencies:
     - node.type.stanford_event
   module:
     - link
+    - stanford_fields
+third_party_settings:
+  stanford_fields:
+    force_relative: true
 id: node.stanford_event.su_event_cta
 field_name: su_event_cta
 entity_type: node

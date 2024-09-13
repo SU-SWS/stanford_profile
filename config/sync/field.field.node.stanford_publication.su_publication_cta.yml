@@ -7,6 +7,10 @@ dependencies:
     - node.type.stanford_publication
   module:
     - link
+    - stanford_fields
+third_party_settings:
+  stanford_fields:
+    force_relative: true
 id: node.stanford_publication.su_publication_cta
 field_name: su_publication_cta
 entity_type: node

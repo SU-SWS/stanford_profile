@@ -7,6 +7,10 @@ dependencies:
     - node.type.stanford_person
   module:
     - link
+    - stanford_fields
+third_party_settings:
+  stanford_fields:
+    force_relative: true
 id: node.stanford_person.su_person_links
 field_name: su_person_links
 entity_type: node
