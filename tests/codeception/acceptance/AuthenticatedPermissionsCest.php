@@ -91,11 +91,11 @@ class AuthenticatedPermissionsCest {
    * Site Manager cannot escalate others' role above Site Manager.
    */
   public function testSiteManagerEscalationOthers(AcceptanceTester $I) {
+    $name = $this->faker->words(3, TRUE);
+    $user = $I->createEntity(['name' => $name], 'user');
     $I->logInWithRole('site_manager');
-    $I->amOnPage('/admin/users');
-    $I->canSee('Morgan');
-    $I->click('Morgan');
-    $I->click('.roles.tabs__tab a');
+    $I->amOnPage($user->toUrl('edit-form')->toString());
+    $I->canSeeInField('Username', $name);
     $I->dontSee('Administrator');
     $I->dontSee('Site Builder');
     $I->dontSee('Site Developer');
