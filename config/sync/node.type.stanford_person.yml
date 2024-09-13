@@ -13,9 +13,10 @@ third_party_settings:
       - stanford-person-type
     parent: 'main:'
   node_revision_delete:
-    minimum_revisions_to_keep: 5
-    minimum_age_to_delete: 0
-    when_to_delete: 0
+    amount:
+      status: true
+      settings:
+        amount: 5
   scheduler:
     expand_fieldset: when_required
     fields_display_mode: vertical_tab
