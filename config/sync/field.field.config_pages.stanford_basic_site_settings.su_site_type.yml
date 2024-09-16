@@ -1,0 +1,21 @@
+uuid: 18918dc6-5dca-49ee-be52-a2d0c57ac172
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_type
+  module:
+    - options
+id: config_pages.stanford_basic_site_settings.su_site_type
+field_name: su_site_type
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Site Type'
+description: "What kind of site is this?\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,55 @@
+uuid: aef7044a-cf89-41f3-b683-aff011270c5b
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - field_permissions
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: config_pages.su_site_type
+field_name: su_site_type
+entity_type: config_pages
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: administrative
+      label: Administrative
+    -
+      value: academic
+      label: Academic
+    -
+      value: faculty
+      label: Faculty
+    -
+      value: research
+      label: Research
+    -
+      value: personal
+      label: Personal
+    -
+      value: community
+      label: Community
+    -
+      value: project
+      label: Project
+    -
+      value: course
+      label: Course
+    -
+      value: service_facility
+      label: Service/Facility
+    -
+      value: other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
