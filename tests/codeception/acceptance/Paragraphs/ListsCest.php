@@ -765,13 +765,14 @@ class ListsCest {
       'type' => 'stanford_page',
       'title' => 'B' . $this->faker->text(15),
       'su_basic_page_type' => $type_term->id(),
+      'created' => time(),
     ]);
 
     $second_basic_page_entity = $I->createEntity([
       'type' => 'stanford_page',
       'title' => 'A' . $this->faker->text(15),
       'su_basic_page_type' => $type_term->id(),
-      'created' => time() - 120,
+      'created' => time() - 12000,
     ]);
 
     $I->amOnPage("/node/{$basic_page_entity->id()}/edit");
@@ -801,7 +802,7 @@ class ListsCest {
       'su_basic_page_type' => $type_term->id(),
       'su_page_description' => $this->faker->text,
       'layout_selection' => 'stanford_basic_page_full',
-      'created' => time() - 1000,
+      'created' => time() - 100000,
     ]);
     $I->amOnPage($layout_changed_page->toUrl('edit-form')->toString());
     $I->click('Save');
@@ -873,6 +874,7 @@ class ListsCest {
         'target_id' => $paragraph->id(),
         'entity' => $paragraph,
       ],
+      'created' => time(),
     ]);
 
     return $node;
