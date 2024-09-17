@@ -27,10 +27,15 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_type
     - node.type.stanford_opportunity
   module:
+    - datetime
+    - element_class_formatter
+    - entity_reference_revisions
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - link
+    - text
     - user
 third_party_settings:
   layout_builder:
@@ -136,6 +141,8 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
+      - Devel
+      - 'Devel PHP'
       - Editoria11y
       - 'Events Lists (Views)'
       - Forms
@@ -206,6 +213,8 @@ third_party_settings:
         - Book
         - 'Chaos Tools'
         - 'Config Pages'
+        - Devel
+        - 'Devel PHP'
         - Editoria11y
         - Forms
         - Help
