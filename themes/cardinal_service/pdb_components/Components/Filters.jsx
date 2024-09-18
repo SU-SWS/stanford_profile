@@ -113,8 +113,9 @@ export class Filters extends Component {
    */
   componentDidMount() {
     const that = this;
+    const params = this.props.apiParams ? "?" + queryString.stringify(this.props.apiParams, {arrayFormat: 'bracket'}) : ""
 
-    fetch('/api/terms-used/' + this.props.bundle)
+    fetch('/api/terms-used/' + this.props.bundle + params)
       .then((response) => response.json())
       .then((jsonData) => {
         that.setState(
@@ -141,7 +142,6 @@ export class Filters extends Component {
     const query = encodeURI(queryString.stringify(this.state.filters, {arrayFormat: 'bracket'}));
     const location = this.props.submitUrl ?? window.location.pathname;
     window.location = `${location}?${query}#filter-wrapper`;
-
   }
 
   /**
@@ -166,8 +166,7 @@ export class Filters extends Component {
     // similar entity IDs. It does like if we are on `Field B`: Field A (option
     // 1 OR option 2) AND Field D (option 6).
     Object.keys(newState.activeItems).map((fieldName) => {
-      // This will be the list of entity IDs that match all of the filtering
-      // criteria.
+      // The list of entity IDs that match all the filtering criteria.
       let validEntities = [];
 
       // For each field we are adjusting, we need to look at the filters to
@@ -339,4 +338,5 @@ export class Filters extends Component {
       </div>
     );
   }
+
 }

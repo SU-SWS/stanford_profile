@@ -1,0 +1,238 @@
+uuid: 5888827f-4f87-462f-a7d3-4ccd05a0e180
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.cardinal_quarter_grid_results
+    - field.field.node.su_opportunity.body
+    - field.field.node.su_opportunity.su_opp_application_deadline
+    - field.field.node.su_opportunity.su_opp_commitment
+    - field.field.node.su_opportunity.su_opp_contact_email
+    - field.field.node.su_opportunity.su_opp_contact_name
+    - field.field.node.su_opportunity.su_opp_contact_phone
+    - field.field.node.su_opportunity.su_opp_course_code
+    - field.field.node.su_opportunity.su_opp_course_date
+    - field.field.node.su_opportunity.su_opp_deadline_time
+    - field.field.node.su_opportunity.su_opp_dimension
+    - field.field.node.su_opportunity.su_opp_duration
+    - field.field.node.su_opportunity.su_opp_eligibility
+    - field.field.node.su_opportunity.su_opp_event_date
+    - field.field.node.su_opportunity.su_opp_image
+    - field.field.node.su_opportunity.su_opp_learn_more
+    - field.field.node.su_opportunity.su_opp_location
+    - field.field.node.su_opportunity.su_opp_not_eligible
+    - field.field.node.su_opportunity.su_opp_open_to
+    - field.field.node.su_opportunity.su_opp_pathway
+    - field.field.node.su_opportunity.su_opp_placement_type
+    - field.field.node.su_opportunity.su_opp_service_theme
+    - field.field.node.su_opportunity.su_opp_solo_url
+    - field.field.node.su_opportunity.su_opp_sponsor
+    - field.field.node.su_opportunity.su_opp_submissions_open
+    - field.field.node.su_opportunity.su_opp_summary
+    - field.field.node.su_opportunity.su_opp_time_year
+    - field.field.node.su_opportunity.su_opp_type
+    - node.type.su_opportunity
+  module:
+    - datetime
+    - ds
+    - field_delimiter
+    - field_formatter_class
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - stanford_media
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      restricted_categories: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      allowed_blocks: {  }
+    allowed_block_categories: {  }
+  ds:
+    layout:
+      id: pattern_cardinal_quarter_grid
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      title:
+        - node_title
+      summary:
+        - su_opp_summary
+      image:
+        - su_opp_image
+      application_deadline:
+        - su_opp_application_deadline
+      event_date:
+        - su_opp_event_date
+      course_date:
+        - su_opp_course_date
+      sponsoring_unit:
+        - su_opp_sponsor
+      location:
+        - su_opp_location
+      when:
+        - su_opp_time_year
+      open_to:
+        - su_opp_open_to
+      favorite:
+        - flag_cs_favorites
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          wrapper: ''
+          class: ''
+id: node.su_opportunity.cardinal_quarter_grid_results
+targetEntityType: node
+bundle: su_opportunity
+mode: cardinal_quarter_grid_results
+content:
+  flag_cs_favorites:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: favorite
+  su_opp_application_deadline:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j, Y | g:i A'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 3
+    region: application_deadline
+  su_opp_course_date:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j, Y'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 5
+    region: course_date
+  su_opp_event_date:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j, Y | g:i A'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 4
+    region: event_date
+  su_opp_image:
+    type: media_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      image_style: opportunity_result_image
+      remove_alt: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 2
+    region: image
+  su_opp_location:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 7
+    region: location
+  su_opp_open_to:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+    weight: 9
+    region: open_to
+  su_opp_sponsor:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+    weight: 6
+    region: sponsoring_unit
+  su_opp_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: summary
+  su_opp_time_year:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ','
+      field_formatter_class:
+        class: ''
+      ds:
+        ds_limit: ''
+    weight: 8
+    region: when
+hidden:
+  body: true
+  links: true
+  search_api_excerpt: true
+  su_opp_commitment: true
+  su_opp_contact_email: true
+  su_opp_contact_name: true
+  su_opp_contact_phone: true
+  su_opp_course_code: true
+  su_opp_deadline_time: true
+  su_opp_dimension: true
+  su_opp_duration: true
+  su_opp_eligibility: true
+  su_opp_learn_more: true
+  su_opp_not_eligible: true
+  su_opp_pathway: true
+  su_opp_placement_type: true
+  su_opp_service_theme: true
+  su_opp_solo_url: true
+  su_opp_submissions_open: true
+  su_opp_type: true

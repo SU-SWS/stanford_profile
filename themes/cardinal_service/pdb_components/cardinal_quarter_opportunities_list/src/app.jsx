@@ -1,0 +1,69 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Filters} from '../../Components/Filters';
+import './styles.scss';
+import queryString from 'query-string';
+
+const nodeBundle = 'su_opportunity';
+const nodeFields = [
+  {field: 'su_opp_placement_type', label: 'Placement Type', multiple: true},
+  {field: 'su_opp_time_year', label: 'Participation Quarter', multiple: true},
+  {field: 'su_opp_service_theme', label: 'Service Theme', multiple: true},
+  {field: 'su_opp_location', label: 'Location', multiple: true},
+  {field: 'su_opp_sponsor', label: 'Sponsor Unit', multiple: true},
+];
+
+const getSortUrl = (field) => {
+  let currentHref = window.location.href.replace(/sort.*?$/, '').replace(/&+$/, '');
+  currentHref = currentHref.replace('#filter-wrapper', '');
+  const separator = currentHref.indexOf('?') === -1 ? '?' : '&';
+  const direction = sortOrderIsAsc(field) ? 'DESC' : 'ASC';
+  return `${currentHref}${separator}sort_by=${field}&sort_order=${direction}#filter-wrapper`
+}
+
+const sortedByField = (field) => {
+  return window.location.href.indexOf('sort_by=' + field) > 0;
+}
+
+const sortOrderIsAsc = (field) => {
+  return sortedByField(field) && window.location.href.indexOf('sort_order=ASC') > 0
+}
+
+ReactDOM.render(
+  <Filters
+    showMoreFilters
+    useGrid
+    bundle={nodeBundle}
+    mainFiltersCount={5}
+    fields={nodeFields}
+    name='cardinalQuarter'
+    header={<h2>Search by</h2>}
+    wrapperAttributes={{className: "flex-12-of-12"}}
+    apiParams={{su_opp_dimension: ["301"]}}
+  >
+    <div className="flex-12-of-12 sort-links">
+      <span style={{ fontWeight: 'bold' }} aria-hidden={true}>Sort By:</span>
+      <a
+        href={getSortUrl('su_opp_application_deadline_value')}
+        className={sortedByField('su_opp_application_deadline_value') ? 'active':''}
+      >
+        <span className="visually-hidden">Sort By Victor</span>
+        Date
+        <i style={{marginLeft: '10px'}} className={sortOrderIsAsc('su_opp_application_deadline_value') ? 'fas fa-chevron-up' : 'fas fa-chevron-down'} />
+      </a>
+      &nbsp;|&nbsp;
+      <a
+        href={getSortUrl('title')}
+        className={sortedByField('title') ? 'active' : ''}
+      >
+        <span className="visually-hidden">Sort By Title: </span>
+        {sortOrderIsAsc('title') ? 'Z to A' : 'A to Z'}
+        <i className={sortOrderIsAsc('title') ? 'fas fa-chevron-up' : 'fas fa-chevron-down'} />
+      </a>
+      <a style={{float: 'right'}} href="/user/opportunities">
+        View Saved Items
+      </a>
+    </div>
+  </Filters>,
+  document.getElementById('cardinal-quarter-opportunities-filter-list')
+);

@@ -1,0 +1,106 @@
+{% set program = program|render_clean %}
+{% set type_list = type_list|render_clean %}
+{% set time_commitment = time_commitment|render_clean %}
+{% set service_theme = service_theme|render_clean %}
+
+{# Add comma "," after program if type is not empty. #}
+{% if program is not empty and type_list is not empty %}
+	{% set program = program|merge({'#markup': program['#markup'] ~ ', '}) %}
+{% endif %}
+
+{# Add "in" between time_commitment and service_theme if both aren't empty. #}
+{% if time_commitment is not empty and service_theme is not empty %}
+	{% set time_commitment = time_commitment|merge({'#markup': time_commitment['#markup'] ~ ' in '}) %}
+
+  {# Add "comma "," after service_theme if program or type aren't empty. #}
+	{% if program is not empty or type_list is not empty %}
+    {% set service_theme = service_theme|merge({'#markup': service_theme['#markup'] ~ ', '}) %}
+	{% endif %}
+
+{% endif %}
+
+{% if event_date|render_clean is not empty %}
+  {% set date_label = 'Event Date'|t %}
+  {% set date = event_date %}
+{% elseif course_date|render_clean is not empty %}
+  {% set date_label = 'Course Date'|t %}
+  {% set date = course_date %}
+{% elseif application_deadline|render_clean is not empty %}
+  {% set date_label = 'Application Deadline'|t %}
+  {% set date = application_deadline %}
+{% endif %}
+
+{% if location|render_clean is empty %}
+  {% set location = 'N/A' %}
+{% endif %}
+
+{% if when|render_clean is empty %}
+  {% set when = 'N/A' %}
+{% endif %}
+
+{% if open_to|render_clean is empty %}
+  {% set open_to = 'N/A' %}
+{% endif %}
+
+{% set image = image|render_clean('<img> <picture> <source>') %}
+
+<div{{ attributes.addClass(['su-opportunity-result', 'su-opportunity-grid-result']) }}>
+  <div class="su-card__contents">
+    <div>
+      <div class="su-opportunity-header">
+
+        {% if image %}
+          <div class="su-opportunity-img">
+              {{ image|raw }}
+          </div>
+        {% endif %}
+
+        {% if time_commitment is not empty or service_theme is not empty or program is not empty or type_list is not empty %}
+          <div class="su-opportunity-grid-program-type-list">
+            <div aria-label="{{ 'Time Commitment, Service Theme, Opportunity Program, and Type'|t }}">
+              <div>{{ time_commitment }}{{ service_theme }}{{ program }}{{ type_list }}</div>
+            </div>
+          </div>
+        {% endif %}
+        <h3>
+          {{ title }}
+        </h3>
+
+        {% if summary %}
+          <div class="su-opportunity-grid-summary">
+            {{ summary|render_clean }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="su-opportunity-body-content">
+    {% if sponsoring_unit|render_clean is not empty %}
+      <div class="su-opportunity-grid-sponsoring-unit">
+        <h4>{{ 'Sponsored by'|t }}:</h4> <div>{{ sponsoring_unit }}</div>
+      </div>
+    {% endif %}
+
+    <div class="su-opportunity-grid-location">
+      <h4>{{ 'Location'|t }}:</h4> <div>{{ location }}</div>
+    </div>
+
+    <div class="su-opportunity-grid-open-to">
+      <h4>{{ 'Open to'|t }}:</h4> <div>{{ open_to }}</div>
+    </div>
+
+    <div class="su-opportunity-grid-duration">
+      <h4>{{ 'When'|t }}:</h4> <div>{{ when }}</div>
+    </div>
+
+    {% if date is not empty %}
+      <div class="su-opportunity-grid-application-deadline">
+        <h4>{{ date_label }}:</h4>
+        <div>{{ date }}</div>
+      </div>
+    {% endif %}
+
+  </div>
+  {{ favorite }}
+</div>

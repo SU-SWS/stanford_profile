@@ -1,0 +1,82 @@
+cardinal_quarter_grid:
+  label: Cardinal Quarter Grid
+  description: 'View result grid display of cardinal quarter.'
+  fields:
+    title:
+      type: text
+      label: Title
+      description: 'Title of the Cardinal Quarter.'
+      preview: 'Opportunity Title'
+    summary:
+      type: text
+      label: Summary
+      description: 'Short summary of the opportunity'
+      preview: '<p>This is the summary information</p>'
+    image:
+      type: image
+      label: Image
+      description: 'Image.'
+      preview:
+        theme: image
+        uri: http://placecorgi.com/800x1200
+    service_theme:
+      type: text
+      label: 'Service Theme'
+      description: 'Service Theme'
+      preview: 'Arts & Media'
+    application_deadline:
+      type: text
+      label: 'Application Deadline'
+      description: 'Application Deadline.'
+      preview: 'Month Date, Year'
+    event_date:
+      type: text
+      label: 'Event Date'
+      description: 'Date of the event.'
+      preview: 'Month Date, Year'
+    course_date:
+      type: text
+      label: 'Course Date'
+      description: 'Date of the event.'
+      preview: 'Month Date, Year'
+    sponsoring_unit:
+      type: text
+      label: 'Sponsoring Unit'
+      description: 'Unit sponsoring the opportunity.'
+      preview: 'Cardinal Service'
+    location:
+      type: text
+      label: Location
+      description: 'Location of the opportunity.'
+      preview: 'Stanford University'
+    when:
+      type: text
+      label: When
+      description: 'Timing of the opportunity.'
+      preview: 'Next Year'
+    open_to:
+      type: text
+      label: 'Open To'
+      description: 'Category of student of the opportunity.'
+      preview: '<ul><li>Everyone</li></ul>'
+    program:
+      type: text
+      label: 'Program'
+      description: 'Opportunity Program.'
+      preview: 'Cardinal Career'
+    type_list:
+      type: text
+      label: 'Type'
+      description: 'Type of the opportunity.'
+      preview: 'Courses for credit'
+    favorite:
+      type: link
+      label: 'Favorite Link'
+      description: 'A link for the user to favorite the content'
+      preview: '<div class="flag flag-cs-favorites action-flag"><a href="#">Favorite</a></div>'
+  use: '@cardinal-service/cardinal-quarter-grid/cardinal_quarter_grid.html.twig'
+  libraries:
+    - opportunity_grid:
+        css:
+          component:
+            ../../../dist/components/opportunity-grid/opportunity_grid.css: {}

@@ -12,6 +12,7 @@ use Drupal\rest\ResourceResponse;
 use Drupal\taxonomy\TermInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Rest endpoint to provide data about what entities are tagged with terms.
@@ -43,6 +44,13 @@ class TermsUsedResource extends ResourceBase {
   protected $fieldManager;
 
   /**
+   * Current request.
+   *
+   * @var \Symfony\Component\HttpFoundation\Request|null
+   */
+  protected $request;
+
+  /**
    * {@inheritDoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -53,17 +61,19 @@ class TermsUsedResource extends ResourceBase {
       $container->getParameter('serializer.formats'),
       $container->get('logger.factory')->get('rest'),
       $container->get('entity_type.manager'),
-      $container->get('entity_field.manager')
+      $container->get('entity_field.manager'),
+      $container->get('request_stack')
     );
   }
 
   /**
    * {@inheritDoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, array $serializer_formats, LoggerInterface $logger, EntityTypeManagerInterface $entityTypeManager, EntityFieldManagerInterface $field_manager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, array $serializer_formats, LoggerInterface $logger, EntityTypeManagerInterface $entityTypeManager, EntityFieldManagerInterface $field_manager, RequestStack $request_stack) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger);
     $this->entityTypeManager = $entityTypeManager;
     $this->fieldManager = $field_manager;
+    $this->request = $request_stack->getCurrentRequest();
   }
 
   /**
@@ -98,6 +108,32 @@ class TermsUsedResource extends ResourceBase {
         $field_definition->getSetting('handler') == 'default:taxonomy_term'
       ) {
         $data[$field_name] = $this->getFieldTermsData($field_definition, $include_children);
+      }
+    }
+
+    $params = $this->request->query->all();
+    $filtering_params = array_intersect(array_keys($params), array_keys($data));
+    $filtered_ids = [];
+
+    if ($filtering_params) {
+      foreach ($filtering_params as $field) {
+        foreach ($params[$field] as $value) {
+          $key = array_search($value, array_column($data[$field], 'id'));
+          $filtered_ids = $filtered_ids ? array_intersect($filtered_ids, $data[$field][$key]['items']) : $data[$field][$key]['items'];
+        }
+      }
+    }
+
+    if ($filtered_ids) {
+      foreach ($data as &$field_values) {
+        foreach ($field_values as $key => &$field_value) {
+          $field_value['items'] = array_values(array_intersect($filtered_ids, $field_value['items']));
+          if (!$field_value['items']) {
+            unset($field_values[$key]);
+          }
+        }
+
+        $field_values = array_values($field_values);
       }
     }
 
@@ -163,7 +199,7 @@ class TermsUsedResource extends ResourceBase {
       }
     }
 
-    uasort($data, function ($item_a, $item_b) {
+    uasort($data, function($item_a, $item_b) {
       return count($item_a['items']) > count($item_b['items']) ? -1 : 1;
     });
     return array_values($data);
