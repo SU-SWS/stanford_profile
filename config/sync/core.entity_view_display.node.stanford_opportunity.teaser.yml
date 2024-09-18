@@ -28,6 +28,7 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_type
     - node.type.stanford_opportunity
   module:
+    - datetime
     - text
     - user
 id: node.stanford_opportunity.teaser
@@ -35,23 +36,51 @@ targetEntityType: node
 bundle: stanford_opportunity
 mode: teaser
 content:
-  body:
-    type: text_summary_or_trimmed
+  su_opp_application_deadline:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  su_opp_image:
+    type: entity_reference_label
     label: hidden
     settings:
-      trim_length: 600
+      link: true
     third_party_settings: {  }
-    weight: 101
+    weight: 0
     region: content
-  links:
+  su_opp_sponsor:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  su_opp_summary:
+    type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 3
+    region: content
+  su_opp_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
     region: content
 hidden:
+  body: true
   layout_builder__layout: true
+  links: true
   search_api_excerpt: true
-  su_opp_application_deadline: true
   su_opp_components: true
   su_opp_contact_email: true
   su_opp_contact_name: true
@@ -60,14 +89,10 @@ hidden:
   su_opp_course_code: true
   su_opp_cta_url: true
   su_opp_eligibility: true
-  su_opp_image: true
   su_opp_learn_more: true
   su_opp_open_date: true
   su_opp_prerequisites: true
   su_opp_source: true
-  su_opp_sponsor: true
   su_opp_start_date: true
   su_opp_status: true
-  su_opp_summary: true
   su_opp_tags: true
-  su_opp_type: true
