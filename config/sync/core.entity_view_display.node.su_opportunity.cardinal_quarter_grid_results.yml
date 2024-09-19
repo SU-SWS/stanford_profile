@@ -40,6 +40,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - link
     - stanford_media
     - text
     - user
@@ -87,6 +88,10 @@ third_party_settings:
         - su_opp_time_year
       open_to:
         - su_opp_open_to
+      contact:
+        - su_opp_contact_email
+      cta_button:
+        - su_opp_solo_url
       favorite:
         - flag_cs_favorites
     fields:
@@ -108,7 +113,7 @@ content:
   flag_cs_favorites:
     settings: {  }
     third_party_settings: {  }
-    weight: 10
+    weight: 12
     region: favorite
   su_opp_application_deadline:
     type: datetime_custom
@@ -121,6 +126,13 @@ content:
         class: ''
     weight: 3
     region: application_deadline
+  su_opp_contact_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: contact
   su_opp_course_date:
     type: datetime_custom
     label: hidden
@@ -180,6 +192,18 @@ content:
         ds_limit: ''
     weight: 9
     region: open_to
+  su_opp_solo_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 11
+    region: cta_button
   su_opp_sponsor:
     type: entity_reference_label
     label: hidden
@@ -220,7 +244,6 @@ hidden:
   links: true
   search_api_excerpt: true
   su_opp_commitment: true
-  su_opp_contact_email: true
   su_opp_contact_name: true
   su_opp_contact_phone: true
   su_opp_course_code: true
@@ -233,6 +256,5 @@ hidden:
   su_opp_pathway: true
   su_opp_placement_type: true
   su_opp_service_theme: true
-  su_opp_solo_url: true
   su_opp_submissions_open: true
   su_opp_type: true

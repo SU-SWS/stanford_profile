@@ -19,11 +19,6 @@ cardinal_quarter_grid:
       preview:
         theme: image
         uri: http://placecorgi.com/800x1200
-    service_theme:
-      type: text
-      label: 'Service Theme'
-      description: 'Service Theme'
-      preview: 'Arts & Media'
     application_deadline:
       type: text
       label: 'Application Deadline'
@@ -59,16 +54,16 @@ cardinal_quarter_grid:
       label: 'Open To'
       description: 'Category of student of the opportunity.'
       preview: '<ul><li>Everyone</li></ul>'
-    program:
-      type: text
-      label: 'Program'
-      description: 'Opportunity Program.'
-      preview: 'Cardinal Career'
-    type_list:
-      type: text
-      label: 'Type'
-      description: 'Type of the opportunity.'
-      preview: 'Courses for credit'
+    email_contact:
+      type: link
+      label: 'Contact: Email'
+      description: 'Display email'
+      preview: 'Contact email'
+    cta_button:
+      type: link
+      label: 'Call to Action Button'
+      description: 'CTA Button'
+      preview: 'Link to Call to Action'
     favorite:
       type: link
       label: 'Favorite Link'
