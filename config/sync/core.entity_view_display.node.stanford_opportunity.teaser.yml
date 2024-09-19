@@ -62,9 +62,10 @@ content:
     weight: 2
     region: content
   su_opp_summary:
-    type: text_default
+    type: text_trimmed
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: 600
     third_party_settings: {  }
     weight: 3
     region: content
