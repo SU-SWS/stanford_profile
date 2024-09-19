@@ -110,8 +110,17 @@ content:
     type: entity_reference_label
     label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
+      link: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: ''
     weight: 1
     region: card_super_headline
   su_opp_summary:
@@ -149,8 +158,17 @@ content:
     type: entity_reference_label
     label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
+      link: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: ''
     weight: 3
     region: card_body
 hidden:

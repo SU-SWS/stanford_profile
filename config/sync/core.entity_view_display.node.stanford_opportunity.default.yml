@@ -26,12 +26,14 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_tags
     - field.field.node.stanford_opportunity.su_opp_type
     - node.type.stanford_opportunity
+    - system.menu.main
   module:
     - field_group
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - menu_block
     - user
 third_party_settings:
   layout_builder:
@@ -39,13 +41,12 @@ third_party_settings:
     allow_custom: true
     sections:
       -
-        layout_id: jumpstart_ui_one_column
+        layout_id: jumpstart_ui_three_column
         layout_settings:
           label: ''
           context_mapping: {  }
           extra_classes: ''
           centered: centered-container
-          columns: default
         components:
           d8d66e18-44f6-4e82-90c7-131eaf8e19de:
             uuid: d8d66e18-44f6-4e82-90c7-131eaf8e19de
@@ -98,26 +99,21 @@ third_party_settings:
                     label_tag: ''
             weight: 1
             additional: {  }
-          fbba124c-b6c2-4129-a8df-e79870507c8c:
-            uuid: fbba124c-b6c2-4129-a8df-e79870507c8c
+          9b45c4b5-bbe3-44f4-803f-bb305be025fe:
+            uuid: 9b45c4b5-bbe3-44f4-803f-bb305be025fe
             region: main
             configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_contact_url'
-              label: 'Contact Link'
-              label_display: '0'
+              id: 'field_block:node:stanford_opportunity:su_opp_prerequisites'
+              label: Prerequisites
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: link
-                label: hidden
-                settings:
-                  trim_length: 80
-                  url_only: false
-                  url_plain: false
-                  rel: '0'
-                  target: '0'
+                type: text_default
+                label: above
+                settings: {  }
                 third_party_settings:
                   empty_fields:
                     handler: ''
@@ -126,7 +122,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 10
+            weight: 2
             additional: {  }
           e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1:
             uuid: e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1
@@ -151,7 +147,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 5
+            weight: 3
             additional: {  }
           75a9a36d-20ef-46a1-aaf6-3fbe4814ec5b:
             uuid: 75a9a36d-20ef-46a1-aaf6-3fbe4814ec5b
@@ -169,6 +165,57 @@ third_party_settings:
                 label: hidden
                 settings:
                   view_mode: default
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 4
+            additional: {  }
+          1af2c338-0e61-4e46-b07e-1de570d93985:
+            uuid: 1af2c338-0e61-4e46-b07e-1de570d93985
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_contact_name'
+              label: 'Contact Name'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 5
+            additional: {  }
+          09a85452-e091-4c80-902b-e55c9aaa6d5e:
+            uuid: 09a85452-e091-4c80-902b-e55c9aaa6d5e
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_contact_email'
+              label: 'Contact Email'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: basic_string
+                label: hidden
+                settings: {  }
                 third_party_settings:
                   empty_fields:
                     handler: ''
@@ -204,23 +251,28 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 9
+            weight: 7
             additional: {  }
-          09a85452-e091-4c80-902b-e55c9aaa6d5e:
-            uuid: 09a85452-e091-4c80-902b-e55c9aaa6d5e
+          fbba124c-b6c2-4129-a8df-e79870507c8c:
+            uuid: fbba124c-b6c2-4129-a8df-e79870507c8c
             region: main
             configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_contact_email'
-              label: 'Contact Email'
+              id: 'field_block:node:stanford_opportunity:su_opp_contact_url'
+              label: 'Contact Link'
               label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: basic_string
+                type: link
                 label: hidden
-                settings: {  }
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
                 third_party_settings:
                   empty_fields:
                     handler: ''
@@ -231,60 +283,9 @@ third_party_settings:
                     label_tag: ''
             weight: 8
             additional: {  }
-          1af2c338-0e61-4e46-b07e-1de570d93985:
-            uuid: 1af2c338-0e61-4e46-b07e-1de570d93985
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_contact_name'
-              label: 'Contact Name'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: hidden
-                settings:
-                  link_to_entity: false
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: ''
-            weight: 7
-            additional: {  }
-          9b45c4b5-bbe3-44f4-803f-bb305be025fe:
-            uuid: 9b45c4b5-bbe3-44f4-803f-bb305be025fe
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_prerequisites'
-              label: Prerequisites
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: ''
-            weight: 4
-            additional: {  }
           411af66d-4ede-4ca0-a51d-c56cb10a96ef:
             uuid: 411af66d-4ede-4ca0-a51d-c56cb10a96ef
-            region: main
+            region: right
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_image'
               label: 'Featured Image'
@@ -306,11 +307,11 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 11
+            weight: 0
             additional: {  }
           d18ff1e0-f50c-4248-b301-2e077267b15c:
             uuid: d18ff1e0-f50c-4248-b301-2e077267b15c
-            region: main
+            region: right
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_type'
               label: 'Opportunity Type'
@@ -332,11 +333,11 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 12
+            weight: 1
             additional: {  }
           6e41b2ce-22c1-4c37-9a18-14082782a173:
             uuid: 6e41b2ce-22c1-4c37-9a18-14082782a173
-            region: main
+            region: right
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_application_deadline'
               label: 'Application Deadline'
@@ -359,11 +360,11 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 13
+            weight: 2
             additional: {  }
           380d8445-73a4-4601-b30c-b8b9f866b057:
             uuid: 380d8445-73a4-4601-b30c-b8b9f866b057
-            region: main
+            region: right
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_eligibility'
               label: Eligibility
@@ -384,11 +385,11 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 15
+            weight: 3
             additional: {  }
           754b749d-c0cd-4bc8-8594-1992fdbbe0a3:
             uuid: 754b749d-c0cd-4bc8-8594-1992fdbbe0a3
-            region: main
+            region: right
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_start_date'
               label: 'Start Date'
@@ -411,11 +412,11 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 16
+            weight: 4
             additional: {  }
           5427b410-5b74-41b2-b6c8-44fac25c3150:
             uuid: 5427b410-5b74-41b2-b6c8-44fac25c3150
-            region: main
+            region: right
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_course_code'
               label: 'Course Code'
@@ -437,7 +438,29 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 17
+            weight: 5
+            additional: {  }
+          45de28a1-7363-4944-ad62-1337d7a5a215:
+            uuid: 45de28a1-7363-4944-ad62-1337d7a5a215
+            region: left
+            configuration:
+              id: 'menu_block:main'
+              label: 'Main navigation'
+              label_display: '0'
+              provider: menu_block
+              context_mapping: {  }
+              follow: false
+              follow_parent: child
+              label_link: false
+              label_type: block
+              level: 2
+              depth: 0
+              expand_all_items: false
+              parent: 'main:'
+              render_parent: false
+              suggestion: main
+              hide_on_nonactive: false
+            weight: 0
             additional: {  }
         third_party_settings: {  }
   layout_library:
