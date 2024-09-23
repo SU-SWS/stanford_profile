@@ -41,12 +41,13 @@ third_party_settings:
     allow_custom: true
     sections:
       -
-        layout_id: jumpstart_ui_three_column
+        layout_id: jumpstart_ui_one_column
         layout_settings:
           label: ''
           context_mapping: {  }
           extra_classes: ''
           centered: centered-container
+          columns: default
         components:
           d8d66e18-44f6-4e82-90c7-131eaf8e19de:
             uuid: d8d66e18-44f6-4e82-90c7-131eaf8e19de
@@ -74,6 +75,15 @@ third_party_settings:
                     label_tag: ''
             weight: 0
             additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_three_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+        components:
           764b7bd8-7488-4796-a259-314de23b87b3:
             uuid: 764b7bd8-7488-4796-a259-314de23b87b3
             region: main
@@ -97,7 +107,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 1
+            weight: 2
             additional: {  }
           9b45c4b5-bbe3-44f4-803f-bb305be025fe:
             uuid: 9b45c4b5-bbe3-44f4-803f-bb305be025fe
@@ -122,7 +132,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 2
+            weight: 3
             additional: {  }
           e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1:
             uuid: e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1
@@ -147,7 +157,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 3
+            weight: 4
             additional: {  }
           75a9a36d-20ef-46a1-aaf6-3fbe4814ec5b:
             uuid: 75a9a36d-20ef-46a1-aaf6-3fbe4814ec5b
@@ -173,7 +183,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 4
+            weight: 5
             additional: {  }
           1af2c338-0e61-4e46-b07e-1de570d93985:
             uuid: 1af2c338-0e61-4e46-b07e-1de570d93985
@@ -199,7 +209,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 5
+            weight: 6
             additional: {  }
           09a85452-e091-4c80-902b-e55c9aaa6d5e:
             uuid: 09a85452-e091-4c80-902b-e55c9aaa6d5e
@@ -224,7 +234,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 6
+            weight: 7
             additional: {  }
           e7da11a9-d160-429f-b39c-6cd0b8cbe496:
             uuid: e7da11a9-d160-429f-b39c-6cd0b8cbe496
@@ -251,7 +261,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 7
+            weight: 8
             additional: {  }
           fbba124c-b6c2-4129-a8df-e79870507c8c:
             uuid: fbba124c-b6c2-4129-a8df-e79870507c8c
@@ -281,7 +291,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 8
+            weight: 9
             additional: {  }
           411af66d-4ede-4ca0-a51d-c56cb10a96ef:
             uuid: 411af66d-4ede-4ca0-a51d-c56cb10a96ef
@@ -461,6 +471,17 @@ third_party_settings:
               suggestion: main
               hide_on_nonactive: false
             weight: 0
+            additional: {  }
+          7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5:
+            uuid: 7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5
+            region: main
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+            weight: 1
             additional: {  }
         third_party_settings: {  }
   layout_library:
