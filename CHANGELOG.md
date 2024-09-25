@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.4.3
+-------------------------------------------------------------------------------
+- Fixed basic page cards when the page has a "page title banner" image.
+
 11.4.2
 -------------------------------------------------------------------------------
 - Adjusted codeception test for cache issue.
