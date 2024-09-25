@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.stanford_component_block
     - field.field.node.stanford_opportunity.body
     - field.field.node.stanford_opportunity.layout_builder__layout
     - field.field.node.stanford_opportunity.su_opp_application_deadline
@@ -71,7 +72,22 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 0
+            weight: 2
+            additional: {  }
+          d2e4901d-e5fa-4d36-9bc0-2ff0545eb32b:
+            uuid: d2e4901d-e5fa-4d36-9bc0-2ff0545eb32b
+            region: main
+            configuration:
+              id: 'inline_block:stanford_component_block'
+              label: 'Back To Link'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: 5
+              block_revision_id: 5
+              block_serialized: null
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
@@ -131,10 +147,13 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_label
+                type: media_responsive_image_formatter
                 label: hidden
                 settings:
-                  link: true
+                  view_mode: stanford_image_large_square
+                  link: false
+                  image_style: ''
+                  remove_alt: 0
                 third_party_settings:
                   empty_fields:
                     handler: ''
@@ -158,7 +177,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: hidden
+                label: inline
                 settings:
                   link: true
                 third_party_settings:
@@ -184,7 +203,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: datetime_default
-                label: hidden
+                label: inline
                 settings:
                   timezone_override: ''
                   format_type: medium
@@ -596,6 +615,7 @@ hidden:
   links: true
   search_api_excerpt: true
   su_opp_application_deadline: true
+  su_opp_back_to_link: true
   su_opp_components: true
   su_opp_contact_email: true
   su_opp_contact_name: true
