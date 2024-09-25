@@ -730,6 +730,7 @@ display:
         filter_groups: false
         pager: false
         empty: false
+        css_class: false
       style:
         type: default
         options:
@@ -1092,6 +1093,7 @@ display:
           plugin_id: text
       allow:
         items_per_page: 0
+      css_class: stanford-opportunities-list
     cache_metadata:
       max-age: -1
       contexts:
@@ -3531,3 +3533,399 @@ display:
         - 'config:field.storage.node.su_event_source'
         - 'config:field.storage.node.su_event_subheadline'
         - 'config:field.storage.node.su_event_type'
+  opp_filter_cards:
+    id: opp_filter_cards
+    display_title: 'Filtered Cards'
+    display_plugin: viewfield_block
+    position: 1
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      block_description: ''
+      block_hide_empty: false
+      block_category: 'Lists (Views)'
+      defaults:
+        fields: true
+        style: false
+        row: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        pager: false
+        empty: false
+        css_class: false
+      style:
+        type: default
+        options:
+          row_class: flex-md-12-of-12
+          default_row_class: 1
+          uses_fields: 0
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: stanford_card
+      arguments: {  }
+      exposed_block: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            stanford_opportunity: stanford_opportunity
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        term_node_tid_depth:
+          id: term_node_tid_depth
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            79: '79'
+            81: '81'
+            82: '82'
+            80: '80'
+          group: 1
+          exposed: true
+          expose:
+            operator_id: term_node_tid_depth_op
+            label: 'Filter by Quarter'
+            description: ''
+            use_operator: 0
+            operator: term_node_tid_depth_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: opp_quarter
+            required: 0
+            remember: 0
+            multiple: 0
+            remember_roles:
+              authenticated: authenticated
+              administrator: 0
+              anonymous: 0
+              stanford_faculty: 0
+              stanford_staff: 0
+              stanford_student: 0
+              contributor: 0
+              site_manager: 0
+              site_editor: 0
+              site_builder: 0
+              site_developer: 0
+              layout_builder_user: 0
+              su_site_embedder: 0
+              decoupled_site_users: 0
+              opportunity_editor: 0
+            reduce: 1
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: 0
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 1
+          type: select
+          limit: true
+          vid: opportunity_tag_filters
+          hierarchy: 1
+          error_message: 1
+          depth: '1'
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+        term_node_tid_depth_1:
+          id: term_node_tid_depth_1
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            86: '86'
+            85: '85'
+            84: '84'
+          group: 1
+          exposed: true
+          expose:
+            operator_id: term_node_tid_depth_1_op
+            label: 'Filter by Eligibility'
+            description: ''
+            use_operator: 0
+            operator: term_node_tid_depth_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: opp_eligibility
+            required: 0
+            remember: 0
+            multiple: 0
+            remember_roles:
+              authenticated: authenticated
+              administrator: 0
+              anonymous: 0
+              stanford_faculty: 0
+              stanford_staff: 0
+              stanford_student: 0
+              contributor: 0
+              site_manager: 0
+              site_editor: 0
+              site_builder: 0
+              site_developer: 0
+              layout_builder_user: 0
+              su_site_embedder: 0
+              decoupled_site_users: 0
+              opportunity_editor: 0
+            reduce: 1
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: 0
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 1
+          type: select
+          limit: true
+          vid: opportunity_tag_filters
+          hierarchy: 1
+          error_message: 1
+          depth: '1'
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+        term_node_tid_depth_2:
+          id: term_node_tid_depth_2
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            89: '89'
+            88: '88'
+          group: 1
+          exposed: true
+          expose:
+            operator_id: term_node_tid_depth_2_op
+            label: 'Filter by Location'
+            description: ''
+            use_operator: 0
+            operator: term_node_tid_depth_2_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: opp_location
+            required: 0
+            remember: 0
+            multiple: 0
+            remember_roles:
+              authenticated: authenticated
+              administrator: 0
+              anonymous: 0
+              stanford_faculty: 0
+              stanford_staff: 0
+              stanford_student: 0
+              contributor: 0
+              site_manager: 0
+              site_editor: 0
+              site_builder: 0
+              site_developer: 0
+              layout_builder_user: 0
+              su_site_embedder: 0
+              decoupled_site_users: 0
+              opportunity_editor: 0
+            reduce: 1
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: 0
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 1
+          type: select
+          limit: true
+          vid: opportunity_tag_filters
+          hierarchy: 1
+          error_message: 1
+          depth: '1'
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+        tid:
+          id: tid
+          table: taxonomy_index
+          field: tid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: tid_op
+            label: 'Filter by Opportunity Type'
+            description: ''
+            use_operator: 0
+            operator: tid_op
+            operator_limit_selection: 0
+            operator_list: {  }
+            identifier: opp_type
+            required: 0
+            remember: 0
+            multiple: 0
+            remember_roles:
+              authenticated: authenticated
+              administrator: 0
+              anonymous: 0
+              stanford_faculty: 0
+              stanford_staff: 0
+              stanford_student: 0
+              contributor: 0
+              site_manager: 0
+              site_editor: 0
+              site_builder: 0
+              site_developer: 0
+              layout_builder_user: 0
+              su_site_embedder: 0
+              decoupled_site_users: 0
+              opportunity_editor: 0
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: 0
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 1
+          type: select
+          limit: true
+          vid: opportunity_type
+          hierarchy: 0
+          error_message: 1
+          plugin_id: taxonomy_index_tid
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      pager:
+        type: full
+        options:
+          pagination_heading_level: h4
+          items_per_page: '10'
+          offset: '0'
+          id: '0'
+          total_pages: ''
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
+          quantity: '9'
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: 0
+          content:
+            value: 'No opportunities at this time. Please check back later.'
+            format: stanford_html
+          plugin_id: text
+      allow:
+        items_per_page: 0
+      css_class: stanford-opportunities-cards
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.su_event_date_time'
+        - 'config:field.storage.node.su_opp_type'
