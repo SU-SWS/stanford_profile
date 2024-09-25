@@ -29,6 +29,10 @@ dependencies:
     - node.type.stanford_opportunity
   module:
     - datetime
+    - empty_fields
+    - field_formatter_class
+    - field_label
+    - stanford_media
     - text
     - user
 id: node.stanford_opportunity.teaser
@@ -46,16 +50,26 @@ content:
     weight: 1
     region: content
   su_opp_image:
-    type: entity_reference_label
+    type: media_responsive_image_formatter
     label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
+      view_mode: stanford_image_large_square
+      link: false
+      image_style: ''
+      remove_alt: 0
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 0
     region: content
   su_opp_sponsor:
     type: entity_reference_label
-    label: above
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
