@@ -51,7 +51,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Filtered Opportunities'
+      title: Opportunities
       fields:
         su_event_date_time:
           id: su_event_date_time
@@ -514,6 +514,7 @@ display:
         arguments: false
         css_class: false
         pager: false
+        title: false
       style:
         type: html_list
         options:
@@ -701,6 +702,7 @@ display:
         options:
           items_per_page: 3
           offset: 0
+      title: 'Opportunities Card Grid'
     cache_metadata:
       max-age: -1
       contexts:
@@ -731,6 +733,9 @@ display:
         pager: false
         empty: false
         css_class: false
+        title: false
+        link_display: false
+        link_url: false
       style:
         type: default
         options:
@@ -1094,6 +1099,9 @@ display:
       allow:
         items_per_page: 0
       css_class: stanford-opportunities-list
+      title: 'Opportunities Filtered List'
+      link_display: custom_url
+      link_url: /opportunities
     cache_metadata:
       max-age: -1
       contexts:
@@ -1122,6 +1130,7 @@ display:
         style: false
         row: false
         arguments: false
+        title: false
       style:
         type: html_list
         options:
@@ -1321,6 +1330,7 @@ display:
           use_taxonomy_term_path: false
           entity_type: node
           plugin_id: taxonomy_index_name_depth
+      title: 'Opportunities List'
     cache_metadata:
       max-age: -1
       contexts:
@@ -1339,6 +1349,7 @@ display:
     display_plugin: block
     position: 3
     display_options:
+      title: 'Opportunities Taxonomy Term Page'
       fields:
         view_node:
           id: view_node
@@ -1665,6 +1676,7 @@ display:
           delta_fieldset:
             delta_fields: {  }
       defaults:
+        title: false
         style: false
         row: false
         fields: false
@@ -2805,6 +2817,7 @@ display:
     display_plugin: block
     position: 4
     display_options:
+      title: 'Opportunities Explore More'
       fields:
         su_event_date_time_value:
           id: su_event_date_time_value
@@ -3499,6 +3512,7 @@ display:
           relationship: none
           view_mode: stanford_card
       defaults:
+        title: false
         css_class: false
         pager: false
         use_more: false
@@ -3554,6 +3568,7 @@ display:
         pager: false
         empty: false
         css_class: false
+        title: false
       style:
         type: default
         options:
@@ -3917,6 +3932,7 @@ display:
       allow:
         items_per_page: 0
       css_class: stanford-opportunities-cards
+      title: 'Opportunities Filtered Cards'
     cache_metadata:
       max-age: -1
       contexts:
