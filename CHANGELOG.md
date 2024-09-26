@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.4.4
+-------------------------------------------------------------------------------
+- Updated image_effects module for compatibility with imagemagic 4.0.0.
+
 11.4.3
 -------------------------------------------------------------------------------
 - Fixed basic page cards when the page has a "page title banner" image.
