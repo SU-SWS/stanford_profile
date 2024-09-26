@@ -22,8 +22,8 @@ class ProfileConnectSection extends HelpSectionPluginBase {
    * {@inheritdoc}
    */
   public function listTopics() {
-    $help = '<p>' . $this->t('The main way the Stanford Drupal community communicates is through the mailing list. You can join this list to participate in the community discussion.') . '</p>';
-    $help .= self::getLinkString($this->t('Join the Drupallers community of practice'), 'https://mailman.stanford.edu/mailman/listinfo/drupallers');
+    $help = '<p>' . $this->t('The main way the Stanford Drupal community communicates is through Slack. To participate in the community discussion, join the #drupal Slack channel in the Stanford Community of Practice workspace.') . '</p>';
+    $help .= self::getLinkString($this->t('Join the Drupallers community of practice'), 'https://stanford.enterprise.slack.com/archives/C0ETL2M47');
     return [['#markup' => $help]];
   }
 
