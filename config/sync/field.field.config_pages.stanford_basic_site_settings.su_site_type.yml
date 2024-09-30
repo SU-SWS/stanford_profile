@@ -15,7 +15,9 @@ label: 'Site Type'
 description: "What kind of site is this?\r\n"
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: pre_production
 default_value_callback: ''
 settings: {  }
 field_type: list_string
