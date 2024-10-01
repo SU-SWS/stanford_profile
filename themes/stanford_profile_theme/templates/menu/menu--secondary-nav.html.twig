@@ -1,0 +1,23 @@
+{%- import _self as menu -%}
+
+{{ menu.nav_menu(items) }}
+
+
+{% macro nav_menu(items, menu_level = 1) %}
+  {% import _self as menus %}
+  <ul class="list-unstyled">
+    {% for item in items %}
+      <li>
+        <a href="{{ item.url }}">
+          <span class="multi-menu__link-text-wrapper">{{ item.title }}</span>
+          {% if item.unpublished %}
+            <span class="unpublished-indicator">{{ "Unpublished Page"|t }}</span>
+          {% endif %}
+        </a>
+        {% if item.below %}
+          {{ menus.nav_menu(item.below, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}

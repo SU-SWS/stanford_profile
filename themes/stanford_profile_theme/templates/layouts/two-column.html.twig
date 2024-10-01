@@ -1,0 +1,22 @@
+{% set left_class = 'w-3/12' %}
+{% set main_class = content.left ? 'w-9/12' : '' %}
+{% set left = content.left|render_clean %}
+
+{% if settings.orientation == 'left' %}
+  {% set left_class = 'w-9/12' %}
+  {% set main_class = left ? 'w-3/12' : '' %}
+{% elseif settings.orientation == 'equal' %}
+  {% set left_class = 'w-6/12' %}
+  {% set main_class = left ? 'w-6/12' : '' %}
+{% endif %}
+
+
+<div class="flex flex-col md:flex-row {{ settings.centered ? 'cc' : '' }}">
+
+  {% if left %}
+    <div{{ region_attributes.left.addClass(left_class) }}>{{ content.left }}</div>
+  {% endif %}
+
+  <div{{ region_attributes.main.addClass(main_class) }}>{{ content.main }}</div>
+</div>
+
