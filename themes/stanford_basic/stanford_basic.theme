@@ -118,6 +118,58 @@ function stanford_basic_page_attachments_alter(array &$attachments) {
   }
   // Check if dropdown menus are activated
   $attachments['#attached']['drupalSettings']['stanford_basic']['nav_dropdown_enabled'] = (bool) theme_get_setting('nav_dropdown_enabled', 'stanford_basic');
+
+  // Only add Google Analytics for anonymous users or users without editing
+  // access while on Acquia environment. Being able to view the toolbar is a
+  // good indicator that they can edit some part of the site.
+  if (
+    isset($_ENV['AH_SITE_ENVIRONMENT']) &&
+    !\Drupal::currentUser()->hasPermission('access toolbar')
+  ) {
+    _stanford_basic_add_ga_tracking($attachments);
+  }
+}
+
+/**
+ * Add the necessary GA tracking for shared analytics.
+ *
+ * @param array $attachments
+ *   Page attachments from hook_page_attachments_alter().
+ */
+function _stanford_basic_add_ga_tracking(array &$attachments) {
+  $add_ga_file = FALSE;
+  // Look to see if there's already a Google Analytics tracking file included.
+  if (isset($attachments['#attached']['html_head'])) {
+    foreach ($attachments['#attached']['html_head'] as $html_head) {
+      if ($html_head[1] == 'google_analytics_tracking_file') {
+        $add_ga_file = TRUE;
+        break;
+      }
+    }
+  }
+
+  // No GA tracking file provided by GA module, we'll add our own.
+  if (!$add_ga_file) {
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#tag' => 'script',
+        '#attributes' => [
+          'async' => TRUE,
+          'src' => '//www.googletagmanager.com/gtag/js?id=G-BECJQXLNCY',
+        ],
+      ],
+      'stanford_basic_analytics_tracking_file',
+    ];
+  }
+
+  // Add the shared GA tracking tag.
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'script',
+      '#value' => 'gtag("config", "G-BECJQXLNCY");',
+    ],
+    'stanford_basic_analytics_tracking',
+  ];
 }
 
 /**
@@ -160,15 +212,6 @@ function stanford_basic_preprocess_html(&$variables) {
 
   // The base path.
   $variables['base_path'] = base_path();
-
-  // Add global google analytics tracker if the site is on Acquia.
-  if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
-    $variables['add_global_ga'] = TRUE;
-    if (\Drupal::moduleHandler()->moduleExists('google_analytics')) {
-      $variables['ga_module_enabled'] = !empty(\Drupal::config('google_analytics.settings')
-        ->get('account'));
-    }
-  }
 }
 
 /**
