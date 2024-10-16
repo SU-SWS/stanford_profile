@@ -114,6 +114,32 @@ class SiteSettingsTest extends KernelTestBase {
       'label' => 'Name',
     ])->save();
 
+    $field_storage = FieldStorageConfig::create([
+      'field_name' => 'su_hide_ext_link_icons',
+      'entity_type' => 'config_pages',
+      'type' => 'boolean',
+    ]);
+    $field_storage->save();
+    FieldConfig::create([
+      'entity_type' => 'config_pages',
+      'field_storage' => $field_storage,
+      'bundle' => 'stanford_basic_site_settings',
+      'label' => 'Hide Ext Links',
+    ])->save();
+
+    $field_storage = FieldStorageConfig::create([
+      'field_name' => 'su_site_created',
+      'entity_type' => 'config_pages',
+      'type' => 'timestamp',
+    ]);
+    $field_storage->save();
+    FieldConfig::create([
+      'entity_type' => 'config_pages',
+      'field_storage' => $field_storage,
+      'bundle' => 'stanford_basic_site_settings',
+      'label' => 'Created',
+    ])->save();
+
     drupal_flush_all_caches();
 
     $data = json_encode([
