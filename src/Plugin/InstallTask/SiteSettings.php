@@ -104,6 +104,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    */
   public function runTask(array &$install_state) {
     $this->state->set('nobots', FALSE);
+    $this->state->set('stanford-created', time());
 
     $node_pages = [
       '403_page' => '4b8018dc-49a6-4018-9c54-e8c3e462beee',
@@ -138,9 +139,10 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
         ->create([
           'type' => 'stanford_basic_site_settings',
           'context' => 'a:0:{}',
-          'su_hide_ext_link_icons' => TRUE,
         ]);
     }
+    $config_page->set('su_hide_ext_link_icons', TRUE);
+    $config_page->set('su_site_created', time());
     $config_page->set('su_site_email', $site_data['email']);
     $config_page->set('su_site_name', $site_data['webSiteTitle']);
     $config_page->save();
