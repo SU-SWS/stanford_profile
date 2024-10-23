@@ -77,7 +77,7 @@ class RolesCest {
     $I->selectOption('Action', 'Delete selected entities');
     $I->click('Apply to selected items');
     $I->click('Execute action');
-    $I->waitForText('Action processing results');
+    $I->waitForText('Delete entities');
     $I->canSee('Access denied (1)');
     $I->runDrush('cache-rebuild');
     $I->amOnPage('/');

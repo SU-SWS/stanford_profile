@@ -80,31 +80,34 @@ display:
           clear_on_exposed: true
           force_selection_info: false
           selected_actions:
-            5:
-              action_id: node_assign_owner_action
-              preconfiguration:
-                add_confirmation: false
-            7:
+            -
               action_id: node_clone_action
               preconfiguration:
                 add_confirmation: false
-            8:
+                message_override: ''
+            -
               action_id: views_bulk_edit
               preconfiguration:
                 add_confirmation: false
+                message_override: ''
                 get_bundles_from_results: true
-            9:
+            -
               action_id: views_bulk_operations_delete_entity
-            11:
+              preconfiguration:
+                add_confirmation: true
+                message_override: ''
+            -
               action_id: 'entity:unpublish_action:node'
               preconfiguration:
                 add_confirmation: false
                 label_override: Unpublish
-            12:
+                message_override: ''
+            -
               action_id: 'entity:publish_action:node'
               preconfiguration:
                 add_confirmation: false
                 label_override: Publish
+                message_override: ''
         title:
           id: title
           table: node_field_data
