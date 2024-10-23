@@ -72,7 +72,7 @@ class ViewsBulkEditCest {
     $I->checkOption('Publication Types (value 1)');
     $I->selectOption('node[stanford_publication][su_publication_topics][0][target_id]', $pubs_foo_bar_baz->id());
     $I->click('Apply');
-    $I->canSee('Action processing results');
+    $I->canSee('Modify field values', '.messages-list');
 
     foreach ($this->nodes as $node) {
       $I->amOnPage($node->toUrl('edit-form')->toString());
