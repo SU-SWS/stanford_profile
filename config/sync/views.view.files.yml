@@ -80,10 +80,12 @@ display:
           clear_on_exposed: true
           force_selection_info: false
           selected_actions:
-            2:
+            -
               action_id: views_bulk_operations_delete_entity
               preconfiguration:
+                add_confirmation: true
                 label_override: 'Delete File'
+                message_override: ''
         fid:
           id: fid
           table: file_managed
