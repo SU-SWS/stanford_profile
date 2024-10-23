@@ -5,6 +5,7 @@ dependencies:
   config:
     - search_api.index.full_site_content
   module:
+    - graphql_compose_views
     - search_api
 id: search
 label: Search
@@ -393,6 +394,47 @@ display:
       header: {  }
       footer: {  }
       display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.full_site_content'
+        - 'search_api_list:full_site_content'
+  graphql_search:
+    id: graphql_search
+    display_title: GraphQL
+    display_plugin: graphql
+    position: 2
+    display_options:
+      pager:
+        type: full
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 15
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: true
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84,87,90,93,96,99'
+            items_per_page_options_all: true
+            items_per_page_options_all_label: '- All -'
+            offset: true
+            offset_label: Offset
+          quantity: 9
+      display_extenders: {  }
+      graphql_query_name: search
     cache_metadata:
       max-age: -1
       contexts:

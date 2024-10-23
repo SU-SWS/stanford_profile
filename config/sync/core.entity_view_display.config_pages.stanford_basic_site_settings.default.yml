@@ -18,6 +18,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_key
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_search
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_ui
+    - field.field.config_pages.stanford_basic_site_settings.su_site_created
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
     - field.field.config_pages.stanford_basic_site_settings.su_site_email
     - field.field.config_pages.stanford_basic_site_settings.su_site_home
@@ -149,6 +150,25 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 23
+    region: content
+  su_site_created:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 26
     region: content
   su_site_dropdowns:
     type: boolean

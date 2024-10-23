@@ -1,5 +1,12 @@
 # Stanford Profile
 
+11.4.5
+-------------------------------------------------------------------------------
+- Remove edit links in views (#821)
+- D8CORE-7564: removed decanter link and replaced with identity guide (#822)
+- D8CORE-7517 | update event subtitle heading (#816)
+- D8Core-7515: adding a few additional "Site Type" options
+
 11.4.4
 -------------------------------------------------------------------------------
 - Updated image_effects module for compatibility with imagemagic 4.0.0.

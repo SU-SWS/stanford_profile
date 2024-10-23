@@ -18,6 +18,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_key
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_search
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_ui
+    - field.field.config_pages.stanford_basic_site_settings.su_site_created
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
     - field.field.config_pages.stanford_basic_site_settings.su_site_email
     - field.field.config_pages.stanford_basic_site_settings.su_site_home
@@ -35,9 +36,11 @@ dependencies:
     - change_labels
     - conditional_fields
     - cshs
+    - field_formatter_class
     - field_group
     - file
     - link
+    - readonly_field_widget
     - text
 third_party_settings:
   field_group:
@@ -248,6 +251,42 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  su_site_created:
+    type: readonly_field_widget
+    weight: 1
+    region: content
+    settings:
+      label: above
+      formatter_type: timestamp
+      formatter_settings:
+        timestamp:
+          date_format: html_date
+          custom_date_format: ''
+          timezone: ''
+          tooltip:
+            date_format: long
+            custom_date_format: ''
+          time_diff:
+            enabled: false
+            future_format: '@interval hence'
+            past_format: '@interval ago'
+            granularity: 2
+            refresh: 60
+            description: ''
+      formatter_third_party_settings:
+        empty_fields:
+          handler: ''
+        field_formatter_class:
+          class: ''
+        field_label:
+          label_value: ''
+          label_tag: ''
+      show_description: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      change_labels:
+        field_label_overwrite: ''
   su_site_dropdowns:
     type: boolean_checkbox
     weight: 5

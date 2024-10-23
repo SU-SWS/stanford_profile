@@ -55,13 +55,13 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
 
   $img = '<img src="' . base_path() . \Drupal::service('extension.list.theme')
       ->getPath('stanford_basic') . '/dist/assets/img/lockup-example.png" />';
-  $decanter = Link::fromTextAndUrl('Decanter Lockup Component', Url::fromUri('https://decanter.stanford.edu/component/identity-lockup/'))
+  $identityguide = Link::fromTextAndUrl('Stanford Identity Guide', Url::fromUri('https://identity.stanford.edu/'))
     ->toString();
 
   $form['options_settings']['stanford_basic_lockup'] = [
     '#type' => 'fieldset',
     '#title' => t('Lockup Settings'),
-    '#field_prefix' => "<p>$img</p><p>More examples can be found at: $decanter</p>",
+    '#field_prefix' => "<p>$img</p><p>Guidance can be found at: $identityguide</p>",
   ];
 
   $form['options_settings']['stanford_basic_lockup']['lockup']['#tree'] = TRUE;

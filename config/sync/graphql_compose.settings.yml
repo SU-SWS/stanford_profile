@@ -21,10 +21,16 @@ entity_config:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
+    policy_settings:
+      enabled: false
     stanford_basic_site_settings:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
+    stanford_courses_importer:
+      enabled: false
+    stanford_events_importer:
+      enabled: false
     stanford_global_message:
       enabled: true
       query_load_enabled: true
@@ -33,6 +39,10 @@ entity_config:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
+    stanford_person_importer:
+      enabled: false
+    stanford_saml:
+      enabled: false
     stanford_super_footer:
       enabled: true
       query_load_enabled: true
@@ -139,8 +149,28 @@ entity_config:
       enabled: true
       query_load_enabled: true
   menu:
+    account:
+      enabled: false
+    admin:
+      enabled: false
+    courses-menu:
+      enabled: false
+    devel:
+      enabled: false
+    footer:
+      enabled: false
     main:
       enabled: true
+    news-topics:
+      enabled: false
+    stanford-event-types:
+      enabled: false
+    stanford-person-type:
+      enabled: false
+    stanford-publication-topics:
+      enabled: false
+    tools:
+      enabled: false
   node:
     stanford_course:
       enabled: true
@@ -162,6 +192,8 @@ entity_config:
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
+    stanford_opportunity:
+      enabled: false
     stanford_page:
       enabled: true
       query_load_enabled: true
@@ -234,9 +266,21 @@ entity_config:
       enabled: true
       query_load_enabled: true
       routes_enabled: true
+    cap_org_codes:
+      enabled: false
     event_audience:
       enabled: true
       query_load_enabled: true
+    media_tags:
+      enabled: false
+    opportunity_sponsor:
+      enabled: false
+    opportunity_tag_filters:
+      enabled: false
+    opportunity_type:
+      enabled: false
+    site_owner_orgs:
+      enabled: false
     stanford_event_groups:
       enabled: true
       query_load_enabled: true
@@ -399,6 +443,8 @@ field_config:
       su_site_algolia_index:
         enabled: true
       su_site_algolia_search:
+        enabled: true
+      su_site_algolia_ui:
         enabled: true
       su_site_dropdowns:
         enabled: true
