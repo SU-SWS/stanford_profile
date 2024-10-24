@@ -7,10 +7,18 @@ dependencies:
 name: square_956
 label: 'Square - 956'
 effects:
-  d383578e-88ff-41aa-830d-526c90d3df98:
-    uuid: d383578e-88ff-41aa-830d-526c90d3df98
-    id: focal_point_scale_and_crop
-    weight: 1
+  34ae12d9-e184-4dc1-835b-9ff560d574b9:
+    uuid: 34ae12d9-e184-4dc1-835b-9ff560d574b9
+    id: image_scale
+    weight: 2
+    data:
+      width: 956
+      height: null
+      upscale: false
+  780d8690-3de1-433d-ab83-a3eeef622b0f:
+    uuid: 780d8690-3de1-433d-ab83-a3eeef622b0f
+    id: focal_point_crop
+    weight: 3
     data:
       width: 956
       height: 956

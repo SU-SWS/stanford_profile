@@ -7,10 +7,18 @@ dependencies:
 name: square_1900
 label: 'Square - 1900'
 effects:
-  578f3e25-6a90-4db7-a90c-91ce8bf4d99e:
-    uuid: 578f3e25-6a90-4db7-a90c-91ce8bf4d99e
-    id: focal_point_scale_and_crop
-    weight: 1
+  28533b06-4746-40ad-bcb8-82595b9061e5:
+    uuid: 28533b06-4746-40ad-bcb8-82595b9061e5
+    id: image_scale
+    weight: 2
+    data:
+      width: 1900
+      height: null
+      upscale: false
+  dce97237-f55e-41a8-bd47-de524fb10a01:
+    uuid: dce97237-f55e-41a8-bd47-de524fb10a01
+    id: focal_point_crop
+    weight: 3
     data:
       width: 1900
       height: 1900
