@@ -3,6 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.large_modal
+    - core.entity_view_mode.media.medium_modal
+    - core.entity_view_mode.media.small_modal
     - core.entity_view_mode.media.stanford_image_large
     - core.entity_view_mode.media.stanford_image_large_square
     - core.entity_view_mode.media.stanford_image_medium
@@ -115,6 +118,9 @@ filters:
       default_view_mode: default
       allowed_view_modes:
         default: default
+        large_modal: large_modal
+        medium_modal: medium_modal
+        small_modal: small_modal
         stanford_image_large: stanford_image_large
         stanford_image_large_square: stanford_image_large_square
         stanford_image_medium: stanford_image_medium
