@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_banner
     - paragraphs.paragraphs_type.stanford_card
     - paragraphs.paragraphs_type.stanford_entity
+    - paragraphs.paragraphs_type.stanford_faq
     - paragraphs.paragraphs_type.stanford_gallery
     - paragraphs.paragraphs_type.stanford_layout
     - paragraphs.paragraphs_type.stanford_lists
@@ -39,6 +40,7 @@ settings:
       stanford_media_caption: stanford_media_caption
       stanford_spacer: stanford_spacer
       stanford_wysiwyg: stanford_wysiwyg
+      stanford_faq: stanford_faq
     negate: 0
     target_bundles_drag_drop:
       stanford_accordion:
@@ -53,6 +55,9 @@ settings:
       stanford_entity:
         weight: 16
         enabled: true
+      stanford_faq:
+        weight: 28
+        enabled: true
       stanford_gallery:
         weight: 17
         enabled: true
@@ -65,6 +70,9 @@ settings:
       stanford_media_caption:
         weight: 20
         enabled: true
+      stanford_page_title_banner:
+        weight: 23
+        enabled: false
       stanford_person_cta:
         weight: 21
         enabled: false

@@ -1,0 +1,21 @@
+uuid: 29b540b5-e421-47f5-accb-77ab84b1d29d
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.su_faq_headline
+field_name: su_faq_headline
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

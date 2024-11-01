@@ -1,0 +1,59 @@
+@charset 'UTF-8';
+
+// Add theme customizations here.
+
+.ptype-stanford-faq {
+
+  .expand-collapse-button {
+    float: right;
+    flex: 1;
+    white-space: nowrap;
+    margin-left: 20px;
+
+    &::after {
+      margin-left: 5px;
+      content: '+';
+      text-decoration: none;
+      background: none;
+      color: $su-color-digital-red;
+    }
+
+    &:hover::after{
+      color: $su-color-black;
+      text-underline: none;
+    }
+
+    &.collapse-all {
+      &::after {
+        content: '-';
+      }
+    }
+  }
+}
+
+.su-faq-headline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.su-faq-questions {
+  margin: 3rem 0;
+
+  > .paragraph-item {
+    margin-bottom: 0;
+
+    &:not(:last-child) {
+      details {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  details {
+    margin: 0;
+  }
+
+  .ds-entity--stanford-accordion {
+    width: 100%;
+  }
+}

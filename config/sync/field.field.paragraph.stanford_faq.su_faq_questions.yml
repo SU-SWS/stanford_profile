@@ -1,0 +1,67 @@
+uuid: 6e670c6e-2bda-4615-827b-9a2dd3c6c13e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_faq_questions
+    - paragraphs.paragraphs_type.stanford_accordion
+    - paragraphs.paragraphs_type.stanford_faq
+  module:
+    - entity_reference_revisions
+id: paragraph.stanford_faq.su_faq_questions
+field_name: su_faq_questions
+entity_type: paragraph
+bundle: stanford_faq
+label: Questions/Answers
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      stanford_accordion: stanford_accordion
+    negate: 0
+    target_bundles_drag_drop:
+      layout:
+        weight: 15
+        enabled: false
+      stanford_accordion:
+        weight: 16
+        enabled: true
+      stanford_banner:
+        weight: 17
+        enabled: false
+      stanford_card:
+        weight: 18
+        enabled: false
+      stanford_entity:
+        weight: 19
+        enabled: false
+      stanford_faq:
+        weight: 14
+        enabled: false
+      stanford_gallery:
+        weight: 20
+        enabled: false
+      stanford_lists:
+        weight: 21
+        enabled: false
+      stanford_media_caption:
+        weight: 22
+        enabled: false
+      stanford_person_cta:
+        weight: 23
+        enabled: false
+      stanford_schedule:
+        weight: 24
+        enabled: false
+      stanford_spacer:
+        weight: 25
+        enabled: false
+      stanford_wysiwyg:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions
