@@ -99,7 +99,8 @@ export default {
             .toLowerCase()
             .replace(/[^\w]/g, '-')
             .replace(/^-+/, '')
-            .replace(/-+$/, '');
+            .replace(/-+$/, '')
+            .substring(0, 25);
 
           $summary.attr('aria-expanded', 'false')
             .attr('aria-controls', `${groupId}-panel`)

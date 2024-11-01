@@ -128,7 +128,7 @@ window.Drupal.behaviors.stanford_basic = {
         var $details = $('details', faq);
         $('summary', $details).each(function (sumIndex, summary) {
           var $summary = $(summary);
-          var groupId = $summary.text().toLowerCase().replace(/[^\w]/g, '-').replace(/^-+/, '').replace(/-+$/, '');
+          var groupId = $summary.text().toLowerCase().replace(/[^\w]/g, '-').replace(/^-+/, '').replace(/-+$/, '').substring(0, 25);
           $summary.attr('aria-expanded', 'false').attr('aria-controls', "".concat(groupId, "-panel")).attr('id', "".concat(groupId, "-button"));
           $summary.next().attr('id', "".concat(groupId, "-panel")).attr('aria-labelledby', "".concat(groupId, "-button"));
         });
