@@ -2,6 +2,14 @@
 
 .content {
   .paragraph-item {
-    @include modular-spacing("margin-bottom", 5);
+    &:not(.ptype-stanford-accordion) {
+      @include modular-spacing("margin-bottom", 5);
+    }
+
+    &.ptype-stanford-accordion {
+      &:last-child {
+        @include modular-spacing("margin-bottom", 5);
+      }
+    }
   }
 }

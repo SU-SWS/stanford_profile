@@ -227,6 +227,9 @@ entity_config:
     stanford_entity:
       enabled: true
       query_load_enabled: true
+    stanford_faq:
+      enabled: true
+      query_load_enabled: true
     stanford_gallery:
       enabled: true
       query_load_enabled: true
@@ -793,6 +796,13 @@ field_config:
       su_entity_headline:
         enabled: true
       su_entity_item:
+        enabled: true
+    stanford_faq:
+      su_faq_description:
+        enabled: true
+      su_faq_headline:
+        enabled: true
+      su_faq_questions:
         enabled: true
     stanford_gallery:
       su_gallery_button:

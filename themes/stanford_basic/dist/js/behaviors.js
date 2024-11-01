@@ -1,7 +1,7 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 7496:
+/***/ 8035:
 /***/ (function() {
 
 var header = document.getElementById('block-stanford-basic-local-tasks');
@@ -35,7 +35,7 @@ function stickyHeaderOnScroll() {
 
 /***/ }),
 
-/***/ 2696:
+/***/ 5644:
 /***/ (function() {
 
 /**
@@ -124,6 +124,34 @@ window.Drupal.behaviors.stanford_basic = {
           $(this).attr('aria-expanded', 'false');
         }
       });
+      $(once('faq-expand-all', '.ptype-stanford-faq', context)).each(function (index, faq) {
+        var $details = $('details', faq);
+        $('summary', $details).each(function (sumIndex, summary) {
+          var $summary = $(summary);
+          var groupId = $summary.text().toLowerCase().replace(/[^\w]/g, '-').replace(/^-+/, '').replace(/-+$/, '').substring(0, 25);
+          $summary.attr('aria-expanded', 'false').attr('aria-controls', "".concat(groupId, "-panel")).attr('id', "".concat(groupId, "-button"));
+          $summary.next().attr('id', "".concat(groupId, "-panel")).attr('aria-labelledby', "".concat(groupId, "-button"));
+        });
+        if ($details.length < 2 || $('.ptype-stanford-faq', faq).length) {
+          return;
+        }
+        var $button = $('<button class="expand-collapse-button expand-all su-button--secondary">' + '<span class="expand-collapse">Expand</span> All' + '<span class="visually-hidden"> Items below.</span>' + '</button>');
+        $button.click(function () {
+          $button.toggleClass('expand-all').toggleClass('collapse-all');
+          var expanded = !$button.hasClass('expand-all');
+          $('span', $button).text(expanded ? 'Collapse' : 'Expand');
+          $details.each(function (i, detail) {
+            $(detail).attr('open', expanded);
+            $('summary', detail).attr('aria-expanded', expanded).attr('aria-pressed', expanded);
+          });
+        });
+        var $headline = $('.su-faq-headline', faq);
+        if ($headline.length) {
+          $headline.append($('<div class="button-wrapper">').append($button));
+        } else {
+          $(faq).prepend($('<div class="button-wrapper clearfix">').append($button));
+        }
+      });
     })(jQuery, once);
   },
   // Detach Example.
@@ -161,16 +189,15 @@ window.Drupal.behaviors.stanford_basic = {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 !function() {
 "use strict";
 
 // EXTERNAL MODULE: ./src/js/theme/menu/StickyHeaderOnScroll.js
-var StickyHeaderOnScroll = __webpack_require__(7496);
-;// CONCATENATED MODULE: ./src/js/theme/menu/index.js
+var StickyHeaderOnScroll = __webpack_require__(8035);
+;// ./src/js/theme/menu/index.js
 
-;// CONCATENATED MODULE: ./src/js/theme/index.js
+;// ./src/js/theme/index.js
 /**
  * Primary roll up file
  */
@@ -178,8 +205,8 @@ var StickyHeaderOnScroll = __webpack_require__(7496);
 // The Local Task Menu
 
 // EXTERNAL MODULE: ./src/js/stanford_basic.behavior.js
-var stanford_basic_behavior = __webpack_require__(2696);
-;// CONCATENATED MODULE: ./src/js/behaviors.js
+var stanford_basic_behavior = __webpack_require__(5644);
+;// ./src/js/behaviors.js
 // Theme code.
 
 

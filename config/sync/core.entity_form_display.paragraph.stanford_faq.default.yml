@@ -1,0 +1,63 @@
+uuid: 4e43efbc-fa41-452d-9e8f-1033f949b6bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_faq.su_faq_description
+    - field.field.paragraph.stanford_faq.su_faq_headline
+    - field.field.paragraph.stanford_faq.su_faq_questions
+    - paragraphs.paragraphs_type.stanford_faq
+  module:
+    - paragraphs
+    - text
+id: paragraph.stanford_faq.default
+targetEntityType: paragraph
+bundle: stanford_faq
+mode: default
+content:
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  su_faq_description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  su_faq_headline:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_faq_questions:
+    type: paragraphs
+    weight: 2
+    region: content
+    settings:
+      title: Questions/Answers
+      title_plural: Questions/Answers
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: stanford_accordion
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+hidden:
+  created: true
+  publish_on: true
+  unpublish_on: true

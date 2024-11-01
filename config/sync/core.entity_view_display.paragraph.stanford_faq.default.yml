@@ -1,0 +1,45 @@
+uuid: 2895bffa-14b5-41cd-bb3a-b0020fb04037
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_faq.su_faq_description
+    - field.field.paragraph.stanford_faq.su_faq_headline
+    - field.field.paragraph.stanford_faq.su_faq_questions
+    - paragraphs.paragraphs_type.stanford_faq
+  module:
+    - entity_reference_revisions
+    - stanford_fields
+    - text
+id: paragraph.stanford_faq.default
+targetEntityType: paragraph
+bundle: stanford_faq
+mode: default
+content:
+  su_faq_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  su_faq_headline:
+    type: entity_title_heading
+    label: hidden
+    settings:
+      tag: h2
+      linked: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  su_faq_questions:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  search_api_excerpt: true
