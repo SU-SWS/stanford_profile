@@ -154,7 +154,7 @@ class SubThemeCest {
     $I->canSeeResponseCodeIs(200);
     $I->seeInSource('<span class="su-lockup__wordmark"></span>');
     $I->dontSeeElement('.su-brand-bar__logo');
-    $I->dontSeeElement('.su-global-footer__container');
+    $I->seeElement('.su-global-footer__container');
     $I->dontSeeElement('.su-brand-bar--default');
   }
 
