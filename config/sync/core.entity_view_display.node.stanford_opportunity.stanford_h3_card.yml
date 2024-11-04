@@ -64,13 +64,17 @@ third_party_settings:
     regions:
       card_image:
         - su_opp_image
-      card_body:
+      card_super_headline:
+        - su_opp_sponsor
+      card_headline:
         - node_title
+      card_body:
+        - su_opp_type
         - su_opp_summary
     fields:
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 2
         label: hidden
         formatter: default
         settings:
@@ -102,6 +106,23 @@ content:
         label_tag: ''
     weight: 0
     region: card_image
+  su_opp_sponsor:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: ''
+    weight: 1
+    region: card_super_headline
   su_opp_summary:
     type: smart_trim
     label: hidden
@@ -131,7 +152,24 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 2
+    weight: 4
+    region: card_body
+  su_opp_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: ''
+    weight: 3
     region: card_body
 hidden:
   body: true
@@ -151,8 +189,6 @@ hidden:
   su_opp_open_date: true
   su_opp_prerequisites: true
   su_opp_source: true
-  su_opp_sponsor: true
   su_opp_start_date: true
   su_opp_status: true
   su_opp_tags: true
-  su_opp_type: true

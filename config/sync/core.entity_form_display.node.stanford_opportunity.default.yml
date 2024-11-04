@@ -162,12 +162,12 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 52
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 50
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -341,14 +341,10 @@ content:
         hide_add_another: 0
         force_single_cardinality: 0
   su_opp_type:
-    type: entity_reference_autocomplete
+    type: options_select
     weight: 9
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   title:
     type: string_textfield
