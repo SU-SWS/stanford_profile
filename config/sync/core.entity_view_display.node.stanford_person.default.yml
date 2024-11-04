@@ -222,11 +222,16 @@ third_party_settings:
                 settings:
                   view_mode: default
                   link: false
-                  image_style: medium_square
+                  image_style: large_square
                   remove_alt: true
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: su-person-photo
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
             weight: 0
             additional: {  }
           9e6e76d4-b758-4c2b-97a7-495f43965c3a:
