@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.stanford_component_block
     - field.field.node.stanford_opportunity.body
     - field.field.node.stanford_opportunity.layout_builder__layout
     - field.field.node.stanford_opportunity.su_opp_application_deadline
@@ -73,21 +72,6 @@ third_party_settings:
                     label_value: ''
                     label_tag: ''
             weight: 2
-            additional: {  }
-          d2e4901d-e5fa-4d36-9bc0-2ff0545eb32b:
-            uuid: d2e4901d-e5fa-4d36-9bc0-2ff0545eb32b
-            region: main
-            configuration:
-              id: 'inline_block:stanford_component_block'
-              label: 'Back To Link'
-              label_display: '0'
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_id: 5
-              block_revision_id: 5
-              block_serialized: null
-            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
@@ -223,7 +207,7 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_eligibility'
               label: Eligibility
-              label_display: visible
+              label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
@@ -248,7 +232,7 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_start_date'
               label: 'Start Date'
-              label_display: visible
+              label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
@@ -294,6 +278,56 @@ third_party_settings:
                     label_value: ''
                     label_tag: ''
             weight: 5
+            additional: {  }
+          9b45c4b5-bbe3-44f4-803f-bb305be025fe:
+            uuid: 9b45c4b5-bbe3-44f4-803f-bb305be025fe
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_prerequisites'
+              label: Prerequisites
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 2
+            additional: {  }
+          e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1:
+            uuid: e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_opportunity:body'
+              label: Body
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 3
             additional: {  }
         third_party_settings: {  }
       -
@@ -438,56 +472,6 @@ third_party_settings:
                     label_value: ''
                     label_tag: ''
             weight: 2
-            additional: {  }
-          e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1:
-            uuid: e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:body'
-              label: Body
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: text_default
-                label: hidden
-                settings: {  }
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: ''
-            weight: 1
-            additional: {  }
-          9b45c4b5-bbe3-44f4-803f-bb305be025fe:
-            uuid: 9b45c4b5-bbe3-44f4-803f-bb305be025fe
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_prerequisites'
-              label: Prerequisites
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: ''
-            weight: 0
             additional: {  }
         third_party_settings: {  }
   layout_library:
