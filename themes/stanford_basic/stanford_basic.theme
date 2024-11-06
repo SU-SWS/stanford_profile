@@ -144,6 +144,9 @@ function stanford_basic_page_attachments_alter(array &$attachments) {
  * Prepares variables for the html.html.twig template.
  */
 function stanford_basic_preprocess_html(&$variables) {
+  $favicon = theme_get_setting('favicon') ?: [];
+  $variables['custom_favicon'] = isset($favicon['use_default']) && !$favicon['use_default'] && !empty($favicon['path']);
+
   try {
     $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
   }
