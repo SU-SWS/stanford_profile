@@ -14,9 +14,16 @@ export default {
     (function ($, once) {
       // Validate there is a skip link anchor for the main content. If not,
       // default to #page-content.
-      var $mc = $('#main-content', context).length;
-      if (!$mc) {
-        $('.su-skipnav--content', context).attr('href', '#page-content');
+      const $title = $('h1', context);
+      if ($title.length) {
+        if (!$title.attr('id')) {
+          $title.attr('id', 'page-title');
+        }
+        $('.su-masthead .su-skipnav--content', context).attr('href', '#' + $title.attr('id'));
+      } else {
+        if (!$('#main-content', context).length) {
+          $('.su-skipnav--content', context).attr('href', '#page-content');
+        }
       }
 
       // Validate there is a skip link for the secondary navigation. If not,
