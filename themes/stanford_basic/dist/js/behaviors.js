@@ -60,7 +60,7 @@ window.Drupal.behaviors.stanford_basic = {
         }
         $('.su-masthead .su-skipnav--content', context).attr('href', '#' + $title.attr('id'));
       } else {
-        if ($('#main-content', context).length === 0) {
+        if (!$('#main-content', context).length) {
           $('.su-skipnav--content', context).attr('href', '#page-content');
         }
       }

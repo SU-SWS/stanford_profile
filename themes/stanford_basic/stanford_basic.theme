@@ -88,6 +88,26 @@ function stanford_basic_preprocess_node(&$variables) {
   $node_bundle = $variables['node']->bundle();
   $variables['#attached']['library'][] = 'stanford_basic/content.' . $node_bundle;
   unset($variables['content']['book_navigation']);
+
+  // If the home page (no page title) has a wysiwyg as the first component, and
+  // it does not have a page banner, at a class that will create a little space
+  // at the top of the page.
+  if (
+    $variables['page'] &&
+    $node_bundle == 'stanford_page' &&
+    \Drupal::service('path.matcher')->isFrontPage()
+  ) {
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $variables['node'];
+    if (
+      !$node->get('su_page_banner')->count() &&
+      $node->get('su_page_components')->count() >= 2 &&
+      $node->get('su_page_components')
+        ->get(1)->entity->bundle() == 'stanford_wysiwyg'
+    ) {
+      $variables['attributes']['class'][] = 'add-more-space-to-top';
+    }
+  }
 }
 
 /**
