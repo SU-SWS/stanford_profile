@@ -51,6 +51,16 @@ window.Drupal.behaviors.stanford_basic = {
   // Attach Drupal Behavior.
   attach: function attach(context, settings) {
     (function ($, once) {
+      // If some embed code contains a caption, make sure the figure respects
+      // the iframe width of 100%.
+      $('figure', context).each(function () {
+        var $iframeWithin = $('iframe', this);
+        var iframeWidth = $iframeWithin.attr('width');
+        if ($iframeWithin.length && (!iframeWidth || iframeWidth === '100%')) {
+          $(this).css('width', '100%');
+        }
+      });
+
       // Validate there is a skip link anchor for the main content. If not,
       // default to #page-content.
       var $title = $('h1', context);
