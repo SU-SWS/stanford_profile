@@ -433,7 +433,7 @@ class EventsCest {
         'organization' => 'Asfdasdfa sdfasd fasf',
       ],
       'su_event_map_link' => [
-        'uri' => 'https://stanford.edu/',
+        'uri' => 'https://www.stanford.edu/',
         'title' => 'map link',
       ],
       'su_event_sponsor' => [

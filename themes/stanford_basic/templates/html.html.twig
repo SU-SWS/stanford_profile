@@ -74,11 +74,11 @@
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-BECJQXLNCY');
+          gtag('config', 'G-BECJQXLNCY', {cookie_domain: window.location.host, cookie_prefix: "sws", "ga-expire": 15552000});
         </script>
         {% else %}
         <script>
-          gtag('config', 'G-BECJQXLNCY');
+          gtag('config', 'G-BECJQXLNCY', {cookie_domain: window.location.host, cookie_prefix: "sws", "ga-expire": 15552000});
         </script>
         {% endif %}
       {% endif %}

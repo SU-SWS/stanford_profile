@@ -158,7 +158,14 @@ class EventSubscriber implements EventSubscriberInterface {
     /** @var \Drupal\Core\Routing\CurrentRouteMatch $route_match */
     $route_match = \Drupal::service('current_route_match');
     $name = $route_match->getCurrentRouteMatch()->getRouteName();
-    if (in_array($name, ['system.css_asset', 'system.js_asset'])) {
+    $ignore_routes = [
+      'system.css_asset',
+      'system.js_asset',
+      'image.style_private',
+      'system.files',
+      'system.private_file_download',
+    ];
+    if (in_array($name, $ignore_routes)) {
       return FALSE;
     }
 
