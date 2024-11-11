@@ -3,13 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_person_photo
-    - field.storage.node.su_person_short_title
+    - core.entity_view_mode.node.stanford_h3_card_plain
     - node.type.stanford_person
   module:
     - node
-    - stanford_fields
-    - stanford_media
     - taxonomy
     - user
     - views_custom_cache_tag
@@ -267,198 +264,15 @@ display:
           separator: ', '
           field_api_classes: false
           convert_spaces: false
-        view_node:
-          id: view_node
+        rendered_entity:
+          id: rendered_entity
           table: node
-          field: view_node
+          field: rendered_entity
           relationship: reverse__node__su_person_type_group
           group_type: group
           admin_label: ''
           entity_type: node
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: ''
-          output_url_as_text: true
-          absolute: true
-        su_person_photo:
-          id: su_person_photo
-          table: node__su_person_photo
-          field: su_person_photo
-          relationship: reverse__node__su_person_type_group
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: su-margin-bottom-1
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: media_image_formatter
-          settings:
-            view_mode: default
-            link: false
-            image_style: stanford_circle
-            remove_alt: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: reverse__node__su_person_type_group
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: title
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: true
-            text: "{{ su_person_photo }}\r\n{{ title }}"
-            make_link: true
-            path: '{{ view_node }}'
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: entity_title_heading
-          settings:
-            tag: h3
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        su_person_short_title:
-          id: su_person_short_title
-          table: node__su_person_short_title
-          field: su_person_short_title
-          relationship: reverse__node__su_person_type_group
-          group_type: group
-          admin_label: ''
-          plugin_id: field
+          plugin_id: rendered_entity
           label: ''
           exclude: false
           alter:
@@ -500,73 +314,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        edit_node:
-          id: edit_node
-          table: node
-          field: edit_node
-          relationship: reverse__node__su_person_type_group
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: entity_link_edit
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: 'Edit this item'
-          output_url_as_text: false
-          absolute: true
+          view_mode: stanford_h3_card_plain
       pager:
         type: infinite_scroll
         options:
@@ -1000,9 +748,7 @@ display:
         - url
         - url.query_args
         - user.permissions
-      tags:
-        - 'config:field.storage.node.su_person_photo'
-        - 'config:field.storage.node.su_person_short_title'
+      tags: {  }
   results_for:
     id: results_for
     display_title: '"Results For" Block'
