@@ -215,9 +215,6 @@ content:
     region: content
     settings:
       modal: false
-      default_tz: user
-      custom_tz: America/Los_Angeles
-      allowed_timezones: {  }
       default_duration: 60
       default_duration_increments: |-
         30
@@ -227,6 +224,9 @@ content:
         custom
       show_extra: false
       hide_date: true
+      default_tz: user
+      custom_tz: America/Los_Angeles
+      allowed_timezones: {  }
       add_abbreviations: ''
     third_party_settings: {  }
   su_event_dek:

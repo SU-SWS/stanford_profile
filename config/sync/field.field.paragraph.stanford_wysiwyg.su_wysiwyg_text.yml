@@ -6,13 +6,7 @@ dependencies:
     - field.storage.paragraph.su_wysiwyg_text
     - paragraphs.paragraphs_type.stanford_wysiwyg
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    stanford_html: '0'
-    stanford_minimal_html: '0'
-    plain_text: '0'
 id: paragraph.stanford_wysiwyg.su_wysiwyg_text
 field_name: su_wysiwyg_text
 entity_type: paragraph

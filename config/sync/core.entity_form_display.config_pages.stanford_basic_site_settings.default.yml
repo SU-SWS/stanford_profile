@@ -273,20 +273,9 @@ content:
             granularity: 2
             refresh: 60
             description: ''
-      formatter_third_party_settings:
-        empty_fields:
-          handler: ''
-        field_formatter_class:
-          class: ''
-        field_label:
-          label_value: ''
-          label_tag: ''
+      formatter_third_party_settings: {  }
       show_description: false
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-      change_labels:
-        field_label_overwrite: ''
+    third_party_settings: {  }
   su_site_dropdowns:
     type: boolean_checkbox
     weight: 5

@@ -2,8 +2,10 @@
 
 .content {
   .paragraph-item {
-    &:not(.ptype-stanford-accordion) {
-      @include modular-spacing("margin-bottom", 5);
+    @include modular-spacing("margin-bottom", 5);
+
+    &.ptype-stanford-accordion {
+      margin-bottom: 0;
     }
 
     &.ptype-stanford-accordion {

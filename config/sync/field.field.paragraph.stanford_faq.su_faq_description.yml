@@ -6,14 +6,7 @@ dependencies:
     - field.storage.paragraph.su_faq_description
     - paragraphs.paragraphs_type.stanford_faq
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    stanford_limited_html: stanford_limited_html
-    stanford_html: '0'
-    stanford_minimal_html: '0'
-    plain_text: '0'
 id: paragraph.stanford_faq.su_faq_description
 field_name: su_faq_description
 entity_type: paragraph

@@ -2,6 +2,8 @@
 
 /**
  * Test for the Global Messages.
+ *
+ * @group global-message
  */
 class GlobalMessageCest {
 

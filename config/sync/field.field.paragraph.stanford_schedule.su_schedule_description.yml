@@ -4,15 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.su_schedule_description
+    - filter.format.stanford_minimal_html
     - paragraphs.paragraphs_type.stanford_schedule
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    stanford_minimal_html: stanford_minimal_html
-    stanford_html: '0'
-    plain_text: '0'
 id: paragraph.stanford_schedule.su_schedule_description
 field_name: su_schedule_description
 entity_type: paragraph
@@ -24,5 +19,6 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - stanford_minimal_html
 field_type: text_long

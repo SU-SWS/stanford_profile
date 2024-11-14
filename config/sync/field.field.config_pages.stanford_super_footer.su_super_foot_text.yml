@@ -6,13 +6,7 @@ dependencies:
     - config_pages.type.stanford_super_footer
     - field.storage.config_pages.su_super_foot_text
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    stanford_html: '0'
-    stanford_minimal_html: '0'
-    plain_text: '0'
 id: config_pages.stanford_super_footer.su_super_foot_text
 field_name: su_super_foot_text
 entity_type: config_pages
