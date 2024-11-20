@@ -1,5 +1,21 @@
 # Stanford Profile
 
+11.5.0
+-------------------------------------------------------------------------------
+- Updated metatag module config
+- Exposed opportunity in graphql
+- D8CORE-7194 Embed codes with captions respect 100% widths on iframes
+- D8CORE-6644 Omit default favicons if one is uploaded in the theme settings
+- D8CORE-5828 If home page starts with a wysiwyg, add some space at the top
+- Added aria label to masthead section
+- D8CORE-6821 Adjust skip to main content location
+- D8CORE-7454: Move back-to-top inside the <main> element
+- D8CORE-7434 D8CORE-7435 D8CORE-7436 | Opportunity full content layout and configure card and list display (#813)
+- D8CORE-7578 Adjust person display for lists and improve resolution (#828)
+- D8CORE-7558: added the global footer to minimal theme in dark with no logo (#820)
+- Added FAQ Accordion List paragraph type based on CAW (#827)
+- Added modal colorbox image display choices in the wysiwyg (#826)
+
 11.4.5
 -------------------------------------------------------------------------------
 - Remove edit links in views (#821)
