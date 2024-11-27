@@ -3,11 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - search_api.server.database_search
     - core.entity_view_mode.node.search_indexing
+    - search_api.server.database_search
   module:
     - node
-    - search_api
 id: full_site_content
 name: 'Full Site Content'
 description: ''
