@@ -8,7 +8,7 @@ title: 'Default cron handler'
 id: simple_oauth_cron
 weight: 0
 module: simple_oauth
-callback: simple_oauth_cron
+callback: 'simple_oauth#cron'
 scheduler:
   id: simple
 launcher:

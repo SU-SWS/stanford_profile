@@ -8,7 +8,7 @@ title: 'Default cron handler'
 id: stanford_events_cron
 weight: 0
 module: stanford_events
-callback: stanford_events_cron
+callback: 'stanford_events#cron'
 scheduler:
   id: simple
 launcher:

@@ -8,7 +8,7 @@ title: 'Default cron handler'
 id: field_encrypt_cron
 weight: 0
 module: field_encrypt
-callback: field_encrypt_cron
+callback: 'field_encrypt#cron'
 scheduler:
   id: simple
 launcher:
