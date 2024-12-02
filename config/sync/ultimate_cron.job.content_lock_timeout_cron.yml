@@ -8,7 +8,7 @@ title: 'Default cron handler'
 id: content_lock_timeout_cron
 weight: 0
 module: content_lock_timeout
-callback: content_lock_timeout_cron
+callback: 'content_lock_timeout#cron'
 scheduler:
   id: simple
 launcher:
