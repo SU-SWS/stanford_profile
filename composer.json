@@ -59,7 +59,7 @@
         "drupal/config_split": "^2.0",
         "drupal/confirm_leave": "^1.0@beta",
         "drupal/content_lock": "^2.2",
-        "drupal/core": "~10.3.0",
+        "drupal/core": "~10.4.0",
         "drupal/cshs": "^4.0",
         "drupal/default_content": "^2.0@alpha",
         "drupal/diff": "^1.3",
@@ -183,9 +183,6 @@
             }
         },
         "patches": {
-            "drupal/google_analytics": {
-                "https://www.drupal.org/project/google_analytics/issues/3373921": "https://www.drupal.org/files/issues/2023-08-07/google-analytics-issues-3373921-cannot-install-from-existing-config-11.patch"
-            },
             "drupal/hook_event_dispatcher": {
                 "https://www.drupal.org/project/hook_event_dispatcher/issues/3354751": "https://www.drupal.org/files/issues/2024-03-14/hook_event_dispatcher-4.x-3354751-7.patch"
             },
