@@ -47,7 +47,7 @@
 {% set attributes = attributes.setAttribute('aria-labelledby', button_label) %}
 {% set attributes = attributes.addClass(classes) %}
 
-<a href="#main-content" class="visually-hidden focusable su-skipnav su-skipnav--content">{{ 'Skip to main content'|t }}</a>
+<a href="#main-content" class="visually-hidden focusable su-skipnav su-skipnav--content">{{ 'Skip Secondary Navigation'|t }}</a>
 <nav{{ attributes }}>
   <div id="secondary-navigation" tabindex="-1" class="visually-hidden focusable">{{ 'Secondary Navigation'|t }}</div>
   {# Label. If not displayed, we still provide it for screen readers. #}

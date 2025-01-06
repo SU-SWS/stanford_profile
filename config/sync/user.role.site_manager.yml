@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.stanford_component_block
     - filter.format.stanford_html
     - filter.format.stanford_minimal_html
     - media.type.embeddable
@@ -28,7 +29,7 @@ dependencies:
     - taxonomy.vocabulary.stanford_publication_topics
     - taxonomy.vocabulary.su_shared_tags
   module:
-    - block_content_permissions
+    - block_content
     - book
     - config_pages
     - content_lock
@@ -176,6 +177,7 @@ permissions:
   - 'edit any file media'
   - 'edit any google_form media'
   - 'edit any image media'
+  - 'edit any stanford_component_block block content'
   - 'edit any stanford_course content'
   - 'edit any stanford_event content'
   - 'edit any stanford_event_series content'
@@ -240,7 +242,6 @@ permissions:
   - 'revert stanford_publication revisions'
   - 'schedule publishing of nodes'
   - 'update any media'
-  - 'update any stanford_component_block block content'
   - 'update media'
   - 'use text format stanford_html'
   - 'use text format stanford_minimal_html'

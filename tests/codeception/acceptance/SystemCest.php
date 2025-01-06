@@ -14,7 +14,7 @@ class SystemCest {
     $I->runDrush('xmlsitemap:rebuild');
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/reports/status');
-    $I->canSee('10.3', '.system-status-general-info');
+    $I->canSee('10.4', '.system-status-general-info');
     if ($I->grabMultiple('.system-status-counter--error')) {
       $I->canSee('1 Error', '.system-status-counter--error');
       $I->canSee('Access to update.php ', '.system-status-report__status-icon--error');
