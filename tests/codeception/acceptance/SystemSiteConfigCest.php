@@ -27,7 +27,7 @@ class SystemSiteConfigCest {
   /**
    * Delete the config page after the test finishes.
    */
-  public function __after(AcceptanceTester $I) {
+  public function _after(AcceptanceTester $I) {
     if ($config_page = ConfigPages::load('stanford_basic_site_settings')) {
       $config_page->delete();
     }
