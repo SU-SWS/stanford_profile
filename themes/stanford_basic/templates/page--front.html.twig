@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Main Page Template.
+ *
+ * Available variables:
+ * - page: The content regions for this page.
+ * - attributes: HTML attributes for the region div.
+ *
+ * @see template_preprocess_page()
+ */
+#}
+
+{% extends "page.html.twig" %}
+
+{# Template Paths #}
+{%- if template_brand_bar is empty -%}
+  {%- set template_brand_bar = "@decanter/components/brand-bar/brand-bar.twig" -%}
+{%- endif -%}
+
+{%- if template_global_footer is empty -%}
+  {%- set template_global_footer = "@decanter/components/global-footer/global-footer.twig" -%}
+{%- endif -%}
+{# End Template Paths. #}
+
+
+{# Main Page Content Section #}
+  {%- block block_main -%}
+
+  {% if is_front %}
+    <h1>
+     <p>Site name: {{ site_name }}</p>
+    </h1>
+  {% endif %}
+    {{ page.content }}
+  {%- endblock -%}
