@@ -15,8 +15,8 @@
 
 {# Main Page Content Section #}
   {%- block block_main -%}
-    <h1>
-     <p>Site name: {{ site_name }}</p>
+    <h1 class='sr-only'>
+     {{ site_name }}
     </h1>
     {{ page.content }}
   {%- endblock -%}
