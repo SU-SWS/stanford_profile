@@ -26,11 +26,8 @@
 
 {# Main Page Content Section #}
   {%- block block_main -%}
-
-  {% if is_front %}
     <h1>
      <p>Site name: {{ site_name }}</p>
     </h1>
-  {% endif %}
     {{ page.content }}
   {%- endblock -%}

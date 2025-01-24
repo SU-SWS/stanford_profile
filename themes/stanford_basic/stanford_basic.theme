@@ -649,9 +649,6 @@ function stanford_basic_preprocess_paragraph__stanford_spacer(&$variables) {
 function stanford_basic_hook_preprocess_page__front( &$variables) {
   /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_pages */
 
-    $config_pages = \Drupal::service('config_pages.stanford_basic_site_settings');
-
-  $variables['site_name'] = $config_pages->get('site_name');
-
-
+    $config_pages = \Drupal::service('config_pages.site-information');
+    $variables['site_name'] = $config_pages->get('site_name');
 }
