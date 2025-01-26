@@ -1,0 +1,14 @@
+uuid: 48173aba-4532-4e16-ba93-6911f1b949ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - toolbar
+    - view_unpublished
+id: su_site_reviewer
+label: 'Site Reviewer'
+weight: 3
+is_admin: null
+permissions:
+  - 'access toolbar'
+  - 'view any unpublished content'
