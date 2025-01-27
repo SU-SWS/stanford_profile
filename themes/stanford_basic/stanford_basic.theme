@@ -642,3 +642,10 @@ function stanford_basic_preprocess_paragraph__stanford_spacer(&$variables) {
       ->getString();
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_page__front(&$variables) {
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+}
