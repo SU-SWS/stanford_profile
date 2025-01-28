@@ -6,6 +6,8 @@ dependencies:
     - field.field.taxonomy_term.stanford_news_topics.layout_builder__layout
     - taxonomy.vocabulary.stanford_news_topics
   module:
+    - change_labels
+    - field_formatter_class
     - text
 id: taxonomy_term.stanford_news_topics.default
 targetEntityType: taxonomy_term
@@ -20,6 +22,12 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  layout_builder__layout:
+    type: null
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -28,9 +36,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      change_labels:
+        field_label_overwrite: ''
 hidden:
-  layout_builder__layout: true
   path: true
   publish_on: true
-  status: true
   unpublish_on: true
