@@ -6,4 +6,6 @@ id: site_reviewer
 label: 'Site Reviewer'
 weight: 4
 is_admin: null
-permissions: {  }
+permissions:
+  - 'access toolbar'
+  - 'view any unpublished content'
