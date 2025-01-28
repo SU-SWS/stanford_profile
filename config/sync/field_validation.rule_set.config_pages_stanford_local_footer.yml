@@ -11,7 +11,7 @@ field_validation_rules:
     id: regex_field_validation_rule
     title: 'Supported Social Links'
     data:
-      setting: /(google|twitter|bsky|github|threads|flickr|mastodon|instagram|linkedin|youtube|x|facebook)\.(com|app|org)/
+      setting: /(google|twitter|bsky|github|threads|flickr|mastodon|instagram|linkedin|youtube|x|facebook)\.(com|app|org|net)/
     weight: 1
     uuid: d8d3f70a-89e9-451a-9d4a-336dc7400835
     field_name: su_local_foot_social
