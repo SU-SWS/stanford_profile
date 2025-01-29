@@ -1,0 +1,19 @@
+uuid: 56475463-853c-4349-96ce-67d164f56677
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_web_services_help
+    - field.storage.config_pages.su_help_subtitle
+id: config_pages.stanford_web_services_help.su_help_subtitle
+field_name: su_help_subtitle
+entity_type: config_pages
+bundle: stanford_web_services_help
+label: 'Help Subtitle'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

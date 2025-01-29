@@ -1,0 +1,52 @@
+uuid: 90e69869-4a42-4366-9822-90e4a98ec85f
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_web_services_help
+    - field.field.config_pages.stanford_web_services_help.su_help_content
+    - field.field.config_pages.stanford_web_services_help.su_help_subtitle
+    - field.field.config_pages.stanford_web_services_help.su_help_title
+  module:
+    - paragraphs
+id: config_pages.stanford_web_services_help.default
+targetEntityType: config_pages
+bundle: stanford_web_services_help
+mode: default
+content:
+  su_help_content:
+    type: paragraphs
+    weight: 2
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  su_help_subtitle:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  su_help_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  label: true

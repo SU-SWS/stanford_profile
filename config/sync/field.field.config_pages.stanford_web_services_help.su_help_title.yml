@@ -1,0 +1,21 @@
+uuid: e398d108-da2a-4d4f-9466-a98fda186f0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_web_services_help
+    - field.storage.config_pages.su_help_title
+id: config_pages.stanford_web_services_help.su_help_title
+field_name: su_help_title
+entity_type: config_pages
+bundle: stanford_web_services_help
+label: 'Help Title'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 'Getting Started'
+default_value_callback: ''
+settings: {  }
+field_type: string

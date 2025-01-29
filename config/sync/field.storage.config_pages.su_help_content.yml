@@ -1,0 +1,21 @@
+uuid: ccaf38c0-e210-456b-b544-bea01afeb60c
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - entity_reference_revisions
+    - paragraphs
+id: config_pages.su_help_content
+field_name: su_help_content
+entity_type: config_pages
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

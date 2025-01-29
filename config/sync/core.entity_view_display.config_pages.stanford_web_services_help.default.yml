@@ -1,0 +1,42 @@
+uuid: 5f9ed1c6-e436-4792-bfb9-397747610c36
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_web_services_help
+    - field.field.config_pages.stanford_web_services_help.su_help_content
+    - field.field.config_pages.stanford_web_services_help.su_help_subtitle
+    - field.field.config_pages.stanford_web_services_help.su_help_title
+  module:
+    - entity_reference_revisions
+id: config_pages.stanford_web_services_help.default
+targetEntityType: config_pages
+bundle: stanford_web_services_help
+mode: default
+content:
+  su_help_content:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  su_help_subtitle:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  su_help_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,82 @@
+uuid: 5ef2f2e7-a1ed-42b1-8bf7-f04b743bc2d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_web_services_help
+    - field.storage.config_pages.su_help_content
+    - paragraphs.paragraphs_type.stanford_accordion
+    - paragraphs.paragraphs_type.stanford_card
+    - paragraphs.paragraphs_type.stanford_faq
+    - paragraphs.paragraphs_type.stanford_layout
+    - paragraphs.paragraphs_type.stanford_lists
+    - paragraphs.paragraphs_type.stanford_media_caption
+    - paragraphs.paragraphs_type.stanford_wysiwyg
+  module:
+    - entity_reference_revisions
+id: config_pages.stanford_web_services_help.su_help_content
+field_name: su_help_content
+entity_type: config_pages
+bundle: stanford_web_services_help
+label: 'Help Content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      stanford_accordion: stanford_accordion
+      stanford_card: stanford_card
+      stanford_faq: stanford_faq
+      stanford_layout: stanford_layout
+      stanford_lists: stanford_lists
+      stanford_media_caption: stanford_media_caption
+      stanford_wysiwyg: stanford_wysiwyg
+    negate: 0
+    target_bundles_drag_drop:
+      stanford_accordion:
+        weight: 15
+        enabled: true
+      stanford_banner:
+        weight: 16
+        enabled: false
+      stanford_card:
+        weight: 17
+        enabled: true
+      stanford_entity:
+        weight: 18
+        enabled: false
+      stanford_faq:
+        weight: 19
+        enabled: true
+      stanford_gallery:
+        weight: 20
+        enabled: false
+      stanford_layout:
+        weight: 21
+        enabled: true
+      stanford_lists:
+        weight: 22
+        enabled: true
+      stanford_media_caption:
+        weight: 23
+        enabled: true
+      stanford_page_title_banner:
+        weight: 24
+        enabled: false
+      stanford_person_cta:
+        weight: 25
+        enabled: false
+      stanford_schedule:
+        weight: 26
+        enabled: false
+      stanford_spacer:
+        weight: 27
+        enabled: false
+      stanford_wysiwyg:
+        weight: 28
+        enabled: true
+field_type: entity_reference_revisions
