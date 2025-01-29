@@ -147,7 +147,7 @@ window.Drupal.behaviors.stanford_basic = {
           var $summary = $(summary);
           var groupId = $summary.text().toLowerCase().replace(/[^\w]/g, '-').replace(/^-+/, '').replace(/-+$/, '').substring(0, 25);
           $summary.attr('aria-controls', "".concat(groupId, "-panel")).attr('id', "".concat(groupId, "-button"));
-          $summary.next().attr('id', "".concat(groupId, "-panel")).attr('aria-labelledby', "".concat(groupId, "-button"));
+          $summary.next().attr('aria-pressed', expanded).attr('id', "".concat(groupId, "-panel")).attr('aria-labelledby', "".concat(groupId, "-button"));
         });
         if ($details.length < 2 || $('.ptype-stanford-faq', faq).length) {
           return;

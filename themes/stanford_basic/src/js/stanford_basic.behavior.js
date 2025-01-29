@@ -123,6 +123,7 @@ export default {
           $summary
             .attr('aria-controls', `${groupId}-panel`)
             .attr('id', `${groupId}-button`);
+
           $summary.next().attr('id', `${groupId}-panel`)
             .attr('aria-labelledby', `${groupId}-button`);
         });
@@ -137,6 +138,7 @@ export default {
           '<span class="visually-hidden"> Items below.</span>' +
           '</button>',
         );
+
         $button.click(function () {
           $button.toggleClass('expand-all').toggleClass('collapse-all');
           const expanded = !$button.hasClass('expand-all');
