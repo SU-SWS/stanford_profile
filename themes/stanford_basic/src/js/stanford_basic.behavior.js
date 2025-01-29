@@ -120,7 +120,7 @@ export default {
             .replace(/-+$/, '')
             .substring(0, 25);
 
-          $summary.attr('aria-expanded', 'false')
+          $summary
             .attr('aria-controls', `${groupId}-panel`)
             .attr('id', `${groupId}-button`);
           $summary.next().attr('id', `${groupId}-panel`)
@@ -144,7 +144,7 @@ export default {
           $('span', $button).text(expanded ? 'Collapse' : 'Expand');
           $details.each((i, detail) => {
             $(detail).attr('open', expanded);
-            $('summary', detail).attr('aria-expanded', expanded)
+            $('summary', detail)
               .attr('aria-pressed', expanded);
           });
         });
