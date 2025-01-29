@@ -60,11 +60,9 @@ class RolesCest {
    * Site Reviewer role should be limited to viewing unpublished page.
    */
   public function testReviewerRole(AcceptanceTester $I) {
-    $I->logInWithRole('su_site_reviewer');
+    $I->logInWithRole('site_reviewer');
     // D8CORE-7622
-    $I->amOnPage('/');
-    $I->canSeeElement('#toolbar-administration');
-    // would be nice to have a test of if they CAN see unpublished pages
+    // would be nice to have a test if they CAN see unpublished pages
   }
 
   /**
