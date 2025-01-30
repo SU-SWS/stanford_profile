@@ -142,14 +142,8 @@ window.Drupal.behaviors.stanford_basic = {
         }
       });
       $(once('faq-expand-all', '.ptype-stanford-faq', context)).each(function (index, faq) {
-        var $details = $('details', faq);
-        $('summary', $details).each(function (sumIndex, summary) {
-          var $summary = $(summary);
-          var groupId = $summary.text().toLowerCase().replace(/[^\w]/g, '-').replace(/^-+/, '').replace(/-+$/, '').substring(0, 25);
-          $summary.attr('aria-expanded', 'false').attr('aria-controls', "".concat(groupId, "-panel")).attr('id', "".concat(groupId, "-button"));
-          $summary.next().attr('id', "".concat(groupId, "-panel")).attr('aria-labelledby', "".concat(groupId, "-button"));
-        });
-        if ($details.length < 2 || $('.ptype-stanford-faq', faq).length) {
+        var $accordionButtons = $('.accordion__title', faq);
+        if ($accordionButtons.length < 2 || $('.ptype-stanford-faq', faq).length) {
           return;
         }
         var $button = $('<button class="expand-collapse-button expand-all su-button--secondary">' + '<span class="expand-collapse">Expand</span> All' + '<span class="visually-hidden"> Items below.</span>' + '</button>');
@@ -157,10 +151,7 @@ window.Drupal.behaviors.stanford_basic = {
           $button.toggleClass('expand-all').toggleClass('collapse-all');
           var expanded = !$button.hasClass('expand-all');
           $('span', $button).text(expanded ? 'Collapse' : 'Expand');
-          $details.each(function (i, detail) {
-            $(detail).attr('open', expanded);
-            $('summary', detail).attr('aria-expanded', expanded).attr('aria-pressed', expanded);
-          });
+          $accordionButtons.click();
         });
         var $headline = $('.su-faq-headline', faq);
         if ($headline.length) {
