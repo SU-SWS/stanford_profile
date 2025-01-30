@@ -230,7 +230,25 @@ content:
     region: content
     settings:
       progress_indicator: throbber
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        3a06e1eb-5e38-4845-90c8-996e580d0ece:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_site_algolia_id:
     type: string_textfield
     weight: 19
@@ -238,7 +256,25 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        89d00a0f-8aca-457f-85a6-dfc51b2cdcba:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_site_algolia_index:
     type: string_textfield
     weight: 22
@@ -246,7 +282,25 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        d39af812-13e3-403e-9967-55f523c7eca1:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_site_algolia_key:
     type: string_textfield
     weight: 20
@@ -254,7 +308,25 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        6265698e-eed8-47de-b292-e0b6c14c5773:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_site_algolia_search:
     type: string_textfield
     weight: 21
@@ -262,7 +334,25 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        c635c796-900f-417a-a9b5-bc71530209b8:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_site_algolia_terms:
     type: boolean_checkbox
     weight: 16
@@ -276,7 +366,25 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        3c7e2b02-874b-450d-acd1-e400b2049b6e:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_site_created:
     type: readonly_field_widget
     weight: 1
