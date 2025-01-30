@@ -124,6 +124,7 @@ third_party_settings:
       children:
         - su_hide_site_search
         - su_site_nobots
+        - su_site_algolia_terms
         - su_site_algolia
         - su_site_algolia_ui
         - su_site_algolia_id
@@ -200,35 +201,37 @@ content:
     third_party_settings: {  }
   su_site_algolia:
     type: boolean_checkbox
-    weight: 16
+    weight: 17
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        ec9c7d33-25e6-48d8-b8ab-cdf2a08c0cc2:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_site_algolia_file:
     type: file_generic
-    weight: 22
+    weight: 23
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   su_site_algolia_id:
-    type: string_textfield
-    weight: 18
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  su_site_algolia_index:
-    type: string_textfield
-    weight: 21
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  su_site_algolia_key:
     type: string_textfield
     weight: 19
     region: content
@@ -236,7 +239,15 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  su_site_algolia_search:
+  su_site_algolia_index:
+    type: string_textfield
+    weight: 22
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  su_site_algolia_key:
     type: string_textfield
     weight: 20
     region: content
@@ -244,16 +255,24 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  su_site_algolia_search:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   su_site_algolia_terms:
     type: boolean_checkbox
-    weight: 23
+    weight: 16
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_site_algolia_ui:
     type: boolean_checkbox
-    weight: 17
+    weight: 18
     region: content
     settings:
       display_label: true
