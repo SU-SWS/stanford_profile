@@ -70,9 +70,9 @@ class AccordionCest {
       $I->cantSee($answer);
 
       $child_index = $delta + 1;
-      $I->click(".ptype-stanford-accordion:nth-child($child_index) summary");
+      $I->click($question);
       $I->waitForText($answer);
-      $I->click(".ptype-stanford-accordion:nth-child($child_index) summary");
+      $I->click($question);
     }
 
     $I->click('Expand All');
