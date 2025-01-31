@@ -72,6 +72,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     $help .= self::getLinkString($this->t('Online Privacy'), 'https://www.stanford.edu/site/privacy/') . '</br>';
     $help .= self::getLinkString($this->t('Accessibility'), 'https://www.stanford.edu/site/accessibility/') . '</br>';
     $help .= self::getLinkString($this->t('Terms of use for Sites'), 'https://www.stanford.edu/site/terms/') . '</br>';
+    $help .= self::getLinkString($this->t('Branding'), 'https://identity.stanford.edu/') . '</br>';
 
     return ['#markup' => $help];
   }
