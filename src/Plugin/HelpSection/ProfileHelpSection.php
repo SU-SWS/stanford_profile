@@ -26,10 +26,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
       $this->getUserGuide(),
       $this->getAssistance(),
       $this->getPolicies(),
-
       $this->getLaunchWebsite(),
-//      $this->getFeedback(),
-//      $this->getContact(),
     ];
   }
 
@@ -91,31 +88,4 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     $help .= self::getLinkString($this->t('Stanford Web Services ServiceNow Form'), 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a', TRUE);
     return ['#markup' => $help];
   }
-
-  /**
-   * Get the feedback help text.
-   *
-   * @return array
-   *   Markup render array.
-   */
-  protected function getFeedback() {
-    $help = '<h3>' . $this->t('Do you have feedback for us?') . '</h3>';
-    $help .= '<p>' . $this->t('Submit Feedback to our Drupal service through our ServiceNow form') . '</p>';
-    $help .= self::getLinkString($this->t('Stanford Web Services ServiceNow Form'), 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a', TRUE);
-    return ['#markup' => $help];
-  }
-
-  /**
-   * Get the contact info help text.
-   *
-   * @return array
-   *   Markup render array.
-   */
-  protected function getContact() {
-    $help = '<h3>' . $this->t("Can't find what you're looking for?") . '</h3>';
-    $help .= '<p>' . $this->t("We'll help you find the answer or connect you with an advisor.") . '</p>';
-    $help .= self::getLinkString($this->t('Stanford Web Services ServiceNow Form'), 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a', TRUE);
-    return ['#markup' => $help];
-  }
-
 }
