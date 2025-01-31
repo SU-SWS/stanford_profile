@@ -25,10 +25,11 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     return [
       $this->getUserGuide(),
       $this->getAssistance(),
-      $this->getLaunchWebsite(),
-      $this->getFeedback(),
       $this->getPolicies(),
-      $this->getContact(),
+
+      $this->getLaunchWebsite(),
+//      $this->getFeedback(),
+//      $this->getContact(),
     ];
   }
 
