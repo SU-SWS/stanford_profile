@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.5.2
+-------------------------------------------------------------------------------
+- Removed non-existent permissions
+
 11.5.1
 -------------------------------------------------------------------------------
 - D8CORE 7753 refactor accordion paragraph to use button and div elements (#863)
