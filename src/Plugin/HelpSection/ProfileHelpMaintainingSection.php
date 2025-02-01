@@ -8,13 +8,13 @@ use Drupal\help\Plugin\HelpSection\HelpSectionPluginBase;
  * Provides the module topics list section for the help page.
  *
  * @HelpSection(
- *   id = "profile_help",
+ *   id = "profile_help_maintaining",
  *   title = @Translation("Maintaining your site"),
- *   description = @Translation("What do you need help with today?"),
- *   weight = -9
+ *   description = @Translation("Resources for maintaining the health of your site."),
+ *   weight = -99
  * )
  */
-class HelpMaintainingYourSiteSection extends HelpSectionPluginBase {
+class ProfileHelpMaintainingSection extends HelpSectionPluginBase {
   /**
    * {@inheritdoc}
    */
@@ -35,7 +35,7 @@ class HelpMaintainingYourSiteSection extends HelpSectionPluginBase {
    */
   protected function getMaintainingYourSite() {
     $help = '<h3>' . $this->t('Maintaining your site') . '</h3>';
-    $help .= '<p>' . $this->t('The following tools and resources will help you keep your site healthy. You can also join our active community of Stanford Sites users on Slack. This is a great place to ask questions, learn about the newest features on Stanford Sites, and more!') . '</p>';
+    $help .= '<p>' . $this->t('The following tools and resources will help you keep your site healthy. You can also join our active community of Stanford Sites users on  <a href="https://stanford.enterprise.slack.com/archives/C01NR8WC6AX">Slack</a>. This is a great place to ask questions, learn about the newest features on Stanford Sites, and more!') . '</p>';
     return ['#markup' => $help];
   }
 
@@ -59,7 +59,7 @@ class HelpMaintainingYourSiteSection extends HelpSectionPluginBase {
    */
   protected function getSiteHealth() {
     $help = '<h3>' . $this->t('Site Health') . '</h3>';
-    $help .= '<p>' . $this->t('Use Siteimprove, an accessibility and quality assurance platform to scan and monitor your website that is active for all launched sites on Stanford Sites. Siteimprove will help you identify accessibility issues, broken links, typos and more! You can learn more about this service here: https://uit.stanford.edu/accessibility/testing/siteimprove.') . '</p>';
+    $help .= '<p>' . $this->t('Use <a href="http://siteimprove.stanford.edu/">Siteimprove</a>, an accessibility and quality assurance platform to scan and monitor your website that is active for all launched sites on Stanford Sites. Siteimprove will help you identify accessibility issues, broken links, typos and more! You can learn more about this service here: <a href="https://uit.stanford.edu/accessibility/testing/siteimprove">https://uit.stanford.edu/accessibility/testing/siteimprove</a>.') . '</p>';
     return ['#markup' => $help];
   }
 
