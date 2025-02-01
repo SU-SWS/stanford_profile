@@ -15,6 +15,7 @@ use Drupal\help\Plugin\HelpSection\HelpSectionPluginBase;
  * )
  */
 class ProfileHelpMaintainingSection extends HelpSectionPluginBase {
+
   /**
    * {@inheritdoc}
    */
@@ -76,4 +77,5 @@ class ProfileHelpMaintainingSection extends HelpSectionPluginBase {
     $help .= '<p>' . $this->t('<a href="https://sallie.stanford.edu/">Sallie</a> is the university’s image database. Find images to meet your communication goals.') . '</p>';
     return ['#markup' => $help];
   }
+
 }

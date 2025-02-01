@@ -36,7 +36,7 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getTechTraining() {
-    $help = '<h3>' . self::getLinkString($this->t('Tech Training: '), 'https://itservices.stanford.edu/service/techtraining/schedule') . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t('Tech Training:'), 'https://itservices.stanford.edu/service/techtraining/schedule') . '</h3>';
     $help .= '<p>' . $this->t('See upcoming courses on site editing.') . '</p>';
     return ['#markup' => $help];
   }
