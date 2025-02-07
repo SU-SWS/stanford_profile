@@ -33,6 +33,21 @@
                     "reference": "master"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "noli42/chosen",
+                "version": "3.0.0",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "chosen"
+                },
+                "dist": {
+                    "url": "https://github.com/noli42/chosen/releases/download/3.0.0/chosen-assets-v3.0.0.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
@@ -149,7 +164,7 @@
         "drupal/views_taxonomy_term_name_depth": "^7.0",
         "drupal/webp": "^1.0@beta",
         "drupal/xmlsitemap": "^2.0",
-        "harvesthq/chosen": "^1.8",
+        "noli42/chosen": "3.0.0",
         "onlyextart/colorbox": "dev-master#e58476becbc89dc671093d1bcd9f99b2167fa8f7",
         "sainsburys/guzzle-oauth2-plugin": "^3.0",
         "seboettg/citeproc-php": "2.4.1",
