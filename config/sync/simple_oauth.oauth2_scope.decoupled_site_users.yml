@@ -1,0 +1,19 @@
+uuid: 08213a92-0ecc-46b4-ba81-f330c7bca4e7
+langcode: en
+status: true
+dependencies: {  }
+id: decoupled_site_users
+name: decoupled_site_users
+description: 'Decoupled Site User'
+grant_types:
+  authorization_code:
+    status: true
+  client_credentials:
+    status: true
+  refresh_token:
+    status: true
+umbrella: false
+parent: null
+granularity: role
+permission: null
+role: decoupled_site_users
