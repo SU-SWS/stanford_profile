@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.5.3
+-------------------------------------------------------------------------------
+- Added site manager permission to grant site reviewer role.
+
 11.5.2
 -------------------------------------------------------------------------------
 - Removed non-existent permissions
