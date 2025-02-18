@@ -1,0 +1,21 @@
+uuid: 30f3cc80-90a8-4879-ab9f-9eed6db5e483
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_algolia_terms
+id: config_pages.stanford_basic_site_settings.su_site_algolia_terms
+field_name: su_site_algolia_terms
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Algolia Terms of Use'
+description: 'Algolia is a third-party service that provides a modern search experience, tools for adjusting search results, and analytics. By checking this box, you are acknowledging that you understand the following: Use of this service on your Stanford Site requires a paid subscription.  Assistance with initial configuration and ongoing support for your search index are available as for-fee services. To learn more, visit our guide to <a href="https://sitesuserguide.stanford.edu/get-started/site-settings/enhancing-site-search">Enhancing Site Search.</a>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Agree
+  off_label: Disagree
+field_type: boolean

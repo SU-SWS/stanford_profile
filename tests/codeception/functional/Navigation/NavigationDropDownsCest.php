@@ -26,7 +26,7 @@ class NavigationDropDownsCest {
   /**
    * Cleanup after test.
    */
-  public function __after(FunctionalTester $I) {
+  public function _after(FunctionalTester $I) {
     \Drupal::entityTypeManager()
       ->getStorage('config_pages')
       ->load('stanford_basic_site_settings')

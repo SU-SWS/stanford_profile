@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-// override default link color styles here 
+// override default link color styles here
 // Teasers & Lists
 
 // Events default and cards
@@ -65,7 +65,7 @@
   }
 }
 
-// for the event list pages 
+// for the event list pages
 .su-event-list-item {
   .su-event-list-item__details {
     h2 {
@@ -183,24 +183,24 @@
 
 // Publications
 .stanford-publications {
-  &.view {
-    a {
-      color: $su-color-digital-blue;
 
-      &:hover,
-      &:active,
-      &:focus {
-    
-        &:after {
-          background-color: $su-color-digital-blue;
-        }
-      }
-   
+  a {
+    color: $su-color-digital-blue;
+
+    &:hover,
+    &:active,
+    &:focus {
+
       &:after {
         background-color: $su-color-digital-blue;
       }
     }
+
+    &:after {
+      background-color: $su-color-digital-blue;
+    }
   }
+
 }
 
 .stanford-publications {
@@ -263,7 +263,7 @@
         &:focus,
         &:active {
           color: $su-color-digital-blue;
-          
+
           &:after {
             background-color: $su-color-digital-blue;
           }
@@ -275,7 +275,7 @@
       }
     }
   }
-} 
+}
 
 .su-basic-page-types-list {
   a {

@@ -1,5 +1,45 @@
 # Stanford Profile
 
+11.5.3
+-------------------------------------------------------------------------------
+- Added site manager permission to grant site reviewer role.
+
+11.5.2
+-------------------------------------------------------------------------------
+- Removed non-existent permissions
+
+11.5.1
+-------------------------------------------------------------------------------
+- D8CORE 7753 refactor accordion paragraph to use button and div elements (#863)
+- Fix typo in lockup config page settings. (#862)
+- D8CORE-7705: Self-Service Enhanced Search (#861)
+- D8CORE-7780: Content Management pages for person, event and news (#858)
+- D8CORE-7622: Site Reviewer Role (#855)
+- D8CORE-7339: added net to the local footer social link validation (#859)
+- D8CORE-7644: updated user creation mail (#856)
+- D8CORE-7220: h1 on Homepage (#847)
+- D8Core-7339: added help text and additional icons to social links in footer. (#846)
+- Revert "Add and configure trash module for soft deleteing content (#835)" (#851)
+- Update tests to work correctly with trash module (#850)
+- D8CORE-7531: removed max-width on intro text and drop cap text (#843)
+- D8CORE-7703: fixed bad link, updated text (#844)
+- D8CORE-7532: removed wysiwyg p line length (#842)
+- Add and configure trash module for soft deleteing content (#835)
+- D8CORE-7678: removed the medium and small quote (#840)
+- Updated editora11y module config (#841)
+- Fix tests with profile helper module dev (#839)
+- Remove obsolete module block_content_permissions (#838)
+- Drupal 11.4 update
+- D8CORE-7533: Change to the Quote style in the wysiwyg
+- Fixup citation entity config export
+- Updated environment indicator settings after update
+- Update linkit module (#834)
+- D8CORE-7664: add gutters to accordions on full width
+- D8CORE-7668: Adjust skip secondary nav anchor link
+- D8CORE-7670: allow all language options in ckeditor
+- Update ultimate cron config after module update (#832)
+- Updated config from db update
+
 11.5.0
 -------------------------------------------------------------------------------
 - Updated metatag module config

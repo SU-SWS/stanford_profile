@@ -35,6 +35,8 @@ class LocalFooterCest {
 
   /**
    * Changes to the local footer should display correctly.
+   *
+   * @group social-links
    */
   public function testCustomLocalFooter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
@@ -52,7 +54,7 @@ class LocalFooterCest {
       'Zip code' => 12345,
       'su_local_foot_action[0][uri]' => 'http://google.com',
       'su_local_foot_action[0][title]' => 'Action Link',
-      'su_local_foot_social[0][uri]' => 'http://facebook.com',
+      'su_local_foot_social[0][uri]' => 'http://foobar.com',
       'su_local_foot_social[0][title]' => 'Facebook Social Link',
       'Primary Links Header' => 'Primary links header',
       'su_local_foot_primary[0][uri]' => 'http://google.com',
@@ -70,6 +72,11 @@ class LocalFooterCest {
     }
 
     $I->click('Save');
+
+    $I->canSee('Social URL is not supported.');
+    $I->fillField('su_local_foot_social[0][uri]', 'http://facebook.com');
+    $I->click('Save');
+
     $I->see('Local Footer has been', '.messages-list');
 
     $I->amOnPage('/');

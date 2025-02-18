@@ -1,0 +1,24 @@
+uuid: b8c6b7c1-56df-4043-bd94-3f3a0207bb7c
+langcode: en
+status: true
+dependencies: {  }
+name: config_pages_stanford_local_footer
+label: 'config_pages stanford_local_footer validation'
+entity_type: config_pages
+bundle: stanford_local_footer
+field_validation_rules:
+  d8d3f70a-89e9-451a-9d4a-336dc7400835:
+    id: regex_field_validation_rule
+    title: 'Supported Social Links'
+    data:
+      setting: /(google|twitter|bsky|github|threads|flickr|mastodon|instagram|linkedin|youtube|x|facebook)\.(com|app|org|net)/
+    weight: 1
+    uuid: d8d3f70a-89e9-451a-9d4a-336dc7400835
+    field_name: su_local_foot_social
+    column: uri
+    error_message: 'Social URL is not supported.'
+    roles: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''
