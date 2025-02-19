@@ -10,7 +10,8 @@ icon_uuid: null
 icon_default: null
 description: 'Choose a list to display various items dynamically with a filter'
 behavior_plugins:
-  layout_paragraphs:
+  list_paragraph:
     enabled: true
-    available_layouts:
-      layout_onecol: 'One column'
+    hide_empty: false
+    empty_message: ''
+    heading_behavior: show
