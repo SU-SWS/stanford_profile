@@ -373,14 +373,10 @@ class BasicPageCest {
       'type' => 'stanford_wysiwyg',
       'su_wysiwyg_text' => ['value' => $text, 'format' => 'stanford_html'],
     ], 'paragraph');
-    $row = $I->createEntity([
-      'type' => 'node_stanford_page_row',
-      'su_page_components' => $wysiwyg,
-    ], 'paragraph_row');
     $node = $I->createEntity([
       'title' => $this->faker->words(3, TRUE),
       'type' => 'stanford_page',
-      'su_page_components' => $row,
+      'su_page_components' => $wysiwyg,
     ]);
     $I->logInWithRole('contributor');
     $I->amOnPage($node->toUrl('edit-form')->toString());
