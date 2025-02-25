@@ -52,7 +52,7 @@ class AuthenticatedPermissionsCest {
   public function testAuthenticatedUserRestrictions(AcceptanceTester $I) {
     $I->logInWithRole('authenticated');
     $I->amOnPage('/');
-    $I->canSeeResponseCodeIs(200);
+    $I->canSeeResponseCodeIs(403);
     $I->amOnPage('/admin');
     $I->canSeeResponseCodeIs(403);
     $I->amOnPage('/admin/content');

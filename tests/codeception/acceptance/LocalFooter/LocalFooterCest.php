@@ -3,7 +3,7 @@
 /**
  * Class LocalFooterCest.
  *
- * @group local_footer
+ * @group local-footer
  */
 class LocalFooterCest {
 

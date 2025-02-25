@@ -2,6 +2,8 @@
 
 /**
  * Test for the Super Footer.
+ *
+ * @group super-footer
  */
 class SuperFooterCest {
 
@@ -49,7 +51,7 @@ class SuperFooterCest {
     $I->click('Save');
     $I->see('Super Footer has been', '.messages-list');
 
-    $I->amOnPage("/");
+    $I->amOnPage('/');
     $I->seeElement(".block-config-pages-super-footer");
     $I->canSee("Super Footer Title");
     $I->canSee("Super footers are super.");
