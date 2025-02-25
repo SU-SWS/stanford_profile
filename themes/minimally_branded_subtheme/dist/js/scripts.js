@@ -1,6 +1,5 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	"use strict";
-var __webpack_exports__ = {};
 /**
  * Behavior Example that works with Webpack.
  *
