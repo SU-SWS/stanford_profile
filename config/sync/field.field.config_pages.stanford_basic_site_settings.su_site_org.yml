@@ -6,13 +6,6 @@ dependencies:
     - config_pages.type.stanford_basic_site_settings
     - field.storage.config_pages.su_site_org
     - taxonomy.vocabulary.site_owner_orgs
-  module:
-    - required_api
-third_party_settings:
-  required_api:
-    required_plugin: required_by_role
-    required_plugin_options:
-      - site_manager
 id: config_pages.stanford_basic_site_settings.su_site_org
 field_name: su_site_org
 entity_type: config_pages
