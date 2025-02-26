@@ -6,7 +6,7 @@ use Faker\Factory;
 /**
  * Class SystemSiteConfigCest.
  *
- * @group system_site_config
+ * @group system-site-config
  */
 class SystemSiteConfigCest {
 

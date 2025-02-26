@@ -1,0 +1,19 @@
+uuid: 92b1f433-8e7f-4095-8255-92702a8b4a37
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_sunetid
+id: config_pages.stanford_basic_site_settings.su_site_sunetid
+field_name: su_site_sunetid
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Personal Site SunetID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

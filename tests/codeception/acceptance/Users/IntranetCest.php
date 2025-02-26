@@ -1,5 +1,7 @@
 <?php
 
+use Faker\Factory;
+
 /**
  * Class IntranetCest.
  *
@@ -23,6 +25,17 @@ class IntranetCest {
    * @var bool
    */
   protected $fileUploadsWasEnabled = FALSE;
+
+  /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
 
   /**
    * Save the original state.
@@ -52,14 +65,19 @@ class IntranetCest {
       $I->runDrush('cache-rebuild');
     }
 
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+
     $I->stopFollowingRedirects();
-    $I->amOnPage('/');
+    $I->amOnPage($node->toUrl()->toString());
     $I->canSeeResponseCodeIsBetween(301, 403);
     $I->canSeeNumberOfElements('.su-multi-menu__menu a', 0);
 
     $I->startFollowingRedirects();
     $I->logInWithRole('authenticated');
-    $I->amOnPage('/');
+    $I->amOnPage($node->toUrl()->toString());
     $I->canSeeResponseCodeIsSuccessful();
     $I->canSeeNumberOfElements('.su-multi-menu__menu a', [0, 99]);
   }

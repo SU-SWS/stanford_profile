@@ -103,7 +103,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    * {@inheritDoc}
    */
   public function runTask(array &$install_state) {
-    $this->state->set('nobots', FALSE);
+    $this->state->set('nobots', TRUE);
     $this->state->set('stanford-created', time());
 
     $node_pages = [

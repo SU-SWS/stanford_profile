@@ -233,8 +233,6 @@ class EventsCest {
 
   /**
    * Test thing.
-   *
-   * @group foobar
    */
   public function testSiteManagerPerms(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');

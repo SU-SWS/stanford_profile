@@ -142,12 +142,12 @@ class SubThemeCest {
    * @group minimal-theme
    */
   public function testMinimalSubtheme(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
     $I->amOnPage('/');
     $I->seeElement('.su-brand-bar__logo');
     $I->seeElement('.su-global-footer__container');
     $I->seeElement('.su-brand-bar--default');
 
-    $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');
     $I->amOnPage('/');
