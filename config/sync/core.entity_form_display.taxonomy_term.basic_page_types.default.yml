@@ -4,9 +4,6 @@ status: true
 dependencies:
   config:
     - taxonomy.vocabulary.basic_page_types
-  module:
-    - change_labels
-    - field_formatter_class
 id: taxonomy_term.basic_page_types.default
 targetEntityType: taxonomy_term
 bundle: basic_page_types
@@ -26,11 +23,7 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-      change_labels:
-        field_label_overwrite: ''
+    third_party_settings: {  }
 hidden:
   description: true
   path: true
