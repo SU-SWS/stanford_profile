@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.su-wysiwyg-text {
+  h2,
+  h3,
+  h4,
+  h5 {
+    a {
+      color: $su-color-bright-blue;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
