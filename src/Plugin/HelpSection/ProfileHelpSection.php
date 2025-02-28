@@ -38,9 +38,9 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getUserGuide() {
-    $help = '<h3>' . $this->t('Stanford Sites User Guide') . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t('Stanford Sites User Guide'), 'https://sitesuserguide.stanford.edu')  . '</h3>';
     $help .= '<p>' . $this->t('Everything you need to know about how to use, maintain, and launch your Website.') . '</p>';
-    $help .= self::getLinkString($this->t('User Guide'), 'https://sitesuserguide.stanford.edu', TRUE);
+//    $help .= self::getLinkString($this->t('User Guide'), 'https://sitesuserguide.stanford.edu', TRUE);
     return ['#markup' => $help];
   }
 
@@ -87,7 +87,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getAssistance() {
-    $help = '<h3>' . $this->t('Need assistance?') . '</h3>';
+    $help = '<h3>' . $this->t('Need Assistance?') . '</h3>';
     $help .= '<p>' . $this->t('Submit a ServiceNow request to Stanford Web Services to request assistance with your website.') . '</p>';
     $help .= self::getLinkString($this->t('Stanford Web Services ServiceNow Form'), 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a', TRUE);
     return ['#markup' => $help];
@@ -101,8 +101,9 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getSupport() {
-    $help = '<h3>' . self::getLinkString($this->t("Stanford Web Services Support"), 'https://sitesuserguide.stanford.edu/support') . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t("Training & Support for Site Editors"), 'https://sitesuserguide.stanford.edu/support') . '</h3>';
     $help .= '<p>' . $this->t("See upcoming onboarding sessions for editors or book office hours to get hands-on assistance with your site.") . '</p>';
+    $help .= self::getLinkString('Slack', 'https://stanford.enterprise.slack.com/archives/C01NR8WC6AX', TRUE);
     return ['#markup' => $help];
   }
 }

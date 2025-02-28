@@ -10,11 +10,13 @@ use Drupal\help\Plugin\HelpSection\HelpSectionPluginBase;
  * @HelpSection(
  *   id = "profile_help_maintaining",
  *   title = @Translation("Maintaining your site"),
- *   description = @Translation("The following tools and resources will help you keep your site healthy. You can also join our active community of Stanford Sites users on Slack (https://stanford.enterprise.slack.com/archives/C01NR8WC6AX). This is a great place to ask questions, learn about the newest features on Stanford Sites, and more!"),
+ *   description = @Translation("The following tools and resources will help you keep your site healthy. You can also join our active community of Stanford Sites users on Slack. This is a great place to ask questions, learn about the newest features on Stanford Sites, and more!"),
  *   weight = -99
  * )
  */
 class ProfileHelpMaintainingSection extends HelpSectionPluginBase {
+
+  use ProfileHelpTrait;
 
   /**
    * {@inheritdoc}
@@ -34,8 +36,9 @@ class ProfileHelpMaintainingSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getStanfordWebServicesSupport() {
-    $help = '<h3>' . $this->t('Stanford Web Services Support') . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t('Stanford Web Services Support'),'https://getsws.stanford.edu') . '</h3>';
     $help .= '<p>' . $this->t('Need expert advice or just an extra pair of hands? Stanford Web Services has you covered, with professional services to meet your needs.') . '</p>';
+    $help .= self::getLinkString($this->t('Request Consultation'),'https://getsws.stanford.edu', TRUE);
     return ['#markup' => $help];
   }
 
@@ -59,9 +62,8 @@ class ProfileHelpMaintainingSection extends HelpSectionPluginBase {
    */
   protected function getContent() {
     $help = '<h3>' . $this->t('Content') . '</h3>';
-    $help .= '<p>' . $this->t('There are many resources available to help communicators.') . '</p>';
-    $help .= '<p>' . $this->t('The <a href="https://communicators.stanford.edu/">Communicators</a> community is a great place to start to learn more about common practices, style guides, and policies.') . '</p>';
-    $help .= '<p>' . $this->t('<a href="https://sallie.stanford.edu/">Sallie</a> is the university’s image database. Find images to meet your communication goals.') . '</p>';
+    $help .= '<p>' . $this->t('The <a href="https://communicators.stanford.edu/">Communicators</a> community is a great place to learn more about common practices, style guides, and policies.') . '</p>';
+    $help .= '<p>' . $this->t('<a href="https://sallie.stanford.edu/">SALLIE</a> is the university’s image database. Find images to meet your communication goals.') . '</p>';
     return ['#markup' => $help];
   }
 
