@@ -40,7 +40,6 @@ class ProfileHelpSection extends HelpSectionPluginBase {
   protected function getUserGuide() {
     $help = '<h3>' . self::getLinkString($this->t('Stanford Sites User Guide'), 'https://sitesuserguide.stanford.edu')  . '</h3>';
     $help .= '<p>' . $this->t('Everything you need to know about how to use, maintain, and launch your Website.') . '</p>';
-//    $help .= self::getLinkString($this->t('User Guide'), 'https://sitesuserguide.stanford.edu', TRUE);
     return ['#markup' => $help];
   }
 
@@ -103,6 +102,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
   protected function getSupport() {
     $help = '<h3>' . self::getLinkString($this->t("Training & Support for Site Editors"), 'https://sitesuserguide.stanford.edu/support') . '</h3>';
     $help .= '<p>' . $this->t("See upcoming onboarding sessions for editors or book office hours to get hands-on assistance with your site.") . '</p>';
+    $help .= '<p>' . $this->t("You can also join our active community of Stanford Sites users on Slack. This is a great place to ask questions, learn about the newest features on Stanford Sites, and more!") . '</p>';
     $help .= self::getLinkString('Slack', 'https://stanford.enterprise.slack.com/archives/C01NR8WC6AX', TRUE);
     return ['#markup' => $help];
   }

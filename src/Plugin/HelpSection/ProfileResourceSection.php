@@ -10,7 +10,7 @@ use Drupal\help\Plugin\HelpSection\HelpSectionPluginBase;
  * @HelpSection(
  *   id = "profile_resources",
  *   title = @Translation("Other resources at Stanford"),
- *   description = @Translation("Stanford has many centrally offered and community created resources that might help you."),
+ *   description = @Translation("Stanford has other centrally offered resources for web editors."),
  *   weight = -50
  * )
  */

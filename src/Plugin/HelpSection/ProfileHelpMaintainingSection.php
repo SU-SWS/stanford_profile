@@ -10,7 +10,7 @@ use Drupal\help\Plugin\HelpSection\HelpSectionPluginBase;
  * @HelpSection(
  *   id = "profile_help_maintaining",
  *   title = @Translation("Maintaining your site"),
- *   description = @Translation("The following tools and resources will help you keep your site healthy. You can also join our active community of Stanford Sites users on Slack. This is a great place to ask questions, learn about the newest features on Stanford Sites, and more!"),
+ *   description = @Translation("The following tools and resources will help you keep your site healthy."),
  *   weight = -99
  * )
  */
