@@ -23,7 +23,6 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    */
   public function listTopics() {
     return [
-      $this->getSupport(),
       $this->getSoda(),
       $this->getTechTraining(),
     ];
@@ -50,18 +49,6 @@ class ProfileResourceSection extends HelpSectionPluginBase {
   protected function getSoda() {
     $help = '<h3>' . self::getLinkString($this->t('Office of Digital Accessibility'), 'https://uit.stanford.edu/accessibility') . '</h3>';
     $help .= '<p>' . $this->t('Get assistance with identifying issues and improving the accessibility of your site.') . '</p>';
-    return ['#markup' => $help];
-  }
-
-  /**
-   * Get the user guide help text.
-   *
-   * @return array
-   *   Markup render array.
-   */
-  protected function getSupport() {
-    $help = '<h3>' . self::getLinkString($this->t("Stanford Web Services Support"), 'https://sitesuserguide.stanford.edu/support') . '</h3>';
-    $help .= '<p>' . $this->t("See upcoming onboarding sessions for editors or book office hours to get hands-on assistance with your site.") . '</p>';
     return ['#markup' => $help];
   }
 }

@@ -10,7 +10,7 @@ use Drupal\help\Plugin\HelpSection\HelpSectionPluginBase;
  * @HelpSection(
  *   id = "profile_help_maintaining",
  *   title = @Translation("Maintaining your site"),
- *   description = @Translation("Resources for maintaining the health of your site."),
+ *   description = @Translation("The following tools and resources will help you keep your site healthy. You can also join our active community of Stanford Sites users on Slack (https://stanford.enterprise.slack.com/archives/C01NR8WC6AX). This is a great place to ask questions, learn about the newest features on Stanford Sites, and more!"),
  *   weight = -99
  * )
  */
@@ -21,7 +21,6 @@ class ProfileHelpMaintainingSection extends HelpSectionPluginBase {
    */
   public function listTopics() {
     return [
-      $this->getMaintainingYourSite(),
       $this->getStanfordWebServicesSupport(),
       $this->getSiteHealth(),
       $this->getContent(),
@@ -34,21 +33,9 @@ class ProfileHelpMaintainingSection extends HelpSectionPluginBase {
    * @return array
    *   Markup render array.
    */
-  protected function getMaintainingYourSite() {
-    $help = '<h3>' . $this->t('Maintaining your site') . '</h3>';
-    $help .= '<p>' . $this->t('The following tools and resources will help you keep your site healthy. You can also join our active community of Stanford Sites users on  <a href="https://stanford.enterprise.slack.com/archives/C01NR8WC6AX">Slack</a>. This is a great place to ask questions, learn about the newest features on Stanford Sites, and more!') . '</p>';
-    return ['#markup' => $help];
-  }
-
-  /**
-   * Get the user guide help text.
-   *
-   * @return array
-   *   Markup render array.
-   */
   protected function getStanfordWebServicesSupport() {
     $help = '<h3>' . $this->t('Stanford Web Services Support') . '</h3>';
-    $help .= '<p>' . $this->t('The following tools and resources will help you keep your site healthy. You can also join our active community of Stanford Sites users on Slack. This is a great place to ask questions, learn about the newest features on Stanford Sites, and more!') . '</p>';
+    $help .= '<p>' . $this->t('Need expert advice or just an extra pair of hands? Stanford Web Services has you covered, with professional services to meet your needs.') . '</p>';
     return ['#markup' => $help];
   }
 

@@ -25,6 +25,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     return [
       $this->getUserGuide(),
       $this->getAssistance(),
+      $this->getSupport(),
       $this->getPolicies(),
       $this->getLaunchWebsite(),
     ];
@@ -57,6 +58,8 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     return ['#markup' => $help];
   }
 
+
+
   /**
    * Get the policies help text.
    *
@@ -87,6 +90,19 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     $help = '<h3>' . $this->t('Need assistance?') . '</h3>';
     $help .= '<p>' . $this->t('Submit a ServiceNow request to Stanford Web Services to request assistance with your website.') . '</p>';
     $help .= self::getLinkString($this->t('Stanford Web Services ServiceNow Form'), 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a', TRUE);
+    return ['#markup' => $help];
+  }
+
+
+  /**
+   * Get the user guide help text.
+   *
+   * @return array
+   *   Markup render array.
+   */
+  protected function getSupport() {
+    $help = '<h3>' . self::getLinkString($this->t("Stanford Web Services Support"), 'https://sitesuserguide.stanford.edu/support') . '</h3>';
+    $help .= '<p>' . $this->t("See upcoming onboarding sessions for editors or book office hours to get hands-on assistance with your site.") . '</p>';
     return ['#markup' => $help];
   }
 }
