@@ -38,7 +38,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getUserGuide() {
-    $help = '<h3>' . self::getLinkString($this->t('Stanford Sites User Guide'), 'https://sitesuserguide.stanford.edu')  . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t('Stanford Sites User Guide'), 'https://sitesuserguide.stanford.edu') . '</h3>';
     $help .= '<p>' . $this->t('Everything you need to know about how to use, maintain, and launch your Website.') . '</p>';
     return ['#markup' => $help];
   }
@@ -91,7 +91,6 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     $help .= self::getLinkString($this->t('Stanford Web Services ServiceNow Form'), 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a', TRUE);
     return ['#markup' => $help];
   }
-
 
   /**
    * Get the user guide help text.
