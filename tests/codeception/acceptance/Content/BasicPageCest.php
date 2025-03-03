@@ -368,7 +368,7 @@ class BasicPageCest {
    * @group search-results
    */
   public function testSearchResult(AcceptanceTester $I) {
-    $text = $this->faker->paragraphs(2, TRUE);
+    $text = 'Two things are infinite: the universe and human stupidity; and I\'m not sure about the universe.';
     $wysiwyg = $I->createEntity([
       'type' => 'stanford_wysiwyg',
       'su_wysiwyg_text' => ['value' => $text, 'format' => 'stanford_html'],
@@ -383,7 +383,7 @@ class BasicPageCest {
     $I->click('Save');
     $I->canSee($node->label(), 'h1');
 
-    $I->fillField('Search this site', $node->label());
+    $I->fillField('Search this site', 'human stupidity');
     $I->click('Submit Search');
     $I->canSee($node->label(), 'h2');
 
