@@ -36,9 +36,9 @@ class ProfileHelpMaintainingSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getStanfordWebServicesSupport() {
-    $help = '<h3>' . self::getLinkString($this->t('Stanford Web Services Support'),'https://getsws.stanford.edu') . '</h3>';
+    $help = '<h3>' . self::getLinkString($this->t('Stanford Web Services Support'), 'https://getsws.stanford.edu') . '</h3>';
     $help .= '<p>' . $this->t('Need expert advice or just an extra pair of hands? Stanford Web Services has you covered, with professional services to meet your needs.') . '</p>';
-    $help .= self::getLinkString($this->t('Request Consultation'),'https://getsws.stanford.edu', TRUE);
+    $help .= self::getLinkString($this->t('Request Consultation'), 'https://getsws.stanford.edu', TRUE);
     return ['#markup' => $help];
   }
 
