@@ -56,9 +56,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     $help .= self::getLinkString($this->t('Website launch process'), 'https://sitesuserguide.stanford.edu/support/site-launch-checklist', TRUE);
     return ['#markup' => $help];
   }
-
-
-
+  
   /**
    * Get the policies help text.
    *
