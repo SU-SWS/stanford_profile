@@ -7,18 +7,20 @@ label: 'citation su_book validation'
 entity_type: citation
 bundle: su_book
 field_validation_rules:
-  7358cbb2-1a51-4ad6-a16d-b3fc1a55438e:
-    id: regex_field_validation_rule
+  c342a2f2-78b1-43b5-80f2-a170b175b91a:
+    uuid: c342a2f2-78b1-43b5-80f2-a170b175b91a
+    id: regex_constraint_rule
     title: 'DOI does not include http'
-    data:
-      setting: '/^((?!http).)*$/'
-    weight: 1
-    uuid: 7358cbb2-1a51-4ad6-a16d-b3fc1a55438e
+    weight: 2
     field_name: su_doi
     column: value
-    error_message: 'DOI must not be the full url.'
+    error_message: ''
     roles: {  }
     condition:
       field: ''
       operator: ''
       value: ''
+    data:
+      pattern: '/^((?!http).)*$/'
+      message: 'DOI must not be the full url.'
+      validate_mode: direct

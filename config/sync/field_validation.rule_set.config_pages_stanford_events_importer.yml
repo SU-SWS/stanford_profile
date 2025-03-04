@@ -7,15 +7,20 @@ label: 'config_pages stanford_events_importer validation'
 entity_type: config_pages
 bundle: stanford_events_importer
 field_validation_rules:
-  40e20165-85e8-40f2-bb3f-40b23d710bba:
-    id: regex_field_validation_rule
+  3ec31e72-486a-48d3-bd90-d35db20c04c0:
+    uuid: 3ec31e72-486a-48d3-bd90-d35db20c04c0
+    id: regex_constraint_rule
     title: 'Bookmarked Feed'
-    data:
-      setting: '/https:\/\/events-legacy\.stanford.edu\/bookmark\/feed\.php\?slug=/'
-    weight: 1
-    uuid: 40e20165-85e8-40f2-bb3f-40b23d710bba
+    weight: 2
     field_name: su_localist_bookmark
     column: uri
-    error_message: 'Url must be a bookmark feed url.'
+    error_message: ''
     roles: {  }
-    condition: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''
+    data:
+      pattern: '/https:\/\/events-legacy\.stanford.edu\/bookmark\/feed\.php\?slug=/'
+      message: 'Url must be a bookmark feed url.'
+      validate_mode: direct
