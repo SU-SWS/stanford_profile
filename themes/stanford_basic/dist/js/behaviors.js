@@ -1,40 +1,6 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 8035:
-/***/ (function() {
-
-var header = document.getElementById('block-stanford-basic-local-tasks');
-var sticky = 0;
-if (header) {
-  sticky = header.getBoundingClientRect().top;
-  window.onscroll = function () {
-    stickyHeaderOnScroll();
-  };
-}
-
-/**
- * Stick the local block tasks to the top of the window.
- */
-function stickyHeaderOnScroll() {
-  var toolbarHeight = 0;
-  var toolbarOpen = document.body.classList.contains('toolbar-tray-open');
-  if (toolbarOpen === true) {
-    toolbarHeight = 79;
-  } else {
-    toolbarHeight = 39;
-  }
-  if (window.pageYOffset >= sticky - toolbarHeight) {
-    header.classList.add('sticky');
-    header.style.marginTop = toolbarHeight + 'px';
-  } else {
-    header.classList.remove('sticky');
-    header.style.marginTop = '0px';
-  }
-}
-
-/***/ }),
-
 /***/ 5644:
 /***/ (function() {
 
@@ -142,8 +108,7 @@ window.Drupal.behaviors.stanford_basic = {
         }
       });
       $(once('faq-expand-all', '.ptype-stanford-faq', context)).each(function (index, faq) {
-        var $accordionButtons = $('.accordion__title', faq);
-        if ($accordionButtons.length < 2 || $('.ptype-stanford-faq', faq).length) {
+        if ($('.accordion__title', faq).length < 2 || $('.ptype-stanford-faq', faq).length) {
           return;
         }
         var $button = $('<button class="expand-collapse-button expand-all su-button--secondary">' + '<span class="expand-collapse">Expand</span> All' + '<span class="visually-hidden"> Items below.</span>' + '</button>');
@@ -151,7 +116,7 @@ window.Drupal.behaviors.stanford_basic = {
           $button.toggleClass('expand-all').toggleClass('collapse-all');
           var expanded = !$button.hasClass('expand-all');
           $('span', $button).text(expanded ? 'Collapse' : 'Expand');
-          $accordionButtons.click();
+          $(".accordion__title[aria-expanded=\"".concat(expanded ? 'false' : 'true', "\"]"), faq).click();
         });
         var $headline = $('.su-faq-headline', faq);
         if ($headline.length) {
@@ -167,6 +132,40 @@ window.Drupal.behaviors.stanford_basic = {
     // console.log("Detached.");
   }
 };
+
+/***/ }),
+
+/***/ 8035:
+/***/ (function() {
+
+var header = document.getElementById('block-stanford-basic-local-tasks');
+var sticky = 0;
+if (header) {
+  sticky = header.getBoundingClientRect().top;
+  window.onscroll = function () {
+    stickyHeaderOnScroll();
+  };
+}
+
+/**
+ * Stick the local block tasks to the top of the window.
+ */
+function stickyHeaderOnScroll() {
+  var toolbarHeight = 0;
+  var toolbarOpen = document.body.classList.contains('toolbar-tray-open');
+  if (toolbarOpen === true) {
+    toolbarHeight = 79;
+  } else {
+    toolbarHeight = 39;
+  }
+  if (window.pageYOffset >= sticky - toolbarHeight) {
+    header.classList.add('sticky');
+    header.style.marginTop = toolbarHeight + 'px';
+  } else {
+    header.classList.remove('sticky');
+    header.style.marginTop = '0px';
+  }
+}
 
 /***/ })
 

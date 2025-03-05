@@ -109,9 +109,7 @@ export default {
       });
 
       $(once('faq-expand-all', '.ptype-stanford-faq', context)).each((index, faq) => {
-        const $accordionButtons = $('.accordion__title', faq);
-
-        if ($accordionButtons.length < 2 || $('.ptype-stanford-faq', faq).length) {
+        if ($('.accordion__title', faq).length < 2 || $('.ptype-stanford-faq', faq).length) {
           return;
         }
 
@@ -127,7 +125,7 @@ export default {
           const expanded = !$button.hasClass('expand-all');
 
           $('span', $button).text(expanded ? 'Collapse' : 'Expand');
-          $accordionButtons.click()
+          $(`.accordion__title[aria-expanded="${expanded ? 'false' : 'true'}"]`, faq).click();
         });
 
         const $headline = $('.su-faq-headline', faq);
