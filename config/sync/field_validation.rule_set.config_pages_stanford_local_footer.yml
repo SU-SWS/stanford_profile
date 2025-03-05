@@ -22,5 +22,5 @@ field_validation_rules:
       value: ''
     data:
       pattern: /(google|twitter|bsky|github|threads|flickr|mastodon|instagram|linkedin|youtube|x|facebook)\.(com|app|org|net)/
-      message: 'The provided URL is not a supported social link.'
+      message: 'Social URL is not supported.'
       validate_mode: direct
