@@ -51,4 +51,5 @@ class ProfileResourceSection extends HelpSectionPluginBase {
     $help .= '<p>' . $this->t('Get assistance with identifying issues and improving the accessibility of your site.') . '</p>';
     return ['#markup' => $help];
   }
+
 }

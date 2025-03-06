@@ -54,9 +54,10 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     // @TODO: Update link when launch process guide is available.
     $help .= '<p>' . $this->t('Learn about the launch process, review the final checklist, and submit a request to launch.') . '</p>';
     $help .= self::getLinkString($this->t('Website launch process'), 'https://sitesuserguide.stanford.edu/support/site-launch-checklist', TRUE);
+
     return ['#markup' => $help];
   }
-  
+
   /**
    * Get the policies help text.
    *
@@ -103,4 +104,5 @@ class ProfileHelpSection extends HelpSectionPluginBase {
     $help .= self::getLinkString('Slack', 'https://stanford.enterprise.slack.com/archives/C01NR8WC6AX', TRUE);
     return ['#markup' => $help];
   }
+
 }
