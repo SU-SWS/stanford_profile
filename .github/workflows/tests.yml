@@ -125,7 +125,7 @@ jobs:
       options: '--network-alias=drupal8ci'
     services:
       selenium:
-        image: selenium/standalone-chrome
+        image: selenium/standalone-chrome:130.0
         options: '--shm-size="2g"'
       mysql:
         image: mysql:8.0
