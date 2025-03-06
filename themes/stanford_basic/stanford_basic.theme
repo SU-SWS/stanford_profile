@@ -420,11 +420,8 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
   if ($variables['menu_name'] !== "main") {
     return;
   }
-  foreach ($variables['items'] as &$item) {
-    $menu_item = [$item];
-    _stanford_basic_menu_process_submenu($menu_item, $current_path);
-    $item = $menu_item[0];
-  }
+
+  _stanford_basic_menu_process_submenu($variables['items'], $current_path);
   if (theme_get_setting('nav_dropdown_enabled', 'stanford_basic')) {
     $variables['attributes']['class'][] = 'su-multi-menu--dropdowns';
   }
@@ -442,13 +439,11 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
  * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
  */
 function _stanford_basic_menu_process_submenu(&$submenu, $current_path) {
+  $is_front = \Drupal::service('path.matcher')->isFrontPage();
+
   foreach ($submenu as &$item) {
-    $item_path = (is_string($item['url'])) ? $item['url'] : $item['url']->toString(TRUE)->getGeneratedUrl();
-    $is_front = \Drupal::service('path.matcher')->isFrontPage();
-    if (
-      $item_path == $current_path ||
-      (_stanford_basic_path_is_home($item_path) && $is_front)
-    ) {
+    $item_path = is_string($item['url']) ? $item['url'] : $item['url']->toString(TRUE)->getGeneratedUrl();
+    if ($item_path == $current_path || (_stanford_basic_path_is_home($item_path) && $is_front)) {
       $item['is_active'] = TRUE;
     }
 
@@ -456,7 +451,7 @@ function _stanford_basic_menu_process_submenu(&$submenu, $current_path) {
       $item['unpublished'] = TRUE;
     }
 
-    if ($item['in_active_trail'] && count($item['below'])) {
+    if (!empty($item['below'])) {
       _stanford_basic_menu_process_submenu($item['below'], $current_path);
     }
   }
@@ -472,6 +467,11 @@ function _stanford_basic_menu_process_submenu(&$submenu, $current_path) {
  *   TRUE if the path corresponds to the current home page.
  */
 function _stanford_basic_path_is_home(string $path) {
+  $is_home = &drupal_static(__FUNCTION__);
+  if (!is_null($is_home)) {
+    return $is_home;
+  }
+
   // account for weird paths in input
   $normal_path = strtolower(trim($path));
   $config = \Drupal::config('system.site');
@@ -484,9 +484,11 @@ function _stanford_basic_path_is_home(string $path) {
     $normal_path == $alias ||
     $normal_path == '<front>'
   ) {
-    return TRUE;
+    $is_home = TRUE;
+    return $is_home;
   }
-  return FALSE;
+  $is_home = FALSE;
+  return $is_home;
 }
 
 /**
