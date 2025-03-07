@@ -34,7 +34,7 @@ class ProfileResourceSectionTest extends UnitTestCase {
   public function testHelpSections() {
     $plugin = new ProfileResourceSection([], '', []);
     $topics = $plugin->listTopics();
-    $this->assertCount(3, $topics);
+    $this->assertCount(2, $topics);
   }
 
 }

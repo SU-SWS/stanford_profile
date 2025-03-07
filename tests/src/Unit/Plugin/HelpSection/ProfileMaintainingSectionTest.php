@@ -4,16 +4,16 @@ namespace Drupal\Tests\stanford_profile\Unit\Plugin\HelpSection;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Utility\LinkGeneratorInterface;
-use Drupal\stanford_profile\Plugin\HelpSection\ProfileConnectSection;
+use Drupal\stanford_profile\Plugin\HelpSection\ProfileHelpMaintainingSection;
 use Drupal\Tests\UnitTestCase;
 
 /**
- * Class ProfileConnectSectionTest
+ * Class ProfileMaintainingSectionTest
  *
  * @group stanford_profile
- * @coversDefaultClass \Drupal\stanford_profile\Plugin\HelpSection\ProfileConnectSection
+ * @coversDefaultClass \Drupal\stanford_profile\Plugin\HelpSection\ProfileHelpMaintainingSection
  */
-class ProfileConnectSectionTest extends UnitTestCase {
+class ProfileMaintainingSectionTest extends UnitTestCase {
 
   /**
    * {@inheritDoc}
@@ -22,7 +22,6 @@ class ProfileConnectSectionTest extends UnitTestCase {
     parent::setUp();
     $container = new ContainerBuilder();
     $container->set('string_translation', $this->getStringTranslationStub());
-
     $container->set('link_generator', $this->createMock(LinkGeneratorInterface::class));;
     \Drupal::setContainer($container);
   }
@@ -31,9 +30,9 @@ class ProfileConnectSectionTest extends UnitTestCase {
    * Test the connection topics exist.
    */
   public function testHelpSections() {
-    $plugin = new ProfileConnectSection([], '', []);
+    $plugin = new ProfileHelpMaintainingSection([], '', []);
     $topics = $plugin->listTopics();
-    $this->assertCount(1, $topics);
+    $this->assertCount(3, $topics);
   }
 
 }
