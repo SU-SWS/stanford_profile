@@ -1,5 +1,22 @@
 # Stanford Profile
 
+11.6.0
+-------------------------------------------------------------------------------
+- D8CORE-7292 - Updated the help pages. (#864)
+- Traverse entire main menu to add appropriate unpublished indicators
+- D8CORE-7835 Fix accordion expand/collapse all behavior to not behave like a toggle
+- Update field Validation plugins to new constraints (#879)
+- Modify field validation on social link field to improve error display.
+- D8CORE-7649: Changing the color of headings in wysiwyg for Minimal subtheme. (#872)
+- D8CORE-7723: Allow unpublishing of taxonomy terms (#874)
+- D8CORE-7885: Change Character Limit for Accordion (#875)
+- Added stage file proxy for dev, stage, and local
+- Implement shield on dev and stage (#873)
+- D8CORE-7737 D8CORE-7738 D8CORE-7824 Install state changes (#871)
+- D8CORE-7704: Configure trash module with necessary test changes (#852)
+- D8CORE-7663: reorganized the opportunity node page (#833)
+- D8CORE-7813: fixed the text color in the more publications button (#870)
+
 11.5.3
 -------------------------------------------------------------------------------
 - Added site manager permission to grant site reviewer role.

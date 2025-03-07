@@ -100,7 +100,7 @@ export default {
        */
       $('.topics__collapsable-menu', context).click(function () {
         $(this).toggleClass('show');
-        if ($(this).siblings('.menu').css('display') != 'none') {
+        if ($(this).siblings('.menu').css('display') !== 'none') {
           $(this).attr('aria-expanded', 'true');
         }
         else {
