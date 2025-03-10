@@ -56,6 +56,8 @@ class NavigationDropDownsCest {
     $I->resizeWindow(1400, 2000);
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->uncheckOption('Use Drop Down Menus');
+    $I->click('#edit-group-experimental summary');
+    $I->uncheckOption('Decoupled Main Menu');
 
     $I->click('Site Contacts');
     $I->waitForText('Site Owner Contact Email');
