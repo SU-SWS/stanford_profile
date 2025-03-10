@@ -133,7 +133,7 @@ class MediaCest {
 
     $name = $this->faker->words(2, TRUE);
     $I->fillField('Name', $name);
-    $I->fillField('oEmbed URL', 'https://twitter.com/SLAClab/status/1303365422583099392');
+    $I->fillField('oEmbed URL', 'https://purl.stanford.edu/mb185ft2131');
     $I->click('Save');
 
     $I->amOnPage('/admin/content/media');
