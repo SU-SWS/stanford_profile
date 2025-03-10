@@ -137,7 +137,9 @@ class MediaCest {
     $I->click('Save');
 
     $I->amOnPage('/admin/content/media');
-    $I->canSee($name);
+    $I->fillField('Media name', $name);
+    $I->click('Filter');
+    $I->canSee($name, '.views-field-name');
 
     $I->amOnPage('/media/add/embeddable');
     $name = $this->faker->words(2, TRUE);
