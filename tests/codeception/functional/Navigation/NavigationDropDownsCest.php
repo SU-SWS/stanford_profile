@@ -54,6 +54,9 @@ class NavigationDropDownsCest {
 
     $I->logInWithRole('site_manager');
     $I->resizeWindow(1400, 2000);
+    $I->amOnPage('/');
+    $I->canSeeLink($parent_menu_title);
+
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->uncheckOption('Use Drop Down Menus');
     $I->click('#edit-group-experimental summary');
