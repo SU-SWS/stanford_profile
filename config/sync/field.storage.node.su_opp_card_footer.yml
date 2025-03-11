@@ -1,0 +1,20 @@
+uuid: 03767296-67bd-4743-80f6-577a12564709
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.su_opp_card_footer
+field_name: su_opp_card_footer
+entity_type: node
+type: text
+settings:
+  max_length: 40
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
