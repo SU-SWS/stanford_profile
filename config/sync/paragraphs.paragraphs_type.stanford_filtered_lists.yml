@@ -1,0 +1,17 @@
+uuid: 8d6c46f3-e7da-4b2f-853d-a02f4a1c58e6
+langcode: en
+status: true
+dependencies:
+  module:
+    - layout_paragraphs
+id: stanford_filtered_lists
+label: 'Filtered Lists'
+icon_uuid: null
+icon_default: null
+description: 'Choose a list to display various items dynamically with a filter'
+behavior_plugins:
+  list_paragraph:
+    enabled: true
+    hide_empty: false
+    empty_message: ''
+    heading_behavior: show
