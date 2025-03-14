@@ -1,5 +1,9 @@
 # Stanford Profile
 
+11.6.2
+-------------------------------------------------------------------------------
+- Fixed logic error in main menu when home page is a node path.
+
 11.6.1
 -------------------------------------------------------------------------------
 - Improve reliability of acceptance tests.
