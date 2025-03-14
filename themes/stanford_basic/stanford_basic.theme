@@ -466,29 +466,31 @@ function _stanford_basic_menu_process_submenu(&$submenu, $current_path) {
  * @return bool
  *   TRUE if the path corresponds to the current home page.
  */
-function _stanford_basic_path_is_home(string $path) {
-  $is_home = &drupal_static(__FUNCTION__);
-  if (!is_null($is_home)) {
-    return $is_home;
-  }
-
+function _stanford_basic_path_is_home(string $path): bool {
   // account for weird paths in input
   $normal_path = strtolower(trim($path));
-  $config = \Drupal::config('system.site');
-  $front_uri = $config->get('page.front');
-  $alias = \Drupal::service('path_alias.manager')->getAliasByPath($front_uri);
+
+  $front_path = &drupal_static(__FUNCTION__);
+
+  if (is_null($front_path)) {
+    $config = \Drupal::config('system.site');
+    $front_uri = $config->get('page.front');
+    $front_alias = \Drupal::service('path_alias.manager')
+      ->getAliasByPath($front_uri);
+    $front_path = [$front_uri, $front_alias];
+  }
+
+  [$front_uri, $front_alias] = $front_path;
 
   if (
     $normal_path == base_path() ||
     $normal_path == $front_uri ||
-    $normal_path == $alias ||
+    $normal_path == $front_alias ||
     $normal_path == '<front>'
   ) {
-    $is_home = TRUE;
-    return $is_home;
+    return TRUE;
   }
-  $is_home = FALSE;
-  return $is_home;
+  return FALSE;
 }
 
 /**
