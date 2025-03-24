@@ -1,0 +1,62 @@
+uuid: 51f63f1d-2406-4de9-9d75-ee4eb7eac4c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_filtered_list_view
+    - paragraphs.paragraphs_type.stanford_filtered_lists
+  module:
+    - viewfield
+id: paragraph.stanford_filtered_lists.su_filtered_list_view
+field_name: su_filtered_list_view
+entity_type: paragraph
+bundle: stanford_filtered_lists
+label: 'Filtered List Format'
+description: 'Main display options for items presented in the list view. Learn more in the guide to <a href="https://sitesuserguide.stanford.edu/build/paragraphs/filtered-lists-paragraph">Filtered Lists.</a>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  force_default: false
+  allowed_views:
+    stanford_opportunities: stanford_opportunities
+    stanford_shared_tags: '0'
+    stanford_basic_pages: '0'
+    su_block_edit_links: '0'
+    change_logs: '0'
+    content: '0'
+    block_content: '0'
+    stanford_courses: '0'
+    editoria11y_dismissals: '0'
+    editoria11y_results: '0'
+    stanford_events: '0'
+    stanford_events_past: '0'
+    stanford_events_schedule: '0'
+    stanford_event_series: '0'
+    authmap: '0'
+    files: '0'
+    locked_content: '0'
+    manage_content: '0'
+    media: '0'
+    media_library: '0'
+    stanford_news: '0'
+    stanford_person: '0'
+    policies: '0'
+    stanford_publications: '0'
+    redirect: '0'
+    samlauth_map: '0'
+    search: '0'
+    taxonomy_term_pages: '0'
+    user_admin_people: '0'
+  allowed_display_types:
+    viewfield_block: viewfield_block
+    block: '0'
+    default: '0'
+    graphql: '0'
+    page: '0'
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: viewfield
