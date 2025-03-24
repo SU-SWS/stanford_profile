@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.stanford_opportunity.body
     - field.field.node.stanford_opportunity.layout_builder__layout
     - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_card_footer
     - field.field.node.stanford_opportunity.su_opp_components
     - field.field.node.stanford_opportunity.su_opp_contact_email
     - field.field.node.stanford_opportunity.su_opp_contact_name
@@ -14,6 +15,7 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_course_code
     - field.field.node.stanford_opportunity.su_opp_cta_url
     - field.field.node.stanford_opportunity.su_opp_eligibility
+    - field.field.node.stanford_opportunity.su_opp_icon
     - field.field.node.stanford_opportunity.su_opp_image
     - field.field.node.stanford_opportunity.su_opp_learn_more
     - field.field.node.stanford_opportunity.su_opp_open_date
@@ -25,13 +27,16 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_summary
     - field.field.node.stanford_opportunity.su_opp_tags
     - field.field.node.stanford_opportunity.su_opp_type
+    - field.field.node.stanford_opportunity.su_opp_units
     - node.type.stanford_opportunity
   module:
     - field_group
+    - fontawesome
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - text
     - user
 third_party_settings:
   layout_builder:
@@ -72,6 +77,54 @@ third_party_settings:
                     label_value: ''
                     label_tag: ''
             weight: 2
+            additional: {  }
+          acc52799-de6b-4b52-9592-f7d669610431:
+            uuid: acc52799-de6b-4b52-9592-f7d669610431
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_icon'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: fontawesome_icon_formatter
+                label: above
+                settings:
+                  layers: false
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          b3ef1054-e22a-4ff4-bd9e-932a9e446513:
+            uuid: b3ef1054-e22a-4ff4-bd9e-932a9e446513
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_units'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: number_integer
+                label: above
+                settings:
+                  thousand_separator: ''
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          0f06945a-dc7f-4f1f-a5ea-79dbc7a22242:
+            uuid: 0f06945a-dc7f-4f1f-a5ea-79dbc7a22242
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_card_footer'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
             additional: {  }
         third_party_settings: {  }
       -
@@ -645,7 +698,31 @@ id: node.stanford_opportunity.default
 targetEntityType: node
 bundle: stanford_opportunity
 mode: default
-content: {  }
+content:
+  su_opp_card_footer:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
+    region: main
+  su_opp_icon:
+    type: fontawesome_icon_formatter
+    label: above
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 21
+    region: main
+  su_opp_units:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 22
+    region: main
 hidden:
   body: true
   layout_builder__layout: true
