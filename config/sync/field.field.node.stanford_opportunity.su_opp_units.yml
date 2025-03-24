@@ -1,0 +1,23 @@
+uuid: 193d771d-6f07-4a45-83f9-4ccf1e1e2bb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_units
+    - node.type.stanford_opportunity
+id: node.stanford_opportunity.su_opp_units
+field_name: su_opp_units
+entity_type: node
+bundle: stanford_opportunity
+label: Units
+description: 'Enter the number of units for this opportunity. If there are multiple options available, add additional units.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 12
+  prefix: ''
+  suffix: ''
+field_type: integer
