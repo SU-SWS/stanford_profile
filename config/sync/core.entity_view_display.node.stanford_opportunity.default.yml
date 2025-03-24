@@ -76,55 +76,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 2
-            additional: {  }
-          acc52799-de6b-4b52-9592-f7d669610431:
-            uuid: acc52799-de6b-4b52-9592-f7d669610431
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_icon'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: fontawesome_icon_formatter
-                label: above
-                settings:
-                  layers: false
-                third_party_settings: {  }
             weight: 3
-            additional: {  }
-          b3ef1054-e22a-4ff4-bd9e-932a9e446513:
-            uuid: b3ef1054-e22a-4ff4-bd9e-932a9e446513
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_units'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: number_integer
-                label: above
-                settings:
-                  thousand_separator: ''
-                  prefix_suffix: true
-                third_party_settings: {  }
-            weight: 4
-            additional: {  }
-          0f06945a-dc7f-4f1f-a5ea-79dbc7a22242:
-            uuid: 0f06945a-dc7f-4f1f-a5ea-79dbc7a22242
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_card_footer'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 5
             additional: {  }
         third_party_settings: {  }
       -
@@ -320,9 +272,9 @@ third_party_settings:
                 type: media_responsive_image_formatter
                 label: hidden
                 settings:
-                  view_mode: stanford_image_large_square
+                  view_mode: default
                   link: false
-                  image_style: ''
+                  image_style: stanford_hero_block_wide
                   remove_alt: 0
                 third_party_settings:
                   empty_fields:
@@ -347,7 +299,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: string
-                label: above
+                label: visually_hidden
                 settings:
                   link_to_entity: false
                 third_party_settings:
@@ -393,7 +345,7 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_contact_email'
               label: Contact
-              label_display: visible
+              label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
@@ -425,7 +377,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: above
+                label: visually_hidden
                 settings:
                   link: false
                 third_party_settings:
