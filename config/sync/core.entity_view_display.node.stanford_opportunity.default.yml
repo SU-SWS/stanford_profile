@@ -80,6 +80,45 @@ third_party_settings:
             additional: {  }
         third_party_settings: {  }
       -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          columns: flex-12-of-12
+        components:
+          411af66d-4ede-4ca0-a51d-c56cb10a96ef:
+            uuid: 411af66d-4ede-4ca0-a51d-c56cb10a96ef
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_image'
+              label: 'Featured Image'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: media_responsive_image_formatter
+                label: hidden
+                settings:
+                  view_mode: default
+                  link: false
+                  image_style: stanford_hero_block_wide
+                  remove_alt: 0
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
         layout_id: jumpstart_ui_two_column
         layout_settings:
           label: ''
@@ -97,7 +136,7 @@ third_party_settings:
               label_display: '0'
               provider: jumpstart_ui
               context_mapping: {  }
-            weight: 0
+            weight: 1
             additional: {  }
           764b7bd8-7488-4796-a259-314de23b87b3:
             uuid: 764b7bd8-7488-4796-a259-314de23b87b3
@@ -257,35 +296,6 @@ third_party_settings:
                     label_tag: h2
             weight: 3
             additional: {  }
-          411af66d-4ede-4ca0-a51d-c56cb10a96ef:
-            uuid: 411af66d-4ede-4ca0-a51d-c56cb10a96ef
-            region: left
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_image'
-              label: 'Featured Image'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: media_responsive_image_formatter
-                label: hidden
-                settings:
-                  view_mode: default
-                  link: false
-                  image_style: stanford_hero_block_wide
-                  remove_alt: 0
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: ''
-            weight: 1
-            additional: {  }
           5427b410-5b74-41b2-b6c8-44fac25c3150:
             uuid: 5427b410-5b74-41b2-b6c8-44fac25c3150
             region: main
@@ -337,7 +347,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: h2
-            weight: 5
+            weight: 6
             additional: {  }
           09a85452-e091-4c80-902b-e55c9aaa6d5e:
             uuid: 09a85452-e091-4c80-902b-e55c9aaa6d5e
@@ -419,6 +429,33 @@ third_party_settings:
                     label_value: Apply
                     label_tag: div
             weight: 11
+            additional: {  }
+          a362c30b-f21d-445f-a15a-74880f3bbe9b:
+            uuid: a362c30b-f21d-445f-a15a-74880f3bbe9b
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_units'
+              label: Units
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: number_integer
+                label: inline
+                settings:
+                  thousand_separator: ''
+                  prefix_suffix: true
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 5
             additional: {  }
         third_party_settings: {  }
       -
@@ -551,6 +588,7 @@ third_party_settings:
       - 'Lists (Views)'
       - Menus
       - 'News Lists (Views)'
+      - 'Opportunities (Views)'
       - 'PDB React'
       - 'People Lists (Views)'
       - 'Policy (Views)'
@@ -589,6 +627,7 @@ third_party_settings:
           - 'field_block:node:stanford_opportunity:su_opp_eligibility'
           - 'field_block:node:stanford_opportunity:su_opp_source'
           - 'field_block:node:stanford_opportunity:su_opp_image'
+          - 'field_block:node:stanford_opportunity:su_opp_icon'
           - 'field_block:node:stanford_opportunity:su_opp_learn_more'
           - 'field_block:node:stanford_opportunity:su_opp_tags'
           - 'field_block:node:stanford_opportunity:su_opp_type'
@@ -598,12 +637,9 @@ third_party_settings:
           - 'field_block:node:stanford_opportunity:su_opp_start_date'
           - 'field_block:node:stanford_opportunity:su_opp_summary'
           - 'field_block:node:stanford_opportunity:title'
+          - 'field_block:node:stanford_opportunity:su_opp_units'
         Menus:
-          - 'system_menu_block:stanford-event-types'
           - 'menu_block:main'
-          - 'system_menu_block:stanford-person-type'
-          - 'system_menu_block:stanford-publication-topics'
-          - 'system_menu_block:news-topics'
         System:
           - system_breadcrumb_block
         core:
@@ -618,6 +654,7 @@ third_party_settings:
         - Forms
         - Help
         - 'Lists (Views)'
+        - 'Opportunities (Views)'
         - 'Policy (Views)'
         - Printable
         - React
