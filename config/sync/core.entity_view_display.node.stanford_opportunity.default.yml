@@ -194,7 +194,7 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_contact_name'
               label: Contact
-              label_display: '0'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
@@ -400,36 +400,6 @@ third_party_settings:
                     label_tag: h2
             weight: 3
             additional: {  }
-          670642ac-cdf7-487b-b31c-2fdc1bb03b36:
-            uuid: 670642ac-cdf7-487b-b31c-2fdc1bb03b36
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_learn_more'
-              label: 'Learn More Link'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: link
-                label: visually_hidden
-                settings:
-                  trim_length: 80
-                  url_only: false
-                  url_plain: false
-                  rel: '0'
-                  target: '0'
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: Apply
-                    label_tag: div
-            weight: 11
-            additional: {  }
           a362c30b-f21d-445f-a15a-74880f3bbe9b:
             uuid: a362c30b-f21d-445f-a15a-74880f3bbe9b
             region: main
@@ -456,6 +426,36 @@ third_party_settings:
                     label_value: ''
                     label_tag: ''
             weight: 5
+            additional: {  }
+          31cbeaa7-6a10-436e-897a-6c0a2a26e832:
+            uuid: 31cbeaa7-6a10-436e-897a-6c0a2a26e832
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_cta_url'
+              label: 'Call to Action'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: link
+                label: visually_hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: 'btn su-button su-button--secondary'
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 12
             additional: {  }
         third_party_settings: {  }
       -
@@ -551,7 +551,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: above
+                label: visually_hidden
                 settings:
                   link: true
                 third_party_settings:
