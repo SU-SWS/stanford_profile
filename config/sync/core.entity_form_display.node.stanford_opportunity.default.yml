@@ -357,10 +357,13 @@ content:
     settings: {  }
     third_party_settings: {  }
   su_opp_units:
-    type: number
-    weight: 55
+    type: entity_reference_autocomplete
+    weight: 57
     region: content
     settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   title:
