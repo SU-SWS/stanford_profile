@@ -70,7 +70,6 @@ third_party_settings:
         - su_opp_eligibility
         - su_opp_course_code
         - su_opp_cta_url
-        - su_opp_learn_more
       label: 'Opportunity Sidebar'
       region: content
       parent_name: ''
@@ -106,7 +105,6 @@ third_party_settings:
     group_basics:
       children:
         - su_opp_image
-        - su_opp_sponsor
         - su_opp_summary
         - su_opp_source
         - su_opp_tags
@@ -391,3 +389,5 @@ content:
     third_party_settings: {  }
 hidden:
   unpublish_on: true
+  su_opp_sponsor: true
+  su_opp_learn_more: true
