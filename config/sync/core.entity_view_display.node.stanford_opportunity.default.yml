@@ -116,6 +116,36 @@ third_party_settings:
                     label_value: ''
                     label_tag: ''
             weight: 0
+          0f06945a-dc7f-4f1f-a5ea-79dbc7a22242:
+            uuid: 0f06945a-dc7f-4f1f-a5ea-79dbc7a22242
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_card_footer'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          f9e43562-c4cb-4a6d-a58d-ce2c7eb8a80c:
+            uuid: f9e43562-c4cb-4a6d-a58d-ce2c7eb8a80c
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_units'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 6
             additional: {  }
         third_party_settings: {  }
       -
@@ -704,13 +734,12 @@ content:
     weight: 21
     region: main
   su_opp_units:
-    type: number_integer
+    type: entity_reference_label
     label: above
     settings:
-      thousand_separator: ''
-      prefix_suffix: true
+      link: true
     third_party_settings: {  }
-    weight: 22
+    weight: 24
     region: main
 hidden:
   body: true
