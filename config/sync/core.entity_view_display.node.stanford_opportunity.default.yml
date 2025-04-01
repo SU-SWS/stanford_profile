@@ -170,7 +170,7 @@ third_party_settings:
         layout_settings:
           label: ''
           context_mapping: {  }
-          extra_classes: ''
+          extra_classes: su-opp-node-container-wrapper
           centered: centered-container
           orientation: left
         components:
@@ -483,7 +483,7 @@ third_party_settings:
         layout_settings:
           label: ''
           context_mapping: {  }
-          extra_classes: su-opp-paragraphs
+          extra_classes: 'su-opp-paragraphs su-opp-node-container-wrapper'
           centered: centered-container
           columns: default
         components:
@@ -547,32 +547,6 @@ third_party_settings:
                     label_value: ''
                     label_tag: ''
             weight: 0
-            additional: {  }
-          3d4a99ba-dd72-41d6-8381-aac52ab4b274:
-            uuid: 3d4a99ba-dd72-41d6-8381-aac52ab4b274
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_tags'
-              label: 'Opportunity Tags/Filters'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_label
-                label: hidden
-                settings:
-                  link: true
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: ''
-            weight: 1
             additional: {  }
         third_party_settings: {  }
   layout_library:
