@@ -130,6 +130,7 @@ const SearchContainer = styled.div`
 `
 
 export const MainMenu = ({}) => {
+
   useWebComponentEvents(islandName)
   const [menuItems, setMenuItems] = useState<MenuContentItem[]>(window.drupalSettings?.stanford_basic?.decoupledMenuItems || []);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -138,7 +139,7 @@ export const MainMenu = ({}) => {
   useOutsideClick(navRef, () => setMenuOpen(false));
 
   useEffect(() => {
-    if (menuItems.length) return;
+    if (menuItems.length > 0) return;
 
     fetch(DRUPAL_DOMAIN + '/jsonapi/menu_items/main')
       .then(res => res.json())
@@ -395,7 +396,7 @@ const MenuItem = ({id, title, url, items, expanded, level = 0}: {
           <NoLink>{title}</NoLink>
         }
 
-        {(items && expanded) &&
+        {(items && items.length > 0 && expanded) &&
           <>
             {level === 0 &&
               <MenuItemDivider/>
@@ -417,7 +418,7 @@ const MenuItem = ({id, title, url, items, expanded, level = 0}: {
         }
       </MenuItemContainer>
 
-      {(items && expanded) &&
+      {(items && items.length > 0 && expanded) &&
         <MenuList open={submenuOpen} level={level}>
 
           {items.sort((a, b) => a.weight < b.weight ? -1 : 1).map(item =>

@@ -244,9 +244,7 @@ function stanford_basic_preprocess_block(&$variables) {
       $variables['attributes']['data-island'] = 'main-menu-island';
       $variables['#attached']['library'][] = 'stanford_basic/decoupled_menu';
       $menu = \Drupal::menuTree()->load('main', new MenuTreeParameters());
-      $links = [];
-      _stanford_basic_get_menu_tree_links($menu, $links);
-      $variables['#attached']['drupalSettings']['stanford_basic']['decoupledMenuItems'] = $links;
+      $variables['#attached']['drupalSettings']['stanford_basic']['decoupledMenuItems'] = _stanford_basic_get_menu_tree_links($menu);
     }
   }
 
@@ -269,10 +267,9 @@ function stanford_basic_preprocess_block(&$variables) {
  *
  * @param \Drupal\Core\Menu\MenuLinkTreeElement[] $items
  *   Menu tree.
- * @param array $tree
- *   Array of menu link data to be used in the decoupled menu.
  */
-function _stanford_basic_get_menu_tree_links(array $items, array &$tree) {
+function _stanford_basic_get_menu_tree_links(array $items) {
+  $tree = [];
   foreach ($items as $id => $item) {
     if (!$item->link->isEnabled()) {
       continue;
@@ -283,10 +280,11 @@ function _stanford_basic_get_menu_tree_links(array $items, array &$tree) {
       'title' => $item->link->getTitle(),
       'expanded' => $item->link->isExpanded(),
       'parent' => $item->link->getParent(),
-      'weight' => (int) $item->link->getWeight(),
+      'weight' => $item->link->getWeight(),
+      'items' => _stanford_basic_get_menu_tree_links($item->subtree),
     ];
-    _stanford_basic_get_menu_tree_links($item->subtree, $tree);
   }
+  return $tree;
 }
 
 /**
