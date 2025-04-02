@@ -106,7 +106,7 @@ jobs:
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:10.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance &&
-          if [ ! -f /var/www/html/artifacts/report.html ]; then
+          if [ ! -f /var/www/html/artifacts/acceptance/report.html ]; then
               exit 1
           fi
       - name: Save Test Results
@@ -151,7 +151,7 @@ jobs:
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:10.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional &&
-          if [ ! -f /var/www/html/artifacts/report.html ]; then
+          if [ ! -f /var/www/html/artifacts/functional/report.html ]; then
               exit 1
           fi
       - name: Save Test Results
@@ -193,7 +193,7 @@ jobs:
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance &&
-          if [ ! -f /var/www/html/artifacts/report.html ]; then
+          if [ ! -f /var/www/html/artifacts/acceptance/report.html ]; then
               exit 1
           fi
       - name: Save Test Results
@@ -236,7 +236,7 @@ jobs:
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional &&
-          if [ ! -f /var/www/html/artifacts/report.html ]; then
+          if [ ! -f /var/www/html/artifacts/functional/report.html ]; then
               exit 1
           fi
       - name: Save Test Results
