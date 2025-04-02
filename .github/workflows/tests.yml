@@ -63,7 +63,8 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         run: |
-          composer global require su-sws/stanford-caravan:11.x-dev
+          mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
+          composer global require su-sws/stanford-caravan:11.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
       - name: Save Test Results
         uses: actions/upload-artifact@v4
@@ -106,7 +107,7 @@ jobs:
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:10.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance &&
-          if [ ! -f /var/www/html/artifacts/acceptance/report.html ]; then
+          if [ ! -f /var/www/html/artifacts/acceptance/results.html ]; then
               exit 1
           fi
       - name: Save Test Results
@@ -151,7 +152,7 @@ jobs:
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:10.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional &&
-          if [ ! -f /var/www/html/artifacts/functional/report.html ]; then
+          if [ ! -f /var/www/html/artifacts/functional/results.html ]; then
               exit 1
           fi
       - name: Save Test Results
@@ -190,10 +191,9 @@ jobs:
           path: project
       - name: Run tests
         run: |
-          mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance &&
-          if [ ! -f /var/www/html/artifacts/acceptance/report.html ]; then
+          if [ ! -f /var/www/html/artifacts/acceptance/results.html ]; then
               exit 1
           fi
       - name: Save Test Results
@@ -215,7 +215,7 @@ jobs:
       options: '--network-alias=drupal8ci'
     services:
       selenium:
-        image: selenium/standalone-chrome
+        image: selenium/standalone-chrome:130.0
         options: '--shm-size="2g"'
       mysql:
         image: mysql:8.0
@@ -233,10 +233,9 @@ jobs:
           path: project
       - name: Run tests
         run: |
-          mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional &&
-          if [ ! -f /var/www/html/artifacts/functional/report.html ]; then
+          if [ ! -f /var/www/html/artifacts/functional/results.html ]; then
               exit 1
           fi
       - name: Save Test Results
