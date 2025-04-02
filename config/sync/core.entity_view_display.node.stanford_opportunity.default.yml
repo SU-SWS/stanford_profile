@@ -109,22 +109,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 5
             additional: {  }
-          f9e43562-c4cb-4a6d-a58d-ce2c7eb8a80c:
-            uuid: f9e43562-c4cb-4a6d-a58d-ce2c7eb8a80c
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_units'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 6
-            additional: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
@@ -235,7 +219,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: h2
-            weight: 6
+            weight: 7
             additional: {  }
           e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1:
             uuid: e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1
@@ -531,6 +515,36 @@ third_party_settings:
                     label_value: ''
                     label_tag: div
             weight: 8
+            additional: {  }
+          f9e43562-c4cb-4a6d-a58d-ce2c7eb8a80c:
+            uuid: f9e43562-c4cb-4a6d-a58d-ce2c7eb8a80c
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_units'
+              label: 'Units:'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: cshs_group_by_root
+                label: inline
+                settings:
+                  linked: false
+                  reverse: false
+                  sort: none
+                  depth: 0
+                  last_child: false
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: span
+            weight: 6
             additional: {  }
         third_party_settings: {  }
       -
