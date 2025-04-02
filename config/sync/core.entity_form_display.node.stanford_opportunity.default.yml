@@ -32,13 +32,14 @@ dependencies:
   module:
     - change_labels
     - datetime
+    - field_formatter_class
     - field_group
     - fontawesome
     - layout_paragraphs
     - link
+    - maxlength
     - media_library
     - path
-    - scheduler
     - stanford_fields
     - telephone
     - text
@@ -54,15 +55,15 @@ third_party_settings:
       region: content
       parent_name: group_taxonomy
       weight: 14
-      format_type: details
+      format_type: fieldset
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         label_as_html: false
-        open: false
         description: 'Contact information for this opportunity. Displays on the individual opportunity page.'
         required_fields: true
+        open: false
     group_taxonomy:
       children:
         - su_opp_type
@@ -76,15 +77,15 @@ third_party_settings:
       region: content
       parent_name: ''
       weight: 2
-      format_type: details
+      format_type: fieldset
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         label_as_html: false
-        open: false
         description: 'This will be displayed on the sidebar'
         required_fields: true
+        open: false
     group_basics:
       children:
         - su_opp_image
@@ -96,14 +97,13 @@ third_party_settings:
       region: content
       parent_name: ''
       weight: 1
-      format_type: details
+      format_type: fieldset
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         label_as_html: false
-        open: false
-        description: ''
+        description: 'This content is used to fill in the image, summary text and other items needed for display in a list or teaser. It also contains an external link field if you wish to direct site visitors to an external page.'
         required_fields: true
     group_page_content:
       children:
@@ -114,7 +114,7 @@ third_party_settings:
       label: 'Page Content'
       region: content
       parent_name: ''
-      weight: 4
+      weight: 3
       format_type: fieldset
       format_settings:
         classes: ''
@@ -133,44 +133,36 @@ content:
     weight: 18
     region: content
     settings:
-      rows: 9
-      summary_rows: 3
+      rows: 4
+      summary_rows: 2
       placeholder: ''
       show_summary: false
-    third_party_settings: {  }
-  created:
-    type: datetime_timestamp
-    weight: 5
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_summary: null
+        maxlength_js_label_summary: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        field_label_overwrite: ''
+  layout_builder__layout:
+    type: null
+    weight: 31
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    weight: 6
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 9
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  scheduler_settings:
-    weight: 10
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 8
+    weight: 6
     region: content
     settings:
       display_label: true
@@ -237,9 +229,20 @@ content:
     weight: 10
     region: content
     settings:
-      size: 60
+      size: 12
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        add_another: ''
+        field_label_overwrite: ''
+        hide_add_another: 0
+        force_single_cardinality: 0
   su_opp_cta_url:
     type: link_default
     weight: 15
@@ -253,9 +256,17 @@ content:
     weight: 16
     region: content
     settings:
-      rows: 5
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        field_label_overwrite: ''
   su_opp_icon:
     type: fontawesome_icon_widget
     weight: 3
@@ -274,9 +285,17 @@ content:
     weight: 17
     region: content
     settings:
-      rows: 5
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        field_label_overwrite: ''
   su_opp_source:
     type: link_default
     weight: 6
@@ -284,15 +303,31 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        field_label_overwrite: ''
   su_opp_summary:
     type: text_textarea
     weight: 4
     region: content
     settings:
-      rows: 5
+      rows: 2
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        field_label_overwrite: ''
   su_opp_tags:
     type: taxonomy_label_hierarchy
     weight: 13
@@ -311,14 +346,10 @@ content:
     settings: {  }
     third_party_settings: {  }
   su_opp_units:
-    type: entity_reference_autocomplete
+    type: options_select
     weight: 11
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -329,8 +360,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
-  layout_builder__layout: true
+  created: true
   layout_selection: true
+  promote: true
+  publish_on: true
+  scheduler_settings: true
   sticky: true
   su_opp_learn_more: true
   su_opp_open_date: true
