@@ -54,21 +54,20 @@ third_party_settings:
       label: 'Contact Information'
       region: content
       parent_name: group_taxonomy
-      weight: 14
-      format_type: fieldset
+      weight: 15
+      format_type: details
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         label_as_html: false
+        open: false
         description: 'Contact information for this opportunity. Displays on the individual opportunity page.'
         required_fields: true
-        open: false
     group_taxonomy:
       children:
         - su_opp_type
-        - su_opp_course_code
-        - su_opp_units
+        - group_academic_info
         - su_opp_application_deadline
         - su_opp_tags
         - group_contact_information
@@ -77,15 +76,15 @@ third_party_settings:
       region: content
       parent_name: ''
       weight: 2
-      format_type: fieldset
+      format_type: details
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         label_as_html: false
+        open: false
         description: 'This will be displayed on the sidebar'
         required_fields: true
-        open: false
     group_basics:
       children:
         - su_opp_image
@@ -97,12 +96,13 @@ third_party_settings:
       region: content
       parent_name: ''
       weight: 1
-      format_type: fieldset
+      format_type: details
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         label_as_html: false
+        open: false
         description: 'This content is used to fill in the image, summary text and other items needed for display in a list or teaser. It also contains an external link field if you wish to direct site visitors to an external page.'
         required_fields: true
     group_page_content:
@@ -115,13 +115,31 @@ third_party_settings:
       region: content
       parent_name: ''
       weight: 3
-      format_type: fieldset
+      format_type: details
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         label_as_html: false
+        open: false
         description: 'Content that will appear on the page in the main content area.'
+        required_fields: true
+    group_academic_info:
+      children:
+        - su_opp_course_code
+        - su_opp_units
+      label: 'Academic Info'
+      region: hidden
+      parent_name: group_taxonomy
+      weight: 10
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: 'Enter course information if this opportunity is a course.'
         required_fields: true
 id: node.stanford_opportunity.default
 targetEntityType: node
@@ -156,20 +174,20 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 5
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 6
+    weight: 5
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_opp_application_deadline:
     type: datetime_default
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -183,7 +201,7 @@ content:
     third_party_settings: {  }
   su_opp_components:
     type: layout_paragraphs
-    weight: 19
+    weight: 20
     region: content
     settings:
       view_mode: default
@@ -218,7 +236,7 @@ content:
     third_party_settings: {  }
   su_opp_contact_url:
     type: link_default
-    weight: 19
+    weight: 20
     region: content
     settings:
       placeholder_url: ''
@@ -226,7 +244,7 @@ content:
     third_party_settings: {  }
   su_opp_course_code:
     type: string_textfield
-    weight: 10
+    weight: 11
     region: content
     settings:
       size: 12
@@ -245,7 +263,7 @@ content:
         force_single_cardinality: 0
   su_opp_cta_url:
     type: link_default
-    weight: 15
+    weight: 16
     region: content
     settings:
       placeholder_url: ''
@@ -330,7 +348,7 @@ content:
         field_label_overwrite: ''
   su_opp_tags:
     type: taxonomy_label_hierarchy
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings:
@@ -347,7 +365,7 @@ content:
     third_party_settings: {  }
   su_opp_units:
     type: options_select
-    weight: 11
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
