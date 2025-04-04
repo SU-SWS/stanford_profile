@@ -83,15 +83,25 @@ third_party_settings:
             region: main
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_icon'
+              label: Icon
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: fontawesome_icon_formatter
                 label: above
                 settings:
                   layers: false
-                third_party_settings: {  }
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: div
             weight: 3
             additional: {  }
           764b7bd8-7488-4796-a259-314de23b87b3:
