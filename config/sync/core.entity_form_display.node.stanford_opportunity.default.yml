@@ -32,6 +32,7 @@ dependencies:
   module:
     - change_labels
     - datetime
+    - field_formatter_class
     - field_group
     - fontawesome
     - layout_paragraphs
@@ -146,7 +147,7 @@ content:
     third_party_settings: {  }
   layout_builder__layout:
     type: null
-    weight: 53
+    weight: 60
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -274,7 +275,11 @@ content:
     weight: 54
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      change_labels:
+        field_label_overwrite: ''
   su_opp_image:
     type: media_library_widget
     weight: 2
