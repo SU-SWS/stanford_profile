@@ -223,12 +223,12 @@ third_party_settings:
                 label: above
                 settings:
                   timezone_override: ''
-                  format_type: stanford_long_day_date_year_time_space
+                  format_type: stanford_month_date_year
                 third_party_settings:
                   empty_fields:
                     handler: ''
                   field_formatter_class:
-                    class: ''
+                    class: su-opp-deadline-date
                   field_label:
                     label_value: ''
                     label_tag: h2
@@ -283,7 +283,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 10
+            weight: 11
             additional: {  }
           e7da11a9-d160-429f-b39c-6cd0b8cbe496:
             uuid: e7da11a9-d160-429f-b39c-6cd0b8cbe496
@@ -310,7 +310,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 11
+            weight: 12
             additional: {  }
           fbba124c-b6c2-4129-a8df-e79870507c8c:
             uuid: fbba124c-b6c2-4129-a8df-e79870507c8c
@@ -340,7 +340,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 12
+            weight: 13
             additional: {  }
           380d8445-73a4-4601-b30c-b8b9f866b057:
             uuid: 380d8445-73a4-4601-b30c-b8b9f866b057
@@ -390,7 +390,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: h2
-            weight: 9
+            weight: 10
             additional: {  }
           d18ff1e0-f50c-4248-b301-2e077267b15c:
             uuid: d18ff1e0-f50c-4248-b301-2e077267b15c
@@ -472,7 +472,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 13
+            weight: 14
             additional: {  }
           9b45c4b5-bbe3-44f4-803f-bb305be025fe:
             uuid: 9b45c4b5-bbe3-44f4-803f-bb305be025fe
@@ -524,6 +524,33 @@ third_party_settings:
                     handler: ''
                   field_formatter_class:
                     class: su-tags-wrapper
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 9
+            additional: {  }
+          35ff7783-bb5c-4351-b1e4-2f7af2c11e1e:
+            uuid: 35ff7783-bb5c-4351-b1e4-2f7af2c11e1e
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_application_deadline'
+              label: 'Application Deadline'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: datetime_default
+                label: hidden
+                settings:
+                  timezone_override: ''
+                  format_type: stanford_time
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: su-opp-deadline-time
                   field_label:
                     label_value: ''
                     label_tag: ''
