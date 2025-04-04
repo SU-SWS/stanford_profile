@@ -290,7 +290,11 @@ content:
     weight: 3
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      change_labels:
+        field_label_overwrite: ''
   su_opp_image:
     type: media_library_widget
     weight: 2
