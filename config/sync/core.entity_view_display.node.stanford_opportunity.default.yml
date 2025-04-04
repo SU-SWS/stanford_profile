@@ -48,7 +48,7 @@ third_party_settings:
         layout_settings:
           label: ''
           context_mapping: {  }
-          extra_classes: ''
+          extra_classes: su-opp-title-wrapper
           centered: centered-container
           columns: default
         components:
@@ -76,7 +76,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 2
+            weight: 3
             additional: {  }
           acc52799-de6b-4b52-9592-f7d669610431:
             uuid: acc52799-de6b-4b52-9592-f7d669610431
@@ -91,19 +91,29 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: fontawesome_icon_formatter
-                label: above
+                label: hidden
                 settings:
                   layers: false
                 third_party_settings:
                   empty_fields:
                     handler: ''
                   field_formatter_class:
-                    class: ''
+                    class: su-opp-icon-wrapper
                   field_label:
                     label_value: ''
-                    label_tag: div
-            weight: 3
+                    label_tag: ''
+            weight: 2
             additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+        components:
           764b7bd8-7488-4796-a259-314de23b87b3:
             uuid: 764b7bd8-7488-4796-a259-314de23b87b3
             region: main
@@ -127,7 +137,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 4
+            weight: 0
             additional: {  }
         third_party_settings: {  }
       -
