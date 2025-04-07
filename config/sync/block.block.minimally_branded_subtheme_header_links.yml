@@ -1,0 +1,22 @@
+uuid: 65be6873-adf6-4ea0-a1c9-30b8a968ca64
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_header_links
+theme: minimally_branded_subtheme
+region: search
+weight: -1
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: 'ConfigPages Block'
+  label_display: '0'
+  provider: config_pages
+  config_page_type: stanford_basic_site_settings
+  config_page_view_mode: site_settings_header
+visibility: {  }
