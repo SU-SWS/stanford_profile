@@ -86,7 +86,7 @@ class NavigationDropDownsCest {
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
 
-    $node_title = Factory::create()->text(20);
+    $node_title = $this->faker->text(20);
 
     $I->amOnPage('/node/add/stanford_page');
     $I->fillField('Title', $node_title);

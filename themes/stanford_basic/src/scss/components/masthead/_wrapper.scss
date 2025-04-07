@@ -1,9 +1,6 @@
 @charset "UTF-8";
 
 .config_pages--type--stanford-basic-site-settings {
-  display: flex;
-  gap: 20px;
-  align-items: center;
   margin-left: auto;
   width: fit-content;
 }
@@ -14,10 +11,21 @@
   gap: 20px;
   align-items: center;
   margin-bottom: 20px;
+
+  a {
+    color: $su-color-black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .su-site-header-button {
+  margin-left: auto;
   margin-bottom: 20px;
+  width: fit-content;
 }
 
 // Decanter overrides.
