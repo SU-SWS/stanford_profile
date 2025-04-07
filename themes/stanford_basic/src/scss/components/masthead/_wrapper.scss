@@ -2,7 +2,7 @@
 
 .config_pages--type--stanford-basic-site-settings {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   margin-left: auto;
   width: fit-content;
@@ -11,8 +11,13 @@
 .su-site-header-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
+  margin-bottom: 20px;
+}
+
+.su-site-header-button {
+  margin-bottom: 20px;
 }
 
 // Decanter overrides.

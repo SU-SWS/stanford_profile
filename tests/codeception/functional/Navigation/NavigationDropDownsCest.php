@@ -58,7 +58,10 @@ class NavigationDropDownsCest {
     $I->canSeeLink($parent_menu_title);
 
     $I->amOnPage('/admin/config/system/basic-site-settings');
+
+    $I->click('#edit-group-site-header-options summary');
     $I->uncheckOption('Use Drop Down Menus');
+
     $I->click('#edit-group-experimental summary');
     $I->uncheckOption('Decoupled Main Menu');
 
