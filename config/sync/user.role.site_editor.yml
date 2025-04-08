@@ -15,6 +15,7 @@ dependencies:
     - node.type.stanford_event
     - node.type.stanford_event_series
     - node.type.stanford_news
+    - node.type.stanford_opportunity
     - node.type.stanford_page
     - node.type.stanford_person
     - node.type.stanford_policy
@@ -22,6 +23,8 @@ dependencies:
     - taxonomy.vocabulary.basic_page_types
     - taxonomy.vocabulary.event_audience
     - taxonomy.vocabulary.media_tags
+    - taxonomy.vocabulary.opportunity_sponsor
+    - taxonomy.vocabulary.opportunity_type
     - taxonomy.vocabulary.stanford_event_types
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
@@ -87,6 +90,7 @@ permissions:
   - 'create stanford_event_series content'
   - 'create stanford_gallery_images media'
   - 'create stanford_news content'
+  - 'create stanford_opportunity content'
   - 'create stanford_page content'
   - 'create stanford_person content'
   - 'create stanford_policy content'
@@ -94,6 +98,8 @@ permissions:
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
   - 'create terms in media_tags'
+  - 'create terms in opportunity_sponsor'
+  - 'create terms in opportunity_type'
   - 'create terms in stanford_event_types'
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'
@@ -105,6 +111,7 @@ permissions:
   - 'delete any stanford_event content'
   - 'delete any stanford_event_series content'
   - 'delete any stanford_news content'
+  - 'delete any stanford_opportunity content'
   - 'delete any stanford_page content'
   - 'delete any stanford_person content'
   - 'delete any stanford_policy content'
@@ -138,6 +145,8 @@ permissions:
   - 'delete terms in basic_page_types'
   - 'delete terms in event_audience'
   - 'delete terms in media_tags'
+  - 'delete terms in opportunity_sponsor'
+  - 'delete terms in opportunity_type'
   - 'delete terms in stanford_event_types'
   - 'delete terms in stanford_news_topics'
   - 'delete terms in stanford_person_types'
@@ -153,6 +162,7 @@ permissions:
   - 'edit any stanford_event_series content'
   - 'edit any stanford_gallery_images media'
   - 'edit any stanford_news content'
+  - 'edit any stanford_opportunity content'
   - 'edit any stanford_page content'
   - 'edit any stanford_person content'
   - 'edit any stanford_policy content'
@@ -171,6 +181,7 @@ permissions:
   - 'edit own stanford_event_series content'
   - 'edit own stanford_gallery_images media'
   - 'edit own stanford_news content'
+  - 'edit own stanford_opportunity content'
   - 'edit own stanford_page content'
   - 'edit own stanford_person content'
   - 'edit own stanford_policy content'
@@ -180,6 +191,8 @@ permissions:
   - 'edit terms in basic_page_types'
   - 'edit terms in event_audience'
   - 'edit terms in media_tags'
+  - 'edit terms in opportunity_sponsor'
+  - 'edit terms in opportunity_type'
   - 'edit terms in stanford_event_types'
   - 'edit terms in stanford_news_topics'
   - 'edit terms in stanford_person_types'
@@ -193,10 +206,13 @@ permissions:
   - 'revert stanford_event revisions'
   - 'revert stanford_event_series revisions'
   - 'revert stanford_news revisions'
+  - 'revert stanford_opportunity revisions'
   - 'revert stanford_page revisions'
   - 'revert stanford_person revisions'
   - 'revert stanford_policy revisions'
   - 'revert stanford_publication revisions'
+  - 'revert term revisions in opportunity_sponsor'
+  - 'revert term revisions in opportunity_type'
   - 'schedule publishing of nodes'
   - 'update any media'
   - 'update media'
@@ -210,6 +226,7 @@ permissions:
   - 'view any unpublished stanford_event content'
   - 'view any unpublished stanford_event_series content'
   - 'view any unpublished stanford_news content'
+  - 'view any unpublished stanford_opportunity content'
   - 'view any unpublished stanford_page content'
   - 'view any unpublished stanford_person content'
   - 'view any unpublished stanford_policy content'
@@ -223,6 +240,7 @@ permissions:
   - 'view stanford_event revisions'
   - 'view stanford_event_series revisions'
   - 'view stanford_news revisions'
+  - 'view stanford_opportunity revisions'
   - 'view stanford_page revisions'
   - 'view stanford_person revisions'
   - 'view stanford_policy revisions'
