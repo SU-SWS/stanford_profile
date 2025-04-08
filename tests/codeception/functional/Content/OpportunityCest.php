@@ -68,7 +68,7 @@ class OpportunityCest {
     $I->logInAs($user->getAccountName());
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
-    $I->click('#edit-group-basics summary');
+    $I->click('#edit-group-taxonomy summary');
     $I->canSee($parent_1->label(), 'legend');
     $I->canSee($parent_2->label(), 'legend');
 
@@ -87,6 +87,14 @@ class OpportunityCest {
 
     $I->click('Save');
     $I->canSee($node->label(), 'h1');
+
+    $I->canSee($parent_1->label());
+    $I->canSee($child_1_1->label());
+    $I->canSee($child_1_2->label());
+
+    $I->canSee($parent_2->label());
+    $I->canSee($child_2_1->label());
+    $I->canSee($child_2_2->label());
   }
 
 }
