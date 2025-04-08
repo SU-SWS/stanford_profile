@@ -67,11 +67,11 @@ third_party_settings:
     group_taxonomy:
       children:
         - su_opp_type
-        - group_academic_info
         - su_opp_application_deadline
         - su_opp_tags
         - group_contact_information
         - su_opp_cta_url
+        - group_academic_info
       label: Sidebar
       region: content
       parent_name: ''
@@ -168,7 +168,7 @@ content:
         field_label_overwrite: ''
   layout_builder__layout:
     type: null
-    weight: 31
+    weight: 32
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -345,9 +345,9 @@ content:
       field_formatter_class:
         class: ''
       maxlength:
-        maxlength_js: null
+        maxlength_js: 300
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
-        maxlength_js_enforce: false
+        maxlength_js_enforce: true
       change_labels:
         field_label_overwrite: ''
   su_opp_tags:
