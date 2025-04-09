@@ -128,7 +128,7 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
           text_input_required: 'Select any filter and click on Apply to see results'
-          text_input_required_format: null
+          text_input_required_format: stanford_html
           bef:
             general:
               autosubmit: false
@@ -141,11 +141,18 @@ display:
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
-            sort:
-              plugin_id: default
             filter:
               su_opp_tags_target_id:
-                plugin_id: default
+                plugin_id: taxonomy_label_hierarchy_checkbox
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
       access:
         type: perm
         options:

@@ -23,7 +23,7 @@ class OpportunityCest {
     $this->faker = Factory::create();
   }
 
-  public function testContentType(FunctionalTester $I) {
+  protected function testContentType(FunctionalTester $I) {
     [
       $parent_1,
       $parent_2,
@@ -108,13 +108,13 @@ class OpportunityCest {
     $I->amOnPage($page->toUrl()->toString());
     $I->canSee($opportunity->label());
 
-    $I->selectOption('Filtered by', '-' . $child_1_2->label());
-    $I->click('Apply');
+    $I->waitForText($parent_1->label(), 10, 'fieldset');
+
+    $I->checkOption($child_1_2->label());
     $I->waitForAjaxToFinish();
     $I->cantSee($opportunity->label());
 
-    $I->selectOption('Filtered by', '-' . $child_1_1->label());
-    $I->click('Apply');
+    $I->checkOption($child_1_1->label());
     $I->waitForAjaxToFinish();
     $I->canSee($opportunity->label());
   }
