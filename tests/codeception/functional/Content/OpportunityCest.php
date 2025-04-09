@@ -108,7 +108,7 @@ class OpportunityCest {
     $I->amOnPage($page->toUrl()->toString());
     $I->canSee($opportunity->label());
 
-    $I->waitForText($parent_1->label(), 10, 'fieldset');
+    $I->waitForText($parent_1->label(), 2, 'fieldset');
 
     $I->checkOption($child_1_2->label());
     $I->waitForAjaxToFinish();
