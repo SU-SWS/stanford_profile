@@ -232,7 +232,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: h2
-            weight: 6
+            weight: 7
             additional: {  }
           e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1:
             uuid: e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1
@@ -556,6 +556,32 @@ third_party_settings:
                     label_tag: ''
             weight: 8
             additional: {  }
+          07ce6778-e8ca-4d1c-9cda-59bf28022570:
+            uuid: 07ce6778-e8ca-4d1c-9cda-59bf28022570
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_units'
+              label: Units
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: inline
+                settings:
+                  link: false
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 6
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
@@ -663,6 +689,7 @@ third_party_settings:
           - 'field_block:node:stanford_opportunity:su_opp_start_date'
           - 'field_block:node:stanford_opportunity:su_opp_summary'
           - 'field_block:node:stanford_opportunity:title'
+          - 'field_block:node:stanford_opportunity:su_opp_units'
         Menus:
           - 'menu_block:main'
         System:
