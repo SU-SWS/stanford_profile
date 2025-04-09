@@ -64,7 +64,7 @@ class OpportunityCest {
       'title' => $this->faker->words(3, TRUE),
     ]);
 
-    $user = $I->createUserWithRoles(['site_manager', 'opportunity_editor']);
+    $user = $I->createUserWithRoles(['site_manager']);
     $I->logInAs($user->getAccountName());
 
     $I->amOnPage($node->toUrl('edit-form')->toString());

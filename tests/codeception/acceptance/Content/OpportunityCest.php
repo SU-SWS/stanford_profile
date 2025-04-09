@@ -39,19 +39,6 @@ class OpportunityCest {
     $I->cantSee('Opportunity');
     $I->amOnPage('/user/logout');
     $I->click('Log out', 'form');
-
-    $user = $I->createUserWithRoles(['site_manager', 'opportunity_editor']);
-    $I->logInAs($user->getAccountName());
-    $I->amOnPage('/node/add');
-    $I->canSee('Opportunity');
-    $I->amOnPage('/admin/structure/taxonomy');
-    $I->canSee('Opportunity');
-    $I->amOnPage('/admin/structure/taxonomy/manage/opportunity_tag_filters/add');
-    $I->canSeeInField('Name', '');
-    $I->amOnPage('/admin/structure/taxonomy/manage/opportunity_sponsor/add');
-    $I->canSeeInField('Name', '');
-    $I->amOnPage('/admin/structure/taxonomy/manage/opportunity_type/add');
-    $I->canSeeInField('Name', '');
   }
 
 }
