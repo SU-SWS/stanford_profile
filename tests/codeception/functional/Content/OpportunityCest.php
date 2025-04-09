@@ -62,13 +62,13 @@ class OpportunityCest {
     $node = $I->createEntity([
       'type' => 'stanford_opportunity',
       'title' => $this->faker->words(3, TRUE),
+      'published' => true,
     ]);
 
     $user = $I->createUserWithRoles(['site_manager']);
     $I->logInAs($user->getAccountName());
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
-    sleep(120);
     $I->click('#edit-group-basics summary');
     $I->canSee($parent_1->label(), 'legend');
     $I->canSee($parent_2->label(), 'legend');
