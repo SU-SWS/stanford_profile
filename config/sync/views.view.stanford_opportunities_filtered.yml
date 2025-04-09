@@ -8,13 +8,12 @@ dependencies:
     - node.type.stanford_opportunity
     - taxonomy.vocabulary.opportunity_tag_filters
   module:
+    - better_exposed_filters
     - datetime
-    - graphql_compose_views
     - node
     - stanford_fields
     - taxonomy
     - user
-    - views_infinite_scroll
 id: stanford_opportunities_filtered
 label: 'Opportunities - Filtered'
 module: views
@@ -119,7 +118,7 @@ display:
             offset_label: Offset
           quantity: 9
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Apply
           reset_button: false
@@ -128,6 +127,25 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: null
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            sort:
+              plugin_id: default
+            filter:
+              su_opp_tags_target_id:
+                plugin_id: default
       access:
         type: perm
         options:
@@ -228,10 +246,10 @@ display:
             operator: su_opp_tags_target_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: su_opp_tags_target_id
+            identifier: filter
             required: false
             remember: false
-            multiple: false
+            multiple: true
             remember_roles:
               authenticated: authenticated
               administrator: '0'
@@ -265,7 +283,7 @@ display:
           reduce_duplicates: false
           vid: opportunity_tag_filters
           type: select
-          hierarchy: false
+          hierarchy: true
           limit: true
           error_message: true
       filter_groups:
@@ -326,7 +344,7 @@ display:
       display_extenders: {  }
       display_description: 'Grid - All Items'
       block_description: ''
-      block_hide_empty: false
+      block_hide_empty: 1
       block_category: 'Opportunities (Views)'
       fields:
         title:
@@ -441,7 +459,7 @@ display:
       display_extenders: {  }
       display_description: 'List - All Items'
       block_description: ''
-      block_hide_empty: false
+      block_hide_empty: 1
       block_category: 'Opportunities (Views)'
       defaults:
         fields: true
@@ -450,9 +468,10 @@ display:
         arguments: true
         title: false
         pager: false
+        exposed_form: false
       title: 'Filtered Opportunities List'
       pager:
-        type: infinite_scroll
+        type: full
         options:
           pagination_heading_level: h4
           items_per_page: '20'
@@ -462,6 +481,8 @@ display:
           tags:
             previous: '‹ Previous'
             next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: 0
             items_per_page_label: 'Items per page'
@@ -470,10 +491,43 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: 0
             offset_label: Offset
-          views_infinite_scroll:
-            button_text: 'Load More Opportunities'
-            automatically_load_content: 0
-            initially_load_all_pages: 0
+          quantity: '9'
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: 0
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: stanford_html
+          bef:
+            general:
+              autosubmit: 1
+              autosubmit_exclude_textfield: 0
+              autosubmit_textfield_delay: '500'
+              autosubmit_textfield_minimum_length: '3'
+              autosubmit_hide: 1
+              input_required: 0
+              allow_secondary: 0
+              secondary_label: 'Advanced options'
+              secondary_open: 0
+              reset_button_always_show: false
+            filter:
+              su_opp_tags_target_id:
+                plugin_id: taxonomy_label_hierarchy_checkbox
+                advanced:
+                  sort_options: 0
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: 0
+                  hide_label: 0
+                  collapsible: 0
+                  collapsible_disable_automatic_open: 0
+                  is_secondary: 0
     cache_metadata:
       max-age: -1
       contexts:
