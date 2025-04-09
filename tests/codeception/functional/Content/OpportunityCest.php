@@ -68,6 +68,7 @@ class OpportunityCest {
     $I->logInAs($user->getAccountName());
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    sleep(120);
     $I->click('#edit-group-basics summary');
     $I->canSee($parent_1->label(), 'legend');
     $I->canSee($parent_2->label(), 'legend');
