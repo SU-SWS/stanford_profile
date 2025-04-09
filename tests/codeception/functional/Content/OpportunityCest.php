@@ -154,14 +154,35 @@ class OpportunityCest {
       'name' => $this->faker->words(2, TRUE),
       'parent' => $child_2_1->id(),
     ], 'taxonomy_term');
-    return [
-      $parent_1,
-      $parent_2,
-      $child_1_1,
-      $child_2_1,
-      $child_1_2,
-      $child_2_2,
-    ];
+
+    $node = $I->createEntity([
+      'type' => 'stanford_opportunity',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+
+    $user = $I->createUserWithRoles(['site_manager']);
+    $I->logInAs($user->getAccountName());
+
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->click('#edit-group-basics summary');
+    $I->canSee($parent_1->label(), 'legend');
+    $I->canSee($parent_2->label(), 'legend');
+
+    $parent_1_id = preg_replace('@[^a-z0-9_.]+@', '_', mb_strtolower($parent_1->label()));
+    $parent_2_id = preg_replace('@[^a-z0-9_.]+@', '_', mb_strtolower($parent_2->label()));
+
+    $I->selectOption("#$parent_1_id select.simpler-select", $child_1_1->label());
+    $I->click('Add More', "#$parent_1_id");
+    $I->waitForElementVisible("#$parent_1_id [class*='1-target-id'] select.simpler-select");
+    $I->selectOption("#$parent_1_id [class*='1-target-id'] select.simpler-select", $child_1_2->label());
+
+    $I->selectOption("#$parent_2_id select.simpler-select", $child_2_1->label());
+
+    $I->waitForElementVisible("#$parent_2_id [class*='--level-1'] select.simpler-select");
+    $I->selectOption("#$parent_2_id [class*='--level-1'] select.simpler-select", $child_2_2->label());
+
+    $I->click('Save');
+    $I->canSee($node->label(), 'h1');
   }
 
 }
