@@ -1,0 +1,21 @@
+uuid: 5b67c24f-e590-4292-808a-fd01f7371fd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_icon
+    - node.type.stanford_opportunity
+  module:
+    - fontawesome
+id: node.stanford_opportunity.su_opp_icon
+field_name: su_opp_icon
+entity_type: node
+bundle: stanford_opportunity
+label: Icon
+description: 'Add in an icon to represent your opportunity. This will be shown on the card display for the Teaser, Lists Paragraph, and Filtered Lists Paragraph. It will also show on the individual opportunity page. This can be used with a Featured Image or without. If both are filled in, both will display.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: fontawesome_icon

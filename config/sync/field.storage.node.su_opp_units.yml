@@ -1,0 +1,20 @@
+uuid: 4af8964c-56c5-4696-9b51-dd28a8420c20
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.su_opp_units
+field_name: su_opp_units
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

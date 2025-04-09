@@ -30,6 +30,7 @@ tasks:
       export PREVIEW_URL=${PREVIEW_FULL_URL#"https://"} &&
       export PROFILE_BRANCH=`cd ../profile && git rev-parse --abbrev-ref HEAD` &&
       composer require su-sws/stanford_profile:"dev-$PROFILE_BRANCH || $PROFILE_BRANCH-dev" --no-update &&
+      composer remove su-sws/stanford_profile_helper --no-update &&
       composer update --no-interaction &&
       rm -rf docroot/*/custom/* &&
       composer install --prefer-source --no-interaction &&

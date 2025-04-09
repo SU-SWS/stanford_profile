@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.stanford_opportunity.body
     - field.field.node.stanford_opportunity.layout_builder__layout
     - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_card_footer
     - field.field.node.stanford_opportunity.su_opp_components
     - field.field.node.stanford_opportunity.su_opp_contact_email
     - field.field.node.stanford_opportunity.su_opp_contact_name
@@ -14,6 +15,7 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_course_code
     - field.field.node.stanford_opportunity.su_opp_cta_url
     - field.field.node.stanford_opportunity.su_opp_eligibility
+    - field.field.node.stanford_opportunity.su_opp_icon
     - field.field.node.stanford_opportunity.su_opp_image
     - field.field.node.stanford_opportunity.su_opp_learn_more
     - field.field.node.stanford_opportunity.su_opp_open_date
@@ -25,13 +27,16 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_summary
     - field.field.node.stanford_opportunity.su_opp_tags
     - field.field.node.stanford_opportunity.su_opp_type
+    - field.field.node.stanford_opportunity.su_opp_units
     - node.type.stanford_opportunity
   module:
     - field_group
+    - fontawesome
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - text
     - user
 third_party_settings:
   layout_builder:
@@ -43,7 +48,7 @@ third_party_settings:
         layout_settings:
           label: ''
           context_mapping: {  }
-          extra_classes: ''
+          extra_classes: su-opp-title-wrapper
           centered: centered-container
           columns: default
         components:
@@ -71,32 +76,47 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
+            weight: 3
+            additional: {  }
+          acc52799-de6b-4b52-9592-f7d669610431:
+            uuid: acc52799-de6b-4b52-9592-f7d669610431
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_icon'
+              label: Icon
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: fontawesome_icon_formatter
+                label: hidden
+                settings:
+                  layers: false
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: su-opp-icon-wrapper
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
             weight: 2
             additional: {  }
         third_party_settings: {  }
       -
-        layout_id: jumpstart_ui_two_column
+        layout_id: jumpstart_ui_one_column
         layout_settings:
           label: ''
           context_mapping: {  }
           extra_classes: ''
           centered: centered-container
-          orientation: left
+          columns: default
         components:
-          7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5:
-            uuid: 7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5
-            region: left
-            configuration:
-              id: jumpstart_ui_skipnav_main_anchor
-              label: 'Main content anchor target'
-              label_display: '0'
-              provider: jumpstart_ui
-              context_mapping: {  }
-            weight: 0
-            additional: {  }
           764b7bd8-7488-4796-a259-314de23b87b3:
             uuid: 764b7bd8-7488-4796-a259-314de23b87b3
-            region: left
+            region: main
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_summary'
               label: Summary
@@ -117,8 +137,18 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 1
+            weight: 0
             additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          columns: flex-12-of-12
+        components:
           411af66d-4ede-4ca0-a51d-c56cb10a96ef:
             uuid: 411af66d-4ede-4ca0-a51d-c56cb10a96ef
             region: main
@@ -131,13 +161,21 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: media_responsive_image_formatter
+                type: media_multimedia_formatter
                 label: hidden
                 settings:
-                  view_mode: stanford_image_large_square
-                  link: false
-                  image_style: ''
-                  remove_alt: 0
+                  image:
+                    image_formatter: image_style
+                    image_formatter_image_style: card_1900x950
+                    image_formatter_responsive_image_style: full_responsive
+                    image_formatter_view_mode: default
+                  video:
+                    video_formatter: entity
+                    video_formatter_view_mode: default
+                  other:
+                    view_mode: default
+                  vt_settings:
+                    settings__formatter__settings__vt_settings__active_tab: edit-image
                 third_party_settings:
                   empty_fields:
                     handler: ''
@@ -146,6 +184,27 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: su-opp-node-container-wrapper
+          centered: centered-container
+          orientation: left
+        components:
+          7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5:
+            uuid: 7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5
+            region: left
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
             weight: 0
             additional: {  }
           6e41b2ce-22c1-4c37-9a18-14082782a173:
@@ -164,65 +223,12 @@ third_party_settings:
                 label: above
                 settings:
                   timezone_override: ''
-                  format_type: medium
+                  format_type: stanford_month_date_year
                 third_party_settings:
                   empty_fields:
                     handler: ''
                   field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: h2
-            weight: 4
-            additional: {  }
-          754b749d-c0cd-4bc8-8594-1992fdbbe0a3:
-            uuid: 754b749d-c0cd-4bc8-8594-1992fdbbe0a3
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_start_date'
-              label: 'Start Date'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: datetime_default
-                label: above
-                settings:
-                  timezone_override: ''
-                  format_type: medium
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: h2
-            weight: 5
-            additional: {  }
-          5427b410-5b74-41b2-b6c8-44fac25c3150:
-            uuid: 5427b410-5b74-41b2-b6c8-44fac25c3150
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_course_code'
-              label: 'Course Code'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
+                    class: su-opp-deadline-date
                   field_label:
                     label_value: ''
                     label_tag: h2
@@ -251,7 +257,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 4
+            weight: 5
             additional: {  }
           1af2c338-0e61-4e46-b07e-1de570d93985:
             uuid: 1af2c338-0e61-4e46-b07e-1de570d93985
@@ -336,57 +342,6 @@ third_party_settings:
                     label_tag: ''
             weight: 13
             additional: {  }
-          d18ff1e0-f50c-4248-b301-2e077267b15c:
-            uuid: d18ff1e0-f50c-4248-b301-2e077267b15c
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_type'
-              label: 'Opportunity Type'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: false
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: su-opp-type
-                  field_label:
-                    label_value: ''
-                    label_tag: h2
-            weight: 3
-            additional: {  }
-          9b45c4b5-bbe3-44f4-803f-bb305be025fe:
-            uuid: 9b45c4b5-bbe3-44f4-803f-bb305be025fe
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_opportunity:su_opp_prerequisites'
-              label: Prerequisites
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: text_default
-                label: hidden
-                settings: {  }
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: ''
-            weight: 7
-            additional: {  }
           380d8445-73a4-4601-b30c-b8b9f866b057:
             uuid: 380d8445-73a4-4601-b30c-b8b9f866b057
             region: left
@@ -418,7 +373,7 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_contact_email'
               label: Contact
-              label_display: visible
+              label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
@@ -434,8 +389,172 @@ third_party_settings:
                     class: ''
                   field_label:
                     label_value: ''
-                    label_tag: h2
+                    label_tag: ''
             weight: 10
+            additional: {  }
+          d18ff1e0-f50c-4248-b301-2e077267b15c:
+            uuid: d18ff1e0-f50c-4248-b301-2e077267b15c
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_type'
+              label: 'Opportunity Type'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: false
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: su-opp-type
+                  field_label:
+                    label_value: ''
+                    label_tag: h2
+            weight: 4
+            additional: {  }
+          5427b410-5b74-41b2-b6c8-44fac25c3150:
+            uuid: 5427b410-5b74-41b2-b6c8-44fac25c3150
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_course_code'
+              label: 'Course Code'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: h2
+            weight: 5
+            additional: {  }
+          fe717316-d599-4c4c-abea-3ce5b700cad4:
+            uuid: fe717316-d599-4c4c-abea-3ce5b700cad4
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_cta_url'
+              label: 'Call to Action'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: su-button
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 14
+            additional: {  }
+          9b45c4b5-bbe3-44f4-803f-bb305be025fe:
+            uuid: 9b45c4b5-bbe3-44f4-803f-bb305be025fe
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_prerequisites'
+              label: Prerequisites
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: h2
+            weight: 4
+            additional: {  }
+          3d4a99ba-dd72-41d6-8381-aac52ab4b274:
+            uuid: 3d4a99ba-dd72-41d6-8381-aac52ab4b274
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_tags'
+              label: 'Opportunity Tags/Filters'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: cshs_group_by_root
+                label: hidden
+                settings:
+                  linked: false
+                  reverse: false
+                  sort: none
+                  depth: 0
+                  last_child: false
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: su-tags-wrapper
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 9
+            additional: {  }
+          35ff7783-bb5c-4351-b1e4-2f7af2c11e1e:
+            uuid: 35ff7783-bb5c-4351-b1e4-2f7af2c11e1e
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_application_deadline'
+              label: 'Application Deadline'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: datetime_default
+                label: hidden
+                settings:
+                  timezone_override: ''
+                  format_type: stanford_time
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: su-opp-deadline-time
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 8
             additional: {  }
         third_party_settings: {  }
       -
@@ -486,8 +605,6 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
-      - Devel
-      - 'Devel PHP'
       - Editoria11y
       - 'Events Lists (Views)'
       - Forms
@@ -497,6 +614,7 @@ third_party_settings:
       - 'Lists (Views)'
       - Menus
       - 'News Lists (Views)'
+      - 'Opportunities (Views)'
       - 'PDB React'
       - 'People Lists (Views)'
       - 'Policy (Views)'
@@ -535,6 +653,7 @@ third_party_settings:
           - 'field_block:node:stanford_opportunity:su_opp_eligibility'
           - 'field_block:node:stanford_opportunity:su_opp_source'
           - 'field_block:node:stanford_opportunity:su_opp_image'
+          - 'field_block:node:stanford_opportunity:su_opp_icon'
           - 'field_block:node:stanford_opportunity:su_opp_learn_more'
           - 'field_block:node:stanford_opportunity:su_opp_tags'
           - 'field_block:node:stanford_opportunity:su_opp_type'
@@ -545,11 +664,7 @@ third_party_settings:
           - 'field_block:node:stanford_opportunity:su_opp_summary'
           - 'field_block:node:stanford_opportunity:title'
         Menus:
-          - 'system_menu_block:stanford-event-types'
           - 'menu_block:main'
-          - 'system_menu_block:stanford-person-type'
-          - 'system_menu_block:stanford-publication-topics'
-          - 'system_menu_block:news-topics'
         System:
           - system_breadcrumb_block
         core:
@@ -558,12 +673,11 @@ third_party_settings:
         - Book
         - 'Chaos Tools'
         - 'Config Pages'
-        - Devel
-        - 'Devel PHP'
         - Editoria11y
         - Forms
         - Help
         - 'Lists (Views)'
+        - 'Opportunities (Views)'
         - 'Policy (Views)'
         - Printable
         - React
@@ -596,7 +710,30 @@ id: node.stanford_opportunity.default
 targetEntityType: node
 bundle: stanford_opportunity
 mode: default
-content: {  }
+content:
+  su_opp_card_footer:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
+    region: main
+  su_opp_icon:
+    type: fontawesome_icon_formatter
+    label: above
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 21
+    region: main
+  su_opp_units:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 24
+    region: main
 hidden:
   body: true
   layout_builder__layout: true
