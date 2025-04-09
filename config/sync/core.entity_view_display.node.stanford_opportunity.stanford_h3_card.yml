@@ -35,11 +35,13 @@ dependencies:
     - empty_fields
     - field_formatter_class
     - field_label
+    - fontawesome
     - layout_builder
     - layout_builder_restrictions
     - layout_library
     - smart_trim
     - stanford_media
+    - text
     - user
 third_party_settings:
   layout_builder:
@@ -69,15 +71,17 @@ third_party_settings:
         - su_opp_image
       card_super_headline:
         - su_opp_sponsor
+        - su_opp_type
       card_headline:
         - node_title
       card_body:
-        - su_opp_type
         - su_opp_summary
+        - su_opp_card_footer
+        - su_opp_icon
     fields:
       node_title:
         plugin_id: node_title
-        weight: 2
+        weight: 3
         label: hidden
         formatter: default
         settings:
@@ -85,12 +89,27 @@ third_party_settings:
           'link class': ''
           link_target: ''
           wrapper: h3
-          class: su-card__link
+          class: 'su-card__link su-link--action'
 id: node.stanford_opportunity.stanford_h3_card
 targetEntityType: node
 bundle: stanford_opportunity
 mode: stanford_h3_card
 content:
+  su_opp_card_footer:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: card_body
+  su_opp_icon:
+    type: fontawesome_icon_formatter
+    label: hidden
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 6
+    region: card_body
   su_opp_image:
     type: media_image_formatter
     label: hidden
@@ -172,15 +191,14 @@ content:
         label_tag: ''
       ds:
         ds_limit: ''
-    weight: 3
-    region: card_body
+    weight: 2
+    region: card_super_headline
 hidden:
   body: true
   layout_builder__layout: true
   links: true
   search_api_excerpt: true
   su_opp_application_deadline: true
-  su_opp_card_footer: true
   su_opp_components: true
   su_opp_contact_email: true
   su_opp_contact_name: true
@@ -189,7 +207,6 @@ hidden:
   su_opp_course_code: true
   su_opp_cta_url: true
   su_opp_eligibility: true
-  su_opp_icon: true
   su_opp_learn_more: true
   su_opp_open_date: true
   su_opp_prerequisites: true
