@@ -1,0 +1,24 @@
+uuid: e97508af-5000-45a0-abba-8e25a04c0b32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_card_footer
+    - filter.format.stanford_minimal_html
+    - node.type.stanford_opportunity
+  module:
+    - text
+id: node.stanford_opportunity.su_opp_card_footer
+field_name: su_opp_card_footer
+entity_type: node
+bundle: stanford_opportunity
+label: 'Card Footer'
+description: ' Add in any additional information that may need to display at the bottom of the individual card for this opportunity in a list or teaser view.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - stanford_minimal_html
+field_type: text

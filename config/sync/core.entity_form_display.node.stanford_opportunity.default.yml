@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.stanford_opportunity.body
     - field.field.node.stanford_opportunity.layout_builder__layout
     - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_card_footer
     - field.field.node.stanford_opportunity.su_opp_components
     - field.field.node.stanford_opportunity.su_opp_contact_email
     - field.field.node.stanford_opportunity.su_opp_contact_name
@@ -14,6 +15,7 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_course_code
     - field.field.node.stanford_opportunity.su_opp_cta_url
     - field.field.node.stanford_opportunity.su_opp_eligibility
+    - field.field.node.stanford_opportunity.su_opp_icon
     - field.field.node.stanford_opportunity.su_opp_image
     - field.field.node.stanford_opportunity.su_opp_learn_more
     - field.field.node.stanford_opportunity.su_opp_open_date
@@ -25,17 +27,19 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_summary
     - field.field.node.stanford_opportunity.su_opp_tags
     - field.field.node.stanford_opportunity.su_opp_type
+    - field.field.node.stanford_opportunity.su_opp_units
     - node.type.stanford_opportunity
   module:
     - change_labels
     - datetime
     - field_formatter_class
     - field_group
+    - fontawesome
     - layout_paragraphs
     - link
+    - maxlength
     - media_library
     - path
-    - scheduler
     - stanford_fields
     - telephone
     - text
@@ -49,8 +53,8 @@ third_party_settings:
         - su_opp_contact_url
       label: 'Contact Information'
       region: content
-      parent_name: ''
-      weight: 4
+      parent_name: group_taxonomy
+      weight: 15
       format_type: details
       format_settings:
         classes: ''
@@ -63,12 +67,12 @@ third_party_settings:
     group_taxonomy:
       children:
         - su_opp_type
-        - su_opp_prerequisites
-        - su_opp_eligibility
-        - su_opp_course_code
+        - su_opp_application_deadline
+        - su_opp_tags
+        - group_contact_information
         - su_opp_cta_url
-        - su_opp_learn_more
-      label: 'Opportunity Sidebar'
+        - group_academic_info
+      label: Sidebar
       region: content
       parent_name: ''
       weight: 2
@@ -79,35 +83,16 @@ third_party_settings:
         id: ''
         label_as_html: false
         open: false
-        description: 'This will be displayed on the sidebar'
-        required_fields: true
-    group_dates:
-      children:
-        - su_opp_status
-        - su_opp_open_date
-        - su_opp_application_deadline
-        - su_opp_start_date
-      label: 'Opportunity Dates & Deadlines'
-      region: content
-      parent_name: ''
-      weight: 3
-      format_type: details
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        open: false
-        description: ''
+        description: 'Information in this section will be displayed on the sidebar.'
         required_fields: true
     group_basics:
       children:
         - su_opp_image
-        - su_opp_sponsor
+        - su_opp_icon
         - su_opp_summary
+        - su_opp_card_footer
         - su_opp_source
-        - su_opp_tags
-      label: Basics
+      label: 'Editorial Content'
       region: content
       parent_name: ''
       weight: 1
@@ -118,7 +103,43 @@ third_party_settings:
         id: ''
         label_as_html: false
         open: false
-        description: ''
+        description: 'This content is used to fill in the image, summary text and other items needed for display in a list or teaser. It also contains an external link field if you wish to direct site visitors to an external page.'
+        required_fields: true
+    group_page_content:
+      children:
+        - su_opp_eligibility
+        - su_opp_prerequisites
+        - body
+        - su_opp_components
+      label: 'Page Content'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: 'Content that will appear on the page in the main content area.'
+        required_fields: true
+    group_academic_info:
+      children:
+        - su_opp_course_code
+        - su_opp_units
+      label: 'Academic Info'
+      region: hidden
+      parent_name: group_taxonomy
+      weight: 10
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: 'Enter course information if this opportunity is a course.'
         required_fields: true
 id: node.stanford_opportunity.default
 targetEntityType: node
@@ -127,60 +148,39 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 5
+    weight: 18
     region: content
     settings:
-      rows: 9
-      summary_rows: 3
+      rows: 4
+      summary_rows: 2
       placeholder: ''
       show_summary: false
-    third_party_settings: {  }
-  created:
-    type: datetime_timestamp
-    weight: 9
-    region: content
-    settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_summary: null
+        maxlength_js_label_summary: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        field_label_overwrite: ''
   layout_builder__layout:
     type: null
-    weight: 53
+    weight: 32
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 12
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    weight: 10
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 15
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  scheduler_settings:
-    weight: 14
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 7
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    weight: 11
+    weight: 5
     region: content
     settings:
       display_label: true
@@ -191,9 +191,17 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  su_opp_card_footer:
+    type: text_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   su_opp_components:
     type: layout_paragraphs
-    weight: 6
+    weight: 20
     region: content
     settings:
       view_mode: default
@@ -205,7 +213,7 @@ content:
     third_party_settings: {  }
   su_opp_contact_email:
     type: email_default
-    weight: 16
+    weight: 17
     region: content
     settings:
       placeholder: ''
@@ -213,7 +221,7 @@ content:
     third_party_settings: {  }
   su_opp_contact_name:
     type: string_textfield
-    weight: 15
+    weight: 16
     region: content
     settings:
       size: 60
@@ -221,14 +229,14 @@ content:
     third_party_settings: {  }
   su_opp_contact_phone:
     type: telephone_default
-    weight: 17
+    weight: 18
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   su_opp_contact_url:
     type: link_default
-    weight: 18
+    weight: 20
     region: content
     settings:
       placeholder_url: ''
@@ -236,15 +244,26 @@ content:
     third_party_settings: {  }
   su_opp_course_code:
     type: string_textfield
-    weight: 12
+    weight: 11
     region: content
     settings:
-      size: 60
+      size: 12
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        add_another: ''
+        field_label_overwrite: ''
+        hide_add_another: 0
+        force_single_cardinality: 0
   su_opp_cta_url:
     type: link_default
-    weight: 13
+    weight: 16
     region: content
     settings:
       placeholder_url: ''
@@ -252,12 +271,30 @@ content:
     third_party_settings: {  }
   su_opp_eligibility:
     type: text_textarea
-    weight: 11
+    weight: 16
     region: content
     settings:
-      rows: 5
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        field_label_overwrite: ''
+  su_opp_icon:
+    type: fontawesome_icon_widget
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      change_labels:
+        field_label_overwrite: ''
   su_opp_image:
     type: media_library_widget
     weight: 2
@@ -265,66 +302,57 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
-  su_opp_learn_more:
-    type: link_default
-    weight: 15
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  su_opp_open_date:
-    type: datetime_default
-    weight: 12
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   su_opp_prerequisites:
     type: text_textarea
-    weight: 10
+    weight: 17
     region: content
     settings:
-      rows: 5
+      rows: 1
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        field_label_overwrite: ''
   su_opp_source:
     type: link_default
-    weight: 5
+    weight: 6
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
-  su_opp_sponsor:
-    type: options_select
-    weight: 3
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  su_opp_start_date:
-    type: datetime_default
-    weight: 14
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  su_opp_status:
-    type: boolean_checkbox
-    weight: 11
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      change_labels:
+        field_label_overwrite: ''
   su_opp_summary:
     type: text_textarea
     weight: 4
     region: content
     settings:
-      rows: 5
+      rows: 2
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: 300
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
+      change_labels:
+        field_label_overwrite: ''
   su_opp_tags:
     type: taxonomy_label_hierarchy
-    weight: 6
+    weight: 14
     region: content
     settings: {  }
     third_party_settings:
@@ -339,6 +367,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  su_opp_units:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 0
@@ -347,20 +381,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
-    weight: 8
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  url_redirects:
-    weight: 13
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
+  created: true
+  layout_selection: true
+  promote: true
+  publish_on: true
+  scheduler_settings: true
+  sticky: true
+  su_opp_learn_more: true
+  su_opp_open_date: true
+  su_opp_sponsor: true
+  su_opp_start_date: true
+  su_opp_status: true
+  uid: true
   unpublish_on: true
+  url_redirects: true

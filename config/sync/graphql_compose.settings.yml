@@ -233,6 +233,8 @@ entity_config:
     stanford_faq:
       enabled: true
       query_load_enabled: true
+    stanford_filtered_lists:
+      enabled: false
     stanford_gallery:
       enabled: true
       query_load_enabled: true
@@ -284,6 +286,8 @@ entity_config:
     opportunity_tag_filters:
       enabled: true
     opportunity_type:
+      enabled: true
+    opportunity_units:
       enabled: true
     site_owner_orgs:
       enabled: false
@@ -668,6 +672,8 @@ field_config:
         enabled: true
       su_opp_application_deadline:
         enabled: true
+      su_opp_card_footer:
+        enabled: true
       su_opp_components:
         enabled: true
       su_opp_contact_email:
@@ -705,6 +711,8 @@ field_config:
       su_opp_tags:
         enabled: true
       su_opp_type:
+        enabled: true
+      su_opp_units:
         enabled: true
     stanford_page:
       layout_selection:

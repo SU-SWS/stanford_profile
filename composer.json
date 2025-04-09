@@ -60,6 +60,7 @@
         "drupal/admin_toolbar": "^3.1",
         "drupal/allowed_formats": "^3.0",
         "drupal/auto_entitylabel": "^3.0@beta",
+        "drupal/better_exposed_filters": "^7.0",
         "drupal/book": "^2.0",
         "drupal/change_labels": "^1.0",
         "drupal/chosen": "^5.0",
@@ -180,7 +181,7 @@
         "su-sws/stanford_fields": "^8.4",
         "su-sws/stanford_media": "^11.0",
         "su-sws/stanford_migrate": "^8.3",
-        "su-sws/stanford_profile_helper": "^9.8",
+        "su-sws/stanford_profile_helper": "dev-feature/D8CORE-5741--opportunities-helper",
         "su-sws/stanford_samlauth": "^1.0"
     },
     "config": {
@@ -203,6 +204,9 @@
             }
         },
         "patches": {
+            "drupal/fontawesome": {
+                "https://www.drupal.org/project/fontawesome/issues/3380581": "https://www.drupal.org/files/issues/2025-03-06/iconpicker-does-not-render_3380581_11.patch"
+            },
             "drupal/hook_event_dispatcher": {
                 "https://www.drupal.org/project/hook_event_dispatcher/issues/3354751": "https://www.drupal.org/files/issues/2024-03-14/hook_event_dispatcher-4.x-3354751-7.patch"
             },

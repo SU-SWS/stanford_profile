@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.stanford_opportunity.body
     - field.field.node.stanford_opportunity.layout_builder__layout
     - field.field.node.stanford_opportunity.su_opp_application_deadline
+    - field.field.node.stanford_opportunity.su_opp_card_footer
     - field.field.node.stanford_opportunity.su_opp_components
     - field.field.node.stanford_opportunity.su_opp_contact_email
     - field.field.node.stanford_opportunity.su_opp_contact_name
@@ -15,6 +16,7 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_course_code
     - field.field.node.stanford_opportunity.su_opp_cta_url
     - field.field.node.stanford_opportunity.su_opp_eligibility
+    - field.field.node.stanford_opportunity.su_opp_icon
     - field.field.node.stanford_opportunity.su_opp_image
     - field.field.node.stanford_opportunity.su_opp_learn_more
     - field.field.node.stanford_opportunity.su_opp_open_date
@@ -26,12 +28,13 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_summary
     - field.field.node.stanford_opportunity.su_opp_tags
     - field.field.node.stanford_opportunity.su_opp_type
+    - field.field.node.stanford_opportunity.su_opp_units
     - node.type.stanford_opportunity
   module:
-    - datetime
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - layout_paragraphs
     - text
     - user
 third_party_settings:
@@ -52,63 +55,89 @@ targetEntityType: node
 bundle: stanford_opportunity
 mode: search_indexing
 content:
-  su_opp_application_deadline:
-    type: datetime_default
-    label: inline
-    settings:
-      timezone_override: ''
-      format_type: medium
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 4
     region: content
-  su_opp_image:
-    type: entity_reference_label
+  su_opp_card_footer:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  su_opp_components:
+    type: layout_paragraphs
     label: hidden
     settings:
-      link: true
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  su_opp_contact_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  su_opp_contact_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  su_opp_course_code:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
     weight: 0
     region: content
-  su_opp_sponsor:
-    type: entity_reference_label
+  su_opp_eligibility:
+    type: text_default
     label: hidden
-    settings:
-      link: true
+    settings: {  }
     third_party_settings: {  }
     weight: 2
     region: content
-  su_opp_summary:
+  su_opp_prerequisites:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 3
     region: content
-  su_opp_type:
-    type: entity_reference_label
+  su_opp_summary:
+    type: text_default
     label: hidden
-    settings:
-      link: true
+    settings: {  }
     third_party_settings: {  }
-    weight: 4
+    weight: 1
     region: content
 hidden:
-  body: true
   layout_builder__layout: true
   links: true
   search_api_excerpt: true
-  su_opp_components: true
-  su_opp_contact_email: true
-  su_opp_contact_name: true
+  su_opp_application_deadline: true
   su_opp_contact_phone: true
   su_opp_contact_url: true
-  su_opp_course_code: true
   su_opp_cta_url: true
-  su_opp_eligibility: true
+  su_opp_icon: true
+  su_opp_image: true
   su_opp_learn_more: true
   su_opp_open_date: true
-  su_opp_prerequisites: true
   su_opp_source: true
+  su_opp_sponsor: true
   su_opp_start_date: true
   su_opp_status: true
   su_opp_tags: true
+  su_opp_type: true
+  su_opp_units: true

@@ -31,7 +31,6 @@ class OpportunityCest {
     $I->cantSee('Opportunity');
     $I->amOnPage('/user/logout');
     $I->click('Log out', 'form');
-
     $I->logInWithRole('contibutor');
     $I->amOnPage('/node/add');
     $I->cantSee('Opportunity');

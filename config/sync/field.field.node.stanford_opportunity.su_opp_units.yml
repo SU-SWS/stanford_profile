@@ -1,0 +1,29 @@
+uuid: 193d771d-6f07-4a45-83f9-4ccf1e1e2bb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_opp_units
+    - node.type.stanford_opportunity
+    - taxonomy.vocabulary.opportunity_units
+id: node.stanford_opportunity.su_opp_units
+field_name: su_opp_units
+entity_type: node
+bundle: stanford_opportunity
+label: Units
+description: 'If the opportunity will provide academic credit, enter the units. This will display on the sidebar. Note: if you wish to allow users to filter based on number of units, please use the Opportunities Filters field instead.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      opportunity_units: opportunity_units
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
