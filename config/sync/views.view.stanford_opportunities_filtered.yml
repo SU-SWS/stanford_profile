@@ -131,11 +131,11 @@ display:
           text_input_required_format: stanford_html
           bef:
             general:
-              autosubmit: false
+              autosubmit: true
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
               autosubmit_textfield_minimum_length: 3
-              autosubmit_hide: false
+              autosubmit_hide: true
               input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
@@ -475,7 +475,7 @@ display:
         arguments: true
         title: false
         pager: false
-        exposed_form: false
+        exposed_form: true
       title: 'Filtered Opportunities List'
       pager:
         type: full
@@ -499,42 +499,6 @@ display:
             offset: 0
             offset_label: Offset
           quantity: '9'
-      exposed_form:
-        type: bef
-        options:
-          submit_button: Apply
-          reset_button: 0
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-          text_input_required: 'Select any filter and click on Apply to see results'
-          text_input_required_format: stanford_html
-          bef:
-            general:
-              autosubmit: 1
-              autosubmit_exclude_textfield: 0
-              autosubmit_textfield_delay: '500'
-              autosubmit_textfield_minimum_length: '3'
-              autosubmit_hide: 1
-              input_required: 0
-              allow_secondary: 0
-              secondary_label: 'Advanced options'
-              secondary_open: 0
-              reset_button_always_show: false
-            filter:
-              su_opp_tags_target_id:
-                plugin_id: taxonomy_label_hierarchy_checkbox
-                advanced:
-                  sort_options: 0
-                  rewrite:
-                    filter_rewrite_values: ''
-                    filter_rewrite_values_key: 0
-                  hide_label: 0
-                  collapsible: 0
-                  collapsible_disable_automatic_open: 0
-                  is_secondary: 0
     cache_metadata:
       max-age: -1
       contexts:
