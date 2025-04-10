@@ -51,28 +51,28 @@ third_party_settings:
           field_templates: default
           variant: default
     regions:
-      news_list_image:
-        - su_opp_image
-      news_list_publishing_date:
+      news_list_topics:
         - su_opp_type
       news_list_headline:
         - node_title
       news_list_dek:
         - su_opp_summary
+      news_list_image:
+        - su_opp_image
       news_list_footer:
         - su_opp_card_footer
     fields:
       node_title:
         plugin_id: node_title
-        weight: 2
+        weight: 1
         label: hidden
         formatter: default
         settings:
           link: true
           'link class': ''
           link_target: ''
-          wrapper: h2
-          class: ''
+          wrapper: ''
+          class: su-opp-title-list
 id: node.stanford_opportunity.teaser
 targetEntityType: node
 bundle: stanford_opportunity
@@ -82,13 +82,20 @@ content:
     type: wrapper_class
     label: hidden
     settings:
-      class: ''
+      class: su-opp-footer-list
       tag: div
       link: false
       link_class: ''
       summary: false
       trim: 200
-    third_party_settings: {  }
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 4
     region: news_list_footer
   su_opp_image:
@@ -103,19 +110,26 @@ content:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: ''
+        class: su-opp-image-list
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 0
+    weight: 3
     region: news_list_image
   su_opp_summary:
     type: text_trimmed
     label: hidden
     settings:
       trim_length: 600
-    third_party_settings: {  }
-    weight: 3
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: su-opp-summary-list
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 2
     region: news_list_dek
   su_opp_type:
     type: entity_reference_label
@@ -126,12 +140,14 @@ content:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: ''
+        class: su-opp-type-list
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 1
-    region: news_list_publishing_date
+      ds:
+        ds_limit: ''
+    weight: 0
+    region: news_list_topics
 hidden:
   body: true
   layout_builder__layout: true
