@@ -35,11 +35,13 @@ dependencies:
     - empty_fields
     - field_formatter_class
     - field_label
+    - fontawesome
     - layout_builder
     - layout_builder_restrictions
     - layout_library
     - smart_trim
     - stanford_media
+    - text
     - user
 third_party_settings:
   layout_builder:
@@ -68,12 +70,13 @@ third_party_settings:
       card_image:
         - su_opp_image
       card_super_headline:
-        - su_opp_sponsor
+        - su_opp_type
       card_headline:
         - node_title
       card_body:
-        - su_opp_type
         - su_opp_summary
+        - su_opp_card_footer
+        - su_opp_icon
     fields:
       node_title:
         plugin_id: node_title
@@ -85,12 +88,27 @@ third_party_settings:
           'link class': ''
           link_target: ''
           wrapper: h3
-          class: su-card__link
+          class: 'su-card__link su-link--action'
 id: node.stanford_opportunity.stanford_h3_card
 targetEntityType: node
 bundle: stanford_opportunity
 mode: stanford_h3_card
 content:
+  su_opp_card_footer:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: card_body
+  su_opp_icon:
+    type: fontawesome_icon_formatter
+    label: hidden
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 5
+    region: card_body
   su_opp_image:
     type: media_image_formatter
     label: hidden
@@ -109,23 +127,6 @@ content:
         label_tag: ''
     weight: 0
     region: card_image
-  su_opp_sponsor:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: false
-    third_party_settings:
-      empty_fields:
-        handler: ''
-      field_formatter_class:
-        class: ''
-      field_label:
-        label_value: ''
-        label_tag: ''
-      ds:
-        ds_limit: ''
-    weight: 1
-    region: card_super_headline
   su_opp_summary:
     type: smart_trim
     label: hidden
@@ -155,7 +156,7 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 4
+    weight: 3
     region: card_body
   su_opp_type:
     type: entity_reference_label
@@ -172,15 +173,14 @@ content:
         label_tag: ''
       ds:
         ds_limit: ''
-    weight: 3
-    region: card_body
+    weight: 1
+    region: card_super_headline
 hidden:
   body: true
   layout_builder__layout: true
   links: true
   search_api_excerpt: true
   su_opp_application_deadline: true
-  su_opp_card_footer: true
   su_opp_components: true
   su_opp_contact_email: true
   su_opp_contact_name: true
@@ -189,11 +189,11 @@ hidden:
   su_opp_course_code: true
   su_opp_cta_url: true
   su_opp_eligibility: true
-  su_opp_icon: true
   su_opp_learn_more: true
   su_opp_open_date: true
   su_opp_prerequisites: true
   su_opp_source: true
+  su_opp_sponsor: true
   su_opp_start_date: true
   su_opp_status: true
   su_opp_tags: true
