@@ -1,0 +1,27 @@
+uuid: 241723e9-801c-4af0-8026-a693b5a04826
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_header_links
+  module:
+    - link
+    - stanford_fields
+third_party_settings:
+  stanford_fields:
+    force_relative: true
+id: config_pages.stanford_basic_site_settings.su_site_header_links
+field_name: su_site_header_links
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Header Links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

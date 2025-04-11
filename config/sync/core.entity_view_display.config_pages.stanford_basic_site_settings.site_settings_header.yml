@@ -1,0 +1,126 @@
+uuid: f8a91608-ad77-4996-a0a0-1a869973de6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - core.entity_view_mode.config_pages.site_settings_header
+    - field.field.config_pages.stanford_basic_site_settings.su_google_analytics
+    - field.field.config_pages.stanford_basic_site_settings.su_hide_ext_link_icons
+    - field.field.config_pages.stanford_basic_site_settings.su_hide_site_search
+    - field.field.config_pages.stanford_basic_site_settings.su_site_403
+    - field.field.config_pages.stanford_basic_site_settings.su_site_404
+    - field.field.config_pages.stanford_basic_site_settings.su_site_a11y_contact
+    - field.field.config_pages.stanford_basic_site_settings.su_site_admin_notes
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_file
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_id
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_index
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_key
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_search
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_terms
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_ui
+    - field.field.config_pages.stanford_basic_site_settings.su_site_created
+    - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
+    - field.field.config_pages.stanford_basic_site_settings.su_site_email
+    - field.field.config_pages.stanford_basic_site_settings.su_site_header_button
+    - field.field.config_pages.stanford_basic_site_settings.su_site_header_links
+    - field.field.config_pages.stanford_basic_site_settings.su_site_home
+    - field.field.config_pages.stanford_basic_site_settings.su_site_menu_levels
+    - field.field.config_pages.stanford_basic_site_settings.su_site_name
+    - field.field.config_pages.stanford_basic_site_settings.su_site_new_menu
+    - field.field.config_pages.stanford_basic_site_settings.su_site_nobots
+    - field.field.config_pages.stanford_basic_site_settings.su_site_org
+    - field.field.config_pages.stanford_basic_site_settings.su_site_owner_contact
+    - field.field.config_pages.stanford_basic_site_settings.su_site_renewal_due
+    - field.field.config_pages.stanford_basic_site_settings.su_site_sunetid
+    - field.field.config_pages.stanford_basic_site_settings.su_site_tech_contact
+    - field.field.config_pages.stanford_basic_site_settings.su_site_type
+    - field.field.config_pages.stanford_basic_site_settings.su_site_url
+  module:
+    - element_class_formatter
+    - empty_fields
+    - field_formatter_class
+    - field_label
+    - layout_builder
+    - link
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: config_pages.stanford_basic_site_settings.site_settings_header
+targetEntityType: config_pages
+bundle: stanford_basic_site_settings
+mode: site_settings_header
+content:
+  su_site_header_button:
+    type: link_class
+    label: hidden
+    settings:
+      class: su-button
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 0
+    region: content
+  su_site_header_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true
+  su_google_analytics: true
+  su_hide_ext_link_icons: true
+  su_hide_site_search: true
+  su_site_403: true
+  su_site_404: true
+  su_site_a11y_contact: true
+  su_site_admin_notes: true
+  su_site_algolia: true
+  su_site_algolia_file: true
+  su_site_algolia_id: true
+  su_site_algolia_index: true
+  su_site_algolia_key: true
+  su_site_algolia_search: true
+  su_site_algolia_terms: true
+  su_site_algolia_ui: true
+  su_site_created: true
+  su_site_dropdowns: true
+  su_site_email: true
+  su_site_home: true
+  su_site_menu_levels: true
+  su_site_name: true
+  su_site_new_menu: true
+  su_site_nobots: true
+  su_site_org: true
+  su_site_owner_contact: true
+  su_site_renewal_due: true
+  su_site_sunetid: true
+  su_site_tech_contact: true
+  su_site_type: true
+  su_site_url: true

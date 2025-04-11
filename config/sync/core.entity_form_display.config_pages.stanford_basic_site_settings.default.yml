@@ -22,6 +22,8 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_created
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
     - field.field.config_pages.stanford_basic_site_settings.su_site_email
+    - field.field.config_pages.stanford_basic_site_settings.su_site_header_button
+    - field.field.config_pages.stanford_basic_site_settings.su_site_header_links
     - field.field.config_pages.stanford_basic_site_settings.su_site_home
     - field.field.config_pages.stanford_basic_site_settings.su_site_menu_levels
     - field.field.config_pages.stanford_basic_site_settings.su_site_name
@@ -51,8 +53,8 @@ third_party_settings:
         - su_site_admin_notes
       label: Experimental
       region: content
-      parent_name: group_site_details
-      weight: 13
+      parent_name: group_site_header_options
+      weight: 9
       format_type: details
       format_settings:
         classes: ''
@@ -83,13 +85,11 @@ third_party_settings:
         - su_site_email
         - su_site_url
         - su_google_analytics
-        - su_site_dropdowns
-        - su_site_menu_levels
         - su_hide_ext_link_icons
         - su_site_home
         - su_site_404
         - su_site_403
-        - group_experimental
+        - group_site_header_options
       label: 'Site Settings/Features'
       region: content
       parent_name: group_tabs
@@ -147,6 +147,26 @@ third_party_settings:
         formatter: closed
         description: 'These settings control the availability and platform used for on-site search as well as instructions to external search engines about including your site content in search results.'
         required_fields: true
+    group_site_header_options:
+      children:
+        - su_site_dropdowns
+        - su_site_menu_levels
+        - su_site_header_button
+        - su_site_header_links
+        - group_experimental
+      label: 'Site Header Options'
+      region: hidden
+      parent_name: group_site_details
+      weight: 11
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
 id: config_pages.stanford_basic_site_settings.default
 targetEntityType: config_pages
 bundle: stanford_basic_site_settings
@@ -162,7 +182,7 @@ content:
     third_party_settings: {  }
   su_hide_ext_link_icons:
     type: boolean_checkbox
-    weight: 8
+    weight: 7
     region: content
     settings:
       display_label: true
@@ -176,13 +196,13 @@ content:
     third_party_settings: {  }
   su_site_403:
     type: options_select
-    weight: 11
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   su_site_404:
     type: options_select
-    weight: 10
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -428,9 +448,25 @@ content:
       placeholder: ''
       size: 60
     third_party_settings: {  }
+  su_site_header_button:
+    type: link_default
+    weight: 7
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  su_site_header_links:
+    type: link_default
+    weight: 8
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   su_site_home:
     type: options_select
-    weight: 9
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
