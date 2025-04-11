@@ -20,37 +20,20 @@ dependencies:
     - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
   module:
-    - datetime
-    - field_formatter_class
     - layout_paragraphs
-    - link
-    - stanford_media
     - user
 id: node.stanford_news.search_indexing
 targetEntityType: node
 bundle: stanford_news
 mode: search_indexing
 content:
-  su_news_banner:
-    type: media_responsive_image_formatter
-    label: hidden
-    settings:
-      view_mode: default
-      link: false
-      image_style: full_responsive
-      remove_alt: false
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-    weight: 8
-    region: content
   su_news_banner_media_caption:
     type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 5
+    weight: 3
     region: content
   su_news_byline:
     type: string
@@ -58,7 +41,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 3
+    weight: 2
     region: content
   su_news_components:
     type: layout_paragraphs
@@ -67,7 +50,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 6
+    weight: 4
     region: content
   su_news_dek:
     type: string
@@ -76,38 +59,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
-    region: content
-  su_news_featured_media:
-    type: entity_reference_entity_view
-    label: hidden
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-    weight: 4
-    region: content
-  su_news_publishing_date:
-    type: datetime_custom
-    label: hidden
-    settings:
-      timezone_override: ''
-      date_format: 'F d, Y'
-    third_party_settings: {  }
-    weight: 2
-    region: content
-  su_news_source:
-    type: link
-    label: hidden
-    settings:
-      trim_length: null
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 7
     region: content
   su_news_topics:
     type: entity_reference_label
@@ -124,5 +75,9 @@ hidden:
   search_api_excerpt: true
   stanford_intranet__access: true
   su_metatags: true
+  su_news_banner: true
+  su_news_featured_media: true
   su_news_hide_social: true
+  su_news_publishing_date: true
+  su_news_source: true
   su_shared_tags: true

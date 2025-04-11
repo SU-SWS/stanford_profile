@@ -17,7 +17,6 @@ dependencies:
     - node.type.stanford_publication
   module:
     - layout_paragraphs
-    - link
     - user
 id: node.stanford_publication.search_indexing
 targetEntityType: node
@@ -43,18 +42,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  su_publication_cta:
-    type: link
-    label: hidden
-    settings:
-      trim_length: null
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 3
-    region: content
   su_publication_topics:
     type: entity_reference_label
     label: hidden
@@ -71,5 +58,6 @@ hidden:
   stanford_intranet__access: true
   su_metatags: true
   su_publication_author_ref: true
+  su_publication_cta: true
   su_publication_image: true
   su_shared_tags: true
