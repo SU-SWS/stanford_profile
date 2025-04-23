@@ -404,14 +404,10 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: cshs_group_by_root
+                type: entity_reference_label
                 label: hidden
                 settings:
-                  linked: false
-                  reverse: false
-                  sort: none
-                  depth: 0
-                  last_child: false
+                  link: false
                 third_party_settings:
                   empty_fields:
                     handler: ''
@@ -419,7 +415,7 @@ third_party_settings:
                     class: su-opp-type
                   field_label:
                     label_value: ''
-                    label_tag: span
+                    label_tag: ''
             weight: 4
             additional: {  }
           5427b410-5b74-41b2-b6c8-44fac25c3150:
