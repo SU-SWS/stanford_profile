@@ -5,6 +5,8 @@
  * stanford_profile.install
  */
 
+use Drupal\taxonomy\Entity\Term;
+
 /**
  * Implements hook_update_last_removed().
  */
@@ -28,5 +30,20 @@ function stanford_profile_update_9105() {
   ];
   foreach ($tables as $table) {
     \Drupal::database()->truncate($table)->execute();
+  }
+}
+
+/**
+ * Removes content from taxonomy terms
+ */
+function stanford_profile_update_9106() {
+  $vocabulary_names = ['opportunity_tag_filters', 'opportunity_type', 'opportunity_sponsor'];
+
+  foreach($vocabulary_names as $vocabulary_name) {
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vocabulary_name, 0, NULL, TRUE);
+
+    foreach ($terms as $term) {
+      $term->delete();
+    }
   }
 }
