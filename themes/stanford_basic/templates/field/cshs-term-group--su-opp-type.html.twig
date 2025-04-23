@@ -22,7 +22,7 @@
     <ul class="cshs-term-group__terms">
       {% for term in terms %}
         <li class="cshs-term-group__term" data-id="{{ term.id }}" data-parent="{{ term.parent }}">
-          {{ term.label }}{{ not loop.last ? ', ' }}
+          {{ term.label }}{{ term.label }}{{ not loop.last ? ', ' }}
         </li>
       {% endfor %}
     </ul>
