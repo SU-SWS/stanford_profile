@@ -14,6 +14,7 @@ dependencies:
     - stanford_fields
     - taxonomy
     - user
+    - views_infinite_scroll
 id: stanford_opportunities_filtered
 label: 'Opportunities - Filtered'
 module: views
@@ -320,7 +321,7 @@ display:
         options:
           query_comment: ''
           disable_sql_rewrite: false
-          distinct: false
+          distinct: true
           replica: false
           query_tags: {  }
           contextual_filters_or: false
@@ -443,10 +444,28 @@ display:
           view_mode: stanford_h3_card
       css_class: ''
       pager:
-        type: some
+        type: infinite_scroll
         options:
-          items_per_page: 3
-          offset: 0
+          pagination_heading_level: h4
+          items_per_page: '39'
+          offset: '0'
+          id: '0'
+          total_pages: ''
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More Opportunities'
+            automatically_load_content: 0
+            initially_load_all_pages: 0
       title: 'Filtered Opportunities Card Grid'
     cache_metadata:
       max-age: -1
@@ -454,6 +473,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
@@ -478,18 +498,16 @@ display:
         exposed_form: true
       title: 'Filtered Opportunities List'
       pager:
-        type: full
+        type: infinite_scroll
         options:
           pagination_heading_level: h4
-          items_per_page: '20'
+          items_per_page: '39'
           offset: '0'
           id: '0'
           total_pages: ''
           tags:
             previous: '‹ Previous'
             next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
           expose:
             items_per_page: 0
             items_per_page_label: 'Items per page'
@@ -498,7 +516,10 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: 0
             offset_label: Offset
-          quantity: '9'
+          views_infinite_scroll:
+            button_text: 'Load More Opportunities'
+            automatically_load_content: 0
+            initially_load_all_pages: 0
     cache_metadata:
       max-age: -1
       contexts:
