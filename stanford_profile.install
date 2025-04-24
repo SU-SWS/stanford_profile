@@ -38,7 +38,7 @@ function stanford_profile_update_9106() {
   $vocabulary_names = [
     'opportunity_tag_filters',
     'opportunity_type',
-    'opportunity_sponsor'
+    'opportunity_sponsor',
   ];
 
   $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['vid' => $vocabulary_names]);
