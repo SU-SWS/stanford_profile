@@ -415,7 +415,7 @@ third_party_settings:
                     class: su-opp-type
                   field_label:
                     label_value: ''
-                    label_tag: h2
+                    label_tag: ''
             weight: 4
             additional: {  }
           5427b410-5b74-41b2-b6c8-44fac25c3150:
@@ -561,17 +561,19 @@ third_party_settings:
             region: main
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_units'
-              label: Units
+              label: 'Units:'
               label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_label
+                type: entity_reference_list_label_class
                 label: inline
                 settings:
                   link: false
+                  class: ''
+                  list_type: ul
                 third_party_settings:
                   empty_fields:
                     handler: ''
