@@ -234,7 +234,8 @@ entity_config:
       enabled: true
       query_load_enabled: true
     stanford_filtered_lists:
-      enabled: false
+      enabled: true
+      query_load_enabled: true
     stanford_gallery:
       enabled: true
       query_load_enabled: true
@@ -283,12 +284,16 @@ entity_config:
       enabled: false
     opportunity_sponsor:
       enabled: true
+      edges_enabled: true
     opportunity_tag_filters:
       enabled: true
+      edges_enabled: true
     opportunity_type:
       enabled: true
+      edges_enabled: true
     opportunity_units:
       enabled: true
+      edges_enabled: true
     site_owner_orgs:
       enabled: false
     stanford_event_groups:
@@ -863,6 +868,13 @@ field_config:
       su_faq_headline:
         enabled: true
       su_faq_questions:
+        enabled: true
+    stanford_filtered_lists:
+      su_filtered_list_view:
+        enabled: true
+      su_list_description:
+        enabled: true
+      su_list_headline:
         enabled: true
     stanford_gallery:
       su_gallery_button:
