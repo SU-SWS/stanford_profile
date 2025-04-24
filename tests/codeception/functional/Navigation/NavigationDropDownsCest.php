@@ -58,10 +58,14 @@ class NavigationDropDownsCest {
     $I->canSeeLink($parent_menu_title);
 
     $I->amOnPage('/admin/config/system/basic-site-settings');
+
+    $I->click('#edit-group-site-header-options summary');
     $I->uncheckOption('Use Drop Down Menus');
+
     $I->click('#edit-group-experimental summary');
     $I->uncheckOption('Decoupled Main Menu');
 
+    $I->scrollTo('body');
     $I->click('Site Contacts');
     $I->waitForText('Site Owner Contact Email');
     $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
@@ -75,11 +79,14 @@ class NavigationDropDownsCest {
     $I->cantSeeElement('button', ['class' => 'su-nav-toggle']);
 
     $I->amOnPage('/admin/config/system/basic-site-settings');
+
+    $I->click('#edit-group-site-header-options summary');
     $I->checkOption('Use Drop Down Menus');
+
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
 
-    $node_title = Factory::create()->text(20);
+    $node_title = $this->faker->text(20);
 
     $I->amOnPage('/node/add/stanford_page');
     $I->fillField('Title', $node_title);

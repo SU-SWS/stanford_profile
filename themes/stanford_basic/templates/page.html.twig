@@ -46,9 +46,21 @@
       {%- endblock -%}
 
       <section class="su-masthead--inner" aria-label="Page logo, menu and search">
-        {{ page.header }}
-        {{ page.search }}
-        {{ page.menu }}
+        {% if page.header %}
+          <div class="region region-header">
+            {{ page.header }}
+          </div>
+        {% endif %}
+        {% if page.search %}
+          <div class="region region-search">
+            {{ page.search }}
+          </div>
+        {% endif %}
+        {% if page.menu %}
+          <div class="region region-menu">
+            {{ page.menu }}
+          </div>
+        {% endif %}
       </section>
     </header>
   {%- endif -%}

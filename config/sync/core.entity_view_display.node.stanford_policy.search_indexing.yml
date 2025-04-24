@@ -155,7 +155,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 3
+    weight: 2
     region: content
   su_policy_effective:
     type: datetime_default
@@ -165,15 +165,6 @@ content:
       format_type: medium
     third_party_settings: {  }
     weight: 1
-    region: content
-  su_policy_updated:
-    type: datetime_default
-    label: hidden
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 2
     region: content
 hidden:
   book_navigation: true
@@ -188,3 +179,4 @@ hidden:
   su_policy_related: true
   su_policy_subchapter: true
   su_policy_title: true
+  su_policy_updated: true

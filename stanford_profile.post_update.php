@@ -48,3 +48,33 @@ function stanford_profile_post_update_event_pages() {
     $default_content_creator->createDefaultContent('ddd5aefb-6b7a-4cd7-aa72-e8c106598bb6');
   }
 }
+
+/**
+ * Create new header link block for the active theme.
+ */
+function stanford_profile_post_update_header_links_block() {
+  $theme = \Drupal::config('system.theme')->get('default');
+  if (in_array($theme, [
+    'stanford_basic',
+    'minimally_branded_subtheme',
+    'stanford_profile_admin_theme',
+  ])) {
+    return;
+  }
+  \Drupal::entityTypeManager()->getStorage('block')->create([
+    'id' => "{$theme}_header_links",
+    'theme' => $theme,
+    'region' => 'search',
+    'plugin' => 'config_pages_block',
+    'weight' => -6,
+    'provider' => NULL,
+    'settings' => [
+      'id' => 'config_pages_block',
+      'label' => 'Site Header Links',
+      'label_display' => '0',
+      'provider' => 'config_pages',
+      'config_page_type' => 'stanford_basic_site_settings',
+      'config_page_view_mode' => 'site_settings_header',
+    ],
+  ])->save();
+}

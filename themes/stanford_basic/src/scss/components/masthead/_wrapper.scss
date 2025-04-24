@@ -1,9 +1,65 @@
 @charset "UTF-8";
 
+.config_pages--type--stanford-basic-site-settings {
+  margin-left: auto;
+  width: fit-content;
+}
+
+.su-site-header-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+
+  a {
+    color: $su-color-black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.su-site-header-button {
+  margin-left: auto;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
 // Decanter overrides.
 // ----------------------------------------------------------------------
 .su-masthead {
   z-index: 11;
+
+  .region {
+    width: 100%;
+  }
+
+  .region-header {
+    @include grid-media-max('md') {
+      @include flex-column(10);
+    }
+
+    @include grid-media('lg') {
+      @include flex-column(8);
+    }
+  }
+
+  .region-search {
+    @include grid-media-max('md') {
+      display: none;
+    }
+
+    @include grid-media-max('md') {
+      @include flex-column(2);
+    }
+
+    @include grid-media('lg') {
+      @include flex-column(4);
+    }
+  }
 
   .su-multi-menu {
     @include grid-media-max('md') {
@@ -41,6 +97,8 @@
   }
 
   .su-lockup {
+    max-width: 100%;
+
     @include grid-media('lg') {
       @include margin(null null 2.2rem null);
     }
@@ -52,6 +110,10 @@
     @include grid-media-max('md') {
       display: block;
     }
+  }
+
+  .su-site-search {
+    max-width: 100%;
   }
 
   .su-site-search__input {
