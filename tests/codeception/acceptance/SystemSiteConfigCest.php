@@ -96,6 +96,7 @@ class SystemSiteConfigCest {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->click('#edit-group-site-header-options summary');
+    $I->click('#edit-group-main-menu-options summary');
     $I->fillField('su_site_header_button[0][uri]', $button_uri);
     $I->fillField('su_site_header_button[0][title]', $button_text);
 
