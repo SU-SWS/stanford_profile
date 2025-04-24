@@ -60,6 +60,7 @@ class NavigationDropDownsCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
 
     $I->click('#edit-group-site-header-options summary');
+    $I->click('#edit-group-main-menu-options summary');
     $I->uncheckOption('Use Drop Down Menus');
 
     $I->click('#edit-group-experimental summary');
@@ -81,6 +82,7 @@ class NavigationDropDownsCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
 
     $I->click('#edit-group-site-header-options summary');
+    $I->click('#edit-group-main-menu-options summary');
     $I->checkOption('Use Drop Down Menus');
 
     $I->click('Save');

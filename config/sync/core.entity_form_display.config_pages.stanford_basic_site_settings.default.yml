@@ -50,11 +50,10 @@ third_party_settings:
     group_experimental:
       children:
         - su_site_new_menu
-        - su_site_admin_notes
       label: Experimental
       region: content
-      parent_name: group_site_header_options
-      weight: 9
+      parent_name: group_main_menu_options
+      weight: 27
       format_type: details
       format_settings:
         classes: ''
@@ -110,6 +109,7 @@ third_party_settings:
         - su_site_org
         - su_site_type
         - su_site_sunetid
+        - su_site_admin_notes
       label: 'Site Contacts'
       region: content
       parent_name: group_tabs
@@ -149,15 +149,47 @@ third_party_settings:
         required_fields: true
     group_site_header_options:
       children:
-        - su_site_dropdowns
-        - su_site_menu_levels
-        - su_site_header_button
-        - su_site_header_links
-        - group_experimental
+        - group_main_menu_options
+        - group_utility_navigation
       label: 'Site Header Options'
-      region: hidden
+      region: content
       parent_name: group_site_details
       weight: 11
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_utility_navigation:
+      children:
+        - su_site_header_button
+        - su_site_header_links
+      label: 'Utility Navigation'
+      region: content
+      parent_name: group_site_header_options
+      weight: 27
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_main_menu_options:
+      children:
+        - su_site_dropdowns
+        - su_site_menu_levels
+        - group_experimental
+      label: 'Main Menu Options'
+      region: content
+      parent_name: group_site_header_options
+      weight: 24
       format_type: details
       format_settings:
         classes: ''
@@ -435,7 +467,7 @@ content:
     third_party_settings: {  }
   su_site_dropdowns:
     type: boolean_checkbox
-    weight: 5
+    weight: 25
     region: content
     settings:
       display_label: true
@@ -450,7 +482,7 @@ content:
     third_party_settings: {  }
   su_site_header_button:
     type: link_default
-    weight: 7
+    weight: 24
     region: content
     settings:
       placeholder_url: ''
@@ -458,7 +490,7 @@ content:
     third_party_settings: {  }
   su_site_header_links:
     type: link_default
-    weight: 8
+    weight: 25
     region: content
     settings:
       placeholder_url: ''
@@ -472,7 +504,7 @@ content:
     third_party_settings: {  }
   su_site_menu_levels:
     type: number
-    weight: 6
+    weight: 26
     region: content
     settings:
       placeholder: ''
