@@ -41,6 +41,7 @@ dependencies:
     - element_class_formatter
     - empty_fields
     - field_formatter_class
+    - field_group
     - field_label
     - layout_builder
     - link
@@ -48,6 +49,28 @@ third_party_settings:
   layout_builder:
     enabled: false
     allow_custom: false
+  field_group:
+    group_nav:
+      children:
+        - su_site_header_button
+        - su_site_header_links
+      label: Nav
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: nav
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: 'name="Site utility navigation"'
+        effect: none
+        speed: fast
 id: config_pages.stanford_basic_site_settings.site_settings_header
 targetEntityType: config_pages
 bundle: stanford_basic_site_settings
@@ -71,7 +94,7 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 0
+    weight: 1
     region: content
   su_site_header_links:
     type: link
@@ -90,7 +113,7 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 1
+    weight: 2
     region: content
 hidden:
   search_api_excerpt: true
