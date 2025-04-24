@@ -561,21 +561,19 @@ third_party_settings:
             region: main
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_units'
-              label: Units
+              label: 'Units:'
               label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: cshs_group_by_root
+                type: entity_reference_list_label_class
                 label: inline
                 settings:
-                  linked: false
-                  reverse: false
-                  sort: none
-                  depth: 0
-                  last_child: false
+                  link: false
+                  class: ''
+                  list_type: ul
                 third_party_settings:
                   empty_fields:
                     handler: ''
