@@ -1,5 +1,13 @@
 # Cardinal Service Profile
 
+11.4.0
+--------------------------------------------------------------------------------
+_Release Date: 2025-04-24_
+- Updated cardinal service profile with downstream changes from Stanford Profile
+- Updated core to Drupal 10.4
+- Prepare for Drupal 11
+- Fix tests
+
 11.3.0
 -------------------------------------------------------------------------------
 - Adjusted tests for better reliability
