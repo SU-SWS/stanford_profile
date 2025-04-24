@@ -41,11 +41,9 @@ function stanford_profile_update_9106() {
     'opportunity_sponsor'
   ];
 
-  foreach ($vocabulary_names as $vocabulary_name) {
-    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vocabulary_name, 0, NULL, TRUE);
+  $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['vid' => $vocabulary_names]);
 
-    foreach ($terms as $term) {
-      $term->delete();
-    }
+  foreach ($terms as $term) {
+    $term->delete();
   }
 }
