@@ -230,11 +230,16 @@ third_party_settings:
                 settings:
                   view_mode: default
                   link: false
-                  image_style: medium_square
+                  image_style: large_square
                   remove_alt: true
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: su-person-photo
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
             weight: 0
             additional: {  }
             third_party_settings: {  }

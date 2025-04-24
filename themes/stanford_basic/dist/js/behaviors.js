@@ -1,41 +1,7 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 7496:
-/***/ (function() {
-
-var header = document.getElementById('block-stanford-basic-local-tasks');
-var sticky = 0;
-if (header) {
-  sticky = header.getBoundingClientRect().top;
-  window.onscroll = function () {
-    stickyHeaderOnScroll();
-  };
-}
-
-/**
- * Stick the local block tasks to the top of the window.
- */
-function stickyHeaderOnScroll() {
-  var toolbarHeight = 0;
-  var toolbarOpen = document.body.classList.contains('toolbar-tray-open');
-  if (toolbarOpen === true) {
-    toolbarHeight = 79;
-  } else {
-    toolbarHeight = 39;
-  }
-  if (window.pageYOffset >= sticky - toolbarHeight) {
-    header.classList.add('sticky');
-    header.style.marginTop = toolbarHeight + 'px';
-  } else {
-    header.classList.remove('sticky');
-    header.style.marginTop = '0px';
-  }
-}
-
-/***/ }),
-
-/***/ 2696:
+/***/ 5644:
 /***/ (function() {
 
 /**
@@ -51,11 +17,28 @@ window.Drupal.behaviors.stanford_basic = {
   // Attach Drupal Behavior.
   attach: function attach(context, settings) {
     (function ($, once) {
+      // If some embed code contains a caption, make sure the figure respects
+      // the iframe width of 100%.
+      $('figure', context).each(function () {
+        var $iframeWithin = $('iframe', this);
+        var iframeWidth = $iframeWithin.attr('width');
+        if ($iframeWithin.length && (!iframeWidth || iframeWidth === '100%')) {
+          $(this).css('width', '100%');
+        }
+      });
+
       // Validate there is a skip link anchor for the main content. If not,
       // default to #page-content.
-      var $mc = $('#main-content', context).length;
-      if (!$mc) {
-        $('.su-skipnav--content', context).attr('href', '#page-content');
+      var $title = $('h1', context);
+      if ($title.length) {
+        if (!$title.attr('id')) {
+          $title.attr('id', 'page-title');
+        }
+        $('.su-masthead .su-skipnav--content', context).attr('href', '#' + $title.attr('id'));
+      } else {
+        if (!$('#main-content', context).length) {
+          $('.su-skipnav--content', context).attr('href', '#page-content');
+        }
       }
 
       // Validate there is a skip link for the secondary navigation. If not,
@@ -124,6 +107,24 @@ window.Drupal.behaviors.stanford_basic = {
           $(this).attr('aria-expanded', 'false');
         }
       });
+      $(once('faq-expand-all', '.ptype-stanford-faq', context)).each(function (index, faq) {
+        if ($('.accordion__title', faq).length < 2 || $('.ptype-stanford-faq', faq).length) {
+          return;
+        }
+        var $button = $('<button class="expand-collapse-button expand-all su-button--secondary">' + '<span class="expand-collapse">Expand</span> All' + '<span class="visually-hidden"> Items below.</span>' + '</button>');
+        $button.click(function () {
+          $button.toggleClass('expand-all').toggleClass('collapse-all');
+          var expanded = !$button.hasClass('expand-all');
+          $('span', $button).text(expanded ? 'Collapse' : 'Expand');
+          $(".accordion__title[aria-expanded=\"".concat(expanded ? 'false' : 'true', "\"]"), faq).click();
+        });
+        var $headline = $('.su-faq-headline', faq);
+        if ($headline.length) {
+          $headline.append($('<div class="button-wrapper">').append($button));
+        } else {
+          $(faq).prepend($('<div class="button-wrapper clearfix">').append($button));
+        }
+      });
     })(jQuery, once);
   },
   // Detach Example.
@@ -131,6 +132,40 @@ window.Drupal.behaviors.stanford_basic = {
     // console.log("Detached.");
   }
 };
+
+/***/ }),
+
+/***/ 8035:
+/***/ (function() {
+
+var header = document.getElementById('block-stanford-basic-local-tasks');
+var sticky = 0;
+if (header) {
+  sticky = header.getBoundingClientRect().top;
+  window.onscroll = function () {
+    stickyHeaderOnScroll();
+  };
+}
+
+/**
+ * Stick the local block tasks to the top of the window.
+ */
+function stickyHeaderOnScroll() {
+  var toolbarHeight = 0;
+  var toolbarOpen = document.body.classList.contains('toolbar-tray-open');
+  if (toolbarOpen === true) {
+    toolbarHeight = 79;
+  } else {
+    toolbarHeight = 39;
+  }
+  if (window.pageYOffset >= sticky - toolbarHeight) {
+    header.classList.add('sticky');
+    header.style.marginTop = toolbarHeight + 'px';
+  } else {
+    header.classList.remove('sticky');
+    header.style.marginTop = '0px';
+  }
+}
 
 /***/ })
 
@@ -161,16 +196,15 @@ window.Drupal.behaviors.stanford_basic = {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 !function() {
 "use strict";
 
 // EXTERNAL MODULE: ./src/js/theme/menu/StickyHeaderOnScroll.js
-var StickyHeaderOnScroll = __webpack_require__(7496);
-;// CONCATENATED MODULE: ./src/js/theme/menu/index.js
+var StickyHeaderOnScroll = __webpack_require__(8035);
+;// ./src/js/theme/menu/index.js
 
-;// CONCATENATED MODULE: ./src/js/theme/index.js
+;// ./src/js/theme/index.js
 /**
  * Primary roll up file
  */
@@ -178,8 +212,8 @@ var StickyHeaderOnScroll = __webpack_require__(7496);
 // The Local Task Menu
 
 // EXTERNAL MODULE: ./src/js/stanford_basic.behavior.js
-var stanford_basic_behavior = __webpack_require__(2696);
-;// CONCATENATED MODULE: ./src/js/behaviors.js
+var stanford_basic_behavior = __webpack_require__(5644);
+;// ./src/js/behaviors.js
 // Theme code.
 
 

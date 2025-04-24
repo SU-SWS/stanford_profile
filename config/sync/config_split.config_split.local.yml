@@ -11,10 +11,14 @@ no_patching: false
 storage: folder
 folder: ../config/envs/local
 module:
+  upgrade_status: 0
+  config_inspector: 0
   dblog: 0
   devel: 0
   devel_generate: 0
   devel_php: 0
+  masquerade: 0
+  stage_file_proxy: 0
 theme: {  }
 complete_list: {  }
 partial_list: {  }

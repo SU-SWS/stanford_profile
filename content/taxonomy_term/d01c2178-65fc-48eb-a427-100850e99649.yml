@@ -1,0 +1,64 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: d01c2178-65fc-48eb-a427-100850e99649
+  bundle: opportunity_tag_filters
+  default_langcode: en
+  depends:
+    fb6a03cb-6d0d-4a08-8e89-cb518cf4e9c5: taxonomy_term
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Graduate
+  weight:
+    -
+      value: 1
+  parent:
+    -
+      entity: fb6a03cb-6d0d-4a08-8e89-cb518cf4e9c5
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Graduate | University'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: 'http://default/taxonomy/term/85'
+    -
+      tag: meta
+      attributes:
+        property: 'og:site_name'
+        content: University
+    -
+      tag: meta
+      attributes:
+        property: 'og:type'
+        content: website
+    -
+      tag: meta
+      attributes:
+        property: 'og:url'
+        content: 'http://default/home'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default

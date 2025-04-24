@@ -1,0 +1,24 @@
+uuid: 9066b0ab-e64a-4a0d-8b2d-07de1fc155db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_faq_description
+    - filter.format.stanford_minimal_html
+    - paragraphs.paragraphs_type.stanford_faq
+  module:
+    - text
+id: paragraph.stanford_faq.su_faq_description
+field_name: su_faq_description
+entity_type: paragraph
+bundle: stanford_faq
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - stanford_minimal_html
+field_type: text_long

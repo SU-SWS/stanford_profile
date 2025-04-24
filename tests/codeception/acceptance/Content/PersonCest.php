@@ -6,6 +6,7 @@ use Faker\Factory;
  * Test the news functionality.
  *
  * @group content
+ * @group person
  */
 class PersonCest {
 
@@ -28,9 +29,9 @@ class PersonCest {
    */
   public function testDefaultContentExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $I->amOnPage('/admin/content?order=changed&sort=asc');
+    $I->amOnPage('/admin/content?title=&type=stanford_person&status=2');
     $I->see('Haley Jackson');
-    $I->amOnPage('/people/haley-jackson');
+    $I->amOnPage('/people/haley-jackson?title=&type=stanford_person&status=2');
     $I->see('This page is currently unpublished and not visible to the public.');
     $I->see('Haley Jackson');
     $I->see('People', '.su-multi-menu');
@@ -252,7 +253,7 @@ class PersonCest {
       'name' => $this->faker->word,
     ], 'taxonomy_term');
     $I->amOnPage($term->toUrl('edit-form')->toString());
-    $I->cantSee('Published');
+    $I->canSeeCheckboxIsChecked('Published');
   }
 
   /**

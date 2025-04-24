@@ -154,6 +154,7 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
         classes:
           layout_class: {  }
         wrappers:
@@ -162,7 +163,6 @@ third_party_settings:
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        label: ''
     regions:
       ds_content:
         - node_title
@@ -225,6 +225,7 @@ content:
     weight: 2
     region: ds_content
 hidden:
+  book_navigation: true
   field_menulink: true
   layout_builder__layout: true
   links: true

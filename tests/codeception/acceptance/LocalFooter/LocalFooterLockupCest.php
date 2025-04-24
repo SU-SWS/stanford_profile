@@ -7,7 +7,8 @@ require_once __DIR__ . '/../TestFilesTrait.php';
 /**
  * Test for the local lockup settings.
  *
- * @group local_footer
+ * @group local-footer
+ * @group local-footer-lockup
  */
 class LocalFooterLockupCest {
 

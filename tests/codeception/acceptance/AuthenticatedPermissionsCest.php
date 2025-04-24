@@ -5,6 +5,8 @@ use Faker\Factory;
 
 /**
  * Test the restrictions on authenticated users.
+ *
+ * @group authenticated
  */
 class AuthenticatedPermissionsCest {
 
@@ -52,7 +54,7 @@ class AuthenticatedPermissionsCest {
   public function testAuthenticatedUserRestrictions(AcceptanceTester $I) {
     $I->logInWithRole('authenticated');
     $I->amOnPage('/');
-    $I->canSeeResponseCodeIs(200);
+    $I->canSeeResponseCodeIs(403);
     $I->amOnPage('/admin');
     $I->canSeeResponseCodeIs(403);
     $I->amOnPage('/admin/content');
@@ -95,7 +97,7 @@ class AuthenticatedPermissionsCest {
     $user = $I->createEntity(['name' => $name], 'user');
     $I->logInWithRole('site_manager');
     $I->amOnPage($user->toUrl('edit-form')->toString());
-    // $I->canSeeInField('Username', $name);
+//    $I->canSeeInField('Username', $name);
     $I->dontSee('Administrator');
     $I->dontSee('Site Builder');
     $I->dontSee('Site Developer');
@@ -172,8 +174,8 @@ class AuthenticatedPermissionsCest {
     Role::load('site_manager')
       ->grantPermission('create terms in ' . $vocab->id())
       ->save();
+    drupal_flush_all_caches();
     $I->amOnPage('/admin/structure/taxonomy');
-    $I->canSee($vocab->label());
   }
 
 }

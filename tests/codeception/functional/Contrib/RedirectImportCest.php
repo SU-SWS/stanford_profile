@@ -10,7 +10,7 @@ class RedirectImportCest {
   /**
    * Cleanup.
    */
-  public function __after() {
+  public function _after() {
     if (file_exists(codecept_data_dir('/redirects.csv'))) {
       unlink(codecept_data_dir('/redirects.csv'));
     }

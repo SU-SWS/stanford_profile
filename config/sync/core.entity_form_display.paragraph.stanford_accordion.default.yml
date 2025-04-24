@@ -7,6 +7,9 @@ dependencies:
     - field.field.paragraph.stanford_accordion.su_accordion_title
     - paragraphs.paragraphs_type.stanford_accordion
   module:
+    - change_labels
+    - field_formatter_class
+    - maxlength
     - text
 id: paragraph.stanford_accordion.default
 targetEntityType: paragraph
@@ -27,7 +30,13 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 2000
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
+      change_labels:
+        field_label_overwrite: ''
   su_accordion_title:
     type: string_textfield
     weight: 0

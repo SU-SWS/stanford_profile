@@ -1,0 +1,19 @@
+uuid: 95e6f345-83ba-4353-8416-b0420f9849b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_faq_headline
+    - paragraphs.paragraphs_type.stanford_faq
+id: paragraph.stanford_faq.su_faq_headline
+field_name: su_faq_headline
+entity_type: paragraph
+bundle: stanford_faq
+label: Headline
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

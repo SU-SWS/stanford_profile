@@ -26,7 +26,7 @@ class NavigationDropDownsCest {
   /**
    * Cleanup after test.
    */
-  public function __after(FunctionalTester $I) {
+  public function _after(FunctionalTester $I) {
     \Drupal::entityTypeManager()
       ->getStorage('config_pages')
       ->load('stanford_basic_site_settings')
@@ -54,8 +54,13 @@ class NavigationDropDownsCest {
 
     $I->logInWithRole('site_manager');
     $I->resizeWindow(1400, 2000);
+    $I->amOnPage('/');
+    $I->canSeeLink($parent_menu_title);
+
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->uncheckOption('Use Drop Down Menus');
+    $I->click('#edit-group-experimental summary');
+    $I->uncheckOption('Decoupled Main Menu');
 
     $I->click('Site Contacts');
     $I->waitForText('Site Owner Contact Email');

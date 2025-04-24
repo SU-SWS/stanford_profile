@@ -61,7 +61,6 @@ dependencies:
     - auto_entitylabel
     - block
     - block_content
-    - block_content_permissions
     - book
     - cardinal_service_profile
     - config_pages
@@ -131,6 +130,7 @@ permissions:
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
+  - 'add any content to books'
   - 'add citation entities'
   - 'add content to books'
   - 'admin classes'
@@ -206,6 +206,7 @@ permissions:
   - 'administer xmlsitemap'
   - 'assign contributor role'
   - 'assign cs_limited_opp_editor role'
+  - 'assign layout_builder_user role'
   - 'assign site_builder role'
   - 'assign site_developer role'
   - 'assign site_editor role'
@@ -445,6 +446,7 @@ permissions:
   - 'rabbit hole administer taxonomy_term'
   - 'rabbit hole bypass node'
   - 'rabbit hole bypass taxonomy_term'
+  - 'reorder book pages'
   - 'revert all revisions'
   - 'revert stanford_course revisions'
   - 'revert stanford_event revisions'
@@ -460,7 +462,6 @@ permissions:
   - 'select account cancellation method'
   - 'switch shortcut sets'
   - 'update any media'
-  - 'update any stanford_component_block block content'
   - 'update media'
   - 'use text format stanford_html'
   - 'use text format stanford_minimal_html'

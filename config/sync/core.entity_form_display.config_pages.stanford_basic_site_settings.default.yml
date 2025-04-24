@@ -17,6 +17,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_index
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_key
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_search
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_terms
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_ui
     - field.field.config_pages.stanford_basic_site_settings.su_site_created
     - field.field.config_pages.stanford_basic_site_settings.su_site_dropdowns
@@ -29,6 +30,7 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_org
     - field.field.config_pages.stanford_basic_site_settings.su_site_owner_contact
     - field.field.config_pages.stanford_basic_site_settings.su_site_renewal_due
+    - field.field.config_pages.stanford_basic_site_settings.su_site_sunetid
     - field.field.config_pages.stanford_basic_site_settings.su_site_tech_contact
     - field.field.config_pages.stanford_basic_site_settings.su_site_type
     - field.field.config_pages.stanford_basic_site_settings.su_site_url
@@ -36,7 +38,6 @@ dependencies:
     - change_labels
     - conditional_fields
     - cshs
-    - field_formatter_class
     - field_group
     - file
     - link
@@ -108,6 +109,7 @@ third_party_settings:
         - su_site_a11y_contact
         - su_site_org
         - su_site_type
+        - su_site_sunetid
       label: 'Site Contacts'
       region: content
       parent_name: group_tabs
@@ -124,6 +126,7 @@ third_party_settings:
       children:
         - su_hide_site_search
         - su_site_nobots
+        - su_site_algolia_terms
         - su_site_algolia
         - su_site_algolia_ui
         - su_site_algolia_id
@@ -140,8 +143,9 @@ third_party_settings:
         classes: ''
         show_empty_fields: false
         id: ''
+        label_as_html: false
         formatter: closed
-        description: ''
+        description: 'These settings control the availability and platform used for on-site search as well as instructions to external search engines about including your site content in search results.'
         required_fields: true
 id: config_pages.stanford_basic_site_settings.default
 targetEntityType: config_pages
@@ -200,57 +204,190 @@ content:
     third_party_settings: {  }
   su_site_algolia:
     type: boolean_checkbox
-    weight: 16
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  su_site_algolia_file:
-    type: file_generic
-    weight: 22
-    region: content
-    settings:
-      progress_indicator: throbber
-    third_party_settings: {  }
-  su_site_algolia_id:
-    type: string_textfield
     weight: 18
     region: content
     settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  su_site_algolia_index:
-    type: string_textfield
-    weight: 21
+      display_label: true
+    third_party_settings:
+      conditional_fields:
+        ec9c7d33-25e6-48d8-b8ab-cdf2a08c0cc2:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  su_site_algolia_file:
+    type: file_generic
+    weight: 24
     region: content
     settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  su_site_algolia_key:
-    type: string_textfield
-    weight: 19
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  su_site_algolia_search:
+      progress_indicator: throbber
+    third_party_settings:
+      conditional_fields:
+        3a06e1eb-5e38-4845-90c8-996e580d0ece:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  su_site_algolia_id:
     type: string_textfield
     weight: 20
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  su_site_algolia_ui:
+    third_party_settings:
+      conditional_fields:
+        89d00a0f-8aca-457f-85a6-dfc51b2cdcba:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  su_site_algolia_index:
+    type: string_textfield
+    weight: 23
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        d39af812-13e3-403e-9967-55f523c7eca1:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  su_site_algolia_key:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        6265698e-eed8-47de-b292-e0b6c14c5773:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  su_site_algolia_search:
+    type: string_textfield
+    weight: 22
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        c635c796-900f-417a-a9b5-bc71530209b8:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  su_site_algolia_terms:
     type: boolean_checkbox
     weight: 17
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
+  su_site_algolia_ui:
+    type: boolean_checkbox
+    weight: 19
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      conditional_fields:
+        3c7e2b02-874b-450d-acd1-e400b2049b6e:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_algolia_terms
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_site_created:
     type: readonly_field_widget
     weight: 1
@@ -273,20 +410,9 @@ content:
             granularity: 2
             refresh: 60
             description: ''
-      formatter_third_party_settings:
-        empty_fields:
-          handler: ''
-        field_formatter_class:
-          class: ''
-        field_label:
-          label_value: ''
-          label_tag: ''
+      formatter_third_party_settings: {  }
       show_description: false
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-      change_labels:
-        field_label_overwrite: ''
+    third_party_settings: {  }
   su_site_dropdowns:
     type: boolean_checkbox
     weight: 5
@@ -380,6 +506,54 @@ content:
       placeholder: ''
       size: 60
     third_party_settings: {  }
+  su_site_sunetid:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        bb90b2cd-657c-44e9-917e-b96db953a6d4:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_type
+          settings:
+            state: required
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: personal
+            effect: fill
+            effect_options:
+              fill:
+                value: ''
+                reset: 1
+            selector: ''
+        e85299d6-8b92-44cc-9340-a25daaca8201:
+          entity_type: config_pages
+          bundle: stanford_basic_site_settings
+          dependee: su_site_type
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: personal
+            effect: show
+            effect_options: {  }
+            selector: ''
   su_site_tech_contact:
     type: email_default
     weight: 5

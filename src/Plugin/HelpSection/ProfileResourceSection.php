@@ -9,8 +9,8 @@ use Drupal\help\Plugin\HelpSection\HelpSectionPluginBase;
  *
  * @HelpSection(
  *   id = "profile_resources",
- *   title = @Translation("Drupal resources at Stanford"),
- *   description = @Translation("Stanford has a very active and engaged Drupal community, and many centrally offered and community created resources that might help you."),
+ *   title = @Translation("Other resources at Stanford"),
+ *   description = @Translation("Stanford has other centrally offered resources for web editors."),
  *   weight = -50
  * )
  */
@@ -23,9 +23,8 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    */
   public function listTopics() {
     return [
+      $this->getSoda(),
       $this->getTechTraining(),
-      $this->getBlog(),
-      $this->getMorningOfCode(),
     ];
   }
 
@@ -36,8 +35,8 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    *   Markup render array.
    */
   protected function getTechTraining() {
-    $help = '<h3>' . self::getLinkString($this->t('University IT Technology Training'), 'https://itservices.stanford.edu/service/techtraining/schedule') . '</h3>';
-    $help .= '<p>' . $this->t('Check the upcoming courses schedule for training courses offered to Stanford faculty and staff.') . '</p>';
+    $help = '<h3>' . self::getLinkString($this->t('Tech Training:'), 'https://itservices.stanford.edu/service/techtraining/schedule') . '</h3>';
+    $help .= '<p>' . $this->t('See upcoming courses on site editing.') . '</p>';
     return ['#markup' => $help];
   }
 
@@ -47,21 +46,9 @@ class ProfileResourceSection extends HelpSectionPluginBase {
    * @return array
    *   Markup render array.
    */
-  protected function getBlog() {
-    $help = '<h3>' . self::getLinkString($this->t('Stanford Web Services Blog'), 'https://swsblog.stanford.edu/') . '</h3>';
-    $help .= '<p>' . $this->t('The Stanford Web Services team blogs about all things related to Stanford Sites, Drupal, design, site building, and many other topics. This is a great resource for SWS clients.') . '</p>';
-    return ['#markup' => $help];
-  }
-
-  /**
-   * Get the user guide help text.
-   *
-   * @return array
-   *   Markup render array.
-   */
-  protected function getMorningOfCode() {
-    $help = '<h3>' . self::getLinkString($this->t("Mornings o' Code, Drupallers Drop-in Help, Drupallers Co-Working Sessions"), 'https://opensource.stanford.edu/moc') . '</h3>';
-    $help .= '<p>' . $this->t("Stanford Drupallers (new and experienced) meet regularly to collaborate and troubleshoot issues. Check the schedule for upcoming co-working sessions.") . '</p>';
+  protected function getSoda() {
+    $help = '<h3>' . self::getLinkString($this->t('Office of Digital Accessibility'), 'https://uit.stanford.edu/accessibility') . '</h3>';
+    $help .= '<p>' . $this->t('Get assistance with identifying issues and improving the accessibility of your site.') . '</p>';
     return ['#markup' => $help];
   }
 

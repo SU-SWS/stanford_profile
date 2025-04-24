@@ -98,7 +98,7 @@ class EventsSeriesCest {
 
     $I->amOnPage("/node/$id/delete");
     $I->canSeeResponseCodeIs(200);
-    $I->canSee('This action cannot be undone');
+    $I->canSee('Are you sure you want to delete');
 
     $I->amOnPage("/node/$id/edit");
     $new_title = $this->faker->words(3, TRUE);
@@ -128,7 +128,7 @@ class EventsSeriesCest {
 
     $I->amOnPage("/node/$id/delete");
     $I->canSeeResponseCodeIs(200);
-    $I->canSee('This action cannot be undone');
+    $I->canSee('Are you sure you want to delete');
 
     $I->amOnPage("/node/$id/edit");
     $new_title = $this->faker->words(3, TRUE);

@@ -45,7 +45,7 @@
         {{ page.help }}
       {%- endblock -%}
 
-      <section class="su-masthead--inner">
+      <section class="su-masthead--inner" aria-label="Page logo, menu and search">
         {{ page.header }}
         {{ page.search }}
         {{ page.menu }}
@@ -59,6 +59,11 @@
   {%- block block_main -%}
     {{ page.content }}
   {%- endblock -%}
+
+  <button id="back-to-top">
+    <span class="fas fa-chevron-up"></span>
+    Back to Top
+  </button>
 </main>
 
 {# Footer Section #}
@@ -68,8 +73,3 @@
     {%- include template_global_footer with { modifier_class : global_footer_variant }  -%}
   </footer>
 {%- endblock -%}
-
-<button id="back-to-top">
-  <span class="fas fa-chevron-up"></span>
-  Back to Top
-</button>

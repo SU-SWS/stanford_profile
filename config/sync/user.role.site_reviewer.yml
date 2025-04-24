@@ -1,0 +1,12 @@
+uuid: 789e9ccb-b42b-44e2-9dc4-dea61e0c4ac4
+langcode: en
+status: true
+dependencies:
+  module:
+    - view_unpublished
+id: site_reviewer
+label: 'Site Reviewer'
+weight: 4
+is_admin: null
+permissions:
+  - 'view any unpublished content'

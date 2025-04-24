@@ -1,0 +1,14 @@
+uuid: 3ef6e2d2-e2d5-49be-bc46-13b3b87b36d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.site_reviewer
+  module:
+    - user
+id: user_add_role_action.site_reviewer
+label: 'Add the Site Reviewer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: site_reviewer

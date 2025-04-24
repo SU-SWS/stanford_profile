@@ -37,7 +37,7 @@ class NewsCest {
    */
   public function testDefaultContentExists(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    $I->amOnPage("/admin/content?order=changed&sort=asc");
+    $I->amOnPage("/admin/content?title=&type=stanford_news&status=2");
     $I->see("Sample: Smith Conference");
     $I->see("Sample: For Runners, Is 15 Feet the New 6 Feet for Social Distancing?");
     $I->see("Sample: Stanford researchers find that misfiring from jittery neurons");
@@ -150,7 +150,7 @@ class NewsCest {
       'name' => $this->faker->word,
     ], 'taxonomy_term');
     $I->amOnPage($term->toUrl('edit-form')->toString());
-    $I->cantSee('Published');
+    $I->canSeeCheckboxIsChecked('Published');
   }
 
   /**

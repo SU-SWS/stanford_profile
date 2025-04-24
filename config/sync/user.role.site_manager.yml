@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.stanford_component_block
     - filter.format.stanford_html
     - filter.format.stanford_minimal_html
     - media.type.embeddable
@@ -51,7 +52,7 @@ dependencies:
     - taxonomy.vocabulary.su_opportunity_type
     - taxonomy.vocabulary.su_shared_tags
   module:
-    - block_content_permissions
+    - block_content
     - book
     - cardinal_service_profile
     - config_pages
@@ -99,6 +100,7 @@ permissions:
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
+  - 'add any content to books'
   - 'add citation entities'
   - 'add content to books'
   - 'administer book outlines'
@@ -113,8 +115,10 @@ permissions:
   - 'administer users'
   - 'assign contributor role'
   - 'assign cs_limited_opp_editor role'
+  - 'assign layout_builder_user role'
   - 'assign site_editor role'
   - 'assign site_manager role'
+  - 'assign site_reviewer role'
   - 'assign stanford_faculty role'
   - 'assign stanford_staff role'
   - 'assign stanford_student role'
@@ -253,6 +257,7 @@ permissions:
   - 'edit any file media'
   - 'edit any google_form media'
   - 'edit any image media'
+  - 'edit any stanford_component_block block content'
   - 'edit any stanford_course content'
   - 'edit any stanford_event content'
   - 'edit any stanford_event_series content'
@@ -332,6 +337,7 @@ permissions:
   - 'mark as ok in editoria11y'
   - 'notify of path changes'
   - 'rabbit hole bypass node'
+  - 'reorder book pages'
   - 'revert stanford_course revisions'
   - 'revert stanford_event revisions'
   - 'revert stanford_event_series revisions'
@@ -344,7 +350,6 @@ permissions:
   - 'revert su_spotlight revisions'
   - 'schedule publishing of nodes'
   - 'update any media'
-  - 'update any stanford_component_block block content'
   - 'update media'
   - 'use text format stanford_html'
   - 'use text format stanford_minimal_html'

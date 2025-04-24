@@ -67,7 +67,7 @@ class EntityReferenceCest {
     $I->amOnPage($publication->toUrl('edit-form')->toString());
 
     $I->selectOption('su_publication_citation[actions][bundle]', 'Journal Article');
-    $I->click('Add new Citation');
+    $I->click('Add Citation');
     $I->waitForText('First Name');
     $I->click('Save');
     $I->canSee($publication->label(), 'h1');

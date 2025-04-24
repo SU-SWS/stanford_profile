@@ -20,6 +20,7 @@ class RolesCest {
     $I->canSee('Site Developer');
     $I->canSee('Administrator');
     $I->canSee('Site Embedder');
+    $I->canSee('Site Reviewer');
   }
 
   /**
@@ -53,6 +54,15 @@ class RolesCest {
     // the admin toolbar.
     $I->amOnPage('/');
     $I->cantSeeElement('#toolbar-administration');
+  }
+
+  /**
+   * Site Reviewer role should be limited to viewing unpublished page.
+   */
+  public function testReviewerRole(AcceptanceTester $I) {
+    $I->logInWithRole('site_reviewer');
+    // D8CORE-7622
+    // would be nice to have a test if they CAN see unpublished pages
   }
 
   /**
@@ -163,6 +173,8 @@ class RolesCest {
 
   /**
    * D8CORE-6983: Site Manager and Site embedder should play well together.
+   *
+   * @group D8CORE-6983
    */
   public function testSiteEmbedderStacking(AcceptanceTester $I){
     // Site manager cannot create custom embeddables.

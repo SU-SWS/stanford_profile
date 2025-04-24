@@ -9,6 +9,8 @@ ignored_config_entities:
   - 'next.next_entity_type_config.*'
   - 'next.next_site.*'
   - 'samlauth.authentication:map_users_roles'
+  - 'stage_file_proxy.settings:origin'
+  - 'stage_file_proxy.settings:origin_dir'
   - 'system.action.user_add_role_action.custm_*'
   - 'system.action.user_remove_role_action.custm_*'
   - 'system.theme:default'

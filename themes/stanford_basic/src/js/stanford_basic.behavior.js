@@ -12,11 +12,29 @@ export default {
   // Attach Drupal Behavior.
   attach(context, settings) {
     (function ($, once) {
+
+      // If some embed code contains a caption, make sure the figure respects
+      // the iframe width of 100%.
+      $('figure', context).each(function() {
+        const $iframeWithin = $('iframe', this);
+        const iframeWidth = $iframeWithin.attr('width');
+        if ($iframeWithin.length && (!iframeWidth || iframeWidth === '100%')) {
+          $(this).css('width', '100%');
+        }
+      })
+
       // Validate there is a skip link anchor for the main content. If not,
       // default to #page-content.
-      var $mc = $('#main-content', context).length;
-      if (!$mc) {
-        $('.su-skipnav--content', context).attr('href', '#page-content');
+      const $title = $('h1', context);
+      if ($title.length) {
+        if (!$title.attr('id')) {
+          $title.attr('id', 'page-title');
+        }
+        $('.su-masthead .su-skipnav--content', context).attr('href', '#' + $title.attr('id'));
+      } else {
+        if (!$('#main-content', context).length) {
+          $('.su-skipnav--content', context).attr('href', '#page-content');
+        }
       }
 
       // Validate there is a skip link for the secondary navigation. If not,
@@ -82,11 +100,39 @@ export default {
        */
       $('.topics__collapsable-menu', context).click(function () {
         $(this).toggleClass('show');
-        if ($(this).siblings('.menu').css('display') != 'none') {
+        if ($(this).siblings('.menu').css('display') !== 'none') {
           $(this).attr('aria-expanded', 'true');
         }
         else {
           $(this).attr('aria-expanded', 'false');
+        }
+      });
+
+      $(once('faq-expand-all', '.ptype-stanford-faq', context)).each((index, faq) => {
+        if ($('.accordion__title', faq).length < 2 || $('.ptype-stanford-faq', faq).length) {
+          return;
+        }
+
+        const $button = $(
+          '<button class="expand-collapse-button expand-all su-button--secondary">' +
+          '<span class="expand-collapse">Expand</span> All' +
+          '<span class="visually-hidden"> Items below.</span>' +
+          '</button>',
+        );
+
+        $button.click(function () {
+          $button.toggleClass('expand-all').toggleClass('collapse-all');
+          const expanded = !$button.hasClass('expand-all');
+
+          $('span', $button).text(expanded ? 'Collapse' : 'Expand');
+          $(`.accordion__title[aria-expanded="${expanded ? 'false' : 'true'}"]`, faq).click();
+        });
+
+        const $headline = $('.su-faq-headline', faq);
+        if ($headline.length) {
+          $headline.append($('<div class="button-wrapper">').append($button));
+        } else {
+          $(faq).prepend($('<div class="button-wrapper clearfix">').append($button));
         }
       });
 

@@ -6,59 +6,84 @@ use Faker\Factory;
  * Class AccordionCest.
  *
  * @group paragraphs
+ * @group accordions
  */
-abstract class AccordionCest {
+class AccordionCest {
+
+  protected $faker;
+
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
 
   /**
    * Create and check the accordion.
    */
   public function testCreatingAccordion(FunctionalTester $I) {
-    $faker = Factory::create();
+    $q_and_a = [
+      [$this->faker->words(3, TRUE), $this->faker->paragraph()],
+      [$this->faker->words(3, TRUE), $this->faker->paragraph()],
+      [$this->faker->words(3, TRUE), $this->faker->paragraph()],
+    ];
+
+    $questions = [];
+    foreach ($q_and_a as $item) {
+      $question_paragraph = $I->createEntity([
+        'type' => 'stanford_accordion',
+        'su_accordion_title' => $item[0],
+        'su_accordion_body' => [
+          'value' => $item[1],
+          'format' => 'stanford_minimal_html',
+        ],
+      ], 'paragraph');
+      $questions[] = [
+        'target_id' => $question_paragraph->id(),
+        'entity' => $question_paragraph,
+      ];
+    }
 
     $paragraph = $I->createEntity([
-      'type' => 'stanford_accordion',
-      'su_accordion_body' => [
-        'value' => 'I can see it in your smile.',
-        'format' => 'stanford_minimal_html',
+      'type' => 'stanford_faq',
+      'su_faq_headline' => $this->faker->words(4, TRUE),
+      'su_faq_description' => [
+        'value' => $this->faker->paragraph,
+        'format' => 'stanford_html',
       ],
+      'su_faq_questions' => $questions,
     ], 'paragraph');
 
-    $row = $I->createEntity([
-      'type' => 'node_stanford_page_row',
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->text(30),
       'su_page_components' => [
         'target_id' => $paragraph->id(),
         'entity' => $paragraph,
       ],
-    ], 'paragraph_row');
-
-    $node = $I->createEntity([
-      'type' => 'stanford_page',
-      'title' => $faker->text(30),
-      'su_page_components' => [
-        'target_id' => $row->id(),
-        'entity' => $row,
-      ],
     ]);
 
-    $I->logInWithRole('contributor');
-    $I->amOnPage($node->toUrl('edit-form')->toString());
-    $I->waitForElementVisible('#row-0');
-    $I->click('Edit', '.inner-row-wrapper');
-    $I->waitForText('Title/Question');
-    $I->fillField('Title/Question', 'Hello. Is it me you\'re looking for?');
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
 
-    $I->click('Continue');
-    $I->waitForElementNotVisible('.MuiDialog-scrollPaper');
-    $I->click('Save');
+    foreach ($q_and_a as $delta => $item) {
+      [$question, $answer] = $item;
+      $I->canSee($question);
+      $I->cantSee($answer);
 
-    $I->canSee('Hello. Is it me you\'re looking for?');
-    $I->cantSeeElement('.open');
-    $open = $I->grabAttributeFrom('details', 'open');
-    $I->assertNull($open);
-    $I->clickWithLeftButton('summary');
-    $open = $I->grabAttributeFrom('details', 'open');
-    $I->assertNotNull($open);
-    $I->canSee('I can see it in your smile.');
+      $child_index = $delta + 1;
+      $I->click($question);
+      $I->waitForText($answer);
+      $I->click($question);
+    }
+
+    $I->click('Expand All');
+    foreach ($q_and_a as $item) {
+      $I->canSee($item[1]);
+    }
+
+    $I->click('Collapse All');
+    foreach ($q_and_a as $item) {
+      $I->cantSee($item[1]);
+    }
   }
 
 }

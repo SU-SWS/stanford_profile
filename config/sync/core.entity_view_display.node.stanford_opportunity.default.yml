@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_type
     - node.type.stanford_opportunity
   module:
+    - field_group
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
@@ -66,6 +67,84 @@ third_party_settings:
                   empty_fields:
                     handler: ''
                   field_formatter_class:
+                    class: node-stanford-page-title
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 2
+            additional: {  }
+            third_party_settings: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          orientation: left
+        components:
+          7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5:
+            uuid: 7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5
+            region: left
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+            weight: 0
+            additional: {  }
+            third_party_settings: {  }
+          764b7bd8-7488-4796-a259-314de23b87b3:
+            uuid: 764b7bd8-7488-4796-a259-314de23b87b3
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_summary'
+              label: Summary
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 1
+            additional: {  }
+            third_party_settings: {  }
+          411af66d-4ede-4ca0-a51d-c56cb10a96ef:
+            uuid: 411af66d-4ede-4ca0-a51d-c56cb10a96ef
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_image'
+              label: 'Featured Image'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: media_responsive_image_formatter
+                label: hidden
+                settings:
+                  view_mode: stanford_image_large_square
+                  link: false
+                  image_style: ''
+                  remove_alt: 0
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
                     class: ''
                   field_label:
                     label_value: ''
@@ -75,7 +154,7 @@ third_party_settings:
             third_party_settings: {  }
           e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1:
             uuid: e712f81b-4aa1-4bc7-bb7f-5068acb3bbd1
-            region: main
+            region: left
             configuration:
               id: 'field_block:node:stanford_opportunity:body'
               label: Body
@@ -96,7 +175,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 1
+            weight: 4
             additional: {  }
             third_party_settings: {  }
           75a9a36d-20ef-46a1-aaf6-3fbe4814ec5b:
@@ -123,7 +202,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 2
+            weight: 0
             additional: {  }
             third_party_settings: {  }
         third_party_settings: {  }
@@ -225,6 +304,26 @@ third_party_settings:
         - 'Taxonomy Terms (Views)'
         - User
         - Views
+  field_group:
+    group_opp_card:
+      children: {  }
+      label: 'Opportunity Details Card'
+      parent_name: ''
+      region: hidden
+      weight: 20
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
 id: node.stanford_opportunity.default
 targetEntityType: node
 bundle: stanford_opportunity
@@ -236,6 +335,7 @@ hidden:
   links: true
   search_api_excerpt: true
   su_opp_application_deadline: true
+  su_opp_back_to_link: true
   su_opp_components: true
   su_opp_contact_email: true
   su_opp_contact_name: true

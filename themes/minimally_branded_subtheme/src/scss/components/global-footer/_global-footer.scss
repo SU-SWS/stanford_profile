@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.su-global-footer {
+  background-color: $su-color-black;
+
+  .su-global-footer__brand {
+    display: none;
+  }
+
+  @include grid-media-min('xs') {
+    .su-global-footer__content {
+      padding-left: 0;
+    }
+  }
+}

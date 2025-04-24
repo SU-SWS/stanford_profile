@@ -1,0 +1,14 @@
+uuid: f44e56f0-fc8b-4742-96b6-bb76951f1165
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.site_reviewer
+  module:
+    - user
+id: user_remove_role_action.site_reviewer
+label: 'Remove the Site Reviewer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: site_reviewer

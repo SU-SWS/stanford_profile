@@ -88,6 +88,26 @@ function stanford_basic_preprocess_node(&$variables) {
   $node_bundle = $variables['node']->bundle();
   $variables['#attached']['library'][] = 'stanford_basic/content.' . $node_bundle;
   unset($variables['content']['book_navigation']);
+
+  // If the home page (no page title) has a wysiwyg as the first component, and
+  // it does not have a page banner, at a class that will create a little space
+  // at the top of the page.
+  if (
+    $variables['page'] &&
+    $node_bundle == 'stanford_page' &&
+    \Drupal::service('path.matcher')->isFrontPage()
+  ) {
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $variables['node'];
+    if (
+      !$node->get('su_page_banner')->count() &&
+      $node->get('su_page_components')->count() >= 2 &&
+      $node->get('su_page_components')
+        ->get(1)->entity->bundle() == 'stanford_wysiwyg'
+    ) {
+      $variables['attributes']['class'][] = 'add-more-space-to-top';
+    }
+  }
 }
 
 /**
@@ -124,6 +144,9 @@ function stanford_basic_page_attachments_alter(array &$attachments) {
  * Prepares variables for the html.html.twig template.
  */
 function stanford_basic_preprocess_html(&$variables) {
+  $favicon = theme_get_setting('favicon') ?: [];
+  $variables['custom_favicon'] = isset($favicon['use_default']) && !$favicon['use_default'] && !empty($favicon['path']);
+
   try {
     $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
   }
@@ -221,9 +244,7 @@ function stanford_basic_preprocess_block(&$variables) {
       $variables['attributes']['data-island'] = 'main-menu-island';
       $variables['#attached']['library'][] = 'stanford_basic/decoupled_menu';
       $menu = \Drupal::menuTree()->load('main', new MenuTreeParameters());
-      $links = [];
-      _stanford_basic_get_menu_tree_links($menu, $links);
-      $variables['#attached']['drupalSettings']['stanford_basic']['decoupledMenuItems'] = $links;
+      $variables['#attached']['drupalSettings']['stanford_basic']['decoupledMenuItems'] = _stanford_basic_get_menu_tree_links($menu);
     }
   }
 
@@ -246,10 +267,9 @@ function stanford_basic_preprocess_block(&$variables) {
  *
  * @param \Drupal\Core\Menu\MenuLinkTreeElement[] $items
  *   Menu tree.
- * @param array $tree
- *   Array of menu link data to be used in the decoupled menu.
  */
-function _stanford_basic_get_menu_tree_links(array $items, array &$tree) {
+function _stanford_basic_get_menu_tree_links(array $items) {
+  $tree = [];
   foreach ($items as $id => $item) {
     if (!$item->link->isEnabled()) {
       continue;
@@ -260,10 +280,11 @@ function _stanford_basic_get_menu_tree_links(array $items, array &$tree) {
       'title' => $item->link->getTitle(),
       'expanded' => $item->link->isExpanded(),
       'parent' => $item->link->getParent(),
-      'weight' => (int) $item->link->getWeight(),
+      'weight' => $item->link->getWeight(),
+      'items' => _stanford_basic_get_menu_tree_links($item->subtree),
     ];
-    _stanford_basic_get_menu_tree_links($item->subtree, $tree);
   }
+  return $tree;
 }
 
 /**
@@ -397,11 +418,8 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
   if ($variables['menu_name'] !== "main") {
     return;
   }
-  foreach ($variables['items'] as &$item) {
-    $menu_item = [$item];
-    _stanford_basic_menu_process_submenu($menu_item, $current_path);
-    $item = $menu_item[0];
-  }
+
+  _stanford_basic_menu_process_submenu($variables['items'], $current_path);
   if (theme_get_setting('nav_dropdown_enabled', 'stanford_basic')) {
     $variables['attributes']['class'][] = 'su-multi-menu--dropdowns';
   }
@@ -419,13 +437,11 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
  * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
  */
 function _stanford_basic_menu_process_submenu(&$submenu, $current_path) {
+  $is_front = \Drupal::service('path.matcher')->isFrontPage();
+
   foreach ($submenu as &$item) {
-    $item_path = (is_string($item['url'])) ? $item['url'] : $item['url']->toString(TRUE)->getGeneratedUrl();
-    $is_front = \Drupal::service('path.matcher')->isFrontPage();
-    if (
-      $item_path == $current_path ||
-      (_stanford_basic_path_is_home($item_path) && $is_front)
-    ) {
+    $item_path = is_string($item['url']) ? $item['url'] : $item['url']->toString(TRUE)->getGeneratedUrl();
+    if ($item_path == $current_path || (_stanford_basic_path_is_home($item_path) && $is_front)) {
       $item['is_active'] = TRUE;
     }
 
@@ -433,7 +449,7 @@ function _stanford_basic_menu_process_submenu(&$submenu, $current_path) {
       $item['unpublished'] = TRUE;
     }
 
-    if ($item['in_active_trail'] && count($item['below'])) {
+    if (!empty($item['below'])) {
       _stanford_basic_menu_process_submenu($item['below'], $current_path);
     }
   }
@@ -448,17 +464,26 @@ function _stanford_basic_menu_process_submenu(&$submenu, $current_path) {
  * @return bool
  *   TRUE if the path corresponds to the current home page.
  */
-function _stanford_basic_path_is_home(string $path) {
+function _stanford_basic_path_is_home(string $path): bool {
   // account for weird paths in input
   $normal_path = strtolower(trim($path));
-  $config = \Drupal::config('system.site');
-  $front_uri = $config->get('page.front');
-  $alias = \Drupal::service('path_alias.manager')->getAliasByPath($front_uri);
+
+  $front_path = &drupal_static(__FUNCTION__);
+
+  if (is_null($front_path)) {
+    $config = \Drupal::config('system.site');
+    $front_uri = $config->get('page.front');
+    $front_alias = \Drupal::service('path_alias.manager')
+      ->getAliasByPath($front_uri);
+    $front_path = [$front_uri, $front_alias];
+  }
+
+  [$front_uri, $front_alias] = $front_path;
 
   if (
     $normal_path == base_path() ||
     $normal_path == $front_uri ||
-    $normal_path == $alias ||
+    $normal_path == $front_alias ||
     $normal_path == '<front>'
   ) {
     return TRUE;
@@ -618,4 +643,11 @@ function stanford_basic_preprocess_paragraph__stanford_spacer(&$variables) {
     $variables['attributes']['class'][] = $paragraph->get('su_spacer_size')
       ->getString();
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_page__front(&$variables) {
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
 }

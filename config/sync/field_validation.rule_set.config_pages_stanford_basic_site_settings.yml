@@ -1,36 +1,46 @@
 uuid: 405551a8-32cb-4fb8-b4b3-5a457e79c1d6
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - stanford_samlauth
 name: config_pages_stanford_basic_site_settings
 label: 'config_pages stanford_basic_site_settings validation'
 entity_type: config_pages
 bundle: stanford_basic_site_settings
 field_validation_rules:
-  a24c3b48-8555-4b09-8ab7-12f3a60cc543:
-    id: regex_field_validation_rule
-    title: 'Google Analytics'
-    data:
-      setting: '/(?:UA|G|AW|DC)-[0-9a-zA-Z]{5,}(?:-[0-9]{1,})?/'
-    weight: 1
-    uuid: a24c3b48-8555-4b09-8ab7-12f3a60cc543
-    field_name: su_google_analytics
+  1bb527fd-c2b5-4065-9ff0-1bfe4bbd9547:
+    message: 'This is not a valid SunetID.'
+    validate_mode: default
+    uuid: 1bb527fd-c2b5-4065-9ff0-1bfe4bbd9547
+    id: valid_sunetid_constraint_rule
+    title: 'Validate SunetID'
+    weight: '3'
+    field_name: su_site_sunetid
     column: value
-    error_message: 'A valid Google Analytics Web Property ID is case sensitive and formatted like UA-xxxxxxx-yy or G-xxxxxxxxxx.'
-    roles: {  }
-    condition: {  }
-  56d4b822-4038-43ef-864b-0465236bd395:
-    id: regex_field_validation_rule
-    title: 'Algolia JS File Path'
-    data:
-      setting: /^(\/|http)/
-    weight: 2
-    uuid: 56d4b822-4038-43ef-864b-0465236bd395
-    field_name: su_site_algolia_file
-    column: value
-    error_message: 'Js file must be either an absolute server path or a url.'
+    error_message: ''
     roles: {  }
     condition:
       field: ''
       operator: ''
       value: ''
+    data:
+      message: 'This is not a valid SunetID.'
+      validate_mode: default
+  fab483e9-0ed4-4087-94ab-f134f4f9fa2c:
+    uuid: fab483e9-0ed4-4087-94ab-f134f4f9fa2c
+    id: regex_constraint_rule
+    title: 'Google Analytics'
+    weight: '4'
+    field_name: su_google_analytics
+    column: value
+    error_message: ''
+    roles: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''
+    data:
+      pattern: '/(?:UA|G|AW|DC)-[0-9a-zA-Z]{5,}(?:-[0-9]{1,})?/'
+      message: 'A valid Google Analytics Web Property ID is case sensitive and formatted like UA-xxxxxxx-yy or G-xxxxxxxxxx.'
+      validate_mode: direct

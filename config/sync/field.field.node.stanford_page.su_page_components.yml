@@ -10,6 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_banner
     - paragraphs.paragraphs_type.stanford_card
     - paragraphs.paragraphs_type.stanford_entity
+    - paragraphs.paragraphs_type.stanford_faq
     - paragraphs.paragraphs_type.stanford_gallery
     - paragraphs.paragraphs_type.stanford_layout
     - paragraphs.paragraphs_type.stanford_lists
@@ -67,6 +68,9 @@ settings:
       stanford_entity:
         weight: 22
         enabled: true
+      stanford_faq:
+        weight: 28
+        enabled: true
       stanford_gallery:
         weight: 23
         enabled: true
@@ -79,6 +83,9 @@ settings:
       stanford_media_caption:
         weight: 26
         enabled: true
+      stanford_page_title_banner:
+        weight: 23
+        enabled: false
       stanford_person_cta:
         weight: 27
         enabled: false

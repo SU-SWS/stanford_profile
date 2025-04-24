@@ -9,7 +9,7 @@ use Faker\Factory;
  * @group no-parallel
  * @group subthemes
  */
-abstract class SubThemeCest {
+class SubThemeCest {
 
   /**
    * Human readable name for the theme.
@@ -142,19 +142,19 @@ abstract class SubThemeCest {
    * @group minimal-theme
    */
   public function testMinimalSubtheme(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
     $I->amOnPage('/');
     $I->seeElement('.su-brand-bar__logo');
     $I->seeElement('.su-global-footer__container');
     $I->seeElement('.su-brand-bar--default');
 
-    $I->logInWithRole('administrator');
     $I->amOnPage('/admin/appearance');
     $I->click('Set as default', 'a[title="Set Stanford Minimally Branded Subtheme as default theme"]');
     $I->amOnPage('/');
     $I->canSeeResponseCodeIs(200);
     $I->seeInSource('<span class="su-lockup__wordmark"></span>');
     $I->dontSeeElement('.su-brand-bar__logo');
-    $I->dontSeeElement('.su-global-footer__container');
+    $I->seeElement('.su-global-footer__container');
     $I->dontSeeElement('.su-brand-bar--default');
   }
 

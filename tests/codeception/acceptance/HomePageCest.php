@@ -2,6 +2,8 @@
 
 /**
  * Test the home page exists.
+ *
+ * @group home-page
  */
 class HomePageCest {
 
@@ -11,7 +13,7 @@ class HomePageCest {
   public function testHomepage(AcceptanceTester $I) {
     $I->amOnPage('/');
     $I->canSee('Stanford');
-    $I->seeCurrentUrlEquals('/');
+    $I->seeCurrentUrlEquals('/user/login?destination=/home');
     $I->canSeeResponseCodeIs(200);
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/structure');
@@ -24,6 +26,7 @@ class HomePageCest {
   public function testUnpublishingHomepage(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/');
+    $I->canSee('Stanford');
     $I->click('Edit', '.tabs');
     $I->cantSee('Published', 'label');
   }

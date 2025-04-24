@@ -7,6 +7,7 @@ use Drupal\consumers\Entity\Consumer;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent;
 use Drupal\Core\Site\Settings;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\default_content\Event\ImportEvent;
 use Drupal\file\Entity\File;
 use Drupal\KernelTests\KernelTestBase;
@@ -45,7 +46,8 @@ class EventSubscriberTest extends KernelTestBase {
     'media',
     'test_stanford_profile',
     'samlauth',
-    'externalauth'
+    'externalauth',
+    'options',
   ];
 
   /**
@@ -149,6 +151,7 @@ class EventSubscriberTest extends KernelTestBase {
     new Settings($site_settings);
 
     $config_page_loader = $this->createMock(ConfigPagesLoaderServiceInterface::class);
+    $config_page_loader->method('getValue')->willReturn(date(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, 0));
     \Drupal::getContainer()->set('config_pages.loader', $config_page_loader);
 
     $account = $this->createMock(AccountProxyInterface::class);

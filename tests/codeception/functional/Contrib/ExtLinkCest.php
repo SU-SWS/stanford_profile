@@ -78,10 +78,10 @@ class ExtLinkCest {
     $I->fillField('su_local_foot_primary[0][title]', 'Primary Link');
     $I->click('Add another item', '.field--name-su-local-foot-primary');
     $I->waitForElement('[name="su_local_foot_primary[1][uri]"]');
-    $I->fillField('su_local_foot_primary[1][uri]', 'https://stanford.edu');
+    $I->fillField('su_local_foot_primary[1][uri]', 'https://www.stanford.edu');
     $I->fillField('su_local_foot_primary[1][title]', 'Another primary link');
 
-    $I->fillField('su_local_foot_second[0][uri]', 'https://stanford.edu');
+    $I->fillField('su_local_foot_second[0][uri]', 'https://www.stanford.edu');
     $I->fillField('su_local_foot_second[0][title]', 'Secondary Link');
     $I->click('Add another item', '.field--name-su-local-foot-second');
     $I->waitForElement('[name="su_local_foot_second[1][uri]"]');
@@ -91,15 +91,32 @@ class ExtLinkCest {
     $I->click('Save');
     $I->see('Local Footer has been', '.messages-list');
 
-    // Validate email links.
-    $I->amOnPage('/');
-    $I->waitForElementVisible('a.mailto svg.mailto');
-    $I->canSeeNumberOfElements('a.mailto svg.mailto', 3);
+    $text = $this->faker->paragraph;
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_wysiwyg',
+      'su_wysiwyg_text' => [
+        'format' => 'stanford_html',
+        'value' => $text . '<a href="mailto:foo@bar.com">email link</a> <a href="/foobar">local link</a> <a href="https://stanford.edu">external link</a>',
+      ],
+    ], 'paragraph');
+
+    $page = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(4, TRUE),
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ]);
+
+    $I->amOnPage($page->toUrl()->toString());
+    $I->waitForElementVisible('#page-content a.su-link--external');
 
     // External Links in the page-content region.
-    $I->canSeeNumberOfElements('#page-content a.su-link--external svg.su-link--external', 1);
+    $I->canSeeNumberOfElements('#page-content a.su-link--external', 2);
+    $I->canSeeNumberOfElements('#page-content a.mailto.su-link--external', 1);
     // External links in the local footer.
-    $I->canSeeNumberOfElements('.su-local-footer__cell2 a.su-link--external svg.su-link--external', 4);
+    $I->canSeeNumberOfElements('.su-local-footer__cell2 a.su-link--external', 4);
   }
 
 }

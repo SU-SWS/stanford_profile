@@ -4,6 +4,8 @@ use Faker\Factory;
 
 /**
  * Test for the basic page content type.
+ *
+ * @group basic-page
  */
 class BasicPageParagraphsCest {
 

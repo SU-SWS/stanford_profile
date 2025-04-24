@@ -1,0 +1,64 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 6a4ed963-bdb8-4ad5-9162-d0e6c319bc19
+  bundle: opportunity_tag_filters
+  default_langcode: en
+  depends:
+    ecfa5c86-dbd0-4007-95b8-02b6ee574a2c: taxonomy_term
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Spring
+  weight:
+    -
+      value: 1
+  parent:
+    -
+      entity: ecfa5c86-dbd0-4007-95b8-02b6ee574a2c
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Spring | University'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: 'http://default/taxonomy/term/81'
+    -
+      tag: meta
+      attributes:
+        property: 'og:site_name'
+        content: University
+    -
+      tag: meta
+      attributes:
+        property: 'og:type'
+        content: website
+    -
+      tag: meta
+      attributes:
+        property: 'og:url'
+        content: 'http://default/home'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default

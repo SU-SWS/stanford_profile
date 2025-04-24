@@ -8,7 +8,7 @@ title: null
 id: stanford_profile_helper_cron
 weight: 0
 module: stanford_profile_helper
-callback: stanford_profile_helper_cron
+callback: 'stanford_profile_helper#cron'
 scheduler:
   id: simple
 launcher:

@@ -3,5 +3,15 @@
 .content {
   .paragraph-item {
     @include modular-spacing("margin-bottom", 5);
+
+    &.ptype-stanford-accordion {
+      margin-bottom: 0;
+    }
+
+    &.ptype-stanford-accordion {
+      &:last-child {
+        @include modular-spacing("margin-bottom", 5);
+      }
+    }
   }
 }

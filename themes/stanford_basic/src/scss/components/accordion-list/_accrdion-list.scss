@@ -1,0 +1,93 @@
+@charset 'UTF-8';
+
+// Add theme customizations here.
+
+.ptype-stanford-faq {
+  margin: 0 auto;
+  width: 100%;
+  max-width: calc(100vw - #{map-get($su-screen-margins, 'xs') * 2});
+
+  @include grid-media('sm') {
+    max-width: calc(100vw - #{map-get($su-screen-margins, 'sm') * 2});
+  }
+
+  @include grid-media('md') {
+    max-width: calc(100vw - #{map-get($su-screen-margins, 'md') * 2});
+  }
+
+  @include grid-media('lg') {
+    max-width: 880px;
+  }
+
+  @include grid-media('xl') {
+    max-width: 980px;
+  }
+
+  .expand-collapse-button {
+    float: right;
+    flex: 1;
+    white-space: nowrap;
+    margin-left: 20px;
+
+    &::after {
+      margin-left: 5px;
+      content: '+';
+      text-decoration: none;
+      background: none;
+      color: $su-color-digital-red;
+    }
+
+    &:hover::after {
+      color: $su-color-black;
+      text-underline: none;
+    }
+
+    &.collapse-all {
+      &::after {
+        content: '-';
+      }
+    }
+  }
+}
+
+.su-faq-headline {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include grid-media('sm') {
+    gap: 10px;
+    flex-direction: row;
+  }
+
+  .button-wrapper {
+    margin-left: auto;
+    margin-bottom: 10px;
+
+    @include grid-media('sm') {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.su-faq-questions {
+  margin: 3rem 0;
+
+  > .paragraph-item {
+    margin-bottom: 0;
+
+    &:not(:last-child) {
+      details {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  details {
+    margin: 0;
+  }
+
+  .ds-entity--stanford-accordion {
+    width: 100%;
+  }
+}

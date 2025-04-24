@@ -32,8 +32,9 @@ class TeaserCest {
     $teaser_entities = [];
     $teaser_item_field = [];
     foreach ($node_types as $node_type) {
+      $title_key = $node_type->id() == 'stanford_policy' ? 'su_policy_title' : 'title';
       $teaser_entities[$node_type->id()] = $I->createEntity([
-        'title' => $this->faker->words(3, TRUE),
+        $title_key => $this->faker->words(3, TRUE),
         'type' => $node_type->id(),
       ]);
       $teaser_item_field[]['target_id'] = $teaser_entities[$node_type->id()]->id();

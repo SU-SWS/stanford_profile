@@ -193,7 +193,10 @@ entity_config:
       edges_enabled: true
       routes_enabled: true
     stanford_opportunity:
-      enabled: false
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
     stanford_page:
       enabled: true
       query_load_enabled: true
@@ -225,6 +228,9 @@ entity_config:
       enabled: true
       query_load_enabled: true
     stanford_entity:
+      enabled: true
+      query_load_enabled: true
+    stanford_faq:
       enabled: true
       query_load_enabled: true
     stanford_gallery:
@@ -274,11 +280,11 @@ entity_config:
     media_tags:
       enabled: false
     opportunity_sponsor:
-      enabled: false
+      enabled: true
     opportunity_tag_filters:
-      enabled: false
+      enabled: true
     opportunity_type:
-      enabled: false
+      enabled: true
     site_owner_orgs:
       enabled: false
     stanford_event_groups:
@@ -655,6 +661,51 @@ field_config:
         enabled: true
       su_news_topics:
         enabled: true
+    stanford_opportunity:
+      body:
+        enabled: true
+      layout_builder__layout:
+        enabled: true
+      su_opp_application_deadline:
+        enabled: true
+      su_opp_components:
+        enabled: true
+      su_opp_contact_email:
+        enabled: true
+      su_opp_contact_name:
+        enabled: true
+      su_opp_contact_phone:
+        enabled: true
+      su_opp_contact_url:
+        enabled: true
+      su_opp_course_code:
+        enabled: true
+      su_opp_cta_url:
+        enabled: true
+      su_opp_eligibility:
+        enabled: true
+      su_opp_image:
+        enabled: true
+      su_opp_learn_more:
+        enabled: true
+      su_opp_open_date:
+        enabled: true
+      su_opp_prerequisites:
+        enabled: true
+      su_opp_source:
+        enabled: true
+      su_opp_sponsor:
+        enabled: true
+      su_opp_start_date:
+        enabled: true
+      su_opp_status:
+        enabled: true
+      su_opp_summary:
+        enabled: true
+      su_opp_tags:
+        enabled: true
+      su_opp_type:
+        enabled: true
     stanford_page:
       layout_selection:
         enabled: true
@@ -793,6 +844,13 @@ field_config:
       su_entity_headline:
         enabled: true
       su_entity_item:
+        enabled: true
+    stanford_faq:
+      su_faq_description:
+        enabled: true
+      su_faq_headline:
+        enabled: true
+      su_faq_questions:
         enabled: true
     stanford_gallery:
       su_gallery_button:

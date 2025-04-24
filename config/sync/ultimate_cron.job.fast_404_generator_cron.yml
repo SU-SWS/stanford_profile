@@ -8,7 +8,7 @@ title: 'Default cron handler'
 id: fast_404_generator_cron
 weight: 0
 module: fast_404_generator
-callback: fast_404_generator_cron
+callback: 'fast_404_generator#cron'
 scheduler:
   id: simple
 launcher:

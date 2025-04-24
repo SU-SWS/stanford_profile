@@ -2,6 +2,8 @@
 
 /**
  * Test for the Super Footer.
+ *
+ * @group super-footer
  */
 class SuperFooterCest {
 
@@ -44,12 +46,12 @@ class SuperFooterCest {
     $I->fillField('#edit-su-super-foot-text-0-value', '<p>Super footers are super.</p>');
     $I->fillField('#edit-su-super-foot-link-0-uri', '<front>');
     $I->fillField('#edit-su-super-foot-link-0-title', 'Action link');
-    $I->fillField('#edit-su-super-foot-intranet-0-uri', 'https://stanford.edu/');
+    $I->fillField('#edit-su-super-foot-intranet-0-uri', 'https://www.stanford.edu/');
     $I->fillField('#edit-su-super-foot-intranet-0-title', 'Intranet Link');
     $I->click('Save');
     $I->see('Super Footer has been', '.messages-list');
 
-    $I->amOnPage("/");
+    $I->amOnPage('/');
     $I->seeElement(".block-config-pages-super-footer");
     $I->canSee("Super Footer Title");
     $I->canSee("Super footers are super.");

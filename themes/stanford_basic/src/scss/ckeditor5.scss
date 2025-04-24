@@ -128,7 +128,6 @@
       margin-bottom: 2.5rem;
       font-weight: 400;
       line-height: 1.5;
-      max-width: 85rem;
       letter-spacing: -0.012em;
       font-size: 30px;
     }
@@ -159,7 +158,6 @@
       font-size: 30px;
       font-weight: 400;
       line-height: 1.5;
-      max-width: 85rem;
       letter-spacing: -0.012em;
       margin-top: 0;
     }
@@ -302,4 +300,9 @@
       content: "";
     }
   }
+}
+
+ul[aria-label="Language"] {
+  max-height: 250px;
+  overflow-y: scroll;
 }

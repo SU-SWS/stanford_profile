@@ -31,3 +31,7 @@ body {
 [data-island] {
   width: 100%;
 }
+
+.add-more-space-to-top {
+  @include margin(8rem 0 0);
+}

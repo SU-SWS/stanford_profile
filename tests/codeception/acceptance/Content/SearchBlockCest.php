@@ -17,7 +17,7 @@ class SearchBlockCest {
     $this->faker = Factory::create();
   }
 
-  public function __before() {
+  public function _before() {
     if ($cp = ConfigPages::load('stanford_basic_site_settings')) {
       $cp->delete();
     }

@@ -299,6 +299,50 @@ class WYSIWYGCest {
   }
 
   /**
+   * Image modal test.
+   *
+   * @group wysiwyg-modal
+   */
+  public function testWysiwygModal(FunctionalTester $I) {
+    $file_system = \Drupal::service('file_system');
+    $image_path = $file_system->copy(__DIR__ . '/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $image_name = basename($image_path);
+
+    $file = $I->createEntity(['uri' => $image_path], 'file');
+    $media = $I->createEntity([
+      'bundle' => 'image',
+      'field_media_image' => ['target_id' => $file->id(), 'alt' => 'alt text'],
+    ], 'media');
+
+    $text = '<drupal-media data-entity-type="media" data-entity-uuid="' . $media->uuid() . '" data-view-mode="large_modal" data-align="right">&nbsp;</drupal-media>';
+    $page = $this->getNodeWithParagraph($I, $text);
+    $I->amOnPage($page->toUrl()->toString());
+    $I->canSee($page->label(), 'h1');
+    $I->canSeeElement('img[alt="alt text"][src*="' . $image_name . '"][src*="/large/"]');
+    $I->clickWithLeftButton('a.colorbox');
+    $I->waitForElementVisible('#cboxLoadedContent img');
+    $I->canSee('alt text', '#cboxTitle');
+
+    $text = '<drupal-media data-entity-type="media" data-entity-uuid="' . $media->uuid() . '" data-view-mode="medium_modal" data-align="right">&nbsp;</drupal-media>';
+    $page = $this->getNodeWithParagraph($I, $text);
+    $I->amOnPage($page->toUrl()->toString());
+    $I->canSee($page->label(), 'h1');
+    $I->canSeeElement('img[alt="alt text"][src*="' . $image_name . '"][src*="/medium/"]');
+    $I->clickWithLeftButton('a.colorbox');
+    $I->waitForElementVisible('#cboxLoadedContent img');
+    $I->canSee('alt text', '#cboxTitle');
+
+    $text = '<drupal-media data-entity-type="media" data-entity-uuid="' . $media->uuid() . '" data-view-mode="small_modal" data-align="right">&nbsp;</drupal-media>';
+    $page = $this->getNodeWithParagraph($I, $text);
+    $I->amOnPage($page->toUrl()->toString());
+    $I->canSee($page->label(), 'h1');
+    $I->canSeeElement('img[alt="alt text"][src*="' . $image_name . '"][src*="/thumbnail/"]');
+    $I->clickWithLeftButton('a.colorbox');
+    $I->waitForElementVisible('#cboxLoadedContent img');
+    $I->canSee('alt text', '#cboxTitle');
+  }
+
+  /**
    * Get a node with a wysiwyg paragraph on it.
    *
    * @param \FunctionalTester $I

@@ -3,7 +3,7 @@ const path = require("path");
 const Webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const autoprefixer = require('autoprefixer')({ grid: true });
 
@@ -96,7 +96,7 @@ var webpackConfig = {
     ]
   },
   plugins: [
-    new FixStyleOnlyEntriesPlugin(),
+    new RemoveEmptyScriptsPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),

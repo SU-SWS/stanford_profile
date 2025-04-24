@@ -1,0 +1,56 @@
+uuid: a4111c63-41f9-42ab-a8f1-70a8726911d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.small_modal
+    - field.field.media.image.field_media_image
+    - field.field.media.image.su_media_category
+    - image.style.breakpoint_2xl_1x
+    - image.style.thumbnail
+    - media.type.image
+  module:
+    - colorbox
+    - empty_fields
+    - field_formatter_class
+    - field_label
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+_core:
+  default_config_hash: hSk8HhFOQGFB36lnn_tEKB38YVOq1uNpB-cdzzq5vMo
+id: media.image.small_modal
+targetEntityType: media
+bundle: image
+mode: small_modal
+content:
+  field_media_image:
+    type: colorbox
+    label: hidden
+    settings:
+      colorbox_image_style: breakpoint_2xl_1x
+      colorbox_gallery: page
+      colorbox_gallery_custom: ''
+      colorbox_caption: auto
+      colorbox_caption_custom: ''
+      colorbox_node_style: thumbnail
+      colorbox_node_style_first: thumbnail
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  search_api_excerpt: true
+  su_media_category: true
+  thumbnail: true
+  uid: true

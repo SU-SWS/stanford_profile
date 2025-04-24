@@ -61,8 +61,8 @@ layout:
       label: ''
       context_mapping: {  }
       extra_classes: ''
-      centered: null
-      columns: flex-10-of-12
+      centered: centered-container
+      columns: default
     components:
       6ce9c0ce-a019-44f4-9225-4c2a1a9fbc6d:
         uuid: 6ce9c0ce-a019-44f4-9225-4c2a1a9fbc6d
@@ -74,6 +74,7 @@ layout:
           provider: layout_builder
           context_mapping:
             entity: layout_builder.entity
+            view_mode: view_mode
           formatter:
             type: entity_title_heading
             label: hidden
