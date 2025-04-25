@@ -1,28 +1,32 @@
 @charset "UTF-8";
 
 .config_pages--type--stanford-basic-site-settings {
-  margin-left: auto;
-  width: fit-content;
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 26px;
+  nav {
+    margin-left: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 26px;
+  }
 }
 
 .su-site-header-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: center;
-  margin-bottom: 20px;
 
-  a {
-    color: $su-color-black;
-    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
 
-    &:hover {
-      text-decoration: underline;
+    a {
+      color: $su-color-black;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
-  }
+
 }
 
 .su-site-header-button {
@@ -41,6 +45,8 @@
   }
 
   .region-header {
+    align-self: end;
+
     @include grid-media-max('md') {
       @include flex-column(10);
     }
@@ -95,7 +101,7 @@
 
   > section:last-of-type {
     @include grid-media('lg') {
-      @include padding(3.6rem null null null);
+      @include padding(1.5rem null null null);
     }
   }
 
@@ -103,7 +109,7 @@
     max-width: 100%;
 
     @include grid-media('lg') {
-      @include margin(null null 2.2rem null);
+      @include margin(null null 0 null);
     }
   }
 
