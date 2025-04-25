@@ -1,0 +1,14 @@
+uuid: 4c9fba1b-ab38-4ec8-825f-d700e9d7ad80
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.opportunity_units
+id: taxonomy_vocabulary_opportunity_units
+entity_type_id: taxonomy_vocabulary
+entity_id: opportunity_units
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

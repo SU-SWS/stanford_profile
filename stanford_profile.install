@@ -30,3 +30,20 @@ function stanford_profile_update_9105() {
     \Drupal::database()->truncate($table)->execute();
   }
 }
+
+/**
+ * Removes content from taxonomy terms.
+ */
+function stanford_profile_update_9106() {
+  $vocabulary_names = [
+    'opportunity_tag_filters',
+    'opportunity_type',
+    'opportunity_sponsor',
+  ];
+
+  $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['vid' => $vocabulary_names]);
+
+  foreach ($terms as $term) {
+    $term->delete();
+  }
+}
