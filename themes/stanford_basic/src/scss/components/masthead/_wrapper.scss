@@ -11,22 +11,20 @@
 }
 
 .su-site-header-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
 
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
-    margin-bottom: 20px;
+  a {
+    color: $su-color-black;
+    text-decoration: none;
 
-    a {
-      color: $su-color-black;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
+    &:hover {
+      text-decoration: underline;
     }
-
+  }
 }
 
 .su-site-header-button {
