@@ -1,8 +1,13 @@
 @charset "UTF-8";
 
 .config_pages--type--stanford-basic-site-settings {
-  margin-left: auto;
-  width: fit-content;
+  nav {
+    margin-left: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 26px;
+  }
 }
 
 .su-site-header-links {
@@ -38,6 +43,8 @@
   }
 
   .region-header {
+    align-self: end;
+
     @include grid-media-max('md') {
       @include flex-column(10);
     }
@@ -92,7 +99,7 @@
 
   > section:last-of-type {
     @include grid-media('lg') {
-      @include padding(3.6rem null null null);
+      @include padding(1.5rem null null null);
     }
   }
 
@@ -100,7 +107,7 @@
     max-width: 100%;
 
     @include grid-media('lg') {
-      @include margin(null null 2.2rem null);
+      @include margin(null null 0 null);
     }
   }
 
