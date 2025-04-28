@@ -946,7 +946,8 @@ field_config:
         enabled: true
 settings:
   exclude_unpublished: false
-  expose_entity_ids: false
+  expose_entity_ids: true
+  field_required_override: false
   schema_description: 'GraphQL Compose'
   schema_version: '1'
   simple_queries: true
