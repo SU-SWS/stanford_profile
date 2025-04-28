@@ -644,10 +644,22 @@ display:
         operator: AND
         groups:
           1: AND
+      style:
+        type: graphql
+        options:
+          grouping:
+            -
+              field: su_schedule_date_time_value
+              rendered: true
+              rendered_strip: false
+          uses_fields: false
+      row:
+        type: graphql_entity
+        options: {  }
       defaults:
         title: false
-        style: true
-        row: true
+        style: false
+        row: false
         fields: true
         sorts: false
         arguments: false
