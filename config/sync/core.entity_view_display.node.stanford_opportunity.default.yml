@@ -137,6 +137,17 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
+            weight: 1
+            additional: {  }
+          7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5:
+            uuid: 7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5
+            region: main
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
             weight: 0
             additional: {  }
         third_party_settings: {  }
@@ -184,7 +195,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 0
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
@@ -196,17 +207,6 @@ third_party_settings:
           centered: centered-container
           orientation: left
         components:
-          7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5:
-            uuid: 7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5
-            region: left
-            configuration:
-              id: jumpstart_ui_skipnav_main_anchor
-              label: 'Main content anchor target'
-              label_display: '0'
-              provider: jumpstart_ui
-              context_mapping: {  }
-            weight: 0
-            additional: {  }
           6e41b2ce-22c1-4c37-9a18-14082782a173:
             uuid: 6e41b2ce-22c1-4c37-9a18-14082782a173
             region: main
