@@ -52,8 +52,8 @@ third_party_settings:
   field_group:
     group_nav:
       children:
-        - su_site_header_button
         - su_site_header_links
+        - su_site_header_button
       label: Nav
       parent_name: ''
       region: content
@@ -94,7 +94,7 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 1
+    weight: 3
     region: content
   su_site_header_links:
     type: link
