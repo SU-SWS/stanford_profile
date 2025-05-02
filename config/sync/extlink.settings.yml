@@ -2,7 +2,7 @@ _core:
   default_config_hash: gp38_GoeI-5DmdfeFE0NfHi_mbT2SqdU0zsJIQv-ehc
 langcode: en
 extlink_use_external_js_file: false
-extlink_exclude_admin_routes: false
+extlink_exclude_admin_routes: true
 extlink_target: false
 extlink_target_no_override: false
 extlink_title_no_override: false
@@ -22,7 +22,7 @@ extlink_exclude_noreferrer: ''
 extlink_class: '0'
 extlink_label: ' (link is external)'
 extlink_img_class: false
-extlink_css_exclude: '.localist-widget, #lclst_widget_footer, .oembed-lazyload__button'
+extlink_css_exclude: '.localist-widget, #lclst_widget_footer, .oembed-lazyload__button, .su-news-vertical-teaser'
 extlink_css_include: ''
 extlink_css_explicit: '#page-content, .su-local-footer'
 extlink_mailto_class: mailto
