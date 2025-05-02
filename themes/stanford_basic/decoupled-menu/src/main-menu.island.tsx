@@ -130,7 +130,6 @@ const SearchContainer = styled.div`
 `
 
 export const MainMenu = ({}) => {
-
   useWebComponentEvents(islandName)
   const [menuItems, setMenuItems] = useState<MenuContentItem[]>(window.drupalSettings?.stanford_basic?.decoupledMenuItems || []);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -140,10 +139,9 @@ export const MainMenu = ({}) => {
 
   useEffect(() => {
     if (menuItems.length > 0) return;
-
     fetch(DRUPAL_DOMAIN + '/jsonapi/menu_items/main')
       .then(res => res.json())
-      .then(data => setMenuItems(deserialize(data)))
+      .then(data => setMenuItems(buildMenuTree(deserialize(data)).items || []))
       .catch(err => console.error(err));
   }, [])
 
@@ -156,8 +154,7 @@ export const MainMenu = ({}) => {
 
   useEventListener("keydown", handleEscape);
 
-  const menuTree = useMemo(() => buildMenuTree(menuItems), [menuItems]);
-  if (!menuTree.items || menuTree.items?.length === 0) return;
+  if (menuItems.length === 0) return;
 
   // Remove the default menu.
   const existingMenu = document.getElementsByClassName('su-multi-menu');
@@ -167,6 +164,7 @@ export const MainMenu = ({}) => {
     <nav
       ref={navRef}
       style={{position: "relative"}}
+      className="preact-main-menu"
     >
       <MobileMenuButton
         ref={buttonRef}
@@ -197,7 +195,7 @@ export const MainMenu = ({}) => {
 
         </SearchContainer>
         <TopList>
-          {menuTree.items.sort((a, b) => a.weight < b.weight ? -1 : 1).map(item => <MenuItem key={item.id} {...item}/>)}
+          {menuItems.map(item => <MenuItem key={item.id} {...item}/>)}
         </TopList>
       </MenuWrapper>
     </nav>
@@ -421,7 +419,7 @@ const MenuItem = ({id, title, url, items, expanded, level = 0}: {
       {(items && items.length > 0 && expanded) &&
         <MenuList open={submenuOpen} level={level}>
 
-          {items.sort((a, b) => a.weight < b.weight ? -1 : 1).map(item =>
+          {items.map(item =>
             <MenuItem key={item.id} {...item} level={level + 1}/>
           )}
         </MenuList>

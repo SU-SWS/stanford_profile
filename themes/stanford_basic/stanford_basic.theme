@@ -233,18 +233,16 @@ function stanford_basic_preprocess_block(&$variables) {
   $variables['attributes']['class'][] = Html::cleanCssIdentifier(_stanford_basic_change_characters($variables['base_plugin_id']));
   $variables['attributes']['class'][] = Html::cleanCssIdentifier(_stanford_basic_change_characters($variables['derivative_plugin_id']));
 
-  if (\Drupal::hasService('config_pages.loader')) {
+  if ($variables['plugin_id'] == 'system_menu_block:main' && \Drupal::hasService('config_pages.loader')) {
     /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_pages */
     $config_pages = \Drupal::service('config_pages.loader');
     $new_menu = (bool) $config_pages->getValue('stanford_basic_site_settings', 'su_site_new_menu', 0, 'value');
-    if (
-      $variables['plugin_id'] == 'system_menu_block:main' &&
-      $new_menu
-    ) {
+    if ($new_menu) {
       $variables['attributes']['data-island'] = 'main-menu-island';
       $variables['#attached']['library'][] = 'stanford_basic/decoupled_menu';
       $menu = \Drupal::menuTree()->load('main', new MenuTreeParameters());
       $variables['#attached']['drupalSettings']['stanford_basic']['decoupledMenuItems'] = _stanford_basic_get_menu_tree_links($menu);
+      $variables['elements']['#cache']['tags'][] = 'stanford_profile_helper:menu_links';
     }
   }
 
@@ -284,7 +282,8 @@ function _stanford_basic_get_menu_tree_links(array $items) {
       'items' => _stanford_basic_get_menu_tree_links($item->subtree),
     ];
   }
-  return $tree;
+  uasort($tree, fn($a, $b) => $a['weight'] != $b['weight'] ? $a['weight'] <=> $b['weight'] : $a['title'] > $b['title']);
+  return array_values($tree);
 }
 
 /**
