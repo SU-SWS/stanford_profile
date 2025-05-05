@@ -433,6 +433,58 @@ display:
             offset: true
             offset_label: Offset
           quantity: 9
+      exposed_form:
+        type: graphql
+        options:
+          submit_button: Apply
+          reset_button: 0
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: 1
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      sorts:
+        search_api_relevance:
+          id: search_api_relevance
+          table: search_api_index_full_site_content
+          field: search_api_relevance
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: search_api_relevance
+          exposed: false
+        changed:
+          id: changed
+          table: search_api_index_full_site_content
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        search_api_id:
+          id: search_api_id
+          table: search_api_index_full_site_content
+          field: search_api_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+      defaults:
+        sorts: false
       display_extenders: {  }
       graphql_query_name: search
     cache_metadata:
