@@ -371,9 +371,10 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: basic_string
+                type: email_link_class
                 label: hidden
-                settings: {  }
+                settings:
+                  class: su-opp-email
                 third_party_settings:
                   empty_fields:
                     handler: ''
