@@ -198,6 +198,7 @@ third_party_settings:
           extra_classes: su-opp-node-container-wrapper
           centered: centered-container
           orientation: left
+          force_regions: true
         components:
           6e41b2ce-22c1-4c37-9a18-14082782a173:
             uuid: 6e41b2ce-22c1-4c37-9a18-14082782a173
@@ -626,6 +627,8 @@ third_party_settings:
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
+      - Devel
+      - 'Devel PHP'
       - Editoria11y
       - 'Events Lists (Views)'
       - Forms
@@ -657,8 +660,6 @@ third_party_settings:
         - jumpstart_ui_three_column
       denylisted_blocks: {  }
       allowlisted_blocks:
-        'Changelog (Views)':
-          - 'views_block:change_logs-policy_changes'
         'Content fields':
           - 'field_block:node:stanford_opportunity:su_opp_application_deadline'
           - 'field_block:node:stanford_opportunity:su_opp_open_date'
@@ -685,24 +686,35 @@ third_party_settings:
           - 'field_block:node:stanford_opportunity:su_opp_summary'
           - 'field_block:node:stanford_opportunity:title'
           - 'field_block:node:stanford_opportunity:su_opp_units'
-        Menus:
-          - 'menu_block:main'
         System:
           - system_breadcrumb_block
         core:
           - page_title_block
       restricted_categories:
+        - 'Basic Page Type Lists (Views)'
         - Book
+        - 'Changelog (Views)'
         - 'Chaos Tools'
         - 'Config Pages'
+        - 'Custom block types'
+        - Devel
+        - 'Devel PHP'
         - Editoria11y
+        - 'Events Lists (Views)'
         - Forms
         - Help
+        - 'Jumpstart UI'
         - 'Lists (Views)'
+        - Menus
+        - 'News Lists (Views)'
         - 'Opportunities (Views)'
+        - 'PDB React'
+        - 'People Lists (Views)'
         - 'Policy (Views)'
         - Printable
+        - 'Publication (Views)'
         - React
+        - 'Stanford News'
         - 'Stanford Profile Helper'
         - 'Stanford SAML Authentication'
         - 'Taxonomy Terms (Views)'
