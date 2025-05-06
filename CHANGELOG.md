@@ -1,5 +1,25 @@
 # Stanford Profile
 
+11.7.0
+-------------------------------------------------------------------------------
+- D8CORE-8031 Force displaying both regions on opportunity  layout
+- D8CORE-8029: made the contact email a link (#921)
+- Add fallback sorting to graphql views
+- Fixed course card grid to display as a grid, instead of list
+- Exclude external link icon from news teasers due to template implementation
+- D8CORE-8024 Fix order of decoupled menu items (#919)
+- D8CORE-8025 D8CORE-8027: fixed tabing order and spacing on the header and utility nav (#920)
+- D8CORE-8020: Opportunities header items changes for alignment when no icon (#918)
+- Expose entity ids in graphql to allow for view filtering'
+- D8CORE-7927: Utility navigation styles (#911)
+- FEATURE: Opportunities content type enhanced with node display, views and filterable views. (#883)
+- D8CORE-7997: Updated edit form for Site Header Options (#916)
+- D8CORE-7924 Add header utility links to site settings (#900)
+- Remove unwanted fields from search indexing displays
+- Updated decoupled menu to correctly display sub menu items
+- D8CORE-7654: Fixed full width basic page title position (#891)
+- Update trash module config
+
 11.6.2
 -------------------------------------------------------------------------------
 - Fixed logic error in main menu when home page is a node path.
