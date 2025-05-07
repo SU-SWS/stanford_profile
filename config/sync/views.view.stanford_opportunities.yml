@@ -1254,8 +1254,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: 'Units: {{ su_opp_units }}'
             make_link: false
             path: ''
             absolute: false
