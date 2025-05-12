@@ -44,3 +44,23 @@ field_validation_rules:
       pattern: '/(?:UA|G|AW|DC)-[0-9a-zA-Z]{5,}(?:-[0-9]{1,})?/'
       message: 'A valid Google Analytics Web Property ID is case sensitive and formatted like UA-xxxxxxx-yy or G-xxxxxxxxxx.'
       validate_mode: direct
+  b7ed8723-96d6-4bf2-80d7-cb4e82c4d474:
+    uuid: b7ed8723-96d6-4bf2-80d7-cb4e82c4d474
+    id: length_constraint_rule
+    title: 'Limit Button Text'
+    weight: 3
+    field_name: su_site_header_button
+    column: title
+    error_message: ''
+    roles: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''
+    data:
+      min: '0'
+      max: '12'
+      maxMessage: 'This value is too long. It should have %limit character or less.|This value is too long. It should have %limit characters or less.'
+      minMessage: 'This value is too short. It should have %limit character or more.|This value is too short. It should have %limit characters or more.'
+      exactMessage: 'This value should have exactly %limit character.|This value should have exactly %limit characters.'
+      validate_mode: default
