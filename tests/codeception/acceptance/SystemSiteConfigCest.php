@@ -82,7 +82,7 @@ class SystemSiteConfigCest {
     ], 'taxonomy_term');
 
     $button_uri = $this->faker->url();
-    $button_text = $this->faker->words(3, TRUE);
+    $button_text = substr($this->faker->words(3, TRUE), 0, 10);
 
     $link_1_uri = $this->faker->url();
     $link_1_text = $this->faker->words(3, TRUE);
