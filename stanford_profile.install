@@ -56,7 +56,7 @@ function stanford_profile_update_9107() {
 
   $users = \Drupal::entityTypeManager()->getStorage('user')->loadByProperties(['name' => $usernames]);
 
-  foreach($users as $user) {
+  foreach ($users as $user) {
     $user->delete();
   }
 
