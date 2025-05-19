@@ -5,7 +5,6 @@ dependencies:
   config:
     - config_pages.type.stanford_person_importer
     - field.storage.config_pages.su_person_orgs
-    - taxonomy.vocabulary.cap_org_codes
 id: config_pages.stanford_person_importer.su_person_orgs
 field_name: su_person_orgs
 entity_type: config_pages
@@ -17,13 +16,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:taxonomy_term'
+  handler: views
   handler_settings:
-    target_bundles:
-      cap_org_codes: cap_org_codes
-    sort:
-      field: name
-      direction: asc
-    auto_create: false
-    auto_create_bundle: ''
+    view:
+      view_name: cap_orgs
+      display_name: org_codes_reference
+      arguments: {  }
 field_type: entity_reference
