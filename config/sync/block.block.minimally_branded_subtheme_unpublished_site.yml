@@ -1,0 +1,22 @@
+uuid: 2e1b8c69-b1fa-4137-a5d5-849f140b97d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - simple_block.simple_block.su_unpublished_site_banner
+  module:
+    - simple_block
+  theme:
+    - minimally_branded_subtheme
+id: minimally_branded_subtheme_unpublished_site
+theme: minimally_branded_subtheme
+region: content
+weight: -7
+provider: null
+plugin: 'simple_block:su_unpublished_site_banner'
+settings:
+  id: 'simple_block:su_unpublished_site_banner'
+  label: 'Unpublished Site Banner'
+  label_display: '0'
+  provider: simple_block
+visibility: {  }

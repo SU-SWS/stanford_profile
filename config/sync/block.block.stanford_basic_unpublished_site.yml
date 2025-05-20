@@ -1,0 +1,22 @@
+uuid: 3bb71f89-b140-4f8f-97ac-e389520c9339
+langcode: en
+status: true
+dependencies:
+  config:
+    - simple_block.simple_block.su_unpublished_site_banner
+  module:
+    - simple_block
+  theme:
+    - stanford_basic
+id: stanford_basic_unpublished_site
+theme: stanford_basic
+region: content
+weight: -7
+provider: null
+plugin: 'simple_block:su_unpublished_site_banner'
+settings:
+  id: 'simple_block:su_unpublished_site_banner'
+  label: 'Unpublished Site Banner'
+  label_display: '0'
+  provider: simple_block
+visibility: {  }
