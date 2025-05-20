@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.su_basic_page_type
     - field.storage.node.su_event_date_time
+    - field.storage.node.su_event_groups
     - field.storage.node.su_event_type
     - field.storage.node.su_news_publishing_date
     - field.storage.node.su_news_topics
@@ -2174,6 +2175,69 @@ display:
             format: custom
             format_custom_false: Unpublished
             format_custom_true: Published
+        su_event_groups:
+          id: su_event_groups
+          table: node__su_event_groups
+          field: su_event_groups
+          relationship: none
+          group_type: group
+          admin_label: 'Imported Status'
+          plugin_id: field
+          label: Imported
+          exclude: false
+          alter:
+            alter_text: true
+            text: 'Yes'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: 'No'
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         operations:
           id: operations
           table: node
@@ -2379,6 +2443,68 @@ display:
           hierarchy: true
           limit: true
           error_message: true
+        su_event_date_time_end_value:
+          id: su_event_date_time_end_value
+          table: node__su_event_date_time
+          field: su_event_date_time_end_value
+          relationship: none
+          group_type: group
+          admin_label: 'Event Status'
+          plugin_id: date
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+            granularity: hour
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_event_date_time_end_value_op
+            label: 'Date & Time - End'
+            description: null
+            use_operator: false
+            operator: su_event_date_time_end_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: su_event_date_time_end_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: null
+            max_placeholder: null
+            placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'Event Status'
+            description: ''
+            identifier: su_event_date_time_end_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Upcoming Events'
+                operator: '>='
+                value:
+                  min: ''
+                  max: ''
+                  value: now
+                  type: offset
+              2:
+                title: 'Past Events'
+                operator: '<'
+                value:
+                  min: ''
+                  max: ''
+                  value: now
+                  type: offset
         status:
           id: status
           table: node_field_data
@@ -2520,6 +2646,7 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.su_event_date_time'
+        - 'config:field.storage.node.su_event_groups'
         - 'config:field.storage.node.su_event_type'
   manage_news:
     id: manage_news
