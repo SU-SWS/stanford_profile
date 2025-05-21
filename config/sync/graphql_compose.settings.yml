@@ -259,6 +259,9 @@ entity_config:
     stanford_spacer:
       enabled: true
       query_load_enabled: true
+    stanford_stat_card:
+      enabled: true
+      query_load_enabled: true
     stanford_wysiwyg:
       enabled: true
       query_load_enabled: true
@@ -930,6 +933,25 @@ field_config:
         enabled: true
     stanford_spacer:
       su_spacer_size:
+        enabled: true
+    stanford_stat_card:
+      su_stat_body:
+        enabled: true
+      su_stat_button:
+        enabled: true
+      su_stat_centered:
+        enabled: true
+      su_stat_headline:
+        enabled: true
+      su_stat_icon:
+        enabled: true
+      su_stat_image:
+        enabled: true
+      su_stat_link_style:
+        enabled: true
+      su_stat_stat:
+        enabled: true
+      su_stat_superhead:
         enabled: true
     stanford_wysiwyg:
       su_wysiwyg_text:

@@ -1,0 +1,19 @@
+uuid: ce1ad4b4-e6e8-4f79-a25e-a1dc9b74c0bb
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.su_stat_body
+field_name: su_stat_body
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

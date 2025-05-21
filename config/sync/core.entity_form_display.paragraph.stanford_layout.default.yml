@@ -1,0 +1,54 @@
+uuid: 07004b19-2ab8-4fc4-84f1-25489a01c443
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_layout.su_layout_bg_color
+    - paragraphs.paragraphs_type.stanford_layout
+  module:
+    - change_labels
+    - color_field
+    - field_formatter_class
+    - field_group
+third_party_settings:
+  field_group:
+    group_styles_behaviors:
+      children:
+        - su_layout_bg_color
+      label: Styles/Behaviors
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.stanford_layout.default
+targetEntityType: paragraph
+bundle: stanford_layout
+mode: default
+content:
+  layout_paragraphs_fields:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  su_layout_bg_color:
+    type: color_field_widget_box
+    weight: 2
+    region: content
+    settings:
+      default_colors: '#ac725e,#d06b64,#f83a22,#fa573c,#ff7537,#ffad46,#42d692,#16a765,#7bd148,#b3dc6c,#fbe983,#92e1c0,#9fe1e7,#9fc6e7,#4986e7,#9a9cff,#b99aff,#c2c2c2,#cabdbf,#cca6ac,#f691b2,#cd74e6,#a47ae2'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      change_labels:
+        field_label_overwrite: ''
+hidden:
+  created: true
+  status: true

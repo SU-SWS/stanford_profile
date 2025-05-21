@@ -1,0 +1,24 @@
+uuid: d40fc255-fa65-4b4a-aeaf-9fd92f3fb4fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_stat_body
+    - filter.format.plain_text
+    - paragraphs.paragraphs_type.stanford_stat_card
+  module:
+    - text
+id: paragraph.stanford_stat_card.su_stat_body
+field_name: su_stat_body
+entity_type: paragraph
+bundle: stanford_stat_card
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text_long

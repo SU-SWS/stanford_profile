@@ -1,0 +1,19 @@
+uuid: 82a5f210-d1c4-4961-a4c1-402affb8f527
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_stat_superhead
+    - paragraphs.paragraphs_type.stanford_stat_card
+id: paragraph.stanford_stat_card.su_stat_superhead
+field_name: su_stat_superhead
+entity_type: paragraph
+bundle: stanford_stat_card
+label: Superhead
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

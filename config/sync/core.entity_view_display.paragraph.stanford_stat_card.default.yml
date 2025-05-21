@@ -1,0 +1,104 @@
+uuid: 79cb444b-4f3f-4280-bcb1-9b1d696d617a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stanford_stat_card.su_stat_bg_color
+    - field.field.paragraph.stanford_stat_card.su_stat_body
+    - field.field.paragraph.stanford_stat_card.su_stat_button
+    - field.field.paragraph.stanford_stat_card.su_stat_centered
+    - field.field.paragraph.stanford_stat_card.su_stat_headline
+    - field.field.paragraph.stanford_stat_card.su_stat_icon
+    - field.field.paragraph.stanford_stat_card.su_stat_icon_color
+    - field.field.paragraph.stanford_stat_card.su_stat_image
+    - field.field.paragraph.stanford_stat_card.su_stat_link_style
+    - field.field.paragraph.stanford_stat_card.su_stat_stat
+    - field.field.paragraph.stanford_stat_card.su_stat_stat_color
+    - field.field.paragraph.stanford_stat_card.su_stat_superhead
+    - paragraphs.paragraphs_type.stanford_stat_card
+  module:
+    - empty_fields
+    - field_formatter_class
+    - field_label
+    - fontawesome
+    - link
+    - text
+id: paragraph.stanford_stat_card.default
+targetEntityType: paragraph
+bundle: stanford_stat_card
+mode: default
+content:
+  su_stat_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  su_stat_button:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 6
+    region: content
+  su_stat_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  su_stat_icon:
+    type: fontawesome_icon_formatter
+    label: hidden
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  su_stat_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  su_stat_stat:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  su_stat_superhead:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  search_api_excerpt: true
+  su_stat_bg_color: true
+  su_stat_centered: true
+  su_stat_icon_color: true
+  su_stat_link_style: true
+  su_stat_stat_color: true
