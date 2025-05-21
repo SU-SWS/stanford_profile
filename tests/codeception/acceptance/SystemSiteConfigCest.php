@@ -228,4 +228,37 @@ class SystemSiteConfigCest {
     $I->cantSee('UA-12456-12');
   }
 
+  /**
+   * @group unpublished-site
+   */
+  public function testUnpublishedSiteBanner(AcceptanceTester $I){
+    $org_term = $I->createEntity([
+      'vid' => 'site_owner_orgs',
+      'name' => $this->faker->words(2, TRUE),
+    ], 'taxonomy_term');
+
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/config/system/basic-site-settings');
+
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
+    $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
+
+    $I->selectOption('Site Type', 'Pre-Production');
+    $I->click('Save');
+    $I->canSee('Site Settings has been', '.messages-list');
+
+    $I->amOnPage('/');
+    $I->canSee('Under Construction');
+
+    $I->amOnPage('/admin/config/system/basic-site-settings');
+    $I->selectOption('Site Type', 'Research');
+    $I->click('Save');
+    $I->canSee('Site Settings has been', '.messages-list');
+
+    $I->amOnPage('/');
+    $I->cantSee('Under Construction');
+  }
+
 }

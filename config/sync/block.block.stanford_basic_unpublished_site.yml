@@ -1,0 +1,34 @@
+uuid: 3bb71f89-b140-4f8f-97ac-e389520c9339
+langcode: en
+status: true
+dependencies:
+  config:
+    - simple_block.simple_block.su_unpublished_site_banner
+  module:
+    - config_pages
+    - simple_block
+    - system
+  theme:
+    - stanford_basic
+id: stanford_basic_unpublished_site
+theme: stanford_basic
+region: content
+weight: -7
+provider: null
+plugin: 'simple_block:su_unpublished_site_banner'
+settings:
+  id: 'simple_block:su_unpublished_site_banner'
+  label: 'Unpublished Site Banner'
+  label_display: '0'
+  provider: simple_block
+visibility:
+  config_pages_values_access:
+    id: config_pages_values_access
+    negate: false
+    config_page_field: stanford_basic_site_settings|su_site_type|list_string
+    operator: '=='
+    condition_value: pre_production
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/user/*'

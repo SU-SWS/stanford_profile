@@ -78,3 +78,45 @@ function stanford_profile_post_update_header_links_block() {
     ],
   ])->save();
 }
+
+/**
+ * Create new header link block for the active theme.
+ */
+function stanford_profile_post_update_unpublished_site_banner() {
+  $theme = \Drupal::config('system.theme')->get('default');
+  if (in_array($theme, [
+    'stanford_basic',
+    'minimally_branded_subtheme',
+    'stanford_profile_admin_theme',
+  ])) {
+    return;
+  }
+  \Drupal::entityTypeManager()->getStorage('block')->create([
+    'id' => "{$theme}_unpublished_site",
+    'theme' => $theme,
+    'region' => 'content',
+    'plugin' => 'simple_block:su_unpublished_site_banner',
+    'weight' => -10,
+    'provider' => NULL,
+    'settings' => [
+      'id' => 'simple_block:su_unpublished_site_banner',
+      'label' => 'Unpublished Site Banner',
+      'label_display' => '0',
+      'provider' => 'simple_block',
+    ],
+    'visibility' => [
+      'config_pages_values_access' => [
+        'id' => 'config_pages_values_access',
+        'negate' => FALSE,
+        'config_page_field' => 'stanford_basic_site_settings|su_site_type|list_string',
+        'operator' => '==',
+        'condition_value' => 'pre_production',
+      ],
+      'request_path' => [
+        'id' => 'request_path',
+        'negate' => TRUE,
+        'pages' => '/user/*',
+      ],
+    ],
+  ])->save();
+}

@@ -69,6 +69,8 @@ class ExtLinkCest {
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
 
+    $I->runDrush('config:pages-set-field-value stanford_basic_site_settings su_site_type academic');
+
     $I->amOnPage('/admin/config/system/local-footer');
     $I->checkOption('#edit-su-footer-enabled-value');
     $I->click('#edit-group-primary-links summary');
