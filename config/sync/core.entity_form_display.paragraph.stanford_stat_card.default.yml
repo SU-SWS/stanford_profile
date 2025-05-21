@@ -54,13 +54,16 @@ bundle: stanford_stat_card
 mode: default
 content:
   su_stat_bg_color:
-    type: color_field_widget_default
+    type: color_field_widget_box
     weight: 7
     region: content
     settings:
-      placeholder_color: ''
-      placeholder_opacity: ''
-    third_party_settings: {  }
+      default_colors: '#2e2d29,#53565a,#544948,#8c1515,#620059,#007c92,#175e54,#e98300,#f4f4f4'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      change_labels:
+        field_label_overwrite: ''
   su_stat_body:
     type: text_textarea
     weight: 5
@@ -116,13 +119,16 @@ content:
       change_labels:
         field_label_overwrite: ''
   su_stat_icon_color:
-    type: color_field_widget_default
+    type: color_field_widget_box
     weight: 8
     region: content
     settings:
-      placeholder_color: ''
-      placeholder_opacity: ''
-    third_party_settings: {  }
+      default_colors: '#2e2d29,#8c1515,#620059,#007c92,#279989,#e98300,#ffffff'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      change_labels:
+        field_label_overwrite: ''
   su_stat_image:
     type: media_library_widget
     weight: 0
@@ -143,15 +149,26 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: 6
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: true
+      change_labels:
+        field_label_overwrite: ''
   su_stat_stat_color:
-    type: color_field_widget_default
+    type: color_field_widget_box
     weight: 9
     region: content
     settings:
-      placeholder_color: ''
-      placeholder_opacity: ''
-    third_party_settings: {  }
+      default_colors: '#2e2d29,#8c1515,#620059,#007c92,#279989,#e98300,#ffffff'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      change_labels:
+        field_label_overwrite: ''
   su_stat_superhead:
     type: string_textfield
     weight: 3

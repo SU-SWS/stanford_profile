@@ -15,6 +15,7 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_lists
     - paragraphs.paragraphs_type.stanford_media_caption
     - paragraphs.paragraphs_type.stanford_spacer
+    - paragraphs.paragraphs_type.stanford_stat_card
     - paragraphs.paragraphs_type.stanford_wysiwyg
   module:
     - entity_reference_revisions
@@ -43,6 +44,7 @@ settings:
       stanford_spacer: stanford_spacer
       stanford_filtered_lists: stanford_filtered_lists
       stanford_faq: stanford_faq
+      stanford_stat_card: stanford_stat_card
     negate: 0
     target_bundles_drag_drop:
       stanford_accordion:
@@ -86,6 +88,9 @@ settings:
         enabled: false
       stanford_spacer:
         weight: -14
+        enabled: true
+      stanford_stat_card:
+        weight: 31
         enabled: true
       stanford_wysiwyg:
         weight: -24
