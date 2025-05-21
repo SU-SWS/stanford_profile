@@ -104,5 +104,19 @@ function stanford_profile_post_update_unpublished_site_banner() {
       'label_display' => '0',
       'provider' => 'simple_block',
     ],
+    'visibility' => [
+      'config_pages_values_access' => [
+        'id' => 'config_pages_values_access',
+        'negate' => FALSE,
+        'config_page_field' => 'stanford_basic_site_settings|su_site_type|list_string',
+        'operator' => '==',
+        'condition_value' => 'pre_production',
+      ],
+      'request_path' => [
+        'id' => 'request_path',
+        'negate' => TRUE,
+        'pages' => '/user/*',
+      ],
+    ],
   ])->save();
 }
