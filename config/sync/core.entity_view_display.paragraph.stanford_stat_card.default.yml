@@ -17,12 +17,38 @@ dependencies:
     - field.field.paragraph.stanford_stat_card.su_stat_superhead
     - paragraphs.paragraphs_type.stanford_stat_card
   module:
+    - ds
     - empty_fields
     - field_formatter_class
     - field_label
     - fontawesome
     - link
+    - stanford_fields
     - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_stat_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      card_image:
+        - su_stat_image
+      card_super_headline:
+        - su_stat_icon
+        - su_stat_superhead
+      card_stat:
+        - su_stat_stat
+      card_headline:
+        - su_stat_headline
+      card_body:
+        - su_stat_body
+      card_link:
+        - su_stat_button
 id: paragraph.stanford_stat_card.default
 targetEntityType: paragraph
 bundle: stanford_stat_card
@@ -34,7 +60,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 5
-    region: content
+    region: card_body
   su_stat_button:
     type: link
     label: hidden
@@ -53,23 +79,31 @@ content:
         label_value: ''
         label_tag: ''
     weight: 6
-    region: content
+    region: card_link
   su_stat_headline:
-    type: string
+    type: entity_title_heading
     label: hidden
     settings:
-      link_to_entity: false
+      tag: h2
+      linked: false
     third_party_settings: {  }
     weight: 4
-    region: content
+    region: card_headline
   su_stat_icon:
     type: fontawesome_icon_formatter
     label: hidden
     settings:
       layers: false
-    third_party_settings: {  }
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: 'color-[paragraph:su_stat_icon_color:color]'
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 1
-    region: content
+    region: card_super_headline
   su_stat_image:
     type: entity_reference_entity_view
     label: hidden
@@ -78,15 +112,22 @@ content:
       link: false
     third_party_settings: {  }
     weight: 0
-    region: content
+    region: card_image
   su_stat_stat:
     type: string
     label: hidden
     settings:
       link_to_entity: false
-    third_party_settings: {  }
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: 'color-[paragraph:su_stat_stat_color:color]'
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 3
-    region: content
+    region: card_stat
   su_stat_superhead:
     type: string
     label: hidden
@@ -94,7 +135,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 2
-    region: content
+    region: card_super_headline
 hidden:
   search_api_excerpt: true
   su_stat_bg_color: true
