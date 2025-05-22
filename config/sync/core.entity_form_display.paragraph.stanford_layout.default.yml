@@ -3,31 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.stanford_layout.su_layout_bg_color
     - paragraphs.paragraphs_type.stanford_layout
-  module:
-    - change_labels
-    - color_field
-    - field_formatter_class
-    - field_group
-third_party_settings:
-  field_group:
-    group_styles_behaviors:
-      children:
-        - su_layout_bg_color
-      label: Styles/Behaviors
-      region: content
-      parent_name: ''
-      weight: 1
-      format_type: details
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        open: false
-        description: ''
-        required_fields: true
 id: paragraph.stanford_layout.default
 targetEntityType: paragraph
 bundle: stanford_layout
@@ -38,17 +14,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  su_layout_bg_color:
-    type: color_field_widget_box
-    weight: 2
-    region: content
-    settings:
-      default_colors: '#f4f4f4,#dad7cb,#007c92,#175e54,#620005,#e98300'
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-      change_labels:
-        field_label_overwrite: ''
 hidden:
   created: true
   status: true

@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.stanford_layout.su_layout_bg_color
     - paragraphs.paragraphs_type.stanford_layout
 id: paragraph.stanford_layout.default
 targetEntityType: paragraph
@@ -12,4 +11,3 @@ mode: default
 content: {  }
 hidden:
   search_api_excerpt: true
-  su_layout_bg_color: true
