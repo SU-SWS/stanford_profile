@@ -38,8 +38,9 @@ third_party_settings:
     regions:
       card_image:
         - su_stat_image
-      card_super_headline:
+      card_icon:
         - su_stat_icon
+      card_super_headline:
         - su_stat_superhead
       card_stat:
         - su_stat_stat
@@ -103,7 +104,7 @@ content:
         label_value: ''
         label_tag: ''
     weight: 1
-    region: card_super_headline
+    region: card_icon
   su_stat_image:
     type: entity_reference_entity_view
     label: hidden
