@@ -18,11 +18,11 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_stat_card
   module:
     - ds
+    - element_class_formatter
     - empty_fields
     - field_formatter_class
     - field_label
     - fontawesome
-    - link
     - stanford_fields
     - text
 third_party_settings:
@@ -63,9 +63,10 @@ content:
     weight: 5
     region: card_body
   su_stat_button:
-    type: link
+    type: link_class
     label: hidden
     settings:
+      class: su-button
       trim_length: null
       url_only: false
       url_plain: false
@@ -99,7 +100,7 @@ content:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: 'color-[paragraph:su_stat_icon_color:color]'
+        class: ''
       field_label:
         label_value: ''
         label_tag: ''
@@ -123,7 +124,7 @@ content:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: 'color-[paragraph:su_stat_stat_color:color]'
+        class: ''
       field_label:
         label_value: ''
         label_tag: ''
