@@ -256,26 +256,6 @@ third_party_settings:
                     class: ''
             weight: 1
             additional: {  }
-          f1884405-c35b-49c2-8f56-b9ff167ec455:
-            uuid: f1884405-c35b-49c2-8f56-b9ff167ec455
-            region: content
-            configuration:
-              id: 'field_block:node:stanford_person:su_person_source'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: link
-                label: above
-                settings:
-                  trim_length: 80
-                  url_only: false
-                  url_plain: false
-                  rel: ''
-                  target: ''
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
         third_party_settings: {  }
       -
         layout_id: stanford_person_body
