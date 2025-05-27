@@ -1,0 +1,23 @@
+uuid: cf1316ba-0a73-4d1b-9d9c-b5b29d3c3375
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_person_source
+    - node.type.stanford_person
+  module:
+    - link
+id: node.stanford_person.su_person_source
+field_name: su_person_source
+entity_type: node
+bundle: stanford_person
+label: 'External Source'
+description: "Add a URL to an external source for this person profile pages. By adding an external source URL, all teaser and list displays for this person will link to the external source instead of a page on this website.\r\nThis must be an external URL such as https://example.com."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link
