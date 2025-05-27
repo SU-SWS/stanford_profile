@@ -14,6 +14,8 @@ dependencies:
     - field.storage.node.su_opp_units
     - node.type.stanford_opportunity
     - taxonomy.vocabulary.opportunity_tag_filters
+    - taxonomy.vocabulary.opportunity_type
+    - taxonomy.vocabulary.opportunity_units
   module:
     - datetime
     - element_class_formatter
@@ -1153,9 +1155,12 @@ display:
               contributor: '0'
               site_manager: '0'
               site_editor: '0'
+              site_builder: '0'
+              site_developer: '0'
               layout_builder_user: '0'
               su_site_embedder: '0'
               decoupled_site_users: '0'
+              opportunity_editor: '0'
               site_reviewer: '0'
             reduce: false
           is_grouped: false
@@ -1502,10 +1507,140 @@ display:
           validate_options: {  }
           break_phrase: false
           not: false
-      filters: {  }
+      filters:
+        su_opp_course_code_value:
+          id: su_opp_course_code_value
+          table: node__su_opp_course_code
+          field: su_opp_course_code_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: 'not empty'
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        su_opp_type_target_id:
+          id: su_opp_type_target_id
+          table: node__su_opp_type
+          field: su_opp_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: 'not empty'
+          value: {  }
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: opportunity_type
+          type: textfield
+          hierarchy: false
+          limit: true
+          error_message: true
+        su_opp_units_target_id:
+          id: su_opp_units_target_id
+          table: node__su_opp_units
+          field: su_opp_units_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: 'not empty'
+          value: {  }
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: opportunity_units
+          type: textfield
+          hierarchy: false
+          limit: true
+          error_message: true
       filter_groups:
         operator: AND
-        groups: {  }
+        groups:
+          1: OR
       style:
         type: default
         options:
