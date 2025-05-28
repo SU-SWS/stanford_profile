@@ -399,16 +399,16 @@ class BasicPageCest {
       ->get('timezone.default') ?: @date_default_timezone_get();
   }
 
-  #[CodeceptionAttribute\Examples('f7ecde')]
-  #[CodeceptionAttribute\Examples('dad7cb')]
-  #[CodeceptionAttribute\Examples('f0e5ef')]
+  #[CodeceptionAttribute\Examples('f7ecde', NULL)]
+  #[CodeceptionAttribute\Examples('dad7cb', NULL)]
+  #[CodeceptionAttribute\Examples('f0e5ef', 'none')]
   #[CodeceptionAttribute\Group('layout-backgrounds')]
   public function testLayoutBackgrounds(AcceptanceTester $I, Example $example) {
     /** @var \Drupal\paragraphs\ParagraphInterface $layout */
     $layout = $I->createEntity(['type' => 'stanford_layout'], 'paragraph');
     $layout->setBehaviorSettings('layout_paragraphs', [
       'layout' => 'layout_paragraphs_1_column',
-      'config' => ['bg_color' => $example[0]],
+      'config' => ['bg_color' => $example[0], 'bottom_margin' => $example[1]],
     ]);
     $layout->save();
     $text = $this->faker->paragraph;
@@ -436,6 +436,9 @@ class BasicPageCest {
     $I->canSee($node->label(), 'h1');
     $I->canSee($text);
     $I->canSeeElement('.bg-' . $example[0] . ' .layout--layout-paragraphs-one-column');
+    if ($example[1]) {
+      $I->canSeeNumberOfElements('.bottom-margin-0 .layout--layout-paragraphs-one-column', 1);
+    }
   }
 
 }
