@@ -24,6 +24,7 @@ dependencies:
     - field_label
     - fontawesome
     - stanford_fields
+    - stanford_media
     - text
 third_party_settings:
   ds:
@@ -107,12 +108,21 @@ content:
     weight: 1
     region: card_icon
   su_stat_image:
-    type: entity_reference_entity_view
+    type: media_responsive_image_formatter
     label: hidden
     settings:
       view_mode: default
       link: false
-    third_party_settings: {  }
+      image_style: card_2_1
+      remove_alt: 0
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 0
     region: card_image
   su_stat_stat:
