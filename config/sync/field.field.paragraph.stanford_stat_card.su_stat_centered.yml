@@ -1,0 +1,21 @@
+uuid: 2f82d36e-c3c1-4fa8-a45f-f7f521f845fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_stat_centered
+    - paragraphs.paragraphs_type.stanford_stat_card
+id: paragraph.stanford_stat_card.su_stat_centered
+field_name: su_stat_centered
+entity_type: paragraph
+bundle: stanford_stat_card
+label: 'Centered Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

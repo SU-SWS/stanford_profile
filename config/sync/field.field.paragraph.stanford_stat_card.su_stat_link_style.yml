@@ -1,0 +1,23 @@
+uuid: 790c70d6-f4c4-44e4-85aa-4bf29ed63b18
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_stat_link_style
+    - paragraphs.paragraphs_type.stanford_stat_card
+  module:
+    - options
+id: paragraph.stanford_stat_card.su_stat_link_style
+field_name: su_stat_link_style
+entity_type: paragraph
+bundle: stanford_stat_card
+label: 'Link Style'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: button
+default_value_callback: ''
+settings: {  }
+field_type: list_string

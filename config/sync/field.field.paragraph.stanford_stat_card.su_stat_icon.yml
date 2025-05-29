@@ -1,0 +1,21 @@
+uuid: 35f16f3f-faaf-4058-963a-a9c3e208e0fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_stat_icon
+    - paragraphs.paragraphs_type.stanford_stat_card
+  module:
+    - fontawesome
+id: paragraph.stanford_stat_card.su_stat_icon
+field_name: su_stat_icon
+entity_type: paragraph
+bundle: stanford_stat_card
+label: Icon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: fontawesome_icon

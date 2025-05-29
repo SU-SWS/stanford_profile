@@ -1,0 +1,21 @@
+uuid: 207439e7-14c2-428b-90b9-5fe14fe7cea8
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.su_stat_headline
+field_name: su_stat_headline
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

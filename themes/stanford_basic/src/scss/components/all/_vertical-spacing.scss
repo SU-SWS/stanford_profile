@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 .content {
-  .paragraph-item {
+  .paragraph-item:not(.ptype-stanford-layout) {
     @include modular-spacing("margin-bottom", 5);
 
     &.ptype-stanford-accordion {

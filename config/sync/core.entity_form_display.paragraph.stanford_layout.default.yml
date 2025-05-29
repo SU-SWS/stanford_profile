@@ -1,0 +1,19 @@
+uuid: 07004b19-2ab8-4fc4-84f1-25489a01c443
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.stanford_layout
+id: paragraph.stanford_layout.default
+targetEntityType: paragraph
+bundle: stanford_layout
+mode: default
+content:
+  layout_paragraphs_fields:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
