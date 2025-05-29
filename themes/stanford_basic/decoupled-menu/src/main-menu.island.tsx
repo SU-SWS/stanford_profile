@@ -132,12 +132,21 @@ const SearchContainer = styled.div`
 export const MainMenu = ({}) => {
   useWebComponentEvents(islandName)
   const [menuItems, setMenuItems] = useState<MenuContentItem[]>(window.drupalSettings?.stanford_basic?.decoupledMenuItems || []);
+  const [utilityNavLinks, setNavLinks] = useState([]);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
   useOutsideClick(navRef, () => setMenuOpen(false));
 
   useEffect(() => {
+    const links = document.getElementsByClassName('utility-nav')
+    if (links) {
+      const utilityObj = Array.from(links).map(link => ({
+        href: link.attr("href"),
+        title: link.attr("text")
+      }))
+    }
+
     if (menuItems.length > 0) return;
     fetch(DRUPAL_DOMAIN + '/jsonapi/menu_items/main')
       .then(res => res.json())
@@ -194,6 +203,13 @@ export const MainMenu = ({}) => {
           </form>
 
         </SearchContainer>
+        {utilityNavLinks.length > 0 &&
+          <>
+            <ul>
+              {utilityNavLinks.map(link => <li><a href={link.href}>{link.title}</a></li>)}
+            </ul>
+          </>
+        }
         <TopList>
           {menuItems.map(item => <MenuItem key={item.id} {...item}/>)}
         </TopList>
@@ -241,7 +257,6 @@ const MenuItemContainer = styled.div<{ level?: number }>`
   justify-content: space-between;
   align-items: center;
   margin-right: ${props => props.level === 0 ? "32px" : "0"};
-
   width: 100%;
 
   @media (min-width: 992px) {
