@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Factory;
+use Codeception\Attribute as CodeceptionAttribute;
 
 /**
  * Class ListsCest.
@@ -22,6 +23,58 @@ class ListsCest {
    */
   public function __construct() {
     $this->faker = Factory::create();
+  }
+
+  /**
+   * Test "items to display" field numeric value.
+   */
+  #[CodeceptionAttribute\Group('D8CORE-8000')]
+  public function testItemsToDisplayNumeric(AcceptanceTester $I) {
+    /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_lists',
+      'su_list_headline' => $this->faker->words(3, TRUE),
+      'su_list_view' => [
+        'target_id' => 'stanford_news',
+        'display_id' => 'block_1',
+        'arguments' => '',
+        'items_to_display' => NULL,
+      ],
+    ], 'paragraph');
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->text(30),
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ]);
+    $paragraph->setParentEntity($node, 'su_page_components');
+    $paragraph->save();
+
+    $I->logInWithRole('administrator');
+    $I->amOnPage("/paragraphs_edit/node/{$node->id()}/paragraphs/{$paragraph->id()}/edit");
+    $I->canSeeInField('View', 'News');
+    $I->fillField('Items to display', $this->faker->word);
+    $I->click('Save');
+    $I->canSee('Items to display must be numeric');
+
+    $I->fillField('Items to display', $this->faker->numberBetween(1, 100) . $this->faker->word);
+    $I->click('Save');
+    $I->canSee('Items to display must be numeric');
+
+    $I->fillField('Items to display', $this->faker->word . $this->faker->numberBetween(1, 100));
+    $I->click('Save');
+    $I->canSee('Items to display must be numeric');
+
+    $I->fillField('Items to display', $this->faker->numberBetween(1, 100) . $this->faker->word . $this->faker->numberBetween(1, 100));
+    $I->click('Save');
+    $I->canSee('Items to display must be numeric');
+
+    $I->fillField('Items to display', $this->faker->numberBetween(1, 100));
+    $I->click('Save');
+    $I->cantSee('Items to display must be numeric');
+    $I->cantSee('error has been found');
   }
 
   /**
@@ -791,8 +844,8 @@ class ListsCest {
 
     $headings = $I->grabMultiple('.ptype-stanford-lists h3');
     $headings = array_map('trim', $headings);
-    $I->assertEquals($basic_page_entity->label(), $headings[0], $basic_page_entity->label()  . ' should be first.');
-    $I->assertEquals($second_basic_page_entity->label(), $headings[1], $second_basic_page_entity->label()  . ' should be second.');
+    $I->assertEquals($basic_page_entity->label(), $headings[0], $basic_page_entity->label() . ' should be first.');
+    $I->assertEquals($second_basic_page_entity->label(), $headings[1], $second_basic_page_entity->label() . ' should be second.');
 
     $I->cantSee($type_term->label());
 
@@ -824,8 +877,8 @@ class ListsCest {
     $headings = $I->grabMultiple('.ptype-stanford-lists h3');
     $headings = array_map('trim', $headings);
 
-    $I->assertEquals($basic_page_entity->label(), $headings[0], $basic_page_entity->label()  . ' should be first.');
-    $I->assertEquals($second_basic_page_entity->label(), $headings[1], $second_basic_page_entity->label()  . ' should be second.');
+    $I->assertEquals($basic_page_entity->label(), $headings[0], $basic_page_entity->label() . ' should be first.');
+    $I->assertEquals($second_basic_page_entity->label(), $headings[1], $second_basic_page_entity->label() . ' should be second.');
 
     $node = $this->getNodeWithList($I, [
       'target_id' => 'stanford_basic_pages',
@@ -841,8 +894,8 @@ class ListsCest {
     $headings = $I->grabMultiple('.ptype-stanford-lists h3');
     $headings = array_map('trim', $headings);
 
-    $I->assertEquals($second_basic_page_entity->label(), $headings[0], $second_basic_page_entity->label()  . ' should be first.');
-    $I->assertEquals($basic_page_entity->label(), $headings[1], $basic_page_entity->label()  . ' should be second.');
+    $I->assertEquals($second_basic_page_entity->label(), $headings[0], $second_basic_page_entity->label() . ' should be first.');
+    $I->assertEquals($basic_page_entity->label(), $headings[1], $basic_page_entity->label() . ' should be second.');
   }
 
   /**
