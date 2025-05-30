@@ -1,0 +1,26 @@
+uuid: f8beec91-d2b9-46e0-a910-91fee317170e
+langcode: en
+status: true
+dependencies: {  }
+name: paragraph_stanford_filtered_lists
+label: 'paragraph stanford_filtered_lists validation'
+entity_type: paragraph
+bundle: stanford_filtered_lists
+field_validation_rules:
+  cc3726e1-5d95-410b-b9c2-5b3fa168dcab:
+    uuid: cc3726e1-5d95-410b-b9c2-5b3fa168dcab
+    id: regex_constraint_rule
+    title: 'Numeric Items to Display'
+    weight: 1
+    field_name: su_filtered_list_view
+    column: items_to_display
+    error_message: ''
+    roles: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''
+    data:
+      pattern: '/^[0-9]+$/'
+      message: 'This value is not valid.'
+      validate_mode: direct

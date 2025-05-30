@@ -1,0 +1,26 @@
+uuid: 862758bf-1ff7-49d1-8120-c6b8a5d2604e
+langcode: en
+status: true
+dependencies: {  }
+name: paragraph_stanford_lists
+label: 'paragraph stanford_lists validation'
+entity_type: paragraph
+bundle: stanford_lists
+field_validation_rules:
+  06c375c9-0807-429a-98df-92bb4bc857d0:
+    uuid: 06c375c9-0807-429a-98df-92bb4bc857d0
+    id: regex_constraint_rule
+    title: 'Numeric Items to Display'
+    weight: 1
+    field_name: su_list_view
+    column: items_to_display
+    error_message: ''
+    roles: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''
+    data:
+      pattern: '/^[0-9]+$/'
+      message: 'Items to display must be numeric.'
+      validate_mode: direct
