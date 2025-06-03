@@ -31,6 +31,7 @@ dependencies:
     - node.type.stanford_opportunity
   module:
     - change_labels
+    - cshs
     - datetime
     - field_formatter_class
     - field_group
@@ -358,10 +359,17 @@ content:
       change_labels:
         field_label_overwrite: ''
   su_opp_sponsor:
-    type: options_select
+    type: cshs
     weight: 0
     region: content
-    settings: {  }
+    settings:
+      save_lineage: false
+      force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   su_opp_summary:
     type: text_textarea
@@ -391,16 +399,30 @@ content:
         hide_add_another: 0
         force_single_cardinality: 0
   su_opp_type:
-    type: options_select
+    type: cshs
     weight: 9
     region: content
-    settings: {  }
+    settings:
+      save_lineage: false
+      force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   su_opp_units:
-    type: options_select
+    type: cshs
     weight: 12
     region: content
-    settings: {  }
+    settings:
+      save_lineage: false
+      force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   title:
     type: string_textfield
