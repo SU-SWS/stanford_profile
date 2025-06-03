@@ -67,11 +67,11 @@ third_party_settings:
     group_taxonomy:
       children:
         - su_opp_type
+        - group_academic_info
         - su_opp_application_deadline
         - su_opp_tags
         - group_contact_information
         - su_opp_cta_url
-        - group_academic_info
       label: Sidebar
       region: content
       parent_name: ''
@@ -107,10 +107,12 @@ third_party_settings:
         required_fields: true
     group_page_content:
       children:
+        - su_opp_sponsor
         - su_opp_eligibility
         - su_opp_prerequisites
         - body
         - su_opp_components
+        - su_opp_learn_more
       label: 'Page Content'
       region: content
       parent_name: ''
@@ -129,7 +131,7 @@ third_party_settings:
         - su_opp_course_code
         - su_opp_units
       label: 'Academic Info'
-      region: hidden
+      region: content
       parent_name: group_taxonomy
       weight: 10
       format_type: details
@@ -148,7 +150,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 18
+    weight: 3
     region: content
     settings:
       rows: 4
@@ -201,7 +203,7 @@ content:
     third_party_settings: {  }
   su_opp_components:
     type: layout_paragraphs
-    weight: 20
+    weight: 4
     region: content
     settings:
       view_mode: default
@@ -271,7 +273,7 @@ content:
     third_party_settings: {  }
   su_opp_eligibility:
     type: text_textarea
-    weight: 16
+    weight: 1
     region: content
     settings:
       rows: 1
@@ -315,9 +317,17 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  su_opp_learn_more:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   su_opp_prerequisites:
     type: text_textarea
-    weight: 17
+    weight: 2
     region: content
     settings:
       rows: 1
@@ -347,6 +357,12 @@ content:
         maxlength_js_enforce: false
       change_labels:
         field_label_overwrite: ''
+  su_opp_sponsor:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   su_opp_summary:
     type: text_textarea
     weight: 4
@@ -401,9 +417,7 @@ hidden:
   publish_on: true
   scheduler_settings: true
   sticky: true
-  su_opp_learn_more: true
   su_opp_open_date: true
-  su_opp_sponsor: true
   su_opp_start_date: true
   su_opp_status: true
   uid: true
