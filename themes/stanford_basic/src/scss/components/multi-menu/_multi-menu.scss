@@ -88,7 +88,7 @@
           color(border--active, $su-multi-menu-light-colors),
           'left'
         );
-        @include padding(1.6rem 0 1.6rem 0);
+        @include padding(1.6rem 0 0 0);
         @include margin(0 0 0 0);
 
         color: color(link, $su-multi-menu-light-colors);
@@ -199,6 +199,7 @@
               transform: scaleX(1);
               visibility: visible;
               background-color: color(h--border, $su-multi-menu-colors);
+              bottom: -1.6rem;
 
               @include grid-media("lg") {
                 background-color: color(h--border, $su-multi-menu-light-colors);
@@ -242,6 +243,7 @@
               height: 6px;
               transform: scaleX(1);
               visibility: visible;
+              bottom: -1.6rem;
             }
           }
         }

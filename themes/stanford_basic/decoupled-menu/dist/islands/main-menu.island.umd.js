@@ -166,7 +166,7 @@
 
   @media (min-width: 992px) {
     color: #b1040e;
-    padding: ${({level:e})=>0!=e?"16px 0 16px 16px":"16px 0"};
+    padding: ${({level:e})=>0!=e?"16px 0 16px 16px":"16px 0 0 0"};
     border-bottom: ${({level:e,inTrail:t,isCurrent:n})=>0===e?n?"6px solid #2e2d29":t?"6px solid #b6b1a9":"6px solid transparent":""};
     border-left: ${({level:e,isCurrent:t})=>0!=e?t?"6px solid #b1040e":"6px solid transparent":"none"};
     margin-bottom: ${({level:e,inTrail:t,isCurrent:n})=>0===e?"-6px":""};

@@ -267,7 +267,7 @@ const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: numb
 
   @media (min-width: 992px) {
     color: #b1040e;
-    padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "16px 0"};
+    padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "16px 0 0 0"};
     border-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "6px solid #2e2d29" : (inTrail ? "6px solid #b6b1a9" : "6px solid transparent")) : ""};
     border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #b1040e" : "6px solid transparent") : "none"};
     margin-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "-6px" : (inTrail ? "-6px" : "-6px")) : ""};
