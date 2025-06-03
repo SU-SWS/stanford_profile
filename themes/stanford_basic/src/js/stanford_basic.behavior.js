@@ -63,6 +63,12 @@ export default {
           .wrap('<li class="su-mobile-site-search"></li>');
       }
 
+      // Check for empty navigation and add space.
+      const $hasNoNav = $('.region-menu', context);
+      if ($hasNoNav.children().length === 0) {
+        $hasNoNav.css( "padding-bottom", "16px" );
+      }
+
       // Add an outline class to the page-content region if local tasks are
       // available.
       var localTab = $('#block-stanford-basic-local-tasks', context);
