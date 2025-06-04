@@ -399,16 +399,21 @@ class BasicPageCest {
       ->get('timezone.default') ?: @date_default_timezone_get();
   }
 
-  #[CodeceptionAttribute\Examples('f7ecde', NULL)]
-  #[CodeceptionAttribute\Examples('dad7cb', NULL)]
-  #[CodeceptionAttribute\Examples('f0e5ef', 'none')]
+  #[CodeceptionAttribute\Examples('f7ecde', NULL, NULL, NULL)]
+  #[CodeceptionAttribute\Examples('dad7cb', NULL, 'none', 'none')]
+  #[CodeceptionAttribute\Examples('f0e5ef', 'none', NULL, 'more')]
   #[CodeceptionAttribute\Group('layout-backgrounds')]
   public function testLayoutBackgrounds(AcceptanceTester $I, Example $example) {
     /** @var \Drupal\paragraphs\ParagraphInterface $layout */
     $layout = $I->createEntity(['type' => 'stanford_layout'], 'paragraph');
     $layout->setBehaviorSettings('layout_paragraphs', [
       'layout' => 'layout_paragraphs_1_column',
-      'config' => ['bg_color' => $example[0], 'bottom_margin' => $example[1]],
+      'config' => [
+        'bg_color' => $example[0],
+        'bottom_margin' => $example[1],
+        'bottom_padding' => $example[2],
+        'top_padding' => $example[3],
+      ],
     ]);
     $layout->save();
     $text = $this->faker->paragraph;
@@ -436,8 +441,26 @@ class BasicPageCest {
     $I->canSee($node->label(), 'h1');
     $I->canSee($text);
     $I->canSeeElement('.bg-' . $example[0] . ' .layout--layout-paragraphs-one-column');
+
     if ($example[1]) {
-      $I->canSeeNumberOfElements('.bottom-margin-0 .layout--layout-paragraphs-one-column', 1);
+      $I->canSeeNumberOfElements('.bottom-margin-none .layout--layout-paragraphs-one-column', 1);
+    }
+    else {
+      $I->canSeeNumberOfElements('.bottom-margin-none', 0);
+    }
+
+    if ($example[2]) {
+      $I->canSeeNumberOfElements('.bottom-padding-none .layout--layout-paragraphs-one-column', 1);
+    }
+    else {
+      $I->canSeeNumberOfElements('.bottom-padding-none', 0);
+    }
+
+    if ($example[3]) {
+      $I->canSeeNumberOfElements(".top-padding-{$example[3]} .layout--layout-paragraphs-one-column", 1);
+    }
+    else {
+      $I->canSeeNumberOfElements(".top-padding-{$example[3]}", 0);
     }
   }
 
