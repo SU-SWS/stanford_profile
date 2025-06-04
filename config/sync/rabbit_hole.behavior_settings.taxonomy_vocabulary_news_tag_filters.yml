@@ -1,0 +1,14 @@
+uuid: bfa0685a-49cf-44be-b08b-b94d2ff01eb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.news_tag_filters
+id: taxonomy_vocabulary_news_tag_filters
+entity_type_id: taxonomy_vocabulary
+entity_id: news_tag_filters
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied
