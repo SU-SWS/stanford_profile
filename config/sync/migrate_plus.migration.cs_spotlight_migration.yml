@@ -1,0 +1,88 @@
+# Migration configuration for importing JSON content to Drupal 10
+# Place this file in your custom module's migrations directory
+# Example: modules/custom/my_module/migrations/migrate_plus.migration.json_articles.yml
+
+id: cs_spotlight_migration
+label: 'Import Articles from JSON'
+migration_group: custom_content
+migration_tags:
+  - JSON
+  - Articles
+  - Content
+
+# Source configuration
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  urls: 'https://cardinalservice-dev.sites-pro.stanford.edu/spotlight-exporter'
+  # If your JSON is an array at root level, use this:
+  item_selector: 0
+
+  # Define the fields available from the source
+  fields:
+    - name: title
+      label: 'Title'
+      selector: title
+    - name: body
+      label: 'Body Content'
+      selector: body
+    - name: uid
+      label: 'User ID'
+      selector: uid
+
+  # Set unique identifier for tracking migrated items
+  ids:
+    title:
+      type: string
+
+# Process configuration - map source fields to destination fields
+process:
+  # Basic content fields
+  type:
+    plugin: default_value
+    default_value: stanford_news
+
+  title: title
+
+  # Process HTML body content
+  'body/value':
+    plugin: callback
+    callable: html_entity_decode
+    source: body
+  'body/format':
+    plugin: default_value
+    default_value: full_html
+
+  # Handle user assignment
+  uid:
+    plugin: migration_lookup
+    migration: users
+    source: uid
+    no_stub: true
+
+  # Create a custom field for location if needed
+  # Uncomment and adjust if you have a location field on your content type
+  # field_location: su_opp_location
+
+  status:
+    plugin: default_value
+    default_value: 1
+
+  # Set creation and modification times
+  created:
+    plugin: callback
+    callable: strtotime
+  changed:
+    plugin: callback
+    callable: strtotime
+
+  # Set language
+  langcode:
+    plugin: default_value
+    default_value: en
+
+# Destination configuration
+destination:
+  plugin: 'entity:node'
+  default_bundle: 'stanford_news'

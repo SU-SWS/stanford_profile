@@ -19,37 +19,17 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls: 'https://jellobelt.com/test.json'
-  item_selector: /
+  item_selector: 0
   fields:
     -
       name: title
       label: 'Course Title'
-      selector: /title
-    -
-      name: body
-      label: 'Course Description'
-      selector: /body
-    -
-      name: uid
-      label: 'User ID'
-      selector: /uid
-    -
-      name: location
-      label: Location
-      selector: /su_opp_location
+      selector: title
   ids:
     title:
       type: string
 process:
   title: title
-  body/value: body
-  body/format:
-    plugin: default_value
-    default_value: full_html
-  uid:
-    plugin: default_value
-    default_value: 1
-  field_location: location
   status:
     plugin: default_value
     default_value: 1
