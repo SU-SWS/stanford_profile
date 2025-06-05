@@ -20,7 +20,6 @@ dependencies:
     - node.type.stanford_person
     - node.type.stanford_policy
     - node.type.stanford_publication
-    - taxonomy.vocabulary.basic_page_filters
     - taxonomy.vocabulary.basic_page_types
     - taxonomy.vocabulary.event_audience
     - taxonomy.vocabulary.media_tags
@@ -30,7 +29,6 @@ dependencies:
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
     - taxonomy.vocabulary.stanford_publication_topics
-    - taxonomy.vocabulary.su_news_tag_filters
     - taxonomy.vocabulary.su_shared_tags
   module:
     - book
@@ -97,7 +95,6 @@ permissions:
   - 'create stanford_person content'
   - 'create stanford_policy content'
   - 'create stanford_publication content'
-  - 'create terms in basic_page_filters'
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
   - 'create terms in media_tags'
@@ -107,7 +104,6 @@ permissions:
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'
   - 'create terms in stanford_publication_topics'
-  - 'create terms in su_news_tag_filters'
   - 'create terms in su_shared_tags'
   - 'create url aliases'
   - 'create video media'

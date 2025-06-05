@@ -112,22 +112,6 @@ third_party_settings:
                     class: su-news-title
             weight: 4
             additional: {  }
-          4adf1708-9b6f-4da5-a45b-4c232d2cd197:
-            uuid: 4adf1708-9b6f-4da5-a45b-4c232d2cd197
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_news:su_news_tags'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 6
-            additional: {  }
         third_party_settings: {  }
       -
         layout_id: stanford_news_byline

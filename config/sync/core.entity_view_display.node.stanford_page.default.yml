@@ -57,22 +57,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          63fb6683-e693-4328-87a1-7c39b87accde:
-            uuid: 63fb6683-e693-4328-87a1-7c39b87accde
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_page:su_basic_page_tags_filters'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column
