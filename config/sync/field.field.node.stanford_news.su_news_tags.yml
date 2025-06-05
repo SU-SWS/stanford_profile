@@ -1,0 +1,29 @@
+uuid: 8e6eb316-54b1-49a0-9db6-a8a6f2f40496
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_tags
+    - node.type.stanford_news
+    - taxonomy.vocabulary.news_tag_filters
+id: node.stanford_news.su_news_tags
+field_name: su_news_tags
+entity_type: node
+bundle: stanford_news
+label: "News Tags/Filters\t"
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      news_tag_filters: news_tag_filters
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

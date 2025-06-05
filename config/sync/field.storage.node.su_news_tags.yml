@@ -1,0 +1,20 @@
+uuid: 855c5b5e-8f73-46f9-9827-7cf1886d2d61
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.su_news_tags
+field_name: su_news_tags
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
