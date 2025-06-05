@@ -258,8 +258,8 @@ class NewsCest {
   public function testNewsTaxonomyAccess(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/structure/taxonomy');
-    $I->canSee('Opportunity');
-    $I->amOnPage('/admin/structure/taxonomy/manage/news_tag_filters/overview/add');
+    $I->canSee('Filters');
+    $I->amOnPage('/admin/structure/taxonomy/manage/su_news_tag_filters/add');
     $I->canSeeInField('Name', '');
   }
 
