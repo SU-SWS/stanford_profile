@@ -1,0 +1,29 @@
+uuid: 34e6e613-d839-4ca2-b5b9-51bc59ce2e7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_basic_page_tags_filters
+    - node.type.stanford_page
+    - taxonomy.vocabulary.basic_page_filters
+id: node.stanford_page.su_basic_page_tags_filters
+field_name: su_basic_page_tags_filters
+entity_type: node
+bundle: stanford_page
+label: 'Basic Page Tags/Filters'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      basic_page_filters: basic_page_filters
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
