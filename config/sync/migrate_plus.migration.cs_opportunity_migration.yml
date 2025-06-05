@@ -20,20 +20,20 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   urls: 'https://cardinalservice-dev.sites-pro.stanford.edu/opportunity-exporter'
-  item_selector: /
+  item_selector: 0
   fields:
     -
       name: title
       label: Title
-      selector: /title
+      selector: title
     -
       name: body
       label: body
-      selector: /body
+      selector: body
     -
-      name: uid
-      label: 'User ID'
-      selector: /uid
+      name: su_opp_sponsor
+      label: 'Opportunity Sponsor'
+      selector: su_opp_sponsor
   ids:
     title:
       type: string
@@ -43,7 +43,18 @@ process:
   body/format:
     plugin: default_value
     default_value: full_html
-  field_location: location
+  su_opp_sponsor:
+    -
+      plugin: skip_on_empty
+      source: su_opp_sponsor
+      method: process
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: opportunity_sponsor
+      value_key: name
+      ignore_case: true
   status:
     plugin: default_value
     default_value: 1
