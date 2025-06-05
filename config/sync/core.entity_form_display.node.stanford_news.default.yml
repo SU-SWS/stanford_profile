@@ -78,6 +78,23 @@ third_party_settings:
         id: ''
         description: ''
         required_fields: true
+    group_news_tags:
+      children:
+        - su_news_topics
+        - su_shared_tags
+        - su_news_tags
+      label: 'News Tags'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        required_fields: true
 id: node.stanford_news.default
 targetEntityType: node
 bundle: stanford_news
@@ -85,37 +102,37 @@ mode: default
 content:
   path:
     type: path
-    weight: 12
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 52
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 50
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   stanford_intranet__access:
     type: entity_access
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 5
+    weight: 6
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_metatags:
     type: metatag_firehose
-    weight: 10
+    weight: 8
     region: content
     settings:
       sidebar: true
@@ -146,7 +163,7 @@ content:
     third_party_settings: {  }
   su_news_components:
     type: layout_paragraphs
-    weight: 4
+    weight: 5
     region: content
     settings:
       view_mode: default
@@ -175,7 +192,7 @@ content:
     third_party_settings: {  }
   su_news_hide_social:
     type: boolean_checkbox
-    weight: 11
+    weight: 9
     region: content
     settings:
       display_label: true
@@ -196,13 +213,13 @@ content:
     third_party_settings: {  }
   su_news_tags:
     type: taxonomy_label_hierarchy
-    weight: 53
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   su_news_topics:
     type: cshs
-    weight: 3
+    weight: 4
     region: content
     settings:
       save_lineage: false
@@ -215,7 +232,7 @@ content:
     third_party_settings: {  }
   su_shared_tags:
     type: cshs
-    weight: 9
+    weight: 5
     region: content
     settings:
       save_lineage: false
