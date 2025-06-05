@@ -9,7 +9,6 @@ dependencies:
     - taxonomy.vocabulary.opportunity_tag_filters
   module:
     - better_exposed_filters
-    - datetime
     - node
     - stanford_fields
     - taxonomy
@@ -164,20 +163,21 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        su_opp_start_date_value:
-          id: su_opp_start_date_value
-          table: node__su_opp_start_date
-          field: su_opp_start_date_value
+        title:
+          id: title
+          table: node_field_data
+          field: title
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: datetime
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
           order: ASC
           expose:
             label: ''
             field_identifier: ''
           exposed: false
-          granularity: second
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
