@@ -21,9 +21,11 @@ dependencies:
     - node.type.stanford_person
     - node.type.stanford_policy
     - node.type.stanford_publication
+    - taxonomy.vocabulary.basic_page_tag_filters
     - taxonomy.vocabulary.basic_page_types
     - taxonomy.vocabulary.event_audience
     - taxonomy.vocabulary.media_tags
+    - taxonomy.vocabulary.news_tag_filters
     - taxonomy.vocabulary.opportunity_sponsor
     - taxonomy.vocabulary.opportunity_tag_filters
     - taxonomy.vocabulary.opportunity_type
@@ -119,9 +121,11 @@ permissions:
   - 'create stanford_person content'
   - 'create stanford_policy content'
   - 'create stanford_publication content'
+  - 'create terms in basic_page_tag_filters'
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
   - 'create terms in media_tags'
+  - 'create terms in news_tag_filters'
   - 'create terms in opportunity_sponsor'
   - 'create terms in opportunity_tag_filters'
   - 'create terms in opportunity_type'
