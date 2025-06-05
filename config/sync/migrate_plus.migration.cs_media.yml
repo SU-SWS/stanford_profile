@@ -1,11 +1,16 @@
-# Example 1: Import Images from JSON
+uuid: c3d6f07e-b64a-4a17-a7fa-ec1d055b5426
+langcode: en
+status: true
+dependencies: {  }
 id: cs_media
-label: 'Import Images from Cardinal Service via JSON'
+class: null
+field_plugin_method: null
+cck_plugin_method: null
 migration_tags:
   - Media
   - Images
 migration_group: cs_media_import
-
+label: 'Import Images from Cardinal Service via JSON'
 source:
   plugin: url
   data_fetcher_plugin: http
@@ -13,39 +18,34 @@ source:
   urls: 'https://example.com/api/images.json'
   item_selector: /
   fields:
-    - name: title
+    -
+      name: title
       selector: title
-    - name: image_url
+    -
+      name: image_url
       selector: image_url
-    - name: alt_text
+    -
+      name: alt_text
       selector: alt_text
-    - name: filename
+    -
+      name: filename
       selector: filename
   ids:
     image_url:
       type: string
-
 process:
-  # Set media bundle type
   bundle:
     plugin: default_value
-    default_value: image  # or your custom media type
-
+    default_value: image
   name: title
-
-  # Download and create file entity
-  'field_media_image/target_id':
+  field_media_image/target_id:
     plugin: download
     source:
       - image_url
       - filename
     destination: 'public://images/'
     file_exists: rename
-
-  # Set alt text
-  'field_media_image/alt': alt_text
-
-  # Set other fields
+  field_media_image/alt: alt_text
   status:
     plugin: default_value
     default_value: 1
@@ -58,230 +58,6 @@ process:
   changed:
     plugin: callback
     callable: time
-
 destination:
   plugin: 'entity:media'
-
----
-# Example 2: Import Files (PDFs, Documents, etc.)
-id: import_files_json
-label: 'Import Files from JSON'
-migration_tags:
-  - Media
-  - Files
-migration_group: media_import
-
-source:
-  plugin: url
-  data_fetcher_plugin: http
-  data_parser_plugin: json
-  urls: 'https://example.com/api/files.json'
-  item_selector: /
-  fields:
-    - name: title
-      selector: title
-    - name: file_url
-      selector: file_url
-    - name: description
-      selector: description
-    - name: filename
-      selector: filename
-  ids:
-    file_url:
-      type: string
-
-process:
-  bundle:
-    plugin: default_value
-    default_value: document  # or file, or your custom media type
-
-  name: title
-
-  # Download file
-  'field_media_document/target_id':
-    plugin: download
-    source:
-      - file_url
-      - filename
-    destination: 'public://documents/'
-    file_exists: rename
-
-  # Set description
-  'field_media_document/description': description
-
-  status:
-    plugin: default_value
-    default_value: 1
-  uid:
-    plugin: default_value
-    default_value: 1
-
-destination:
-  plugin: 'entity:media'
-
----
-# Example 3: Import Remote Videos (YouTube, Vimeo, etc.)
-id: import_videos_json
-label: 'Import Videos from JSON'
-migration_tags:
-  - Media
-  - Videos
-migration_group: media_import
-
-source:
-  plugin: url
-  data_fetcher_plugin: http
-  data_parser_plugin: json
-  urls: 'https://example.com/api/videos.json'
-  item_selector: /
-  fields:
-    - name: title
-      selector: title
-    - name: video_url
-      selector: video_url
-    - name: description
-      selector: description
-  ids:
-    video_url:
-      type: string
-
-process:
-  bundle:
-    plugin: default_value
-    default_value: remote_video  # Standard Drupal media type
-
-  name: title
-
-  # Set video URL (no download needed for remote videos)
-  'field_media_oembed_video/value': video_url
-
-  status:
-    plugin: default_value
-    default_value: 1
-  uid:
-    plugin: default_value
-    default_value: 1
-
-destination:
-  plugin: 'entity:media'
-
----
-# Example 4: Import from CSV with file paths
-id: import_media_csv
-label: 'Import Media from CSV'
-migration_tags:
-  - Media
-  - CSV
-migration_group: media_import
-
-source:
-  plugin: csv
-  path: 'sites/default/files/import/media.csv'
-  header_offset: 0
-  ids:
-    - file_path
-  fields:
-    - name: title
-      selector: title
-    - name: file_path
-      selector: file_path
-    - name: alt_text
-      selector: alt_text
-    - name: media_type
-      selector: media_type
-
-process:
-  bundle: media_type
-  name: title
-
-  # Handle different media types conditionally
-  'field_media_image/target_id':
-    plugin: skip_on_empty
-    source:
-      - '@_is_image'
-      - file_path
-    method: process
-      -
-        plugin: download
-        source:
-          - file_path
-        destination: 'public://images/'
-
-  'field_media_document/target_id':
-    plugin: skip_on_empty
-    source:
-      - '@_is_document'
-      - file_path
-    method: process
-      -
-        plugin: download
-        source:
-          - file_path
-        destination: 'public://documents/'
-
-  # Helper processes to determine media type
-  '_is_image':
-    plugin: callback
-    callable:
-      - '\Drupal\my_module\MediaMigrationHelpers'
-      - 'isImage'
-    source: file_path
-
-  '_is_document':
-    plugin: callback
-    callable:
-      - '\Drupal\my_module\MediaMigrationHelpers'
-      - 'isDocument'
-    source: file_path
-
-  'field_media_image/alt': alt_text
-
-destination:
-  plugin: 'entity:media'
-
----
-# Example 5: Simple Image Import with Minimal Fields
-id: simple_image_import
-label: 'Simple Image Import'
-migration_tags:
-  - Media
-migration_group: media_import
-
-source:
-  plugin: url
-  data_fetcher_plugin: http
-  data_parser_plugin: json
-  urls: 'https://jsonplaceholder.typicode.com/photos'
-  item_selector: /
-  fields:
-    - name: title
-      selector: title
-    - name: url
-      selector: url
-    - name: id
-      selector: id
-  ids:
-    id:
-      type: integer
-
-process:
-  bundle:
-    plugin: default_value
-    default_value: image
-
-  name: title
-
-  # Simple file download
-  'field_media_image/target_id':
-    plugin: download
-    source:
-      - url
-    destination: 'public://imported-images/'
-    file_exists: rename
-
-  status:
-    plugin: default_value
-    default_value: 1
-
-destination:
-  plugin: 'entity:media'
+migration_dependencies: null
