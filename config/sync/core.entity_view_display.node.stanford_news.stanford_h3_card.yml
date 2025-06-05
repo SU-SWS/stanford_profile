@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.stanford_news.su_news_hide_social
     - field.field.node.stanford_news.su_news_publishing_date
     - field.field.node.stanford_news.su_news_source
+    - field.field.node.stanford_news.su_news_tags
     - field.field.node.stanford_news.su_news_topics
     - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
@@ -163,4 +164,5 @@ hidden:
   su_news_byline: true
   su_news_components: true
   su_news_hide_social: true
+  su_news_tags: true
   su_shared_tags: true
