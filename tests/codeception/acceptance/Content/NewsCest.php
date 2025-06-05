@@ -255,4 +255,12 @@ class NewsCest {
     $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
   }
 
+  public function testNewsTaxonomyAccess(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/structure/taxonomy');
+    $I->canSee('Opportunity');
+    $I->amOnPage('/admin/structure/taxonomy/manage/news_tag_filters/overview/add');
+    $I->canSeeInField('Name', '');
+  }
+
 }
