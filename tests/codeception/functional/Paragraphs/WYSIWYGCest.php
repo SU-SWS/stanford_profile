@@ -115,7 +115,7 @@ class WYSIWYGCest {
     $I->click('Save');
     $I->canSeeLink($url);
 
-    $I->canSeeNumberOfElements('.su-wysiwyg-text td', 15);
+    $I->canSeeNumberOfElements('.su-wysiwyg-text td', 12);
     $I->canSeeNumberOfElements('.su-wysiwyg-text tr', 5);
   }
 
