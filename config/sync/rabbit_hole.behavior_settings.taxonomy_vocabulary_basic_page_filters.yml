@@ -1,0 +1,14 @@
+uuid: 58ed476a-7207-4767-88ca-53c6ed476b76
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.basic_page_filters
+id: taxonomy_vocabulary_basic_page_filters
+entity_type_id: taxonomy_vocabulary
+entity_id: basic_page_filters
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied
