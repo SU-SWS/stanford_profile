@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.stanford_page.su_page_description
     - field.field.node.stanford_page.su_page_image
     - field.field.node.stanford_page.su_shared_tags
+    - field.field.node.stanford_page.su_tags_basic_page
     - node.type.stanford_page
   module:
     - change_labels
@@ -26,6 +27,7 @@ dependencies:
     - paragraphs
     - path
     - scheduler
+    - stanford_fields
     - stanford_intranet
 third_party_settings:
   field_group:
@@ -34,6 +36,7 @@ third_party_settings:
         - su_page_image
         - su_page_description
         - su_basic_page_type
+        - su_tags_basic_page
         - su_shared_tags
       label: 'Page Metadata'
       region: content
@@ -60,7 +63,7 @@ content:
     third_party_settings: {  }
   field_menulink:
     type: menu_link_default
-    weight: 26
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -78,12 +81,12 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -115,7 +118,7 @@ content:
     third_party_settings: {  }
   su_metatags:
     type: metatag_firehose
-    weight: 11
+    weight: 12
     region: content
     settings:
       sidebar: true
@@ -148,7 +151,9 @@ content:
     weight: 7
     region: content
     settings:
+      view_mode: default
       preview_view_mode: default
+      form_display_mode: default
       nesting_depth: 0
       require_layouts: 1
       empty_message: ''
@@ -172,7 +177,7 @@ content:
     third_party_settings: {  }
   su_shared_tags:
     type: cshs
-    weight: 3
+    weight: 4
     region: content
     settings:
       save_lineage: false
@@ -182,6 +187,12 @@ content:
       hierarchy_depth: 0
       required_depth: 0
       none_label: '- Please select -'
+    third_party_settings: {  }
+  su_tags_basic_page:
+    type: taxonomy_label_hierarchy
+    weight: 3
+    region: content
+    settings: {  }
     third_party_settings: {  }
   title:
     type: string_textfield

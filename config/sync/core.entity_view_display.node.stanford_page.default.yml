@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.stanford_page.su_page_description
     - field.field.node.stanford_page.su_page_image
     - field.field.node.stanford_page.su_shared_tags
+    - field.field.node.stanford_page.su_tags_basic_page
     - node.type.stanford_page
     - system.menu.main
   module:
@@ -55,6 +56,22 @@ third_party_settings:
                   view_mode: default
                 third_party_settings: {  }
             weight: 0
+            additional: {  }
+          c8934bc2-bd9d-45b9-b495-7c1af51fe045:
+            uuid: c8934bc2-bd9d-45b9-b495-7c1af51fe045
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_page:su_tags_basic_page'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
@@ -312,6 +329,14 @@ content:
       link: false
     third_party_settings: {  }
     weight: 5
+    region: main
+  su_tags_basic_page:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
     region: main
 hidden:
   field_menulink: true

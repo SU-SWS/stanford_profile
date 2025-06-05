@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.stanford_page.su_page_description
     - field.field.node.stanford_page.su_page_image
     - field.field.node.stanford_page.su_shared_tags
+    - field.field.node.stanford_page.su_tags_basic_page
     - node.type.stanford_page
   module:
     - entity_reference_revisions
@@ -62,3 +63,4 @@ hidden:
   su_metatags: true
   su_page_image: true
   su_shared_tags: true
+  su_tags_basic_page: true
