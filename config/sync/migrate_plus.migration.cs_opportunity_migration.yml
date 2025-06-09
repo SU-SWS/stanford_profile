@@ -42,7 +42,7 @@ process:
   body/value: body
   body/format:
     plugin: default_value
-    default_value: full_html
+    default_value: stanford_html
   su_opp_sponsor:
     -
       plugin: skip_on_empty
