@@ -66,9 +66,9 @@ window.Drupal.behaviors.stanford_basic = {
       }
 
       // Check for empty navigation and add space.
-      var $hasNoNav = $('.region-menu', context);
-      if ($hasNoNav.children().length === 0) {
-        $hasNoNav.css("padding-bottom", "16px");
+      var $MenRegion = $('.region-menu', context);
+      if ($MenRegion.children().length === 0) {
+        $MenRegion.addClass("empty-menu");
       }
 
       // Add an outline class to the page-content region if local tasks are
