@@ -135,7 +135,7 @@ const UtilityNav = styled.ul`
   list-style: none;
   margin: 0;
   background: #2e2d29;
-  padding: 24px;
+  padding: 24px 45px;
   font-size: 18px;
 
   @media (min-width: 992px) {
@@ -144,6 +144,13 @@ const UtilityNav = styled.ul`
 
   a {
     color: #fff;
+    font-size: .9em;
+    font-weight: 400;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
   }
 `
 
