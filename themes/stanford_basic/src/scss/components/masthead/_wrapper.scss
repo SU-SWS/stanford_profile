@@ -28,9 +28,72 @@
 }
 
 .su-site-header-button {
+  display: none;
   margin-left: auto;
   margin-bottom: 20px;
   width: fit-content;
+  white-space: nowrap;
+
+  @include grid-media-min('lg') {
+    display: block;
+  }
+}
+
+.su-mobile-utility-button {
+  .su-site-header-button {
+    display: none;
+    padding: 0;
+
+    @include grid-media-max('md') {
+      display: inline-block;
+      position: absolute;
+      right: 0;
+
+      .su-button {
+        font-size: 0.8em;
+        padding: 7px 10px 8px;
+      }
+    }
+  }
+}
+
+.su-mobile-site-utility {
+  .su-site-header-links {
+    display: none;
+    @include grid-media-max('md') {
+      display: flex;
+    }
+  }
+}
+
+@include grid-media-max('md') {
+  .su-brand-bar__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .su-mobile-site-utility {
+    margin: 28px 20px;
+
+    .su-site-header-links {
+      align-items: flex-start;
+      margin-bottom: 20px;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0;
+      }
+
+      a {
+        color: $su-color-white;
+        font-size: 0.9em;
+        font-weight: $su-font-regular;
+      }
+    }
+  }
 }
 
 // Decanter overrides.
