@@ -39,9 +39,45 @@ source:
       label: 'Opportunity Open Submission'
       selector: su_opp_submissions_open
     -
-      name: su_opp_solo_url
-      label: 'Call to Action'
+      name: ctaUrl
+      label: 'Call to Action Link'
       selector: su_opp_solo_url
+    -
+      name: ctaTitle
+      label: 'Call to Action Title'
+      selector: su_opp_solo_url_1
+    -
+      name: su_opp_contact_email
+      label: 'Contact Email'
+      selector: su_opp_contact_email
+    -
+      name: su_opp_contact_name
+      label: 'Contact Email'
+      selector: su_opp_contact_name
+    -
+      name: su_opp_contact_phone
+      label: 'Contact Email'
+      selector: su_opp_contact_phone
+    -
+      name: su_opp_eligibility
+      label: 'Eligibility'
+      selector: su_opp_eligibility
+    -
+      name: learnMoreUrl
+      label: 'Learn more'
+      selector: su_opp_learn_more
+    -
+      name: learnMoreTitle
+      label: 'Learn more Title'
+      selector: su_opp_learn_more_1
+    -
+      name: su_opp_location
+      label: 'Location'
+      selector: su_opp_location
+    -
+      name: su_opp_summary
+      label: 'Location'
+      selector: su_opp_summary
   ids:
     title:
       type: string
@@ -64,7 +100,28 @@ process:
       value_key: name
       ignore_case: true
   su_opp_open_date: su_opp_submissions_open
-  su_opp_cta_url: su_opp_cta_url
+  su_opp_cta_url/uri: ctaUrl
+  su_opp_cta_url/title: ctaTitle
+  su_opp_contact_email: su_opp_contact_email
+  su_opp_contact_name:
+    -
+      plugin: skip_on_empty
+      source: su_opp_contact_name
+      method: process
+    -
+      plugin: get
+      source: su_opp_contact_name
+  su_opp_contact_phone: su_opp_contact_phone
+  su_opp_eligibility/value: su_opp_eligibility
+  su_opp_eligibility/format:
+    plugin: default_value
+    default_value: stanford_html
+  su_opp_learn_more/uri: learnMoreUrl
+  su_opp_learn_more/title: learnMoreTitle
+  su_opp_summary/value: su_opp_summary
+  su_opp_summary/format:
+    plugin: default_value
+    default_value: stanford_html
   status:
     plugin: default_value
     default_value: 1
