@@ -34,6 +34,14 @@ source:
       name: su_opp_sponsor
       label: 'Opportunity Sponsor'
       selector: su_opp_sponsor
+    -
+      name: su_opp_submissions_open
+      label: 'Opportunity Open Submission'
+      selector: su_opp_submissions_open
+    -
+      name: su_opp_solo_url
+      label: 'Call to Action'
+      selector: su_opp_solo_url
   ids:
     title:
       type: string
@@ -55,6 +63,8 @@ process:
       bundle: opportunity_sponsor
       value_key: name
       ignore_case: true
+  su_opp_open_date: su_opp_submissions_open
+  su_opp_cta_url: su_opp_cta_url
   status:
     plugin: default_value
     default_value: 1
