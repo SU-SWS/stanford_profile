@@ -63,6 +63,12 @@ export default {
           .wrap('<li class="su-mobile-site-search"></li>');
       }
 
+      // Check for empty navigation and add space.
+      const $MenRegion = $('.region-menu', context);
+      if ($MenRegion.children().length === 0) {
+        $MenRegion.addClass( "empty-menu" );
+      }
+
       // Move the utility button to the brand bar for mobile users
       const $utiltyBtn = $('.su-site-header-button', context);
       if ($utiltyBtn.length) {
