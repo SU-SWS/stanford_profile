@@ -71,6 +71,29 @@ window.Drupal.behaviors.stanford_basic = {
         $MenRegion.addClass("empty-menu");
       }
 
+      // Move the utility button to the brand bar for mobile users
+      var $utiltyBtn = $('.su-site-header-button', context);
+      if ($utiltyBtn.length) {
+        var $clonedutiltyBtn = $utiltyBtn.clone();
+        $clonedutiltyBtn.appendTo('.su-brand-bar__container', context).wrap('<div class="su-mobile-utility-button"></div>');
+      }
+
+      // Move the Utiltiy links to the mobile menu. Decoupled menu addressed in the decoupled files.
+      var $utility = $('.su-site-header-links', context);
+      if ($utility.length) {
+        var $clonedUtility = $utility.clone();
+        $clonedUtility.addClass('utility-navigation-mobile');
+        // for the Drupal menu
+        $clonedUtility.insertBefore('.su-masthead .su-multi-menu > ul li:eq(1)', context).wrap('<li class="su-mobile-site-utility"></li>');
+
+        // Change the utilty links to a list.
+        var list = $("<ul class='stanford-basic-site-settings su-site-header-links utility-navigation-mobile'></ul>");
+        $(".su-mobile-site-utility .su-site-header-links div").each(function () {
+          list.append("<li>" + $(this).html() + "</li>");
+        });
+        $(".su-mobile-site-utility .su-site-header-links").first().replaceWith(list);
+      }
+
       // Add an outline class to the page-content region if local tasks are
       // available.
       var localTab = $('#block-stanford-basic-local-tasks', context);

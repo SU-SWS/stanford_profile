@@ -129,15 +129,54 @@ const SearchContainer = styled.div`
   }
 `
 
+const UtilityNav = styled.ul`
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  background: #2e2d29;
+  padding: 24px 45px;
+  font-size: 18px;
+
+  @media (min-width: 992px) {
+    display: none;
+  }
+
+  a {
+    color: #fff;
+    font-size: .9em;
+    font-weight: 400;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+  }
+`
+
 export const MainMenu = ({}) => {
   useWebComponentEvents(islandName)
   const [menuItems, setMenuItems] = useState<MenuContentItem[]>(window.drupalSettings?.stanford_basic?.decoupledMenuItems || []);
+  const [utilityNavLinks, setNavLinks] = useState<Array<{href: string, title: string}>>([]);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
   useOutsideClick(navRef, () => setMenuOpen(false));
 
   useEffect(() => {
+    const utilityLinkNodes = document.evaluate('//*[contains(@class, \'su-site-header-links\')]//a', document, null, XPathResult.ANY_TYPE, null)
+    let linkNode = null
+    const utilityLinks = []
+    while ((linkNode = utilityLinkNodes.iterateNext())) {
+      utilityLinks.push({
+        href: linkNode.getAttribute('href'),
+        title: linkNode.innerText,
+      })
+    }
+    if (utilityLinks) {
+      setNavLinks(utilityLinks)
+    }
+
     if (menuItems.length > 0) return;
     fetch(DRUPAL_DOMAIN + '/jsonapi/menu_items/main')
       .then(res => res.json())
@@ -194,6 +233,13 @@ export const MainMenu = ({}) => {
           </form>
 
         </SearchContainer>
+        {utilityNavLinks.length > 0 &&
+          <UtilityNav>
+            {utilityNavLinks.map(link =>
+              <li><a href={link.href}>{link.title}</a></li>
+            )}
+          </UtilityNav>
+        }
         <TopList>
           {menuItems.map(item => <MenuItem key={item.id} {...item}/>)}
         </TopList>
@@ -241,7 +287,6 @@ const MenuItemContainer = styled.div<{ level?: number }>`
   justify-content: space-between;
   align-items: center;
   margin-right: ${props => props.level === 0 ? "32px" : "0"};
-
   width: 100%;
 
   @media (min-width: 992px) {
