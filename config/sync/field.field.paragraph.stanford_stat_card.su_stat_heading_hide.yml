@@ -1,0 +1,21 @@
+uuid: 5f0813b6-23de-4372-8c9d-154f6659c784
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_stat_heading_hide
+    - paragraphs.paragraphs_type.stanford_stat_card
+id: paragraph.stanford_stat_card.su_stat_heading_hide
+field_name: su_stat_heading_hide
+entity_type: paragraph
+bundle: stanford_stat_card
+label: 'Visually Hide Heading'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

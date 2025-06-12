@@ -45,6 +45,27 @@ function stanford_basic_preprocess_ds_entity_view(&$variables) {
   }
 }
 
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_field__su_stat_headline(&$variables) {
+  $entity = $variables['element']['#object'];
+  $heading_lvl = $entity->get('su_stat_headline_lvl')?->getString() ?: 'h2';
+  if (!str_contains($heading_lvl, '.')) {
+    $heading_lvl .= '.';
+  }
+  // Split the value like div.foo.bar into tag and classes. Then explode the
+  // classes next to build an array.
+  [$tag, $classes] = explode('.', $heading_lvl, 2);
+  $variables['items'][0]['content']['#tag'] = $tag;
+  $variables['items'][0]['content']['#attributes']['class'] = explode('.', $classes);
+
+  if (!!$entity->get('su_stat_heading_hide')?->getString()) {
+    $variables['items'][0]['content']['#attributes']['class'][] = 'visually-hidden';
+  }
+}
+
 /**
  * Implements hook_preprocess_HOOK().
  */
