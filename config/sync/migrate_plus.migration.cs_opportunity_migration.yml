@@ -118,6 +118,14 @@ process:
     default_value: stanford_html
   su_opp_learn_more/uri: learnMoreUrl
   su_opp_learn_more/title: learnMoreTitle
+  su_opp_tags:
+  -
+    plugin: entity_lookup
+    value_key: name
+    bundle_key: vid
+    entity_type: taxonomy_term
+    bundle: opportunity_tag_filters
+    source: su_opp_location
   su_opp_summary/value: su_opp_summary
   su_opp_summary/format:
     plugin: default_value
@@ -125,6 +133,11 @@ process:
   status:
     plugin: default_value
     default_value: 1
+  uid:
+    plugin: entity_lookup
+    source: dena
+    entity_type: user
+    value_key: name
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_opportunity

@@ -31,6 +31,18 @@ source:
       name: uid
       label: 'User ID'
       selector: uid
+    -
+      name: su_spotlight_student_name
+      label: 'Spotlight student name'
+      selector: su_spotlight_student_name
+    -
+      name: su_spotlight_context
+      label: 'Spotlight context'
+      selector: su_spotlight_context
+    -
+      name: su_spotlight_feature_image
+      label: 'Spotlight feature image'
+      selector: su_spotlight_feature_image
   ids:
     title:
       type: string
@@ -39,18 +51,24 @@ process:
     plugin: default_value
     default_value: stanford_news
   title: title
-  body/value:
-    plugin: callback
-    callable: html_entity_decode
-    source: body
-  body/format:
-    plugin: default_value
-    default_value: full_html
+  stanford_wysiwyg:
+    plugin: sub_process
+    process:
+      type: source_paragraph_type_field
+      su_wysiwyg_text:
+        plugin: iterator
+        source: body
+        process:
+          value: body
+          format:
+            plugin: default_value
+            default_value: stanford_html
   uid:
     plugin: migration_lookup
     migration: users
     source: uid
     no_stub: true
+  su_news_byline: su_spotlight_student_name
   status:
     plugin: default_value
     default_value: 1
