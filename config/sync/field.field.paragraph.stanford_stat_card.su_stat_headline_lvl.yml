@@ -1,23 +1,23 @@
-uuid: 790c70d6-f4c4-44e4-85aa-4bf29ed63b18
+uuid: 068b8abc-b051-4077-a594-cb781ca4e54f
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.su_stat_link_style
+    - field.storage.paragraph.su_stat_headline_lvl
     - paragraphs.paragraphs_type.stanford_stat_card
   module:
     - options
-id: paragraph.stanford_stat_card.su_stat_link_style
-field_name: su_stat_link_style
+id: paragraph.stanford_stat_card.su_stat_headline_lvl
+field_name: su_stat_headline_lvl
 entity_type: paragraph
 bundle: stanford_stat_card
-label: 'Link Style'
-description: 'Choose how you would like the link to display. '
+label: 'Headling Level'
+description: ''
 required: true
 translatable: false
 default_value:
   -
-    value: button
+    value: h2
 default_value_callback: ''
 settings: {  }
 field_type: list_string

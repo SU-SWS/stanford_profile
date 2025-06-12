@@ -7,7 +7,9 @@ dependencies:
     - field.field.paragraph.stanford_stat_card.su_stat_body
     - field.field.paragraph.stanford_stat_card.su_stat_button
     - field.field.paragraph.stanford_stat_card.su_stat_centered
+    - field.field.paragraph.stanford_stat_card.su_stat_heading_hide
     - field.field.paragraph.stanford_stat_card.su_stat_headline
+    - field.field.paragraph.stanford_stat_card.su_stat_headline_lvl
     - field.field.paragraph.stanford_stat_card.su_stat_icon
     - field.field.paragraph.stanford_stat_card.su_stat_icon_color
     - field.field.paragraph.stanford_stat_card.su_stat_image
@@ -30,6 +32,8 @@ third_party_settings:
   field_group:
     group_styles_behaviors:
       children:
+        - su_stat_headline_lvl
+        - su_stat_heading_hide
         - su_stat_bg_color
         - su_stat_icon_color
         - su_stat_stat_color
@@ -55,10 +59,10 @@ mode: default
 content:
   su_stat_bg_color:
     type: color_field_widget_box
-    weight: 7
+    weight: 14
     region: content
     settings:
-      default_colors: '#2e2d29,#53565a,#544948,#8c1515,#620059,#007c92,#175e54,#e98300,#f4f4f4,#e04f39'
+      default_colors: '#2e2d29,#53565a,#544948,#8c1515,#620059,#007c92,#175e54,#e98300,#e04f39,#f4f4f4'
     third_party_settings:
       field_formatter_class:
         class: ''
@@ -82,7 +86,14 @@ content:
     third_party_settings: {  }
   su_stat_centered:
     type: boolean_checkbox
-    weight: 10
+    weight: 17
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  su_stat_heading_hide:
+    type: boolean_checkbox
+    weight: 13
     region: content
     settings:
       display_label: true
@@ -94,6 +105,12 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  su_stat_headline_lvl:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
     third_party_settings: {  }
   su_stat_icon:
     type: fontawesome_icon_widget
@@ -120,10 +137,10 @@ content:
         field_label_overwrite: ''
   su_stat_icon_color:
     type: color_field_widget_box
-    weight: 8
+    weight: 15
     region: content
     settings:
-      default_colors: '#2e2d29,#8c1515,#620059,#007c92,#279989,#d1660f,#e04f39'
+      default_colors: '#8c1515,#620059,#007c92,#279989,#d1660f,#e04f39'
     third_party_settings:
       field_formatter_class:
         class: ''
@@ -138,7 +155,7 @@ content:
     third_party_settings: {  }
   su_stat_link_style:
     type: options_select
-    weight: 11
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -160,10 +177,10 @@ content:
         field_label_overwrite: ''
   su_stat_stat_color:
     type: color_field_widget_box
-    weight: 9
+    weight: 16
     region: content
     settings:
-      default_colors: '#2e2d29,#8c1515,#620059,#007c92,#279989,#d1660f,#e04f39'
+      default_colors: '#8c1515,#620059,#007c92,#279989,#d1660f,#e04f39'
     third_party_settings:
       field_formatter_class:
         class: ''

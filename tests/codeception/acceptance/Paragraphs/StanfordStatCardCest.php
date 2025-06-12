@@ -2,6 +2,7 @@
 
 use Faker\Factory;
 use Codeception\Attribute as CodeceptionAttribute;
+use Codeception\Example;
 
 /**
  * Codeception tests on stat card paragraph type.
@@ -22,8 +23,16 @@ class StanfordStatCardCest {
     $this->faker = Factory::create();
   }
 
+  #[CodeceptionAttribute\Examples(NULL, NULL, NULL, NULL, NULL)]
+  #[CodeceptionAttribute\Examples('53565a', '8c1515', '8c1515', 'h2', NULL)]
+  #[CodeceptionAttribute\Examples('8c1515', '620059', '620059', 'h3', NULL)]
+  #[CodeceptionAttribute\Examples('620059', '007c92', '007c92', 'h4', NULL)]
+  #[CodeceptionAttribute\Examples(NULL, '279989', '279989', 'div.splash-font', NULL)]
+  #[CodeceptionAttribute\Examples(NULL, 'd1660f', 'd1660f', 'h2', TRUE)]
+  #[CodeceptionAttribute\Examples(NULL, 'e04f39', 'e04f39', 'h3', TRUE)]
+  #[CodeceptionAttribute\Examples(NULL, 'e04f39', 'e04f39', 'h4', TRUE)]
   #[CodeceptionAttribute\Group('stat-card')]
-  public function testStatCard(AcceptanceTester $I) {
+  public function testStatCard(AcceptanceTester $I, Example $example) {
     /** @var \Drupal\paragraphs\ParagraphInterface $layout */
     $layout = $I->createEntity(['type' => 'stanford_layout'], 'paragraph');
     $layout->setBehaviorSettings('layout_paragraphs', [
@@ -33,6 +42,7 @@ class StanfordStatCardCest {
     $text = $this->faker->paragraph;
 
     $stat = substr($this->faker->word, 0, 5);
+    $headline = $this->faker->words(3, TRUE);
 
     /** @var \Drupal\paragraphs\ParagraphInterface $card */
     $card = $I->createEntity([
@@ -51,10 +61,14 @@ class StanfordStatCardCest {
           'power_transforms' => [],
         ]),
       ],
-      'su_stat_icon_color' => ['color' => '2e2d29'],
       'su_stat_stat' => $stat,
-      'su_stat_stat_color' => ['color' => '007c92'],
       'su_stat_superhead' => $this->faker->words(3, TRUE),
+      'su_stat_headline' => $headline,
+      'su_stat_bg_color' => ['color' => $example[0]],
+      'su_stat_icon_color' => ['color' => $example[1]],
+      'su_stat_stat_color' => ['color' => $example[2]],
+      'su_stat_headline_lvl' => $example[3],
+      'su_stat_heading_hide' => $example[4],
     ], 'paragraph');
 
     $card->setBehaviorSettings('layout_paragraphs', [
@@ -74,8 +88,39 @@ class StanfordStatCardCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($node->label(), 'h1');
     $I->canSee($text, '.su-stat-card');
-    $I->canSee($stat, '.stat-stat-007c92');
-    $I->canSeeElement('.stat-icon-2e2d29 .fa-drupal');
+
+    if ($example[0]) {
+      $I->canSee($headline, ".stat-bg-$example[0] .stat-card-headline");
+    }
+    else {
+      $I->canSee($headline, '.stat-card-headline');
+    }
+
+    if (!$example[0] && $example[1]) {
+      $I->canSeeElement(".stat-icon-$example[1] .fa-drupal");
+    }
+    else {
+      $I->canSeeElement('.stat-card-icon .fa-drupal');
+    }
+
+    if (!$example[0] && $example[2]) {
+      $I->canSee($stat, ".stat-stat-$example[2] .stat-card-stat");
+    }
+    else {
+      $I->canSee($stat, '.stat-card-stat');
+    }
+
+    if ($example[3]) {
+      [$tag] = explode('.', $example[3]);
+      $I->canSee($headline, $tag);
+    }
+    else {
+      $I->canSee($headline, 'h2');
+    }
+
+    if ($example[4]) {
+      $I->canSee($headline, '.visually-hidden');
+    }
   }
 
 }

@@ -1,0 +1,33 @@
+uuid: 35541251-bc0b-41c2-8b59-a8c414c58584
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.su_stat_headline_lvl
+field_name: su_stat_headline_lvl
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: h2
+      label: H2
+    -
+      value: h3
+      label: H3
+    -
+      value: h4
+      label: H4
+    -
+      value: div.su-font-splash
+      label: 'Splash Text'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
