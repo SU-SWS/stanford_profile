@@ -25,6 +25,7 @@ dependencies:
     - stanford_fields
     - taxonomy
     - user
+    - views_custom_cache_tag
     - views_infinite_scroll
     - views_taxonomy_term_name_depth
 id: stanford_opportunities
@@ -702,6 +703,10 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      cache:
+        type: custom_tag
+        options:
+          custom_tag: 'node:{{ raw_arguments.nid }}'
       sorts: {  }
       arguments:
         nid:
@@ -914,6 +919,7 @@ display:
           separator: ''
           hide_empty: true
       defaults:
+        cache: false
         title: false
         style: false
         row: false
@@ -1470,6 +1476,10 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      cache:
+        type: custom_tag
+        options:
+          custom_tag: 'node:{{ raw_arguments.nid }}'
       sorts: {  }
       arguments:
         nid:
@@ -1655,6 +1665,7 @@ display:
           separator: ''
           hide_empty: true
       defaults:
+        cache: false
         title: false
         style: false
         row: false
