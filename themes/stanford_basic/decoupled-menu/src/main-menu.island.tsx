@@ -66,7 +66,6 @@ const MobileMenuButton = styled.button`
   font-size: 1.6rem;
 
   &:hover, &:focus {
-    border-bottom: 2px solid #2e2d29;
     background: transparent;
     color: #2e2d29;
     box-shadow: none;

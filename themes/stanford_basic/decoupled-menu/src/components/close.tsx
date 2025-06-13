@@ -1,10 +1,11 @@
 const Close = ({...props}) => {
   return (
-    <svg width="22px" height="26px" viewBox="0 0 24 24" fill="none" aria-hidden={true} {...props}>
-      <g id="Menu / Close_SM">
-        <path id="Vector" d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </g>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+         stroke-width="1.5" stroke="currentColor" className="size-6">
+      <path stroke-linecap="round" stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12" />
     </svg>
+
   )
 }
 export default Close;
