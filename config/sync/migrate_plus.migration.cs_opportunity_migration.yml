@@ -132,8 +132,8 @@ process:
       delimiter: '|'
       source:
         - su_opp_location
-        - su_opp_open_to
-        - su_opp_placement_type
+#        - su_opp_open_to
+#        - su_opp_placement_type
     -
       plugin: explode
       delimiter: '|'
