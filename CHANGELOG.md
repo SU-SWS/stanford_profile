@@ -1,5 +1,31 @@
 # Stanford Profile
 
+11.8.0
+-------------------------------------------------------------------------------
+- D8CORE-8019: Move opportunity fields into a view for better styles (#924)
+- D8CORE-8063 Fix html structure on opportunity list items (#952)
+- D8CORE-8071 Added an "Imported" field populated by importers (#951)
+- D8CORE-8014 Fix hover state on mobile menu hamburger
+- D8CORE-8065 Move opportunity node page "Main content" anchor above page title
+- Adjust opportunity filters to use radio buttons (#950)
+- D8CORE-8036: RSS Feed For News (#936)
+- Added heading level selection for stat card paragraph (#949)
+- D8CORE-8045: Adding spacing to header bottom when there is no navigation menu. (#943)
+- Add fontawesome icon template to hide icon from screen readers
+- D8CORE-7987: Copy the utility links and buttons for the mobile display (#935)
+- D8CORE-8133: Changed sort for the opportunities view (#945)
+- Update stat card color choices
+- Updated editorially settings
+- Require headline in stat card (#940)
+- Added stat card icon
+- D8CORE-8000: Add validation for numeric "Items to display" on list paragraph (#937)
+- D8CORE-7843 D8CORE-8086 Add stat card and section background color options (#932)
+- D8CORE-8042 - External source field for person with page redirect (#933)
+- D8CORE-7736: Add unpublished site banner to all pages (#931)
+- D8CORE-7836: added past and upcoming filter and indicator to "Manage events" page. (#928)
+- D8CORE-8047: Manage Basic Pages content management view (#927)
+- D8CORE-6470: Update Event Importer help text (#929)
+
 11.7.0
 -------------------------------------------------------------------------------
 - D8CORE-8031 Force displaying both regions on opportunity  layout
