@@ -141,4 +141,6 @@ process:
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_opportunity
+  overwrite_properties:
+    - title
 migration_dependencies: null

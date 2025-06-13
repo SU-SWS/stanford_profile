@@ -51,18 +51,54 @@ process:
     plugin: default_value
     default_value: stanford_news
   title: title
-  stanford_wysiwyg:
-    plugin: sub_process
-    process:
-      type: source_paragraph_type_field
-      su_wysiwyg_text:
-        plugin: iterator
-        source: body
-        process:
-          value: body
-          format:
-            plugin: default_value
-            default_value: stanford_html
+  su_news_text_area:
+    -
+      plugin: skip_on_empty
+      source: body
+      method: process
+    -
+      plugin: entity_revision_generate
+      entity_type: paragraph
+      bundle_key: type
+      bundle: stanford_wysiwyg
+      value_key: su_wysiwyg_text
+      ignore_case: true
+      values:
+        su_wysiwyg_text/value: body
+        su_wysiwyg_text/format: constants/basic_html
+  text_area_target_id:
+    -
+      plugin: skip_on_empty
+      source: '@su_news_text_area'
+      method: process
+    -
+      plugin: extract
+      index:
+        - 0
+  text_area_target_revision_id:
+    -
+      plugin: skip_on_empty
+      source: '@su_news_text_area'
+      method: process
+    -
+      plugin: extract
+      index:
+        - 1
+  su_news_components:
+    -
+      plugin: skip_on_empty
+      source: '@text_area_target_id'
+      method: process
+    -
+      plugin: entity_revision_generate
+      entity_type: paragraph_row
+      bundle_key: type
+      bundle: su_news_rows
+      value_key: su_news_components
+      ignore_case: true
+      values:
+        su_news_components/target_id: '@text_area_target_id'
+        su_news_components/target_revision_id: '@text_area_target_revision_id'
   uid:
     plugin: migration_lookup
     migration: users
@@ -84,4 +120,6 @@ process:
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_news
+  overwrite_properties:
+    - title
 migration_dependencies: null
