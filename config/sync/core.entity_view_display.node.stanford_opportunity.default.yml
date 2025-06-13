@@ -48,6 +48,27 @@ third_party_settings:
         layout_settings:
           label: ''
           context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+        components:
+          7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5:
+            uuid: 7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5
+            region: main
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
           extra_classes: su-opp-title-wrapper
           centered: centered-container
           columns: flex-10-of-12
@@ -130,17 +151,6 @@ third_party_settings:
                     label_value: ''
                     label_tag: ''
             weight: 4
-            additional: {  }
-          7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5:
-            uuid: 7676c62a-39a7-4e6f-b32d-4d7dd5ddeab5
-            region: main
-            configuration:
-              id: jumpstart_ui_skipnav_main_anchor
-              label: 'Main content anchor target'
-              label_display: '0'
-              provider: jumpstart_ui
-              context_mapping: {  }
-            weight: 2
             additional: {  }
         third_party_settings: {  }
       -
