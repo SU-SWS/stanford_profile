@@ -52,11 +52,11 @@ source:
       selector: su_opp_contact_email
     -
       name: su_opp_contact_name
-      label: 'Contact Email'
+      label: 'Contact Name'
       selector: su_opp_contact_name
     -
       name: su_opp_contact_phone
-      label: 'Contact Email'
+      label: 'Contact Phone'
       selector: su_opp_contact_phone
     -
       name: su_opp_eligibility
@@ -133,7 +133,6 @@ process:
       source:
         - su_opp_location
 #        - su_opp_open_to
-#        - su_opp_placement_type
     -
       plugin: explode
       delimiter: '|'
@@ -151,11 +150,6 @@ process:
   status:
     plugin: default_value
     default_value: 1
-#  uid:
-#    plugin: entity_lookup
-#    source: ids
-#    entity_type: user
-#    value_key: uid
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_opportunity
