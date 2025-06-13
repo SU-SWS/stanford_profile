@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.storage.node.su_basic_page_type
     - field.storage.node.su_event_date_time
-    - field.storage.node.su_event_groups
     - field.storage.node.su_event_type
+    - field.storage.node.su_imported
     - field.storage.node.su_news_publishing_date
     - field.storage.node.su_news_topics
     - field.storage.node.su_opp_application_deadline
@@ -685,13 +685,13 @@ display:
           columns:
             views_bulk_operations_bulk_form: views_bulk_operations_bulk_form
             title: title
-            su_basic_page_type: su_basic_page_type
-            su_page_image: su_page_image
-            su_page_description: su_page_description
+            su_event_type: su_event_type
+            su_event_date_time: su_event_date_time
             name: name
             changed: changed
             revision_uid: revision_uid
             status: status
+            su_imported: su_imported
             operations: operations
           default: changed
           info:
@@ -707,20 +707,13 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            su_basic_page_type:
+            su_event_type:
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            su_page_image:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            su_page_description:
-              sortable: true
+            su_event_date_time:
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
@@ -748,6 +741,13 @@ display:
               empty_column: false
               responsive: ''
             status:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            su_imported:
               sortable: true
               default_sort_order: asc
               align: ''
@@ -2175,19 +2175,19 @@ display:
             format: custom
             format_custom_false: Unpublished
             format_custom_true: Published
-        su_event_groups:
-          id: su_event_groups
-          table: node__su_event_groups
-          field: su_event_groups
+        su_imported:
+          id: su_imported
+          table: node__su_imported
+          field: su_imported
           relationship: none
           group_type: group
-          admin_label: 'Imported Status'
+          admin_label: ''
           plugin_id: field
           label: Imported
           exclude: false
           alter:
-            alter_text: true
-            text: 'Yes'
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -2224,11 +2224,13 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
+          click_sort_column: value
+          type: boolean
           settings:
-            link: true
-          group_column: target_id
+            format: yes-no
+            format_custom_false: ''
+            format_custom_true: ''
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -2607,6 +2609,60 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
+        su_imported_value:
+          id: su_imported_value
+          table: node__su_imported
+          field: su_imported_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: All
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Imported
+            description: ''
+            use_operator: false
+            operator: su_imported_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: imported
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              administrator: '0'
+              anonymous: '0'
+              stanford_faculty: '0'
+              stanford_staff: '0'
+              stanford_student: '0'
+              contributor: '0'
+              site_manager: '0'
+              site_editor: '0'
+              layout_builder_user: '0'
+              su_site_embedder: '0'
+              decoupled_site_users: '0'
+              site_reviewer: '0'
+          is_grouped: true
+          group_info:
+            label: Imported
+            description: ''
+            identifier: imported
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: '1'
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Yes'
+                operator: '='
+                value: '1'
       filter_groups:
         operator: AND
         groups:
@@ -2646,8 +2702,8 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.su_event_date_time'
-        - 'config:field.storage.node.su_event_groups'
         - 'config:field.storage.node.su_event_type'
+        - 'config:field.storage.node.su_imported'
   manage_news:
     id: manage_news
     display_title: News
@@ -4869,6 +4925,71 @@ display:
             format: custom
             format_custom_false: Unpublished
             format_custom_true: Published
+        su_imported:
+          id: su_imported
+          table: node__su_imported
+          field: su_imported
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Imported
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: 'No'
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: yes-no
+            format_custom_false: ''
+            format_custom_true: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         operations:
           id: operations
           table: node
@@ -5183,6 +5304,60 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
+        su_imported_value:
+          id: su_imported_value
+          table: node__su_imported
+          field: su_imported_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: All
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Imported
+            description: ''
+            use_operator: false
+            operator: su_imported_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: imported
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              administrator: '0'
+              anonymous: '0'
+              stanford_faculty: '0'
+              stanford_staff: '0'
+              stanford_student: '0'
+              contributor: '0'
+              site_manager: '0'
+              site_editor: '0'
+              layout_builder_user: '0'
+              su_site_embedder: '0'
+              decoupled_site_users: '0'
+              site_reviewer: '0'
+          is_grouped: true
+          group_info:
+            label: Imported
+            description: ''
+            identifier: imported
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              3:
+                title: 'Yes'
+                operator: '='
+                value: '1'
       filter_groups:
         operator: AND
         groups:
@@ -5221,4 +5396,5 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.su_imported'
         - 'config:field.storage.node.su_person_type_group'

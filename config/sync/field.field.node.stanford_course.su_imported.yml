@@ -1,0 +1,21 @@
+uuid: b6684ae3-70fa-4933-98fc-f160aae2c475
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_imported
+    - node.type.stanford_course
+id: node.stanford_course.su_imported
+field_name: su_imported
+entity_type: node
+bundle: stanford_course
+label: Imported
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -292,6 +292,9 @@ process:
       source:
         - scholarly_interests_fulltext
         - scholarly_interests_tersetext
+  su_imported:
+    plugin: default_value
+    default_value: 1
 destination:
   plugin: 'entity:node'
   overwrite_properties:
@@ -304,6 +307,7 @@ destination:
     - photo_source
     - revision_timestamp
     - revision_translation_affected
+    - su_imported
     - su_person_academic_appt
     - su_person_admin_appts
     - su_person_education

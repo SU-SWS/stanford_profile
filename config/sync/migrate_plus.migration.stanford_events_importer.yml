@@ -180,6 +180,9 @@ process:
       bundle: event_audience
       value_key: name
       ignore_case: true
+  su_imported:
+    plugin: default_value
+    default_value: 1
 destination:
   plugin: 'entity:node'
   overwrite_properties:
@@ -198,6 +201,7 @@ destination:
     - su_event_sponsor
     - su_event_telephone
     - su_event_type
+    - su_imported
     - title
     - type
 migration_dependencies: {  }

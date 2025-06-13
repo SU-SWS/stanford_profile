@@ -495,6 +495,9 @@ process:
           ignore_case: true
           source: name
   su_event_ext_image: photo_url
+  su_imported:
+    plugin: default_value
+    default_value: 1
 destination:
   plugin: 'entity:node'
   overwrite_properties:
@@ -521,6 +524,7 @@ destination:
     - su_event_source/uri
     - su_event_subject
     - su_event_type
+    - su_imported
     - tags
     - tags_chunked
     - title

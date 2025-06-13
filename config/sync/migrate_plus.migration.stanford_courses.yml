@@ -162,6 +162,9 @@ process:
           bundle: su_course_tags
           value_key: name
           source: '0'
+  su_imported:
+    plugin: default_value
+    default_value: 1
 destination:
   plugin: 'entity:node'
 migration_dependencies: {  }

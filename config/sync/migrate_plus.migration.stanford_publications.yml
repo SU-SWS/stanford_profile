@@ -300,6 +300,9 @@ process:
         name: '@title'
         field_media_image/target_id: '@image_file'
         field_media_image/alt: constants/alt
+  su_imported:
+    plugin: default_value
+    default_value: 1
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_publication
@@ -309,6 +312,7 @@ destination:
     - citation_url
     - image_file
     - skip
+    - su_imported
     - su_publication_citation
     - su_publication_components
     - su_publication_cta/title
