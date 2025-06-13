@@ -1,0 +1,21 @@
+uuid: b01839be-6985-4c75-bdcb-9685aef0779e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_imported
+    - node.type.stanford_publication
+id: node.stanford_publication.su_imported
+field_name: su_imported
+entity_type: node
+bundle: stanford_publication
+label: Imported
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

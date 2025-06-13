@@ -1,9 +1,16 @@
 uuid: 38b52676-06f2-47f1-a5d1-0d8813ec01b6
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - field_permissions
 id: administrator
 label: Administrator
 weight: -10
 is_admin: true
-permissions: {  }
+permissions:
+  - 'create su_imported'
+  - 'edit own su_imported'
+  - 'edit su_imported'
+  - 'view own su_imported'
+  - 'view su_imported'
