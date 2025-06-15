@@ -19,8 +19,10 @@
  * @see field.html.twig
  */
 #}
+{#
 <div{{ attributes }}>
   {%- for item in items -%}
     {{ item.content }}{{ not loop.last ? ', ' }}
   {%- endfor -%}
 </div>
+#}
