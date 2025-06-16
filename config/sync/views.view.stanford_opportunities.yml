@@ -1409,7 +1409,7 @@ display:
           delta_reversed: false
           delta_first_last: false
           multi_type: separator
-          separator: ', '
+          separator: '<br/>'
           field_api_classes: false
         su_opp_units:
           id: su_opp_units
@@ -1422,7 +1422,7 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: true
+            alter_text: false
             text: 'Units: {{ su_opp_units }}'
             make_link: false
             path: ''
@@ -1449,7 +1449,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: su-opp-units
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -1457,7 +1457,7 @@ display:
           element_wrapper_class: ''
           element_default_classes: false
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
@@ -1534,7 +1534,8 @@ display:
         type: fields
         options:
           default_field_elements: true
-          inline: {  }
+          inline:
+            su_opp_units: su_opp_units
           separator: ''
           hide_empty: true
       defaults:
