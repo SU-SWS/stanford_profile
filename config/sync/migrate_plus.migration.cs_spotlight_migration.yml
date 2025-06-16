@@ -18,6 +18,9 @@ source:
   data_parser_plugin: json
   urls: 'https://cardinalservice-dev.sites-pro.stanford.edu/spotlight-exporter'
   item_selector: 0
+  constants:
+    basic_html: stanford_html
+    minimal_html: stanford_minimal_html
   fields:
     -
       name: title
@@ -65,7 +68,7 @@ process:
       ignore_case: true
       values:
         su_wysiwyg_text/value: body
-        su_wysiwyg_text/format: constants/stanford_html
+        su_wysiwyg_text/format: constants/basic_html
   uid:
     plugin: migration_lookup
     migration: users
