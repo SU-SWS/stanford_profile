@@ -72,8 +72,8 @@ third_party_settings:
           label: ''
           context_mapping: {  }
           extra_classes: su-opp-title-wrapper
-          centered: centered-container
-          columns: flex-10-of-12
+          centered: null
+          columns: flex-8-of-12
         components:
           acc52799-de6b-4b52-9592-f7d669610431:
             uuid: acc52799-de6b-4b52-9592-f7d669610431
@@ -429,19 +429,9 @@ third_party_settings:
               exposed: {  }
             weight: 11
             additional: {  }
-        third_party_settings: {  }
-      -
-        layout_id: jumpstart_ui_one_column
-        layout_settings:
-          label: ''
-          context_mapping: {  }
-          extra_classes: 'su-opp-paragraphs su-page-components'
-          centered: centered-container
-          columns: default
-        components:
           75a9a36d-20ef-46a1-aaf6-3fbe4814ec5b:
             uuid: 75a9a36d-20ef-46a1-aaf6-3fbe4814ec5b
-            region: main
+            region: left
             configuration:
               id: 'field_block:node:stanford_opportunity:su_opp_components'
               label: Paragraphs
@@ -459,11 +449,11 @@ third_party_settings:
                   empty_fields:
                     handler: ''
                   field_formatter_class:
-                    class: ''
+                    class: 'su-opp-paragraphs su-page-components'
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 0
+            weight: 6
             additional: {  }
         third_party_settings: {  }
   layout_library:
