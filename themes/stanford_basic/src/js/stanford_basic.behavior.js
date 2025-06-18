@@ -94,13 +94,6 @@ export default {
           $(".su-mobile-site-utility .su-site-header-links").first().replaceWith(list);
       }
 
-      // Add a class if the opportunity node has an icon.
-      const $suOppIcon = $('.opportunity .node-stanford-opportunity-su-opp-icon', context);
-      if ($suOppIcon.length) {
-        $('.su-opp-title-wrapper .main-region').addClass('has-icon');
-      }
-
-
       // Add an outline class to the page-content region if local tasks are
       // available.
       var localTab = $('#block-stanford-basic-local-tasks', context);
