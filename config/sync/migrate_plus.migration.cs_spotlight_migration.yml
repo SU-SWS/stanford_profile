@@ -8,10 +8,9 @@ field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - JSON
-  - Articles
-  - Content
+  - Spotlight
 migration_group: custom_content
-label: 'Import Articles from JSON'
+label: 'Import Spotlight from JSON'
 source:
   plugin: url
   data_fetcher_plugin: http
@@ -30,10 +29,6 @@ source:
       name: body
       label: 'Body Content'
       selector: body
-    -
-      name: uid
-      label: 'User ID'
-      selector: uid
     -
       name: su_spotlight_person_type
       label: 'Spotlight person type'
@@ -69,13 +64,7 @@ process:
       values:
         su_wysiwyg_text/value: body
         su_wysiwyg_text/format: constants/basic_html
-  uid:
-    plugin: migration_lookup
-    migration: users
-    source: uid
-    no_stub: true
   su_news_byline: su_spotlight_student_name
-  su_news_topics: su_spotlight_person_type
   status:
     plugin: default_value
     default_value: 1
