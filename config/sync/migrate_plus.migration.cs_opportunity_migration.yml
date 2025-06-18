@@ -75,14 +75,6 @@ source:
       label: 'Location'
       selector: su_opp_location
     -
-      name: su_opp_open_to
-      label: 'Open to'
-      selector: su_opp_open_to
-    -
-      name: su_opp_placement_type
-      label: 'Placement Type'
-      selector: su_opp_placement_type
-    -
       name: su_opp_summary
       label: 'Summary'
       selector: su_opp_summary
@@ -132,7 +124,6 @@ process:
       delimiter: '|'
       source:
         - su_opp_location
-#        - su_opp_open_to
     -
       plugin: explode
       delimiter: '|'
