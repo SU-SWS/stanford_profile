@@ -35,6 +35,10 @@ source:
       label: 'User ID'
       selector: uid
     -
+      name: su_spotlight_person_type
+      label: 'Spotlight person type'
+      selector: su_spotlight_person_type
+    -
       name: su_spotlight_student_name
       label: 'Spotlight student name'
       selector: su_spotlight_student_name
@@ -42,10 +46,6 @@ source:
       name: su_spotlight_context
       label: 'Spotlight context'
       selector: su_spotlight_context
-    -
-      name: su_spotlight_feature_image
-      label: 'Spotlight feature image'
-      selector: su_spotlight_feature_image
   ids:
     title:
       type: string
@@ -75,6 +75,7 @@ process:
     source: uid
     no_stub: true
   su_news_byline: su_spotlight_student_name
+  su_news_topics: su_spotlight_person_type
   status:
     plugin: default_value
     default_value: 1
