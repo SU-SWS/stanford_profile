@@ -703,6 +703,11 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 1
       cache:
         type: custom_tag
         options:
@@ -921,6 +926,7 @@ display:
       defaults:
         cache: false
         title: false
+        pager: false
         style: false
         row: false
         fields: false
@@ -940,7 +946,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1325,12 +1330,12 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: su-opp-type
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: ''
+          element_wrapper_class: su-opp-type
           element_default_classes: false
           empty: ''
           hide_empty: false
@@ -1388,12 +1393,12 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: su-opp-course-code
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: ''
+          element_wrapper_class: 'su-opp-course-code su-margin-bottom-1'
           element_default_classes: false
           empty: ''
           hide_empty: false
@@ -1411,7 +1416,7 @@ display:
           delta_reversed: false
           delta_first_last: false
           multi_type: separator
-          separator: ', '
+          separator: '<br/>'
           field_api_classes: false
         su_opp_units:
           id: su_opp_units
@@ -1421,10 +1426,10 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: ''
+          label: Units
           exclude: false
           alter:
-            alter_text: true
+            alter_text: false
             text: 'Units: {{ su_opp_units }}'
             make_link: false
             path: ''
@@ -1450,16 +1455,16 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: ''
-          element_class: su-opp-units
+          element_type: span
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
-          element_wrapper_class: ''
+          element_wrapper_class: su-opp-units
           element_default_classes: false
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
@@ -1474,8 +1479,13 @@ display:
           delta_reversed: false
           delta_first_last: false
           multi_type: separator
-          separator: ', '
+          separator: ', <br/>'
           field_api_classes: false
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 1
       cache:
         type: custom_tag
         options:
@@ -1649,8 +1659,7 @@ display:
           error_message: true
       filter_groups:
         operator: AND
-        groups:
-          1: OR
+        groups: {  }
       style:
         type: default
         options:
@@ -1667,6 +1676,8 @@ display:
       defaults:
         cache: false
         title: false
+        pager: false
+        group_by: true
         style: false
         row: false
         fields: false
@@ -1684,7 +1695,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
