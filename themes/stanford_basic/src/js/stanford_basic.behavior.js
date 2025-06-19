@@ -127,15 +127,6 @@ export default {
       }
 
       /**
-      * Add class to the opportunity node.
-      */
-      const $oppnode = $('.section-opportunities .node', context);
-      if ($oppnode.length) {
-        const $oppsection = $('section.opportunity');
-        $oppsection.addClass('node--stanford-opportunity');
-      }
-
-      /**
        * Open and close on the filter menu: News, People, Publications, Events
        */
       $('.topics__collapsable-menu', context).click(function () {

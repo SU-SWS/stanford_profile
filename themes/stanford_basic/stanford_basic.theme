@@ -145,6 +145,12 @@ function stanford_basic_preprocess_node(&$variables) {
       $variables['attributes']['class'][] = 'add-more-space-to-top';
     }
   }
+  if (
+    $variables['page'] &&
+    $node_bundle == 'stanford_opportunity'
+  ) {
+    $variables['attributes']['class'][] = 'node--stanford-opportunity';
+  }
 }
 
 /**
