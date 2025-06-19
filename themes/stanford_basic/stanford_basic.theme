@@ -149,7 +149,7 @@ function stanford_basic_preprocess_node(&$variables) {
     $variables['page'] &&
     $node_bundle == 'stanford_opportunity'
   ) {
-    $variables['attributes']['class'][] = 'node--stanford-opportunity';
+    $variables['attributes']['class'][] = Html::cleanCssIdentifier('node--' . $node_bundle);
   }
 }
 
