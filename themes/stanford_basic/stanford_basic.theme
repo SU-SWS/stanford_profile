@@ -145,10 +145,11 @@ function stanford_basic_preprocess_node(&$variables) {
       $variables['attributes']['class'][] = 'add-more-space-to-top';
     }
   }
-  if (
-    $variables['page']
-  ) {
-    $variables['attributes']['class'][] = Html::cleanCssIdentifier('node--' . $node_bundle);
+
+  $variables['attributes']['class'][] = Html::cleanCssIdentifier('node--' . $node_bundle);
+
+  if ($variables['page']) {
+    $variables['attributes']['class'][] = Html::cleanCssIdentifier('node-page--' . $node_bundle);
   }
 }
 
