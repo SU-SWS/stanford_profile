@@ -24,7 +24,7 @@
 {# Masthead Section. #}
 {%- block block_header -%}
   {%- if page.header or page.search or page.menu -%}
-    <header class="su-masthead su-masthead--right">
+    <header class="su-masthead su-masthead--right" data-nosnippet>
 
       {% block block_skiplinks %}
         <a href="#main-content" class="visually-hidden focusable su-skipnav su-skipnav--content">
@@ -80,7 +80,7 @@
 
 {# Footer Section #}
 {%- block block_footer -%}
-  <footer id="footer">
+  <footer id="footer" data-nosnippet>
     {{ page.footer }}
     {%- include template_global_footer with { modifier_class : global_footer_variant }  -%}
   </footer>
