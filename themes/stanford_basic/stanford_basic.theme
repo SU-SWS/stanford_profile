@@ -146,8 +146,7 @@ function stanford_basic_preprocess_node(&$variables) {
     }
   }
   if (
-    $variables['page'] &&
-    $node_bundle == 'stanford_opportunity'
+    $variables['page']
   ) {
     $variables['attributes']['class'][] = Html::cleanCssIdentifier('node--' . $node_bundle);
   }
