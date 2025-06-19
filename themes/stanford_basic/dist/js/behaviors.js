@@ -126,6 +126,15 @@ window.Drupal.behaviors.stanford_basic = {
       }
 
       /**
+      * Add class to the opportunity node.
+      */
+      var $oppnode = $('.section-opportunities .node', context);
+      if ($oppnode.length) {
+        var $oppsection = $('section.opportunity');
+        $oppsection.addClass('node--stanford-opportunity');
+      }
+
+      /**
        * Open and close on the filter menu: News, People, Publications, Events
        */
       $('.topics__collapsable-menu', context).click(function () {
