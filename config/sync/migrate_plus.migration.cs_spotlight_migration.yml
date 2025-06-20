@@ -68,6 +68,4 @@ process:
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_news
-  overwrite_properties:
-    - fake-field-to-make-others-read-write
 migration_dependencies: null
