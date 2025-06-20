@@ -22,6 +22,10 @@ source:
     minimal_html: stanford_minimal_html
   fields:
     -
+      name: uuid
+      label: UUID
+      selector: uuid
+    -
       name: title
       label: Title
       selector: title
@@ -34,12 +38,13 @@ source:
       label: 'Spotlight student name'
       selector: su_spotlight_student_name
   ids:
-    title:
-      type: string
+    uuid:
+      type: integer
 process:
   type:
     plugin: default_value
     default_value: stanford_news
+  ids: ids
   title: title
   su_news_components:
     -
@@ -60,18 +65,9 @@ process:
   status:
     plugin: default_value
     default_value: 1
-  created:
-    plugin: callback
-    callable: strtotime
-  changed:
-    plugin: callback
-    callable: strtotime
-  langcode:
-    plugin: default_value
-    default_value: en
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_news
   overwrite_properties:
-    - title
+    - fake-field-to-make-others-read-write
 migration_dependencies: null

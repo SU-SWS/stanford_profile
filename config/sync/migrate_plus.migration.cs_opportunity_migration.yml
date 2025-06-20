@@ -23,6 +23,10 @@ source:
   item_selector: 0
   fields:
     -
+      name: uuid
+      label: UUID
+      selector: uuid
+    -
       name: title
       label: Title
       selector: title
@@ -34,10 +38,6 @@ source:
       name: su_opp_sponsor
       label: 'Opportunity Sponsor'
       selector: su_opp_sponsor
-    -
-      name: su_opp_submissions_open
-      label: 'Opportunity Open Submission'
-      selector: su_opp_submissions_open
     -
       name: ctaUrl
       label: 'Call to Action Link'
@@ -78,6 +78,10 @@ source:
       name: su_opp_summary
       label: 'Summary'
       selector: su_opp_summary
+    -
+      name: su_opp_deadline_time
+      label: 'Summary'
+      selector: su_opp_deadline_time
   ids:
     title:
       type: string
@@ -99,18 +103,10 @@ process:
       bundle: opportunity_sponsor
       value_key: name
       ignore_case: true
-  su_opp_open_date: su_opp_submissions_open
   su_opp_cta_url/uri: ctaUrl
   su_opp_cta_url/title: ctaTitle
   su_opp_contact_email: su_opp_contact_email
-  su_opp_contact_name:
-    -
-      plugin: skip_on_empty
-      source: su_opp_contact_name
-      method: process
-    -
-      plugin: get
-      source: su_opp_contact_name
+  su_opp_contact_name: su_opp_contact_name
   su_opp_contact_phone: su_opp_contact_phone
   su_opp_eligibility/value: su_opp_eligibility
   su_opp_eligibility/format:
@@ -119,14 +115,6 @@ process:
   su_opp_learn_more/uri: learnMoreUrl
   su_opp_learn_more/title: learnMoreTitle
   su_opp_tags:
-    -
-      plugin: concat
-      delimiter: '|'
-      source:
-        - su_opp_location
-    -
-      plugin: explode
-      delimiter: '|'
     -
       plugin: entity_lookup
       value_key: name
@@ -145,5 +133,5 @@ destination:
   plugin: 'entity:node'
   default_bundle: stanford_opportunity
   overwrite_properties:
-    - title
+    - fake-field-to-make-others-read-write
 migration_dependencies: null
