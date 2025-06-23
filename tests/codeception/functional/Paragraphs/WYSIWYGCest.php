@@ -107,7 +107,7 @@ class WYSIWYGCest {
     $I->click('[data-cke-tooltip-text="Link (Ctrl+K)"]');
     $url = $this->faker->url;
     $I->fillField('Link URL', $url);
-    $I->click('[data-cke-tooltip-text="Save"]');
+    $I->click('Insert');
     $I->clickWithLeftButton('.ui-dialog-title');
 
     $I->click('Save', '.ui-dialog-buttonpane');
