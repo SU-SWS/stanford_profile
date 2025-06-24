@@ -82,8 +82,12 @@ source:
       name: su_opp_deadline_time
       label: 'Summary'
       selector: su_opp_deadline_time
+    -
+      name: su_opp_type
+      label: 'Summary'
+      selector: su_opp_type
   ids:
-    title:
+    uuid:
       type: string
 process:
   title: title
@@ -105,6 +109,18 @@ process:
       ignore_case: true
   su_opp_cta_url/uri: ctaUrl
   su_opp_cta_url/title: ctaTitle
+  su_opp_type:
+    -
+      plugin: skip_on_empty
+      source: su_opp_type
+      method: process
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: opportunity_type
+      value_key: name
+      ignore_case: true
   su_opp_contact_email: su_opp_contact_email
   su_opp_contact_name: su_opp_contact_name
   su_opp_contact_phone: su_opp_contact_phone
@@ -131,5 +147,7 @@ process:
     default_value: 1
 destination:
   plugin: 'entity:node'
+  overwrite_properties:
+    - title
   default_bundle: stanford_opportunity
 migration_dependencies: null

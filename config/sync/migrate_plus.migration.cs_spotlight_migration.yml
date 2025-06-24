@@ -40,11 +40,11 @@ source:
   ids:
     uuid:
       type: integer
+      max_length: 128
 process:
   type:
     plugin: default_value
     default_value: stanford_news
-  ids: ids
   title: title
   su_news_components:
     -
