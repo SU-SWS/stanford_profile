@@ -113,6 +113,9 @@ process:
       source: su_opp_sponsor
       method: process
     -
+      plugin: explode
+      delimiter: ','
+    -
       plugin: entity_generate
       entity_type: taxonomy_term
       bundle_key: vid
