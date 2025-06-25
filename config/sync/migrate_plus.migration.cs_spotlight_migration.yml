@@ -37,19 +37,36 @@ source:
       name: su_spotlight_student_name
       label: 'Spotlight student name'
       selector: su_spotlight_student_name
+    -
+      name: su_spotlight_context
+      label: 'Spotlight context and caption'
+      selector: su_spotlight_context
   ids:
     uuid:
-      type: integer
-      max_length: 128
+      type: string
 process:
   type:
     plugin: default_value
     default_value: stanford_news
   title: title
+  temp_body:
+    plugin: default_value
+    source: body
+    default_value: ''
+  temp_context:
+    plugin: default_value
+    source: su_spotlight_context
+    default_value: ''
+  temp_field:
+    plugin: concat
+    source:
+      - '@temp_body'
+      - '@temp_context'
+    delimiter: " - "
   su_news_components:
     -
       plugin: skip_on_empty
-      source: body
+      source: '@temp_field'
       method: process
     -
       plugin: entity_revision_generate
@@ -59,7 +76,7 @@ process:
       value_key: su_wysiwyg_text
       ignore_case: true
       values:
-        su_wysiwyg_text/value: body
+        su_wysiwyg_text/value: '@temp_field'
         su_wysiwyg_text/format: constants/basic_html
   su_news_byline: su_spotlight_student_name
   status:
