@@ -45,6 +45,10 @@ source:
       name: su_spotlight_context
       label: 'Spotlight context and caption'
       selector: su_spotlight_context
+    -
+      name: su_spotlight_person_type
+      label: 'Spotlight person type'
+      selector: su_spotlight_person_type
   ids:
     uuid:
       type: string
@@ -66,7 +70,7 @@ process:
     source:
       - '@temp_body'
       - '@temp_context'
-    delimiter: " - "
+    delimiter: "\n\n\n"
   su_news_components:
     -
       plugin: skip_on_empty
@@ -82,6 +86,18 @@ process:
       values:
         su_wysiwyg_text/value: '@temp_field'
         su_wysiwyg_text/format: constants/basic_html
+  su_news_topics:
+    -
+      plugin: skip_on_empty
+      source: su_spotlight_person_type
+      method: process
+    -
+      plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: stanford_news_topics
+      value_key: name
+      ignore_case: true
   su_news_byline:
     -
       plugin: callback
