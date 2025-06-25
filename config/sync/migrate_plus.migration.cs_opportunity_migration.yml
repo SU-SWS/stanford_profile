@@ -124,19 +124,16 @@ process:
       ignore_case: true
   su_opp_cta_url/uri: ctaUrl
   su_opp_cta_url/title: ctaTitle
-#  su_opp_tags_quarter_offered_0_target_id__level_0: su_opp_open_to
   su_opp_type:
     -
-      plugin: null_coalesce
-      source:
-        - su_opp_open_to
-        - su_opp_placement_type
-      method: process
-    -
       plugin: skip_on_empty
+      source: su_opp_type
       method: process
     -
-      plugin: entity_lookup
+      plugin: explode
+      delimiter: ','
+    -
+      plugin: entity_generate
       entity_type: taxonomy_term
       bundle_key: vid
       bundle: opportunity_type
@@ -151,14 +148,21 @@ process:
     default_value: stanford_minimal_html
   su_opp_learn_more/uri: learnMoreUrl
   su_opp_learn_more/title: learnMoreTitle
-  su_opp_tags:
-    -
-      plugin: entity_lookup
-      value_key: name
-      bundle_key: vid
-      bundle: opportunity_tag_filters
-      entity_type: taxonomy_term
-      ignore_case: true
+#  su_opp_tags:
+#    -
+#      plugin: sub_process
+#      source:
+#        - su_opp_open_to
+#        - su_opp_placement_type
+#      process:
+#        target_id:
+#          plugin: entity_lookup
+#          value_key: name
+#          bundle_key: vid
+#          bundle: opportunity_tag_filters
+#          entity_type: taxonomy_term
+#          ignore_case: true
+#          source: '@current_value'
   su_opp_summary/value: su_opp_summary
   su_opp_summary/format:
     plugin: default_value
