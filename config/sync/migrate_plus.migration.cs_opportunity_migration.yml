@@ -21,6 +21,7 @@ source:
   data_parser_plugin: json
   urls: 'https://cardinalservice-dev.sites-pro.stanford.edu/opportunity-exporter'
   item_selector: 0
+  track_changes: true
   fields:
     -
       name: uuid
@@ -151,29 +152,24 @@ process:
   su_opp_tags:
     -
       plugin: skip_on_empty
-      source: su_opp_location
+      source: su_opp_tags
       method: process
     -
-      plugin: entity_lookup
+      plugin: explode
+      delimiter: ', '
+    -
+      plugin: str_replace
+      search: '/,$/'
+      replace: ''
+      regex: true
+    -
+      plugin: entity_generate
+      access_check: false
       value_key: name
+      bundle_key: vid
       bundle: opportunity_tag_filters
       entity_type: taxonomy_term
       ignore_case: true
-  #  su_opp_tags:
-  #    -
-  #      plugin: sub_process
-  #      source:
-  #        - su_opp_open_to
-  #        - su_opp_placement_type
-  #      process:
-  #        target_id:
-  #          plugin: entity_lookup
-  #          value_key: name
-  #          bundle_key: vid
-  #          bundle: opportunity_tag_filters
-  #          entity_type: taxonomy_term
-  #          ignore_case: true
-  #          source: '@current_value'
   su_opp_summary/value: su_opp_summary
   su_opp_summary/format:
     plugin: default_value
@@ -183,7 +179,5 @@ process:
     default_value: 1
 destination:
   plugin: 'entity:node'
-  overwrite_properties:
-    - title
   default_bundle: stanford_opportunity
 migration_dependencies: null
