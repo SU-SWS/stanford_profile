@@ -163,7 +163,7 @@ process:
       replace: ''
       regex: true
     -
-      plugin: entity_generate
+      plugin: entity_lookup
       access_check: false
       value_key: name
       bundle_key: vid
@@ -180,4 +180,6 @@ process:
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_opportunity
+  overwrite_properties:
+    - title
 migration_dependencies: null
