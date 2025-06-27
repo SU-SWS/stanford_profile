@@ -155,6 +155,9 @@ process:
       source: su_opp_tags
       method: process
     -
+      plugin: callback
+      callable: html_entity_decode
+    -
       plugin: explode
       delimiter: ', '
     -
@@ -163,7 +166,7 @@ process:
       replace: ''
       regex: true
     -
-      plugin: entity_lookup
+      plugin: entity_generate
       access_check: false
       value_key: name
       bundle_key: vid
@@ -180,6 +183,4 @@ process:
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_opportunity
-  overwrite_properties:
-    - title
 migration_dependencies: null
