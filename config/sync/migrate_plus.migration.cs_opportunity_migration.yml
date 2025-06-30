@@ -96,6 +96,14 @@ source:
       label: 'Service Theme'
       selector: su_opp_service_theme
     -
+      name: su_opp_image
+      label: 'Image'
+      selector: su_opp_image
+    -
+      name: su_opp_course_code
+      label: 'Course codes'
+      selector: su_opp_course_code
+    -
       name: su_opp_tags
       label: 'Opp tags'
       selector: nothing
@@ -125,6 +133,21 @@ process:
       ignore_case: true
   su_opp_cta_url/uri: ctaUrl
   su_opp_cta_url/title: ctaTitle
+  su_opp_image:
+    -
+      plugin: skip_on_empty
+      source: su_opp_image
+      method: process
+    -
+      plugin: str_replace
+      search: '/^(.+)\.([^.]+)$/'
+      replace: '$1_0.$2'
+      regex: true
+    -
+      plugin: entity_lookup
+      entity_type: media
+      value_key: name
+      ignore_case: true
   su_opp_type:
     -
       plugin: skip_on_empty
@@ -143,6 +166,7 @@ process:
   su_opp_contact_email: su_opp_contact_email
   su_opp_contact_name: su_opp_contact_name
   su_opp_contact_phone: su_opp_contact_phone
+  su_opp_course_code: su_opp_course_code
   su_opp_eligibility/value: su_opp_eligibility
   su_opp_eligibility/format:
     plugin: default_value
