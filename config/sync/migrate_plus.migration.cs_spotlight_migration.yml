@@ -15,8 +15,9 @@ source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://cardinalservice-dev.sites-pro.stanford.edu/spotlight-exporter'
+  urls: 'https://cardinalservice.stanford.edu/spotlight-exporter'
   item_selector: 0
+  track_changes: true
   constants:
     basic_html: stanford_html
     minimal_html: stanford_minimal_html
@@ -110,6 +111,4 @@ process:
 destination:
   plugin: 'entity:node'
   default_bundle: stanford_news
-  overwrite_properties:
-    - title
 migration_dependencies: null
