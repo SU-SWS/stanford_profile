@@ -1,6 +1,6 @@
 _core:
   default_config_hash: 6Ka3T1c-CIjEUO1Q64NXKksLthkMhj53a6zy4RJBtkc
-verbose: 0
+verbose: false
 types:
   block_content: {  }
   config_pages: {  }
@@ -22,7 +22,6 @@ types:
   menu_link_content: {  }
   paragraph: {  }
 types_translation_lock: {  }
-types_js_lock: {  }
 form_op_lock:
   block_content:
     mode: 0
@@ -80,3 +79,4 @@ form_op_lock:
   paragraph:
     mode: 0
     values: {  }
+timeout: 900
