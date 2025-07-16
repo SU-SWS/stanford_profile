@@ -1,5 +1,6 @@
 # Stanford Profile
 
+
 11.8.3
 -------------------------------------------------------------------------------
 - Fixed minimally branded theme unpublished banner visibility
