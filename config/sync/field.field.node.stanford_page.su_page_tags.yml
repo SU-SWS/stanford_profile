@@ -1,17 +1,17 @@
-uuid: 34e6e613-d839-4ca2-b5b9-51bc59ce2e7e
+uuid: 154a6ed5-796c-4ea5-9c5f-e8224c70ce13
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_basic_page_tags_filters
+    - field.storage.node.su_page_tags
     - node.type.stanford_page
     - taxonomy.vocabulary.basic_page_filters
-id: node.stanford_page.su_basic_page_tags_filters
-field_name: su_basic_page_tags_filters
+id: node.stanford_page.su_page_tags
+field_name: su_page_tags
 entity_type: node
 bundle: stanford_page
-label: 'Basic Page Tags/Filters'
-description: 'Tag this page with categories for use with the Filtered List Paragraph. Tags do not display on the Basic Page or Basic Page Teasers. <a href="https://sitesuserguide.stanford.edu/build/paragraphs/filtered-lists-paragraph">Learn more</a>'
+label: 'Page Tags'
+description: ''
 required: false
 translatable: false
 default_value: {  }
