@@ -57,22 +57,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          2b596d32-8b3f-43ba-a570-c3c096d7e113:
-            uuid: 2b596d32-8b3f-43ba-a570-c3c096d7e113
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_page:su_page_tags'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_one_column

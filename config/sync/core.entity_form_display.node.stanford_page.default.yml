@@ -27,6 +27,7 @@ dependencies:
     - paragraphs
     - path
     - scheduler
+    - stanford_fields
     - stanford_intranet
 third_party_settings:
   field_group:
@@ -175,14 +176,10 @@ content:
       media_types: {  }
     third_party_settings: {  }
   su_page_tags:
-    type: entity_reference_autocomplete
+    type: taxonomy_label_hierarchy
     weight: 3
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   su_shared_tags:
     type: cshs
