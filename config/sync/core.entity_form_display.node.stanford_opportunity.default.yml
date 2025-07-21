@@ -31,6 +31,7 @@ dependencies:
     - node.type.stanford_opportunity
   module:
     - change_labels
+    - cshs
     - datetime
     - field_formatter_class
     - field_group
@@ -54,7 +55,7 @@ third_party_settings:
       label: 'Contact Information'
       region: content
       parent_name: group_taxonomy
-      weight: 15
+      weight: 13
       format_type: details
       format_settings:
         classes: ''
@@ -71,7 +72,6 @@ third_party_settings:
         - su_opp_tags
         - group_contact_information
         - su_opp_cta_url
-        - group_academic_info
       label: Sidebar
       region: content
       parent_name: ''
@@ -90,6 +90,7 @@ third_party_settings:
         - su_opp_image
         - su_opp_icon
         - su_opp_summary
+        - su_opp_sponsor
         - su_opp_card_footer
         - su_opp_source
       label: 'Editorial Content'
@@ -129,9 +130,9 @@ third_party_settings:
         - su_opp_course_code
         - su_opp_units
       label: 'Academic Info'
-      region: hidden
-      parent_name: group_taxonomy
-      weight: 10
+      region: content
+      parent_name: ''
+      weight: 6
       format_type: details
       format_settings:
         classes: ''
@@ -187,13 +188,13 @@ content:
     third_party_settings: {  }
   su_opp_application_deadline:
     type: datetime_default
-    weight: 13
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   su_opp_card_footer:
     type: text_textfield
-    weight: 5
+    weight: 6
     region: content
     settings:
       size: 60
@@ -201,7 +202,7 @@ content:
     third_party_settings: {  }
   su_opp_components:
     type: layout_paragraphs
-    weight: 20
+    weight: 19
     region: content
     settings:
       view_mode: default
@@ -263,7 +264,7 @@ content:
         force_single_cardinality: 0
   su_opp_cta_url:
     type: link_default
-    weight: 16
+    weight: 14
     region: content
     settings:
       placeholder_url: ''
@@ -333,7 +334,7 @@ content:
         field_label_overwrite: ''
   su_opp_source:
     type: link_default
-    weight: 6
+    weight: 7
     region: content
     settings:
       placeholder_url: ''
@@ -347,6 +348,19 @@ content:
         maxlength_js_enforce: false
       change_labels:
         field_label_overwrite: ''
+  su_opp_sponsor:
+    type: cshs
+    weight: 5
+    region: content
+    settings:
+      save_lineage: false
+      force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
+    third_party_settings: {  }
   su_opp_summary:
     type: text_textarea
     weight: 4
@@ -365,7 +379,7 @@ content:
         field_label_overwrite: ''
   su_opp_tags:
     type: taxonomy_label_hierarchy
-    weight: 14
+    weight: 11
     region: content
     settings: {  }
     third_party_settings:
@@ -403,7 +417,6 @@ hidden:
   sticky: true
   su_opp_learn_more: true
   su_opp_open_date: true
-  su_opp_sponsor: true
   su_opp_start_date: true
   su_opp_status: true
   uid: true
