@@ -1,0 +1,21 @@
+uuid: 9264aed3-afce-4c6b-a109-cf0c392b2edc
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.stanford_basic_site_settings
+    - field.storage.config_pages.su_site_algolia_federated
+id: config_pages.stanford_basic_site_settings.su_site_algolia_federated
+field_name: su_site_algolia_federated
+entity_type: config_pages
+bundle: stanford_basic_site_settings
+label: 'Federated Search'
+description: 'Check this if using a single Algolia Index to search more than one site.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,13 +1,14 @@
 import {useInstantSearch, useSearchBox} from "react-instantsearch";
 import {useRef} from "preact/compat";
 
-const SearchBox = (props) => {
+const SearchBox = ({federatedSearch, ...props}) => {
   const {query, refine} = useSearchBox(props);
   const {status} = useInstantSearch();
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <form
+      className={federatedSearch ? "federated-search" : ""}
       action=""
       role="search"
       noValidate
@@ -24,35 +25,41 @@ const SearchBox = (props) => {
         inputRef.current.value = '';
         inputRef.current?.focus();
       }}
-      style={{marginBottom: "20px"}}
     >
       <div>
-        <label htmlFor="keyword-search-algolia">
-          Keywords<span className="visually-hidden">&nbsp;Search</span>
-        </label>
-        <input
-          id="keyword-search-algolia"
-          ref={inputRef}
-          autoComplete="on"
-          autoCorrect="on"
-          autoCapitalize="off"
-          spellCheck={true}
-          maxLength={128}
-          type="search"
-          defaultValue={query}
-          autoFocus
-        />
+        <div>
+          <label htmlFor="keyword-search-algolia" className="visually-hidden">
+            Keywords Search
+          </label>
+          <input
+            id="keyword-search-algolia"
+            ref={inputRef}
+            autoComplete="on"
+            autoCorrect="on"
+            autoCapitalize="off"
+            maxLength={128}
+            type="search"
+            defaultValue={query}
+            autoFocus
+          />
+        </div>
+        <div style={{display: "flex", gap: "1rem", marginTop: "1rem"}}>
+          <button type="submit">Submit</button>
+          <button
+            type="reset"
+            hidden={query.length === 0}
+          >
+            Reset
+          </button>
+        </div>
+        <StatusMessage status={status} query={query}/>
       </div>
-      <div style={{display: "flex", gap: "1rem", marginTop: "1rem"}}>
-        <button type="submit">Submit</button>
-        <button
-          type="reset"
-          hidden={query.length === 0}
-        >
-          Reset
-        </button>
-      </div>
-      <StatusMessage status={status} query={query}/>
+
+      {federatedSearch &&
+        <div className="federated-search-facets">
+          This is some contents
+        </div>
+      }
     </form>
   );
 }
@@ -63,7 +70,9 @@ const StatusMessage = ({status, query}) => {
     message = `Showing results for "${query}"`
   }
   return (
-    <div className="visually-hidden" aria-live="polite" aria-atomic>{message}</div>
+    <div className="visually-hidden" aria-live="polite" aria-atomic>
+      {message}
+    </div>
   )
 }
 export default SearchBox;

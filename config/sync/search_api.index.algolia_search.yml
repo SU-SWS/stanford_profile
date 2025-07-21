@@ -204,6 +204,12 @@ field_settings:
         - field.storage.node.su_shared_tags
       module:
         - taxonomy
+  site_name:
+    label: 'Site Name'
+    property_path: custom_value
+    type: string
+    configuration:
+      value: '[config_page:stanford_basic_site_settings:su_site_algolia_federated_name|site:name]'
   status:
     label: status
     datasource_id: 'entity:node'
@@ -316,6 +322,7 @@ processor_settings:
       - photo
       - publication_type
       - shared_tags
+      - site_name
       - subheadline
       - summary
       - title
@@ -358,6 +365,7 @@ tracker_settings:
     indexing_order: fifo
 options:
   cron_limit: 50
+  delete_on_fail: true
   index_directly: false
   track_changes_in_references: true
   algolia_index_name: ''

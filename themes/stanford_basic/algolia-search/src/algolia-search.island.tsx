@@ -16,14 +16,31 @@ const key = window.drupalSettings?.stanfordAlgolia.searchKey || process.env.ALGO
 
 const searchClient = liteClient(appId, key);
 
-const Hit = ({hit}: HitsProps< StanfordHit>) => {
-  if (hit.type === 'Event') return <EventHit hit={hit}/>
-  if (hit.type === 'News') return <NewsHit hit={hit}/>
+const Hit = ({hit, ...props}: HitsProps<StanfordHit> & {federatedSearch?: boolean}) => {
 
-  return <DefaultHit hit={hit}/>
+  if (hit.type === 'Event') return <EventHit {...props} hit={hit}/>
+  if (hit.type === 'News') return <NewsHit {...props} hit={hit}/>
+
+  return <DefaultHit {...props} hit={hit}/>
 }
 
 const Container = styled.div`
+  .search-results {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &.federated-search {
+      float: right;
+      width: 60%;
+    }
+  }
+
+  .federated-search-facets {
+    float: left;
+    width: 30%;
+  }
+
   li {
     margin-bottom: 30px;
     border-bottom: 1px solid black;
@@ -34,17 +51,17 @@ const Container = styled.div`
   }
 `
 
-const CustomHits = (props) => {
+const CustomHits = ({federatedSearch, ...props}) => {
   const {items: hits} = useHits(props);
   if (hits.length === 0) return (
     <p>No results for your search. Please try another search.</p>
   )
 
   return (
-    <ul style={{listStyle: "none", padding: 0}}>
+    <ul className={federatedSearch ? "search-results federated-search" : "search-results"}>
       {hits.map(hit =>
         <li key={hit.objectID}>
-          <Hit hit={hit}/>
+          <Hit hit={hit} federatedSearch={federatedSearch}/>
         </li>
       )}
     </ul>
@@ -55,6 +72,7 @@ const Search = () => {
   const currentUrl = new URL(window.location.href);
   const initialSearch = currentUrl.searchParams.get('key');
   const searchIndex = window.drupalSettings?.stanfordAlgolia.index || process.env.ALGOLIA_INDEX;
+  const federatedSearch = !!window.drupalSettings?.stanfordAlgolia.federatedSearch;
 
   return (
     <InstantSearch
@@ -65,8 +83,8 @@ const Search = () => {
       }}
     >
       <Container>
-        <SearchBox/>
-        <CustomHits/>
+        <SearchBox federatedSearch={federatedSearch}/>
+        <CustomHits federatedSearch={federatedSearch}/>
       </Container>
     </InstantSearch>
   )

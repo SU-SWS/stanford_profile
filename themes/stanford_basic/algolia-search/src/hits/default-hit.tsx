@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import {Highlight, Snippet} from "react-instantsearch";
+import {Highlight, HitsProps, Snippet} from "react-instantsearch";
+import {StanfordHit} from "./hit.types";
 
 const HitContainer = styled.article`
   display: flex;
@@ -26,18 +27,30 @@ const DetailsContainer = styled.div`
   justify-content: space-between;
 `
 
-const DefaultHit = ({hit}) => {
+type HitProps = HitsProps<StanfordHit> & { federatedSearch?: boolean }
+
+const DefaultHit = ({hit, federatedSearch}: HitProps) => {
   const hitUrl = new URL(hit.url);
 
   return (
     <HitContainer>
       <DetailsContainer>
         <div>
-          <h2>
-            <a href={hit.url.replace(hitUrl.origin, '')}>
-              {hit.title}
-            </a>
-          </h2>
+
+          <div style={{display: "flex", "flex-direction": "column-reverse"}}>
+            <h2>
+              <a href={hit.url.replace(hitUrl.origin, '')}>
+                {hit.title}
+              </a>
+            </h2>
+
+            {federatedSearch && (
+              <div>
+                <div>{hit.site_name}</div>
+                <div>{new URL(hit.url).host}</div>
+              </div>
+            )}
+          </div>
 
           {hit.summary &&
             <p className="summary">
