@@ -29,6 +29,30 @@ export const AlgoliaSearchContainer = styled.div`
     }
   }
 `
+export const SearchInput = styled.div`
+  position: relative;
+  width: fit-content;
+
+  input {
+    padding-right: 30px;
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    aspect-ratio: 1;
+    background: transparent;
+    color: #B1040E;
+
+
+    &:hover, &:focus {
+      background: transparent;
+      color: #2E2D29;
+    }
+  }
+`
 export const PaginationList = styled.ul`
   list-style: none;
   margin: 0;
@@ -52,13 +76,9 @@ export const PaginationList = styled.ul`
     border-bottom: 4px solid #2E2D29;
   }
 
-  .arrow {
+  .fa-arrow {
     color: #B1040E;
     width: 30px;
-
-    &.left {
-      transform: rotate(180deg);
-    }
   }
 `
 
@@ -82,12 +102,12 @@ export const CheckboxLabel = styled.label`
     height: 20px;
   }
 
-  .check {
+  .fa-check {
     display: none;
   }
 
   input:checked ~ .checkbox {
-    .check {
+    .fa-check {
       display: block;
     }
   }

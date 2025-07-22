@@ -3,7 +3,7 @@ import {
   useSearchBox
 } from "react-instantsearch";
 import {useRef} from "preact/compat";
-import {CheckboxLabel} from "./styled-components";
+import {CheckboxLabel, SearchInput} from "./styled-components";
 
 const SearchBox = ({federatedSearch, ...props}) => {
   const {query, refine} = useSearchBox(props);
@@ -29,7 +29,7 @@ const SearchBox = ({federatedSearch, ...props}) => {
       }}
     >
       <div>
-        <div>
+        <SearchInput>
           <label htmlFor="keyword-search-algolia" className="visually-hidden">
             Keywords Search
           </label>
@@ -44,9 +44,12 @@ const SearchBox = ({federatedSearch, ...props}) => {
             defaultValue={query}
             autoFocus
           />
-        </div>
+          <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span className="visually-hidden">Submit</span>
+          </button>
+        </SearchInput>
         <div style={{display: "flex", gap: "1rem", marginTop: "1rem"}}>
-          <button type="submit">Submit</button>
           <button
             type="reset"
             hidden={query.length === 0}
@@ -83,21 +86,13 @@ const RefinementSidebar = () => {
             <input type="checkbox" onChange={() => refineSites(site.value)}
                    checked={site.isRefined}/>
             <span className="checkbox">
-              <CheckMark/>
+              <i class="fa-solid fa-check"></i>
             </span>
             <span className="label-display">{site.label} ({site.count})</span>
           </CheckboxLabel>
         )}
       </fieldset>
     </div>
-  )
-}
-
-const CheckMark = () => {
-  return (
-    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="check">
-      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>
-    </svg>
   )
 }
 

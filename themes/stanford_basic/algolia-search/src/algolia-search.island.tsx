@@ -67,7 +67,7 @@ const CustomHits = ({federatedSearch, ...props}) => {
               <li>
                 <button onClick={() => goToPage(0)}>
                   <span className="visually-hidden">Go to first page</span>
-                  <ArrowLongIcon left/>
+                  <i class="fa-solid fa-arrow-left"></i>
                 </button>
               </li>
             )}
@@ -87,7 +87,7 @@ const CustomHits = ({federatedSearch, ...props}) => {
               <li>
                 <button onClick={() => goToPage(nbPages - 1)}>
                   <span className="visually-hidden">Go to last page</span>
-                  <ArrowLongIcon/>
+                  <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </li>
             )}
@@ -118,16 +118,6 @@ const Search = () => {
         <CustomHits federatedSearch={federatedSearch}/>
       </AlgoliaSearchContainer>
     </InstantSearch>
-  )
-}
-
-const ArrowLongIcon = ({left}: { left?: boolean }) => {
-  return (
-    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-         stroke="currentColor" className={left ? "arrow left" : "arrow"}>
-      <path stroke-linecap="round" stroke-linejoin="round"
-            d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/>
-    </svg>
   )
 }
 
