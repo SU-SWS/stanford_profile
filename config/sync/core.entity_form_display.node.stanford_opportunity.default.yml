@@ -31,7 +31,6 @@ dependencies:
     - node.type.stanford_opportunity
   module:
     - change_labels
-    - cshs
     - datetime
     - field_formatter_class
     - field_group
@@ -349,17 +348,10 @@ content:
       change_labels:
         field_label_overwrite: ''
   su_opp_sponsor:
-    type: cshs
+    type: options_select
     weight: 5
     region: content
-    settings:
-      save_lineage: false
-      force_deepest: false
-      parent: ''
-      level_labels: ''
-      hierarchy_depth: 0
-      required_depth: 0
-      none_label: '- Please select -'
+    settings: {  }
     third_party_settings: {  }
   su_opp_summary:
     type: text_textarea
