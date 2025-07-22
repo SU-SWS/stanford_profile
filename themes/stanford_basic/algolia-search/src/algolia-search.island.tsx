@@ -1,6 +1,12 @@
 import {liteClient} from 'algoliasearch/lite';
 import {createIslandWebComponent} from 'preact-island'
-import {HitsProps, InstantSearch, useHits} from 'react-instantsearch';
+import {
+  HitsProps,
+  InstantSearch,
+  useHits,
+  useInstantSearch
+} from 'react-instantsearch';
+import type { InstantSearch as InstantSearchType } from 'instantsearch.js';
 import SearchBox from "./search-box";
 import EventHit from "./hits/events";
 import NewsHit from "./hits/news";
@@ -26,13 +32,16 @@ const Hit = ({hit, ...props}: HitsProps<StanfordHit> & {federatedSearch?: boolea
 
 const Container = styled.div`
   .search-results {
-    margin: 0;
-    padding: 0;
-    list-style: none;
 
     &.federated-search {
       float: right;
       width: 60%;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
   }
 
@@ -53,18 +62,23 @@ const Container = styled.div`
 
 const CustomHits = ({federatedSearch, ...props}) => {
   const {items: hits} = useHits(props);
+  const {status, results} = useInstantSearch();
+
   if (hits.length === 0) return (
     <p>No results for your search. Please try another search.</p>
   )
 
   return (
-    <ul className={federatedSearch ? "search-results federated-search" : "search-results"}>
-      {hits.map(hit =>
-        <li key={hit.objectID}>
-          <Hit hit={hit} federatedSearch={federatedSearch}/>
-        </li>
-      )}
-    </ul>
+    <div className={federatedSearch ? "search-results federated-search" : "search-results"}>
+      <StatusMessage status={status} totalResults={results.nbHits}/>
+      <ul>
+        {hits.map(hit =>
+          <li key={hit.objectID}>
+            <Hit hit={hit} federatedSearch={federatedSearch}/>
+          </li>
+        )}
+      </ul>
+    </div>
   )
 }
 
@@ -85,11 +99,23 @@ const Search = () => {
       <Container>
         <SearchBox federatedSearch={federatedSearch}/>
         <CustomHits federatedSearch={federatedSearch}/>
+
       </Container>
     </InstantSearch>
   )
 }
 
+const StatusMessage = ({status, totalResults}: {status: InstantSearchType['status'], totalResults: number}) => {
+  let message = status === 'loading' ? 'Loading' : null;
+  if (status != 'loading' && totalResults) {
+    message = `${totalResults} results`
+  }
+  return (
+    <div aria-live="polite" aria-atomic>
+      {message}
+    </div>
+  )
+}
 
 const island = createIslandWebComponent(islandName, Search)
 island.render({
