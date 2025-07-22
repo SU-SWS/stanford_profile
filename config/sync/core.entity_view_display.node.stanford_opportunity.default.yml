@@ -166,10 +166,12 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_label
+                type: entity_reference_list_label_class
                 label: hidden
                 settings:
                   link: false
+                  class: su-opp-sponsor-list
+                  list_type: ul
                 third_party_settings:
                   empty_fields:
                     handler: ''
