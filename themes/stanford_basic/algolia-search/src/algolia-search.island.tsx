@@ -4,15 +4,14 @@ import {
   HitsProps,
   InstantSearch,
   useHits,
-  useInstantSearch
+  usePagination
 } from 'react-instantsearch';
-import type { InstantSearch as InstantSearchType } from 'instantsearch.js';
 import SearchBox from "./search-box";
 import EventHit from "./hits/events";
 import NewsHit from "./hits/news";
 import DefaultHit from "./hits/default-hit";
-import styled from "styled-components";
 import {StanfordHit} from "./hits/hit.types";
+import {AlgoliaSearchContainer, PaginationList} from "./styled-components";
 
 const islandName = 'algolia-search'
 
@@ -22,7 +21,9 @@ const key = window.drupalSettings?.stanfordAlgolia.searchKey || process.env.ALGO
 
 const searchClient = liteClient(appId, key);
 
-const Hit = ({hit, ...props}: HitsProps<StanfordHit> & {federatedSearch?: boolean}) => {
+const Hit = ({hit, ...props}: HitsProps<StanfordHit> & {
+  federatedSearch?: boolean
+}) => {
 
   if (hit.type === 'Event') return <EventHit {...props} hit={hit}/>
   if (hit.type === 'News') return <NewsHit {...props} hit={hit}/>
@@ -30,47 +31,27 @@ const Hit = ({hit, ...props}: HitsProps<StanfordHit> & {federatedSearch?: boolea
   return <DefaultHit {...props} hit={hit}/>
 }
 
-const Container = styled.div`
-  .search-results {
-
-    &.federated-search {
-      float: right;
-      width: 60%;
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-  }
-
-  .federated-search-facets {
-    float: left;
-    width: 30%;
-  }
-
-  li {
-    margin-bottom: 30px;
-    border-bottom: 1px solid black;
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-`
 
 const CustomHits = ({federatedSearch, ...props}) => {
   const {items: hits} = useHits(props);
-  const {status, results} = useInstantSearch();
+  const {
+    currentRefinement: currentPage,
+    pages,
+    nbPages,
+    nbHits,
+    refine: goToPage
+  } = usePagination({padding: 2})
 
   if (hits.length === 0) return (
     <p>No results for your search. Please try another search.</p>
   )
 
   return (
-    <div className={federatedSearch ? "search-results federated-search" : "search-results"}>
-      <StatusMessage status={status} totalResults={results.nbHits}/>
+    <div
+      className={federatedSearch ? "search-results federated-search" : "search-results"}>
+      <div aria-live="polite" aria-atomic>
+        {nbHits} results
+      </div>
       <ul>
         {hits.map(hit =>
           <li key={hit.objectID}>
@@ -78,6 +59,41 @@ const CustomHits = ({federatedSearch, ...props}) => {
           </li>
         )}
       </ul>
+
+      {pages.length > 1 && (
+        <nav aria-label="Search results pager">
+          <PaginationList>
+            {pages[0] > 0 && (
+              <li>
+                <button onClick={() => goToPage(0)}>
+                  <span className="visually-hidden">Go to first page</span>
+                  <ArrowLongIcon left/>
+                </button>
+              </li>
+            )}
+
+            {pages.map(pageNum => (
+              <li
+                key={`page-${pageNum}`}
+                aria-current={currentPage === pageNum}
+              >
+                <button onClick={() => goToPage(pageNum)}>
+                  {pageNum + 1}
+                </button>
+              </li>
+            ))}
+
+            {pages[pages.length - 1] !== nbPages && (
+              <li>
+                <button onClick={() => goToPage(nbPages - 1)}>
+                  <span className="visually-hidden">Go to last page</span>
+                  <ArrowLongIcon/>
+                </button>
+              </li>
+            )}
+          </PaginationList>
+        </nav>
+      )}
     </div>
   )
 }
@@ -92,28 +108,26 @@ const Search = () => {
     <InstantSearch
       searchClient={searchClient}
       indexName={searchIndex}
+      insights={true}
       initialUiState={{
         [searchIndex]: {query: initialSearch},
       }}
     >
-      <Container>
+      <AlgoliaSearchContainer>
         <SearchBox federatedSearch={federatedSearch}/>
         <CustomHits federatedSearch={federatedSearch}/>
-
-      </Container>
+      </AlgoliaSearchContainer>
     </InstantSearch>
   )
 }
 
-const StatusMessage = ({status, totalResults}: {status: InstantSearchType['status'], totalResults: number}) => {
-  let message = status === 'loading' ? 'Loading' : null;
-  if (status != 'loading' && totalResults) {
-    message = `${totalResults} results`
-  }
+const ArrowLongIcon = ({left}: { left?: boolean }) => {
   return (
-    <div aria-live="polite" aria-atomic>
-      {message}
-    </div>
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+         stroke="currentColor" className={left ? "arrow left" : "arrow"}>
+      <path stroke-linecap="round" stroke-linejoin="round"
+            d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/>
+    </svg>
   )
 }
 

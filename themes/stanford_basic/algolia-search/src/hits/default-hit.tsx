@@ -1,31 +1,6 @@
-import styled from "styled-components";
 import {Highlight, HitsProps, Snippet} from "react-instantsearch";
 import {StanfordHit} from "./hit.types";
-
-const HitContainer = styled.article`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 4rem;
-  padding: 2rem 2rem 2rem 0;
-  margin-bottom: 2rem;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-  }
-
-  img {
-    max-width: 300px;
-    max-height: 300px;
-    object-fit: cover;
-  }
-`
-
-const DetailsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
+import {DetailsContainer, HitContainer} from "../styled-components";
 
 type HitProps = HitsProps<StanfordHit> & { federatedSearch?: boolean }
 

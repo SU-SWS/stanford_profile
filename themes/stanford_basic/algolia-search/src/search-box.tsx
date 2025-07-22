@@ -2,8 +2,8 @@ import {
   useRefinementList,
   useSearchBox
 } from "react-instantsearch";
-import styled from "styled-components";
 import {useRef} from "preact/compat";
+import {CheckboxLabel} from "./styled-components";
 
 const SearchBox = ({federatedSearch, ...props}) => {
   const {query, refine} = useSearchBox(props);
@@ -62,37 +62,6 @@ const SearchBox = ({federatedSearch, ...props}) => {
     </form>
   );
 }
-
-const CheckboxLabel = styled.label`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  cursor: pointer;
-
-  &:hover, &:focus {
-    .label-display {
-      text-decoration: underline;
-    }
-  }
-
-  .checkbox {
-    border: 2px solid #979694;
-    border-radius: 3px;
-    display: block;
-    width: 20px;
-    height: 20px;
-  }
-
-  .check {
-    display: none;
-  }
-
-  input:checked ~ .checkbox {
-    .check {
-      display: block;
-    }
-  }
-`
 
 const RefinementSidebar = () => {
   const {

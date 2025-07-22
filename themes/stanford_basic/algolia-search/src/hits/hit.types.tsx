@@ -10,6 +10,7 @@ export type DefaultHit = {
   status: boolean
   title: string
   updated: number
+  site_name?: string
 }
 
 export type NewsHit = DefaultHit & {
