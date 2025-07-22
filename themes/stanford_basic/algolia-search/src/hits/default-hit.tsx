@@ -1,44 +1,45 @@
-import {Highlight, HitsProps, Snippet} from "react-instantsearch";
+import {Highlight, Snippet} from "react-instantsearch";
 import {StanfordHit} from "./hit.types";
-import {DetailsContainer, HitContainer} from "../styled-components";
+import {
+  DetailsContainer,
+  HitContainer,
+  ReverseVerticalDisplay
+} from "../styled-components";
+import {Hit} from "instantsearch.js/es/types/results";
 
-type HitProps = HitsProps<StanfordHit> & { federatedSearch?: boolean }
+type HitProps =  { federatedSearch?: boolean, hit: Hit<StanfordHit> }
 
 const DefaultHit = ({hit, federatedSearch}: HitProps) => {
-  const hitUrl = new URL(hit.url);
 
   return (
-    <HitContainer>
+    <HitContainer aria-labelledby={hit.objectID}>
       <DetailsContainer>
-        <div>
+        <ReverseVerticalDisplay>
+          <h3 id={hit.objectID}>
+            <a href={hit.url}>
+              {hit.title}
+            </a>
+          </h3>
 
-          <div style={{display: "flex", "flex-direction": "column-reverse"}}>
-            <h2>
-              <a href={hit.url.replace(hitUrl.origin, '')}>
-                {hit.title}
-              </a>
-            </h2>
+          {federatedSearch && (
+            <div>
+              <div>{hit.site_name}</div>
+              <div>{new URL(hit.url).host}</div>
+            </div>
+          )}
+        </ReverseVerticalDisplay>
 
-            {federatedSearch && (
-              <div>
-                <div>{hit.site_name}</div>
-                <div>{new URL(hit.url).host}</div>
-              </div>
-            )}
-          </div>
+        {hit.summary &&
+          <p className="summary">
+            <Highlight hit={hit} attribute="summary"/>
+          </p>
+        }
 
-          {hit.summary &&
-            <p className="summary">
-              <Highlight hit={hit} attribute="summary"/>
-            </p>
-          }
-
-          {(!hit.summary && hit.html) &&
-            <p>
-              <Snippet hit={hit} attribute="html"/>
-            </p>
-          }
-        </div>
+        {(!hit.summary && hit.html) &&
+          <p>
+            <Snippet hit={hit} attribute="html"/>
+          </p>
+        }
 
         {hit.updated &&
           <div>
@@ -52,7 +53,7 @@ const DefaultHit = ({hit, federatedSearch}: HitProps) => {
         }
       </DetailsContainer>
       {hit.photo &&
-        <img src={hit.photo.replace(hitUrl.origin, '')} alt=""/>
+        <img src={hit.photo} alt=""/>
       }
     </HitContainer>
   )

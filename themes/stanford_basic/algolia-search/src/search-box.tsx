@@ -5,8 +5,8 @@ import {
 import {useRef} from "preact/compat";
 import {CheckboxLabel, SearchInput} from "./styled-components";
 
-const SearchBox = ({federatedSearch, ...props}) => {
-  const {query, refine} = useSearchBox(props);
+const SearchBox = ({federatedSearch}: {federatedSearch?: boolean}) => {
+  const {query, refine} = useSearchBox();
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <form
@@ -17,15 +17,18 @@ const SearchBox = ({federatedSearch, ...props}) => {
       onSubmit={e => {
         e.preventDefault();
         e.stopPropagation();
-        refine(inputRef.current?.value);
+        refine(inputRef.current?.value || "");
         window.history.replaceState(null, '', `?key=${inputRef.current?.value}`)
       }}
       onReset={e => {
         e.preventDefault();
         e.stopPropagation();
         refine('');
-        inputRef.current.value = '';
-        inputRef.current?.focus();
+
+        if (inputRef.current) {
+          inputRef.current.value = '';
+          inputRef.current.focus();
+        }
       }}
     >
       <div>

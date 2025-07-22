@@ -136,3 +136,7 @@ export const DetailsContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `
+export const ReverseVerticalDisplay = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+`
