@@ -8,6 +8,17 @@
     flex-direction: row;
     gap: 26px;
   }
+
+  .su-button {
+    &.su-link--external {
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 .su-site-header-links {
@@ -17,11 +28,17 @@
   align-items: center;
   margin-bottom: 20px;
 
-  a {
+  a,
+  .su-link--external {
     color: $su-color-black;
     text-decoration: none;
 
-    &:hover {
+    &:after {
+      background-color: $su-color-black;
+    }
+
+    &:hover,
+    &:focus {
       text-decoration: underline;
     }
   }
