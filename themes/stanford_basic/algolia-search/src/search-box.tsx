@@ -74,9 +74,9 @@ const RefinementSidebar = () => {
     sortBy: ["name"]
   })
   return (
-    <div>
+    <div className="federated-search-facets">
       <h2>Filter by</h2>
-      <fieldset className="federated-search-facets">
+      <fieldset>
         <legend>Sites</legend>
         {sites.map(site =>
           <CheckboxLabel key={site.label}>
