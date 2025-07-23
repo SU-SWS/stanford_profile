@@ -11,6 +11,8 @@ export const AlgoliaSearchContainer = styled.div`
   }
 
   .federated-search-facets {
+    margin-bottom: 40px;
+    
     h2 {
       padding-bottom: 45px;
       border-bottom: 1px solid #979694;
