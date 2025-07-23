@@ -12,8 +12,8 @@ dependencies:
     - field.field.config_pages.stanford_basic_site_settings.su_site_a11y_contact
     - field.field.config_pages.stanford_basic_site_settings.su_site_admin_notes
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia
-    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_federated
-    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_federated_name
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_fed
+    - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_fed_name
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_file
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_id
     - field.field.config_pages.stanford_basic_site_settings.su_site_algolia_index
@@ -136,8 +136,8 @@ third_party_settings:
         - su_site_algolia_search
         - su_site_algolia_index
         - su_site_algolia_file
-        - su_site_algolia_federated
-        - su_site_algolia_federated_name
+        - su_site_algolia_fed
+        - su_site_algolia_fed_name
       label: Search
       region: content
       parent_name: group_tabs
@@ -283,7 +283,7 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
-  su_site_algolia_federated:
+  su_site_algolia_fed:
     type: boolean_checkbox
     weight: 24
     region: content
@@ -328,7 +328,7 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
-  su_site_algolia_federated_name:
+  su_site_algolia_fed_name:
     type: string_textfield
     weight: 25
     region: content
@@ -340,7 +340,7 @@ content:
         a0429358-fed0-4c89-b0d1-3d01fa7e6bd0:
           entity_type: config_pages
           bundle: stanford_basic_site_settings
-          dependee: su_site_algolia_federated
+          dependee: su_site_algolia_fed
           settings:
             state: visible
             condition: checked
