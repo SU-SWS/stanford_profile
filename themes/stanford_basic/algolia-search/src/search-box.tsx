@@ -3,13 +3,13 @@ import {
   useSearchBox
 } from "react-instantsearch";
 import {useRef} from "preact/compat";
-import {CheckboxLabel, SearchInput} from "./styled-components";
+import {CheckboxLabel, SearchForm, SearchInput} from "./styled-components";
 
-const SearchBox = ({federatedSearch}: {federatedSearch?: boolean}) => {
+const SearchBox = ({federatedSearch}: { federatedSearch?: boolean }) => {
   const {query, refine} = useSearchBox();
   const inputRef = useRef<HTMLInputElement>(null);
   return (
-    <form
+    <SearchForm
       className={federatedSearch ? "federated-search" : ""}
       action=""
       role="search"
@@ -52,20 +52,18 @@ const SearchBox = ({federatedSearch}: {federatedSearch?: boolean}) => {
             <span className="visually-hidden">Submit</span>
           </button>
         </SearchInput>
-        <div style={{display: "flex", gap: "1rem", marginTop: "1rem"}}>
-          <button
-            type="reset"
-            hidden={query.length === 0}
-          >
-            Reset
-          </button>
-        </div>
+        <button
+          type="reset"
+          hidden={query.length === 0}
+        >
+          Reset
+        </button>
       </div>
 
       {federatedSearch &&
         <RefinementSidebar/>
       }
-    </form>
+    </SearchForm>
   );
 }
 

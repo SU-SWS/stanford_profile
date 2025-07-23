@@ -2,39 +2,67 @@ import styled from "styled-components";
 
 export const AlgoliaSearchContainer = styled.div`
   .search-results {
-
     &.federated-search {
-      float: right;
-      width: 60%;
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
+      @media (min-width: 768px) {
+        float: right;
+        width: 60%;
+      }
     }
   }
 
   .federated-search-facets {
-    float: left;
-    width: 30%;
+    h2 {
+      padding-bottom: 45px;
+      border-bottom: 1px solid #979694;
+    }
+
+    @media (min-width: 768px) {
+      float: left;
+      width: 30%;
+    }
+
+    fieldset {
+      padding: 0;
+      margin: 0;
+    }
   }
 
-  li {
-    margin-bottom: 30px;
-    border-bottom: 1px solid black;
+  .results {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
-    &:last-child {
-      border-bottom: none;
+    li {
+      margin-bottom: 30px;
+      border-bottom: 1px solid black;
+
+      &:last-child {
+        border-bottom: none;
+      }
     }
+  }
+`
+
+export const SearchForm = styled.form`
+  button[type="reset"] {
+    margin: 0 auto 30px;
+    display: block;
   }
 `
 export const SearchInput = styled.div`
   position: relative;
-  width: fit-content;
+  margin: 0 auto 30px;
+  max-width: 660px;
+
+  @media (min-width: 768px) {
+    width: 70%;
+  }
 
   input {
+    max-width: 100%;
     padding-right: 30px;
+    border-radius: 50px;
+    border: 2px solid #979694;
   }
 
   button {
@@ -45,11 +73,13 @@ export const SearchInput = styled.div`
     aspect-ratio: 1;
     background: transparent;
     color: #B1040E;
-
+    border: 2px solid transparent;
+    border-radius: 50px;
 
     &:hover, &:focus {
       background: transparent;
       color: #2E2D29;
+      border: 2px solid #B1040E;
     }
   }
 `
@@ -68,6 +98,10 @@ export const PaginationList = styled.ul`
 
     &:hover, &:focus {
       text-decoration: underline;
+
+      i {
+        border-bottom: 1px solid black;
+      }
     }
   }
 
@@ -76,9 +110,10 @@ export const PaginationList = styled.ul`
     border-bottom: 4px solid #2E2D29;
   }
 
-  .fa-arrow {
+  i {
     color: #B1040E;
     width: 30px;
+    border-bottom: 1px solid transparent;
   }
 `
 
@@ -87,6 +122,7 @@ export const CheckboxLabel = styled.label`
   gap: 10px;
   align-items: center;
   cursor: pointer;
+  margin-left: 26px;
 
   &:hover, &:focus {
     .label-display {
@@ -128,6 +164,24 @@ export const HitContainer = styled.article`
     max-width: 300px;
     max-height: 300px;
     object-fit: cover;
+  }
+
+  .federated-site {
+    margin-bottom: 5px;
+    .site-name {
+
+    }
+    .site-domain {
+      color: #585754;
+    }
+  }
+
+  .fa-arrow-right {
+    transform: rotate(-45deg);
+    margin-right: 10px;
+    font-size: 20px;
+    position: relative;
+    bottom: 2px;
   }
 `
 

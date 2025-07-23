@@ -51,7 +51,7 @@ const CustomHits = ({federatedSearch, ...props}: {
       <p aria-live="polite" aria-atomic>
         {nbHits} results
       </p>
-      <ul>
+      <ul className="results">
         {hits.map(hit =>
           <li key={hit.objectID}>
             <Hit hit={hit} federatedSearch={federatedSearch}/>

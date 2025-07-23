@@ -7,37 +7,40 @@ import {
 } from "../styled-components";
 import {Hit} from "instantsearch.js/es/types/results";
 
-type HitProps =  { federatedSearch?: boolean, hit: Hit<StanfordHit> }
+type HitProps = { federatedSearch?: boolean, hit: Hit<StanfordHit> }
 
 const DefaultHit = ({hit, federatedSearch}: HitProps) => {
-
+  const hitDomain = new URL(hit.url).host
   return (
     <HitContainer aria-labelledby={hit.objectID}>
       <DetailsContainer>
         <ReverseVerticalDisplay>
           <h3 id={hit.objectID}>
             <a href={hit.url}>
+              {(federatedSearch && hitDomain != window.location.host) &&
+                <i class="fa-solid fa-arrow-right"/>
+              }
               {hit.title}
             </a>
           </h3>
 
           {federatedSearch && (
-            <div>
-              <div>{hit.site_name}</div>
-              <div>{new URL(hit.url).host}</div>
+            <div className="federated-site">
+              <div className="site-name">{hit.site_name}</div>
+              <div className="site-domain">{hitDomain}</div>
             </div>
           )}
         </ReverseVerticalDisplay>
 
         {hit.summary &&
           <p className="summary">
-            <Highlight hit={hit} attribute="summary"/>
+            <Highlight hit={hit} attribute="summary" highlightedTagName="strong"/>
           </p>
         }
 
         {(!hit.summary && hit.html) &&
           <p>
-            <Snippet hit={hit} attribute="html"/>
+            <Snippet hit={hit} attribute="html" highlightedTagName="strong"/>
           </p>
         }
 
