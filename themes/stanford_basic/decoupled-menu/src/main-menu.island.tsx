@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import {useWebComponentEvents} from "./hooks/useWebComponentEvents";
 import {createIslandWebComponent} from 'preact-island'
-import {useState, useEffect, useRef, useCallback, useMemo} from 'preact/hooks';
+import {useState, useEffect, useRef, useCallback} from 'preact/hooks';
 import {deserialize} from "./tools/deserialize";
 import {buildMenuTree, MenuContentItem} from "./tools/build-menu-tree";
-import {DRUPAL_DOMAIN} from './config/env'
 import Caret from "./components/caret";
 import Hamburger from "./components/hamburger";
 import Close from "./components/close";
@@ -177,7 +176,7 @@ export const MainMenu = ({}) => {
     }
 
     if (menuItems.length > 0) return;
-    fetch(DRUPAL_DOMAIN + '/jsonapi/menu_items/main')
+    fetch('/jsonapi/menu_items/main')
       .then(res => res.json())
       .then(data => setMenuItems(buildMenuTree(deserialize(data)).items || []))
       .catch(err => console.error(err));

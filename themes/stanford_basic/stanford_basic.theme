@@ -599,10 +599,12 @@ function _stanford_basic_algolia_settings(): array|bool {
   $algolia_app = $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_id', 0, 'value');
   $algolia_search_key = $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_search', 0, 'value');
   $search_index = $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_index', 0, 'value');
+  $federated = (bool) $config_page->getValue('stanford_basic_site_settings', 'su_site_algolia_fed', 0, 'value');
   $settings = [
     'appId' => $algolia_app,
     'searchKey' => $algolia_search_key,
     'index' => $search_index,
+    'federatedSearch' => $federated,
   ];
   return $settings;
 }

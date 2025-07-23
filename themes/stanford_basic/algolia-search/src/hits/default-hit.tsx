@@ -1,56 +1,48 @@
-import styled from "styled-components";
 import {Highlight, Snippet} from "react-instantsearch";
+import {StanfordHit} from "./hit.types";
+import {
+  DetailsContainer,
+  HitContainer,
+  ReverseVerticalDisplay
+} from "../styled-components";
+import {Hit} from "instantsearch.js/es/types/results";
 
-const HitContainer = styled.article`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 4rem;
-  padding: 2rem 2rem 2rem 0;
-  margin-bottom: 2rem;
+type HitProps = { federatedSearch?: boolean, hit: Hit<StanfordHit> }
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-  }
-
-  img {
-    max-width: 300px;
-    max-height: 300px;
-    object-fit: cover;
-  }
-`
-
-const DetailsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
-
-const DefaultHit = ({hit}) => {
-  const hitUrl = new URL(hit.url);
-
+const DefaultHit = ({hit, federatedSearch}: HitProps) => {
+  const hitDomain = new URL(hit.url).host
   return (
-    <HitContainer>
+    <HitContainer aria-labelledby={hit.objectID}>
       <DetailsContainer>
-        <div>
-          <h2>
-            <a href={hit.url.replace(hitUrl.origin, '')}>
+        <ReverseVerticalDisplay>
+          <h3 id={hit.objectID}>
+            <a href={hit.url}>
+              {(federatedSearch && hitDomain != window.location.host) &&
+                <i class="fa-solid fa-arrow-right"/>
+              }
               {hit.title}
             </a>
-          </h2>
+          </h3>
 
-          {hit.summary &&
-            <p className="summary">
-              <Highlight hit={hit} attribute="summary"/>
-            </p>
-          }
+          {federatedSearch && (
+            <div className="federated-site">
+              <div className="site-name">{hit.site_name}</div>
+              <div className="site-domain">{hitDomain}</div>
+            </div>
+          )}
+        </ReverseVerticalDisplay>
 
-          {(!hit.summary && hit.html) &&
-            <p>
-              <Snippet hit={hit} attribute="html"/>
-            </p>
-          }
-        </div>
+        {hit.summary &&
+          <p className="summary">
+            <Highlight hit={hit} attribute="summary" highlightedTagName="strong"/>
+          </p>
+        }
+
+        {(!hit.summary && hit.html) &&
+          <p>
+            <Snippet hit={hit} attribute="html" highlightedTagName="strong"/>
+          </p>
+        }
 
         {hit.updated &&
           <div>
@@ -64,7 +56,7 @@ const DefaultHit = ({hit}) => {
         }
       </DetailsContainer>
       {hit.photo &&
-        <img src={hit.photo.replace(hitUrl.origin, '')} alt=""/>
+        <img src={hit.photo} alt=""/>
       }
     </HitContainer>
   )
