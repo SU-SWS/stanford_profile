@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_ext_image
     - field.field.node.stanford_event.su_event_groups
     - field.field.node.stanford_event.su_event_keywords
     - field.field.node.stanford_event.su_event_location
@@ -23,8 +24,10 @@ dependencies:
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_subject
+    - field.field.node.stanford_event.su_event_tags
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_imported
     - field.field.node.stanford_event.su_metatags
     - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
@@ -40,6 +43,7 @@ dependencies:
     - readonly_field_widget
     - scheduler
     - smart_date
+    - stanford_fields
     - stanford_intranet
     - telephone
     - text
@@ -116,6 +120,7 @@ third_party_settings:
         - su_event_keywords
         - su_event_subject
         - su_event_groups
+        - su_event_tags
       label: Taxonomy
       region: content
       parent_name: ''
@@ -186,7 +191,9 @@ content:
     weight: 3
     region: content
     settings:
+      view_mode: default
       preview_view_mode: default
+      form_display_mode: default
       nesting_depth: 0
       require_layouts: 1
       empty_message: ''
@@ -224,6 +231,10 @@ content:
         custom
       show_extra: false
       hide_date: true
+      allday: true
+      remove_seconds: false
+      duration_overlay: true
+      separator: to
       default_tz: user
       custom_tz: America/Los_Angeles
       allowed_timezones: {  }
@@ -253,6 +264,7 @@ content:
       label: above
       formatter_type: null
       formatter_settings: null
+      formatter_third_party_settings: {  }
       show_description: false
     third_party_settings: {  }
   su_event_keywords:
@@ -263,6 +275,7 @@ content:
       label: above
       formatter_type: null
       formatter_settings: null
+      formatter_third_party_settings: {  }
       show_description: false
     third_party_settings: {  }
   su_event_location:
@@ -326,7 +339,14 @@ content:
       label: above
       formatter_type: null
       formatter_settings: null
+      formatter_third_party_settings: {  }
       show_description: false
+    third_party_settings: {  }
+  su_event_tags:
+    type: taxonomy_label_hierarchy
+    weight: 14
+    region: content
+    settings: {  }
     third_party_settings: {  }
   su_event_telephone:
     type: telephone_default

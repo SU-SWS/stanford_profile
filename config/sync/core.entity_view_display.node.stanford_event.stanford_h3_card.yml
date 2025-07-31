@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_ext_image
     - field.field.node.stanford_event.su_event_groups
     - field.field.node.stanford_event.su_event_keywords
     - field.field.node.stanford_event.su_event_location
@@ -24,8 +25,10 @@ dependencies:
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_subject
+    - field.field.node.stanford_event.su_event_tags
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_imported
     - field.field.node.stanford_event.su_metatags
     - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
@@ -271,6 +274,7 @@ hidden:
   su_event_schedule: true
   su_event_sponsor: true
   su_event_subject: true
+  su_event_tags: true
   su_event_telephone: true
   su_imported: true
   su_metatags: true

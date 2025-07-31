@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.stanford_person.field_menulink
     - field.field.node.stanford_person.layout_builder__layout
     - field.field.node.stanford_person.stanford_intranet__access
+    - field.field.node.stanford_person.su_imported
     - field.field.node.stanford_person.su_metatags
     - field.field.node.stanford_person.su_person_academic_appt
     - field.field.node.stanford_person.su_person_admin_appts
@@ -33,6 +34,7 @@ dependencies:
     - field.field.node.stanford_person.su_person_scholarly_interests
     - field.field.node.stanford_person.su_person_short_title
     - field.field.node.stanford_person.su_person_source
+    - field.field.node.stanford_person.su_person_tags
     - field.field.node.stanford_person.su_person_telephone
     - field.field.node.stanford_person.su_person_type_group
     - field.field.node.stanford_person.su_shared_tags
@@ -89,6 +91,7 @@ hidden:
   su_person_scholarly_interests: true
   su_person_short_title: true
   su_person_source: true
+  su_person_tags: true
   su_person_telephone: true
   su_person_type_group: true
   su_shared_tags: true

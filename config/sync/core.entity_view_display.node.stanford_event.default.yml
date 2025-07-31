@@ -25,6 +25,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_subject
+    - field.field.node.stanford_event.su_event_tags
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
     - field.field.node.stanford_event.su_imported
@@ -814,6 +815,14 @@ content:
     third_party_settings: {  }
     weight: 103
     region: content
+  su_event_tags:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 120
+    region: main
   su_event_telephone:
     type: basic_string
     label: above

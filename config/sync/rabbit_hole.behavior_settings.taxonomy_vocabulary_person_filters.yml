@@ -1,0 +1,14 @@
+uuid: 9cdae7aa-2feb-4928-b289-cd400a9b9aee
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.person_filters
+id: taxonomy_vocabulary_person_filters
+entity_type_id: taxonomy_vocabulary
+entity_id: person_filters
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,20 @@
+uuid: 7582cbd5-ed94-4b96-9d7d-5922afbf7c6b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.su_person_tags
+field_name: su_person_tags
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

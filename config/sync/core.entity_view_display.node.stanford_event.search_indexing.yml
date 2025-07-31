@@ -25,8 +25,10 @@ dependencies:
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_subject
+    - field.field.node.stanford_event.su_event_tags
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_imported
     - field.field.node.stanford_event.su_metatags
     - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
@@ -186,6 +188,7 @@ hidden:
   su_event_map_link: true
   su_event_source: true
   su_event_subject: true
+  su_event_tags: true
   su_imported: true
   su_metatags: true
   su_shared_tags: true

@@ -1,0 +1,29 @@
+uuid: 646aef9b-04df-410c-818a-b7137a6e28a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_person_tags
+    - node.type.stanford_person
+    - taxonomy.vocabulary.person_filters
+id: node.stanford_person.su_person_tags
+field_name: su_person_tags
+entity_type: node
+bundle: stanford_person
+label: 'Person Tags'
+description: 'These will be used as filters for the future Filtered Lists Paragraph for Person. They do not display on the Person item or Person Teaser.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      person_filters: person_filters
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
