@@ -7,15 +7,18 @@ export const AlgoliaSearchContainer = styled.div`
         float: right;
         width: 60%;
       }
+
+      margin-bottom: 162px;
     }
   }
 
   .federated-search-facets {
     margin-bottom: 40px;
-    
+
     h2 {
       padding-bottom: 45px;
       border-bottom: 1px solid #979694;
+      font-size: 23px;
     }
 
     @media (min-width: 768px) {
@@ -27,6 +30,16 @@ export const AlgoliaSearchContainer = styled.div`
       padding: 0;
       margin: 0;
     }
+
+    legend {
+      font-size: 21px;
+      font-weight: 600;
+    }
+  }
+
+  .search-results-count {
+    color: rgba(88, 87, 84, 1);
+    font-size: 21px;
   }
 
   .results {
@@ -36,11 +49,16 @@ export const AlgoliaSearchContainer = styled.div`
 
     li {
       margin-bottom: 30px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid rgba(213, 213, 212, 1);
 
       &:last-child {
         border-bottom: none;
       }
+    }
+
+    .last-updated {
+      color: rgba(118, 118, 116, 1);
+      font-size: 16px;
     }
   }
 `
@@ -90,22 +108,32 @@ export const PaginationList = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: flex-start;
 
   button {
     background: transparent;
     color: #B1040E;
     text-decoration: none;
     border: 0;
+    font-size: 20px;
 
     &:hover, &:focus {
       text-decoration: underline;
+      box-shadow: none;
 
       i {
         border-bottom: 1px solid black;
       }
     }
+
+    &.page-number {
+      font-size: 26px;
+      font-weight: 600;
+    }
   }
+
+
 
   li[aria-current="true"] button {
     color: #2E2D29;
@@ -170,11 +198,12 @@ export const HitContainer = styled.article`
 
   .federated-site {
     margin-bottom: 5px;
+    font-size: 16px;
     .site-name {
-
+      color: rgba(46, 45, 41, 1)
     }
     .site-domain {
-      color: #585754;
+      color: rgba(88, 87, 84, 1);
     }
   }
 

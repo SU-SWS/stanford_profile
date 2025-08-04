@@ -48,7 +48,7 @@ const CustomHits = ({federatedSearch, ...props}: {
     <div
       className={federatedSearch ? "search-results federated-search" : "search-results"}>
       <h2 className="visually-hidden">Search Results</h2>
-      <p aria-live="polite" aria-atomic>
+      <p className="search-results-count" aria-live="polite" aria-atomic>
         {nbHits} results
       </p>
       <ul className="results">
@@ -66,7 +66,7 @@ const CustomHits = ({federatedSearch, ...props}: {
               <li>
                 <button onClick={() => goToPage(0)}>
                   <span className="visually-hidden">Go to first page</span>
-                  <i class="fa-solid fa-arrow-left"></i>
+                  Previous
                 </button>
               </li>
             )}
@@ -76,7 +76,7 @@ const CustomHits = ({federatedSearch, ...props}: {
                 key={`page-${pageNum}`}
                 aria-current={currentPage === pageNum}
               >
-                <button onClick={() => goToPage(pageNum)}>
+                <button className="page-number" onClick={() => goToPage(pageNum)}>
                   {pageNum + 1}
                 </button>
               </li>
@@ -86,7 +86,7 @@ const CustomHits = ({federatedSearch, ...props}: {
               <li>
                 <button onClick={() => goToPage(nbPages - 1)}>
                   <span className="visually-hidden">Go to last page</span>
-                  <i class="fa-solid fa-arrow-right"></i>
+                  Next
                 </button>
               </li>
             )}
