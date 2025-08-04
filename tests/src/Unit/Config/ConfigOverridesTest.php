@@ -10,13 +10,14 @@ use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\State\StateInterface;
 use Drupal\stanford_profile\Config\ConfigOverrides;
 use Drupal\Tests\UnitTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class ConfigOverridesTest
  *
  * @group stanford_profile
- * @coversDefaultClass \Drupal\stanford_profile\Config\ConfigOverrides
  */
+#[CoversClass(ConfigOverrides::class)]
 class ConfigOverridesTest extends UnitTestCase {
 
   /**
@@ -31,17 +32,17 @@ class ConfigOverridesTest extends UnitTestCase {
     parent::setUp();
     $state = $this->createMock(StateInterface::class);
     $state->method('get')
-      ->will($this->returnCallback([$this, 'getStateCallback']));
+      ->willReturnCallback([$this, 'getStateCallback']);
 
     $config_factory = $this->createMock(ConfigFactoryInterface::class);
     $config_factory->method('getEditable')
-      ->will($this->returnCallback([$this, 'getConfigCallback']));
+      ->willReturnCallback([$this, 'getConfigCallback']);
 
     $this->overrideService = new ConfigOverrides($state, $config_factory);
 
     $config_page_loader = $this->createMock(ConfigPagesLoaderServiceInterface::class);
     $config_page_loader->method('getValue')
-      ->will($this->returnCallback([$this, 'getConfigPageValue']));
+      ->willReturnCallback([$this, 'getConfigPageValue']);
 
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $config_page_loader);

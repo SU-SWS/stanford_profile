@@ -5,12 +5,12 @@ namespace Drupal\Tests\stanford_profile\Kernel\Plugin\InstallTask;
 use Drupal\Core\Routing\RouteBuilderInterface;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\stanford_profile\Plugin\InstallTask\RouteRebuilder;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class RouteRebuilderTest.
- *
- * @coversDefaultClass \Drupal\stanford_profile\Plugin\InstallTask\RouteRebuilder
  */
+#[CoversClass(RouteRebuilder::class)]
 class RouteRebuilderTest extends KernelTestBase {
 
   /**

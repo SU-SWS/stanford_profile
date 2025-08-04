@@ -6,12 +6,14 @@ use Drupal\KernelTests\KernelTestBase;
 use Drupal\stanford_profile\Plugin\InstallTask\Users;
 use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class UsersTest.
  *
  * @coversDefaultClass \Drupal\stanford_profile\Plugin\InstallTask\Users
  */
+#[CoversClass(Users::class)]
 class UsersTest extends KernelTestBase {
 
   /**

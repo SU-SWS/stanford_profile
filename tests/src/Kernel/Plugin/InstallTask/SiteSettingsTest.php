@@ -5,7 +5,6 @@ namespace Drupal\Tests\stanford_profile\Kernel\Plugin\InstallTask;
 use Drupal\config_pages\Entity\ConfigPagesType;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
-use Drupal\Driver\Exception\Exception;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\KernelTests\KernelTestBase;
@@ -14,15 +13,15 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Stream;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Drupal\stanford_profile\Plugin\InstallTask\SiteSettings;
 
 /**
  * Class SiteSettingsTest.
- *
- * @coversDefaultClass \Drupal\stanford_profile\Plugin\InstallTask\SiteSettings
  */
+#[CoversClass(SiteSettings::class)]
 class SiteSettingsTest extends KernelTestBase {
 
   /**
@@ -68,7 +67,7 @@ class SiteSettingsTest extends KernelTestBase {
 
     $config_page_type = ConfigPagesType::create([
       'id' => 'stanford_basic_site_settings',
-      'menu' => [],
+      'menu' => ['path' => '/foo'],
       'context' => [],
     ]);
     $config_page_type->setThirdPartySetting('config_pages_overrides', $this->randomMachineName(), [
@@ -222,7 +221,7 @@ class SiteSettingsTest extends KernelTestBase {
           ->willThrowException(new ClientException('Failed here', $request, $response));
         break;
 
-      case Exception::class:
+      case \Exception::class:
         $response->method('getBody')
           ->willThrowException(new \Exception('Failed here'));
         break;
@@ -296,7 +295,7 @@ class SiteSettingsTest extends KernelTestBase {
    * If exceptions are thrown, the service should be able to handle it.
    */
   public function testExceptions() {
-    $this->runInstallTask(Exception::class);
+    $this->runInstallTask(\Exception::class);
 
     drupal_flush_all_caches();
     $this->assertEmpty(\Drupal::config('system.site')->get('name'));
