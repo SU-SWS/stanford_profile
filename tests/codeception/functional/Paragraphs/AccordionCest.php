@@ -1,13 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Class AccordionCest.
- *
- * @group paragraphs
- * @group accordions
  */
+#[CodeceptionAttribute\Group('paragraphs')]
+#[CodeceptionAttribute\Group('accordions')]
 class AccordionCest {
 
   protected $faker;
@@ -46,7 +46,7 @@ class AccordionCest {
       'type' => 'stanford_faq',
       'su_faq_headline' => $this->faker->words(4, TRUE),
       'su_faq_description' => [
-        'value' => $this->faker->paragraph,
+        'value' => $this->faker->paragraph(),
         'format' => 'stanford_html',
       ],
       'su_faq_questions' => $questions,

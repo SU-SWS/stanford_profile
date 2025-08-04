@@ -1,12 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Class RolesCest.
- *
- * @group users
  */
+#[CodeceptionAttribute\Group('users')]
 class RolesCest {
 
   /**
@@ -59,11 +59,11 @@ class RolesCest {
   public function testBulkDeleteHomePage(FunctionalTester $I) {
     $test_home = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => $this->faker->words(3, true),
+      'title' => $this->faker->words(3, TRUE),
     ]);
     $I->createEntity([
       'type' => 'stanford_page',
-      'title' => $this->faker->words(3, true),
+      'title' => $this->faker->words(3, TRUE),
     ]);
     $test_home_url = $test_home->toUrl()->toString();
     \Drupal::state()->set('stanford_profile.front_page', $test_home_url);

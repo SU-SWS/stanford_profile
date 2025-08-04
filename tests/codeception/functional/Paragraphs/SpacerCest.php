@@ -1,13 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Class SpacerCest.
- *
- * @group paragraphs
- * @group spacer
  */
+#[CodeceptionAttribute\Group('paragraphs')]
+#[CodeceptionAttribute\Group('spacer')]
 class SpacerCest {
 
   /**

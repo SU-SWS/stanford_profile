@@ -1,13 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Test out the views bulk edit module.
- *
- * @group contrib
- * @group bulk_edit
  */
+#[CodeceptionAttribute\Group('contrib')]
+#[CodeceptionAttribute\Group('bulk_edit')]
 class ViewsBulkEditCest {
 
   /**

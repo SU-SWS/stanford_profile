@@ -1,10 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Test the news functionality.
  */
+#[CodeceptionAttribute\Group('news')]
 class StanfordNewsCest {
 
   /**
@@ -23,20 +25,19 @@ class StanfordNewsCest {
 
   /**
    * Taxonomy terms in SHS should save in the order they were chosen.
-   *
-   * @group D8CORE-6003
    */
+  #[CodeceptionAttribute\Group('D8CORE-6003')]
   public function testTermOrder(FunctionalTester $I) {
     $first_term = $I->createEntity([
-      'name' => 'c-' . $this->faker->word,
+      'name' => 'c-' . $this->faker->word(),
       'vid' => 'stanford_news_topics',
     ], 'taxonomy_term');
     $second_term = $I->createEntity([
-      'name' => 'b-' . $this->faker->word,
+      'name' => 'b-' . $this->faker->word(),
       'vid' => 'stanford_news_topics',
     ], 'taxonomy_term');
     $third_term = $I->createEntity([
-      'name' => 'a-' . $this->faker->word,
+      'name' => 'a-' . $this->faker->word(),
       'vid' => 'stanford_news_topics',
     ], 'taxonomy_term');
 

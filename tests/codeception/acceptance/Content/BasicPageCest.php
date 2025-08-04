@@ -6,10 +6,9 @@ use Faker\Factory;
 
 /**
  * Class BasicPageCest.
- *
- * @group content
- * @group basic_page
  */
+#[CodeceptionAttribute\Group('content')]
+#[CodeceptionAttribute\Group('basic_page')]
 class BasicPageCest {
 
   /**
@@ -26,10 +25,9 @@ class BasicPageCest {
 
   /**
    * Test placing a basic page in the menu with a child menu item.
-   *
-   * @group pathauto
-   * @group menu_link_weight
    */
+  #[CodeceptionAttribute\Group('pathauto')]
+  #[CodeceptionAttribute\Group('menu_link_weight')]
   public function testCreatingPage(AcceptanceTester $I) {
     $node_title = $this->faker->text(20);
     $node = $I->createEntity([
@@ -103,7 +101,7 @@ class BasicPageCest {
    * Number of h1 tags should always be 1.
    */
   public function testH1Tags(AcceptanceTester $I) {
-    $I->amOnPage('/' . $this->faker->text);
+    $I->amOnPage('/' . $this->faker->text());
     $I->canSeeResponseCodeIs(404);
     $I->canSeeNumberOfElements('h1', 1);
 
@@ -117,9 +115,8 @@ class BasicPageCest {
    * The revision history tab should be functional.
    *
    * Regression test for D8CORE-1547.
-   *
-   * @group D8CORE-1547
    */
+  #[CodeceptionAttribute\Group('D8CORE-1547')]
   public function testRevisionPage(AcceptanceTester $I) {
     $title = $this->faker->words(3, TRUE);
     $I->logInWithRole('site_manager');
@@ -137,7 +134,7 @@ class BasicPageCest {
     $description = $this->faker->words(10, TRUE);
     $type_term = $I->createEntity([
       'vid' => 'basic_page_types',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
     ], 'taxonomy_term');
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_page');
@@ -168,9 +165,8 @@ class BasicPageCest {
 
   /**
    * A site manager should be able to place a page under an unpublished page.
-   *
-   * @group menu_link_weight
    */
+  #[CodeceptionAttribute\Group('menu_link_weight')]
   public function testUnpublishedMenuItems(AcceptanceTester $I) {
     $unpublished_title = $this->faker->words(5, TRUE);
     $unpublished_node = $I->createEntity([
@@ -229,9 +225,8 @@ class BasicPageCest {
 
   /**
    * Test the basic page scheduled publishing.
-   *
-   * @group scheduler
    */
+  #[CodeceptionAttribute\Group('scheduler')]
   public function testScheduler(AcceptanceTester $I) {
     $time = \Drupal::time();
 
@@ -270,9 +265,8 @@ class BasicPageCest {
 
   /**
    * Validate metadata information.
-   *
-   * @group metadata
    */
+  #[CodeceptionAttribute\Group('metadata')]
   public function testMetaData(AcceptanceTester $I) {
     $values = [
       'banner_image_alt' => $this->faker->words(3, TRUE),
@@ -283,8 +277,8 @@ class BasicPageCest {
 
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
-    $banner_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
-    $meta_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $banner_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
+    $meta_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
 
     $file = $I->createEntity(['uri' => $banner_image_path], 'file');
     $banner_media = $I->createEntity([
@@ -365,9 +359,7 @@ class BasicPageCest {
     $I->assertEquals($values['page_description'], $I->grabAttributeFrom('meta[name="description"]', 'content'), 'Metadata "description" should match.');
   }
 
-  /**
-   * @group search-results
-   */
+  #[CodeceptionAttribute\Group('search-results')]
   public function testSearchResult(AcceptanceTester $I) {
     $text = 'Two things are infinite: the universe and human stupidity; and I\'m not sure about the universe.';
     $wysiwyg = $I->createEntity([
@@ -416,7 +408,7 @@ class BasicPageCest {
       ],
     ]);
     $layout->save();
-    $text = $this->faker->paragraph;
+    $text = $this->faker->paragraph();
     /** @var \Drupal\paragraphs\ParagraphInterface $wysiwyg */
     $wysiwyg = $I->createEntity([
       'type' => 'stanford_wysiwyg',

@@ -1,10 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Test for the Super Footer.
- *
- * @group super-footer
  */
+#[CodeceptionAttribute\Group('super-footer')]
 class SuperFooterCest {
 
   public function _after(AcceptanceTester $I) {

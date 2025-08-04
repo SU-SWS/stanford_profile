@@ -1,12 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Test the page title banner paragraph.
- *
- * @group page-title-banner
  */
+#[CodeceptionAttribute\Group('paragraphs')]
+#[CodeceptionAttribute\Group('page-title-banner')]
 class PageTitleBannerCest {
 
   use TestFilesTrait;

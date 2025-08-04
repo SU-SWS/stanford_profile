@@ -1,12 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Test opportunity content type.
- *
- * @group opportunity
  */
+#[CodeceptionAttribute\Group('opportunity')]
 class OpportunityCest {
 
   /**

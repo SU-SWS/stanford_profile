@@ -1,14 +1,14 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Class IntranetCest.
- *
- * @group users
- * @group no-parallel
- * @group intranet
  */
+#[CodeceptionAttribute\Group('users')]
+#[CodeceptionAttribute\Group('no-parallel')]
+#[CodeceptionAttribute\Group('intranet')]
 class IntranetCest {
 
   /**

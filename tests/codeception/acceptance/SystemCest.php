@@ -1,10 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * System tests.
- *
- * @group system
  */
+#[CodeceptionAttribute\Group('system')]
 class SystemCest {
 
   /**
@@ -14,9 +15,12 @@ class SystemCest {
     $I->runDrush('xmlsitemap:rebuild');
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/reports/status');
-    $I->canSee('10.5', '.system-status-general-info');
+    $I->canSee('11.2', '.system-status-general-info');
     if ($I->grabMultiple('.system-status-counter--error')) {
-      $I->canSee('1 Error', '.system-status-counter--error');
+      $error_count = \Drupal::moduleHandler()
+        ->moduleExists('config_inspector') ? '2 Errors' : '1 Error';
+
+      $I->canSee($error_count, '.system-status-counter--error');
       $I->canSee('Access to update.php ', '.system-status-report__status-icon--error');
     }
 
@@ -28,10 +32,9 @@ class SystemCest {
 
   /**
    * Test the login page.
-   *
-   * @group 403-redirect
    */
-  public function testLoginPage(AcceptanceTester $I){
+  #[CodeceptionAttribute\Group('403-redirect')]
+  public function testLoginPage(AcceptanceTester $I) {
     $I->amOnPage('/admin/config');
     $I->canSeeInCurrentUrl('/user/login');
     $I->canSeeNumberOfElements('h1', 1);

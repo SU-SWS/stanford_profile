@@ -1,12 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Test the Course functionality.
- *
- * @group content
  */
+#[CodeceptionAttribute\Group('content')]
 class CoursesCest {
 
   /**
@@ -158,7 +158,7 @@ class CoursesCest {
    */
   protected function createCourseTagsTerm(AcceptanceTester $I) {
     return $I->createEntity([
-      'name' => $this->faker->word . '::' . $this->faker->word,
+      'name' => $this->faker->word() . '::' . $this->faker->word(),
       'vid' => 'su_course_tags',
     ], 'taxonomy_term');
   }

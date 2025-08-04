@@ -1,10 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Test for the Global Messages.
- *
- * @group global-message
  */
+#[CodeceptionAttribute\Group('global-message')]
 class GlobalMessageCest {
 
   /**

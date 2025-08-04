@@ -1,12 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Class GalleryCest.
- *
- * @group paragraph
  */
+#[CodeceptionAttribute\Group('paragraph')]
 class GalleryCest {
 
   /**

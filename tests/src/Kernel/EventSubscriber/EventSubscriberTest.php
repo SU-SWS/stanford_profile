@@ -5,7 +5,6 @@ namespace Drupal\Tests\stanford_profile\Kernel\EventSubscriber;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\consumers\Entity\Consumer;
 use Drupal\Core\Session\AccountProxyInterface;
-use Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent;
 use Drupal\Core\Site\Settings;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\default_content\Event\ImportEvent;
@@ -13,7 +12,7 @@ use Drupal\file\Entity\File;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\media\Entity\Media;
 use Drupal\media\Entity\MediaType;
-use Drupal\stanford_profile\EventSubscriber\EventSubscriber as StanfordEventSubscriber;
+use Drupal\stanford_profile\EventSubscriber\StanfordProfileEventSubscriber as StanfordEventSubscriber;
 use Drupal\user\Entity\Role;
 use GuzzleHttp\ClientInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -25,7 +24,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
  * Class EventSubscriberTest.
  *
  * @group stanford_profile
- * @coversDefaultClass \Drupal\stanford_profile\EventSubscriber\EventSubscriber
+ * @coversDefaultClass \Drupal\stanford_profile\EventSubscriber\StanfordProfileEventSubscriber
  */
 class EventSubscriberTest extends KernelTestBase {
 
@@ -53,7 +52,7 @@ class EventSubscriberTest extends KernelTestBase {
   /**
    * Event subscriber object.
    *
-   * @var \Drupal\stanford_profile\EventSubscriber\EventSubscriber
+   * @var \Drupal\stanford_profile\EventSubscriber\StanfordProfileEventSubscriber
    */
   protected $eventSubscriber;
 
@@ -75,7 +74,7 @@ class EventSubscriberTest extends KernelTestBase {
     $messenger = \Drupal::messenger();
     $client = $this->createMock(ClientInterface::class);
 
-    $this->eventSubscriber = new TestStanfordEventSubscriber($file_system, $client, $logger_factory, $messenger);
+    $this->eventSubscriber = new TestStanfordStanfordProfileEventSubscriber($file_system, $client, $logger_factory, $messenger);
 
     /** @var \Drupal\media\MediaTypeInterface $media_type */
     $media_type = MediaType::create([
@@ -177,7 +176,7 @@ class EventSubscriberTest extends KernelTestBase {
 /**
  * {@inheritDoc}
  */
-class TestStanfordEventSubscriber extends StanfordEventSubscriber {
+class TestStanfordStanfordProfileEventSubscriber extends StanfordEventSubscriber {
 
   /**
    * {@inheritDoc}

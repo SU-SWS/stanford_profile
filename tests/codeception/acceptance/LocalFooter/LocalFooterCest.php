@@ -1,10 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Class LocalFooterCest.
- *
- * @group local-footer
  */
+#[CodeceptionAttribute\Group('local-footer')]
 class LocalFooterCest {
 
   /**
@@ -35,9 +36,8 @@ class LocalFooterCest {
 
   /**
    * Changes to the local footer should display correctly.
-   *
-   * @group social-links
    */
+  #[CodeceptionAttribute\Group('social-links')]
   public function testCustomLocalFooter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/local-footer');

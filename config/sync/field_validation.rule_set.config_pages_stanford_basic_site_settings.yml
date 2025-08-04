@@ -10,12 +10,13 @@ entity_type: config_pages
 bundle: stanford_basic_site_settings
 field_validation_rules:
   1bb527fd-c2b5-4065-9ff0-1bfe4bbd9547:
-    message: 'This is not a valid SunetID.'
-    validate_mode: default
-    uuid: 1bb527fd-c2b5-4065-9ff0-1bfe4bbd9547
     id: valid_sunetid_constraint_rule
     title: 'Validate SunetID'
-    weight: '3'
+    data:
+      message: 'This is not a valid SunetID.'
+      validate_mode: default
+    weight: 3
+    uuid: 1bb527fd-c2b5-4065-9ff0-1bfe4bbd9547
     field_name: su_site_sunetid
     column: value
     error_message: ''
@@ -24,14 +25,17 @@ field_validation_rules:
       field: ''
       operator: ''
       value: ''
-    data:
-      message: 'This is not a valid SunetID.'
-      validate_mode: default
+    message: 'This is not a valid SunetID.'
+    validate_mode: default
   fab483e9-0ed4-4087-94ab-f134f4f9fa2c:
-    uuid: fab483e9-0ed4-4087-94ab-f134f4f9fa2c
     id: regex_constraint_rule
     title: 'Google Analytics'
-    weight: '4'
+    data:
+      validate_mode: direct
+      pattern: '/(?:UA|G|AW|DC)-[0-9a-zA-Z]{5,}(?:-[0-9]{1,})?/'
+      message: 'A valid Google Analytics Web Property ID is case sensitive and formatted like UA-xxxxxxx-yy or G-xxxxxxxxxx.'
+    weight: 4
+    uuid: fab483e9-0ed4-4087-94ab-f134f4f9fa2c
     field_name: su_google_analytics
     column: value
     error_message: ''
@@ -40,15 +44,18 @@ field_validation_rules:
       field: ''
       operator: ''
       value: ''
-    data:
-      pattern: '/(?:UA|G|AW|DC)-[0-9a-zA-Z]{5,}(?:-[0-9]{1,})?/'
-      message: 'A valid Google Analytics Web Property ID is case sensitive and formatted like UA-xxxxxxx-yy or G-xxxxxxxxxx.'
-      validate_mode: direct
   b7ed8723-96d6-4bf2-80d7-cb4e82c4d474:
-    uuid: b7ed8723-96d6-4bf2-80d7-cb4e82c4d474
     id: length_constraint_rule
     title: 'Limit Button Text'
-    weight: '3'
+    data:
+      validate_mode: default
+      min: '0'
+      max: '12'
+      maxMessage: 'This value is too long. It should have %limit character or less.|This value is too long. It should have %limit characters or less.'
+      minMessage: 'This value is too short. It should have %limit character or more.|This value is too short. It should have %limit characters or more.'
+      exactMessage: 'This value should have exactly %limit character.|This value should have exactly %limit characters.'
+    weight: 3
+    uuid: b7ed8723-96d6-4bf2-80d7-cb4e82c4d474
     field_name: su_site_header_button
     column: title
     error_message: ''
@@ -57,18 +64,15 @@ field_validation_rules:
       field: ''
       operator: ''
       value: ''
-    data:
-      min: '0'
-      max: '12'
-      maxMessage: 'This value is too long. It should have %limit character or less.|This value is too long. It should have %limit characters or less.'
-      minMessage: 'This value is too short. It should have %limit character or more.|This value is too short. It should have %limit characters or more.'
-      exactMessage: 'This value should have exactly %limit character.|This value should have exactly %limit characters.'
-      validate_mode: default
   6bf70db3-7bde-463f-9550-3660d644327e:
-    uuid: 6bf70db3-7bde-463f-9550-3660d644327e
     id: identical_to_constraint_rule
     title: 'Site URL Matches current URL'
-    weight: '4'
+    data:
+      validate_mode: default
+      value: '[site:base-url]'
+      message: 'This value should be identical to %compared_value_type %compared_value.'
+    weight: 4
+    uuid: 6bf70db3-7bde-463f-9550-3660d644327e
     field_name: su_site_url
     column: uri
     error_message: ''
@@ -78,7 +82,3 @@ field_validation_rules:
       field: ''
       operator: ''
       value: ''
-    data:
-      value: '[site:base-url]'
-      message: 'This value should be identical to %compared_value_type %compared_value.'
-      validate_mode: default

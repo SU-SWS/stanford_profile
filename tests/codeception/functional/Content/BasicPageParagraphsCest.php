@@ -1,12 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Test for the basic page content type.
- *
- * @group basic-page
  */
+#[CodeceptionAttribute\Group('basic-page')]
 class BasicPageParagraphsCest {
 
   /**
@@ -30,7 +30,7 @@ class BasicPageParagraphsCest {
     $card_values = [
       'superhead' => $this->faker->words(3, TRUE),
       'headline' => $this->faker->words(3, TRUE),
-      'uri' => $this->faker->url,
+      'uri' => $this->faker->url(),
       'title' => $this->faker->words(3, TRUE),
     ];
 
@@ -65,9 +65,8 @@ class BasicPageParagraphsCest {
 
   /**
    * The user should be able to see all revisions of a node.
-   *
-   * @group revisions
    */
+  #[CodeceptionAttribute\Group('revisions')]
   public function testViewRevisions(FunctionalTester $I) {
     $paragraph = $I->createEntity([
       'type' => 'stanford_card',
