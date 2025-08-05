@@ -42,15 +42,22 @@ class GlobalMessageCest {
    * Test the Form Settings.
    */
   public function testFormSettings(AcceptanceTester $I) {
-    $I->logInWithRole('administrator');
+    $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/config/system/global-message');
     $I->checkOption('#edit-su-global-msg-enabled-value');
     $I->selectOption("#edit-su-global-msg-type", "success");
     $I->fillField('Label', 'MESSAGE LABEL');
     $I->fillField('Headline', 'MESSAGE HEADER');
     $I->fillField('#edit-su-global-msg-message-0-value', '<p>This is the message body.</p>');
-    $I->fillField('URL', '<front>');
+
+    $current_domain = \Drupal::request()->getSchemeAndHttpHost();
+    $I->fillField('URL', "$current_domain/foo/bar");
     $I->fillField('Link text', 'Action link');
+    $I->click('Save');
+    $I->canSee('1 error has been found');
+    $I->canSee('Please use relative links');
+
+    $I->fillField('URL', '<front>');
     $I->click('Save');
     $I->see('Global Message has been', '.messages-list');
 
