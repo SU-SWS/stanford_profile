@@ -31,7 +31,7 @@ const SearchBox = ({federatedSearch}: { federatedSearch?: boolean }) => {
         }
       }}
     >
-      <div>
+      <div className="search-input">
         <SearchInput>
           <label htmlFor="keyword-search-algolia" className="visually-hidden">
             Keywords Search

@@ -118,22 +118,31 @@ export const PaginationList = styled.ul`
     border: 0;
     font-size: 20px;
 
-    &:hover, &:focus {
-      text-decoration: underline;
-      box-shadow: none;
-
-      i {
-        border-bottom: 1px solid black;
-      }
-    }
-
     &.page-number {
       font-size: 26px;
       font-weight: 600;
+      color: #B1040E;
+
+      &:hover, &:focus {
+        box-shadow: none;
+        border-bottom: 4px solid #820000;
+
+        i {
+          border-bottom: 1px solid black;
+        }
+      }
     }
   }
 
-
+  .next button,
+  .previous button {
+    &:hover, &:focus {
+      text-decoration: underline;
+      color: black;
+      box-shadow: none;
+      border-bottom: none;
+    }
+  }
 
   li[aria-current="true"] button {
     color: #2E2D29;

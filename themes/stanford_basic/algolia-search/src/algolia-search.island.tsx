@@ -63,7 +63,7 @@ const CustomHits = ({federatedSearch, ...props}: {
         <nav aria-label="Search results pager">
           <PaginationList>
             {pages[0] > 0 && (
-              <li>
+              <li className="previous">
                 <button onClick={() => goToPage(0)}>
                   <span className="visually-hidden">Go to first page</span>
                   Previous
@@ -83,7 +83,7 @@ const CustomHits = ({federatedSearch, ...props}: {
             ))}
 
             {pages[pages.length - 1] !== nbPages && (
-              <li>
+              <li className="next">
                 <button onClick={() => goToPage(nbPages - 1)}>
                   <span className="visually-hidden">Go to last page</span>
                   Next
