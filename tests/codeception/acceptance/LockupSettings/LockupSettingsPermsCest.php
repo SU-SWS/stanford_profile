@@ -1,8 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Test for the lockup settings permissions.
  */
+#[CodeceptionAttribute\Group('lockup')]
 class LockupSettingsPermsCest {
 
   /**

@@ -1,10 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Class DefaultUsersCest.
- *
- * @group users
  */
+#[CodeceptionAttribute\Group('users')]
 class DefaultUsersCest {
 
   /**

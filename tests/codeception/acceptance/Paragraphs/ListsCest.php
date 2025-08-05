@@ -1,14 +1,13 @@
 <?php
 
-use Faker\Factory;
 use Codeception\Attribute as CodeceptionAttribute;
+use Faker\Factory;
 
 /**
  * Class ListsCest.
- *
- * @group paragraphs
- * @group lists
  */
+#[CodeceptionAttribute\Group('paragraphs')]
+#[CodeceptionAttribute\Group('lists')]
 class ListsCest {
 
   /**
@@ -55,19 +54,19 @@ class ListsCest {
     $I->logInWithRole('administrator');
     $I->amOnPage("/paragraphs_edit/node/{$node->id()}/paragraphs/{$paragraph->id()}/edit");
     $I->canSeeInField('View', 'News');
-    $I->fillField('Items to display', $this->faker->word);
+    $I->fillField('Items to display', $this->faker->word());
     $I->click('Save');
     $I->canSee('Items to display must be numeric');
 
-    $I->fillField('Items to display', $this->faker->numberBetween(1, 100) . $this->faker->word);
+    $I->fillField('Items to display', $this->faker->numberBetween(1, 100) . $this->faker->word());
     $I->click('Save');
     $I->canSee('Items to display must be numeric');
 
-    $I->fillField('Items to display', $this->faker->word . $this->faker->numberBetween(1, 100));
+    $I->fillField('Items to display', $this->faker->word() . $this->faker->numberBetween(1, 100));
     $I->click('Save');
     $I->canSee('Items to display must be numeric');
 
-    $I->fillField('Items to display', $this->faker->numberBetween(1, 100) . $this->faker->word . $this->faker->numberBetween(1, 100));
+    $I->fillField('Items to display', $this->faker->numberBetween(1, 100) . $this->faker->word() . $this->faker->numberBetween(1, 100));
     $I->click('Save');
     $I->canSee('Items to display must be numeric');
 
@@ -79,12 +78,11 @@ class ListsCest {
 
   /**
    * Shared tags on each content type are identical.
-   *
-   * @group jsonapi
    */
+  #[CodeceptionAttribute\Group('jsonapi')]
   public function testSharedTags(AcceptanceTester $I) {
     $shared_tag = $I->createEntity([
-      'name' => $this->faker->jobTitle,
+      'name' => $this->faker->jobTitle(),
       'vid' => 'su_shared_tags',
     ], 'taxonomy_term');
     $basic_page = $I->createEntity([
@@ -103,8 +101,8 @@ class ListsCest {
       'su_shared_tags' => $shared_tag->id(),
     ]);
     $person = $I->createEntity([
-      'su_person_first_name' => $this->faker->firstName,
-      'su_person_last_name' => $this->faker->lastName,
+      'su_person_first_name' => $this->faker->firstName(),
+      'su_person_last_name' => $this->faker->lastName(),
       'type' => 'stanford_person',
       'su_shared_tags' => $shared_tag->id(),
     ]);
@@ -185,9 +183,8 @@ class ListsCest {
 
   /**
    * News items should display in the list paragraph.
-   *
-   * @group jsonapi
    */
+  #[CodeceptionAttribute\Group('jsonapi')]
   public function testListParagraphNews(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_news');
@@ -220,9 +217,8 @@ class ListsCest {
 
   /**
    * When using the list paragraph and view arguments, it should filter results.
-   *
-   * @group jsonapi
    */
+  #[CodeceptionAttribute\Group('jsonapi')]
   public function testListParagraphNewsFiltersNoFilter(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
@@ -312,9 +308,8 @@ class ListsCest {
 
   /**
    * No results message and hiding should work.
-   *
-   * @group D8CORE-4858
    */
+  #[CodeceptionAttribute\Group('D8CORE-4858')]
   public function testEmptyResultsListEvents(AcceptanceTester $I) {
     // Start with no events.
     $nodes = \Drupal::entityTypeManager()
@@ -323,7 +318,7 @@ class ListsCest {
     foreach ($nodes as $node) {
       $node->delete();
     }
-    $message = $this->faker->sentence;
+    $message = $this->faker->sentence();
     $headline_text = $this->faker->words(3, TRUE);
     /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
     $paragraph = $I->createEntity([
@@ -424,9 +419,8 @@ class ListsCest {
 
   /**
    * Event items should display in the list paragraph.
-   *
-   * @group jsonapi
    */
+  #[CodeceptionAttribute\Group('jsonapi')]
   public function testListParagraphEvents(AcceptanceTester $I) {
     $I->logInWithRole('contributor');
 
@@ -593,7 +587,7 @@ class ListsCest {
 
     $event = $I->createEntity([
       'type' => 'stanford_event',
-      'title' => $this->faker->text(15),
+      'title' => $this->faker->words(3, TRUE),
       'su_event_audience' => $event_audience->id(),
       'su_event_type' => $event_type->id(),
       'su_event_date_time' => [
@@ -806,9 +800,8 @@ class ListsCest {
 
   /**
    * Test basic page types list view.
-   *
-   * @group D8CORE-7422
    */
+  #[CodeceptionAttribute\Group('D8CORE-7422')]
   public function testListParagraphBasicPageTypesFilter(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
 
@@ -853,7 +846,7 @@ class ListsCest {
       'type' => 'stanford_page',
       'title' => 'Z' . $this->faker->text(15),
       'su_basic_page_type' => $type_term->id(),
-      'su_page_description' => $this->faker->text,
+      'su_page_description' => $this->faker->text(),
       'layout_selection' => 'stanford_basic_page_full',
       'created' => time() - 100000,
     ]);

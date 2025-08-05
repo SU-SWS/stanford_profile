@@ -2,18 +2,19 @@
 
 namespace Drupal\stanford_profile\Plugin\HelpSection;
 
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\help\Attribute\HelpSection;
 use Drupal\help\Plugin\HelpSection\HelpSectionPluginBase;
 
 /**
  * Provides the module topics list section for the help page.
- *
- * @HelpSection(
- *   id = "profile_resources",
- *   title = @Translation("Other resources at Stanford"),
- *   description = @Translation("Stanford has other centrally offered resources for web editors."),
- *   weight = -50
- * )
  */
+#[HelpSection(
+  id: 'profile_resources',
+  title: new TranslatableMarkup('Other resources at Stanford'),
+  description: new TranslatableMarkup('Stanford has other centrally offered resources for web editors.'),
+  weight: -50
+)]
 class ProfileResourceSection extends HelpSectionPluginBase {
 
   use ProfileHelpTrait;

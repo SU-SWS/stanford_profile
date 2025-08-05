@@ -9,41 +9,17 @@
  * Implements hook_update_last_removed().
  */
 function stanford_profile_update_last_removed() {
-  return 9104;
+  return 9106;
 }
 
 /**
- * Remove data for paragraph rows.
+ * Force uninstall pdb_react from schema since it was removed.
  */
-function stanford_profile_update_9105() {
-  $tables = [
-    'paragraph_row__su_page_components',
-    'paragraph_row__su_pubs_components',
-    'paragraph_row_revision__su_page_components',
-    'paragraph_row_revision__su_pubs_components',
-    'paragraph_rows_field_revision',
-    'paragraph_rows_item',
-    'paragraph_rows_item_field_data',
-    'paragraph_rows_revision',
-  ];
-  foreach ($tables as $table) {
-    \Drupal::database()->truncate($table)->execute();
-  }
-}
-
-/**
- * Removes content from taxonomy terms.
- */
-function stanford_profile_update_9106() {
-  $vocabulary_names = [
-    'opportunity_tag_filters',
-    'opportunity_type',
-    'opportunity_sponsor',
-  ];
-
-  $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['vid' => $vocabulary_names]);
-
-  foreach ($terms as $term) {
-    $term->delete();
-  }
+function stanford_profile_update_11000() {
+  $config = \Drupal::configFactory()->getEditable('core.extension');
+  $modules = $config->get('module');
+  unset($modules['pdb_react']);
+  $config->set('module', $modules);
+  $config->save(TRUE);
+  \Drupal::keyValue('system.schema')->delete('pdb_react');
 }

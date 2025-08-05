@@ -1,0 +1,30 @@
+uuid: dc8f0113-99b6-4735-aa65-ce1131b1b0c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - stanford_profile_helper
+    - user
+  theme:
+    - stanford_basic
+id: stanford_basic_rabbit_hole_message
+theme: stanford_basic
+region: content
+weight: -10
+provider: null
+plugin: rabbit_hole_message
+settings:
+  id: rabbit_hole_message
+  label: 'Rabbit Hole Message'
+  label_display: '0'
+  provider: stanford_profile_helper
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  user_role:
+    id: user_role
+    negate: true
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      anonymous: anonymous

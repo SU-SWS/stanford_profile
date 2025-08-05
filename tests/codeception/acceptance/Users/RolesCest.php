@@ -1,10 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Class RolesCest.
- *
- * @group users
  */
+#[CodeceptionAttribute\Group('users')]
 class RolesCest {
 
   /**
@@ -171,10 +172,9 @@ class RolesCest {
 
   /**
    * D8CORE-6983: Site Manager and Site embedder should play well together.
-   *
-   * @group D8CORE-6983
    */
-  public function testSiteEmbedderStacking(AcceptanceTester $I){
+  #[CodeceptionAttribute\Group('D8CORE-6983')]
+  public function testSiteEmbedderStacking(AcceptanceTester $I) {
     // Site manager cannot create custom embeddables.
     $I->logInWithRole('site_manager');
     $I->amOnPage('/media/add/embeddable');

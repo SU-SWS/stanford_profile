@@ -1,13 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Test for the decoupled menu.
- *
- * @group navigation
- * @group decoupled-menu
  */
+#[CodeceptionAttribute\Group('navigation')]
+#[CodeceptionAttribute\Group('decoupled-menu')]
 class DecoupledMenuCest {
 
   /**

@@ -3,7 +3,7 @@ services:
     class: Drupal\stanford_profile\InstallTaskManager
     parent: default_plugin_manager
   stanford_profile.event_subscriber:
-    class: '\Drupal\stanford_profile\EventSubscriber\EventSubscriber'
+    class: '\Drupal\stanford_profile\EventSubscriber\StanfordProfileEventSubscriber'
     arguments: ['@file_system', '@http_client', '@logger.factory', '@messenger']
     tags:
       - { name: 'event_subscriber' }

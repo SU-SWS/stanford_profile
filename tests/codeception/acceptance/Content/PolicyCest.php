@@ -1,14 +1,14 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 use Drupal\config_pages\Entity\ConfigPages;
 
 /**
  * Test policy content type.
- *
- * @group content
- * @group policy
  */
+#[CodeceptionAttribute\Group('content')]
+#[CodeceptionAttribute\Group('policy')]
 class PolicyCest {
 
   /**
@@ -73,6 +73,7 @@ class PolicyCest {
   /**
    * Test book title changes.
    */
+  #[CodeceptionAttribute\Group('policy-title')]
   public function testPolicyTitle(AcceptanceTester $I) {
     $title = $this->faker->words(4, TRUE) . ' foo bar';
     $I->logInWithRole('administrator');
@@ -91,9 +92,8 @@ class PolicyCest {
 
   /**
    * Test the path auto settings.
-   *
-   * @group menu_link_weight
    */
+  #[CodeceptionAttribute\Group('menu_link_weight')]
   public function testPolicyPathAuto(AcceptanceTester $I) {
     $title = $this->faker->words(4, TRUE) . ' foo bar';
     $I->logInWithRole('administrator');
@@ -162,9 +162,8 @@ class PolicyCest {
 
   /**
    * Test the hierarchy of the book.
-   *
-   * @group menu_link_weight
    */
+  #[CodeceptionAttribute\Group('menu_link_weight')]
   public function testPolicyHeirarcy(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $book = $I->createEntity([
@@ -206,7 +205,7 @@ class PolicyCest {
     $I->canSee($book->label(), '.breadcrumb');
     $I->canSee($chapter_two->label(), '.breadcrumb');
 
-    $authority = substr($this->faker->sentence, 0, 255);
+    $authority = substr($this->faker->sentence(), 0, 255);
 
     $article_one = $I->createEntity([
       'type' => 'stanford_policy',
@@ -258,7 +257,7 @@ class PolicyCest {
     $I->amOnPage($article_one->toUrl()->toString());
     $I->canSee('II.A ' . $article_one->get('su_policy_title')->getString());
 
-    $new_prefix = $this->faker->randomLetter;
+    $new_prefix = $this->faker->randomLetter();
     $I->amOnPage($chapter_two->toUrl('edit-form')->toString());
     $I->uncheckOption('Automatic Prefix');
     $I->fillField('Chapter Number', $new_prefix);

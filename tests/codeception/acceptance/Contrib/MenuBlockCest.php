@@ -1,5 +1,6 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 class MenuBlockCest {
@@ -20,9 +21,8 @@ class MenuBlockCest {
 
   /**
    * Test the menu block.
-   *
-   * @group menu_block
    */
+  #[CodeceptionAttribute\Group('menu_block')]
   public function testMenuBlockVisibility(AcceptanceTester $I) {
     $parent = $I->createEntity([
       'type' => 'stanford_page',

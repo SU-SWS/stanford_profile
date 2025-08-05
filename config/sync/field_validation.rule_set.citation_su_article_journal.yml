@@ -8,10 +8,14 @@ entity_type: citation
 bundle: su_article_journal
 field_validation_rules:
   4e08bc2f-aa62-4360-b503-80d9aefc88dc:
-    uuid: 4e08bc2f-aa62-4360-b503-80d9aefc88dc
     id: regex_constraint_rule
     title: 'DOI does not include http'
+    data:
+      validate_mode: direct
+      pattern: '/^((?!http).)*$/'
+      message: 'DOI must not be the full url.'
     weight: 2
+    uuid: 4e08bc2f-aa62-4360-b503-80d9aefc88dc
     field_name: su_doi
     column: value
     error_message: ''
@@ -20,7 +24,3 @@ field_validation_rules:
       field: ''
       operator: ''
       value: ''
-    data:
-      pattern: '/^((?!http).)*$/'
-      message: 'DOI must not be the full url.'
-      validate_mode: direct

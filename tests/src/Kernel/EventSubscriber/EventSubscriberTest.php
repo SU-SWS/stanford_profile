@@ -5,7 +5,6 @@ namespace Drupal\Tests\stanford_profile\Kernel\EventSubscriber;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\consumers\Entity\Consumer;
 use Drupal\Core\Session\AccountProxyInterface;
-use Drupal\core_event_dispatcher\Event\Entity\EntityInsertEvent;
 use Drupal\Core\Site\Settings;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\default_content\Event\ImportEvent;
@@ -13,8 +12,7 @@ use Drupal\file\Entity\File;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\media\Entity\Media;
 use Drupal\media\Entity\MediaType;
-use Drupal\stanford_profile\EventSubscriber\EventSubscriber as StanfordEventSubscriber;
-use Drupal\user\Entity\Role;
+use Drupal\stanford_profile\EventSubscriber\StanfordProfileEventSubscriber;
 use GuzzleHttp\ClientInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,9 +21,6 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
  * Class EventSubscriberTest.
- *
- * @group stanford_profile
- * @coversDefaultClass \Drupal\stanford_profile\EventSubscriber\EventSubscriber
  */
 class EventSubscriberTest extends KernelTestBase {
 
@@ -45,7 +40,6 @@ class EventSubscriberTest extends KernelTestBase {
     'serialization',
     'media',
     'test_stanford_profile',
-    'samlauth',
     'externalauth',
     'options',
   ];
@@ -53,7 +47,7 @@ class EventSubscriberTest extends KernelTestBase {
   /**
    * Event subscriber object.
    *
-   * @var \Drupal\stanford_profile\EventSubscriber\EventSubscriber
+   * @var \Drupal\stanford_profile\EventSubscriber\StanfordProfileEventSubscriber
    */
   protected $eventSubscriber;
 
@@ -75,7 +69,7 @@ class EventSubscriberTest extends KernelTestBase {
     $messenger = \Drupal::messenger();
     $client = $this->createMock(ClientInterface::class);
 
-    $this->eventSubscriber = new TestStanfordEventSubscriber($file_system, $client, $logger_factory, $messenger);
+    $this->eventSubscriber = new TestStanfordStanfordProfileEventSubscriber($file_system, $client, $logger_factory, $messenger);
 
     /** @var \Drupal\media\MediaTypeInterface $media_type */
     $media_type = MediaType::create([
@@ -98,7 +92,7 @@ class EventSubscriberTest extends KernelTestBase {
    * Test the consumer secret is randomized.
    */
   public function testConsumerSecretRandomized() {
-    $this->assertContains('onContentImport', StanfordEventSubscriber::getSubscribedEvents());
+    $this->assertContains('onContentImport', StanfordProfileEventSubscriber::getSubscribedEvents());
     $consumer = Consumer::create([
       'client_id' => 'foobar',
       'label' => 'foobar',
@@ -129,18 +123,6 @@ class EventSubscriberTest extends KernelTestBase {
     $this->assertFileExists('public://foobar.jpg');
   }
 
-  public function testUserInsert() {
-    $role = Role::create(['id' => 'test_role1', 'label' => 'Test role 1']);
-    $role->save();
-
-    $event = new EntityInsertEvent($role);
-    $this->eventSubscriber->onEntityInsert($event);
-    $saml_setting = \Drupal::config('samlauth.authentication')
-      ->get('map_users_roles');
-
-    $this->assertContains('test_role1', $saml_setting);
-  }
-
   public function testKernelRequest() {
     $ci = getenv('CI');
     putenv('CI');
@@ -151,7 +133,8 @@ class EventSubscriberTest extends KernelTestBase {
     new Settings($site_settings);
 
     $config_page_loader = $this->createMock(ConfigPagesLoaderServiceInterface::class);
-    $config_page_loader->method('getValue')->willReturn(date(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, 0));
+    $config_page_loader->method('getValue')
+      ->willReturn(date(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, 0));
     \Drupal::getContainer()->set('config_pages.loader', $config_page_loader);
 
     $account = $this->createMock(AccountProxyInterface::class);
@@ -177,7 +160,7 @@ class EventSubscriberTest extends KernelTestBase {
 /**
  * {@inheritDoc}
  */
-class TestStanfordEventSubscriber extends StanfordEventSubscriber {
+class TestStanfordStanfordProfileEventSubscriber extends StanfordProfileEventSubscriber {
 
   /**
    * {@inheritDoc}

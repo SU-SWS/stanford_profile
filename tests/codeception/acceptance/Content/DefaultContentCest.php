@@ -1,10 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Class DefaultContentCest.
- *
- * @group content
  */
+#[CodeceptionAttribute\Group('content')]
 class DefaultContentCest {
 
   /**
@@ -66,9 +67,8 @@ class DefaultContentCest {
 
   /**
    * Test the default menu items exist with proper destinations.
-   *
-   * @group menu_link_weight
    */
+  #[CodeceptionAttribute\Group('menu_link_weight')]
   public function testMenuItems(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/structure/menu/manage/main');

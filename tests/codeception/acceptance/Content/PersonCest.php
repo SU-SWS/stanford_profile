@@ -1,12 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Test the news functionality.
- *
- * @group content
  */
+#[CodeceptionAttribute\Group('content')]
 class PersonCest {
 
   /**
@@ -64,12 +64,12 @@ class PersonCest {
   public function testCreatePerson(AcceptanceTester $I) {
     $term = $I->createEntity([
       'vid' => 'stanford_person_types',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
     ], 'taxonomy_term');
 
     // Use 1s in the name to be at the top of the lists.
-    $first_name = '111' . $this->faker->firstName;
-    $last_name = '111' . $this->faker->lastName;
+    $first_name = '111' . $this->faker->firstName();
+    $last_name = '111' . $this->faker->lastName();
     $node = $I->createEntity([
       'type' => 'stanford_person',
       'su_person_first_name' => $first_name,
@@ -131,24 +131,23 @@ class PersonCest {
    * Special characters should stay.
    */
   public function testSpecialCharacters(AcceptanceTester $I) {
-    $first_name = $this->faker->firstName;
-    $middle_name = $this->faker->firstName;
-    $last_name = $this->faker->lastName;
+    $first_name = $this->faker->firstName();
+    $middle_name = $this->faker->firstName();
+    $last_name = $this->faker->lastName();
 
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_person');
     $I->fillField('First Name', $first_name);
     $I->fillField('Last Name', "$middle_name & $last_name");
-    $I->fillField('Short Title', $this->faker->text);
+    $I->fillField('Short Title', $this->faker->text());
     $I->click('Save');
     $I->canSee("$first_name $middle_name & $last_name", 'h1');
   }
 
   /**
    * D8CORE-2613: Taxonomy menu items don't respect the UI.
-   *
-   * @group 4704
    */
+  #[CodeceptionAttribute\Group('4704')]
   public function testD8Core2613Terms(AcceptanceTester $I) {
     $term1 = $I->createEntity([
       'name' => $this->faker->words(2, TRUE),
@@ -223,8 +222,8 @@ class PersonCest {
 
     $node = $I->createEntity([
       'type' => 'stanford_person',
-      'su_person_first_name' => $faker->firstName,
-      'su_person_last_name' => $faker->lastName,
+      'su_person_first_name' => $faker->firstName(),
+      'su_person_last_name' => $faker->lastName(),
       'su_person_type_group' => [
         ['target_id' => $great_grandchild->id()],
         ['target_id' => $another_child->id()],
@@ -249,7 +248,7 @@ class PersonCest {
     $I->logInWithRole('site_manager');
     $term = $I->createEntity([
       'vid' => 'stanford_person_types',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
     ], 'taxonomy_term');
     $I->amOnPage($term->toUrl('edit-form')->toString());
     $I->canSeeCheckboxIsChecked('Published');
@@ -266,9 +265,9 @@ class PersonCest {
     /** @var \Drupal\node\NodeInterface $node */
     $node = $I->createEntity([
       'type' => 'stanford_person',
-      'su_person_short_title' => $this->faker->title,
-      'su_person_first_name' => $this->faker->firstName,
-      'su_person_last_name' => $this->faker->lastName,
+      'su_person_short_title' => $this->faker->title(),
+      'su_person_first_name' => $this->faker->firstName(),
+      'su_person_last_name' => $this->faker->lastName(),
       'su_person_type_group' => $term->id(),
     ]);
     $I->logInWithRole('administrator');
@@ -286,21 +285,20 @@ class PersonCest {
 
   /**
    * Validate metadata information.
-   *
-   * @group metadata
    */
+  #[CodeceptionAttribute\Group('metadata')]
   public function testMetaData(AcceptanceTester $I) {
     $values = [
       'image_alt' => $this->faker->words(3, TRUE),
-      'body' => $this->faker->paragraph,
-      'first_name' => $this->faker->firstName,
-      'last_name' => $this->faker->lastName,
-      'profile_link' => $this->faker->url,
+      'body' => $this->faker->paragraph(),
+      'first_name' => $this->faker->firstName(),
+      'last_name' => $this->faker->lastName(),
+      'profile_link' => $this->faker->url(),
     ];
 
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
-    $image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
 
     $file = $I->createEntity(['uri' => $image_path], 'file');
     $media = $I->createEntity([
@@ -353,9 +351,9 @@ class PersonCest {
     /** @var \Drupal\node\NodeInterface $node */
     $node = $I->createEntity([
       'type' => 'stanford_person',
-      'su_person_short_title' => $this->faker->title,
-      'su_person_first_name' => $this->faker->firstName,
-      'su_person_last_name' => $this->faker->lastName,
+      'su_person_short_title' => $this->faker->title(),
+      'su_person_first_name' => $this->faker->firstName(),
+      'su_person_last_name' => $this->faker->lastName(),
       'su_person_type_group' => $term->id(),
     ]);
     $term->delete();

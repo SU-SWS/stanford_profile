@@ -1,5 +1,6 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Drupal\user\Entity\Role;
 use Faker\Factory;
 
@@ -159,8 +160,9 @@ class AuthenticatedPermissionsCest {
   /**
    * Vocabs aren't seen if there are no permissions for them.
    */
+  #[CodeceptionAttribute\Group('form_taxonomy_overview_vocabularies_alter')]
   public function testTaxonomyOverviewPage(AcceptanceTester $I) {
-    $name = $this->faker->firstName;
+    $name = $this->faker->firstName();
     $vocab = $I->createEntity([
       'vid' => strtolower($name),
       'name' => $name,

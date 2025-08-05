@@ -1,12 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 require_once __DIR__ . '/../TestFilesTrait.php';
 
 /**
  * Test for the lockup settings.
- *
- * @group lockup
  */
+#[CodeceptionAttribute\Group('lockup')]
 class LockupSettingsCest {
 
   use TestFilesTrait;

@@ -21,101 +21,39 @@ function stanford_profile_removed_post_updates() {
     'stanford_profile_post_update_update_field_defs' => '11.4.0',
     'stanford_profile_post_update_samlauth' => '11.4.0',
     'stanford_profile_post_update_site_orgs' => '11.4.0',
+    'stanford_profile_post_update_event_pages' => '12.0.0',
+    'stanford_profile_post_update_header_links_block' =>'12.0.0',
+    'stanford_profile_post_update_unpublished_site_banner' =>'12.0.0',
   ];
 }
 
 /**
- * Create default past event and event series node pages if content exists.
+ * Implements hook_post_update_NAME().
  */
-function stanford_profile_post_update_event_pages() {
-  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
-  $events = $node_storage->getQuery()
-    ->accessCheck(FALSE)
-    ->condition('type', 'stanford_event')
-    ->count()
-    ->execute();
-
-  $default_content_creator = \Drupal::service('stanford_profile_helper.default_content');
-  if ($events) {
-    $default_content_creator->createDefaultContent('86a411a2-0b05-41bc-ae15-2184b8e81ea4');
-  }
-  $event_series = $node_storage->getQuery()
-    ->accessCheck(FALSE)
-    ->condition('type', 'stanford_event-series')
-    ->count()
-    ->execute();
-  if ($event_series) {
-    $default_content_creator->createDefaultContent('ddd5aefb-6b7a-4cd7-aa72-e8c106598bb6');
-  }
-}
-
-/**
- * Create new header link block for the active theme.
- */
-function stanford_profile_post_update_header_links_block() {
+function stanford_profile_post_update_rabbit_hole_block() {
   $theme = \Drupal::config('system.theme')->get('default');
-  if (in_array($theme, [
-    'stanford_basic',
-    'minimally_branded_subtheme',
-    'stanford_profile_admin_theme',
-  ])) {
+  if (in_array($theme, ['stanford_basic', 'minimally_branded_subtheme'])) {
     return;
   }
   \Drupal::entityTypeManager()->getStorage('block')->create([
-    'id' => "{$theme}_header_links",
-    'theme' => $theme,
-    'region' => 'search',
-    'plugin' => 'config_pages_block',
-    'weight' => -6,
-    'provider' => NULL,
-    'settings' => [
-      'id' => 'config_pages_block',
-      'label' => 'Site Header Links',
-      'label_display' => '0',
-      'provider' => 'config_pages',
-      'config_page_type' => 'stanford_basic_site_settings',
-      'config_page_view_mode' => 'site_settings_header',
-    ],
-  ])->save();
-}
-
-/**
- * Create new header link block for the active theme.
- */
-function stanford_profile_post_update_unpublished_site_banner() {
-  $theme = \Drupal::config('system.theme')->get('default');
-  if (in_array($theme, [
-    'stanford_basic',
-    'minimally_branded_subtheme',
-    'stanford_profile_admin_theme',
-  ])) {
-    return;
-  }
-  \Drupal::entityTypeManager()->getStorage('block')->create([
-    'id' => "{$theme}_unpublished_site",
+    'id' => "{$theme}_rabbit_hole_message",
     'theme' => $theme,
     'region' => 'content',
-    'plugin' => 'simple_block:su_unpublished_site_banner',
     'weight' => -10,
-    'provider' => NULL,
+    'plugin' => 'rabbit_hole_message',
     'settings' => [
-      'id' => 'simple_block:su_unpublished_site_banner',
-      'label' => 'Unpublished Site Banner',
-      'label_display' => '0',
-      'provider' => 'simple_block',
+      'id' => 'rabbit_hole_message',
+      'label' => 'Rabbit Hole Message',
+      'label_display' => 0,
+      'provider' => 'stanford_profile_helper',
+      'context_mapping' => ['node' => '@node.node_route_context:node'],
     ],
     'visibility' => [
-      'config_pages_values_access' => [
-        'id' => 'config_pages_values_access',
-        'negate' => FALSE,
-        'config_page_field' => 'stanford_basic_site_settings|su_site_type|list_string',
-        'operator' => '==',
-        'condition_value' => 'pre_production',
-      ],
-      'request_path' => [
-        'id' => 'request_path',
+      'user_role' => [
+        'id' => 'user_role',
         'negate' => TRUE,
-        'pages' => '/user/*',
+        'context_mapping' => ['user' => '@user.current_user_context:current_user'],
+        'roles' => ['anonymous' => 'anonymous'],
       ],
     ],
   ])->save();

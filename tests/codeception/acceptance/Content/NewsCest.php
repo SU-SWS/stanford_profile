@@ -1,12 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Test the news functionality.
- *
- * @group content
  */
+#[CodeceptionAttribute\Group('content')]
 class NewsCest {
 
   /**
@@ -147,7 +147,7 @@ class NewsCest {
     $I->logInWithRole('site_manager');
     $term = $I->createEntity([
       'vid' => 'stanford_news_topics',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
     ], 'taxonomy_term');
     $I->amOnPage($term->toUrl('edit-form')->toString());
     $I->canSeeCheckboxIsChecked('Published');
@@ -155,9 +155,8 @@ class NewsCest {
 
   /**
    * Validate metadata information.
-   *
-   * @group metadata
    */
+  #[CodeceptionAttribute\Group('metadata')]
   public function testMetaData(AcceptanceTester $I) {
     $time = \Drupal::time()->getCurrentTime();
     $now = DateTime::createFromFormat('U', $time);
@@ -177,8 +176,8 @@ class NewsCest {
 
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
-    $banner_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
-    $featured_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $banner_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
+    $featured_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
 
     $file = $I->createEntity(['uri' => $banner_image_path], 'file');
     $banner_media = $I->createEntity([
