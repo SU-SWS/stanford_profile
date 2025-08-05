@@ -161,6 +161,26 @@ class PolicyCest {
   }
 
   /**
+   * Validate external content redirect.
+   */
+  public function testExternalSourcePolicy(AcceptanceTester $I) {
+    $node = $I->createEntity([
+      'type' => 'stanford_policy',
+      'title' => $this->faker->words(3, TRUE),
+      'su_policy_source' => "http://google.com/",
+    ]);
+
+    // Redirect as anon.
+    $I->amOnPage($node->toUrl()->toString());
+    $I->seeCurrentUrlEquals('/');
+
+    // See content as admin.
+    $I->logInWithRole('administrator');
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSeeInCurrentUrl($node->toUrl()->toString());
+  }
+
+  /**
    * Test the hierarchy of the book.
    */
   #[CodeceptionAttribute\Group('menu_link_weight')]
