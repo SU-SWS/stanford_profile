@@ -6,14 +6,10 @@ use Drupal\KernelTests\KernelTestBase;
 use Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay;
 use Drupal\node\Entity\NodeType;
 use Drupal\stanford_profile\StanfordProfilePermissions;
-use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class StanfordProfilePermissionsTest.
- *
- * @group stanford_profile
  */
-#[CoversClass(StanfordProfilePermissions::class)]
 class StanfordProfilePermissionsTest extends KernelTestBase {
 
   /**

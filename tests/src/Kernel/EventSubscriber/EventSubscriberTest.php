@@ -14,7 +14,6 @@ use Drupal\media\Entity\Media;
 use Drupal\media\Entity\MediaType;
 use Drupal\stanford_profile\EventSubscriber\StanfordProfileEventSubscriber;
 use GuzzleHttp\ClientInterface;
-use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -22,10 +21,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
  * Class EventSubscriberTest.
- *
- * @group stanford_profile
  */
-#[CoversClass(StanfordProfileEventSubscriber::class)]
 class EventSubscriberTest extends KernelTestBase {
 
   /**

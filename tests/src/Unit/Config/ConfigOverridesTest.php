@@ -10,14 +10,10 @@ use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\State\StateInterface;
 use Drupal\stanford_profile\Config\ConfigOverrides;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class ConfigOverridesTest
- *
- * @group stanford_profile
  */
-#[CoversClass(ConfigOverrides::class)]
 class ConfigOverridesTest extends UnitTestCase {
 
   /**

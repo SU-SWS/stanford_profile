@@ -13,7 +13,6 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Stream;
-use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Drupal\stanford_profile\Plugin\InstallTask\SiteSettings;
@@ -21,7 +20,6 @@ use Drupal\stanford_profile\Plugin\InstallTask\SiteSettings;
 /**
  * Class SiteSettingsTest.
  */
-#[CoversClass(SiteSettings::class)]
 class SiteSettingsTest extends KernelTestBase {
 
   /**

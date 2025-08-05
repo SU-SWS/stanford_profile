@@ -6,14 +6,10 @@ use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Utility\LinkGeneratorInterface;
 use Drupal\stanford_profile\Plugin\HelpSection\ProfileHelpMaintainingSection;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class ProfileMaintainingSectionTest
- *
- * @group stanford_profile
  */
-#[CoversClass(ProfileHelpMaintainingSection::class)]
 class ProfileMaintainingSectionTest extends UnitTestCase {
 
   /**
