@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Drupal\stanford_profile\Attribute;
 
 use Drupal\Component\Plugin\Attribute\AttributeBase;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * The foo_bar attribute.
@@ -16,11 +15,12 @@ final class InstallTask extends AttributeBase {
   /**
    * Constructs a new FooBar instance.
    *
+   * @codeCoverageIgnore
+   *
    * @param string $id
-   *   The plugin ID. There are some implementation bugs that make the plugin
-   *   available only if the ID follows a specific pattern. It must be either
-   *   identical to group or prefixed with the group. E.g. if the group is "foo"
-   *   the ID must be either "foo" or "foo:bar".
+   *   The plugin ID.
+   * @param string[] $dependencies
+   *   List of dependent install task ids.
    */
   public function __construct(
     public readonly string $id,
