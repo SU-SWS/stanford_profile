@@ -1,0 +1,23 @@
+uuid: 0c537c3d-8a6c-47d6-b27a-51365268fc23
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_policy_source
+    - node.type.stanford_policy
+  module:
+    - link
+id: node.stanford_policy.su_policy_source
+field_name: su_policy_source
+entity_type: node
+bundle: stanford_policy
+label: 'External Source'
+description: 'Add a URL to an external source for this policy item such as https://example.com/. By adding an external source URL all listings of this policy will link to the external source instead of a page on this website.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

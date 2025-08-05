@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.stanford_policy.su_policy_effective
     - field.field.node.stanford_policy.su_policy_policy_num
     - field.field.node.stanford_policy.su_policy_related
+    - field.field.node.stanford_policy.su_policy_source
     - field.field.node.stanford_policy.su_policy_subchapter
     - field.field.node.stanford_policy.su_policy_title
     - field.field.node.stanford_policy.su_policy_updated
@@ -21,6 +22,7 @@ dependencies:
     - datetime
     - field_group
     - inline_entity_form
+    - link
     - menu_link
     - path
     - scheduler
@@ -217,6 +219,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  su_policy_source:
+    type: link_default
+    weight: 54
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   su_policy_subchapter:
     type: string_textfield
