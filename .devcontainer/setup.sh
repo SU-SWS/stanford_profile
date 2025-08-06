@@ -17,7 +17,7 @@ rm -rf docroot/*/custom/*
 composer install --prefer-source --no-interaction
 
 rm -rf docroot/profiles/custom/stanford_profile
-ln -snf $1/ /var/www/html
+ln -snf /workspace/stanford_profile docroot/profiles/custom/stanford_profile
 
 drush sws:multisite:settings
 sed -i "s|uri:.*$|uri: https://$CODESPACE_NAME-80.app.github.dev|" docroot/sites/default/local.drush.yml
