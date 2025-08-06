@@ -32,7 +32,7 @@ tasks:
       git remote set-url origin git@github.com:SU-SWS/stanford_profile.git &&
       cd $GITPOD_REPO_ROOT &&
       mkdir -p docroot/sites/settings &&
-      find docroot/sites/ -name 'local*' | xargs rm &&
+      find docroot/sites/ -name 'local*' -type f | xargs rm -rf  &&
       cp .gitpod/global.settings.php docroot/sites/settings/global.settings.php &&
       cp .gitpod/default.local.services.yml docroot/sites/local.services.yml &&
       drush settings &&
