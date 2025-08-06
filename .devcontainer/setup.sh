@@ -10,8 +10,6 @@ rm -rf /var/www/html
 git clone --branch 2.x https://github.com/SU-SWS/acsf-cardinalsites-public.git /var/www/html
 cp .devcontainer/drush.yml /var/www/html/drush/local.drush.yml
 
-code -a /var/www/html
-
 cd /var/www/html
 composer require su-sws/stanford_profile:"dev-$PROFILE_BRANCH || $PROFILE_BRANCH-dev" --no-update &&
 composer update --no-interaction
