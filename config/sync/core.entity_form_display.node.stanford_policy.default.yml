@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.stanford_policy.su_policy_effective
     - field.field.node.stanford_policy.su_policy_policy_num
     - field.field.node.stanford_policy.su_policy_related
+    - field.field.node.stanford_policy.su_policy_source
     - field.field.node.stanford_policy.su_policy_subchapter
     - field.field.node.stanford_policy.su_policy_title
     - field.field.node.stanford_policy.su_policy_updated
@@ -21,6 +22,7 @@ dependencies:
     - datetime
     - field_group
     - inline_entity_form
+    - link
     - menu_link
     - path
     - scheduler
@@ -36,7 +38,7 @@ third_party_settings:
       label: 'Policy Prefix'
       region: content
       parent_name: ''
-      weight: 6
+      weight: 7
       format_type: details_sidebar
       format_settings:
         classes: ''
@@ -53,7 +55,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 5
+    weight: 2
     region: content
     settings:
       rows: 9
@@ -63,24 +65,24 @@ content:
     third_party_settings: {  }
   field_menulink:
     type: menu_link_default
-    weight: 53
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 52
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 50
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -93,7 +95,7 @@ content:
     third_party_settings: {  }
   su_policy_authority:
     type: string_textfield
-    weight: 4
+    weight: 6
     region: content
     settings:
       size: 60
@@ -122,6 +124,7 @@ content:
       collapsible: false
       collapsed: false
       revision: false
+      removed_reference: optional
     third_party_settings: {  }
   su_policy_chapter:
     type: string_textfield
@@ -184,7 +187,7 @@ content:
             selector: ''
   su_policy_effective:
     type: datetime_default
-    weight: 2
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -217,6 +220,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  su_policy_source:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   su_policy_subchapter:
     type: string_textfield
@@ -269,7 +280,7 @@ content:
     third_party_settings: {  }
   su_policy_updated:
     type: datetime_default
-    weight: 3
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
