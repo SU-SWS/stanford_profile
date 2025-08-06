@@ -166,7 +166,7 @@ class PolicyCest {
   public function testExternalSourcePolicy(AcceptanceTester $I) {
     $node = $I->createEntity([
       'type' => 'stanford_policy',
-      'title' => $this->faker->words(3, TRUE),
+      'su_policy_title' => $this->faker->words(3, TRUE),
       'su_policy_source' => "http://google.com/",
     ]);
 
