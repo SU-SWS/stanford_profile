@@ -36,7 +36,7 @@ tasks:
       cp .gitpod/global.settings.php docroot/sites/settings/global.settings.php &&
       cp .gitpod/default.local.services.yml docroot/sites/local.services.yml &&
       drush settings &&
-      sed "s|uri:.*|uri: $(gp url 8001)|" docroot/sites/default/local.drush.yml &&
+      sed -i "s|uri:.*|uri: $(gp url 8001)|" docroot/sites/default/local.drush.yml &&
       drush si stanford_profile -v -y &&
       drush cr &&
       drush cim -y
