@@ -1,17 +1,42 @@
 {
-  name: "CardinalSites",
-  dockerComposeFile: "docker-compose.yml",
-  service: "web",
-  forwardPorts: [80],
-  portsAttributes: {
-    '80': {
-      label: "Web"
+  "name": "CardinalSites",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "web",
+  "forwardPorts": [
+    80
+  ],
+  "portsAttributes": {
+    "80": {
+      "label": "Web"
     }
   },
-  postStartCommand: "${containerWorkspaceFolder}/.devcontainer/setup.sh ${containerWorkspaceFolder}",
-  customizations: {
-    vscode: {
-      settings: {
+  "onCreateCommand": ".devcontainer/on-create.sh",
+  "postCreateCommand": ".devcontainer/post-create.sh",
+  "secrets": {
+    "SSH_PRIVATE_KEY": {
+      "description": "SSH Private key for connecting to remote services.",
+      "documentationUrl": "https://example.com/link/to/info"
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "su-sws/stanford_fields": {
+          "permissions": "write-all"
+        },
+        "su-sws/stanford_media": {
+          "permissions": "write-all"
+        },
+        "su-sws/stanford_migrate": {
+          "permissions": "write-all"
+        },
+        "su-sws/stanford_samlauth": {
+          "permissions": "write-all"
+        }
+      }
+    },
+    "vscode": {
+      "settings": {
         "breadcrumbs.enabled": true,
         "css.validate": true,
         "diffEditor.ignoreTrimWhitespace": false,
@@ -43,7 +68,6 @@
         "html.format.enable": true,
         "html.format.wrapLineLength": 80,
         "telemetry.telemetryLevel": "off",
-
         /* PHP Intelephense (bmewburn.vscode-intelephense-client) */
         "intelephense.environment.includePaths": [
           "core/",
@@ -51,7 +75,7 @@
           "../vendor/"
         ]
       },
-      extensions: {
+      "extensions": {
         "recommendations": [
           "bmewburn.vscode-intelephense-client",
           "dbaeumer.vscode-eslint",
@@ -70,7 +94,7 @@
           "phproberto.vscode-php-getters-setters",
           "redhat.vscode-yaml",
           "stanislav.vscode-drupal",
-          "thenouillet.symfony-vscode",
+          "thenouillet.symfony-vscode"
         ]
       }
     }
