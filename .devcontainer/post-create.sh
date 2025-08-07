@@ -3,6 +3,8 @@
 set -ev
 set -o xtrace
 
+PROFILE_NAME=`ls | grep info.yml | sed 's/\.info\.yml//'`
+
 rm -rf docroot/profiles/custom/$PROFILE_NAME
 ln -snf /workspaces/$PROFILE_NAME docroot/profiles/custom/$PROFILE_NAME
 
@@ -15,7 +17,6 @@ if [[ ! -z $GITCONFIG ]]; then
   echo $GITCONFIG | base64 -d > ~/.gitconfig
   chmod 644 ~/.gitconfig
 fi
-
 
 drush uli
 

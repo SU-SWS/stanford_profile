@@ -9,7 +9,9 @@ PROFILE_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
 chown -R www-data:www-data /tmp
 rm -rf /var/www/html
-git clone --branch 2.x https://github.com/SU-SWS/acsf-cardinalsites-public.git /var/www/html
+git clone --branch 2.x https://github.com/SU-SWS/acsf-cardinalsites-public.git /workspaces/html
+ln -snf /workspaces/html /var/www/html
+
 cp .devcontainer/drush.yml /var/www/html/drush/local.drush.yml
 
 cd /var/www/html
