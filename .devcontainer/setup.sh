@@ -16,30 +16,30 @@ rm -rf $PROFILE_NAME/*
 rsync -r stack/ $PROFILE_NAME
 ln -snf $PROFILE_NAME /var/www/html
 
-cd $PROFILE_NAME
-cp .devcontainer/drush.yml /var/www/html/drush/local.drush.yml
-
-composer require "$PACKAGE:dev-$PROFILE_BRANCH || $PROFILE_BRANCH-dev" --no-update &&
-composer update --no-interaction
-rm -rf docroot/*/custom/*
-composer install --prefer-source --no-interaction
-
-drush sws:multisite:settings
-sed -i "s|uri:.*$|uri: https://$CODESPACE_NAME-80.app.github.dev|" docroot/sites/default/local.drush.yml
-sed -i "s|uri:.*$|uri: https://$CODESPACE_NAME-80.app.github.dev|" drush/local.drush.yml
-
-drush site-install $PROFILE_NAME -y -v
-drush cim -y
-
-if [[ ! -z $SSH_PRIVATE_KEY ]]; then
-  mkdir -p ~/.ssh
-  echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_rsa
-  chmod 600 ~/.ssh/id_rsa
-fi
-if [[ ! -z $GITCONFIG ]]; then
-  echo $GITCONFIG | base64 -d > ~/.gitconfig
-  chmod 644 ~/.gitconfig
-fi
-
-drush cset stage_file_proxy.settings origin 'localhost' -y
-drush uli
+#cd $PROFILE_NAME
+#cp .devcontainer/drush.yml /var/www/html/drush/local.drush.yml
+#
+#composer require "$PACKAGE:dev-$PROFILE_BRANCH || $PROFILE_BRANCH-dev" --no-update &&
+#composer update --no-interaction
+#rm -rf docroot/*/custom/*
+#composer install --prefer-source --no-interaction
+#
+#drush sws:multisite:settings
+#sed -i "s|uri:.*$|uri: https://$CODESPACE_NAME-80.app.github.dev|" docroot/sites/default/local.drush.yml
+#sed -i "s|uri:.*$|uri: https://$CODESPACE_NAME-80.app.github.dev|" drush/local.drush.yml
+#
+#drush site-install $PROFILE_NAME -y -v
+#drush cim -y
+#
+#if [[ ! -z $SSH_PRIVATE_KEY ]]; then
+#  mkdir -p ~/.ssh
+#  echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_rsa
+#  chmod 600 ~/.ssh/id_rsa
+#fi
+#if [[ ! -z $GITCONFIG ]]; then
+#  echo $GITCONFIG | base64 -d > ~/.gitconfig
+#  chmod 644 ~/.gitconfig
+#fi
+#
+#drush cset stage_file_proxy.settings origin 'localhost' -y
+#drush uli
