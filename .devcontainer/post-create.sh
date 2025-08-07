@@ -18,5 +18,5 @@ if [[ ! -z $GITCONFIG ]]; then
   chmod 644 ~/.gitconfig
 fi
 
-drush uli
+cd /workspaces/html && drush uli
 

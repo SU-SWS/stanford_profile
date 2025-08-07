@@ -25,6 +25,4 @@ sed -i "s|uri:.*$|uri: https://$CODESPACE_NAME-80.app.github.dev|" docroot/sites
 sed -i "s|uri:.*$|uri: https://$CODESPACE_NAME-80.app.github.dev|" drush/local.drush.yml
 
 drush site-install $PROFILE_NAME -y -v
-drush cim -y
-
 drush cset stage_file_proxy.settings origin 'localhost' -y
