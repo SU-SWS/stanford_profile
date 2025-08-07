@@ -46,8 +46,9 @@ tasks:
       cd $GITPOD_REPO_ROOT/docroot/profiles/custom/$PROFILE_NAME &&
       git remote set-url origin $(git remote get-url --push origin)
     command: |
+      cd $GITPOD_REPO_ROOT &&
       apache2ctl restart &&
-      git config core.fileMode false
+      git config core.fileMode false &&
       sed -i "s|uri:.*|uri: $(gp url 8001)|" docroot/sites/default/local.drush.yml &&
       drush uli &&
       drush uli | xargs gp preview --external
