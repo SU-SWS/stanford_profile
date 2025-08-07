@@ -10,13 +10,13 @@ PROFILE_BRANCH=`git rev-parse --abbrev-ref HEAD`
 chown -R www-data:www-data /tmp
 rm -rf /var/www/html
 cd /workspaces
-rm -rf $PROFILE_NAME
-git clone --branch 2.x https://github.com/SU-SWS/acsf-cardinalsites-public.git $PROFILE_NAME
+
+git clone --branch 2.x https://github.com/SU-SWS/acsf-cardinalsites-public.git stack
+rm -rf $PROFILE_NAME/*
+rsync -r stack/ $PROFILE_NAME
 ln -snf $PROFILE_NAME /var/www/html
 
 cd $PROFILE_NAME
-
-exit 0
 cp .devcontainer/drush.yml /var/www/html/drush/local.drush.yml
 
 composer require "$PACKAGE:dev-$PROFILE_BRANCH || $PROFILE_BRANCH-dev" --no-update &&
