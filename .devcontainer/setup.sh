@@ -32,8 +32,6 @@ if [[ ! -z $SSH_PRIVATE_KEY ]]; then
   mkdir -p ~/.ssh
   echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_rsa
   chmod 600 ~/.ssh/id_rsa
-  ssh-keyscan staging-2153.enterprise-g1.hosting.acquia.com >> ~/.ssh/known_hosts
-  drush sws:keys
 fi
 if [[ ! -z $GITCONFIG ]]; then
   echo $GITCONFIG | base64 -d > ~/.gitconfig
@@ -42,3 +40,5 @@ fi
 
 drush cset stage_file_proxy.settings origin 'localhost' -y
 drush uli
+
+code -a /var/www/html
