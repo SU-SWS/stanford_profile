@@ -3,10 +3,10 @@
 set -ev
 set -o xtrace
 
-PROFILE_NAME=`ls | grep info.yml | sed 's/\.info\.yml//'`
+PROFILE_NAME=`ls | grep info.yml | sed 's/\.info.*//'`
 
-rm -rf docroot/profiles/custom/$PROFILE_NAME
-ln -snf /workspaces/$PROFILE_NAME docroot/profiles/custom/$PROFILE_NAME
+rm -rf /workspaces/html/docroot/profiles/custom/$PROFILE_NAME
+ln -snf /workspaces/$PROFILE_NAME /workspaces/html/docroot/profiles/custom/$PROFILE_NAME
 
 if [[ ! -z $SSH_PRIVATE_KEY ]]; then
   mkdir -p ~/.ssh
