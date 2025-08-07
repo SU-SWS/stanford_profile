@@ -24,5 +24,8 @@ drush sws:multisite:settings
 sed -i "s|uri:.*$|uri: https://$CODESPACE_NAME-80.app.github.dev|" docroot/sites/default/local.drush.yml
 sed -i "s|uri:.*$|uri: https://$CODESPACE_NAME-80.app.github.dev|" drush/local.drush.yml
 
+cp .gitpod/global.settings.php docroot/sites/settings/global.settings.php
+cp .gitpod/default.local.services.yml docroot/sites/local.services.yml
+
 drush site-install $PROFILE_NAME -y -v
 drush cset stage_file_proxy.settings origin 'localhost' -y
