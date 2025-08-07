@@ -36,7 +36,6 @@ tasks:
 
       drush sws:multisite:settings &&
       sed -i "s|uri:.*|uri: $(gp url 8001)|" drush/local.drush.yml &&
-      sed -i "s|uri:.*|uri: $(gp url 8001)|" docroot/sites/default/local.drush.yml &&
 
       cp .gitpod/global.settings.php docroot/sites/settings/global.settings.php &&
       cp .gitpod/default.local.services.yml docroot/sites/local.services.yml &&
