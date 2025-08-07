@@ -3,12 +3,11 @@
 set -ev
 set -o xtrace
 
-pwd
-ls
-
 PACKAGE=`cat composer.json | jq -r '.name'`
 PROFILE_NAME=`ls | grep info.yml | sed 's/\.info\.yml//'`
 PROFILE_BRANCH=`git rev-parse --abbrev-ref HEAD`
+
+rm -rf ./*
 
 chown -R www-data:www-data /tmp
 rm -rf /var/www/html
