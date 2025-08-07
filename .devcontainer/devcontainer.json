@@ -18,9 +18,6 @@
     },
     "GITCONFIG": {
       "description": "SSH Private key for connecting to remote services. `cat ~/.gitconfig | base64 -w 0`"
-    },
-    "FOO": {
-      "description": "TEST Secret"
     }
   },
   "customizations": {
@@ -36,6 +33,9 @@
           "permissions": "write-all"
         },
         "su-sws/stanford_samlauth": {
+          "permissions": "write-all"
+        },
+        "su-sws/stanford_profile_helper": {
           "permissions": "write-all"
         }
       }
