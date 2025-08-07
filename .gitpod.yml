@@ -19,9 +19,9 @@ tasks:
           echo $GITCONFIG | base64 -d > ~/.gitconfig && chmod 644 ~/.gitconfig
       fi
     init: >
-      export PACKAGE=`cat composer.json | jq -r '.name'` &&
-      export PROFILE_NAME=`ls | grep info.yml | sed 's/\.info.*//'` &&
-      export PROFILE_BRANCH=`git rev-parse --abbrev-ref HEAD` &&
+      export PACKAGE=$(cat composer.json | jq -r '.name') &&
+      export PROFILE_NAME=$(ls | grep info.yml | sed 's/\.info.*//') &&
+      export PROFILE_BRANCH=$(echo $GITPOD_WORKSPACE_CONTEXT | jq -r '.ref) &&
 
       cd /workspace &&
 
