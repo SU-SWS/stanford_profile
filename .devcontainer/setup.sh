@@ -15,6 +15,8 @@ git clone --branch 2.x https://github.com/SU-SWS/acsf-cardinalsites-public.git $
 ln -snf $PROFILE_NAME /var/www/html
 
 cd $PROFILE_NAME
+
+exit 0
 cp .devcontainer/drush.yml /var/www/html/drush/local.drush.yml
 
 composer require "$PACKAGE:dev-$PROFILE_BRANCH || $PROFILE_BRANCH-dev" --no-update &&
