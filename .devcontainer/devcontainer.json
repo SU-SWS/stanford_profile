@@ -10,12 +10,17 @@
       "label": "Web"
     }
   },
-  "onCreateCommand": "cd /workspaces && rm -rf stanford_profile && git clone --branch 2.x https://github.com/SU-SWS/acsf-cardinalsites-public.git stanford_profile",
-  "postCreateCommand": ".devcontainer/on-create.sh",
+  "onCreateCommand": ".devcontainer/on-create.sh",
+  "postCreateCommand": ".devcontainer/post-create.sh",
   "secrets": {
     "SSH_PRIVATE_KEY": {
-      "description": "SSH Private key for connecting to remote services.",
-      "documentationUrl": "https://example.com/link/to/info"
+      "description": "SSH Private key for connecting to remote services. Use a password-less ssh: `cat id_rsa | base64 -w 0`."
+    },
+    "GITCONFIG": {
+      "description": "SSH Private key for connecting to remote services. `cat ~/.gitconfig | base64 -w 0`"
+    },
+    "FOO": {
+      "description": "TEST Secret"
     }
   },
   "customizations": {
