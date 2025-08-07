@@ -1,0 +1,13 @@
+services:
+  web:
+    image: "pookmish/drupal8ci:php8.3"
+  mysql:
+    image: "mysql:8.0"
+    command: --max_allowed_packet=67108864
+    environment:
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+      MYSQL_ROOT_PASSWORD: drupal
+    ports:
+      - '33306:3306'
