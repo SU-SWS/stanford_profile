@@ -21,7 +21,7 @@ tasks:
     init: >
       export PACKAGE=$(cat composer.json | jq -r '.name') &&
       export PROFILE_NAME=$(ls | grep info.yml | sed 's/\.info.*//') &&
-      export PROFILE_BRANCH=$(echo $GITPOD_WORKSPACE_CONTEXT | jq -r '.ref) &&
+      export PROFILE_BRANCH=$(echo $GITPOD_WORKSPACE_CONTEXT | jq -r '.ref') &&
 
       cd /workspace &&
 
