@@ -13,7 +13,7 @@ tasks:
   - before: |
       mkdir -p ~/.ssh
       if [[ ! -z $SSH_PRIVATE_KEY ]]; then
-          echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa &&
+          echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
       fi
       if [[ ! -z $GITCONFIG ]]; then
           echo $GITCONFIG | base64 -d > ~/.gitconfig && chmod 644 ~/.gitconfig
@@ -25,6 +25,7 @@ tasks:
 
       cd /workspace &&
 
+      rm -rf $GITPOD_REPO_ROOT &&
       git clone --branch 2.x https://github.com/SU-SWS/acsf-cardinalsites-public.git $GITPOD_REPO_ROOT &&
       cd $GITPOD_REPO_ROOT &&
 
