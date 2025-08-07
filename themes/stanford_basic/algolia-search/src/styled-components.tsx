@@ -37,6 +37,18 @@ export const AlgoliaSearchContainer = styled.div`
     }
   }
 
+  .clear-filters-link {
+    display: block;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: #2e2d29;
+      text-decoration: underline;
+    }
+  }
+
   .search-results-count {
     color: rgba(88, 87, 84, 1);
     font-size: 21px;
@@ -65,7 +77,7 @@ export const AlgoliaSearchContainer = styled.div`
 
 export const SearchForm = styled.form`
   button[type="reset"] {
-    margin: 0 auto 30px;
+    color: #767674;
     display: block;
   }
 `
@@ -85,11 +97,17 @@ export const SearchInput = styled.div`
     border: 2px solid #979694;
   }
 
-  button {
+  .search-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
+  }
+
+  button {
     aspect-ratio: 1;
     background: transparent;
     color: #B1040E;

@@ -1,4 +1,5 @@
 import {
+  useClearRefinements,
   useRefinementList,
   useSearchBox
 } from "react-instantsearch";
@@ -47,17 +48,21 @@ const SearchBox = ({federatedSearch}: { federatedSearch?: boolean }) => {
             defaultValue={query}
             autoFocus
           />
-          <button type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <span className="visually-hidden">Submit</span>
-          </button>
+          <div class="search-buttons">
+            <button
+              type="reset"
+              hidden={query.length === 0}
+            >
+              <i class="fa-solid fa-close"></i>
+            </button>
+            <span class="separator" hidden={query.length === 0}>|</span>
+            <button type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span className="visually-hidden">Submit</span>
+            </button>
+          </div>
         </SearchInput>
-        <button
-          type="reset"
-          hidden={query.length === 0}
-        >
-          Reset
-        </button>
+
       </div>
 
       {federatedSearch &&
@@ -66,6 +71,21 @@ const SearchBox = ({federatedSearch}: { federatedSearch?: boolean }) => {
     </SearchForm>
   );
 }
+
+const ClearFilters = () => {
+  const { canRefine, refine } = useClearRefinements();
+
+  return (
+    <a
+      type="link"
+      onClick={refine}
+      className="clear-filters-link"
+    >
+      Reset filters
+    </a>
+  );
+};
+
 
 const RefinementSidebar = () => {
   const {
@@ -80,6 +100,7 @@ const RefinementSidebar = () => {
   return (
     <div className="federated-search-facets">
       <h2>Filter by</h2>
+      <ClearFilters/>
       <fieldset>
         <legend>Sites</legend>
         {sites.map(site =>
