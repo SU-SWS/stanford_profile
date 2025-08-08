@@ -6,6 +6,7 @@ import {
 import {useRef} from "preact/compat";
 import {CheckboxLabel, SearchForm, SearchInput} from "./styled-components";
 
+
 const SearchBox = ({federatedSearch}: { federatedSearch?: boolean }) => {
   const {query, refine} = useSearchBox();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -97,6 +98,7 @@ const RefinementSidebar = () => {
     showMore: false,
     sortBy: ["name"]
   })
+
   return (
     <div className="federated-search-facets">
       <h2>Filter by</h2>

@@ -9,6 +9,7 @@ export const AlgoliaSearchContainer = styled.div`
       }
 
       margin-bottom: 162px;
+      margin-top: 61px;
     }
   }
 
@@ -17,8 +18,27 @@ export const AlgoliaSearchContainer = styled.div`
 
     h2 {
       padding-bottom: 45px;
-      border-bottom: 1px solid #979694;
       font-size: 23px;
+      margin-bottom: 0;
+    }
+
+    .clear-filters-link {
+      color: #006CB8;
+      font-size: 18px;
+      font-weight: 400;
+      padding-bottom: 18px;
+      margin-bottom: 19px;
+      border-bottom: 1px solid #979694;
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: #2e2d29;
+        text-decoration: underline;
+      }
     }
 
     @media (min-width: 768px) {
@@ -34,18 +54,6 @@ export const AlgoliaSearchContainer = styled.div`
     legend {
       font-size: 21px;
       font-weight: 600;
-    }
-  }
-
-  .clear-filters-link {
-    display: block;
-    text-decoration: none;
-
-    &:hover,
-    &:focus,
-    &:active {
-      color: #2e2d29;
-      text-decoration: underline;
     }
   }
 

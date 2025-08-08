@@ -3,13 +3,16 @@ import {createIslandWebComponent} from 'preact-island'
 import {
   InstantSearch,
   useHits,
-  usePagination
+  usePagination,
+  useCurrentRefinements
 } from 'react-instantsearch';
 import {Hit as HitType} from "instantsearch.js/es/types/results";
 import SearchBox from "./search-box";
 import DefaultHit from "./hits/default-hit";
 import {StanfordHit} from "./hits/hit.types";
 import {AlgoliaSearchContainer, PaginationList} from "./styled-components";
+import ChipsContainer from "./components/chips-container";
+import CustomChips from "./components/custom-chips";
 
 const islandName = 'algolia-search'
 
@@ -27,7 +30,6 @@ const Hit = ({hit, ...props}: {
   return <DefaultHit {...props} hit={hit}/>
 }
 
-
 const CustomHits = ({federatedSearch, ...props}: {
   federatedSearch?: boolean
 }) => {
@@ -44,10 +46,17 @@ const CustomHits = ({federatedSearch, ...props}: {
     <p>No results for your search. Please try another search.</p>
   )
 
+  const { canRefine } = useCurrentRefinements();
+
   return (
     <div
       className={federatedSearch ? "search-results federated-search" : "search-results"}>
       <h2 className="visually-hidden">Search Results</h2>
+      {canRefine && (
+        <ChipsContainer>
+          <CustomChips />
+        </ChipsContainer>
+      )}
       <p className="search-results-count" aria-live="polite" aria-atomic>
         {nbHits} results
       </p>
