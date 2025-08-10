@@ -57,6 +57,82 @@ export const AlgoliaSearchContainer = styled.div`
     }
   }
 
+  .mobile-federated-search-facets {
+    .filter-link {
+      display: flex;
+      padding: 16px 22px 16px 28px;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 40px;
+      color: #2E2D29;
+      border: 1px solid  #C0C0BF;
+      background: #FFF;
+      cursor: pointer;
+
+      h2 {
+        text-align: center;
+        font-size: 21px;
+        font-style: normal;
+        font-weight: 400;
+        margin: 0;
+      }
+
+      i {
+        background-color: #fff;
+        color: #B1040E;
+        text-decoration: none;
+      }
+    }
+
+    fieldset {
+      .legend-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 18px;
+
+        span {
+          align-self: center;
+        }
+        i {
+        color: #6d6c69;
+        }
+      }
+
+    }
+    .mobile-footer-facets {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      border-top: 1px solid #D5D5D4;
+      background: #D5D5D4;
+      padding: 26px;
+      margin-top: 18px;
+
+      .clear-filters-link {
+        color:#767674;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        padding: 9px 15px 11px 15px;
+        border-radius: 3px;
+        border: 1px solid #D5D5D4;
+        background: #fff;
+      }
+      .view-results {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        padding: 9px 13px 11px 13px;
+        border-radius: 3px;
+        border: 1px solid #85CCFF;
+        background: #006CB8;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.10);
+      }
+    }
+  }
+
   .search-results-count {
     color: rgba(88, 87, 84, 1);
     font-size: 21px;
