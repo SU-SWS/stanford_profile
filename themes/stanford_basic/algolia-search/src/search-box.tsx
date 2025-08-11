@@ -1,5 +1,4 @@
 import {
-  useClearRefinements,
   useSearchBox
 } from "react-instantsearch";
 import {useRef} from "preact/compat";

@@ -15,7 +15,4 @@ const ClearFilters = () => {
   );
 };
 
-
-
-
 export default ClearFilters;

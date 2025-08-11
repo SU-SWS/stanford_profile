@@ -13,6 +13,21 @@ export const AlgoliaSearchContainer = styled.div`
     }
   }
 
+  @media (max-width: 768px) {
+    form {
+      &.federated-search {
+        display: flex;
+        flex-diretion: row;
+        justify-content: space-between;
+        gap: 30px;
+        flex: 2 1 auto;
+      }
+      .search-input {
+        flex-grow:2;
+      }
+    }
+  }
+
   .federated-search-facets {
     margin-bottom: 40px;
 
@@ -68,6 +83,14 @@ export const AlgoliaSearchContainer = styled.div`
       border: 1px solid  #C0C0BF;
       background: #FFF;
       cursor: pointer;
+      text-decoration: none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: #2e2d29;
+        text-decoration: underline;
+      }
 
       h2 {
         text-align: center;
@@ -75,6 +98,7 @@ export const AlgoliaSearchContainer = styled.div`
         font-style: normal;
         font-weight: 400;
         margin: 0;
+        padding-right: 8px;
       }
 
       i {
@@ -85,18 +109,17 @@ export const AlgoliaSearchContainer = styled.div`
     }
 
     fieldset {
-      .legend-content {
+      .legend-title {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        font-size: 18px;
-
-        span {
-          align-self: center;
-        }
-        i {
+      }
+      i {
         color: #6d6c69;
-        }
+      }
+      legend {
+        font-size: 18px;
+        font-weight: 400;
+        margin: 0 auto;
       }
 
     }
@@ -105,7 +128,7 @@ export const AlgoliaSearchContainer = styled.div`
       flex-direction: row;
       justify-content: space-between;
       border-top: 1px solid #D5D5D4;
-      background: #D5D5D4;
+      background: #f4f4f4;
       padding: 26px;
       margin-top: 18px;
 

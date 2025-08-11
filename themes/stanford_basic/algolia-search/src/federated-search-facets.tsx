@@ -65,16 +65,16 @@
         <div>
           {isMobile ? (
             <div className="mobile-federated-search-facets">
-              <a onClick={toggleVisibility} className="filter-link"><h2>Filter By </h2>
+              <a onClick={toggleVisibility} className="filter-link"><h2>Filter </h2>
                 <i class="fa-solid fa-angle-right"></i>
               </a>
 
               {isVisible && (
                 <>
                   <fieldset>
-                    <div class="legend-content">
+                    <div className="legend-title">
                       <p><i class="fa-solid fa-arrow-left"></i></p>
-                      <p>Sites</p>
+                      <legend>Sites</legend>
                     </div>
                       {sites.map(site =>
                         <CheckboxLabel key={site.label}>
