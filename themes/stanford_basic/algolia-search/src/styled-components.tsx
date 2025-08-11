@@ -88,8 +88,10 @@ export const AlgoliaSearchContainer = styled.div`
       &:hover,
       &:focus,
       &:active {
-        color: #2e2d29;
-        text-decoration: underline;
+        border-radius: 40px;
+        border: 1px solid #C0C0BF;
+        background: #F4F4F4;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.10);
       }
 
       h2 {
@@ -102,7 +104,6 @@ export const AlgoliaSearchContainer = styled.div`
       }
 
       i {
-        background-color: #fff;
         color: #B1040E;
         text-decoration: none;
       }
@@ -142,7 +143,19 @@ export const AlgoliaSearchContainer = styled.div`
         border-radius: 3px;
         border: 1px solid #D5D5D4;
         background: #fff;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover,
+        &:focus,
+        &:active {
+          border-radius: 3px;
+          border: 1px solid #85CCFF;
+          background: #FFF;
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+        }
       }
+
       .view-results {
         font-size: 16px;
         font-style: normal;
@@ -150,8 +163,16 @@ export const AlgoliaSearchContainer = styled.div`
         padding: 9px 13px 11px 13px;
         border-radius: 3px;
         border: 1px solid #85CCFF;
-        background: #006CB8;
+        background-color: #006CB8;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.10);
+
+        &:hover,
+        &:focus,
+        &:active {
+          border-color: #006CB8;
+          background-color: #00548F;
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -218,13 +239,12 @@ export const SearchInput = styled.div`
     aspect-ratio: 1;
     background: transparent;
     color: #B1040E;
-    border: 2px solid transparent;
-    border-radius: 50px;
+    border: transparent;
 
     &:hover, &:focus {
       background: transparent;
-      color: #2E2D29;
-      border: 2px solid #B1040E;
+      color: #e50808;
+      border: none;
     }
   }
 `
@@ -307,8 +327,13 @@ export const CheckboxLabel = styled.label`
   }
 
   input:checked ~ .checkbox {
+    border-color: #85CCFF;
+
     .fa-check {
       display: block;
+      background-color: #006CB8;
+      color: #fff;
+      height: 16px;
     }
   }
 `
