@@ -233,18 +233,19 @@ export const SearchInput = styled.div`
     top: 0;
     right: 0;
     height: 100%;
-  }
 
-  button {
-    aspect-ratio: 1;
-    background: transparent;
-    color: #B1040E;
-    border: transparent;
-
-    &:hover, &:focus {
+    button {
+      aspect-ratio: 1;
       background: transparent;
-      color: #e50808;
-      border: none;
+      color: #B1040E;
+      border: transparent;
+
+      &:hover, &:focus {
+        background: transparent;
+        color: #e50808;
+        border: none;
+        box-shadow: none;
+      }
     }
   }
 `

@@ -62,10 +62,10 @@
       };
 
       return (
-        <div>
+        <>
           {isMobile ? (
             <div className="mobile-federated-search-facets">
-              <a onClick={toggleVisibility} className="filter-link"><h2>Filter </h2>
+              <a href="" onClick={toggleVisibility} className="filter-link"><h2>Filter </h2>
                 <i class="fa-solid fa-angle-right"></i>
               </a>
 
@@ -114,7 +114,7 @@
               </fieldset>
             </div>
           )}
-        </div>
+        </>
       );
     }
 
