@@ -101,7 +101,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 5
+            weight: 6
             additional: {  }
           d8d66e18-44f6-4e82-90c7-131eaf8e19de:
             uuid: d8d66e18-44f6-4e82-90c7-131eaf8e19de
@@ -153,6 +153,34 @@ third_party_settings:
                     label_value: ''
                     label_tag: ''
             weight: 4
+            additional: {  }
+          8f91ad48-f1c3-4bf5-adb2-90d34da1fb39:
+            uuid: 8f91ad48-f1c3-4bf5-adb2-90d34da1fb39
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_sponsor'
+              label: 'Sponsored by '
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_list_label_class
+                label: hidden
+                settings:
+                  link: false
+                  class: su-opp-sponsor-list
+                  list_type: ul
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: span
+            weight: 5
             additional: {  }
         third_party_settings: {  }
       -

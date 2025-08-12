@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_subject
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_imported
     - field.field.node.stanford_event.su_metatags
     - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
@@ -142,8 +143,8 @@ third_party_settings:
             region: main
             configuration:
               id: 'field_block:node:stanford_event:su_event_sponsor'
-              label: Sponsor
-              label_display: '0'
+              label: 'Sponsored by'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
@@ -154,10 +155,13 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: 'su-event-sponsor flex-7-of-12'
-                  ds:
-                    ds_limit: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: span
             weight: -5
             additional: {  }
           229e196d-4f22-4f5a-b265-added1838d5d:
