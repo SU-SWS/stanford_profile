@@ -40,4 +40,13 @@ class SystemCest {
     $I->canSeeNumberOfElements('h1', 1);
   }
 
+  /**
+   * User json api should not exist.
+   */
+  #[CodeceptionAttribute\Group('jsonapi')]
+  public function testJsonApiUser(AcceptanceTester $I){
+    $I->amOnPage('/jsonapi/user/user');
+    $I->canSeeResponseCodeIs(404);
+  }
+
 }
