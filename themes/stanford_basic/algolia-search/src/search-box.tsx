@@ -48,16 +48,18 @@ const SearchBox = ({federatedSearch}: { federatedSearch?: boolean }) => {
             autoFocus
           />
           <div class="search-buttons">
+
+            <button type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span className="visually-hidden">Submit</span>
+            </button>
+            <span className="divider"/>
             <button
               type="reset"
               hidden={query.length === 0}
             >
               <i class="fa-solid fa-close"></i>
-            </button>
-            <span class="separator" hidden={query.length === 0}>|</span>
-            <button type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <span className="visually-hidden">Submit</span>
+              <span className="visually-hidden">Clear search</span>
             </button>
           </div>
         </SearchInput>

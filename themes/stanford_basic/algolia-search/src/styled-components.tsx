@@ -7,180 +7,10 @@ export const AlgoliaSearchContainer = styled.div`
         float: right;
         width: 60%;
       }
-
-      margin-bottom: 162px;
-      margin-top: 61px;
     }
   }
 
-  @media (max-width: 768px) {
-    form {
-      &.federated-search {
-        display: flex;
-        flex-diretion: row;
-        justify-content: space-between;
-        gap: 30px;
-        flex: 2 1 auto;
-      }
-      .search-input {
-        flex-grow:2;
-      }
-    }
-  }
 
-  .federated-search-facets {
-    margin-bottom: 40px;
-
-    h2 {
-      padding-bottom: 45px;
-      font-size: 23px;
-      margin-bottom: 0;
-    }
-
-    .clear-filters-link {
-      color: #006CB8;
-      font-size: 18px;
-      font-weight: 400;
-      padding-bottom: 18px;
-      margin-bottom: 19px;
-      border-bottom: 1px solid #979694;
-      display: block;
-      text-decoration: none;
-      cursor: pointer;
-
-      &:hover,
-      &:focus,
-      &:active {
-        color: #2e2d29;
-        text-decoration: underline;
-      }
-    }
-
-    @media (min-width: 768px) {
-      float: left;
-      width: 30%;
-    }
-
-    fieldset {
-      padding: 0;
-      margin: 0;
-    }
-
-    legend {
-      font-size: 21px;
-      font-weight: 600;
-    }
-  }
-
-  .mobile-federated-search-facets {
-    .filter-link {
-      display: flex;
-      padding: 16px 22px 16px 28px;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 40px;
-      color: #2E2D29;
-      border: 1px solid  #C0C0BF;
-      background: #FFF;
-      cursor: pointer;
-      text-decoration: none;
-
-      &:hover,
-      &:focus,
-      &:active {
-        border-radius: 40px;
-        border: 1px solid #C0C0BF;
-        background: #F4F4F4;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.10);
-      }
-
-      h2 {
-        text-align: center;
-        font-size: 21px;
-        font-style: normal;
-        font-weight: 400;
-        margin: 0;
-        padding-right: 8px;
-      }
-
-      i {
-        color: #B1040E;
-        text-decoration: none;
-      }
-    }
-
-    fieldset {
-      .legend-title {
-        display: flex;
-        flex-direction: row;
-      }
-      i {
-        color: #6d6c69;
-      }
-      legend {
-        font-size: 18px;
-        font-weight: 400;
-        margin: 0 auto;
-      }
-
-    }
-    .mobile-footer-facets {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      border-top: 1px solid #D5D5D4;
-      background: #f4f4f4;
-      padding: 26px;
-      margin-top: 18px;
-
-      .clear-filters-link {
-        color:#767674;
-        text-align: center;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        padding: 9px 15px 11px 15px;
-        border-radius: 3px;
-        border: 1px solid #D5D5D4;
-        background: #fff;
-        text-decoration: none;
-        cursor: pointer;
-
-        &:hover,
-        &:focus,
-        &:active {
-          border-radius: 3px;
-          border: 1px solid #85CCFF;
-          background: #FFF;
-          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
-        }
-      }
-
-      .view-results {
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        padding: 9px 13px 11px 13px;
-        border-radius: 3px;
-        border: 1px solid #85CCFF;
-        background-color: #006CB8;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.10);
-
-        &:hover,
-        &:focus,
-        &:active {
-          border-color: #006CB8;
-          background-color: #00548F;
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-
-  .search-results-count {
-    color: rgba(88, 87, 84, 1);
-    font-size: 21px;
-  }
 
   .results {
     margin: 0;
@@ -189,33 +19,104 @@ export const AlgoliaSearchContainer = styled.div`
 
     li {
       margin-bottom: 30px;
-      border-bottom: 1px solid rgba(213, 213, 212, 1);
+      border-bottom: 1px solid black;
 
       &:last-child {
         border-bottom: none;
       }
     }
-
-    .last-updated {
-      color: rgba(118, 118, 116, 1);
-      font-size: 16px;
-    }
   }
 `
 
 export const SearchForm = styled.form`
-  button[type="reset"] {
-    color: #767674;
+  margin-bottom: 40px;
+
+  @media (min-width: 360px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
     display: block;
+    margin-bottom:0;
+  }
+
+  .search-input {
+    flex-grow: 1;
+  }
+
+  .federated-search-facets {
+    .filter-by {
+      @media (min-width: 768px) {
+        padding-bottom: 25px;
+        border-bottom: 1px solid #979694;
+      }
+    }
+
+    @media (min-width: 768px) {
+      float: left;
+      width: 30%;
+      margin-bottom: 40px;
+    }
+
+    fieldset {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 100vw;
+    height: 100dvh;
+    z-index: 999;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &.hidden {
+      display: none;
+    }
+
+    fieldset {
+      padding: 20px;
+    }
+
+    .top-button {
+      display: block;
+      width: 100%;
+      position: relative;
+
+      i {
+        position: absolute;
+        left: 30px;
+      }
+    }
+
+    .mobile-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px;
+      border-top: 1px solid #979694;
+      background: #D5D5D4;
+    }
   }
 `
 export const SearchInput = styled.div`
   position: relative;
-  margin: 0 auto 30px;
+  margin: 0 auto;
   max-width: 660px;
 
   @media (min-width: 768px) {
     width: 70%;
+    margin-bottom: 30px;
   }
 
   input {
@@ -226,26 +127,40 @@ export const SearchInput = styled.div`
   }
 
   .search-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
 
     button {
-      aspect-ratio: 1;
       background: transparent;
       color: #B1040E;
-      border: transparent;
+      border: 2px solid transparent;
+      position: relative;
 
       &:hover, &:focus {
         background: transparent;
-        color: #e50808;
-        border: none;
+        color: #2E2D29;
+        border: 2px solid #B1040E;
         box-shadow: none;
+        outline: none;
       }
+
+      &[type="reset"] {
+        color: #767674;
+      }
+
+    }
+    .divider {
+      display: block;
+      background: #C0C0BF;
+      width: 1px;
+      height: 60%;
+      top: 20%;
+      right: -1px;
     }
   }
 `
@@ -254,39 +169,20 @@ export const PaginationList = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-between;
 
   button {
     background: transparent;
     color: #B1040E;
     text-decoration: none;
     border: 0;
-    font-size: 20px;
 
-    &.page-number {
-      font-size: 26px;
-      font-weight: 600;
-      color: #B1040E;
-
-      &:hover, &:focus {
-        box-shadow: none;
-        border-bottom: 4px solid #820000;
-
-        i {
-          border-bottom: 1px solid black;
-        }
-      }
-    }
-  }
-
-  .next button,
-  .previous button {
     &:hover, &:focus {
       text-decoration: underline;
-      color: black;
-      box-shadow: none;
-      border-bottom: none;
+
+      i {
+        border-bottom: 1px solid black;
+      }
     }
   }
 
@@ -321,21 +217,28 @@ export const CheckboxLabel = styled.label`
     display: block;
     width: 20px;
     height: 20px;
+    transition: background-color .25s ease-in-out, color .25s ease-in-out
   }
 
   .fa-check {
     display: none;
+    margin: 2px;
+    font-size: 14px;
   }
 
   input:checked ~ .checkbox {
-    border-color: #85CCFF;
+    background: #006CB8;
+    color: #ffffff;
+    border: 2px solid #85CCFF;
 
     .fa-check {
       display: block;
-      background-color: #006CB8;
-      color: #fff;
-      height: 16px;
     }
+  }
+
+  input:hover ~ .label-display,
+  input:focus ~ .label-display {
+    text-decoration: underline;
   }
 `
 export const HitContainer = styled.article`
@@ -358,12 +261,11 @@ export const HitContainer = styled.article`
 
   .federated-site {
     margin-bottom: 5px;
-    font-size: 16px;
     .site-name {
-      color: rgba(46, 45, 41, 1)
+
     }
     .site-domain {
-      color: rgba(88, 87, 84, 1);
+      color: #585754;
     }
   }
 

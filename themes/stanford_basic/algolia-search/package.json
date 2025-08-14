@@ -12,13 +12,17 @@
   ],
   "scripts": {
     "build": "webpack --env prod",
+    "watch": "webpack --watch --env prod",
     "dev": "webpack serve --env dev"
   },
   "dependencies": {
     "algoliasearch": "^5.34.0",
+    "clsx": "^2.1.1",
     "preact": "^10.26.9",
+    "react-focus-lock": "^2.13.6",
     "react-instantsearch": "^7.16.1",
-    "styled-components": "^6.1.19"
+    "styled-components": "^6.1.19",
+    "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",

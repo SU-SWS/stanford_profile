@@ -1,108 +1,124 @@
-  import {
-    useClearRefinements,
-    useRefinementList
-  } from "react-instantsearch";
-  import {CheckboxLabel} from "./styled-components";
-  import { useEffect, useState } from "preact/hooks";
+import {
+  useClearRefinements,
+  useRefinementList
+} from "react-instantsearch";
+import {CheckboxLabel} from "./styled-components";
+import {useEffect} from "preact/hooks";
+import {useBoolean, useScrollLock, useWindowSize} from 'usehooks-ts'
+import {clsx} from "clsx";
+import ReactFocusLock from "react-focus-lock"
+import {useRef} from "preact/compat";
 
-    function useWindowSize() {
-      const [windowSize, setWindowSize] = useState({
-        width: typeof window !== 'undefined' ? window.innerWidth : 0,
-        height: typeof window !== 'undefined' ? window.innerHeight : 0,
-      });
+const RefinementSidebar = () => {
+  const topButtonRef = useRef<HTMLButtonElement>(null)
+  const {width = 0} = useWindowSize()
 
-      useEffect(() => {
-        function handleResize() {
-          setWindowSize({
-            width: window.innerWidth,
-            height: window.innerHeight,
-          });
-        }
+  const {refine, canRefine} = useClearRefinements();
+  const {
+    items: sites,
+    refine: refineSites,
+  } = useRefinementList({
+    attribute: "site_name",
+    limit: 100,
+    showMore: false,
+    sortBy: ["name"]
+  })
 
-        if (typeof window !== 'undefined') {
-          window.addEventListener('resize', handleResize);
-          return () => window.removeEventListener('resize', handleResize);
-        }
-      }, []);
+  const {
+    value: isModalOpen,
+    setTrue: openModal,
+    setFalse: closeModal
+  } = useBoolean(false)
 
-      return windowSize;
+  const {
+    lock: lockScroll,
+    unlock: unlockScroll
+  } = useScrollLock({autoLock: false})
+
+  useEffect(() => {
+    if (isModalOpen) {
+      lockScroll()
+      topButtonRef.current?.focus()
     }
+    if (!isModalOpen) unlockScroll()
+  }, [isModalOpen]);
 
-    const ClearFilters = () => {
-      const { refine } = useClearRefinements();
+  useEffect(() => {
+    if (width > 768) closeModal()
+  }, [width]);
 
-      return (
-        <a
-          type="link"
+  const isMobile = width <= 768;
+
+  const totalCount = sites.reduce((n, {count}) => n + count, 0)
+  const resultCount = sites.filter(site => site.isRefined)
+    .reduce((n, {count}) => n + count, 0)
+
+  return (
+    <div className="federated-search-facets">
+      <button
+        className={clsx({hidden: !isMobile})}
+        onClick={openModal}>
+        Filters
+      </button>
+      <div className="filter-by">
+        <h2 className={clsx({hidden: isMobile})}>Filter By</h2>
+        <button
           onClick={refine}
-          className="clear-filters-link"
+          disabled={!canRefine}
+          className={clsx({hidden: isMobile})}
         >
           Reset filters
-        </a>
-      );
-    };
+        </button>
+      </div>
 
-    const RefinementSidebar = () => {
-      const {
-        items: sites,
-        refine: refineSites
-      } = useRefinementList({
-        attribute: "site_name",
-        limit: 100,
-        showMore: false,
-        sortBy: ["name"]
-      })
+      <ReactFocusLock
+        returnFocus
+        as={isMobile ? "dialog" : "div"}
+        disabled={!isModalOpen}
+        lockProps={{open: isModalOpen}}
+        className={clsx({
+          hidden: isMobile && !isModalOpen,
+        })}
+      >
+        <div>
+          <button
+            ref={topButtonRef}
+            onClick={closeModal}
+            className={clsx("top-button", {hidden: !isMobile})}
+          >
+            <i class="fa-solid fa-arrow-left"/>
+            Sites ({resultCount === 0 ? totalCount : resultCount})
+          </button>
 
-      const { width } = useWindowSize();
-      const isMobile = width <= 768;
-      const [isVisible, setIsVisible] = useState(false);
-      const toggleVisibility = (e) => {
-        e.preventDefault();
-        setIsVisible(!isVisible);
-      };
+          <fieldset>
+            <legend className={clsx({"visually-hidden": isMobile})}>Sites
+            </legend>
 
-      return (
-        <>
-          <div className={isMobile ? "mobile-federated-search-facets": "federated-search-facets"}>
-            <fieldset>
-              {isMobile ? (
-                <>
-                  <a href="" onClick={toggleVisibility} className="filter-link"><h2>Filter </h2>
-                    <i class="fa-solid fa-angle-right"></i>
-                  </a>
-                  <div className="legend-title">
-                    <p><i class="fa-solid fa-arrow-left"></i></p>
-                      <legend>Sites</legend>
-                    </div>
-                </>
-                ) : (
-                <>
-                  <h2>Filter by</h2>
-                  <legend className="sr-only">Sites</legend>
-                  <ClearFilters/>
-                </>
-                )}
-
-              {sites.map(site =>
-                <CheckboxLabel key={site.label}>
+            {sites.map(site =>
+              <CheckboxLabel key={site.label}>
                 <input type="checkbox" onChange={() => refineSites(site.value)}
-                      checked={site.isRefined}/>
+                       checked={site.isRefined}/>
                 <span className="checkbox">
                   <i class="fa-solid fa-check"></i>
                 </span>
-                <span className="label-display">{site.label} ({site.count})</span>
-                </CheckboxLabel>
-              )}
-              {isMobile &&
-                <div className="mobile-footer-facets">
-                  <ClearFilters/>
-                  <button className="view-results">View Results</button>
-                </div>
-              }
-            </fieldset>
-          </div>
-        </>
-      );
-  }
+                <span
+                  className="label-display">{site.label} ({site.count})</span>
+              </CheckboxLabel>
+            )}
+          </fieldset>
+        </div>
 
-  export default RefinementSidebar;
+
+        <div className={clsx("mobile-actions", {hidden: !isMobile})}>
+          <button onClick={refine} disabled={!canRefine}>Clear all</button>
+          <button onClick={closeModal}>View results
+          </button>
+        </div>
+
+      </ReactFocusLock>
+    </div>
+  )
+}
+
+
+export default RefinementSidebar;
