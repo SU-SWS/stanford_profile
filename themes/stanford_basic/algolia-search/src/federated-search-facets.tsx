@@ -56,9 +56,10 @@ const RefinementSidebar = () => {
   return (
     <div className="federated-search-facets">
       <button
-        className={clsx({hidden: !isMobile})}
+        className={clsx("open-modal", {hidden: !isMobile})}
         onClick={openModal}>
         Filters
+        <i class="fa-solid fa-chevron-right"></i>
       </button>
       <div className="filter-by">
         <h2 className={clsx({hidden: isMobile})}>Filter By</h2>
@@ -110,8 +111,8 @@ const RefinementSidebar = () => {
 
 
         <div className={clsx("mobile-actions", {hidden: !isMobile})}>
-          <button onClick={refine} disabled={!canRefine}>Clear all</button>
-          <button onClick={closeModal}>View results
+          <button className="clear-all" onClick={refine} disabled={!canRefine}>Clear all</button>
+          <button className="close-modal" onClick={closeModal}>View results
           </button>
         </div>
 

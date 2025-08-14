@@ -52,6 +52,56 @@ export const SearchForm = styled.form`
       @media (min-width: 768px) {
         padding-bottom: 25px;
         border-bottom: 1px solid #979694;
+
+        button {
+          color: #006CB8;
+          background-color: transparent;
+          text-decoration: none;
+
+          &:hover, &:focus {
+            background: transparent;
+            color: #2E2D29;
+            text-decoration: underline;
+            box-shadow: none;
+            outline: none;
+          }
+
+          &:disabled {
+            color: #767674;
+
+            &:hover, &:focus {
+              text-decoration: none;
+              cursor: default;
+            }
+          }
+        }
+      }
+    }
+
+    .open-modal {
+      color: #2E2D29;
+      font-size: 21px;
+      font-weight: 400;
+      text-decoration: none;
+      border-radius: 40px;
+      border: 1px solid #C0C0BF;
+      background: #fff;
+      display: flex;
+      flex-direction: row;
+      padding: .8rem 2rem 1rem;
+
+      &:hover, &:focus {
+        background: transparent;
+        color: #2E2D29;
+        text-decoration: underline;
+        box-shadow: none;
+        outline: none;
+      }
+
+      i {
+        align-self: center;
+        padding-left: 5px;
+        color: #B1040E;
       }
     }
 
@@ -106,6 +156,49 @@ export const SearchForm = styled.form`
       padding: 30px;
       border-top: 1px solid #979694;
       background: #D5D5D4;
+
+      .clear-all {
+        color: #767674;
+        font-size: 16px;
+        font-weight: 400;
+        border-radius: 3px;
+        border: 1px solid #85CCFF;
+        background-color: #ffffff;
+
+        &:hover, &:focus {
+          border-radius: 3px;
+          border: 1px solid #00548F;
+          background: #ffffff;
+          box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.14);
+        }
+
+        &:disabled {
+          border-radius: 3px;
+          border: 1px solid #D5D5D4;
+          background-color: #ffffff;
+          cursor: default;
+
+          &:hover, &:focus {
+            text-decoration: none;
+            box-shadow: none;
+          }
+        }
+      }
+      .close-modal {
+        border-radius: 3px;
+        border: 1px solid #85CCFF;
+        background-color: #006CB8;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.10);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 400;
+
+        &:hover, &:focus {
+          border: 1px solid #006CB8;
+          background: #00548F;
+          box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.14);
+        }
+      }
     }
   }
 `
