@@ -23,10 +23,13 @@ dependencies:
     - node.type.stanford_publication
     - taxonomy.vocabulary.basic_page_types
     - taxonomy.vocabulary.event_audience
+    - taxonomy.vocabulary.event_filters
     - taxonomy.vocabulary.media_tags
     - taxonomy.vocabulary.opportunity_sponsor
     - taxonomy.vocabulary.opportunity_tag_filters
     - taxonomy.vocabulary.opportunity_type
+    - taxonomy.vocabulary.person_filters
+    - taxonomy.vocabulary.publication_filters
     - taxonomy.vocabulary.stanford_event_types
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
@@ -121,10 +124,13 @@ permissions:
   - 'create stanford_publication content'
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
+  - 'create terms in event_filters'
   - 'create terms in media_tags'
   - 'create terms in opportunity_sponsor'
   - 'create terms in opportunity_tag_filters'
   - 'create terms in opportunity_type'
+  - 'create terms in person_filters'
+  - 'create terms in publication_filters'
   - 'create terms in stanford_event_types'
   - 'create terms in stanford_news_topics'
   - 'create terms in stanford_person_types'

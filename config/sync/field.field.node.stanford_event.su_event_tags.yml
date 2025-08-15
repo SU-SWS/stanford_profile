@@ -1,0 +1,29 @@
+uuid: 4c66e31b-0d4c-4b8f-bba6-04f34f848885
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_event_tags
+    - node.type.stanford_event
+    - taxonomy.vocabulary.event_filters
+id: node.stanford_event.su_event_tags
+field_name: su_event_tags
+entity_type: node
+bundle: stanford_event
+label: 'Event Tags'
+description: 'These will be used as filters for the future Filtered Lists Paragraph for Event. They do not display on the Event item or Event Teaser.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event_filters: event_filters
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
