@@ -57,7 +57,9 @@ const RefinementSidebar = () => {
     <div className="federated-search-facets">
       <button
         className={clsx("open-modal", {hidden: !isMobile})}
-        onClick={openModal}>
+        onClick={openModal}
+        disabled={totalCount === 0}
+      >
         Filters
         <i class="fa-solid fa-chevron-right"></i>
       </button>
@@ -92,8 +94,13 @@ const RefinementSidebar = () => {
           </button>
 
           <fieldset>
-            <legend className={clsx({"visually-hidden": isMobile})}>Sites
+            <legend className={clsx({"visually-hidden": isMobile})}>
+              Sites
             </legend>
+
+            {sites.length === 0 &&
+              <p>No available sites</p>
+            }
 
             {sites.map(site =>
               <CheckboxLabel key={site.label}>

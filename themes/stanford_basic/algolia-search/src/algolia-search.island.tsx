@@ -43,18 +43,27 @@ const CustomHits = ({federatedSearch, ...props}: {
   } = usePagination({padding: 2})
 
   if (hits.length === 0) return (
-    <p>No results for your search. Please try another search.</p>
+    <div
+      className={federatedSearch ? "search-results federated-search" : "search-results"}
+    >
+      <p>
+        <span aria-live="polite" aria-atomic>
+          No results for your search.
+        </span> Please try another search.
+      </p>
+    </div>
   )
 
-  const { canRefine } = useCurrentRefinements();
+  const {canRefine} = useCurrentRefinements();
 
   return (
     <div
-      className={federatedSearch ? "search-results federated-search" : "search-results"}>
+      className={federatedSearch ? "search-results federated-search" : "search-results"}
+    >
       <h2 className="visually-hidden">Search Results</h2>
       {canRefine && (
         <ChipsContainer>
-          <CustomChips />
+          <CustomChips/>
         </ChipsContainer>
       )}
       <p className="search-results-count" aria-live="polite" aria-atomic>
@@ -85,7 +94,8 @@ const CustomHits = ({federatedSearch, ...props}: {
                 key={`page-${pageNum}`}
                 aria-current={currentPage === pageNum}
               >
-                <button className="page-number" onClick={() => goToPage(pageNum)}>
+                <button className="page-number"
+                        onClick={() => goToPage(pageNum)}>
                   {pageNum + 1}
                 </button>
               </li>
