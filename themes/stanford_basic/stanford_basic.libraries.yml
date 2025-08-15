@@ -141,6 +141,9 @@ content.stanford_policy:
       dist/css/content/policy.css: { }
 
 algolia-search:
+  css:
+    theme:
+      dist/css/search-page.css: { }
   js:
     algolia-search/dist/islands/algolia-search.island.js: { minified: true }
   dependencies:
