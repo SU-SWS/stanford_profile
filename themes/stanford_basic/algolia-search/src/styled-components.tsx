@@ -252,6 +252,13 @@ export const SearchInput = styled.div`
     padding-right: 30px;
     border-radius: 50px;
     border: 1px solid #c0c0bf;
+    font-family: 'Source Sans 3', sans-serif;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
   }
 
   // Removes the browser pseudo-elements
