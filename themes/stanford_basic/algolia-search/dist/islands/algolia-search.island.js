@@ -75,30 +75,32 @@
       }
     }
 
-    .open-modal {
-      color: #2E2D29;
-      font-size: 21px;
-      font-weight: 400;
-      text-decoration: none;
-      border-radius: 40px;
-      border: 1px solid #C0C0BF;
-      background: #fff;
-      display: flex;
-      flex-direction: row;
-      padding: .8rem 2rem 1rem;
-
-      &:hover, &:focus {
-        background: transparent;
+    @media ( max-width: 768px) {
+      .open-modal {
         color: #2E2D29;
-        text-decoration: underline;
-        box-shadow: none;
-        outline: none;
-      }
+        font-size: 21px;
+        font-weight: 400;
+        text-decoration: none;
+        border-radius: 40px;
+        border: 1px solid #C0C0BF;
+        background: #fff;
+        display: flex;
+        flex-direction: row;
+        padding: .8rem 2rem 1rem;
 
-      i {
-        align-self: center;
-        padding-left: 5px;
-        color: #B1040E;
+        &:hover, &:focus {
+          background: transparent;
+          color: #2E2D29;
+          text-decoration: underline;
+          box-shadow: none;
+          outline: none;
+        }
+
+        i {
+          align-self: center;
+          padding-left: 5px;
+          color: #B1040E;
+        }
       }
     }
 
