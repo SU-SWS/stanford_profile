@@ -34,12 +34,12 @@ mode: default
 content:
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 13
+    weight: 52
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 12
+    weight: 50
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -58,7 +58,7 @@ content:
     third_party_settings: {  }
   su_metatags:
     type: metatag_firehose
-    weight: 11
+    weight: 26
     region: content
     settings:
       sidebar: true
@@ -123,7 +123,7 @@ content:
     third_party_settings: {  }
   su_publication_tags:
     type: taxonomy_label_hierarchy
-    weight: 10
+    weight: 99
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -142,7 +142,7 @@ content:
     third_party_settings: {  }
   su_shared_tags:
     type: cshs
-    weight: 9
+    weight: 11
     region: content
     settings:
       save_lineage: false

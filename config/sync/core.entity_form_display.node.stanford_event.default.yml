@@ -120,7 +120,6 @@ third_party_settings:
         - su_event_keywords
         - su_event_subject
         - su_event_groups
-        - su_event_tags
       label: Taxonomy
       region: content
       parent_name: ''
@@ -266,6 +265,7 @@ content:
       formatter_settings: null
       formatter_third_party_settings: {  }
       show_description: false
+      error_validation: false
     third_party_settings: {  }
   su_event_keywords:
     type: readonly_field_widget
@@ -277,6 +277,7 @@ content:
       formatter_settings: null
       formatter_third_party_settings: {  }
       show_description: false
+      error_validation: false
     third_party_settings: {  }
   su_event_location:
     type: address_default
@@ -341,10 +342,11 @@ content:
       formatter_settings: null
       formatter_third_party_settings: {  }
       show_description: false
+      error_validation: false
     third_party_settings: {  }
   su_event_tags:
     type: taxonomy_label_hierarchy
-    weight: 14
+    weight: 99
     region: content
     settings: {  }
     third_party_settings: {  }
