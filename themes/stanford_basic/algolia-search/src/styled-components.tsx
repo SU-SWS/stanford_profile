@@ -8,9 +8,11 @@ export const AlgoliaSearchContainer = styled.div`
         width: 60%;
       }
     }
+
+    .search-results-count {
+      font-size: 21px;
+    }
   }
-
-
 
   .results {
     margin: 0;
@@ -19,10 +21,18 @@ export const AlgoliaSearchContainer = styled.div`
 
     li {
       margin-bottom: 30px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid #979694;
 
       &:last-child {
         border-bottom: none;
+      }
+
+      h3 {
+        margin-bottom: 18px;
+      }
+
+      .last-updated {
+        color: #6d6c69;
       }
     }
   }
@@ -45,18 +55,36 @@ export const SearchForm = styled.form`
 
   .search-input {
     flex-grow: 1;
+
+    @media (min-width: 768px) {
+      input[type=search] {
+        height: auto;
+        padding: 2rem 1.5em;
+      }
+    }
   }
 
   .federated-search-facets {
+    legend {
+      font-size: 21px;
+      padding-top: 19px;
+      font-weight: 600;
+    }
+
     .filter-by {
       @media (min-width: 768px) {
-        padding-bottom: 25px;
+        padding-bottom: 12px;
         border-bottom: 1px solid #979694;
+
+        h2 {
+          font-size: 23px;
+        }
 
         button {
           color: #006CB8;
           background-color: transparent;
           text-decoration: none;
+          padding: 0;
 
           &:hover, &:focus {
             background: transparent;
@@ -67,12 +95,7 @@ export const SearchForm = styled.form`
           }
 
           &:disabled {
-            color: #767674;
-
-            &:hover, &:focus {
-              text-decoration: none;
-              cursor: default;
-            }
+            display: none;
           }
         }
       }
@@ -89,7 +112,8 @@ export const SearchForm = styled.form`
         background: #fff;
         display: flex;
         flex-direction: row;
-        padding: .8rem 2rem 1rem;
+        padding: 1.2rem 2rem 1.2rem;
+        background-color: #f4f4f4;
 
         &:hover, &:focus {
           background: transparent;
@@ -97,6 +121,10 @@ export const SearchForm = styled.form`
           text-decoration: underline;
           box-shadow: none;
           outline: none;
+
+          i {
+            text-decoration: none;
+          }
         }
 
         i {
@@ -144,6 +172,11 @@ export const SearchForm = styled.form`
       display: block;
       width: 100%;
       position: relative;
+      background: white;
+      color: #6D6C69;
+      border-bottom: 1px solid #C0C0BF;
+      padding-top: 26px;
+      padding-bottom: 26px;
 
       i {
         position: absolute;
@@ -155,9 +188,9 @@ export const SearchForm = styled.form`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 30px;
-      border-top: 1px solid #979694;
-      background: #D5D5D4;
+      padding: 30px 26px;
+      border-top: 1px solid #D5D5D4;
+      background: #f4f4f4;
 
       .clear-all {
         color: #767674;
@@ -211,14 +244,19 @@ export const SearchInput = styled.div`
 
   @media (min-width: 768px) {
     width: 70%;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
   }
 
   input {
     max-width: 100%;
     padding-right: 30px;
     border-radius: 50px;
-    border: 2px solid #979694;
+    border: 1px solid #c0c0bf;
+  }
+
+  // Removes the browser pseudo-elements
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none; /* Remove default styling */
   }
 
   .search-buttons {
@@ -238,14 +276,17 @@ export const SearchInput = styled.div`
 
       &:hover, &:focus {
         background: transparent;
-        color: #2E2D29;
-        border: 2px solid #B1040E;
+        color: #e50808;
         box-shadow: none;
         outline: none;
       }
 
       &[type="reset"] {
         color: #767674;
+
+        &:hover, &:focus {
+          color: #e50808;
+        }
       }
 
     }
