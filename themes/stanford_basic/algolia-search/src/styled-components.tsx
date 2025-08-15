@@ -101,39 +101,43 @@ export const SearchForm = styled.form`
       }
     }
 
-    @media ( max-width: 768px) {
-      .open-modal {
+
+    .open-modal {
+      color: #2E2D29;
+      font-size: 21px;
+      font-weight: 400;
+      text-decoration: none;
+      border-radius: 40px;
+      border: 1px solid #C0C0BF;
+      background: #fff;
+      display: flex;
+      flex-direction: row;
+      padding: 1.2rem 2rem 1.2rem;
+      background-color: #f4f4f4;
+
+      &:hover, &:focus {
+        background: transparent;
         color: #2E2D29;
-        font-size: 21px;
-        font-weight: 400;
-        text-decoration: none;
-        border-radius: 40px;
-        border: 1px solid #C0C0BF;
-        background: #fff;
-        display: flex;
-        flex-direction: row;
-        padding: 1.2rem 2rem 1.2rem;
-        background-color: #f4f4f4;
-
-        &:hover, &:focus {
-          background: transparent;
-          color: #2E2D29;
-          text-decoration: underline;
-          box-shadow: none;
-          outline: none;
-
-          i {
-            text-decoration: none;
-          }
-        }
+        text-decoration: underline;
+        box-shadow: none;
+        outline: none;
 
         i {
-          align-self: center;
-          padding-left: 5px;
-          color: #B1040E;
+          text-decoration: none;
         }
       }
+
+      i {
+        align-self: center;
+        padding-left: 5px;
+        color: #B1040E;
+      }
+
+      &.hidden {
+        display: none;
+      }
     }
+
 
     @media (min-width: 768px) {
       float: left;
