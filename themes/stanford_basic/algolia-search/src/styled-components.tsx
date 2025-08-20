@@ -115,7 +115,7 @@ export const SearchForm = styled.form`
       padding: 1.2rem 2rem 1.2rem;
       background-color: #fff;
 
-      &:hover, &:focus {
+      &:hover {
         background-color: #f4f4f4;
         color: #2E2D29;
         box-shadow: none;
@@ -126,15 +126,20 @@ export const SearchForm = styled.form`
         }
       }
 
-      &:focus-visible, &:focus {
+      &:focus {
+        box-shadow: none;
+      }
+
+      &:focus-visible {
+        background-color: #fff;
+        color: #2E2D29;
+        box-shadow: none;
+        outline: none;
+
         span {
           text-decoration: none;
           background-color: transparent;
         }
-      }
-
-      &:focus-visible, &:focus {
-        background-color: #fff;
       }
 
       i {
