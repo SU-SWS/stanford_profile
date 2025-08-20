@@ -5,7 +5,13 @@
 // Search form on search results page
 .page-search {
   main {
-    background: $su-color-foggy-light;
+    background: #f9f9f9;
+  }
+}
+
+.search-results {
+  &.federated-search {
+    @include responsive-spacing('padding-bottom', 9);
   }
 }
 

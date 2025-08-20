@@ -60,7 +60,7 @@ const RefinementSidebar = () => {
         onClick={openModal}
         disabled={totalCount === 0}
       >
-        Filters
+        <span>Filters</span>
         <i class="fa-solid fa-chevron-right"></i>
       </button>
       <div className="filter-by">
