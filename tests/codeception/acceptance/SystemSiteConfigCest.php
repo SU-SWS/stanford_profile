@@ -256,4 +256,33 @@ class SystemSiteConfigCest {
     $I->cantSee('Under Construction');
   }
 
+  #[CodeceptionAttribute\Group('redirect')]
+  public function testRedirectingRecentDelete(AcceptanceTester $I) {
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/config/search/redirect/add');
+
+    $source_path = ltrim($node->toUrl()->toString(), '/');
+    $I->fillField('Path', $source_path);
+    $I->fillField('To', '/');
+    $I->click('Save');
+    $I->canSee("The source path $source_path appears to be a valid path");
+
+    $node->delete();
+    $I->amOnPage('/admin/content/trash');
+    $I->canSee($node->label());
+    $I->amOnPage("/$source_path");
+    $I->canSeeResponseCodeIs(404);
+
+    $I->amOnPage('/admin/config/search/redirect/add');
+    $I->fillField('Path', $source_path);
+    $I->fillField('To', '/');
+    $I->click('Save');
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee("The source path $source_path appears to be a valid path");
+  }
+
 }
