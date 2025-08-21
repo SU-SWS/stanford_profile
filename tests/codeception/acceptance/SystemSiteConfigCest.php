@@ -257,6 +257,28 @@ class SystemSiteConfigCest {
   }
 
   #[CodeceptionAttribute\Group('redirect')]
+  public function testRedirect(AcceptanceTester $I) {
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/config/search/redirect/add');
+
+    $source_path = preg_replace('/[^\da-z]/', '-', strtolower($this->faker->words(3, TRUE)));
+
+    $I->fillField('Path', $source_path);
+    $I->fillField('To', $node->toUrl()->toString());
+    $I->click('Save');
+    $I->cantSee("The source path $source_path appears to be a valid path");
+    $I->canSee("The redirect has been saved");
+
+    $I->amOnPage("/$source_path");
+    $I->canSeeInCurrentUrl($node->toUrl()->toString());
+  }
+
+  #[CodeceptionAttribute\Group('redirect')]
   public function testRedirectingRecentDelete(AcceptanceTester $I) {
     $node = $I->createEntity([
       'type' => 'stanford_page',
