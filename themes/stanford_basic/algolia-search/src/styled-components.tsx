@@ -113,17 +113,32 @@ export const SearchForm = styled.form`
       display: flex;
       flex-direction: row;
       padding: 1.2rem 2rem 1.2rem;
-      background-color: #f4f4f4;
+      background-color: #fff;
 
-      &:hover, &:focus {
-        background: transparent;
+      &:hover {
+        background-color: #f4f4f4;
         color: #2E2D29;
-        text-decoration: underline;
         box-shadow: none;
         outline: none;
 
-        i {
+        span {
+          text-decoration: underline;
+        }
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &:focus-visible {
+        background-color: #fff;
+        color: #2E2D29;
+        box-shadow: none;
+        outline: none;
+
+        span {
           text-decoration: none;
+          background-color: transparent;
         }
       }
 
@@ -156,6 +171,7 @@ export const SearchForm = styled.form`
     top: 0;
     left: 0;
     background: #fff;
+    border: none;
     width: 100vw;
     height: 100dvh;
     z-index: 999;
@@ -186,6 +202,15 @@ export const SearchForm = styled.form`
         position: absolute;
         left: 30px;
       }
+
+      &:focus, &:active {
+        text-decoration: none;
+      }
+
+      &:focus-visible {
+        box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.14);
+        text-decoration: underline;
+      }
     }
 
     .mobile-actions {
@@ -197,24 +222,25 @@ export const SearchForm = styled.form`
       background: #f4f4f4;
 
       .clear-all {
-        color: #767674;
+        color: #006CB8;
         font-size: 16px;
         font-weight: 400;
         border-radius: 3px;
         border: 1px solid #85CCFF;
-        background-color: #ffffff;
+        background-color: #fff;
 
         &:hover, &:focus {
           border-radius: 3px;
           border: 1px solid #00548F;
-          background: #ffffff;
+          background: #fff;
           box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.14);
         }
 
         &:disabled {
+          color: #767674;
           border-radius: 3px;
           border: 1px solid #D5D5D4;
-          background-color: #ffffff;
+          background-color: #fff;
           cursor: default;
 
           &:hover, &:focus {
@@ -228,7 +254,7 @@ export const SearchForm = styled.form`
         border: 1px solid #85CCFF;
         background-color: #006CB8;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.10);
-        color: #ffffff;
+        color: #fff;
         font-size: 16px;
         font-weight: 400;
 
@@ -313,10 +339,11 @@ export const SearchInput = styled.div`
 `
 export const PaginationList = styled.ul`
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: flex;
   justify-content: space-between;
+  max-width: 490px;
 
   button {
     background: transparent;
@@ -325,7 +352,8 @@ export const PaginationList = styled.ul`
     border: 0;
 
     &:hover, &:focus {
-      text-decoration: underline;
+      box-shadow: none;
+      border-bottom: 4px solid #B1040E;
 
       i {
         border-bottom: 1px solid black;
@@ -375,7 +403,7 @@ export const CheckboxLabel = styled.label`
 
   input:checked ~ .checkbox {
     background: #006CB8;
-    color: #ffffff;
+    color: #fff;
     border: 2px solid #85CCFF;
 
     .fa-check {
