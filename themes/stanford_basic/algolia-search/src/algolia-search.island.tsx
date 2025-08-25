@@ -82,8 +82,8 @@ const CustomHits = ({federatedSearch, ...props}: {
           <PaginationList>
             {pages[0] > 0 && (
               <li className="previous">
-                <button onClick={() => goToPage(0)}>
-                  <span className="visually-hidden">Go to first page</span>
+                <button onClick={() => goToPage(currentPage - 1)}>
+                  <span className="visually-hidden">Go to previous page</span>
                   Previous
                 </button>
               </li>
@@ -103,8 +103,8 @@ const CustomHits = ({federatedSearch, ...props}: {
 
             {pages[pages.length - 1] !== nbPages && (
               <li className="next">
-                <button onClick={() => goToPage(nbPages - 1)}>
-                  <span className="visually-hidden">Go to last page</span>
+                <button onClick={() => goToPage(currentPage + 1)}>
+                  <span className="visually-hidden">Go to next page</span>
                   Next
                 </button>
               </li>
