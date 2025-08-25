@@ -129,7 +129,7 @@ export const SearchForm = styled.form`
       &:focus-visible {
         background-color: #fff;
         color: #2E2D29;
-        outline: none;
+        box-shadow: none;
 
         span {
           text-decoration: none;

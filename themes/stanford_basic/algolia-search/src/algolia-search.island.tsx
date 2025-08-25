@@ -76,8 +76,6 @@ const CustomHits = ({federatedSearch, ...props}: {
           </li>
         )}
       </ul>
-      Current Page: {currentPage}
-      Total Pages: {nbPages}
 
       {pages.length > 1 && (
         <nav aria-label="Search results pager">
