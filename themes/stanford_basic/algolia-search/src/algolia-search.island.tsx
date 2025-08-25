@@ -76,39 +76,44 @@ const CustomHits = ({federatedSearch, ...props}: {
           </li>
         )}
       </ul>
+      Current Page: {currentPage}
+      Total Pages: {nbPages}
 
       {pages.length > 1 && (
         <nav aria-label="Search results pager">
           <PaginationList>
-            {pages[0] > 0 && (
-              <li className="previous">
+
+            {currentPage > 0 &&
+              <li>
                 <button onClick={() => goToPage(currentPage - 1)}>
                   <span className="visually-hidden">Go to previous page</span>
                   Previous
                 </button>
               </li>
-            )}
+            }
 
             {pages.map(pageNum => (
               <li
                 key={`page-${pageNum}`}
                 aria-current={currentPage === pageNum}
               >
-                <button className="page-number"
-                        onClick={() => goToPage(pageNum)}>
+                <button
+                  className="page-number"
+                  onClick={() => goToPage(pageNum)}
+                >
                   {pageNum + 1}
                 </button>
               </li>
             ))}
 
-            {pages[pages.length - 1] !== nbPages && (
-              <li className="next">
+            {currentPage != nbPages - 1 &&
+              <li>
                 <button onClick={() => goToPage(currentPage + 1)}>
                   <span className="visually-hidden">Go to next page</span>
                   Next
                 </button>
               </li>
-            )}
+            }
           </PaginationList>
         </nav>
       )}
