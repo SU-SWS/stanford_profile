@@ -1411,11 +1411,11 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: Units
+          label: ''
           exclude: false
           alter:
             alter_text: false
-            text: 'Units: {{ su_opp_units }}'
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -1440,16 +1440,16 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: span
+          element_type: ''
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: su-opp-units
-          element_default_classes: false
+          element_wrapper_class: ''
+          element_default_classes: true
           empty: ''
-          hide_empty: true
+          hide_empty: false
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
@@ -1464,8 +1464,8 @@ display:
           delta_reversed: false
           delta_first_last: false
           multi_type: separator
-          separator: ', <br/>'
-          field_api_classes: false
+          separator: ', '
+          field_api_classes: true
       pager:
         type: some
         options:
@@ -1644,7 +1644,8 @@ display:
           error_message: true
       filter_groups:
         operator: AND
-        groups: {  }
+        groups:
+          1: OR
       style:
         type: default
         options:
