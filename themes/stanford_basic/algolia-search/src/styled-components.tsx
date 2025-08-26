@@ -126,15 +126,10 @@ export const SearchForm = styled.form`
         }
       }
 
-      &:focus {
-        box-shadow: none;
-      }
-
       &:focus-visible {
         background-color: #fff;
         color: #2E2D29;
         box-shadow: none;
-        outline: none;
 
         span {
           text-decoration: none;
@@ -315,7 +310,6 @@ export const SearchInput = styled.div`
         background: transparent;
         color: #e50808;
         box-shadow: none;
-        outline: none;
       }
 
       &[type="reset"] {

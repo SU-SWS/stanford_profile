@@ -51,7 +51,7 @@ const SearchBox = ({federatedSearch}: { federatedSearch?: boolean }) => {
 
             <button type="submit">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <span className="visually-hidden">Submit</span>
+              <span className="visually-hidden">Submit search</span>
             </button>
             <span className="divider"/>
             <button
