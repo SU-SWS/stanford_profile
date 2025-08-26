@@ -1,5 +1,10 @@
 # Stanford Profile
 
+12.0.2
+-------------------------------------------------------------------------------
+- D8CORE-8244: Fix label display when fields are empty (#985)
+- Adjust opportunity form display field order
+
 12.0.1
 -------------------------------------------------------------------------------
 
