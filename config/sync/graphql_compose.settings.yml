@@ -277,25 +277,37 @@ entity_config:
     basic_page_types:
       enabled: true
       query_load_enabled: true
-      routes_enabled: true
     cap_org_codes:
       enabled: false
     event_audience:
       enabled: true
       query_load_enabled: true
+    event_filters:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
     media_tags:
       enabled: false
     opportunity_sponsor:
       enabled: true
-      edges_enabled: true
+      query_load_enabled: true
     opportunity_tag_filters:
       enabled: true
+      query_load_enabled: true
       edges_enabled: true
     opportunity_type:
       enabled: true
-      edges_enabled: true
+      query_load_enabled: true
     opportunity_units:
       enabled: true
+      query_load_enabled: true
+    person_filters:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    publication_filters:
+      enabled: true
+      query_load_enabled: true
       edges_enabled: true
     site_owner_orgs:
       enabled: false
@@ -311,29 +323,26 @@ entity_config:
     stanford_event_types:
       enabled: true
       query_load_enabled: true
-      routes_enabled: true
     stanford_news_topics:
       enabled: true
       query_load_enabled: true
-      routes_enabled: true
     stanford_person_types:
       enabled: true
-      routes_enabled: true
+      query_load_enabled: true
     stanford_publication_topics:
       enabled: true
       query_load_enabled: true
-      routes_enabled: true
     su_course_quarters:
       enabled: true
       query_load_enabled: true
     su_course_subjects:
       enabled: true
       query_load_enabled: true
-      routes_enabled: true
     su_course_tags:
       enabled: true
+      query_load_enabled: true
     su_shared_tags:
-      enabled: true
+      enabled: false
 field_config:
   block_content:
     stanford_component_block:
@@ -455,6 +464,8 @@ field_config:
       su_hide_site_search:
         enabled: true
       su_site_algolia:
+        enabled: true
+      su_site_algolia_fed:
         enabled: true
       su_site_algolia_id:
         enabled: true
@@ -790,6 +801,8 @@ field_config:
         enabled: true
       su_person_short_title:
         enabled: true
+      su_person_source:
+        enabled: true
       su_person_telephone:
         enabled: true
       su_person_type_group:
@@ -810,6 +823,8 @@ field_config:
       su_policy_policy_num:
         enabled: true
       su_policy_related:
+        enabled: true
+      su_policy_source:
         enabled: true
       su_policy_subchapter:
         enabled: true
@@ -975,6 +990,10 @@ field_config:
       su_policy_public:
         enabled: true
       su_policy_title:
+        enabled: true
+  taxonomy_term:
+    su_course_subjects:
+      su_courses_dept_long:
         enabled: true
 settings:
   exclude_unpublished: false
