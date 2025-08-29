@@ -374,6 +374,7 @@
   }
 
   .checkbox {
+    flex-shrink: 0;
     border: 2px solid #979694;
     border-radius: 3px;
     display: block;
