@@ -3,7 +3,6 @@
 require_once __DIR__ . '/../TestFilesTrait.php';
 
 use Codeception\Attribute as CodeceptionAttribute;
-use Codeception\Example;
 use Faker\Factory;
 
 /**
@@ -251,12 +250,7 @@ class PublicationsCest {
   }
 
   #[CodeceptionAttribute\Group('publication-importer')]
-  #[CodeceptionAttribute\Examples(type: 'Article Newspaper/Magazine')]
-  #[CodeceptionAttribute\Examples(type: 'Book')]
-  #[CodeceptionAttribute\Examples(type: 'Journal Article')]
-  #[CodeceptionAttribute\Examples(type: 'Other')]
-  #[CodeceptionAttribute\Examples(type: 'Thesis')]
-  public function testPublicationImporter(AcceptanceTester $I, Example $example) {
+  public function testPublicationImporter(AcceptanceTester $I) {
     $topic = $I->createEntity([
       'vid' => 'stanford_publication_topics',
       'name' => $this->faker->unique()->words(2, TRUE),
@@ -265,34 +259,45 @@ class PublicationsCest {
       'vid' => 'stanford_publication_topics',
       'name' => $this->faker->unique()->words(2, TRUE),
     ], 'taxonomy_term');
-
-    $csv_data = [
-      'id' => $this->faker->uuid(),
-      'citationType' => $example['type'],
-      'title' => $this->faker->unique()->words(3, TRUE),
-      'subtitle' => $this->faker->words(5, TRUE),
-      'authors' => $this->faker->firstName() . ' ' . $this->faker->lastName() . '|' . $this->faker->firstName() . ' ' . $this->faker->lastName(),
-      'pubPlace' => $this->faker->words(3, TRUE),
-      'publisher' => $this->faker->words(3, TRUE),
-      'volume' => $this->faker->words(3, TRUE),
-      'issue' => $this->faker->numberBetween(1, 100),
-      'edition' => $this->faker->numberBetween(1, 100),
-      'page' => $this->faker->numberBetween(10, 50),
-      'month' => $this->faker->numberBetween(1, 12),
-      'day' => $this->faker->numberBetween(1, 25),
-      'year' => $this->faker->year(),
-      'doi' => $this->faker->numberBetween(1, 50) . '/' . $this->faker->numberBetween(1, 50),
-      'url' => $this->faker->url(),
-      'image' => '',
-      'topics' => $topic->label() . '|' . $topic2->label(),
-      'body' => $this->faker->sentences(3, TRUE),
-      'ctaUrl' => $this->faker->url(),
-      'ctaTitle' => $this->faker->words(3, TRUE),
-      'genre' => '',
+    $pubTypes = [
+      'Article Newspaper/Magazine',
+      'Book',
+      'Journal Article',
+      'Other',
+      'Thesis',
     ];
+    foreach ($pubTypes as $type) {
+      $csv_data[] = [
+        'id' => $this->faker->uuid(),
+        'citationType' => $type,
+        'title' => $type . ': ' . $this->faker->unique()->word(),
+        'subtitle' => $this->faker->words(5, TRUE),
+        'authors' => $this->faker->firstName() . ' ' . $this->faker->lastName() . '|' . $this->faker->firstName() . ' ' . $this->faker->lastName(),
+        'pubPlace' => $this->faker->words(3, TRUE),
+        'publisher' => $this->faker->words(3, TRUE),
+        'volume' => $this->faker->words(3, TRUE),
+        'issue' => $this->faker->numberBetween(1, 100),
+        'edition' => $this->faker->numberBetween(1, 100),
+        'page' => $this->faker->numberBetween(10, 50),
+        'month' => $this->faker->numberBetween(1, 12),
+        'day' => $this->faker->numberBetween(1, 25),
+        'year' => $this->faker->year(),
+        'doi' => $this->faker->numberBetween(1, 50) . '/' . $this->faker->numberBetween(1, 50),
+        'url' => $this->faker->url(),
+        'image' => '',
+        'topics' => $topic->label() . '|' . $topic2->label(),
+        'body' => $this->faker->sentences(3, TRUE),
+        'ctaUrl' => $this->faker->url(),
+        'ctaTitle' => $this->faker->words(3, TRUE),
+        'genre' => '',
+      ];
+    }
+
     $handle = fopen('php://temp', 'r+');
-    fputcsv($handle, array_keys($csv_data));
-    fputcsv($handle, array_values($csv_data));
+    fputcsv($handle, array_keys($csv_data[0]));
+    foreach ($csv_data as $row) {
+      fputcsv($handle, $row);
+    }
     rewind($handle);
     $csv_contents = stream_get_contents($handle);
     fclose($handle);
@@ -304,68 +309,104 @@ class PublicationsCest {
     $I->attachFile('files[csv]', $csv_file);
     $I->click('Save and Import');
 
-    $I->canSee('1 created');
-    $I->amOnPage('/admin/content');
-    $I->canSee($csv_data['title']);
-    $I->click($csv_data['title']);
-    $I->canSee($csv_data['title'], 'h1');
+    $I->canSee('5 created');
 
-    $I->click('Edit', '.tabs.primary');
-    $I->canSeeInCurrentUrl('/edit');
-    $I->click('Edit', '.field--name-su-publication-citation');
+    foreach ($csv_data as $publication) {
+      $I->amOnPage('/admin/content');
 
-    $I->canSeeInField('Title', $csv_data['title']);
-    $topics = explode('|', $csv_data['topics']);
-    $I->canSeeOptionIsSelected('Publication Types (value 1)', $topics[0]);
-    $I->canSeeOptionIsSelected('Publication Types (value 2)', $topics[1]);
-    $I->canSee($csv_data['body'], '.su-wysiwyg-text');
-    $I->canSeeInField('su_publication_cta[0][uri]', $csv_data['ctaUrl']);
-    $I->canSeeInField('su_publication_cta[0][title]', $csv_data['ctaTitle']);
+      $I->canSee($publication['title']);
+      $I->click($publication['title']);
+      $I->canSee($publication['title'], 'h1');
 
-    $authors = explode('|', $csv_data['authors']);
-    [$authorFirst, $authorLast] = explode(' ', $authors[0]);
-    $I->canSeeInField('First Name', $authorFirst);
-    $I->canSeeInField('Last Name/Company', $authorLast);
+      $I->click('Edit', '.tabs.primary');
+      $I->canSeeInCurrentUrl('/edit');
+      $I->click('Edit', '.field--name-su-publication-citation');
 
-    [$authorFirst, $authorLast] = explode(' ', $authors[1]);
-    $I->canSeeInField('su_publication_citation[form][inline_entity_form][entities][0][form][su_author][1][given]', $authorFirst);
-    $I->canSeeInField('su_publication_citation[form][inline_entity_form][entities][0][form][su_author][1][family]', $authorLast);
-    $I->canSeeInField('Year', $csv_data['year']);
-    $I->canSeeInField('External Source', $csv_data['url']);
+      $I->canSeeInField('Title', $publication['title']);
+      $topics = explode('|', $publication['topics']);
+      $I->canSeeOptionIsSelected('Publication Types (value 1)', $topics[0]);
+      $I->canSeeOptionIsSelected('Publication Types (value 2)', $topics[1]);
+      $I->canSee($publication['body'], '.su-wysiwyg-text');
+      $I->canSeeInField('su_publication_cta[0][uri]', $publication['ctaUrl']);
+      $I->canSeeInField('su_publication_cta[0][title]', $publication['ctaTitle']);
 
-    if (!in_array($example['type'], ['Journal Article', 'Article Newspaper/Magazine', 'Thesis'])) {
-      $I->canSeeInField('Subtitle', $csv_data['subtitle']);
-    }
+      $authors = explode('|', $publication['authors']);
+      [$authorFirst, $authorLast] = explode(' ', $authors[0]);
+      $I->canSeeInField('First Name', $authorFirst);
+      $I->canSeeInField('Last Name/Company', $authorLast);
 
-    if (!in_array($example['type'], ['Book', 'Journal Article', 'Article Newspaper/Magazine', 'Thesis', 'Other'])) {
-      $I->canSeeInField('Journal Name', $csv_data['issue']);
-    }
+      [$authorFirst, $authorLast] = explode(' ', $authors[1]);
+      $I->canSeeInField('su_publication_citation[form][inline_entity_form][entities][0][form][su_author][1][given]', $authorFirst);
+      $I->canSeeInField('su_publication_citation[form][inline_entity_form][entities][0][form][su_author][1][family]', $authorLast);
+      $I->canSeeInField('Year', $publication['year']);
+      $I->canSeeInField('External Source', $publication['url']);
 
-    if (!in_array($example['type'], ['Book', 'Article Newspaper/Magazine', 'Thesis', 'Other'])) {
-      $I->canSeeInField('Volume', $csv_data['volume']);
-      $I->canSeeInField('Issue', $csv_data['issue']);
-    }
+      if (!in_array($publication['citationType'], [
+        'Journal Article',
+        'Article Newspaper/Magazine',
+        'Thesis',
+      ])) {
+        $I->canSeeInField('Subtitle', $publication['subtitle']);
+      }
 
-    if (!in_array($example['type'], ['Book'])) {
-      $I->canSeeInField('Month', $csv_data['month']);
-      $I->canSeeInField('Day', $csv_data['day']);
-    }
+      if (!in_array($publication['citationType'], [
+        'Book',
+        'Journal Article',
+        'Article Newspaper/Magazine',
+        'Thesis',
+        'Other',
+      ])) {
+        $I->canSeeInField('Journal Name', $publication['issue']);
+      }
 
-    if (!in_array($example['type'], ['Journal Article', 'Article Newspaper/Magazine', 'Thesis', 'Other'])) {
-      $I->canSeeInField('Publication Place', $csv_data['pubPlace']);
-    }
-    if (!in_array($example['type'], ['Journal Article'])) {
-      $I->canSeeInField('Publisher', $csv_data['publisher']);
-    }
+      if (!in_array($publication['citationType'], [
+        'Book',
+        'Article Newspaper/Magazine',
+        'Thesis',
+        'Other',
+      ])) {
+        $I->canSeeInField('Volume', $publication['volume']);
+        $I->canSeeInField('Issue', $publication['issue']);
+      }
 
-    if (!in_array($example['type'], ['Thesis', 'Other', 'Article Newspaper/Magazine'])) {
-      $I->canSeeInField('Page(s)', $csv_data['page']);
-    }
-    if (!in_array($example['type'], ['Journal Article', 'Thesis', 'Other'])) {
-      $I->canSeeInField('Edition', $csv_data['edition']);
-    }
-    if (!in_array($example['type'], ['Article Newspaper/Magazine', 'Other'])) {
-      $I->canSeeInField('DOI', $csv_data['doi']);
+      if (!in_array($publication['citationType'], ['Book'])) {
+        $I->canSeeInField('Month', $publication['month']);
+        $I->canSeeInField('Day', $publication['day']);
+      }
+
+      if (!in_array($publication['citationType'], [
+        'Journal Article',
+        'Article Newspaper/Magazine',
+        'Thesis',
+        'Other',
+      ])) {
+        $I->canSeeInField('Publication Place', $publication['pubPlace']);
+      }
+      if (!in_array($publication['citationType'], ['Journal Article'])) {
+        $I->canSeeInField('Publisher', $publication['publisher']);
+      }
+
+      if (!in_array($publication['citationType'], [
+        'Thesis',
+        'Other',
+        'Article Newspaper/Magazine',
+      ])) {
+        $I->canSeeInField('Page(s)', $publication['page']);
+      }
+      if (!in_array($publication['citationType'], [
+        'Journal Article',
+        'Thesis',
+        'Other',
+        'Article Newspaper/Magazine',
+      ])) {
+        $I->canSeeInField('Edition', $publication['edition']);
+      }
+      if (!in_array($publication['citationType'], [
+        'Article Newspaper/Magazine',
+        'Other',
+      ])) {
+        $I->canSeeInField('DOI', $publication['doi']);
+      }
     }
   }
 
