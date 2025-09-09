@@ -340,6 +340,44 @@ class WYSIWYGCest {
     $I->canSee('alt text', '#cboxTitle');
   }
 
+  #[CodeceptionAttribute\Group('embed-code')]
+  public function testEmbedCode(FunctionalTester $I){
+    $node = $this->getNodeWithParagraph($I);
+    $user = $I->createUserWithRoles(['site_manager', 'su_site_embedder']);
+    $I->logInAs($user->getAccountName());
+
+    $I->resizeWindow(1500, 1000);
+
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
+    $I->moveMouseOver('.js-lpb-component', 10, 10);
+    $I->click('Edit', '.lpb-controls');
+    $I->waitForElementVisible('.ck-toolbar');
+
+    // Wait a second for any click events to be applied.
+    $I->wait(1);
+    $I->click('[data-cke-tooltip-text="Insert Media"]');
+    $I->waitForElementVisible('.dropzone');
+    $I->click('Embeddable', '.media-library-menu');
+    $I->waitForText('oEmbed URL');
+
+    $embed_code = $this->faker->sentence();
+    $I->fillField('Embed Code', "<div>$embed_code</div>");
+
+    $I->click('Add');
+    $I->waitForText('The media item has been created but has not yet been saved');
+    $I->wait(1);
+    $I->click('//button[contains(text(), "Save and insert")]');
+    $I->waitForElementNotVisible('.media-library-widget-modal');
+    $I->wait(1);
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
+    $I->click('Save');
+
+    $I->canSee($node->label(), 'h1');
+    $I->canSee($embed_code);
+  }
+
   /**
    * Get a node with a wysiwyg paragraph on it.
    *
