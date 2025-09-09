@@ -2,6 +2,14 @@
 
 12.0.2
 -------------------------------------------------------------------------------
+
+- Updated external link settings
+- Added acceptance test for publication csv importer
+- Prevent federated search checkbox shrinking
+- Added person and policy external source fields to graphql
+
+12.0.2
+-------------------------------------------------------------------------------
 - D8CORE-8244: Fix label display when fields are empty (#985)
 - Adjust opportunity form display field order
 
