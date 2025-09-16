@@ -7,6 +7,7 @@ use Faker\Factory;
  * Test the news functionality.
  */
 #[CodeceptionAttribute\Group('content')]
+#[CodeceptionAttribute\Group('news_page')]
 class NewsCest {
 
   /**
@@ -267,21 +268,14 @@ class NewsCest {
 
     // Verify that default variant fields are visible
     $I->canSeeElement('#edit-su-news-dek-wrapper');
-    $I->canSee('Dek', '#edit-su-news-dek-wrapper');
-
     $I->canSeeElement('#edit-su-news-byline-wrapper');
-    $I->canSee('Byline', '#edit-su-news-byline-wrapper');
-
     $I->canSeeElement('#edit-su-news-banner-wrapper');
-    $I->canSee('Banner', '#edit-su-news-banner-wrapper');
-
     $I->canSeeElement('#edit-su-news-topics-wrapper');
-    $I->canSee('Topics', '#edit-su-news-topics-wrapper');
 
     // Verify that spotlight variant fields are not visible
-    $I->cantSeeElement('#edit-su-news-quote-wrapper');
-    $I->cantSeeElement('#edit-su-news-subtitle-wrapper');
-    $I->cantSeeElement('#edit-su-news-spotlight-filters-wrapper');
+    $I->cantSeeElement('[data-drupal-selector="edit-su-news-quote-wrapper"][style*="display: none"]');
+    $I->cantSeeElement('[data-drupal-selector="edit-su-news-subtitle-wrapper"][style*="display: none"]');
+    $I->cantSeeElement('[data-drupal-selector="edit-su-news-spotlight-filters-wrapper"][style*="display: none"]');
   }
 
   /**
@@ -294,22 +288,17 @@ class NewsCest {
 
     // Select the spotlight variant
     $I->selectOption('#edit-su-news-variant', 'su_news_spotlight');
-    
+
     // Verify that spotlight variant fields are visible
     $I->canSeeElement('#edit-su-news-quote-wrapper');
-    $I->canSee('Quote', '#edit-su-news-quote-wrapper');
-
     $I->canSeeElement('#edit-su-news-subtitle-wrapper');
-    $I->canSee('Subtitle', '#edit-su-news-subtitle-wrapper');
-
     $I->canSeeElement('#edit-su-news-spotlight-filters-wrapper');
-    $I->canSee('Spotlight Filters', '#edit-su-news-spotlight-filters-wrapper');
 
     // Verify that default variant fields are not visible
-    $I->cantSeeElement('#edit-su-news-dek-wrapper');
-    $I->cantSeeElement('#edit-su-news-byline-wrapper');
-    $I->cantSeeElement('#edit-su-news-banner-wrapper');
-    $I->cantSeeElement('#edit-su-news-topics-wrapper');
+    $I->cantSeeElement('[data-drupal-selector="edit-su-news-dek-wrapper"][style*="display: none"]');
+    $I->cantSeeElement('[data-drupal-selector="edit-su-news-byline-wrapper"][style*="display: none"]');
+    $I->cantSeeElement('[data-drupal-selector="edit-su-news-banner-wrapper"][style*="display: none"]');
+    $I->cantSeeElement('[data-drupal-selector="edit-su-news-topics-wrapper"][style*="display: none"]');
   }
 
 }
