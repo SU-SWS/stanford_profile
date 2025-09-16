@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.stanford_news.su_news_spotlight_filters
     - field.field.node.stanford_news.su_news_subtitle
     - field.field.node.stanford_news.su_news_topics
+    - field.field.node.stanford_news.su_news_variant
     - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
   module:
@@ -86,4 +87,5 @@ hidden:
   su_news_source: true
   su_news_spotlight_filters: true
   su_news_subtitle: true
+  su_news_variant: true
   su_shared_tags: true

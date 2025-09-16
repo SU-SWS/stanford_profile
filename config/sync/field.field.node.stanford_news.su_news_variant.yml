@@ -1,0 +1,23 @@
+uuid: 7c4a70f2-e92c-484b-8415-519f298580a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_variant
+    - node.type.stanford_news
+  module:
+    - options
+id: node.stanford_news.su_news_variant
+field_name: su_news_variant
+entity_type: node
+bundle: stanford_news
+label: Variant
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: su_news_default
+default_value_callback: ''
+settings: {  }
+field_type: list_string
