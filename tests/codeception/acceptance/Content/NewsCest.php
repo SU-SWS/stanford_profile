@@ -254,4 +254,62 @@ class NewsCest {
     $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
   }
 
+  /**
+   * Test that default news variant displays correct fields.
+   */
+  public function testDefaultVariantFieldsDisplay(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/node/add/stanford_news');
+    $I->canSeeResponseCodeIs(200);
+    
+    // Select the default variant
+    $I->selectOption('#edit-su-news-variant', 'su_news_default');
+
+    // Verify that default variant fields are visible
+    $I->canSeeElement('#edit-su-news-dek-wrapper');
+    $I->canSee('Dek', '#edit-su-news-dek-wrapper');
+
+    $I->canSeeElement('#edit-su-news-byline-wrapper');
+    $I->canSee('Byline', '#edit-su-news-byline-wrapper');
+
+    $I->canSeeElement('#edit-su-news-banner-wrapper');
+    $I->canSee('Banner', '#edit-su-news-banner-wrapper');
+
+    $I->canSeeElement('#edit-su-news-topics-wrapper');
+    $I->canSee('Topics', '#edit-su-news-topics-wrapper');
+
+    // Verify that spotlight variant fields are not visible
+    $I->cantSeeElement('#edit-su-news-quote-wrapper');
+    $I->cantSeeElement('#edit-su-news-subtitle-wrapper');
+    $I->cantSeeElement('#edit-su-news-spotlight-filters-wrapper');
+  }
+
+  /**
+   * Test that spotlight news variant displays correct fields.
+   */
+  public function testSpotlightVariantFieldsDisplay(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/node/add/stanford_news');
+    $I->canSeeResponseCodeIs(200);
+
+    // Select the spotlight variant
+    $I->selectOption('#edit-su-news-variant', 'su_news_spotlight');
+    
+    // Verify that spotlight variant fields are visible
+    $I->canSeeElement('#edit-su-news-quote-wrapper');
+    $I->canSee('Quote', '#edit-su-news-quote-wrapper');
+
+    $I->canSeeElement('#edit-su-news-subtitle-wrapper');
+    $I->canSee('Subtitle', '#edit-su-news-subtitle-wrapper');
+
+    $I->canSeeElement('#edit-su-news-spotlight-filters-wrapper');
+    $I->canSee('Spotlight Filters', '#edit-su-news-spotlight-filters-wrapper');
+
+    // Verify that default variant fields are not visible
+    $I->cantSeeElement('#edit-su-news-dek-wrapper');
+    $I->cantSeeElement('#edit-su-news-byline-wrapper');
+    $I->cantSeeElement('#edit-su-news-banner-wrapper');
+    $I->cantSeeElement('#edit-su-news-topics-wrapper');
+  }
+
 }
