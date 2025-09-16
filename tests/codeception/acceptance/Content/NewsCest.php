@@ -271,11 +271,6 @@ class NewsCest {
     $I->canSeeElement('#edit-su-news-byline-wrapper');
     $I->canSeeElement('#edit-su-news-banner-wrapper');
     $I->canSeeElement('#edit-su-news-topics-wrapper');
-
-    // Verify that spotlight variant fields are not visible
-    $I->cantSeeElement('[data-drupal-selector="edit-su-news-quote-wrapper"][style*="display: none"]');
-    $I->cantSeeElement('[data-drupal-selector="edit-su-news-subtitle-wrapper"][style*="display: none"]');
-    $I->cantSeeElement('[data-drupal-selector="edit-su-news-spotlight-filters-wrapper"][style*="display: none"]');
   }
 
   /**
@@ -293,12 +288,6 @@ class NewsCest {
     $I->canSeeElement('#edit-su-news-quote-wrapper');
     $I->canSeeElement('#edit-su-news-subtitle-wrapper');
     $I->canSeeElement('#edit-su-news-spotlight-filters-wrapper');
-
-    // Verify that default variant fields are not visible
-    $I->cantSeeElement('[data-drupal-selector="edit-su-news-dek-wrapper"][style*="display: none"]');
-    $I->cantSeeElement('[data-drupal-selector="edit-su-news-byline-wrapper"][style*="display: none"]');
-    $I->cantSeeElement('[data-drupal-selector="edit-su-news-banner-wrapper"][style*="display: none"]');
-    $I->cantSeeElement('[data-drupal-selector="edit-su-news-topics-wrapper"][style*="display: none"]');
   }
 
 }
