@@ -1,0 +1,29 @@
+uuid: 671468f3-166d-4de0-905e-9be959391676
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_news_spotlight_filters
+    - node.type.stanford_news
+    - taxonomy.vocabulary.stanford_news_spotlight_filters
+id: node.stanford_news.su_news_spotlight_filters
+field_name: su_news_spotlight_filters
+entity_type: node
+bundle: stanford_news
+label: 'Spotlight Filters'
+description: 'Enter the categories associated with this spotlight. These will be used in two ways: displayed in the content on the individual spotlight page, and as filters for the Filtered Lists Paragraph view.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      stanford_news_spotlight_filters: stanford_news_spotlight_filters
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

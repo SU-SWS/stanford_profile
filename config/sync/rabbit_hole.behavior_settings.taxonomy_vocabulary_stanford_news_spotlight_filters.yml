@@ -1,0 +1,14 @@
+uuid: f9a11867-3542-4914-94f1-6c2bbab06845
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_news_spotlight_filters
+id: taxonomy_vocabulary_stanford_news_spotlight_filters
+entity_type_id: taxonomy_vocabulary
+entity_id: stanford_news_spotlight_filters
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied
