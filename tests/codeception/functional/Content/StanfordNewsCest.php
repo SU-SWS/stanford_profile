@@ -94,4 +94,33 @@ class StanfordNewsCest {
     $I->canSee($third_term->label() . ', ' . $first_term->label() . ', ' . $second_term->label());
   }
 
+  public function testDefaultVariantHidesFields(FunctionalTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/node/add/stanford_news');
+
+    $I->seeElement('[data-drupal-selector="edit-su-news-dek-wrapper"]');
+    $I->seeElement('[data-drupal-selector="edit-su-news-banner-wrapper"]');
+    $I->seeElement('[data-drupal-selector="edit-su-news-topics-wrapper"]');
+
+    $I->dontSeeElement('[data-drupal-selector="edit-su-news-quote-wrapper"]');
+    $I->dontSeeElement('[data-drupal-selector="edit-su-news-subtitle-wrapper"]');
+    $I->dontSeeElement('[data-drupal-selector="edit-su-news-spotlight-filters-wrapper"]');
+  }
+
+  public function testSpotlightVariantShowsFields(FunctionalTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/node/add/stanford_news');
+
+    $I->selectOption('[name="su_news_variant"]', 'su_news_spotlight');
+
+    // These field containers should now be visible
+    $I->seeElement('[data-drupal-selector="edit-su-news-subtitle-wrapper"]');
+    $I->seeElement('[data-drupal-selector="edit-su-news-quote-wrapper"]');
+    $I->seeElement('[data-drupal-selector="edit-su-news-spotlight-filters-wrapper"]');
+
+    // These containers should be hidden
+    $I->dontSeeElement('[data-drupal-selector="edit-su-news-dek-wrapper"]');
+    $I->dontSeeElement('[data-drupal-selector="edit-su-news-banner-wrapper"]');
+    $I->dontSeeElement('[data-drupal-selector="edit-su-news-topics-wrapper"]');
+  }
 }
