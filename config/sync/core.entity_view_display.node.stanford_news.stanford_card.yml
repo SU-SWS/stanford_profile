@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
     - field.field.node.stanford_news.layout_builder__layout
+    - field.field.node.stanford_news.layout_selection
     - field.field.node.stanford_news.stanford_intranet__access
     - field.field.node.stanford_news.su_metatags
     - field.field.node.stanford_news.su_news_banner
@@ -20,7 +21,6 @@ dependencies:
     - field.field.node.stanford_news.su_news_spotlight_filters
     - field.field.node.stanford_news.su_news_subtitle
     - field.field.node.stanford_news.su_news_topics
-    - field.field.node.stanford_news.su_news_variant
     - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
   module:
@@ -153,5 +153,4 @@ hidden:
   su_news_quote: true
   su_news_spotlight_filters: true
   su_news_subtitle: true
-  su_news_variant: true
   su_shared_tags: true
