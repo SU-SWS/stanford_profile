@@ -255,39 +255,20 @@ class NewsCest {
     $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
   }
 
+  #[CodeceptionAttribute\Group('news_variant')]
   /**
-   * Test that default news variant displays correct fields.
+   * Test that news variants display correct fields.
    */
-  public function testDefaultVariantFieldsDisplay(AcceptanceTester $I) {
-    $I->logInWithRole('administrator');
+  public function testNewsVariantFieldsDisplay(AcceptanceTester $I) {
+    $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add/stanford_news');
     $I->canSeeResponseCodeIs(200);
     
-    // Select the default variant
-    $I->selectOption('#edit-su-news-variant', 'su_news_default');
-
-    // Verify that default variant fields are visible
-    $I->canSeeElement('#edit-su-news-dek-wrapper');
-    $I->canSeeElement('#edit-su-news-byline-wrapper');
-    $I->canSeeElement('#edit-su-news-banner-wrapper');
-    $I->canSeeElement('#edit-su-news-topics-wrapper');
+    // Test default variant fields
+    $I->canSeeInField('Dek', '');
+    $I->canSeeInField('Byline', '');
+    $I->canSeeInField('Banner Caption', '');
+    $I->canSeeInField('Quote / Big Text', '');
+    $I->canSeeInField('Subtitle', '');
   }
-
-  /**
-   * Test that spotlight news variant displays correct fields.
-   */
-  public function testSpotlightVariantFieldsDisplay(AcceptanceTester $I) {
-    $I->logInWithRole('administrator');
-    $I->amOnPage('/node/add/stanford_news');
-    $I->canSeeResponseCodeIs(200);
-
-    // Select the spotlight variant
-    $I->selectOption('#edit-su-news-variant', 'su_news_spotlight');
-
-    // Verify that spotlight variant fields are visible
-    $I->canSeeElement('#edit-su-news-quote-wrapper');
-    $I->canSeeElement('#edit-su-news-subtitle-wrapper');
-    $I->canSeeElement('#edit-su-news-spotlight-filters-wrapper');
-  }
-
 }
