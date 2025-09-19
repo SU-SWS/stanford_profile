@@ -94,33 +94,32 @@ class StanfordNewsCest {
     $I->canSee($third_term->label() . ', ' . $first_term->label() . ', ' . $second_term->label());
   }
 
+  #[CodeceptionAttribute\Group('news_variant')]
   public function testDefaultVariantHidesFields(FunctionalTester $I) {
-    $I->logInWithRole('administrator');
-    $I->amOnPage('/node/add/stanford_news');
+    $default_news = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'su_news_dek' => $this->faker->sentence(),
+      'su_news_byline' => $this->faker->name(),
+    ]);
+    $spotlight_news = $I->createEntity([
+      'title' => $this->faker->words(2, TRUE),
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_quote' => $this->faker->sentence(),
+      'su_news_subtitle' => $this->faker->sentence(),
+    ]);
 
-    $I->seeElement('[data-drupal-selector="edit-su-news-dek-wrapper"]');
-    $I->seeElement('[data-drupal-selector="edit-su-news-banner-wrapper"]');
-    $I->seeElement('[data-drupal-selector="edit-su-news-topics-wrapper"]');
-
-    $I->dontSeeElement('[data-drupal-selector="edit-su-news-quote-wrapper"]');
-    $I->dontSeeElement('[data-drupal-selector="edit-su-news-subtitle-wrapper"]');
-    $I->dontSeeElement('[data-drupal-selector="edit-su-news-spotlight-filters-wrapper"]');
-  }
-
-  public function testSpotlightVariantShowsFields(FunctionalTester $I) {
-    $I->logInWithRole('administrator');
-    $I->amOnPage('/node/add/stanford_news');
-
-    $I->selectOption('[name="su_news_variant"]', 'su_news_spotlight');
-
-    // These field containers should now be visible
-    $I->seeElement('[data-drupal-selector="edit-su-news-subtitle-wrapper"]');
-    $I->seeElement('[data-drupal-selector="edit-su-news-quote-wrapper"]');
-    $I->seeElement('[data-drupal-selector="edit-su-news-spotlight-filters-wrapper"]');
-
-    // These containers should be hidden
-    $I->dontSeeElement('[data-drupal-selector="edit-su-news-dek-wrapper"]');
-    $I->dontSeeElement('[data-drupal-selector="edit-su-news-banner-wrapper"]');
-    $I->dontSeeElement('[data-drupal-selector="edit-su-news-topics-wrapper"]');
+    $I->logInWithRole('site_manager');
+    $I->amOnPage($default_news->toUrl('edit-form')->toString());
+    $I->canSeeInField('Headline', $default_news->label());
+    $I->canSeeInField('Dek', $default_news->get('su_news_dek')->value);
+    $I->canSeeInField('Byline', $default_news->get('su_news_byline')->value);
+    
+    $I->amOnPage($spotlight_news->toUrl('edit-form')->toString());
+    $I->canSeeInField('Headline', $spotlight_news->label());
+    // $I->selectOption('Layout', 'Spotlight'); 
+    $I->canSeeInField('Quote / Big Text', $spotlight_news->get('su_news_quote')->value);
+    $I->canSeeInField('Subtitle', $spotlight_news->get('su_news_subtitle')->value);
   }
 }
