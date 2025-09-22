@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.stanford_page.body
     - field.field.node.stanford_page.field_menulink
     - field.field.node.stanford_page.layout_builder__layout
     - field.field.node.stanford_page.layout_selection
@@ -18,8 +19,10 @@ dependencies:
   module:
     - change_labels
     - cshs
+    - field_formatter_class
     - field_group
     - layout_paragraphs
+    - maxlength
     - media_library
     - menu_link
     - metatag
@@ -27,6 +30,7 @@ dependencies:
     - path
     - scheduler
     - stanford_intranet
+    - text
 third_party_settings:
   field_group:
     group_page_metadata:
@@ -38,7 +42,7 @@ third_party_settings:
       label: 'Page Metadata'
       region: content
       parent_name: ''
-      weight: 10
+      weight: 11
       format_type: details_sidebar
       format_settings:
         classes: ''
@@ -52,6 +56,26 @@ targetEntityType: node
 bundle: stanford_page
 mode: default
 content:
+  body:
+    type: text_textarea_with_summary
+    weight: 7
+    region: content
+    settings:
+      rows: 2
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings:
+      change_labels:
+        field_label_overwrite: ''
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_summary: null
+        maxlength_js_label_summary: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
   created:
     type: datetime_timestamp
     weight: 2
@@ -60,13 +84,19 @@ content:
     third_party_settings: {  }
   field_menulink:
     type: menu_link_default
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  layout_builder__layout:
+    type: null
     weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
   layout_selection:
     type: options_select
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -78,18 +108,18 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   stanford_intranet__access:
     type: entity_access
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -115,7 +145,7 @@ content:
     third_party_settings: {  }
   su_metatags:
     type: metatag_firehose
-    weight: 11
+    weight: 12
     region: content
     settings:
       sidebar: true
@@ -145,10 +175,12 @@ content:
         field_label_overwrite: ''
   su_page_components:
     type: layout_paragraphs
-    weight: 7
+    weight: 8
     region: content
     settings:
+      view_mode: default
       preview_view_mode: default
+      form_display_mode: default
       nesting_depth: 0
       require_layouts: 1
       empty_message: ''
@@ -207,7 +239,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  layout_builder__layout: true
   promote: true
   sticky: true
   unpublish_on: true
