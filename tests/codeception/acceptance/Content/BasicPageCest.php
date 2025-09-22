@@ -456,4 +456,17 @@ class BasicPageCest {
     }
   }
 
+  #[CodeceptionAttribute\Group('body')]
+  public function testBodyField(AcceptanceTester $I) {
+    $body_text = '<p>'. implode('</p><p>', $this->faker->paragraphs()) . '</p>';
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+      'body' => ['value' => $body_text, 'format' => 'stanford_html'],
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+    $I->canSee(strip_tags($body_text));
+  }
+
 }

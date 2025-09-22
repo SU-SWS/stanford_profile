@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.stanford_news.body
     - field.field.node.stanford_news.layout_builder__layout
     - field.field.node.stanford_news.stanford_intranet__access
     - field.field.node.stanford_news.su_metatags
@@ -22,14 +23,17 @@ dependencies:
     - change_labels
     - cshs
     - datetime
+    - field_formatter_class
     - field_group
     - layout_paragraphs
     - link
+    - maxlength
     - media_library
     - metatag
     - path
     - scheduler
     - stanford_intranet
+    - text
 third_party_settings:
   field_group:
     group_media:
@@ -81,39 +85,65 @@ targetEntityType: node
 bundle: stanford_news
 mode: default
 content:
+  body:
+    type: text_textarea_with_summary
+    weight: 4
+    region: content
+    settings:
+      rows: 2
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings:
+      change_labels:
+        field_label_overwrite: ''
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_summary: null
+        maxlength_js_label_summary: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+  layout_builder__layout:
+    type: null
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
-    weight: 12
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 52
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 50
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   stanford_intranet__access:
     type: entity_access
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 5
+    weight: 6
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   su_metatags:
     type: metatag_firehose
-    weight: 10
+    weight: 9
     region: content
     settings:
       sidebar: true
@@ -144,10 +174,12 @@ content:
     third_party_settings: {  }
   su_news_components:
     type: layout_paragraphs
-    weight: 4
+    weight: 5
     region: content
     settings:
+      view_mode: default
       preview_view_mode: default
+      form_display_mode: default
       nesting_depth: 0
       require_layouts: 1
       empty_message: ''
@@ -171,7 +203,7 @@ content:
     third_party_settings: {  }
   su_news_hide_social:
     type: boolean_checkbox
-    weight: 11
+    weight: 10
     region: content
     settings:
       display_label: true
@@ -205,7 +237,7 @@ content:
     third_party_settings: {  }
   su_shared_tags:
     type: cshs
-    weight: 9
+    weight: 8
     region: content
     settings:
       save_lineage: false
@@ -226,7 +258,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  layout_builder__layout: true
   layout_selection: true
   promote: true
   sticky: true

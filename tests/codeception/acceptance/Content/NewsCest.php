@@ -254,4 +254,17 @@ class NewsCest {
     $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
   }
 
+  #[CodeceptionAttribute\Group('body')]
+  public function testBodyField(AcceptanceTester $I) {
+    $body_text = '<p>'. implode('</p><p>', $this->faker->paragraphs()) . '</p>';
+    $node = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => $this->faker->words(3, TRUE),
+      'body' => ['value' => $body_text, 'format' => 'stanford_html'],
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+    $I->canSee(strip_tags($body_text));
+  }
+
 }
