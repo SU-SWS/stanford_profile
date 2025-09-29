@@ -255,13 +255,15 @@ class NewsCest {
     $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
   }
 
-  #[CodeceptionAttribute\Group('news_variant')]
-  /**
-   * Test that news variants display correct fields and can be populated with site manaager role.
-   */
-  public function testNewsVariantFieldsDisplay(AcceptanceTester $I) {
-    // Test with site-manager role
-    $I->logInWithRole('site_manager');
+#[CodeceptionAttribute\Group('news_variant')]
+/**
+ * Test that news variants display correct fields and can be populated with site manager and contributor roles.
+ */
+public function testNewsVariantFieldsDisplay(AcceptanceTester $I) {
+  $roles = ['site_manager', 'contributor'];
+
+  foreach ($roles as $role) {
+    $I->logInWithRole($role);
     $I->amOnPage('/node/add/stanford_news');
     $I->canSeeResponseCodeIs(200);
     
@@ -300,49 +302,6 @@ class NewsCest {
     $I->canSee($testData['Dek']);
     $I->canSee($testData['Byline']);
     $I->canSee($testData['Banner Caption']);
-    // $I->canSee($testData['Quote']);
-    // $I->canSee($testData['Subtitle']);
   }
-
-  /**
-   * Test that news variants display correct fields and can be populated with contributor role.
-   */
-  public function testNewsVariantFieldsDisplayContributor(AcceptanceTester $I) {
-    // Test with contributor role
-    $I->logInWithRole('contributor');
-    $I->amOnPage('/node/add/stanford_news');
-    $I->canSeeResponseCodeIs(200);
-    
-    $testData = [
-      'Dek' => $this->faker->sentence(),
-      'Byline' => $this->faker->name(),
-      'Banner Caption' => $this->faker->sentence(),
-      'Quote' => $this->faker->sentence(),
-      'Subtitle' => $this->faker->words(4, TRUE)
-    ];
-
-    $I->fillField('Headline', $this->faker->words(3, TRUE));
-    
-    $I->canSeeInField('Dek', '');
-    $I->canSeeInField('Byline', '');
-    $I->canSeeInField('Banner Caption', '');
-    $I->canSeeInField('Quote / Big Text', '');
-    $I->canSeeInField('Subtitle', '');
-    
-    $I->fillField('Dek', $testData['Dek']);
-    $I->fillField('Byline', $testData['Byline']);
-    $I->fillField('Banner Caption', $testData['Banner Caption']);
-    $I->fillField('Quote / Big Text', $testData['Quote']);
-    $I->fillField('Subtitle', $testData['Subtitle']);
-    
-    $I->click('Save');
-    
-    $I->canSeeResponseCodeIs(200);
-    $I->canSee('has been created');
-    $I->canSee($testData['Dek']);
-    $I->canSee($testData['Byline']);
-    $I->canSee($testData['Banner Caption']);
-    // $I->canSee($testData['Quote / Big Text']);
-    // $I->canSee($testData['Subtitle']);
-  }
+}
 }
