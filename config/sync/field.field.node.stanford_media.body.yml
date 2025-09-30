@@ -1,0 +1,24 @@
+uuid: c4a87752-c132-47bc-91bf-e0a42da90a8b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.stanford_media
+  module:
+    - text
+id: node.stanford_media.body
+field_name: body
+entity_type: node
+bundle: stanford_media
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

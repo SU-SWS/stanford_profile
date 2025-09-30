@@ -1,0 +1,19 @@
+uuid: 23500fbe-a7b6-4a4f-9266-341bcc0dfef1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.su_import_lookup
+    - media.type.video
+id: media.video.su_import_lookup
+field_name: su_import_lookup
+entity_type: media
+bundle: video
+label: 'Imported Lookup'
+description: 'Administrative field to use for lookup when migrating content. The name of the media may be a string, so this can be any value.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

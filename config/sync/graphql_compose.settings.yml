@@ -189,6 +189,11 @@ entity_config:
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
+    stanford_media:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
     stanford_news:
       enabled: true
       query_load_enabled: true
@@ -291,6 +296,9 @@ entity_config:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
+    media_content_types:
+      enabled: true
+      query_load_enabled: true
     media_tags:
       enabled: false
     opportunity_sponsor:
@@ -351,6 +359,9 @@ entity_config:
       query_load_enabled: true
     su_shared_tags:
       enabled: false
+    media_content_series:
+      enabled: true
+      query_load_enabled: true
 field_config:
   block_content:
     stanford_component_block:
@@ -599,6 +610,12 @@ field_config:
     video:
       field_media_oembed_video:
         enabled: true
+      su_video_subtitles:
+        enabled: true
+      su_media_description:
+        enabled: true
+      su_video_duration:
+        enabled: true
   node:
     stanford_course:
       body:
@@ -676,6 +693,33 @@ field_config:
       su_event_series_subheadline:
         enabled: true
       su_event_series_type:
+        enabled: true
+    stanford_media:
+      body:
+        enabled: true
+      su_media_audio_video:
+        enabled: true
+      su_media_date:
+        enabled: true
+      su_media_dek:
+        enabled: true
+      su_media_image:
+        enabled: true
+      su_media_person:
+        enabled: true
+      su_media_source:
+        enabled: true
+      su_media_transcript:
+        enabled: true
+      su_media_types:
+        enabled: true
+      su_media_season:
+        enabled: true
+      su_media_episode:
+        enabled: true
+      su_media_series:
+        enabled: true
+      su_media_duration:
         enabled: true
     stanford_news:
       body:

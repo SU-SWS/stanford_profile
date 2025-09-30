@@ -1,0 +1,142 @@
+uuid: 44648dbf-bfaf-44e5-bc09-dc0f99f8e62e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.stanford_card
+    - field.field.node.stanford_media.body
+    - field.field.node.stanford_media.su_media_audio_video
+    - field.field.node.stanford_media.su_media_date
+    - field.field.node.stanford_media.su_media_dek
+    - field.field.node.stanford_media.su_media_duration
+    - field.field.node.stanford_media.su_media_episode
+    - field.field.node.stanford_media.su_media_image
+    - field.field.node.stanford_media.su_media_person
+    - field.field.node.stanford_media.su_media_season
+    - field.field.node.stanford_media.su_media_series
+    - field.field.node.stanford_media.su_media_source
+    - field.field.node.stanford_media.su_media_transcript
+    - field.field.node.stanford_media.su_media_types
+    - node.type.stanford_media
+  module:
+    - datetime
+    - ds
+    - empty_fields
+    - field_formatter_class
+    - field_label
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - stanford_media
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+  ds:
+    layout:
+      id: pattern_container_responsive_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      image:
+        - su_media_image
+      eyebrow:
+        - su_media_dek
+      heading:
+        - node_title
+      body:
+        - su_media_date
+        - su_media_season
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 2
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          link_target: ''
+          wrapper: h2
+          class: su-card__link
+id: node.stanford_media.stanford_card
+targetEntityType: node
+bundle: stanford_media
+mode: stanford_card
+content:
+  su_media_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: stanford_month_date_year
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 3
+    region: body
+  su_media_dek:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: eyebrow
+  su_media_image:
+    type: media_responsive_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      image_style: card_2_1
+      remove_alt: 0
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 0
+    region: image
+  su_media_season:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: body
+hidden:
+  body: true
+  links: true
+  search_api_excerpt: true
+  su_media_audio_video: true
+  su_media_duration: true
+  su_media_episode: true
+  su_media_person: true
+  su_media_series: true
+  su_media_source: true
+  su_media_transcript: true
+  su_media_types: true

@@ -1,0 +1,66 @@
+uuid: 15a17ed6-41b3-4145-948e-1ef9af8fd7b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.printable
+    - field.field.node.stanford_media.body
+    - field.field.node.stanford_media.su_media_audio_video
+    - field.field.node.stanford_media.su_media_date
+    - field.field.node.stanford_media.su_media_dek
+    - field.field.node.stanford_media.su_media_duration
+    - field.field.node.stanford_media.su_media_episode
+    - field.field.node.stanford_media.su_media_image
+    - field.field.node.stanford_media.su_media_person
+    - field.field.node.stanford_media.su_media_season
+    - field.field.node.stanford_media.su_media_series
+    - field.field.node.stanford_media.su_media_source
+    - field.field.node.stanford_media.su_media_transcript
+    - field.field.node.stanford_media.su_media_types
+    - node.type.stanford_media
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+id: node.stanford_media.printable
+targetEntityType: node
+bundle: stanford_media
+mode: printable
+content:
+  su_media_transcript:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  links: true
+  search_api_excerpt: true
+  su_media_audio_video: true
+  su_media_date: true
+  su_media_dek: true
+  su_media_duration: true
+  su_media_episode: true
+  su_media_image: true
+  su_media_person: true
+  su_media_season: true
+  su_media_series: true
+  su_media_source: true
+  su_media_types: true
