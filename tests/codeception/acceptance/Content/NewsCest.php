@@ -302,6 +302,10 @@ public function testNewsVariantFieldsDisplay(AcceptanceTester $I) {
     $I->canSee($testData['Dek']);
     $I->canSee($testData['Byline']);
     $I->canSee($testData['Banner Caption']);
+
+    // Logout
+    $I->amOnPage('/user/logout');
+    $I->click('#edit-submit');
   }
 }
 }
