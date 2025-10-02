@@ -8,7 +8,7 @@ default:
       value: true
   label:
     -
-      value: test
+      value: 'Person Content'
   base_url:
     -
       value: 'https://stvp.stanford.edu'
@@ -47,7 +47,25 @@ default:
               destination: su_person_photo
             -
               source: meta/__contributor_is_power_contributor
-              settings: null
+              settings:
+                -
+                  plugin: str_replace
+                  search:
+                    - '1'
+                    - '0'
+                  replace:
+                    - 'Core Contributor'
+                    - Contributor
+                -
+                  plugin: skip_on_empty
+                  method: process
+                -
+                  plugin: entity_generate
+                  entity_type: taxonomy_term
+                  bundle_key: vid
+                  bundle: stanford_person_types
+                  value_key: name
+                  ignore_case: true
               destination: su_person_type_group
             -
               source: title/rendered
@@ -87,6 +105,120 @@ default:
                   start: 0
                   length: 255
               destination: su_person_last_name
+            -
+              source: organization
+              settings: null
+              destination: su_person_type_group
+        /wp/v2/student:
+          stanford_person:
+            -
+              source: title/rendered
+              settings: null
+              destination: title
+            -
+              source: title/rendered
+              settings:
+                -
+                  plugin: skip_on_empty
+                  method: process
+                -
+                  plugin: callback
+                  callable: html_entity_decode
+                -
+                  plugin: str_replace
+                  regex: true
+                  search: '/ .*/'
+                  replace: ''
+                -
+                  plugin: substr
+                  start: 0
+                  length: 255
+              destination: su_person_first_name
+            -
+              source: title/rendered
+              settings:
+                -
+                  plugin: skip_on_empty
+                  method: process
+                -
+                  plugin: callback
+                  callable: html_entity_decode
+                -
+                  plugin: str_replace
+                  regex: true
+                  search: '/^.*? /'
+                  replace: ''
+                -
+                  plugin: substr
+                  start: 0
+                  length: 255
+              destination: su_person_last_name
+            -
+              source: acf/student_picture
+              settings: null
+              destination: su_person_photo
+            -
+              source: content/rendered
+              settings: null
+              destination: body/value
+            -
+              source: acf/student_bio
+              settings: null
+              destination: body/value
+            -
+              source: acf/student_linkedin_profile_url
+              settings: null
+              destination: su_person_source/uri
+            -
+              source: acf/dissertation_title
+              settings: null
+              destination: body/value
+            -
+              source: acf/phd_alum_title
+              settings: null
+              destination: su_person_full_title
+            -
+              source: acf/student_program
+              settings:
+                -
+                  plugin: skip_on_empty
+                  method: process
+                -
+                  plugin: entity_generate
+                  entity_type: taxonomy_term
+                  bundle_key: vid
+                  bundle: stanford_person_types
+                  value_key: name
+                  ignore_case: true
+              destination: su_person_type_group
+            -
+              source: acf/student_class
+              settings:
+                -
+                  plugin: skip_on_empty
+                  method: process
+                -
+                  plugin: entity_generate
+                  entity_type: taxonomy_term
+                  bundle_key: vid
+                  bundle: stanford_person_types
+                  value_key: name
+                  ignore_case: true
+              destination: su_person_type_group
+            -
+              source: __empty
+              settings:
+                -
+                  plugin: default_value
+                  default_value: Student
+                -
+                  plugin: entity_generate
+                  entity_type: taxonomy_term
+                  bundle_key: vid
+                  bundle: stanford_person_types
+                  value_key: name
+                  ignore_case: true
+              destination: su_person_type_group
   metatag:
     -
       tag: meta
