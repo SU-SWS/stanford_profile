@@ -25,6 +25,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_subject
+    - field.field.node.stanford_event.su_event_tags
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
     - field.field.node.stanford_event.su_imported
@@ -381,19 +382,6 @@ third_party_settings:
                     class: su-event-email
             weight: 3
             additional: {  }
-          c4f8811e-dd0e-44ae-b65d-b0f82cf894df:
-            uuid: c4f8811e-dd0e-44ae-b65d-b0f82cf894df
-            region: main
-            configuration:
-              id: jumpstart_ui_page_heading
-              label: 'Heading Block'
-              label_display: '0'
-              provider: jumpstart_ui
-              context_mapping: {  }
-              heading_text: 'Event Details:'
-              wrapper: h2
-            weight: 1
-            additional: {  }
           72ffb956-3705-4638-a22a-22c5ce31e291:
             uuid: 72ffb956-3705-4638-a22a-22c5ce31e291
             region: main
@@ -460,6 +448,20 @@ third_party_settings:
                   field_formatter_class:
                     class: su-event-contact-info
             weight: 4
+            additional: {  }
+          4852b83f-2377-497f-9eb7-bd5207d6c76c:
+            uuid: 4852b83f-2377-497f-9eb7-bd5207d6c76c
+            region: title
+            configuration:
+              id: jumpstart_ui_page_heading
+              label: 'Heading Block'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+              heading_text: 'Event Details:'
+              wrapper: h2
+              hide_heading: 0
+            weight: 0
             additional: {  }
         third_party_settings: {  }
       -
