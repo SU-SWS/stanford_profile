@@ -29,10 +29,13 @@ layout:
             entity: layout_builder.entity
             view_mode: view_mode
           formatter:
-            type: entity_reference_label
+            type: media_image_formatter
             label: hidden
             settings:
-              link: true
+              view_mode: stanford_image_large_square
+              link: false
+              image_style: ''
+              remove_alt: false
             third_party_settings:
               empty_fields:
                 handler: ''
@@ -67,7 +70,7 @@ layout:
               field_label:
                 label_value: ''
                 label_tag: ''
-        weight: 9
+        weight: 10
         additional: {  }
       a882d0a7-3cbf-49b9-a5e9-1907b4756679:
         uuid: a882d0a7-3cbf-49b9-a5e9-1907b4756679
@@ -93,7 +96,7 @@ layout:
               field_label:
                 label_value: ''
                 label_tag: ''
-        weight: 10
+        weight: 11
         additional: {  }
       732beb30-5e41-4c27-8b28-605b2cadbf06:
         uuid: 732beb30-5e41-4c27-8b28-605b2cadbf06
@@ -119,7 +122,7 @@ layout:
               field_label:
                 label_value: ''
                 label_tag: ''
-        weight: 6
+        weight: 7
         additional: {  }
       d543d9d0-cec8-4ab6-bab9-aa79a13639bb:
         uuid: d543d9d0-cec8-4ab6-bab9-aa79a13639bb
@@ -136,6 +139,32 @@ layout:
             type: basic_string
             label: hidden
             settings: {  }
+            third_party_settings:
+              empty_fields:
+                handler: ''
+              field_formatter_class:
+                class: ''
+              field_label:
+                label_value: ''
+                label_tag: ''
+        weight: 9
+        additional: {  }
+      b9778f05-c8e7-4f90-8456-3d0125d36538:
+        uuid: b9778f05-c8e7-4f90-8456-3d0125d36538
+        region: left
+        configuration:
+          id: 'field_block:node:stanford_news:layout_selection'
+          label: Layout
+          label_display: '0'
+          provider: layout_builder
+          context_mapping:
+            entity: layout_builder.entity
+            view_mode: view_mode
+          formatter:
+            type: entity_reference_label
+            label: hidden
+            settings:
+              link: false
             third_party_settings:
               empty_fields:
                 handler: ''
