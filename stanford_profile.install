@@ -5,6 +5,8 @@
  * stanford_profile.install
  */
 
+use Drupal\field\Entity\FieldStorageConfig;
+
 /**
  * Implements hook_update_last_removed().
  */
@@ -22,4 +24,42 @@ function stanford_profile_update_11000() {
   $config->set('module', $modules);
   $config->save(TRUE);
   \Drupal::keyValue('system.schema')->delete('pdb_react');
+}
+
+/**
+ * Increase the size of a "string" field.
+ *
+ * @param string $entityType
+ *   Entity type id.
+ * @param string $fieldName
+ *   Field machine name.
+ * @param int $newSize
+ *   New size of the field.
+ */
+function _stanford_profile_update_field_size(string $entityType, string $fieldName, int $newSize){
+  $database = \Drupal::database();
+  $database->query("ALTER TABLE {$entityType}__$fieldName MODIFY {$fieldName}_value VARCHAR($newSize)");
+  $database->query("ALTER TABLE {$entityType}_revision__$fieldName MODIFY {$fieldName}_value VARCHAR($newSize)");
+
+  $storage_key = "node.field_schema_data.$fieldName";
+  $storage_schema = \Drupal::keyValue('entity.storage_schema.sql');
+  $field_schema = $storage_schema->get($storage_key);
+  $field_schema["{$entityType}__$fieldName"]['fields']["{$fieldName}_value"]['length'] = $newSize;
+  $field_schema["{$entityType}_revision__$fieldName"]['fields']["{$fieldName}_value"]['length'] = $newSize;
+  $storage_schema->set($storage_key, $field_schema);
+
+  $config = \Drupal::configFactory()
+    ->getEditable("field.storage.node.$fieldName");
+  $config->set('settings.max_length', $newSize);
+  $config->save(TRUE);
+
+  // Update field storage configuration.
+  FieldStorageConfig::loadByName($entityType, $fieldName)->save();
+}
+
+/**
+ * Increase News Dek field size to 500 characters.
+ */
+function stanford_profile_update_11001(){
+  _stanford_profile_update_field_size('node', 'su_news_dek', 500);
 }
