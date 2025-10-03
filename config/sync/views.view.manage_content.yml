@@ -5210,7 +5210,32 @@ display:
         sorts: false
         filters: false
         filter_groups: false
+        header: false
       display_description: ''
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "<p>Enter Person Profiles on the site, or import profiles from Stanford Profiles (https://profiles.stanford.edu). </p>\r\n\r\n<p><A href=\"https://sitesuserguide.stanford.edu/build/page-types/person-page\">Learn more about Person Profiles</A></p>\r\n<hr/>"
+            format: stanford_html
+          tokenize: false
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: '<p>Total number of Person Profiles in this list: <strong>@total items</strong></p>'
       display_extenders: {  }
       path: admin/content/people
       menu:
