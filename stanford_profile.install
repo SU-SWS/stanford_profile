@@ -36,7 +36,7 @@ function stanford_profile_update_11000() {
  * @param int $newSize
  *   New size of the field.
  */
-function _stanford_profile_update_field_size(string $entityType, string $fieldName, int $newSize){
+function _stanford_profile_update_field_size(string $entityType, string $fieldName, int $newSize): void {
   $database = \Drupal::database();
   $database->query("ALTER TABLE {$entityType}__$fieldName MODIFY {$fieldName}_value VARCHAR($newSize)");
   $database->query("ALTER TABLE {$entityType}_revision__$fieldName MODIFY {$fieldName}_value VARCHAR($newSize)");
@@ -60,6 +60,6 @@ function _stanford_profile_update_field_size(string $entityType, string $fieldNa
 /**
  * Increase News Dek field size to 500 characters.
  */
-function stanford_profile_update_11001(){
+function stanford_profile_update_11001() {
   _stanford_profile_update_field_size('node', 'su_news_dek', 500);
 }

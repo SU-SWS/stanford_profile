@@ -1128,6 +1128,101 @@ display:
         - 'config:field.storage.node.su_news_publishing_date'
         - 'config:field.storage.node.su_news_source'
         - 'config:field.storage.node.su_news_topics'
+  related_person:
+    id: related_person
+    display_title: 'Person Related News'
+    display_plugin: block
+    position: 3
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      arguments:
+        su_news_person_target_id:
+          id: su_news_person_target_id
+          table: node__su_news_person
+          field: su_news_person_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: entity_target_id
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      style:
+        type: html_list
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: stanford_h3_card
+      defaults:
+        css_class: false
+        pager: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
+        style: false
+        row: false
+        arguments: false
+      css_class: 'stanford-news--cards stanford-news--cards-any'
+      display_description: 'Vertical Cards'
+      use_more: false
+      use_more_always: false
+      use_more_text: 'See All News'
+      link_display: custom_url
+      link_url: /news
+      display_extenders: {  }
+      block_description: ''
+      block_category: 'News Lists (Views)'
+      block_hide_empty: true
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.su_news_dek'
+        - 'config:field.storage.node.su_news_featured_media'
+        - 'config:field.storage.node.su_news_publishing_date'
+        - 'config:field.storage.node.su_news_source'
+        - 'config:field.storage.node.su_news_topics'
   rss:
     id: rss
     display_title: 'News RSS Feed'

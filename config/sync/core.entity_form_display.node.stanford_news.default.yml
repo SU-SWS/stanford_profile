@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.stanford_news.su_news_dek
     - field.field.node.stanford_news.su_news_featured_media
     - field.field.node.stanford_news.su_news_hide_social
+    - field.field.node.stanford_news.su_news_person
     - field.field.node.stanford_news.su_news_publishing_date
     - field.field.node.stanford_news.su_news_source
     - field.field.node.stanford_news.su_news_topics
@@ -207,6 +208,12 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  su_news_person:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
     third_party_settings: {  }
   su_news_publishing_date:
     type: datetime_default

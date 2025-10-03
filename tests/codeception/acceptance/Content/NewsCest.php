@@ -254,11 +254,11 @@ class NewsCest {
     $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
   }
 
-  #[CodeceptionAttribute\Group('body-foo')]
+  #[CodeceptionAttribute\Group('body')]
   public function testBodyField(AcceptanceTester $I) {
-    $dek = substr($this->faker->sentences(20, true), 0, 499);
+    $dek = substr($this->faker->sentences(20, TRUE), 0, 499);
 
-    $body_text = '<p>'. implode('</p><p>', $this->faker->paragraphs()) . '</p>';
+    $body_text = '<p>' . implode('</p><p>', $this->faker->paragraphs()) . '</p>';
     $node = $I->createEntity([
       'type' => 'stanford_news',
       'title' => $this->faker->words(3, TRUE),
@@ -269,6 +269,40 @@ class NewsCest {
     $I->canSee($node->label(), 'h1');
     $I->canSee(strip_tags($body_text));
     $I->canSee($dek);
+  }
+
+  #[CodeceptionAttribute\Group('related-news')]
+  public function testRelatedNewsPerson(AcceptanceTester $I) {
+    $person = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $this->faker->firstName(),
+      'su_person_last_name' => $this->faker->lastName(),
+    ]);
+    $otherPerson = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $this->faker->firstName(),
+      'su_person_last_name' => $this->faker->lastName(),
+    ]);
+    $news = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => $this->faker->words(3, TRUE),
+      'su_news_person' => $person->id(),
+    ]);
+    $otherNews = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+    $I->amOnPage($person->toUrl()->toString());
+    $I->canSee($person->label(), 'h1');
+    $I->canSee('Related News', 'h2');
+    $I->canSee($news->label(), 'h3');
+    $I->cantSee($otherNews->label());
+
+    $I->amOnPage($otherPerson->toUrl()->toString());
+    $I->canSee($otherPerson->label(), 'h1');
+    $I->cantSee('Related News');
+    $I->cantSee($news->label());
+    $I->cantSee($otherNews->label());
   }
 
 }
