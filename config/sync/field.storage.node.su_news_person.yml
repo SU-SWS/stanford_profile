@@ -1,20 +1,18 @@
-uuid: 6aacce26-a17e-47c7-97e5-3e4a60acde32
+uuid: 8c972c52-9ce7-4407-ae8a-dcf36a401b7f
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.su_news_dek
-field_name: su_news_dek
+id: node.su_news_person
+field_name: su_news_person
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 500
-  case_sensitive: false
-  is_ascii: false
+  target_type: node
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

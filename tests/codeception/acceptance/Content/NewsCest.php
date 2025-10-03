@@ -256,15 +256,53 @@ class NewsCest {
 
   #[CodeceptionAttribute\Group('body')]
   public function testBodyField(AcceptanceTester $I) {
-    $body_text = '<p>'. implode('</p><p>', $this->faker->paragraphs()) . '</p>';
+    $dek = substr($this->faker->sentences(20, TRUE), 0, 499);
+
+    $body_text = '<p>' . implode('</p><p>', $this->faker->paragraphs()) . '</p>';
     $node = $I->createEntity([
       'type' => 'stanford_news',
       'title' => $this->faker->words(3, TRUE),
       'body' => ['value' => $body_text, 'format' => 'stanford_html'],
+      'su_news_dek' => $dek,
     ]);
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($node->label(), 'h1');
     $I->canSee(strip_tags($body_text));
+    $I->canSee($dek);
+  }
+
+  #[CodeceptionAttribute\Group('related-news')]
+  public function testRelatedNewsPerson(AcceptanceTester $I) {
+    $person = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $this->faker->firstName(),
+      'su_person_last_name' => $this->faker->lastName(),
+    ]);
+    $otherPerson = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $this->faker->firstName(),
+      'su_person_last_name' => $this->faker->lastName(),
+    ]);
+    $news = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => $this->faker->words(3, TRUE),
+      'su_news_person' => $person->id(),
+    ]);
+    $otherNews = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+    $I->amOnPage($person->toUrl()->toString());
+    $I->canSee($person->label(), 'h1');
+    $I->canSee('Related News', 'h2');
+    $I->canSee($news->label(), 'h3');
+    $I->cantSee($otherNews->label());
+
+    $I->amOnPage($otherPerson->toUrl()->toString());
+    $I->canSee($otherPerson->label(), 'h1');
+    $I->cantSee('Related News');
+    $I->cantSee($news->label());
+    $I->cantSee($otherNews->label());
   }
 
 }
