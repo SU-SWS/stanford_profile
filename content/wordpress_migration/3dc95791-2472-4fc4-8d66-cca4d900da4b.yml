@@ -18,6 +18,9 @@ default:
         -
           source: /wp/v2/organization
           destination: stanford_person_types
+        -
+          source: /wp/v2/categories
+          destination: stanford_news_topics
       content:
         /wp/v2/contributor:
           stanford_person:
@@ -219,6 +222,86 @@ default:
                   value_key: name
                   ignore_case: true
               destination: su_person_type_group
+        /wp/v2/posts:
+          stanford_news:
+            -
+              source: title/rendered
+              settings: null
+              destination: title
+            -
+              source: __empty
+              settings:
+                -
+                  plugin: default_value
+                  default_value: Posts
+                -
+                  plugin: entity_generate
+                  entity_type: taxonomy_term
+                  bundle_key: vid
+                  bundle: stanford_news_topics
+                  value_key: name
+                  ignore_case: true
+              destination: su_news_topics
+            -
+              source: content/rendered
+              settings: null
+              destination: body/value
+            -
+              source: meta/__in_brief
+              settings: null
+              destination: su_news_dek
+            -
+              source: acf/homepage_blurb_external_url
+              settings: null
+              destination: su_news_source/uri
+            -
+              source: date
+              settings: null
+              destination: su_news_publishing_date
+            -
+              source: featured_media
+              settings: null
+              destination: su_news_featured_media
+            -
+              source: categories
+              settings: null
+              destination: su_news_topics
+        /wp/v2/article:
+          stanford_news:
+            -
+              source: title/rendered
+              settings: null
+              destination: title
+            -
+              source: __empty
+              settings:
+                -
+                  plugin: default_value
+                  default_value: Article
+                -
+                  plugin: entity_generate
+                  entity_type: taxonomy_term
+                  bundle_key: vid
+                  bundle: stanford_news_topics
+                  value_key: name
+                  ignore_case: true
+              destination: su_news_topics
+            -
+              source: content/rendered
+              settings: null
+              destination: body/value
+            -
+              source: featured_media
+              settings: null
+              destination: su_news_featured_media
+            -
+              source: date
+              settings: null
+              destination: su_news_publishing_date
+            -
+              source: categories
+              settings: null
+              destination: su_news_topics
   metatag:
     -
       tag: meta
