@@ -7,26 +7,12 @@
 
 use Drupal\config_pages\ConfigPagesInterface;
 use Drupal\Core\Installer\InstallerKernel;
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_install_tasks().
  */
 function stanford_profile_install_tasks(&$install_state) {
   return ['stanford_profile_final_task' => []];
-}
-
-/**
- * Replace None option label with News for layout selection on Stanford News content type
- *
- * Implements hook_form_alter().
- */
-function stanford_profile_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if ($form_id == 'node_stanford_news_form' || $form_id == 'node_stanford_news_edit_form') {
-    if (isset($form['layout_selection']['widget']['#options']['_none'])) {
-      $form['layout_selection']['widget']['#options']['_none'] = t('News');
-    }
-  }
 }
 
 /**
@@ -43,9 +29,9 @@ function stanford_profile_final_task(array &$install_state) {
  * Implements hook_ENTITY_TYPE_presave().
  */
 function stanford_profile_config_pages_presave(ConfigPagesInterface $config_page) {
-  # During install, rebuild the router when saving a config page. This prevents
-  # an error if the config page route doesn't exist for it yet. Event
-  # subscriber doesn't work for this since it's during installation.
+  // During install, rebuild the router when saving a config page. This prevents
+  // an error if the config page route doesn't exist for it yet. Event
+  // subscriber doesn't work for this since it's during installation.
   if (InstallerKernel::installationAttempted()) {
     \Drupal::service('router.builder')->rebuild();
   }
