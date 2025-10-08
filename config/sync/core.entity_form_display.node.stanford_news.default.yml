@@ -34,6 +34,7 @@ dependencies:
     - metatag
     - path
     - scheduler
+    - stanford_fields
     - stanford_intranet
 third_party_settings:
   field_group:
@@ -117,7 +118,7 @@ content:
               recurse: '0'
   layout_builder__layout:
     type: null
-    weight: 27
+    weight: 29
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -337,14 +338,10 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   su_news_spotlight_filters:
-    type: entity_reference_autocomplete
-    weight: 16
+    type: taxonomy_label_hierarchy
+    weight: 28
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings:
       conditional_fields:
         ea6602ea-f047-48ee-af29-1ea7d973513c:
