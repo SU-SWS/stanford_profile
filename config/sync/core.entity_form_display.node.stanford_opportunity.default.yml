@@ -17,13 +17,9 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_eligibility
     - field.field.node.stanford_opportunity.su_opp_icon
     - field.field.node.stanford_opportunity.su_opp_image
-    - field.field.node.stanford_opportunity.su_opp_learn_more
-    - field.field.node.stanford_opportunity.su_opp_open_date
     - field.field.node.stanford_opportunity.su_opp_prerequisites
     - field.field.node.stanford_opportunity.su_opp_source
     - field.field.node.stanford_opportunity.su_opp_sponsor
-    - field.field.node.stanford_opportunity.su_opp_start_date
-    - field.field.node.stanford_opportunity.su_opp_status
     - field.field.node.stanford_opportunity.su_opp_summary
     - field.field.node.stanford_opportunity.su_opp_tags
     - field.field.node.stanford_opportunity.su_opp_type
@@ -408,10 +404,6 @@ hidden:
   publish_on: true
   scheduler_settings: true
   sticky: true
-  su_opp_learn_more: true
-  su_opp_open_date: true
-  su_opp_start_date: true
-  su_opp_status: true
   uid: true
   unpublish_on: true
   url_redirects: true
