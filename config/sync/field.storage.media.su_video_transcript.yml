@@ -1,0 +1,19 @@
+uuid: 865ec511-163f-4894-9209-2afb13243212
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - text
+id: media.su_video_transcript
+field_name: su_video_transcript
+entity_type: media
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

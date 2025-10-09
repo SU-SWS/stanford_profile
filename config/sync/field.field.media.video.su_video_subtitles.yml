@@ -1,0 +1,27 @@
+uuid: cbac81f8-2246-45f6-8097-9c5807eaaa74
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.su_video_subtitles
+    - media.type.video
+  module:
+    - file
+id: media.video.su_video_subtitles
+field_name: su_video_subtitles
+entity_type: media
+bundle: video
+label: Subtitles
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: media/video
+  file_extensions: srt
+  max_filesize: ''
+  description_field: false
+field_type: file

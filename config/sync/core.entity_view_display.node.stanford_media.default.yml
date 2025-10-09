@@ -1,0 +1,101 @@
+uuid: 1bd0fc95-ee9c-4a16-a790-c25b3e0f7ee3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.stanford_media.su_media_audio_video
+    - node.type.stanford_media
+  module:
+    - jumpstart_ui
+    - layout_builder
+    - layout_library
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: jumpstart_ui_one_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          columns: default
+        components:
+          715aaa8a-f4c2-49a1-83d2-c8ec7c371e9a:
+            uuid: 715aaa8a-f4c2-49a1-83d2-c8ec7c371e9a
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_media:title'
+              label: Title
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_title_heading
+                label: hidden
+                settings:
+                  tag: h1
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 1
+            additional: {  }
+          8337a414-ee34-42a0-a5f3-789835ae3017:
+            uuid: 8337a414-ee34-42a0-a5f3-789835ae3017
+            region: main
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+            weight: 0
+            additional: {  }
+          f4dc0baa-b357-4caf-b631-e9a35bccdc95:
+            uuid: f4dc0baa-b357-4caf-b631-e9a35bccdc95
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_media:su_media_audio_video'
+              label: Audio/Video
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+  layout_library:
+    enable: false
+id: node.stanford_media.default
+targetEntityType: node
+bundle: stanford_media
+mode: default
+content: {  }
+hidden:
+  links: true
+  search_api_excerpt: true
+  su_media_audio_video: true
