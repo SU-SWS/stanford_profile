@@ -4,13 +4,18 @@ status: true
 dependencies:
   config:
     - field.field.media.video.field_media_oembed_video
+    - field.field.media.video.su_import_lookup
     - field.field.media.video.su_media_category
+    - field.field.media.video.su_video_subtitles
+    - field.field.media.video.su_video_transcript
     - media.type.video
   module:
     - empty_fields
     - field_formatter_class
     - field_label
+    - file
     - media
+    - text
 _core:
   default_config_hash: Lcpr93rB3W6kcI48KJ3MhzP4Kg3HObfdAS8RDpoIyTg
 id: media.video.default
@@ -36,13 +41,33 @@ content:
         label_tag: ''
     weight: 0
     region: content
+  su_video_subtitles:
+    type: file_default
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 1
+    region: content
+  su_video_transcript:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
 hidden:
   created: true
   name: true
   search_api_excerpt: true
   su_import_lookup: true
   su_media_category: true
-  su_video_subtitles: true
-  su_video_transcript: true
   thumbnail: true
   uid: true

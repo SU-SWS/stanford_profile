@@ -36,15 +36,17 @@ field_settings:
         - administrator
       view_mode:
         'entity:node':
-          stanford_course: search_indexing
-          stanford_event: search_indexing
-          stanford_event_series: search_indexing
-          stanford_news: search_indexing
-          stanford_opportunity: search_indexing
-          stanford_page: search_indexing
-          stanford_person: search_indexing
-          stanford_policy: search_indexing
-          stanford_publication: search_indexing
+          ':default': search_indexing
+          stanford_course: ':default'
+          stanford_event: ':default'
+          stanford_event_series: ':default'
+          stanford_media: ':default'
+          stanford_news: ':default'
+          stanford_opportunity: ':default'
+          stanford_page: ':default'
+          stanford_person: ':default'
+          stanford_policy: ':default'
+          stanford_publication: ':default'
   role_access:
     label: 'Role-based access information'
     property_path: search_api_role_access
@@ -214,6 +216,7 @@ tracker_settings:
     indexing_order: fifo
 options:
   cron_limit: 50
+  delete_on_fail: true
   index_directly: true
   track_changes_in_references: true
 server: database_search

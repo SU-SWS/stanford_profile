@@ -4,10 +4,18 @@ status: true
 dependencies:
   config:
     - field.field.media.video.field_media_oembed_video
+    - field.field.media.video.su_import_lookup
     - field.field.media.video.su_media_category
+    - field.field.media.video.su_video_subtitles
+    - field.field.media.video.su_video_transcript
     - media.type.video
   module:
+    - change_labels
     - cshs
+    - field_formatter_class
+    - file
+    - maxlength
+    - text
 _core:
   default_config_hash: 7asQaGZMyJ5EtC9GHpp-bYEGCmfCKgCZhEcDl4wsU6w
 id: media.video.default
@@ -33,7 +41,7 @@ content:
     third_party_settings: {  }
   su_media_category:
     type: cshs
-    weight: 26
+    weight: 2
     region: content
     settings:
       save_lineage: false
@@ -44,13 +52,34 @@ content:
       required_depth: 0
       none_label: '- Please select -'
     third_party_settings: {  }
+  su_video_subtitles:
+    type: file_generic
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  su_video_transcript:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings:
+      change_labels:
+        field_label_overwrite: ''
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
 hidden:
   created: true
   path: true
   publish_on: true
   status: true
   su_import_lookup: true
-  su_video_subtitles: true
-  su_video_transcript: true
   uid: true
   unpublish_on: true
