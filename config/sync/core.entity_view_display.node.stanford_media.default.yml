@@ -73,15 +73,25 @@ third_party_settings:
             region: main
             configuration:
               id: 'field_block:node:stanford_media:su_media_dek'
+              label: Dek
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: string
-                label: above
+                label: hidden
                 settings:
                   link_to_entity: false
-                third_party_settings: {  }
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
             weight: 2
             additional: {  }
         third_party_settings: {  }
@@ -115,16 +125,24 @@ third_party_settings:
             region: main
             configuration:
               id: 'field_block:node:stanford_media:body'
+              label: Body
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: text_default
-                label: above
+                label: hidden
                 settings: {  }
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
             weight: 2
             additional: {  }
           f4dc0baa-b357-4caf-b631-e9a35bccdc95:
