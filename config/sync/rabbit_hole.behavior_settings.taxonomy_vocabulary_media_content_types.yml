@@ -1,0 +1,14 @@
+uuid: 01fb012a-1638-4bbd-b15a-3fcf88ecff3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.media_content_types
+id: taxonomy_vocabulary_media_content_types
+entity_type_id: taxonomy_vocabulary
+entity_id: media_content_types
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

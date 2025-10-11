@@ -3,13 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.stanford_media.body
     - field.field.node.stanford_media.su_media_audio_video
+    - field.field.node.stanford_media.su_media_dek
+    - field.field.node.stanford_media.su_media_person
+    - field.field.node.stanford_media.su_media_transcript
+    - field.field.node.stanford_media.su_media_types
     - node.type.stanford_media
   module:
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - text
     - user
 third_party_settings:
   layout_builder:
@@ -25,6 +31,17 @@ third_party_settings:
           centered: centered-container
           columns: default
         components:
+          8337a414-ee34-42a0-a5f3-789835ae3017:
+            uuid: 8337a414-ee34-42a0-a5f3-789835ae3017
+            region: main
+            configuration:
+              id: jumpstart_ui_skipnav_main_anchor
+              label: 'Main content anchor target'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+            weight: 0
+            additional: {  }
           715aaa8a-f4c2-49a1-83d2-c8ec7c371e9a:
             uuid: 715aaa8a-f4c2-49a1-83d2-c8ec7c371e9a
             region: main
@@ -51,16 +68,64 @@ third_party_settings:
                     label_tag: ''
             weight: 1
             additional: {  }
-          8337a414-ee34-42a0-a5f3-789835ae3017:
-            uuid: 8337a414-ee34-42a0-a5f3-789835ae3017
+          9de51780-2344-41d4-aa44-4e259d7be1fb:
+            uuid: 9de51780-2344-41d4-aa44-4e259d7be1fb
             region: main
             configuration:
-              id: jumpstart_ui_skipnav_main_anchor
-              label: 'Main content anchor target'
+              id: 'field_block:node:stanford_media:su_media_dek'
               label_display: '0'
-              provider: jumpstart_ui
-              context_mapping: {  }
-            weight: 0
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          orientation: right
+          force_regions: 0
+        components:
+          2c9d4b68-1494-45ed-bf86-a4f7877376ef:
+            uuid: 2c9d4b68-1494-45ed-bf86-a4f7877376ef
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_media:su_media_transcript'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          f49e2d23-c204-421e-8993-933e5072322f:
+            uuid: f49e2d23-c204-421e-8993-933e5072322f
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_media:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings:
+                  field_formatter_class:
+                    class: ''
+            weight: 2
             additional: {  }
           f4dc0baa-b357-4caf-b631-e9a35bccdc95:
             uuid: f4dc0baa-b357-4caf-b631-e9a35bccdc95
@@ -86,7 +151,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 2
+            weight: 1
             additional: {  }
         third_party_settings: {  }
   layout_library:
@@ -102,7 +167,47 @@ id: node.stanford_media.default
 targetEntityType: node
 bundle: stanford_media
 mode: default
-content: {  }
+content:
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 1
+    region: main
+  su_media_dek:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: main
+  su_media_person:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: main
+  su_media_transcript:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: main
+  su_media_types:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: main
 hidden:
   links: true
   search_api_excerpt: true
