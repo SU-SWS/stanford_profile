@@ -1,0 +1,24 @@
+uuid: 998ccf88-7c65-47d9-8925-755e39e99cee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_media_date
+    - node.type.stanford_media
+  module:
+    - datetime
+id: node.stanford_media.su_media_date
+field_name: su_media_date
+entity_type: node
+bundle: stanford_media
+label: 'Published Date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

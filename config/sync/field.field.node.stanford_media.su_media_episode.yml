@@ -1,0 +1,19 @@
+uuid: 48f4f087-5ba5-4358-b048-08f5ff9bae67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_media_episode
+    - node.type.stanford_media
+id: node.stanford_media.su_media_episode
+field_name: su_media_episode
+entity_type: node
+bundle: stanford_media
+label: Episode
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
