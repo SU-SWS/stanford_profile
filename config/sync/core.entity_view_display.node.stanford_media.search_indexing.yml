@@ -18,9 +18,6 @@ dependencies:
     - field.field.node.stanford_media.su_media_types
     - node.type.stanford_media
   module:
-    - empty_fields
-    - field_formatter_class
-    - field_label
     - layout_builder
     - layout_builder_restrictions
     - layout_library
@@ -84,21 +81,6 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
-  su_media_series:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: false
-    third_party_settings:
-      empty_fields:
-        handler: ''
-      field_formatter_class:
-        class: ''
-      field_label:
-        label_value: ''
-        label_tag: ''
-    weight: 5
-    region: content
   su_media_transcript:
     type: text_default
     label: hidden
@@ -112,5 +94,6 @@ hidden:
   su_media_date: true
   su_media_image: true
   su_media_person: true
+  su_media_series: true
   su_media_source: true
   su_media_types: true

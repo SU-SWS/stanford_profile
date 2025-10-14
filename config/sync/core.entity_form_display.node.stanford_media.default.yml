@@ -102,10 +102,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_media_series:
-    type: options_select
-    weight: 8
+    type: string_textfield
+    weight: 26
     region: content
-    settings: {  }
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   su_media_source:
     type: link_default

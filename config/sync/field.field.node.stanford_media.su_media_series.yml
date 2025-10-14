@@ -1,11 +1,10 @@
-uuid: c0ab5a81-1101-406e-af34-3bd681f64f38
+uuid: 894eb441-19ce-4d71-b462-a5460ee9fda5
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.su_media_series
     - node.type.stanford_media
-    - taxonomy.vocabulary.media_content_series
 id: node.stanford_media.su_media_series
 field_name: su_media_series
 entity_type: node
@@ -16,14 +15,5 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings:
-  handler: 'default:taxonomy_term'
-  handler_settings:
-    target_bundles:
-      media_content_series: media_content_series
-    sort:
-      field: name
-      direction: asc
-    auto_create: false
-    auto_create_bundle: ''
-field_type: entity_reference
+settings: {  }
+field_type: string
