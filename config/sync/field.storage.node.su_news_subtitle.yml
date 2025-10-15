@@ -1,0 +1,21 @@
+uuid: 8f861b79-5510-42b6-aed8-ed40af51fe42
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.su_news_subtitle
+field_name: su_news_subtitle
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
