@@ -63,6 +63,7 @@ third_party_settings:
         - su_news_dek
         - su_news_publishing_date
         - su_news_byline
+        - body
         - su_news_source
       label: 'Editorial Content'
       region: content
@@ -93,6 +94,26 @@ targetEntityType: node
 bundle: stanford_news
 mode: default
 content:
+  body:
+    type: text_textarea_with_summary
+    weight: 7
+    region: content
+    settings:
+      rows: 2
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings:
+      change_labels:
+        field_label_overwrite: ''
+      field_formatter_class:
+        class: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_summary: null
+        maxlength_js_label_summary: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
   group_banner:
     weight: 26
     region: content
@@ -130,32 +151,6 @@ content:
   layout_selection:
     type: options_select
     weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  body:
-    type: text_textarea_with_summary
-    weight: 4
-    region: content
-    settings:
-      rows: 2
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings:
-      change_labels:
-        field_label_overwrite: ''
-      field_formatter_class:
-        class: ''
-      maxlength:
-        maxlength_js: null
-        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
-        maxlength_js_summary: null
-        maxlength_js_label_summary: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
-        maxlength_js_enforce: false
-  layout_builder__layout:
-    type: null
-    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -214,7 +209,7 @@ content:
     third_party_settings: {  }
   su_news_byline:
     type: string_textfield
-    weight: 7
+    weight: 6
     region: content
     settings:
       size: 60
@@ -245,9 +240,7 @@ content:
     region: content
     settings:
       view_mode: default
-      view_mode: default
       preview_view_mode: default
-      form_display_mode: default
       form_display_mode: default
       nesting_depth: 0
       require_layouts: 1
@@ -257,7 +250,7 @@ content:
         add_another: ''
   su_news_dek:
     type: string_textfield
-    weight: 5
+    weight: 4
     region: content
     settings:
       size: 60
@@ -321,7 +314,7 @@ content:
     third_party_settings: {  }
   su_news_publishing_date:
     type: datetime_default
-    weight: 6
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -554,7 +547,6 @@ content:
       conditional_fields: {  }
 hidden:
   created: true
-  layout_selection: true
   promote: true
   sticky: true
   uid: true
