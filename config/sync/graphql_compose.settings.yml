@@ -127,6 +127,8 @@ entity_config:
     tiny_blur:
       enabled: true
   layout:
+    news_spotlight:
+      enabled: true
     stanford_basic_page_full:
       enabled: true
   media:
@@ -321,6 +323,9 @@ entity_config:
       enabled: true
       query_load_enabled: true
     stanford_event_types:
+      enabled: true
+      query_load_enabled: true
+    stanford_news_spotlight_filters:
       enabled: true
       query_load_enabled: true
     stanford_news_topics:
@@ -670,6 +675,8 @@ field_config:
     stanford_news:
       body:
         enabled: true
+      layout_selection:
+        enabled: true
       su_news_banner:
         enabled: true
       su_news_banner_media_caption:
@@ -688,7 +695,13 @@ field_config:
         enabled: true
       su_news_publishing_date:
         enabled: true
+      su_news_quote:
+        enabled: true
       su_news_source:
+        enabled: true
+      su_news_spotlight_filters:
+        enabled: true
+      su_news_subtitle:
         enabled: true
       su_news_topics:
         enabled: true
@@ -721,19 +734,11 @@ field_config:
         enabled: true
       su_opp_image:
         enabled: true
-      su_opp_learn_more:
-        enabled: true
-      su_opp_open_date:
-        enabled: true
       su_opp_prerequisites:
         enabled: true
       su_opp_source:
         enabled: true
       su_opp_sponsor:
-        enabled: true
-      su_opp_start_date:
-        enabled: true
-      su_opp_status:
         enabled: true
       su_opp_summary:
         enabled: true
