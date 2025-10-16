@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_indexing
     - field.field.node.stanford_news.layout_builder__layout
+    - field.field.node.stanford_news.layout_selection
     - field.field.node.stanford_news.stanford_intranet__access
     - field.field.node.stanford_news.su_metatags
     - field.field.node.stanford_news.su_news_banner
@@ -15,7 +16,10 @@ dependencies:
     - field.field.node.stanford_news.su_news_featured_media
     - field.field.node.stanford_news.su_news_hide_social
     - field.field.node.stanford_news.su_news_publishing_date
+    - field.field.node.stanford_news.su_news_quote
     - field.field.node.stanford_news.su_news_source
+    - field.field.node.stanford_news.su_news_spotlight_filters
+    - field.field.node.stanford_news.su_news_subtitle
     - field.field.node.stanford_news.su_news_topics
     - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
@@ -81,5 +85,8 @@ hidden:
   su_news_hide_social: true
   su_news_person: true
   su_news_publishing_date: true
+  su_news_quote: true
   su_news_source: true
+  su_news_spotlight_filters: true
+  su_news_subtitle: true
   su_shared_tags: true
