@@ -11,6 +11,10 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_banner
   module:
     - ds
+    - element_class_formatter
+    - empty_fields
+    - field_formatter_class
+    - field_label
     - link
     - stanford_media
     - text
@@ -28,11 +32,10 @@ third_party_settings:
     regions:
       hero_image:
         - su_banner_image
-      hero_super_headline:
-        - su_banner_sup_header
       hero_headline:
         - su_banner_header
       hero_body:
+        - su_banner_sup_header
         - su_banner_body
       hero_button_link:
         - su_banner_button
@@ -74,7 +77,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: hero_headline
   su_banner_image:
     type: media_responsive_image_formatter
@@ -83,16 +86,29 @@ content:
       view_mode: default
       link: false
       image_style: stanford_hero_block_wide
+      remove_alt: false
     third_party_settings: {  }
     weight: 0
     region: hero_image
   su_banner_sup_header:
-    type: string
+    type: wrapper_class
     label: hidden
     settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
-    region: hero_super_headline
+      class: su-card__superhead
+      tag: div
+      link: false
+      link_class: ''
+      summary: false
+      trim: 200
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 2
+    region: hero_body
 hidden:
   search_api_excerpt: true

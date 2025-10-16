@@ -101,10 +101,10 @@ class WYSIWYGCest {
     // Wait a second for any click events to be applied.
     $I->wait(1);
 
-    $I->click('[data-cke-tooltip-text="Insert table"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert table"]');
     $I->click('[data-row="5"][data-column="3"]');
 
-    $I->click('[data-cke-tooltip-text="Link (Ctrl+K)"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Link (Ctrl+K)"]');
     $url = $this->faker->url();
     $I->fillField('Link URL', $url);
     $I->click('Insert');
@@ -136,7 +136,7 @@ class WYSIWYGCest {
 
     // Wait a second for any click events to be applied.
     $I->wait(1);
-    $I->click('[data-cke-tooltip-text="Insert Media"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert Media"]');
     $I->waitForElementVisible('.dropzone');
     $I->dropFileInDropzone(__DIR__ . '/logo.jpg');
     $I->click('Upload and Continue');
@@ -195,7 +195,7 @@ class WYSIWYGCest {
 
     // Wait a second for any click events to be applied.
     $I->wait(1);
-    $I->click('[data-cke-tooltip-text="Insert Media"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert Media"]');
     $I->waitForElementVisible('.dropzone');
 
     $I->selectOption('Category', $unrelated_term->label());
@@ -237,7 +237,7 @@ class WYSIWYGCest {
 
     // Wait a second for any click events to be applied.
     $I->wait(1);
-    $I->click('[data-cke-tooltip-text="Insert Media"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert Media"]');
     $I->waitForElementVisible('.dropzone');
     $I->click('Video', '.media-library-menu-video');
     $I->waitForElementVisible('.media-library-add-form-oembed-url');
@@ -277,7 +277,7 @@ class WYSIWYGCest {
 
     // Wait a second for any click events to be applied.
     $I->wait(1);
-    $I->click('[data-cke-tooltip-text="Insert Media"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert Media"]');
     $I->waitForElementVisible('.dropzone');
     $I->click('File', '.media-library-menu-file');
     $I->waitForText('txt, rtf, doc, docx');
@@ -356,7 +356,7 @@ class WYSIWYGCest {
 
     // Wait a second for any click events to be applied.
     $I->wait(1);
-    $I->click('[data-cke-tooltip-text="Insert Media"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert Media"]');
     $I->waitForElementVisible('.dropzone');
     $I->click('Embeddable', '.media-library-menu');
     $I->waitForText('oEmbed URL');

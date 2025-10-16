@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.stanford_page.body
     - field.field.node.stanford_page.field_menulink
     - field.field.node.stanford_page.layout_builder__layout
     - field.field.node.stanford_page.layout_selection
@@ -142,6 +143,37 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
+            weight: -8
+            additional: {  }
+          e09f21a6-e751-4454-b253-b649fcd03240:
+            uuid: e09f21a6-e751-4454-b253-b649fcd03240
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_page:body'
+              label: Body
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: wrapper_class
+                label: hidden
+                settings:
+                  class: ptype-stanford-wysiwyg
+                  tag: div
+                  link: false
+                  link_class: ''
+                  summary: false
+                  trim: 200
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: su-page-components
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
             weight: -9
             additional: {  }
         third_party_settings: {  }
@@ -299,6 +331,7 @@ content:
     weight: 5
     region: main
 hidden:
+  body: true
   field_menulink: true
   layout_builder__layout: true
   layout_selection: true

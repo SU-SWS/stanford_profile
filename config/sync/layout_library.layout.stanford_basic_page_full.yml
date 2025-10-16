@@ -95,7 +95,7 @@ layout:
             third_party_settings:
               field_formatter_class:
                 class: ''
-        weight: -6
+        weight: -5
         additional: {  }
       dae81a37-1839-4bc3-86fc-3e4f7fda4183:
         uuid: dae81a37-1839-4bc3-86fc-3e4f7fda4183
@@ -107,5 +107,36 @@ layout:
           provider: jumpstart_ui
           context_mapping: {  }
         weight: -10
+        additional: {  }
+      357f00aa-a398-417c-8a8b-154348c7827b:
+        uuid: 357f00aa-a398-417c-8a8b-154348c7827b
+        region: main
+        configuration:
+          id: 'field_block:node:stanford_page:body'
+          label: Body
+          label_display: '0'
+          provider: layout_builder
+          context_mapping:
+            entity: layout_builder.entity
+            view_mode: view_mode
+          formatter:
+            type: wrapper_class
+            label: hidden
+            settings:
+              class: ptype-stanford-wysiwyg
+              tag: div
+              link: false
+              link_class: ''
+              summary: false
+              trim: 200
+            third_party_settings:
+              empty_fields:
+                handler: ''
+              field_formatter_class:
+                class: su-page-components
+              field_label:
+                label_value: ''
+                label_tag: ''
+        weight: -6
         additional: {  }
     third_party_settings: {  }
