@@ -7,7 +7,6 @@ use Faker\Factory;
  * Test the news functionality.
  */
 #[CodeceptionAttribute\Group('content')]
-#[CodeceptionAttribute\Group('news_page')]
 class NewsCest {
 
   /**
@@ -255,60 +254,6 @@ class NewsCest {
     $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
   }
 
-<<<<<<< HEAD
-#[CodeceptionAttribute\Group('news_variant')]
-/**
- * Test that news variants display correct fields and can be populated with site manager and contributor roles.
- */
-public function testNewsVariantFieldsDisplay(AcceptanceTester $I) {
-  $roles = ['site_manager', 'contributor'];
-
-  foreach ($roles as $role) {
-    $I->logInWithRole($role);
-    $I->amOnPage('/node/add/stanford_news');
-    $I->canSeeResponseCodeIs(200);
-    
-    // Generate test data using faker
-    $testData = [
-      'Dek' => $this->faker->sentence(),
-      'Byline' => $this->faker->name(),
-      'Banner Caption' => $this->faker->sentence(),
-      'Quote' => $this->faker->sentence(),
-      'Subtitle' => $this->faker->words(4, TRUE)
-    ];
-
-    // Fill in required title field
-    $I->fillField('Headline', $this->faker->words(3, TRUE));
-    
-    // Verify fields are initially empty using canSeeInField()
-    $I->canSeeInField('Dek', '');
-    $I->canSeeInField('Byline', '');
-    $I->canSeeInField('Banner Caption', '');
-    $I->canSeeInField('Quote / Big Text', '');
-    $I->canSeeInField('Subtitle', '');
-    
-    // Fill in the fields
-    $I->fillField('Dek', $testData['Dek']);
-    $I->fillField('Byline', $testData['Byline']);
-    $I->fillField('Banner Caption', $testData['Banner Caption']);
-    $I->fillField('Quote / Big Text', $testData['Quote']);
-    $I->fillField('Subtitle', $testData['Subtitle']);
-    
-    // Save the node
-    $I->click('Save');
-    $I->canSeeResponseCodeIs(200);
-    $I->canSee('has been created');
-    
-    // Verify the information is reflected on the page
-    $I->canSee($testData['Dek']);
-    $I->canSee($testData['Byline']);
-    $I->canSee($testData['Banner Caption']);
-
-    // Logout
-    $I->amOnPage('/user/logout');
-    $I->click('#edit-submit');
-  }
-=======
   #[CodeceptionAttribute\Group('body')]
   public function testBodyField(AcceptanceTester $I) {
     $dek = substr($this->faker->sentences(20, TRUE), 0, 499);
@@ -360,6 +305,51 @@ public function testNewsVariantFieldsDisplay(AcceptanceTester $I) {
     $I->cantSee($otherNews->label());
   }
 
->>>>>>> 12.x
-}
+  /**
+   * Test that news variants display correct fields and can be populated with
+   * contributor roles.
+   */
+  #[CodeceptionAttribute\Group('news-variant')]
+  public function testNewsVariantFieldsDisplay(AcceptanceTester $I) {
+    $I->logInWithRole('contributor');
+    $I->amOnPage('/node/add/stanford_news');
+    $I->canSeeResponseCodeIs(200);
+
+    // Generate test data using faker
+    $testData = [
+      'Dek' => $this->faker->sentence(),
+      'Byline' => $this->faker->name(),
+      'Banner Caption' => $this->faker->sentence(),
+      'Quote' => $this->faker->sentence(),
+      'Subtitle' => $this->faker->words(4, TRUE),
+    ];
+
+    // Fill in required title field
+    $I->fillField('Headline', $this->faker->words(3, TRUE));
+
+    // Verify fields are initially empty using canSeeInField()
+    $I->canSeeInField('Dek', '');
+    $I->canSeeInField('Byline', '');
+    $I->canSeeInField('Banner Caption', '');
+    $I->canSeeInField('Quote / Big Text', '');
+    $I->canSeeInField('Subtitle', '');
+
+    // Fill in the fields
+    $I->fillField('Dek', $testData['Dek']);
+    $I->fillField('Byline', $testData['Byline']);
+    $I->fillField('Banner Caption', $testData['Banner Caption']);
+    $I->fillField('Quote / Big Text', $testData['Quote']);
+    $I->fillField('Subtitle', $testData['Subtitle']);
+
+    // Save the node
+    $I->click('Save');
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee('has been created');
+
+    // Verify the information is reflected on the page
+    $I->canSee($testData['Dek']);
+    $I->canSee($testData['Byline']);
+    $I->canSee($testData['Banner Caption']);
+  }
+
 }
