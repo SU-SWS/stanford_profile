@@ -43,7 +43,7 @@ jobs:
       fail-fast: false
       matrix:
         suite: [ acceptance, functional ]
-        shard: [ '1/1' ]
+        shard: [ '1/4', '2/4', '3/4', '4/4' ]
     runs-on: ubuntu-latest
     env:
       DRUPAL_DATABASE_NAME: drupal
