@@ -198,7 +198,7 @@ class MediaCest {
   /**
    * Administrative file listing can delete files.
    */
-  #[CodeceptionAttribute\Group('foobar')]
+  #[CodeceptionAttribute\Group('vbo')]
   public function testDeleteFiles(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/content/files');

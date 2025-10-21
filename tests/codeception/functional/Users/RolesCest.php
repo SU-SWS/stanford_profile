@@ -56,7 +56,8 @@ class RolesCest {
   /**
    * D8CORE-1200 Prevent deleteing the homepage from bulk delete.
    */
-  #[CodeceptionAttribute\Group('foobar')]
+  #[CodeceptionAttribute\Group('D8CORE-1200')]
+  #[CodeceptionAttribute\Group('vbo')]
   public function testBulkDeleteHomePage(FunctionalTester $I) {
     $test_home = $I->createEntity([
       'type' => 'stanford_page',
