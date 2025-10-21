@@ -198,6 +198,7 @@ class MediaCest {
   /**
    * Administrative file listing can delete files.
    */
+  #[CodeceptionAttribute\Group('vbo')]
   public function testDeleteFiles(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/content/files');
@@ -244,7 +245,7 @@ class MediaCest {
     $I->canSee('Are you sure you wish to perform');
     $I->canSee($this->filePath);
     $I->click('Execute action');
-    $I->canSee('Delete entities');
+    $I->canSee('Delete file entities (1)');
     $I->amOnPage('/admin/content/files');
     $I->cantSee($this->filePath);
 

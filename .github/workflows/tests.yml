@@ -1,11 +1,11 @@
-name: PHPUnit and Acceptance Tests
+name: Tests
 on: [push]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   phpunit:
-    name: PHPUnit Coverage Tests
+    name: PHPUnit
     runs-on: ubuntu-latest
     container:
       image: pookmish/drupal8ci:php8.3
@@ -37,8 +37,13 @@ jobs:
         with:
           name: d11-unit-tests-results
           path: /var/www/html/artifacts
-  acceptance:
-    name: Codeception Acceptance Tests
+  codeception:
+    name: Codeception
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [ acceptance, functional ]
+        shard: [ '1', '2', '3', '4', '5' ]
     runs-on: ubuntu-latest
     env:
       DRUPAL_DATABASE_NAME: drupal
@@ -48,48 +53,6 @@ jobs:
     container:
       image: pookmish/drupal8ci:php8.3
       options: '--network-alias drupal8ci'
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_DATABASE: drupal
-          MYSQL_USER: drupal
-          MYSQL_PASSWORD: drupal
-          MYSQL_ROOT_PASSWORD: drupal
-        ports:
-          - 33306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          path: project
-      - name: Run tests
-        env:
-          STANFORD_ENCRYPT: ${{ secrets.STANFORD_ENCRYPT }}
-        run: |
-          mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
-          composer global require su-sws/stanford-caravan:11.x-dev &&
-          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=acceptance &&
-          if [ ! -f /var/www/html/artifacts/acceptance/results.html ]; then
-              exit 1
-          fi
-      - name: Save Test Results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: d11-acceptance-tests-results
-          path: /var/www/html/artifacts
-  functional:
-    name: Codeception Functional Tests
-    runs-on: ubuntu-latest
-    env:
-      DRUPAL_DATABASE_NAME: drupal
-      DRUPAL_DATABASE_USERNAME: drupal
-      DRUPAL_DATABASE_PASSWORD: drupal
-      DRUPAL_DATABASE_HOST: mysql
-    container:
-      image: pookmish/drupal8ci:php8.3
-      options: '--network-alias=drupal8ci'
     services:
       selenium:
         image: selenium/standalone-chrome:130.0
@@ -114,13 +77,13 @@ jobs:
         run: |
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
-          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=functional &&
-          if [ ! -f /var/www/html/artifacts/functional/results.html ]; then
+          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=${{ matrix.suite }} --shard=${{ matrix.shard }}/5 &&
+          if [ ! -f /var/www/html/artifacts/${{ matrix.suite }}/results.html ]; then
               exit 1
           fi
       - name: Save Test Results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: d11-functional-tests-results
+          name: codeception-${{ matrix.suite }}-${{ matrix.shard }}
           path: /var/www/html/artifacts

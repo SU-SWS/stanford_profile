@@ -56,6 +56,8 @@ class RolesCest {
   /**
    * D8CORE-1200 Prevent deleteing the homepage from bulk delete.
    */
+  #[CodeceptionAttribute\Group('D8CORE-1200')]
+  #[CodeceptionAttribute\Group('vbo')]
   public function testBulkDeleteHomePage(FunctionalTester $I) {
     $test_home = $I->createEntity([
       'type' => 'stanford_page',
@@ -77,7 +79,7 @@ class RolesCest {
     $I->selectOption('Action', 'Delete selected entities');
     $I->click('Apply to selected items');
     $I->click('Execute action');
-    $I->waitForText('Delete entities');
+    $I->waitForText('Delete content item entities (1)');
     $I->canSee('Access denied (1)');
     $I->runDrush('cache-rebuild');
     $I->amOnPage('/');

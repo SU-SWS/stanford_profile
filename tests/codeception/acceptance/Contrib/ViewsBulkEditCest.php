@@ -7,7 +7,7 @@ use Faker\Factory;
  * Test out the views bulk edit module.
  */
 #[CodeceptionAttribute\Group('contrib')]
-#[CodeceptionAttribute\Group('bulk_edit')]
+#[CodeceptionAttribute\Group('vbo')]
 class ViewsBulkEditCest {
 
   /**
@@ -51,7 +51,7 @@ class ViewsBulkEditCest {
 
     $I->amOnPage('/admin/content');
     $I->selectOption('Action', 'Modify field values');
-    foreach ($this->nodes as $delta => $node) {
+    foreach ($this->nodes as $node) {
       $I->canSee($node->label(), 'tr');
       $I->checkOption('tr:contains("' . $node->label() . '") input[name^="views_bulk_operations_bulk_form"]');
     }
