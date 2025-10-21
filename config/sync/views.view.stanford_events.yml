@@ -966,14 +966,14 @@ display:
     position: 9
     display_options:
       fields:
-        su_event_date_time:
-          id: su_event_date_time
+        su_event_date_time_value:
+          id: su_event_date_time_value
           table: node__su_event_date_time
-          field: su_event_date_time
+          field: su_event_date_time_value
           relationship: none
           group_type: group
-          admin_label: ''
-          plugin_id: field
+          admin_label: 'Start Time'
+          plugin_id: date
           label: ''
           exclude: false
           alter:
@@ -1015,40 +1015,9 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: smartdate_custom
-          settings:
-            separator: ''
-            time_diff:
-              enabled: 0
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: '2'
-              refresh: '60'
-              description: ''
-            date_format: 'D, d M Y H:i:s O'
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: ''
-              custom_date_format: ''
-            join: ''
-            time_format: ''
-            time_hour_format: ''
-            allday_label: ''
-            date_first: '1'
-            ampm_reduce: 0
-            site_time_toggle: 0
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
+          date_format: custom
+          custom_date_format: 'D, d M Y H:i:s O'
+          timezone: ''
         title:
           id: title
           table: node_field_data
@@ -1386,7 +1355,7 @@ display:
           link_field: view_node
           description_field: su_event_dek
           creator_field: su_event_sponsor
-          date_field: su_event_date_time
+          date_field: su_event_date_time_value
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1409,7 +1378,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.su_event_date_time'
         - 'config:field.storage.node.su_event_dek'
         - 'config:field.storage.node.su_event_sponsor'
   events_topics_rss:
@@ -1419,14 +1387,14 @@ display:
     position: 9
     display_options:
       fields:
-        su_event_date_time:
-          id: su_event_date_time
+        su_event_date_time_value:
+          id: su_event_date_time_value
           table: node__su_event_date_time
-          field: su_event_date_time
+          field: su_event_date_time_value
           relationship: none
           group_type: group
-          admin_label: ''
-          plugin_id: field
+          admin_label: 'Start Time'
+          plugin_id: date
           label: ''
           exclude: false
           alter:
@@ -1468,40 +1436,9 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: smartdate_custom
-          settings:
-            separator: ''
-            time_diff:
-              enabled: 0
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: '2'
-              refresh: '60'
-              description: ''
-            date_format: 'D, d M Y H:i:s O'
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: ''
-              custom_date_format: ''
-            join: ''
-            time_format: ''
-            time_hour_format: ''
-            allday_label: ''
-            date_first: '1'
-            ampm_reduce: 0
-            site_time_toggle: 0
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
+          date_format: custom
+          custom_date_format: 'D, d M Y H:i:s O'
+          timezone: ''
         title:
           id: title
           table: node_field_data
@@ -1879,7 +1816,7 @@ display:
           link_field: view_node
           description_field: su_event_dek
           creator_field: su_event_sponsor
-          date_field: su_event_date_time
+          date_field: su_event_date_time_value
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1904,7 +1841,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.su_event_date_time'
         - 'config:field.storage.node.su_event_dek'
         - 'config:field.storage.node.su_event_sponsor'
   list_page:
