@@ -1,11 +1,11 @@
-name: PHPUnit and Acceptance Tests
+name: Tests
 on: [push]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   phpunit:
-    name: PHPUnit Coverage Tests
+    name: PHPUnit
     runs-on: ubuntu-latest
     container:
       image: pookmish/drupal8ci:php8.3
@@ -44,7 +44,6 @@ jobs:
       matrix:
         suite: [ acceptance, functional ]
         shard: [ '1', '2', '3', '4', '5' ]
-        total-shards: [ '5' ]
     runs-on: ubuntu-latest
     env:
       DRUPAL_DATABASE_NAME: drupal
@@ -78,7 +77,7 @@ jobs:
         run: |
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
-          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=${{ matrix.suite }} --shard=${{ matrix.shard }}/${{ matrix.total-shards }} &&
+          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=${{ matrix.suite }} --shard=${{ matrix.shard }}/5 &&
           if [ ! -f /var/www/html/artifacts/${{ matrix.suite }}/results.html ]; then
               exit 1
           fi
@@ -86,5 +85,5 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: d11-codeception-${{ matrix.suite }}-${{ matrix.shard }}
+          name: codeception-${{ matrix.suite }}-${{ matrix.shard }}
           path: /var/www/html/artifacts
