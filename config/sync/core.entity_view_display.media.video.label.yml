@@ -1,9 +1,9 @@
-uuid: a7e0e619-3a2c-4f63-a833-0dca727b9769
+uuid: 06dbac14-309f-48fa-9abe-11354b16d086
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.media.full
+    - core.entity_view_mode.media.label
     - field.field.media.video.field_media_oembed_video
     - field.field.media.video.su_import_lookup
     - field.field.media.video.su_media_category
@@ -11,40 +11,33 @@ dependencies:
     - field.field.media.video.su_video_transcript
     - media.type.video
   module:
-    - file
-    - media
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
 _core:
-  default_config_hash: vqVUNXW5VQkzMmWbWehC_qWBkReYPc_i-In_6nmtn8o
-id: media.video.full
+  default_config_hash: Lcpr93rB3W6kcI48KJ3MhzP4Kg3HObfdAS8RDpoIyTg
+id: media.video.label
 targetEntityType: media
 bundle: video
-mode: full
+mode: label
 content:
-  field_media_oembed_video:
-    type: oembed
+  name:
+    type: string
     label: hidden
     settings:
-      max_width: 0
-      max_height: 0
-      loading:
-        attribute: lazy
+      link_to_entity: false
     third_party_settings: {  }
     weight: 0
     region: content
-  su_video_subtitles:
-    type: file_default
-    label: hidden
-    settings:
-      use_description_as_link_text: true
-    third_party_settings: {  }
-    weight: 1
-    region: content
 hidden:
   created: true
-  name: true
+  field_media_oembed_video: true
   search_api_excerpt: true
   su_import_lookup: true
   su_media_category: true
+  su_video_subtitles: true
   su_video_transcript: true
   thumbnail: true
   uid: true

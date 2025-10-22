@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.stanford_media.su_media_transcript
     - field.field.node.stanford_media.su_media_types
     - node.type.stanford_media
+    - views.view.media_content
   module:
     - datetime
     - jumpstart_ui
@@ -25,6 +26,7 @@ dependencies:
     - link
     - text
     - user
+    - views
 third_party_settings:
   layout_builder:
     enabled: true
@@ -50,35 +52,100 @@ third_party_settings:
               context_mapping: {  }
             weight: 0
             additional: {  }
-          715aaa8a-f4c2-49a1-83d2-c8ec7c371e9a:
-            uuid: 715aaa8a-f4c2-49a1-83d2-c8ec7c371e9a
+        third_party_settings: {  }
+      -
+        layout_id: jumpstart_ui_two_column
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          extra_classes: ''
+          centered: centered-container
+          orientation: left
+          force_regions: 0
+        components:
+          2c9d4b68-1494-45ed-bf86-a4f7877376ef:
+            uuid: 2c9d4b68-1494-45ed-bf86-a4f7877376ef
             region: main
             configuration:
-              id: 'field_block:node:stanford_media:title'
-              label: Title
+              id: 'field_block:node:stanford_media:su_media_transcript'
               label_display: '0'
-              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
-                view_mode: view_mode
               formatter:
-                type: entity_title_heading
-                label: hidden
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          1fbfd630-3aac-43ad-8756-c3b560d4d408:
+            uuid: 1fbfd630-3aac-43ad-8756-c3b560d4d408
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_media:su_media_episode'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
                 settings:
-                  tag: h1
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: ''
-            weight: 1
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          cad61bdb-a6f8-4757-9269-70c0e395c91e:
+            uuid: cad61bdb-a6f8-4757-9269-70c0e395c91e
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_media:su_media_season'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          ff88a0e7-accf-4281-a3a9-f94bea46385e:
+            uuid: ff88a0e7-accf-4281-a3a9-f94bea46385e
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_media:su_media_date'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: datetime_default
+                label: above
+                settings:
+                  timezone_override: ''
+                  format_type: medium
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          efdb215f-45d7-4308-bf06-14ecfb65b4a2:
+            uuid: efdb215f-45d7-4308-bf06-14ecfb65b4a2
+            region: left
+            configuration:
+              id: 'field_block:node:stanford_media:su_media_series'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 6
             additional: {  }
           9de51780-2344-41d4-aa44-4e259d7be1fb:
             uuid: 9de51780-2344-41d4-aa44-4e259d7be1fb
-            region: main
+            region: left
             configuration:
               id: 'field_block:node:stanford_media:su_media_dek'
               label: Dek
@@ -102,52 +169,49 @@ third_party_settings:
                     label_tag: ''
             weight: 2
             additional: {  }
-          5d4b5cdf-7e83-4762-8474-7b757b62a908:
-            uuid: 5d4b5cdf-7e83-4762-8474-7b757b62a908
-            region: main
+          715aaa8a-f4c2-49a1-83d2-c8ec7c371e9a:
+            uuid: 715aaa8a-f4c2-49a1-83d2-c8ec7c371e9a
+            region: left
             configuration:
-              id: 'field_block:node:stanford_media:su_media_image'
+              id: 'field_block:node:stanford_media:title'
+              label: Title
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                type: entity_reference_entity_view
-                label: above
+                type: entity_title_heading
+                label: hidden
                 settings:
-                  view_mode: default
-                  link: false
-                third_party_settings: {  }
-            weight: 5
+                  tag: h1
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 1
             additional: {  }
-        third_party_settings: {  }
-      -
-        layout_id: jumpstart_ui_two_column
-        layout_settings:
-          label: ''
-          context_mapping: {  }
-          extra_classes: ''
-          centered: centered-container
-          orientation: right
-          force_regions: 0
-        components:
-          2c9d4b68-1494-45ed-bf86-a4f7877376ef:
-            uuid: 2c9d4b68-1494-45ed-bf86-a4f7877376ef
-            region: main
+          6387b72c-f88c-4bd7-bd59-1c042911e978:
+            uuid: 6387b72c-f88c-4bd7-bd59-1c042911e978
+            region: left
             configuration:
-              id: 'field_block:node:stanford_media:su_media_transcript'
+              id: 'views_block:media_content-first_media'
+              label: ''
               label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 3
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: null
+              exposed: {  }
+            weight: 0
             additional: {  }
           f49e2d23-c204-421e-8993-933e5072322f:
             uuid: f49e2d23-c204-421e-8993-933e5072322f
-            region: main
+            region: left
             configuration:
               id: 'field_block:node:stanford_media:body'
               label: Body
@@ -168,98 +232,21 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 2
+            weight: 7
             additional: {  }
-          f4dc0baa-b357-4caf-b631-e9a35bccdc95:
-            uuid: f4dc0baa-b357-4caf-b631-e9a35bccdc95
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_media:su_media_audio_video'
-              label: Audio/Video
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_entity_view
-                label: hidden
-                settings:
-                  view_mode: default
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: ''
-            weight: 1
-            additional: {  }
-          1fbfd630-3aac-43ad-8756-c3b560d4d408:
-            uuid: 1fbfd630-3aac-43ad-8756-c3b560d4d408
+          5bf04085-c621-4e27-9569-7de949545cef:
+            uuid: 5bf04085-c621-4e27-9569-7de949545cef
             region: left
             configuration:
-              id: 'field_block:node:stanford_media:su_media_episode'
+              id: 'views_block:media_content-after_first_media'
+              label: ''
               label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 3
-            additional: {  }
-          cad61bdb-a6f8-4757-9269-70c0e395c91e:
-            uuid: cad61bdb-a6f8-4757-9269-70c0e395c91e
-            region: left
-            configuration:
-              id: 'field_block:node:stanford_media:su_media_season'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-          ff88a0e7-accf-4281-a3a9-f94bea46385e:
-            uuid: ff88a0e7-accf-4281-a3a9-f94bea46385e
-            region: left
-            configuration:
-              id: 'field_block:node:stanford_media:su_media_date'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: datetime_default
-                label: above
-                settings:
-                  timezone_override: ''
-                  format_type: medium
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          efdb215f-45d7-4308-bf06-14ecfb65b4a2:
-            uuid: efdb215f-45d7-4308-bf06-14ecfb65b4a2
-            region: left
-            configuration:
-              id: 'field_block:node:stanford_media:su_media_series'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 4
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: null
+              exposed: {  }
+            weight: 8
             additional: {  }
         third_party_settings: {  }
   layout_library:
