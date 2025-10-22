@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.stanford_course.body
     - field.field.node.stanford_course.su_course_academic_year
     - field.field.node.stanford_course.su_course_code
+    - field.field.node.stanford_course.su_course_filters
     - field.field.node.stanford_course.su_course_id
     - field.field.node.stanford_course.su_course_instructors
     - field.field.node.stanford_course.su_course_link
@@ -14,6 +15,7 @@ dependencies:
     - field.field.node.stanford_course.su_course_section_units
     - field.field.node.stanford_course.su_course_subject
     - field.field.node.stanford_course.su_course_tags
+    - field.field.node.stanford_course.su_imported
     - field.field.node.stanford_course.su_metatags
     - field.field.node.stanford_course.su_shared_tags
     - node.type.stanford_course
@@ -119,6 +121,7 @@ hidden:
   body: true
   links: true
   search_api_excerpt: true
+  su_course_filters: true
   su_course_id: true
   su_course_instructors: true
   su_course_quarters: true
