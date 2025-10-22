@@ -37,13 +37,28 @@ jobs:
         with:
           name: d11-unit-tests-results
           path: /var/www/html/artifacts
+  shard_matrix:
+    name: Test Shards
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Generate Shard Matrix
+        id: set-matrix
+        run: |
+          n=${{ vars.TEST_SHARDS || 4 }} &&
+          numbers=($(seq 1 $n)) &&
+          json=$(printf '%s\n' "${numbers[@]}" | jq -R . | jq -s -c .) &&
+          echo "Test shards: $json" &&
+          echo "matrix=$json" >> $GITHUB_OUTPUT
   codeception:
     name: Codeception
+    needs: [shard_matrix]
     strategy:
       fail-fast: false
       matrix:
         suite: [ acceptance, functional ]
-        shard: [ '1', '2', '3', '4', '5' ]
+        shard: ${{fromJSON(needs.shard_matrix.outputs.matrix)}}
     runs-on: ubuntu-latest
     env:
       DRUPAL_DATABASE_NAME: drupal
@@ -75,9 +90,10 @@ jobs:
         env:
           STANFORD_ENCRYPT: ${{ secrets.STANFORD_ENCRYPT }}
         run: |
+          n=${{ vars.TEST_SHARDS || 4 }} &&
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
-          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=${{ matrix.suite }} --shard=${{ matrix.shard }}/5 &&
+          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=${{ matrix.suite }} --shard=${{ matrix.shard }}/$n &&
           if [ ! -f /var/www/html/artifacts/${{ matrix.suite }}/results.html ]; then
               exit 1
           fi
