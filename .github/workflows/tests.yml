@@ -103,3 +103,9 @@ jobs:
         with:
           name: codeception-${{ matrix.suite }}-${{ matrix.shard }}
           path: /var/www/html/artifacts
+  all-tests-pass:
+    name: All Tests Pass
+    needs: [phpunit, codeception]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Passed'
