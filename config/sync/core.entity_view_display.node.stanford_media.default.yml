@@ -100,32 +100,6 @@ third_party_settings:
                     label_tag: ''
             weight: 0
             additional: {  }
-          9de51780-2344-41d4-aa44-4e259d7be1fb:
-            uuid: 9de51780-2344-41d4-aa44-4e259d7be1fb
-            region: eyebrow
-            configuration:
-              id: 'field_block:node:stanford_media:su_media_dek'
-              label: Dek
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: hidden
-                settings:
-                  link_to_entity: false
-                third_party_settings:
-                  empty_fields:
-                    handler: ''
-                  field_formatter_class:
-                    class: ''
-                  field_label:
-                    label_value: ''
-                    label_tag: ''
-            weight: 0
-            additional: {  }
           ff88a0e7-accf-4281-a3a9-f94bea46385e:
             uuid: ff88a0e7-accf-4281-a3a9-f94bea46385e
             region: supplemental
@@ -141,7 +115,7 @@ third_party_settings:
                   timezone_override: ''
                   format_type: medium
                 third_party_settings: {  }
-            weight: 0
+            weight: 2
             additional: {  }
           cad61bdb-a6f8-4757-9269-70c0e395c91e:
             uuid: cad61bdb-a6f8-4757-9269-70c0e395c91e
@@ -157,29 +131,13 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 0
+            weight: 1
             additional: {  }
           1fbfd630-3aac-43ad-8756-c3b560d4d408:
             uuid: 1fbfd630-3aac-43ad-8756-c3b560d4d408
             region: series
             configuration:
               id: 'field_block:node:stanford_media:su_media_episode'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          efdb215f-45d7-4308-bf06-14ecfb65b4a2:
-            uuid: efdb215f-45d7-4308-bf06-14ecfb65b4a2
-            region: series
-            configuration:
-              id: 'field_block:node:stanford_media:su_media_series'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
@@ -240,7 +198,7 @@ third_party_settings:
               provider: printable
               context_mapping: {  }
               max_age: '180'
-            weight: 2
+            weight: 3
             additional: {  }
           85a2bf50-d2a2-48be-8942-e43b04b97fbd:
             uuid: 85a2bf50-d2a2-48be-8942-e43b04b97fbd
@@ -255,6 +213,88 @@ third_party_settings:
               items_per_page: null
               exposed: {  }
             weight: 0
+            additional: {  }
+          9de51780-2344-41d4-aa44-4e259d7be1fb:
+            uuid: 9de51780-2344-41d4-aa44-4e259d7be1fb
+            region: supplemental
+            configuration:
+              id: 'field_block:node:stanford_media:su_media_dek'
+              label: Dek
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 0
+            additional: {  }
+          c92085ec-1920-4726-8313-89002e55cc2f:
+            uuid: c92085ec-1920-4726-8313-89002e55cc2f
+            region: eyebrow
+            configuration:
+              id: 'field_block:node:stanford_media:su_media_types'
+              label: 'Media Types'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: false
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
+            weight: 0
+            additional: {  }
+          efdb215f-45d7-4308-bf06-14ecfb65b4a2:
+            uuid: efdb215f-45d7-4308-bf06-14ecfb65b4a2
+            region: series
+            configuration:
+              id: 'field_block:node:stanford_media:su_media_series'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          9472c98a-0887-4a92-8465-a66736243da4:
+            uuid: 9472c98a-0887-4a92-8465-a66736243da4
+            region: supplemental
+            configuration:
+              id: 'views_block:media_content-related_person'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: null
+              exposed: {  }
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -

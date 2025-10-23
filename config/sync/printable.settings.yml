@@ -10,7 +10,6 @@ printable_entities:
   crop: '0'
   file: '0'
   media: '0'
-  page_variant: '0'
   path_alias: '0'
   paragraph_row: '0'
   paragraphs_row_type: '0'
@@ -22,18 +21,21 @@ printable_entities:
   su_policy_log: '0'
   citation: '0'
   citation_type: '0'
+  wordpress_migration: '0'
   taxonomy_term: '0'
   user: '0'
   menu_link_content: '0'
   paragraph: '0'
 printable_entities_bundles:
   node:
+    stanford_media: true
     stanford_policy: true
     _all: false
     stanford_course: false
     stanford_event: false
     stanford_event_series: false
     stanford_news: false
+    stanford_opportunity: false
     stanford_page: false
     stanford_person: false
     stanford_publication: false
@@ -75,16 +77,11 @@ printable_entities_bundles:
     image: false
     stanford_gallery_images: false
     video: false
-  page_variant:
-    _all: false
-    page_variant: false
   path_alias:
     _all: false
     path_alias: false
   paragraph_row:
     _all: false
-    node_stanford_page_row: false
-    su_pub_rows: false
   paragraphs_row_type:
     _all: false
     paragraphs_row_type: false
@@ -118,17 +115,29 @@ printable_entities_bundles:
   citation_type:
     _all: false
     citation_type: false
+  wordpress_migration:
+    _all: true
+    wordpress_migration: false
   taxonomy_term:
     _all: false
     basic_page_types: false
     cap_org_codes: false
     event_audience: false
+    event_filters: false
+    media_content_types: false
     media_tags: false
+    opportunity_sponsor: false
+    opportunity_tag_filters: false
+    opportunity_type: false
+    opportunity_units: false
+    person_filters: false
+    publication_filters: false
     site_owner_orgs: false
     stanford_event_groups: false
     stanford_event_keywords: false
     stanford_event_subject: false
     stanford_event_types: false
+    stanford_news_spotlight_filters: false
     stanford_news_topics: false
     stanford_person_types: false
     stanford_publication_topics: false
@@ -148,13 +157,17 @@ printable_entities_bundles:
     stanford_banner: false
     stanford_card: false
     stanford_entity: false
+    stanford_faq: false
+    stanford_filtered_lists: false
     stanford_gallery: false
     stanford_layout: false
     stanford_lists: false
     stanford_media_caption: false
+    stanford_page_title_banner: false
     stanford_person_cta: false
     stanford_schedule: false
     stanford_spacer: false
+    stanford_stat_card: false
     stanford_wysiwyg: false
 open_target_blank: false
 css_include: profiles/custom/stanford_profile/themes/stanford_basic/dist/css/print.css
