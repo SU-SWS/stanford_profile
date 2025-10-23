@@ -403,12 +403,111 @@ third_party_settings:
   layout_library:
     enable: false
   layout_builder_restrictions:
-    allowed_block_categories: {  }
+    allowed_block_categories:
+      - 'Basic Page Type Lists (Views)'
+      - Book
+      - 'Changelog (Views)'
+      - 'Chaos Tools'
+      - 'Config Pages'
+      - 'Content fields'
+      - 'Custom block types'
+      - 'Custom blocks'
+      - Devel
+      - 'Devel PHP'
+      - Editoria11y
+      - 'Events Lists (Views)'
+      - Forms
+      - Help
+      - 'Inline blocks'
+      - 'Jumpstart UI'
+      - 'Lists (Views)'
+      - 'Media Lists (Views)'
+      - Menus
+      - 'News Lists (Views)'
+      - 'Opportunities (Views)'
+      - 'PDB Components'
+      - 'People Lists (Views)'
+      - 'Policy (Views)'
+      - Printable
+      - 'Publication (Views)'
+      - 'Simple block'
+      - 'Stanford News'
+      - 'Stanford Profile Helper'
+      - 'Stanford SAML Authentication'
+      - System
+      - 'Taxonomy Terms (Views)'
+      - User
+      - Views
+      - core
     entity_view_mode_restriction:
-      allowed_layouts: {  }
-      denylisted_blocks: {  }
-      allowlisted_blocks: {  }
-      restricted_categories: {  }
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+        - media_content
+      denylisted_blocks:
+        'Content fields':
+          - 'field_block:node:stanford_media:uid'
+          - 'field_block:node:stanford_media:created'
+          - 'field_block:node:stanford_media:changed'
+          - 'field_block:node:stanford_media:type'
+          - 'field_block:node:stanford_media:revision_default'
+          - 'field_block:node:stanford_media:default_langcode'
+          - 'field_block:node:stanford_media:deleted'
+          - 'field_block:node:stanford_media:nid'
+          - 'field_block:node:stanford_media:langcode'
+          - 'extra_field_block:node:stanford_media:links'
+          - 'field_block:node:stanford_media:menu_link'
+          - 'field_block:node:stanford_media:promote'
+          - 'field_block:node:stanford_media:status'
+          - 'field_block:node:stanford_media:su_media_date'
+          - 'field_block:node:stanford_media:publish_on'
+          - 'field_block:node:stanford_media:rh_action'
+          - 'field_block:node:stanford_media:rh_redirect_fallback_action'
+          - 'field_block:node:stanford_media:rh_redirect'
+          - 'field_block:node:stanford_media:rh_redirect_response'
+          - 'field_block:node:stanford_media:revision_timestamp'
+          - 'field_block:node:stanford_media:vid'
+          - 'field_block:node:stanford_media:revision_log'
+          - 'field_block:node:stanford_media:revision_translation_affected'
+          - 'field_block:node:stanford_media:revision_uid'
+          - 'extra_field_block:node:stanford_media:search_api_excerpt'
+          - 'field_block:node:stanford_media:sticky'
+          - 'field_block:node:stanford_media:unpublish_on'
+      allowlisted_blocks:
+        Menus:
+          - 'menu_block:main'
+        System:
+          - system_breadcrumb_block
+        core:
+          - page_title_block
+      restricted_categories:
+        - 'Basic Page Type Lists (Views)'
+        - Book
+        - 'Changelog (Views)'
+        - 'Chaos Tools'
+        - 'Config Pages'
+        - Devel
+        - 'Devel PHP'
+        - Editoria11y
+        - 'Events Lists (Views)'
+        - Forms
+        - Help
+        - 'Lists (Views)'
+        - 'News Lists (Views)'
+        - 'Opportunities (Views)'
+        - 'PDB Components'
+        - 'People Lists (Views)'
+        - 'Policy (Views)'
+        - Printable
+        - 'Publication (Views)'
+        - 'Simple block'
+        - 'Stanford News'
+        - 'Stanford Profile Helper'
+        - 'Stanford SAML Authentication'
+        - 'Taxonomy Terms (Views)'
+        - User
+        - Views
 id: node.stanford_media.default
 targetEntityType: node
 bundle: stanford_media
