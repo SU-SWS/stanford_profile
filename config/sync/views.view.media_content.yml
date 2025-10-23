@@ -6,8 +6,9 @@ dependencies:
     - core.entity_view_mode.node.stanford_h3_card
     - core.entity_view_mode.node.teaser
     - field.storage.node.su_media_audio_video
+    - field.storage.node.su_media_date
     - field.storage.node.su_media_image
-    - field.storage.node.su_media_series
+    - field.storage.node.su_media_person
     - field.storage.node.su_person_short_title
     - node.type.stanford_media
   module:
@@ -15,8 +16,8 @@ dependencies:
     - graphql_compose_views
     - node
     - stanford_fields
+    - stanford_media
     - user
-    - views_field_view
     - views_taxonomy_term_name_depth
 id: media_content
 label: 'Media Content'
@@ -211,11 +212,11 @@ display:
         options:
           grouping: {  }
           row_class: ''
-          default_row_class: true
+          default_row_class: false
       row:
         type: fields
         options:
-          default_field_elements: true
+          default_field_elements: false
           inline: {  }
           separator: ''
           hide_empty: false
@@ -248,6 +249,7 @@ display:
     display_plugin: block
     position: 4
     display_options:
+      title: 'Video clips'
       fields:
         su_media_audio_video:
           id: su_media_audio_video
@@ -301,7 +303,7 @@ display:
           click_sort_column: target_id
           type: entity_reference_entity_view
           settings:
-            view_mode: label
+            view_mode: colorbox_video
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -377,6 +379,47 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 1
+      arguments:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: true
+          title: 'Video clips from: {{ title }}'
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
       filters:
         type:
           id: type
@@ -436,25 +479,17 @@ display:
         groups:
           1: AND
       defaults:
+        title: false
+        pager: false
+        relationships: false
         fields: false
+        arguments: false
         filters: false
         filter_groups: false
         header: false
+      relationships: {  }
       display_description: ''
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: '<h2>Video clips from: {{ title }}</h2>'
-            format: stanford_html
-          tokenize: true
+      header: {  }
       display_extenders: {  }
       block_description: 'After First Media'
       block_category: 'Media Lists (Views)'
@@ -818,6 +853,19 @@ display:
             field_identifier: ''
           exposed: false
           granularity: second
+        su_media_episode_value:
+          id: su_media_episode_value
+          table: node__su_media_episode
+          field: su_media_episode_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+            field_identifier: ''
+          plugin_id: standard
       arguments:
         term_node_taxonomy_name_depth:
           id: term_node_taxonomy_name_depth
@@ -1217,204 +1265,6 @@ display:
     position: 5
     display_options:
       fields:
-        su_media_series:
-          id: su_media_series
-          table: node__su_media_series
-          field: su_media_series
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        view:
-          id: view
-          table: views
-          field: view
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: view
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          view: media_content
-          display: related_series_items
-          arguments: '{{ fields.su_media_series }}'
-      pager:
-        type: some
-        options:
-          offset: 0
-          items_per_page: 1
-      arguments:
-        nid:
-          id: nid
-          table: node_field_data
-          field: nid
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: nid
-          plugin_id: node_nid
-          default_action: default
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: node
-          default_argument_options: {  }
-          summary_options:
-            base_path: ''
-            count: true
-            override: false
-            items_per_page: 25
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          break_phrase: false
-          not: false
-      style:
-        type: default
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-      row:
-        type: fields
-        options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
-      defaults:
-        pager: false
-        style: false
-        row: false
-        fields: false
-        arguments: false
-        filters: true
-        filter_groups: true
-      display_description: ''
-      display_extenders: {  }
-      block_category: 'Media Lists (Views)'
-      block_hide_empty: true
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - 'user.node_grants:view'
-        - user.permissions
-      tags:
-        - 'config:field.storage.node.su_media_series'
-  related_series_items:
-    id: related_series_items
-    display_title: 'Related Series Items'
-    display_plugin: block
-    position: 6
-    display_options:
-      fields:
         su_media_image:
           id: su_media_image
           table: node__su_media_image
@@ -1465,9 +1315,12 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: entity_reference_entity_view
+          type: media_image_formatter
           settings:
-            view_mode: stanford_image_medium_square
+            view_mode: default
+            link: false
+            image_style: breakpoint_md_2x
+            remove_alt: false
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -1543,11 +1396,153 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        su_media_date:
+          id: su_media_date
+          table: node__su_media_date
+          field: su_media_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: stanford_month_two_digit_day_year
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        su_media_person:
+          id: su_media_person
+          table: node__su_media_person
+          field: su_media_person
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
         type: some
         options:
           offset: 0
           items_per_page: 5
+      sorts:
+        su_media_date_value:
+          id: su_media_date_value
+          table: node__su_media_date
+          field: su_media_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
       arguments:
         su_media_series_value:
           id: su_media_series_value
@@ -1557,16 +1552,20 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: string
-          default_action: ignore
+          default_action: default
           exception:
             value: all
             title_enable: false
             title: All
           title_enable: false
           title: ''
-          default_argument_type: fixed
+          default_argument_type: token
           default_argument_options:
-            argument: ''
+            argument: '[node:su_media_series]'
+            process: 0
+            and_or: +
+            all_option: 1
+            debug: 0
           summary_options:
             base_path: ''
             count: true
@@ -1588,14 +1587,11 @@ display:
           transform_dash: false
           break_phrase: false
       style:
-        type: html_list
+        type: default
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          type: ul
-          wrapper_class: ''
-          class: su-list-unstyled
       row:
         type: fields
         options:
@@ -1608,12 +1604,13 @@ display:
         style: false
         row: false
         fields: false
+        sorts: false
         arguments: false
         filters: true
         filter_groups: true
       display_description: ''
       display_extenders: {  }
-      block_category: 'Media (Views)'
+      block_category: 'Media Lists (Views)'
       block_hide_empty: true
     cache_metadata:
       max-age: -1
@@ -1624,4 +1621,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.su_media_date'
         - 'config:field.storage.node.su_media_image'
+        - 'config:field.storage.node.su_media_person'

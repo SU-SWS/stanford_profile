@@ -1,9 +1,9 @@
-uuid: 06dbac14-309f-48fa-9abe-11354b16d086
+uuid: a2e6fd80-4a51-4180-9807-dd876820bf61
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.media.label
+    - core.entity_view_mode.media.colorbox_video
     - field.field.media.video.field_media_oembed_video
     - field.field.media.video.su_import_lookup
     - field.field.media.video.su_media_category
@@ -11,6 +11,10 @@ dependencies:
     - field.field.media.video.su_video_transcript
     - media.type.video
   module:
+    - colorbox_media_video
+    - empty_fields
+    - field_formatter_class
+    - field_label
     - layout_builder
 third_party_settings:
   layout_builder:
@@ -18,22 +22,39 @@ third_party_settings:
     allow_custom: false
 _core:
   default_config_hash: Lcpr93rB3W6kcI48KJ3MhzP4Kg3HObfdAS8RDpoIyTg
-id: media.video.label
+id: media.video.colorbox_video
 targetEntityType: media
 bundle: video
-mode: label
+mode: colorbox_video
 content:
-  name:
-    type: string
+  field_media_oembed_video:
+    type: colorbox_media_remote_video
     label: hidden
     settings:
-      link_to_entity: false
-    third_party_settings: {  }
+      max_width: 0
+      max_height: 0
+      loading:
+        attribute: lazy
+      display: media_title
+      link_text: 'View Video'
+      image_style: thumbnail
+      colorbox_gallery: none
+      colorbox_gallery_custom: ''
+      colorbox_caption: entity_title
+      colorbox_caption_custom: ''
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 0
     region: content
 hidden:
   created: true
-  field_media_oembed_video: true
+  name: true
   search_api_excerpt: true
   su_import_lookup: true
   su_media_category: true

@@ -1,9 +1,9 @@
-uuid: 7f574ccf-5741-4a10-bb4b-c71969724d0b
+uuid: 15a17ed6-41b3-4145-948e-1ef9af8fd7b3
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.print
+    - core.entity_view_mode.node.printable
     - field.field.node.stanford_media.body
     - field.field.node.stanford_media.su_media_audio_video
     - field.field.node.stanford_media.su_media_date
@@ -36,10 +36,10 @@ third_party_settings:
       denylisted_blocks: {  }
       allowlisted_blocks: {  }
       restricted_categories: {  }
-id: node.stanford_media.print
+id: node.stanford_media.printable
 targetEntityType: node
 bundle: stanford_media
-mode: print
+mode: printable
 content:
   su_media_transcript:
     type: text_default
