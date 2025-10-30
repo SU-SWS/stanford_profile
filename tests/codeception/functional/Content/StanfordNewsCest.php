@@ -139,7 +139,7 @@ class StanfordNewsCest {
   /**
    * Test that Related Spotlights filters by matching taxonomy terms.
    *
-   * This tests the stanford_news_views_query_alter() hook.
+   * This tests filtering via view configuration (arguments and filters).
    */
   #[CodeceptionAttribute\Group('news_variant')]
   public function testRelatedSpotlightsFiltersByTaxonomy(FunctionalTester $I) {
