@@ -239,3 +239,26 @@ layout:
         weight: 0
         additional: {  }
     third_party_settings: {  }
+  -
+    layout_id: jumpstart_ui_one_column
+    layout_settings:
+      label: 'Related Spotlights'
+      context_mapping: {  }
+      extra_classes: su-news-related-spotlights
+      centered: centered-container
+      columns: flex-12-of-12
+    components:
+      related-spotlights-block:
+        uuid: related-spotlights-block
+        region: main
+        configuration:
+          id: 'views_block:stanford_news-related_spotlights'
+          label: 'Related Spotlights'
+          label_display: '0'
+          provider: views
+          context_mapping: {  }
+          views_label: ''
+          items_per_page: 0
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }

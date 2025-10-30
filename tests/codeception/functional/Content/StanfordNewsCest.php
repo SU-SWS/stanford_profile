@@ -115,11 +115,49 @@ class StanfordNewsCest {
     $I->canSeeInField('Headline', $default_news->label());
     $I->canSeeInField('Dek', $default_news->get('su_news_dek')->value);
     $I->canSeeInField('Byline', $default_news->get('su_news_byline')->value);
-    
+
     $I->amOnPage($spotlight_news->toUrl('edit-form')->toString());
     $I->canSeeInField('Headline', $spotlight_news->label());
-    // $I->selectOption('Layout', 'Spotlight'); 
+    // $I->selectOption('Layout', 'Spotlight');
     $I->canSeeInField('Quote / Big Text', $spotlight_news->get('su_news_quote')->value);
     $I->canSeeInField('Subtitle', $spotlight_news->get('su_news_subtitle')->value);
   }
+
+  /**
+   * Test Related Spotlights view displays.
+   */
+  #[CodeceptionAttribute\Group('news_variant')]
+  public function testRelatedSpotlightsViewDisplaysWithFourNodes(FunctionalTester $I) {
+
+    // Create 4 spotlight nodes.
+    $spotlights = [];
+    for ($i = 1; $i <= 4; $i++) {
+      $spotlights[] = $I->createEntity([
+        'title' => 'Test Spotlight ' . $i,
+        'type' => 'stanford_news',
+        'layout_selection' => 'news_spotlight',
+        'status' => 1,
+      ]);
+    }
+
+    // Visit the first spotlight node.
+    $I->amOnPage($spotlights[0]->toUrl()->toString());
+
+    // The Related Spotlights view block should exist on the page.
+    $I->seeElement('.view.stanford-news.related-spotlights');
+  }
+
+  /**
+   * Test Related Spotlights view configuration and existence.
+   */
+  #[CodeceptionAttribute\Group('news_variant')]
+  public function testRelatedSpotlightsViewExists(FunctionalTester $I) {
+    // Log in as administrator to access views admin.
+    $I->logInWithRole('administrator');
+
+    // Verify the view display exists and is configured properly.
+    $I->amOnPage('/admin/structure/views/view/stanford_news/edit/related_spotlights');
+    $I->canSee('Related Spotlights');
+  }
+
 }
