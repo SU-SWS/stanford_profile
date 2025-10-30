@@ -137,10 +137,10 @@ class StanfordNewsCest {
     // Wait for conditional fields JavaScript to execute
     $I->wait(1);
     // Body, Shared Tags, Social Share Icons, and Related Person should be hidden
-    $I->cantSeeElement('.field--name-body');
-    $I->cantSeeElement('.field--name-su-shared-tags');
-    $I->cantSeeElement('.field--name-su-news-hide-social');
-    $I->cantSeeElement('.field--name-su-news-person');
+    $I->dontSeeElement('.field--name-body:visible');
+    $I->dontSeeElement('.field--name-su-shared-tags:visible');
+    $I->dontSeeElement('.field--name-su-news-hide-social:visible');
+    $I->dontSeeElement('.field--name-su-news-person:visible');
     // Verify spotlight-specific fields are visible
     $I->canSeeElement('.field--name-su-news-quote');
     $I->canSeeElement('.field--name-su-news-subtitle');
