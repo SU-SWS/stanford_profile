@@ -124,30 +124,6 @@ class StanfordNewsCest {
   }
 
   /**
-   * Test Related Spotlights view displays.
-   */
-  #[CodeceptionAttribute\Group('news_variant')]
-  public function testRelatedSpotlightsViewDisplaysWithFourNodes(FunctionalTester $I) {
-
-    // Create 4 spotlight nodes.
-    $spotlights = [];
-    for ($i = 1; $i <= 4; $i++) {
-      $spotlights[] = $I->createEntity([
-        'title' => 'Test Spotlight ' . $i,
-        'type' => 'stanford_news',
-        'layout_selection' => 'news_spotlight',
-        'status' => 1,
-      ]);
-    }
-
-    // Visit the first spotlight node.
-    $I->amOnPage($spotlights[0]->toUrl()->toString());
-
-    // The Related Spotlights view block should exist on the page.
-    $I->seeElement('.view.stanford-news.related-spotlights');
-  }
-
-  /**
    * Test Related Spotlights view configuration and existence.
    */
   #[CodeceptionAttribute\Group('news_variant')]
@@ -160,4 +136,84 @@ class StanfordNewsCest {
     $I->canSee('Related Spotlights');
   }
 
+  /**
+   * Test that Related Spotlights filters by matching taxonomy terms.
+   *
+   * This tests the stanford_news_views_query_alter() hook.
+   */
+  #[CodeceptionAttribute\Group('news_variant')]
+  public function testRelatedSpotlightsFiltersByTaxonomy(FunctionalTester $I) {
+
+    // Create taxonomy terms.
+    $term_a = $I->createEntity([
+      'name' => 'Category A',
+      'vid' => 'stanford_news_spotlight_filters',
+    ], 'taxonomy_term');
+
+    $term_b = $I->createEntity([
+      'name' => 'Category B',
+      'vid' => 'stanford_news_spotlight_filters',
+    ], 'taxonomy_term');
+
+    // Create 3 spotlight nodes with term A and 2 with term B.
+    $spotlight_a1 = $I->createEntity([
+      'title' => 'Spotlight A1',
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => [$term_a->id()],
+      'status' => 1,
+    ]);
+
+    $spotlight_a2 = $I->createEntity([
+      'title' => 'Spotlight A2',
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => [$term_a->id()],
+      'status' => 1,
+    ]);
+
+    $spotlight_a3 = $I->createEntity([
+      'title' => 'Spotlight A3',
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => [$term_a->id()],
+      'status' => 1,
+    ]);
+
+    $spotlight_b1 = $I->createEntity([
+      'title' => 'Spotlight B1',
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => [$term_b->id()],
+      'status' => 1,
+    ]);
+
+    $spotlight_b2 = $I->createEntity([
+      'title' => 'Spotlight B2',
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => [$term_b->id()],
+      'status' => 1,
+    ]);
+
+    // Create a spotlight with no terms.
+    $spotlight_c = $I->createEntity([
+      'title' => 'Spotlight C',
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'status' => 1,
+    ]);
+
+    // Visit spotlight A1 - should show other nodes with term A.
+    $I->amOnPage($spotlight_a1->toUrl()->toString());
+    $I->seeElement('.su-news-related-spotlights');
+    $I->seeLink('Spotlight A2');
+    $I->seeLink('Spotlight A3');
+    $I->dontSeeLink('Spotlight B1');
+    $I->dontSeeLink('Spotlight B2');
+
+    // If there are no terms attached, we should see no related spotlights.
+    $I->amOnPage($spotlight_c->toUrl()->toString());
+    $I->dontSeeElement('.su-news-related-spotlights');
+  }
 }
