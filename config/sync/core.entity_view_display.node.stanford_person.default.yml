@@ -616,11 +616,16 @@ third_party_settings:
                   trim_length: null
                   url_only: false
                   url_plain: false
-                  rel: '0'
+                  rel: nofollow
                   target: '0'
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
             weight: 11
             additional: {  }
         third_party_settings: {  }
