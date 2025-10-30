@@ -206,7 +206,7 @@ class StanfordNewsCest {
 
     // Visit spotlight A1 - should show other nodes with term A.
     $I->amOnPage($spotlight_a1->toUrl()->toString());
-    $I->seeElement('.su-news-related-spotlights');
+    $I->seeElement('.related-spotlights');
     $I->seeLink('Spotlight A2');
     $I->seeLink('Spotlight A3');
     $I->dontSeeLink('Spotlight B1');
@@ -214,6 +214,6 @@ class StanfordNewsCest {
 
     // If there are no terms attached, we should see no related spotlights.
     $I->amOnPage($spotlight_c->toUrl()->toString());
-    $I->dontSeeElement('.su-news-related-spotlights');
+    $I->dontSeeElement('.related-spotlights');
   }
 }
