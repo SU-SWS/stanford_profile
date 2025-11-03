@@ -120,30 +120,32 @@ class StanfordNewsCest {
 
     // Test default news variant
     $I->amOnPage($default_news->toUrl('edit-form')->toString());
+    $I->canSeeInField('Variant', 'News');
     $I->canSeeInField('Headline', $default_news->label());
     $I->canSeeInField('Dek', $default_news->get('su_news_dek')->value);
     $I->canSeeInField('Byline', $default_news->get('su_news_byline')->value);
+
     // Body, Shared Tags, Social Share Icons, and Related Person should be visible
-    $I->canSeeElement('.field--name-body');
-    $I->canSeeElement('.field--name-su-shared-tags');
-    $I->canSeeElement('.field--name-su-news-hide-social');
-    $I->canSeeElement('.field--name-su-news-person');
+    $I->canSee('Body');
+    $I->canSee('Shared Tags');
+    $I->canSee('Hide Social Share Icons');
+    $I->canSee('Related Person');
 
     // Test spotlight news variant
     $I->amOnPage($spotlight_news->toUrl('edit-form')->toString());
+    $I->canSeeInField('Variant', 'Spotlight');
     $I->canSeeInField('Headline', $spotlight_news->label());
     $I->canSeeInField('Quote / Big Text', $spotlight_news->get('su_news_quote')->value);
     $I->canSeeInField('Subtitle', $spotlight_news->get('su_news_subtitle')->value);
-    // Wait for conditional fields JavaScript to execute
-    $I->wait(1);
+
     // Body, Shared Tags, Social Share Icons, and Related Person should be hidden
-    $I->dontSeeElement('.field--name-body:visible');
-    $I->dontSeeElement('.field--name-su-shared-tags:visible');
-    $I->dontSeeElement('.field--name-su-news-hide-social:visible');
-    $I->dontSeeElement('.field--name-su-news-person:visible');
+    $I->cantSee('Body');
+    $I->cantSee('Shared Tags');
+    $I->cantSee('Hide Social Share Icons');
+    $I->cantSee('Related Person');
     // Verify spotlight-specific fields are visible
-    $I->canSeeElement('.field--name-su-news-quote');
-    $I->canSeeElement('.field--name-su-news-subtitle');
-    $I->canSeeElement('.field--name-su-news-spotlight-filters');
+    $I->canSee('Quote / Big Text');
+    $I->canSee('Subtitle');
+    $I->canSee('Spotlight Filters');
   }
 }
