@@ -20,7 +20,6 @@ dependencies:
     - field.field.node.stanford_news.su_news_quote
     - field.field.node.stanford_news.su_news_source
     - field.field.node.stanford_news.su_news_spotlight_filters
-    - field.field.node.stanford_news.su_news_subtitle
     - field.field.node.stanford_news.su_news_topics
     - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
@@ -435,49 +434,6 @@ content:
             effect_options: {  }
             selector: ''
         dda05d6d-5f7c-4f55-9445-dc47604e05fa:
-          entity_type: node
-          bundle: stanford_news
-          dependee: layout_selection
-          settings:
-            state: '!visible'
-            reset: false
-            condition: '!touched'
-            grouping: AND
-            values_set: 1
-            value: ''
-            values: {  }
-            value_form: {  }
-            effect: show
-            effect_options: {  }
-            selector: ''
-  su_news_subtitle:
-    type: string_textfield
-    weight: 3
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings:
-      conditional_fields:
-        f4dfc262-5fea-4f1a-95c8-3e6e6513befe:
-          entity_type: node
-          bundle: stanford_news
-          dependee: layout_selection
-          settings:
-            state: visible
-            reset: false
-            condition: value
-            grouping: AND
-            values_set: 1
-            value: ''
-            values: {  }
-            value_form:
-              -
-                target_id: news_spotlight
-            effect: show
-            effect_options: {  }
-            selector: ''
-        7150a9ca-2338-47b2-8c40-51246fdead4b:
           entity_type: node
           bundle: stanford_news
           dependee: layout_selection

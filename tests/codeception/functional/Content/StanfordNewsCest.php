@@ -120,6 +120,7 @@ class StanfordNewsCest {
 
     // Test default news variant
     $I->amOnPage($default_news->toUrl('edit-form')->toString());
+    $I->waitForElement('[name="layout_selection"]');
     $I->canSeeInField('Variant', 'News');
     $I->canSeeInField('Headline', $default_news->label());
     $I->canSeeInField('Dek', $default_news->get('su_news_dek')->value);
@@ -133,10 +134,10 @@ class StanfordNewsCest {
 
     // Test spotlight news variant
     $I->amOnPage($spotlight_news->toUrl('edit-form')->toString());
+    $I->waitForElement('[name="layout_selection"]');
     $I->canSeeInField('Variant', 'Spotlight');
     $I->canSeeInField('Headline', $spotlight_news->label());
     $I->canSeeInField('Quote / Big Text', $spotlight_news->get('su_news_quote')->value);
-    $I->canSeeInField('Subtitle', $spotlight_news->get('su_news_subtitle')->value);
 
     // Body, Shared Tags, Social Share Icons, and Related Person should be hidden
     $I->cantSee('Body');
@@ -145,7 +146,6 @@ class StanfordNewsCest {
     $I->cantSee('Related Person');
     // Verify spotlight-specific fields are visible
     $I->canSee('Quote / Big Text');
-    $I->canSee('Subtitle');
     $I->canSee('Spotlight Filters');
   }
 }
