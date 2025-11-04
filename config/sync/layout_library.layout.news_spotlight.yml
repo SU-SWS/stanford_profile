@@ -244,21 +244,22 @@ layout:
     layout_settings:
       label: 'Related Spotlights'
       context_mapping: {  }
-      extra_classes: su-news-related-spotlights
+      extra_classes: section-supporting-content
       centered: centered-container
-      columns: flex-12-of-12
+      columns: default
     components:
-      related-spotlights-block:
-        uuid: related-spotlights-block
+      0bfd9815-83fb-4dce-bf30-8187881f5037:
+        uuid: 0bfd9815-83fb-4dce-bf30-8187881f5037
         region: main
         configuration:
-          id: 'views_block:stanford_news-related_spotlights'
-          label: 'Related Spotlights'
-          label_display: '0'
+          id: 'views_block:stanford_news-related_spotlights_filtered'
+          label: 'More Spotlights'
+          label_display: visible
           provider: views
           context_mapping: {  }
-          views_label: ''
-          items_per_page: 0
+          views_label: 'More Spotlights'
+          items_per_page: null
+          exposed: {  }
         weight: 0
         additional: {  }
     third_party_settings: {  }
