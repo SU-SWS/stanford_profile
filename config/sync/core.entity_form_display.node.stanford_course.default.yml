@@ -23,6 +23,7 @@ dependencies:
     - link
     - metatag
     - path
+    - stanford_fields
     - text
 _core:
   default_config_hash: QDRdEfbaTCodBKx86SPI4kztwbpL9XOi2KleL66-Oqc
@@ -77,14 +78,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_course_filters:
-    type: entity_reference_autocomplete
+    type: taxonomy_label_hierarchy
     weight: 33
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   su_course_instructors:
     type: string_textfield
