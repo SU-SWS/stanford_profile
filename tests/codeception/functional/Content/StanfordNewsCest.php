@@ -113,7 +113,6 @@ class StanfordNewsCest {
       'type' => 'stanford_news',
       'layout_selection' => 'news_spotlight',
       'su_news_quote' => $this->faker->sentence(),
-      'su_news_subtitle' => $this->faker->sentence(),
     ]);
 
     $I->logInWithRole('site_manager');

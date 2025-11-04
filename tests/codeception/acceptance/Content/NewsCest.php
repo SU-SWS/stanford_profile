@@ -332,14 +332,12 @@ class NewsCest {
     $I->canSeeInField('Byline', '');
     $I->canSeeInField('Banner Caption', '');
     $I->canSeeInField('Quote / Big Text', '');
-    $I->canSeeInField('Subtitle', '');
 
     // Fill in the fields
     $I->fillField('Dek', $testData['Dek']);
     $I->fillField('Byline', $testData['Byline']);
     $I->fillField('Banner Caption', $testData['Banner Caption']);
     $I->fillField('Quote / Big Text', $testData['Quote']);
-    $I->fillField('Subtitle', $testData['Subtitle']);
 
     // Save the node
     $I->click('Save');
