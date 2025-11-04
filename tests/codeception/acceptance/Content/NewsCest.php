@@ -321,7 +321,6 @@ class NewsCest {
       'Byline' => $this->faker->name(),
       'Banner Caption' => $this->faker->sentence(),
       'Quote' => $this->faker->sentence(),
-      'Subtitle' => $this->faker->words(4, TRUE),
     ];
 
     // Fill in required title field
