@@ -3482,46 +3482,10 @@ display:
           wrapper_class: ''
           class: 'su-list-unstyled grid-container-4'
       row:
-        type: ui_patterns
+        type: 'entity:node'
         options:
-          default_field_elements: 1
-          inline:
-            su_news_featured_media: 0
-            su_news_publishing_date: 0
-            su_news_quote: 0
-            title: 0
-            su_news_spotlight_filters: 0
-            view_node: 0
-          separator: ''
-          hide_empty: 0
-          pattern: card
-          pattern_mapping:
-            'views_row:su_news_featured_media':
-              destination: card_image
-              weight: 0
-              plugin: views_row
-              source: su_news_featured_media
-            'views_row:su_news_publishing_date':
-              destination: card_super_headline
-              weight: 1
-              plugin: views_row
-              source: su_news_publishing_date
-            'views_row:su_news_quote':
-              destination: card_body
-              weight: 2
-              plugin: views_row
-              source: su_news_quote
-            'views_row:title':
-              destination: card_headline
-              weight: 3
-              plugin: views_row
-              source: title
-            'views_row:su_news_spotlight_filters':
-              destination: card_body
-              weight: 4
-              plugin: views_row
-              source: su_news_spotlight_filters
-          pattern_variant: default
+          relationship: none
+          view_mode: stanford_card
       pager:
         type: infinite_scroll
         options:
@@ -3943,40 +3907,10 @@ display:
           wrapper_class: ''
           class: 'su-list-unstyled grid-container-4'
       row:
-        type: ui_patterns
+        type: 'entity:node'
         options:
-          default_field_elements: 0
-          inline:
-            su_news_featured_media: 0
-            su_news_quote: 0
-            title: 0
-            su_news_spotlight_filters: 0
-            view_node: 0
-          separator: ''
-          hide_empty: 0
-          pattern: card
-          pattern_mapping:
-            'views_row:su_news_featured_media':
-              destination: card_image
-              weight: 0
-              plugin: views_row
-              source: su_news_featured_media
-            'views_row:su_news_quote':
-              destination: card_body
-              weight: 1
-              plugin: views_row
-              source: su_news_quote
-            'views_row:title':
-              destination: card_headline
-              weight: 2
-              plugin: views_row
-              source: title
-            'views_row:su_news_spotlight_filters':
-              destination: card_body
-              weight: 3
-              plugin: views_row
-              source: su_news_spotlight_filters
-          pattern_variant: default
+          relationship: none
+          view_mode: stanford_card
       pager:
         type: infinite_scroll
         options:
