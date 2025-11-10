@@ -15,7 +15,7 @@ dependencies:
     - views_infinite_scroll
     - views_taxonomy_term_name_depth
 id: stanford_news_filtered
-label: 'News Spotlights - Filtered'
+label: 'News - Filtered'
 module: views
 description: ''
 tag: ''
@@ -329,11 +329,11 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  cards:
-    id: cards
-    display_title: 'Card Grid'
+  spotlight_cards:
+    id: spotlight_cards
+    display_title: 'Spotlights - Card Grid'
     display_plugin: viewfield_block
-    position: 1
+    position: 2
     display_options:
       display_extenders: {  }
       display_description: ''
@@ -388,9 +388,9 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  list_page:
-    id: list_page
-    display_title: 'Default List'
+  spotlight_list_page:
+    id: spotlight_list_page
+    display_title: 'Spotlights - Default List'
     display_plugin: viewfield_block
     position: 1
     display_options:
