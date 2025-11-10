@@ -48,7 +48,7 @@ class FilteredListsSpotlightsCest {
     $I->amOnPage("/paragraphs_edit/node/{$node->id()}/paragraphs/{$paragraph->id()}/edit");
     $I->canSee('View');
     $I->seeElement("//label[contains(text(), 'View')]");
-    $I->seeElement("//select/option[contains(text(), 'News Spotlights - Filtered')]");
+    $I->seeElement("//select/option[contains(text(), 'News - Filtered')]");
   }
 
   /**
@@ -80,7 +80,7 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'cards',
+        'display_id' => 'spotlight_cards',
       ],
     ], 'paragraph');
 
@@ -134,7 +134,7 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'cards',
+        'display_id' => 'spotlight_cards',
         'arguments' => $filter_term_1->label(),
       ],
     ], 'paragraph');
@@ -183,7 +183,7 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'cards',
+        'display_id' => 'spotlight_cards',
         'arguments' => $parent_term->label(),
       ],
     ], 'paragraph');
@@ -237,7 +237,7 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'cards',
+        'display_id' => 'spotlight_cards',
       ],
     ], 'paragraph');
 
@@ -289,7 +289,7 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'cards',
+        'display_id' => 'spotlight_cards',
       ],
     ], 'paragraph');
 
@@ -330,7 +330,7 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'list_page',
+        'display_id' => 'spotlight_list_page',
       ],
     ], 'paragraph');
 
