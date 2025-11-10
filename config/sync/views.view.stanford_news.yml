@@ -1800,8 +1800,21 @@ display:
         arguments: false
         filters: false
         filter_groups: false
+        header: false
       relationships: {  }
       display_description: ''
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: false
+          content: '<h2>More Spotlights</h2>'
+          tokenize: false
       display_extenders: {  }
       block_hide_empty: true
     cache_metadata:
@@ -2444,10 +2457,23 @@ display:
         arguments: false
         filters: false
         filter_groups: false
+        header: false
       relationships: {  }
       display_description: ''
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: false
+          content: '<h2>More Spotlights</h2>'
+          tokenize: false
       display_extenders: {  }
-      block_hide_empty: false
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
