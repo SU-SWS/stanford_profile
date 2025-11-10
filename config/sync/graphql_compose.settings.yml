@@ -281,6 +281,9 @@ entity_config:
       query_load_enabled: true
     cap_org_codes:
       enabled: false
+    course_filters:
+      enabled: true
+      query_load_enabled: true
     event_audience:
       enabled: true
       query_load_enabled: true
@@ -604,6 +607,8 @@ field_config:
         enabled: true
       su_course_code:
         enabled: true
+      su_course_filters:
+        enabled: true
       su_course_id:
         enabled: true
       su_course_instructors:
@@ -700,8 +705,6 @@ field_config:
       su_news_source:
         enabled: true
       su_news_spotlight_filters:
-        enabled: true
-      su_news_subtitle:
         enabled: true
       su_news_topics:
         enabled: true

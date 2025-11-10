@@ -167,7 +167,9 @@ layout:
               link: false
             third_party_settings:
               empty_fields:
-                handler: ''
+                handler: text
+                settings:
+                  empty_text: Spotlight
               field_formatter_class:
                 class: ''
               field_label:
@@ -185,32 +187,6 @@ layout:
       centered: centered-container
       columns: flex-12-of-12
     components:
-      074a19fc-39ac-40f6-95a7-b625dcc9e1b2:
-        uuid: 074a19fc-39ac-40f6-95a7-b625dcc9e1b2
-        region: main
-        configuration:
-          id: 'field_block:node:stanford_news:su_news_components'
-          label: Components
-          label_display: '0'
-          provider: layout_builder
-          context_mapping:
-            entity: layout_builder.entity
-            view_mode: view_mode
-          formatter:
-            type: layout_paragraphs
-            label: hidden
-            settings:
-              view_mode: default
-            third_party_settings:
-              empty_fields:
-                handler: ''
-              field_formatter_class:
-                class: su-news-components
-              field_label:
-                label_value: ''
-                label_tag: ''
-        weight: 1
-        additional: {  }
       5faf7033-e156-462c-a793-f543191db211:
         uuid: 5faf7033-e156-462c-a793-f543191db211
         region: main
@@ -237,6 +213,57 @@ layout:
                 label_value: ''
                 label_tag: ''
         weight: 0
+        additional: {  }
+      35a5e3ef-79bf-444c-8663-0f52e123108d:
+        uuid: 35a5e3ef-79bf-444c-8663-0f52e123108d
+        region: main
+        configuration:
+          id: 'field_block:node:stanford_news:body'
+          label: Body
+          label_display: '0'
+          provider: layout_builder
+          context_mapping:
+            entity: layout_builder.entity
+            view_mode: view_mode
+          formatter:
+            type: text_default
+            label: hidden
+            settings: {  }
+            third_party_settings:
+              empty_fields:
+                handler: ''
+              field_formatter_class:
+                class: ''
+              field_label:
+                label_value: ''
+                label_tag: ''
+        weight: 2
+        additional: {  }
+      074a19fc-39ac-40f6-95a7-b625dcc9e1b2:
+        uuid: 074a19fc-39ac-40f6-95a7-b625dcc9e1b2
+        region: main
+        configuration:
+          id: 'field_block:node:stanford_news:su_news_components'
+          label: Components
+          label_display: '0'
+          provider: layout_builder
+          context_mapping:
+            entity: layout_builder.entity
+            view_mode: view_mode
+          formatter:
+            type: layout_paragraphs
+            label: hidden
+            settings:
+              view_mode: default
+            third_party_settings:
+              empty_fields:
+                handler: ''
+              field_formatter_class:
+                class: su-news-components
+              field_label:
+                label_value: ''
+                label_tag: ''
+        weight: 3
         additional: {  }
     third_party_settings: {  }
   -

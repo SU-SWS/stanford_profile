@@ -1,20 +1,19 @@
-uuid: 8f861b79-5510-42b6-aed8-ed40af51fe42
+uuid: f85659a1-b2ae-4ddd-a311-2ecb45948715
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.su_news_subtitle
-field_name: su_news_subtitle
+    - taxonomy
+id: node.su_course_filters
+field_name: su_course_filters
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+  target_type: taxonomy_term
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false
