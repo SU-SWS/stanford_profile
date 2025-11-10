@@ -55,8 +55,10 @@ third_party_settings:
         - su_news_publishing_date
       dek:
         - su_news_dek
+        - su_news_quote
       news_topics:
         - su_news_topics
+        - su_news_spotlight_filters
       news_source:
         - su_news_source
       news_url:
@@ -64,7 +66,7 @@ third_party_settings:
     fields:
       'dynamic_token_field:node-news_content_url':
         plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 6
+        weight: 8
         label: hidden
         formatter: default
       node_title:
@@ -128,6 +130,26 @@ content:
         label_tag: ''
     weight: 2
     region: date
+  su_news_quote:
+    type: wrapper_class
+    label: hidden
+    settings:
+      class: su-news-dek__big-quote
+      tag: p
+      link: false
+      link_class: ''
+      summary: false
+      trim: 200
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 4
+    region: dek
   su_news_source:
     type: link
     label: hidden
@@ -140,8 +162,27 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    weight: 5
+    weight: 7
     region: news_source
+  su_news_spotlight_filters:
+    type: entity_reference_list_label_class
+    label: hidden
+    settings:
+      link: true
+      class: su-list-unstyled
+      list_type: ul
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: '3'
+    weight: 6
+    region: news_topics
   su_news_topics:
     type: entity_reference_list_label_class
     label: hidden
@@ -154,7 +195,7 @@ content:
         class: ''
       ds:
         ds_limit: '3'
-    weight: 4
+    weight: 5
     region: news_topics
 hidden:
   body: true

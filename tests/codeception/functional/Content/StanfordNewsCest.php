@@ -147,4 +147,5 @@ class StanfordNewsCest {
     $I->canSee('Quote / Big Text');
     $I->canSee('Spotlight Filters');
   }
+
 }

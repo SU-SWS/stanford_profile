@@ -266,3 +266,27 @@ layout:
         weight: 3
         additional: {  }
     third_party_settings: {  }
+  -
+    layout_id: jumpstart_ui_one_column
+    layout_settings:
+      label: 'Related Spotlights'
+      context_mapping: {  }
+      extra_classes: section-supporting-content
+      centered: centered-container
+      columns: default
+    components:
+      0bfd9815-83fb-4dce-bf30-8187881f5037:
+        uuid: 0bfd9815-83fb-4dce-bf30-8187881f5037
+        region: main
+        configuration:
+          id: 'views_block:stanford_news-related_spotlights_filtered'
+          label: 'More Spotlights'
+          label_display: '0'
+          provider: views
+          context_mapping: {  }
+          views_label: ''
+          items_per_page: null
+          exposed: {  }
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
