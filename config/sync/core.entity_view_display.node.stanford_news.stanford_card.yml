@@ -94,13 +94,13 @@ content:
     weight: 3
     region: dek
   su_news_featured_media:
-    type: media_responsive_image_formatter
+    type: media_image_formatter
     label: hidden
     settings:
       view_mode: default
       link: false
-      image_style: card_2_1
-      remove_alt: '1'
+      image_style: responsive_medium
+      remove_alt: true
     third_party_settings:
       empty_fields:
         handler: ''
