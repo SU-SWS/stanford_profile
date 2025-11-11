@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.su_media_episode
     - field.storage.node.su_media_season
     - field.storage.node.su_media_series
   module:
@@ -24,6 +23,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
+      title: 'Media Series'
       fields:
         su_media_series:
           id: su_media_series
@@ -256,12 +256,59 @@ display:
     display_plugin: autocompletion_callback
     position: 1
     display_options:
+      filters:
+        su_media_series_value:
+          id: su_media_series_value
+          table: node__su_media_series
+          field: su_media_series_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_media_series_value_op
+            label: Series
+            description: ''
+            use_operator: false
+            operator: su_media_series_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: series
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: callback_serializer
         options:
           grouping: {  }
           input_label: su_media_series
           input_link: su_media_series
+      defaults:
+        filters: false
+        filter_groups: false
       display_description: ''
       display_extenders: {  }
       path: api/media/series
@@ -270,6 +317,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -280,6 +328,7 @@ display:
     display_plugin: autocompletion_callback
     position: 1
     display_options:
+      title: 'Media Season'
       fields:
         su_media_season:
           id: su_media_season
@@ -429,6 +478,50 @@ display:
             label: ''
             field_identifier: ''
           exposed: false
+      filters:
+        su_media_season_value:
+          id: su_media_season_value
+          table: node__su_media_season
+          field: su_media_season_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_media_season_value_op
+            label: Season
+            description: ''
+            use_operator: false
+            operator: su_media_season_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: season
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: callback_serializer
         options:
@@ -436,8 +529,11 @@ display:
           input_label: su_media_season
           input_link: su_media_season
       defaults:
+        title: false
         fields: false
         sorts: false
+        filters: false
+        filter_groups: false
       display_description: ''
       display_extenders: {  }
       path: api/media/season
@@ -446,6 +542,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
