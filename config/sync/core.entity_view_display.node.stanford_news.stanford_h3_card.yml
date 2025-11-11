@@ -33,6 +33,7 @@ dependencies:
     - field_label
     - layout_builder
     - link
+    - smart_trim
     - stanford_media
     - user
 third_party_settings:
@@ -64,6 +65,11 @@ third_party_settings:
       news_url:
         - 'dynamic_token_field:node-news_content_url'
     fields:
+      'dynamic_token_field:node-news_content_url':
+        plugin_id: 'dynamic_token_field:node-news_content_url'
+        weight: 8
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -75,11 +81,6 @@ third_party_settings:
           link_target: ''
           wrapper: ''
           class: ''
-      'dynamic_token_field:node-news_content_url':
-        plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 8
-        label: hidden
-        formatter: default
   layout_builder:
     enabled: false
     allow_custom: false
@@ -131,15 +132,26 @@ content:
     weight: 2
     region: date
   su_news_quote:
-    type: wrapper_class
+    type: smart_trim
     label: hidden
     settings:
-      class: su-news-dek__big-quote
-      tag: p
-      link: false
-      link_class: ''
-      summary: false
-      trim: 200
+      trim_length: 100
+      trim_type: chars
+      trim_suffix: \u2026
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+        replace_tokens: false
     third_party_settings:
       empty_fields:
         handler: ''
