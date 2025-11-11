@@ -5,12 +5,21 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_indexing
     - field.storage.node.su_basic_page_type
+    - field.storage.node.su_course_filters
     - field.storage.node.su_course_subject
     - field.storage.node.su_event_audience
     - field.storage.node.su_event_date_time
     - field.storage.node.su_event_subject
     - field.storage.node.su_event_type
+    - field.storage.node.su_media_date
+    - field.storage.node.su_media_duration
+    - field.storage.node.su_media_episode
+    - field.storage.node.su_media_filters
+    - field.storage.node.su_media_season
+    - field.storage.node.su_media_series
+    - field.storage.node.su_news_spotlight_filters
     - field.storage.node.su_news_topics
+    - field.storage.node.su_opp_tags
     - field.storage.node.su_person_full_title
     - field.storage.node.su_person_short_title
     - field.storage.node.su_person_type_group
@@ -65,7 +74,7 @@ field_settings:
     property_path: custom_value
     type: string
     configuration:
-      value: '[node:su_event_dek|node:su_event_series_dek|node:su_news_dek]'
+      value: '[node:su_event_dek|node:su_media_dek|node:su_event_series_dek|node:su_news_dek]'
   email:
     label: Email
     property_path: custom_value
@@ -118,6 +127,38 @@ field_settings:
         - field.storage.node.su_event_type
       module:
         - taxonomy
+  filters_course:
+    label: 'Course Filters'
+    datasource_id: 'entity:node'
+    property_path: su_course_filters
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_course_filters
+  filters_media:
+    label: 'Media Filters'
+    datasource_id: 'entity:node'
+    property_path: su_media_filters
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_media_filters
+  filters_opportunities:
+    label: 'Opportunity Tags/Filters'
+    datasource_id: 'entity:node'
+    property_path: su_opp_tags
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_opp_tags
+  filters_spotlights:
+    label: 'Spotlight Filters'
+    datasource_id: 'entity:node'
+    property_path: su_news_spotlight_filters
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_news_spotlight_filters
   html:
     label: 'Rendered HTML output'
     property_path: rendered_item
@@ -138,6 +179,46 @@ field_settings:
           stanford_person: ':default'
           stanford_policy: ':default'
           stanford_publication: ':default'
+  media_date:
+    label: 'Published Date'
+    datasource_id: 'entity:node'
+    property_path: su_media_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.su_media_date
+  media_duration:
+    label: Duration
+    datasource_id: 'entity:node'
+    property_path: su_media_duration
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.su_media_duration
+  media_episode:
+    label: Episode
+    datasource_id: 'entity:node'
+    property_path: su_media_episode
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_media_episode
+  media_season:
+    label: Season
+    datasource_id: 'entity:node'
+    property_path: su_media_season
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_media_season
+  media_series:
+    label: Series
+    datasource_id: 'entity:node'
+    property_path: su_media_series
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_media_series
   news_type:
     label: 'News Types » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -185,7 +266,7 @@ field_settings:
     property_path: custom_value
     type: string
     configuration:
-      value: '[node:su_page_image:entity:field_media_image:large|node:su_page_banner:entity:su_banner_image:entity:field_media_image:large|node:su_person_photo:entity:field_media_image:large|node:su_news_featured_media:entity:field_media_image:large|node:su_news_banner:entity:field_media_image:large|node:su_event_ext_image]'
+      value: '[node:su_page_image:entity:field_media_image:large|node:su_media_image:entity:field_media_image:large|node:su_page_banner:entity:su_banner_image:entity:field_media_image:large|node:su_person_photo:entity:field_media_image:large|node:su_news_featured_media:entity:field_media_image:large|node:su_news_banner:entity:field_media_image:large|node:su_event_ext_image]'
   publication_type:
     label: 'Publication Types » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -315,7 +396,14 @@ processor_settings:
       - event_audience
       - event_subject
       - event_type
+      - filters_course
+      - filters_media
+      - filters_opportunities
+      - filters_spotlights
       - html
+      - media_episode
+      - media_season
+      - media_series
       - news_type
       - person_full_title
       - person_short_title
