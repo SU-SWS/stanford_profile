@@ -64,11 +64,6 @@ third_party_settings:
       news_url:
         - 'dynamic_token_field:node-news_content_url'
     fields:
-      'dynamic_token_field:node-news_content_url':
-        plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 8
-        label: hidden
-        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -80,6 +75,11 @@ third_party_settings:
           link_target: ''
           wrapper: ''
           class: ''
+      'dynamic_token_field:node-news_content_url':
+        plugin_id: 'dynamic_token_field:node-news_content_url'
+        weight: 8
+        label: hidden
+        formatter: default
   layout_builder:
     enabled: false
     allow_custom: false
@@ -97,13 +97,13 @@ content:
     weight: 3
     region: dek
   su_news_featured_media:
-    type: media_responsive_image_formatter
+    type: media_image_formatter
     label: hidden
     settings:
       view_mode: default
       link: false
-      image_style: card_2_1
-      remove_alt: '1'
+      image_style: responsive_medium
+      remove_alt: true
     third_party_settings:
       empty_fields:
         handler: ''
@@ -211,6 +211,4 @@ hidden:
   su_news_components: true
   su_news_hide_social: true
   su_news_person: true
-  su_news_quote: true
-  su_news_spotlight_filters: true
   su_shared_tags: true
