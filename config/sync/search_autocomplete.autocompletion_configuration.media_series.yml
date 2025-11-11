@@ -1,0 +1,21 @@
+uuid: 57602ac7-3f24-4c49-ac7e-3800ab0b0f3a
+langcode: en
+status: true
+dependencies: {  }
+id: media_series
+label: 'Media Series'
+selector: '#edit-su-media-series-0-value'
+minChar: 3
+autoSubmit: false
+autoRedirect: false
+maxSuggestions: 10
+noResultLabel: 'No results found for [search-phrase]. Click to perform full search.'
+noResultValue: '[search-phrase]'
+noResultLink: ''
+moreResultsLabel: 'View all results for [search-phrase].'
+moreResultsValue: '[search-phrase]'
+moreResultsLink: ''
+source: /api/media/series
+theme: minimal.css
+editable: true
+deletable: true

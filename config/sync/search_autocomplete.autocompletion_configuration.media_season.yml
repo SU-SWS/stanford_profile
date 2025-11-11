@@ -1,0 +1,21 @@
+uuid: 94982f31-d96e-40d7-ab09-22579fb5d219
+langcode: en
+status: true
+dependencies: {  }
+id: media_season
+label: 'Media Season'
+selector: '#edit-su-media-season-0-value'
+minChar: 3
+autoSubmit: false
+autoRedirect: false
+maxSuggestions: 10
+noResultLabel: 'No results found for [search-phrase]. Click to perform full search.'
+noResultValue: '[search-phrase]'
+noResultLink: ''
+moreResultsLabel: 'View all results for [search-phrase].'
+moreResultsValue: '[search-phrase]'
+moreResultsLink: ''
+source: /api/media/season
+theme: minimal.css
+editable: true
+deletable: true

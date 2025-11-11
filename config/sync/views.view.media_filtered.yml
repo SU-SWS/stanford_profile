@@ -202,13 +202,13 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: taxonomy_index_tid
-          operator: or
+          operator: and
           value: {  }
           group: 1
           exposed: true
           expose:
             operator_id: su_media_filters_target_id_op
-            label: Filter
+            label: 'Filter by'
             description: ''
             use_operator: false
             operator: su_media_filters_target_id_op
@@ -235,8 +235,8 @@ display:
             group_items: {  }
           reduce_duplicates: false
           vid: media_content_filters
-          type: textfield
-          hierarchy: false
+          type: select
+          hierarchy: true
           limit: true
           error_message: true
       style:
@@ -263,6 +263,7 @@ display:
           query_tags: {  }
           contextual_filters_or: false
       relationships: {  }
+      use_ajax: true
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -301,6 +302,7 @@ display:
           relationship: none
           view_mode: stanford_h3_card
       display_description: ''
+      block_hide_empty: 1
     cache_metadata:
       max-age: -1
       contexts:
@@ -319,6 +321,7 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
+      block_hide_empty: 1
     cache_metadata:
       max-age: -1
       contexts:
