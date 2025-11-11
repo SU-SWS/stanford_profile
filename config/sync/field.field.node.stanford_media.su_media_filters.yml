@@ -1,0 +1,29 @@
+uuid: a263d5d9-7233-435a-a35f-de1f4b5b82da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_media_filters
+    - node.type.stanford_media
+    - taxonomy.vocabulary.media_content_filters
+id: node.stanford_media.su_media_filters
+field_name: su_media_filters
+entity_type: node
+bundle: stanford_media
+label: 'Media Filters'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media_content_filters: media_content_filters
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
