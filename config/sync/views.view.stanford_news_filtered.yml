@@ -300,6 +300,13 @@ display:
           error_message: true
       style:
         type: html_list
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
       row:
         type: 'entity:node'
         options:
