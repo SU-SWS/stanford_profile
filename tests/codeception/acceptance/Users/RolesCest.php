@@ -1,12 +1,23 @@
 <?php
 
 use Codeception\Attribute as CodeceptionAttribute;
+use Codeception\Example;
+use Faker\Factory;
 
 /**
  * Class RolesCest.
  */
 #[CodeceptionAttribute\Group('users')]
 class RolesCest {
+
+  /**
+   * @var \Faker\Generator
+   */
+  protected $faker;
+
+  public function __construct() {
+    $this->faker = Factory::create();
+  }
 
   /**
    * Default roles should exist.
@@ -202,6 +213,73 @@ class RolesCest {
     $I->click('Save');
     $I->cantSee('error has been found');
     $I->canSee('Embeddable test embed has been created');
+  }
+
+  #[CodeceptionAttribute\Group('media-content')]
+  #[CodeceptionAttribute\Examples(role: 'contributor', access: FALSE)]
+  #[CodeceptionAttribute\Examples(role: 'site_manager', access: FALSE)]
+  #[CodeceptionAttribute\Examples(role: 'administrator', access: TRUE)]
+  public function testMediaContentCreateAccess(AcceptanceTester $I, Example $example) {
+    $I->logInWithRole($example['role']);
+    $I->amOnPage('/node/add/stanford_media');
+    if ($example['access']) {
+      $I->canSeeResponseCodeIs(200);
+    }
+    else {
+      $I->canSeeResponseCodeIs(403);
+    }
+  }
+
+  #[CodeceptionAttribute\Group('media-content')]
+  #[CodeceptionAttribute\Examples(role: 'contributor', access: TRUE)]
+  #[CodeceptionAttribute\Examples(role: 'site_manager', access: TRUE)]
+  public function testMediaContentEditAccess(AcceptanceTester $I, Example $example) {
+    $node = $I->createEntity([
+      'type' => 'stanford_media',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+    $I->logInWithRole($example['role']);
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+
+    if ($example['access']) {
+      $I->canSeeResponseCodeIs(200);
+      $I->canSeeInField('Title', $node->label());
+    }
+    else {
+      $I->canSeeResponseCodeIs(403);
+    }
+  }
+
+  #[CodeceptionAttribute\Group('media-content')]
+  #[CodeceptionAttribute\Examples(role: 'contributor', access: FALSE)]
+  #[CodeceptionAttribute\Examples(role: 'site_manager', access: FALSE)]
+  public function testMediaTaxonomyAccess(AcceptanceTester $I, Example $example) {
+    $node = $I->createEntity([
+      'type' => 'stanford_media',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+    $I->logInWithRole($example['role']);
+    $I->amOnPage('/admin/structure/taxonomy');
+
+    if ($example['access']) {
+      $I->canSee('Media Types');
+      $I->canSee('Media Content Filters');
+    }
+    else {
+      $I->cantSee('Media Types');
+      $I->cantSee('Media Content Filters');
+    }
+
+    foreach (['media_content_types', 'media_content_filters'] as $type) {
+      $I->amOnPage("/admin/structure/taxonomy/manage/$type/overview");
+
+      if ($example['access']) {
+        $I->canSeeLink('Add term', '#taxonomy');
+      }
+      else {
+        $I->cantSeeLink('Add term', '#taxonomy');
+      }
+    }
   }
 
   /**
