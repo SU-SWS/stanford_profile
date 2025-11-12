@@ -435,4 +435,27 @@ class NewsCest {
     $I->seeNumberOfElements('.related-spotlights article', 3);
   }
 
+  /**
+   * Test spotlight label displayed correctly on the news spotlight variant page.
+   */
+
+  #[CodeceptionAttribute\Group('news_variant')]
+
+  #[CodeceptionAttribute\Group('spotlight_page')]
+  public function testSpotlightCreationAndDisplay(AcceptanceTester $I) {
+    // Create a spotlight node.
+    $spotlight = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'status' => 1,
+    ]);
+
+    // Visit the spotlight page.
+    $I->amOnPage($spotlight->toUrl()->toString());
+
+    // Verify the spotlight label exists
+    $I->canSee('Spotlight', '.su-spotlight-label p');
+  }
+
 }
