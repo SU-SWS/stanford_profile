@@ -114,11 +114,11 @@ display:
           text_input_required_format: stanford_html
           bef:
             general:
-              autosubmit: false
+              autosubmit: true
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
               autosubmit_textfield_minimum_length: 3
-              autosubmit_hide: false
+              autosubmit_hide: true
               input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
@@ -128,7 +128,7 @@ display:
               su_media_filters_target_id:
                 plugin_id: taxonomy_label_hierarchy_checkbox
                 advanced:
-                  placeholder_text: ''
+                  sort_options: false
                   rewrite:
                     filter_rewrite_values: ''
                     filter_rewrite_values_key: false
