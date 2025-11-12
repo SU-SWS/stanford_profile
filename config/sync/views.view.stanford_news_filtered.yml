@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.stanford_h3_card
-    - core.entity_view_mode.node.teaser
     - node.type.stanford_news
     - taxonomy.vocabulary.stanford_news_spotlight_filters
   module:
@@ -474,7 +473,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: teaser
+          view_mode: stanford_h3_card
     cache_metadata:
       max-age: -1
       contexts:
