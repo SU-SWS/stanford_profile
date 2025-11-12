@@ -189,7 +189,7 @@ class ListsCest {
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_news');
     $title = $this->faker->words(3, TRUE);
-    $I->fillField('Headline', $title);
+    $I->fillField('Headline / Name', $title);
     $I->click('Save');
 
     $node = $this->getNodeWithList($I, [
