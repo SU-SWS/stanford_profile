@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.stanford_h3_card
+    - core.entity_view_mode.node.teaser
     - node.type.stanford_news
     - taxonomy.vocabulary.stanford_news_spotlight_filters
   module:
@@ -383,8 +384,24 @@ display:
       defaults:
         exposed_form: false
         title: false
+        style: false
+        row: false
       block_hide_empty: 1
       title: 'Filtered Spotlights Card Grid'
+      style:
+        type: html_list
+        options:
+          row_class: ''
+          default_row_class: 1
+          uses_fields: 0
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: stanford_h3_card
     cache_metadata:
       max-age: -1
       contexts:
@@ -441,7 +458,23 @@ display:
                   is_secondary: 0
       defaults:
         exposed_form: false
+        style: false
+        row: false
       block_hide_empty: 1
+      style:
+        type: html_list
+        options:
+          row_class: ''
+          default_row_class: 1
+          uses_fields: 0
+          type: ul
+          wrapper_class: ''
+          class: su-list-unstyled
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
     cache_metadata:
       max-age: -1
       contexts:
