@@ -324,7 +324,7 @@ class NewsCest {
     ];
 
     // Fill in required title field
-    $I->fillField('Headline', $this->faker->words(3, TRUE));
+    $I->fillField('Headline / Name', $this->faker->words(3, TRUE));
 
     // Verify fields are initially empty using canSeeInField()
     $I->canSeeInField('Dek', '');
