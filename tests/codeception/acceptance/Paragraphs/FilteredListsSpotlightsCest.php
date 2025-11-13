@@ -312,7 +312,7 @@ class FilteredListsSpotlightsCest {
   /**
    * Test list page display.
    */
-  public function testListPageDisplay(AcceptanceTester $I) {
+  protected function testListPageDisplay(AcceptanceTester $I) {
     $filter_term = $I->createEntity([
       'vid' => 'stanford_news_spotlight_filters',
       'name' => $this->faker->words(2, TRUE),

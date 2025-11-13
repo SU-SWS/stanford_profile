@@ -111,7 +111,7 @@ jobs:
     steps:
       - run: echo 'Passed'
   something_failed:
-    name: All Tests Pass
+    name: Something Failed
     if: failure()
     needs: [phpunit, codeception]
     runs-on: ubuntu-latest
