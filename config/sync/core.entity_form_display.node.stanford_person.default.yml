@@ -48,7 +48,6 @@ dependencies:
     - menu_link
     - metatag
     - scheduler
-    - stanford_fields
     - stanford_intranet
     - text
 third_party_settings:
@@ -125,6 +124,8 @@ third_party_settings:
     group_taxonomy:
       children:
         - su_person_type_group
+        - su_person_tags
+        - su_shared_tags
       label: Taxonomy
       region: content
       parent_name: ''
@@ -142,7 +143,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 5
+    weight: 14
     region: content
     settings:
       rows: 9
@@ -169,7 +170,7 @@ content:
     third_party_settings: {  }
   stanford_intranet__access:
     type: entity_access
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -190,7 +191,7 @@ content:
     third_party_settings: {  }
   su_person_affiliations:
     type: link_default
-    weight: 9
+    weight: 10
     region: content
     settings:
       placeholder_url: ''
@@ -198,7 +199,7 @@ content:
     third_party_settings: {  }
   su_person_components:
     type: layout_paragraphs
-    weight: 7
+    weight: 15
     region: content
     settings:
       view_mode: default
@@ -212,7 +213,7 @@ content:
         add_another: ''
   su_person_education:
     type: string_textfield
-    weight: 8
+    weight: 9
     region: content
     settings:
       size: 60
@@ -220,7 +221,7 @@ content:
     third_party_settings: {  }
   su_person_email:
     type: email_default
-    weight: 12
+    weight: 16
     region: content
     settings:
       placeholder: ''
@@ -228,7 +229,7 @@ content:
     third_party_settings: {  }
   su_person_fax:
     type: string_textfield
-    weight: 11
+    weight: 15
     region: content
     settings:
       size: 60
@@ -260,7 +261,7 @@ content:
     third_party_settings: {  }
   su_person_links:
     type: link_default
-    weight: 10
+    weight: 11
     region: content
     settings:
       placeholder_url: ''
@@ -268,7 +269,7 @@ content:
     third_party_settings: {  }
   su_person_location_address:
     type: text_textarea
-    weight: 15
+    weight: 19
     region: content
     settings:
       rows: 5
@@ -276,7 +277,7 @@ content:
     third_party_settings: {  }
   su_person_location_name:
     type: string_textfield
-    weight: 14
+    weight: 18
     region: content
     settings:
       size: 60
@@ -284,7 +285,7 @@ content:
     third_party_settings: {  }
   su_person_mail_code:
     type: string_textfield
-    weight: 13
+    weight: 17
     region: content
     settings:
       size: 60
@@ -292,7 +293,7 @@ content:
     third_party_settings: {  }
   su_person_map_url:
     type: link_default
-    weight: 16
+    weight: 20
     region: content
     settings:
       placeholder_url: ''
@@ -300,7 +301,7 @@ content:
     third_party_settings: {  }
   su_person_mobile_phone:
     type: string_textfield
-    weight: 10
+    weight: 14
     region: content
     settings:
       size: 60
@@ -308,14 +309,14 @@ content:
     third_party_settings: {  }
   su_person_photo:
     type: media_library_widget
-    weight: 4
+    weight: 13
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   su_person_profile_link:
     type: link_default
-    weight: 7
+    weight: 8
     region: content
     settings:
       placeholder_url: ''
@@ -354,14 +355,21 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   su_person_tags:
-    type: taxonomy_label_hierarchy
-    weight: 99
+    type: cshs
+    weight: 18
     region: content
-    settings: {  }
+    settings:
+      save_lineage: false
+      force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   su_person_telephone:
     type: string_textfield
-    weight: 9
+    weight: 13
     region: content
     settings:
       size: 60
@@ -382,7 +390,7 @@ content:
     third_party_settings: {  }
   su_shared_tags:
     type: cshs
-    weight: 9
+    weight: 19
     region: content
     settings:
       save_lineage: false
