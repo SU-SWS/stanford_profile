@@ -1,0 +1,19 @@
+uuid: 53205584-0807-4db1-9370-d592b8cff282
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.su_import_lookup
+    - media.type.google_form
+id: media.google_form.su_import_lookup
+field_name: su_import_lookup
+entity_type: media
+bundle: google_form
+label: 'Imported Lookup'
+description: 'Administrative field to use for lookup when migrating content. The name of the media may be a string, so this can be any value.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

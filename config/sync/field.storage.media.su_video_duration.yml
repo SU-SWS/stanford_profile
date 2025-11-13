@@ -1,0 +1,20 @@
+uuid: 52053130-ebf4-42df-8348-e43eb1c201ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.su_video_duration
+field_name: su_video_duration
+entity_type: media
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

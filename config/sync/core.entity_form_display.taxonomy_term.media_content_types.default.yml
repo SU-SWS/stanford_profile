@@ -1,0 +1,31 @@
+uuid: 54c47d9d-8ebe-4cd3-be67-5c51c0298e43
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.media_content_types
+id: taxonomy_term.media_content_types.default
+targetEntityType: taxonomy_term
+bundle: media_content_types
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true
+  publish_on: true
+  unpublish_on: true

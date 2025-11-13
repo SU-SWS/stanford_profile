@@ -711,3 +711,22 @@ function stanford_basic_preprocess_paragraph__stanford_spacer(&$variables) {
 function stanford_basic_preprocess_page__front(&$variables) {
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_links__entity__printable(&$variables) {
+  if (isset($variables['links']['print']['link'])) {
+    $variables['links']['print']['link']['#attributes']['rel'] = 'nofollow';
+
+    $node_id = $variables['links']['print']['link']['#url']->getRouteParameters()['entity'];
+    $node_bundle = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->load($node_id)
+      ?->bundle();
+
+    if ($node_bundle == 'stanford_media') {
+      $variables['links']['print']['link']['#title'] = t('Read Transcript');
+    }
+  }
+}

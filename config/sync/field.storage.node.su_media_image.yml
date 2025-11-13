@@ -1,0 +1,20 @@
+uuid: ad3900fe-496d-4e4c-b4d1-9c8ba5b6e186
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+id: node.su_media_image
+field_name: su_media_image
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -48,6 +48,19 @@
                     "type": "zip"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "cure53/dompurify",
+                "version": "3.3.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/cure53/DOMPurify.git",
+                    "type": "git",
+                    "reference": "3.3.0"
+                }
+            }
         }
     ],
     "require": {
@@ -56,6 +69,7 @@
         "citation-style-language/locales": "1.0.0",
         "citation-style-language/styles-distribution": "1.0.0",
         "composer/installers": ">=1.2",
+        "cure53/dompurify": "^3.0",
         "drupal/address": "^2.0",
         "drupal/admin_toolbar": "^3.1",
         "drupal/allowed_formats": "^3.0",
@@ -67,6 +81,7 @@
         "drupal/ckeditor5_icons": "^1.1",
         "drupal/color_field": "^3.0",
         "drupal/colorbox": "^2.0",
+        "drupal/colorbox_media_video": "^2.0",
         "drupal/components": "^3.0",
         "drupal/conditional_fields": "^4.0",
         "drupal/config_ignore": "^3.0",
@@ -91,7 +106,8 @@
         "drupal/fast_404_generator": "^1.0",
         "drupal/field_encrypt": "^3.0 || ^4.0",
         "drupal/field_formatter_class": "^1.5",
-        "drupal/field_group": "^3.0@rc",
+        "drupal/field_formatter_range": "^1.7",
+        "drupal/field_group": "^4.0",
         "drupal/field_label": "^1.4",
         "drupal/field_permissions": "^1.0@RC",
         "drupal/field_validation": "^3.0",
@@ -147,11 +163,13 @@
         "drupal/scheduler": "^2.0",
         "drupal/search_api": "^1.19",
         "drupal/search_api_algolia": "^3.0@beta",
+        "drupal/search_autocomplete": "^4.0",
         "drupal/seckit": "^2.0",
         "drupal/shield": "^1.8",
         "drupal/shs": "^2.0@RC",
         "drupal/simple_block": "^1.7",
         "drupal/simple_oauth": "^6.0",
+        "drupal/single_content_sync": "^1.4",
         "drupal/smart_date": "^4.0",
         "drupal/smart_trim": "^2.0",
         "drupal/stage_file_proxy": "^3.1",
@@ -163,6 +181,7 @@
         "drupal/ultimate_cron": "^2.0@beta",
         "drupal/view_unpublished": "^1.0",
         "drupal/viewfield": "^3.0@beta",
+        "drupal/views_argument_token": "^2.0",
         "drupal/views_block_filter_block": "^2.0@beta",
         "drupal/views_bulk_edit": "^3.0",
         "drupal/views_contextual_filters_or": "^1.3",

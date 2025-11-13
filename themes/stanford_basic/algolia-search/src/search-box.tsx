@@ -18,7 +18,6 @@ const SearchBox = ({federatedSearch}: { federatedSearch?: boolean }) => {
         e.preventDefault();
         e.stopPropagation();
         refine(inputRef.current?.value || "");
-        window.history.replaceState(null, '', `?key=${inputRef.current?.value}`)
       }}
       onReset={e => {
         e.preventDefault();

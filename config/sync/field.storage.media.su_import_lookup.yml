@@ -1,0 +1,25 @@
+uuid: de1bdae6-03ea-4e5e-92fd-de54fbca5953
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - media
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: media.su_import_lookup
+field_name: su_import_lookup
+entity_type: media
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
