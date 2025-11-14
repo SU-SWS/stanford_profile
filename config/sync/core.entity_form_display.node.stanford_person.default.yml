@@ -48,6 +48,7 @@ dependencies:
     - menu_link
     - metatag
     - scheduler
+    - stanford_fields
     - stanford_intranet
     - text
 third_party_settings:
@@ -355,17 +356,10 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   su_person_tags:
-    type: cshs
+    type: taxonomy_label_hierarchy
     weight: 18
     region: content
-    settings:
-      save_lineage: false
-      force_deepest: false
-      parent: ''
-      level_labels: ''
-      hierarchy_depth: 0
-      required_depth: 0
-      none_label: '- Please select -'
+    settings: {  }
     third_party_settings: {  }
   su_person_telephone:
     type: string_textfield

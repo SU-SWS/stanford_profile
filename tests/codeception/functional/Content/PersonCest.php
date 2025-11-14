@@ -81,7 +81,7 @@ class PersonCest {
       'title' => $this->faker->words(3, TRUE),
       'su_person_first_name' => $this->faker->firstName(),
       'su_person_last_name' => $this->faker->lastName(),
-      'su_opp_tags' => [
+      'su_person_tags' => [
         ['target_id' => $child_1_1->id()],
         ['target_id' => $child_2_1->id()],
       ],
