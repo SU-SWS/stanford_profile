@@ -7,6 +7,7 @@ dependencies:
     - node.type.stanford_person
     - taxonomy.vocabulary.person_filters
   module:
+    - better_exposed_filters
     - node
     - stanford_fields
     - taxonomy
@@ -114,7 +115,7 @@ display:
             button_text: 'Load More People'
             automatically_load_content: false
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Apply
           reset_button: false
@@ -123,6 +124,32 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: stanford_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: true
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              su_person_tags_target_id:
+                plugin_id: taxonomy_label_hierarchy_checkbox
+                advanced:
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
       access:
         type: perm
         options:
@@ -262,7 +289,7 @@ display:
             operator: su_person_tags_target_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: su_person_tags_target_id
+            identifier: tags
             required: false
             remember: false
             multiple: true
@@ -283,8 +310,8 @@ display:
             group_items: {  }
           reduce_duplicates: false
           vid: person_filters
-          type: textfield
-          hierarchy: false
+          type: select
+          hierarchy: true
           limit: true
           error_message: true
       style:

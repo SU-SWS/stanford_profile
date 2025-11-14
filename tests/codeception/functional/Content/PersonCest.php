@@ -65,6 +65,59 @@ class PersonCest {
     $I->canSee($node->label(), 'h1');
   }
 
+
+  #[CodeceptionAttribute\Group('people-filters')]
+  public function testFilteringPeople(FunctionalTester $I) {
+    [
+      $parent_1,
+      $parent_2,
+      $child_1_1,
+      $child_2_1,
+      $child_1_2,
+      $child_2_2,
+    ] = $this->buildTaxonomyTerms($I);
+    $person = $I->createEntity([
+      'type' => 'stanford_person',
+      'title' => $this->faker->words(3, TRUE),
+      'su_person_first_name' => $this->faker->firstName(),
+      'su_person_last_name' => $this->faker->lastName(),
+      'su_opp_tags' => [
+        ['target_id' => $child_1_1->id()],
+        ['target_id' => $child_2_1->id()],
+      ],
+    ]);
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_filtered_lists',
+      'su_list_headline' => $this->faker->words(3, TRUE),
+      'su_filtered_list_view' => [
+        'target_id' => 'people_filtered',
+        'display_id' => 'grid_list_all',
+        'arguments' => '',
+        'items_to_display' => NULL,
+      ],
+    ], 'paragraph');
+    $page = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ]);
+    $I->amOnPage($page->toUrl()->toString());
+    $I->canSee($person->label());
+
+    $I->waitForText($parent_1->label(), 2, 'fieldset');
+
+    $I->checkOption($child_1_2->label());
+    $I->waitForAjaxToFinish();
+    $I->cantSee($person->label());
+
+    $I->checkOption($child_1_1->label());
+    $I->waitForAjaxToFinish();
+    $I->canSee($person->label());
+  }
+
   protected function buildTaxonomyTerms(FunctionalTester $I) {
     $parent_1 = $I->createEntity([
       'vid' => 'person_filters',
