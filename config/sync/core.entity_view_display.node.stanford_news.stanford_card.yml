@@ -57,6 +57,7 @@ third_party_settings:
         - su_news_quote
       news_topics:
         - su_news_topics
+        - su_news_spotlight_filters
       news_source:
         - su_news_source
       news_url:
@@ -64,9 +65,14 @@ third_party_settings:
     fields:
       'dynamic_token_field:node-news_content_url':
         plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 7
+        weight: 8
         label: hidden
         formatter: default
+      node_post_date:
+        plugin_id: node_post_date
+        weight: 2
+        label: hidden
+        formatter: ds_post_date_stanford_month_date_year
       node_title:
         plugin_id: node_title
         weight: 1
@@ -76,11 +82,6 @@ third_party_settings:
           link: false
           wrapper: ''
           class: ''
-      node_post_date:
-        plugin_id: node_post_date
-        weight: 2
-        label: hidden
-        formatter: ds_post_date_stanford_month_date_year
 id: node.stanford_news.stanford_card
 targetEntityType: node
 bundle: stanford_news
@@ -155,8 +156,31 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    weight: 6
+    weight: 7
     region: news_source
+  su_news_spotlight_filters:
+    type: entity_reference_list_label_class
+    label: hidden
+    settings:
+      link: false
+      class: su-list-unstyled
+      list_type: ul
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_formatter_range:
+        order: 0
+        limit: 0
+        offset: 0
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: ''
+    weight: 6
+    region: news_topics
   su_news_topics:
     type: entity_reference_list_label_class
     label: hidden
@@ -186,5 +210,4 @@ hidden:
   su_news_hide_social: true
   su_news_person: true
   su_news_publishing_date: true
-  su_news_spotlight_filters: true
   su_shared_tags: true
