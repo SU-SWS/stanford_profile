@@ -55,7 +55,6 @@ jobs:
     name: Codeception
     needs: [shard_matrix]
     strategy:
-      fail-fast: false
       matrix:
         suite: [ acceptance, functional ]
         shard: ${{fromJSON(needs.shard_matrix.outputs.matrix)}}
@@ -105,7 +104,17 @@ jobs:
           path: /var/www/html/artifacts
   all-tests-pass:
     name: All Tests Pass
+    if: success()
     needs: [phpunit, codeception]
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Passed'
+  something_failed:
+    name: Something Failed
+    if: failure()
+    needs: [phpunit, codeception]
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "something failed"
+          exit 1

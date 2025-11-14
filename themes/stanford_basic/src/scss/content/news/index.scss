@@ -1,0 +1,22 @@
+@charset 'UTF-8';
+
+// First import decanter as no markup.
+@import 'decanter/core/src/scss/decanter-no-markup';
+
+// Then we override the variables, mixins, and functions.
+@import '../../config/index',
+'../../utilities/index';
+
+
+.su-news-vertical-teaser {
+  img {
+    aspect-ratio: 2/1;
+    object-fit: cover;
+  }
+
+  .news-spotlight & {
+    img {
+      aspect-ratio: 1/1;
+    }
+  }
+}

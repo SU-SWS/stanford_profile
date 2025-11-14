@@ -20,10 +20,13 @@ default_value_callback: ''
 settings:
   force_default: false
   allowed_views:
+    media_filtered: media_filtered
+    stanford_news_filtered: stanford_news_filtered
     stanford_opportunities_filtered: stanford_opportunities_filtered
     stanford_shared_tags: '0'
     stanford_basic_pages: '0'
     su_block_edit_links: '0'
+    cap_orgs: '0'
     change_logs: '0'
     content: '0'
     block_content: '0'
@@ -39,10 +42,10 @@ settings:
     locked_content: '0'
     manage_content: '0'
     media: '0'
+    media_content: '0'
     media_library: '0'
     stanford_news: '0'
     stanford_opportunities: '0'
-    duplicate_of_opportunities: '0'
     stanford_person: '0'
     policies: '0'
     stanford_publications: '0'
@@ -55,6 +58,8 @@ settings:
     viewfield_block: viewfield_block
     block: '0'
     default: '0'
+    entity_reference: '0'
+    feed: '0'
     graphql: '0'
     page: '0'
   handler: 'default:view'

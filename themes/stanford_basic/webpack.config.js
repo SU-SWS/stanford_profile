@@ -30,6 +30,7 @@ var webpackConfig = {
     "theme":                "/src/scss/theme/index.scss",
     "user_login":           "/src/scss/admin/user_login.scss",
     "content/policy":       "/src/scss/content/policy/index.scss",
+    "content/news":       "/src/scss/content/news/index.scss",
   },
   output: {
     path: config.distFolder,

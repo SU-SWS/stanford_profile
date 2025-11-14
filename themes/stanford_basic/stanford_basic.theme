@@ -5,6 +5,7 @@
  * Preprocess functions for Stanford Basic.
  */
 
+use Drupal\node\NodeInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\Cache\CacheableMetadata;
@@ -37,6 +38,18 @@ function stanford_basic_library_info_alter(&$libraries, $extension) {
  * Implements hook_preprocess_HOOK().
  */
 function stanford_basic_preprocess_ds_entity_view(&$variables) {
+  if (isset($variables['content']['#node']) && $variables['content']['#node'] instanceof NodeInterface) {
+    $node = $variables['content']['#node'];
+    $variables['#attached']['library'][] = 'stanford_basic/content.' . $node->bundle();
+
+    if (
+      $node->bundle() == 'stanford_news' &&
+      $node->get('layout_selection')->getString() == 'news_spotlight'
+    ) {
+      $variables['attributes']['class'][] = 'news-spotlight';
+    }
+  }
+
   if (isset($variables['content']['#paragraph'])) {
     // Backwards compatibility for the old paragraph type.
     $class = Html::cleanCssIdentifier('ptype-' . $variables['content']['#paragraph']->bundle());
@@ -697,4 +710,23 @@ function stanford_basic_preprocess_paragraph__stanford_spacer(&$variables) {
  */
 function stanford_basic_preprocess_page__front(&$variables) {
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function stanford_basic_preprocess_links__entity__printable(&$variables) {
+  if (isset($variables['links']['print']['link'])) {
+    $variables['links']['print']['link']['#attributes']['rel'] = 'nofollow';
+
+    $node_id = $variables['links']['print']['link']['#url']->getRouteParameters()['entity'];
+    $node_bundle = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->load($node_id)
+      ?->bundle();
+
+    if ($node_bundle == 'stanford_media') {
+      $variables['links']['print']['link']['#title'] = t('Read Transcript');
+    }
+  }
 }

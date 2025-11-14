@@ -1,0 +1,24 @@
+uuid: 4050bee5-a972-4967-8a06-7f9a3f7c3573
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_media_transcript
+    - filter.format.stanford_minimal_html
+    - node.type.stanford_media
+  module:
+    - text
+id: node.stanford_media.su_media_transcript
+field_name: su_media_transcript
+entity_type: node
+bundle: stanford_media
+label: 'Full Transcript'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - stanford_minimal_html
+field_type: text_long

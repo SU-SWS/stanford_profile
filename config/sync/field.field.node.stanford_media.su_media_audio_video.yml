@@ -1,0 +1,31 @@
+uuid: 1b28682f-7525-4dba-b96b-7416dfc089d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_media_audio_video
+    - media.type.embeddable
+    - media.type.video
+    - node.type.stanford_media
+id: node.stanford_media.su_media_audio_video
+field_name: su_media_audio_video
+entity_type: node
+bundle: stanford_media
+label: Audio/Video
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      embeddable: embeddable
+      video: video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: embeddable
+field_type: entity_reference

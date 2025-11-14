@@ -33,6 +33,7 @@ dependencies:
     - field_label
     - layout_builder
     - link
+    - smart_trim
     - stanford_media
     - user
 third_party_settings:
@@ -97,13 +98,13 @@ content:
     weight: 3
     region: dek
   su_news_featured_media:
-    type: media_responsive_image_formatter
+    type: media_image_formatter
     label: hidden
     settings:
       view_mode: default
       link: false
-      image_style: card_2_1
-      remove_alt: '1'
+      image_style: responsive_medium
+      remove_alt: true
     third_party_settings:
       empty_fields:
         handler: ''
@@ -131,15 +132,26 @@ content:
     weight: 2
     region: date
   su_news_quote:
-    type: wrapper_class
+    type: smart_trim
     label: hidden
     settings:
-      class: su-news-dek__big-quote
-      tag: p
-      link: false
-      link_class: ''
-      summary: false
-      trim: 200
+      trim_length: 100
+      trim_type: chars
+      trim_suffix: \u2026
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+        replace_tokens: false
     third_party_settings:
       empty_fields:
         handler: ''
@@ -168,7 +180,7 @@ content:
     type: entity_reference_list_label_class
     label: hidden
     settings:
-      link: true
+      link: false
       class: su-list-unstyled
       list_type: ul
     third_party_settings:
@@ -211,6 +223,4 @@ hidden:
   su_news_components: true
   su_news_hide_social: true
   su_news_person: true
-  su_news_quote: true
-  su_news_spotlight_filters: true
   su_shared_tags: true

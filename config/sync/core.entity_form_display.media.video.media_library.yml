@@ -5,7 +5,11 @@ dependencies:
   config:
     - core.entity_form_mode.media.media_library
     - field.field.media.video.field_media_oembed_video
+    - field.field.media.video.su_import_lookup
     - field.field.media.video.su_media_category
+    - field.field.media.video.su_media_description
+    - field.field.media.video.su_video_duration
+    - field.field.media.video.su_video_subtitles
     - media.type.video
   module:
     - cshs
@@ -49,5 +53,10 @@ hidden:
   publish_on: true
   scheduler_settings: true
   status: true
+  su_import_lookup: true
+  su_media_description: true
+  su_video_duration: true
+  su_video_subtitles: true
+  su_video_transcript: true
   uid: true
   unpublish_on: true

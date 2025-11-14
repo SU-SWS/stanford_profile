@@ -120,8 +120,6 @@ const CustomHits = ({federatedSearch, ...props}: {
 }
 
 const Search = () => {
-  const currentUrl = new URL(window.location.href);
-  const initialSearch = currentUrl.searchParams.get('key');
   const searchIndex = window.drupalSettings?.stanfordAlgolia.index || process.env.ALGOLIA_INDEX;
   const federatedSearch = !!window.drupalSettings?.stanfordAlgolia.federatedSearch;
 
@@ -130,8 +128,19 @@ const Search = () => {
       searchClient={searchClient}
       indexName={searchIndex}
       insights={true}
-      initialUiState={{
-        [searchIndex]: {query: initialSearch},
+      routing={{
+        stateMapping: {
+          stateToRoute(uiState): Record<string, string> {
+            const indexUiState = uiState[searchIndex]
+            if (indexUiState.query) return {key: indexUiState.query}
+            return {}
+          },
+          routeToState(routeState: Record<string, string>) {
+            return {
+              [searchIndex]: {query: routeState.key},
+            }
+          },
+        },
       }}
     >
       <AlgoliaSearchContainer>

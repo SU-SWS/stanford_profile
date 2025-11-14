@@ -1,0 +1,23 @@
+uuid: ad2dd2b3-c08a-4a7b-b5fe-94a3e5ca1901
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: HQ-i-h4kbN0bZmhCG5COIA5U_JHo23p6SzMiMpJf4Hw
+id: search_form_users
+label: 'Search Form (users tab)'
+selector: ''
+minChar: 3
+autoSubmit: true
+autoRedirect: true
+maxSuggestions: 10
+noResultLabel: 'No users found for [search-phrase]. Click to perform full search.'
+noResultValue: '[search-phrase]'
+noResultLink: ''
+moreResultsLabel: 'View all users for [search-phrase].'
+moreResultsValue: '[search-phrase]'
+moreResultsLink: ''
+source: 'autocompletion_callbacks_users::users_autocompletion_callback'
+theme: basic.css
+editable: true
+deletable: false

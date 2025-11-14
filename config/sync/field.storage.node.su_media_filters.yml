@@ -1,0 +1,20 @@
+uuid: 08cee2c1-3b25-4aa5-9bb4-0bdc50c6ac61
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.su_media_filters
+field_name: su_media_filters
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

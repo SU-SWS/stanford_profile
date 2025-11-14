@@ -137,9 +137,9 @@ class StanfordNewsCest {
     $I->canSeeInField('Variant', 'Spotlight');
     $I->canSeeInField('Headline', $spotlight_news->label());
     $I->canSeeInField('Quote / Big Text', $spotlight_news->get('su_news_quote')->value);
+    $I->canSee('Body');
 
-    // Body, Shared Tags, Social Share Icons, and Related Person should be hidden
-    $I->cantSee('Body');
+    // Shared Tags, Social Share Icons, and Related Person should be hidden
     $I->cantSee('Shared Tags');
     $I->cantSee('Hide Social Share Icons');
     $I->cantSee('Related Person');

@@ -1,0 +1,23 @@
+uuid: 37aa4331-66d7-4b54-8979-95398a716247
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.su_video_duration
+    - media.type.video
+id: media.video.su_video_duration
+field_name: su_video_duration
+entity_type: media
+bundle: video
+label: Duration
+description: 'Total length of the video in seconds.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -14,6 +14,7 @@ dependencies:
     - node.type.stanford_course
     - node.type.stanford_event
     - node.type.stanford_event_series
+    - node.type.stanford_media
     - node.type.stanford_news
     - node.type.stanford_opportunity
     - node.type.stanford_page
@@ -110,6 +111,7 @@ permissions:
   - 'delete any stanford_course content'
   - 'delete any stanford_event content'
   - 'delete any stanford_event_series content'
+  - 'delete any stanford_media content'
   - 'delete any stanford_news content'
   - 'delete any stanford_opportunity content'
   - 'delete any stanford_page content'
@@ -127,6 +129,7 @@ permissions:
   - 'delete own stanford_event content'
   - 'delete own stanford_event_series content'
   - 'delete own stanford_gallery_images media'
+  - 'delete own stanford_media content'
   - 'delete own stanford_news content'
   - 'delete own stanford_opportunity content'
   - 'delete own stanford_page content'
@@ -138,6 +141,7 @@ permissions:
   - 'delete stanford_course revisions'
   - 'delete stanford_event revisions'
   - 'delete stanford_event_series revisions'
+  - 'delete stanford_media revisions'
   - 'delete stanford_news revisions'
   - 'delete stanford_opportunity revisions'
   - 'delete stanford_page revisions'
@@ -163,6 +167,7 @@ permissions:
   - 'edit any stanford_event content'
   - 'edit any stanford_event_series content'
   - 'edit any stanford_gallery_images media'
+  - 'edit any stanford_media content'
   - 'edit any stanford_news content'
   - 'edit any stanford_opportunity content'
   - 'edit any stanford_page content'
@@ -182,6 +187,7 @@ permissions:
   - 'edit own stanford_event content'
   - 'edit own stanford_event_series content'
   - 'edit own stanford_gallery_images media'
+  - 'edit own stanford_media content'
   - 'edit own stanford_news content'
   - 'edit own stanford_opportunity content'
   - 'edit own stanford_page content'
@@ -207,6 +213,7 @@ permissions:
   - 'revert stanford_course revisions'
   - 'revert stanford_event revisions'
   - 'revert stanford_event_series revisions'
+  - 'revert stanford_media revisions'
   - 'revert stanford_news revisions'
   - 'revert stanford_opportunity revisions'
   - 'revert stanford_page revisions'
@@ -242,6 +249,7 @@ permissions:
   - 'view stanford_course revisions'
   - 'view stanford_event revisions'
   - 'view stanford_event_series revisions'
+  - 'view stanford_media revisions'
   - 'view stanford_news revisions'
   - 'view stanford_opportunity revisions'
   - 'view stanford_page revisions'

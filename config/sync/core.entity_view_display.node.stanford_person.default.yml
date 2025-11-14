@@ -39,6 +39,7 @@ dependencies:
     - field.field.node.stanford_person.su_person_type_group
     - field.field.node.stanford_person.su_shared_tags
     - node.type.stanford_person
+    - views.view.media_content
     - views.view.stanford_news
     - views.view.stanford_publications
   module:
@@ -664,6 +665,20 @@ third_party_settings:
               items_per_page: null
               exposed: {  }
             weight: 1
+            additional: {  }
+          a6833952-b33a-4444-aaf7-74bb207ca8aa:
+            uuid: a6833952-b33a-4444-aaf7-74bb207ca8aa
+            region: main
+            configuration:
+              id: 'views_block:media_content-person_list'
+              label: Media
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: Media
+              items_per_page: null
+              exposed: {  }
+            weight: 2
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

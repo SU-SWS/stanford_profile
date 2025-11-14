@@ -46,32 +46,6 @@ layout:
                 label_tag: ''
         weight: 0
         additional: {  }
-      59fa3d22-3c8f-403d-914b-590ada330bc3:
-        uuid: 59fa3d22-3c8f-403d-914b-590ada330bc3
-        region: left
-        configuration:
-          id: 'field_block:node:stanford_news:su_news_subtitle'
-          label: Subtitle
-          label_display: '0'
-          provider: layout_builder
-          context_mapping:
-            entity: layout_builder.entity
-            view_mode: view_mode
-          formatter:
-            type: string
-            label: hidden
-            settings:
-              link_to_entity: false
-            third_party_settings:
-              empty_fields:
-                handler: ''
-              field_formatter_class:
-                class: ''
-              field_label:
-                label_value: ''
-                label_tag: ''
-        weight: 10
-        additional: {  }
       a882d0a7-3cbf-49b9-a5e9-1907b4756679:
         uuid: a882d0a7-3cbf-49b9-a5e9-1907b4756679
         region: left
@@ -147,34 +121,17 @@ layout:
               field_label:
                 label_value: ''
                 label_tag: ''
-        weight: 9
+        weight: 10
         additional: {  }
-      b9778f05-c8e7-4f90-8456-3d0125d36538:
-        uuid: b9778f05-c8e7-4f90-8456-3d0125d36538
+      50cb47d0-dcb4-4d3e-95e8-7c04f42f10da:
+        uuid: 50cb47d0-dcb4-4d3e-95e8-7c04f42f10da
         region: left
         configuration:
-          id: 'field_block:node:stanford_news:layout_selection'
-          label: Layout
+          id: 'simple_block:su_spotlight_label'
+          label: 'Spotlight label'
           label_display: '0'
-          provider: layout_builder
-          context_mapping:
-            entity: layout_builder.entity
-            view_mode: view_mode
-          formatter:
-            type: entity_reference_label
-            label: hidden
-            settings:
-              link: false
-            third_party_settings:
-              empty_fields:
-                handler: text
-                settings:
-                  empty_text: Spotlight
-              field_formatter_class:
-                class: ''
-              field_label:
-                label_value: ''
-                label_tag: ''
+          provider: simple_block
+          context_mapping: {  }
         weight: 8
         additional: {  }
     third_party_settings: {  }
