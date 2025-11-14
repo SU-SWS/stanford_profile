@@ -55,6 +55,7 @@ jobs:
     name: Codeception
     needs: [shard_matrix]
     strategy:
+      fail-fast: false
       matrix:
         suite: [ acceptance, functional ]
         shard: ${{fromJSON(needs.shard_matrix.outputs.matrix)}}
