@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.stanford_course.body
     - field.field.node.stanford_course.su_course_academic_year
     - field.field.node.stanford_course.su_course_code
+    - field.field.node.stanford_course.su_course_filters
     - field.field.node.stanford_course.su_course_id
     - field.field.node.stanford_course.su_course_instructors
     - field.field.node.stanford_course.su_course_link
@@ -13,6 +14,7 @@ dependencies:
     - field.field.node.stanford_course.su_course_section_units
     - field.field.node.stanford_course.su_course_subject
     - field.field.node.stanford_course.su_course_tags
+    - field.field.node.stanford_course.su_imported
     - field.field.node.stanford_course.su_metatags
     - field.field.node.stanford_course.su_shared_tags
     - node.type.stanford_course
@@ -42,27 +44,6 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_course:su_course_code'
               label: 'Course Code'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-            weight: 3
-            additional: {  }
-          9c974fa8-29c9-40aa-8678-90be7d7f5982:
-            uuid: 9c974fa8-29c9-40aa-8678-90be7d7f5982
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_course:title'
-              label: Title
               label_display: '0'
               provider: layout_builder
               context_mapping:
@@ -197,6 +178,32 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          9c974fa8-29c9-40aa-8678-90be7d7f5982:
+            uuid: 9c974fa8-29c9-40aa-8678-90be7d7f5982
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_course:title'
+              label: Title
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_title_heading
+                label: hidden
+                settings:
+                  tag: h1
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
             weight: 2
             additional: {  }
         third_party_settings: {  }
