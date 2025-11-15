@@ -7,7 +7,7 @@ use Faker\Factory;
 use FunctionalTester;
 
 /**
- * Test Person content type.
+ * Test course content type.
  */
 #[CodeceptionAttribute\Group('courses')]
 class CoursesCest {
@@ -41,9 +41,10 @@ class CoursesCest {
       'title' => $this->faker->words(3, TRUE),
     ]);
 
-    $I->logInWithRole('contributor');
+    $I->logInWithRole('site_manager');
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->fillField('Course Link', $this->faker->url());
 
     $I->canSee($parent_1->label(), 'legend');
     $I->canSee($parent_2->label(), 'legend');
@@ -66,8 +67,8 @@ class CoursesCest {
     $I->canSee($node->label(), 'h1');
   }
 
-  #[CodeceptionAttribute\Group('people-filters')]
-  public function testFilteringPeople(FunctionalTester $I) {
+  #[CodeceptionAttribute\Group('course-filters')]
+  public function testFilteringCourse(FunctionalTester $I) {
     [
       $parent_1,
       $parent_2,
@@ -76,7 +77,7 @@ class CoursesCest {
       $child_1_2,
       $child_2_2,
     ] = $this->buildTaxonomyTerms($I);
-    $person = $I->createEntity([
+    $course = $I->createEntity([
       'type' => 'stanford_course',
       'title' => $this->faker->words(3, TRUE),
       'su_course_filters' => [
@@ -88,7 +89,7 @@ class CoursesCest {
       'type' => 'stanford_filtered_lists',
       'su_list_headline' => $this->faker->words(3, TRUE),
       'su_filtered_list_view' => [
-        'target_id' => 'course_filtered',
+        'target_id' => 'courses_filtered',
         'display_id' => 'list',
         'arguments' => '',
         'items_to_display' => NULL,
@@ -103,17 +104,17 @@ class CoursesCest {
       ],
     ]);
     $I->amOnPage($page->toUrl()->toString());
-    $I->canSee($person->label());
+    $I->canSee($course->label());
 
     $I->waitForText($parent_1->label(), 2, 'fieldset');
 
     $I->checkOption($child_1_2->label());
     $I->waitForAjaxToFinish();
-    $I->cantSee($person->label());
+    $I->cantSee($course->label());
 
     $I->checkOption($child_1_1->label());
     $I->waitForAjaxToFinish();
-    $I->canSee($person->label());
+    $I->canSee($course->label());
   }
 
   protected function buildTaxonomyTerms(FunctionalTester $I) {
