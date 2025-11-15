@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.stanford_course.body
     - field.field.node.stanford_course.su_course_academic_year
     - field.field.node.stanford_course.su_course_code
+    - field.field.node.stanford_course.su_course_filters
     - field.field.node.stanford_course.su_course_id
     - field.field.node.stanford_course.su_course_instructors
     - field.field.node.stanford_course.su_course_link
@@ -14,13 +15,21 @@ dependencies:
     - field.field.node.stanford_course.su_course_section_units
     - field.field.node.stanford_course.su_course_subject
     - field.field.node.stanford_course.su_course_tags
+    - field.field.node.stanford_course.su_imported
     - field.field.node.stanford_course.su_metatags
     - field.field.node.stanford_course.su_shared_tags
     - node.type.stanford_course
   module:
+    - ds
+    - element_class_formatter
+    - empty_fields
+    - field_formatter_class
+    - field_formatter_range
+    - field_label
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - smart_trim
     - user
 third_party_settings:
   layout_builder:
@@ -35,6 +44,42 @@ third_party_settings:
       restricted_categories: {  }
   layout_library:
     enable: false
+  ds:
+    layout:
+      id: pattern_course_list
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: h3_header
+    regions:
+      course_list_code:
+        - su_course_subject
+        - su_course_code
+      course_list_academic_year:
+        - su_course_academic_year
+      course_list_quarters:
+        - su_course_quarters
+      course_list_title:
+        - node_title
+      course_list_instructors:
+        - su_course_instructors
+      course_list_description:
+        - body
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 4
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          link_target: ''
+          wrapper: ''
+          class: ''
 _core:
   default_config_hash: 3q3wp63fQ-h1XTJTAHRzKP7uFPch4KfSFHFXWC50bIw
 id: node.stanford_course.teaser
@@ -42,45 +87,119 @@ targetEntityType: node
 bundle: stanford_course
 mode: teaser
 content:
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
-    region: content
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 50
+      trim_type: words
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: ignore
+      trim_options:
+        text: true
+        trim_zero: false
+        replace_tokens: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 6
+    region: course_list_description
   su_course_academic_year:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 107
-    region: main
-  su_course_instructors:
+    weight: 2
+    region: course_list_academic_year
+  su_course_code:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 106
-    region: main
-  su_course_tags:
-    type: entity_reference_label
-    label: above
+    weight: 1
+    region: course_list_code
+  su_course_instructors:
+    type: string_list_class
+    label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
-    weight: 104
-    region: main
+      class: su-list-unstyled
+      list_type: ul
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_formatter_range:
+        order: 0
+        limit: 0
+        offset: 0
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: ''
+    weight: 5
+    region: course_list_instructors
+  su_course_quarters:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_formatter_range:
+        order: 0
+        limit: 0
+        offset: 0
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: ''
+    weight: 3
+    region: course_list_quarters
+  su_course_subject:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 0
+    region: course_list_code
 hidden:
-  body: true
+  links: true
   search_api_excerpt: true
-  su_course_code: true
   su_course_filters: true
   su_course_id: true
   su_course_link: true
-  su_course_quarters: true
   su_course_section_units: true
-  su_course_subject: true
+  su_course_tags: true
   su_imported: true
   su_metatags: true
   su_shared_tags: true
