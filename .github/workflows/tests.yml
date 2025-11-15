@@ -105,17 +105,9 @@ jobs:
           path: /var/www/html/artifacts
   all-tests-pass:
     name: All Tests Pass
-    if: success()
+    if: success() || ((!cancelled() || contains(needs.*.result, 'cancelled')) && fromjson('throw'))
     needs: [phpunit, codeception]
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Passed'
-  something_failed:
-    name: Something Failed
-    if: failure()
-    needs: [phpunit, codeception]
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo "something failed"
-          exit 1
+
