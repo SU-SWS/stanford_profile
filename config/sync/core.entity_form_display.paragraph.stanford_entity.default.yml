@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.stanford_entity.su_entity_description
     - field.field.paragraph.stanford_entity.su_entity_headline
     - field.field.paragraph.stanford_entity.su_entity_item
+    - field.field.paragraph.stanford_entity.su_paragraph_display_mode
     - paragraphs.paragraphs_type.stanford_entity
   module:
     - link
@@ -56,6 +57,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  su_paragraph_display_mode:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

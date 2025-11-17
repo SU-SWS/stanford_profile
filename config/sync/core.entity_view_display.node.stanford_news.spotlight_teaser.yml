@@ -1,0 +1,234 @@
+uuid: 17b0189b-010f-42fb-ada5-63bc50e11ea9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.spotlight_teaser
+    - field.field.node.stanford_news.body
+    - field.field.node.stanford_news.layout_builder__layout
+    - field.field.node.stanford_news.layout_selection
+    - field.field.node.stanford_news.stanford_intranet__access
+    - field.field.node.stanford_news.su_metatags
+    - field.field.node.stanford_news.su_news_banner
+    - field.field.node.stanford_news.su_news_banner_media_caption
+    - field.field.node.stanford_news.su_news_byline
+    - field.field.node.stanford_news.su_news_components
+    - field.field.node.stanford_news.su_news_dek
+    - field.field.node.stanford_news.su_news_featured_media
+    - field.field.node.stanford_news.su_news_hide_social
+    - field.field.node.stanford_news.su_news_person
+    - field.field.node.stanford_news.su_news_publishing_date
+    - field.field.node.stanford_news.su_news_quote
+    - field.field.node.stanford_news.su_news_source
+    - field.field.node.stanford_news.su_news_spotlight_filters
+    - field.field.node.stanford_news.su_news_topics
+    - field.field.node.stanford_news.su_shared_tags
+    - node.type.stanford_news
+  module:
+    - colorbox
+    - ds
+    - element_class_formatter
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - metatag
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories:
+      - 'Basic Page Type Lists (Views)'
+      - Book
+      - 'Changelog (Views)'
+      - 'Chaos Tools'
+      - 'Config Pages'
+      - 'Content fields'
+      - 'Custom block types'
+      - 'Custom blocks'
+      - Devel
+      - 'Devel PHP'
+      - Editoria11y
+      - 'Events Lists (Views)'
+      - Forms
+      - Help
+      - 'Inline blocks'
+      - 'Jumpstart UI'
+      - 'Lists (Views)'
+      - Menus
+      - 'News Lists (Views)'
+      - 'Opportunities (Views)'
+      - 'PDB Components'
+      - 'People Lists (Views)'
+      - 'Policy (Views)'
+      - Printable
+      - 'Publication (Views)'
+      - 'Simple block'
+      - 'Stanford News'
+      - 'Stanford Profile Helper'
+      - 'Stanford SAML Authentication'
+      - System
+      - 'Taxonomy Terms (Views)'
+      - User
+      - Views
+      - core
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - jumpstart_ui_one_column
+        - jumpstart_ui_two_column
+        - jumpstart_ui_three_column
+        - stanford_news_byline
+      denylisted_blocks:
+        'Content fields':
+          - 'field_block:node:stanford_news:uid'
+          - 'field_block:node:stanford_news:created'
+          - 'field_block:node:stanford_news:type'
+          - 'field_block:node:stanford_news:revision_default'
+          - 'field_block:node:stanford_news:default_langcode'
+          - 'field_block:node:stanford_news:nid'
+          - 'field_block:node:stanford_news:langcode'
+          - 'extra_field_block:node:stanford_news:links'
+          - 'field_block:node:stanford_news:menu_link'
+          - 'field_block:node:stanford_news:promote'
+          - 'field_block:node:stanford_news:status'
+          - 'field_block:node:stanford_news:rh_action'
+          - 'field_block:node:stanford_news:rh_redirect_fallback_action'
+          - 'field_block:node:stanford_news:rh_redirect'
+          - 'field_block:node:stanford_news:rh_redirect_response'
+          - 'field_block:node:stanford_news:revision_timestamp'
+          - 'field_block:node:stanford_news:vid'
+          - 'field_block:node:stanford_news:revision_log'
+          - 'field_block:node:stanford_news:revision_translation_affected'
+          - 'field_block:node:stanford_news:revision_uid'
+          - 'extra_field_block:node:stanford_news:search_api_excerpt'
+          - 'field_block:node:stanford_news:sticky'
+          - 'field_block:node:stanford_news:unpublish_on'
+      allowlisted_blocks:
+        Menus:
+          - 'menu_block:main'
+        System:
+          - system_breadcrumb_block
+        core:
+          - page_title_block
+      restricted_categories:
+        - Book
+        - 'Changelog (Views)'
+        - 'Chaos Tools'
+        - 'Config Pages'
+        - Devel
+        - 'Devel PHP'
+        - Editoria11y
+        - Forms
+        - Help
+        - 'Lists (Views)'
+        - 'Opportunities (Views)'
+        - 'PDB Components'
+        - 'Policy (Views)'
+        - Printable
+        - 'Simple block'
+        - 'Stanford Profile Helper'
+        - 'Stanford SAML Authentication'
+        - 'Taxonomy Terms (Views)'
+        - User
+        - Views
+  layout_library:
+    enable: true
+  ds:
+    layout:
+      id: layout_paragraphs_1_column
+      library: stanford_layout_paragraphs/one_column
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+        bg_color: dcecef
+        top_padding: ''
+        bottom_padding: ''
+        bottom_margin: ''
+    regions:
+      main:
+        - body
+        - su_metatags
+        - su_news_banner
+        - su_news_banner_media_caption
+        - su_news_byline
+id: node.stanford_news.spotlight_teaser
+targetEntityType: node
+bundle: stanford_news
+mode: spotlight_teaser
+content:
+  body:
+    type: wrapper_class
+    label: above
+    settings:
+      class: ''
+      tag: div
+      link: false
+      link_class: ''
+      summary: false
+      trim: 200
+    third_party_settings: {  }
+    weight: 0
+    region: main
+  su_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: main
+  su_news_banner:
+    type: colorbox_view_modes
+    label: above
+    settings:
+      colorbox_view_mode: ''
+      colorbox_modal_view_mode: ''
+      colorbox_gallery: post
+      colorbox_gallery_custom: ''
+    third_party_settings: {  }
+    weight: 2
+    region: main
+  su_news_banner_media_caption:
+    type: wrapper_class
+    label: above
+    settings:
+      class: ''
+      tag: div
+      link: false
+      link_class: ''
+      summary: false
+      trim: 200
+    third_party_settings: {  }
+    weight: 3
+    region: main
+  su_news_byline:
+    type: wrapper_class
+    label: above
+    settings:
+      class: ''
+      tag: div
+      link: false
+      link_class: ''
+      summary: false
+      trim: 200
+    third_party_settings: {  }
+    weight: 4
+    region: main
+hidden:
+  layout_builder__layout: true
+  layout_selection: true
+  links: true
+  search_api_excerpt: true
+  stanford_intranet__access: true
+  su_news_components: true
+  su_news_dek: true
+  su_news_featured_media: true
+  su_news_hide_social: true
+  su_news_person: true
+  su_news_publishing_date: true
+  su_news_quote: true
+  su_news_source: true
+  su_news_spotlight_filters: true
+  su_news_topics: true
+  su_shared_tags: true

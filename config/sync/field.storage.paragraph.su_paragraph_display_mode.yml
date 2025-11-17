@@ -1,0 +1,19 @@
+uuid: ec28ce83-8570-4616-ad2f-3732a84dd05c
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_display
+    - paragraphs
+id: paragraph.su_paragraph_display_mode
+field_name: su_paragraph_display_mode
+entity_type: paragraph
+type: entity_reference_display
+settings: {  }
+module: entity_reference_display
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

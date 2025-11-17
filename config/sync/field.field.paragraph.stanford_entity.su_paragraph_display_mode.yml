@@ -1,0 +1,39 @@
+uuid: 6c2e51a1-b15c-4f6c-9712-cd1b963fc4db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_paragraph_display_mode
+    - paragraphs.paragraphs_type.stanford_entity
+  module:
+    - entity_reference_display
+id: paragraph.stanford_entity.su_paragraph_display_mode
+field_name: su_paragraph_display_mode
+entity_type: paragraph
+bundle: stanford_entity
+label: paragraph_display_mode
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  exclude:
+    stanford_h3_card: stanford_h3_card
+    stanford_h3_card_plain: stanford_h3_card_plain
+    stanford_image_large: stanford_image_large
+    large_modal: large_modal
+    stanford_image_large_square: stanford_image_large_square
+    media_library: media_library
+    stanford_image_medium: stanford_image_medium
+    medium_modal: medium_modal
+    stanford_image_medium_square: stanford_image_medium_square
+    print: print
+    printable: printable
+    revision: revision
+    diff: diff
+    search_indexing: search_indexing
+    site_settings_header: site_settings_header
+    spotlight_teaser: spotlight_teaser
+  negate: true
+field_type: entity_reference_display
