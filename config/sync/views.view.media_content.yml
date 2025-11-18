@@ -1044,6 +1044,128 @@ display:
           hierarchy: true
           limit: true
           error_message: true
+        su_media_person_target_id:
+          id: su_media_person_target_id
+          table: node__su_media_person
+          field: su_media_person_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_media_person_target_id_op
+            label: 'Related Person'
+            description: ''
+            use_operator: false
+            operator: su_media_person_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: person
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        su_media_season_value:
+          id: su_media_season_value
+          table: node__su_media_season
+          field: su_media_season_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_media_season_value_op
+            label: Season
+            description: ''
+            use_operator: false
+            operator: su_media_season_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: season
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        su_media_series_value:
+          id: su_media_series_value
+          table: node__su_media_series
+          field: su_media_series_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_media_series_value_op
+            label: Series
+            description: ''
+            use_operator: false
+            operator: su_media_series_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: series
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:

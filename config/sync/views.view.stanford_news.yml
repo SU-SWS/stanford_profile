@@ -1132,6 +1132,45 @@ display:
           hierarchy: true
           limit: true
           error_message: true
+        layout_selection_target_id:
+          id: layout_selection_target_id
+          table: node__layout_selection
+          field: layout_selection_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: layout_selection_target_id_op
+            label: Layout
+            description: ''
+            use_operator: false
+            operator: layout_selection_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: layout
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
