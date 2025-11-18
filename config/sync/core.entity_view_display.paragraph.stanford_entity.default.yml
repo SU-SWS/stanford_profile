@@ -7,11 +7,17 @@ dependencies:
     - field.field.paragraph.stanford_entity.su_entity_description
     - field.field.paragraph.stanford_entity.su_entity_headline
     - field.field.paragraph.stanford_entity.su_entity_item
+    - field.field.paragraph.stanford_entity.su_entity_news
+    - field.field.paragraph.stanford_entity.su_entity_news_display
     - paragraphs.paragraphs_type.stanford_entity
   module:
     - ds
     - element_class_formatter
+    - empty_fields
+    - entity_reference_display
     - field_formatter_class
+    - field_formatter_range
+    - field_label
     - stanford_fields
     - text
 id: paragraph.stanford_entity.default
@@ -32,7 +38,7 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    weight: 3
+    weight: 4
     region: content
   su_entity_description:
     type: text_default
@@ -67,5 +73,27 @@ content:
         ds_limit: ''
     weight: 2
     region: content
+  su_entity_news:
+    type: entity_reference_display_default
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      display_field: ''
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: su-margin-bottom-5
+      field_formatter_range:
+        order: 0
+        limit: 0
+        offset: 0
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 3
+    region: content
 hidden:
   search_api_excerpt: true
+  su_entity_news_display: true

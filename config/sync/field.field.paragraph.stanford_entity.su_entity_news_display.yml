@@ -1,0 +1,25 @@
+uuid: 7feccdc1-220a-49b2-83dd-2f340112b153
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.su_entity_news_display
+    - paragraphs.paragraphs_type.stanford_entity
+  module:
+    - entity_reference_display
+id: paragraph.stanford_entity.su_entity_news_display
+field_name: su_entity_news_display
+entity_type: paragraph
+bundle: stanford_entity
+label: 'News Display'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  exclude:
+    stanford_card: stanford_card
+    stanford_h3_card: stanford_h3_card
+  negate: true
+field_type: entity_reference_display
