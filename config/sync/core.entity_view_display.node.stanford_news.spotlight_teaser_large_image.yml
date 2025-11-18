@@ -1,0 +1,179 @@
+uuid: 1221dfea-9b09-49ba-863a-5cc5f6d4fc36
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.spotlight_teaser_large_image
+    - field.field.node.stanford_news.body
+    - field.field.node.stanford_news.layout_builder__layout
+    - field.field.node.stanford_news.layout_selection
+    - field.field.node.stanford_news.stanford_intranet__access
+    - field.field.node.stanford_news.su_metatags
+    - field.field.node.stanford_news.su_news_banner
+    - field.field.node.stanford_news.su_news_banner_media_caption
+    - field.field.node.stanford_news.su_news_byline
+    - field.field.node.stanford_news.su_news_components
+    - field.field.node.stanford_news.su_news_dek
+    - field.field.node.stanford_news.su_news_featured_media
+    - field.field.node.stanford_news.su_news_hide_social
+    - field.field.node.stanford_news.su_news_person
+    - field.field.node.stanford_news.su_news_publishing_date
+    - field.field.node.stanford_news.su_news_quote
+    - field.field.node.stanford_news.su_news_source
+    - field.field.node.stanford_news.su_news_spotlight_filters
+    - field.field.node.stanford_news.su_news_topics
+    - field.field.node.stanford_news.su_shared_tags
+    - node.type.stanford_news
+  module:
+    - datetime
+    - ds
+    - element_class_formatter
+    - empty_fields
+    - field_formatter_class
+    - field_formatter_range
+    - field_label
+    - layout_builder
+    - smart_trim
+    - stanford_media
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_spotlight-teaser
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+          variant: large_image
+    regions:
+      headline:
+        - node_title
+      quote:
+        - su_news_quote
+      media:
+        - su_news_featured_media
+      filters:
+        - su_news_spotlight_filters
+      date:
+        - su_news_publishing_date
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': 'su-link su-card__link'
+          link_target: ''
+          wrapper: h3
+          class: ''
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.stanford_news.spotlight_teaser_large_image
+targetEntityType: node
+bundle: stanford_news
+mode: spotlight_teaser_large_image
+content:
+  su_news_featured_media:
+    type: media_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      image_style: large_square
+      remove_alt: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 2
+    region: spotlight_teaser_media
+  su_news_publishing_date:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F d, Y'
+    third_party_settings: {  }
+    weight: 4
+    region: date
+  su_news_quote:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 100
+      trim_type: chars
+      trim_suffix: \u2026
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+        replace_tokens: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 1
+    region: spotlight_teaser_quote
+  su_news_spotlight_filters:
+    type: entity_reference_list_label_class
+    label: hidden
+    settings:
+      link: false
+      class: su-list-unstyled
+      list_type: ul
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_formatter_range:
+        order: 0
+        limit: 0
+        offset: 0
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: '3'
+    weight: 3
+    region: spotlight_filters
+hidden:
+  body: true
+  layout_builder__layout: true
+  layout_selection: true
+  links: true
+  search_api_excerpt: true
+  stanford_intranet__access: true
+  su_metatags: true
+  su_news_banner: true
+  su_news_banner_media_caption: true
+  su_news_byline: true
+  su_news_components: true
+  su_news_dek: true
+  su_news_hide_social: true
+  su_news_person: true
+  su_news_source: true
+  su_news_topics: true
+  su_shared_tags: true
