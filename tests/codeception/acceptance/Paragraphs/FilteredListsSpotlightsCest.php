@@ -80,7 +80,54 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'spotlight_cards',
+        'display_id' => 'spotlight_cards_large',
+      ],
+    ], 'paragraph');
+
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->text(30),
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($spotlight_news->label(), 'h3');
+    $I->cantSee($regular_news->label());
+  }
+
+  /**
+   * Test news spotlights filtered view with small image display mode.
+   */
+  public function testNewsSpotlightsFilteredViewSmallImageDisplay(AcceptanceTester $I) {
+    // Create spotlight filter terms.
+    $filter_term = $I->createEntity([
+      'vid' => 'stanford_news_spotlight_filters',
+      'name' => $this->faker->words(3, TRUE),
+    ], 'taxonomy_term');
+
+    // Create a news item with spotlight layout and filter.
+    $spotlight_news = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => 'Spotlight News Small ' . $this->faker->words(3, TRUE),
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => $filter_term->id(),
+    ]);
+
+    // Create a regular news item (should not appear).
+    $regular_news = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => 'Regular News ' . $this->faker->words(3, TRUE),
+    ]);
+
+    // Create filtered list paragraph with stanford_news_filtered view using small image display.
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_filtered_lists',
+      'su_filtered_list_view' => [
+        'target_id' => 'stanford_news_filtered',
+        'display_id' => 'spotlight_cards_small',
       ],
     ], 'paragraph');
 
@@ -134,7 +181,7 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'spotlight_cards',
+        'display_id' => 'spotlight_cards_large',
         'arguments' => $filter_term_1->label(),
       ],
     ], 'paragraph');
@@ -183,7 +230,7 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'spotlight_cards',
+        'display_id' => 'spotlight_cards_large',
         'arguments' => $parent_term->label(),
       ],
     ], 'paragraph');
@@ -237,7 +284,7 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'spotlight_cards',
+        'display_id' => 'spotlight_cards_large',
       ],
     ], 'paragraph');
 
@@ -289,7 +336,7 @@ class FilteredListsSpotlightsCest {
       'type' => 'stanford_filtered_lists',
       'su_filtered_list_view' => [
         'target_id' => 'stanford_news_filtered',
-        'display_id' => 'spotlight_cards',
+        'display_id' => 'spotlight_cards_large',
       ],
     ], 'paragraph');
 
@@ -345,6 +392,96 @@ class FilteredListsSpotlightsCest {
 
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($spotlight_news->label(), 'h3');
+  }
+
+  /**
+   * Test stanford_news view spotlight displays with large image variant.
+   *
+   * Tests the spotlight_card_large_all_results and spotlight_card_large_no_date
+   * displays from the stanford_news view using the stanford_lists paragraph.
+   */
+  public function testStanfordNewsViewSpotlightLargeDisplays(AcceptanceTester $I) {
+    // Create spotlight filter term.
+    $filter_term = $I->createEntity([
+      'vid' => 'stanford_news_spotlight_filters',
+      'name' => $this->faker->words(2, TRUE),
+    ], 'taxonomy_term');
+
+    // Create a spotlight news item.
+    $spotlight_news = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => 'Large Image Spotlight ' . $this->faker->words(3, TRUE),
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => $filter_term->id(),
+      'su_news_publishing_date' => date('Y-m-d'),
+    ]);
+
+    // Test spotlight_card_large_all_results display.
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_lists',
+      'su_list_headline' => $this->faker->words(3, TRUE),
+      'su_list_view' => [
+        'target_id' => 'stanford_news',
+        'display_id' => 'spotlight_card_large_all_results',
+      ],
+    ], 'paragraph');
+
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->text(30),
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($spotlight_news->label());
+  }
+
+  /**
+   * Test stanford_news view spotlight displays with small image variant.
+   *
+   * Tests the spotlight_card_small_all_results and spotlight_card_small_no_date
+   * displays from the stanford_news view using the stanford_lists paragraph.
+   */
+  public function testStanfordNewsViewSpotlightSmallDisplays(AcceptanceTester $I) {
+    // Create spotlight filter term.
+    $filter_term = $I->createEntity([
+      'vid' => 'stanford_news_spotlight_filters',
+      'name' => $this->faker->words(2, TRUE),
+    ], 'taxonomy_term');
+
+    // Create a spotlight news item.
+    $spotlight_news = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => 'Small Image Spotlight ' . $this->faker->words(3, TRUE),
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => $filter_term->id(),
+      'su_news_publishing_date' => date('Y-m-d'),
+    ]);
+
+    // Test spotlight_card_small_all_results display.
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_lists',
+      'su_list_headline' => $this->faker->words(3, TRUE),
+      'su_list_view' => [
+        'target_id' => 'stanford_news',
+        'display_id' => 'spotlight_card_small_all_results',
+      ],
+    ], 'paragraph');
+
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->text(30),
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ]);
+
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($spotlight_news->label());
   }
 
 }

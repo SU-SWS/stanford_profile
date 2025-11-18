@@ -1,0 +1,19 @@
+uuid: 8fdc31f9-184f-48fa-bfff-071da0be251b
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_display
+    - paragraphs
+id: paragraph.su_entity_news_display
+field_name: su_entity_news_display
+entity_type: paragraph
+type: entity_reference_display
+settings: {  }
+module: entity_reference_display
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
