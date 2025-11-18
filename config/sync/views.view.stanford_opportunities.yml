@@ -17,7 +17,6 @@ dependencies:
     - taxonomy.vocabulary.opportunity_type
     - taxonomy.vocabulary.opportunity_units
   module:
-    - datetime
     - element_class_formatter
     - graphql_compose_views
     - link
@@ -993,20 +992,6 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       sorts:
-        su_opp_start_date_value:
-          id: su_opp_start_date_value
-          table: node__su_opp_start_date
-          field: su_opp_start_date_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: datetime
-          order: ASC
-          expose:
-            label: 'Start Date (su_opp_start_date)'
-            field_identifier: start
-          exposed: true
-          granularity: second
         title:
           id: title
           table: node_field_data
