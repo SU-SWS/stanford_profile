@@ -124,11 +124,18 @@ display:
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
+              autosubmit_breakpoint: ''
+              auto_submit_sort_only: false
             sort:
               plugin_id: default
             filter:
               su_news_spotlight_filters_target_id:
                 plugin_id: default
+                advanced:
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
       access:
         type: perm
         options:
@@ -368,6 +375,8 @@ display:
               secondary_label: 'Advanced options'
               secondary_open: 0
               reset_button_always_show: false
+              autosubmit_breakpoint: ''
+              auto_submit_sort_only: false
             filter:
               su_news_spotlight_filters_target_id:
                 plugin_id: taxonomy_label_hierarchy_checkbox
@@ -380,6 +389,10 @@ display:
                   collapsible: 0
                   collapsible_disable_automatic_open: 0
                   is_secondary: 0
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
       defaults:
         exposed_form: false
         title: false
@@ -443,6 +456,8 @@ display:
               secondary_label: 'Advanced options'
               secondary_open: 0
               reset_button_always_show: false
+              autosubmit_breakpoint: ''
+              auto_submit_sort_only: false
             filter:
               su_news_spotlight_filters_target_id:
                 plugin_id: taxonomy_label_hierarchy_checkbox
@@ -455,6 +470,10 @@ display:
                   collapsible: 0
                   collapsible_disable_automatic_open: 0
                   is_secondary: 0
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
       defaults:
         exposed_form: false
         style: false
