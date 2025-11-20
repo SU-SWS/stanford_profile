@@ -19,6 +19,7 @@ dependencies:
     - node.type.stanford_page
   module:
     - entity_reference_revisions
+    - layout_paragraphs
     - text
     - user
 id: node.stanford_page.search_indexing
@@ -43,10 +44,11 @@ content:
     weight: 1
     region: content
   su_page_components:
-    type: entity_reference_revisions_label
+    type: layout_paragraphs
     label: hidden
     settings:
-      link: false
+      view_mode: default
+      link: ''
     third_party_settings: {  }
     weight: 3
     region: content
