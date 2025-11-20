@@ -26,12 +26,20 @@ dependencies:
     - node.type.stanford_news
   module:
     - layout_paragraphs
+    - text
     - user
 id: node.stanford_news.search_indexing
 targetEntityType: node
 bundle: stanford_news
 mode: search_indexing
 content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
   su_news_banner_media_caption:
     type: string
     label: hidden
@@ -55,7 +63,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: content
   su_news_dek:
     type: string
@@ -74,7 +82,6 @@ content:
     weight: 0
     region: content
 hidden:
-  body: true
   layout_builder__layout: true
   layout_selection: true
   links: true

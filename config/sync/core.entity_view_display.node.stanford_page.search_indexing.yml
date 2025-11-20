@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_indexing
+    - field.field.node.stanford_page.body
     - field.field.node.stanford_page.field_menulink
     - field.field.node.stanford_page.layout_builder__layout
     - field.field.node.stanford_page.layout_selection
@@ -18,13 +19,20 @@ dependencies:
     - node.type.stanford_page
   module:
     - entity_reference_revisions
-    - layout_paragraphs
+    - text
     - user
 id: node.stanford_page.search_indexing
 targetEntityType: node
 bundle: stanford_page
 mode: search_indexing
 content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
   su_page_banner:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -35,13 +43,12 @@ content:
     weight: 1
     region: content
   su_page_components:
-    type: layout_paragraphs
+    type: entity_reference_revisions_label
     label: hidden
     settings:
-      view_mode: default
-      link: ''
+      link: false
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   su_page_description:
     type: string
@@ -52,7 +59,6 @@ content:
     weight: 0
     region: content
 hidden:
-  body: true
   field_menulink: true
   layout_builder__layout: true
   layout_selection: true
