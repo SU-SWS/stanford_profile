@@ -1,13 +1,16 @@
 <?php
 
+namespace Content;
+
 use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
+use FunctionalTester;
 
 /**
- * Test Person content type.
+ * Test course content type.
  */
-#[CodeceptionAttribute\Group('person')]
-class PersonCest {
+#[CodeceptionAttribute\Group('courses')]
+class CoursesCest {
 
   /**
    * Faker.
@@ -34,15 +37,14 @@ class PersonCest {
     ] = $this->buildTaxonomyTerms($I);
 
     $node = $I->createEntity([
-      'type' => 'stanford_person',
+      'type' => 'stanford_course',
       'title' => $this->faker->words(3, TRUE),
-      'su_person_first_name' => $this->faker->firstName(),
-      'su_person_last_name' => $this->faker->lastName(),
     ]);
 
-    $I->logInWithRole('contributor');
+    $I->logInWithRole('site_manager');
 
     $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->fillField('Course Link', $this->faker->url());
 
     $I->canSee($parent_1->label(), 'legend');
     $I->canSee($parent_2->label(), 'legend');
@@ -65,9 +67,8 @@ class PersonCest {
     $I->canSee($node->label(), 'h1');
   }
 
-
-  #[CodeceptionAttribute\Group('people-filters')]
-  public function testFilteringPeople(FunctionalTester $I) {
+  #[CodeceptionAttribute\Group('course-filters')]
+  public function testFilteringCourse(FunctionalTester $I) {
     [
       $parent_1,
       $parent_2,
@@ -76,12 +77,10 @@ class PersonCest {
       $child_1_2,
       $child_2_2,
     ] = $this->buildTaxonomyTerms($I);
-    $person = $I->createEntity([
-      'type' => 'stanford_person',
+    $course = $I->createEntity([
+      'type' => 'stanford_course',
       'title' => $this->faker->words(3, TRUE),
-      'su_person_first_name' => $this->faker->firstName(),
-      'su_person_last_name' => $this->faker->lastName(),
-      'su_person_tags' => [
+      'su_course_filters' => [
         ['target_id' => $child_1_1->id()],
         ['target_id' => $child_2_1->id()],
       ],
@@ -90,8 +89,8 @@ class PersonCest {
       'type' => 'stanford_filtered_lists',
       'su_list_headline' => $this->faker->words(3, TRUE),
       'su_filtered_list_view' => [
-        'target_id' => 'people_filtered',
-        'display_id' => 'grid_list_all',
+        'target_id' => 'courses_filtered',
+        'display_id' => 'list',
         'arguments' => '',
         'items_to_display' => NULL,
       ],
@@ -105,51 +104,51 @@ class PersonCest {
       ],
     ]);
     $I->amOnPage($page->toUrl()->toString());
-    $I->canSee($person->label());
+    $I->canSee($course->label());
 
     $I->waitForText($parent_1->label(), 2, 'fieldset');
 
     $I->checkOption($child_1_2->label());
     $I->waitForAjaxToFinish();
-    $I->cantSee($person->label());
+    $I->cantSee($course->label());
 
     $I->checkOption($child_1_1->label());
     $I->waitForAjaxToFinish();
-    $I->canSee($person->label());
+    $I->canSee($course->label());
   }
 
   protected function buildTaxonomyTerms(FunctionalTester $I) {
     $parent_1 = $I->createEntity([
-      'vid' => 'person_filters',
+      'vid' => 'course_filters',
       'name' => $this->faker->words(2, TRUE),
       'weight' => 0,
     ], 'taxonomy_term');
     $parent_2 = $I->createEntity([
-      'vid' => 'person_filters',
+      'vid' => 'course_filters',
       'name' => $this->faker->words(2, TRUE),
       'weight' => 10,
     ], 'taxonomy_term');
 
     $child_1_1 = $I->createEntity([
-      'vid' => 'person_filters',
+      'vid' => 'course_filters',
       'name' => $this->faker->words(2, TRUE),
       'parent' => $parent_1->id(),
     ], 'taxonomy_term');
 
     $child_1_2 = $I->createEntity([
-      'vid' => 'person_filters',
+      'vid' => 'course_filters',
       'name' => $this->faker->words(2, TRUE),
       'parent' => $parent_1->id(),
     ], 'taxonomy_term');
 
     $child_2_1 = $I->createEntity([
-      'vid' => 'person_filters',
+      'vid' => 'course_filters',
       'name' => $this->faker->words(2, TRUE),
       'parent' => $parent_2->id(),
     ], 'taxonomy_term');
 
     $child_2_2 = $I->createEntity([
-      'vid' => 'person_filters',
+      'vid' => 'course_filters',
       'name' => $this->faker->words(2, TRUE),
       'parent' => $child_2_1->id(),
     ], 'taxonomy_term');

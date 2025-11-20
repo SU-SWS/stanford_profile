@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.stanford_h3_card_plain
     - node.type.stanford_person
+    - taxonomy.vocabulary.person_filters
   module:
     - graphql_compose_views
     - node
@@ -509,6 +510,111 @@ display:
           use_taxonomy_term_path: false
           vocabularies:
             stanford_person_types: stanford_person_types
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            stanford_person: stanford_person
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        su_person_tags_target_id:
+          id: su_person_tags_target_id
+          table: node__su_person_tags
+          field: su_person_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: and
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_person_tags_target_id_op
+            label: 'Person Filters'
+            description: ''
+            use_operator: false
+            operator: su_person_tags_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: filter
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: person_filters
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       row:
         type: graphql_entity
         options: {  }
@@ -517,6 +623,8 @@ display:
         fields: true
         sorts: false
         arguments: false
+        filters: false
+        filter_groups: false
       relationships: {  }
       display_description: 'A list of people on a grid page view'
       display_extenders: {  }

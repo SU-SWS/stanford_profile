@@ -1087,6 +1087,90 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        su_news_spotlight_filters_target_id:
+          id: su_news_spotlight_filters_target_id
+          table: node__su_news_spotlight_filters
+          field: su_news_spotlight_filters_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: and
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_news_spotlight_filters_target_id_op
+            label: 'Spotlight Filters'
+            description: ''
+            use_operator: false
+            operator: su_news_spotlight_filters_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: spotlight
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: stanford_news_spotlight_filters
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+        layout_selection_target_id:
+          id: layout_selection_target_id
+          table: node__layout_selection
+          field: layout_selection_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: layout_selection_target_id_op
+            label: Layout
+            description: ''
+            use_operator: false
+            operator: layout_selection_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: layout
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:

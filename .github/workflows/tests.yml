@@ -55,6 +55,7 @@ jobs:
     name: Codeception
     needs: [shard_matrix]
     strategy:
+      fail-fast: false
       matrix:
         suite: [ acceptance, functional ]
         shard: ${{fromJSON(needs.shard_matrix.outputs.matrix)}}
@@ -103,18 +104,14 @@ jobs:
           name: codeception-${{ matrix.suite }}-${{ matrix.shard }}
           path: /var/www/html/artifacts
   all-tests-pass:
+    # This job will be skipped if the requirements pass. If any of the dependent
+    # jobs fail, this will run and throw an error, causing the PR to fail.
     name: All Tests Pass
-    if: success()
-    needs: [phpunit, codeception]
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'Passed'
-  something_failed:
-    name: Something Failed
-    if: failure()
+    if: ${{ cancelled() || contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'failure') }}
     needs: [phpunit, codeception]
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "something failed"
+          echo "Some workflows have failed!"
           exit 1
+
