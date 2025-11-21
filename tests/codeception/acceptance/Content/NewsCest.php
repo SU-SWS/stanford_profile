@@ -311,9 +311,21 @@ class NewsCest {
    */
   #[CodeceptionAttribute\Group('news_variant')]
   public function testNewsVariantFieldsDisplay(AcceptanceTester $I) {
+    $I->logInWithRole('site_editor');
+    $I->amOnPage('/node/add/stanford_news');
+    $I->canSeeResponseCodeIs(200);
+
+    // Verify Variant field is visible and accessible
+    $I->canSee('Variant');
+    $I->canSeeElement('[name="layout_selection"]');
+
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_news');
     $I->canSeeResponseCodeIs(200);
+
+    // Verify contributor role can see the Variant field
+    $I->canSee('Variant');
+    $I->canSeeElement('[name="layout_selection"]');
 
     // Generate test data using faker
     $testData = [
@@ -348,7 +360,6 @@ class NewsCest {
     $I->canSee($testData['Byline']);
     $I->canSee($testData['Banner Caption']);
   }
-
 
   /**
    * Test that Related Spotlights filters by matching taxonomy terms.
