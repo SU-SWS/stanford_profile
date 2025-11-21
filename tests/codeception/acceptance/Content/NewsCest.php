@@ -318,6 +318,8 @@ class NewsCest {
     // Verify Variant field is visible and accessible
     $I->canSee('Variant');
     $I->canSeeElement('[name="layout_selection"]');
+    $I->amOnPage('/user/logout');
+    $I->click('Log out', 'form');
 
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_news');
