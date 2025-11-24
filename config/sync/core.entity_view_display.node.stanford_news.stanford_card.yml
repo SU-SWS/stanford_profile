@@ -63,16 +63,6 @@ third_party_settings:
       news_url:
         - 'dynamic_token_field:node-news_content_url'
     fields:
-      'dynamic_token_field:node-news_content_url':
-        plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 8
-        label: hidden
-        formatter: default
-      node_post_date:
-        plugin_id: node_post_date
-        weight: 2
-        label: hidden
-        formatter: ds_post_date_stanford_month_date_year
       node_title:
         plugin_id: node_title
         weight: 1
@@ -82,6 +72,16 @@ third_party_settings:
           link: false
           wrapper: ''
           class: ''
+      node_post_date:
+        plugin_id: node_post_date
+        weight: 2
+        label: hidden
+        formatter: ds_post_date_stanford_month_date_year
+      'dynamic_token_field:node-news_content_url':
+        plugin_id: 'dynamic_token_field:node-news_content_url'
+        weight: 8
+        label: hidden
+        formatter: default
 id: node.stanford_news.stanford_card
 targetEntityType: node
 bundle: stanford_news
@@ -101,7 +101,7 @@ content:
     settings:
       view_mode: default
       link: false
-      image_style: responsive_medium
+      image_style: card_956x478
       remove_alt: true
     third_party_settings:
       empty_fields:

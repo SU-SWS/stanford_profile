@@ -44,9 +44,13 @@ function stanford_basic_preprocess_ds_entity_view(&$variables) {
 
     if (
       $node->bundle() == 'stanford_news' &&
+      $node->hasField('layout_selection') &&
       $node->get('layout_selection')->getString() == 'news_spotlight'
     ) {
       $variables['attributes']['class'][] = 'news-spotlight';
+      if (isset($variables['content']['news_vertical_teaser_image']['su_news_featured_media'][0]['#stanford_media_image_style'])) {
+        $variables['content']['news_vertical_teaser_image']['su_news_featured_media'][0]['#stanford_media_image_style'] = 'square_1192';
+      }
     }
   }
 

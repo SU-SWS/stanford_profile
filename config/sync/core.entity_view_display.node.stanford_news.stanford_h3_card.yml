@@ -65,11 +65,6 @@ third_party_settings:
       news_url:
         - 'dynamic_token_field:node-news_content_url'
     fields:
-      'dynamic_token_field:node-news_content_url':
-        plugin_id: 'dynamic_token_field:node-news_content_url'
-        weight: 8
-        label: hidden
-        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -81,6 +76,11 @@ third_party_settings:
           link_target: ''
           wrapper: ''
           class: ''
+      'dynamic_token_field:node-news_content_url':
+        plugin_id: 'dynamic_token_field:node-news_content_url'
+        weight: 8
+        label: hidden
+        formatter: default
   layout_builder:
     enabled: false
     allow_custom: false
@@ -103,7 +103,7 @@ content:
     settings:
       view_mode: default
       link: false
-      image_style: responsive_medium
+      image_style: card_956x478
       remove_alt: true
     third_party_settings:
       empty_fields:
