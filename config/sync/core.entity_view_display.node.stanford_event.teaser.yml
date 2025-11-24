@@ -72,6 +72,7 @@ third_party_settings:
         - su_event_date_time
       location:
         - su_event_alt_loc
+      address:
         - su_event_location
     fields:
       'display_field_copy:node-event_date_time_1':
@@ -224,7 +225,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 10
-    region: location
+    region: address
   su_event_subheadline:
     type: string
     label: hidden
