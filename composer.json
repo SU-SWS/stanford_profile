@@ -205,7 +205,7 @@
         "su-sws/stanford_actions": "^8.2",
         "su-sws/stanford_media": "^11.0",
         "su-sws/stanford_migrate": "^9.0",
-        "su-sws/stanford_profile_helper": "10.x-dev",
+        "su-sws/stanford_profile_helper": "D8CORE-8453-dev",
         "su-sws/stanford_samlauth": "^2.0"
     },
     "config": {
@@ -228,6 +228,9 @@
             }
         },
         "patches": {
+            "drupal/entity_reference_display": {
+                "https://www.drupal.org/project/entity_reference_display/issues/3554095": "https://git.drupalcode.org/project/entity_reference_display/-/merge_requests/17.diff"
+            },
             "drupal/fontawesome": {
                 "https://www.drupal.org/project/fontawesome/issues/3380581": "https://www.drupal.org/files/issues/2025-03-06/iconpicker-does-not-render_3380581_11.patch"
             },

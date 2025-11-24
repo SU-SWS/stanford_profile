@@ -25,13 +25,16 @@ dependencies:
     - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
   module:
-    - colorbox
+    - datetime
     - ds
-    - element_class_formatter
+    - empty_fields
+    - field_formatter_class
+    - field_label
     - layout_builder
     - layout_builder_restrictions
     - layout_library
-    - metatag
+    - smart_trim
+    - stanford_media
     - user
 third_party_settings:
   layout_builder:
@@ -146,50 +149,105 @@ third_party_settings:
           variant: default
     regions:
       spotlight_teaser_headline:
-        - title
-      spotlight_teaser_quote:
-        - su_news_quote
+        - node_title
       spotlight_teaser_media:
         - su_news_featured_media
+      spotlight_teaser_quote:
+        - su_news_quote
       spotlight_filters:
         - su_news_spotlight_filters
       date:
         - su_news_publishing_date
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          link_target: ''
+          wrapper: h2
+          class: ''
 id: node.stanford_news.spotlight_teaser
 targetEntityType: node
 bundle: stanford_news
 mode: spotlight_teaser
 content:
   su_news_featured_media:
-    type: entity_reference_entity_view
+    type: media_image_formatter
     label: hidden
     settings:
       view_mode: default
-    third_party_settings: {  }
-    weight: 2
+      link: false
+      image_style: medium_square
+      remove_alt: true
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 0
     region: spotlight_teaser_media
   su_news_publishing_date:
     type: datetime_default
     label: hidden
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
     weight: 4
     region: date
   su_news_quote:
-    type: text_default
+    type: smart_trim
     label: hidden
-    settings: {  }
-    third_party_settings: {  }
+    settings:
+      trim_length: 100
+      trim_type: chars
+      trim_suffix: \u2026
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+        replace_tokens: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 1
     region: spotlight_teaser_quote
   su_news_spotlight_filters:
     type: entity_reference_label
     label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
+      link: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: ''
     weight: 3
     region: spotlight_filters
 hidden:
