@@ -21,25 +21,6 @@ class EntityReferenceDisplayCest {
   }
 
   /**
-   * Test adding a news item to stanford_entity paragraph.
-   */
-  public function testNewsItemsInEntityParagraph(FunctionalTester $I) {
-    $news = $this->createNewsEntity($I);
-    $I->logInWithRole('contributor');
-    $node = $this->createNodeWithEntityParagraph($I);
-
-    $this->openParagraphNewsAccordion($I, $node);
-
-    $I->fillField('News Items', $news->label() . ' (' . $news->id() . ')');
-    $I->click('Save', '.ui-dialog-buttonpane');
-    $I->waitForElementNotVisible('.ui-dialog');
-    $I->click('Save');
-
-    $I->canSee('has been updated');
-    $I->canSee($news->label());
-  }
-
-  /**
    * Test adding multiple news items.
    */
   public function testMultipleNewsItems(FunctionalTester $I) {
@@ -143,6 +124,29 @@ class EntityReferenceDisplayCest {
   }
 
   /**
+   * Test spotlight teaser display modes render correctly.
+   */
+  #[CodeceptionAttribute\Examples(displayMode: 'spotlight_teaser_large_image', variantClass: 'su-spotlight-teaser--large')]
+  #[CodeceptionAttribute\Examples(displayMode: 'spotlight_teaser_small_image', variantClass: 'su-spotlight-teaser--small')]
+  public function testSpotlightTeaserDisplayModes(FunctionalTester $I, \Codeception\Example $example) {
+    $news = $this->createNewsEntity($I);
+    $I->logInWithRole('site_manager');
+    $node = $this->createNodeWithEntityParagraph($I);
+    $this->openParagraphNewsAccordion($I, $node);
+
+    $I->fillField('News Items', $news->label() . ' (' . $news->id() . ')');
+    $I->selectOption('News Display', $example['displayMode']);
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
+    $I->click('Save');
+
+    $I->canSee('has been updated');
+    $I->canSee($news->label(), '.su-spotlight-teaser');
+    $I->seeElement('.su-card.su-spotlight-teaser.' . $example['variantClass']);
+    $I->canSee($news->get('su_news_quote')->value, '.su-spotlight-teaser__quote');
+  }
+
+  /**
    * Create a news entity for testing.
    */
   protected function createNewsEntity(FunctionalTester $I) {
@@ -164,7 +168,6 @@ class EntityReferenceDisplayCest {
     $I->moveMouseOver('.js-lpb-component', 10, 10);
     $I->click('Edit', '.lpb-controls');
     $I->waitForElement('.ui-dialog');
-    // Click News accordion using stable data-drupal-selector.
     $I->click('[data-drupal-selector="edit-group-news"] summary');
     $I->waitForElementVisible('[name="su_entity_news[0][target_id]"]');
   }
