@@ -374,7 +374,6 @@ content:
     weight: 17
     region: content
     settings:
-      allow_unpublished: true
       save_lineage: false
       force_deepest: false
       parent: ''
@@ -382,13 +381,13 @@ content:
       hierarchy_depth: 0
       required_depth: 0
       none_label: '- Please select -'
+      allow_unpublished: true
     third_party_settings: {  }
   su_shared_tags:
     type: cshs
     weight: 19
     region: content
     settings:
-      allow_unpublished: true
       save_lineage: false
       force_deepest: false
       parent: ''
@@ -396,6 +395,7 @@ content:
       hierarchy_depth: 0
       required_depth: 0
       none_label: '- Please select -'
+      allow_unpublished: true
     third_party_settings: {  }
   title:
     type: string_textfield
