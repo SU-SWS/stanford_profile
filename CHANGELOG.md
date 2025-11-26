@@ -1,5 +1,40 @@
 # Stanford Profile
 
+12.1.0
+-------------------------------------------------------------------------------
+- D8CORE-5180: Remove alt text for people image cards
+- D8CORE-8393: Add course filtering view (#1028)
+- D8CORE-8461: New People filtered list view and adjustments to edit form and help text (#1025)
+- D8CORE-8462 D8CORE-8463 | add spotlight filters to news card display (#1027)
+- D8CORE-8235: update spotlight list paragraph grid from 4 to 3 (#1026)
+- D8CORE-8239: Moved the list class names on the view (#1020)
+- Added new media content type, taxonomy, and views. (#1004)
+- D8CORE-8408: News adjust label of the title field (#1023)
+- D8CORE-8412: replace spotlight text in layout with content block; show body field on Spotlight variant (#1022)
+- Removed link from spotlight filter terms in H3 Card display mode (#1021)
+- D8CORE-8413: smart trim spotlight quotes in card displays (#1019)
+- D8CORE-8418: Removed default "Spotlights" taxonomy term
+- D8CORE-8450: Style spotlight card images as 1/1 square (#1017)
+- D8CORE-8234 D8CORE-8238: Spotlights-related Views for paragraphs (#1015)
+- D8CORE-8232: Added related spotlights view display (#1013)
+- D8CORE-8390: Hide and show news fields correctly based on variants (#1012)
+- D8CORE-8414: Add body field to spotlight node display (#1016)
+- D8CORE-8377: Course Filters field (#1007)
+- D8CORE-7945: added no follow to link to person node (#1014)
+- Use display mode instead of fields in event views (#1011)
+- D8CORE-8395: changed permissions on sunet field in site settings (#1009)
+- D8CORE-8294: Adjust date on RSS feeds (#1003)
+- D8CORE-8227: Build out spotlight variant on News CT (#1005)
+- D8CORE-8090: Removing fields from Opportunity content type (#1001)
+- D8CORE-8343: Add counts and other tools to manage content views (#997)
+- D8CORE-8346: Increase news dek field from 180 to 500 characters (#998)
+- D8CORE-8316 | Adjust events page details section layout (#996)
+- SUL23-818 | Update font awesome icon help text (#994)
+- STVP26-74 STVP26-75: Add "Body" field to news and basic pages (#993)
+- D8CORE-8196 | update card structure to match banner and fulfill a11y (#992)
+- D8CORE-8196 | adjust banner overlay card content order for a11y (#990)
+
+
 12.0.2
 -------------------------------------------------------------------------------
 
