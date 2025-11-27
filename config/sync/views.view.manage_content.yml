@@ -19,6 +19,7 @@ dependencies:
     - field.storage.node.su_page_image
     - field.storage.node.su_person_type_group
     - field.storage.node.su_publication_topics
+    - node.type.stanford_course
     - node.type.stanford_event
     - node.type.stanford_media
     - node.type.stanford_news
@@ -2412,7 +2413,7 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            stanford_media: stanford_media
+            stanford_course: stanford_course
           group: 1
           exposed: false
           expose:
