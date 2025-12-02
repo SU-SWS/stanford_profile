@@ -23,6 +23,7 @@ dependencies:
     - node.type.stanford_policy
     - node.type.stanford_publication
     - taxonomy.vocabulary.basic_page_types
+    - taxonomy.vocabulary.course_filters
     - taxonomy.vocabulary.event_audience
     - taxonomy.vocabulary.event_filters
     - taxonomy.vocabulary.media_tags
@@ -125,6 +126,7 @@ permissions:
   - 'create stanford_policy content'
   - 'create stanford_publication content'
   - 'create terms in basic_page_types'
+  - 'create terms in course_filters'
   - 'create terms in event_audience'
   - 'create terms in event_filters'
   - 'create terms in media_tags'
@@ -188,6 +190,7 @@ permissions:
   - 'delete stanford_policy revisions'
   - 'delete stanford_publication revisions'
   - 'delete terms in basic_page_types'
+  - 'delete terms in course_filters'
   - 'delete terms in event_audience'
   - 'delete terms in media_tags'
   - 'delete terms in opportunity_sponsor'
@@ -247,6 +250,7 @@ permissions:
   - 'edit stanford_saml config page entity'
   - 'edit stanford_super_footer config page entity'
   - 'edit terms in basic_page_types'
+  - 'edit terms in course_filters'
   - 'edit terms in event_audience'
   - 'edit terms in media_tags'
   - 'edit terms in opportunity_sponsor'
