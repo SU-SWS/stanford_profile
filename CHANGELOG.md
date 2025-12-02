@@ -1,5 +1,10 @@
 # Stanford Profile
 
+12.1.1
+-------------------------------------------------------------------------------
+- Add course_filters to site manager role permissions
+- Increase number of admin toolbar entity bundles available
+
 12.1.0
 -------------------------------------------------------------------------------
 - D8CORE-5180: Remove alt text for people image cards
