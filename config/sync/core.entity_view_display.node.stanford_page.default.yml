@@ -187,7 +187,6 @@ third_party_settings:
       - 'Chaos Tools'
       - 'Config Pages'
       - 'Content fields'
-      - 'Courses Lists (Views)'
       - 'Custom block types'
       - 'Custom blocks'
       - Devel
@@ -199,7 +198,6 @@ third_party_settings:
       - 'Inline blocks'
       - 'Jumpstart UI'
       - 'Lists (Views)'
-      - 'Media Lists (Views)'
       - Menus
       - 'News Lists (Views)'
       - 'Opportunities (Views)'
@@ -210,7 +208,6 @@ third_party_settings:
       - 'Publication (Views)'
       - 'Simple block'
       - 'Stanford News'
-      - 'Stanford Profile Helper'
       - 'Stanford SAML Authentication'
       - System
       - 'Taxonomy Terms (Views)'
@@ -253,9 +250,11 @@ third_party_settings:
         'Changelog (Views)':
           - 'views_block:change_logs-policy_changes'
         Menus:
+          - 'system_menu_block:stanford-event-types'
           - 'menu_block:main'
-        'Stanford Profile Helper':
-          - anchor_link_navigation
+          - 'system_menu_block:stanford-person-type'
+          - 'system_menu_block:stanford-publication-topics'
+          - 'system_menu_block:news-topics'
         System:
           - system_breadcrumb_block
         core:
@@ -264,14 +263,12 @@ third_party_settings:
         - Book
         - 'Chaos Tools'
         - 'Config Pages'
-        - 'Courses Lists (Views)'
         - Devel
         - 'Devel PHP'
         - Editoria11y
         - Forms
         - Help
         - 'Lists (Views)'
-        - 'Media Lists (Views)'
         - 'Opportunities (Views)'
         - 'Policy (Views)'
         - Printable
