@@ -1,22 +1,21 @@
-uuid: aec8062c-c736-4634-8276-b7d3496f8fda
+uuid: e4c5545c-a2fc-4acf-a20a-92a9a4d31892
 langcode: en
 status: true
 dependencies: {  }
-id: top_anchor_nav
-label: 'Top Anchor Navigation with Secondary Navigation'
+id: top_anchor_nav_full_width
+label: 'Top Anchor Navigation Full Width'
 targetEntityType: node
 targetBundle: stanford_page
 layout:
   -
     layout_id: jumpstart_ui_one_column
     layout_settings:
-      context_mapping: {  }
       extra_classes: ''
       centered: null
       columns: default
     components:
-      da20ed40-0f0f-4103-bda1-29d84c24975f:
-        uuid: da20ed40-0f0f-4103-bda1-29d84c24975f
+      4fba82f7-8808-4c93-95d9-7ecdde2fb0b1:
+        uuid: 4fba82f7-8808-4c93-95d9-7ecdde2fb0b1
         region: main
         configuration:
           id: 'field_block:node:stanford_page:su_page_banner'
@@ -25,7 +24,6 @@ layout:
           provider: layout_builder
           context_mapping:
             entity: layout_builder.entity
-            view_mode: view_mode
           formatter:
             type: entity_reference_revisions_entity_view
             label: hidden
@@ -38,13 +36,14 @@ layout:
   -
     layout_id: jumpstart_ui_one_column
     layout_settings:
+      label: ''
       context_mapping: {  }
       extra_classes: ''
       centered: centered-container
       columns: default
     components:
-      af0809fe-fe61-4e78-be4e-4837cd773c26:
-        uuid: af0809fe-fe61-4e78-be4e-4837cd773c26
+      6ce9c0ce-a019-44f4-9225-4c2a1a9fbc6d:
+        uuid: 6ce9c0ce-a019-44f4-9225-4c2a1a9fbc6d
         region: main
         configuration:
           id: 'field_block:node:stanford_page:title'
@@ -59,11 +58,18 @@ layout:
             label: hidden
             settings:
               tag: h1
-            third_party_settings: {  }
+            third_party_settings:
+              empty_fields:
+                handler: ''
+              field_formatter_class:
+                class: ''
+              field_label:
+                label_value: ''
+                label_tag: ''
         weight: 0
         additional: {  }
-      3beead74-d71e-4a85-b905-07851c6986c0:
-        uuid: 3beead74-d71e-4a85-b905-07851c6986c0
+      49ce7155-2ac2-4a1f-8140-3d953b75ed81:
+        uuid: 49ce7155-2ac2-4a1f-8140-3d953b75ed81
         region: main
         configuration:
           id: anchor_link_navigation
@@ -76,45 +82,14 @@ layout:
         additional: {  }
     third_party_settings: {  }
   -
-    layout_id: jumpstart_ui_two_column
+    layout_id: jumpstart_ui_one_column
     layout_settings:
-      context_mapping: {  }
       extra_classes: ''
-      centered: centered-container
-      orientation: right
-      force_regions: false
+      centered: null
+      columns: default
     components:
-      582a6898-7096-40c2-bb65-99a556ada919:
-        uuid: 582a6898-7096-40c2-bb65-99a556ada919
-        region: left
-        configuration:
-          id: 'menu_block:main'
-          label: 'Main navigation'
-          label_display: '0'
-          provider: menu_block
-          context_mapping: {  }
-          follow: false
-          follow_parent: child
-          level: 2
-          depth: 0
-          parent: 'main:'
-          suggestion: secondary_nav
-          expand: true
-        weight: 0
-        additional: {  }
-      c40ac234-fff7-4c9d-8a34-03fb9d335617:
-        uuid: c40ac234-fff7-4c9d-8a34-03fb9d335617
-        region: main
-        configuration:
-          id: jumpstart_ui_skipnav_main_anchor
-          label: 'Main content anchor target'
-          label_display: '0'
-          provider: jumpstart_ui
-          context_mapping: {  }
-        weight: -10
-        additional: {  }
-      3dabcba4-136e-4433-8604-9eb0a0b74439:
-        uuid: 3dabcba4-136e-4433-8604-9eb0a0b74439
+      d23da6c4-a596-41c2-8185-cd712c160306:
+        uuid: d23da6c4-a596-41c2-8185-cd712c160306
         region: main
         configuration:
           id: 'field_block:node:stanford_page:su_page_components'
@@ -132,10 +107,21 @@ layout:
             third_party_settings:
               field_formatter_class:
                 class: ''
-        weight: -7
+        weight: -5
         additional: {  }
-      e09f21a6-e751-4454-b253-b649fcd03240:
-        uuid: e09f21a6-e751-4454-b253-b649fcd03240
+      dae81a37-1839-4bc3-86fc-3e4f7fda4183:
+        uuid: dae81a37-1839-4bc3-86fc-3e4f7fda4183
+        region: main
+        configuration:
+          id: jumpstart_ui_skipnav_main_anchor
+          label: 'Main content anchor target'
+          label_display: '0'
+          provider: jumpstart_ui
+          context_mapping: {  }
+        weight: -10
+        additional: {  }
+      357f00aa-a398-417c-8a8b-154348c7827b:
+        uuid: 357f00aa-a398-417c-8a8b-154348c7827b
         region: main
         configuration:
           id: 'field_block:node:stanford_page:body'
@@ -163,6 +149,6 @@ layout:
               field_label:
                 label_value: ''
                 label_tag: ''
-        weight: -8
+        weight: -6
         additional: {  }
     third_party_settings: {  }
