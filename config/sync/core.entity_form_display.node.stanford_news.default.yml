@@ -37,6 +37,7 @@ dependencies:
     - metatag
     - path
     - scheduler
+    - stanford_fields
     - stanford_intranet
     - text
 third_party_settings:
@@ -410,18 +411,10 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   su_news_spotlight_filters:
-    type: cshs
+    type: taxonomy_label_hierarchy
     weight: 5
     region: content
-    settings:
-      save_lineage: false
-      force_deepest: false
-      parent: null
-      level_labels: ''
-      hierarchy_depth: 0
-      required_depth: 0
-      none_label: '- Please select -'
-      allow_unpublished: true
+    settings: {  }
     third_party_settings:
       change_labels:
         add_another: ''
