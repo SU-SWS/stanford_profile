@@ -32,25 +32,39 @@
 
   }
 
-  // Adding in the carets
-  .su-secondary-nav__item--parent {
-    >.su-secondary-nav__link {
-      &::before {
-        background-color: transparent;
-      }
+  // Adding in the carets for desktop only.
+  @include grid-media-min('lg') {
+    .su-secondary-nav__item--parent {
+      >.su-secondary-nav__link {
+        padding-right: 0;
+        padding-left: 2.0rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
 
-      &::after {
-        content: '';
-        display: block;
-        position: relative;
-        visibility: visible;
-        width: 5rem;
-        background: transparent url("../../assets/svg/caret-down-grey.svg") no-repeat center / 30%;
-        right: 1rem;
-        height: 50px;
-        top: 5px;
-        transform: none;
-     }
+        &::before {
+          background-color: transparent;
+        }
+
+        &::after {
+          content: '';
+          display: inline-block;
+          position: relative;
+          visibility: visible;
+          margin: 0 10px 0 18px;
+          background: transparent url("../../assets/svg/caret-down-grey.svg") no-repeat right / 10px;
+          min-height: 6px;
+          transform: none;
+          min-width: 10px;
+        }
+
+        &:hover {
+          &::after {
+            background-color: transparent;
+          }
+        }
+      }
     }
   }
 }
