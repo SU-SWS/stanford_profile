@@ -48,15 +48,15 @@
         }
 
         &::after {
-          content: '';
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          color: $su-color-black-70;
+          content: "\f078";
           display: inline-block;
           position: relative;
           visibility: visible;
           margin: 0 10px 0 18px;
-          background: transparent url("../../assets/svg/caret-down-grey.svg") no-repeat right / 10px;
-          min-height: 6px;
-          transform: none;
-          min-width: 10px;
+          font-size: 1.3rem;
         }
 
         &:hover {
