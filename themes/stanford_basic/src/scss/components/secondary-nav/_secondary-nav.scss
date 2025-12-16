@@ -13,6 +13,8 @@
 
   .su-secondary-nav__link {
     border-top: 0;
+    font-weight: $su-font-regular;
+    font-size: 18px;
   }
 
   > .su-secondary-nav__menu {
@@ -28,6 +30,28 @@
       border: 0;
     }
 
+  }
+
+  // Adding in the carets
+  .su-secondary-nav__item--parent {
+    >.su-secondary-nav__link {
+      &::before {
+        background-color: transparent;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        position: relative;
+        visibility: visible;
+        width: 5rem;
+        background: transparent url("../../assets/svg/caret-down-grey.svg") no-repeat center / 30%;
+        right: 1rem;
+        height: 50px;
+        top: 5px;
+        transform: none;
+     }
+    }
   }
 }
 
