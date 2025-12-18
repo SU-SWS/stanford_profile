@@ -23,12 +23,12 @@ dependencies:
     - node.type.stanford_publication
     - taxonomy.vocabulary.basic_page_types
     - taxonomy.vocabulary.event_audience
+    - taxonomy.vocabulary.media_content_filters
+    - taxonomy.vocabulary.media_content_types
     - taxonomy.vocabulary.media_tags
     - taxonomy.vocabulary.opportunity_sponsor
     - taxonomy.vocabulary.opportunity_type
     - taxonomy.vocabulary.stanford_event_types
-    - taxonomy.vocabulary.media_content_filters
-    - taxonomy.vocabulary.media_content_types
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
     - taxonomy.vocabulary.stanford_publication_topics
@@ -220,6 +220,7 @@ permissions:
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
   - 'notify of path changes'
+  - 'rebuild node access permissions'
   - 'reorder book pages'
   - 'revert stanford_course revisions'
   - 'revert stanford_event revisions'
