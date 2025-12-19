@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.stanford_media.su_media_dek
     - field.field.node.stanford_media.su_media_duration
     - field.field.node.stanford_media.su_media_episode
+    - field.field.node.stanford_media.su_media_filters
     - field.field.node.stanford_media.su_media_image
     - field.field.node.stanford_media.su_media_person
     - field.field.node.stanford_media.su_media_season
@@ -258,7 +259,7 @@ third_party_settings:
                 type: entity_reference_label
                 label: hidden
                 settings:
-                  link: false
+                  link: true
                 third_party_settings:
                   empty_fields:
                     handler: ''
@@ -438,6 +439,7 @@ third_party_settings:
       - 'Chaos Tools'
       - 'Config Pages'
       - 'Content fields'
+      - 'Courses Lists (Views)'
       - 'Custom block types'
       - 'Custom blocks'
       - Devel
@@ -515,6 +517,7 @@ third_party_settings:
         - 'Changelog (Views)'
         - 'Chaos Tools'
         - 'Config Pages'
+        - 'Courses Lists (Views)'
         - Devel
         - 'Devel PHP'
         - Editoria11y
