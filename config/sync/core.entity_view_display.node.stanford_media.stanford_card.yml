@@ -6,10 +6,12 @@ dependencies:
     - core.entity_view_mode.node.stanford_card
     - field.field.node.stanford_media.body
     - field.field.node.stanford_media.su_media_audio_video
+    - field.field.node.stanford_media.su_media_category
     - field.field.node.stanford_media.su_media_date
     - field.field.node.stanford_media.su_media_dek
     - field.field.node.stanford_media.su_media_duration
     - field.field.node.stanford_media.su_media_episode
+    - field.field.node.stanford_media.su_media_filters
     - field.field.node.stanford_media.su_media_image
     - field.field.node.stanford_media.su_media_person
     - field.field.node.stanford_media.su_media_season
@@ -133,6 +135,7 @@ hidden:
   links: true
   search_api_excerpt: true
   su_media_audio_video: true
+  su_media_category: true
   su_media_duration: true
   su_media_episode: true
   su_media_filters: true
