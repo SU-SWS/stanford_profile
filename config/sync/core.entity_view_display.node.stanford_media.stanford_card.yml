@@ -29,6 +29,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - options
     - stanford_media
     - user
 third_party_settings:
@@ -56,17 +57,17 @@ third_party_settings:
     regions:
       image:
         - su_media_image
-      eyebrow:
-        - su_media_dek
       heading:
         - node_title
       body:
+        - su_media_dek
         - su_media_date
         - su_media_season
+        - su_media_category
     fields:
       node_title:
         plugin_id: node_title
-        weight: 2
+        weight: 1
         label: hidden
         formatter: default
         settings:
@@ -80,6 +81,13 @@ targetEntityType: node
 bundle: stanford_media
 mode: stanford_card
 content:
+  su_media_category:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: body
   su_media_date:
     type: datetime_default
     label: hidden
@@ -102,8 +110,8 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 1
-    region: eyebrow
+    weight: 2
+    region: body
   su_media_image:
     type: media_responsive_image_formatter
     label: hidden
@@ -135,7 +143,6 @@ hidden:
   links: true
   search_api_excerpt: true
   su_media_audio_video: true
-  su_media_category: true
   su_media_duration: true
   su_media_episode: true
   su_media_filters: true
