@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.spotlight_teaser_large_image
+    - core.entity_view_mode.node.spotlight_teaser_small_image
     - core.entity_view_mode.node.stanford_h3_card
     - node.type.stanford_news
     - taxonomy.vocabulary.stanford_news_spotlight_filters
@@ -343,9 +345,9 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  spotlight_cards:
-    id: spotlight_cards
-    display_title: 'Spotlights - Card Grid'
+  spotlight_cards_large:
+    id: spotlight_cards_large
+    display_title: 'Spotlights - Large Image'
     display_plugin: viewfield_block
     position: 2
     display_options:
@@ -413,7 +415,88 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: stanford_h3_card
+          view_mode: spotlight_teaser_large_image
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  spotlight_cards_small:
+    id: spotlight_cards_small
+    display_title: 'Spotlights - Small Image'
+    display_plugin: viewfield_block
+    position: 2
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: 0
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: stanford_html
+          bef:
+            general:
+              autosubmit: 1
+              autosubmit_exclude_textfield: 0
+              autosubmit_textfield_delay: '500'
+              autosubmit_textfield_minimum_length: '3'
+              autosubmit_hide: 1
+              input_required: 0
+              allow_secondary: 0
+              secondary_label: 'Advanced options'
+              secondary_open: 0
+              reset_button_always_show: false
+              autosubmit_breakpoint: ''
+              auto_submit_sort_only: false
+            filter:
+              su_news_spotlight_filters_target_id:
+                plugin_id: taxonomy_label_hierarchy_checkbox
+                advanced:
+                  sort_options: 0
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: 0
+                  hide_label: 0
+                  collapsible: 0
+                  collapsible_disable_automatic_open: 0
+                  is_secondary: 0
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+      defaults:
+        exposed_form: false
+        title: false
+        style: false
+        row: false
+      block_hide_empty: 1
+      title: 'Filtered Spotlights Card Grid'
+      style:
+        type: html_list
+        options:
+          row_class: ''
+          default_row_class: 1
+          uses_fields: 0
+          type: ul
+          wrapper_class: ''
+          class: 'su-list-unstyled grid-container-3'
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: spotlight_teaser_small_image
     cache_metadata:
       max-age: -1
       contexts:
