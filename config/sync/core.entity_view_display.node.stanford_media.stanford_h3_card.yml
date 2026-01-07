@@ -61,9 +61,9 @@ third_party_settings:
         - node_title
       body:
         - su_media_date
+        - su_media_dek
         - su_media_series
         - su_media_category
-        - su_media_dek
     fields:
       node_title:
         plugin_id: node_title
@@ -86,7 +86,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: body
   su_media_date:
     type: datetime_default
@@ -110,7 +110,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 5
+    weight: 3
     region: body
   su_media_image:
     type: media_responsive_image_formatter
@@ -136,7 +136,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: body
 hidden:
   body: true
