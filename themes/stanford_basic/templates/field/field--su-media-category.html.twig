@@ -23,7 +23,7 @@
 {% set field_key = element['#items'].0.value|clean_class %}
 
 <div{{ attributes }}>
-  <div{{ attributes.addClass(field_key) }}>
+  <div class="{{ field_key }}">
     {%- for item in items -%}
       {{ item.content }}
     {%- endfor -%}
