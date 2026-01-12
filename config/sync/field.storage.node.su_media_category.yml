@@ -1,0 +1,33 @@
+uuid: 815d603a-95da-4702-8ea5-cd2f1c3c2765
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.su_media_category
+field_name: su_media_category
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: video
+      label: Video
+    -
+      value: podcast
+      label: Podcast
+    -
+      value: audio
+      label: Audio
+    -
+      value: media
+      label: Media
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

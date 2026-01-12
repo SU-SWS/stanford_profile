@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.field.node.stanford_media.body
     - field.field.node.stanford_media.su_media_audio_video
+    - field.field.node.stanford_media.su_media_category
     - field.field.node.stanford_media.su_media_date
     - field.field.node.stanford_media.su_media_dek
     - field.field.node.stanford_media.su_media_duration
     - field.field.node.stanford_media.su_media_episode
+    - field.field.node.stanford_media.su_media_filters
     - field.field.node.stanford_media.su_media_image
     - field.field.node.stanford_media.su_media_person
     - field.field.node.stanford_media.su_media_season
@@ -25,6 +27,7 @@ dependencies:
     - layout_builder_restrictions
     - layout_library
     - link
+    - options
     - printable
     - text
     - user
@@ -34,27 +37,6 @@ third_party_settings:
     enabled: true
     allow_custom: false
     sections:
-      -
-        layout_id: jumpstart_ui_one_column
-        layout_settings:
-          label: ''
-          context_mapping: {  }
-          extra_classes: ''
-          centered: centered-container
-          columns: default
-        components:
-          8337a414-ee34-42a0-a5f3-789835ae3017:
-            uuid: 8337a414-ee34-42a0-a5f3-789835ae3017
-            region: main
-            configuration:
-              id: jumpstart_ui_skipnav_main_anchor
-              label: 'Main content anchor target'
-              label_display: '0'
-              provider: jumpstart_ui
-              context_mapping: {  }
-            weight: 0
-            additional: {  }
-        third_party_settings: {  }
       -
         layout_id: media_content
         layout_settings:
@@ -549,6 +531,13 @@ content:
       field_formatter_class:
         class: ''
     weight: 1
+    region: main
+  su_media_category:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
     region: main
   su_media_date:
     type: datetime_default

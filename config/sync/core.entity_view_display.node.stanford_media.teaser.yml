@@ -6,10 +6,12 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.stanford_media.body
     - field.field.node.stanford_media.su_media_audio_video
+    - field.field.node.stanford_media.su_media_category
     - field.field.node.stanford_media.su_media_date
     - field.field.node.stanford_media.su_media_dek
     - field.field.node.stanford_media.su_media_duration
     - field.field.node.stanford_media.su_media_episode
+    - field.field.node.stanford_media.su_media_filters
     - field.field.node.stanford_media.su_media_image
     - field.field.node.stanford_media.su_media_person
     - field.field.node.stanford_media.su_media_season
@@ -27,6 +29,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - options
     - stanford_media
     - user
 third_party_settings:
@@ -58,11 +61,13 @@ third_party_settings:
         - node_title
       body:
         - su_media_date
+        - su_media_dek
         - su_media_series
+        - su_media_category
     fields:
       node_title:
         plugin_id: node_title
-        weight: 0
+        weight: 1
         label: hidden
         formatter: default
         settings:
@@ -76,6 +81,20 @@ targetEntityType: node
 bundle: stanford_media
 mode: teaser
 content:
+  su_media_category:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 5
+    region: body
   su_media_date:
     type: datetime_default
     label: hidden
@@ -90,7 +109,15 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 0
+    weight: 2
+    region: body
+  su_media_dek:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
     region: body
   su_media_image:
     type: media_image_formatter
@@ -116,14 +143,13 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 0
+    weight: 4
     region: body
 hidden:
   body: true
   links: true
   search_api_excerpt: true
   su_media_audio_video: true
-  su_media_dek: true
   su_media_duration: true
   su_media_episode: true
   su_media_filters: true
