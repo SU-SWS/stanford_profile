@@ -39,7 +39,7 @@ filters:
   filter_autop:
     id: filter_autop
     provider: filter
-    status: false
+    status: true
     weight: -36
     settings: {  }
   filter_caption:
@@ -72,7 +72,7 @@ filters:
   filter_htmlcorrector:
     id: filter_htmlcorrector
     provider: filter
-    status: true
+    status: false
     weight: -43
     settings: {  }
   filter_image_lazy_load:
@@ -137,6 +137,6 @@ filters:
   su_clean_html:
     id: su_clean_html
     provider: stanford_decoupled
-    status: true
+    status: false
     weight: -40
     settings: {  }
