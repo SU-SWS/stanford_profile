@@ -6,10 +6,12 @@ dependencies:
     - core.entity_view_mode.node.stanford_h3_card
     - field.field.node.stanford_media.body
     - field.field.node.stanford_media.su_media_audio_video
+    - field.field.node.stanford_media.su_media_category
     - field.field.node.stanford_media.su_media_date
     - field.field.node.stanford_media.su_media_dek
     - field.field.node.stanford_media.su_media_duration
     - field.field.node.stanford_media.su_media_episode
+    - field.field.node.stanford_media.su_media_filters
     - field.field.node.stanford_media.su_media_image
     - field.field.node.stanford_media.su_media_person
     - field.field.node.stanford_media.su_media_season
@@ -27,6 +29,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - options
     - stanford_media
     - user
 third_party_settings:
@@ -54,17 +57,17 @@ third_party_settings:
     regions:
       image:
         - su_media_image
-      eyebrow:
-        - su_media_dek
       heading:
         - node_title
       body:
         - su_media_date
+        - su_media_dek
         - su_media_series
+        - su_media_category
     fields:
       node_title:
         plugin_id: node_title
-        weight: 2
+        weight: 1
         label: hidden
         formatter: default
         settings:
@@ -78,6 +81,13 @@ targetEntityType: node
 bundle: stanford_media
 mode: stanford_h3_card
 content:
+  su_media_category:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: body
   su_media_date:
     type: datetime_default
     label: hidden
@@ -92,7 +102,7 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 3
+    weight: 2
     region: body
   su_media_dek:
     type: string
@@ -100,8 +110,8 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 1
-    region: eyebrow
+    weight: 3
+    region: body
   su_media_image:
     type: media_responsive_image_formatter
     label: hidden

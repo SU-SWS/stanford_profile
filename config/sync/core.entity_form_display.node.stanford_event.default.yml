@@ -369,6 +369,7 @@ content:
       hierarchy_depth: 0
       required_depth: 0
       none_label: '- Please select -'
+      allow_unpublished: true
     third_party_settings: {  }
   su_metatags:
     type: metatag_firehose
@@ -390,6 +391,7 @@ content:
       hierarchy_depth: 0
       required_depth: 0
       none_label: '- Please select -'
+      allow_unpublished: true
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -406,6 +408,7 @@ hidden:
   promote: true
   sticky: true
   su_event_ext_image: true
+  su_event_localist_id: true
   su_imported: true
   uid: true
   unpublish_on: true

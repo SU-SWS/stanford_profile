@@ -1,0 +1,21 @@
+uuid: 6867b0f2-ae3d-49cc-ac9f-3807f6e717a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_media_category
+    - node.type.stanford_media
+  module:
+    - options
+id: node.stanford_media.su_media_category
+field_name: su_media_category
+entity_type: node
+bundle: stanford_media
+label: 'Media Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

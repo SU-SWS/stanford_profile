@@ -396,7 +396,6 @@ class NewsCest {
    */
   #[CodeceptionAttribute\Group('news_variant')]
   public function testRelatedSpotlightsFiltersByTaxonomy(AcceptanceTester $I) {
-
     // Create taxonomy terms.
     $term_a = $I->createEntity([
       'name' => $this->faker->words(3, TRUE),
@@ -478,9 +477,7 @@ class NewsCest {
   /**
    * Test spotlight label displayed correctly on the news spotlight variant page.
    */
-
   #[CodeceptionAttribute\Group('news_variant')]
-
   #[CodeceptionAttribute\Group('spotlight_page')]
   public function testSpotlightCreationAndDisplay(AcceptanceTester $I) {
     // Create a spotlight node.
@@ -496,6 +493,26 @@ class NewsCest {
 
     // Verify the spotlight label exists
     $I->canSee('Spotlight', '.su-spotlight-label p');
+  }
+
+  #[CodeceptionAttribute\Group('unpublished-terms')]
+  public function testUnpublishedTerms(AcceptanceTester $I) {
+    $term = $I->createEntity([
+      'vid' => 'stanford_news_topics',
+      'name' => $this->faker->uuid(),
+    ], 'taxonomy_term');
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'su_news_topics' => $term->id(),
+    ]);
+    $I->logInWithRole('site_manager');
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->canSeeOptionIsSelected('News Types (value 1)', $term->label());
+
+    $term->setUnpublished()->save();
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->canSeeOptionIsSelected('News Types (value 1)', $term->label());
   }
 
 }
