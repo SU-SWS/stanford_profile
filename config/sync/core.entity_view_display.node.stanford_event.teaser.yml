@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.stanford_event.su_event_ext_image
     - field.field.node.stanford_event.su_event_groups
     - field.field.node.stanford_event.su_event_keywords
+    - field.field.node.stanford_event.su_event_localist_id
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
     - field.field.node.stanford_event.su_event_schedule
@@ -37,6 +38,7 @@ dependencies:
     - ds
     - empty_fields
     - field_formatter_class
+    - field_formatter_range
     - field_label
     - smart_date
     - user
@@ -246,11 +248,15 @@ content:
         handler: ''
       field_formatter_class:
         class: ''
+      field_formatter_range:
+        order: 0
+        limit: 1
+        offset: 0
       field_label:
         label_value: ''
         label_tag: ''
       ds:
-        ds_limit: ''
+        ds_limit: '1'
     weight: 4
     region: event_type
 hidden:
