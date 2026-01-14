@@ -1,6 +1,7 @@
 <?php
 
 use Codeception\Attribute as CodeceptionAttribute;
+use Codeception\Example;
 use Faker\Factory;
 
 /**
@@ -126,9 +127,9 @@ class EntityReferenceDisplayCest {
   /**
    * Test spotlight teaser display modes render correctly.
    */
-  #[CodeceptionAttribute\Examples(displayMode: 'spotlight_teaser_large_image', variantClass: 'su-spotlight-teaser--large')]
-  #[CodeceptionAttribute\Examples(displayMode: 'spotlight_teaser_small_image', variantClass: 'su-spotlight-teaser--small')]
-  public function testSpotlightTeaserDisplayModes(FunctionalTester $I, \Codeception\Example $example) {
+  #[CodeceptionAttribute\Examples(displayMode: 'Spotlight Teaser - Large Image', variantClass: '.news-spotlight--large')]
+  #[CodeceptionAttribute\Examples(displayMode: 'Spotlight Teaser - Small Image', variantClass: '.news-teaser--small')]
+  public function testSpotlightTeaserDisplayModes(FunctionalTester $I, Example $example) {
     $news = $this->createNewsEntity($I);
     $I->logInWithRole('site_manager');
     $node = $this->createNodeWithEntityParagraph($I);
@@ -141,9 +142,9 @@ class EntityReferenceDisplayCest {
     $I->click('Save');
 
     $I->canSee('has been updated');
-    $I->canSee($news->label(), '.su-spotlight-teaser');
-    $I->seeElement('.su-card.su-spotlight-teaser.' . $example['variantClass']);
-    $I->canSee($news->get('su_news_quote')->value, '.su-spotlight-teaser__quote');
+    $I->canSee($news->label(), '.news-spotlight-teaser');
+    $I->seeElement('.news-spotlight-teaser' . $example['variantClass']);
+    $I->canSee($news->get('su_news_quote')->value, '.spotlight-quote');
   }
 
   /**
