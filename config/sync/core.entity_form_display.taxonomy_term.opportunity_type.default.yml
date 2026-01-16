@@ -27,6 +27,7 @@ dependencies:
     - node.type.stanford_opportunity
   module:
     - change_labels
+    - cshs
     - datetime
     - field_formatter_class
     - field_group
@@ -165,7 +166,7 @@ content:
         field_label_overwrite: ''
   layout_builder__layout:
     type: null
-    weight: 34
+    weight: 37
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -378,10 +379,18 @@ content:
         hide_add_another: 0
         force_single_cardinality: 0
   su_opp_type:
-    type: taxonomy_label_hierarchy
+    type: cshs
     weight: 7
     region: content
-    settings: {  }
+    settings:
+      save_lineage: false
+      force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
+      allow_unpublished: false
     third_party_settings: {  }
   su_opp_units:
     type: options_select
