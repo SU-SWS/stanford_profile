@@ -137,27 +137,6 @@ third_party_settings:
                     class: su-short-title
             weight: 0
             additional: {  }
-          e0167f4a-2c96-49d4-a0c0-0d316058897c:
-            uuid: e0167f4a-2c96-49d4-a0c0-0d316058897c
-            region: quote_title
-            configuration:
-              id: 'field_block:node:stanford_person:su_person_short_title'
-              label: 'Short Title'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: hidden
-                settings:
-                  link_to_entity: false
-                third_party_settings:
-                  field_formatter_class:
-                    class: su-person-title
-            weight: -9
-            additional: {  }
           0d5ce623-cc57-4e84-947f-4c1dcd8c3354:
             uuid: 0d5ce623-cc57-4e84-947f-4c1dcd8c3354
             region: quote_name
