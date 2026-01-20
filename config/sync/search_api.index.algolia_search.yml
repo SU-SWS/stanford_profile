@@ -11,12 +11,14 @@ dependencies:
     - field.storage.node.su_event_date_time
     - field.storage.node.su_event_subject
     - field.storage.node.su_event_type
+    - field.storage.node.su_media_category
     - field.storage.node.su_media_date
     - field.storage.node.su_media_duration
     - field.storage.node.su_media_episode
     - field.storage.node.su_media_filters
     - field.storage.node.su_media_season
     - field.storage.node.su_media_series
+    - field.storage.node.su_media_types
     - field.storage.node.su_news_spotlight_filters
     - field.storage.node.su_news_topics
     - field.storage.node.su_opp_tags
@@ -203,6 +205,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.su_media_episode
+  media_icon:
+    label: 'Media Icon'
+    datasource_id: 'entity:node'
+    property_path: su_media_category
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_media_category
   media_season:
     label: Season
     datasource_id: 'entity:node'
@@ -219,6 +229,16 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.su_media_series
+  media_type:
+    label: 'Media Type » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'su_media_types:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.su_media_types
+      module:
+        - taxonomy
   news_type:
     label: 'News Types » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -402,8 +422,10 @@ processor_settings:
       - filters_spotlights
       - html
       - media_episode
+      - media_icon
       - media_season
       - media_series
+      - media_type
       - news_type
       - person_full_title
       - person_short_title
