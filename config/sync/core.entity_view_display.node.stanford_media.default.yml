@@ -102,7 +102,7 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_media:su_media_season'
               label: Season
-              label_display: '0'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
@@ -128,7 +128,7 @@ third_party_settings:
             configuration:
               id: 'field_block:node:stanford_media:su_media_episode'
               label: Episode
-              label_display: '0'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
