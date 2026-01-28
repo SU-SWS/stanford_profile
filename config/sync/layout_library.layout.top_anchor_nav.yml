@@ -42,38 +42,7 @@ layout:
       extra_classes: ''
       centered: centered-container
       columns: default
-    components:
-      af0809fe-fe61-4e78-be4e-4837cd773c26:
-        uuid: af0809fe-fe61-4e78-be4e-4837cd773c26
-        region: main
-        configuration:
-          id: 'field_block:node:stanford_page:title'
-          label: Title
-          label_display: '0'
-          provider: layout_builder
-          context_mapping:
-            entity: layout_builder.entity
-            view_mode: view_mode
-          formatter:
-            type: entity_title_heading
-            label: hidden
-            settings:
-              tag: h1
-            third_party_settings: {  }
-        weight: 0
-        additional: {  }
-      3beead74-d71e-4a85-b905-07851c6986c0:
-        uuid: 3beead74-d71e-4a85-b905-07851c6986c0
-        region: main
-        configuration:
-          id: anchor_link_navigation
-          label: 'Anchor Link Navigation'
-          label_display: '0'
-          provider: jumpstart_ui
-          context_mapping: {  }
-          orientation: horizontal
-        weight: 1
-        additional: {  }
+    components: {  }
     third_party_settings: {  }
   -
     layout_id: jumpstart_ui_two_column
@@ -132,7 +101,7 @@ layout:
             third_party_settings:
               field_formatter_class:
                 class: ''
-        weight: -7
+        weight: -5
         additional: {  }
       e09f21a6-e751-4454-b253-b649fcd03240:
         uuid: e09f21a6-e751-4454-b253-b649fcd03240
@@ -163,6 +132,37 @@ layout:
               field_label:
                 label_value: ''
                 label_tag: ''
+        weight: -6
+        additional: {  }
+      af0809fe-fe61-4e78-be4e-4837cd773c26:
+        uuid: af0809fe-fe61-4e78-be4e-4837cd773c26
+        region: main
+        configuration:
+          id: 'field_block:node:stanford_page:title'
+          label: Title
+          label_display: '0'
+          provider: layout_builder
+          context_mapping:
+            entity: layout_builder.entity
+            view_mode: view_mode
+          formatter:
+            type: entity_title_heading
+            label: hidden
+            settings:
+              tag: h1
+            third_party_settings: {  }
+        weight: -7
+        additional: {  }
+      3beead74-d71e-4a85-b905-07851c6986c0:
+        uuid: 3beead74-d71e-4a85-b905-07851c6986c0
+        region: main
+        configuration:
+          id: anchor_link_navigation
+          label: 'Anchor Link Navigation'
+          label_display: '0'
+          provider: jumpstart_ui
+          context_mapping: {  }
+          orientation: horizontal
         weight: -8
         additional: {  }
     third_party_settings: {  }
