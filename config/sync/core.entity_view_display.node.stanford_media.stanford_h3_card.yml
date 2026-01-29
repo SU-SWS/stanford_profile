@@ -113,18 +113,18 @@ content:
     weight: 3
     region: body
   su_media_image:
-    type: media_responsive_image_formatter
+    type: media_image_formatter
     label: hidden
     settings:
       view_mode: default
       link: false
-      image_style: card_2_1
-      remove_alt: 0
+      image_style: breakpoint_lg_2x
+      remove_alt: false
     third_party_settings:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: 'su-media su-media--image su-card__media'
+        class: ''
       field_label:
         label_value: ''
         label_tag: ''
