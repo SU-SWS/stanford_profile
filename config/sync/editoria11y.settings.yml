@@ -7,13 +7,14 @@ ignore_all_if_absent: ''
 ignore_elements: nav
 panel_no_cover: ''
 embedded_content_warning: .media.embeddable
-download_links: ''
+download_links: 'false'
 link_strings_new_windows: ''
 ignore_link_strings: ''
 link_ignore_selector: 'svg.ext, svg.mailto, .link-purpose-text'
 hidden_handlers: ''
 element_hides_overflow: ''
 ed11y_theme: sleekTheme
+panel_pin: right
 shadow_components: ''
 detect_shadow: false
 watch_for_changes: 'true'
@@ -32,7 +33,7 @@ ignore_tests:
   linkNewWindow: '0'
   linkNoText: '0'
   altEmptyLinked: '0'
-  linkDocument: '0'
+  linkDocument: linkDocument
   linkTextIsURL: '0'
   linkTextIsGeneric: '0'
   textPossibleList: '0'
