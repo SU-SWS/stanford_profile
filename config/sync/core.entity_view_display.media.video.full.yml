@@ -9,10 +9,8 @@ dependencies:
     - field.field.media.video.su_media_category
     - field.field.media.video.su_media_description
     - field.field.media.video.su_video_duration
-    - field.field.media.video.su_video_subtitles
     - media.type.video
   module:
-    - file
     - media
 _core:
   default_config_hash: vqVUNXW5VQkzMmWbWehC_qWBkReYPc_i-In_6nmtn8o
@@ -38,14 +36,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
-    region: content
-  su_video_subtitles:
-    type: file_default
-    label: hidden
-    settings:
-      use_description_as_link_text: true
-    third_party_settings: {  }
-    weight: 1
     region: content
 hidden:
   created: true

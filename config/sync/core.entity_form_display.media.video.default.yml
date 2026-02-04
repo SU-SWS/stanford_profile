@@ -8,13 +8,11 @@ dependencies:
     - field.field.media.video.su_media_category
     - field.field.media.video.su_media_description
     - field.field.media.video.su_video_duration
-    - field.field.media.video.su_video_subtitles
     - media.type.video
   module:
     - change_labels
     - cshs
     - field_formatter_class
-    - file
     - maxlength
     - stanford_profile_helper
 _core:
@@ -75,13 +73,6 @@ content:
     weight: 27
     region: content
     settings: {  }
-    third_party_settings: {  }
-  su_video_subtitles:
-    type: file_generic
-    weight: 3
-    region: content
-    settings:
-      progress_indicator: throbber
     third_party_settings: {  }
 hidden:
   created: true

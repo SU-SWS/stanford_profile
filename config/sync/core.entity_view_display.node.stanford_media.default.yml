@@ -16,12 +16,14 @@ dependencies:
     - field.field.node.stanford_media.su_media_season
     - field.field.node.stanford_media.su_media_series
     - field.field.node.stanford_media.su_media_source
+    - field.field.node.stanford_media.su_media_subtitles
     - field.field.node.stanford_media.su_media_transcript
     - field.field.node.stanford_media.su_media_types
     - node.type.stanford_media
     - views.view.media_content
   module:
     - datetime
+    - file
     - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
@@ -398,6 +400,22 @@ third_party_settings:
                     label_tag: ''
             weight: 2
             additional: {  }
+          fccf4419-6de9-4dc5-9e7f-39a543c7a768:
+            uuid: fccf4419-6de9-4dc5-9e7f-39a543c7a768
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_media:su_media_subtitles'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: file_default
+                label: above
+                settings:
+                  use_description_as_link_text: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: jumpstart_ui_two_column
@@ -617,6 +635,14 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 7
+    region: main
+  su_media_subtitles:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 15
     region: main
   su_media_transcript:
     type: text_default

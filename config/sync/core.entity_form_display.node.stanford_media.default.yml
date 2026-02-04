@@ -16,12 +16,14 @@ dependencies:
     - field.field.node.stanford_media.su_media_season
     - field.field.node.stanford_media.su_media_series
     - field.field.node.stanford_media.su_media_source
+    - field.field.node.stanford_media.su_media_subtitles
     - field.field.node.stanford_media.su_media_transcript
     - field.field.node.stanford_media.su_media_types
     - node.type.stanford_media
   module:
     - cshs
     - datetime
+    - file
     - link
     - media_library
     - path
@@ -144,13 +146,12 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-  su_media_transcript:
-    type: text_textarea
+  su_media_subtitles:
+    type: file_generic
     weight: 14
     region: content
     settings:
-      rows: 5
-      placeholder: ''
+      progress_indicator: throbber
     third_party_settings: {  }
   su_media_types:
     type: cshs
@@ -184,5 +185,6 @@ hidden:
   promote: true
   publish_on: true
   sticky: true
+  su_media_transcript: true
   uid: true
   unpublish_on: true
