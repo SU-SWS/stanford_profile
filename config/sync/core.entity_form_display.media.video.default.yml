@@ -16,6 +16,7 @@ dependencies:
     - field_formatter_class
     - file
     - maxlength
+    - stanford_profile_helper
 _core:
   default_config_hash: 7asQaGZMyJ5EtC9GHpp-bYEGCmfCKgCZhEcDl4wsU6w
 id: media.video.default
@@ -70,11 +71,10 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: true
   su_video_duration:
-    type: number
+    type: time_duration
     weight: 27
     region: content
-    settings:
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   su_video_subtitles:
     type: file_generic

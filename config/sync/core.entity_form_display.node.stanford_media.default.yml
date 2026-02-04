@@ -26,6 +26,7 @@ dependencies:
     - media_library
     - path
     - stanford_fields
+    - stanford_profile_helper
     - text
 id: node.stanford_media.default
 targetEntityType: node
@@ -87,11 +88,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   su_media_duration:
-    type: number
+    type: time_duration
     weight: 5
     region: content
-    settings:
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   su_media_episode:
     type: string_textfield
