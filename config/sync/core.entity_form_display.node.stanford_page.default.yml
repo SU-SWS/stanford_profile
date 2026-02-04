@@ -30,6 +30,7 @@ dependencies:
     - path
     - scheduler
     - stanford_intranet
+    - stanford_profile_helper
     - text
 third_party_settings:
   field_group:
@@ -95,7 +96,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   layout_selection:
-    type: options_select
+    type: layout_library_icons
     weight: 9
     region: content
     settings: {  }
