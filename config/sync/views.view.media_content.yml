@@ -29,7 +29,7 @@ dependencies:
     - user
     - views_taxonomy_term_name_depth
 id: media_content
-label: 'Media Content'
+label: 'Audio/Visual Content'
 module: views
 description: ''
 tag: ''
@@ -1017,7 +1017,7 @@ display:
           exposed: true
           expose:
             operator_id: su_media_filters_target_id_op
-            label: 'Media Filters'
+            label: 'Audio/Visual Filters'
             description: ''
             use_operator: false
             operator: su_media_filters_target_id_op
