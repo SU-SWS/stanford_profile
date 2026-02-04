@@ -3602,7 +3602,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Media Types'
+          label: 'Audio/Visual Types'
           exclude: false
           alter:
             alter_text: false
@@ -4055,7 +4055,7 @@ display:
           exposed: true
           expose:
             operator_id: su_media_types_target_id_op
-            label: 'Media Types'
+            label: 'Audio/Visual Types'
             description: ''
             use_operator: false
             operator: su_media_types_target_id_op
@@ -4254,12 +4254,12 @@ display:
           admin_label: ''
           plugin_id: result
           empty: true
-          content: "<p>Media can be used for creating series/collections of videos, podcasts, or embedded content from the Stanford Digital Repository. Media is similar to News in that it has a published date, information about related people, and more.</p>\r\n<p><a href=\"https://sitesuserguide.stanford.edu/build/page-types/media-content-type\">Learn more about the Media content type</a></p>\r\n<hr/>\r\n<p>Total number of News items in this list: <strong>@total items</strong></p>"
+          content: "<p>Audio/Visual can be used for creating series/collections of videos, podcasts, or embedded content from the Stanford Digital Repository. Audio/Visual is similar to News in that it has a published date, information about related people, and more.</p>\r\n<p><a href=\"https://sitesuserguide.stanford.edu/build/page-types/media-content-type\">Learn more about the Audio/Visual content type</a></p>\r\n<hr/>\r\n<p>Total number of News items in this list: <strong>@total items</strong></p>"
       display_extenders: {  }
       path: admin/content/media-content
       menu:
         type: tab
-        title: 'Manage Media'
+        title: 'Manage Audio/Visual'
         description: ''
         weight: 0
         expanded: false

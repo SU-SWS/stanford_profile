@@ -262,12 +262,12 @@ class RolesCest {
     $I->amOnPage('/admin/structure/taxonomy');
 
     if ($example['access']) {
-      $I->canSee('Media Types');
-      $I->canSee('Media Content Filters');
+      $I->canSee('Audio/Visual Types');
+      $I->canSee('Audio/Visual Content Filters');
     }
     else {
-      $I->cantSee('Media Types');
-      $I->cantSee('Media Content Filters');
+      $I->cantSee('Audio/Visual Types');
+      $I->cantSee('Audio/Visual Content Filters');
     }
 
     foreach (['media_content_types', 'media_content_filters'] as $type) {
