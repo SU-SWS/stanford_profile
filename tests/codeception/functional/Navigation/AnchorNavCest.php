@@ -71,10 +71,13 @@ class AnchorNavCest {
     if ($example['layout'] == 'stanford_basic_page_full') {
       $I->cantSeeElement('.anchor-link-nav');
       foreach ($headings as $heading) {
-        $I->canSeeLink($heading);
+        $I->canSee($heading, '.su-wysiwyg-text h2');
+        $I->cantSeeLink($heading);
       }
+      return;
     }
 
+    $I->canSee($headings[0], '.su-wysiwyg-text h2');
     $I->canSee($headings[0], '.anchor-link-nav');
     $I->canSeeLink($headings[0], "#$headings[0]");
     unset($headings[0]);
@@ -85,6 +88,7 @@ class AnchorNavCest {
     }
 
     foreach ($headings as $heading) {
+      $I->canSee($heading, '.su-wysiwyg-text h2');
       $I->canSee($heading, '.anchor-link-nav');
       $I->canSeeLink($heading, "#$heading");
     }
