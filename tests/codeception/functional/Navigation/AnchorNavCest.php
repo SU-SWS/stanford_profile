@@ -66,6 +66,7 @@ class AnchorNavCest {
       ],
     ]);
     $I->amOnPage($node->toUrl()->toString());
+    $I->resizeWindow(1400, 1000);
 
     foreach ($headings as $heading) {
       $I->canSee($heading, '.anchor-link-nav');
