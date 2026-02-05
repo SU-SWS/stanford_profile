@@ -8,14 +8,13 @@ dependencies:
     - field.field.media.video.su_media_category
     - field.field.media.video.su_media_description
     - field.field.media.video.su_video_duration
-    - field.field.media.video.su_video_subtitles
     - media.type.video
   module:
     - change_labels
     - cshs
     - field_formatter_class
-    - file
     - maxlength
+    - stanford_profile_helper
 _core:
   default_config_hash: 7asQaGZMyJ5EtC9GHpp-bYEGCmfCKgCZhEcDl4wsU6w
 id: media.video.default
@@ -70,18 +69,10 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: true
   su_video_duration:
-    type: number
+    type: time_duration
     weight: 27
     region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-  su_video_subtitles:
-    type: file_generic
-    weight: 3
-    region: content
-    settings:
-      progress_indicator: throbber
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

@@ -8,7 +8,6 @@ dependencies:
     - field.field.media.video.su_media_category
     - field.field.media.video.su_media_description
     - field.field.media.video.su_video_duration
-    - field.field.media.video.su_video_subtitles
     - media.type.video
   module:
     - empty_fields
@@ -48,6 +47,5 @@ hidden:
   su_media_category: true
   su_media_description: true
   su_video_duration: true
-  su_video_subtitles: true
   thumbnail: true
   uid: true
