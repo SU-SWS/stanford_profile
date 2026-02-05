@@ -68,6 +68,22 @@ class AnchorNavCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->resizeWindow(1400, 1000);
 
+    if ($example['layout'] == 'stanford_basic_page_full') {
+      $I->cantSeeElement('.anchor-link-nav');
+      foreach ($headings as $heading) {
+        $I->canSeeLink($heading);
+      }
+    }
+
+    $I->canSee($headings[0], '.anchor-link-nav');
+    $I->canSeeLink($headings[0], "#$headings[0]");
+    unset($headings[0]);
+
+    // Top anchor will have other links in the collapsed area.
+    if (str_starts_with($example['layout'], 'top_anchor_nav')) {
+      $I->click('See More', '.anchor-link-nav');
+    }
+
     foreach ($headings as $heading) {
       $I->canSee($heading, '.anchor-link-nav');
       $I->canSeeLink($heading, "#$heading");
