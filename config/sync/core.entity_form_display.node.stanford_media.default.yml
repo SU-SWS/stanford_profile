@@ -63,8 +63,17 @@ content:
     weight: 10
     region: content
     settings:
-      media_types: {  }
-    third_party_settings: {  }
+      media_types:
+        - video
+        - embeddable
+    third_party_settings:
+      change_labels:
+        add_another: ''
+        field_label_overwrite: ''
+        hide_add_another: 0
+        force_single_cardinality: 0
+      field_formatter_class:
+        class: ''
   su_media_category:
     type: options_select
     weight: 11
