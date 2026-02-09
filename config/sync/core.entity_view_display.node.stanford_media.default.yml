@@ -400,33 +400,6 @@ third_party_settings:
                     label_tag: ''
             weight: 2
             additional: {  }
-          fccf4419-6de9-4dc5-9e7f-39a543c7a768:
-            uuid: fccf4419-6de9-4dc5-9e7f-39a543c7a768
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_media:su_media_subtitles'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: file_default
-                label: above
-                settings:
-                  use_description_as_link_text: true
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-        third_party_settings: {  }
-      -
-        layout_id: jumpstart_ui_two_column
-        layout_settings:
-          label: ''
-          context_mapping: {  }
-          extra_classes: ''
-          centered: centered-container
-          orientation: left
-          force_regions: 0
-        components: {  }
         third_party_settings: {  }
   layout_library:
     enable: false
