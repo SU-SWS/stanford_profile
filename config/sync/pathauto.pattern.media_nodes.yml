@@ -5,9 +5,9 @@ dependencies:
   module:
     - node
 id: media_nodes
-label: 'Media Nodes'
+label: 'Audio/Visual Nodes'
 type: 'canonical_entities:node'
-pattern: 'media/[node:title]'
+pattern: 'av/[node:title]'
 selection_criteria:
   43deff05-71af-4c9a-a795-0b71021659aa:
     id: 'entity_bundle:node'
