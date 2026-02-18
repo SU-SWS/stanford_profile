@@ -1853,7 +1853,7 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: ''
+          element_type: div
           element_class: ''
           element_label_type: ''
           element_label_class: ''
@@ -2230,11 +2230,14 @@ display:
           break_phrase: false
           not: true
       style:
-        type: default
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: su-list-unstyled
       row:
         type: fields
         options:
