@@ -256,7 +256,7 @@ display:
         - 'config:field.storage.node.su_media_audio_video'
   after_first_media:
     id: after_first_media
-    display_title: 'After First Media'
+    display_title: 'After First Audio/Visual'
     display_plugin: block
     position: 4
     display_options:
@@ -779,14 +779,14 @@ display:
           field: su_media_audio_video
           relationship: none
           group_type: group
-          admin_label: 'su_media_audio_video: Media'
+          admin_label: 'su_media_audio_video: Audio/Visual'
           plugin_id: standard
           required: false
       display_description: ''
       header: {  }
       display_extenders: {  }
-      block_description: 'After First Media'
-      block_category: 'Media Lists (Views)'
+      block_description: 'After First Audio/Visual'
+      block_category: 'Audio/Visual Lists (Views)'
       block_hide_empty: true
     cache_metadata:
       max-age: -1
@@ -887,7 +887,7 @@ display:
         arguments: false
       display_description: ''
       block_description: 'Default List'
-      block_category: 'Media Lists (Views)'
+      block_category: 'Audio/Visual Lists (Views)'
       block_hide_empty: true
     cache_metadata:
       max-age: -1
@@ -1337,7 +1337,7 @@ display:
         arguments: false
       display_description: ''
       block_description: 'Default List'
-      block_category: 'Media Lists (Views)'
+      block_category: 'Audio/Visual Lists (Views)'
       block_hide_empty: true
     cache_metadata:
       max-age: -1
@@ -1351,7 +1351,7 @@ display:
         - 'config:field.storage.node.su_media_audio_video'
   person_list:
     id: person_list
-    display_title: 'Person Media'
+    display_title: 'Person Audio/Visual'
     display_plugin: block
     position: 8
     display_options:
@@ -1431,7 +1431,7 @@ display:
         arguments: false
       display_description: ''
       display_extenders: {  }
-      block_description: 'Person: Related Media'
+      block_description: 'Person: Related Audio/Visual'
       block_category: 'People Lists (Views)'
       block_hide_empty: true
     cache_metadata:
@@ -1676,7 +1676,7 @@ display:
           required: true
       display_description: ''
       display_extenders: {  }
-      block_category: 'Media Lists (Views)'
+      block_category: 'Audio/Visual Lists (Views)'
       block_hide_empty: true
     cache_metadata:
       max-age: -1
@@ -2253,7 +2253,7 @@ display:
         filter_groups: true
       display_description: ''
       display_extenders: {  }
-      block_category: 'Media Lists (Views)'
+      block_category: 'Audio/Visual Lists (Views)'
       block_hide_empty: true
     cache_metadata:
       max-age: -1
