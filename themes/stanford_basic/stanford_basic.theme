@@ -329,7 +329,7 @@ function stanford_basic_preprocess_block(&$variables) {
 function _stanford_basic_get_menu_tree_links(array $items) {
   $tree = [];
   foreach ($items as $id => $item) {
-    if (!$item->link->isEnabled()) {
+    if (!$item->link->isEnabled() || !$item->link->getUrlObject()->access()) {
       continue;
     }
     $tree[] = [
