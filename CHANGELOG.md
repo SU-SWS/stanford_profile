@@ -1,6 +1,10 @@
 # Stanford Profile
 
-12.1.2
+12.2.1
+-------------------------------------------------------------------------------
+- Check for decoupled menu item access for user
+
+12.2.0
 -------------------------------------------------------------------------------
 - Ignore PDFs for Editoria11y so we don't trigger WAF (#1068)
 - Allow anchor link navigation block (#1043)
