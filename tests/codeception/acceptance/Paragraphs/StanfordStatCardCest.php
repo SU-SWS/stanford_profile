@@ -1,12 +1,13 @@
 <?php
 
-use Faker\Factory;
 use Codeception\Attribute as CodeceptionAttribute;
+use Faker\Factory;
 use Codeception\Example;
 
 /**
  * Codeception tests on stat card paragraph type.
  */
+#[CodeceptionAttribute\Group('paragraphs')]
 class StanfordStatCardCest {
 
   /**
@@ -39,9 +40,9 @@ class StanfordStatCardCest {
       'layout' => 'layout_paragraphs_1_column',
     ]);
     $layout->save();
-    $text = $this->faker->paragraph;
+    $text = $this->faker->paragraph();
 
-    $stat = substr($this->faker->word, 0, 5);
+    $stat = substr($this->faker->word(), 0, 5);
     $headline = $this->faker->words(3, TRUE);
 
     /** @var \Drupal\paragraphs\ParagraphInterface $card */

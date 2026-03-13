@@ -1,10 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Tests for various media access functionality.
  */
+#[CodeceptionAttribute\Group('media')]
 class MediaPermissionsCest {
 
   /**

@@ -1,10 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 use Drupal\layout_builder\Section;
 use Drupal\layout_builder\SectionComponent;
 use Facebook\WebDriver\WebDriverElement;
 
+#[CodeceptionAttribute\Group('events')]
 class EventsCest {
 
   /**
@@ -23,9 +25,8 @@ class EventsCest {
 
   /**
    * Mini calendar display.
-   *
-   * @group mini-calendar
    */
+  #[CodeceptionAttribute\Group('mini-calendar')]
   public function testMiniCalendar(FunctionalTester $I) {
     $events = [];
     $current_month = (int) date('n');
@@ -49,10 +50,10 @@ class EventsCest {
     $uuid_service = \Drupal::service('uuid');
     $components = [
       new SectionComponent($uuid_service->generate(), 'main', [
-        'id' => 'react_component:mini_calendar',
+        'id' => 'pdb_component:mini_calendar',
         'label' => 'Mini Calendar',
         'label_display' => 'hidden',
-        'provider' => 'pdb_react',
+        'provider' => 'stanford_profile_helper',
       ]),
     ];
     $layout = [
@@ -84,6 +85,96 @@ class EventsCest {
       $I->click('Close Dialog');
       $I->click('Next Month');;
     }
+  }
+
+
+  public function testContentType(FunctionalTester $I) {
+    [
+      $parent_1,
+      $parent_2,
+      $child_1_1,
+      $child_2_1,
+      $child_1_2,
+      $child_2_2,
+    ] = $this->buildTaxonomyTerms($I);
+
+    $node = $I->createEntity([
+      'type' => 'stanford_event',
+      'title' => $this->faker->words(3, TRUE),
+      'su_event_date_time' => [
+        'value' => time(),
+        'end_value' => time(),
+      ],
+    ]);
+
+    $I->logInWithRole('contributor');
+
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+
+    $I->canSee($parent_1->label(), 'legend');
+    $I->canSee($parent_2->label(), 'legend');
+
+    $parent_1_id = preg_replace('@[^a-z0-9_.]+@', '_', mb_strtolower($parent_1->label()));
+    $parent_2_id = preg_replace('@[^a-z0-9_.]+@', '_', mb_strtolower($parent_2->label()));
+
+    $I->selectOption("#$parent_1_id select.simpler-select", $child_1_1->label());
+    $I->click('Add More', "#$parent_1_id");
+    $I->waitForElementVisible("#$parent_1_id [class*='1-target-id'] select.simpler-select");
+    $I->selectOption("#$parent_1_id [class*='1-target-id'] select.simpler-select", $child_1_2->label());
+
+    $I->selectOption("#$parent_2_id select.simpler-select", $child_2_1->label());
+
+    $I->waitForElementVisible("#$parent_2_id [class*='--level-1'] select.simpler-select");
+    $I->selectOption("#$parent_2_id [class*='--level-1'] select.simpler-select", $child_2_2->label());
+
+    $I->click('Save');
+    $I->canSeeInCurrentUrl($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+  }
+
+  protected function buildTaxonomyTerms(FunctionalTester $I) {
+    $parent_1 = $I->createEntity([
+      'vid' => 'event_filters',
+      'name' => $this->faker->words(2, TRUE),
+      'weight' => 0,
+    ], 'taxonomy_term');
+    $parent_2 = $I->createEntity([
+      'vid' => 'event_filters',
+      'name' => $this->faker->words(2, TRUE),
+      'weight' => 10,
+    ], 'taxonomy_term');
+
+    $child_1_1 = $I->createEntity([
+      'vid' => 'event_filters',
+      'name' => $this->faker->words(2, TRUE),
+      'parent' => $parent_1->id(),
+    ], 'taxonomy_term');
+
+    $child_1_2 = $I->createEntity([
+      'vid' => 'event_filters',
+      'name' => $this->faker->words(2, TRUE),
+      'parent' => $parent_1->id(),
+    ], 'taxonomy_term');
+
+    $child_2_1 = $I->createEntity([
+      'vid' => 'event_filters',
+      'name' => $this->faker->words(2, TRUE),
+      'parent' => $parent_2->id(),
+    ], 'taxonomy_term');
+
+    $child_2_2 = $I->createEntity([
+      'vid' => 'event_filters',
+      'name' => $this->faker->words(2, TRUE),
+      'parent' => $child_2_1->id(),
+    ], 'taxonomy_term');
+    return [
+      $parent_1,
+      $parent_2,
+      $child_1_1,
+      $child_2_1,
+      $child_1_2,
+      $child_2_2,
+    ];
   }
 
 }

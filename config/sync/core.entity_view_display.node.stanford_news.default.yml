@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - core.base_field_override.node.stanford_news.title
+    - field.field.node.stanford_news.body
     - field.field.node.stanford_news.layout_builder__layout
+    - field.field.node.stanford_news.layout_selection
     - field.field.node.stanford_news.stanford_intranet__access
     - field.field.node.stanford_news.su_metatags
     - field.field.node.stanford_news.su_news_banner
@@ -14,8 +16,11 @@ dependencies:
     - field.field.node.stanford_news.su_news_dek
     - field.field.node.stanford_news.su_news_featured_media
     - field.field.node.stanford_news.su_news_hide_social
+    - field.field.node.stanford_news.su_news_person
     - field.field.node.stanford_news.su_news_publishing_date
+    - field.field.node.stanford_news.su_news_quote
     - field.field.node.stanford_news.su_news_source
+    - field.field.node.stanford_news.su_news_spotlight_filters
     - field.field.node.stanford_news.su_news_topics
     - field.field.node.stanford_news.su_shared_tags
     - node.type.stanford_news
@@ -87,8 +92,8 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
-            weight: 2
+              items_per_page: 0
+            weight: 3
             additional: {  }
           93729581-66b7-4de2-8d6c-2e4163693189:
             uuid: 93729581-66b7-4de2-8d6c-2e4163693189
@@ -253,6 +258,31 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: su-news-components
+            weight: 1
+            additional: {  }
+          61eb67ef-873e-4577-96c4-0ffef8a5d648:
+            uuid: 61eb67ef-873e-4577-96c4-0ffef8a5d648
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_news:body'
+              label: Body
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: layout-background
+                  field_label:
+                    label_value: ''
+                    label_tag: ''
             weight: 0
             additional: {  }
         third_party_settings: {  }
@@ -330,18 +360,23 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: 'More News'
-              items_per_page: none
+              items_per_page: 0
             weight: 0
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories:
       - 'Basic Page Type Lists (Views)'
+      - Book
+      - 'Changelog (Views)'
       - 'Chaos Tools'
       - 'Config Pages'
       - 'Content fields'
       - 'Custom block types'
       - 'Custom blocks'
+      - Devel
+      - 'Devel PHP'
+      - Editoria11y
       - 'Events Lists (Views)'
       - Forms
       - Help
@@ -350,15 +385,19 @@ third_party_settings:
       - 'Lists (Views)'
       - Menus
       - 'News Lists (Views)'
-      - 'PDB React'
+      - 'Opportunities (Views)'
+      - 'PDB Components'
       - 'People Lists (Views)'
+      - 'Policy (Views)'
+      - Printable
       - 'Publication (Views)'
-      - React
-      - 'SimpleSAMLphp Authentication'
+      - 'Simple block'
       - 'Stanford News'
       - 'Stanford Profile Helper'
-      - 'Stanford SimpleSAML PHP'
+      - 'Stanford SAML Authentication'
       - System
+      - 'Taxonomy Terms (Views)'
+      - User
       - Views
       - core
     entity_view_mode_restriction:
@@ -392,49 +431,36 @@ third_party_settings:
           - 'extra_field_block:node:stanford_news:search_api_excerpt'
           - 'field_block:node:stanford_news:sticky'
           - 'field_block:node:stanford_news:unpublish_on'
-          - 'field_block:user:user:changed'
-          - 'field_block:user:user:created'
-          - 'field_block:user:user:default_langcode'
-          - 'field_block:user:user:su_display_name'
-          - 'field_block:user:user:mail'
-          - 'field_block:user:user:init'
-          - 'field_block:user:user:langcode'
-          - 'field_block:user:user:access'
-          - 'field_block:user:user:login'
-          - 'extra_field_block:user:user:member_for'
-          - 'field_block:user:user:name'
-          - 'field_block:user:user:preferred_admin_langcode'
-          - 'field_block:user:user:preferred_langcode'
-          - 'field_block:user:user:role_change'
-          - 'field_block:user:user:roles'
-          - 'extra_field_block:user:user:search_api_excerpt'
-          - 'field_block:user:user:timezone'
-          - 'field_block:user:user:uid'
-          - 'field_block:user:user:status'
       allowlisted_blocks:
         Menus:
-          - 'system_menu_block:stanford-event-types'
           - 'menu_block:main'
-          - 'system_menu_block:stanford-person-type'
-          - 'system_menu_block:stanford-publication-topics'
-          - 'system_menu_block:news-topics'
         System:
           - system_breadcrumb_block
         core:
           - page_title_block
       restricted_categories:
+        - Book
+        - 'Changelog (Views)'
         - 'Chaos Tools'
         - 'Config Pages'
+        - Devel
+        - 'Devel PHP'
+        - Editoria11y
         - Forms
         - Help
         - 'Lists (Views)'
-        - React
-        - 'SimpleSAMLphp Authentication'
+        - 'Opportunities (Views)'
+        - 'PDB Components'
+        - 'Policy (Views)'
+        - Printable
+        - 'Simple block'
         - 'Stanford Profile Helper'
-        - 'Stanford SimpleSAML PHP'
+        - 'Stanford SAML Authentication'
+        - 'Taxonomy Terms (Views)'
+        - User
         - Views
   layout_library:
-    enable: false
+    enable: true
 id: node.stanford_news.default
 targetEntityType: node
 bundle: stanford_news
@@ -502,6 +528,21 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
+  su_news_quote:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: main
+  su_news_spotlight_filters:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: main
   su_news_topics:
     type: entity_reference_label
     label: hidden
@@ -511,6 +552,7 @@ content:
     weight: 0
     region: content
 hidden:
+  body: true
   layout_builder__layout: true
   layout_selection: true
   links: true
@@ -518,5 +560,6 @@ hidden:
   stanford_intranet__access: true
   su_metatags: true
   su_news_hide_social: true
+  su_news_person: true
   su_news_source: true
   su_shared_tags: true

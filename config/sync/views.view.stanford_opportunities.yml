@@ -17,7 +17,6 @@ dependencies:
     - taxonomy.vocabulary.opportunity_type
     - taxonomy.vocabulary.opportunity_units
   module:
-    - datetime
     - element_class_formatter
     - graphql_compose_views
     - link
@@ -993,20 +992,6 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       sorts:
-        su_opp_start_date_value:
-          id: su_opp_start_date_value
-          table: node__su_opp_start_date
-          field: su_opp_start_date_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: datetime
-          order: ASC
-          expose:
-            label: 'Start Date (su_opp_start_date)'
-            field_identifier: start
-          exposed: true
-          granularity: second
         title:
           id: title
           table: node_field_data
@@ -1158,18 +1143,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              administrator: '0'
-              anonymous: '0'
-              stanford_faculty: '0'
-              stanford_staff: '0'
-              stanford_student: '0'
-              contributor: '0'
-              site_manager: '0'
-              site_editor: '0'
-              layout_builder_user: '0'
-              su_site_embedder: '0'
-              decoupled_site_users: '0'
-              site_reviewer: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1423,11 +1396,11 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: Units
+          label: ''
           exclude: false
           alter:
             alter_text: false
-            text: 'Units: {{ su_opp_units }}'
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -1452,16 +1425,16 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: span
+          element_type: ''
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: su-opp-units
-          element_default_classes: false
+          element_wrapper_class: ''
+          element_default_classes: true
           empty: ''
-          hide_empty: true
+          hide_empty: false
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
@@ -1476,8 +1449,8 @@ display:
           delta_reversed: false
           delta_first_last: false
           multi_type: separator
-          separator: ', <br/>'
-          field_api_classes: false
+          separator: ', '
+          field_api_classes: true
       pager:
         type: some
         options:
@@ -1656,7 +1629,8 @@ display:
           error_message: true
       filter_groups:
         operator: AND
-        groups: {  }
+        groups:
+          1: OR
       style:
         type: default
         options:

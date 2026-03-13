@@ -13,6 +13,8 @@
 
   .su-secondary-nav__link {
     border-top: 0;
+    font-weight: $su-font-regular;
+    font-size: 1.7rem;
   }
 
   > .su-secondary-nav__menu {
@@ -28,6 +30,42 @@
       border: 0;
     }
 
+  }
+
+  // Adding in the carets for desktop only.
+  @include grid-media-min('lg') {
+    .su-secondary-nav__item--parent {
+      >.su-secondary-nav__link {
+        padding-right: 0;
+        padding-left: 2.0rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        &::before {
+          background-color: transparent;
+        }
+
+        &::after {
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          color: $su-color-black-70;
+          content: "\f078";
+          display: inline-block;
+          position: relative;
+          visibility: visible;
+          margin: 0 10px 0 18px;
+          font-size: 1.3rem;
+        }
+
+        &:hover {
+          &::after {
+            background-color: transparent;
+          }
+        }
+      }
+    }
   }
 }
 

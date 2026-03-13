@@ -1,0 +1,14 @@
+uuid: de3a46e6-a056-4c80-a2a9-474416003eef
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.course_filters
+id: taxonomy_vocabulary_course_filters
+entity_type_id: taxonomy_vocabulary
+entity_id: course_filters
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

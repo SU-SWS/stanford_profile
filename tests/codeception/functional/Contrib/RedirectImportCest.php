@@ -1,10 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Class RedirectImportCest.
- *
- * @group contrib
  */
+#[CodeceptionAttribute\Group('contrib')]
 class RedirectImportCest {
 
   /**

@@ -1,13 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Drupal\config_pages\Entity\ConfigPages;
 use Faker\Factory;
 
 /**
  * Test for custom block types.
- *
- * @group block
  */
+#[CodeceptionAttribute\Group('block')]
 class SearchBlockCest {
 
   /**
@@ -37,9 +37,9 @@ class SearchBlockCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->see('Hide Site Search');
     $I->checkOption('Hide Site Search');
-    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
-    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email());
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email());
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email());
     $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
     $I->click('Save');
     // The settings might have been created or updated.

@@ -8,10 +8,14 @@ entity_type: config_pages
 bundle: stanford_local_footer
 field_validation_rules:
   929a9985-e3c7-4a86-9ff1-d9f349df4932:
-    uuid: 929a9985-e3c7-4a86-9ff1-d9f349df4932
     id: regex_constraint_rule
     title: 'Supported Social Links'
+    data:
+      validate_mode: direct
+      pattern: /(google|twitter|bsky|github|threads|flickr|mastodon|instagram|linkedin|youtube|x|facebook)\.(com|app|org|net)/
+      message: 'Social URL is not supported.'
     weight: 2
+    uuid: 929a9985-e3c7-4a86-9ff1-d9f349df4932
     field_name: su_local_foot_social
     column: uri
     error_message: ''
@@ -20,7 +24,3 @@ field_validation_rules:
       field: ''
       operator: ''
       value: ''
-    data:
-      pattern: /(google|twitter|bsky|github|threads|flickr|mastodon|instagram|linkedin|youtube|x|facebook)\.(com|app|org|net)/
-      message: 'Social URL is not supported.'
-      validate_mode: direct

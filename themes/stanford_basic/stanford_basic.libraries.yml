@@ -140,7 +140,15 @@ content.stanford_policy:
     theme:
       dist/css/content/policy.css: { }
 
+content.stanford_news:
+  css:
+    theme:
+      dist/css/content/news.css: { }
+
 algolia-search:
+  css:
+    theme:
+      dist/css/search-page.css: { }
   js:
     algolia-search/dist/islands/algolia-search.island.js: { minified: true }
   dependencies:

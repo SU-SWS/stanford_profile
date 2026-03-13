@@ -45,7 +45,7 @@ const DefaultHit = ({hit, federatedSearch}: HitProps) => {
         }
 
         {hit.updated &&
-          <div>
+          <div className="last-updated">
             Last
             Updated: {new Date(hit.updated * 1000).toLocaleDateString('en-us', {
             month: "long",

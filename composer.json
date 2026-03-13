@@ -48,14 +48,31 @@
                     "type": "zip"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "cure53/dompurify",
+                "version": "3.3.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/cure53/DOMPurify.git",
+                    "type": "git",
+                    "reference": "3.3.0"
+                }
+            }
         }
     ],
+    "conflict": {
+        "drupal/colorbox": ">=2.2.0"
+    },
     "require": {
         "ext-imagick": "*",
         "acquia/drupal-environment-detector": "^1.0",
         "citation-style-language/locales": "1.0.0",
         "citation-style-language/styles-distribution": "1.0.0",
         "composer/installers": ">=1.2",
+        "cure53/dompurify": "^3.0",
         "drupal/address": "^2.0",
         "drupal/admin_toolbar": "^3.1",
         "drupal/allowed_formats": "^3.0",
@@ -67,16 +84,17 @@
         "drupal/ckeditor5_icons": "^1.1",
         "drupal/color_field": "^3.0",
         "drupal/colorbox": "^2.0",
+        "drupal/colorbox_media_video": "^2.0",
         "drupal/components": "^3.0",
         "drupal/conditional_fields": "^4.0",
         "drupal/config_ignore": "^3.0",
         "drupal/config_pages": "^2.6",
-        "drupal/config_pages_overrides": "^2.0",
+        "drupal/config_pages_overrides": "^3.0",
         "drupal/config_readonly": "^1.0@beta",
         "drupal/config_split": "^2.0",
         "drupal/confirm_leave": "^1.0@beta",
         "drupal/content_lock": "^3.0",
-        "drupal/core": "~10.5.0",
+        "drupal/core": "~11.2.2",
         "drupal/cshs": "^4.0",
         "drupal/default_content": "^2.0@alpha",
         "drupal/diff": "^1.3",
@@ -89,9 +107,10 @@
         "drupal/environment_indicator": "^4.0",
         "drupal/extlink": "^2.0",
         "drupal/fast_404_generator": "^1.0",
-        "drupal/field_encrypt": "^3.0",
+        "drupal/field_encrypt": "^3.0 || ^4.0",
         "drupal/field_formatter_class": "^1.5",
-        "drupal/field_group": "^3.0@rc",
+        "drupal/field_formatter_range": "^1.7",
+        "drupal/field_group": "^4.0",
         "drupal/field_label": "^1.4",
         "drupal/field_permissions": "^1.0@RC",
         "drupal/field_validation": "^3.0",
@@ -101,7 +120,6 @@
         "drupal/google_analytics": "^4.0",
         "drupal/google_tag": "^2.0",
         "drupal/graphql_compose": "^2.0",
-        "drupal/hook_event_dispatcher": "^4.0@beta",
         "drupal/image_effects": "^4.0",
         "drupal/imagecache_external": "^3.0",
         "drupal/imagemagick": "^4.0",
@@ -125,7 +143,7 @@
         "drupal/maxlength": "^3.1",
         "drupal/menu_admin_per_menu": "^1.0",
         "drupal/menu_block": "^1.10",
-        "drupal/menu_link_weight": "^2.0@alpha",
+        "drupal/menu_link_weight": "2.x-dev",
         "drupal/metatag": "^2.0",
         "drupal/migrate_file": "^3.0",
         "drupal/mysql57": "^1.0",
@@ -136,11 +154,10 @@
         "drupal/page_manager": "^4.0@beta",
         "drupal/paragraphs": "^1.11",
         "drupal/paragraphs_edit": "^3.0",
-        "drupal/paranoia": "^1.0@alpha",
         "drupal/path_redirect_import": "^2.0",
         "drupal/pathauto": "^1.6",
-        "drupal/pdb": "2.0.0",
-        "drupal/printable": "^3.0",
+        "drupal/pdb": "^2.0",
+        "drupal/printable": "^3.1",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/real_aes": "^2.4",
         "drupal/redirect": "^1.0-beta1",
@@ -149,11 +166,13 @@
         "drupal/scheduler": "^2.0",
         "drupal/search_api": "^1.19",
         "drupal/search_api_algolia": "^3.0@beta",
+        "drupal/search_autocomplete": "^4.0",
         "drupal/seckit": "^2.0",
         "drupal/shield": "^1.8",
         "drupal/shs": "^2.0@RC",
         "drupal/simple_block": "^1.7",
         "drupal/simple_oauth": "^6.0",
+        "drupal/single_content_sync": "^1.4",
         "drupal/smart_date": "^4.0",
         "drupal/smart_trim": "^2.0",
         "drupal/stage_file_proxy": "^3.1",
@@ -165,6 +184,7 @@
         "drupal/ultimate_cron": "^2.0@beta",
         "drupal/view_unpublished": "^1.0",
         "drupal/viewfield": "^3.0@beta",
+        "drupal/views_argument_token": "^2.0",
         "drupal/views_block_filter_block": "^2.0@beta",
         "drupal/views_bulk_edit": "^3.0",
         "drupal/views_contextual_filters_or": "^1.3",
@@ -178,14 +198,14 @@
         "sainsburys/guzzle-oauth2-plugin": "^3.0",
         "seboettg/citeproc-php": "2.4.1",
         "su-sws/ckeditor5_plugins": "^1.0",
-        "su-sws/drupal-patches": "^10.0",
+        "su-sws/drupal-patches": "^11.0",
+        "su-sws/paranoia": "^1.0@RC",
         "su-sws/react_paragraphs": "^8.2",
         "su-sws/stanford_actions": "^8.2",
-        "su-sws/stanford_fields": "^8.4",
         "su-sws/stanford_media": "^11.0",
-        "su-sws/stanford_migrate": "^8.3",
-        "su-sws/stanford_profile_helper": "^9.10",
-        "su-sws/stanford_samlauth": "^1.0"
+        "su-sws/stanford_migrate": "^9.0",
+        "su-sws/stanford_profile_helper": "^10.2",
+        "su-sws/stanford_samlauth": "^2.0"
     },
     "config": {
         "sort-packages": true
@@ -210,9 +230,6 @@
             "drupal/fontawesome": {
                 "https://www.drupal.org/project/fontawesome/issues/3380581": "https://www.drupal.org/files/issues/2025-03-06/iconpicker-does-not-render_3380581_11.patch"
             },
-            "drupal/hook_event_dispatcher": {
-                "https://www.drupal.org/project/hook_event_dispatcher/issues/3354751": "https://www.drupal.org/files/issues/2024-03-14/hook_event_dispatcher-4.x-3354751-7.patch"
-            },
             "drupal/menu_link": {
                 "https://www.drupal.org/project/menu_link/issues/3358081": "https://git.drupalcode.org/project/menu_link/-/merge_requests/9.patch"
             },
@@ -220,7 +237,7 @@
                 "https://www.drupal.org/project/menu_link_weight/issues/2875984": "https://git.drupalcode.org/project/menu_link_weight/-/merge_requests/2.diff"
             },
             "drupal/trash": {
-                "Trash module delete condition group": "https://sws-devguide.stanford.edu/sites/g/files/sbiybj17516/files/trash-delete_condition.patch"
+                "Trash module delete condition group": "https://sws-devguide.stanford.edu/sites/g/files/sbiybj17516/files/trash-delete_condition-3_0_22.patch"
             }
         }
     }

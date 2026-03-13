@@ -1,13 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Drupal\config_pages\Entity\ConfigPages;
 use Faker\Factory;
 
 /**
  * Class SystemSiteConfigCest.
- *
- * @group system-site-config
  */
+#[CodeceptionAttribute\Group('system-site-config')]
 class SystemSiteConfigCest {
 
   /**
@@ -35,9 +35,8 @@ class SystemSiteConfigCest {
 
   /**
    * The site manager should be able to change the site name.
-   *
-   * @group site-settings
    */
+  #[CodeceptionAttribute\Group('site-settings')]
   public function testBasicSiteSettings(AcceptanceTester $I) {
     $org_term = $I->createEntity([
       'vid' => 'site_owner_orgs',
@@ -51,9 +50,9 @@ class SystemSiteConfigCest {
     $I->canSeeElement('#contact');
     $I->cantSee('Site URL');
     $I->fillField('Site Name', 'Foo Bar Site');
-    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
-    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email());
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email());
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email());
     $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
@@ -72,9 +71,7 @@ class SystemSiteConfigCest {
     $I->cantSee('Foo Bar Site');
   }
 
-  /**
-   * @group header-links
-   */
+  #[CodeceptionAttribute\Group('header-links')]
   public function testHeaderLinks(AcceptanceTester $I) {
     $org_term = $I->createEntity([
       'vid' => 'site_owner_orgs',
@@ -109,9 +106,9 @@ class SystemSiteConfigCest {
     $I->fillField('su_site_header_links[2][uri]', $link_3_uri);
     $I->fillField('su_site_header_links[2][title]', $link_3_text);
 
-    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
-    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email());
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email());
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email());
     $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
 
     $I->click('Save');
@@ -137,7 +134,7 @@ class SystemSiteConfigCest {
       'name' => $this->faker->words(2, TRUE),
     ], 'taxonomy_term');
 
-    $text = $this->faker->paragraph;
+    $text = $this->faker->paragraph();
     $paragraph = $I->createEntity([
       'type' => 'stanford_wysiwyg',
       'su_wysiwyg_text' => [
@@ -161,9 +158,9 @@ class SystemSiteConfigCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->selectOption('Home Page', $node->label());
-    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
-    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email());
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email());
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email());
     $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
     $I->click('Save');
     $I->canSee('Site Settings has been', '.messages-list');
@@ -202,9 +199,9 @@ class SystemSiteConfigCest {
     $I->amOnPage('/admin/config/system/basic-site-settings');
     $I->fillField('Google Analytics Account', 'abcdefg');
 
-    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
-    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email());
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email());
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email());
     $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
 
     $I->click('Save');
@@ -228,10 +225,8 @@ class SystemSiteConfigCest {
     $I->cantSee('UA-12456-12');
   }
 
-  /**
-   * @group unpublished-site
-   */
-  public function testUnpublishedSiteBanner(AcceptanceTester $I){
+  #[CodeceptionAttribute\Group('unpublished-site')]
+  public function testUnpublishedSiteBanner(AcceptanceTester $I) {
     $org_term = $I->createEntity([
       'vid' => 'site_owner_orgs',
       'name' => $this->faker->words(2, TRUE),
@@ -240,9 +235,9 @@ class SystemSiteConfigCest {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/system/basic-site-settings');
 
-    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email);
-    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email);
-    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email);
+    $I->fillField('Site Owner Contact Email (value 1)', $this->faker->email());
+    $I->fillField('Primary Site Manager Email (value 1)', $this->faker->email());
+    $I->fillField('Accessibility Contact Email (value 1)', $this->faker->email());
     $I->selectOption('[name="su_site_org[0][target_id]"]', $org_term->id());
 
     $I->selectOption('Site Type', 'Pre-Production');
@@ -259,6 +254,57 @@ class SystemSiteConfigCest {
 
     $I->amOnPage('/');
     $I->cantSee('Under Construction');
+  }
+
+  #[CodeceptionAttribute\Group('redirect')]
+  public function testRedirect(AcceptanceTester $I) {
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+
+    $I->logInWithRole('site_manager');
+    $I->amOnPage('/admin/config/search/redirect/add');
+
+    $source_path = preg_replace('/[^\da-z]/', '-', strtolower($this->faker->words(3, TRUE)));
+
+    $I->fillField('Path', $source_path);
+    $I->fillField('To', $node->toUrl()->toString());
+    $I->click('Save');
+    $I->cantSee("The source path $source_path appears to be a valid path");
+    $I->canSee("The redirect has been saved");
+
+    $I->amOnPage("/$source_path");
+    $I->canSeeInCurrentUrl($node->toUrl()->toString());
+  }
+
+  #[CodeceptionAttribute\Group('redirect')]
+  public function testRedirectingRecentDelete(AcceptanceTester $I) {
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+    $I->logInWithRole('administrator');
+    $I->amOnPage('/admin/config/search/redirect/add');
+
+    $source_path = ltrim($node->toUrl()->toString(), '/');
+    $I->fillField('Path', $source_path);
+    $I->fillField('To', '/');
+    $I->click('Save');
+    $I->canSee("The source path $source_path appears to be a valid path");
+
+    $node->delete();
+    $I->amOnPage('/admin/content/trash');
+    $I->canSee($node->label());
+    $I->amOnPage("/$source_path");
+    $I->canSeeResponseCodeIs(404);
+
+    $I->amOnPage('/admin/config/search/redirect/add');
+    $I->fillField('Path', $source_path);
+    $I->fillField('To', '/');
+    $I->click('Save');
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee("The source path $source_path appears to be a valid path");
   }
 
 }

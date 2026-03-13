@@ -1,15 +1,15 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Class Issue2901390Cest.
  *
- * @group paragraphs
- * @group bug_fix
- *
  * @link https://www.drupal.org/node/2901390
  */
+#[CodeceptionAttribute\Group('bug_fix')]
+#[CodeceptionAttribute\Group('paragraphs')]
 class Issue2901390Cest {
 
   /**

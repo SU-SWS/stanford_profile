@@ -17,13 +17,9 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_eligibility
     - field.field.node.stanford_opportunity.su_opp_icon
     - field.field.node.stanford_opportunity.su_opp_image
-    - field.field.node.stanford_opportunity.su_opp_learn_more
-    - field.field.node.stanford_opportunity.su_opp_open_date
     - field.field.node.stanford_opportunity.su_opp_prerequisites
     - field.field.node.stanford_opportunity.su_opp_source
     - field.field.node.stanford_opportunity.su_opp_sponsor
-    - field.field.node.stanford_opportunity.su_opp_start_date
-    - field.field.node.stanford_opportunity.su_opp_status
     - field.field.node.stanford_opportunity.su_opp_summary
     - field.field.node.stanford_opportunity.su_opp_tags
     - field.field.node.stanford_opportunity.su_opp_type
@@ -101,7 +97,7 @@ third_party_settings:
                   field_label:
                     label_value: ''
                     label_tag: ''
-            weight: 5
+            weight: 6
             additional: {  }
           d8d66e18-44f6-4e82-90c7-131eaf8e19de:
             uuid: d8d66e18-44f6-4e82-90c7-131eaf8e19de
@@ -153,6 +149,34 @@ third_party_settings:
                     label_value: ''
                     label_tag: ''
             weight: 4
+            additional: {  }
+          8f91ad48-f1c3-4bf5-adb2-90d34da1fb39:
+            uuid: 8f91ad48-f1c3-4bf5-adb2-90d34da1fb39
+            region: main
+            configuration:
+              id: 'field_block:node:stanford_opportunity:su_opp_sponsor'
+              label: 'Sponsored by '
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_list_label_class
+                label: hidden
+                settings:
+                  link: false
+                  class: su-opp-sponsor-list
+                  list_type: ul
+                third_party_settings:
+                  empty_fields:
+                    handler: ''
+                  field_formatter_class:
+                    class: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: span
+            weight: 5
             additional: {  }
         third_party_settings: {  }
       -
@@ -411,7 +435,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
               exposed: {  }
             weight: 4
             additional: {  }
@@ -425,7 +449,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
               exposed: {  }
             weight: 11
             additional: {  }
@@ -480,7 +504,6 @@ third_party_settings:
       - Menus
       - 'News Lists (Views)'
       - 'Opportunities (Views)'
-      - 'PDB React'
       - 'People Lists (Views)'
       - 'Policy (Views)'
       - Printable
@@ -551,7 +574,6 @@ third_party_settings:
         - 'Lists (Views)'
         - Menus
         - 'News Lists (Views)'
-        - 'PDB React'
         - 'People Lists (Views)'
         - 'Policy (Views)'
         - Printable
@@ -627,13 +649,9 @@ hidden:
   su_opp_cta_url: true
   su_opp_eligibility: true
   su_opp_image: true
-  su_opp_learn_more: true
-  su_opp_open_date: true
   su_opp_prerequisites: true
   su_opp_source: true
   su_opp_sponsor: true
-  su_opp_start_date: true
-  su_opp_status: true
   su_opp_summary: true
   su_opp_tags: true
   su_opp_type: true

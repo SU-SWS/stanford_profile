@@ -1,10 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Test the home page exists.
- *
- * @group home-page
  */
+#[CodeceptionAttribute\Group('home-page')]
 class HomePageCest {
 
   /**

@@ -15,8 +15,10 @@ dependencies:
     - field.field.node.stanford_event.su_event_date_time
     - field.field.node.stanford_event.su_event_dek
     - field.field.node.stanford_event.su_event_email
+    - field.field.node.stanford_event.su_event_ext_image
     - field.field.node.stanford_event.su_event_groups
     - field.field.node.stanford_event.su_event_keywords
+    - field.field.node.stanford_event.su_event_localist_id
     - field.field.node.stanford_event.su_event_location
     - field.field.node.stanford_event.su_event_map_link
     - field.field.node.stanford_event.su_event_schedule
@@ -24,18 +26,21 @@ dependencies:
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_subject
+    - field.field.node.stanford_event.su_event_tags
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_imported
     - field.field.node.stanford_event.su_metatags
     - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
   module:
     - address
     - ds
+    - empty_fields
     - field_formatter_class
-    - link
+    - field_formatter_range
+    - field_label
     - smart_date
-    - stanford_fields
     - user
 third_party_settings:
   ds:
@@ -47,6 +52,7 @@ third_party_settings:
       settings:
         pattern:
           field_templates: only_content
+          variant: h3_header
     regions:
       start_month:
         - 'display_field_copy:node-event_date_time_1'
@@ -64,12 +70,11 @@ third_party_settings:
         - su_event_subheadline
       dek:
         - su_event_dek
-      url:
-        - su_event_source
       date_time:
         - su_event_date_time
       location:
         - su_event_alt_loc
+      address:
         - su_event_location
     fields:
       'display_field_copy:node-event_date_time_1':
@@ -96,7 +101,7 @@ third_party_settings:
             localize: 0
       'display_field_copy:node-event_date_time_2':
         plugin_id: 'display_field_copy:node-event_date_time_2'
-        weight: 0
+        weight: 1
         label: hidden
         formatter: smartdate_default
         settings:
@@ -106,7 +111,7 @@ third_party_settings:
               end: 0
               duration: 0
             timezone_override: ''
-            format: day
+            format: day_leading
             duration:
               separator: ' | '
               unit: ''
@@ -118,7 +123,7 @@ third_party_settings:
             localize: 0
       'display_field_copy:node-event_date_time_3':
         plugin_id: 'display_field_copy:node-event_date_time_3'
-        weight: 0
+        weight: 2
         label: hidden
         formatter: smartdate_default
         settings:
@@ -140,7 +145,7 @@ third_party_settings:
             localize: 0
       'display_field_copy:node-event_date_time_4':
         plugin_id: 'display_field_copy:node-event_date_time_4'
-        weight: 0
+        weight: 3
         label: hidden
         formatter: smartdate_default
         settings:
@@ -167,7 +172,9 @@ third_party_settings:
         formatter: default
         settings:
           link: true
-          wrapper: h2
+          'link class': ''
+          link_target: ''
+          wrapper: h3
           class: ''
 id: node.stanford_event.teaser
 targetEntityType: node
@@ -180,7 +187,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 10
+    weight: 9
     region: location
   su_event_date_time:
     type: smartdate_default
@@ -204,7 +211,7 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    weight: 9
+    weight: 8
     region: date_time
   su_event_dek:
     type: string
@@ -219,28 +226,13 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 11
-    region: location
-  su_event_source:
-    type: link
-    label: hidden
-    settings:
-      trim_length: null
-      url_only: true
-      url_plain: true
-      rel: '0'
-      target: '0'
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-    weight: 8
-    region: url
+    weight: 10
+    region: address
   su_event_subheadline:
-    type: entity_title_heading
+    type: string
     label: hidden
     settings:
-      tag: h3
-      linked: false
+      link_to_entity: false
     third_party_settings:
       field_formatter_class:
         class: ''
@@ -250,10 +242,21 @@ content:
     type: entity_reference_label
     label: hidden
     settings:
-      link: false
+      link: true
     third_party_settings:
+      empty_fields:
+        handler: ''
       field_formatter_class:
         class: ''
+      field_formatter_range:
+        order: 0
+        limit: 0
+        offset: 0
+      field_label:
+        label_value: ''
+        label_tag: ''
+      ds:
+        ds_limit: '1'
     weight: 4
     region: event_type
 hidden:
@@ -270,10 +273,13 @@ hidden:
   su_event_ext_image: true
   su_event_groups: true
   su_event_keywords: true
+  su_event_localist_id: true
   su_event_map_link: true
   su_event_schedule: true
+  su_event_source: true
   su_event_sponsor: true
   su_event_subject: true
+  su_event_tags: true
   su_event_telephone: true
   su_imported: true
   su_metatags: true

@@ -171,7 +171,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: 'More Publications'
-              items_per_page: none
+              items_per_page: 0
             weight: 1
             additional: {  }
           7bc27225-3b16-491d-b443-c266687f6db8:
@@ -216,7 +216,6 @@ third_party_settings:
       - 'Lists (Views)'
       - Menus
       - 'News Lists (Views)'
-      - 'PDB React'
       - 'People Lists (Views)'
       - 'Publication (Views)'
       - React
@@ -316,5 +315,6 @@ hidden:
   su_publication_components: true
   su_publication_cta: true
   su_publication_image: true
+  su_publication_tags: true
   su_publication_topics: true
   su_shared_tags: true

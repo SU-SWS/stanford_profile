@@ -1,12 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Test opportunity content type.
- *
- * @group opportunity
  */
+#[CodeceptionAttribute\Group('opportunity')]
 class OpportunityCest {
 
   /**
@@ -23,7 +23,7 @@ class OpportunityCest {
     $this->faker = Factory::create();
   }
 
-  protected function testContentType(FunctionalTester $I) {
+  public function testContentType(FunctionalTester $I) {
     [
       $parent_1,
       $parent_2,
@@ -70,6 +70,7 @@ class OpportunityCest {
     $I->canSee($child_2_2->label());
   }
 
+  #[CodeceptionAttribute\Group('opportunity-filters')]
   public function testFilteringOpportunities(FunctionalTester $I) {
     [
       $parent_1,

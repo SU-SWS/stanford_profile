@@ -1,11 +1,12 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Class ConfigReadonlyCest.
- *
- * @group config_readonly
- * @group contrib
  */
+#[CodeceptionAttribute\Group('config_readonly')]
+#[CodeceptionAttribute\Group('contrib')]
 class ConfigReadonlyCest {
 
   /**

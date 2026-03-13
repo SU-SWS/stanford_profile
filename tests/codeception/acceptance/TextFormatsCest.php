@@ -1,10 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Class TextFormatsCest.
- *
- * @group text_formats
  */
+#[CodeceptionAttribute\Group('text_formats')]
 class TextFormatsCest {
 
   /**

@@ -11,7 +11,7 @@ field_name: su_news_featured_media
 entity_type: node
 bundle: stanford_news
 label: 'Featured Media'
-description: 'Maximum one featured media. <em>The “featured media” will appear as a thumbnail on the list page, and as a thumbnail on the teaser card paragraph.</em>'
+description: 'Maximum of one featured media item. <em>The featured media will appear as a thumbnail on the list page and on the teaser card paragraph.</em> The alternative text for the image should not be just the image or person’s name. The image should either be marked as decorative, or the alternative text should describe the image. See the <a href="https://sitesuserguide.stanford.edu/build/media-library/alternative-text-alt-text-images-and-other-media">User Guide: Alternative text (alt text) for images and other media</a> for additional information.'
 required: false
 translatable: false
 default_value: {  }
@@ -23,6 +23,7 @@ settings:
       image: image
     sort:
       field: _none
+      direction: ASC
     auto_create: false
     auto_create_bundle: image
 field_type: entity_reference

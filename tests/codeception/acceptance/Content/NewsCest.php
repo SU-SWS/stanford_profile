@@ -1,12 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+use Codeception\Example;
 use Faker\Factory;
 
 /**
  * Test the news functionality.
- *
- * @group content
  */
+#[CodeceptionAttribute\Group('content')]
 class NewsCest {
 
   /**
@@ -147,7 +148,7 @@ class NewsCest {
     $I->logInWithRole('site_manager');
     $term = $I->createEntity([
       'vid' => 'stanford_news_topics',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
     ], 'taxonomy_term');
     $I->amOnPage($term->toUrl('edit-form')->toString());
     $I->canSeeCheckboxIsChecked('Published');
@@ -155,9 +156,8 @@ class NewsCest {
 
   /**
    * Validate metadata information.
-   *
-   * @group metadata
    */
+  #[CodeceptionAttribute\Group('metadata')]
   public function testMetaData(AcceptanceTester $I) {
     $time = \Drupal::time()->getCurrentTime();
     $now = DateTime::createFromFormat('U', $time);
@@ -177,8 +177,8 @@ class NewsCest {
 
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
-    $banner_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
-    $featured_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $banner_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
+    $featured_image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
 
     $file = $I->createEntity(['uri' => $banner_image_path], 'file');
     $banner_media = $I->createEntity([
@@ -253,6 +253,266 @@ class NewsCest {
     $I->assertStringContainsString(basename($featured_image_path), $I->grabAttributeFrom('meta[name="twitter:image"]', 'content'), 'Metadata "twitter:image" should match.');
     $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[property="og:image:alt"]', 'content'), 'Metadata "og:image:alt" should match.');
     $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
+  }
+
+  #[CodeceptionAttribute\Group('body')]
+  public function testBodyField(AcceptanceTester $I) {
+    $dek = substr($this->faker->sentences(20, TRUE), 0, 499);
+
+    $body_text = '<p>' . implode('</p><p>', $this->faker->paragraphs()) . '</p>';
+    $node = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => $this->faker->words(3, TRUE),
+      'body' => ['value' => $body_text, 'format' => 'stanford_html'],
+      'su_news_dek' => $dek,
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+    $I->canSee(strip_tags($body_text));
+    $I->canSee($dek);
+  }
+
+  #[CodeceptionAttribute\Group('related-news')]
+  public function testRelatedNewsPerson(AcceptanceTester $I) {
+    $person = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $this->faker->firstName(),
+      'su_person_last_name' => $this->faker->lastName(),
+    ]);
+    $otherPerson = $I->createEntity([
+      'type' => 'stanford_person',
+      'su_person_first_name' => $this->faker->firstName(),
+      'su_person_last_name' => $this->faker->lastName(),
+    ]);
+    $news = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => $this->faker->words(3, TRUE),
+      'su_news_person' => $person->id(),
+    ]);
+    $otherNews = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+    $I->amOnPage($person->toUrl()->toString());
+    $I->canSee($person->label(), 'h1');
+    $I->canSee('Related News', 'h2');
+    $I->canSee($news->label(), 'h3');
+    $I->cantSee($otherNews->label());
+
+    $I->amOnPage($otherPerson->toUrl()->toString());
+    $I->canSee($otherPerson->label(), 'h1');
+    $I->cantSee('Related News');
+    $I->cantSee($news->label());
+    $I->cantSee($otherNews->label());
+  }
+
+  /**
+   * Test that news variants display correct fields and can be populated with
+   * contributor roles.
+   */
+  #[CodeceptionAttribute\Group('news_variant')]
+  public function testNewsVariantFieldsDisplay(AcceptanceTester $I) {
+    $I->logInWithRole('contributor');
+    $I->amOnPage('/node/add/stanford_news');
+    $I->canSeeResponseCodeIs(200);
+
+    // Verify contributor role can see the Variant field
+    $I->canSee('Variant');
+    $I->canSeeElement('[name="layout_selection"]');
+
+    // Generate test data using faker
+    $testData = [
+      'Dek' => $this->faker->sentence(),
+      'Byline' => $this->faker->name(),
+      'Banner Caption' => $this->faker->sentence(),
+      'Quote' => $this->faker->sentence(),
+    ];
+
+    // Fill in required title field
+    $I->fillField('Headline / Name', $this->faker->words(3, TRUE));
+
+    // Verify fields are initially empty using canSeeInField()
+    $I->canSeeInField('Dek', '');
+    $I->canSeeInField('Byline', '');
+    $I->canSeeInField('Banner Caption', '');
+    $I->canSeeInField('Quote / Big Text', '');
+
+    // Fill in the fields
+    $I->fillField('Dek', $testData['Dek']);
+    $I->fillField('Byline', $testData['Byline']);
+    $I->fillField('Banner Caption', $testData['Banner Caption']);
+    $I->fillField('Quote / Big Text', $testData['Quote']);
+
+    // Save the node
+    $I->click('Save');
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee('has been created');
+
+    // Verify the information is reflected on the page
+    $I->canSee($testData['Dek']);
+    $I->canSee($testData['Byline']);
+    $I->canSee($testData['Banner Caption']);
+  }
+
+  /**
+   * Test that roles with layout selection permission can select spotlight variant.
+   */
+  #[CodeceptionAttribute\Group('news_variant')]
+  #[CodeceptionAttribute\Examples(role: 'contributor')]
+  #[CodeceptionAttribute\Examples(role: 'site_editor')]
+  #[CodeceptionAttribute\Examples(role: 'site_manager')]
+  public function testRoleCanSelectSpotlightVariant(AcceptanceTester $I, Example $example) {
+    $I->logInWithRole($example['role']);
+    $I->amOnPage('/node/add/stanford_news');
+    $I->canSeeResponseCodeIs(200);
+
+    // Verify Variant field is visible and accessible
+    $I->canSee('Variant');
+    $I->canSeeElement('[name="layout_selection"]');
+
+    // Fill in required title
+    $title = $this->faker->words(3, TRUE);
+    $I->fillField('Headline / Name', $title);
+
+    // Select Spotlight variant
+    $I->selectOption('Variant', 'Spotlight');
+
+    // Fill in spotlight-specific field
+    $quote = $this->faker->sentence();
+    $I->fillField('Quote / Big Text', $quote);
+
+    // Save the node
+    $I->click('Save');
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee('has been created');
+
+    // Verify the spotlight label is displayed
+    $I->canSee('Spotlight', '.su-spotlight-label p');
+  }
+
+  /**
+   * Test that Related Spotlights filters by matching taxonomy terms.
+   *
+   */
+  #[CodeceptionAttribute\Group('news_variant')]
+  public function testRelatedSpotlightsFiltersByTaxonomy(AcceptanceTester $I) {
+    // Create taxonomy terms.
+    $term_a = $I->createEntity([
+      'name' => $this->faker->words(3, TRUE),
+      'vid' => 'stanford_news_spotlight_filters',
+    ], 'taxonomy_term');
+
+    $term_b = $I->createEntity([
+      'name' => $this->faker->words(3, TRUE),
+      'vid' => 'stanford_news_spotlight_filters',
+    ], 'taxonomy_term');
+
+    // Create 3 spotlight nodes with term A and 2 with term B.
+    $spotlight_a1 = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => [$term_a->id()],
+      'status' => 1,
+    ]);
+
+    $spotlight_a2 = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => [$term_a->id()],
+      'status' => 1,
+    ]);
+
+    $spotlight_a3 = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => [$term_a->id()],
+      'status' => 1,
+    ]);
+
+    $spotlight_b1 = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => [$term_b->id()],
+      'status' => 1,
+    ]);
+
+    $spotlight_b2 = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'su_news_spotlight_filters' => [$term_b->id()],
+      'status' => 1,
+    ]);
+
+    // Create a spotlight with no terms.
+    $spotlight_c = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'status' => 1,
+    ]);
+
+    // Visit spotlight A1 - should show other nodes with term A.
+    $I->amOnPage($spotlight_a1->toUrl()->toString());
+    // Make sure there's an h2
+    $I->see('More Spotlights', 'h2');
+    // Make sure the links are h3s
+    $I->seeLink($spotlight_a2->label());
+    $I->see($spotlight_a2->label(), 'h3');
+    $I->seeLink($spotlight_a3->label());
+    $I->see($spotlight_a3->label(), 'h3');
+    $I->dontSee($spotlight_b1->label());
+    $I->dontSee($spotlight_b2->label());
+
+    // If there are no terms attached, we should see three spotlights.
+    $I->amOnPage($spotlight_c->toUrl()->toString());
+    $I->see('More Spotlights', 'h2');
+    $I->seeNumberOfElements('.related-spotlights article', 3);
+  }
+
+  /**
+   * Test spotlight label displayed correctly on the news spotlight variant page.
+   */
+  #[CodeceptionAttribute\Group('news_variant')]
+  #[CodeceptionAttribute\Group('spotlight_page')]
+  public function testSpotlightCreationAndDisplay(AcceptanceTester $I) {
+    // Create a spotlight node.
+    $spotlight = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'layout_selection' => 'news_spotlight',
+      'status' => 1,
+    ]);
+
+    // Visit the spotlight page.
+    $I->amOnPage($spotlight->toUrl()->toString());
+
+    // Verify the spotlight label exists
+    $I->canSee('Spotlight', '.su-spotlight-label p');
+  }
+
+  #[CodeceptionAttribute\Group('unpublished-terms')]
+  public function testUnpublishedTerms(AcceptanceTester $I) {
+    $term = $I->createEntity([
+      'vid' => 'stanford_news_topics',
+      'name' => $this->faker->uuid(),
+    ], 'taxonomy_term');
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_news',
+      'su_news_topics' => $term->id(),
+    ]);
+    $I->logInWithRole('site_manager');
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->canSeeOptionIsSelected('News Types (value 1)', $term->label());
+
+    $term->setUnpublished()->save();
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->canSeeOptionIsSelected('News Types (value 1)', $term->label());
   }
 
 }

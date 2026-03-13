@@ -1,0 +1,107 @@
+uuid: 55485e80-5d14-4f80-b446-0cf4391be17e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_indexing
+    - field.field.node.stanford_media.body
+    - field.field.node.stanford_media.su_media_audio_video
+    - field.field.node.stanford_media.su_media_category
+    - field.field.node.stanford_media.su_media_date
+    - field.field.node.stanford_media.su_media_dek
+    - field.field.node.stanford_media.su_media_duration
+    - field.field.node.stanford_media.su_media_episode
+    - field.field.node.stanford_media.su_media_filters
+    - field.field.node.stanford_media.su_media_image
+    - field.field.node.stanford_media.su_media_person
+    - field.field.node.stanford_media.su_media_season
+    - field.field.node.stanford_media.su_media_series
+    - field.field.node.stanford_media.su_media_source
+    - field.field.node.stanford_media.su_media_subtitles
+    - field.field.node.stanford_media.su_media_transcript
+    - field.field.node.stanford_media.su_media_types
+    - node.type.stanford_media
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_library
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_library:
+    enable: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+id: node.stanford_media.search_indexing
+targetEntityType: node
+bundle: stanford_media
+mode: search_indexing
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  su_media_audio_video:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  su_media_dek:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  su_media_episode:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  su_media_season:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  su_media_transcript:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  links: true
+  search_api_excerpt: true
+  su_media_category: true
+  su_media_date: true
+  su_media_duration: true
+  su_media_filters: true
+  su_media_image: true
+  su_media_person: true
+  su_media_series: true
+  su_media_source: true
+  su_media_subtitles: true
+  su_media_types: true

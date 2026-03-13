@@ -1,5 +1,6 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 require_once __DIR__ . '/../TestFilesTrait.php';
@@ -7,6 +8,7 @@ require_once __DIR__ . '/../TestFilesTrait.php';
 /**
  * Tests for various media functionality.
  */
+#[CodeceptionAttribute\Group('media')]
 class MediaCest {
 
   use TestFilesTrait;
@@ -53,7 +55,7 @@ class MediaCest {
   public function testSourceTag(AcceptanceTester $I) {
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
-    $image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
 
     $file = $I->createEntity(['uri' => $image_path], 'file');
     $image_media = $I->createEntity([
@@ -72,7 +74,7 @@ class MediaCest {
     ], 'paragraph');
     $node = $I->createEntity([
       'type' => 'stanford_page',
-      'title' => $this->faker->words(3, true),
+      'title' => $this->faker->words(3, TRUE),
       'su_page_components' => [
         [
           'target_id' => $wysiwyg->id(),
@@ -153,14 +155,13 @@ class MediaCest {
 
   /**
    * Specific embed codes are allowed for site managers.
-   *
-   * @group embed-codes
    */
+  #[CodeceptionAttribute\Group('embed-codes')]
   public function testAllowedEmbedCodes(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/media/add/embeddable');
     $I->fillField('Name', $this->faker->words(3, TRUE));
-    $I->fillField('Embed Code', '<iframe src="' . $this->faker->url . '"></iframe>');
+    $I->fillField('Embed Code', '<iframe src="' . $this->faker->url() . '"></iframe>');
     $I->click('Save');
     $I->canSee('The given embeddable code is not permitted');
 
@@ -197,6 +198,7 @@ class MediaCest {
   /**
    * Administrative file listing can delete files.
    */
+  #[CodeceptionAttribute\Group('vbo')]
   public function testDeleteFiles(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/admin/content/files');
@@ -243,7 +245,7 @@ class MediaCest {
     $I->canSee('Are you sure you wish to perform');
     $I->canSee($this->filePath);
     $I->click('Execute action');
-    $I->canSee('Delete entities');
+    $I->canSee('Delete file entities (1)');
     $I->amOnPage('/admin/content/files');
     $I->cantSee($this->filePath);
 
@@ -258,9 +260,8 @@ class MediaCest {
 
   /**
    * SUL Embeddables can be saved.
-   *
-   * @group arcgis
    */
+  #[CodeceptionAttribute\Group('arcgis')]
   public function testArcGis(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/media/add/embeddable');
@@ -277,21 +278,21 @@ class MediaCest {
   public function testCategoryField(AcceptanceTester $I) {
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
-    $image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $image_path = $file_system->copy(__DIR__ . '/../assets/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
     $file = $I->createEntity(['uri' => $image_path], 'file');
 
     $unrelated_term = $I->createEntity([
       'vid' => 'media_tags',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
     ], 'taxonomy_term');
 
     $parent_term = $I->createEntity([
       'vid' => 'media_tags',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
     ], 'taxonomy_term');
     $child_term = $I->createEntity([
       'vid' => 'media_tags',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
       'parent' => $parent_term->id(),
     ], 'taxonomy_term');
 

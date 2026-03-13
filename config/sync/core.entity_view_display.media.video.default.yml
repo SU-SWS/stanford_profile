@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.media.video.field_media_oembed_video
+    - field.field.media.video.su_import_lookup
     - field.field.media.video.su_media_category
+    - field.field.media.video.su_media_description
+    - field.field.media.video.su_video_duration
     - media.type.video
   module:
     - empty_fields
@@ -40,6 +43,9 @@ hidden:
   created: true
   name: true
   search_api_excerpt: true
+  su_import_lookup: true
   su_media_category: true
+  su_media_description: true
+  su_video_duration: true
   thumbnail: true
   uid: true

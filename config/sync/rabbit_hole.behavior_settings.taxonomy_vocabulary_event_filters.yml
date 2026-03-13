@@ -1,0 +1,14 @@
+uuid: a1490ace-ac2b-4dcb-9cf4-b22b23af93cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.event_filters
+id: taxonomy_vocabulary_event_filters
+entity_type_id: taxonomy_vocabulary
+entity_id: event_filters
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

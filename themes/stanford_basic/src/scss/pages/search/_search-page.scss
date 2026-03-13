@@ -3,6 +3,17 @@
 // Custom Styles For Stanford Page Search form and search results.
 //
 // Search form on search results page
+.page-search {
+  main {
+    background: #f9f9f9;
+  }
+}
+
+.search-results {
+  &.federated-search {
+    @include responsive-spacing('padding-bottom', 9);
+  }
+}
 
 // Search Header
 h1 {

@@ -1,0 +1,46 @@
+{# Create classes array #}
+{% set classes = [] %}
+
+{# BEM inspired class syntax: https://en.bem.info/
+   Enable this code if you would like field classes like "article__tags", where article is the content type and field_tags is the field name.
+{% set classes = classes|merge([
+  bundle ~ '__' ~ field_name|replace({'field_' : ''})|clean_class
+]) %}
+#}
+
+{% set attributes = attributes.addClass(classes) %}
+
+{%
+  set title_classes = [
+  label_display == 'visually_hidden' ? 'visually-hidden',
+]
+%}
+{% set label_tag = label_tag|default('div') %}
+
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes }}>
+      {% for item in items %}
+        <div{{ item.attributes }}>{{ item.content }}</div>
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for item in items %}
+      <div{{ attributes }}>{{ item.content }}</div>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes }}>
+    <{{ label_tag }}{{ title_attributes.addClass(title_classes) }}>{{ label }}: </{{ label_tag }}>
+    {% if multiple %}
+    <div>
+      {% endif %}
+      {% for item in items %}
+        <div{{ item.attributes }}>{{ item.content }}{% if not loop.last %}, {% endif %}</div>
+      {% endfor %}
+      {% if multiple %}
+    </div>
+    {% endif %}
+  </div>
+{% endif %}

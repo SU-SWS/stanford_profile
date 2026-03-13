@@ -14,6 +14,7 @@ dependencies:
     - node.type.stanford_course
     - node.type.stanford_event
     - node.type.stanford_event_series
+    - node.type.stanford_media
     - node.type.stanford_news
     - node.type.stanford_opportunity
     - node.type.stanford_page
@@ -26,6 +27,8 @@ dependencies:
     - taxonomy.vocabulary.opportunity_sponsor
     - taxonomy.vocabulary.opportunity_type
     - taxonomy.vocabulary.stanford_event_types
+    - taxonomy.vocabulary.media_content_filters
+    - taxonomy.vocabulary.media_content_types
     - taxonomy.vocabulary.stanford_news_topics
     - taxonomy.vocabulary.stanford_person_types
     - taxonomy.vocabulary.stanford_publication_topics
@@ -47,6 +50,7 @@ dependencies:
     - pathauto
     - scheduler
     - stanford_policy
+    - stanford_profile
     - stanford_publication
     - system
     - taxonomy
@@ -77,6 +81,7 @@ permissions:
   - 'administer stanford-event-types menu items'
   - 'administer stanford-person-type menu items'
   - 'break content lock'
+  - 'choose layout for node stanford_news'
   - 'create embeddable media'
   - 'create field_media_embeddable_code'
   - 'create file media'
@@ -89,6 +94,7 @@ permissions:
   - 'create stanford_event content'
   - 'create stanford_event_series content'
   - 'create stanford_gallery_images media'
+  - 'create stanford_media content'
   - 'create stanford_news content'
   - 'create stanford_opportunity content'
   - 'create stanford_page content'
@@ -97,6 +103,8 @@ permissions:
   - 'create stanford_publication content'
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
+  - 'create terms in media_content_filters'
+  - 'create terms in media_content_types'
   - 'create terms in media_tags'
   - 'create terms in opportunity_sponsor'
   - 'create terms in opportunity_type'
@@ -110,6 +118,7 @@ permissions:
   - 'delete any stanford_course content'
   - 'delete any stanford_event content'
   - 'delete any stanford_event_series content'
+  - 'delete any stanford_media content'
   - 'delete any stanford_news content'
   - 'delete any stanford_opportunity content'
   - 'delete any stanford_page content'
@@ -127,6 +136,7 @@ permissions:
   - 'delete own stanford_event content'
   - 'delete own stanford_event_series content'
   - 'delete own stanford_gallery_images media'
+  - 'delete own stanford_media content'
   - 'delete own stanford_news content'
   - 'delete own stanford_opportunity content'
   - 'delete own stanford_page content'
@@ -138,6 +148,7 @@ permissions:
   - 'delete stanford_course revisions'
   - 'delete stanford_event revisions'
   - 'delete stanford_event_series revisions'
+  - 'delete stanford_media revisions'
   - 'delete stanford_news revisions'
   - 'delete stanford_opportunity revisions'
   - 'delete stanford_page revisions'
@@ -146,6 +157,8 @@ permissions:
   - 'delete stanford_publication revisions'
   - 'delete terms in basic_page_types'
   - 'delete terms in event_audience'
+  - 'delete terms in media_content_filters'
+  - 'delete terms in media_content_types'
   - 'delete terms in media_tags'
   - 'delete terms in opportunity_sponsor'
   - 'delete terms in opportunity_type'
@@ -163,6 +176,7 @@ permissions:
   - 'edit any stanford_event content'
   - 'edit any stanford_event_series content'
   - 'edit any stanford_gallery_images media'
+  - 'edit any stanford_media content'
   - 'edit any stanford_news content'
   - 'edit any stanford_opportunity content'
   - 'edit any stanford_page content'
@@ -182,6 +196,7 @@ permissions:
   - 'edit own stanford_event content'
   - 'edit own stanford_event_series content'
   - 'edit own stanford_gallery_images media'
+  - 'edit own stanford_media content'
   - 'edit own stanford_news content'
   - 'edit own stanford_opportunity content'
   - 'edit own stanford_page content'
@@ -192,6 +207,8 @@ permissions:
   - 'edit policy log'
   - 'edit terms in basic_page_types'
   - 'edit terms in event_audience'
+  - 'edit terms in media_content_filters'
+  - 'edit terms in media_content_types'
   - 'edit terms in media_tags'
   - 'edit terms in opportunity_sponsor'
   - 'edit terms in opportunity_type'
@@ -207,6 +224,7 @@ permissions:
   - 'revert stanford_course revisions'
   - 'revert stanford_event revisions'
   - 'revert stanford_event_series revisions'
+  - 'revert stanford_media revisions'
   - 'revert stanford_news revisions'
   - 'revert stanford_opportunity revisions'
   - 'revert stanford_page revisions'
@@ -227,6 +245,7 @@ permissions:
   - 'view any unpublished stanford_course content'
   - 'view any unpublished stanford_event content'
   - 'view any unpublished stanford_event_series content'
+  - 'view any unpublished stanford_media content'
   - 'view any unpublished stanford_news content'
   - 'view any unpublished stanford_opportunity content'
   - 'view any unpublished stanford_page content'
@@ -242,6 +261,7 @@ permissions:
   - 'view stanford_course revisions'
   - 'view stanford_event revisions'
   - 'view stanford_event_series revisions'
+  - 'view stanford_media revisions'
   - 'view stanford_news revisions'
   - 'view stanford_opportunity revisions'
   - 'view stanford_page revisions'

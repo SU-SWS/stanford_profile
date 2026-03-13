@@ -1,0 +1,19 @@
+uuid: eb7b9f53-1a9b-4f13-a73e-3de4bdd5eb0b
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.su_policy_source
+field_name: su_policy_source
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

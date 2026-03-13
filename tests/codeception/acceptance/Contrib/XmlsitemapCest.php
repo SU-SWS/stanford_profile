@@ -1,8 +1,11 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
+
 /**
  * Test that stanford_profile_xmlsitemap_link_alter is working.
  */
+#[CodeceptionAttribute\Group('xmlsitemap')]
 class XmlsitemapCest {
 
   /**

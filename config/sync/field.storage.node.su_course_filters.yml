@@ -1,0 +1,20 @@
+uuid: f85659a1-b2ae-4ddd-a311-2ecb45948715
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.su_course_filters
+field_name: su_course_filters
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

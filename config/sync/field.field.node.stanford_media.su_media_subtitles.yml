@@ -1,0 +1,27 @@
+uuid: a7635729-53fc-459c-83eb-e3252f658528
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_media_subtitles
+    - node.type.stanford_media
+  module:
+    - file
+id: node.stanford_media.su_media_subtitles
+field_name: su_media_subtitles
+entity_type: node
+bundle: stanford_media
+label: Subtitles
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: media/subtitles
+  file_extensions: srt
+  max_filesize: 5MB
+  description_field: false
+field_type: file

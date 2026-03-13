@@ -1,0 +1,23 @@
+uuid: 71652b5b-6194-4c92-81ba-58c522f04a86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_media_duration
+    - node.type.stanford_media
+id: node.stanford_media.su_media_duration
+field_name: su_media_duration
+entity_type: node
+bundle: stanford_media
+label: Duration
+description: 'Total length of the primary Audio/Video in seconds.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -172,6 +172,20 @@ third_party_settings:
                     class: su-event-series-items
                   ds:
                     ds_limit: ''
+            weight: 1
+            additional: {  }
+          5543da25-15ba-4ff0-ba8e-6b50f32b7d86:
+            uuid: 5543da25-15ba-4ff0-ba8e-6b50f32b7d86
+            region: main
+            configuration:
+              id: jumpstart_ui_page_heading
+              label: 'Heading Block'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+              heading_text: 'Series Events'
+              wrapper: h2
+              hide_heading: 1
             weight: 0
             additional: {  }
         third_party_settings: {  }
@@ -193,7 +207,6 @@ third_party_settings:
       - 'Lists (Views)'
       - Menus
       - 'News Lists (Views)'
-      - 'PDB React'
       - 'People Lists (Views)'
       - 'Publication (Views)'
       - React

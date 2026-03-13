@@ -1,13 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Class MediaWithCaptionCest.
- *
- * @group paragraphs
- * @group media_caption
  */
+#[CodeceptionAttribute\Group('paragraphs')]
+#[CodeceptionAttribute\Group('media_caption')]
 class MediaWithCaptionCest {
 
   /**

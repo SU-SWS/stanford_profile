@@ -25,8 +25,10 @@ dependencies:
     - field.field.node.stanford_event.su_event_sponsor
     - field.field.node.stanford_event.su_event_subheadline
     - field.field.node.stanford_event.su_event_subject
+    - field.field.node.stanford_event.su_event_tags
     - field.field.node.stanford_event.su_event_telephone
     - field.field.node.stanford_event.su_event_type
+    - field.field.node.stanford_event.su_imported
     - field.field.node.stanford_event.su_metatags
     - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
@@ -142,8 +144,8 @@ third_party_settings:
             region: main
             configuration:
               id: 'field_block:node:stanford_event:su_event_sponsor'
-              label: Sponsor
-              label_display: '0'
+              label: 'Sponsored by'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
@@ -154,10 +156,13 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings:
+                  empty_fields:
+                    handler: ''
                   field_formatter_class:
                     class: 'su-event-sponsor flex-7-of-12'
-                  ds:
-                    ds_limit: ''
+                  field_label:
+                    label_value: ''
+                    label_tag: span
             weight: -5
             additional: {  }
           229e196d-4f22-4f5a-b265-added1838d5d:
@@ -377,19 +382,6 @@ third_party_settings:
                     class: su-event-email
             weight: 3
             additional: {  }
-          c4f8811e-dd0e-44ae-b65d-b0f82cf894df:
-            uuid: c4f8811e-dd0e-44ae-b65d-b0f82cf894df
-            region: main
-            configuration:
-              id: jumpstart_ui_page_heading
-              label: 'Heading Block'
-              label_display: '0'
-              provider: jumpstart_ui
-              context_mapping: {  }
-              heading_text: 'Event Details:'
-              wrapper: h2
-            weight: 1
-            additional: {  }
           72ffb956-3705-4638-a22a-22c5ce31e291:
             uuid: 72ffb956-3705-4638-a22a-22c5ce31e291
             region: main
@@ -456,6 +448,20 @@ third_party_settings:
                   field_formatter_class:
                     class: su-event-contact-info
             weight: 4
+            additional: {  }
+          4852b83f-2377-497f-9eb7-bd5207d6c76c:
+            uuid: 4852b83f-2377-497f-9eb7-bd5207d6c76c
+            region: title
+            configuration:
+              id: jumpstart_ui_page_heading
+              label: 'Heading Block'
+              label_display: '0'
+              provider: jumpstart_ui
+              context_mapping: {  }
+              heading_text: 'Event Details:'
+              wrapper: h2
+              hide_heading: 0
+            weight: 0
             additional: {  }
         third_party_settings: {  }
       -
@@ -549,7 +555,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: Schedule
-              items_per_page: none
+              items_per_page: 0
             weight: 2
             additional: {  }
         third_party_settings: {  }
@@ -572,7 +578,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: 'Explore More Events'
-              items_per_page: none
+              items_per_page: 0
             weight: 0
             additional: {  }
         third_party_settings: {  }
@@ -594,7 +600,6 @@ third_party_settings:
       - 'Lists (Views)'
       - Menus
       - 'News Lists (Views)'
-      - 'PDB React'
       - 'People Lists (Views)'
       - 'Publication (Views)'
       - React
@@ -833,8 +838,10 @@ hidden:
   su_event_ext_image: true
   su_event_groups: true
   su_event_keywords: true
+  su_event_localist_id: true
   su_event_schedule: true
   su_event_subject: true
+  su_event_tags: true
   su_imported: true
   su_metatags: true
   su_shared_tags: true

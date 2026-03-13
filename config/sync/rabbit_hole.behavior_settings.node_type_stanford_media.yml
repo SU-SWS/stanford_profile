@@ -1,0 +1,14 @@
+uuid: 6251c5fc-1073-4163-9be7-47ee74a440cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.stanford_media
+id: node_type_stanford_media
+entity_type_id: node_type
+entity_id: stanford_media
+action: page_redirect
+allow_override: 1
+redirect: '[node:su_media_source:uri]'
+redirect_code: 301
+redirect_fallback_action: display_page

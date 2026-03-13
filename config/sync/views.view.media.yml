@@ -616,8 +616,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -658,8 +656,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -739,18 +735,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              administrator: '0'
-              anonymous: '0'
-              stanford_faculty: '0'
-              stanford_staff: '0'
-              stanford_student: '0'
-              contributor: '0'
-              site_manager: '0'
-              site_editor: '0'
-              site_builder: '0'
-              site_developer: '0'
-              layout_builder_user: '0'
-              decoupled_site_users: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -834,6 +818,7 @@ display:
           empty_table: true
           caption: ''
           description: ''
+          class: ''
       row:
         type: fields
       query:

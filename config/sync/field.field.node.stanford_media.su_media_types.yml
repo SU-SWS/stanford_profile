@@ -1,0 +1,29 @@
+uuid: 3f7ffb34-5fd6-4e33-bf92-70df53da7f0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_media_types
+    - node.type.stanford_media
+    - taxonomy.vocabulary.media_content_types
+id: node.stanford_media.su_media_types
+field_name: su_media_types
+entity_type: node
+bundle: stanford_media
+label: 'Audio/Visual Types'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media_content_types: media_content_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

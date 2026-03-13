@@ -1,15 +1,15 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Drupal\config_pages\Entity\ConfigPages;
 
 require_once __DIR__ . '/../TestFilesTrait.php';
 
 /**
  * Test for the local lockup settings.
- *
- * @group local-footer
- * @group local-footer-lockup
  */
+#[CodeceptionAttribute\Group('local-footer')]
+#[CodeceptionAttribute\Group('local-footer-lockup')]
 class LocalFooterLockupCest {
 
   use TestFilesTrait;

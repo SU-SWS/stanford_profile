@@ -30,7 +30,6 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
     '#title' => t('Brand Bar Variant'),
     '#options' => [
       'default' => '- Default -',
-      'bright' => t('Bright'),
       'dark' => t('Dark'),
       'white' => t('White'),
     ],

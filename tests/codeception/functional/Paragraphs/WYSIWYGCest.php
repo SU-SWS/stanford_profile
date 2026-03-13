@@ -1,13 +1,13 @@
 <?php
 
+use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
  * Class WYSIWYGCest.
- *
- * @group paragraphs
- * @group wysiwyg
  */
+#[CodeceptionAttribute\Group('paragraphs')]
+#[CodeceptionAttribute\Group('wysiwyg')]
 class WYSIWYGCest {
 
   /**
@@ -33,7 +33,7 @@ class WYSIWYGCest {
     $I->amOnPage($node->toUrl()->toString());
 
     # Stripped Tags
-    $I->cantSee("alert('testme')");
+    $I->canSee("alert('testme')");
 
     $I->cantSeeElement('.system-main-block iframe');
     $I->cantSeeElement('.system-main-block form');
@@ -101,11 +101,11 @@ class WYSIWYGCest {
     // Wait a second for any click events to be applied.
     $I->wait(1);
 
-    $I->click('[data-cke-tooltip-text="Insert table"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert table"]');
     $I->click('[data-row="5"][data-column="3"]');
 
-    $I->click('[data-cke-tooltip-text="Link (Ctrl+K)"]');
-    $url = $this->faker->url;
+    $I->click('.ui-dialog [data-cke-tooltip-text="Link (Ctrl+K)"]');
+    $url = $this->faker->url();
     $I->fillField('Link URL', $url);
     $I->click('Insert');
     $I->clickWithLeftButton('.ui-dialog-title');
@@ -136,12 +136,12 @@ class WYSIWYGCest {
 
     // Wait a second for any click events to be applied.
     $I->wait(1);
-    $I->click('[data-cke-tooltip-text="Insert Media"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert Media"]');
     $I->waitForElementVisible('.dropzone');
     $I->dropFileInDropzone(__DIR__ . '/logo.jpg');
     $I->click('Upload and Continue');
     $I->waitForText('Decorative Image');
-    $I->click('Save and insert', '.media-library-widget-modal .ui-dialog-buttonset');
+    $I->click('//button[contains(text(), "Save and insert")]');
     $I->waitForElementNotVisible('.media-library-widget-modal');
     $I->wait(2);
 
@@ -160,21 +160,21 @@ class WYSIWYGCest {
 
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
-    $image_path = $file_system->copy(__DIR__ . '/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $image_path = $file_system->copy(__DIR__ . '/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
     $file = $I->createEntity(['uri' => $image_path], 'file');
 
     $unrelated_term = $I->createEntity([
       'vid' => 'media_tags',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
     ], 'taxonomy_term');
 
     $parent_term = $I->createEntity([
       'vid' => 'media_tags',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
     ], 'taxonomy_term');
     $child_term = $I->createEntity([
       'vid' => 'media_tags',
-      'name' => $this->faker->word,
+      'name' => $this->faker->word(),
       'parent' => $parent_term->id(),
     ], 'taxonomy_term');
 
@@ -195,7 +195,7 @@ class WYSIWYGCest {
 
     // Wait a second for any click events to be applied.
     $I->wait(1);
-    $I->click('[data-cke-tooltip-text="Insert Media"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert Media"]');
     $I->waitForElementVisible('.dropzone');
 
     $I->selectOption('Category', $unrelated_term->label());
@@ -221,9 +221,8 @@ class WYSIWYGCest {
 
   /**
    * Videos in the WYSIWYG should display correctly.
-   *
-   * @group lazyload
    */
+  #[CodeceptionAttribute\Group('lazyload')]
   public function testEmbeddedVideo(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I, 'Lorem Ipsum');
     $I->logInWithRole('administrator');
@@ -238,7 +237,7 @@ class WYSIWYGCest {
 
     // Wait a second for any click events to be applied.
     $I->wait(1);
-    $I->click('[data-cke-tooltip-text="Insert Media"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert Media"]');
     $I->waitForElementVisible('.dropzone');
     $I->click('Video', '.media-library-menu-video');
     $I->waitForElementVisible('.media-library-add-form-oembed-url');
@@ -248,7 +247,7 @@ class WYSIWYGCest {
 
     $I->waitForText('The media item has been created but has not yet been saved');
     $I->fillField('Name', 'Test Youtube Video');
-    $I->click('Save and insert', '.media-library-widget-modal .ui-dialog-buttonset');
+    $I->click('//button[contains(text(), "Save and insert")]');
     $I->waitForElementNotVisible('.media-library-widget-modal');
     $I->wait(1);
 
@@ -278,7 +277,7 @@ class WYSIWYGCest {
 
     // Wait a second for any click events to be applied.
     $I->wait(1);
-    $I->click('[data-cke-tooltip-text="Insert Media"]');
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert Media"]');
     $I->waitForElementVisible('.dropzone');
     $I->click('File', '.media-library-menu-file');
     $I->waitForText('txt, rtf, doc, docx');
@@ -289,7 +288,7 @@ class WYSIWYGCest {
     $I->click('Upload and Continue');
     $I->waitForText('The media item has been created but has not yet been saved');
     $I->wait(1);
-    $I->click('Save and insert', '.media-library-widget-modal .ui-dialog-buttonset');
+    $I->click('//button[contains(text(), "Save and insert")]');
     $I->waitForElementNotVisible('.media-library-widget-modal');
     $I->wait(1);
     $I->click('Save', '.ui-dialog-buttonpane');
@@ -300,12 +299,11 @@ class WYSIWYGCest {
 
   /**
    * Image modal test.
-   *
-   * @group wysiwyg-modal
    */
+  #[CodeceptionAttribute\Group('wysiwyg-modal')]
   public function testWysiwygModal(FunctionalTester $I) {
     $file_system = \Drupal::service('file_system');
-    $image_path = $file_system->copy(__DIR__ . '/logo.jpg', 'public://' . $this->faker->word . '.jpg');
+    $image_path = $file_system->copy(__DIR__ . '/logo.jpg', 'public://' . $this->faker->word() . '.jpg');
     $image_name = basename($image_path);
 
     $file = $I->createEntity(['uri' => $image_path], 'file');
@@ -340,6 +338,44 @@ class WYSIWYGCest {
     $I->clickWithLeftButton('a.colorbox');
     $I->waitForElementVisible('#cboxLoadedContent img');
     $I->canSee('alt text', '#cboxTitle');
+  }
+
+  #[CodeceptionAttribute\Group('embed-code')]
+  public function testEmbedCode(FunctionalTester $I){
+    $node = $this->getNodeWithParagraph($I);
+    $user = $I->createUserWithRoles(['site_manager', 'su_site_embedder']);
+    $I->logInAs($user->getAccountName());
+
+    $I->resizeWindow(1500, 1000);
+
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->scrollTo('.js-lpb-component', 0, -100);
+    $I->moveMouseOver('.js-lpb-component', 10, 10);
+    $I->click('Edit', '.lpb-controls');
+    $I->waitForElementVisible('.ck-toolbar');
+
+    // Wait a second for any click events to be applied.
+    $I->wait(1);
+    $I->click('.ui-dialog [data-cke-tooltip-text="Insert Media"]');
+    $I->waitForElementVisible('.dropzone');
+    $I->click('Embeddable', '.media-library-menu');
+    $I->waitForText('oEmbed URL');
+
+    $embed_code = $this->faker->sentence();
+    $I->fillField('Embed Code', "<div>$embed_code</div>");
+
+    $I->click('Add');
+    $I->waitForText('The media item has been created but has not yet been saved');
+    $I->wait(1);
+    $I->click('//button[contains(text(), "Save and insert")]');
+    $I->waitForElementNotVisible('.media-library-widget-modal');
+    $I->wait(1);
+    $I->click('Save', '.ui-dialog-buttonpane');
+    $I->waitForElementNotVisible('.ui-dialog');
+    $I->click('Save');
+
+    $I->canSee($node->label(), 'h1');
+    $I->canSee($embed_code);
   }
 
   /**

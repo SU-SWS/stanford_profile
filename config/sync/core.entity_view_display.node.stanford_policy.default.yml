@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.stanford_policy.su_policy_effective
     - field.field.node.stanford_policy.su_policy_policy_num
     - field.field.node.stanford_policy.su_policy_related
+    - field.field.node.stanford_policy.su_policy_source
     - field.field.node.stanford_policy.su_policy_subchapter
     - field.field.node.stanford_policy.su_policy_title
     - field.field.node.stanford_policy.su_policy_updated
@@ -25,6 +26,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - link
     - printable
     - stanford_fields
     - system
@@ -120,7 +122,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
             weight: 9
             additional: {  }
           e5fdfbfd-b488-4d67-ae95-3d7ebce32699:
@@ -177,7 +179,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
             weight: 7
             additional: {  }
           0921d570-ecf6-46f4-a290-d38ea2f4b293:
@@ -288,7 +290,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
               exposed: {  }
             weight: 2
             additional: {  }
@@ -313,7 +315,6 @@ third_party_settings:
       - 'Lists (Views)'
       - Menus
       - 'News Lists (Views)'
-      - 'PDB React'
       - 'People Lists (Views)'
       - 'Policy (Views)'
       - Printable
@@ -415,7 +416,19 @@ id: node.stanford_policy.default
 targetEntityType: node
 bundle: stanford_policy
 mode: default
-content: {  }
+content:
+  su_policy_source:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: main
 hidden:
   body: true
   book_navigation: true

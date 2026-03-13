@@ -8,8 +8,6 @@ use Drupal\stanford_profile\Plugin\InstallTask\RouteRebuilder;
 
 /**
  * Class RouteRebuilderTest.
- *
- * @coversDefaultClass \Drupal\stanford_profile\Plugin\InstallTask\RouteRebuilder
  */
 class RouteRebuilderTest extends KernelTestBase {
 

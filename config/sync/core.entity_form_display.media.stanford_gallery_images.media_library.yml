@@ -55,6 +55,7 @@ content:
       hierarchy_depth: 0
       required_depth: 0
       none_label: '- Please select -'
+      allow_unpublished: true
     third_party_settings: {  }
 hidden:
   created: true
@@ -62,5 +63,6 @@ hidden:
   publish_on: true
   scheduler_settings: true
   status: true
+  su_import_lookup: true
   uid: true
   unpublish_on: true

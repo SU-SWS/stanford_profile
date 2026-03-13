@@ -127,6 +127,8 @@ entity_config:
     tiny_blur:
       enabled: true
   layout:
+    news_spotlight:
+      enabled: true
     stanford_basic_page_full:
       enabled: true
   media:
@@ -183,6 +185,11 @@ entity_config:
       edges_enabled: true
       routes_enabled: true
     stanford_event_series:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    stanford_media:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
@@ -277,25 +284,48 @@ entity_config:
     basic_page_types:
       enabled: true
       query_load_enabled: true
-      routes_enabled: true
     cap_org_codes:
       enabled: false
+    course_filters:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
     event_audience:
+      enabled: true
+      query_load_enabled: true
+    event_filters:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    media_content_filters:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    media_content_types:
       enabled: true
       query_load_enabled: true
     media_tags:
       enabled: false
     opportunity_sponsor:
       enabled: true
-      edges_enabled: true
+      query_load_enabled: true
     opportunity_tag_filters:
       enabled: true
+      query_load_enabled: true
       edges_enabled: true
     opportunity_type:
       enabled: true
-      edges_enabled: true
+      query_load_enabled: true
     opportunity_units:
       enabled: true
+      query_load_enabled: true
+    person_filters:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    publication_filters:
+      enabled: true
+      query_load_enabled: true
       edges_enabled: true
     site_owner_orgs:
       enabled: false
@@ -311,29 +341,30 @@ entity_config:
     stanford_event_types:
       enabled: true
       query_load_enabled: true
-      routes_enabled: true
+    stanford_news_spotlight_filters:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
     stanford_news_topics:
       enabled: true
       query_load_enabled: true
-      routes_enabled: true
     stanford_person_types:
       enabled: true
-      routes_enabled: true
+      query_load_enabled: true
     stanford_publication_topics:
       enabled: true
       query_load_enabled: true
-      routes_enabled: true
     su_course_quarters:
       enabled: true
       query_load_enabled: true
     su_course_subjects:
       enabled: true
       query_load_enabled: true
-      routes_enabled: true
     su_course_tags:
       enabled: true
+      query_load_enabled: true
     su_shared_tags:
-      enabled: true
+      enabled: false
 field_config:
   block_content:
     stanford_component_block:
@@ -455,6 +486,8 @@ field_config:
       su_hide_site_search:
         enabled: true
       su_site_algolia:
+        enabled: true
+      su_site_algolia_fed:
         enabled: true
       su_site_algolia_id:
         enabled: true
@@ -580,6 +613,10 @@ field_config:
     video:
       field_media_oembed_video:
         enabled: true
+      su_media_description:
+        enabled: true
+      su_video_duration:
+        enabled: true
   node:
     stanford_course:
       body:
@@ -587,6 +624,8 @@ field_config:
       su_course_academic_year:
         enabled: true
       su_course_code:
+        enabled: true
+      su_course_filters:
         enabled: true
       su_course_id:
         enabled: true
@@ -645,6 +684,8 @@ field_config:
         enabled: true
       su_event_type:
         enabled: true
+      su_event_localist_id:
+        enabled: true
     stanford_event_series:
       su_event_series_components:
         enabled: true
@@ -656,7 +697,44 @@ field_config:
         enabled: true
       su_event_series_type:
         enabled: true
+    stanford_media:
+      body:
+        enabled: true
+      su_media_audio_video:
+        enabled: true
+      su_media_date:
+        enabled: true
+      su_media_dek:
+        enabled: true
+      su_media_duration:
+        enabled: true
+      su_media_episode:
+        enabled: true
+      su_media_filters:
+        enabled: true
+      su_media_image:
+        enabled: true
+      su_media_person:
+        enabled: true
+      su_media_season:
+        enabled: true
+      su_media_series:
+        enabled: true
+      su_media_source:
+        enabled: true
+      su_media_transcript:
+        enabled: true
+      su_media_types:
+        enabled: true
+      su_media_category:
+        enabled: true
+      su_media_subtitles:
+        enabled: true
     stanford_news:
+      body:
+        enabled: true
+      layout_selection:
+        enabled: true
       su_news_banner:
         enabled: true
       su_news_banner_media_caption:
@@ -671,9 +749,15 @@ field_config:
         enabled: true
       su_news_hide_social:
         enabled: true
+      su_news_person:
+        enabled: true
       su_news_publishing_date:
         enabled: true
+      su_news_quote:
+        enabled: true
       su_news_source:
+        enabled: true
+      su_news_spotlight_filters:
         enabled: true
       su_news_topics:
         enabled: true
@@ -706,19 +790,11 @@ field_config:
         enabled: true
       su_opp_image:
         enabled: true
-      su_opp_learn_more:
-        enabled: true
-      su_opp_open_date:
-        enabled: true
       su_opp_prerequisites:
         enabled: true
       su_opp_source:
         enabled: true
       su_opp_sponsor:
-        enabled: true
-      su_opp_start_date:
-        enabled: true
-      su_opp_status:
         enabled: true
       su_opp_summary:
         enabled: true
@@ -729,6 +805,8 @@ field_config:
       su_opp_units:
         enabled: true
     stanford_page:
+      body:
+        enabled: true
       layout_selection:
         enabled: true
       su_basic_page_type:
@@ -790,6 +868,8 @@ field_config:
         enabled: true
       su_person_short_title:
         enabled: true
+      su_person_source:
+        enabled: true
       su_person_telephone:
         enabled: true
       su_person_type_group:
@@ -810,6 +890,8 @@ field_config:
       su_policy_policy_num:
         enabled: true
       su_policy_related:
+        enabled: true
+      su_policy_source:
         enabled: true
       su_policy_subchapter:
         enabled: true
@@ -975,6 +1057,10 @@ field_config:
       su_policy_public:
         enabled: true
       su_policy_title:
+        enabled: true
+  taxonomy_term:
+    su_course_subjects:
+      su_courses_dept_long:
         enabled: true
 settings:
   exclude_unpublished: false

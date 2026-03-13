@@ -3,13 +3,16 @@ import {createIslandWebComponent} from 'preact-island'
 import {
   InstantSearch,
   useHits,
-  usePagination
+  usePagination,
+  useCurrentRefinements
 } from 'react-instantsearch';
 import {Hit as HitType} from "instantsearch.js/es/types/results";
 import SearchBox from "./search-box";
 import DefaultHit from "./hits/default-hit";
 import {StanfordHit} from "./hits/hit.types";
 import {AlgoliaSearchContainer, PaginationList} from "./styled-components";
+import ChipsContainer from "./components/chips-container";
+import CustomChips from "./components/custom-chips";
 
 const islandName = 'algolia-search'
 
@@ -27,7 +30,6 @@ const Hit = ({hit, ...props}: {
   return <DefaultHit {...props} hit={hit}/>
 }
 
-
 const CustomHits = ({federatedSearch, ...props}: {
   federatedSearch?: boolean
 }) => {
@@ -41,14 +43,30 @@ const CustomHits = ({federatedSearch, ...props}: {
   } = usePagination({padding: 2})
 
   if (hits.length === 0) return (
-    <p>No results for your search. Please try another search.</p>
+    <div
+      className={federatedSearch ? "search-results federated-search" : "search-results"}
+    >
+      <p>
+        <span aria-live="polite" aria-atomic>
+          No results for your search.
+        </span> Please try another search.
+      </p>
+    </div>
   )
+
+  const {canRefine} = useCurrentRefinements();
 
   return (
     <div
-      className={federatedSearch ? "search-results federated-search" : "search-results"}>
+      className={federatedSearch ? "search-results federated-search" : "search-results"}
+    >
       <h2 className="visually-hidden">Search Results</h2>
-      <p aria-live="polite" aria-atomic>
+      {canRefine && (
+        <ChipsContainer>
+          <CustomChips/>
+        </ChipsContainer>
+      )}
+      <p className="search-results-count" aria-live="polite" aria-atomic>
         {nbHits} results
       </p>
       <ul className="results">
@@ -62,34 +80,38 @@ const CustomHits = ({federatedSearch, ...props}: {
       {pages.length > 1 && (
         <nav aria-label="Search results pager">
           <PaginationList>
-            {pages[0] > 0 && (
+
+            {currentPage > 0 &&
               <li>
-                <button onClick={() => goToPage(0)}>
-                  <span className="visually-hidden">Go to first page</span>
-                  <i class="fa-solid fa-arrow-left"></i>
+                <button onClick={() => goToPage(currentPage - 1)}>
+                  <span className="visually-hidden">Go to previous page</span>
+                  Previous
                 </button>
               </li>
-            )}
+            }
 
             {pages.map(pageNum => (
               <li
                 key={`page-${pageNum}`}
                 aria-current={currentPage === pageNum}
               >
-                <button onClick={() => goToPage(pageNum)}>
+                <button
+                  className="page-number"
+                  onClick={() => goToPage(pageNum)}
+                >
                   {pageNum + 1}
                 </button>
               </li>
             ))}
 
-            {pages[pages.length - 1] !== nbPages && (
+            {currentPage != nbPages - 1 &&
               <li>
-                <button onClick={() => goToPage(nbPages - 1)}>
-                  <span className="visually-hidden">Go to last page</span>
-                  <i class="fa-solid fa-arrow-right"></i>
+                <button onClick={() => goToPage(currentPage + 1)}>
+                  <span className="visually-hidden">Go to next page</span>
+                  Next
                 </button>
               </li>
-            )}
+            }
           </PaginationList>
         </nav>
       )}
@@ -98,8 +120,6 @@ const CustomHits = ({federatedSearch, ...props}: {
 }
 
 const Search = () => {
-  const currentUrl = new URL(window.location.href);
-  const initialSearch = currentUrl.searchParams.get('key');
   const searchIndex = window.drupalSettings?.stanfordAlgolia.index || process.env.ALGOLIA_INDEX;
   const federatedSearch = !!window.drupalSettings?.stanfordAlgolia.federatedSearch;
 
@@ -108,8 +128,19 @@ const Search = () => {
       searchClient={searchClient}
       indexName={searchIndex}
       insights={true}
-      initialUiState={{
-        [searchIndex]: {query: initialSearch},
+      routing={{
+        stateMapping: {
+          stateToRoute(uiState): Record<string, string> {
+            const indexUiState = uiState[searchIndex]
+            if (indexUiState.query) return {key: indexUiState.query}
+            return {}
+          },
+          routeToState(routeState: Record<string, string>) {
+            return {
+              [searchIndex]: {query: routeState.key},
+            }
+          },
+        },
       }}
     >
       <AlgoliaSearchContainer>
