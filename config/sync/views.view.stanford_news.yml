@@ -570,19 +570,30 @@ display:
       row:
         type: ui_patterns
         options:
-          default_field_elements: 0
+          default_field_elements: false
           inline:
-            su_news_publishing_date: 0
-            su_news_featured_media: 0
-            title: 0
-            su_news_dek: 0
-            su_news_topics: 0
-            su_news_source: 0
-            view_node: 0
-            edit_node: 0
+            su_news_publishing_date: '0'
+            su_news_featured_media: '0'
+            title: '0'
+            su_news_dek: '0'
+            su_news_topics: '0'
+            su_news_source: '0'
+            view_node: '0'
+            edit_node: '0'
           separator: ''
-          hide_empty: 0
+          hide_empty: false
           pattern: news-vertical-teaser
+          pattern_mapping:
+            'views_row:su_news_featured_media':
+              plugin: views_row
+              source: su_news_featured_media
+              destination: news_vertical_teaser_image
+              weight: 0
+            'views_row:su_news_topics':
+              plugin: views_row
+              source: su_news_topics
+              destination: news_topics
+              weight: 1
           variants:
             alert: default
             brandbar: default
@@ -594,17 +605,6 @@ display:
             link: default
             lockup: a
             media: default
-          pattern_mapping:
-            'views_row:su_news_featured_media':
-              destination: news_vertical_teaser_image
-              weight: 0
-              plugin: views_row
-              source: su_news_featured_media
-            'views_row:su_news_topics':
-              destination: news_topics
-              weight: 1
-              plugin: views_row
-              source: su_news_topics
       query:
         type: views_query
         options:
@@ -4220,19 +4220,60 @@ display:
       row:
         type: ui_patterns
         options:
-          default_field_elements: 0
+          default_field_elements: false
           inline:
-            su_news_publishing_date: 0
-            su_news_featured_media: 0
-            title: 0
-            su_news_dek: 0
-            su_news_topics: 0
-            su_news_source: 0
-            view_node: 0
-            edit_node: 0
+            su_news_publishing_date: '0'
+            su_news_featured_media: '0'
+            title: '0'
+            su_news_dek: '0'
+            su_news_topics: '0'
+            su_news_source: '0'
+            view_node: '0'
+            edit_node: '0'
           separator: ''
-          hide_empty: 0
+          hide_empty: false
           pattern: news-list
+          pattern_mapping:
+            'views_row:view_node':
+              plugin: views_row
+              source: view_node
+              destination: news_url
+              weight: 0
+            'views_row:title':
+              plugin: views_row
+              source: title
+              destination: news_list_headline
+              weight: 1
+            'views_row:su_news_publishing_date':
+              plugin: views_row
+              source: su_news_publishing_date
+              destination: news_list_publishing_date
+              weight: 2
+            'views_row:su_news_source':
+              plugin: views_row
+              source: su_news_source
+              destination: news_source
+              weight: 3
+            'views_row:su_news_featured_media':
+              plugin: views_row
+              source: su_news_featured_media
+              destination: news_list_image
+              weight: 4
+            'views_row:su_news_dek':
+              plugin: views_row
+              source: su_news_dek
+              destination: news_list_dek
+              weight: 5
+            'views_row:su_news_topics':
+              plugin: views_row
+              source: su_news_topics
+              destination: news_list_topics
+              weight: 6
+            'views_row:edit_node':
+              plugin: views_row
+              source: edit_node
+              destination: news_list_footer
+              weight: 7
           variants:
             alert: default
             brandbar: default
@@ -4244,47 +4285,6 @@ display:
             link: default
             lockup: a
             media: default
-          pattern_mapping:
-            'views_row:view_node':
-              destination: news_url
-              weight: 0
-              plugin: views_row
-              source: view_node
-            'views_row:title':
-              destination: news_list_headline
-              weight: 1
-              plugin: views_row
-              source: title
-            'views_row:su_news_publishing_date':
-              destination: news_list_publishing_date
-              weight: 2
-              plugin: views_row
-              source: su_news_publishing_date
-            'views_row:su_news_source':
-              destination: news_source
-              weight: 3
-              plugin: views_row
-              source: su_news_source
-            'views_row:su_news_featured_media':
-              destination: news_list_image
-              weight: 4
-              plugin: views_row
-              source: su_news_featured_media
-            'views_row:su_news_dek':
-              destination: news_list_dek
-              weight: 5
-              plugin: views_row
-              source: su_news_dek
-            'views_row:su_news_topics':
-              destination: news_list_topics
-              weight: 6
-              plugin: views_row
-              source: su_news_topics
-            'views_row:edit_node':
-              destination: news_list_footer
-              weight: 7
-              plugin: views_row
-              source: edit_node
       defaults:
         empty: false
         css_class: false

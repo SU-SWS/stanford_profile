@@ -1,5 +1,9 @@
 # Stanford Profile
 
+12.2.2
+-------------------------------------------------------------------------------
+- D8CORE-8658: Update aria-label for secondary navigation
+
 12.2.1
 -------------------------------------------------------------------------------
 - Check for decoupled menu item access for user
