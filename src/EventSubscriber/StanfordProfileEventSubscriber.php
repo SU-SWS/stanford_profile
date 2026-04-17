@@ -124,9 +124,10 @@ class StanfordProfileEventSubscriber implements EventSubscriberInterface {
                 $this->getFile($file_uri);
               }
 
-              [$width, $height] = @getimagesize($file_uri);
-              $item->set('width', (int) $width);
-              $item->set('height', (int) $height);
+              if ($size = @getimagesize($file_uri)) {
+                $item->set('width', (int) $size[0]);
+                $item->set('height', (int) $size[1]);
+              }
             }
           }
         }

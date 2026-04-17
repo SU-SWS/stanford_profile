@@ -56,17 +56,17 @@ class LockupSettingsCest {
     $I->uncheckOption('Use Default Lockup');
     $I->selectOption('Lockup Options', 'a');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Last line full width option");
+    $I->canSee(__FUNCTION__ . ' Site title line');
+    $I->canSee(__FUNCTION__ . ' Last line full width option');
   }
 
   /**
@@ -77,19 +77,19 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "b");
+    $I->selectOption('Lockup Options', 'b');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Secondary title line");
+    $I->canSee(__FUNCTION__ . ' Site title line');
+    $I->canSee(__FUNCTION__ . ' Secondary title line');
   }
 
   /**
@@ -100,19 +100,19 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "d");
+    $I->selectOption('Lockup Options', 'd');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Tertiary title line");
+    $I->canSee(__FUNCTION__ . ' Site title line');
+    $I->canSee(__FUNCTION__ . ' Tertiary title line');
   }
 
   /**
@@ -123,20 +123,20 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "e");
+    $I->selectOption('Lockup Options', 'e');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Secondary title line");
-    $I->canSee("Tertiary title line");
+    $I->canSee(__FUNCTION__ . ' Site title line');
+    $I->canSee(__FUNCTION__ . ' Secondary title line');
+    $I->canSee(__FUNCTION__ . ' Tertiary title line');
   }
 
   /**
@@ -147,20 +147,20 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "h");
+    $I->selectOption('Lockup Options', 'h');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Organization name");
-    $I->canSee("Tertiary title line");
+    $I->canSee(__FUNCTION__ . ' Site title line');
+    $I->canSee(__FUNCTION__ . ' Organization name');
+    $I->canSee(__FUNCTION__ . ' Tertiary title line');
   }
 
   /**
@@ -171,20 +171,20 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "i");
+    $I->selectOption('Lockup Options', 'i');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Organization name");
-    $I->canSee("Tertiary title line");
+    $I->canSee(__FUNCTION__ . ' Site title line');
+    $I->canSee(__FUNCTION__ . ' Organization name');
+    $I->canSee(__FUNCTION__ . ' Tertiary title line');
   }
 
   /**
@@ -195,19 +195,19 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "m");
+    $I->selectOption('Lockup Options', 'm');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Secondary title line");
+    $I->canSee(__FUNCTION__ . ' Site title line');
+    $I->canSee(__FUNCTION__ . ' Secondary title line');
   }
 
   /**
@@ -218,18 +218,18 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "o");
+    $I->selectOption('Lockup Options', 'o');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Organization name");
+    $I->canSee(__FUNCTION__ . ' Organization name');
   }
 
   /**
@@ -240,19 +240,19 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "p");
+    $I->selectOption('Lockup Options', 'p');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Organization name");
+    $I->canSee(__FUNCTION__ . ' Site title line');
+    $I->canSee(__FUNCTION__ . ' Organization name');
   }
 
   /**
@@ -263,18 +263,18 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "r");
+    $I->selectOption('Lockup Options', 'r');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Last line full width option");
+    $I->canSee(__FUNCTION__ . ' Last line full width option');
   }
 
   /**
@@ -285,20 +285,20 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "s");
+    $I->selectOption('Lockup Options', 's');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Secondary title line");
-    $I->canSee("Organization name");
+    $I->canSee(__FUNCTION__ . ' Site title line');
+    $I->canSee(__FUNCTION__ . ' Secondary title line');
+    $I->canSee(__FUNCTION__ . ' Organization name');
   }
 
   /**
@@ -309,21 +309,21 @@ class LockupSettingsCest {
     $I->amOnPage('/admin/config/system/lockup-settings');
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
-    $I->selectOption("Lockup Options", "t");
+    $I->selectOption('Lockup Options', 't');
     $I->checkOption('Use the logo supplied by the theme');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
     $I->click('Save');
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->canSee("Site title line");
-    $I->canSee("Secondary title line");
-    $I->canSee("Tertiary title line");
-    $I->canSee("Organization name");
+    $I->canSee(__FUNCTION__ . ' Site title line');
+    $I->canSee(__FUNCTION__ . ' Secondary title line');
+    $I->canSee(__FUNCTION__ . ' Tertiary title line');
+    $I->canSee(__FUNCTION__ . ' Organization name');
   }
 
   /**
@@ -335,18 +335,18 @@ class LockupSettingsCest {
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
     $I->selectOption('Lockup Options', 'a');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
 
     // Add custom logo.
     $I->uncheckOption('Use the logo supplied by the theme');
 
     // In case there was an image already.
     if ($I->grabMultiple('input[value="Remove"]')) {
-      $I->click("Remove");
+      $I->click('Remove');
     }
 
     $I->attachFile('input[name="files[su_upload_logo_image_0]"]', $this->logoPath);
@@ -356,9 +356,9 @@ class LockupSettingsCest {
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->seeElement(".su-lockup__custom-logo");
+    $I->seeElement('.su-lockup__custom-logo');
     $I->assertNotEmpty($I->grabAttributeFrom('.su-lockup__custom-logo', 'alt'));
-    $I->canSee("Site title line");
+    $I->canSee(__FUNCTION__ . ' Site title line');
   }
 
   /**
@@ -370,18 +370,18 @@ class LockupSettingsCest {
     $I->canSeeResponseCodeIs(200);
     $I->uncheckOption('Use Default Lockup');
     $I->selectOption('Lockup Options', 'none');
-    $I->fillField('Line 1', 'Site title line');
-    $I->fillField('Line 2', 'Secondary title line');
-    $I->fillField('Line 3', 'Tertiary title line');
-    $I->fillField('Line 4', 'Organization name');
-    $I->fillField('Line 5', 'Last line full width option');
+    $I->fillField('Line 1', __FUNCTION__ . ' Site title line');
+    $I->fillField('Line 2', __FUNCTION__ . ' Secondary title line');
+    $I->fillField('Line 3', __FUNCTION__ . ' Tertiary title line');
+    $I->fillField('Line 4', __FUNCTION__ . ' Organization name');
+    $I->fillField('Line 5', __FUNCTION__ . ' Last line full width option');
 
     // Add custom logo.
     $I->uncheckOption('Use the logo supplied by the theme');
 
     // In case there was an image already.
     if ($I->grabMultiple('input[value="Remove"]')) {
-      $I->click("Remove");
+      $I->click('Remove');
     }
 
     // For CircleCI
@@ -392,9 +392,9 @@ class LockupSettingsCest {
     $I->see('Lockup Settings has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->seeElement(".su-lockup__custom-logo");
-    $I->assertNotEmpty($I->grabAttributeFrom('.su-lockup__custom-logo', 'alt'));
-    $I->cantSee("Site title line");
+    $I->seeElement('.su-lockup__custom-logo');
+    $I->assertNotEmpty($I->grabAttributeFrom('.su-masthead--inner .su-lockup__custom-logo', 'alt'));
+    $I->cantSee(__FUNCTION__ . ' Site title line', '.su-masthead--inner');
   }
 
 }

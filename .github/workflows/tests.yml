@@ -6,9 +6,13 @@ concurrency:
 jobs:
   phpunit:
     name: PHPUnit
+    strategy:
+      fail-fast: false
+      matrix:
+        php_version: [ 8.3, 8.4, 8.5 ]
     runs-on: ubuntu-latest
     container:
-      image: pookmish/drupal8ci:php8.3
+      image: pookmish/drupal8ci:php${{ matrix.php_version }}
     services:
       mysql:
         image: mysql:8.0
@@ -19,20 +23,24 @@ jobs:
           MYSQL_ROOT_PASSWORD: drupal
         ports:
           - 33306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: >
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           path: project
       - name: Build project
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         run: |
-          mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
+          mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' --ssl=0 &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
       - name: Save Test Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: d11-unit-tests-results
@@ -58,6 +66,7 @@ jobs:
       fail-fast: false
       matrix:
         suite: [ acceptance, functional ]
+        php_version: [8.3, 8.4, 8.5]
         shard: ${{fromJSON(needs.shard_matrix.outputs.matrix)}}
     runs-on: ubuntu-latest
     env:
@@ -66,7 +75,7 @@ jobs:
       DRUPAL_DATABASE_PASSWORD: drupal
       DRUPAL_DATABASE_HOST: mysql
     container:
-      image: pookmish/drupal8ci:php8.3
+      image: pookmish/drupal8ci:php${{ matrix.php_version }}
       options: '--network-alias drupal8ci'
     services:
       selenium:
@@ -81,9 +90,13 @@ jobs:
           MYSQL_ROOT_PASSWORD: drupal
         ports:
           - 33306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: >
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           path: project
       - name: Run tests
@@ -91,14 +104,14 @@ jobs:
           STANFORD_ENCRYPT: ${{ secrets.STANFORD_ENCRYPT }}
         run: |
           n=${{ vars.TEST_SHARDS || 4 }} &&
-          mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
+          mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' --ssl=0 &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=${{ matrix.suite }} --shard=${{ matrix.shard }}/$n &&
           if [ ! -f /var/www/html/artifacts/${{ matrix.suite }}/results.html ]; then
               exit 1
           fi
       - name: Save Test Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: codeception-${{ matrix.suite }}-${{ matrix.shard }}
