@@ -393,8 +393,8 @@ class LockupSettingsCest {
 
     $I->amOnPage('/');
     $I->seeElement('.su-lockup__custom-logo');
-    $I->assertNotEmpty($I->grabAttributeFrom('.su-lockup__custom-logo', 'alt'));
-    $I->cantSee(__FUNCTION__ . ' Site title line');
+    $I->assertNotEmpty($I->grabAttributeFrom('.su-masthead--inner .su-lockup__custom-logo', 'alt'));
+    $I->cantSee(__FUNCTION__ . ' Site title line', '.su-masthead--inner');
   }
 
 }

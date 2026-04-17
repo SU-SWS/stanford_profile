@@ -383,8 +383,9 @@ class LocalFooterLockupCest {
     $I->see('Local Footer has been', '.messages-list');
 
     $I->amOnPage('/');
-    $I->seeElement('.su-lockup__custom-logo');
-    $I->cantSee('Site title line');
+    $img_alt = $I->grabAttributeFrom('.su-local-footer .su-lockup__custom-logo', 'alt');
+    $I->assertNotEmpty($img_alt);
+    $I->assertEquals(__FUNCTION__ . ' Site title line', $img_alt);
   }
 
 }
