@@ -36,7 +36,7 @@ jobs:
           composer global require su-sws/stanford-caravan:11.x-dev &&
           ~/.config/composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
       - name: Save Test Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: d11-unit-tests-results
@@ -106,7 +106,7 @@ jobs:
               exit 1
           fi
       - name: Save Test Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: codeception-${{ matrix.suite }}-${{ matrix.shard }}
