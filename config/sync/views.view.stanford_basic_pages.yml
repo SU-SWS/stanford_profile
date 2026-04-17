@@ -512,17 +512,38 @@ display:
       row:
         type: ui_patterns
         options:
-          default_field_elements: 0
+          default_field_elements: false
           inline:
-            view_node: 0
-            title: 0
-            su_page_description: 0
-            su_banner_image: 0
-            su_page_image: 0
-            edit_node: 0
+            view_node: '0'
+            title: '0'
+            su_page_description: '0'
+            su_banner_image: '0'
+            su_page_image: '0'
+            edit_node: '0'
           separator: ''
-          hide_empty: 0
+          hide_empty: false
           pattern: basic-page-types-list
+          pattern_mapping:
+            'views_row:title':
+              plugin: views_row
+              source: title
+              destination: description
+              weight: 0
+            'views_row:su_page_description':
+              plugin: views_row
+              source: su_page_description
+              destination: description
+              weight: 1
+            'views_row:su_page_image':
+              plugin: views_row
+              source: su_page_image
+              destination: page_image
+              weight: 2
+            'views_row:edit_node':
+              plugin: views_row
+              source: edit_node
+              destination: footer
+              weight: 3
           variants:
             alert: default
             brandbar: default
@@ -539,27 +560,6 @@ display:
             events_list: default
             news-list: default
             news-vertical-teaser: default
-          pattern_mapping:
-            'views_row:title':
-              destination: description
-              weight: 0
-              plugin: views_row
-              source: title
-            'views_row:su_page_description':
-              destination: description
-              weight: 1
-              plugin: views_row
-              source: su_page_description
-            'views_row:su_page_image':
-              destination: page_image
-              weight: 2
-              plugin: views_row
-              source: su_page_image
-            'views_row:edit_node':
-              destination: footer
-              weight: 3
-              plugin: views_row
-              source: edit_node
       query:
         type: views_query
         options:
