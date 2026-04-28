@@ -7,6 +7,7 @@ dependencies:
     - search_api.server.database_search
   module:
     - node
+    - trash
 id: full_site_content
 name: 'Full Site Content'
 description: ''
@@ -203,6 +204,7 @@ processor_settings:
       - was
       - will
       - with
+  trash_status: {  }
   type_boost:
     weights:
       preprocess_index: 0

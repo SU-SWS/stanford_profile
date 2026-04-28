@@ -32,6 +32,7 @@ dependencies:
     - node
     - stanford_profile_helper
     - taxonomy
+    - trash
 id: algolia_search
 name: 'Algolia Search'
 description: ''
@@ -386,7 +387,16 @@ processor_settings:
       - event_audience
       - event_subject
       - event_type
+      - filters_course
+      - filters_media
+      - filters_opportunities
+      - filters_spotlights
       - html
+      - media_episode
+      - media_icon
+      - media_season
+      - media_series
+      - media_type
       - news_type
       - person_full_title
       - person_short_title
@@ -395,6 +405,7 @@ processor_settings:
       - photo
       - publication_type
       - shared_tags
+      - site_name
       - subheadline
       - summary
       - title
@@ -458,7 +469,16 @@ processor_settings:
       - event_audience
       - event_subject
       - event_type
+      - filters_course
+      - filters_media
+      - filters_opportunities
+      - filters_spotlights
       - html
+      - media_episode
+      - media_icon
+      - media_season
+      - media_series
+      - media_type
       - news_type
       - person_full_title
       - person_short_title
@@ -467,11 +487,13 @@ processor_settings:
       - photo
       - publication_type
       - shared_tags
+      - site_name
       - subheadline
       - summary
       - title
       - type
       - url
+  trash_status: {  }
 tracker_settings:
   default:
     indexing_order: fifo
