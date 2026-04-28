@@ -33,7 +33,7 @@ const Hit = ({hit, ...props}: {
 const CustomHits = ({federatedSearch, ...props}: {
   federatedSearch?: boolean
 }) => {
-  const {items: hits} = useHits<StanfordHit>(props);
+  const {items: hits, sendEvent} = useHits<StanfordHit>(props);
   const {
     currentRefinement: currentPage,
     pages,
@@ -71,7 +71,11 @@ const CustomHits = ({federatedSearch, ...props}: {
       </p>
       <ul className="results">
         {hits.map(hit =>
-          <li key={hit.objectID}>
+          <li
+            key={hit.objectID}
+            onClick={() => sendEvent('click', hit, 'Hit Clicked')}
+            onAuxClick={() => sendEvent('click', hit, 'Hit Clicked')}
+          >
             <Hit hit={hit} federatedSearch={federatedSearch}/>
           </li>
         )}
