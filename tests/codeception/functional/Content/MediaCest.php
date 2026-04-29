@@ -54,6 +54,11 @@ class MediaCest {
       'su_media_series' => $series,
     ]);
 
+    /** @var \Drupal\Core\File\FileSystemInterface $fs */
+    $fs = \Drupal::service('file_system');
+    $transcriptUri = $fs->copy(__DIR__ . '/transcript.srt', 'public://transcript.srt');
+    $transcriptFile = $I->createEntity(['uri' => $transcriptUri], 'file');
+
     $mediaNode = $I->createEntity([
       'type' => 'stanford_media',
       'title' => $this->faker->words(4, TRUE),
@@ -66,10 +71,10 @@ class MediaCest {
       'su_media_episode' => $this->faker->word(),
       'su_media_season' => $this->faker->word(),
       'su_media_series' => $series,
-      'su_media_transcript' => $this->faker->paragraphs(10, TRUE),
       'su_media_person' => $person->id(),
       'su_media_date' => date(DateTimeItemInterface::DATE_STORAGE_FORMAT),
       'su_media_types' => $mediaType->id(),
+      'su_media_subtitles' => $transcriptFile->id(),
     ]);
 
     $I->amOnPage($mediaNode->toUrl()->toString());
