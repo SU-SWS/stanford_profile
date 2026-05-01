@@ -302,7 +302,14 @@ class SystemSiteConfigCest {
     $I->amOnPage('/admin/config/search/redirect');
     $I->fillField('From', $source_path);
     $I->click('Filter');
-    $I->canSeeLink('/deleted-' . $source_path);
+    $I->cantSee($source_path);
+
+    $I->amOnPage('/admin/config/search/redirect/add');
+    $I->fillField('Path', $source_path);
+    $I->fillField('To', '<front>');
+    $I->click('Save');
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee('The redirect has been saved');
   }
 
 }
