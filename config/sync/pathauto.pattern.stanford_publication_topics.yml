@@ -2,17 +2,18 @@ uuid: f672409b-e08c-4ea0-8531-58a5b5a57f02
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_publication_topics
   module:
     - taxonomy
 id: stanford_publication_topics
 label: 'Publication Topics'
 type: 'canonical_entities:taxonomy_term'
-pattern: 'publications/[term:parents:join-path]/[term:name]'
+pattern: '/publications/[term:parents:join-path]/[term:name]'
 selection_criteria:
   0d5b64c9-6391-4dc7-90ca-777f41554c24:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 0d5b64c9-6391-4dc7-90ca-777f41554c24
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

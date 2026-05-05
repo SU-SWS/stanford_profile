@@ -2,17 +2,18 @@ uuid: d7f85709-ba0f-4e6f-83e3-0e9b7a7435ac
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.stanford_person
   module:
     - node
 id: person
 label: Person
 type: 'canonical_entities:node'
-pattern: 'people/[node:su_person_first_name]-[node:su_person_last_name]'
+pattern: '/people/[node:su_person_first_name]-[node:su_person_last_name]'
 selection_criteria:
   19fa6a2b-7ad8-48b7-9dea-2d4ec67ccfa0:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 19fa6a2b-7ad8-48b7-9dea-2d4ec67ccfa0
     context_mapping:
       node: node
     bundles:

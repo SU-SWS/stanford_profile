@@ -2,18 +2,18 @@ uuid: 3dc9f219-f45e-4a0c-af2a-f2d26a04d960
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_person_types
   module:
-    - ctools
     - taxonomy
 id: person_types
 label: 'Person Types'
 type: 'canonical_entities:taxonomy_term'
-pattern: 'people/[term:parents:join-path]/[term:name]'
+pattern: '/people/[term:parents:join-path]/[term:name]'
 selection_criteria:
   ca9a94b5-dbd0-42a6-9f35-05ca1f416f97:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: ca9a94b5-dbd0-42a6-9f35-05ca1f416f97
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

@@ -2,17 +2,18 @@ uuid: 0eee9d03-e8ef-445c-a41a-c5531ab07f44
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.stanford_event_series
   module:
     - node
 id: event_series
 label: 'Event Series'
 type: 'canonical_entities:node'
-pattern: 'event/series/[node:title]'
+pattern: '/event/series/[node:title]'
 selection_criteria:
   7e335004-e90f-455b-811f-8f26492117ae:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 7e335004-e90f-455b-811f-8f26492117ae
     context_mapping:
       node: node
     bundles:

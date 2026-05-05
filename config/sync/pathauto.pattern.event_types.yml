@@ -2,17 +2,18 @@ uuid: 8d779fed-984f-4074-8950-0612421c22f8
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.stanford_event_types
   module:
     - taxonomy
 id: event_types
 label: 'Event Types'
 type: 'canonical_entities:taxonomy_term'
-pattern: 'events/[term:parents:join-path]/[term:name]'
+pattern: '/events/[term:parents:join-path]/[term:name]'
 selection_criteria:
   ab7d6e8b-cf04-47cd-b752-9e18cfb789a7:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: ab7d6e8b-cf04-47cd-b752-9e18cfb789a7
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

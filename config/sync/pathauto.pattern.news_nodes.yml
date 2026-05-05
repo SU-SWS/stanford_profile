@@ -2,17 +2,18 @@ uuid: e2c9db69-657c-4d6e-babd-099e235758aa
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.stanford_news
   module:
     - node
 id: news_nodes
 label: 'News Nodes'
 type: 'canonical_entities:node'
-pattern: 'news/[node:title]'
+pattern: '/news/[node:title]'
 selection_criteria:
   7a7d05be-0ed3-47a8-a375-bc151a7ee92d:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 7a7d05be-0ed3-47a8-a375-bc151a7ee92d
     context_mapping:
       node: node
     bundles:
