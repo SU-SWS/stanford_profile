@@ -24,7 +24,7 @@ final class InstallTask extends AttributeBase {
    */
   public function __construct(
     public readonly string $id,
-    public readonly array $dependencies = [],
+    public array|null $dependencies = [],
   ) {}
 
 }
