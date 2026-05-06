@@ -113,6 +113,7 @@ settings:
       properties:
         reversed: true
         startIndex: true
+        styles: true
       multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags:
@@ -130,8 +131,8 @@ settings:
         - '<abbr aria-* class dir id lang title>'
         - '<span aria-* class dir id lang title>'
         - '<blockquote cite aria-* class dir id lang title>'
-        - '<ul type aria-* class dir id lang title>'
-        - '<ol type aria-* class dir id lang title>'
+        - '<ul aria-* class dir id lang title>'
+        - '<ol aria-* class dir id lang title>'
         - '<li aria-* class dir id lang title>'
         - '<h2 aria-* class dir id lang title>'
         - '<h3 aria-* class dir id lang title>'

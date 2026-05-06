@@ -15,7 +15,7 @@ class SystemCest {
     $I->runDrush('xmlsitemap:rebuild');
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/reports/status');
-    $I->canSee('11.2', '.system-status-general-info');
+    $I->canSee('11.3', '.system-status-general-info');
     if ($I->grabMultiple('.system-status-counter--error')) {
       $error_count = \Drupal::moduleHandler()
         ->moduleExists('config_inspector') ? '2 Errors' : '1 Error';
