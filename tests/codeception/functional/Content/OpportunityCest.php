@@ -118,6 +118,8 @@ class OpportunityCest {
     $I->checkOption($child_1_1->label());
     $I->waitForAjaxToFinish();
     $I->canSee($opportunity->label());
+
+    $I->canSeeInCurrentUrl($page->toUrl()->toString());
   }
 
   protected function buildTaxonomyTerms(FunctionalTester $I) {
