@@ -1,0 +1,30 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: List Paragraph
+status: stable
+props:
+  type: object
+  properties:
+    hide_if_empty:
+      type: boolean
+      title: Hide if empty
+      # @todo Add examples here.
+      examples: [ ]
+    empty_list_message:
+      type: string
+      title: Empty List Message
+      # @todo Add examples here.
+      examples: [ ]
+    headline_level:
+      type: string
+      title: Headline Level
+      # @todo Add examples here.
+      examples: [ ]
+slots:
+  view:
+    title: View
+  headline:
+    title: Headline
+  body:
+    title: Body
+  link:
+    title: Link

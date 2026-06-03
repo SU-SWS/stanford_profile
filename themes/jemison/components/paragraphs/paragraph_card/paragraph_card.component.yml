@@ -1,0 +1,32 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Card Paragraph
+status: stable
+props:
+  type: object
+  properties:
+    heading_level:
+      type: string
+      title: Heading Level
+      # @todo Add examples here.
+      examples: [ ]
+    visually_hide_heading:
+      type: boolean
+      title: Visually Hide Heading
+      # @todo Add examples here.
+      examples: [ ]
+    link_style:
+      type: string
+      title: Link Style
+      # @todo Add examples here.
+      examples: [ ]
+slots:
+  image:
+    title: Image
+  headline:
+    title: Headline
+  superhead:
+    title: Superhead
+  body:
+    title: Body
+  link:
+    title: Link
