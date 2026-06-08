@@ -1,0 +1,16 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Link
+status: stable
+props:
+  type: object
+  properties:
+    style:
+      type: string
+      title: Style
+      # @todo Add examples here.
+      examples: []
+slots:
+  href:
+    title: Href
+  contents:
+    title: Contents
