@@ -1,0 +1,19 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Masthead
+status: stable
+props:
+  type: object
+  properties:
+    remove_search:
+      type: boolean
+      title: Remove Search
+      description: Remove the site search input.
+      # @todo Add examples here.
+      examples: [ ]
+slots:
+  lockup:
+    title: Lockup
+  menu:
+    title: Menu
+  utility_nav:
+    title: Utility Navigation

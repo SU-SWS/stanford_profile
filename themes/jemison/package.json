@@ -1,0 +1,13 @@
+{
+  "name": "jemison",
+  "version": "1.0.0",
+  "description": "Jemison theme",
+  "scripts": {
+    "build": "sass styles/lib:styles/dist components:components",
+    "watch": "sass --watch styles/lib:styles/dist components:components"
+  },
+  "devDependencies": {
+    "sass": "^1.89.2"
+  },
+  "packageManager": "yarn@4.16.0"
+}

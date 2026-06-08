@@ -1,0 +1,18 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: FAQ Paragraph
+status: stable
+props:
+  type: object
+  properties:
+    heading_level:
+      type: string
+      title: Heading Level
+      # @todo Add examples here.
+      examples: [ ]
+slots:
+  qa:
+    title: Questions &amp; Answers
+  headline:
+    title: Headline
+  body:
+    title: Body
