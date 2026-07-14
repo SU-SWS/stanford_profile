@@ -6,46 +6,10 @@ dependencies:
     - field.field.paragraph.stanford_page_title_banner.su_title_banner_image
     - paragraphs.paragraphs_type.stanford_page_title_banner
   module:
-    - ds
     - empty_fields
     - field_formatter_class
-    - jumpstart_ui
+    - field_label
     - stanford_media
-    - ui_patterns
-    - ui_patterns_layouts
-third_party_settings:
-  ds:
-    layout:
-      id: 'ui_patterns:jumpstart_ui:hero'
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        ui_patterns:
-          component_id: 'jumpstart_ui:hero'
-          variant_id:
-            source_id: select
-            source:
-              value: default
-          props:
-            attributes:
-              source_id: attributes
-              source:
-                value: ''
-          slots: {  }
-    regions:
-      hero_body:
-        - 'dynamic_token_field:paragraph-page_title'
-        - su_title_banner_header
-      hero_image:
-        - su_title_banner_image
-    fields:
-      'dynamic_token_field:paragraph-page_title':
-        plugin_id: 'dynamic_token_field:paragraph-page_title'
-        weight: 0
-        label: hidden
-        formatter: default
 id: paragraph.stanford_page_title_banner.default
 targetEntityType: paragraph
 bundle: stanford_page_title_banner
@@ -64,7 +28,10 @@ content:
         handler: ''
       field_formatter_class:
         class: ''
-    weight: 2
-    region: hero_image
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 0
+    region: content
 hidden:
   search_api_excerpt: true
