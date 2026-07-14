@@ -10,43 +10,12 @@ dependencies:
     - field.field.paragraph.stanford_banner.su_banner_sup_header
     - paragraphs.paragraphs_type.stanford_banner
   module:
-    - ds
-    - element_class_formatter
     - empty_fields
     - field_formatter_class
     - field_label
     - link
     - stanford_media
     - text
-third_party_settings:
-  ds:
-    layout:
-      id: pattern_hero
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        pattern:
-          field_templates: only_content
-          variant: default
-    regions:
-      hero_image:
-        - su_banner_image
-      hero_headline:
-        - su_banner_header
-      hero_body:
-        - su_banner_sup_header
-        - su_banner_body
-      hero_button_link:
-        - su_banner_button
-      hero_button_label:
-        - 'display_field_copy:paragraph-su_banner_button_title'
-    fields:
-      'display_field_copy:paragraph-su_banner_button_title':
-        plugin_id: 'display_field_copy:paragraph-su_banner_button_title'
-        weight: 5
-        label: hidden
-        formatter: link_title
 id: paragraph.stanford_banner.default
 targetEntityType: paragraph
 bundle: stanford_banner
@@ -58,19 +27,26 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 3
-    region: hero_body
+    region: content
   su_banner_button:
-    type: link
+    type: link_separate
     label: hidden
     settings:
       trim_length: null
-      url_only: true
+      url_only: false
       url_plain: true
       rel: '0'
       target: '0'
-    third_party_settings: {  }
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 4
-    region: hero_button_link
+    region: content
   su_banner_header:
     type: string
     label: hidden
@@ -78,7 +54,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
-    region: hero_headline
+    region: content
   su_banner_image:
     type: media_responsive_image_formatter
     label: hidden
@@ -89,26 +65,21 @@ content:
       remove_alt: false
     third_party_settings: {  }
     weight: 0
-    region: hero_image
+    region: content
   su_banner_sup_header:
-    type: wrapper_class
+    type: string
     label: hidden
     settings:
-      class: su-card__superhead
-      tag: div
-      link: false
-      link_class: ''
-      summary: false
-      trim: 200
+      link_to_entity: false
     third_party_settings:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: ''
+        class: su-card__superhead
       field_label:
         label_value: ''
         label_tag: ''
     weight: 2
-    region: hero_body
+    region: content
 hidden:
   search_api_excerpt: true

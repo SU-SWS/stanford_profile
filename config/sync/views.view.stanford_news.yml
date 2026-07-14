@@ -22,7 +22,9 @@ dependencies:
     - node
     - stanford_fields
     - stanford_media
+    - stanford_news
     - taxonomy
+    - ui_patterns
     - ui_patterns_views
     - user
     - views_infinite_scroll
@@ -570,41 +572,33 @@ display:
       row:
         type: ui_patterns
         options:
-          default_field_elements: false
-          inline:
-            su_news_publishing_date: '0'
-            su_news_featured_media: '0'
-            title: '0'
-            su_news_dek: '0'
-            su_news_topics: '0'
-            su_news_source: '0'
-            view_node: '0'
-            edit_node: '0'
-          separator: ''
           hide_empty: false
-          pattern: news-vertical-teaser
-          pattern_mapping:
-            'views_row:su_news_featured_media':
-              plugin: views_row
-              source: su_news_featured_media
-              destination: news_vertical_teaser_image
-              weight: 0
-            'views_row:su_news_topics':
-              plugin: views_row
-              source: su_news_topics
-              destination: news_topics
-              weight: 1
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            link: default
-            lockup: a
-            media: default
+          ui_patterns:
+            component_id: 'stanford_news:news-vertical-teaser'
+            variant_id:
+              source_id: select
+              source:
+                value: ''
+            props:
+              attributes:
+                source_id: attributes
+                source:
+                  value: ''
+            slots:
+              news_vertical_teaser_image:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_news_featured_media
+                    _weight: 0
+              news_topics:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_news_topics
+                    _weight: 1
       query:
         type: views_query
         options:
@@ -790,61 +784,75 @@ display:
       row:
         type: ui_patterns
         options:
-          default_field_elements: 0
-          inline:
-            su_news_publishing_date: 0
-            su_news_featured_media: 0
-            title: 0
-            su_news_dek: 0
-            su_news_topics: 0
-            su_news_source: 0
-            view_node: 0
-            edit_node: 0
-          separator: ''
-          hide_empty: 0
-          pattern: news-list
-          pattern_mapping:
-            'views_row:view_node':
-              destination: news_url
-              weight: 0
-              plugin: views_row
-              source: view_node
-            'views_row:su_news_publishing_date':
-              destination: news_list_publishing_date
-              weight: 1
-              plugin: views_row
-              source: su_news_publishing_date
-            'views_row:su_news_source':
-              destination: news_source
-              weight: 2
-              plugin: views_row
-              source: su_news_source
-            'views_row:su_news_featured_media':
-              destination: news_list_image
-              weight: 3
-              plugin: views_row
-              source: su_news_featured_media
-            'views_row:su_news_dek':
-              destination: news_list_dek
-              weight: 4
-              plugin: views_row
-              source: su_news_dek
-            'views_row:title':
-              destination: news_list_headline
-              weight: 5
-              plugin: views_row
-              source: title
-            'views_row:su_news_topics':
-              destination: news_list_topics
-              weight: 6
-              plugin: views_row
-              source: su_news_topics
-            'views_row:edit_node':
-              destination: news_list_footer
-              weight: 7
-              plugin: views_row
-              source: edit_node
-          pattern_variant: h3_header
+          hide_empty: false
+          ui_patterns:
+            component_id: 'stanford_news:news-list'
+            variant_id:
+              source_id: select
+              source:
+                value: h3_header
+            props:
+              attributes:
+                source_id: attributes
+                source:
+                  value: ''
+            slots:
+              news_url:
+                sources:
+                  -
+                    source_id: view_field
+                    _weight: '0'
+                    source:
+                      ui_patterns_views_field: view_node
+              news_list_publishing_date:
+                sources:
+                  -
+                    source_id: view_field
+                    _weight: '1'
+                    source:
+                      ui_patterns_views_field: su_news_publishing_date
+              news_source:
+                sources:
+                  -
+                    source_id: view_field
+                    _weight: '2'
+                    source:
+                      ui_patterns_views_field: su_news_source
+              news_list_image:
+                sources:
+                  -
+                    source_id: view_field
+                    _weight: '3'
+                    source:
+                      ui_patterns_views_field: su_news_featured_media
+              news_list_dek:
+                sources:
+                  -
+                    source_id: view_field
+                    _weight: '4'
+                    source:
+                      ui_patterns_views_field: su_news_dek
+              news_list_headline:
+                sources:
+                  -
+                    source_id: view_field
+                    _weight: '5'
+                    source:
+                      ui_patterns_views_field: title
+              news_list_topics:
+                sources:
+                  -
+                    source_id: view_field
+                    _weight: '6'
+                    source:
+                      ui_patterns_views_field: su_news_topics
+              news_list_footer:
+                sources:
+                  -
+                    source_id: view_field
+                    _weight: '7'
+                    source:
+                      ui_patterns_views_field: edit_node
       block_category: 'News Lists (Views)'
       block_description: ''
       css_class: ''
@@ -4220,71 +4228,75 @@ display:
       row:
         type: ui_patterns
         options:
-          default_field_elements: false
-          inline:
-            su_news_publishing_date: '0'
-            su_news_featured_media: '0'
-            title: '0'
-            su_news_dek: '0'
-            su_news_topics: '0'
-            su_news_source: '0'
-            view_node: '0'
-            edit_node: '0'
-          separator: ''
           hide_empty: false
-          pattern: news-list
-          pattern_mapping:
-            'views_row:view_node':
-              plugin: views_row
-              source: view_node
-              destination: news_url
-              weight: 0
-            'views_row:title':
-              plugin: views_row
-              source: title
-              destination: news_list_headline
-              weight: 1
-            'views_row:su_news_publishing_date':
-              plugin: views_row
-              source: su_news_publishing_date
-              destination: news_list_publishing_date
-              weight: 2
-            'views_row:su_news_source':
-              plugin: views_row
-              source: su_news_source
-              destination: news_source
-              weight: 3
-            'views_row:su_news_featured_media':
-              plugin: views_row
-              source: su_news_featured_media
-              destination: news_list_image
-              weight: 4
-            'views_row:su_news_dek':
-              plugin: views_row
-              source: su_news_dek
-              destination: news_list_dek
-              weight: 5
-            'views_row:su_news_topics':
-              plugin: views_row
-              source: su_news_topics
-              destination: news_list_topics
-              weight: 6
-            'views_row:edit_node':
-              plugin: views_row
-              source: edit_node
-              destination: news_list_footer
-              weight: 7
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            link: default
-            lockup: a
-            media: default
+          ui_patterns:
+            component_id: 'stanford_news:news-list'
+            variant_id:
+              source_id: select
+              source:
+                value: ''
+            props:
+              attributes:
+                source_id: attributes
+                source:
+                  value: ''
+            slots:
+              news_url:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: view_node
+                    _weight: 0
+              news_list_headline:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: title
+                    _weight: 1
+              news_list_publishing_date:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_news_publishing_date
+                    _weight: 2
+              news_source:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_news_source
+                    _weight: 3
+              news_list_image:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_news_featured_media
+                    _weight: 4
+              news_list_dek:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_news_dek
+                    _weight: 5
+              news_list_topics:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_news_topics
+                    _weight: 6
+              news_list_footer:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: edit_node
+                    _weight: 7
       defaults:
         empty: false
         css_class: false

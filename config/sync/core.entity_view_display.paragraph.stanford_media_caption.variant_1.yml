@@ -10,19 +10,32 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_media_caption
   module:
     - ds
+    - jumpstart_ui
     - layout_builder
     - text
+    - ui_patterns
+    - ui_patterns_layouts
 third_party_settings:
   ds:
     layout:
-      id: pattern_media
+      id: 'ui_patterns:jumpstart_ui:media'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: only_content
-          variant: video
+        label: ''
+        ui_patterns:
+          component_id: 'jumpstart_ui:media'
+          variant_id:
+            source_id: select
+            source:
+              value: video
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       media_caption:
         - su_media_caption_caption

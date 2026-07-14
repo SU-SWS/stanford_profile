@@ -25,20 +25,34 @@ dependencies:
     - field_formatter_class
     - field_label
     - fontawesome
+    - jumpstart_ui
     - options
     - stanford_fields
     - stanford_media
     - text
+    - ui_patterns
+    - ui_patterns_layouts
 third_party_settings:
   ds:
     layout:
-      id: pattern_stat_card
+      id: 'ui_patterns:jumpstart_ui:stat_card'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: default
+        label: ''
+        ui_patterns:
+          component_id: 'jumpstart_ui:stat_card'
+          variant_id:
+            source_id: select
+            source:
+              value: ''
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       card_image:
         - su_stat_image

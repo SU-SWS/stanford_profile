@@ -22,10 +22,13 @@ dependencies:
   module:
     - ds
     - field_formatter_class
+    - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
     - layout_library
     - smart_trim
+    - ui_patterns
+    - ui_patterns_layouts
     - user
 third_party_settings:
   layout_builder:
@@ -147,14 +150,24 @@ third_party_settings:
         - Views
   ds:
     layout:
-      id: pattern_card
+      id: 'ui_patterns:jumpstart_ui:card'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: default
-          variant: default
+        label: ''
+        ui_patterns:
+          component_id: 'jumpstart_ui:card'
+          variant_id:
+            source_id: select
+            source:
+              value: default
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       card_body:
         - node_title

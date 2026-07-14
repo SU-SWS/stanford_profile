@@ -27,6 +27,9 @@ dependencies:
     - layout_builder_restrictions
     - layout_library
     - smart_trim
+    - stanford_news
+    - ui_patterns
+    - ui_patterns_layouts
     - user
 third_party_settings:
   layout_builder:
@@ -145,13 +148,24 @@ third_party_settings:
         - Views
   ds:
     layout:
-      id: pattern_news-list
+      id: 'ui_patterns:stanford_news:news-list'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: default
+        label: ''
+        ui_patterns:
+          component_id: 'stanford_news:news-list'
+          variant_id:
+            source_id: select
+            source:
+              value: ''
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       news_list_headline:
         - node_title

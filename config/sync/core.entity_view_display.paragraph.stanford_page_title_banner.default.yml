@@ -9,18 +9,31 @@ dependencies:
     - ds
     - empty_fields
     - field_formatter_class
+    - jumpstart_ui
     - stanford_media
+    - ui_patterns
+    - ui_patterns_layouts
 third_party_settings:
   ds:
     layout:
-      id: pattern_hero
+      id: 'ui_patterns:jumpstart_ui:hero'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: default
-          variant: default
+        label: ''
+        ui_patterns:
+          component_id: 'jumpstart_ui:hero'
+          variant_id:
+            source_id: select
+            source:
+              value: default
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       hero_body:
         - 'dynamic_token_field:paragraph-page_title'

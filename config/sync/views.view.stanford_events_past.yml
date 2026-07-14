@@ -16,7 +16,9 @@ dependencies:
     - link
     - node
     - smart_date
+    - stanford_events
     - stanford_fields
+    - ui_patterns
     - ui_patterns_views
     - user
     - views_infinite_scroll
@@ -1042,97 +1044,99 @@ display:
       row:
         type: ui_patterns
         options:
-          default_field_elements: false
-          inline:
-            view_node: '0'
-            title: '0'
-            su_event_date_time: '0'
-            su_event_date_time_value: '0'
-            su_event_date_time_end_value: '0'
-            su_event_date_time_value_1: '0'
-            su_event_date_time_end_value_1: '0'
-            su_event_dek: '0'
-            su_event_alt_loc: '0'
-            su_event_type: '0'
-            su_event_location: '0'
-            su_event_subheadline: '0'
-            su_event_source: '0'
-            su_event_date_time_end_value_2: '0'
-          separator: ''
           hide_empty: true
-          pattern: events_list
-          pattern_mapping:
-            'views_row:su_event_date_time':
-              plugin: views_row
-              source: su_event_date_time
-              destination: date_time
-              weight: 0
-            'views_row:su_event_date_time_end_value':
-              plugin: views_row
-              source: su_event_date_time_end_value
-              destination: end_month
-              weight: 1
-            'views_row:su_event_date_time_value_1':
-              plugin: views_row
-              source: su_event_date_time_value_1
-              destination: start_date
-              weight: 2
-            'views_row:su_event_date_time_end_value_1':
-              plugin: views_row
-              source: su_event_date_time_end_value_1
-              destination: end_date
-              weight: 3
-            'views_row:su_event_date_time_value':
-              plugin: views_row
-              source: su_event_date_time_value
-              destination: start_month
-              weight: 4
-            'views_row:su_event_dek':
-              plugin: views_row
-              source: su_event_dek
-              destination: dek
-              weight: 5
-            'views_row:su_event_alt_loc':
-              plugin: views_row
-              source: su_event_alt_loc
-              destination: location
-              weight: 6
-            'views_row:su_event_type':
-              plugin: views_row
-              source: su_event_type
-              destination: event_type
-              weight: 7
-            'views_row:su_event_source':
-              plugin: views_row
-              source: su_event_source
-              destination: headline
-              weight: 8
-            'views_row:su_event_location':
-              plugin: views_row
-              source: su_event_location
-              destination: location
-              weight: 9
-            'views_row:su_event_subheadline':
-              plugin: views_row
-              source: su_event_subheadline
-              destination: subheadline
-              weight: 10
-            'views_row:su_event_date_time_end_value_2':
-              plugin: views_row
-              source: su_event_date_time_end_value_2
-              destination: event_type
-              weight: 11
-          variants:
-            media: default
-            lockup: a
-            hero: default
-            brandbar: default
-            link: default
-            button: default
-            date-stacked: default
-            cta: default
-            alert: default
-            card: default
+          ui_patterns:
+            component_id: 'stanford_events:events_list'
+            variant_id:
+              source_id: select
+              source:
+                value: ''
+            props:
+              attributes:
+                source_id: attributes
+                source:
+                  value: ''
+            slots:
+              date_time:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_date_time
+                    _weight: 0
+              end_month:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_date_time_end_value
+                    _weight: 1
+              start_date:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_date_time_value_1
+                    _weight: 2
+              end_date:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_date_time_end_value_1
+                    _weight: 3
+              start_month:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_date_time_value
+                    _weight: 4
+              dek:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_dek
+                    _weight: 5
+              location:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_alt_loc
+                    _weight: 6
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_location
+                    _weight: 9
+              event_type:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_type
+                    _weight: 7
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_date_time_end_value_2
+                    _weight: 11
+              headline:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_source
+                    _weight: 8
+              subheadline:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_subheadline
+                    _weight: 10
       query:
         type: views_query
         options:

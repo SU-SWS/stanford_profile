@@ -17,17 +17,31 @@ dependencies:
     - field_formatter_class
     - link
     - smart_date
+    - stanford_events
     - text
+    - ui_patterns
+    - ui_patterns_layouts
 third_party_settings:
   ds:
     layout:
-      id: pattern_events_schedule
+      id: 'ui_patterns:stanford_events:events_schedule'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: only_content
+        label: ''
+        ui_patterns:
+          component_id: 'stanford_events:events_schedule'
+          variant_id:
+            source_id: select
+            source:
+              value: ''
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       time:
         - su_schedule_date_time

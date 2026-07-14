@@ -24,6 +24,9 @@ dependencies:
     - layout_builder_restrictions
     - layout_library
     - link
+    - stanford_courses
+    - ui_patterns
+    - ui_patterns_layouts
     - user
 third_party_settings:
   layout_builder:
@@ -40,13 +43,24 @@ third_party_settings:
     enable: false
   ds:
     layout:
-      id: pattern_course_vertical_teaser
+      id: 'ui_patterns:stanford_courses:course_vertical_teaser'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: only_content
+        label: ''
+        ui_patterns:
+          component_id: 'stanford_courses:course_vertical_teaser'
+          variant_id:
+            source_id: select
+            source:
+              value: ''
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       course_code:
         - su_course_subject

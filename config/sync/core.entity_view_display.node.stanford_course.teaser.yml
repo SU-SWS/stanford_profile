@@ -30,6 +30,9 @@ dependencies:
     - layout_builder_restrictions
     - layout_library
     - smart_trim
+    - stanford_courses
+    - ui_patterns
+    - ui_patterns_layouts
     - user
 third_party_settings:
   layout_builder:
@@ -46,14 +49,24 @@ third_party_settings:
     enable: false
   ds:
     layout:
-      id: pattern_course_list
+      id: 'ui_patterns:stanford_courses:course_list'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: default
-          variant: h3_header
+        label: ''
+        ui_patterns:
+          component_id: 'stanford_courses:course_list'
+          variant_id:
+            source_id: select
+            source:
+              value: h3_header
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       course_list_code:
         - su_course_subject

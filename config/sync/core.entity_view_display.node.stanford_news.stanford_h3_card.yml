@@ -35,18 +35,31 @@ dependencies:
     - link
     - smart_trim
     - stanford_media
+    - stanford_news
+    - ui_patterns
+    - ui_patterns_layouts
     - user
 third_party_settings:
   ds:
     layout:
-      id: pattern_news-vertical-teaser
+      id: 'ui_patterns:stanford_news:news-vertical-teaser'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: only_content
-          variant: h3_header
+        label: ''
+        ui_patterns:
+          component_id: 'stanford_news:news-vertical-teaser'
+          variant_id:
+            source_id: select
+            source:
+              value: h3_header
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       news_vertical_teaser_image:
         - su_news_featured_media

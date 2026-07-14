@@ -36,18 +36,31 @@ dependencies:
     - layout_builder
     - link
     - smart_date
+    - stanford_events
+    - ui_patterns
+    - ui_patterns_layouts
     - user
 third_party_settings:
   ds:
     layout:
-      id: pattern_events_card
+      id: 'ui_patterns:stanford_events:events_card'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: only_content
-          variant: h3_header
+        label: ''
+        ui_patterns:
+          component_id: 'stanford_events:events_card'
+          variant_id:
+            source_id: select
+            source:
+              value: h3_header
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       start_month:
         - 'display_field_copy:node-event_date_time_1'

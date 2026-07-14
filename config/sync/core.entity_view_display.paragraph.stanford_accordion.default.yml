@@ -8,17 +8,31 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_accordion
   module:
     - ds
+    - jumpstart_ui
     - text
+    - ui_patterns
+    - ui_patterns_layouts
 third_party_settings:
   ds:
     layout:
-      id: pattern_accordion
+      id: 'ui_patterns:jumpstart_ui:accordion'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: default
+        label: ''
+        ui_patterns:
+          component_id: 'jumpstart_ui:accordion'
+          variant_id:
+            source_id: select
+            source:
+              value: ''
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       title:
         - su_accordion_title

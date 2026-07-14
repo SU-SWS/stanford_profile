@@ -33,19 +33,32 @@ dependencies:
     - field_formatter_class
     - field_label
     - stanford_media
+    - stanford_news
     - text
+    - ui_patterns
+    - ui_patterns_layouts
     - user
 third_party_settings:
   ds:
     layout:
-      id: pattern_news-list
+      id: 'ui_patterns:stanford_news:news-list'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: only_content
-          variant: default
+        label: ''
+        ui_patterns:
+          component_id: 'stanford_news:news-list'
+          variant_id:
+            source_id: select
+            source:
+              value: default
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       news_list_topics:
         - su_opp_type

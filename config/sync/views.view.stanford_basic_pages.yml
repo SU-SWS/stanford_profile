@@ -12,8 +12,10 @@ dependencies:
     - graphql_compose_views
     - node
     - paragraphs
+    - stanford_basic_page_types
     - stanford_fields
     - stanford_media
+    - ui_patterns
     - ui_patterns_views
     - user
     - views_taxonomy_term_name_depth
@@ -512,54 +514,45 @@ display:
       row:
         type: ui_patterns
         options:
-          default_field_elements: false
-          inline:
-            view_node: '0'
-            title: '0'
-            su_page_description: '0'
-            su_banner_image: '0'
-            su_page_image: '0'
-            edit_node: '0'
-          separator: ''
           hide_empty: false
-          pattern: basic-page-types-list
-          pattern_mapping:
-            'views_row:title':
-              plugin: views_row
-              source: title
-              destination: description
-              weight: 0
-            'views_row:su_page_description':
-              plugin: views_row
-              source: su_page_description
-              destination: description
-              weight: 1
-            'views_row:su_page_image':
-              plugin: views_row
-              source: su_page_image
-              destination: page_image
-              weight: 2
-            'views_row:edit_node':
-              plugin: views_row
-              source: edit_node
-              destination: footer
-              weight: 3
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            lockup: a
-            media: default
-            course_list: default
-            course_vertical_teaser: default
-            events_card: default
-            events_list: default
-            news-list: default
-            news-vertical-teaser: default
+          ui_patterns:
+            component_id: 'stanford_basic_page_types:basic-page-types-list'
+            variant_id:
+              source_id: select
+              source:
+                value: ''
+            props:
+              attributes:
+                source_id: attributes
+                source:
+                  value: ''
+            slots:
+              description:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: title
+                    _weight: 0
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_page_description
+                    _weight: 1
+              page_image:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_page_image
+                    _weight: 2
+              footer:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: edit_node
+                    _weight: 3
       query:
         type: views_query
         options:

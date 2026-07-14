@@ -12,20 +12,33 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_card
   module:
     - ds
+    - jumpstart_ui
     - layout_builder
     - stanford_media
     - text
+    - ui_patterns
+    - ui_patterns_layouts
 third_party_settings:
   ds:
     layout:
-      id: pattern_card
+      id: 'ui_patterns:jumpstart_ui:card'
       library: null
       disable_css: false
       entity_classes: no_classes
       settings:
-        pattern:
-          field_templates: only_content
-          variant: postcard
+        label: ''
+        ui_patterns:
+          component_id: 'jumpstart_ui:card'
+          variant_id:
+            source_id: select
+            source:
+              value: postcard
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       card_image:
         - su_card_media

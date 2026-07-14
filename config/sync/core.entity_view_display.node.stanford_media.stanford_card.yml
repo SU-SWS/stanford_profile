@@ -27,11 +27,14 @@ dependencies:
     - empty_fields
     - field_formatter_class
     - field_label
+    - jumpstart_ui
     - layout_builder
     - layout_builder_restrictions
     - layout_library
     - options
     - stanford_media
+    - ui_patterns
+    - ui_patterns_layouts
     - user
 third_party_settings:
   layout_builder:
@@ -48,13 +51,24 @@ third_party_settings:
       restricted_categories: {  }
   ds:
     layout:
-      id: pattern_container_responsive_card
+      id: 'ui_patterns:jumpstart_ui:container_responsive_card'
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: default
+        label: ''
+        ui_patterns:
+          component_id: 'jumpstart_ui:container_responsive_card'
+          variant_id:
+            source_id: select
+            source:
+              value: ''
+          props:
+            attributes:
+              source_id: attributes
+              source:
+                value: ''
+          slots: {  }
     regions:
       image:
         - su_media_image
