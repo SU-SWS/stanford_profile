@@ -9,42 +9,10 @@ dependencies:
     - field.field.paragraph.stanford_person_cta.su_person_cta_title
     - paragraphs.paragraphs_type.stanford_person_cta
   module:
-    - ds
+    - empty_fields
     - field_formatter_class
+    - field_label
     - link
-    - stanford_events
-    - ui_patterns
-    - ui_patterns_layouts
-third_party_settings:
-  ds:
-    layout:
-      id: 'ui_patterns:stanford_events:events_person_cta'
-      library: null
-      disable_css: false
-      entity_classes: no_classes
-      settings:
-        label: ''
-        ui_patterns:
-          component_id: 'stanford_events:events_person_cta'
-          variant_id:
-            source_id: select
-            source:
-              value: ''
-          props:
-            attributes:
-              source_id: attributes
-              source:
-                value: ''
-          slots: {  }
-    regions:
-      image:
-        - su_person_cta_image
-      name:
-        - su_person_cta_name
-      title:
-        - su_person_cta_title
-      link:
-        - su_person_cta_link
 id: paragraph.stanford_person_cta.default
 targetEntityType: paragraph
 bundle: stanford_person_cta
@@ -60,7 +28,7 @@ content:
       field_formatter_class:
         class: su-person-cta--image
     weight: 0
-    region: image
+    region: content
   su_person_cta_link:
     type: link
     label: hidden
@@ -71,10 +39,15 @@ content:
       rel: '0'
       target: '0'
     third_party_settings:
+      empty_fields:
+        handler: ''
       field_formatter_class:
         class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 3
-    region: link
+    region: content
   su_person_cta_name:
     type: string
     label: hidden
@@ -82,7 +55,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
-    region: name
+    region: content
   su_person_cta_title:
     type: string
     label: hidden
@@ -90,6 +63,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 2
-    region: title
+    region: content
 hidden:
   search_api_excerpt: true
