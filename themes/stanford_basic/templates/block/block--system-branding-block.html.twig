@@ -57,44 +57,53 @@
   {% set line5 = '' %}
 {% endif %}
 
-{# If the theme has a custom logo. Use that. We can do this by overriding the twig block in lockup.twig #}
-{% block cell1 %}
-  {% if site_logo|render|striptags|trim is not empty and use_logo == false %}
-    <div class="su-lockup__logo-wrapper">
-      <img src="{{ site_logo }}" alt="{{ site_name }}" class="su-lockup__custom-logo" />
-      {% if line4 is not empty %}
-        <span class="su-lockup__line4" {{ region_attributes.line4 }}>{{ line4 }}</span>
-      {% endif %}
-    </div>
-  {% else %}
-    <div class="su-lockup__wordmark-wrapper">
-      <span class="su-lockup__wordmark">Stanford</span>
-      {% if line4 is not empty %}
-        <span class="su-lockup__line4" {{ region_attributes.line4 }}>{{ line4 }}</span>
-      {% endif %}
-    </div>
-  {% endif %}
-{% endblock %}
+{% embed 'jumpstart_ui:lockup' with {
+  line1: line1,
+  line2: line2,
+  line3: line3,
+  line4: line4,
+  line5: line5
+} %}
 
-{# Override block cell2 because we want to hide some elements if the none option is selected. #}
-{% block cell2 %}
-  {% if lockup.option != 'none' %}
-    {% if line1 is not empty or line2 is not empty or line3 is not empty %}
-    <div class="su-lockup__cell2">
-      {% if line1 is not empty %}
-      <span class="su-lockup__line1" {{ region_attributes.line1 }}>{{ line1 }}</span>
-      {% endif %}
 
-      {% if line2 is not empty %}
-      <span class="su-lockup__line2" {{ region_attributes.line2 }}>{{ line2 }}</span>
-      {% endif %}
-
-      {% if line3 is not empty %}
-      <span class="su-lockup__line3" {{ region_attributes.line3 }}>{{ line3 }}</span>
-      {% endif %}
-    </div>
+  {# If the theme has a custom logo. Use that. We can do this by overriding the twig block in lockup.twig #}
+  {% block cell1 %}
+    {% if site_logo|render|striptags|trim is not empty and use_logo == false %}
+      <div class="su-lockup__logo-wrapper">
+        <img src="{{ site_logo }}" alt="{{ site_name }}" class="su-lockup__custom-logo" />
+        {% if line4 is not empty %}
+          <span class="su-lockup__line4" {{ region_attributes.line4 }}>{{ line4 }}</span>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="su-lockup__wordmark-wrapper">
+        <span class="su-lockup__wordmark">Stanford</span>
+        {% if line4 is not empty %}
+          <span class="su-lockup__line4" {{ region_attributes.line4 }}>{{ line4 }}</span>
+        {% endif %}
+      </div>
     {% endif %}
-  {% endif %}
-{% endblock %}
+  {% endblock %}
 
-{% extends "@decanter/components/lockup/lockup.twig" %}
+  {# Override block cell2 because we want to hide some elements if the none option is selected. #}
+  {% block cell2 %}
+    {% if lockup.option != 'none' %}
+      {% if line1 is not empty or line2 is not empty or line3 is not empty %}
+      <div class="su-lockup__cell2">
+        {% if line1 is not empty %}
+        <span class="su-lockup__line1" {{ region_attributes.line1 }}>{{ line1 }}</span>
+        {% endif %}
+
+        {% if line2 is not empty %}
+        <span class="su-lockup__line2" {{ region_attributes.line2 }}>{{ line2 }}</span>
+        {% endif %}
+
+        {% if line3 is not empty %}
+        <span class="su-lockup__line3" {{ region_attributes.line3 }}>{{ line3 }}</span>
+        {% endif %}
+      </div>
+      {% endif %}
+    {% endif %}
+  {% endblock %}
+
+{% endembed %}
