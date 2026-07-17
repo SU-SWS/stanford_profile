@@ -40,55 +40,11 @@ dependencies:
     - field.field.node.stanford_person.su_shared_tags
     - node.type.stanford_person
   module:
-    - ds
-    - empty_fields
-    - field_formatter_class
-    - field_label
-    - jumpstart_ui
     - layout_builder
-    - stanford_media
-    - ui_patterns
-    - ui_patterns_layouts
+    - link
+    - text
     - user
 third_party_settings:
-  ds:
-    layout:
-      id: 'ui_patterns:jumpstart_ui:card'
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        ui_patterns:
-          component_id: 'jumpstart_ui:card'
-          variant_id:
-            source_id: select
-            source:
-              value: minimal
-          props:
-            attributes:
-              source_id: attributes
-              source:
-                value: ''
-          slots: {  }
-    regions:
-      card_image:
-        - su_person_photo
-      card_body:
-        - node_title
-        - su_person_short_title
-    fields:
-      node_title:
-        plugin_id: node_title
-        weight: 1
-        label: hidden
-        formatter: default
-        settings:
-          link: true
-          'link class': ''
-          link_target: ''
-          wrapper: h3
-          class: ''
   layout_builder:
     enabled: false
     allow_custom: false
@@ -97,32 +53,229 @@ targetEntityType: node
 bundle: stanford_person
 mode: stanford_h3_card_plain
 content:
-  su_person_photo:
-    type: media_responsive_image_formatter
+  su_person_academic_appt:
+    type: string
     label: hidden
     settings:
-      view_mode: default
-      link: false
-      image_style: responsive_1_1
-      remove_alt: '1'
-    third_party_settings:
-      empty_fields:
-        handler: ''
-      field_formatter_class:
-        class: ''
-      field_label:
-        label_value: ''
-        label_tag: ''
-    weight: 0
-    region: card_image
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  su_person_admin_appts:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  su_person_affiliations:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  su_person_education:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  su_person_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  su_person_fax:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  su_person_first_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  su_person_full_title:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  su_person_last_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  su_person_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  su_person_location_address:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  su_person_location_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  su_person_mail_code:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  su_person_map_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  su_person_mobile_phone:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  su_person_photo:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  su_person_profile_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  su_person_pronouns:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  su_person_research:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  su_person_research_interests:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  su_person_scholarly_interests:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 24
+    region: content
   su_person_short_title:
     type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 2
-    region: card_body
+    weight: 25
+    region: content
+  su_person_source:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 26
+    region: content
+  su_person_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 27
+    region: content
+  su_person_telephone:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 28
+    region: content
+  su_person_type_group:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 29
+    region: content
 hidden:
   body: true
   field_menulink: true
@@ -132,29 +285,5 @@ hidden:
   stanford_intranet__access: true
   su_imported: true
   su_metatags: true
-  su_person_academic_appt: true
-  su_person_admin_appts: true
-  su_person_affiliations: true
   su_person_components: true
-  su_person_education: true
-  su_person_email: true
-  su_person_fax: true
-  su_person_first_name: true
-  su_person_full_title: true
-  su_person_last_name: true
-  su_person_links: true
-  su_person_location_address: true
-  su_person_location_name: true
-  su_person_mail_code: true
-  su_person_map_url: true
-  su_person_mobile_phone: true
-  su_person_profile_link: true
-  su_person_pronouns: true
-  su_person_research: true
-  su_person_research_interests: true
-  su_person_scholarly_interests: true
-  su_person_source: true
-  su_person_tags: true
-  su_person_telephone: true
-  su_person_type_group: true
   su_shared_tags: true

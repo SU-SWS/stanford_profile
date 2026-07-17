@@ -24,9 +24,51 @@ bundle: stanford_event_series
 mode: teaser
 content:
   links:
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 100
+    region: content
+  su_event_series_dek:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  su_event_series_event:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  su_event_series_subheadline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  su_event_series_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  su_event_series_weight:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 106
     region: content
 hidden:
   field_menulink: true
@@ -34,10 +76,6 @@ hidden:
   search_api_excerpt: true
   stanford_intranet__access: true
   su_event_series_components: true
-  su_event_series_dek: true
-  su_event_series_event: true
-  su_event_series_subheadline: true
-  su_event_series_type: true
-  su_event_series_weight: true
+  su_imported: true
   su_metatags: true
   su_shared_tags: true

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
+    - field.field.node.stanford_page.body
     - field.field.node.stanford_page.field_menulink
     - field.field.node.stanford_page.layout_builder__layout
     - field.field.node.stanford_page.layout_selection
@@ -17,58 +18,23 @@ dependencies:
     - field.field.node.stanford_page.su_shared_tags
     - node.type.stanford_page
   module:
-    - ds
     - entity_reference_revisions
     - field_formatter_class
-    - jumpstart_ui
     - stanford_media
-    - ui_patterns
-    - ui_patterns_layouts
     - user
-third_party_settings:
-  ds:
-    layout:
-      id: 'ui_patterns:jumpstart_ui:card'
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        ui_patterns:
-          component_id: 'jumpstart_ui:card'
-          variant_id:
-            source_id: select
-            source:
-              value: default
-          props:
-            attributes:
-              source_id: attributes
-              source:
-                value: ''
-          slots: {  }
-    regions:
-      card_image:
-        - su_page_banner
-        - su_page_image
-      card_headline:
-        - node_title
-      card_body:
-        - su_page_description
-    fields:
-      node_title:
-        plugin_id: node_title
-        weight: 2
-        label: hidden
-        formatter: default
-        settings:
-          link: true
-          wrapper: ''
-          class: su-card__link
 id: node.stanford_page.stanford_card
 targetEntityType: node
 bundle: stanford_page
 mode: stanford_card
 content:
+  su_basic_page_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
   su_page_banner:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -119,7 +85,7 @@ hidden:
   links: true
   search_api_excerpt: true
   stanford_intranet__access: true
-  su_basic_page_type: true
+  su_imported: true
   su_metatags: true
   su_page_components: true
   su_shared_tags: true

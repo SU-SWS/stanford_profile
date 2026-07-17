@@ -17,54 +17,7 @@ dependencies:
     - field.field.node.stanford_event_series.su_shared_tags
     - node.type.stanford_event_series
   module:
-    - ds
-    - jumpstart_ui
-    - layout_builder
-    - ui_patterns
-    - ui_patterns_layouts
     - user
-third_party_settings:
-  ds:
-    layout:
-      id: 'ui_patterns:jumpstart_ui:card'
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        ui_patterns:
-          component_id: 'jumpstart_ui:card'
-          variant_id:
-            source_id: select
-            source:
-              value: default
-          props:
-            attributes:
-              source_id: attributes
-              source:
-                value: ''
-          slots: {  }
-    regions:
-      card_super_headline:
-        - su_event_series_dek
-      card_body:
-        - node_title
-        - su_event_series_subheadline
-    fields:
-      node_title:
-        plugin_id: node_title
-        weight: 1
-        label: hidden
-        formatter: default
-        settings:
-          link: true
-          'link class': ''
-          link_target: ''
-          wrapper: h3
-          class: ''
-  layout_builder:
-    enabled: false
-    allow_custom: false
 id: node.stanford_event_series.stanford_h3_card
 targetEntityType: node
 bundle: stanford_event_series
@@ -78,6 +31,14 @@ content:
     third_party_settings: {  }
     weight: 0
     region: card_super_headline
+  su_event_series_event:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
   su_event_series_subheadline:
     type: string
     label: hidden
@@ -86,6 +47,23 @@ content:
     third_party_settings: {  }
     weight: 2
     region: card_body
+  su_event_series_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  su_event_series_weight:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
 hidden:
   field_menulink: true
   layout_builder__layout: true
@@ -93,8 +71,6 @@ hidden:
   search_api_excerpt: true
   stanford_intranet__access: true
   su_event_series_components: true
-  su_event_series_event: true
-  su_event_series_type: true
-  su_event_series_weight: true
+  su_imported: true
   su_metatags: true
   su_shared_tags: true

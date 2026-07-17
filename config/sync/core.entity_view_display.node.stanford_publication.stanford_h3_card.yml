@@ -6,12 +6,14 @@ dependencies:
     - core.entity_view_mode.node.stanford_h3_card
     - field.field.node.stanford_publication.layout_builder__layout
     - field.field.node.stanford_publication.stanford_intranet__access
+    - field.field.node.stanford_publication.su_imported
     - field.field.node.stanford_publication.su_metatags
     - field.field.node.stanford_publication.su_publication_author_ref
     - field.field.node.stanford_publication.su_publication_citation
     - field.field.node.stanford_publication.su_publication_components
     - field.field.node.stanford_publication.su_publication_cta
     - field.field.node.stanford_publication.su_publication_image
+    - field.field.node.stanford_publication.su_publication_tags
     - field.field.node.stanford_publication.su_publication_topics
     - field.field.node.stanford_publication.su_shared_tags
     - node.type.stanford_publication
@@ -19,63 +21,63 @@ dependencies:
     - ds
     - element_class_formatter
     - field_formatter_class
-    - jumpstart_ui
-    - layout_builder
-    - ui_patterns
-    - ui_patterns_layouts
+    - link
     - user
-third_party_settings:
-  ds:
-    layout:
-      id: 'ui_patterns:jumpstart_ui:card'
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        ui_patterns:
-          component_id: 'jumpstart_ui:card'
-          variant_id:
-            source_id: select
-            source:
-              value: default
-          props:
-            attributes:
-              source_id: attributes
-              source:
-                value: ''
-          slots: {  }
-    regions:
-      card_super_headline:
-        - citation_type
-      card_body:
-        - node_title
-        - su_publication_topics
-    fields:
-      node_title:
-        plugin_id: node_title
-        weight: 1
-        label: hidden
-        formatter: default
-        settings:
-          link: true
-          'link class': ''
-          link_target: ''
-          wrapper: h3
-          class: ''
-  layout_builder:
-    enabled: false
-    allow_custom: false
 id: node.stanford_publication.stanford_h3_card
 targetEntityType: node
 bundle: stanford_publication
 mode: stanford_h3_card
 content:
   citation_type:
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: card_super_headline
+  su_publication_author_ref:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  su_publication_citation:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  su_publication_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  su_publication_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  su_publication_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
   su_publication_topics:
     type: entity_reference_list_label_class
     label: hidden
@@ -97,10 +99,5 @@ hidden:
   stanford_intranet__access: true
   su_imported: true
   su_metatags: true
-  su_publication_author_ref: true
-  su_publication_citation: true
   su_publication_components: true
-  su_publication_cta: true
-  su_publication_image: true
-  su_publication_tags: true
   su_shared_tags: true

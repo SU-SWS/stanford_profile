@@ -27,79 +27,106 @@ dependencies:
     - field.field.node.stanford_opportunity.su_opp_units
     - node.type.stanford_opportunity
   module:
-    - ds
+    - datetime
     - empty_fields
     - field_formatter_class
     - field_label
-    - jumpstart_ui
-    - layout_builder
-    - layout_builder_restrictions
-    - layout_library
+    - fontawesome
+    - link
     - smart_trim
     - stanford_media
-    - ui_patterns
-    - ui_patterns_layouts
+    - text
     - user
-third_party_settings:
-  layout_builder:
-    enabled: false
-    allow_custom: false
-  layout_library:
-    enable: false
-  layout_builder_restrictions:
-    allowed_block_categories: {  }
-    entity_view_mode_restriction:
-      allowed_layouts: {  }
-      denylisted_blocks: {  }
-      allowlisted_blocks: {  }
-      restricted_categories: {  }
-  ds:
-    layout:
-      id: 'ui_patterns:jumpstart_ui:card'
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        ui_patterns:
-          component_id: 'jumpstart_ui:card'
-          variant_id:
-            source_id: select
-            source:
-              value: default
-          props:
-            attributes:
-              source_id: attributes
-              source:
-                value: ''
-          slots: {  }
-    regions:
-      card_image:
-        - su_opp_image
-      card_super_headline:
-        - su_opp_sponsor
-      card_headline:
-        - node_title
-      card_body:
-        - su_opp_type
-        - su_opp_summary
-    fields:
-      node_title:
-        plugin_id: node_title
-        weight: 2
-        label: hidden
-        formatter: default
-        settings:
-          link: true
-          'link class': ''
-          link_target: ''
-          wrapper: ''
-          class: su-card__link
 id: node.stanford_opportunity.stanford_card
 targetEntityType: node
 bundle: stanford_opportunity
 mode: stanford_card
 content:
+  su_opp_application_deadline:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  su_opp_card_footer:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  su_opp_contact_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  su_opp_contact_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  su_opp_contact_phone:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  su_opp_contact_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  su_opp_course_code:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  su_opp_cta_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  su_opp_eligibility:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  su_opp_icon:
+    type: fontawesome_icon_formatter
+    label: hidden
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 15
+    region: content
   su_opp_image:
     type: media_image_formatter
     label: hidden
@@ -118,6 +145,25 @@ content:
         label_tag: ''
     weight: 0
     region: card_image
+  su_opp_prerequisites:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  su_opp_source:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 17
+    region: content
   su_opp_sponsor:
     type: entity_reference_label
     label: hidden
@@ -166,6 +212,14 @@ content:
         label_tag: ''
     weight: 4
     region: card_body
+  su_opp_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 18
+    region: content
   su_opp_type:
     type: entity_reference_label
     label: hidden
@@ -183,23 +237,20 @@ content:
         ds_limit: ''
     weight: 3
     region: card_body
+  su_opp_units:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 19
+    region: content
 hidden:
   body: true
   layout_builder__layout: true
   links: true
   search_api_excerpt: true
-  su_opp_application_deadline: true
-  su_opp_card_footer: true
+  su_imported: true
+  su_metatags: true
   su_opp_components: true
-  su_opp_contact_email: true
-  su_opp_contact_name: true
-  su_opp_contact_phone: true
-  su_opp_contact_url: true
-  su_opp_course_code: true
-  su_opp_cta_url: true
-  su_opp_eligibility: true
-  su_opp_icon: true
-  su_opp_prerequisites: true
-  su_opp_source: true
-  su_opp_tags: true
-  su_opp_units: true
+  su_shared_tags: true

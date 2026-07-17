@@ -19,34 +19,6 @@ dependencies:
     - text
     - ui_patterns
     - ui_patterns_layouts
-third_party_settings:
-  ds:
-    layout:
-      id: 'ui_patterns:jumpstart_ui:alert'
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        ui_patterns:
-          component_id: 'jumpstart_ui:alert'
-          variant_id:
-            source_id: select
-            source:
-              value: default
-          props:
-            attributes:
-              source_id: attributes
-              source:
-                value: ''
-          slots: {  }
-    regions:
-      alert_label:
-        - su_global_msg_label
-      alert_text:
-        - su_global_msg_header
-        - su_global_msg_message
-        - su_global_msg_link
 id: config_pages.stanford_global_message.default
 targetEntityType: config_pages
 bundle: stanford_global_message

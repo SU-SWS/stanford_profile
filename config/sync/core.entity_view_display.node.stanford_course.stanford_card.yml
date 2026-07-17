@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.stanford_course.body
     - field.field.node.stanford_course.su_course_academic_year
     - field.field.node.stanford_course.su_course_code
+    - field.field.node.stanford_course.su_course_filters
     - field.field.node.stanford_course.su_course_id
     - field.field.node.stanford_course.su_course_instructors
     - field.field.node.stanford_course.su_course_link
@@ -14,74 +15,14 @@ dependencies:
     - field.field.node.stanford_course.su_course_section_units
     - field.field.node.stanford_course.su_course_subject
     - field.field.node.stanford_course.su_course_tags
+    - field.field.node.stanford_course.su_imported
     - field.field.node.stanford_course.su_metatags
     - field.field.node.stanford_course.su_shared_tags
     - node.type.stanford_course
   module:
-    - ds
     - field_formatter_class
-    - layout_builder
-    - layout_builder_restrictions
-    - layout_library
     - link
-    - stanford_courses
-    - ui_patterns
-    - ui_patterns_layouts
     - user
-third_party_settings:
-  layout_builder:
-    enabled: false
-    allow_custom: false
-  layout_builder_restrictions:
-    allowed_block_categories: {  }
-    entity_view_mode_restriction:
-      allowed_layouts: {  }
-      denylisted_blocks: {  }
-      allowlisted_blocks: {  }
-      restricted_categories: {  }
-  layout_library:
-    enable: false
-  ds:
-    layout:
-      id: 'ui_patterns:stanford_courses:course_vertical_teaser'
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        ui_patterns:
-          component_id: 'stanford_courses:course_vertical_teaser'
-          variant_id:
-            source_id: select
-            source:
-              value: ''
-          props:
-            attributes:
-              source_id: attributes
-              source:
-                value: ''
-          slots: {  }
-    regions:
-      course_code:
-        - su_course_subject
-        - su_course_code
-      course_academic_year:
-        - su_course_academic_year
-      course_title:
-        - node_title
-      course_url:
-        - su_course_link
-    fields:
-      node_title:
-        plugin_id: node_title
-        weight: 3
-        label: hidden
-        formatter: default
-        settings:
-          link: false
-          'link class': ''
-          wrapper: ''
-          class: ''
 _core:
   default_config_hash: 3q3wp63fQ-h1XTJTAHRzKP7uFPch4KfSFHFXWC50bIw
 id: node.stanford_course.stanford_card
@@ -105,6 +46,31 @@ content:
     third_party_settings: {  }
     weight: 1
     region: course_code
+  su_course_filters:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  su_course_id:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  su_course_instructors:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
   su_course_link:
     type: link
     label: hidden
@@ -119,6 +85,22 @@ content:
         class: ''
     weight: 4
     region: course_url
+  su_course_quarters:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  su_course_section_units:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
   su_course_subject:
     type: entity_reference_label
     label: hidden
@@ -129,16 +111,18 @@ content:
         class: ''
     weight: 0
     region: course_code
+  su_course_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
 hidden:
   body: true
   links: true
   search_api_excerpt: true
-  su_course_filters: true
-  su_course_id: true
-  su_course_instructors: true
-  su_course_quarters: true
-  su_course_section_units: true
-  su_course_tags: true
   su_imported: true
   su_metatags: true
   su_shared_tags: true

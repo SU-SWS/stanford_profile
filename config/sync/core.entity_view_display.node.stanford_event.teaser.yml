@@ -37,158 +37,13 @@ dependencies:
     - address
     - ds
     - empty_fields
+    - entity_reference_revisions
     - field_formatter_class
     - field_formatter_range
     - field_label
+    - link
     - smart_date
-    - stanford_events
-    - ui_patterns
-    - ui_patterns_layouts
     - user
-third_party_settings:
-  ds:
-    layout:
-      id: 'ui_patterns:stanford_events:events_list'
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        ui_patterns:
-          component_id: 'stanford_events:events_list'
-          variant_id:
-            source_id: select
-            source:
-              value: h3_header
-          props:
-            attributes:
-              source_id: attributes
-              source:
-                value: ''
-          slots: {  }
-    regions:
-      start_month:
-        - 'display_field_copy:node-event_date_time_1'
-      start_date:
-        - 'display_field_copy:node-event_date_time_2'
-      end_month:
-        - 'display_field_copy:node-event_date_time_3'
-      end_date:
-        - 'display_field_copy:node-event_date_time_4'
-      event_type:
-        - su_event_type
-      headline:
-        - node_title
-      subheadline:
-        - su_event_subheadline
-      dek:
-        - su_event_dek
-      date_time:
-        - su_event_date_time
-      location:
-        - su_event_alt_loc
-      address:
-        - su_event_location
-    fields:
-      'display_field_copy:node-event_date_time_1':
-        plugin_id: 'display_field_copy:node-event_date_time_1'
-        weight: 0
-        label: hidden
-        formatter: smartdate_default
-        settings:
-          formatter:
-            parts:
-              start: start
-              end: 0
-              duration: 0
-            timezone_override: ''
-            format: short_month
-            duration:
-              separator: ' | '
-              unit: ''
-              decimals: '2'
-              suffix: h
-            time_wrapper: '1'
-            force_chronological: 0
-            add_classes: 0
-            localize: 0
-      'display_field_copy:node-event_date_time_2':
-        plugin_id: 'display_field_copy:node-event_date_time_2'
-        weight: 1
-        label: hidden
-        formatter: smartdate_default
-        settings:
-          formatter:
-            parts:
-              start: start
-              end: 0
-              duration: 0
-            timezone_override: ''
-            format: day_leading
-            duration:
-              separator: ' | '
-              unit: ''
-              decimals: '2'
-              suffix: h
-            time_wrapper: '1'
-            force_chronological: 0
-            add_classes: 0
-            localize: 0
-      'display_field_copy:node-event_date_time_3':
-        plugin_id: 'display_field_copy:node-event_date_time_3'
-        weight: 2
-        label: hidden
-        formatter: smartdate_default
-        settings:
-          formatter:
-            parts:
-              end: end
-              start: 0
-              duration: 0
-            timezone_override: ''
-            format: short_month
-            duration:
-              separator: ' | '
-              unit: ''
-              decimals: '2'
-              suffix: h
-            time_wrapper: '1'
-            force_chronological: 0
-            add_classes: 0
-            localize: 0
-      'display_field_copy:node-event_date_time_4':
-        plugin_id: 'display_field_copy:node-event_date_time_4'
-        weight: 3
-        label: hidden
-        formatter: smartdate_default
-        settings:
-          formatter:
-            parts:
-              end: end
-              start: 0
-              duration: 0
-            timezone_override: ''
-            format: day
-            duration:
-              separator: ' | '
-              unit: ''
-              decimals: '2'
-              suffix: h
-            time_wrapper: '1'
-            force_chronological: 0
-            add_classes: 0
-            localize: 0
-      node_title:
-        plugin_id: node_title
-        weight: 5
-        label: hidden
-        formatter: default
-        settings:
-          link: true
-          'link class': ''
-          link_target: ''
-          wrapper: h3
-          class: ''
 id: node.stanford_event.teaser
 targetEntityType: node
 bundle: stanford_event
@@ -202,6 +57,34 @@ content:
     third_party_settings: {  }
     weight: 9
     region: location
+  su_event_audience:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  su_event_contact_info:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  su_event_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 14
+    region: content
   su_event_date_time:
     type: smartdate_default
     label: hidden
@@ -234,6 +117,46 @@ content:
     third_party_settings: {  }
     weight: 7
     region: dek
+  su_event_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  su_event_ext_image:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  su_event_groups:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  su_event_keywords:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  su_event_localist_id:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 19
+    region: content
   su_event_location:
     type: address_default
     label: hidden
@@ -241,6 +164,47 @@ content:
     third_party_settings: {  }
     weight: 10
     region: address
+  su_event_map_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  su_event_schedule:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  su_event_source:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  su_event_sponsor:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 23
+    region: content
   su_event_subheadline:
     type: string
     label: hidden
@@ -251,6 +215,29 @@ content:
         class: ''
     weight: 6
     region: subheadline
+  su_event_subject:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  su_event_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  su_event_telephone:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 26
+    region: content
   su_event_type:
     type: entity_reference_label
     label: hidden
@@ -278,22 +265,7 @@ hidden:
   links: true
   search_api_excerpt: true
   stanford_intranet__access: true
-  su_event_audience: true
   su_event_components: true
-  su_event_contact_info: true
-  su_event_cta: true
-  su_event_email: true
-  su_event_ext_image: true
-  su_event_groups: true
-  su_event_keywords: true
-  su_event_localist_id: true
-  su_event_map_link: true
-  su_event_schedule: true
-  su_event_source: true
-  su_event_sponsor: true
-  su_event_subject: true
-  su_event_tags: true
-  su_event_telephone: true
   su_imported: true
   su_metatags: true
   su_shared_tags: true
