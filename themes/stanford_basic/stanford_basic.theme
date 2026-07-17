@@ -13,6 +13,7 @@ use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
 use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
+use Drupal\Core\Extension\ThemeSettingsProvider;
 
 /**
  * Implements hook_library_info_alter().
@@ -197,14 +198,16 @@ function stanford_basic_page_attachments_alter(array &$attachments) {
     $attachments['#attached']['library'][] = 'stanford_basic/user_login';
   }
   // Check if dropdown menus are activated
-  $attachments['#attached']['drupalSettings']['stanford_basic']['nav_dropdown_enabled'] = (bool) theme_get_setting('nav_dropdown_enabled', 'stanford_basic');
+  $theme_settings = \Drupal::service(ThemeSettingsProvider::class);
+  $attachments['#attached']['drupalSettings']['stanford_basic']['nav_dropdown_enabled'] = (bool) $theme_settings->getSetting('nav_dropdown_enabled', 'stanford_basic');
 }
 
 /**
  * Prepares variables for the html.html.twig template.
  */
 function stanford_basic_preprocess_html(&$variables) {
-  $favicon = theme_get_setting('favicon') ?: [];
+  $theme_settings = \Drupal::service(ThemeSettingsProvider::class);
+  $favicon = $theme_settings->getSetting('favicon') ?: [];
   $variables['custom_favicon'] = isset($favicon['use_default']) && !$favicon['use_default'] && !empty($favicon['path']);
 
   try {
@@ -395,8 +398,10 @@ function stanford_basic_preprocess_patterns_overview_page(&$variables) {
  * Implements hook_preprocess_page().
  */
 function stanford_basic_preprocess_page(&$vars) {
+  $theme_settings = \Drupal::service(ThemeSettingsProvider::class);
+
   // Variant setting for the brand bar.
-  $bbv = theme_get_setting('brand_bar_variant');
+  $bbv = $theme_settings->getSetting('brand_bar_variant');
   if ($bbv == 'bright') {
     $bbv = 'default';
   }
@@ -404,7 +409,7 @@ function stanford_basic_preprocess_page(&$vars) {
     $vars['brand_bar_variant'] = 'su-brand-bar--' . $bbv;
   }
   // Variant setting for the global footer.
-  if ($global_footer_variant = theme_get_setting('global_footer_variant')) {
+  if ($global_footer_variant = $theme_settings->getSetting('global_footer_variant')) {
     $vars['global_footer_variant'] = 'su-global-footer--' . $global_footer_variant;
   }
 
@@ -455,8 +460,9 @@ function _stanford_basic_preprocess_not_nodes(&$vars) {
  * Pass through the lockup configuration settings.
  */
 function stanford_basic_preprocess_block__system_branding_block(&$vars) {
-  $vars['use_logo'] = theme_get_setting('logo.use_default');
-  $vars['lockup'] = theme_get_setting('lockup') ?: ['option' => 'a'];
+  $theme_settings = \Drupal::service(ThemeSettingsProvider::class);
+  $vars['use_logo'] = $theme_settings->getSetting('logo.use_default');
+  $vars['lockup'] =  $theme_settings->getSetting('lockup') ?: ['option' => 'a'];
 }
 
 /**
@@ -468,7 +474,8 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
   $items = $variables['items'];
   foreach ($items as $key => $item) {
     // If path is current_path, add aria-current to the link.
-    if (parse_url($item['url']->toString(TRUE)->getGeneratedUrl(), PHP_URL_PATH) == $current_path) {
+    $item_path = parse_url($item['url']->toString(TRUE)->getGeneratedUrl(), PHP_URL_PATH);
+    if ($item_path == $current_path) {
       $link_options = $variables['items'][$key]['url']->getOptions();
       $link_options['attributes']['aria-current'] = 'true';
       $variables['items'][$key]['url']->setOptions($link_options);
@@ -482,7 +489,8 @@ function stanford_basic_preprocess_menu(&$variables, $hook) {
   }
 
   _stanford_basic_menu_process_submenu($variables['items'], $current_path);
-  if (theme_get_setting('nav_dropdown_enabled', 'stanford_basic')) {
+  $theme_settings = \Drupal::service(ThemeSettingsProvider::class);
+  if ($theme_settings->getSetting('nav_dropdown_enabled', 'stanford_basic')) {
     $variables['attributes']['class'][] = 'su-multi-menu--dropdowns';
   }
 }

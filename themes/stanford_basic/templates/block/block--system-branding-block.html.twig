@@ -19,7 +19,6 @@
 #}
 
 {# Set some of the default options for the lockup. #}
-{% set attributes = attributes|without('class') %}
 {% set link = url('<front>') %}
 {% if lockup is not empty %}
   {% set line3 = lockup.line3 %}
