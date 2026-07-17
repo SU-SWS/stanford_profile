@@ -40,8 +40,12 @@ dependencies:
     - field.field.node.stanford_person.su_shared_tags
     - node.type.stanford_person
   module:
+    - empty_fields
+    - field_formatter_class
+    - field_label
     - layout_builder
     - link
+    - stanford_media
     - text
     - user
 third_party_settings:
@@ -183,11 +187,21 @@ content:
     weight: 18
     region: content
   su_person_photo:
-    type: entity_reference_label
+    type: media_responsive_image_formatter
     label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
+      view_mode: default
+      link: false
+      image_style: responsive_1_1
+      remove_alt: '1'
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: su-person-photo
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 19
     region: content
   su_person_profile_link:

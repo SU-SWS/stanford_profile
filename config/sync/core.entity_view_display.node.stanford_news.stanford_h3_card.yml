@@ -26,8 +26,6 @@ dependencies:
     - node.type.stanford_news
   module:
     - datetime
-    - ds
-    - element_class_formatter
     - empty_fields
     - field_formatter_class
     - field_label
@@ -40,13 +38,44 @@ targetEntityType: node
 bundle: stanford_news
 mode: stanford_h3_card
 content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 200
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+        replace_tokens: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 5
+    region: content
   su_news_banner:
     type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 9
+    weight: 0
     region: content
   su_news_banner_media_caption:
     type: string
@@ -54,7 +83,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 10
+    weight: 1
     region: content
   su_news_byline:
     type: string
@@ -62,7 +91,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 11
+    weight: 2
     region: content
   su_news_dek:
     type: string
@@ -70,8 +99,8 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 3
-    region: dek
+    weight: 10
+    region: content
   su_news_featured_media:
     type: media_image_formatter
     label: hidden
@@ -88,8 +117,8 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 0
-    region: news_vertical_teaser_image
+    weight: 9
+    region: content
   su_news_hide_social:
     type: boolean
     label: hidden
@@ -98,7 +127,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 13
+    weight: 3
     region: content
   su_news_person:
     type: entity_reference_label
@@ -106,76 +135,33 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 14
+    weight: 4
     region: content
   su_news_publishing_date:
     type: datetime_default
     label: hidden
     settings:
       timezone_override: ''
-      format_type: stanford_month_date_year
-    third_party_settings:
-      empty_fields:
-        handler: ''
-      field_formatter_class:
-        class: ''
-      field_label:
-        label_value: ''
-        label_tag: ''
-    weight: 2
-    region: date
+      format_type: medium
+    third_party_settings: {  }
+    weight: 6
+    region: content
   su_news_quote:
-    type: smart_trim
+    type: basic_string
     label: hidden
-    settings:
-      trim_length: 100
-      trim_type: chars
-      trim_suffix: \u2026
-      wrap_output: false
-      wrap_class: trimmed
-      more:
-        display_link: false
-        target_blank: false
-        link_trim_only: false
-        class: more-link
-        text: More
-        aria_label: 'Read more about [node:title]'
-      summary_handler: full
-      trim_options:
-        text: true
-        trim_zero: false
-        replace_tokens: false
-    third_party_settings:
-      empty_fields:
-        handler: ''
-      field_formatter_class:
-        class: ''
-      field_label:
-        label_value: ''
-        label_tag: ''
-    weight: 4
-    region: dek
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
   su_news_source:
     type: link
     label: hidden
     settings:
       trim_length: null
       url_only: true
-      url_plain: true
+      url_plain: false
       rel: '0'
       target: '0'
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-    weight: 7
-    region: news_source
-  su_news_spotlight_filters:
-    type: entity_reference_list_label_class
-    label: hidden
-    settings:
-      link: false
-      class: su-list-unstyled
-      list_type: ul
     third_party_settings:
       empty_fields:
         handler: ''
@@ -184,26 +170,36 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-      ds:
-        ds_limit: '3'
-    weight: 6
-    region: news_topics
+    weight: 11
+    region: content
+  su_news_spotlight_filters:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_formatter_range:
+        order: 0
+        limit: 0
+        offset: 0
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 12
+    region: content
   su_news_topics:
-    type: entity_reference_list_label_class
+    type: entity_reference_label
     label: hidden
     settings:
       link: true
-      class: su-list-unstyled
-      list_type: ul
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-      ds:
-        ds_limit: '3'
-    weight: 5
-    region: news_topics
+    third_party_settings: {  }
+    weight: 8
+    region: content
 hidden:
-  body: true
   layout_builder__layout: true
   layout_selection: true
   links: true
