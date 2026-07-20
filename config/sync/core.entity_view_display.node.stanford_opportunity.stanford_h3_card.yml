@@ -28,6 +28,7 @@ dependencies:
     - node.type.stanford_opportunity
   module:
     - datetime
+    - element_class_formatter
     - empty_fields
     - field_formatter_class
     - field_label
@@ -42,6 +43,27 @@ targetEntityType: node
 bundle: stanford_opportunity
 mode: stanford_h3_card
 content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 600
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
   su_opp_application_deadline:
     type: datetime_default
     label: hidden
@@ -49,21 +71,21 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 6
+    weight: 0
     region: content
   su_opp_card_footer:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 4
-    region: card_body
+    weight: 17
+    region: content
   su_opp_contact_email:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 8
+    weight: 1
     region: content
   su_opp_contact_name:
     type: string
@@ -71,14 +93,16 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 9
+    weight: 2
     region: content
   su_opp_contact_phone:
-    type: basic_string
+    type: telephone_link_class
     label: hidden
-    settings: {  }
+    settings:
+      title: ''
+      class: ''
     third_party_settings: {  }
-    weight: 10
+    weight: 3
     region: content
   su_opp_contact_url:
     type: link
@@ -90,7 +114,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 11
+    weight: 4
     region: content
   su_opp_course_code:
     type: string
@@ -98,7 +122,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 12
+    weight: 5
     region: content
   su_opp_cta_url:
     type: link
@@ -110,14 +134,14 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 13
+    weight: 6
     region: content
   su_opp_eligibility:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 14
+    weight: 7
     region: content
   su_opp_icon:
     type: fontawesome_icon_formatter
@@ -125,8 +149,8 @@ content:
     settings:
       layers: false
     third_party_settings: {  }
-    weight: 5
-    region: card_body
+    weight: 18
+    region: content
   su_opp_image:
     type: media_image_formatter
     label: hidden
@@ -143,14 +167,14 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 0
-    region: card_image
+    weight: 14
+    region: content
   su_opp_prerequisites:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 15
+    weight: 8
     region: content
   su_opp_source:
     type: link
@@ -162,7 +186,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 16
+    weight: 9
     region: content
   su_opp_sponsor:
     type: entity_reference_label
@@ -170,7 +194,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 17
+    weight: 10
     region: content
   su_opp_summary:
     type: smart_trim
@@ -201,15 +225,15 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 3
-    region: card_body
+    weight: 16
+    region: content
   su_opp_tags:
     type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 18
+    weight: 11
     region: content
   su_opp_type:
     type: entity_reference_label
@@ -221,23 +245,24 @@ content:
         handler: ''
       field_formatter_class:
         class: ''
+      field_formatter_range:
+        order: 0
+        limit: 0
+        offset: 0
       field_label:
         label_value: ''
         label_tag: ''
-      ds:
-        ds_limit: ''
-    weight: 1
-    region: card_super_headline
+    weight: 15
+    region: content
   su_opp_units:
     type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 19
+    weight: 12
     region: content
 hidden:
-  body: true
   layout_builder__layout: true
   links: true
   search_api_excerpt: true

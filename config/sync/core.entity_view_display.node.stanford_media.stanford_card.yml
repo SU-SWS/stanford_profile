@@ -38,48 +38,27 @@ targetEntityType: node
 bundle: stanford_media
 mode: stanford_card
 content:
-  body:
-    type: smart_trim
-    label: hidden
-    settings:
-      trim_length: 600
-      trim_type: chars
-      trim_suffix: ''
-      wrap_output: false
-      wrap_class: trimmed
-      more:
-        display_link: false
-        target_blank: false
-        link_trim_only: false
-        class: more-link
-        text: More
-        aria_label: 'Read more about [node:title]'
-      summary_handler: full
-      trim_options: {  }
-    third_party_settings: {  }
-    weight: 10
-    region: content
   su_media_audio_video:
     type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 0
+    weight: 6
     region: content
   su_media_category:
     type: list_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 15
-    region: content
+    weight: 5
+    region: body
   su_media_date:
     type: datetime_default
     label: hidden
     settings:
       timezone_override: ''
-      format_type: stanford_month_date_year
+      format_type: stanford_month_two_digit_day_year
     third_party_settings:
       empty_fields:
         handler: ''
@@ -88,16 +67,16 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 13
-    region: content
+    weight: 2
+    region: body
   su_media_dek:
     type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 12
-    region: content
+    weight: 3
+    region: body
   su_media_duration:
     type: number_integer
     label: hidden
@@ -105,7 +84,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 1
+    weight: 7
     region: content
   su_media_episode:
     type: string
@@ -113,7 +92,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 2
+    weight: 8
     region: content
   su_media_filters:
     type: entity_reference_label
@@ -121,7 +100,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 3
+    weight: 9
     region: content
   su_media_image:
     type: media_image_formatter
@@ -139,15 +118,15 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 11
-    region: content
+    weight: 0
+    region: image
   su_media_person:
     type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 4
+    weight: 10
     region: content
   su_media_season:
     type: string
@@ -155,7 +134,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 14
+    weight: 11
     region: content
   su_media_series:
     type: string
@@ -163,8 +142,8 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 5
-    region: content
+    weight: 4
+    region: body
   su_media_source:
     type: link
     label: hidden
@@ -175,7 +154,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 6
+    weight: 12
     region: content
   su_media_subtitles:
     type: file_default
@@ -183,14 +162,14 @@ content:
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 7
+    weight: 13
     region: content
   su_media_transcript:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 8
+    weight: 14
     region: content
   su_media_types:
     type: entity_reference_label
@@ -198,9 +177,10 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 9
+    weight: 15
     region: content
 hidden:
+  body: true
   links: true
   search_api_excerpt: true
   su_imported: true

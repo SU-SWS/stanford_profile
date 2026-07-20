@@ -18,9 +18,10 @@ dependencies:
     - field.field.node.stanford_publication.su_shared_tags
     - node.type.stanford_publication
   module:
-    - ds
-    - element_class_formatter
+    - empty_fields
     - field_formatter_class
+    - field_formatter_range
+    - field_label
     - link
     - user
 id: node.stanford_publication.stanford_h3_card
@@ -29,18 +30,17 @@ bundle: stanford_publication
 mode: stanford_h3_card
 content:
   citation_type:
-    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
-    region: card_super_headline
+    weight: 5
+    region: content
   su_publication_author_ref:
     type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 5
+    weight: 0
     region: content
   su_publication_citation:
     type: entity_reference_label
@@ -48,7 +48,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 6
+    weight: 1
     region: content
   su_publication_cta:
     type: link
@@ -60,7 +60,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 8
+    weight: 2
     region: content
   su_publication_image:
     type: entity_reference_label
@@ -68,7 +68,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 9
+    weight: 3
     region: content
   su_publication_tags:
     type: entity_reference_label
@@ -76,22 +76,27 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 10
+    weight: 4
     region: content
   su_publication_topics:
-    type: entity_reference_list_label_class
+    type: entity_reference_label
     label: hidden
     settings:
-      link: true
-      class: su-list-unstyled
-      list_type: ul
+      link: false
     third_party_settings:
+      empty_fields:
+        handler: ''
       field_formatter_class:
         class: ''
-      ds:
-        ds_limit: '3'
-    weight: 2
-    region: card_body
+      field_formatter_range:
+        order: 0
+        limit: 0
+        offset: 0
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 6
+    region: content
 hidden:
   layout_builder__layout: true
   links: true
