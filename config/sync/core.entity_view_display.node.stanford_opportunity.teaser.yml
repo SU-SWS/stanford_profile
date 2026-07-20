@@ -34,6 +34,7 @@ dependencies:
     - field_label
     - fontawesome
     - link
+    - smart_trim
     - stanford_media
     - text
     - user
@@ -42,6 +43,27 @@ targetEntityType: node
 bundle: stanford_opportunity
 mode: teaser
 content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 600
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
   su_opp_application_deadline:
     type: datetime_default
     label: hidden
@@ -49,18 +71,48 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 5
+    weight: 0
     region: content
   su_opp_card_footer:
-    type: wrapper_class
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  su_opp_contact_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  su_opp_contact_name:
+    type: string
     label: hidden
     settings:
-      class: su-opp-footer-list
-      tag: div
-      link: false
-      link_class: ''
-      summary: false
-      trim: 200
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  su_opp_contact_phone:
+    type: telephone_link_class
+    label: hidden
+    settings:
+      title: ''
+      class: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  su_opp_contact_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
     third_party_settings:
       empty_fields:
         handler: ''
@@ -70,40 +122,6 @@ content:
         label_value: ''
         label_tag: ''
     weight: 4
-    region: news_list_footer
-  su_opp_contact_email:
-    type: basic_string
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 7
-    region: content
-  su_opp_contact_name:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 8
-    region: content
-  su_opp_contact_phone:
-    type: basic_string
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 9
-    region: content
-  su_opp_contact_url:
-    type: link
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 10
     region: content
   su_opp_course_code:
     type: string
@@ -111,26 +129,33 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 11
+    weight: 5
     region: content
   su_opp_cta_url:
     type: link
     label: hidden
     settings:
-      trim_length: 80
+      trim_length: null
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 12
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 6
     region: content
   su_opp_eligibility:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 13
+    weight: 7
     region: content
   su_opp_icon:
     type: fontawesome_icon_formatter
@@ -138,32 +163,32 @@ content:
     settings:
       layers: false
     third_party_settings: {  }
-    weight: 14
+    weight: 18
     region: content
   su_opp_image:
-    type: media_responsive_image_formatter
+    type: media_image_formatter
     label: hidden
     settings:
-      view_mode: stanford_image_large_square
+      view_mode: default
       link: false
-      image_style: ''
-      remove_alt: 0
+      image_style: card_1192x596
+      remove_alt: false
     third_party_settings:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: su-opp-image-list
+        class: ''
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 3
-    region: news_list_image
+    weight: 14
+    region: content
   su_opp_prerequisites:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 15
+    weight: 8
     region: content
   su_opp_source:
     type: link
@@ -175,7 +200,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 16
+    weight: 9
     region: content
   su_opp_sponsor:
     type: entity_reference_label
@@ -183,30 +208,46 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 17
+    weight: 10
     region: content
   su_opp_summary:
-    type: text_trimmed
+    type: smart_trim
     label: hidden
     settings:
-      trim_length: 600
+      trim_length: 50
+      trim_type: words
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+        replace_tokens: false
     third_party_settings:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: su-opp-summary-list
+        class: ''
       field_label:
         label_value: ''
         label_tag: ''
-    weight: 2
-    region: news_list_dek
+    weight: 16
+    region: content
   su_opp_tags:
     type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 18
+    weight: 11
     region: content
   su_opp_type:
     type: entity_reference_label
@@ -217,24 +258,25 @@ content:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: su-opp-type-list
+        class: ''
+      field_formatter_range:
+        order: 0
+        limit: 0
+        offset: 0
       field_label:
         label_value: ''
         label_tag: ''
-      ds:
-        ds_limit: ''
-    weight: 0
-    region: news_list_topics
+    weight: 15
+    region: content
   su_opp_units:
     type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 19
+    weight: 12
     region: content
 hidden:
-  body: true
   layout_builder__layout: true
   links: true
   search_api_excerpt: true

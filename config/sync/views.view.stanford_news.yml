@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.stanford_card
     - core.entity_view_mode.node.stanford_h3_card
+    - core.entity_view_mode.node.teaser
     - field.storage.node.su_news_byline
     - field.storage.node.su_news_dek
     - field.storage.node.su_news_featured_media
@@ -22,10 +23,7 @@ dependencies:
     - node
     - stanford_fields
     - stanford_media
-    - stanford_news
     - taxonomy
-    - ui_patterns
-    - ui_patterns_views
     - user
     - views_infinite_scroll
     - views_taxonomy_term_name_depth
@@ -570,35 +568,10 @@ display:
           row_class: ''
           default_row_class: true
       row:
-        type: ui_patterns
+        type: 'entity:node'
         options:
-          hide_empty: false
-          ui_patterns:
-            component_id: 'jumpstart_ui:news_vertical_teaser'
-            variant_id:
-              source_id: select
-              source:
-                value: ''
-            props:
-              attributes:
-                source_id: attributes
-                source:
-                  value: ''
-            slots:
-              news_vertical_teaser_image:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_news_featured_media
-                    _weight: 0
-              news_topics:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_news_topics
-                    _weight: 1
+          relationship: none
+          view_mode: teaser
       query:
         type: views_query
         options:
@@ -782,77 +755,10 @@ display:
           wrapper_class: ''
           class: su-list-unstyled
       row:
-        type: ui_patterns
+        type: 'entity:node'
         options:
-          hide_empty: false
-          ui_patterns:
-            component_id: 'jumpstart_ui:news_list'
-            variant_id:
-              source_id: select
-              source:
-                value: h3_header
-            props:
-              attributes:
-                source_id: attributes
-                source:
-                  value: ''
-            slots:
-              news_url:
-                sources:
-                  -
-                    source_id: view_field
-                    _weight: '0'
-                    source:
-                      ui_patterns_views_field: view_node
-              news_list_publishing_date:
-                sources:
-                  -
-                    source_id: view_field
-                    _weight: '1'
-                    source:
-                      ui_patterns_views_field: su_news_publishing_date
-              news_source:
-                sources:
-                  -
-                    source_id: view_field
-                    _weight: '2'
-                    source:
-                      ui_patterns_views_field: su_news_source
-              news_list_image:
-                sources:
-                  -
-                    source_id: view_field
-                    _weight: '3'
-                    source:
-                      ui_patterns_views_field: su_news_featured_media
-              news_list_dek:
-                sources:
-                  -
-                    source_id: view_field
-                    _weight: '4'
-                    source:
-                      ui_patterns_views_field: su_news_dek
-              news_list_headline:
-                sources:
-                  -
-                    source_id: view_field
-                    _weight: '5'
-                    source:
-                      ui_patterns_views_field: title
-              news_list_topics:
-                sources:
-                  -
-                    source_id: view_field
-                    _weight: '6'
-                    source:
-                      ui_patterns_views_field: su_news_topics
-              news_list_footer:
-                sources:
-                  -
-                    source_id: view_field
-                    _weight: '7'
-                    source:
-                      ui_patterns_views_field: edit_node
+          relationship: none
+          view_mode: teaser
       block_category: 'News Lists (Views)'
       block_description: ''
       css_class: ''
@@ -4226,77 +4132,10 @@ display:
           wrapper_class: ''
           class: su-list-unstyled
       row:
-        type: ui_patterns
+        type: 'entity:node'
         options:
-          hide_empty: false
-          ui_patterns:
-            component_id: 'jumpstart_ui:news_list'
-            variant_id:
-              source_id: select
-              source:
-                value: ''
-            props:
-              attributes:
-                source_id: attributes
-                source:
-                  value: ''
-            slots:
-              news_url:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: view_node
-                    _weight: 0
-              news_list_headline:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: title
-                    _weight: 1
-              news_list_publishing_date:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_news_publishing_date
-                    _weight: 2
-              news_source:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_news_source
-                    _weight: 3
-              news_list_image:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_news_featured_media
-                    _weight: 4
-              news_list_dek:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_news_dek
-                    _weight: 5
-              news_list_topics:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_news_topics
-                    _weight: 6
-              news_list_footer:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: edit_node
-                    _weight: 7
+          relationship: none
+          view_mode: teaser
       defaults:
         empty: false
         css_class: false
