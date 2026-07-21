@@ -1667,9 +1667,33 @@ display:
                   value: ''
             slots:
               image: {  }
-              super_headline: {  }
-              headline: {  }
-              body: {  }
+              super_headline:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: type
+                    third_party_settings: ''
+                    _weight: 0
+                    node_id: ''
+              headline:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: title
+                    third_party_settings: ''
+                    _weight: 0
+                    node_id: ''
+              body:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_publication_topics_1
+                    third_party_settings: ''
+                    _weight: 0
+                    node_id: ''
               link: {  }
               cta_label: {  }
               button_label: {  }

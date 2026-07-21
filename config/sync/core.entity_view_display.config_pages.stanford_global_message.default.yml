@@ -11,14 +11,12 @@ dependencies:
     - field.field.config_pages.stanford_global_message.su_global_msg_message
     - field.field.config_pages.stanford_global_message.su_global_msg_type
   module:
-    - ds
+    - empty_fields
     - field_formatter_class
-    - jumpstart_ui
+    - field_label
     - link
     - stanford_fields
     - text
-    - ui_patterns
-    - ui_patterns_layouts
 id: config_pages.stanford_global_message.default
 targetEntityType: config_pages
 bundle: stanford_global_message
@@ -32,7 +30,7 @@ content:
       linked: false
     third_party_settings: {  }
     weight: 1
-    region: alert_text
+    region: content
   su_global_msg_label:
     type: string
     label: hidden
@@ -40,7 +38,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
-    region: alert_label
+    region: content
   su_global_msg_link:
     type: link
     label: hidden
@@ -51,17 +49,22 @@ content:
       rel: '0'
       target: '0'
     third_party_settings:
+      empty_fields:
+        handler: ''
       field_formatter_class:
         class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 3
-    region: alert_text
+    region: content
   su_global_msg_message:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 2
-    region: alert_text
+    region: content
 hidden:
   search_api_excerpt: true
   su_global_msg_enabled: true
