@@ -1643,42 +1643,38 @@ display:
           hide_empty: false
           ui_patterns:
             component_id: 'jumpstart_ui:card'
-            variant_id:
-              source_id: select
-              source:
-                value: default
+            variant_id: null
             props:
               attributes:
                 source_id: attributes
                 source:
                   value: ''
+              header_tag:
+                source_id: textfield
+                source:
+                  value: ''
+              header_classes:
+                source_id: textfield
+                source:
+                  value: ''
+              visually_hide_header:
+                source_id: checkbox
+                source:
+                  value: false
+              modifier_class:
+                source_id: textfield
+                source:
+                  value: ''
             slots:
-              card_super_headline:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: type
-                    _weight: 0
-              card_body:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: edit_node
-                    _weight: 1
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_publication_topics_1
-                    _weight: 3
-              card_headline:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: title
-                    _weight: 2
+              image: {  }
+              super_headline: {  }
+              headline: {  }
+              body: {  }
+              link: {  }
+              cta_label: {  }
+              button_label: {  }
+            third_party_settings: ''
+            node_id: ''
       defaults:
         title: false
         css_class: false

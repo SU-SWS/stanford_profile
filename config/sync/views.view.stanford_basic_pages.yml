@@ -10,9 +10,9 @@ dependencies:
     - node.type.stanford_page
   module:
     - graphql_compose_views
+    - jumpstart_ui
     - node
     - paragraphs
-    - stanford_basic_page_types
     - stanford_fields
     - stanford_media
     - ui_patterns
@@ -516,43 +516,52 @@ display:
         options:
           hide_empty: false
           ui_patterns:
-            component_id: 'stanford_basic_page_types:basic-page-types-list'
-            variant_id:
-              source_id: select
-              source:
-                value: ''
+            component_id: 'jumpstart_ui:basic_page_list'
+            variant_id: null
             props:
               attributes:
                 source_id: attributes
                 source:
                   value: ''
             slots:
+              category: {  }
+              title: {  }
               description:
                 sources:
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: title
+                    third_party_settings: ''
                     _weight: 0
+                    node_id: ''
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: su_page_description
+                    third_party_settings: ''
                     _weight: 1
+                    node_id: ''
               page_image:
                 sources:
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: su_page_image
+                    third_party_settings: ''
                     _weight: 2
+                    node_id: ''
               footer:
                 sources:
                   -
                     source_id: view_field
                     source:
-                      ui_patterns_views_field: edit_node
+                      ui_patterns_views_field: view_node
+                    third_party_settings: ''
                     _weight: 3
+                    node_id: ''
+            third_party_settings: ''
+            node_id: ''
       query:
         type: views_query
         options:

@@ -8,8 +8,8 @@ dependencies:
     - field.storage.node.su_event_series_type
     - node.type.stanford_event_series
   module:
+    - jumpstart_ui
     - node
-    - stanford_events
     - stanford_fields
     - ui_patterns
     - ui_patterns_views
@@ -285,59 +285,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        view_node:
-          id: view_node
-          table: node
-          field: view_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: entity_link
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: true
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: true
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
       pager:
         type: infinite_scroll
         options:
@@ -469,59 +416,68 @@ display:
         options:
           hide_empty: true
           ui_patterns:
-            component_id: 'stanford_events:events_list'
-            variant_id:
-              source_id: select
-              source:
-                value: h3_header
+            component_id: 'jumpstart_ui:event_list'
+            variant_id: null
             props:
               attributes:
                 source_id: attributes
                 source:
                   value: ''
             slots:
+              start_month: {  }
+              start_date: {  }
+              end_month: {  }
+              end_date: {  }
               event_type:
                 sources:
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: su_event_series_type
+                    third_party_settings: ''
                     _weight: 0
-              edit:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: edit_node
-                    _weight: 1
-              url:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: view_node
-                    _weight: 2
+                    node_id: ''
               headline:
                 sources:
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: title
+                    third_party_settings: ''
                     _weight: 3
+                    node_id: ''
               subheadline:
                 sources:
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: su_event_series_subheadline
+                    third_party_settings: ''
                     _weight: 4
+                    node_id: ''
               dek:
                 sources:
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: su_event_series_dek
+                    third_party_settings: ''
                     _weight: 5
+                    node_id: ''
+              url:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_series_type
+                    third_party_settings: ''
+                    _weight: 2
+                    node_id: ''
+              date_time: {  }
+              location: {  }
+              address: {  }
+            third_party_settings: ''
+            node_id: ''
       query:
         type: views_query
         options:

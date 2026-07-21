@@ -13,10 +13,10 @@ dependencies:
     - node.type.stanford_event
   module:
     - address
+    - jumpstart_ui
     - link
     - node
     - smart_date
-    - stanford_events
     - stanford_fields
     - ui_patterns
     - ui_patterns_views
@@ -1046,97 +1046,122 @@ display:
         options:
           hide_empty: true
           ui_patterns:
-            component_id: 'stanford_events:events_list'
-            variant_id:
-              source_id: select
-              source:
-                value: ''
+            component_id: 'jumpstart_ui:event_list'
+            variant_id: null
             props:
               attributes:
                 source_id: attributes
                 source:
                   value: ''
             slots:
-              date_time:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_event_date_time
-                    _weight: 0
-              end_month:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_event_date_time_end_value
-                    _weight: 1
-              start_date:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_event_date_time_value_1
-                    _weight: 2
-              end_date:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_event_date_time_end_value_1
-                    _weight: 3
               start_month:
                 sources:
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: su_event_date_time_value
+                    third_party_settings: ''
                     _weight: 4
-              dek:
+                    node_id: ''
+              start_date:
                 sources:
                   -
                     source_id: view_field
                     source:
-                      ui_patterns_views_field: su_event_dek
-                    _weight: 5
-              location:
+                      ui_patterns_views_field: su_event_date_time_value_1
+                    third_party_settings: ''
+                    _weight: 2
+                    node_id: ''
+              end_month:
                 sources:
                   -
                     source_id: view_field
                     source:
-                      ui_patterns_views_field: su_event_alt_loc
-                    _weight: 6
+                      ui_patterns_views_field: su_event_date_time_end_value
+                    third_party_settings: ''
+                    _weight: 1
+                    node_id: ''
+              end_date:
+                sources:
                   -
                     source_id: view_field
                     source:
-                      ui_patterns_views_field: su_event_location
-                    _weight: 9
+                      ui_patterns_views_field: su_event_date_time_end_value_1
+                    third_party_settings: ''
+                    _weight: 3
+                    node_id: ''
               event_type:
                 sources:
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: su_event_type
+                    third_party_settings: ''
                     _weight: 7
+                    node_id: ''
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: su_event_date_time_end_value_2
+                    third_party_settings: ''
                     _weight: 11
+                    node_id: ''
               headline:
                 sources:
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: su_event_source
+                    third_party_settings: ''
                     _weight: 8
+                    node_id: ''
               subheadline:
                 sources:
                   -
                     source_id: view_field
                     source:
                       ui_patterns_views_field: su_event_subheadline
+                    third_party_settings: ''
                     _weight: 10
+                    node_id: ''
+              dek:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_dek
+                    third_party_settings: ''
+                    _weight: 5
+                    node_id: ''
+              url: {  }
+              date_time:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_date_time
+                    third_party_settings: ''
+                    _weight: 0
+                    node_id: ''
+              location:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_alt_loc
+                    third_party_settings: ''
+                    _weight: 6
+                    node_id: ''
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_event_location
+                    third_party_settings: ''
+                    _weight: 9
+                    node_id: ''
+              address: {  }
+            third_party_settings: ''
+            node_id: ''
       query:
         type: views_query
         options:
