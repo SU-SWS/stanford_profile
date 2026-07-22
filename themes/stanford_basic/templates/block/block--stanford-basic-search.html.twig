@@ -1,0 +1,11 @@
+{% set attributes = attributes.addClass('su-site-search') %}
+
+<div {{ attributes }} role="search">
+  <form action="{{ action|default("/search") }}" method="{{ method|default('GET') }}" accept-charset="UTF-8">
+    <label class="su-site-search__sr-label" for="{{ search_input_name|default('key') }}">{{ search_label|default('Search this site') }}</label>
+    <input {{ search_input_attributes }} type="text" id="{{ search_input_id|default('key') }}" name="{{ search_input_name|default('key') }}" class="su-site-search__input" placeholder="{{ placeholder|default('Search this site') }}" maxlength="128">
+    <button {{ search_button_attributes }} type="submit" name="{{ search_button_name|default('search') }}" class="su-site-search__submit su-sr-only-text">{{ search_button_text|default('Submit Search') }}</button>
+    {{- additional_fields -}}
+  </form>
+</div>
+

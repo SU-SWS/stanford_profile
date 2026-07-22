@@ -68,7 +68,6 @@ dependencies:
     - system
     - taxonomy
     - toolbar
-    - ui_patterns_library
     - view_unpublished
     - views_bulk_edit
 id: site_manager
@@ -77,7 +76,6 @@ weight: -3
 is_admin: false
 permissions:
   - 'access administration pages'
-  - 'access components page'
   - 'access content overview'
   - 'access contextual links'
   - 'access help pages'
