@@ -1,0 +1,13 @@
+<div{{ attributes }}>
+  {{ include("jumpstart_ui:hero", {
+    image: content["su_banner_image"],
+    headline: content["su_banner_header"],
+    body: [
+      content["su_banner_sup_header"],
+      content["su_banner_body"]
+    ],
+    button_link: content["su_banner_button"][0]["#url_title"],
+    button_label: content["su_banner_button"][0]["#title"],
+  }|merge(component), with_context = false) }}
+</div>
+

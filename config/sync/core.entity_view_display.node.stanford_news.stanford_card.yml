@@ -26,8 +26,6 @@ dependencies:
     - node.type.stanford_news
   module:
     - datetime
-    - ds
-    - element_class_formatter
     - empty_fields
     - field_formatter_class
     - field_label
@@ -144,8 +142,15 @@ content:
     label: hidden
     settings:
       timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
+      format_type: stanford_month_date_year
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 6
     region: content
   su_news_quote:

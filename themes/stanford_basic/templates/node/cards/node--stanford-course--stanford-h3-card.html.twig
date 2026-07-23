@@ -1,0 +1,12 @@
+<div{{ attributes }}>
+  {{ include("jumpstart_ui:course_vertical_teaser", {
+    header_tag: "h3",
+    code: [
+      content["su_course_subject"],
+      content["su_course_code"]
+    ],
+    academic_year: content["su_course_academic_year"],
+    title: label,
+    url: content["su_course_link"]|render_clean || url
+  }, with_context = false) }}
+</div>

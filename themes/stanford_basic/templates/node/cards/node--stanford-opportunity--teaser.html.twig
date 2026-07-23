@@ -1,0 +1,13 @@
+{% set headline %}
+  <a href="{{ url }}" class="su-opp-title-list">{{ label|render_plain }}</a>
+{% endset %}
+<div{{ attributes }}>
+  {{ include("jumpstart_ui:news_list", {
+    image: content["su_opp_image"],
+    super_headline: content["su_opp_sponsor"],
+    headline: headline,
+    dek: content["su_opp_summary"],
+    topics: content["su_opp_type"],
+    footer: content["su_opp_card_footer"]
+  }, with_context = false) }}
+</div>

@@ -1,0 +1,15 @@
+{% set source = content["su_event_source"]|render_clean %}
+
+<div{{ attributes }}>
+  {{ include("jumpstart_ui:event_card", {
+    header_tag: "h2",
+    event_type: content["su_event_type"],
+    headline: label,
+    subheadline: content["su_event_subheadline"],
+    dek: content["su_event_dek"],
+    url: source ?? url,
+    date_time: content["su_event_date_time"],
+    location: content["su_event_alt_loc"],
+    address: content["su_event_location"]
+  }|merge(component), with_context = false) }}
+</div>

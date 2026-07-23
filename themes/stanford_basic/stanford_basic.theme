@@ -139,41 +139,6 @@ function _stanford_basic_set_active_book_item(array &$items, string $current_url
 /**
  * Implements hook_preprocess_HOOK().
  */
-function stanford_basic_preprocess_node(&$variables) {
-  $node_bundle = $variables['node']->bundle();
-  $variables['#attached']['library'][] = 'stanford_basic/content.' . $node_bundle;
-  unset($variables['content']['book_navigation']);
-
-  // If the home page (no page title) has a wysiwyg as the first component, and
-  // it does not have a page banner, at a class that will create a little space
-  // at the top of the page.
-  if (
-    $variables['page'] &&
-    $node_bundle == 'stanford_page' &&
-    \Drupal::service('path.matcher')->isFrontPage()
-  ) {
-    /** @var \Drupal\node\NodeInterface $node */
-    $node = $variables['node'];
-    if (
-      !$node->get('su_page_banner')->count() &&
-      $node->get('su_page_components')->count() >= 2 &&
-      $node->get('su_page_components')
-        ->get(1)->entity->bundle() == 'stanford_wysiwyg'
-    ) {
-      $variables['attributes']['class'][] = 'add-more-space-to-top';
-    }
-  }
-
-  $variables['attributes']['class'][] = Html::cleanCssIdentifier('node--' . $node_bundle);
-
-  if ($variables['page']) {
-    $variables['attributes']['class'][] = Html::cleanCssIdentifier('node-page--' . $node_bundle);
-  }
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
 function stanford_basic_preprocess_breadcrumb(&$variables) {
   $request = \Drupal::request();
   $route_match = \Drupal::routeMatch();
@@ -383,15 +348,6 @@ function stanford_basic_preprocess_image(&$vars) {
   if (!isset($vars['attributes']['alt'])) {
     $vars['attributes']['role'] = 'presentation';
   }
-}
-
-/**
- * Implements hook_preprocess_patterns_overview_page().
- */
-function stanford_basic_preprocess_patterns_overview_page(&$variables) {
-  uasort($variables['patterns'], function($pattern_a, $pattern_b) {
-    return strcmp($pattern_a['label'], $pattern_b['label']);
-  });
 }
 
 /**

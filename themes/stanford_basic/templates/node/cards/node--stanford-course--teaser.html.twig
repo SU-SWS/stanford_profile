@@ -1,0 +1,14 @@
+<div{{ attributes }}>
+  {{ include("jumpstart_ui:course_list", {
+    code: [
+      content["su_course_subject"],
+      content["su_course_code"]
+    ],
+    academic_year: content["su_course_academic_year"],
+    quarters: content["su_course_quarters"],
+    instructors: content["su_course_instructors"],
+    description: content["body"],
+    title: label,
+    url: content["su_course_link"]|render_clean || url
+  }, with_context = false) }}
+</div>

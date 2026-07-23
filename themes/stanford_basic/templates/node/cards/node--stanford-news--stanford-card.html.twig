@@ -1,0 +1,19 @@
+<div{{ attributes }}>
+  {{ include("jumpstart_ui:news_vertical_teaser", {
+    header_tag: "h2",
+    image: content["su_news_featured_media"],
+    headline: label,
+    date: content["su_news_publishing_date"],
+    dek: [
+      content["su_news_dek"],
+      content["su_news_quote"]
+    ],
+    topics: [
+      content["su_news_topics"],
+      content["su_news_spotlight_filters"]
+    ],
+    source: content["su_news_source"],
+    url: url,
+  }, with_context = false) }}
+</div>
+

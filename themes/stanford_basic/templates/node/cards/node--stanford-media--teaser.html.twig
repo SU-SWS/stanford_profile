@@ -1,0 +1,18 @@
+{% set heading %}
+  <h3 class="su-card__link">
+    <a href="{{ url }}">{{ label|render_clean }}</a>
+  </h3>
+{% endset %}
+<div{{ attributes }}>
+  {{ include("jumpstart_ui:container_responsive_card", {
+    header_tag: "h3",
+    image: content["su_media_image"],
+    heading: heading,
+    body: [
+      content["su_media_date"],
+      content["su_media_dek"],
+      content["su_media_series"],
+      content["su_media_category"],
+    ]
+  }, with_context = false) }}
+</div>
