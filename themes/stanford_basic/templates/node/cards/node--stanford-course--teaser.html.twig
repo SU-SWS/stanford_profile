@@ -1,3 +1,4 @@
+{% set course_link = content["su_course_link"]|render_clean %}
 <div{{ attributes }}>
   {{ include("jumpstart_ui:course_list", {
     code: [
@@ -9,6 +10,6 @@
     instructors: content["su_course_instructors"],
     description: content["body"],
     title: label,
-    url: content["su_course_link"]|render_clean || url
+    url: course_link ?? url
   }, with_context = false) }}
 </div>
