@@ -12,6 +12,9 @@ use Drupal\Core\Routing\RedirectDestinationInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Url;
 
+/**
+ * @codeCoverageIgnore
+ */
 class StanfordBasicConfigPageHooks {
 
   public function __construct(

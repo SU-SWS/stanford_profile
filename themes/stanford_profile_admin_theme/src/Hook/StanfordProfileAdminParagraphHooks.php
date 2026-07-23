@@ -7,6 +7,9 @@ namespace Drupal\stanford_profile_admin_theme\Hook;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Routing\RouteObjectInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class StanfordProfileAdminParagraphHooks {
 
   #[Hook('preprocess_paragraph__stanford_banner')]

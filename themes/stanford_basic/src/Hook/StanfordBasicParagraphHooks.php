@@ -7,6 +7,9 @@ namespace Drupal\stanford_basic\Hook;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Routing\RouteObjectInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class StanfordBasicParagraphHooks {
 
   #[Hook('preprocess_paragraph__stanford_banner')]

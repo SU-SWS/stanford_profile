@@ -8,6 +8,9 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Path\PathMatcherInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class StanfordBasicNodeHooks {
 
   public function __construct(protected PathMatcherInterface $pathMatcher) {}

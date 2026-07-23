@@ -1,5 +1,5 @@
 {% set headline %}
-  <a href="{{ url }}" class="su-opp-title-list">{{ label|render_plain }}</a>
+  <a href="{{ url }}" class="su-opp-title-list">{{ label|render_clean }}</a>
 {% endset %}
 <div{{ attributes }}>
   {{ include("jumpstart_ui:news_list", {
