@@ -1,28 +1,38 @@
 {% set cell2 %}
-
+  <div class="flex-container">
+    <div class="flex-md-6-of-12 su-margin-bottom-1">
+      {{ config_pages.su_local_foot_se_co.processed }}
+    </div>
+    <div class="flex-md-6-of-12">
+      {{ config_pages.su_local_foot_tr2_co.processed }}
+    </div>
+  </div>
 {% endset %}
 
 {{ include("jumpstart_ui:localfooter", {
-  cell1: content["su_local_foot_pr_co"],
+  custom_lockup: config_pages.su_local_foot_use_loc.value,
+  lockup_option: config_pages.su_local_foot_use_loc.value,
+  use_default_logo: config_pages.su_local_foot_use_logo.value,
+  cell1: config_pages.su_local_foot_pr_co.processed,
   cell2: cell2,
-  cell3: content["su_local_foot_tr_co"],
-  address: content["su_local_foot_address"],
-  action_links: content['su_local_foot_action'],
-  social_links: content['su_local_foot_social'],
-  primary_links_header: content['su_local_foot_prime_h'],
-  primary_links: content['su_local_foot_primary'],
-  secondary_links_header: content['su_local_foot_second_h'],
-  secondary_links: content['su_local_foot_second'],
-  signup_form_content: content['su_local_foot_f_intro'],
-  signup_form_action: content['su_local_foot_f_url'],
-  signup_form_method: content['su_local_foot_f_method'],
-  signup_form_field_submit_value: content['su_local_foot_f_button'],
-  weblogin_text: content['su_local_foot_sunet_t'],
-  site_logo: content['su_local_foot_loc_img'],
-  site_logo_alt: 'image alt',
-  line1: content['su_local_foot_line_1'],
-  line2: content['su_local_foot_line_2'],
-  line3: content['su_local_foot_line_3'],
-  line4: content['su_local_foot_line_4'],
-  line5: content['su_local_foot_line_5'],
+  cell3: config_pages.su_local_foot_tr_co.processed,
+  address: content.su_local_foot_address,
+  action_links: content.su_local_foot_action,
+  social_links: content.su_local_foot_social,
+  primary_links_header: config_pages.su_local_foot_prime_h.value,
+  primary_links: content.su_local_foot_primary,
+  secondary_links_header: config_pages.su_local_foot_second_h.value,
+  secondary_links: content.su_local_foot_second,
+  signup_form_content: content.su_local_foot_f_intro,
+  signup_form_action: config_pages.su_local_foot_f_url.value,
+  signup_form_method: config_pages.su_local_foot_f_method.value,
+  signup_form_field_submit_value: config_pages.su_local_foot_f_button.value,
+  weblogin_text: config_pages.su_local_foot_sunet_t.value,
+  site_logo: config_pages.su_local_foot_loc_img.value,
+  site_logo_alt: lockup_title,
+  line1: config_pages.su_local_foot_line_1.value,
+  line2: config_pages.su_local_foot_line_2.value,
+  line3: config_pages.su_local_foot_line_3.value,
+  line4: config_pages.su_local_foot_line_4.value,
+  line5: config_pages.su_local_foot_line_5.value,
 }|merge(component), with_context = false) }}

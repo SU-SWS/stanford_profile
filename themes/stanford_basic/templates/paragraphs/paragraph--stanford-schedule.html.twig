@@ -1,10 +1,10 @@
 <div{{ attributes }}>
   {{ include("stanford_events:events_schedule", {
-    time: content['su_schedule_date_time'],
-    headline: content['su_schedule_headline'],
-    description: content['su_schedule_description'],
-    location: content['su_schedule_location'],
-    url: content['su_schedule_url'],
-    speakers: content['su_schedule_speaker'],
+    time: content.su_schedule_date_time,
+    headline: paragraph.su_schedule_headline.value,
+    description: paragraph.su_schedule_description.processsed,
+    location: content.su_schedule_location,
+    url: content.su_schedule_url,
+    speakers: content.su_schedule_speaker,
   }, with_context = false) }}
 </div>

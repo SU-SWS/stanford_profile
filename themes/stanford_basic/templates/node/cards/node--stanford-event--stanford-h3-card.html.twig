@@ -1,14 +1,14 @@
-{% set source = content["su_event_source"]|render_clean %}
+{% set source = content.su_event_source|render_clean %}
 <div{{ attributes }}>
   {{ include("jumpstart_ui:event_card", {
     header_tag: "h3",
-    event_type: content["su_event_type"],
+    event_type: content.su_event_type,
     headline: label,
-    subheadline: content["su_event_subheadline"],
-    dek: content["su_event_dek"],
+    subheadline: node.su_event_subheadline.value,
+    dek: node.su_event_dek.value,
     url: source ?? url,
-    date_time: content["su_event_date_time"],
-    location: content["su_event_alt_loc"],
-    address: content["su_event_location"]
+    date_time: content.su_event_date_time,
+    location: node.su_event_alt_loc.value,
+    address: content.su_event_location
   }|merge(component), with_context = false) }}
 </div>

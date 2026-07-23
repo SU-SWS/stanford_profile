@@ -1,13 +1,17 @@
+
+{% set sup_header = paragraph.su_banner_sup_header.value|default(null) %}
+{% set banner_body = paragraph.su_banner_body.processed|default(null) %}
+{% if sup_header or banner_body %}
+  {% set body = [content.su_banner_sup_header, content.su_banner_body] %}
+{% endif %}
+
 <div{{ attributes }}>
   {{ include("jumpstart_ui:hero", {
-    image: content["su_banner_image"],
-    headline: content["su_banner_header"],
-    body: [
-      content["su_banner_sup_header"],
-      content["su_banner_body"]
-    ],
-    button_link: content["su_banner_button"][0]["#url_title"],
-    button_label: content["su_banner_button"][0]["#title"],
+    image: content.su_banner_image|default(null),
+    headline: paragraph.su_banner_header.value|default(null),
+    body: body,
+    button_link: paragraph.su_banner_button.get(0).getUrl().toString()|default(null),
+    button_label: paragraph.su_banner_button.title|default(null),
   }|merge(component), with_context = false) }}
 </div>
 

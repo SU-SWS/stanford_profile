@@ -1,14 +1,14 @@
 <div{{ attributes }}>
   {{ include("jumpstart_ui:card", {
-    image: content["su_card_media"],
-    headline: content["su_card_header"],
+    image: content.su_card_media,
+    headline: paragraph.su_card_header.value,
     body: [
-      content["su_card_super_header"],
-      content["su_card_body"],
+      content.su_card_super_header,
+      content.su_card_body,
     ],
-    link: content["su_card_link"][0]["#url_title"],
-    button_label: component["link_style"] != "action" ? content["su_card_link"][0]['#title'] : null,
-    cta_label: component["link_style"] == "action" ? content["su_card_link"][0]['#title'] : null,
+    link: paragraph.su_card_link.get(0).getUrl().toString(),
+    button_label: component["link_style"] != "action" ? content.su_card_link[0]['#title'] : null,
+    cta_label: component["link_style"] == "action" ? content.su_card_link[0]['#title'] : null,
   }|merge(component), with_context = false) }}
 </div>
 

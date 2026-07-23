@@ -1,8 +1,10 @@
+
 {{ include("jumpstart_ui:alert", {
-  label: content["su_global_msg_label"],
+  level: config_pages.su_global_msg_type.value,
+  label: config_pages.su_global_msg_label.value,
   message: [
-    content["su_global_msg_header"],
-    content["su_global_msg_message"],
-    content["su_global_msg_link"],
+    config_pages.su_global_msg_header.value,
+    config_pages.su_global_msg_message.processed,
+    content.su_global_msg_link,
   ]
 }, with_context = false) }}

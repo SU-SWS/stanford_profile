@@ -1,15 +1,15 @@
-{% set course_link = content["su_course_link"]|render_clean %}
+
 <div{{ attributes }}>
   {{ include("jumpstart_ui:course_list", {
     code: [
-      content["su_course_subject"],
-      content["su_course_code"]
+      content.su_course_subject,
+      content.su_course_code
     ],
-    academic_year: content["su_course_academic_year"],
-    quarters: content["su_course_quarters"],
-    instructors: content["su_course_instructors"],
-    description: content["body"],
+    academic_year: node.su_course_academic_year.value,
+    quarters: content.su_course_quarters,
+    instructors: content.su_course_instructors,
+    description: node.body.processed,
     title: label,
-    url: course_link ?? url
+    url: node.su_course_link.get(0).getUrl().toString() ?? url
   }, with_context = false) }}
 </div>

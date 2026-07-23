@@ -4,12 +4,12 @@
 <div{{ attributes }}>
   {{ include("jumpstart_ui:card", {
     header_tag: "h2",
-    image: content["su_opp_image"],
-    super_headline: content["su_opp_sponsor"],
+    image: content.su_opp_image,
+    super_headline: node.su_opp_sponsor.value,
     headline: headline,
     body: [
-      content["su_opp_type"],
-      content["su_opp_summary"],
+      content.su_opp_type,
+      content.su_opp_summary,
     ],
 
   }, with_context = false) }}

@@ -1,13 +1,13 @@
-{% set course_link = content["su_course_link"]|render_clean %}
+
 <div{{ attributes }}>
   {{ include("jumpstart_ui:course_vertical_teaser", {
     header_tag: "h2",
     code: [
-      content["su_course_subject"],
-      content["su_course_code"]
+      content.su_course_subject,
+      content.su_course_code
     ],
-    academic_year: content["su_course_academic_year"],
+    academic_year: node.su_course_academic_year.value,
     title: label,
-    url: course_link ?? url
+    url: node.su_course_link.get(0).getUrl().toString() ?? url
   }, with_context = false) }}
 </div>

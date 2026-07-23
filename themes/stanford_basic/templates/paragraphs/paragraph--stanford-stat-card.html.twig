@@ -1,11 +1,11 @@
 <div{{ attributes }}>
   {{ include("jumpstart_ui:hero", {
-    image: content['su_stat_image'],
-    icon: content['su_stat_icon'],
-    stat: content['su_stat_stat'],
-    super_headline: content['su_stat_superhead'],
-    headline: content['su_stat_headline'],
-    body: content['su_stat_body'],
-    link: content['su_stat_button'],
+    image: content.su_stat_image,
+    icon: content.su_stat_icon,
+    stat: paragraph.su_stat_stat.value,
+    super_headline: paragraph.su_stat_superhead.value,
+    headline: paragraph.su_stat_headline.value,
+    body: paragraph.su_stat_body.processed,
+    link: content.su_stat_button,
   }|merge(component), with_context = false) }}
 </div>

@@ -5,8 +5,8 @@
   {{ include("jumpstart_ui:card", {
     attributes: attributes,
     header_tag: "h3",
-    image: content["su_page_image"] ?? content['su_page_banner'],
+    image: content.su_page_image ?? content.su_page_banner,
     headline: headline,
-    body: content["su_page_description"]
+    body: content.su_page_description
   }, with_context = false) }}
 </div>

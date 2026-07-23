@@ -4,8 +4,8 @@
 <div{{ attributes }}>
   {{ include("jumpstart_ui:card", {
     header_tag: "h2",
-    image: content["su_page_image"] ?? content['su_page_banner'],
+    image: content.su_page_image ?? content.su_page_banner,
     headline: headline,
-    body: content["su_page_description"]
+    body: node.su_page_description.value
   }, with_context = false) }}
 </div>

@@ -5,6 +5,6 @@
   {{ include("jumpstart_ui:card", {
     header_tag: "h2",
     headline: headline,
-    body: content["su_event_series_subheadline"]
+    body: node.su_event_series_subheadline.value
   }, with_context = false) }}
 </div>

@@ -1,8 +1,8 @@
 <div{{ attributes }}>
   {{ include("stanford_events:events_person_cta", {
-    image: content['su_person_cta_image'],
-    name: content['su_person_cta_name'],
-    title: content['su_person_cta_title'],
-    link: content['su_person_cta_link'],
+    image: content.su_person_cta_image,
+    name: paragraph.su_person_cta_name.value,
+    title: paragraph.su_person_cta_title.value,
+    link: content.su_person_cta_link,
   }, with_context = false) }}
 </div>
