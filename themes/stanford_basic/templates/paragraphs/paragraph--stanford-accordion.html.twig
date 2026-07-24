@@ -1,6 +1,6 @@
 <div{{ attributes }}>
   {{ include("jumpstart_ui:accordion", {
     title: paragraph.su_accordion_title.value,
-    contents: paragraph.su_accordion_body.processed
+    contents: content.su_accordion_body
   }, with_context = false) }}
 </div>

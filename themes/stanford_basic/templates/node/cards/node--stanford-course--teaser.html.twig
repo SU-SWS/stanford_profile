@@ -5,7 +5,7 @@
     academic_year: node.su_course_academic_year.value,
     quarters: content.su_course_quarters,
     instructors: content.su_course_instructors,
-    description: node.body.processed,
+    description: content.body,
     title: node.label,
     url: node.su_course_link.get(0).getUrl().toString() ?? url
   }, with_context = false) }}

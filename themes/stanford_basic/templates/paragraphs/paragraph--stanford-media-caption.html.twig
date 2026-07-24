@@ -1,7 +1,7 @@
 <div{{ attributes }}>
   {{ include("jumpstart_ui:media", {
     image: content.su_media_caption_media,
-    caption: paragraph.su_media_caption_caption.processed,
+    caption: content.su_media_caption_caption,
     link: content.su_media_caption_link,
   }, with_context = false) }}
 </div>

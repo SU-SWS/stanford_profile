@@ -3,7 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.citation.su_url
+    - core.base_field_override.node.stanford_event.title
+    - core.base_field_override.node.stanford_news.title
+    - core.base_field_override.node.stanford_person.title
     - field.storage.node.su_publication_citation
     - field.storage.node.su_publication_topics
     - node.type.stanford_publication
@@ -11,11 +13,11 @@ dependencies:
   module:
     - graphql_compose_views
     - jumpstart_ui
-    - link
     - node
     - stanford_fields
     - stanford_publication
     - taxonomy
+    - token
     - ui_patterns
     - ui_patterns_views
     - user
@@ -1325,126 +1327,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        view_node:
-          id: view_node
-          table: node
-          field: view_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-        su_url:
-          id: su_url
-          table: citation__su_url
-          field: su_url
-          relationship: su_publication_citation
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: true
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: '{{ view_node }}'
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: uri
-          type: link
-          settings:
-            trim_length: null
-            url_only: true
-            url_plain: true
-            rel: '0'
-            target: '0'
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         title:
           id: title
           table: node_field_data
@@ -1650,9 +1532,9 @@ display:
                 source:
                   value: ''
               header_tag:
-                source_id: textfield
+                source_id: select
                 source:
-                  value: ''
+                  value: h3
               header_classes:
                 source_id: textfield
                 source:
@@ -1665,26 +1547,35 @@ display:
                 source_id: textfield
                 source:
                   value: ''
+              super_headline:
+                source_id: textfield
+                source:
+                  value: ''
+              headline:
+                source_id: entity_field
+                source:
+                  derivable_context: 'field:node::title'
+                  'field:node::title':
+                    value:
+                      source_id: 'field_property:node:title:value'
+              headline_url:
+                source_id: token
+                source:
+                  value: '[node:su_publication_citation:entity:su_url|node:url]'
+              link:
+                source_id: textfield
+                source:
+                  value: ''
+              cta_label:
+                source_id: textfield
+                source:
+                  value: ''
+              button_label:
+                source_id: textfield
+                source:
+                  value: ''
             slots:
               image: {  }
-              super_headline:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: type
-                    third_party_settings: ''
-                    _weight: 0
-                    node_id: ''
-              headline:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: title
-                    third_party_settings: ''
-                    _weight: 0
-                    node_id: ''
               body:
                 sources:
                   -
@@ -1694,11 +1585,6 @@ display:
                     third_party_settings: ''
                     _weight: 0
                     node_id: ''
-              link: {  }
-              cta_label: {  }
-              button_label: {  }
-            third_party_settings: ''
-            node_id: ''
       defaults:
         title: false
         css_class: false
@@ -1732,7 +1618,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.citation.su_url'
         - 'config:field.storage.node.su_publication_topics'
   term_list_chicago:
     id: term_list_chicago

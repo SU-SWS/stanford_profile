@@ -523,9 +523,12 @@ display:
                 source_id: attributes
                 source:
                   value: ''
+              title:
+                source_id: textfield
+                source:
+                  value: ''
             slots:
               category: {  }
-              title: {  }
               description:
                 sources:
                   -
@@ -560,8 +563,6 @@ display:
                     third_party_settings: ''
                     _weight: 3
                     node_id: ''
-            third_party_settings: ''
-            node_id: ''
       query:
         type: views_query
         options:
