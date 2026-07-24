@@ -33,15 +33,21 @@ class StanfordBasicConfigPageHooks {
 
     $login_path = Url::fromRoute('samlauth.saml_controller_login', ['destination' => $redirectDestination]);
 
-    foreach ($variables['content']['su_local_foot_social'][0]['#items'] as &$link) {
-      $url = $link['#url']->toString();
-      $host = explode('.', parse_url($url, PHP_URL_HOST));
-      $host = count($host) == 2 ? $host[0] : $host[1];
-      $link['#attributes']['class'][] = Html::cleanCssIdentifier("su-local-footer__social-$host");
-      $link['#title'] = [
-        ['#type' => 'html_tag', '#tag' => 'i'],
-        ['#type' => 'html_tag', '#tag' => 'span', '#value' => $link['#title']],
-      ];
+    if (isset($variables['content']['su_local_foot_social'][0]['#items'])) {
+      foreach ($variables['content']['su_local_foot_social'][0]['#items'] as &$link) {
+        $url = $link['#url']->toString();
+        $host = explode('.', parse_url($url, PHP_URL_HOST));
+        $host = count($host) == 2 ? $host[0] : $host[1];
+        $link['#attributes']['class'][] = Html::cleanCssIdentifier("su-local-footer__social-$host");
+        $link['#title'] = [
+          ['#type' => 'html_tag', '#tag' => 'i'],
+          [
+            '#type' => 'html_tag',
+            '#tag' => 'span',
+            '#value' => $link['#title'],
+          ],
+        ];
+      }
     }
 
     $login_url = $this->account->isAnonymous() ? $login_path->toString() : NULL;

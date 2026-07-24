@@ -10,7 +10,7 @@
 {% endset %}
 
 {{ include("jumpstart_ui:localfooter", {
-  custom_lockup: config_pages.su_local_foot_use_loc.value,
+  custom_lockup: not config_pages.su_local_foot_use_loc.value,
   lockup_option: config_pages.su_local_foot_loc_op.value,
   use_default_logo: config_pages.su_local_foot_use_logo.value,
   cell1: content.su_local_foot_pr_co,
