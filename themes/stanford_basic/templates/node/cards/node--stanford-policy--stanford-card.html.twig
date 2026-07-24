@@ -1,9 +1,11 @@
 
 <div{{ attributes }}>
+  {{ title_prefix }}
   {{ include("jumpstart_ui:card", {
     header_tag: "h2",
     headline: node.label,
     headline_url: node.su_policy_source.get(0).getUrl().toString() ?? url,
     body: content.body
   }, with_context = false) }}
+  {{ title_suffix }}
 </div>

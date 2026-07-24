@@ -21,6 +21,8 @@ class StanfordBasicNodeHooks {
     $variables['#attached']['library'][] = 'stanford_basic/content.' . $node_bundle;
     unset($variables['content']['book_navigation']);
 
+    $variables['attributes']['class'][] = Html::cleanCssIdentifier('node--' . $node_bundle);
+
     if ($variables['view_mode'] == 'full') {
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('node-page--' . $node_bundle);
     }
@@ -28,7 +30,6 @@ class StanfordBasicNodeHooks {
       // Backwards compatibility with UI patterns.
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ds-entity--node');
       $variables['attributes']['class'][] = Html::cleanCssIdentifier('ds-entity--' . $node_bundle);
-      $variables['attributes']['class'][] = Html::cleanCssIdentifier('node--' . $node_bundle);
     }
   }
 

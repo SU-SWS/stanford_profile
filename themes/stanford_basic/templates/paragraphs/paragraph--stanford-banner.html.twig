@@ -8,6 +8,7 @@
 {% set heading_behavior = paragraph.getBehaviorSetting("hero_pattern", "heading", "h2")|split(".") %}
 
 <div{{ attributes }}>
+  {{ title_prefix }}
   {{ include("jumpstart_ui:hero", {
     image: content.su_banner_image|default(null),
     header_tag: heading_behavior.0,
@@ -22,5 +23,6 @@
     button_label: button_label,
     show_card: headline or sup_header or banner_body or button_label or button_link
   }, with_context = false) }}
+  {{ title_suffix }}
 </div>
 

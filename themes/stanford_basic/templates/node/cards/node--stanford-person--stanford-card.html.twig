@@ -1,5 +1,6 @@
 
 <div{{ attributes }}>
+  {{ title_prefix }}
   {{ include("jumpstart_ui:card", {
     header_tag: "h2",
     image: content.su_person_photo,
@@ -7,4 +8,5 @@
     headline_url: node.su_person_source.get(0).getUrl().toString() ?? url,
     body: node.su_person_short_title.value
   }, with_context = false) }}
+  {{ title_suffix }}
 </div>

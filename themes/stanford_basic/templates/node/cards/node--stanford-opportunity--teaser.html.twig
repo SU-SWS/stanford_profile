@@ -1,5 +1,6 @@
 
 <div{{ attributes }}>
+  {{ title_prefix }}
   {{ include("jumpstart_ui:news_list", {
     image: content.su_opp_image,
     super_headline: content.su_opp_sponsor,
@@ -9,4 +10,5 @@
     footer: node.su_opp_card_footer.value,
     url: node.su_opp_source.get(0).getUrl().toString() ?? url
   }, with_context = false) }}
+  {{ title_suffix }}
 </div>

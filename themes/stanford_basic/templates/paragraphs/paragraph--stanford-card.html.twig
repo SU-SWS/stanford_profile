@@ -2,6 +2,7 @@
 {% set link_style = paragraph.getBehaviorSetting("su_card_styles", "link_style", "button") %}
 
 <div{{ attributes }}>
+  {{ title_prefix }}
   {{ include("jumpstart_ui:card", {
     header_tag: heading_behavior.0,
     header_classes: heading_behavior|slice(1)|join(" "),
@@ -16,5 +17,6 @@
     button_label: link_style != "action" ? content.su_card_link[0]['#title'] : null,
     cta_label: link_style == "action" ? content.su_card_link[0]['#title'] : null,
   }, with_context = false) }}
+  {{ title_suffix }}
 </div>
 

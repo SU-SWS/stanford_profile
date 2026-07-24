@@ -1,5 +1,6 @@
 
 <div{{ attributes }}>
+  {{ title_prefix }}
   {{ include("jumpstart_ui:card", {
     attributes: attributes,
     header_tag: "h2",
@@ -8,4 +9,5 @@
     headline_url: url,
     body: content.su_page_description
   }, with_context = false) }}
+  {{ title_suffix }}
 </div>

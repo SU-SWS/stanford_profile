@@ -47,11 +47,35 @@ bundle: stanford_event
 mode: stanford_card
 content:
   body:
-    type: text_default
+    type: smart_trim
     label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 0
+    settings:
+      trim_length: 50
+      trim_type: words
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: trim
+      trim_options:
+        text: false
+        trim_zero: false
+        replace_tokens: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 21
     region: content
   su_event_alt_loc:
     type: string
@@ -59,7 +83,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 18
+    weight: 16
     region: content
   su_event_audience:
     type: entity_reference_label
@@ -67,7 +91,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
   su_event_contact_info:
     type: string
@@ -75,7 +99,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 3
+    weight: 1
     region: content
   su_event_cta:
     type: link
@@ -87,7 +111,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 2
     region: content
   su_event_date_time:
     type: smartdate_default
@@ -101,16 +125,22 @@ content:
       time_wrapper: true
       localize: false
       parts:
-        - start
-        - end
+        start: start
+        end: end
+        duration: '0'
       duration:
         separator: ' | '
         unit: ''
         decimals: 2
         suffix: h
     third_party_settings:
+      empty_fields:
+        handler: ''
       field_formatter_class:
         class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 17
     region: content
   su_event_dek:
@@ -119,14 +149,14 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 5
+    weight: 18
     region: content
   su_event_email:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 6
+    weight: 3
     region: content
   su_event_ext_image:
     type: string
@@ -134,7 +164,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 20
+    weight: 4
     region: content
   su_event_groups:
     type: entity_reference_label
@@ -142,7 +172,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 7
+    weight: 5
     region: content
   su_event_keywords:
     type: entity_reference_label
@@ -150,7 +180,16 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 21
+    weight: 6
+    region: content
+  su_event_localist_id:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 7
     region: content
   su_event_location:
     type: address_default
@@ -160,21 +199,23 @@ content:
     weight: 19
     region: content
   su_event_map_link:
-    type: link_ally_class
+    type: link
     label: hidden
     settings:
-      class: ''
-      link_text: ''
-      screenreader_text: ''
-      tag: ''
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
     third_party_settings: {  }
     weight: 8
     region: content
   su_event_schedule:
-    type: entity_reference_revisions_label
+    type: entity_reference_revisions_entity_view
     label: hidden
     settings:
-      link: true
+      view_mode: default
+      link: ''
     third_party_settings: {  }
     weight: 9
     region: content
@@ -183,14 +224,12 @@ content:
     label: hidden
     settings:
       trim_length: null
-      url_only: true
-      url_plain: true
-      rel: '0'
-      target: '0'
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-    weight: 16
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 10
     region: content
   su_event_sponsor:
     type: string
@@ -198,7 +237,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 10
+    weight: 11
     region: content
   su_event_subheadline:
     type: string
@@ -206,7 +245,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 15
+    weight: 20
     region: content
   su_event_subject:
     type: entity_reference_label
@@ -214,7 +253,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: content
   su_event_tags:
     type: entity_reference_label
@@ -222,15 +261,16 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   su_event_telephone:
-    type: string
+    type: telephone_link_class
     label: hidden
     settings:
-      link_to_entity: false
+      title: ''
+      class: ''
     third_party_settings: {  }
-    weight: 13
+    weight: 14
     region: content
   su_event_type:
     type: entity_reference_label
@@ -238,11 +278,18 @@ content:
     settings:
       link: true
     third_party_settings:
+      empty_fields:
+        handler: ''
       field_formatter_class:
         class: ''
-      ds:
-        ds_limit: '1'
-    weight: 14
+      field_formatter_range:
+        order: 0
+        limit: 1
+        offset: 0
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 15
     region: content
 hidden:
   layout_builder__layout: true
@@ -250,7 +297,6 @@ hidden:
   search_api_excerpt: true
   stanford_intranet__access: true
   su_event_components: true
-  su_event_localist_id: true
   su_imported: true
   su_metatags: true
   su_shared_tags: true

@@ -4,6 +4,7 @@
   </h3>
 {% endset %}
 <div{{ attributes }}>
+  {{ title_prefix }}
   {{ include("jumpstart_ui:container_responsive_card", {
     header_tag: "h3",
     image: content.su_media_image,
@@ -15,4 +16,5 @@
       content.su_media_category,
     ]
   }, with_context = false) }}
+  {{ title_suffix }}
 </div>

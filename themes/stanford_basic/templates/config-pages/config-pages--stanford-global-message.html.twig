@@ -1,10 +1,12 @@
 
+{% set message %}
+<h2>{{ config_pages.su_global_msg_header.value }}</h2>
+  {{ config_pages.su_global_msg_message.processed }}
+  {{ content.su_global_msg_link }}
+{% endset %}
+
 {{ include("jumpstart_ui:alert", {
   level: config_pages.su_global_msg_type.value,
   label: config_pages.su_global_msg_label.value,
-  message: [
-    config_pages.su_global_msg_header.value,
-    config_pages.su_global_msg_message.processed,
-    content.su_global_msg_link,
-  ]
+  message: message
 }, with_context = false) }}

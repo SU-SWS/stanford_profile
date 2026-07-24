@@ -1,5 +1,6 @@
 
 <div{{ attributes }}>
+  {{ title_prefix }}
   {{ include("jumpstart_ui:card", {
     header_tag: "h2",
     super_headline: node.su_publication_citation.get(0).entity.getBundleEntity().label|default("Publication"),
@@ -7,4 +8,5 @@
     headline_url: url,
     body: content.su_publication_topics
   }, with_context = false) }}
+  {{ title_suffix }}
 </div>

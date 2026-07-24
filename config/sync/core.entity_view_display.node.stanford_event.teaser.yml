@@ -35,7 +35,7 @@ dependencies:
     - node.type.stanford_event
   module:
     - address
-    - ds
+    - element_class_formatter
     - empty_fields
     - entity_reference_revisions
     - field_formatter_class
@@ -43,27 +43,59 @@ dependencies:
     - field_label
     - link
     - smart_date
+    - smart_trim
     - user
 id: node.stanford_event.teaser
 targetEntityType: node
 bundle: stanford_event
 mode: teaser
 content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 50
+      trim_type: words
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: trim
+      trim_options:
+        text: false
+        trim_zero: false
+        replace_tokens: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 21
+    region: content
   su_event_alt_loc:
     type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 9
-    region: location
+    weight: 16
+    region: content
   su_event_audience:
     type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 11
+    weight: 0
     region: content
   su_event_contact_info:
     type: string
@@ -71,7 +103,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 13
+    weight: 1
     region: content
   su_event_cta:
     type: link
@@ -83,7 +115,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 14
+    weight: 2
     region: content
   su_event_date_time:
     type: smartdate_default
@@ -97,32 +129,38 @@ content:
       time_wrapper: true
       localize: false
       parts:
-        - start
-        - end
+        start: start
+        end: end
+        duration: '0'
       duration:
         separator: ' | '
         unit: ''
         decimals: 2
         suffix: h
     third_party_settings:
+      empty_fields:
+        handler: ''
       field_formatter_class:
         class: ''
-    weight: 8
-    region: date_time
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 17
+    region: content
   su_event_dek:
     type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 7
-    region: dek
+    weight: 18
+    region: content
   su_event_email:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 15
+    weight: 3
     region: content
   su_event_ext_image:
     type: string
@@ -130,7 +168,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 16
+    weight: 4
     region: content
   su_event_groups:
     type: entity_reference_label
@@ -138,7 +176,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 17
+    weight: 5
     region: content
   su_event_keywords:
     type: entity_reference_label
@@ -146,7 +184,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 18
+    weight: 6
     region: content
   su_event_localist_id:
     type: number_integer
@@ -155,15 +193,15 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 19
+    weight: 7
     region: content
   su_event_location:
     type: address_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 10
-    region: address
+    weight: 19
+    region: content
   su_event_map_link:
     type: link
     label: hidden
@@ -174,7 +212,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 20
+    weight: 8
     region: content
   su_event_schedule:
     type: entity_reference_revisions_entity_view
@@ -183,7 +221,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 21
+    weight: 9
     region: content
   su_event_source:
     type: link
@@ -195,7 +233,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 22
+    weight: 10
     region: content
   su_event_sponsor:
     type: string
@@ -203,25 +241,23 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 23
+    weight: 11
     region: content
   su_event_subheadline:
     type: string
     label: hidden
     settings:
       link_to_entity: false
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-    weight: 6
-    region: subheadline
+    third_party_settings: {  }
+    weight: 20
+    region: content
   su_event_subject:
     type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 24
+    weight: 12
     region: content
   su_event_tags:
     type: entity_reference_label
@@ -229,14 +265,16 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 25
+    weight: 13
     region: content
   su_event_telephone:
-    type: basic_string
+    type: telephone_link_class
     label: hidden
-    settings: {  }
+    settings:
+      title: ''
+      class: ''
     third_party_settings: {  }
-    weight: 26
+    weight: 14
     region: content
   su_event_type:
     type: entity_reference_label
@@ -250,17 +288,14 @@ content:
         class: ''
       field_formatter_range:
         order: 0
-        limit: 0
+        limit: 1
         offset: 0
       field_label:
         label_value: ''
         label_tag: ''
-      ds:
-        ds_limit: '1'
-    weight: 4
-    region: event_type
+    weight: 15
+    region: content
 hidden:
-  body: true
   layout_builder__layout: true
   links: true
   search_api_excerpt: true
