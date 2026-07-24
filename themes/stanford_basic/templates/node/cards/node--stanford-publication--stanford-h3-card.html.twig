@@ -2,8 +2,9 @@
 <div{{ attributes }}>
   {{ include("jumpstart_ui:card", {
     header_tag: "h3",
+    super_headline: node.su_publication_citation.get(0).entity.getBundleEntity().label|default("Publication"),
     headline: node.label,
     headline_url: url,
     body: content.su_publication_topics
-  }|merge(component), with_context = false) }}
+  }, with_context = false) }}
 </div>

@@ -5,15 +5,22 @@
 {% set button_link = paragraph.su_banner_button.get(0).getUrl().toString()|default(null) %}
 {% set button_label = paragraph.su_banner_button.title|default(null) %}
 
+{% set heading_behavior = paragraph.getBehaviorSetting("hero_pattern", "heading", "h2")|split(".") %}
+
 <div{{ attributes }}>
   {{ include("jumpstart_ui:hero", {
     image: content.su_banner_image|default(null),
+    header_tag: heading_behavior.0,
+    header_classes: heading_behavior|slice(1)|join(" "),
+    visually_hide_header: paragraph.getBehaviorSetting("hero_pattern", "hide_heading", false),
+    overlay_position: paragraph.getBehaviorSetting("hero_pattern", "overlay_position", "left"),
+    wrapper_class: "bottom-margin-" ~ paragraph.getBehaviorSetting("hero_pattern", "space_below", "default"),
     headline: headline,
     super_headline: sup_header,
     body: content.su_banner_body,
     button_link: button_link,
     button_label: button_label,
     show_card: headline or sup_header or banner_body or button_label or button_link
-  }|merge(component), with_context = false) }}
+  }, with_context = false) }}
 </div>
 

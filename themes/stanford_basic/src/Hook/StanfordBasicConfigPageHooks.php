@@ -47,10 +47,8 @@ class StanfordBasicConfigPageHooks {
     $login_url = $this->account->isAnonymous() ? $login_path->toString() : NULL;
     $lockup_title = $this->configFactory->get('system.site')->get('name');
 
-    $variables['component'] = [
-      'weblogin_url' => $login_url,
-      'lockup_title' => $lockup_title,
-    ];
+    $variables['weblogin_url'] = $login_url;
+    $variables['lockup_title'] = $lockup_title;
     $variables['#cache']['contexts'][] = 'url.path';
   }
 

@@ -1,5 +1,15 @@
+
+{% set heading_behavior = paragraph.su_stat_headline_lvl.value|default("h2")|split(".") %}
+
 <div{{ attributes }}>
-  {{ include("jumpstart_ui:hero", {
+  {{ include("jumpstart_ui:stat_card", {
+    header_tag: heading_behavior.0,
+    header_classes: heading_behavior|slice(1)|join(" "),
+    visually_hide_header: paragraph.su_stat_heading_hide.value,
+    bg_color: paragraph.su_stat_bg_color.color,
+    icon_color: paragraph.su_stat_icon_color.color,
+    stat_color: paragraph.su_stat_stat_color.color,
+    centered_text: paragraph.su_stat_centered.value,
     image: content.su_stat_image,
     icon: content.su_stat_icon,
     stat: paragraph.su_stat_stat.value,
@@ -7,5 +17,5 @@
     headline: paragraph.su_stat_headline.value,
     body: content.su_stat_body,
     link: content.su_stat_button,
-  }|merge(component), with_context = false) }}
+  }, with_context = false) }}
 </div>

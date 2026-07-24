@@ -32,30 +32,6 @@ class StanfordProfileAdminNodeHooks {
     }
   }
 
-  #[Hook('preprocess_node__stanford_event')]
-  public function preprocessEvent(&$variables) {
-    /** @var \Drupal\node\NodeInterface $node */
-    $node = $variables['node'];
-    $date = $node->get('su_event_date_time')->get(0)?->getValue();
-    $startMonth = $startDay = $endMonth = $endDay = NULL;
-    if ($date) {
-      [
-        $startMonth,
-        $startDay,
-      ] = explode(' ', date('M j', (int) $date['value']));
-      [
-        $endMonth,
-        $endDay,
-      ] = explode(' ', date('M j', (int) $date['end_value']));
-    }
-    $variables['component'] = [
-      'start_month' => $startMonth,
-      'start_date' => $startDay,
-      'end_month' => $endMonth,
-      'end_date' => $endDay,
-    ];
-  }
-
   #[Hook('preprocess_node__stanford_page')]
   public function preprocessPage(&$variables) {
     if (
@@ -73,15 +49,6 @@ class StanfordProfileAdminNodeHooks {
         $variables['attributes']['class'][] = 'add-more-space-to-top';
       }
     }
-  }
-
-  #[Hook('preprocess_node__stanford_publication')]
-  public function preprocessPublication(&$variables) {
-    /** @var \Drupal\node\NodeInterface $node */
-    $node = $variables['node'];
-    $citation_type = $node->get('su_publication_citation')
-      ->get(0)?->entity?->getBundleEntity()->label();
-    $variables['component']['super_headline'] = $citation_type ?? 'Publication';
   }
 
 }
