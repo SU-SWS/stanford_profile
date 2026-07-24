@@ -1,11 +1,12 @@
-{% set date_time = node.su_event_date_time.get(0).value %}
+{% set start = node.su_event_date_time.get(0).value %}
+{% set end = node.su_event_date_time.get(0).end_value|default(start) %}
 <div{{ attributes }}>
   {{ include("jumpstart_ui:event_card", {
     header_tag: "h2",
-    start_month: date_time|date("M"),
-    start_date: date_time|date("j"),
-    end_month: date_time|date("M"),
-    end_date: date_time|date("j"),
+    start_month: start|date("M"),
+    start_date: start|date("j"),
+    end_month: end|date("M"),
+    end_date: end|date("j"),
     event_type: content.su_event_type,
     headline: node.label,
     subheadline: node.su_event_subheadline.value,
