@@ -1,10 +1,9 @@
-{% set headline %}
-  <a href="{{ url }}">{{ label }}</a>
-{% endset %}
+
 <div{{ attributes }}>
   {{ include("jumpstart_ui:card", {
     header_tag: "h2",
-    headline: headline,
+    headline: node.label,
+    headline_url: node.su_policy_source.get(0).getUrl().toString() ?? url
     body: content.body
   }, with_context = false) }}
 </div>

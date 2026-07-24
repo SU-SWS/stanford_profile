@@ -1,12 +1,11 @@
-{% set headline %}
-  <a href="{{ url }}">{{ label|render_clean }}</a>
-{% endset %}
+
 <div{{ attributes }}>
   {{ include("jumpstart_ui:card", {
     attributes: attributes,
     header_tag: "h3",
     image: content.su_page_image ?? content.su_page_banner,
-    headline: headline,
+    headline: node.label,
+    headline_url: url,
     body: content.su_page_description
   }, with_context = false) }}
 </div>

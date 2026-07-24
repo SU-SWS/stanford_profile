@@ -1,10 +1,9 @@
-{% set headline %}
-  <a href="{{ url }}">{{ label }}</a>
-{% endset %}
+
 <div{{ attributes }}>
   {{ include("jumpstart_ui:card", {
     header_tag: "h3",
-    headline: headline,
+    headline: node.label,
+    headline_url: url,
     body: content.su_publication_topics
   }|merge(component), with_context = false) }}
 </div>

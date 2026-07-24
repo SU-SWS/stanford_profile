@@ -1,21 +1,21 @@
 {% set cell2 %}
   <div class="flex-container">
     <div class="flex-md-6-of-12 su-margin-bottom-1">
-      {{ config_pages.su_local_foot_se_co.processed }}
+      {{ content.su_local_foot_se_co }}
     </div>
     <div class="flex-md-6-of-12">
-      {{ config_pages.su_local_foot_tr2_co.processed }}
+      {{ content.su_local_foot_tr2_co }}
     </div>
   </div>
 {% endset %}
 
 {{ include("jumpstart_ui:localfooter", {
   custom_lockup: config_pages.su_local_foot_use_loc.value,
-  lockup_option: config_pages.su_local_foot_use_loc.value,
+  lockup_option: config_pages.su_local_foot_loc_op.value,
   use_default_logo: config_pages.su_local_foot_use_logo.value,
-  cell1: config_pages.su_local_foot_pr_co.processed,
+  cell1: content.su_local_foot_pr_co,
   cell2: cell2,
-  cell3: config_pages.su_local_foot_tr_co.processed,
+  cell3: content.su_local_foot_tr_co,
   address: content.su_local_foot_address,
   action_links: content.su_local_foot_action,
   social_links: content.su_local_foot_social,

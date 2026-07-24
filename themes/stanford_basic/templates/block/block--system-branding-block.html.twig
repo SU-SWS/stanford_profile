@@ -1,33 +1,15 @@
-{#
-/**
- * @file
- * Available variables:
- *
- * site_logo: Logo for site as defined in Appearance or theme settings.
- * site_name: Name for site as defined in Site information settings.
- * site_slogan: Slogan for site as defined in Site information settings
- * content: Containts the above vars with more information.
- * lockup: Settings from the theme.
- * use_logo: Setting from the theme
- * configuration: More settings from the theme.
- * - id: "system_branding_block"
- * - label: "Site Branding"
- * - use_site_logo: boolean
- * - use_site_name: boolean
- * - use_site_slogan: boolean
- */
-#}
+
 
 {# Set some of the default options for the lockup. #}
 {% set link = url('<front>') %}
-{% if lockup is not empty %}
+{% if lockup %}
   {% set line3 = lockup.line3 %}
   {% set line4 = lockup.line4 %}
   {% set line5 = lockup.line5 %}
 {% endif %}
 
 {# The variant classes change when there is more than one line to render. #}
-{% if lockup.option is not empty %}
+{% if lockup.option %}
   {% set modifier_class = "su-lockup--option-" ~ lockup.option %}
 {% endif %}
 
@@ -37,13 +19,13 @@
 {% endif %}
 
 {# Grab the site1 variable if it is not empty #}
-{% if lockup.line1 is not empty %}
+{% if lockup.line1 %}
  {% set line1 = lockup.line1 %}
 {% endif %}
 
 {# Default from the theme is to use the site slogan. #}
 {% set line2 = site_slogan %}
-{% if lockup.line2 is not empty %}
+{% if lockup.line2 %}
  {% set line2 = lockup.line2 %}
 {% endif %}
 
@@ -57,6 +39,7 @@
 {% endif %}
 
 {% embed 'jumpstart_ui:lockup' with {
+  lockup_style: lockup.option,
   line1: line1,
   line2: line2,
   line3: line3,
@@ -67,18 +50,18 @@
 
   {# If the theme has a custom logo. Use that. We can do this by overriding the twig block in lockup.twig #}
   {% block cell1 %}
-    {% if site_logo|render|striptags|trim is not empty and use_logo == false %}
+    {% if site_logo and not use_logo %}
       <div class="su-lockup__logo-wrapper">
         <img src="{{ site_logo }}" alt="{{ site_name }}" class="su-lockup__custom-logo" />
-        {% if line4 is not empty %}
-          <span class="su-lockup__line4" {{ region_attributes.line4 }}>{{ line4 }}</span>
+        {% if line4 %}
+          <span class="su-lockup__line4">{{ line4 }}</span>
         {% endif %}
       </div>
     {% else %}
       <div class="su-lockup__wordmark-wrapper">
         <span class="su-lockup__wordmark">Stanford</span>
-        {% if line4 is not empty %}
-          <span class="su-lockup__line4" {{ region_attributes.line4 }}>{{ line4 }}</span>
+        {% if line4 %}
+          <span class="su-lockup__line4">{{ line4 }}</span>
         {% endif %}
       </div>
     {% endif %}
@@ -87,18 +70,18 @@
   {# Override block cell2 because we want to hide some elements if the none option is selected. #}
   {% block cell2 %}
     {% if lockup.option != 'none' %}
-      {% if line1 is not empty or line2 is not empty or line3 is not empty %}
+      {% if line1 or line2 or line3 %}
       <div class="su-lockup__cell2">
         {% if line1 is not empty %}
-        <span class="su-lockup__line1" {{ region_attributes.line1 }}>{{ line1 }}</span>
+        <span class="su-lockup__line1">{{ line1 }}</span>
         {% endif %}
 
         {% if line2 is not empty %}
-        <span class="su-lockup__line2" {{ region_attributes.line2 }}>{{ line2 }}</span>
+        <span class="su-lockup__line2">{{ line2 }}</span>
         {% endif %}
 
         {% if line3 is not empty %}
-        <span class="su-lockup__line3" {{ region_attributes.line3 }}>{{ line3 }}</span>
+        <span class="su-lockup__line3">{{ line3 }}</span>
         {% endif %}
       </div>
       {% endif %}

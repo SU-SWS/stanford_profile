@@ -15,6 +15,7 @@ dependencies:
     - field_formatter_class
     - field_label
     - link
+    - options
     - stanford_fields
     - text
 id: config_pages.stanford_global_message.default
@@ -65,7 +66,13 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  su_global_msg_type:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
 hidden:
   search_api_excerpt: true
   su_global_msg_enabled: true
-  su_global_msg_type: true

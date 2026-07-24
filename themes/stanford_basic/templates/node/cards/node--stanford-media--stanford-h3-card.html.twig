@@ -1,6 +1,6 @@
 {% set heading %}
   <h3>
-    <a href="{{ url }}">{{ label|render_clean }}</a>
+    <a href="{{ node.su_media_source.get(0).getUrl().toString() ?? url }}">{{ node.label }}</a>
   </h3>
 {% endset %}
 <div{{ attributes }}>

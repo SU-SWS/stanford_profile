@@ -2,12 +2,9 @@
 <div{{ attributes }}>
   {{ include("jumpstart_ui:course_vertical_teaser", {
     header_tag: "h2",
-    code: [
-      content.su_course_subject,
-      content.su_course_code
-    ],
+    code: node.su_course_subject.entity.name.value|default("") ~ node.su_course_code.value|default(""),
     academic_year: node.su_course_academic_year.value,
-    title: label,
+    title: node.label,
     url: node.su_course_link.get(0).getUrl().toString() ?? url
   }, with_context = false) }}
 </div>
