@@ -166,18 +166,18 @@ content:
     weight: 18
     region: content
   su_opp_image:
-    type: media_image_formatter
+    type: media_responsive_image_formatter
     label: hidden
     settings:
-      view_mode: default
+      view_mode: stanford_image_large_square
       link: false
-      image_style: card_1192x596
-      remove_alt: false
+      image_style: ''
+      remove_alt: 0
     third_party_settings:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: ''
+        class: su-opp-image-list
       field_label:
         label_value: ''
         label_tag: ''
@@ -214,8 +214,8 @@ content:
     type: smart_trim
     label: hidden
     settings:
-      trim_length: 50
-      trim_type: words
+      trim_length: 600
+      trim_type: chars
       trim_suffix: ''
       wrap_output: false
       wrap_class: trimmed
@@ -228,14 +228,14 @@ content:
         aria_label: 'Read more about [node:title]'
       summary_handler: full
       trim_options:
-        text: false
+        text: true
         trim_zero: false
         replace_tokens: false
     third_party_settings:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: ''
+        class: su-opp-summary-list
       field_label:
         label_value: ''
         label_tag: ''
@@ -258,7 +258,7 @@ content:
       empty_fields:
         handler: ''
       field_formatter_class:
-        class: ''
+        class: su-opp-type-list
       field_formatter_range:
         order: 0
         limit: 0

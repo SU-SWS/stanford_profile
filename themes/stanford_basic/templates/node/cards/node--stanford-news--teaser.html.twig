@@ -5,6 +5,15 @@
   {% set spotlight_filters = spotlight_filters|merge([filter_item.entity.name.value]) %}
 {% endfor %}
 
+{% set topics %}
+  {% for topic in node.su_news_topics %}
+    <a href="{{ path("entity.taxonomy_term.canonical", {"taxonomy_term": topic.entity.id }) }}">
+      {{ topic.entity.name.value }}
+    </a>
+    {% if not loop.last %},&nbsp;{% endif %}
+  {% endfor %}
+{% endset %}
+
 <div{{ attributes }}>
   {{ title_prefix }}
   {{ include("jumpstart_ui:news_list", {
@@ -14,7 +23,7 @@
     publishing_date: content.su_news_publishing_date,
     dek: node.su_news_dek.value,
     quote: is_spotlight ? content.su_news_quote[0]["#output"]["#text"] : null,
-    topics: is_spotlight ? spotlight_filters|join(", ")|default(null) : content.su_news_topics,
+    topics: is_spotlight ? spotlight_filters|join(", ")|default(null) : topics,
     source: node.su_news_source.get(0).getUrl().toString(),
     url: url,
   }, with_context = false) }}
