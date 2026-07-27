@@ -52,4 +52,20 @@ class StanfordBasicNodeHooks {
     }
   }
 
+  #[Hook('preprocess_node__stanford_news')]
+  public function preprocessNews(&$variables) {
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $variables['node'];
+  }
+
+  #[Hook('preprocess_field__su_news_featured_media')]
+  public function preprocessNewsImageField(&$variables) {
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $variables['element']['#object'];
+
+    if ($node->get('layout_selection')->getString() == 'news_spotlight') {
+      $variables['items'][0]['content']['#stanford_media_image_style'] = 'square_1192';
+    }
+  }
+
 }

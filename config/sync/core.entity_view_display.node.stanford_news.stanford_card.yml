@@ -154,10 +154,34 @@ content:
     weight: 6
     region: content
   su_news_quote:
-    type: basic_string
+    type: smart_trim
     label: hidden
-    settings: {  }
-    third_party_settings: {  }
+    settings:
+      trim_length: 100
+      trim_type: chars
+      trim_suffix: \u2026
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+        replace_tokens: false
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 7
     region: content
   su_news_source:

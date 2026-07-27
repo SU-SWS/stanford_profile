@@ -1,8 +1,16 @@
 '$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
 name: Accordion Paragraph
 status: stable
+props:
+  type: object
+  properties:
+    heading_level:
+      type: string
+      title: Heading Level
+      enum: [h1, h2, h3, h4, div]
+    question:
+      type: string
+      title: Question
 slots:
-  question:
-    title: Question
   answer:
     title: Answer

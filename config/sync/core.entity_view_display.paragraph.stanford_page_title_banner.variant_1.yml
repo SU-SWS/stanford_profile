@@ -1,0 +1,43 @@
+uuid: 0f77874e-7ea6-4a47-a786-84f5dab8675d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.variant_1
+    - field.field.paragraph.stanford_page_title_banner.su_title_banner_image
+    - paragraphs.paragraphs_type.stanford_page_title_banner
+  module:
+    - empty_fields
+    - field_formatter_class
+    - field_label
+    - layout_builder
+    - stanford_media
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.stanford_page_title_banner.variant_1
+targetEntityType: paragraph
+bundle: stanford_page_title_banner
+mode: variant_1
+content:
+  su_title_banner_image:
+    type: media_responsive_image_formatter
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+      image_style: stanford_hero_block_wide
+      remove_alt: 0
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

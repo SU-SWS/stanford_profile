@@ -1,8 +1,9 @@
+{% set code = node.su_course_subject.entity.name.value|default("") ~ " " ~ node.su_course_code.value|default("") %}
 
 <div{{ attributes }}>
   {{ title_prefix }}
   {{ include("jumpstart_ui:course_list", {
-    code: node.su_course_subject.entity.name.value|default("") ~ node.su_course_code.value|default(""),
+    code: code|trim,
     academic_year: node.su_course_academic_year.value,
     quarters: content.su_course_quarters,
     instructors: content.su_course_instructors,

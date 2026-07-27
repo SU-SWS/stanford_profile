@@ -3,23 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.base_field_override.node.stanford_event.title
-    - core.base_field_override.node.stanford_news.title
-    - core.base_field_override.node.stanford_person.title
+    - core.entity_view_mode.node.teaser
     - field.storage.node.su_publication_citation
     - field.storage.node.su_publication_topics
     - node.type.stanford_publication
     - views.view.taxonomy_term_pages
   module:
     - graphql_compose_views
-    - jumpstart_ui
     - node
     - stanford_fields
     - stanford_publication
     - taxonomy
-    - token
-    - ui_patterns
-    - ui_patterns_views
     - user
     - views_infinite_scroll
     - views_taxonomy_term_name_depth
@@ -1520,71 +1514,10 @@ display:
           wrapper_class: ''
           class: 'su-list-unstyled grid-container-3'
       row:
-        type: ui_patterns
+        type: 'entity:node'
         options:
-          hide_empty: false
-          ui_patterns:
-            component_id: 'jumpstart_ui:card'
-            variant_id: null
-            props:
-              attributes:
-                source_id: attributes
-                source:
-                  value: ''
-              header_tag:
-                source_id: select
-                source:
-                  value: h3
-              header_classes:
-                source_id: textfield
-                source:
-                  value: ''
-              visually_hide_header:
-                source_id: checkbox
-                source:
-                  value: false
-              modifier_class:
-                source_id: textfield
-                source:
-                  value: ''
-              super_headline:
-                source_id: textfield
-                source:
-                  value: ''
-              headline:
-                source_id: entity_field
-                source:
-                  derivable_context: 'field:node::title'
-                  'field:node::title':
-                    value:
-                      source_id: 'field_property:node:title:value'
-              headline_url:
-                source_id: token
-                source:
-                  value: '[node:su_publication_citation:entity:su_url|node:url]'
-              link:
-                source_id: textfield
-                source:
-                  value: ''
-              cta_label:
-                source_id: textfield
-                source:
-                  value: ''
-              button_label:
-                source_id: textfield
-                source:
-                  value: ''
-            slots:
-              image: {  }
-              body:
-                sources:
-                  -
-                    source_id: view_field
-                    source:
-                      ui_patterns_views_field: su_publication_topics_1
-                    third_party_settings: ''
-                    _weight: 0
-                    node_id: ''
+          relationship: none
+          view_mode: teaser
       defaults:
         title: false
         css_class: false

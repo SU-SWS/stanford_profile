@@ -1,21 +1,23 @@
+{% set is_spotlight = node.layout_selection.target_id == "news_spotlight" %}
+
+{% set spotlight_filters = [] %}
+{% for filter_item in node.su_news_spotlight_filters %}
+  {% set spotlight_filters = spotlight_filters|merge([filter_item.entity.name.value]) %}
+{% endfor %}
+
 <div{{ attributes }}>
   {{ title_prefix }}
   {{ include("jumpstart_ui:news_vertical_teaser", {
     header_tag: "h2",
+    is_spotlight: is_spotlight,
     image: content.su_news_featured_media,
     headline: node.label,
-    date: content.su_news_publishing_date,
-    dek: [
-      content.su_news_dek,
-      content.su_news_quote
-    ],
-    topics: [
-      content.su_news_topics,
-      content.su_news_spotlight_filters
-    ],
+    date: node.su_news_publishing_date.value|date("M j, Y"),
+    dek: node.su_news_dek.value,
+    quote: is_spotlight ? content.su_news_quote[0]["#output"]["#text"] : null,
+    topics: is_spotlight ? spotlight_filters|join(", ")|default(null) : content.su_news_topics,
     source: node.su_news_source.get(0).getUrl().toString(),
     url: url,
   }, with_context = false) }}
   {{ title_suffix }}
 </div>
-

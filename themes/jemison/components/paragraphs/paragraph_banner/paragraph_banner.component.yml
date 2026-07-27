@@ -7,31 +7,28 @@ props:
     heading_level:
       type: string
       title: Heading Level
-      # @todo Add examples here.
-      examples: [ ]
+      enum: [h1, h2, h3, h4, div]
     visually_hide_heading:
       type: boolean
       title: Visually Hide Heading
-      # @todo Add examples here.
-      examples: [ ]
     text_overlay_position:
       type: string
       title: Text Overlay Position
-      # @todo Add examples here.
-      examples: [ ]
     space_below:
       type: string
       title: Space Below
-      # @todo Add examples here.
-      examples: [ ]
+    headline:
+      title: Headline
+      type: string
+    superhead:
+      title: Superhead
+      type: string
+    link_url:
+      title: Link URL
+      type: string
+    link_text:
+      title: Link Text
+      type: string
 slots:
   image:
     title: Image
-  headline:
-    title: Headline
-  superhead:
-    title: Superhead
-  body:
-    title: Body
-  link:
-    title: Link

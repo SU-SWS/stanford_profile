@@ -1,0 +1,10 @@
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ include("jemison:paragraph_page_title_banner", {
+    header_tag: "h1",
+    image: content.su_title_banner_image,
+    headline: page_title,
+    show_card: true
+  }, with_context = false) }}
+  {{ title_suffix }}
+</div>

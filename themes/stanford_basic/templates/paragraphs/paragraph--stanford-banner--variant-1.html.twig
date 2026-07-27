@@ -1,0 +1,14 @@
+{% set headline = paragraph.su_banner_header.value|default(null) %}
+{% set sup_header = paragraph.su_banner_sup_header.value|default(null) %}
+{% set banner_body = paragraph.su_banner_body.processed|default(null) %}
+{% set button_link = paragraph.su_banner_button.get(0).getUrl().toString()|default(null) %}
+{% set button_label = paragraph.su_banner_button.title|default(null) %}
+
+{% set heading_behavior = paragraph.getBehaviorSetting("hero_pattern", "heading", "h2")|split(".") %}
+
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ content.su_banner_image }}
+  {{ title_suffix }}
+</div>
+
