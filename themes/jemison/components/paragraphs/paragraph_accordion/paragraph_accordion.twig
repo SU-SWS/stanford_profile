@@ -1,8 +1,14 @@
-<div {{ attributes }}>
-  {% block question %}
-    {{ question }}
-  {% endblock %}
+<div{{ attributes }}>
+  <button class="accordion--title">
+    {% if heading_level %}
+      <{{ heading_tag }}>{{ question }}</{{ heading_tag }}>
+    {% else %}
+      {{ question }}
+    {% endif %}
+  </button>
   {% block answer %}
-    {{ answer }}
+    <div class="accordion--contents">
+      {{ answer }}
+    </div>
   {% endblock %}
 </div>

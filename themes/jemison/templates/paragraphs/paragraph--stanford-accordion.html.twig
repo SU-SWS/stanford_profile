@@ -1,0 +1,8 @@
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ include("jemison:paragraph_accordion", {
+    title: paragraph.su_accordion_title.value,
+    contents: content.su_accordion_body
+  }, with_context = false) }}
+  {{ title_suffix }}
+</div>

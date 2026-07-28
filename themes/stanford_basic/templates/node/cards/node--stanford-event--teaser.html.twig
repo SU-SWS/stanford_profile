@@ -1,0 +1,23 @@
+{% set start = node.su_event_date_time.get(0).value %}
+{% set end = node.su_event_date_time.get(0).end_value|default(start) %}
+
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ include("jumpstart_ui:event_list", {
+    header_tag: "h3",
+    start_month: start|date("M"),
+    start_date: start|date("j"),
+    end_month: end|date("M"),
+    end_date: end|date("j"),
+    event_type: content.su_event_type,
+    headline: node.label,
+    subheadline: node.su_event_subheadline.value,
+    dek: node.su_event_dek.value,
+    url: node.su_event_source.get(0).getUrl().toString() ?? url,
+    date_time: content.su_event_date_time,
+    location: node.su_event_alt_loc.value,
+    address: content.su_event_location
+  }, with_context = false) }}
+  {{ title_suffix }}
+</div>
+

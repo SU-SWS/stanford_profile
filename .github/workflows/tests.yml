@@ -38,7 +38,7 @@ jobs:
         run: |
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' --ssl=0 &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
-          ~/.config/composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage
+          ~/.config/composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --with-coverage --core-version=11.3
       - name: Save Test Results
         uses: actions/upload-artifact@v7
         if: failure()
@@ -106,7 +106,7 @@ jobs:
           n=${{ vars.TEST_SHARDS || 4 }} &&
           mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' --ssl=0 &&
           composer global require su-sws/stanford-caravan:11.x-dev &&
-          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=${{ matrix.suite }} --shard=${{ matrix.shard }}/$n &&
+          ~/.config/composer/vendor/bin/sws-caravan codeception /var/www/html --extension-dir=$GITHUB_WORKSPACE/project --suites=${{ matrix.suite }} --shard=${{ matrix.shard }}/$n --core-version=11.3 &&
           if [ ! -f /var/www/html/artifacts/${{ matrix.suite }}/results.html ]; then
               exit 1
           fi

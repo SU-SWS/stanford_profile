@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_display.node.stanford_event.default
     - core.entity_view_display.node.stanford_event_series.default
-    - core.entity_view_display.node.stanford_media.default
     - core.entity_view_display.node.stanford_news.default
     - core.entity_view_display.node.stanford_page.default
     - core.entity_view_display.node.stanford_person.default
@@ -21,17 +20,14 @@ dependencies:
     - file
     - filter
     - layout_builder
-    - ui_patterns_library
 id: layout_builder_user
 label: 'Layout Builder User'
 weight: 1
 is_admin: null
 permissions:
-  - 'access patterns page'
   - 'configure editable stanford_event node layout overrides'
   - 'configure editable stanford_event_series node layout overrides'
   - 'configure editable stanford_event_types taxonomy_term layout overrides'
-  - 'configure editable stanford_media node layout overrides'
   - 'configure editable stanford_news node layout overrides'
   - 'configure editable stanford_news_topics taxonomy_term layout overrides'
   - 'configure editable stanford_page node layout overrides'

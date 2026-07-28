@@ -27,6 +27,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_library
+    - link
     - text
     - user
 third_party_settings:
@@ -196,24 +197,94 @@ content:
     region: ds_content
   su_policy_authority:
     type: string
-    label: inline
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
     region: ds_content
+  su_policy_auto_prefix:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  su_policy_changelog:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  su_policy_chapter:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
   su_policy_effective:
     type: datetime_default
-    label: inline
+    label: hidden
     settings:
       timezone_override: ''
       format_type: stanford_month_date_year
     third_party_settings: {  }
     weight: 3
     region: ds_content
+  su_policy_policy_num:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  su_policy_related:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  su_policy_source:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  su_policy_subchapter:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  su_policy_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 12
+    region: content
   su_policy_updated:
     type: datetime_default
-    label: inline
+    label: hidden
     settings:
       timezone_override: ''
       format_type: stanford_month_date_year
@@ -230,11 +301,6 @@ hidden:
   layout_builder__layout: true
   links: true
   search_api_excerpt: true
-  su_policy_auto_prefix: true
-  su_policy_changelog: true
-  su_policy_chapter: true
-  su_policy_policy_num: true
-  su_policy_related: true
-  su_policy_source: true
-  su_policy_subchapter: true
-  su_policy_title: true
+  su_imported: true
+  su_metatags: true
+  su_shared_tags: true

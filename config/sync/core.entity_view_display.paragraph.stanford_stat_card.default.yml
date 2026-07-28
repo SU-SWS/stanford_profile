@@ -19,7 +19,7 @@ dependencies:
     - field.field.paragraph.stanford_stat_card.su_stat_superhead
     - paragraphs.paragraphs_type.stanford_stat_card
   module:
-    - ds
+    - color_field
     - element_class_formatter
     - empty_fields
     - field_formatter_class
@@ -29,43 +29,27 @@ dependencies:
     - stanford_fields
     - stanford_media
     - text
-third_party_settings:
-  ds:
-    layout:
-      id: pattern_stat_card
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        pattern:
-          field_templates: default
-    regions:
-      card_image:
-        - su_stat_image
-      card_icon:
-        - su_stat_icon
-      card_super_headline:
-        - su_stat_superhead
-      card_stat:
-        - su_stat_stat
-      card_headline:
-        - su_stat_headline
-      card_body:
-        - su_stat_body
-      card_link:
-        - su_stat_button
 id: paragraph.stanford_stat_card.default
 targetEntityType: paragraph
 bundle: stanford_stat_card
 mode: default
 content:
+  su_stat_bg_color:
+    type: color_field_formatter_text
+    label: hidden
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
   su_stat_body:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 5
-    region: card_body
+    region: content
   su_stat_button:
     type: link_class
     label: hidden
@@ -85,10 +69,20 @@ content:
         label_value: ''
         label_tag: ''
     weight: 6
-    region: card_link
+    region: content
+  su_stat_centered:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 10
+    region: content
   su_stat_heading_hide:
     type: boolean
-    label: above
+    label: hidden
     settings:
       format: default
       format_custom_false: ''
@@ -104,10 +98,10 @@ content:
       linked: false
     third_party_settings: {  }
     weight: 4
-    region: card_headline
+    region: content
   su_stat_headline_lvl:
     type: list_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 7
@@ -126,7 +120,16 @@ content:
         label_value: ''
         label_tag: ''
     weight: 1
-    region: card_icon
+    region: content
+  su_stat_icon_color:
+    type: color_field_formatter_text
+    label: hidden
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
   su_stat_image:
     type: media_responsive_image_formatter
     label: hidden
@@ -144,7 +147,14 @@ content:
         label_value: ''
         label_tag: ''
     weight: 0
-    region: card_image
+    region: content
+  su_stat_link_style:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
   su_stat_stat:
     type: string
     label: hidden
@@ -159,7 +169,16 @@ content:
         label_value: ''
         label_tag: ''
     weight: 3
-    region: card_stat
+    region: content
+  su_stat_stat_color:
+    type: color_field_formatter_text
+    label: hidden
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    weight: 13
+    region: content
   su_stat_superhead:
     type: string
     label: hidden
@@ -167,11 +186,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 2
-    region: card_super_headline
+    region: content
 hidden:
   search_api_excerpt: true
-  su_stat_bg_color: true
-  su_stat_centered: true
-  su_stat_icon_color: true
-  su_stat_link_style: true
-  su_stat_stat_color: true

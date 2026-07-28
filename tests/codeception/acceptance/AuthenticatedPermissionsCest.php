@@ -72,8 +72,6 @@ class AuthenticatedPermissionsCest {
     $I->canSeeResponseCodeIs(403);
     $I->amOnPage('/admin/reports/status');
     $I->canSeeResponseCodeIs(403);
-    $I->amOnPage('/admin/patterns');
-    $I->canSeeResponseCodeIs(403);
   }
 
   /**

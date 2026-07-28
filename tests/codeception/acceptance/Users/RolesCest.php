@@ -106,9 +106,6 @@ class RolesCest {
     // the admin toolbar.
     $I->amOnPage('/');
     $I->canSeeElement('#toolbar-administration');
-
-    $I->amOnPage('/admin/patterns');
-    $I->canSeeResponseCodeIs(200);
   }
 
   /**
@@ -176,9 +173,6 @@ class RolesCest {
     // the admin toolbar.
     $I->amOnPage('/');
     $I->canSeeElement('#toolbar-administration');
-
-    $I->amOnPage('/admin/patterns');
-    $I->canSeeResponseCodeIs(200);
   }
 
   /**

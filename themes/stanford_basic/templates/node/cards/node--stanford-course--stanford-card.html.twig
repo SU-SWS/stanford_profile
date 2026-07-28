@@ -1,0 +1,13 @@
+{% set code = node.su_course_subject.entity.name.value|default("") ~ " " ~ node.su_course_code.value|default("") %}
+
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ include("jumpstart_ui:course_vertical_teaser", {
+    header_tag: "h2",
+    code: code|trim,
+    academic_year: node.su_course_academic_year.value,
+    title: node.label,
+    url: node.su_course_link.get(0).getUrl().toString() ?? url
+  }, with_context = false) }}
+  {{ title_suffix }}
+</div>

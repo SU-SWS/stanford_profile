@@ -12,35 +12,13 @@ dependencies:
     - paragraphs.paragraphs_type.stanford_schedule
   module:
     - address
-    - ds
+    - empty_fields
     - entity_reference_revisions
     - field_formatter_class
+    - field_label
     - link
     - smart_date
     - text
-third_party_settings:
-  ds:
-    layout:
-      id: pattern_events_schedule
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        pattern:
-          field_templates: only_content
-    regions:
-      time:
-        - su_schedule_date_time
-      headline:
-        - su_schedule_headline
-      description:
-        - su_schedule_description
-      location:
-        - su_schedule_location
-      url:
-        - su_schedule_url
-      speakers:
-        - su_schedule_speaker
 id: paragraph.stanford_schedule.default
 targetEntityType: paragraph
 bundle: stanford_schedule
@@ -54,16 +32,27 @@ content:
       format_type: medium
       format: time_only_no_all_day
       force_chronological: false
+      add_classes: false
+      time_wrapper: true
+      localize: false
+      parts:
+        - start
+        - end
+      duration:
+        separator: ' | '
+        unit: ''
+        decimals: 2
+        suffix: h
     third_party_settings: {  }
     weight: 0
-    region: time
+    region: content
   su_schedule_description:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 2
-    region: description
+    region: content
   su_schedule_headline:
     type: string
     label: hidden
@@ -71,14 +60,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
-    region: headline
+    region: content
   su_schedule_location:
     type: address_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 3
-    region: location
+    region: content
   su_schedule_speaker:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -87,20 +76,25 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 5
-    region: speakers
+    region: content
   su_schedule_url:
-    type: link
+    type: link_separate
     label: hidden
     settings:
       trim_length: null
-      url_only: true
+      url_only: false
       url_plain: false
       rel: '0'
       target: '0'
     third_party_settings:
+      empty_fields:
+        handler: ''
       field_formatter_class:
         class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 4
-    region: url
+    region: content
 hidden:
   search_api_excerpt: true

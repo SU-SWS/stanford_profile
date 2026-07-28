@@ -1,0 +1,21 @@
+{% set opp_types = [] %}
+{% for type in node.su_opp_type %}
+  {% set opp_types = opp_types|merge([type.entity.name.value]) %}
+{% endfor %}
+
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ include("jumpstart_ui:card", {
+    header_tag: "h3",
+    image: content.su_opp_image,
+    super_headline: opp_types|join(", "),
+    headline: node.label,
+    headline_url: node.su_opp_source.get(0).getUrl().toString() ?? url,
+    body: [
+      content.su_opp_summary,
+      content.su_opp_card_footer,
+      content.su_opp_icon,
+    ],
+  }, with_context = false) }}
+  {{ title_suffix }}
+</div>

@@ -8,10 +8,6 @@
 {% set attributes = attributes.addClass(node_classes) %}
 {% set attributes = attributes.removeAttribute('role') %}
 
-{# Template Paths #}
-{%- if template_alert is empty -%}
-  {%- set template_alert = "@decanter/components/alert/alert.twig" -%}
-{%- endif -%}
 {# End Template Paths #}
 
 {% if page %}
@@ -24,12 +20,10 @@
     {% if node.publish_on and not node.publish_on.isEmpty %}
       {% set message =message ~ " The page is also scheduled to publish in the future." %}
     {% endif %}
-
-    {%- set data = {
-      'attributes': create_attribute({'class': 'su-alert su-alert--warning'}),
-      'alert_text': message|t,
-    } -%}
-    {%- include template_alert with data only -%}
+    {{ include("jumpstart_ui:alert", {
+      level: "warning",
+      message: message
+    }, with_context = false) }}
   {%- endif -%}
 
 {# Node in a list should be it's own article. #}

@@ -1,0 +1,40 @@
+{% set cell2 %}
+  <div class="flex-container">
+    <div class="flex-md-6-of-12 su-margin-bottom-1">
+      {{ content.su_local_foot_se_co }}
+    </div>
+    <div class="flex-md-6-of-12">
+      {{ content.su_local_foot_tr2_co }}
+    </div>
+  </div>
+{% endset %}
+
+{{ include("jumpstart_ui:localfooter", {
+  custom_lockup: not config_pages.su_local_foot_use_loc.value,
+  lockup_option: config_pages.su_local_foot_loc_op.value,
+  use_default_logo: config_pages.su_local_foot_use_logo.value,
+  cell1: content.su_local_foot_pr_co,
+  cell2: cell2,
+  cell3: content.su_local_foot_tr_co,
+  address: content.su_local_foot_address,
+  action_links: content.su_local_foot_action,
+  social_links: content.su_local_foot_social,
+  primary_links_header: config_pages.su_local_foot_prime_h.value,
+  primary_links: content.su_local_foot_primary,
+  secondary_links_header: config_pages.su_local_foot_second_h.value,
+  secondary_links: content.su_local_foot_second,
+  signup_form_content: content.su_local_foot_f_intro,
+  signup_form_action: config_pages.su_local_foot_f_url.value,
+  signup_form_method: config_pages.su_local_foot_f_method.value,
+  signup_form_field_submit_value: config_pages.su_local_foot_f_button.value,
+  weblogin_url: weblogin_url,
+  weblogin_text: config_pages.su_local_foot_sunet_t.value,
+  lockup_title: lockup_title,
+  site_logo: config_pages.su_local_foot_loc_img.value,
+  site_logo_alt: lockup_title,
+  line1: config_pages.su_local_foot_line_1.value,
+  line2: config_pages.su_local_foot_line_2.value,
+  line3: config_pages.su_local_foot_line_3.value,
+  line4: config_pages.su_local_foot_line_4.value,
+  line5: config_pages.su_local_foot_line_5.value,
+}, with_context = false) }}

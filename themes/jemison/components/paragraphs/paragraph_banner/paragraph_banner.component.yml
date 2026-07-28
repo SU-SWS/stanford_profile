@@ -1,0 +1,34 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Image Banner Paragraph
+status: stable
+props:
+  type: object
+  properties:
+    heading_level:
+      type: string
+      title: Heading Level
+      enum: [h1, h2, h3, h4, div]
+    visually_hide_heading:
+      type: boolean
+      title: Visually Hide Heading
+    text_overlay_position:
+      type: string
+      title: Text Overlay Position
+    space_below:
+      type: string
+      title: Space Below
+    headline:
+      title: Headline
+      type: string
+    superhead:
+      title: Superhead
+      type: string
+    link_url:
+      title: Link URL
+      type: string
+    link_text:
+      title: Link Text
+      type: string
+slots:
+  image:
+    title: Image

@@ -1,0 +1,22 @@
+{% set heading_behavior = paragraph.getBehaviorSetting("su_card_styles", "heading", "h2")|split(".") %}
+{% set link_style = paragraph.getBehaviorSetting("su_card_styles", "link_style", "button") %}
+
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ include("jumpstart_ui:card", {
+    header_tag: heading_behavior.0,
+    header_classes: heading_behavior|slice(1)|join(" "),
+    visually_hide_header: paragraph.getBehaviorSetting("su_card_styles", "hide_heading", false),
+    image: content.su_card_media,
+    headline: paragraph.su_card_header.value,
+    body: [
+      content.su_card_super_header,
+      content.su_card_body,
+    ],
+    link: paragraph.su_card_link.get(0).getUrl().toString(),
+    button_label: link_style != "action" ? content.su_card_link[0]['#title'] : null,
+    cta_label: link_style == "action" ? content.su_card_link[0]['#title'] : null,
+  }, with_context = false) }}
+  {{ title_suffix }}
+</div>
+

@@ -1,0 +1,12 @@
+{% set headline %}
+  <a href="{{ url }}">{{ node.label }}</a>
+{% endset %}
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ include("jumpstart_ui:card", {
+    header_tag: "h2",
+    headline: headline,
+    body: node.su_event_series_subheadline.value
+  }, with_context = false) }}
+  {{ title_suffix }}
+</div>

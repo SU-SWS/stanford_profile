@@ -7,23 +7,10 @@ dependencies:
     - field.field.paragraph.stanford_accordion.su_accordion_title
     - paragraphs.paragraphs_type.stanford_accordion
   module:
-    - ds
+    - empty_fields
+    - field_formatter_class
+    - field_label
     - text
-third_party_settings:
-  ds:
-    layout:
-      id: pattern_accordion
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        pattern:
-          field_templates: default
-    regions:
-      title:
-        - su_accordion_title
-      contents:
-        - su_accordion_body
 id: paragraph.stanford_accordion.default
 targetEntityType: paragraph
 bundle: stanford_accordion
@@ -35,14 +22,21 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
-    region: contents
+    region: content
   su_accordion_title:
     type: string
     label: hidden
     settings:
       link_to_entity: false
-    third_party_settings: {  }
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 0
-    region: title
+    region: content
 hidden:
   search_api_excerpt: true

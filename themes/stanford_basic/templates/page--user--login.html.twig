@@ -13,6 +13,6 @@
 
 {% block block_footer %}
 <footer id="footer">
-  {%- include template_global_footer -%}
+  {{ include("jumpstart_ui:global_footer", {}, with_context = false) }}
 </footer>
 {% endblock %}

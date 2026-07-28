@@ -3,19 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.citation.su_url
+    - core.entity_view_mode.node.teaser
     - field.storage.node.su_publication_citation
     - field.storage.node.su_publication_topics
     - node.type.stanford_publication
     - views.view.taxonomy_term_pages
   module:
     - graphql_compose_views
-    - link
     - node
     - stanford_fields
     - stanford_publication
     - taxonomy
-    - ui_patterns_views
     - user
     - views_infinite_scroll
     - views_taxonomy_term_name_depth
@@ -1323,126 +1321,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        view_node:
-          id: view_node
-          table: node
-          field: view_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-        su_url:
-          id: su_url
-          table: citation__su_url
-          field: su_url
-          relationship: su_publication_citation
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: true
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: '{{ view_node }}'
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: uri
-          type: link
-          settings:
-            trim_length: null
-            url_only: true
-            url_plain: true
-            rel: '0'
-            target: '0'
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         title:
           id: title
           table: node_field_data
@@ -1636,41 +1514,10 @@ display:
           wrapper_class: ''
           class: 'su-list-unstyled grid-container-3'
       row:
-        type: ui_patterns
+        type: 'entity:node'
         options:
-          default_field_elements: false
-          inline:
-            type: '0'
-            view_node: '0'
-            su_url: '0'
-            title: '0'
-            su_publication_topics_1: '0'
-            edit_node: '0'
-          separator: ''
-          hide_empty: false
-          pattern: card
-          pattern_variant: default
-          pattern_mapping:
-            'views_row:type':
-              plugin: views_row
-              source: type
-              destination: card_super_headline
-              weight: 0
-            'views_row:edit_node':
-              plugin: views_row
-              source: edit_node
-              destination: card_body
-              weight: 1
-            'views_row:title':
-              plugin: views_row
-              source: title
-              destination: card_headline
-              weight: 2
-            'views_row:su_publication_topics_1':
-              plugin: views_row
-              source: su_publication_topics_1
-              destination: card_body
-              weight: 3
+          relationship: none
+          view_mode: teaser
       defaults:
         title: false
         css_class: false
@@ -1704,7 +1551,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.citation.su_url'
         - 'config:field.storage.node.su_publication_topics'
   term_list_chicago:
     id: term_list_chicago

@@ -10,10 +10,12 @@ dependencies:
     - node.type.stanford_page
   module:
     - graphql_compose_views
+    - jumpstart_ui
     - node
     - paragraphs
     - stanford_fields
     - stanford_media
+    - ui_patterns
     - ui_patterns_views
     - user
     - views_taxonomy_term_name_depth
@@ -512,54 +514,55 @@ display:
       row:
         type: ui_patterns
         options:
-          default_field_elements: false
-          inline:
-            view_node: '0'
-            title: '0'
-            su_page_description: '0'
-            su_banner_image: '0'
-            su_page_image: '0'
-            edit_node: '0'
-          separator: ''
           hide_empty: false
-          pattern: basic-page-types-list
-          pattern_mapping:
-            'views_row:title':
-              plugin: views_row
-              source: title
-              destination: description
-              weight: 0
-            'views_row:su_page_description':
-              plugin: views_row
-              source: su_page_description
-              destination: description
-              weight: 1
-            'views_row:su_page_image':
-              plugin: views_row
-              source: su_page_image
-              destination: page_image
-              weight: 2
-            'views_row:edit_node':
-              plugin: views_row
-              source: edit_node
-              destination: footer
-              weight: 3
-          variants:
-            alert: default
-            brandbar: default
-            button: default
-            card: default
-            cta: default
-            date-stacked: default
-            hero: default
-            lockup: a
-            media: default
-            course_list: default
-            course_vertical_teaser: default
-            events_card: default
-            events_list: default
-            news-list: default
-            news-vertical-teaser: default
+          ui_patterns:
+            component_id: 'jumpstart_ui:basic_page_list'
+            variant_id: null
+            props:
+              attributes:
+                source_id: attributes
+                source:
+                  value: ''
+              title:
+                source_id: textfield
+                source:
+                  value: ''
+            slots:
+              category: {  }
+              description:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: title
+                    third_party_settings: ''
+                    _weight: 0
+                    node_id: ''
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_page_description
+                    third_party_settings: ''
+                    _weight: 1
+                    node_id: ''
+              page_image:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: su_page_image
+                    third_party_settings: ''
+                    _weight: 2
+                    node_id: ''
+              footer:
+                sources:
+                  -
+                    source_id: view_field
+                    source:
+                      ui_patterns_views_field: view_node
+                    third_party_settings: ''
+                    _weight: 3
+                    node_id: ''
       query:
         type: views_query
         options:

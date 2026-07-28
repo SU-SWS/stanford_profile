@@ -8,29 +8,12 @@ dependencies:
     - field.field.paragraph.stanford_media_caption.su_media_caption_media
     - paragraphs.paragraphs_type.stanford_media_caption
   module:
-    - ds
+    - empty_fields
     - field_formatter_class
+    - field_label
     - link
     - stanford_media
     - text
-third_party_settings:
-  ds:
-    layout:
-      id: pattern_media
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        pattern:
-          field_templates: only_content
-          variant: default
-    regions:
-      media_caption:
-        - su_media_caption_caption
-      media_link:
-        - su_media_caption_link
-      media_custom:
-        - su_media_caption_media
 id: paragraph.stanford_media_caption.default
 targetEntityType: paragraph
 bundle: stanford_media_caption
@@ -40,9 +23,16 @@ content:
     type: text_default
     label: hidden
     settings: {  }
-    third_party_settings: {  }
-    weight: 0
-    region: media_caption
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
+    weight: 2
+    region: content
   su_media_caption_link:
     type: link
     label: hidden
@@ -56,7 +46,7 @@ content:
       field_formatter_class:
         class: ''
     weight: 1
-    region: media_link
+    region: content
   su_media_caption_media:
     type: media_multimedia_formatter
     label: hidden
@@ -76,7 +66,7 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    weight: 2
-    region: media_custom
+    weight: 0
+    region: content
 hidden:
   search_api_excerpt: true
