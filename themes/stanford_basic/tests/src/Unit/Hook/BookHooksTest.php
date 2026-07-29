@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\stanford_basic\Unit\Hook;
 
+use Drupal\Core\Cache\Context\CacheContextsManager;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\GeneratedUrl;
 use Drupal\Core\PathProcessor\OutboundPathProcessorInterface;
@@ -158,8 +159,21 @@ class BookHooksTest extends UnitTestCase {
 
     $urlGenerator = new UrlGenerator($provider, $pathProcessor, $routeProcessor, $requestStack);
 
+    // RouteProcessorCurrent::processOutbound() adds the 'route' cache
+    // context via addCacheContexts(), which calls Cache::mergeContexts().
+    // That method validates tokens inside a PHP assert() — whether this
+    // actually executes depends on the runtime zend.assertions ini setting,
+    // which varies by environment. Register a real cache_contexts_manager
+    // mock so the container has the service either way, rather than relying
+    // on assertions being stripped.
+    $cacheContextsManager = $this->getMockBuilder(CacheContextsManager::class)
+      ->disableOriginalConstructor()
+      ->getMock();
+    $cacheContextsManager->method('assertValidTokens')->willReturn(TRUE);
+
     $container = new ContainerBuilder();
     $container->set('url_generator', $urlGenerator);
+    $container->set('cache_contexts_manager', $cacheContextsManager);
     \Drupal::setContainer($container);
   }
 
