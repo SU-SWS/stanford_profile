@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\stanford_profile\Unit\Hook;
 
-use Drupal\config_pages\ConfigPagesInterface;
+use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Routing\RouteBuilderInterface;
+use Drupal\config_pages\ConfigPagesInterface;
 use Drupal\stanford_profile\Hook\InstallHooks;
 use Drupal\stanford_profile\InstallTaskManager;
 use Drupal\Tests\UnitTestCase;
@@ -27,27 +28,11 @@ class InstallHooksTest extends UnitTestCase {
   protected InstallHooks $hooks;
 
   /**
-   * The mocked install task manager.
-   *
-   * @var \Drupal\stanford_profile\InstallTaskManager|\PHPUnit\Framework\MockObject\MockObject
-   */
-  protected InstallTaskManager $installTaskManager;
-
-  /**
-   * The mocked route builder.
-   *
-   * @var \Drupal\Core\Routing\RouteBuilderInterface|\PHPUnit\Framework\MockObject\MockObject
-   */
-  protected RouteBuilderInterface $routeBuilder;
-
-  /**
    * {@inheritDoc}
    */
   protected function setUp(): void {
     parent::setUp();
-    $this->installTaskManager = $this->createMock(InstallTaskManager::class);
-    $this->routeBuilder = $this->createMock(RouteBuilderInterface::class);
-    $this->hooks = new InstallHooks($this->installTaskManager, $this->routeBuilder);
+    $this->hooks = new InstallHooks();
   }
 
   /**
@@ -62,12 +47,17 @@ class InstallHooksTest extends UnitTestCase {
    * finalTask() delegates to the install_tasks plugin manager's runTasks().
    */
   public function testFinalTaskRunsInstallTasks(): void {
-    $install_state = ['parameters' => ['profile' => 'stanford_profile']];
-    $this->installTaskManager->expects($this->once())
+    $installTaskManager = $this->createMock(InstallTaskManager::class);
+    $installTaskManager->expects($this->once())
       ->method('runTasks')
-      ->with($install_state);
+      ->with(['parameters' => ['profile' => 'stanford_profile']]);
 
-    $this->hooks->finalTask($install_state);
+    $container = new ContainerBuilder();
+    $container->set('plugin.manager.install_tasks', $installTaskManager);
+    \Drupal::setContainer($container);
+
+    $install_state = ['parameters' => ['profile' => 'stanford_profile']];
+    InstallHooks::finalTask($install_state);
   }
 
   /**
@@ -75,7 +65,13 @@ class InstallHooksTest extends UnitTestCase {
    */
   public function testConfigPagesPresaveSkipsRebuildWhenNotInstalling(): void {
     unset($GLOBALS['install_state']);
-    $this->routeBuilder->expects($this->never())->method('rebuild');
+
+    $routeBuilder = $this->createMock(RouteBuilderInterface::class);
+    $routeBuilder->expects($this->never())->method('rebuild');
+
+    $container = new ContainerBuilder();
+    $container->set('router.builder', $routeBuilder);
+    \Drupal::setContainer($container);
 
     $configPage = $this->createMock(ConfigPagesInterface::class);
     $this->hooks->configPagesPresave($configPage);
@@ -87,7 +83,13 @@ class InstallHooksTest extends UnitTestCase {
    */
   public function testConfigPagesPresaveSkipsRebuildWhenInstallationFinished(): void {
     $GLOBALS['install_state'] = ['installation_finished' => TRUE];
-    $this->routeBuilder->expects($this->never())->method('rebuild');
+
+    $routeBuilder = $this->createMock(RouteBuilderInterface::class);
+    $routeBuilder->expects($this->never())->method('rebuild');
+
+    $container = new ContainerBuilder();
+    $container->set('router.builder', $routeBuilder);
+    \Drupal::setContainer($container);
 
     $configPage = $this->createMock(ConfigPagesInterface::class);
     $this->hooks->configPagesPresave($configPage);
@@ -99,7 +101,13 @@ class InstallHooksTest extends UnitTestCase {
    */
   public function testConfigPagesPresaveRebuildsRouterWhenInstalling(): void {
     $GLOBALS['install_state'] = ['installation_finished' => FALSE];
-    $this->routeBuilder->expects($this->once())->method('rebuild');
+
+    $routeBuilder = $this->createMock(RouteBuilderInterface::class);
+    $routeBuilder->expects($this->once())->method('rebuild');
+
+    $container = new ContainerBuilder();
+    $container->set('router.builder', $routeBuilder);
+    \Drupal::setContainer($container);
 
     $configPage = $this->createMock(ConfigPagesInterface::class);
     $this->hooks->configPagesPresave($configPage);
