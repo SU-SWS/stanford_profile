@@ -8,7 +8,7 @@
     dek: content.su_opp_summary,
     topics: content.su_opp_type,
     footer: node.su_opp_card_footer.value,
-    url: node.su_opp_source.get(0).getUrl().toString() ?? url
+    url: node.su_opp_source.get(0).getUrl().toString() ?: url
   }, with_context = false) }}
   {{ title_suffix }}
 </div>
