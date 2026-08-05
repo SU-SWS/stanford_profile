@@ -73,6 +73,9 @@ class SearchBlockCest {
     $I->amOnPage($node->toUrl('edit-form')->toString());
     $I->click('Save');
 
+    $I->runDrush('sapi-r full_site_content');
+    $I->runDrush('sapi-i full_site_content');
+
     $I->amOnPage('/search');
     $I->fillField('Keyword Search', $search_keys);
     $I->click('Search', '#views-exposed-form-search-results');
