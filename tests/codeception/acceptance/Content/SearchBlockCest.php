@@ -55,4 +55,38 @@ class SearchBlockCest {
     $I->seeElement('.su-site-search__input');
   }
 
+  /**
+   * A page excluded from search indexes should not appear in search results.
+   */
+  #[CodeceptionAttribute\Group('search-results')]
+  public function testExcludeFromSearchResults(AcceptanceTester $I) {
+    $body_text = $this->faker->unique()->sentence(10);
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+      'body' => ['value' => $body_text, 'format' => 'stanford_html']
+    ]);
+
+    $search_keys = implode(' ', array_slice(explode(' ', $body_text), 0, 4));
+
+    $I->logInWithRole('site_manager');
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->click('Save');
+
+    $I->amOnPage('/search');
+    $I->fillField('Keyword Search', $search_keys);
+    $I->click('Search', '#views-exposed-form-search-results');
+    $I->canSee($node->label());
+
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->checkOption('Yes, exclude this entity from the search indexes.');
+    $I->click('Save');
+    $I->canSee($node->label(), 'h1');
+
+    $I->amOnPage('/search');
+    $I->fillField('Keyword Search', $search_keys);
+    $I->click('Search', '#views-exposed-form-search-results');
+    $I->cantSee($node->label());
+  }
+
 }
