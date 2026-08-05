@@ -10,7 +10,7 @@
     image: content.su_opp_image,
     super_headline: opp_types|join(", "),
     headline: node.label,
-    headline_url: node.su_opp_source.get(0).getUrl().toString() ?? url,
+    headline_url: node.su_opp_source.get(0).getUrl().toString() ?: url,
     body: [
       content.su_opp_summary,
       content.su_opp_card_footer,

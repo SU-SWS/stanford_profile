@@ -1,9 +1,9 @@
 
-{% set headline = paragraph.su_banner_header.value|default(null) %}
-{% set sup_header = paragraph.su_banner_sup_header.value|default(null) %}
-{% set banner_body = paragraph.su_banner_body.processed|default(null) %}
-{% set button_link = paragraph.su_banner_button.get(0).getUrl().toString()|default(null) %}
-{% set button_label = paragraph.su_banner_button.title|default(null) %}
+{% set headline = paragraph.su_banner_header.value|default("")|trim %}
+{% set sup_header = paragraph.su_banner_sup_header.value|default("")|trim %}
+{% set banner_body = paragraph.su_banner_body.processed|default("")|trim %}
+{% set button_link = paragraph.su_banner_button.get(0).getUrl().toString()|default("")|trim %}
+{% set button_label = paragraph.su_banner_button.title|default("")|trim %}
 
 {% set heading_behavior = paragraph.getBehaviorSetting("hero_pattern", "heading", "h2")|split(".") %}
 

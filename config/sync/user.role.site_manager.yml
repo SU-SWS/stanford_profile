@@ -61,6 +61,7 @@ dependencies:
     - redirect
     - role_delegation
     - scheduler
+    - search_api_exclude_entity
     - stanford_migrate
     - stanford_policy
     - stanford_profile
@@ -126,6 +127,7 @@ permissions:
   - 'create stanford_person content'
   - 'create stanford_policy content'
   - 'create stanford_publication content'
+  - 'create su_metatags'
   - 'create terms in basic_page_types'
   - 'create terms in course_filters'
   - 'create terms in event_audience'
@@ -245,8 +247,10 @@ permissions:
   - 'edit own stanford_person content'
   - 'edit own stanford_policy content'
   - 'edit own stanford_publication content'
+  - 'edit own su_metatags'
   - 'edit own video media'
   - 'edit policy log'
+  - 'edit search api exclude entity'
   - 'edit stanford_basic_site_settings config page entity'
   - 'edit stanford_courses_importer config page entity'
   - 'edit stanford_events_importer config page entity'
@@ -255,6 +259,7 @@ permissions:
   - 'edit stanford_person_importer config page entity'
   - 'edit stanford_saml config page entity'
   - 'edit stanford_super_footer config page entity'
+  - 'edit su_metatags'
   - 'edit terms in basic_page_types'
   - 'edit terms in course_filters'
   - 'edit terms in event_audience'

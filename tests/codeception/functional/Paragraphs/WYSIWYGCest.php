@@ -246,7 +246,7 @@ class WYSIWYGCest {
     $I->click('Add');
 
     $I->waitForText('The media item has been created but has not yet been saved');
-    $I->fillField('Name', 'Test Youtube Video');
+    $I->fillField('[name="media[0][fields][name][0][value]"]', 'Test Youtube Video');
     $I->click('//button[contains(text(), "Save and insert")]');
     $I->waitForElementNotVisible('.media-library-widget-modal');
     $I->wait(1);

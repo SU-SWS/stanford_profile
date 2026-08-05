@@ -29,7 +29,7 @@ class HomePageCest {
     $I->amOnPage('/');
     $I->canSee('Stanford');
     $I->click('Edit', '.tabs');
-    $I->cantSee('Published', 'label');
+    $I->cantSee('Published', '.field--name-status label');
   }
 
 }

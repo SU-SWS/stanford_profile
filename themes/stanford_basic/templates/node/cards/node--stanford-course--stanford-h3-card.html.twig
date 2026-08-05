@@ -7,7 +7,7 @@
     code: code|trim,
     academic_year: node.su_course_academic_year.value,
     title: node.label,
-    url: node.su_course_link.get(0).getUrl().toString() ?? url
+    url: node.su_course_link.get(0).getUrl().toString() ?: url
   }, with_context = false) }}
   {{ title_suffix }}
 </div>

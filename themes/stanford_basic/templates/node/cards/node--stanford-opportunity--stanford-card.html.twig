@@ -6,7 +6,7 @@
     image: content.su_opp_image,
     super_headline: node.su_opp_sponsor.value,
     headline: node.label,
-    headline_url: node.su_opp_source.get(0).getUrl().toString() ?? url,
+    headline_url: node.su_opp_source.get(0).getUrl().toString() ?: url,
     body: [
       content.su_opp_type,
       content.su_opp_summary,

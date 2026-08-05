@@ -16,8 +16,6 @@ use PHPUnit\Framework\Attributes\Group;
  *
  * Only the two new, in-scope methods are covered here:
  * preprocessParagraph() and preprocessParagraphStanfordSpacer().
- * preprocessParagraphStanfordPageTitleBanner() is pre-existing code marked
- * with @codeCoverageIgnore and is intentionally out of scope.
  */
 #[Group('stanford_basic')]
 #[CoversMethod(StanfordBasicParagraphHooks::class, 'preprocessParagraph')]
