@@ -1,15 +1,84 @@
-entity_type_groups: {  }
+entity_type_groups:
+  node:
+    stanford_course:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_course: schema_course
+    stanford_event:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_event: schema_event
+    stanford_event_series:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+    stanford_media:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_movie: schema_movie
+    stanford_news:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_article: schema_article
+    stanford_opportunity:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_course: schema_course
+      schema_event: schema_event
+      schema_job_posting: schema_job_posting
+    stanford_page:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      site_verification: site_verification
+      schema_organization: schema_organization
+      schema_person: schema_person
+      schema_web_page: schema_web_page
+      schema_web_site: schema_web_site
+    stanford_person:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_person: schema_person
+    stanford_policy:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_organization: schema_organization
+      schema_web_page: schema_web_page
+    stanford_publication:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_article: schema_article
+      schema_book: schema_book
+separator: ','
 tag_trim_method: beforeValue
+use_maxlength: true
 tag_trim_maxlength:
-  metatag_maxlength_description: null
   metatag_maxlength_title: null
+  metatag_maxlength_description: null
   metatag_maxlength_abstract: null
   metatag_maxlength_og_site_name: null
-  metatag_maxlength_og_description: null
   metatag_maxlength_og_title: null
-  metatag_maxlength_twitter_cards_label1: null
+  metatag_maxlength_og_description: null
   metatag_maxlength_twitter_cards_description: null
-  metatag_maxlength_twitter_cards_label2: null
   metatag_maxlength_twitter_cards_title: null
 tag_scroll_max_height: ''
 tag_trim_end: '|.,-:;/+&([{"'''
+trim_suffix: ''

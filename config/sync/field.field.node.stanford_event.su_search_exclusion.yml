@@ -1,0 +1,21 @@
+uuid: 62071296-4f47-4d2f-8915-3d146f98e137
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_search_exclusion
+    - node.type.stanford_event
+  module:
+    - search_api_exclude_entity
+id: node.stanford_event.su_search_exclusion
+field_name: su_search_exclusion
+entity_type: node
+bundle: stanford_event
+label: 'Exclude from Search'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: search_api_exclude_entity

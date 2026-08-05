@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.stanford_course.su_course_tags
     - field.field.node.stanford_course.su_imported
     - field.field.node.stanford_course.su_metatags
+    - field.field.node.stanford_course.su_search_exclusion
     - field.field.node.stanford_course.su_shared_tags
     - node.type.stanford_course
   module:
@@ -23,6 +24,7 @@ dependencies:
     - link
     - metatag
     - path
+    - search_api_exclude_entity
     - stanford_fields
     - text
 _core:
@@ -144,6 +146,14 @@ content:
     settings:
       sidebar: true
       use_details: true
+    third_party_settings: {  }
+  su_search_exclusion:
+    type: search_api_exclude_entity_widget
+    weight: 27
+    region: content
+    settings:
+      field_label: 'Yes, exclude this entity from the search indexes.'
+      use_details_container: true
     third_party_settings: {  }
   su_shared_tags:
     type: cshs

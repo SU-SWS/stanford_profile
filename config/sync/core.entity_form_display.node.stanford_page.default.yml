@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.stanford_page.su_page_components
     - field.field.node.stanford_page.su_page_description
     - field.field.node.stanford_page.su_page_image
+    - field.field.node.stanford_page.su_search_exclusion
     - field.field.node.stanford_page.su_shared_tags
     - node.type.stanford_page
   module:
@@ -29,6 +30,7 @@ dependencies:
     - paragraphs
     - path
     - scheduler
+    - search_api_exclude_entity
     - stanford_intranet
     - stanford_profile_helper
     - text
@@ -203,6 +205,14 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  su_search_exclusion:
+    type: search_api_exclude_entity_widget
+    weight: 27
+    region: content
+    settings:
+      field_label: 'Yes, exclude this entity from the search indexes.'
+      use_details_container: true
     third_party_settings: {  }
   su_shared_tags:
     type: cshs

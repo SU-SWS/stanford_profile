@@ -1,0 +1,21 @@
+uuid: b4beea85-39c4-4a20-a4db-b10e3aa189ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_search_exclusion
+    - node.type.stanford_course
+  module:
+    - search_api_exclude_entity
+id: node.stanford_course.su_search_exclusion
+field_name: su_search_exclusion
+entity_type: node
+bundle: stanford_course
+label: 'Exclude from Search'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: search_api_exclude_entity

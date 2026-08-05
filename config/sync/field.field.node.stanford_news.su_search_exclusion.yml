@@ -1,0 +1,21 @@
+uuid: 137c32df-b51a-4838-8790-cff2b657cde6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_search_exclusion
+    - node.type.stanford_news
+  module:
+    - search_api_exclude_entity
+id: node.stanford_news.su_search_exclusion
+field_name: su_search_exclusion
+entity_type: node
+bundle: stanford_news
+label: 'Exclude from Search'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: search_api_exclude_entity

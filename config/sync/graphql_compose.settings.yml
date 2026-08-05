@@ -127,10 +127,18 @@ entity_config:
     tiny_blur:
       enabled: true
   layout:
+    left_anchor_nav:
+      enabled: false
+    left_anchor_no_nav:
+      enabled: false
     news_spotlight:
       enabled: true
     stanford_basic_page_full:
       enabled: true
+    top_anchor_nav:
+      enabled: false
+    top_anchor_nav_full_width:
+      enabled: false
   media:
     embeddable:
       enabled: true
@@ -666,6 +674,8 @@ field_config:
         enabled: true
       su_event_keywords:
         enabled: true
+      su_event_localist_id:
+        enabled: true
       su_event_location:
         enabled: true
       su_event_map_link:
@@ -684,8 +694,6 @@ field_config:
         enabled: true
       su_event_type:
         enabled: true
-      su_event_localist_id:
-        enabled: true
     stanford_event_series:
       su_event_series_components:
         enabled: true
@@ -701,6 +709,8 @@ field_config:
       body:
         enabled: true
       su_media_audio_video:
+        enabled: true
+      su_media_category:
         enabled: true
       su_media_date:
         enabled: true
@@ -722,13 +732,11 @@ field_config:
         enabled: true
       su_media_source:
         enabled: true
+      su_media_subtitles:
+        enabled: true
       su_media_transcript:
         enabled: true
       su_media_types:
-        enabled: true
-      su_media_category:
-        enabled: true
-      su_media_subtitles:
         enabled: true
     stanford_news:
       body:
