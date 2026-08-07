@@ -156,12 +156,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 53
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   scheduler_settings:
     weight: 50
     region: content
@@ -417,6 +411,12 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 53
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
