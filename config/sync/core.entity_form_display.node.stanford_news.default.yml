@@ -578,10 +578,15 @@ content:
       placeholder: ''
     third_party_settings:
       conditional_fields: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   promote: true
   sticky: true
   uid: true
-  unpublish_on: true
   url_redirects: true

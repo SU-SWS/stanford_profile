@@ -412,6 +412,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 53
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   layout_builder__layout: true
@@ -422,5 +428,4 @@ hidden:
   su_event_localist_id: true
   su_imported: true
   uid: true
-  unpublish_on: true
   url_redirects: true
