@@ -113,4 +113,35 @@ class MediaCest {
     $I->canSeeLink($mediaNode->label(), $mediaNode->toUrl()->toString());
   }
 
+  /**
+   * Test adding SDR to wysiwyg.
+   */
+  public function testAddSdrMedia(FunctionalTester $I) {
+    $node = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(2, TRUE),
+    ]);
+    $I->logInWithRole('site_manager');
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+
+    $I->amOnPage($node->toUrl('edit-form')->toString());
+    $I->waitForElement('[data-cke-tooltip-text="Insert Media"]');
+    $I->click('Insert Media');
+
+    $I->waitForText('Stanford Digital Repository', 10, '.media-library-menu');
+    $I->click('Stanford Digital Repository', '.media-library-menu');
+    $I->waitForText('oEmbed URL', 10, '.media-library-add-form');
+    $I->fillField('oEmbed URL', 'https://purl.stanford.edu/cd436vr6503');
+    $I->click('Add');
+    $I->waitForText('The media item has been created but has not yet been saved');
+    $I->click('//button[contains(text(), "Save and insert")]');
+
+    $I->waitForElementNotVisible('.media-library-add-form');
+    $I->click('Save');
+
+    $I->canSee($node->label(), 'h1');
+    $I->canSeeElement('iframe[src*="cd436vr6503"]');
+  }
+
 }

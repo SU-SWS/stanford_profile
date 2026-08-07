@@ -1,0 +1,19 @@
+uuid: ebe7e487-aa33-4aab-95b3-1f3c67a5265c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_embeddable_oembed
+    - media.type.sdr
+id: media.sdr.field_media_embeddable_oembed
+field_name: field_media_embeddable_oembed
+entity_type: media
+bundle: sdr
+label: 'Stanford Embedded Media URL'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

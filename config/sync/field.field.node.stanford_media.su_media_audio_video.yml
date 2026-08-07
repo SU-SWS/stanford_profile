@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.su_media_audio_video
     - media.type.embeddable
+    - media.type.sdr
     - media.type.video
     - node.type.stanford_media
 id: node.stanford_media.su_media_audio_video
@@ -22,6 +23,7 @@ settings:
   handler_settings:
     target_bundles:
       embeddable: embeddable
+      sdr: sdr
       video: video
     sort:
       field: _none

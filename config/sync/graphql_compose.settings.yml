@@ -152,6 +152,9 @@ entity_config:
     image:
       enabled: true
       query_load_enabled: true
+    sdr:
+      enabled: true
+      query_load_enabled: true
     stanford_gallery_images:
       enabled: true
       query_load_enabled: true
@@ -612,6 +615,9 @@ field_config:
         enabled: true
     image:
       field_media_image:
+        enabled: true
+    sdr:
+      field_media_embeddable_oembed:
         enabled: true
     stanford_gallery_images:
       su_gallery_caption:
