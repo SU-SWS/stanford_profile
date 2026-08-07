@@ -8,6 +8,7 @@ use Drupal\Core\Extension\ThemeSettingsProvider;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\Core\Site\Settings;
 
 class PageAttachmentHooks {
 
@@ -24,6 +25,9 @@ class PageAttachmentHooks {
    */
   #[Hook('page_attachments_alter')]
   public function pageAttachmentsAlter(array &$attachments): void {
+    if (Settings::get('stanford_profile_hotfix_styles')) {
+      $attachments['#attached']['library'][] = 'stanford_basic/hotfix';
+    }
     if ($this->currentUser->isAuthenticated()) {
       $attachments['#attached']['library'][] = 'stanford_basic/admin';
     }
