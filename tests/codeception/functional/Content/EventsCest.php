@@ -87,7 +87,6 @@ class EventsCest {
     }
   }
 
-
   public function testContentType(FunctionalTester $I) {
     [
       $parent_1,
@@ -102,8 +101,8 @@ class EventsCest {
       'type' => 'stanford_event',
       'title' => $this->faker->words(3, TRUE),
       'su_event_date_time' => [
-        'value' => time(),
-        'end_value' => time(),
+        'value' => time() + 60 * 60,
+        'end_value' => time() + 60 * 60,
       ],
     ]);
 
@@ -125,11 +124,39 @@ class EventsCest {
     $I->selectOption("#$parent_2_id select.simpler-select", $child_2_1->label());
 
     $I->waitForElementVisible("#$parent_2_id [class*='--level-1'] select.simpler-select");
-    $I->selectOption("#$parent_2_id [class*='--level-1'] select.simpler-select", $child_2_2->label());
 
     $I->click('Save');
     $I->canSeeInCurrentUrl($node->toUrl()->toString());
     $I->canSee($node->label(), 'h1');
+
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_filtered_lists',
+      'su_list_headline' => $this->faker->words(3, TRUE),
+      'su_filtered_list_view' => [
+        'target_id' => 'stanford_events_filtered',
+        'display_id' => 'list',
+        'arguments' => '',
+        'items_to_display' => NULL,
+      ],
+    ], 'paragraph');
+    $page = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ]);
+    $I->amOnPage($page->toUrl()->toString());
+    $I->canSee($node->label(), 'h3');
+
+    $I->checkOption('-' . $child_2_2->label());
+    $I->waitForText('No events available');
+    $I->cantSee($node->label());
+
+    $I->checkOption($child_2_1->label());
+    $I->waitForText($node->label());
+    $I->canSee($node->label(), 'h3');
   }
 
   protected function buildTaxonomyTerms(FunctionalTester $I) {
