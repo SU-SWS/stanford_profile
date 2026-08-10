@@ -30,7 +30,7 @@
   weblogin_url: weblogin_url,
   weblogin_text: config_pages.su_local_foot_sunet_t.value,
   lockup_title: lockup_title,
-  site_logo: config_pages.su_local_foot_loc_img.value,
+  site_logo: file_url(config_pages.su_local_foot_loc_img.get(0).entity.uri.value),
   site_logo_alt: lockup_title,
   line1: config_pages.su_local_foot_line_1.value,
   line2: config_pages.su_local_foot_line_2.value,
