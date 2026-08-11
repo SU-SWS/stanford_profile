@@ -1,11 +1,15 @@
 
+{% if node.su_policy_updated|length %}
+  {% set dek = "Last Updated " ~ node.su_policy_updated.value|date("F j, Y") %}
+{% endif %}
 <div{{ attributes }}>
   {{ title_prefix }}
-  {{ include("jumpstart_ui:card", {
-    header_tag: "h3",
+  {{ include("jumpstart_ui:news_list", {
+    header_tag: "h2",
     headline: node.label,
-    headline_url: node.su_policy_source.get(0).getUrl().toString() ?: url,
-    body: content.body
+    url: node.su_policy_source.get(0).getUrl().toString() ?: url,
+    dek: dek,
+    footer: content.body
   }, with_context = false) }}
   {{ title_suffix }}
 </div>
