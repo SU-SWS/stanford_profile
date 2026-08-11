@@ -9,6 +9,35 @@
  */
 function minimally_branded_subtheme_preprocess_html(&$variables) {
   $variables['stanford_basic_path'] = \Drupal::service('extension.list.theme')->getPath('stanford_basic');
+
+  // Add variant classes to the HTML element for global application.
+  // Color scheme variant.
+  if ($color_scheme_variant = theme_get_setting('color_scheme_variant')) {
+    if ($color_scheme_variant !== 'default') {
+      $variables['attributes']['class'][] = 'minimal-theme--color-scheme-' . $color_scheme_variant;
+    }
+  }
+
+  // Layout variant.
+  if ($layout_variant = theme_get_setting('layout_variant')) {
+    if ($layout_variant !== 'default') {
+      $variables['attributes']['class'][] = 'minimal-theme--layout-' . $layout_variant;
+    }
+  }
+
+  // Typography variant.
+  if ($typography_variant = theme_get_setting('typography_variant')) {
+    if ($typography_variant !== 'default') {
+      $variables['attributes']['class'][] = 'minimal-theme--typography-' . $typography_variant;
+    }
+  }
+
+  // Button variant.
+  if ($button_variant = theme_get_setting('button_variant')) {
+    if ($button_variant !== 'default') {
+      $variables['attributes']['class'][] = 'minimal-theme--button-' . $button_variant;
+    }
+  }
 }
 
 /**
@@ -18,4 +47,12 @@ function minimally_branded_subtheme_theme_suggestions_block_alter(array &$sugges
   if (!empty($variables['elements']['#id']) && $variables['elements']['#id'] == 'minimally_branded_subtheme_search') {
     $suggestions[] = 'block__stanford_basic_search';
   }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function minimally_branded_subtheme_preprocess_page(&$vars) {
+  // Variants are applied to the HTML element for global application.
+  // Add any page-specific variant handling here if needed.
 }
