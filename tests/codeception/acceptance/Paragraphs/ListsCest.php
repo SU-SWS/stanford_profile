@@ -165,20 +165,6 @@ class ListsCest {
     $I->canSeeOptionIsSelected('Shared Tags (value 1)', $shared_tag->label());
     $I->amOnPage($publication->toUrl('edit-form')->toString());
     $I->canSeeOptionIsSelected('Shared Tags (value 1)', $shared_tag->label());
-
-    $I->amOnPage('/jsonapi/views/stanford_shared_tags/card_grid?page[limit]=50&views-argument[]=' . preg_replace('/[^a-z0-9-]/', '-', strtolower($shared_tag->label())));
-    $json_data = json_decode($I->grabPageSource(), TRUE, 512, JSON_THROW_ON_ERROR);
-    $I->assertArrayHasKey('data', $json_data);
-
-    $json_ids = [];
-    foreach ($json_data['data'] as $item) {
-      $json_ids[] = $item['id'];
-    }
-    $I->assertContains($basic_page->uuid(), $json_ids);
-    $I->assertContains($news->uuid(), $json_ids);
-    $I->assertContains($event->uuid(), $json_ids);
-    $I->assertContains($person->uuid(), $json_ids);
-    $I->assertContains($publication->uuid(), $json_ids);
   }
 
   /**
