@@ -19,6 +19,7 @@
   {{ title_prefix }}
   {{ include("jumpstart_ui:news_vertical_teaser", {
     header_tag: "h3",
+    is_spotlight: is_spotlight,
     image: content.su_news_featured_media,
     headline: node.label,
     date: content.su_news_publishing_date,
