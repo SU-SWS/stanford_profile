@@ -1,20 +1,26 @@
 {% set heading %}
   <h2 class="su-card__link">
-    <a href="{{ node.su_media_source.get(0).getUrl().toString() ?: url }}">{{ node.label }}</a>
+    <a
+      href="{{ node.su_media_source.get(0).getUrl().toString() ?: url }}">{{ node.label }}</a>
   </h2>
 {% endset %}
+
+{% set body %}
+  <div>
+    {{ content.su_media_dek }}
+    {{ content.su_media_date }}
+    {{ content.su_media_season }}
+    {{ content.su_media_category }}
+  </div>
+{% endset %}
+
 <div{{ attributes }}>
   {{ title_prefix }}
   {{ include("jumpstart_ui:container_responsive_card", {
     header_tag: "h2",
     image: content.su_media_image,
     heading: heading,
-    body: [
-      content.su_media_date,
-      content.su_media_dek,
-      content.su_media_series,
-      content.su_media_category,
-    ]
+    body: body
   }, with_context = false) }}
   {{ title_suffix }}
 </div>
