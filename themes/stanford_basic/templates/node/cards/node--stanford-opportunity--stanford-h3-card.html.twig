@@ -8,6 +8,7 @@
   {{ include("jumpstart_ui:card", {
     header_tag: "h3",
     image: content.su_opp_image,
+    header_classes: "su-link--action",
     super_headline: opp_types|join(", "),
     headline: node.label,
     headline_url: node.su_opp_source.get(0).getUrl().toString() ?: url,
