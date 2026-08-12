@@ -15,11 +15,15 @@ dependencies:
     - field.field.node.stanford_page.su_page_components
     - field.field.node.stanford_page.su_page_description
     - field.field.node.stanford_page.su_page_image
+    - field.field.node.stanford_page.su_search_exclusion
     - field.field.node.stanford_page.su_shared_tags
     - node.type.stanford_page
   module:
+    - empty_fields
     - entity_reference_revisions
     - field_formatter_class
+    - field_label
+    - smart_trim
     - stanford_media
     - user
 id: node.stanford_page.stanford_card
@@ -60,9 +64,16 @@ content:
     type: entity_reference_revisions_entity_view
     label: hidden
     settings:
-      view_mode: default
+      view_mode: variant_1
       link: ''
-    third_party_settings: {  }
+    third_party_settings:
+      empty_fields:
+        handler: ''
+      field_formatter_class:
+        class: ''
+      field_label:
+        label_value: ''
+        label_tag: ''
     weight: 2
     region: content
   su_page_description:
