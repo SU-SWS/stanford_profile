@@ -4,33 +4,15 @@ status: true
 dependencies:
   config:
     - config_pages.type.stanford_super_footer
+    - field.field.config_pages.stanford_super_footer.su_super_foot_enabled
     - field.field.config_pages.stanford_super_footer.su_super_foot_intranet
     - field.field.config_pages.stanford_super_footer.su_super_foot_link
-    - field.field.config_pages.stanford_super_footer.su_super_foot_enabled
     - field.field.config_pages.stanford_super_footer.su_super_foot_text
     - field.field.config_pages.stanford_super_footer.su_super_foot_title
   module:
-    - ds
     - field_formatter_class
     - link
     - text
-third_party_settings:
-  ds:
-    layout:
-      id: jumpstart_ui_one_column
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        extra_classes: ''
-        centered: centered-container
-        columns: default
-        label: ''
-    regions:
-      main:
-        - su_super_foot_title
-        - su_super_foot_link
-        - su_super_foot_intranet
 id: config_pages.stanford_super_footer.default
 targetEntityType: config_pages
 bundle: stanford_super_footer

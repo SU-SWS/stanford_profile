@@ -20,7 +20,6 @@ dependencies:
     - field.field.node.stanford_course.su_shared_tags
     - node.type.stanford_course
   module:
-    - ds
     - element_class_formatter
     - empty_fields
     - field_formatter_class
@@ -118,8 +117,6 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-      ds:
-        ds_limit: ''
     weight: 5
     region: course_list_instructors
   su_course_link:
@@ -151,8 +148,6 @@ content:
       field_label:
         label_value: ''
         label_tag: ''
-      ds:
-        ds_limit: ''
     weight: 3
     region: course_list_quarters
   su_course_section_units:

@@ -14,7 +14,6 @@ dependencies:
     - field.field.citation.su_book.su_year
     - stanford_publication.citation_type.su_book
   module:
-    - ds
     - field_formatter_class
     - name
 id: citation.su_book.default
@@ -45,8 +44,6 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-2
-      ds:
-        ds_limit: ''
     weight: 0
     region: content
   su_doi:

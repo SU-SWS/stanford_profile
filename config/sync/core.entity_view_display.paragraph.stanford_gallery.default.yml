@@ -9,7 +9,6 @@ dependencies:
     - field.field.paragraph.stanford_gallery.su_gallery_images
     - paragraphs.paragraphs_type.stanford_gallery
   module:
-    - ds
     - element_class_formatter
     - field_formatter_class
     - stanford_fields
@@ -63,8 +62,6 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-margin-bottom-2
-      ds:
-        ds_limit: ''
     weight: 2
     region: content
 hidden:
