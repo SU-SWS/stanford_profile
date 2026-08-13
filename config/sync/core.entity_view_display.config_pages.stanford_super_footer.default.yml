@@ -4,36 +4,82 @@ status: true
 dependencies:
   config:
     - config_pages.type.stanford_super_footer
+    - field.field.config_pages.stanford_super_footer.su_super_foot_enabled
     - field.field.config_pages.stanford_super_footer.su_super_foot_intranet
     - field.field.config_pages.stanford_super_footer.su_super_foot_link
-    - field.field.config_pages.stanford_super_footer.su_super_foot_enabled
     - field.field.config_pages.stanford_super_footer.su_super_foot_text
     - field.field.config_pages.stanford_super_footer.su_super_foot_title
   module:
-    - ds
     - field_formatter_class
+    - field_group
     - link
     - stanford_fields
     - text
 third_party_settings:
-  ds:
-    layout:
-      id: jumpstart_ui_two_column
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        extra_classes: ''
-        centered: centered-container
-        orientation: equal
-    regions:
-      left:
+  field_group:
+    group_left:
+      children:
         - su_super_foot_title
         - su_super_foot_text
-      main:
+      label: Left
+      parent_name: group_wrapper
+      region: content
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: 'left-region flex-lg-6-of-12'
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_right:
+      children:
         - su_super_foot_link
         - su_super_foot_intranet
+      label: Right
+      parent_name: group_wrapper
+      region: content
+      weight: 2
+      format_type: html_element
+      format_settings:
+        classes: 'main-region flex-lg-6-of-12'
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_wrapper:
+      children:
+        - group_left
+        - group_right
+      label: Wrapper
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: 'flex-container centered-container'
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
 id: config_pages.stanford_super_footer.default
 targetEntityType: config_pages
 bundle: stanford_super_footer
@@ -51,8 +97,8 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-super-footer__intranet
-    weight: 2
-    region: main
+    weight: 4
+    region: content
   su_super_foot_link:
     type: link
     label: hidden
@@ -65,10 +111,8 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-super-footer__link
-      ds:
-        ds_limit: ''
-    weight: 1
-    region: main
+    weight: 3
+    region: content
   su_super_foot_text:
     type: text_default
     label: hidden
@@ -76,8 +120,8 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-    weight: 3
-    region: left
+    weight: 2
+    region: content
   su_super_foot_title:
     type: entity_title_heading
     label: hidden
@@ -87,8 +131,8 @@ content:
     third_party_settings:
       field_formatter_class:
         class: su-super-footer__heading
-    weight: 0
-    region: left
+    weight: 1
+    region: content
 hidden:
   search_api_excerpt: true
   su_super_foot_enabled: true

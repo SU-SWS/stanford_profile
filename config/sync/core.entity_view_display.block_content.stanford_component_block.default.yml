@@ -6,7 +6,6 @@ dependencies:
     - block_content.type.stanford_component_block
     - field.field.block_content.stanford_component_block.su_component
   module:
-    - ds
     - entity_reference_revisions
     - field_formatter_class
 id: block_content.stanford_component_block.default
@@ -23,8 +22,6 @@ content:
     third_party_settings:
       field_formatter_class:
         class: 'su-intro su-margin-bottom-3'
-      ds:
-        ds_limit: ''
     weight: 0
     region: content
 hidden:
