@@ -9,6 +9,27 @@
   </div>
 {% endset %}
 
+{% set action_links = [] %}
+{% for link in config_pages.su_local_foot_action %}
+  {% set action_links = action_links|merge([{url: link.getUrl().toString(), title: link.title}]) %}
+{% endfor %}
+
+{% set primary_links = [] %}
+{% for link in config_pages.su_local_foot_primary %}
+  {% set primary_links = primary_links|merge([{url: link.getUrl().toString(), title: link.title}]) %}
+{% endfor %}
+
+{% set secondary_links = [] %}
+{% for link in config_pages.su_local_foot_second %}
+  {% set secondary_links = secondary_links|merge([{url: link.getUrl().toString(), title: link.title}]) %}
+{% endfor %}
+
+{% set social_links = [] %}
+{% for link in config_pages.su_local_foot_social %}
+  {% set social_links = social_links|merge([{url: link.getUrl().toString(), title: link.title}]) %}
+{% endfor %}
+
+
 {{ include("jumpstart_ui:localfooter", {
   custom_lockup: not config_pages.su_local_foot_use_loc.value,
   lockup_option: config_pages.su_local_foot_loc_op.value,
@@ -17,12 +38,12 @@
   cell2: cell2,
   cell3: content.su_local_foot_tr_co,
   address: content.su_local_foot_address,
-  action_links: content.su_local_foot_action,
-  social_links: content.su_local_foot_social,
+  action_links: action_links,
+  social_links: social_links,
   primary_links_header: config_pages.su_local_foot_prime_h.value,
-  primary_links: content.su_local_foot_primary,
+  primary_links: primary_links,
   secondary_links_header: config_pages.su_local_foot_second_h.value,
-  secondary_links: content.su_local_foot_second,
+  secondary_links: secondary_links,
   signup_form_content: content.su_local_foot_f_intro,
   signup_form_action: config_pages.su_local_foot_f_url.value,
   signup_form_method: config_pages.su_local_foot_f_method.value,
