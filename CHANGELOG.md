@@ -1,5 +1,17 @@
 # Stanford Profile
 
+13.0.0
+-------------------------------------------------------------------------------
+- Refactor display logic to use SDC instead of UI Patterns (#1094)
+- Convert procedural hooks into OOP hooks (#1095)
+- Removed DS module dependencies (#1101)
+- Allow user to exclude a page from search and configure schema metatags (#1096)
+- Added SDR Media type and added to AV node and wysiwygs (#1097)
+- Create hotfix style sheet that loads from github pages (#1098)
+- Build out event filter list and card grid (#1099)
+- Schedule unpublish for News, Events, People, Opportunities (#1061)
+- Added AV and Opportunity content to sitemap
+
 12.2.4
 -------------------------------------------------------------------------------
 - Update content_lock settings.
