@@ -22,7 +22,7 @@
     is_spotlight: is_spotlight,
     image: content.su_news_featured_media,
     headline: node.label,
-    date: content.su_news_publishing_date,
+    date: node.su_news_publishing_date|length ? node.su_news_publishing_date.value|date("M j, Y") : null,
     dek: node.su_news_dek.value,
     quote: is_spotlight ? content.su_news_quote[0]["#output"]["#text"] : null,
     topics: is_spotlight ? spotlight_filters|join(", ")|default(null) : topics,

@@ -76,4 +76,30 @@ class TeaserCest {
     }
   }
 
+  /**
+   * Test news without publishing date.
+   */
+  public function testNewsTeaser(AcceptanceTester $I) {
+    $news = $I->createEntity([
+      'type' => 'stanford_news',
+      'title' => $this->faker->words(3, TRUE),
+      'su_news_publishing_date' => [],
+    ]);
+    $paragraph = $I->createEntity([
+      'type' => 'stanford_entity',
+      'su_entity_item' => [['target_id' => $news->id()]],
+    ], 'paragraph');
+    $node = $I->createEntity([
+      'title' => $this->faker->words(3, TRUE),
+      'type' => 'stanford_page',
+      'su_page_components' => [
+        'target_id' => $paragraph->id(),
+        'entity' => $paragraph,
+      ],
+    ]);
+    $I->amOnPage($node->toUrl()->toString());
+    $I->canSee($node->label(), 'h1');
+    $I->canSee($news->label(), 'h2');
+  }
+
 }
