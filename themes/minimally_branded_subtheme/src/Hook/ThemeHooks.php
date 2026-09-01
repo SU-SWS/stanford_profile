@@ -29,4 +29,12 @@ class ThemeHooks {
     }
   }
 
+  /**
+   * Hide lockup wordmark.
+   */
+  #[Hook('preprocess_config_pages__stanford_local_footer')]
+  function preprocessConfigPagesStanfordLocalFooter(&$variables) {
+    $variables['hide_lockup_wordmark'] = TRUE;
+  }
+
 }
