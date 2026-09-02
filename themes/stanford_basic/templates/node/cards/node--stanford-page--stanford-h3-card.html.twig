@@ -1,9 +1,15 @@
+{% set has_page_image = node.su_page_image|length >= 1 %}
 
+{% if not has_page_image and node.su_page_banner|length >= 1 %}
+  {% set image %}
+    <div class="page-image">{{ content.su_page_banner|render|striptags("<picture> <img> <source>")|raw }}</div>
+  {% endset %}
+{% endif %}
 <div{{ attributes }}>
   {{ title_prefix }}
   {{ include("jumpstart_ui:card", {
     header_tag: "h3",
-    image: node.su_page_image.get(0).value ? content.su_page_image : content.su_page_banner,
+    image: has_page_image ? content.su_page_image : image,
     headline: node.label,
     headline_url: url,
     body: node.su_page_description.value
