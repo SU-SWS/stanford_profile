@@ -1,5 +1,9 @@
 # Stanford Profile
 
+13.0.3
+-------------------------------------------------------------------------------
+- Reduced unwanted markup around images in basic page teasers.
+
 13.0.2
 -------------------------------------------------------------------------------
 - Adjusted local footer and minimally branded theme.
