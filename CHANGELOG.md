@@ -1,5 +1,9 @@
 # Stanford Profile
 
+13.0.4
+-------------------------------------------------------------------------------
+- Adjusted card displays for news and AV content types.
+
 13.0.3
 -------------------------------------------------------------------------------
 - Reduced unwanted markup around images in basic page teasers.
