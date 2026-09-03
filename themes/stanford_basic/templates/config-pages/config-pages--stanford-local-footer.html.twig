@@ -1,11 +1,23 @@
+
+{% set col1 = create_attribute({class: "su-margin-bottom-1"}) %}
+{% set col2 = create_attribute() %}
+{% if config_pages.su_local_foot_se_co|length > 0 and config_pages.su_local_foot_tr2_co|length > 0 %}
+  {% set col1 = col1.addClass("flex-md-6-of-12") %}
+  {% set col2 = col2.addClass("flex-md-6-of-12") %}
+{% endif %}
+
 {% set cell2 %}
   <div class="flex-container">
-    <div class="flex-md-6-of-12 su-margin-bottom-1">
-      {{ content.su_local_foot_se_co }}
-    </div>
-    <div class="flex-md-6-of-12">
-      {{ content.su_local_foot_tr2_co }}
-    </div>
+    {% if config_pages.su_local_foot_se_co|length %}
+      <div{{ col1 }}>
+        {{ content.su_local_foot_se_co }}
+      </div>
+    {% endif %}
+    {% if config_pages.su_local_foot_tr2_co|length %}
+      <div{{ col2 }}>
+        {{ content.su_local_foot_tr2_co }}
+      </div>
+    {% endif %}
   </div>
 {% endset %}
 
