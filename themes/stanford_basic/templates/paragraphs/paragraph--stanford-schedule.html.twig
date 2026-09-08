@@ -1,12 +1,38 @@
 <div{{ attributes }}>
   {{ title_prefix }}
-  {{ include("stanford_events:events_schedule", {
-    time: content.su_schedule_date_time,
+  {% embed "stanford_events:events_schedule" with {
+    time: content.su_schedule_date_time|render_clean,
     headline: paragraph.su_schedule_headline.value,
-    description: paragraph.su_schedule_description.processsed,
-    location: content.su_schedule_location,
-    url: content.su_schedule_url,
-    speakers: content.su_schedule_speaker,
-  }, with_context = false) }}
+    url: paragraph.su_schedule_url.get(0).getUrl().toString(),
+    paragraph: paragraph,
+    content: content
+  } only %}
+
+    {% block description %}
+      {% if paragraph.su_schedule_description|length %}
+        <div class="su-event-schedule__description">
+          {{ paragraph.su_schedule_description.get(0).processed }}
+        </div>
+      {% endif %}
+    {% endblock %}
+
+    {% block location %}
+      {% if paragraph.su_schedule_location|length %}
+        <div class="su-event-schedule__location">
+          {{ content.su_schedule_location }}
+        </div>
+      {%- endif -%}
+    {% endblock %}
+
+    {% block speakers %}
+      {% if paragraph.su_schedule_speaker|length %}
+        <div class="su-event-schedule__speakers">
+          {{ content.su_schedule_speaker }}
+        </div>
+      {% endif %}
+    {% endblock %}
+
+
+  {% endembed %}
   {{ title_suffix }}
 </div>

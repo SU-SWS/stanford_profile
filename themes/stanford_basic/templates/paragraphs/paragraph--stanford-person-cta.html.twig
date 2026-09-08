@@ -1,10 +1,21 @@
 <div{{ attributes }}>
   {{ title_prefix }}
-  {{ include("stanford_events:events_person_cta", {
-    image: content.su_person_cta_image,
+  {% embed "stanford_events:events_person_cta" with {
     name: paragraph.su_person_cta_name.value,
     title: paragraph.su_person_cta_title.value,
-    link: paragraph.su_person_cta_link.get(0).getUrl().toString(),
-  }, with_context = false) }}
+    url: paragraph.su_person_cta_link.get(0).getUrl().toString(),
+    image: content.su_person_cta_image
+  } only %}
+
+    {% block image %}
+      {% if image[0] %}
+        <div class="su-person-cta__image">
+          {{ image }}
+        </div>
+      {% endif %}
+    {% endblock %}
+
+  {% endembed %}
+
   {{ title_suffix }}
 </div>
