@@ -110,7 +110,9 @@ class AuthenticatedPermissionsCest {
     $I->fillField('#edit-redirect-redirect-0-uri', '<?php echo("injection"); ?>');
     $I->click('Save');
     $I->dontSee('injection');
-    $I->see('Manually entered paths should start with one of the following characters:');
+    $I->seeInCurrentUrl('/admin/config/search/redirect/add');
+    $I->see('error has been found');
+    $I->canSee('Enter a content title to select it');
   }
 
   /**
