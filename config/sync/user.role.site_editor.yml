@@ -23,7 +23,6 @@ dependencies:
     - node.type.stanford_publication
     - taxonomy.vocabulary.basic_page_types
     - taxonomy.vocabulary.event_audience
-    - taxonomy.vocabulary.media_content_filters
     - taxonomy.vocabulary.media_content_types
     - taxonomy.vocabulary.media_tags
     - taxonomy.vocabulary.opportunity_sponsor
@@ -101,7 +100,6 @@ permissions:
   - 'create stanford_publication content'
   - 'create terms in basic_page_types'
   - 'create terms in event_audience'
-  - 'create terms in media_content_filters'
   - 'create terms in media_content_types'
   - 'create terms in media_tags'
   - 'create terms in opportunity_sponsor'
@@ -155,7 +153,6 @@ permissions:
   - 'delete stanford_publication revisions'
   - 'delete terms in basic_page_types'
   - 'delete terms in event_audience'
-  - 'delete terms in media_content_filters'
   - 'delete terms in media_content_types'
   - 'delete terms in media_tags'
   - 'delete terms in opportunity_sponsor'
@@ -205,7 +202,6 @@ permissions:
   - 'edit policy log'
   - 'edit terms in basic_page_types'
   - 'edit terms in event_audience'
-  - 'edit terms in media_content_filters'
   - 'edit terms in media_content_types'
   - 'edit terms in media_tags'
   - 'edit terms in opportunity_sponsor'
