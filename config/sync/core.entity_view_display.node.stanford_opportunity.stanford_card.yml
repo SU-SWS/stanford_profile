@@ -28,6 +28,7 @@ dependencies:
     - node.type.stanford_opportunity
   module:
     - datetime
+    - element_class_formatter
     - empty_fields
     - field_formatter_class
     - field_label
@@ -156,7 +157,7 @@ content:
     settings:
       view_mode: default
       link: false
-      image_style: card_1192x596
+      image_style: square_956
       remove_alt: false
     third_party_settings:
       empty_fields:
