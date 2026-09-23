@@ -67,7 +67,7 @@ class RolesCest {
       'type' => 'stanford_page',
       'title' => $this->faker->words(3, TRUE),
     ]);
-    $test_home_url = $test_home->toUrl()->toString();
+    $test_home_url = '/node/' . $test_home->id();
     \Drupal::state()->set('stanford_profile.front_page', $test_home_url);
     $I->runDrush('cache-rebuild');
     $I->assertEquals($test_home_url, $this->getFrontPagePath($I));
@@ -83,7 +83,8 @@ class RolesCest {
     $I->canSee('Access denied (1)');
     $I->runDrush('cache-rebuild');
     $I->amOnPage('/');
-    $I->canSee($test_home->label(), 'h1');
+    $I->canSeeElement('h1.visually-hidden');
+    $I->cantSee($test_home->label());
   }
 
   /**
