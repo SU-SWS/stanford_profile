@@ -1,5 +1,13 @@
 # Stanford Profile
 
+13.0.8
+-------------------------------------------------------------------------------
+- Change opportunity cards images to squares
+- D8CORE-8670: Remove media_content_filters permissions for site editor (#1113)
+- D8CORE-8526: Add publication_filters permissions for site_manager role (#1112)
+- Remove event schedule view that is not used (#1111)
+- Fixed event series cards
+
 13.0.7
 -------------------------------------------------------------------------------
 - Fixed template rendering for event schedule paragraphs.
