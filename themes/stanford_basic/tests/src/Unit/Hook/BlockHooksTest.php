@@ -17,14 +17,12 @@ use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\stanford_basic\Hook\AlgoliaHooks;
 use Drupal\stanford_basic\Hook\BlockHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for BlockHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(BlockHooks::class)]
 class BlockHooksTest extends UnitTestCase {
 
   /**

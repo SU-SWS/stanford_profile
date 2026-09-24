@@ -7,14 +7,12 @@ namespace Drupal\Tests\jemison\Unit\Hook;
 use Drupal\Core\Extension\ThemeHandlerInterface;
 use Drupal\jemison\Hook\LibraryHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for LibraryHooks.
  */
 #[Group('jemison')]
-#[CoversClass(LibraryHooks::class)]
 class LibraryHooksTest extends UnitTestCase {
 
   /**

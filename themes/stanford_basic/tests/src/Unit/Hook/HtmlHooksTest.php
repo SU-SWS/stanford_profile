@@ -15,14 +15,12 @@ use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\path_alias\AliasManagerInterface;
 use Drupal\stanford_basic\Hook\HtmlHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for HtmlHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(HtmlHooks::class)]
 class HtmlHooksTest extends UnitTestCase {
 
   /**

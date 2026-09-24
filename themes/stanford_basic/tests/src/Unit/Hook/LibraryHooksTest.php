@@ -11,14 +11,12 @@ use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\file\FileInterface;
 use Drupal\stanford_basic\Hook\LibraryHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for LibraryHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(LibraryHooks::class)]
 class LibraryHooksTest extends UnitTestCase {
 
   /**

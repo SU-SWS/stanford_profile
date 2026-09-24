@@ -27,7 +27,7 @@ class InstallTaskManager extends DefaultPluginManager {
   protected $completedTasks = [];
 
   /**
-   * Constructs a ArchiverManager object.
+   * Constructs an InstallTaskManager object.
    *
    * @param \Traversable $namespaces
    *   An object that implements \Traversable which contains the root paths

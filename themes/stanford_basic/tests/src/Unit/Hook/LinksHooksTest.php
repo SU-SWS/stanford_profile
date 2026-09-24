@@ -10,14 +10,12 @@ use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\stanford_basic\Hook\LinksHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for LinksHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(LinksHooks::class)]
 class LinksHooksTest extends UnitTestCase {
 
   /**

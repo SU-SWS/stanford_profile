@@ -33,7 +33,7 @@ class ThemeHooks {
    * Hide lockup wordmark.
    */
   #[Hook('preprocess_config_pages__stanford_local_footer')]
-  function preprocessConfigPagesStanfordLocalFooter(&$variables) {
+  public function preprocessConfigPagesStanfordLocalFooter(&$variables): void {
     $variables['hide_lockup_wordmark'] = TRUE;
   }
 

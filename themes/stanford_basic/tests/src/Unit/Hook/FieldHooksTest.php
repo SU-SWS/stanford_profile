@@ -9,14 +9,12 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\stanford_basic\Hook\FieldHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for FieldHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(FieldHooks::class)]
 class FieldHooksTest extends UnitTestCase {
 
   /**

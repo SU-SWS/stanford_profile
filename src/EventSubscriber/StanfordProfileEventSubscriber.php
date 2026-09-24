@@ -3,6 +3,7 @@
 namespace Drupal\stanford_profile\EventSubscriber;
 
 use Acquia\DrupalEnvironmentDetector\AcquiaDrupalEnvironmentDetector;
+use Drupal\Component\Utility\Crypt;
 use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -50,7 +51,7 @@ class StanfordProfileEventSubscriber implements EventSubscriberInterface {
   /**
    * {@inheritDoc}
    */
-  public static function getSubscribedEvents() {
+  public static function getSubscribedEvents(): array {
     return [
       'default_content.import' => 'onContentImport',
       KernelEvents::REQUEST => 'onKernelRequest',
@@ -106,7 +107,7 @@ class StanfordProfileEventSubscriber implements EventSubscriberInterface {
     /** @var \Drupal\file\FileInterface $entity */
     foreach ($event->getImportedEntities() as $entity) {
       if ($entity->getEntityTypeId() == 'consumer') {
-        $entity->set('secret', md5(random_int(0, 99999)));
+        $entity->set('secret', Crypt::randomBytesBase64());
         $entity->save();
       }
 
@@ -142,7 +143,7 @@ class StanfordProfileEventSubscriber implements EventSubscriberInterface {
    *   Local file path with schema.
    */
   protected function getFile(string $file_uri): void {
-    $local_directory = dirname($file_uri);
+    $local_directory = $this->fileSystem->dirname($file_uri);
     $this->fileSystem->prepareDirectory($local_directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
 
     $file_scheme = StreamWrapperManager::getScheme($file_uri);
@@ -183,7 +184,7 @@ class StanfordProfileEventSubscriber implements EventSubscriberInterface {
    *   Local path with schema.
    *
    * @return mixed
-   *   See system_retrieve_file().
+   *   The path to the saved file.
    *
    * @codeCoverageIgnore
    *   Ignore from unit tests.

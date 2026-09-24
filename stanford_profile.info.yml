@@ -3,7 +3,7 @@ description: 'Jumpstart Website Profile'
 version: 13.0.8
 type: profile
 project: Stanford
-core_version_requirement: ^11.2
+core_version_requirement: ^11.4 || ^12
 install:
   - 'address:address'
   - 'admin_toolbar:admin_toolbar'
@@ -114,7 +114,7 @@ install:
   - 'xmlsitemap:xmlsitemap_engines'
 themes:
     - stable9
-    - seven
+    - claro
     - stanford_basic
 default_content:
   block_content:

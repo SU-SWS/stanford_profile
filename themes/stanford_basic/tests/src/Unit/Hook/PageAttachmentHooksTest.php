@@ -9,14 +9,12 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\stanford_basic\Hook\PageAttachmentHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for PageAttachmentHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(PageAttachmentHooks::class)]
 class PageAttachmentHooksTest extends UnitTestCase {
 
   /**

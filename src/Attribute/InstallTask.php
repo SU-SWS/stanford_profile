@@ -7,13 +7,13 @@ namespace Drupal\stanford_profile\Attribute;
 use Drupal\Component\Plugin\Attribute\AttributeBase;
 
 /**
- * The foo_bar attribute.
+ * Defines an install task plugin attribute.
  */
 #[\Attribute(\Attribute::TARGET_CLASS)]
 final class InstallTask extends AttributeBase {
 
   /**
-   * Constructs a new FooBar instance.
+   * Constructs a new InstallTask instance.
    *
    * @codeCoverageIgnore
    *

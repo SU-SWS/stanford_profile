@@ -67,6 +67,7 @@
         "drupal/colorbox": ">=2.2.0"
     },
     "require": {
+        "php": ">=8.3",
         "ext-imagick": "*",
         "acquia/drupal-environment-detector": "^1.0",
         "citation-style-language/locales": "1.0.0",
@@ -178,6 +179,7 @@
         "drupal/single_content_sync": "^1.4",
         "drupal/smart_date": "^4.0",
         "drupal/smart_trim": "^2.0",
+        "drupal/stable9": "^1.0",
         "drupal/stage_file_proxy": "^3.1",
         "drupal/taxonomy_entity_index": "^1.8",
         "drupal/taxonomy_menu": "^3.5",
@@ -208,7 +210,7 @@
         "su-sws/stanford_actions": "^8.2",
         "su-sws/stanford_media": "^11.3",
         "su-sws/stanford_migrate": "^9.0",
-        "su-sws/stanford_profile_helper": "^11.0",
+        "su-sws/stanford_profile_helper": "11.x-dev",
         "su-sws/stanford_samlauth": "^2.0"
     },
     "config": {
