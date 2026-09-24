@@ -2,7 +2,15 @@ uuid: 1497b449-5b81-4752-ab4b-a543431405e6
 langcode: en
 status: true
 dependencies:
+  config:
+    - config_pages.type.lockup_settings
+    - config_pages.type.policy_settings
+    - config_pages.type.stanford_basic_site_settings
+    - config_pages.type.stanford_global_message
+    - config_pages.type.stanford_local_footer
+    - config_pages.type.stanford_super_footer
   module:
+    - book
     - config_pages
     - field_permissions
     - media
@@ -17,6 +25,7 @@ label: 'Anonymous user'
 weight: -9
 is_admin: false
 permissions:
+  - 'access book list'
   - 'access content'
   - 'issue subrequests'
   - 'view field_media_embeddable_code'
