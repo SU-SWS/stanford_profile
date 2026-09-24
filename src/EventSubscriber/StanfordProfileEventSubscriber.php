@@ -143,7 +143,7 @@ class StanfordProfileEventSubscriber implements EventSubscriberInterface {
    *   Local file path with schema.
    */
   protected function getFile(string $file_uri): void {
-    $local_directory = dirname($file_uri);
+    $local_directory = $this->fileSystem->dirname($file_uri);
     $this->fileSystem->prepareDirectory($local_directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
 
     $file_scheme = StreamWrapperManager::getScheme($file_uri);
