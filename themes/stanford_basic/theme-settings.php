@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Extension\ThemeSettingsProvider;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
@@ -13,6 +14,7 @@ $theme_name = \Drupal::theme()->getActiveTheme()->getName();
  * Implements hook_form_system_theme_settings_alter().
  */
 function stanford_basic_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state) {
+  $theme_settings = \Drupal::service(ThemeSettingsProvider::class);
 
   $form['options_settings'] = [
     '#type' => 'fieldset',
@@ -33,7 +35,7 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
       'dark' => t('Dark'),
       'white' => t('White'),
     ],
-    '#default_value' => theme_get_setting('brand_bar_variant'),
+    '#default_value' => $theme_settings->getSetting('brand_bar_variant'),
   ];
 
   // Global footer support.
@@ -49,7 +51,7 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
       'dark' => t('Dark'),
     ],
     '#empty_option' => t('- Default -'),
-    '#default_value' => theme_get_setting('global_footer_variant'),
+    '#default_value' => $theme_settings->getSetting('global_footer_variant'),
   ];
 
   $img = '<img src="' . base_path() . \Drupal::service('extension.list.theme')
@@ -91,14 +93,14 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
       's' => t('Option S'),
       't' => t('Option T'),
     ],
-    '#default_value' => theme_get_setting('lockup.option') ?? 'a',
+    '#default_value' => $theme_settings->getSetting('lockup.option') ?? 'a',
     '#description' => t("Layout options."),
   ];
 
   $form['options_settings']['stanford_basic_lockup']['lockup']['line1'] = [
     '#type' => 'textfield',
     '#title' => t('Line 1'),
-    '#default_value' => theme_get_setting('lockup.line1'),
+    '#default_value' => $theme_settings->getSetting('lockup.line1'),
     '#description' => t("Site title line."),
     '#states' => [
       'invisible' => [
@@ -112,7 +114,7 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
   $form['options_settings']['stanford_basic_lockup']['lockup']['line2'] = [
     '#type' => 'textfield',
     '#title' => t('Line 2'),
-    '#default_value' => theme_get_setting('lockup.line2'),
+    '#default_value' => $theme_settings->getSetting('lockup.line2'),
     '#description' => t("Secondary title line."),
     '#states' => [
       'invisible' => [
@@ -135,7 +137,7 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
   $form['options_settings']['stanford_basic_lockup']['lockup']['line3'] = [
     '#type' => 'textfield',
     '#title' => t('Line 3'),
-    '#default_value' => theme_get_setting('lockup.line3'),
+    '#default_value' => $theme_settings->getSetting('lockup.line3'),
     '#description' => t("Tertiary title line."),
     '#states' => [
       'invisible' => [
@@ -162,7 +164,7 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
   $form['options_settings']['stanford_basic_lockup']['lockup']['line4'] = [
     '#type' => 'textfield',
     '#title' => t('Line 4'),
-    '#default_value' => theme_get_setting('lockup.line4'),
+    '#default_value' => $theme_settings->getSetting('lockup.line4'),
     '#description' => t("Organization name."),
     '#states' => [
       'invisible' => [
@@ -187,7 +189,7 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
   $form['options_settings']['stanford_basic_lockup']['lockup']['line5'] = [
     '#type' => 'textfield',
     '#title' => t('Line 5'),
-    '#default_value' => theme_get_setting('lockup.line5'),
+    '#default_value' => $theme_settings->getSetting('lockup.line5'),
     '#description' => t("Last line full width option."),
     '#states' => [
       'invisible' => [
@@ -219,14 +221,14 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
   $form['options_settings']['stanford_basic_browser_sync']['browser_sync']['enabled'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable BrowserSync support for theme'),
-    '#default_value' => theme_get_setting('browser_sync.enabled'),
+    '#default_value' => $theme_settings->getSetting('browser_sync.enabled'),
     '#description' => t("Checking this box will automatically add the BrowserSync JS to your theme for development."),
   ];
 
   $form['options_settings']['stanford_basic_browser_sync']['browser_sync']['host'] = [
     '#type' => 'textfield',
     '#title' => t('BrowserSync host'),
-    '#default_value' => theme_get_setting('browser_sync.host'),
+    '#default_value' => $theme_settings->getSetting('browser_sync.host'),
     '#description' => t("Default: localhost. Enter 'HOST' which will be replaced by your site's hostname."),
     '#states' => [
       'visible' => [':input[name="browser_sync[enabled]"]' => ['checked' => TRUE]],
@@ -236,7 +238,7 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
   $form['options_settings']['stanford_basic_browser_sync']['browser_sync']['port'] = [
     '#type' => 'number',
     '#title' => t('Enable BrowserSync support for theme'),
-    '#default_value' => theme_get_setting('browser_sync.port'),
+    '#default_value' => $theme_settings->getSetting('browser_sync.port'),
     '#description' => t("Default: '3000'."),
     '#states' => [
       'visible' => [':input[name="browser_sync[enabled]"]' => ['checked' => TRUE]],

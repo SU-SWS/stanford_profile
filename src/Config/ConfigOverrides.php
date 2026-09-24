@@ -63,7 +63,7 @@ class ConfigOverrides implements ConfigFactoryOverrideInterface {
       $existing_ignored = $this->configFactory->getEditable('config_ignore.settings')
         ->getOriginal('ignored_config_entities', FALSE);
       $themes = $this->configFactory->getEditable('core.extension')
-        ->getOriginal('theme');
+        ->getOriginal('theme') ?? [];
       foreach (array_keys($themes) as $theme_name) {
         $existing_ignored[] = "$theme_name.settings";
       }

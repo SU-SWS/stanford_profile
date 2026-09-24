@@ -45,7 +45,7 @@ class StanfordBasicNodeHooks {
         !$node->get('su_page_banner')->count() &&
         $node->get('su_page_components')->count() >= 2 &&
         $node->get('su_page_components')
-          ->get(1)->entity->bundle() == 'stanford_wysiwyg'
+          ->get(1)->entity?->bundle() == 'stanford_wysiwyg'
       ) {
         $variables['attributes']['class'][] = 'add-more-space-to-top';
       }

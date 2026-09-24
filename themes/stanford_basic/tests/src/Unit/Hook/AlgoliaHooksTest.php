@@ -8,14 +8,12 @@ use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\stanford_basic\Hook\AlgoliaHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for AlgoliaHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(AlgoliaHooks::class)]
 class AlgoliaHooksTest extends UnitTestCase {
 
   /**

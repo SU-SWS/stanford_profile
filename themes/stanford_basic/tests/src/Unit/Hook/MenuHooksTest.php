@@ -16,7 +16,6 @@ use Drupal\node\NodeInterface;
 use Drupal\path_alias\AliasManagerInterface;
 use Drupal\stanford_basic\Hook\MenuHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -25,7 +24,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
  * Unit tests for MenuHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(MenuHooks::class)]
 class MenuHooksTest extends UnitTestCase {
 
   /**

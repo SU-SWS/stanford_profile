@@ -5,10 +5,14 @@ namespace Drupal\Tests\stanford_profile\Kernel\Plugin\InstallTask;
 use Drupal\Core\Routing\RouteBuilderInterface;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\stanford_profile\Plugin\InstallTask\RouteRebuilder;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Class RouteRebuilderTest.
  */
+#[Group('stanford_profile')]
+#[RunTestsInSeparateProcesses]
 class RouteRebuilderTest extends KernelTestBase {
 
   /**
@@ -23,7 +27,7 @@ class RouteRebuilderTest extends KernelTestBase {
   /**
    * {@inheritDoc}
    */
-  public function setup(): void {
+  protected function setUp(): void {
     parent::setUp();
     $this->setInstallProfile('stanford_profile');
     $this->installEntitySchema('user');

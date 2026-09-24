@@ -179,7 +179,7 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
       'status' => 1,
     ]);
     $new_user->save();
-    $this->authmap->save($new_user, 'simplesamlphp_auth', $sunet);
+    $this->authmap->save($new_user, 'samlauth', $sunet);
   }
 
   /**
@@ -211,6 +211,10 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
 
       if (isset($response['result'][0]['message']) && preg_match('/no records found/i', $response['result'][0]['message'])) {
         throw new \Exception($response['result'][0]['message']);
+      }
+
+      if (empty($response['result'][0]) || !is_array($response['result'][0])) {
+        throw new \Exception('No results returned from SNOW API.');
       }
 
       return reset($response['result'][0]);

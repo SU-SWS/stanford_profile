@@ -7,14 +7,12 @@ namespace Drupal\Tests\minimally_branded_subtheme\Unit\Hook;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\minimally_branded_subtheme\Hook\ThemeHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for ThemeHooks.
  */
 #[Group('minimally_branded_subtheme')]
-#[CoversClass(ThemeHooks::class)]
 class ThemeHooksTest extends UnitTestCase {
 
   /**

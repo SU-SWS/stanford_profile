@@ -8,7 +8,6 @@ use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\stanford_basic\Hook\BreadcrumbHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -18,7 +17,6 @@ use Symfony\Component\Routing\Route;
  * Unit tests for BreadcrumbHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(BreadcrumbHooks::class)]
 class BreadcrumbHooksTest extends UnitTestCase {
 
   /**

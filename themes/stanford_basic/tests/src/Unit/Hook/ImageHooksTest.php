@@ -6,14 +6,12 @@ namespace Drupal\Tests\stanford_basic\Unit\Hook;
 
 use Drupal\stanford_basic\Hook\ImageHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for ImageHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(ImageHooks::class)]
 class ImageHooksTest extends UnitTestCase {
 
   /**

@@ -7,14 +7,12 @@ namespace Drupal\Tests\stanford_basic\Unit\Hook;
 use Drupal\stanford_basic\Hook\ViewsHooks;
 use Drupal\Tests\UnitTestCase;
 use Drupal\views\ViewExecutable;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Unit tests for ViewsHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(ViewsHooks::class)]
 class ViewsHooksTest extends UnitTestCase {
 
   /**

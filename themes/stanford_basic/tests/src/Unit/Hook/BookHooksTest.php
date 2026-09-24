@@ -15,7 +15,6 @@ use Drupal\Core\Routing\UrlGenerator;
 use Drupal\Core\Url;
 use Drupal\stanford_basic\Hook\BookHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +25,6 @@ use Symfony\Component\Routing\Route as SymfonyRoute;
  * Unit tests for BookHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(BookHooks::class)]
 class BookHooksTest extends UnitTestCase {
 
   /**

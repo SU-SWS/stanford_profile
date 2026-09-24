@@ -11,7 +11,6 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
 use Drupal\stanford_basic\Hook\PageHooks;
 use Drupal\Tests\UnitTestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
@@ -19,7 +18,6 @@ use Symfony\Component\HttpFoundation\ParameterBag;
  * Unit tests for PageHooks.
  */
 #[Group('stanford_basic')]
-#[CoversClass(PageHooks::class)]
 class PageHooksTest extends UnitTestCase {
 
   /**
