@@ -2,7 +2,15 @@ uuid: ccb69bd8-1bb9-4122-861e-0d75be7eb22d
 langcode: en
 status: true
 dependencies:
+  config:
+    - config_pages.type.lockup_settings
+    - config_pages.type.policy_settings
+    - config_pages.type.stanford_basic_site_settings
+    - config_pages.type.stanford_global_message
+    - config_pages.type.stanford_local_footer
+    - config_pages.type.stanford_super_footer
   module:
+    - book
     - config_pages
     - field_permissions
     - file
@@ -20,6 +28,7 @@ label: 'Authenticated user'
 weight: -8
 is_admin: false
 permissions:
+  - 'access book list'
   - 'access content'
   - 'access shortcuts'
   - 'delete own files'
