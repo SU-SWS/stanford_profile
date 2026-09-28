@@ -112,7 +112,6 @@ class PolicyCest {
     $parent_page = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->words(2, TRUE) . '-bar-baz',
-      'su_policy_auto_prefix' => 1,
     ]);
     $I->amOnPage($parent_page->toUrl('edit-form')->toString());
     $I->checkOption('Provide a menu link');

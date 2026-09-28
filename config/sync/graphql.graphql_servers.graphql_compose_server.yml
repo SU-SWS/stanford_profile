@@ -12,11 +12,23 @@ schema: graphql_compose
 caching: true
 batching: true
 disable_introspection: false
-query_depth: null
-query_complexity: null
+query_depth: 0
+query_complexity: 0
 schema_configuration:
   graphql_compose:
-    enabled: true
+    providers:
+      graphql_compose: graphql_compose
+      graphql_compose_blocks: graphql_compose_blocks
+      graphql_compose_edges: graphql_compose_edges
+      graphql_compose_image_style: graphql_compose_image_style
+      graphql_compose_layout_paragraphs: graphql_compose_layout_paragraphs
+      graphql_compose_layouts: graphql_compose_layouts
+      graphql_compose_menus: graphql_compose_menus
+      graphql_compose_metatags: graphql_compose_metatags
+      graphql_compose_routes: graphql_compose_routes
+      graphql_compose_views: graphql_compose_views
+      stanford_decoupled: stanford_decoupled
+      stanford_fields: stanford_fields
 persisted_queries_settings:
   automatic_persisted_query:
     weight: 0
