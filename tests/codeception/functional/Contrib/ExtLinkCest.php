@@ -11,7 +11,7 @@ use Drupal\config_pages\Entity\ConfigPages;
 class ExtLinkCest {
 
   /**
-   * @var Faker
+   * @var \Faker\Factory
    */
   protected $faker;
 
