@@ -64,13 +64,13 @@ content:
     weight: 10
     region: content
     settings:
-      media_types: {  }
+      media_types:
+        - video
+        - embeddable
+        - sdr
     third_party_settings:
       change_labels:
-        add_another: ''
         field_label_overwrite: ''
-        hide_add_another: 0
-        force_single_cardinality: 0
       field_formatter_class:
         class: ''
   su_media_category:
@@ -84,7 +84,7 @@ content:
       field_formatter_class:
         class: ''
   su_media_clips:
-    type: entity_reference_autocomplete_tags
+    type: entity_reference_autocomplete
     weight: 11
     region: content
     settings:
