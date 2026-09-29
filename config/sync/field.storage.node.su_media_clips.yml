@@ -1,19 +1,18 @@
-uuid: 12994cfa-6121-444f-99db-fc03bcf852d8
+uuid: 260884ec-3094-4411-9036-97e17f7d6b74
 langcode: en
 status: true
 dependencies:
   module:
-    - media
     - node
-id: node.su_media_audio_video
-field_name: su_media_audio_video
+id: node.su_media_clips
+field_name: su_media_clips
 entity_type: node
 type: entity_reference
 settings:
-  target_type: media
+  target_type: node
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

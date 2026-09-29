@@ -1,0 +1,28 @@
+uuid: 2587a542-6bc8-4367-9e63-d6b0d7a93aaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.su_media_clips
+    - node.type.stanford_media
+id: node.stanford_media.su_media_clips
+field_name: su_media_clips
+entity_type: node
+bundle: stanford_media
+label: 'Additional Videos/Clips'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      stanford_media: stanford_media
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
