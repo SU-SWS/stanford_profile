@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.stanford_media.body
     - field.field.node.stanford_media.su_media_audio_video
     - field.field.node.stanford_media.su_media_category
+    - field.field.node.stanford_media.su_media_clips
     - field.field.node.stanford_media.su_media_date
     - field.field.node.stanford_media.su_media_dek
     - field.field.node.stanford_media.su_media_duration
@@ -303,7 +304,7 @@ third_party_settings:
             configuration:
               id: 'views_block:media_content-after_first_media'
               label: ''
-              label_display: visible
+              label_display: '0'
               provider: views
               context_mapping: {  }
               views_label: ''
@@ -636,4 +637,5 @@ hidden:
   links: true
   search_api_excerpt: true
   su_media_audio_video: true
+  su_media_clips: true
   su_media_filters: true

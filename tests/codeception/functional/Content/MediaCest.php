@@ -59,10 +59,19 @@ class MediaCest {
     $transcriptUri = $fs->copy(__DIR__ . '/transcript.srt', 'public://transcript.srt');
     $transcriptFile = $I->createEntity(['uri' => $transcriptUri], 'file');
 
+    $firstVideo = $mediaVideos[0];
+    unset($mediaVideos[0]);
+    $mediaClips = array_map(fn($media) => $I->createEntity([
+      'type' => 'stanford_media',
+      'title' => $media->label(),
+      'su_media_audio_video' => [$media->id()],
+    ]), $mediaVideos);
+
     $mediaNode = $I->createEntity([
       'type' => 'stanford_media',
       'title' => $this->faker->words(4, TRUE),
-      'su_media_audio_video' => array_map(fn($media) => $media->id(), $mediaVideos),
+      'su_media_audio_video' => $firstVideo->id(),
+      'su_media_clips' => array_map(fn($node) => $node->id(), $mediaClips),
       'su_media_dek' => $this->faker->sentences(1, TRUE),
       'body' => [
         'value' => '<p>' . implode('</p><p>', $this->faker->paragraphs(4)) . '</p>',
@@ -91,7 +100,7 @@ class MediaCest {
     $I->canSee($otherMedia->label(), 'h3');
     $I->canSee('Related Topics', 'h2');
 
-    if (count($mediaVideos) > 1) {
+    if (count($example['videos']) > 1) {
       $I->canSee('Video clips from: ' . $mediaNode->label(), 'h2');
       for ($j = 1; $j < count($mediaVideos); $j++) {
         $I->canSeeLink($mediaVideos[$j]->label());
@@ -99,8 +108,7 @@ class MediaCest {
 
       $lastVideo = end($mediaVideos);
       $I->click($lastVideo->label());
-      $I->waitForText($lastVideo->label(), 10, '.ui-dialog');
-      $I->canSeeElement('.ui-dialog iframe');
+      $I->canSee($lastVideo->label(), 'h1');
     }
     else {
       $I->cantSee('Video clips from');
