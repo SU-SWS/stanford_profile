@@ -15,6 +15,7 @@ class ViewsHooks {
    */
   #[Hook('preprocess_views_view')]
   public function preprocessViewsView(&$variables): void {
+    $variables['attributes']['data-nosnippet'] = 'true';
     $variables['attributes']['class'][] = Html::cleanCssIdentifier('view');
     $variables['attributes']['class'][] = Html::cleanCssIdentifier($variables['id']);
     $variables['attributes']['class'][] = Html::cleanCssIdentifier($variables['display_id']);

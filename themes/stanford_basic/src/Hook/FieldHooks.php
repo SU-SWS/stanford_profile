@@ -12,6 +12,14 @@ class FieldHooks {
   /**
    * Implements hook_preprocess_HOOK().
    */
+  #[Hook('preprocess_field__su_entity_item')]
+  public function preprocessFieldSuEntityItem(&$variables): void {
+    $variables['attributes']['data-nosnippet'] = 'true';
+  }
+
+  /**
+   * Implements hook_preprocess_HOOK().
+   */
   #[Hook('preprocess_field__su_stat_headline')]
   public function preprocessFieldSuStatHeadline(&$variables): void {
     $entity = $variables['element']['#object'];
