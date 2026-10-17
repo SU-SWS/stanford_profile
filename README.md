@@ -32,7 +32,7 @@ Releases
 ---
 
 Steps to build a new release:
-- Checkout the latest commit from the `8.x-1.x` branch.
+- Checkout the latest commit from the `12.x` branch.
 - Create a new branch for the release.
 - Commit any necessary changes to the release branch.
   -  These may include, but are not necessarily limited to:
