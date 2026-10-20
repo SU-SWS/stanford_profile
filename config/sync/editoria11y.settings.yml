@@ -4,7 +4,7 @@ content_root: '#page-content, .block-config-pages-super-footer, .ds-entity--stan
 assertiveness: assertive
 no_load: ''
 ignore_all_if_absent: ''
-ignore_elements: nav
+ignore_elements: 'nav, .ds-entity--node, .menu-block'
 panel_no_cover: ''
 embedded_content_warning: .media.embeddable
 download_links: 'false'
@@ -29,6 +29,6 @@ live_h3: ''
 live_h4: ''
 hide_edit_links: ''
 ck5_table_headers: row
-tests_off: 'QA_DOCUMENT,CONTRAST_WARNING_GRAPHIC,LINK_CLICK_HERE,LINK_IMAGE_ALT'
+tests_off: 'CONTRAST_WARNING_GRAPHIC,LINK_CLICK_HERE,LINK_IMAGE_ALT,LINK_NEW_TAB,LINK_UNPRONOUNCEABLE,QA_DOCUMENT'
 ignore_containers: .su-secondary-nav
 allow_overflow: ''
