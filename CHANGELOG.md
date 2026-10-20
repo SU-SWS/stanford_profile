@@ -1,5 +1,18 @@
 # Stanford Profile
 
+13.0.10
+-------------------------------------------------------------------------------
+- Require stanford_profile_helper ^11.1
+- D8Core-8558: Updating editoria11y settings (#1121)
+- D8CORE-9045: Add data-nosnippet to views and teaser field (#1123)
+- STVP: Split AV items into separate pages (#1122)
+- Updated book configuration settings (#1120)
+- Adjust SDR style to ensure minimum 800px size
+- Updated mathjax to v4
+- Update entity usage settings for contrib supported feature (#1119)
+- Tests: Fix media linking around an image in the wysiwyg (#1118)
+- Updated book, graphql, graphql_compose, Imagick, Editoria11y, and extlink (#1117)
+
 13.0.8
 -------------------------------------------------------------------------------
 - Change opportunity cards images to squares
