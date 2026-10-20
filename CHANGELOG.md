@@ -13,6 +13,12 @@
 - Tests: Fix media linking around an image in the wysiwyg (#1118)
 - Updated book, graphql, graphql_compose, Imagick, Editoria11y, and extlink (#1117)
 
+13.0.9
+-------------------------------------------------------------------------------
+- Refactor deprecated code and functions to prepare for D12 (#1116)
+- Update to drupal 11.4
+- Adjusted home page acceptance test (#1115)
+
 13.0.8
 -------------------------------------------------------------------------------
 - Change opportunity cards images to squares
