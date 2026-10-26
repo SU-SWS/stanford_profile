@@ -141,7 +141,7 @@ class MediaCest {
 
     $I->amOnPage('/admin/content/media');
     $I->fillField('Media name', $name);
-    $I->click('filter', 'form');
+    $I->click('Filter', 'form');
     $I->canSee($name, '.views-field-name');
 
     $I->amOnPage('/media/add/embeddable');
