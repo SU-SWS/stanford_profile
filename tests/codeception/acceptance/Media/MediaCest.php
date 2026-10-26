@@ -141,7 +141,7 @@ class MediaCest {
 
     $I->amOnPage('/admin/content/media');
     $I->fillField('Media name', $name);
-    $I->click('Filter');
+    $I->click('Filter', 'form');
     $I->canSee($name, '.views-field-name');
 
     $I->amOnPage('/media/add/embeddable');
@@ -314,19 +314,19 @@ class MediaCest {
     $I->canSee($media->label());
 
     $I->selectOption('Category', $unrelated_term->label());
-    $I->click('Filter');
+    $I->click('Filter', 'form');
     $I->cantSee($media->label());
 
     $I->selectOption('Category', $parent_term->label());
-    $I->click('Filter');
+    $I->click('Filter', 'form');
     $I->canSee($media->label());
 
     $I->selectOption('Category', $unrelated_term->label());
-    $I->click('Filter');
+    $I->click('Filter', 'form');
     $I->cantSee($media->label());
 
     $I->selectOption('Category', '-' . $child_term->label());
-    $I->click('Filter');
+    $I->click('Filter', 'form');
     $I->canSee($media->label());
   }
 
