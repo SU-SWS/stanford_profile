@@ -1,5 +1,12 @@
 # Stanford Profile
 
+13.0.11
+-------------------------------------------------------------------------------
+- Require stanford_migrate ^9.4 and stanford_profile_helper ^11.1.1
+- Update migrate source plugins (#1128)
+- D8CORE-9064: Add consistent descriptions to all taxonomy vocabularies (#1126)
+- D8CORE-8661: Add help text to Audio/Visual content type fields (#1127)
+
 13.0.10
 -------------------------------------------------------------------------------
 - Require stanford_profile_helper ^11.1
