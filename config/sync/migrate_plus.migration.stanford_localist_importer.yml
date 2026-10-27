@@ -13,7 +13,7 @@ migration_group: stanford_events
 label: 'localist importer'
 source:
   track_changes: true
-  plugin: url
+  plugin: localist_url
   data_fetcher_plugin: http
   request_options:
     timeout: 60

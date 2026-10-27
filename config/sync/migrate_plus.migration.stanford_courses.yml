@@ -13,7 +13,7 @@ migration_group: stanford_courses
 label: 'Course importer'
 source:
   track_changes: true
-  plugin: url
+  plugin: explore_courses_url
   data_fetcher_plugin: http
   urls: {  }
   data_parser_plugin: simple_xml
