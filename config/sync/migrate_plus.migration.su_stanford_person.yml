@@ -11,7 +11,7 @@ migration_group: su_stanford_person
 label: 'Stanford Person Importer'
 source:
   orphan_action: forget
-  plugin: url
+  plugin: cap_url
   constants:
     status: 1
     type: stanford_person
