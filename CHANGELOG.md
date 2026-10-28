@@ -1,5 +1,10 @@
 # Stanford Profile
 
+13.0.12
+-------------------------------------------------------------------------------
+- Updated metatag for 403 and 404 pages
+- Updated contrib config
+
 13.0.11
 -------------------------------------------------------------------------------
 - Require stanford_migrate ^9.4 and stanford_profile_helper ^11.1.1
