@@ -27,361 +27,6 @@ display:
     display_options:
       title: Dismissals
       fields:
-        view_node:
-          id: view_node
-          table: node
-          field: view_node
-          relationship: editoria11y_node_to_page
-          group_type: group
-          admin_label: 'Node path'
-          entity_type: node
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-        view_taxonomy_term:
-          id: view_taxonomy_term
-          table: taxonomy_term_data
-          field: view_taxonomy_term
-          relationship: editoria11y_term_to_page
-          group_type: group
-          admin_label: 'Term path'
-          entity_type: taxonomy_term
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-        view_user:
-          id: view_user
-          table: users
-          field: view_user
-          relationship: editoria11y_user_to_page
-          group_type: group
-          admin_label: 'User bio path'
-          entity_type: user
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-        name_1:
-          id: name_1
-          table: taxonomy_term_field_data
-          field: name
-          relationship: editoria11y_term_to_page
-          group_type: group
-          admin_label: 'Term title'
-          entity_type: taxonomy_term
-          entity_field: name
-          plugin_id: term_name
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          convert_spaces: false
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: editoria11y_node_to_page
-          group_type: group
-          admin_label: 'Node title'
-          entity_type: node
-          entity_field: title
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        name_2:
-          id: name_2
-          table: users_field_data
-          field: name
-          relationship: editoria11y_user_to_page
-          group_type: group
-          admin_label: 'User name'
-          entity_type: user
-          entity_field: name
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: user_name
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         page_path:
           id: page_path
           table: ed11y_page
@@ -434,7 +79,7 @@ display:
         page_title:
           id: page_title
           table: ed11y_page
-          field: page_title
+          field: page_title_link
           relationship: editoria11y_page_to_dismissals
           group_type: group
           admin_label: Computed
@@ -442,8 +87,8 @@ display:
           label: Page
           exclude: false
           alter:
-            alter_text: true
-            text: "{% set dynamic_path = view_node ~ view_taxonomy_term ~ view_user  %}{% if dynamic_path is empty %}{% set dynamic_path = page_path %}{% endif %}\r\n{% set dynamic_title = title ~ name_2 ~ name_1 %}{% if dynamic_title is empty %}{% set dynamic_title = page_title %}{% endif %}\r\n<a href=\"{{ dynamic_path }}\" data-ed1ref=\"{{pid}}\">{{ dynamic_title }}</a>"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -480,6 +125,8 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
+          link_to_entity: true
+          entity_label: true
         result_key:
           id: result_key
           table: ed11y_action
@@ -586,7 +233,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: date
-          label: 'On'
+          label: 'Dismissed on'
           exclude: false
           alter:
             alter_text: false
@@ -924,9 +571,6 @@ display:
           default_row_class: true
           columns:
             pid: pid
-            view_node: view_node
-            view_taxonomy_term: view_taxonomy_term
-            view_user: view_user
             page_path: page_path
             page_title: page_title
             result_key: result_key
@@ -938,27 +582,6 @@ display:
           default: created
           info:
             pid:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            view_node:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            view_taxonomy_term:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            view_user:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1183,165 +806,6 @@ display:
           format_plural_string: !!binary MQNAY291bnQ=
           prefix: ''
           suffix: ''
-        view_node:
-          id: view_node
-          table: node
-          field: view_node
-          relationship: editoria11y_node_to_page
-          group_type: group
-          admin_label: 'Node path'
-          entity_type: node
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-        view_taxonomy_term:
-          id: view_taxonomy_term
-          table: taxonomy_term_data
-          field: view_taxonomy_term
-          relationship: editoria11y_term_to_page
-          group_type: group
-          admin_label: 'Term path'
-          entity_type: taxonomy_term
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-        view_user:
-          id: view_user
-          table: users
-          field: view_user
-          relationship: editoria11y_user_to_page
-          group_type: group
-          admin_label: 'User bio path'
-          entity_type: user
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
         page_path:
           id: page_path
           table: ed11y_page
@@ -1394,7 +858,7 @@ display:
         page_title:
           id: page_title
           table: ed11y_page
-          field: page_title
+          field: page_title_link
           relationship: editoria11y_page_to_dismissals
           group_type: group
           admin_label: Computed
@@ -1402,8 +866,8 @@ display:
           label: Page
           exclude: false
           alter:
-            alter_text: true
-            text: "{% set dynamic_path = view_node ~ view_taxonomy_term ~ view_user  %}{% if dynamic_path is empty %}{% set dynamic_path = page_path %}{% endif %}\r\n<a href=\"{{ dynamic_path }}\" data-ed1ref=\"{{pid}}\">{{ page_title }}</a>"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -1440,6 +904,8 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
+          link_to_entity: true
+          entity_label: false
         result_key:
           id: result_key
           table: ed11y_action
@@ -1546,7 +1012,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: date
-          label: 'On'
+          label: 'Dismissed on'
           exclude: false
           alter:
             alter_text: false
@@ -2193,165 +1659,6 @@ display:
           format_plural_string: !!binary MQNAY291bnQ=
           prefix: ''
           suffix: ''
-        view_node:
-          id: view_node
-          table: node
-          field: view_node
-          relationship: editoria11y_node_to_page
-          group_type: group
-          admin_label: 'Node path'
-          entity_type: node
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-        view_taxonomy_term:
-          id: view_taxonomy_term
-          table: taxonomy_term_data
-          field: view_taxonomy_term
-          relationship: editoria11y_term_to_page
-          group_type: group
-          admin_label: 'Term path'
-          entity_type: taxonomy_term
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
-        view_user:
-          id: view_user
-          table: users
-          field: view_user
-          relationship: editoria11y_user_to_page
-          group_type: group
-          admin_label: 'User bio path'
-          entity_type: user
-          plugin_id: entity_link
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: false
         page_path:
           id: page_path
           table: ed11y_page
@@ -2404,7 +1711,7 @@ display:
         page_title:
           id: page_title
           table: ed11y_page
-          field: page_title
+          field: page_title_link
           relationship: editoria11y_page_to_dismissals
           group_type: group
           admin_label: Computed
@@ -2412,8 +1719,8 @@ display:
           label: Page
           exclude: false
           alter:
-            alter_text: true
-            text: "{% set dynamic_path = view_node ~ view_taxonomy_term ~ view_user  %}{% if dynamic_path is empty %}{% set dynamic_path = page_path %}{% endif %}\r\n<a href=\"{{ dynamic_path }}\" data-ed1ref=\"{{pid}}\">{{ page_title }}</a>"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -2450,6 +1757,8 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
+          link_to_entity: true
+          entity_label: false
         action_type:
           id: action_type
           table: ed11y_action
@@ -2507,7 +1816,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: date
-          label: 'On'
+          label: 'Dismissed on'
           exclude: false
           alter:
             alter_text: false
