@@ -64,7 +64,8 @@
         }
     ],
     "conflict": {
-        "drupal/colorbox": ">=2.2.0"
+        "drupal/colorbox": ">=2.2.0",
+        "drupal/migrate_plus": "<6.0.11"
     },
     "require": {
         "php": ">=8.3",
@@ -199,9 +200,9 @@
         "drupal/views_taxonomy_term_name_depth": "^7.0",
         "drupal/webp": "^1.0@beta",
         "drupal/xmlsitemap": "^2.0",
+        "league/oauth2-client": "^2.9",
         "noli42/chosen": "3.0.0",
         "onlyextart/colorbox": "dev-master#e58476becbc89dc671093d1bcd9f99b2167fa8f7",
-        "sainsburys/guzzle-oauth2-plugin": "^3.0",
         "seboettg/citeproc-php": "2.4.1",
         "su-sws/ckeditor5_plugins": "^1.0",
         "su-sws/drupal-patches": "^11.1",
