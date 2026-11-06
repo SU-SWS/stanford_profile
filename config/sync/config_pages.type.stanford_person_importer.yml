@@ -22,6 +22,22 @@ third_party_settings:
       config_item: source.orphan_action
       prefix: ''
       suffix: ''
+    6ef53268-2e96-4f6f-a5d3-65927821ef1c:
+      field: su_person_cap_username
+      delta: 0
+      column: value
+      config_name: migrate_plus.migration_group.su_stanford_person
+      config_item: shared_configuration.source.authentication.client_id
+      prefix: ''
+      suffix: ''
+    cb83e53f-046f-4e61-b528-2a73822a5dd2:
+      field: su_person_cap_password
+      delta: 0
+      column: value
+      config_name: migrate_plus.migration_group.su_stanford_person
+      config_item: shared_configuration.source.authentication.client_secret
+      prefix: ''
+      suffix: ''
 id: stanford_person_importer
 label: 'Person Importer'
 token: null
