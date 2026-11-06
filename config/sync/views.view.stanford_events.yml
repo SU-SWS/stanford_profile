@@ -16,6 +16,7 @@ dependencies:
     - field.storage.node.su_event_subheadline
     - field.storage.node.su_event_type
     - node.type.stanford_event
+    - taxonomy.vocabulary.event_filters
   module:
     - address
     - entity_reference_revisions
@@ -2882,6 +2883,126 @@ display:
           use_taxonomy_term_path: false
           vocabularies:
             stanford_event_keywords: stanford_event_keywords
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            stanford_event: stanford_event
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        su_event_date_time_end_value:
+          id: su_event_date_time_end_value
+          table: node__su_event_date_time
+          field: su_event_date_time_end_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: now
+            type: offset
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        su_event_tags_target_id:
+          id: su_event_tags_target_id
+          table: node__su_event_tags
+          field: su_event_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: and
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: su_event_tags_target_id_op
+            label: 'Event Tags'
+            description: ''
+            use_operator: false
+            operator: su_event_tags_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: event_tags
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: event_filters
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: graphql
         options: null
@@ -2894,6 +3015,8 @@ display:
         fields: false
         sorts: false
         arguments: false
+        filters: false
+        filter_groups: false
       display_description: 'List - All Items'
       display_extenders: {  }
       graphql_query_name: stanfordEvents
