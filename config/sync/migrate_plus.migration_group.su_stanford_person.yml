@@ -15,9 +15,9 @@ shared_configuration:
       provider_options:
         clientId: '[client_id]'
         clientSecret: '[client_secret]'
-        urlAuthorize: 'https://authz.stanford.edu/oauth/token'
-        urlResourceOwnerDetails: 'https://authz.stanford.edu/oauth/token'
-        urlAccessToken: 'https://authz.stanford.edu/oauth/token'
+        urlAuthorize: 'https://authz-dev.med.stanford.edu/oauth2/token'
+        urlResourceOwnerDetails: 'https://authz-dev.med.stanford.edu/oauth2/token'
+        urlAccessToken: 'https://authz-dev.med.stanford.edu/oauth2/token'
     track_changes: true
     plugin: url
     data_fetcher_plugin: http
