@@ -28,10 +28,10 @@ keywords = ["auth"]
 [[rules]]
 id = "hardcoded-password"
 description = "Hardcoded password or client secret"
-regex = '''(?i)['"]?\b(?:password|passwd|pass|pwd|client_secret|api_secret|secret_key|api_key)['"]?\s*(?:=>|=|:)\s*['"]([^'"$\s{}\[\]]{6,})['"]'''
+regex = '''(?i)['"]?\b(?:password|passwd|pass|pwd|client_?secret|api_?secret|secret_?key|api_?key)['"]?\s*(?:=>|=|:)\s*['"]([^'"$\s{}\[\]]{6,})['"]'''
 secretGroup = 1
 entropy = 2.5
-keywords = ["pass", "pwd", "secret", "api_key"]
+keywords = ["pass", "pwd", "secret", "api_key", "apikey"]
 
   # Values that are placeholders or references, not secrets.
   [[rules.allowlists]]
