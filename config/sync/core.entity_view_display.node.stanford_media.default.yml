@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.stanford_media.title
     - field.field.node.stanford_media.body
     - field.field.node.stanford_media.su_media_audio_video
     - field.field.node.stanford_media.su_media_category
@@ -250,9 +251,7 @@ third_party_settings:
                   field_formatter_class:
                     class: ''
                   field_formatter_range:
-                    order: 0
                     limit: 1
-                    offset: 0
                   field_label:
                     label_value: ''
                     label_tag: ''
@@ -335,10 +334,6 @@ third_party_settings:
                     handler: ''
                   field_formatter_class:
                     class: ''
-                  field_formatter_range:
-                    order: 0
-                    limit: 0
-                    offset: 0
                   field_label:
                     label_value: ''
                     label_tag: ''
@@ -393,9 +388,7 @@ third_party_settings:
                   field_formatter_class:
                     class: ''
                   field_formatter_range:
-                    order: 0
                     limit: 1
-                    offset: 0
                   field_label:
                     label_value: ''
                     label_tag: ''
