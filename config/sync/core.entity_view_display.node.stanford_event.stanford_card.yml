@@ -31,14 +31,20 @@ dependencies:
     - field.field.node.stanford_event.su_event_type
     - field.field.node.stanford_event.su_imported
     - field.field.node.stanford_event.su_metatags
+    - field.field.node.stanford_event.su_search_exclusion
     - field.field.node.stanford_event.su_shared_tags
     - node.type.stanford_event
   module:
     - address
+    - element_class_formatter
+    - empty_fields
     - entity_reference_revisions
     - field_formatter_class
+    - field_formatter_range
+    - field_label
     - link
     - smart_date
+    - smart_trim
     - user
 id: node.stanford_event.stanford_card
 targetEntityType: node
@@ -282,9 +288,7 @@ content:
       field_formatter_class:
         class: ''
       field_formatter_range:
-        order: 0
         limit: 1
-        offset: 0
       field_label:
         label_value: ''
         label_tag: ''
