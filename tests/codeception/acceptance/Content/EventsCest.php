@@ -374,6 +374,53 @@ class EventsCest {
     $I->assertEquals(self::getDateTimeString('j', time() + (60 * 60 * 24)), preg_replace('/(\r\n|\n|\r)/', '', $day->item(0)->nodeValue), 'End Date does not match');
   }
 
+  /**
+   * Events with link fields can be fetched through JSON:API.
+   *
+   * The link field's computed "target_uuid" property must not cause a fatal
+   * error for external, internal or entity links. The events mini calendar
+   * relies on this endpoint.
+   */
+  #[CodeceptionAttribute\Group('jsonapi')]
+  public function testJsonApiLinkFields(AcceptanceTester $I) {
+    $target = $I->createEntity([
+      'type' => 'stanford_page',
+      'title' => $this->faker->words(3, TRUE),
+    ]);
+
+    $event = $this->createEventNode($I);
+    $event->set('su_event_cta', [
+      'uri' => 'https://google.com/',
+      'title' => 'External link',
+    ]);
+    $event->set('su_event_source', [
+      'uri' => 'entity:node/' . $target->id(),
+      'title' => 'Entity link',
+    ]);
+    $event->set('su_event_map_link', [
+      'uri' => 'internal:/',
+      'title' => 'Internal link',
+    ]);
+    $event->save();
+
+    // Individual resource.
+    $I->amOnPage('/jsonapi/node/stanford_event/' . $event->uuid());
+    $I->canSeeResponseCodeIs(200);
+    $data = json_decode($I->grabPageSource(), TRUE);
+    $I->assertArrayNotHasKey('errors', $data);
+    $attributes = $data['data']['attributes'];
+    $I->assertNull($attributes['su_event_cta']['target_uuid']);
+    $I->assertEquals($target->uuid(), $attributes['su_event_source']['target_uuid']);
+    $I->assertNull($attributes['su_event_map_link']['target_uuid']);
+
+    // Collection resource, as used by the events mini calendar.
+    $I->amOnPage('/jsonapi/node/stanford_event?filter[status]=1&filter[id]=' . $event->uuid());
+    $I->canSeeResponseCodeIs(200);
+    $data = json_decode($I->grabPageSource(), TRUE);
+    $I->assertArrayNotHasKey('errors', $data);
+    $I->assertCount(1, $data['data']);
+  }
+
   protected static function getDateTimeString($format, $time) {
     $timezone = \Drupal::config('system.date')
       ->get('timezone.default') ?: @date_default_timezone_get();
