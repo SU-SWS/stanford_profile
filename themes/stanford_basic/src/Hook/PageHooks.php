@@ -49,10 +49,7 @@ class PageHooks {
   protected function preprocessNotNodes(&$vars): void {
     $pbag = $this->routeMatch->getParameters();
     $pkeys = $pbag->keys();
-    $block_list = [
-      'node', // Node Types.
-      'page_manager_page', // Panels.
-    ];
+    $block_list = ['node'];
 
     foreach ($block_list as $key) {
       if (in_array($key, $pkeys)) {
