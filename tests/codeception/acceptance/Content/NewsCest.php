@@ -88,11 +88,10 @@ class NewsCest {
     // Redirect as anon. Check the redirect itself rather than following it:
     // loading the external site makes the test depend on it, and Google
     // answers CI runners with a bot check page.
-    $I->stopFollowingRedirects();
-    $I->amOnPage($node->toUrl()->toString());
-    $I->seeResponseCodeIs(301);
-    $I->seeHttpHeader('Location', 'http://google.com/');
-    $I->startFollowingRedirects();
+    $url = $node->toUrl()->toString();
+    $response = $I->executeInGuzzle(fn($client) => $client->get($url, ['allow_redirects' => FALSE]));
+    $I->assertEquals(301, $response->getStatusCode());
+    $I->assertEquals('http://google.com/', $response->getHeaderLine('Location'));
 
     // See content as admin.
     $I->logInWithRole('administrator');
