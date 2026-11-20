@@ -85,9 +85,14 @@ class NewsCest {
       'su_news_source' => "http://google.com/",
     ]);
 
-    // Redirect as anon.
+    // Redirect as anon. Check the redirect itself rather than following it:
+    // loading the external site makes the test depend on it, and Google
+    // answers CI runners with a bot check page.
+    $I->stopFollowingRedirects();
     $I->amOnPage($node->toUrl()->toString());
-    $I->seeCurrentUrlEquals('/');
+    $I->seeResponseCodeIs(301);
+    $I->seeHttpHeader('Location', 'http://google.com/');
+    $I->startFollowingRedirects();
 
     // See content as admin.
     $I->logInWithRole('administrator');
