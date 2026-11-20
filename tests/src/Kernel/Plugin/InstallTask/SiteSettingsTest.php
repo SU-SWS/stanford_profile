@@ -12,6 +12,7 @@ use Drupal\user\Entity\Role;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Stream;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -233,8 +234,23 @@ class SiteSettingsTest extends KernelTestBase {
         break;
     }
 
+    $client->method('send')
+      ->willReturn($this->getTokenResponse(['access_token' => 'foo-token', 'token_type' => 'Bearer']));
     $client->method('request')->willReturn($response);
     return $client;
+  }
+
+  /**
+   * Get a token endpoint response.
+   *
+   * @param array $data
+   *   Response data.
+   *
+   * @return \GuzzleHttp\Psr7\Response
+   *   Response object.
+   */
+  protected function getTokenResponse(array $data) {
+    return new Response(200, ['Content-Type' => 'application/json'], json_encode($data));
   }
 
   /**
@@ -314,6 +330,62 @@ class SiteSettingsTest extends KernelTestBase {
     drupal_flush_all_caches();
     $this->assertEmpty(\Drupal::config('system.site')->get('name'));
     $this->assertEmpty(\Drupal::config('system.site')->get('mail'));
+  }
+
+  /**
+   * The API request uses the OAuth2 token as a bearer token.
+   */
+  public function testBearerToken() {
+    $response = $this->createMock(ResponseInterface::class);
+    $response->method('getBody')->willReturnReference($this->guzzleResponse);
+
+    $token_requests = [];
+    $requests = [];
+    $client = $this->createMock(ClientInterface::class);
+    $client->method('send')
+      ->willReturnCallback(function (RequestInterface $request) use (&$token_requests) {
+        $token_requests[] = $request;
+        return $this->getTokenResponse(['access_token' => 'foo-token']);
+      });
+    $client->method('request')
+      ->willReturnCallback(function ($method, $uri, $options) use (&$requests, $response) {
+        $requests[] = [$method, $uri, $options];
+        return $response;
+      });
+    $this->container->set('http_client', $client);
+
+    $plugin = TestSiteSettings::create($this->container, [], '', []);
+    $install_state['forms']['install_configure_form']['site_name'] = 'foo bar';
+    $plugin->runTask($install_state);
+
+    $this->assertCount(1, $token_requests);
+    $this->assertEquals('POST', $token_requests[0]->getMethod());
+    $this->assertEquals(SiteSettings::SNOW_TOKEN_URL, (string) $token_requests[0]->getUri());
+    parse_str((string) $token_requests[0]->getBody(), $token_params);
+    $this->assertEquals('client_credentials', $token_params['grant_type']);
+
+    $this->assertCount(1, $requests);
+    $this->assertEquals('GET', $requests[0][0]);
+    $this->assertEquals('Bearer foo-token', $requests[0][2]['headers']['Authorization']);
+    $this->assertArrayNotHasKey('auth', $requests[0][2]);
+  }
+
+  /**
+   * If the token endpoint returns an error, no changes will be made.
+   */
+  public function testMissingToken() {
+    $client = $this->createMock(ClientInterface::class);
+    $client->method('send')
+      ->willReturn($this->getTokenResponse(['error' => 'access_denied']));
+    $client->expects($this->never())->method('request');
+    $this->container->set('http_client', $client);
+
+    $plugin = TestSiteSettings::create($this->container, [], '', []);
+    $install_state['forms']['install_configure_form']['site_name'] = 'foo bar';
+    $plugin->runTask($install_state);
+
+    drupal_flush_all_caches();
+    $this->assertEmpty(\Drupal::config('system.site')->get('name'));
   }
 
   /**
