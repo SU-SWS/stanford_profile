@@ -13,7 +13,7 @@ permissions:
 jobs:
   tests:
     name: Tests
-    uses: SU-SWS/stanford-caravan/.github/workflows/drupal-tests.yml@11.x
+    uses: SU-SWS/stanford-caravan/.github/workflows/drupal-tests.yml@12.x
     with:
       codeception-shards: ${{ fromJSON(vars.TEST_SHARDS || '4') }}
     secrets: inherit
