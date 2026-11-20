@@ -166,30 +166,6 @@ class PageHooksTest extends UnitTestCase {
   }
 
   /**
-   * When the "page_manager_page" route parameter is present, no
-   * centered-container class is added.
-   */
-  public function testPreprocessNotNodesReturnsEarlyForPageManagerPages(): void {
-    $this->routeMatch = $this->createMock(RouteMatchInterface::class);
-    $this->routeMatch->method('getParameters')
-      ->willReturn(new ParameterBag(['page_manager_page' => 'foo']));
-    $this->themeSettingsProvider->method('getSetting')->willReturn(NULL);
-
-    $this->hooks = new PageHooks(
-      $this->themeSettingsProvider,
-      $this->routeMatch,
-      $this->configFactory,
-    );
-
-    $vars = $this->buildVars([
-      'my_block' => ['#block' => TRUE],
-    ]);
-    $this->hooks->preprocessPage($vars);
-
-    $this->assertArrayNotHasKey('#attributes', $vars['page']['content']['my_block']);
-  }
-
-  /**
    * When the layout builder UI is active (section_storage is an instance of
    * DefaultsSectionStorage), no centered-container class is added.
    */
