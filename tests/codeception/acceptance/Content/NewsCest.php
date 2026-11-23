@@ -359,7 +359,8 @@ class NewsCest {
   }
 
   /**
-   * Test that roles with layout selection permission can select spotlight variant.
+   * Test that roles with layout selection permission can select spotlight
+   * variant.
    */
   #[CodeceptionAttribute\Group('news_variant')]
   #[CodeceptionAttribute\Examples(role: 'contributor')]
@@ -479,7 +480,8 @@ class NewsCest {
   }
 
   /**
-   * Test spotlight label displayed correctly on the news spotlight variant page.
+   * Test spotlight label displayed correctly on the news spotlight variant
+   * page.
    */
   #[CodeceptionAttribute\Group('news_variant')]
   #[CodeceptionAttribute\Group('spotlight_page')]

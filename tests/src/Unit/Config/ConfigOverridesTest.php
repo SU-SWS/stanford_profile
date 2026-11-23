@@ -67,7 +67,7 @@ class ConfigOverridesTest extends UnitTestCase {
    */
   public function testConfigIgnoreOverrides() {
     // Fake like it's during installation time.
-    $GLOBALS['install_state'] = true;
+    $GLOBALS['install_state'] = TRUE;
     $overrides = $this->overrideService->loadOverrides(['config_ignore.settings']);
     $expected = [
       'config_ignore.settings' => [
@@ -123,7 +123,6 @@ class ConfigOverridesTest extends UnitTestCase {
 
       case 'stanford_profile.front_page':
         return '/node/99';
-
     }
   }
 
@@ -143,8 +142,8 @@ class ConfigOverridesTest extends UnitTestCase {
   /**
    * During installation, the config ignore settings shouldn't contain anything.
    */
-  public function testConfigOverridesDuringInstall(){
-    $GLOBALS['install_state'] = true;
+  public function testConfigOverridesDuringInstall() {
+    $GLOBALS['install_state'] = TRUE;
 
     $overrides = $this->overrideService->loadOverrides(['config_ignore.settings']);
     $expected = [

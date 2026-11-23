@@ -26,7 +26,8 @@ class FilteredListsSpotlightsCest {
   }
 
   /**
-   * Test that stanford_news_filtered view is available in filtered lists paragraph.
+   * Test that stanford_news_filtered view is available in filtered lists
+   * paragraph.
    */
   public function testNewsFilteredViewAvailable(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');

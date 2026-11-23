@@ -458,7 +458,7 @@ class BasicPageCest {
 
   #[CodeceptionAttribute\Group('body')]
   public function testBodyField(AcceptanceTester $I) {
-    $body_text = '<p>'. implode('</p><p>', $this->faker->paragraphs()) . '</p>';
+    $body_text = '<p>' . implode('</p><p>', $this->faker->paragraphs()) . '</p>';
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->words(3, TRUE),

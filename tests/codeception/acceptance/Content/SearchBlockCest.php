@@ -64,7 +64,7 @@ class SearchBlockCest {
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->words(3, TRUE),
-      'body' => ['value' => $body_text, 'format' => 'stanford_html']
+      'body' => ['value' => $body_text, 'format' => 'stanford_html'],
     ]);
 
     $search_keys = implode(' ', array_slice(explode(' ', $body_text), 0, 4));

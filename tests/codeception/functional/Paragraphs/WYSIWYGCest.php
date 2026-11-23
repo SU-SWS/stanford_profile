@@ -341,7 +341,7 @@ class WYSIWYGCest {
   }
 
   #[CodeceptionAttribute\Group('embed-code')]
-  public function testEmbedCode(FunctionalTester $I){
+  public function testEmbedCode(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I);
     $user = $I->createUserWithRoles(['site_manager', 'su_site_embedder']);
     $I->logInAs($user->getAccountName());

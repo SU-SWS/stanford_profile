@@ -1,23 +1,26 @@
 {
-  "name": "CardinalSites",
+  "name": "stanford_profile",
   "dockerComposeFile": "docker-compose.yml",
   "service": "web",
-  "forwardPorts": [
-    80
-  ],
-  "portsAttributes": {
-    "80": {
-      "label": "Web"
-    }
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "remoteUser": "vscode",
+  "features": {
+    // Theme and component builds (yarn), and gh for pull requests.
+    "ghcr.io/devcontainers/features/node:1": {"version": "lts"},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
+  // Drush and the site's other tools, from any directory.
+  "remoteEnv": {"PATH": "${containerEnv:PATH}:/var/www/site/drupal/vendor/bin"},
+  "forwardPorts": [80],
+  "portsAttributes": {"80": {"label": "Web", "onAutoForward": "notify"}},
   "onCreateCommand": ".devcontainer/on-create.sh",
-  "postCreateCommand": ".devcontainer/post-create.sh",
+  "postStartCommand": ".devcontainer/post-start.sh",
   "secrets": {
     "SSH_PRIVATE_KEY": {
-      "description": "SSH Private key for connecting to remote services. Use a password-less ssh: `cat id_rsa | base64 -w 0`."
+      "description": "Optional password-less SSH private key for remote services, base64 encoded: `base64 -w 0 < ~/.ssh/id_rsa`."
     },
     "GITCONFIG": {
-      "description": "SSH Private key for connecting to remote services. `cat ~/.gitconfig | base64 -w 0`"
+      "description": "Optional git config, base64 encoded: `base64 -w 0 < ~/.gitconfig`."
     }
   },
   "customizations": {
@@ -54,35 +57,36 @@
         "html.format.enable": true,
         "html.format.wrapLineLength": 80,
         "telemetry.telemetryLevel": "off",
-        /* PHP Intelephense (bmewburn.vscode-intelephense-client) */
+
+        /* PHP Intelephense (bmewburn.vscode-intelephense-client): the
+           built site's core and vendor code. */
         "intelephense.environment.includePaths": [
-          "core/",
-          "core/includes",
-          "../vendor/"
+          "/var/www/site/drupal/web/core",
+          "/var/www/site/drupal/web/modules/contrib",
+          "/var/www/site/drupal/vendor"
         ]
       },
-      "extensions": {
-        "recommendations": [
-          "bmewburn.vscode-intelephense-client",
-          "dbaeumer.vscode-eslint",
-          "duboiss.sf-pack",
-          "eduardgenzora.symfony-service-locator",
-          "formulahendry.vscode-mysql",
-          "george-alisson.html-preview-vscode",
-          "ikappas.composer",
-          "marcostazi.vs-code-drupal",
-          "mblode.twig-language-2",
-          "mehedidracula.php-namespace-resolver",
-          "mohd-akram.vscode-html-format",
-          "mrmlnc.vscode-apache",
-          "nadim-vscode.symfony-code-snippets",
-          "nadim-vscode.twig-code-snippets",
-          "phproberto.vscode-php-getters-setters",
-          "redhat.vscode-yaml",
-          "stanislav.vscode-drupal",
-          "thenouillet.symfony-vscode"
-        ]
-      }
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "dbaeumer.vscode-eslint",
+        "duboiss.sf-pack",
+        "eduardgenzora.symfony-service-locator",
+        "formulahendry.vscode-mysql",
+        "george-alisson.html-preview-vscode",
+        "ikappas.composer",
+        "marcostazi.vs-code-drupal",
+        "mblode.twig-language-2",
+        "mehedidracula.php-namespace-resolver",
+        "mohd-akram.vscode-html-format",
+        "mrmlnc.vscode-apache",
+        "nadim-vscode.symfony-code-snippets",
+        "nadim-vscode.twig-code-snippets",
+        "phproberto.vscode-php-getters-setters",
+        "redhat.vscode-yaml",
+        "stanislav.vscode-drupal",
+        "thenouillet.symfony-vscode",
+        "xdebug.php-debug"
+      ]
     }
   }
 }

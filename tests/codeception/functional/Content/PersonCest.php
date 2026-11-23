@@ -65,7 +65,6 @@ class PersonCest {
     $I->canSee($node->label(), 'h1');
   }
 
-
   #[CodeceptionAttribute\Group('people-filters')]
   public function testFilteringPeople(FunctionalTester $I) {
     [
