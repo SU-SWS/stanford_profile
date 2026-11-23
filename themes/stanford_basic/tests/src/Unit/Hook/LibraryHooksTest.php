@@ -43,6 +43,8 @@ class LibraryHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that libraries of other extensions are left alone.
+   *
    * When the extension is not stanford_basic, nothing happens and the
    * config_pages.loader service is never consulted.
    */

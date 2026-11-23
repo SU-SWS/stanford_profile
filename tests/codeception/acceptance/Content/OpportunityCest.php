@@ -9,6 +9,7 @@ use Faker\Factory;
  * Test opportunity content type.
  */
 #[CodeceptionAttribute\Group('opportunity')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class OpportunityCest {
 
   /**
@@ -25,6 +26,9 @@ class OpportunityCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Test site managers can access opportunity content and vocabularies.
+   */
   public function testContentAccess(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');
     $I->amOnPage('/node/add');
@@ -39,6 +43,9 @@ class OpportunityCest {
     $I->canSeeInField('Name', '');
   }
 
+  /**
+   * Provide sidebar field combinations for the sidebar fields test.
+   */
   public function sidebarDataProvider() {
     return [
       ['code' => [], 'units' => [], 'contact' => '', 'deadline' => NULL],
@@ -69,6 +76,9 @@ class OpportunityCest {
     ];
   }
 
+  /**
+   * Test the opportunity sidebar fields display only when populated.
+   */
   #[CodeceptionAttribute\DataProvider('sidebarDataProvider')]
   public function testSidebarFields(AcceptanceTester $I, Example $example) {
     $unit_ids = [];

@@ -8,6 +8,9 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Render\Element;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
+/**
+ * Replaces the search page results with the Algolia search app.
+ */
 class AlgoliaHooks {
 
   use StringTranslationTrait;

@@ -20,7 +20,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
- * Class SiteSettingsTest.
+ * Tests the site settings install task.
  */
 #[Group('stanford_profile')]
 #[RunTestsInSeparateProcesses]

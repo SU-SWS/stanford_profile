@@ -139,6 +139,8 @@ class HtmlHooksTest extends UnitTestCase {
   }
 
   /**
+   * Sets up the config factory mock for theme and analytics settings.
+   *
    * Sets up the configFactory mock to return the given config for
    * '<theme>.settings' and a separate config mock for
    * 'google_analytics.settings'.
@@ -219,6 +221,8 @@ class HtmlHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that is_front defaults to FALSE when isFrontPage() throws.
+   *
    * When isFrontPage() throws an exception (e.g. database unavailable),
    * is_front defaults to FALSE and the path/alias/class logic still runs.
    */
@@ -236,6 +240,8 @@ class HtmlHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that the front page gets no page or section classes.
+   *
    * On the front page, no page-/section- classes are added and the alias
    * manager is never consulted.
    */
@@ -253,8 +259,7 @@ class HtmlHooksTest extends UnitTestCase {
   }
 
   /**
-   * When not on the front page and the alias is empty, no classes are
-   * added.
+   * Tests that an empty alias adds no classes.
    */
   public function testPreprocessHtmlNotFrontPageWithEmptyAlias(): void {
     $this->themeSettingsProvider->method('getSetting')->willReturn([]);
@@ -287,8 +292,10 @@ class HtmlHooksTest extends UnitTestCase {
   }
 
   /**
-   * A multi-segment alias adds a page- class for the full alias and a
-   * section- class for just the first segment.
+   * Tests page and section classes for a multi-segment alias.
+   *
+   * A multi-segment alias adds a page- class for the full alias and a section-
+   * class for just the first segment.
    */
   public function testPreprocessHtmlNotFrontPageWithMultiSegmentAlias(): void {
     $this->themeSettingsProvider->method('getSetting')->willReturn([]);
@@ -305,8 +312,10 @@ class HtmlHooksTest extends UnitTestCase {
   }
 
   /**
-   * Theme setting config variables are unioned into $variables, and
-   * base_path() is set.
+   * Tests that theme settings and base_path are added to the variables.
+   *
+   * Theme setting config variables are unioned into $variables, and base_path()
+   * is set.
    */
   public function testPreprocessHtmlUnionsThemeSettingsAndSetsBasePath(): void {
     $this->themeSettingsProvider->method('getSetting')->willReturn([]);
@@ -337,6 +346,8 @@ class HtmlHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests analytics variables when the google_analytics module is disabled.
+   *
    * When AH_SITE_ENVIRONMENT is set but the google_analytics module is not
    * enabled, add_global_ga is TRUE but ga_module_enabled is not set.
    */
@@ -355,8 +366,10 @@ class HtmlHooksTest extends UnitTestCase {
   }
 
   /**
-   * When AH_SITE_ENVIRONMENT is set and the google_analytics module is
-   * enabled with an account configured, ga_module_enabled is TRUE.
+   * Tests analytics variables when the google_analytics module is enabled.
+   *
+   * When AH_SITE_ENVIRONMENT is set and the google_analytics module is enabled
+   * with an account configured, ga_module_enabled is TRUE.
    */
   public function testPreprocessHtmlWithAcquiaEnvironmentAndGaModuleWithAccount(): void {
     $_ENV['AH_SITE_ENVIRONMENT'] = 'prod';
@@ -376,8 +389,10 @@ class HtmlHooksTest extends UnitTestCase {
   }
 
   /**
-   * When the google_analytics module is enabled but no account is
-   * configured, ga_module_enabled is FALSE.
+   * Tests analytics variables when no analytics account is configured.
+   *
+   * When the google_analytics module is enabled but no account is configured,
+   * ga_module_enabled is FALSE.
    */
   public function testPreprocessHtmlWithAcquiaEnvironmentAndGaModuleWithoutAccount(): void {
     $_ENV['AH_SITE_ENVIRONMENT'] = 'prod';
@@ -400,10 +415,12 @@ class HtmlHooksTest extends UnitTestCase {
 namespace Drupal\stanford_basic\Hook;
 
 if (!function_exists(__NAMESPACE__ . '\base_path')) {
+
   /**
    * Stub for base_path() so unit tests don't require a full bootstrap.
    */
   function base_path() {
     return '/';
   }
+
 }

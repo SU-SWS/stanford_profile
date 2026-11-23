@@ -7,6 +7,7 @@ use Faker\Factory;
  * Test for the basic page content type.
  */
 #[CodeceptionAttribute\Group('basic-page')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class BasicPageParagraphsCest {
 
   /**

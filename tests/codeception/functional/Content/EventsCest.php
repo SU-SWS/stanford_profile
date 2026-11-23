@@ -4,15 +4,18 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 use Drupal\layout_builder\Section;
 use Drupal\layout_builder\SectionComponent;
-use Facebook\WebDriver\WebDriverElement;
 
+/**
+ * Tests the event content type, mini calendar and event filters.
+ */
 #[CodeceptionAttribute\Group('events')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class EventsCest {
 
   /**
    * Faker generator.
    *
-   * @var \Faker\Generator $faker
+   * @var \Faker\Generator
    */
   protected $faker;
 
@@ -83,10 +86,14 @@ class EventsCest {
       $I->waitForText($event->label(), 5);
       $I->canSee($event->label(), 'dialog');
       $I->click('Close Dialog');
-      $I->click('Next Month');;
+      $I->click('Next Month');
+
     }
   }
 
+  /**
+   * Event filter terms can be set on an event and filter the events list.
+   */
   public function testContentType(FunctionalTester $I) {
     [
       $parent_1,
@@ -159,6 +166,9 @@ class EventsCest {
     $I->canSee($node->label(), 'h3');
   }
 
+  /**
+   * Create two parent event filter terms with two children each.
+   */
   protected function buildTaxonomyTerms(FunctionalTester $I) {
     $parent_1 = $I->createEntity([
       'vid' => 'event_filters',

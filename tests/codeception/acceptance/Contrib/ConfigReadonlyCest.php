@@ -3,10 +3,11 @@
 use Codeception\Attribute as CodeceptionAttribute;
 
 /**
- * Class ConfigReadonlyCest.
+ * Tests that the config readonly module is enabled.
  */
 #[CodeceptionAttribute\Group('config_readonly')]
 #[CodeceptionAttribute\Group('contrib')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class ConfigReadonlyCest {
 
   /**

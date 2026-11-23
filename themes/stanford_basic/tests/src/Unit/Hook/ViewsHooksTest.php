@@ -31,8 +31,10 @@ class ViewsHooksTest extends UnitTestCase {
   }
 
   /**
-   * Base view/display classes are always added, and the special policy
-   * change library is not attached for an unrelated view/display.
+   * Tests that base classes are added without the policy library.
+   *
+   * Base view/display classes are always added, and the special policy change
+   * library is not attached for an unrelated view/display.
    */
   public function testPreprocessViewsViewAddsBaseClassesOnly(): void {
     $variables = [
@@ -47,6 +49,8 @@ class ViewsHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that the policy changes display attaches the policy library.
+   *
    * The change_logs/policy_changes view+display combination attaches the
    * stanford_policy library in addition to the base classes.
    */
@@ -63,8 +67,7 @@ class ViewsHooksTest extends UnitTestCase {
   }
 
   /**
-   * Matching the view id but not the display id must not attach the
-   * library.
+   * Tests that a matching view id alone does not attach the library.
    */
   public function testPreprocessViewsViewDoesNotAttachLibraryWhenOnlyViewIdMatches(): void {
     $variables = [
@@ -78,8 +81,7 @@ class ViewsHooksTest extends UnitTestCase {
   }
 
   /**
-   * Matching the display id but not the view id must not attach the
-   * library.
+   * Tests that a matching display id alone does not attach the library.
    */
   public function testPreprocessViewsViewDoesNotAttachLibraryWhenOnlyDisplayIdMatches(): void {
     $variables = [

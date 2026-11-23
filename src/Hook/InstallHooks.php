@@ -11,7 +11,7 @@ use Drupal\Core\Installer\InstallerKernel;
 /**
  * Hooks that relate to installing the stanford_profile install profile.
  *
- * hook_install_tasks() itself cannot be implemented with the #[Hook]
+ * Hook_install_tasks() itself cannot be implemented with the #[Hook]
  * attribute (Drupal core's HookCollectorPass::checkForProceduralOnlyHooks()
  * explicitly denies it, along with hook_install(), hook_schema(), and a few
  * others) so it remains procedural in stanford_profile.profile. It calls

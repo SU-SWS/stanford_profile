@@ -3,12 +3,16 @@
 use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
+/**
+ * Tests for the menu block visibility.
+ */
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class MenuBlockCest {
 
   /**
    * Faker generator.
    *
-   * @var \Faker\Generator $faker
+   * @var \Faker\Generator
    */
   protected $faker;
 

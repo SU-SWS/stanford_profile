@@ -57,8 +57,10 @@ class PageAttachmentHooksTest extends UnitTestCase {
   }
 
   /**
-   * Anonymous users on a non-login route with dropdowns disabled get no
-   * extra libraries attached and a FALSE drupalSettings flag.
+   * Tests that anonymous users get no extra libraries or dropdown flag.
+   *
+   * Anonymous users on a non-login route with dropdowns disabled get no extra
+   * libraries attached and a FALSE drupalSettings flag.
    */
   public function testPageAttachmentsAlterAnonymousNonLoginDropdownDisabled(): void {
     $this->currentUser->method('isAuthenticated')->willReturn(FALSE);
@@ -105,8 +107,10 @@ class PageAttachmentHooksTest extends UnitTestCase {
   }
 
   /**
-   * Both libraries are attached when the user is authenticated and on the
-   * login route, and the dropdown setting is cast to a boolean TRUE.
+   * Tests attachments for an authenticated user on the login route.
+   *
+   * Both libraries are attached when the user is authenticated and on the login
+   * route, and the dropdown setting is cast to a boolean TRUE.
    */
   public function testPageAttachmentsAlterAuthenticatedOnLoginRouteWithDropdownEnabled(): void {
     $this->currentUser->method('isAuthenticated')->willReturn(TRUE);

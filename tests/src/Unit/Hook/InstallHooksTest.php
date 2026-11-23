@@ -42,7 +42,7 @@ class InstallHooksTest extends UnitTestCase {
   }
 
   /**
-   * finalTask() delegates to the install_tasks plugin manager's runTasks().
+   * FinalTask() delegates to the install_tasks plugin manager's runTasks().
    */
   public function testFinalTaskRunsInstallTasks(): void {
     $installTaskManager = $this->createMock(InstallTaskManager::class);
@@ -76,8 +76,7 @@ class InstallHooksTest extends UnitTestCase {
   }
 
   /**
-   * When install_state exists but installation has already finished, the
-   * router is not rebuilt either.
+   * Test the router is not rebuilt once installation has finished.
    */
   public function testConfigPagesPresaveSkipsRebuildWhenInstallationFinished(): void {
     $GLOBALS['install_state'] = ['installation_finished' => TRUE];
@@ -94,8 +93,7 @@ class InstallHooksTest extends UnitTestCase {
   }
 
   /**
-   * When an installation is actively being attempted, the router is
-   * rebuilt.
+   * Test the router is rebuilt while an installation is in progress.
    */
   public function testConfigPagesPresaveRebuildsRouterWhenInstalling(): void {
     $GLOBALS['install_state'] = ['installation_finished' => FALSE];

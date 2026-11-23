@@ -6,8 +6,13 @@ use Codeception\Attribute as CodeceptionAttribute;
  * Test for the Super Footer.
  */
 #[CodeceptionAttribute\Group('super-footer')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class SuperFooterCest {
 
+  /**
+   * Delete the super footer config page after each test.
+   */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     $config_page = \Drupal::entityTypeManager()
       ->getStorage('config_pages')

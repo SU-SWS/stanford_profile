@@ -7,6 +7,9 @@ namespace Drupal\jemison\Hook;
 use Drupal\Core\Extension\ThemeHandlerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 
+/**
+ * Removes Stanford module libraries from pages using the Jemison theme.
+ */
 class LibraryHooks {
 
   public function __construct(protected ThemeHandlerInterface $themeHandler) {}

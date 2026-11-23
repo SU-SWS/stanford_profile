@@ -6,9 +6,10 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class PublicationsCest.
+ * Tests for the publication content type and importer.
  */
 #[CodeceptionAttribute\Group('content')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class PublicationsCest {
 
   use TestFilesTrait;
@@ -35,7 +36,7 @@ class PublicationsCest {
   }
 
   /**
-   * Create a book citation
+   * Create a book citation.
    */
   public function testBookCitation(AcceptanceTester $I) {
     $this->values['term_name'] = $this->faker->words(3, TRUE);
@@ -177,7 +178,7 @@ class PublicationsCest {
     $I->assertGreaterThan($a_pos, $c_pos, sprintf('"%s" does not display after "%s"', $this->values['c_node_title'], $this->values['a_node_title']));
     $I->assertGreaterThan($b_pos, $c_pos, sprintf('"%s" does not display after "%s"', $this->values['c_node_title'], $this->values['b_node_title']));
 
-    // Ensure distinct results
+    // Ensure distinct results.
     $titles_counts = array_count_values($titles);
     $I->assertEquals(1, $titles_counts[$this->values['a_node_title']]);
     $I->assertEquals(1, $titles_counts[$this->values['b_node_title']]);
@@ -249,6 +250,9 @@ class PublicationsCest {
     $I->canSee('Publisher');
   }
 
+  /**
+   * Test importing publications of each citation type from a CSV file.
+   */
   #[CodeceptionAttribute\Group('publication-importer')]
   public function testPublicationImporter(AcceptanceTester $I) {
     $topic = $I->createEntity([

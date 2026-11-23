@@ -4,12 +4,18 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class AccordionCest.
+ * Tests the FAQ paragraph and its accordion expand and collapse controls.
  */
 #[CodeceptionAttribute\Group('paragraphs')]
 #[CodeceptionAttribute\Group('accordions')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class AccordionCest {
 
+  /**
+   * Faker service.
+   *
+   * @var \Faker\Generator
+   */
   protected $faker;
 
   public function __construct() {
@@ -64,12 +70,11 @@ class AccordionCest {
     $I->amOnPage($node->toUrl()->toString());
     $I->canSee($node->label(), 'h1');
 
-    foreach ($q_and_a as $delta => $item) {
+    foreach ($q_and_a as $item) {
       [$question, $answer] = $item;
       $I->canSee($question);
       $I->cantSee($answer);
 
-      $child_index = $delta + 1;
       $I->click($question);
       $I->waitForText($answer);
       $I->click($question);

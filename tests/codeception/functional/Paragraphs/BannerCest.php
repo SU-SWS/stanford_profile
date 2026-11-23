@@ -4,10 +4,11 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class BannerCest.
+ * Tests the display of the banner paragraph fields.
  */
 #[CodeceptionAttribute\Group('paragraphs')]
 #[CodeceptionAttribute\Group('banner')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class BannerCest {
 
   /**
@@ -74,7 +75,8 @@ class BannerCest {
     $I->click('Edit', '.lpb-controls');
     $I->waitForText('Behaviors');
     $I->clickWithLeftButton('.lpb-behavior-plugins summary');
-    $I->selectOption('Text Overlay Position', 'Right');;
+    $I->selectOption('Text Overlay Position', 'Right');
+
     $I->selectOption('Heading Level', 'h3');
 
     $I->click('Save', '.ui-dialog-buttonpane');

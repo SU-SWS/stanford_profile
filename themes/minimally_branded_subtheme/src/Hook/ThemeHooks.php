@@ -7,6 +7,9 @@ namespace Drupal\minimally_branded_subtheme\Hook;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Hook\Attribute\Hook;
 
+/**
+ * Adds base theme paths, search block suggestions and footer lockup settings.
+ */
 class ThemeHooks {
 
   public function __construct(protected ThemeExtensionList $themeExtensionList) {}

@@ -43,8 +43,10 @@ class BookHooksTest extends UnitTestCase {
   }
 
   /**
-   * Builds a mocked \Drupal\Core\Url object whose toString(TRUE) call
-   * returns a GeneratedUrl resolving to the given path.
+   * Builds a mocked Url object that resolves to the given path.
+   *
+   * Builds a mocked \Drupal\Core\Url object whose toString(TRUE) call returns a
+   * GeneratedUrl resolving to the given path.
    */
   protected function mockUrlObject(string $generatedUrl): Url {
     $generated = $this->createMock(GeneratedUrl::class);
@@ -85,8 +87,10 @@ class BookHooksTest extends UnitTestCase {
   }
 
   /**
-   * A top-level item matching the current url is marked active, and
-   * iteration stops (later siblings are left untouched).
+   * Tests that a matching top-level item is marked active.
+   *
+   * A top-level item matching the current url is marked active, and iteration
+   * stops (later siblings are left untouched).
    */
   public function testSetActiveBookItemTopLevelMatchStopsIteration(): void {
     $items = [
@@ -100,6 +104,8 @@ class BookHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that a matching nested item is marked active.
+   *
    * When no top-level item matches, nested 'below' items are searched
    * recursively and the matching nested item is marked active.
    */
@@ -134,6 +140,8 @@ class BookHooksTest extends UnitTestCase {
   }
 
   /**
+   * Installs a mocked url_generator service that resolves the current route.
+   *
    * Builds a working 'url_generator' service backed by mocked dependencies,
    * configured so that Url::fromRoute('<current>') resolves to $currentPath,
    * and installs it into a fresh container via \Drupal::setContainer().
@@ -176,6 +184,8 @@ class BookHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that preprocessBookTree() marks the current item active.
+   *
    * Full happy path: preprocessBookTree() resolves the current url via
    * Url::fromRoute('<current>') and marks the matching tree item active.
    */

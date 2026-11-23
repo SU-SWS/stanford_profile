@@ -52,7 +52,7 @@ class ProfileHelpSection extends HelpSectionPluginBase {
    */
   protected function getLaunchWebsite() {
     $help = '<h3>' . $this->t('Ready to Launch?') . '</h3>';
-    // @TODO: Update link when launch process guide is available.
+    // @todo Update link when launch process guide is available.
     $help .= '<p>' . $this->t('Learn about the launch process, review the final checklist, and submit a request to launch.') . '</p>';
     $help .= self::getLinkString($this->t('Website launch process'), 'https://sitesuserguide.stanford.edu/support/site-launch-checklist', TRUE);
 

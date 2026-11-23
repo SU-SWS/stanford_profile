@@ -9,6 +9,7 @@ use Drupal\config_pages\Entity\ConfigPages;
  */
 #[CodeceptionAttribute\Group('content')]
 #[CodeceptionAttribute\Group('policy')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class PolicyCest {
 
   /**
@@ -25,12 +26,20 @@ class PolicyCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Delete the policy settings config page before each test.
+   */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _before(AcceptanceTester $I) {
     if ($config_page = ConfigPages::load('policy_settings')) {
       $config_page->delete();
     }
   }
 
+  /**
+   * Delete the policy settings config page after each test.
+   */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     $this->_before($I);
   }
@@ -42,7 +51,7 @@ class PolicyCest {
     $I->logInWithRole('contributor');
     $I->amOnPage('/node/add/stanford_policy');
     $I->cantSee('Create a new book');
-    // D8CORE-4551 - removed create policy permission for contributors
+    // D8CORE-4551 - removed create policy permission for contributors.
     $I->canSee('Access Denied');
     $book = $I->createEntity([
       'type' => 'stanford_policy',
@@ -282,11 +291,11 @@ class PolicyCest {
     $I->fillField('Chapter Number', $new_prefix);
     $I->click('Save');
     $I->canSee($new_prefix . '. ' . $chapter_two->get('su_policy_title')
-        ->getString(), 'h1');
+      ->getString(), 'h1');
 
     $I->amOnPage($article_one->toUrl()->toString());
     $I->canSee($new_prefix . '.A ' . $article_one->get('su_policy_title')
-        ->getString());
+      ->getString());
 
     $new_title = $this->faker->words(4, TRUE);
     $I->amOnPage($article_one->toUrl('edit-form')->toString());
@@ -295,6 +304,9 @@ class PolicyCest {
     $I->canSee($new_title);
   }
 
+  /**
+   * Get the site's default timezone.
+   */
   protected static function getTimezone() {
     return \Drupal::config('system.date')
       ->get('timezone.default') ?: @date_default_timezone_get();

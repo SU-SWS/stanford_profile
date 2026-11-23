@@ -8,6 +8,7 @@ use Codeception\Example;
  * Codeception tests on stat card paragraph type.
  */
 #[CodeceptionAttribute\Group('paragraphs')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class StanfordStatCardCest {
 
   /**
@@ -24,6 +25,9 @@ class StanfordStatCardCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Test stat card colors, heading levels and hidden headline options.
+   */
   #[CodeceptionAttribute\Examples(NULL, NULL, NULL, NULL, NULL)]
   #[CodeceptionAttribute\Examples('53565a', '8c1515', '8c1515', 'h2', NULL)]
   #[CodeceptionAttribute\Examples('8c1515', '620059', '620059', 'h3', NULL)]

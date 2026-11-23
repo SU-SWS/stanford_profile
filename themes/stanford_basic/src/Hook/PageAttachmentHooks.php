@@ -10,6 +10,9 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Site\Settings;
 
+/**
+ * Attaches theme libraries and settings to every page.
+ */
 class PageAttachmentHooks {
 
   public function __construct(

@@ -2,9 +2,15 @@
 
 use Faker\Factory;
 
+/**
+ * Tests linking to media with the Linkit CKEditor plugin.
+ */
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class LinkItCest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Factory
    */
   protected $faker;
@@ -16,6 +22,9 @@ class LinkItCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Linkit should link text and embedded images to a document media file.
+   */
   public function testLinkingMedia(FunctionalTester $I) {
     $docName = preg_replace('/[^a-z0-9]/', '-', strtolower($this->faker->words(3, TRUE)));
     $imageName = preg_replace('/[^a-z0-9]/', '-', strtolower($this->faker->words(3, TRUE)));

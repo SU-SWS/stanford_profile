@@ -76,8 +76,10 @@ class LibraryHooksTest extends UnitTestCase {
   }
 
   /**
-   * Extensions that don't match the theme and don't match the pattern are
-   * left completely untouched.
+   * Tests that libraries of other non-Stanford extensions are kept.
+   *
+   * Extensions that don't match the theme and don't match the pattern are left
+   * completely untouched.
    */
   public function testLibraryInfoAlterLeavesUnrelatedExtensionsAlone(): void {
     $this->themeHandler->method('themeExists')->with('core')->willReturn(FALSE);

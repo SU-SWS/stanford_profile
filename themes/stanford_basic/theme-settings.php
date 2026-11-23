@@ -1,17 +1,19 @@
 <?php
 
+/**
+ * @file
+ * Adds the Stanford Basic theme settings to the theme settings form.
+ */
+
 use Drupal\Core\Extension\ThemeSettingsProvider;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 
-// @codeCoverageIgnoreStart
-
-// Set theme name to use in the key values.
-$theme_name = \Drupal::theme()->getActiveTheme()->getName();
-
 /**
  * Implements hook_form_system_theme_settings_alter().
+ *
+ * @codeCoverageIgnore
  */
 function stanford_basic_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state) {
   $theme_settings = \Drupal::service(ThemeSettingsProvider::class);
@@ -31,7 +33,7 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
     '#type' => 'select',
     '#title' => t('Brand Bar Variant'),
     '#options' => [
-      'default' => '- Default -',
+      'default' => t('- Default -'),
       'dark' => t('Dark'),
       'white' => t('White'),
     ],
@@ -55,7 +57,7 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
   ];
 
   $img = '<img src="' . base_path() . \Drupal::service('extension.list.theme')
-      ->getPath('stanford_basic') . '/dist/assets/img/lockup-example.png" />';
+    ->getPath('stanford_basic') . '/dist/assets/img/lockup-example.png" />';
   $identityguide = Link::fromTextAndUrl('Stanford Identity Guide', Url::fromUri('https://identity.stanford.edu/'))
     ->toString();
 
@@ -246,5 +248,3 @@ function stanford_basic_form_system_theme_settings_alter(array &$form, FormState
   ];
 
 }
-
-// @codeCoverageIgnoreEnd

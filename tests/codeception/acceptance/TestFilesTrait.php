@@ -1,13 +1,20 @@
 <?php
 
+/**
+ * Helpers to prepare and clean up files used in upload tests.
+ */
 trait TestFilesTrait {
 
   /**
+   * Path of the prepared logo file, relative to the data directory.
+   *
    * @var string
    */
   protected $logoPath;
 
   /**
+   * Path of the prepared test file, relative to the data directory.
+   *
    * @var string
    */
   protected $filePath;
@@ -25,6 +32,7 @@ trait TestFilesTrait {
    * @param \AcceptanceTester $I
    *   Tester.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     $this->removeFiles();
   }
@@ -83,11 +91,13 @@ trait TestFilesTrait {
   }
 
   /**
-   *
+   * Get the full data directory path to a file, creating its directory.
    *
    * @param string $file
+   *   File path relative to the codeception data directory.
    *
    * @return string
+   *   Absolute path to the file.
    */
   protected function getFullPath(string $file): string {
     $full_path = codecept_data_dir($file);
@@ -98,7 +108,10 @@ trait TestFilesTrait {
   }
 
   /**
+   * Generate a random five-character prefix for unique file names.
+   *
    * @return string
+   *   Five-character file name prefix.
    */
   protected function getUniqueFilePrefix(): string {
     return substr(md5(self::class . microtime()), 0, 5);

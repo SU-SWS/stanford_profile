@@ -6,6 +6,7 @@ use Codeception\Attribute as CodeceptionAttribute;
  * System tests.
  */
 #[CodeceptionAttribute\Group('system')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class SystemCest {
 
   /**

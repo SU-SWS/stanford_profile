@@ -7,6 +7,9 @@ namespace Drupal\stanford_basic\Hook;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 
+/**
+ * Swaps in the site-uploaded Algolia search script for the theme library.
+ */
 class LibraryHooks {
 
   public function __construct(protected EntityTypeManagerInterface $entityTypeManager) {}

@@ -4,9 +4,10 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class RolesCest.
+ * Tests restrictions on what user roles can do, such as deleting the home page.
  */
 #[CodeceptionAttribute\Group('users')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class RolesCest {
 
   /**
@@ -22,6 +23,7 @@ class RolesCest {
    * @param \FunctionalTester $I
    *   Tester.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _before(FunctionalTester $I) {
     $this->saveStateValue('stanford_profile.front_page');
   }
@@ -32,6 +34,7 @@ class RolesCest {
    * @param \FunctionalTester $I
    *   Tester.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(FunctionalTester $I) {
     foreach ($this->state as $key => $value) {
       \Drupal::state()->set($key, $value);

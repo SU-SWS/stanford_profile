@@ -7,6 +7,7 @@ use Faker\Factory;
  * Test Publication content type.
  */
 #[CodeceptionAttribute\Group('publication')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class PublicationCest {
 
   /**
@@ -23,6 +24,9 @@ class PublicationCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Contributor can tag a publication with nested publication filter terms.
+   */
   public function testContentType(FunctionalTester $I) {
     [
       $parent_1,
@@ -63,6 +67,9 @@ class PublicationCest {
     $I->canSee($node->label(), 'h1');
   }
 
+  /**
+   * Create two parent publication filter terms with two children each.
+   */
   protected function buildTaxonomyTerms(FunctionalTester $I) {
     $parent_1 = $I->createEntity([
       'vid' => 'publication_filters',

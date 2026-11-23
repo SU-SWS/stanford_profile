@@ -9,6 +9,7 @@ use Drupal\Core\Cache\Cache;
  * Test the events + importer functionality.
  */
 #[CodeceptionAttribute\Group('content')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class EventsCest {
 
   /**
@@ -25,6 +26,10 @@ class EventsCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Delete the events importer config page after each test.
+   */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     if ($config_page = ConfigPages::load('stanford_events_importer')) {
       $config_page->delete();
@@ -97,7 +102,7 @@ class EventsCest {
   /**
    * Ensure events are in the sitemap.
    */
-  public function testXMLSiteMap(AcceptanceTester $I) {
+  public function testXmlSiteMap(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_event');
     $I->seeOptionIsSelected('#edit-xmlsitemap-status', 'Included');
@@ -109,7 +114,7 @@ class EventsCest {
    */
   public function testPageTitleIgnoreCondition(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    // Todo: make theme name dynamic.
+    // @todo make theme name dynamic.
     $I->amOnPage('/admin/structure/block/manage/stanford_basic_pagetitle');
     $values = $I->grabValueFrom('#edit-visibility-request-path-pages');
     if (is_string($values)) {
@@ -421,6 +426,9 @@ class EventsCest {
     $I->assertCount(1, $data['data']);
   }
 
+  /**
+   * Format a timestamp in the site's default timezone.
+   */
   protected static function getDateTimeString($format, $time) {
     $timezone = \Drupal::config('system.date')
       ->get('timezone.default') ?: @date_default_timezone_get();
@@ -432,7 +440,7 @@ class EventsCest {
    * Create an Event Node.
    *
    * @param AcceptanceTester $I
-   *   Codeception AcceptanceTester
+   *   Codeception AcceptanceTester.
    * @param bool $external
    *   Wether or not this node should be external.
    * @param string $node_title

@@ -10,6 +10,9 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
 
+/**
+ * Adds brand bar, footer and layout variables to the page template.
+ */
 class PageHooks {
 
   public function __construct(

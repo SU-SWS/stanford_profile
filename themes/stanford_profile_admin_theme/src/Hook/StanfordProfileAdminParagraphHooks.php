@@ -8,10 +8,15 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Routing\RouteObjectInterface;
 
 /**
+ * Builds component variables for paragraph templates in the admin theme.
+ *
  * @codeCoverageIgnore
  */
 class StanfordProfileAdminParagraphHooks {
 
+  /**
+   * Builds hero component variables from the banner behavior settings.
+   */
   #[Hook('preprocess_paragraph__stanford_banner')]
   public function preprocessParagraphStanfordBanner(&$variables) {
     /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
@@ -29,6 +34,9 @@ class StanfordProfileAdminParagraphHooks {
     ];
   }
 
+  /**
+   * Builds card component variables from the card style settings.
+   */
   #[Hook('preprocess_paragraph__stanford_card')]
   public function preprocessParagraphStanfordCard(&$variables) {
     /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
@@ -45,6 +53,9 @@ class StanfordProfileAdminParagraphHooks {
     ];
   }
 
+  /**
+   * Adds the current page title to page title banner paragraphs.
+   */
   #[Hook('preprocess_paragraph__stanford_page_title_banner')]
   public function preprocessParagraphStanfordPageTitleBanner(&$variables) {
     $request = \Drupal::request();
@@ -56,6 +67,9 @@ class StanfordProfileAdminParagraphHooks {
     $variables['page_title'] = $page_title;
   }
 
+  /**
+   * Builds stat card component variables from the paragraph colors.
+   */
   #[Hook('preprocess_paragraph__stanford_stat_card')]
   public function preprocessParagraphStanfordStatCard(&$variables) {
     /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */

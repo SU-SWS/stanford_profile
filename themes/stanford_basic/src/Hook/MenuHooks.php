@@ -15,6 +15,9 @@ use Drupal\Core\Url;
 use Drupal\path_alias\AliasManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+/**
+ * Marks active, current and unpublished menu items and local tasks.
+ */
 class MenuHooks {
 
   use StringTranslationTrait;

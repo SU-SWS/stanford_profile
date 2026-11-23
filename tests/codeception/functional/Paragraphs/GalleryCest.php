@@ -4,9 +4,10 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class GalleryCest.
+ * Tests the gallery paragraph and its colorbox behavior.
  */
 #[CodeceptionAttribute\Group('paragraph')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class GalleryCest {
 
   /**
@@ -76,6 +77,9 @@ class GalleryCest {
     $I->assertNotEquals($first_image_src, $second_image_src);
   }
 
+  /**
+   * Create a basic page containing an empty gallery paragraph.
+   */
   protected function getNode(FunctionalTester $I) {
     $paragraph = $I->createEntity([
       'type' => 'stanford_gallery',

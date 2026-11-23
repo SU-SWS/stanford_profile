@@ -42,8 +42,10 @@ class AlgoliaHooksTest extends UnitTestCase {
   }
 
   /**
-   * Resets the internal static cache property between tests so that one
-   * test's cached result cannot leak into another.
+   * Resets the static Algolia settings cache between tests.
+   *
+   * Resets the internal static cache property between tests so that one test's
+   * cached result cannot leak into another.
    */
   protected function resetAlgoliaSettingsCache(): void {
     $property = new \ReflectionProperty(AlgoliaHooks::class, 'algoliaSettings');
@@ -109,6 +111,8 @@ class AlgoliaHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that Algolia settings are cached statically.
+   *
    * The result is cached statically; a second call does not re-query the
    * config_pages.loader service.
    */
@@ -131,6 +135,8 @@ class AlgoliaHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that the search page is unchanged without Algolia settings.
+   *
    * When algolia settings are not configured, preprocessPageSearch() returns
    * early and does not attach any library or drupalSettings.
    */
@@ -145,6 +151,8 @@ class AlgoliaHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that the search page is set up for Algolia when configured.
+   *
    * When algolia settings are configured, the library and drupalSettings are
    * attached, and the system_main_block content is replaced with a
    * noscript-friendly container.

@@ -8,6 +8,7 @@ use Faker\Factory;
  */
 #[CodeceptionAttribute\Group('navigation')]
 #[CodeceptionAttribute\Group('decoupled-menu')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class DecoupledMenuCest {
 
   /**
@@ -27,6 +28,7 @@ class DecoupledMenuCest {
   /**
    * Cleanup after test.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(FunctionalTester $I) {
     \Drupal::entityTypeManager()
       ->getStorage('config_pages')
@@ -35,6 +37,9 @@ class DecoupledMenuCest {
       ->save();
   }
 
+  /**
+   * Decoupled main menu should show parents, then children in weight order.
+   */
   public function testDecoupledMenu(FunctionalTester $I) {
     $this->enableDecoupledMenu();
     $parent_1_title = $this->faker->uuid();
@@ -72,6 +77,9 @@ class DecoupledMenuCest {
     $I->assertTrue(array_search($child_1_title, $menu_links) < array_search($parent_2_title, $menu_links), 'Child link 1 displays before parent link 2');
   }
 
+  /**
+   * Create a basic page with a main menu link.
+   */
   protected function createPageInMenu(FunctionalTester $I, string $title, int $weight = 0, string $parent = '') {
     return $I->createEntity([
       'type' => 'stanford_page',
@@ -86,6 +94,9 @@ class DecoupledMenuCest {
     ]);
   }
 
+  /**
+   * Turn on the decoupled main menu in the basic site settings config page.
+   */
   protected function enableDecoupledMenu() {
     $cp_storage = \Drupal::entityTypeManager()
       ->getStorage('config_pages');

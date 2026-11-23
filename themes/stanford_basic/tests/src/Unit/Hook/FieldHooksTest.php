@@ -53,8 +53,10 @@ class FieldHooksTest extends UnitTestCase {
   }
 
   /**
-   * When no heading level is set, the default 'h2' is used and no dot means
-   * a trailing dot is appended, resulting in an empty classes string.
+   * Tests the default h2 heading level with no classes.
+   *
+   * When no heading level is set, the default 'h2' is used and no dot means a
+   * trailing dot is appended, resulting in an empty classes string.
    */
   public function testPreprocessFieldSuStatHeadlineDefaultHeading(): void {
     $entity = $this->mockEntity(['su_stat_headline_lvl' => NULL, 'su_stat_heading_hide' => NULL]);
@@ -177,8 +179,7 @@ class FieldHooksTest extends UnitTestCase {
   }
 
   /**
-   * A field of type entity_reference_revisions whose first item is not
-   * flagged as a paragraph does not get paragraph classes added.
+   * Tests that non-paragraph reference revision fields get no item classes.
    */
   public function testPreprocessFieldEntityReferenceRevisionsNonParagraph(): void {
     $variables = $this->baseFieldVariables();
@@ -208,8 +209,7 @@ class FieldHooksTest extends UnitTestCase {
   }
 
   /**
-   * Happy path: a paragraph field with items gets paragraph-item classes
-   * and a ptype-* class derived from the paragraph bundle.
+   * Tests that paragraph field items get paragraph-item and ptype-* classes.
    */
   public function testPreprocessFieldParagraphHappyPath(): void {
     $paragraph = $this->createMock(ParagraphInterface::class);
@@ -231,8 +231,7 @@ class FieldHooksTest extends UnitTestCase {
   }
 
   /**
-   * When the item already has classes, the paragraph classes are appended
-   * rather than overwriting the existing ones.
+   * Tests that paragraph classes are appended to existing item classes.
    */
   public function testPreprocessFieldParagraphAppendsToExistingClasses(): void {
     $paragraph = $this->createMock(ParagraphInterface::class);

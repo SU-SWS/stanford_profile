@@ -8,6 +8,7 @@ require_once __DIR__ . '/../TestFilesTrait.php';
  * Test for the lockup settings.
  */
 #[CodeceptionAttribute\Group('lockup')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class LockupSettingsCest {
 
   use TestFilesTrait;
@@ -16,9 +17,10 @@ class LockupSettingsCest {
    * Setup work before running tests.
    *
    * @param AcceptanceTester $I
-   *  The working class.
+   *   The working class.
    */
-  function _before(AcceptanceTester $I) {
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
+  public function _before(AcceptanceTester $I) {
     $this->prepareImage();
   }
 
@@ -28,6 +30,7 @@ class LockupSettingsCest {
    * @param \AcceptanceTester $I
    *   Tester.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     $config_page = \Drupal::entityTypeManager()
       ->getStorage('config_pages')
@@ -384,7 +387,7 @@ class LockupSettingsCest {
       $I->click('Remove');
     }
 
-    // For CircleCI
+    // For CircleCI.
     $I->attachFile('input[name="files[su_upload_logo_image_0]"]', $this->logoPath);
     $I->click('Upload');
 

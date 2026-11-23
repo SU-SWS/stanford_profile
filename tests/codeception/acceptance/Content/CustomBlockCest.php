@@ -7,15 +7,18 @@ use Faker\Factory;
  * Test for custom block types.
  */
 #[CodeceptionAttribute\Group('block')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class CustomBlockCest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Generator
    */
   protected $faker;
 
   /**
-   * Test Constructor
+   * Test Constructor.
    */
   public function __construct() {
     $this->faker = Factory::create();

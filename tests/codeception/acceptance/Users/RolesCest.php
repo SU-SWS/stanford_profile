@@ -5,12 +5,15 @@ use Codeception\Example;
 use Faker\Factory;
 
 /**
- * Class RolesCest.
+ * Tests for the permissions of the default user roles.
  */
 #[CodeceptionAttribute\Group('users')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class RolesCest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Generator
    */
   protected $faker;
@@ -72,7 +75,7 @@ class RolesCest {
   public function testReviewerRole(AcceptanceTester $I) {
     $I->logInWithRole('site_reviewer');
     // D8CORE-7622
-    // would be nice to have a test if they CAN see unpublished pages
+    // would be nice to have a test if they CAN see unpublished pages.
   }
 
   /**
@@ -209,6 +212,9 @@ class RolesCest {
     $I->canSee('Embeddable test embed has been created');
   }
 
+  /**
+   * Test which roles can create audio/visual content.
+   */
   #[CodeceptionAttribute\Group('media-content')]
   #[CodeceptionAttribute\Examples(role: 'contributor', access: TRUE)]
   #[CodeceptionAttribute\Examples(role: 'site_manager', access: TRUE)]
@@ -224,6 +230,9 @@ class RolesCest {
     }
   }
 
+  /**
+   * Test which roles can edit audio/visual content.
+   */
   #[CodeceptionAttribute\Group('media-content')]
   #[CodeceptionAttribute\Examples(role: 'contributor', access: TRUE)]
   #[CodeceptionAttribute\Examples(role: 'site_manager', access: TRUE)]
@@ -244,11 +253,14 @@ class RolesCest {
     }
   }
 
+  /**
+   * Test which roles can manage audio/visual taxonomy terms.
+   */
   #[CodeceptionAttribute\Group('media-content')]
   #[CodeceptionAttribute\Examples(role: 'contributor', access: FALSE)]
   #[CodeceptionAttribute\Examples(role: 'site_manager', access: TRUE)]
   public function testMediaTaxonomyAccess(AcceptanceTester $I, Example $example) {
-    $node = $I->createEntity([
+    $I->createEntity([
       'type' => 'stanford_media',
       'title' => $this->faker->words(3, TRUE),
     ]);

@@ -7,6 +7,7 @@ use Faker\Factory;
  * Test the event series functionality.
  */
 #[CodeceptionAttribute\Group('content')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class EventsSeriesCest {
 
   /**
@@ -26,7 +27,7 @@ class EventsSeriesCest {
   /**
    * Ensure events are in the sitemap.
    */
-  public function testXMLSiteMap(AcceptanceTester $I) {
+  public function testXmlSiteMap(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage('/admin/config/search/xmlsitemap/settings/node/stanford_event_series');
     $I->seeOptionIsSelected('#edit-xmlsitemap-status', 'Included');
@@ -38,7 +39,7 @@ class EventsSeriesCest {
    */
   public function testPageTitleIgnoreCondition(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
-    // Todo: make theme name dynamic.
+    // @todo make theme name dynamic.
     $I->amOnPage('/admin/structure/block/manage/stanford_basic_pagetitle');
     $values = $I->grabValueFrom('#edit-visibility-request-path-pages');
     if (is_string($values)) {
@@ -162,9 +163,13 @@ class EventsSeriesCest {
   }
 
   /**
-   * [protected description]
+   * Create an event node happening now for use in a series.
    *
-   * @var [type]
+   * @param \AcceptanceTester $I
+   *   Tester.
+   *
+   * @return \Drupal\node\NodeInterface
+   *   The created event node.
    */
   protected function createEventNode(AcceptanceTester $I) {
     $start = time() - (60 * 60 * 24);

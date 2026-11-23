@@ -8,9 +8,12 @@ use Drupal\config_pages\Entity\ConfigPages;
  * Test the external link module functionality.
  */
 #[CodeceptionAttribute\Group('ext_links')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class ExtLinkCest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Factory
    */
   protected $faker;
@@ -21,6 +24,7 @@ class ExtLinkCest {
    * @param \AcceptanceTester $I
    *   Tester.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _before(FunctionalTester $I) {
     $this->_after($I);
   }
@@ -38,6 +42,7 @@ class ExtLinkCest {
    * @param \AcceptanceTester $I
    *   Tester.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(FunctionalTester $I) {
     if ($config_page = ConfigPages::load('stanford_local_footer')) {
       $config_page->delete();

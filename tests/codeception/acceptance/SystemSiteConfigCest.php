@@ -5,9 +5,10 @@ use Drupal\config_pages\Entity\ConfigPages;
 use Faker\Factory;
 
 /**
- * Class SystemSiteConfigCest.
+ * Tests for the basic site settings config page.
  */
 #[CodeceptionAttribute\Group('system-site-config')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class SystemSiteConfigCest {
 
   /**
@@ -27,6 +28,7 @@ class SystemSiteConfigCest {
   /**
    * Delete the config page after the test finishes.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     if ($config_page = ConfigPages::load('stanford_basic_site_settings')) {
       $config_page->delete();
@@ -71,6 +73,9 @@ class SystemSiteConfigCest {
     $I->cantSee('Foo Bar Site');
   }
 
+  /**
+   * Test site managers can set the header button and links.
+   */
   #[CodeceptionAttribute\Group('header-links')]
   public function testHeaderLinks(AcceptanceTester $I) {
     $org_term = $I->createEntity([
@@ -225,6 +230,9 @@ class SystemSiteConfigCest {
     $I->cantSee('UA-12456-12');
   }
 
+  /**
+   * Test the pre-production site type shows an under construction banner.
+   */
   #[CodeceptionAttribute\Group('unpublished-site')]
   public function testUnpublishedSiteBanner(AcceptanceTester $I) {
     $org_term = $I->createEntity([
@@ -256,6 +264,9 @@ class SystemSiteConfigCest {
     $I->cantSee('Under Construction');
   }
 
+  /**
+   * Test site managers can add a redirect to a node.
+   */
   #[CodeceptionAttribute\Group('redirect')]
   public function testRedirect(AcceptanceTester $I) {
     $node = $I->createEntity([
@@ -278,6 +289,9 @@ class SystemSiteConfigCest {
     $I->canSeeInCurrentUrl($node->toUrl()->toString());
   }
 
+  /**
+   * Test a redirect can replace the path of a recently deleted node.
+   */
   #[CodeceptionAttribute\Group('redirect')]
   public function testRedirectingRecentDelete(AcceptanceTester $I) {
     $node = $I->createEntity([

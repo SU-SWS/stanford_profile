@@ -6,6 +6,7 @@ use Codeception\Attribute as CodeceptionAttribute;
  * Test for the lockup settings permissions.
  */
 #[CodeceptionAttribute\Group('lockup')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class LockupSettingsPermsCest {
 
   /**

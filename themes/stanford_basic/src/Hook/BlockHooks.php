@@ -12,6 +12,9 @@ use Drupal\Core\Menu\MenuLinkTreeInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Extension\ThemeSettingsProvider;
 
+/**
+ * Adds block classes and the decoupled main menu to blocks.
+ */
 class BlockHooks {
 
   public function __construct(
@@ -108,6 +111,8 @@ class BlockHooks {
   }
 
   /**
+   * Replaces non-alphanumeric characters, such as ":", with dashes.
+   *
    * Html::cleanCssIdentifier() doesn't remove ":" so we have to clean a little
    * more.
    *

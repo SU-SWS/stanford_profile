@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
- * Class UsersTest.
+ * Tests the users install task.
  */
 #[Group('stanford_profile')]
 #[RunTestsInSeparateProcesses]

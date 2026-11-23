@@ -8,6 +8,9 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
+/**
+ * Adjusts the print link on printable entity links.
+ */
 class LinksHooks {
 
   use StringTranslationTrait;

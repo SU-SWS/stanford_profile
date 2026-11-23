@@ -9,6 +9,9 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+/**
+ * Appends the current page title to the breadcrumb.
+ */
 class BreadcrumbHooks {
 
   public function __construct(

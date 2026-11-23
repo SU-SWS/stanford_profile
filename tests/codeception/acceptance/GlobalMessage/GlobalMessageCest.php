@@ -6,11 +6,13 @@ use Codeception\Attribute as CodeceptionAttribute;
  * Test for the Global Messages.
  */
 #[CodeceptionAttribute\Group('global-message')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class GlobalMessageCest {
 
   /**
    * Delete the config page after finishing.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     $config_page = \Drupal::entityTypeManager()
       ->getStorage('config_pages')

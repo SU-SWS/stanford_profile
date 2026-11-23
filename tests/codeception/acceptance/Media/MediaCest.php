@@ -9,6 +9,7 @@ require_once __DIR__ . '/../TestFilesTrait.php';
  * Tests for various media functionality.
  */
 #[CodeceptionAttribute\Group('media')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class MediaCest {
 
   use TestFilesTrait;
@@ -188,7 +189,7 @@ class MediaCest {
   }
 
   /**
-   * Google Form additional field
+   * Google Form additional field.
    */
   public function testForGoogleFormFields(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');

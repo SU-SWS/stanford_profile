@@ -4,21 +4,24 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class Issue2901390Cest.
+ * Test creating a custom block in layout builder (Drupal issue 2901390).
  *
  * @link https://www.drupal.org/node/2901390
  */
 #[CodeceptionAttribute\Group('bug_fix')]
 #[CodeceptionAttribute\Group('paragraphs')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class Issue2901390Cest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Generator
    */
   protected $faker;
 
   /**
-   * Test Constructor
+   * Test Constructor.
    */
   public function __construct() {
     $this->faker = Factory::create();
