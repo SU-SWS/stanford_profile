@@ -18,6 +18,7 @@ jobs:
       php-versions: '["8.4", "8.5"]'
       codeception-shards: ${{ fromJSON(vars.TEST_SHARDS || '4') }}
       phpcs: fail
+      phpstan: fail
     secrets: inherit
 
   # The required status check in the *.x ruleset.

@@ -131,6 +131,7 @@ class BlockHooksTest extends UnitTestCase {
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $configPages);
     \Drupal::setContainer($container);
+    $this->hooks = new BlockHooks($this->entityTypeManager, $this->menuTree, $this->themeSettingsProvider, $configPages);
 
     $variables = $this->baseVariables('system_menu_block:footer');
     $this->hooks->preprocessBlock($variables);
@@ -172,6 +173,7 @@ class BlockHooksTest extends UnitTestCase {
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $configPages);
     \Drupal::setContainer($container);
+    $this->hooks = new BlockHooks($this->entityTypeManager, $this->menuTree, $this->themeSettingsProvider, $configPages);
 
     $this->menuTree->expects($this->never())->method('load');
 
@@ -222,6 +224,7 @@ class BlockHooksTest extends UnitTestCase {
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $configPages);
     \Drupal::setContainer($container);
+    $this->hooks = new BlockHooks($this->entityTypeManager, $this->menuTree, $this->themeSettingsProvider, $configPages);
 
     $child = $this->buildMenuLinkTreeElement('Child Link', 5);
     $disabledChild = $this->buildMenuLinkTreeElement('Disabled Link', 1, enabled: FALSE);
@@ -274,6 +277,7 @@ class BlockHooksTest extends UnitTestCase {
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $configPages);
     \Drupal::setContainer($container);
+    $this->hooks = new BlockHooks($this->entityTypeManager, $this->menuTree, $this->themeSettingsProvider, $configPages);
 
     $variables = $this->baseVariables('views_exposed_filter_block:search-results');
     $this->hooks->preprocessBlock($variables);
@@ -293,6 +297,7 @@ class BlockHooksTest extends UnitTestCase {
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $configPages);
     \Drupal::setContainer($container);
+    $this->hooks = new BlockHooks($this->entityTypeManager, $this->menuTree, $this->themeSettingsProvider, $configPages);
 
     $variables = $this->baseVariables('views_exposed_filter_block:search-results');
     $this->hooks->preprocessBlock($variables);

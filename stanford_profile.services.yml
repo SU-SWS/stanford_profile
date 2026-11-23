@@ -1,4 +1,7 @@
 services:
+  logger.channel.stanford_profile:
+    parent: logger.channel_base
+    arguments: ['stanford_profile']
   plugin.manager.install_tasks:
     class: Drupal\stanford_profile\InstallTaskManager
     parent: default_plugin_manager

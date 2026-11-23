@@ -19,21 +19,6 @@ use PHPUnit\Framework\Attributes\Group;
 class InstallHooksTest extends UnitTestCase {
 
   /**
-   * The hook class under test.
-   *
-   * @var \Drupal\stanford_profile\Hook\InstallHooks
-   */
-  protected InstallHooks $hooks;
-
-  /**
-   * {@inheritDoc}
-   */
-  protected function setUp(): void {
-    parent::setUp();
-    $this->hooks = new InstallHooks();
-  }
-
-  /**
    * {@inheritDoc}
    */
   protected function tearDown(): void {
@@ -67,12 +52,8 @@ class InstallHooksTest extends UnitTestCase {
     $routeBuilder = $this->createMock(RouteBuilderInterface::class);
     $routeBuilder->expects($this->never())->method('rebuild');
 
-    $container = new ContainerBuilder();
-    $container->set('router.builder', $routeBuilder);
-    \Drupal::setContainer($container);
-
     $configPage = $this->createMock(ConfigPagesInterface::class);
-    $this->hooks->configPagesPresave($configPage);
+    (new InstallHooks($routeBuilder))->configPagesPresave($configPage);
   }
 
   /**
@@ -84,12 +65,8 @@ class InstallHooksTest extends UnitTestCase {
     $routeBuilder = $this->createMock(RouteBuilderInterface::class);
     $routeBuilder->expects($this->never())->method('rebuild');
 
-    $container = new ContainerBuilder();
-    $container->set('router.builder', $routeBuilder);
-    \Drupal::setContainer($container);
-
     $configPage = $this->createMock(ConfigPagesInterface::class);
-    $this->hooks->configPagesPresave($configPage);
+    (new InstallHooks($routeBuilder))->configPagesPresave($configPage);
   }
 
   /**
@@ -101,12 +78,8 @@ class InstallHooksTest extends UnitTestCase {
     $routeBuilder = $this->createMock(RouteBuilderInterface::class);
     $routeBuilder->expects($this->once())->method('rebuild');
 
-    $container = new ContainerBuilder();
-    $container->set('router.builder', $routeBuilder);
-    \Drupal::setContainer($container);
-
     $configPage = $this->createMock(ConfigPagesInterface::class);
-    $this->hooks->configPagesPresave($configPage);
+    (new InstallHooks($routeBuilder))->configPagesPresave($configPage);
   }
 
 }

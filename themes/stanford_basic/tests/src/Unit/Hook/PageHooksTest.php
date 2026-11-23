@@ -254,7 +254,7 @@ class PageHooksTest extends UnitTestCase {
       $vars['page']['content']['block_two']['#attributes']['class'],
     );
     $this->assertArrayNotHasKey('#attributes', $vars['page']['content']['not_a_block']);
-    $this->assertSame(TRUE, $vars['page']['content']['#sorted']);
+    $this->assertTrue($vars['page']['content']['#sorted']);
   }
 
   /**

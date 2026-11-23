@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\stanford_basic\Unit\Hook;
 
-use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
@@ -49,9 +48,6 @@ class LibraryHooksTest extends UnitTestCase {
    * config_pages.loader service is never consulted.
    */
   public function testLibraryInfoAlterWrongExtension(): void {
-    $container = new ContainerBuilder();
-    \Drupal::setContainer($container);
-
     $this->entityTypeManager->expects($this->never())->method('getStorage');
 
     $libraries = ['algolia-search' => []];
@@ -64,9 +60,6 @@ class LibraryHooksTest extends UnitTestCase {
    * When the config_pages.loader service is unavailable, nothing happens.
    */
   public function testLibraryInfoAlterServiceUnavailable(): void {
-    $container = new ContainerBuilder();
-    \Drupal::setContainer($container);
-
     $this->entityTypeManager->expects($this->never())->method('getStorage');
 
     $libraries = ['algolia-search' => []];
@@ -84,9 +77,7 @@ class LibraryHooksTest extends UnitTestCase {
       ->with('stanford_basic_site_settings', 'su_site_algolia_file', 0, 'target_id')
       ->willReturn(0);
 
-    $container = new ContainerBuilder();
-    $container->set('config_pages.loader', $configPages);
-    \Drupal::setContainer($container);
+    $this->hooks = new LibraryHooks($this->entityTypeManager, $configPages);
 
     $this->entityTypeManager->expects($this->never())->method('getStorage');
 
@@ -105,9 +96,7 @@ class LibraryHooksTest extends UnitTestCase {
       ->with('stanford_basic_site_settings', 'su_site_algolia_file', 0, 'target_id')
       ->willReturn(42);
 
-    $container = new ContainerBuilder();
-    $container->set('config_pages.loader', $configPages);
-    \Drupal::setContainer($container);
+    $this->hooks = new LibraryHooks($this->entityTypeManager, $configPages);
 
     $fileStorage = $this->createMock(EntityStorageInterface::class);
     $fileStorage->method('load')->with(42)->willReturn(NULL);
@@ -128,9 +117,7 @@ class LibraryHooksTest extends UnitTestCase {
       ->with('stanford_basic_site_settings', 'su_site_algolia_file', 0, 'target_id')
       ->willReturn(42);
 
-    $container = new ContainerBuilder();
-    $container->set('config_pages.loader', $configPages);
-    \Drupal::setContainer($container);
+    $this->hooks = new LibraryHooks($this->entityTypeManager, $configPages);
 
     $file = $this->createMock(FileInterface::class);
     $file->method('createFileUrl')->willReturn('/sites/default/files/algolia.js');

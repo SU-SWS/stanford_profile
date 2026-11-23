@@ -36,7 +36,7 @@ class StanfordProfilePermissions implements ContainerInjectionInterface {
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_manager
    *   Entity type manager service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_manager) {
+  final public function __construct(EntityTypeManagerInterface $entity_manager) {
     $this->entityTypeManager = $entity_manager;
   }
 

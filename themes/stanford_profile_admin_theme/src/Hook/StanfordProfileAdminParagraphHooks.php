@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Drupal\stanford_profile_admin_theme\Hook;
 
+use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Routing\RouteObjectInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Builds component variables for paragraph templates in the admin theme.
@@ -13,6 +15,11 @@ use Drupal\Core\Routing\RouteObjectInterface;
  * @codeCoverageIgnore
  */
 class StanfordProfileAdminParagraphHooks {
+
+  public function __construct(
+    protected RequestStack $requestStack,
+    protected TitleResolverInterface $titleResolver,
+  ) {}
 
   /**
    * Builds hero component variables from the banner behavior settings.
@@ -58,11 +65,10 @@ class StanfordProfileAdminParagraphHooks {
    */
   #[Hook('preprocess_paragraph__stanford_page_title_banner')]
   public function preprocessParagraphStanfordPageTitleBanner(&$variables) {
-    $request = \Drupal::request();
-    $route = $request->attributes->get(RouteObjectInterface::ROUTE_OBJECT);
+    $request = $this->requestStack->getCurrentRequest();
+    $route = $request?->attributes->get(RouteObjectInterface::ROUTE_OBJECT);
 
-    $page_title = $route ? \Drupal::service('title_resolver')
-      ->getTitle($request, $route) : NULL;
+    $page_title = $route ? $this->titleResolver->getTitle($request, $route) : NULL;
 
     $variables['page_title'] = $page_title;
   }
