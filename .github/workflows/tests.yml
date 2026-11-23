@@ -13,12 +13,13 @@ permissions:
 jobs:
   tests:
     name: Tests
-    uses: SU-SWS/stanford-caravan/.github/workflows/drupal-tests.yml@12.x
+    uses: SU-SWS/stanford-caravan/.github/workflows/drupal-tests.yml@codeception-secure-origin
     with:
       php-versions: '["8.4", "8.5"]'
       codeception-shards: ${{ fromJSON(vars.TEST_SHARDS || '4') }}
       phpcs: fail
       phpstan: fail
+      caravan-ref: codeception-secure-origin
     secrets: inherit
 
   # The required status check in the *.x ruleset.
