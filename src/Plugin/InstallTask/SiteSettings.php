@@ -14,6 +14,7 @@ use Drupal\stanford_profile\Attribute\InstallTask;
 use Drupal\stanford_profile\InstallTaskBase;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use League\OAuth2\Client\Provider\GenericProvider;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -31,6 +32,11 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
    * Service now api endpoint.
    */
   const SNOW_API = 'https://stanford.service-now.com/api/stu/su_acsf_site_requester_information/requestor';
+
+  /**
+   * Service now OAuth2 token endpoint.
+   */
+  const SNOW_TOKEN_URL = 'https://stanforddev.service-now.com/oauth_token.do';
 
   /**
    * Guzzle service.
@@ -196,9 +202,9 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
     try {
       $response = $this->client->request('GET', $api_url, [
         'query' => ['website_address' => $site_name],
-        'auth' => [
-          Settings::get('stanford_profile_snow_api_user'),
-          Settings::get('stanford_profile_snow_api_pass'),
+        'headers' => [
+          'Authorization' => 'Bearer ' . $this->getSnowAccessToken(),
+          'Accept' => 'application/json',
         ],
       ]);
 
@@ -234,6 +240,39 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
         return $this->getSnowData('default');
       }
     }
+  }
+
+  /**
+   * Get an OAuth2 access token for the SNOW API.
+   *
+   * Uses the client credentials grant. If a username and password are also
+   * configured, the password grant is used instead.
+   *
+   * @return string
+   *   Access token.
+   *
+   * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
+   * @throws \GuzzleHttp\Exception\GuzzleException
+   */
+  protected function getSnowAccessToken(): string {
+    $provider = new GenericProvider([
+      'clientId' => Settings::get('stanford_profile_snow_client_id'),
+      'clientSecret' => Settings::get('stanford_profile_snow_client_secret'),
+      'urlAccessToken' => Settings::get('stanford_profile_snow_token_url', self::SNOW_TOKEN_URL),
+      // Only the token endpoint is used, but the provider requires these.
+      'urlAuthorize' => '',
+      'urlResourceOwnerDetails' => '',
+    ], ['httpClient' => $this->client]);
+
+    $username = Settings::get('stanford_profile_snow_api_user');
+    $password = Settings::get('stanford_profile_snow_api_pass');
+    if ($username && $password) {
+      return $provider->getAccessToken('password', [
+        'username' => $username,
+        'password' => $password,
+      ])->getToken();
+    }
+    return $provider->getAccessToken('client_credentials')->getToken();
   }
 
   /**
