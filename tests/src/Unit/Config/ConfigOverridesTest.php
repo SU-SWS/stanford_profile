@@ -13,12 +13,14 @@ use Drupal\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
- * Class ConfigOverridesTest
+ * Tests the Stanford profile config overrides service.
  */
 #[Group('stanford_profile')]
 class ConfigOverridesTest extends UnitTestCase {
 
   /**
+   * Config overrides service being tested.
+   *
    * @var \Drupal\stanford_profile\Config\ConfigOverrides
    */
   protected $overrideService;
@@ -47,6 +49,9 @@ class ConfigOverridesTest extends UnitTestCase {
     \Drupal::setContainer($container);
   }
 
+  /**
+   * Test the system site pages are overridden from state.
+   */
   public function testConfigOverrides() {
     $this->assertEquals('StanfordProfileConfigOverride', $this->overrideService->getCacheSuffix());
     $this->assertNull($this->overrideService->createConfigObject('foo'));
@@ -67,7 +72,7 @@ class ConfigOverridesTest extends UnitTestCase {
    */
   public function testConfigIgnoreOverrides() {
     // Fake like it's during installation time.
-    $GLOBALS['install_state'] = true;
+    $GLOBALS['install_state'] = TRUE;
     $overrides = $this->overrideService->loadOverrides(['config_ignore.settings']);
     $expected = [
       'config_ignore.settings' => [
@@ -96,6 +101,9 @@ class ConfigOverridesTest extends UnitTestCase {
     $this->assertEquals($expected, $overrides);
   }
 
+  /**
+   * Test SAML role mappings are overridden from the config page value.
+   */
   public function testSamlOverrides() {
     $overrides = $this->overrideService->loadOverrides(['stanford_samlauth.settings']);
     $expected = [
@@ -112,6 +120,12 @@ class ConfigOverridesTest extends UnitTestCase {
 
   /**
    * State callback.
+   *
+   * @param string $name
+   *   State key.
+   *
+   * @return string|null
+   *   Node path for the key, or NULL if not set.
    */
   public function getStateCallback($name) {
     switch ($name) {
@@ -123,10 +137,18 @@ class ConfigOverridesTest extends UnitTestCase {
 
       case 'stanford_profile.front_page':
         return '/node/99';
-
     }
   }
 
+  /**
+   * Config factory callback returning a mocked config object.
+   *
+   * @param string $name
+   *   Config name.
+   *
+   * @return \Drupal\Core\Config\Config
+   *   Mocked config object.
+   */
   public function getConfigCallback($name) {
     $config = $this->createMock(Config::class);
     $setting = [];
@@ -143,8 +165,8 @@ class ConfigOverridesTest extends UnitTestCase {
   /**
    * During installation, the config ignore settings shouldn't contain anything.
    */
-  public function testConfigOverridesDuringInstall(){
-    $GLOBALS['install_state'] = true;
+  public function testConfigOverridesDuringInstall() {
+    $GLOBALS['install_state'] = TRUE;
 
     $overrides = $this->overrideService->loadOverrides(['config_ignore.settings']);
     $expected = [
@@ -155,6 +177,21 @@ class ConfigOverridesTest extends UnitTestCase {
     $this->assertEquals($expected, $overrides);
   }
 
+  /**
+   * Config pages loader callback returning field values.
+   *
+   * @param string $page
+   *   Config page type.
+   * @param string $field
+   *   Field name.
+   * @param array $deltas
+   *   Field deltas.
+   * @param string|null $key
+   *   Field property key.
+   *
+   * @return string|null
+   *   Field value, or NULL if not mocked.
+   */
   public function getConfigPageValue($page, $field, $deltas = [], $key = NULL) {
     switch ($field) {
       case 'su_simplesaml_roles':

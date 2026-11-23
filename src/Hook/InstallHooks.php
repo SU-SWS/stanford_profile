@@ -7,17 +7,20 @@ namespace Drupal\stanford_profile\Hook;
 use Drupal\config_pages\ConfigPagesInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Installer\InstallerKernel;
+use Drupal\Core\Routing\RouteBuilderInterface;
 
 /**
  * Hooks that relate to installing the stanford_profile install profile.
  *
- * hook_install_tasks() itself cannot be implemented with the #[Hook]
+ * Hook_install_tasks() itself cannot be implemented with the #[Hook]
  * attribute (Drupal core's HookCollectorPass::checkForProceduralOnlyHooks()
  * explicitly denies it, along with hook_install(), hook_schema(), and a few
  * others) so it remains procedural in stanford_profile.profile. It calls
  * back into self::finalTask() here, which is not itself a hook.
  */
 class InstallHooks {
+
+  public function __construct(protected RouteBuilderInterface $routeBuilder) {}
 
   /**
    * Perform final tasks after the profile has completed installing.
@@ -39,7 +42,7 @@ class InstallHooks {
   #[Hook('config_pages_presave')]
   public function configPagesPresave(ConfigPagesInterface $config_page): void {
     if (InstallerKernel::installationAttempted()) {
-      \Drupal::service('router.builder')->rebuild();
+      $this->routeBuilder->rebuild();
     }
   }
 

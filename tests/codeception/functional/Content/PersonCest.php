@@ -7,6 +7,7 @@ use Faker\Factory;
  * Test Person content type.
  */
 #[CodeceptionAttribute\Group('person')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class PersonCest {
 
   /**
@@ -23,6 +24,9 @@ class PersonCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Contributor can tag a person with nested person filter terms.
+   */
   public function testContentType(FunctionalTester $I) {
     [
       $parent_1,
@@ -65,16 +69,16 @@ class PersonCest {
     $I->canSee($node->label(), 'h1');
   }
 
-
+  /**
+   * Filtered people list should filter people by their tags.
+   */
   #[CodeceptionAttribute\Group('people-filters')]
   public function testFilteringPeople(FunctionalTester $I) {
     [
-      $parent_1,
-      $parent_2,
-      $child_1_1,
-      $child_2_1,
-      $child_1_2,
-      $child_2_2,
+      0 => $parent_1,
+      2 => $child_1_1,
+      3 => $child_2_1,
+      4 => $child_1_2,
     ] = $this->buildTaxonomyTerms($I);
     $person = $I->createEntity([
       'type' => 'stanford_person',
@@ -118,6 +122,9 @@ class PersonCest {
     $I->canSee($person->label());
   }
 
+  /**
+   * Create two parent person filter terms with two children each.
+   */
   protected function buildTaxonomyTerms(FunctionalTester $I) {
     $parent_1 = $I->createEntity([
       'vid' => 'person_filters',

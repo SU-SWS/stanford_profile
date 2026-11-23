@@ -1,16 +1,16 @@
 <?php
 
 use Faker\Factory;
-use Codeception\Example;
-use Codeception\Attribute\Examples;
-use Codeception\Attribute\Group;
 
 /**
  * Media content tests.
  */
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class AudioVisualContentCest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Generator
    */
   protected $faker;
@@ -19,6 +19,9 @@ class AudioVisualContentCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Test the audio/visual duration and transcript link display.
+   */
   public function testAudioVisual(AcceptanceTester $I) {
     copy(__DIR__ . '/../assets/test.srt', codecept_data_dir() . 'test.srt');
 

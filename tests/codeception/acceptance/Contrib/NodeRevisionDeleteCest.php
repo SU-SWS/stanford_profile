@@ -7,6 +7,7 @@ use Faker\Factory;
  * Test the node revision delete module functionality.
  */
 #[CodeceptionAttribute\Group('node_revision_delete')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class NodeRevisionDeleteCest {
 
   /**

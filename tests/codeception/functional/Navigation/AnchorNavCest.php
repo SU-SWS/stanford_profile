@@ -9,9 +9,12 @@ use Codeception\Attribute\Group;
  * Anchor nav tests.
  */
 #[Group('anchor-nav')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class AnchorNavCest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Generator
    */
   protected $faker;
@@ -20,6 +23,9 @@ class AnchorNavCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Each layout should show or hide the anchor nav links to its h2 headings.
+   */
   #[Examples(layout: 'left_anchor_nav')]
   #[Examples(layout: 'left_anchor_no_nav')]
   #[Examples(layout: 'stanford_basic_page_full')]

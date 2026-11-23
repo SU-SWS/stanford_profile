@@ -5,7 +5,6 @@ namespace Drupal\stanford_profile;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\stanford_profile\Attribute\InstallTask;
 
 /**
@@ -16,8 +15,6 @@ use Drupal\stanford_profile\Attribute\InstallTask;
  *   We can't test a service in profile due to some limitations of the Kernel.
  */
 class InstallTaskManager extends DefaultPluginManager {
-
-  use StringTranslationTrait;
 
   /**
    * Array of completed plugin ids.
@@ -78,7 +75,7 @@ class InstallTaskManager extends DefaultPluginManager {
       // bad development work.
       if (in_array($task_definition['id'], $requesting_plugins)) {
         $requesting_plugins[] = $task_definition['id'];
-        throw new \Exception($this->t('Circular dependencies detected. %path', ['%path' => implode(' -> ', $requesting_plugins)]));
+        throw new \Exception(sprintf('Circular dependencies detected. %s', implode(' -> ', $requesting_plugins)));
       }
 
       $requesting_plugins[] = $task_definition['id'];

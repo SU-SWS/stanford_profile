@@ -4,30 +4,41 @@ namespace Content;
 
 use Codeception\Example;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
-use FunctionalTester;
 use Faker\Factory;
 use Codeception\Attribute as CodeceptionAttribute;
 
+/**
+ * Tests the media content type and embedding SDR media in the editor.
+ */
 #[CodeceptionAttribute\Group('content')]
 #[CodeceptionAttribute\Group('media-content')]
 #[CodeceptionAttribute\Group('media')]
 class MediaCest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Generator
    */
   protected $faker;
 
-  public function _before(FunctionalTester $I) {
+  /**
+   * Create the faker service before each test.
+   */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
+  public function _before(\FunctionalTester $I) {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Media node should display its video, clips, series and related person.
+   */
   #[CodeceptionAttribute\Examples(videos: ['https://www.youtube.com/watch?v=WNEyg3UKTVQ'])]
   #[CodeceptionAttribute\Examples(videos: [
     'https://www.youtube.com/watch?v=WNEyg3UKTVQ',
     'https://www.youtube.com/watch?v=myjrQS_7zNk',
   ])]
-  public function testAddImageMedia(FunctionalTester $I, Example $example) {
+  public function testAddImageMedia(\FunctionalTester $I, Example $example) {
     foreach ($example['videos'] as $videoUrl) {
       $mediaVideos[] = $I->createEntity([
         'bundle' => 'video',
@@ -124,7 +135,7 @@ class MediaCest {
   /**
    * Test adding SDR to wysiwyg.
    */
-  public function testAddSdrMedia(FunctionalTester $I) {
+  public function testAddSdrMedia(\FunctionalTester $I) {
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->words(2, TRUE),

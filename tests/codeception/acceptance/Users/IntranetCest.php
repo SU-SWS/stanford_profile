@@ -4,11 +4,12 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class IntranetCest.
+ * Tests for intranet mode access and file upload restrictions.
  */
 #[CodeceptionAttribute\Group('users')]
 #[CodeceptionAttribute\Group('no-parallel')]
 #[CodeceptionAttribute\Group('intranet')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class IntranetCest {
 
   /**
@@ -19,8 +20,7 @@ class IntranetCest {
   protected $intranetWasEnabled = FALSE;
 
   /**
-   * Save the Allow File Uploads state before the tests and reset after the
-   * tests.
+   * Allow File Uploads state saved before the tests and restored after.
    *
    * @var bool
    */
@@ -40,6 +40,7 @@ class IntranetCest {
   /**
    * Save the original state.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _before(AcceptanceTester $I) {
     $this->intranetWasEnabled = (bool) $I->runDrush('sget stanford_intranet');
     $this->fileUploadsWasEnabled = (bool) $I->runDrush('sget stanford_intranet.allow_file_uploads');
@@ -48,6 +49,7 @@ class IntranetCest {
   /**
    * Set the state back to how it was before the test.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     $I->runDrush('sset stanford_intranet ' . (int) $this->intranetWasEnabled);
     $I->runDrush('sset stanford_intranet.allow_file_uploads ' . (int) $this->fileUploadsWasEnabled);

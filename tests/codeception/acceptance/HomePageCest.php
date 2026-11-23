@@ -6,6 +6,7 @@ use Codeception\Attribute as CodeceptionAttribute;
  * Test the home page exists.
  */
 #[CodeceptionAttribute\Group('home-page')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class HomePageCest {
 
   /**

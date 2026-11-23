@@ -8,6 +8,7 @@ use Faker\Factory;
  */
 #[CodeceptionAttribute\Group('paragraphs')]
 #[CodeceptionAttribute\Group('page-title-banner')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class PageTitleBannerCest {
 
   use TestFilesTrait;

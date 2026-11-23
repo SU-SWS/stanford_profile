@@ -7,6 +7,9 @@ namespace Drupal\stanford_basic\Hook;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Hook\Attribute\Hook;
 
+/**
+ * Adds classes, heading tags and template suggestions to field output.
+ */
 class FieldHooks {
 
   /**
@@ -69,13 +72,13 @@ class FieldHooks {
     $variables['attributes']['class'][] = Html::cleanCssIdentifier($variables['field_type']);
     $variables['attributes']['class'][] = Html::cleanCssIdentifier('label-' . $variables['label_display']);
 
-    $first_item = isset($variables['element'][0]) ? $variables['element'][0] : NULL;
-    $is_paragraph = isset($first_item['#paragraph']) ? $first_item['#paragraph'] : FALSE;
+    $first_item = $variables['element'][0] ?? NULL;
+    $is_paragraph = $first_item['#paragraph'] ?? FALSE;
     $has_items = isset($variables['items']) ? count($variables['items']) : FALSE;
 
     // Add additional information to paragraph fields.
-    // Bricks has a different field type and structures the array differently, so
-    // we need to check if its actual normal paragraph fields as well.
+    // Bricks has a different field type and structures the array differently,
+    // so we need to check if its actual normal paragraph fields as well.
     if ($variables['field_type'] == 'entity_reference_revisions' && $is_paragraph && $has_items) {
       foreach ($variables['items'] as &$pitem) {
         $paragraph_type = $pitem['content']['#paragraph']->getType();

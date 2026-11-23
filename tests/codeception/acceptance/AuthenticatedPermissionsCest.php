@@ -7,6 +7,7 @@ use Faker\Factory;
 /**
  * Test the restrictions on authenticated users.
  */
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class AuthenticatedPermissionsCest {
 
   /**
@@ -26,6 +27,7 @@ class AuthenticatedPermissionsCest {
   /**
    * Set up a file to test PHP injection.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _before(AcceptanceTester $I) {
     $dir = rtrim(codecept_data_dir(), '/');
     $file = "$dir/injection.php";
@@ -40,6 +42,7 @@ class AuthenticatedPermissionsCest {
   /**
    * Remove the php injection file.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     $file = rtrim(codecept_data_dir(), '/') . '/injection.php';
     if (file_exists($file)) {

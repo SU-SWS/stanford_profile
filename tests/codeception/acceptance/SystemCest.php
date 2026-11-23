@@ -6,6 +6,7 @@ use Codeception\Attribute as CodeceptionAttribute;
  * System tests.
  */
 #[CodeceptionAttribute\Group('system')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class SystemCest {
 
   /**
@@ -44,7 +45,7 @@ class SystemCest {
    * User json api should not exist.
    */
   #[CodeceptionAttribute\Group('jsonapi')]
-  public function testJsonApiUser(AcceptanceTester $I){
+  public function testJsonApiUser(AcceptanceTester $I) {
     $I->amOnPage('/jsonapi/user/user');
     $I->canSeeResponseCodeIs(404);
   }

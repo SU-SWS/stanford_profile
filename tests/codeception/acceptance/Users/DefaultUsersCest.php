@@ -3,9 +3,10 @@
 use Codeception\Attribute as CodeceptionAttribute;
 
 /**
- * Class DefaultUsersCest.
+ * Tests that the default users are created.
  */
 #[CodeceptionAttribute\Group('users')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class DefaultUsersCest {
 
   /**

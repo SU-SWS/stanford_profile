@@ -107,11 +107,13 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
+   * Stubs the config and alias mocks used by pathIsHome().
+   *
    * Configures the configFactory/aliasManager mocks so that any call to the
    * protected pathIsHome() method (e.g. indirectly via menuProcessSubmenu())
    * resolves without error. Uses lenient method() stubs (no call-count
-   * assertions) since several tests trigger this as a side effect of
-   * evaluating the left-hand side of a boolean OR.
+   * assertions) since several tests trigger this as a side effect of evaluating
+   * the left-hand side of a boolean OR.
    */
   protected function stubFrontPageConfig(string $frontUri = '/node/1', string $frontAlias = '/home-alias'): void {
     $siteConfig = $this->createMock(ImmutableConfig::class);
@@ -130,8 +132,10 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
-   * Builds a mock Url whose toString(TRUE)->getGeneratedUrl() returns the
-   * given path, and whose getOptions()/setOptions() can be inspected.
+   * Builds a mock Url that resolves to the given path.
+   *
+   * Builds a mock Url whose toString(TRUE)->getGeneratedUrl() returns the given
+   * path, and whose getOptions()/setOptions() can be inspected.
    */
   protected function mockUrl(string $generatedPath, array $options = []): Url {
     $generatedUrl = new GeneratedUrl();
@@ -171,8 +175,10 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
-   * When a menu item's URL matches the current path, aria-current is added
-   * to both the URL options and the item's own attributes.
+   * Tests that aria-current is added to the item matching the current path.
+   *
+   * When a menu item's URL matches the current path, aria-current is added to
+   * both the URL options and the item's own attributes.
    */
   public function testPreprocessMenuAddsAriaCurrentWhenPathMatches(): void {
     $this->setCurrentPath('/current/path');
@@ -194,6 +200,8 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that no aria-current is added when no item matches.
+   *
    * When a menu item's URL does not match the current path, no aria-current
    * attribute is added anywhere.
    */
@@ -215,6 +223,8 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that non-main menus skip the main menu processing.
+   *
    * Non-main menus never run the submenu processing logic or check the
    * nav_dropdown_enabled theme setting.
    */
@@ -233,6 +243,8 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests the main menu with dropdowns disabled.
+   *
    * On the main menu, when the dropdown theme setting is disabled, no extra
    * class is added.
    */
@@ -258,6 +270,8 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests the main menu with dropdowns enabled.
+   *
    * On the main menu, when the dropdown theme setting is enabled, the
    * su-multi-menu--dropdowns class is added, and matching submenu items are
    * marked active via the recursive menuProcessSubmenu() call.
@@ -288,6 +302,8 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that string URLs are compared directly to the current path.
+   *
    * String URLs (unrouted paths) are compared directly against the current
    * path, without calling toString().
    */
@@ -306,9 +322,11 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
-   * When the front page matcher is TRUE and the item's path corresponds to
-   * the configured front page, the item is marked active even though its
-   * own path differs from the literal current path.
+   * Tests that a front page item is active on the front page.
+   *
+   * When the front page matcher is TRUE and the item's path corresponds to the
+   * configured front page, the item is marked active even though its own path
+   * differs from the literal current path.
    */
   public function testMenuProcessSubmenuMarksFrontPageItemActive(): void {
     $this->pathMatcher->method('isFrontPage')->willReturn(TRUE);
@@ -327,6 +345,8 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that unpublished node links are flagged in nested items.
+   *
    * Recursion into 'below' items is exercised, and an unpublished node link
    * deep in the tree is flagged.
    */
@@ -398,8 +418,10 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
-   * A node canonical route whose node no longer exists is treated as
-   * public (TRUE), since there is nothing to hide.
+   * Tests that a link to a missing node is treated as public.
+   *
+   * A node canonical route whose node no longer exists is treated as public
+   * (TRUE), since there is nothing to hide.
    */
   public function testLinkIsPublicTrueWhenNodeMissing(): void {
     $url = $this->createMock(Url::class);
@@ -415,6 +437,8 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that a link to a non-node route is always public.
+   *
    * A routed URL for a non-node route is always public, and the entity type
    * manager is never queried.
    */
@@ -442,9 +466,11 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
-   * pathIsHome() returns TRUE when the given path equals the site's base
-   * path, and the front-page config lookup is only performed once (cached
-   * on the instance for subsequent calls).
+   * Tests that pathIsHome() matches the base path and caches its lookup.
+   *
+   * It returns TRUE when the given path equals the site's base path, and the
+   * front-page config lookup is only performed once (cached on the instance
+   * for subsequent calls).
    */
   public function testPathIsHomeMatchesBasePathAndCachesLookup(): void {
     $siteConfig = $this->createMock(ImmutableConfig::class);
@@ -466,8 +492,7 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
-   * pathIsHome() returns TRUE when the path matches the configured front
-   * page's internal URI.
+   * Tests that pathIsHome() matches the front page's internal URI.
    */
   public function testPathIsHomeMatchesFrontUri(): void {
     $siteConfig = $this->createMock(ImmutableConfig::class);
@@ -479,7 +504,7 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
-   * pathIsHome() returns TRUE when the path matches the front page's alias.
+   * Tests that pathIsHome() matches the front page's alias.
    */
   public function testPathIsHomeMatchesFrontAlias(): void {
     $siteConfig = $this->createMock(ImmutableConfig::class);
@@ -491,7 +516,7 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
-   * pathIsHome() returns TRUE for the literal '<front>' placeholder path.
+   * Tests that pathIsHome() matches the literal '<front>' placeholder path.
    */
   public function testPathIsHomeMatchesFrontPlaceholder(): void {
     $siteConfig = $this->createMock(ImmutableConfig::class);
@@ -503,7 +528,7 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
-   * pathIsHome() returns FALSE for a path unrelated to the front page.
+   * Tests that pathIsHome() rejects a path unrelated to the front page.
    */
   public function testPathIsHomeReturnsFalseForUnrelatedPath(): void {
     $siteConfig = $this->createMock(ImmutableConfig::class);
@@ -515,9 +540,10 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests the local task for the node version history route.
+   *
    * When the linked route is the node version history route, the title is
-   * changed to "Version History" and the class is derived from that new
-   * title.
+   * changed to "Version History" and the class is derived from that new title.
    */
   public function testPreprocessMenuLocalTaskVersionHistory(): void {
     $url = $this->createMock(Url::class);
@@ -534,8 +560,10 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
-   * When the linked route is the node canonical route, the title is
-   * changed to "Page Content" and the page-content-label class is added.
+   * Tests the local task for the node canonical route.
+   *
+   * When the linked route is the node canonical route, the title is changed to
+   * "Page Content" and the page-content-label class is added.
    */
   public function testPreprocessMenuLocalTaskNodeCanonical(): void {
     $url = $this->createMock(Url::class);
@@ -553,6 +581,8 @@ class MenuHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests the local task for any other route.
+   *
    * For any other route, the title is left untouched and only the
    * class-from-title is added.
    */
@@ -576,10 +606,12 @@ class MenuHooksTest extends UnitTestCase {
 namespace Drupal\stanford_basic\Hook;
 
 if (!function_exists(__NAMESPACE__ . '\base_path')) {
+
   /**
    * Stub for base_path() so unit tests don't require a full bootstrap.
    */
   function base_path() {
     return '/';
   }
+
 }

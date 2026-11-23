@@ -3,7 +3,11 @@
 use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
+/**
+ * Tests for the teaser (entity) paragraph type.
+ */
 #[CodeceptionAttribute\Group('paragraphs')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class TeaserCest {
 
   /**
@@ -20,6 +24,9 @@ class TeaserCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Test teaser item heading levels with and without a paragraph headline.
+   */
   #[CodeceptionAttribute\Group('teaser-headers')]
   public function testTeaserParagraphHeaders(AcceptanceTester $I) {
     $node_types = \Drupal::entityTypeManager()

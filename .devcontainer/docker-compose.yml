@@ -1,13 +1,40 @@
 services:
   web:
-    image: "pookmish/drupal8ci:php8.3"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+      # The built site (Drupal core, contrib, vendor, files), kept out of the
+      # repository and across container rebuilds.
+      - site:/var/www/site
+    environment:
+      # Read by the site's settings.php (stanford-caravan's).
+      DRUPAL_DATABASE_HOST: mysql
+      DRUPAL_DATABASE_NAME: drupal
+      DRUPAL_DATABASE_USERNAME: drupal
+      DRUPAL_DATABASE_PASSWORD: drupal
+    command: sleep infinity
+    depends_on:
+      mysql:
+        condition: service_healthy
   mysql:
-    image: "mysql:8.0"
+    image: mysql:8.0
     command: --max_allowed_packet=67108864
     environment:
       MYSQL_DATABASE: drupal
       MYSQL_USER: drupal
       MYSQL_PASSWORD: drupal
       MYSQL_ROOT_PASSWORD: drupal
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-pdrupal"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    volumes:
+      - mysql-data:/var/lib/mysql
     ports:
       - '33306:3306'
+volumes:
+  site:
+  mysql-data:

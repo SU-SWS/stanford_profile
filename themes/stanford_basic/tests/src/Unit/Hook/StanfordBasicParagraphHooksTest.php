@@ -38,7 +38,7 @@ class StanfordBasicParagraphHooksTest extends UnitTestCase {
   }
 
   /**
-   * preprocessParagraph() should add a css class derived from the bundle.
+   * Tests that preprocessParagraph() adds a css class from the bundle.
    */
   public function testPreprocessParagraphAddsBundleClass() {
     $paragraph = $this->createMock(ParagraphInterface::class);

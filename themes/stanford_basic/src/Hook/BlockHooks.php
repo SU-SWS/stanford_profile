@@ -5,19 +5,27 @@ declare(strict_types=1);
 namespace Drupal\stanford_basic\Hook;
 
 use Drupal\Component\Utility\Html;
+use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Menu\MenuLinkTreeInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Extension\ThemeSettingsProvider;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
+/**
+ * Adds block classes and the decoupled main menu to blocks.
+ */
 class BlockHooks {
 
   public function __construct(
     protected EntityTypeManagerInterface $entityTypeManager,
     protected MenuLinkTreeInterface $menuTree,
     protected ThemeSettingsProvider $themeSettingsProvider,
+    // NULL when the config_pages module isn't installed.
+    #[Autowire(service: 'config_pages.loader')]
+    protected ?ConfigPagesLoaderServiceInterface $configPagesLoader = NULL,
   ) {}
 
   /**
@@ -28,10 +36,8 @@ class BlockHooks {
     $variables['attributes']['class'][] = Html::cleanCssIdentifier($this->changeCharacters($variables['base_plugin_id']));
     $variables['attributes']['class'][] = Html::cleanCssIdentifier($this->changeCharacters($variables['derivative_plugin_id']));
 
-    if ($variables['plugin_id'] == 'system_menu_block:main' && \Drupal::hasService('config_pages.loader')) {
-      /** @var \Drupal\config_pages\ConfigPagesLoaderServiceInterface $config_pages */
-      $config_pages = \Drupal::service('config_pages.loader');
-      $new_menu = (bool) $config_pages->getValue('stanford_basic_site_settings', 'su_site_new_menu', 0, 'value');
+    if ($variables['plugin_id'] == 'system_menu_block:main' && $this->configPagesLoader) {
+      $new_menu = (bool) $this->configPagesLoader->getValue('stanford_basic_site_settings', 'su_site_new_menu', 0, 'value');
       if ($new_menu) {
         $variables['attributes']['data-island'] = 'main-menu-island';
         $variables['#attached']['library'][] = 'stanford_basic/decoupled_menu';
@@ -108,6 +114,8 @@ class BlockHooks {
   }
 
   /**
+   * Replaces non-alphanumeric characters, such as ":", with dashes.
+   *
    * Html::cleanCssIdentifier() doesn't remove ":" so we have to clean a little
    * more.
    *

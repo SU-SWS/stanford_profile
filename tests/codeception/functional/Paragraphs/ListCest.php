@@ -8,6 +8,7 @@ use Faker\Factory;
  */
 #[CodeceptionAttribute\Group('paragraphs')]
 #[CodeceptionAttribute\Group('lists')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class ListCest {
 
   /**
@@ -24,6 +25,9 @@ class ListCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * List paragraph argument autocomplete should suggest the view's own terms.
+   */
   #[CodeceptionAttribute\Group('argument-suggestion')]
   public function testArgumentSuggestion(FunctionalTester $I) {
     $news_term = $I->createEntity([

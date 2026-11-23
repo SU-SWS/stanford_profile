@@ -6,8 +6,10 @@ namespace Drupal\stanford_basic\Hook;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Hook\Attribute\Hook;
-use Drupal\views\ViewExecutable;
 
+/**
+ * Adds classes and template suggestions to Views output.
+ */
 class ViewsHooks {
 
   /**

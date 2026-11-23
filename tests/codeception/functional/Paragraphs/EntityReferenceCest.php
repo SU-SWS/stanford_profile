@@ -4,10 +4,11 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class EntityReferenceCest.
+ * Tests the entity reference (teaser) paragraph with news and publications.
  */
 #[CodeceptionAttribute\Group('paragraphs')]
 #[CodeceptionAttribute\Group('teaser')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class EntityReferenceCest {
 
   /**
@@ -104,6 +105,7 @@ class EntityReferenceCest {
    *   Tester.
    *
    * @return bool|\Drupal\node\NodeInterface
+   *   Node entity.
    */
   protected function getNodeWithReferenceParagraph(FunctionalTester $I) {
     $this->fieldValues = [

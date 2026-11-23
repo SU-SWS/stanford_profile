@@ -9,6 +9,7 @@ use Faker\Factory;
 #[CodeceptionAttribute\Group('paragraphs')]
 #[CodeceptionAttribute\Group('news-variant')]
 #[CodeceptionAttribute\Group('filtered-lists')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class FilteredListsSpotlightsCest {
 
   /**
@@ -26,7 +27,7 @@ class FilteredListsSpotlightsCest {
   }
 
   /**
-   * Test that stanford_news_filtered view is available in filtered lists paragraph.
+   * Test the stanford_news_filtered view is available in filtered lists.
    */
   public function testNewsFilteredViewAvailable(AcceptanceTester $I) {
     $I->logInWithRole('site_manager');

@@ -9,12 +9,17 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Path\PathMatcherInterface;
 
 /**
+ * Adds node classes and libraries to node templates in the admin theme.
+ *
  * @codeCoverageIgnore
  */
 class StanfordProfileAdminNodeHooks {
 
   public function __construct(protected PathMatcherInterface $pathMatcher) {}
 
+  /**
+   * Adds bundle libraries and CSS classes to node templates.
+   */
   #[Hook('preprocess_node')]
   public function preprocessNode(&$variables) {
     $node_bundle = $variables['node']->bundle();
@@ -32,6 +37,9 @@ class StanfordProfileAdminNodeHooks {
     }
   }
 
+  /**
+   * Adds extra top spacing on a bannerless front page that starts with text.
+   */
   #[Hook('preprocess_node__stanford_page')]
   public function preprocessPage(&$variables) {
     if (

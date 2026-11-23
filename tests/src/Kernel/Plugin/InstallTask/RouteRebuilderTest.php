@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
- * Class RouteRebuilderTest.
+ * Tests the route rebuilder install task.
  */
 #[Group('stanford_profile')]
 #[RunTestsInSeparateProcesses]
@@ -36,6 +36,9 @@ class RouteRebuilderTest extends KernelTestBase {
     $this->container->set('router.builder', $this->createMock(RouteBuilderInterface::class));
   }
 
+  /**
+   * Test the install task runs without errors.
+   */
   public function testRouteRebuild() {
     $plugin = RouteRebuilder::create($this->container, [], '', []);
     $install_state = [];

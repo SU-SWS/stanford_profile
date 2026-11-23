@@ -9,7 +9,7 @@ use Drupal\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
- * Class ProfileMaintainingSectionTest
+ * Tests the profile maintaining help section plugin.
  */
 #[Group('stanford_profile')]
 class ProfileMaintainingSectionTest extends UnitTestCase {
@@ -21,7 +21,8 @@ class ProfileMaintainingSectionTest extends UnitTestCase {
     parent::setUp();
     $container = new ContainerBuilder();
     $container->set('string_translation', $this->getStringTranslationStub());
-    $container->set('link_generator', $this->createMock(LinkGeneratorInterface::class));;
+    $container->set('link_generator', $this->createMock(LinkGeneratorInterface::class));
+
     \Drupal::setContainer($container);
   }
 

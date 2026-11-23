@@ -22,7 +22,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
- * Class EventSubscriberTest.
+ * Tests the Stanford profile event subscriber.
  */
 #[Group('stanford_profile')]
 #[RunTestsInSeparateProcesses]
@@ -110,6 +110,9 @@ class EventSubscriberTest extends KernelTestBase {
     $this->assertNotEquals($secret, $consumer->get('secret')->getString());
   }
 
+  /**
+   * Test importing media downloads its image file.
+   */
   public function testContentImportEntity() {
     $file = File::create(['uri' => 'public://foobar.jpg']);
     $file->save();
@@ -127,6 +130,9 @@ class EventSubscriberTest extends KernelTestBase {
     $this->assertFileExists('public://foobar.jpg');
   }
 
+  /**
+   * Test users are redirected to verify the site contact settings.
+   */
   public function testKernelRequest() {
     $ci = getenv('CI');
     putenv('CI');

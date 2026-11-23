@@ -8,7 +8,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class StanfordProfilePermissions.
+ * Provides per-node-type layout library permissions.
  *
  * @package Drupal\stanford_profile
  */
@@ -31,12 +31,12 @@ class StanfordProfilePermissions implements ContainerInjectionInterface {
   }
 
   /**
-   * StanfordProfilePermissions constructor.
+   * Constructs a StanfordProfilePermissions object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_manager
    *   Entity type manager service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_manager) {
+  final public function __construct(EntityTypeManagerInterface $entity_manager) {
     $this->entityTypeManager = $entity_manager;
   }
 

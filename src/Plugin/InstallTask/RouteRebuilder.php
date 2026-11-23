@@ -45,7 +45,7 @@ class RouteRebuilder extends InstallTaskBase implements ContainerFactoryPluginIn
   /**
    * {@inheritDoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, RouteBuilderInterface $route_builder, NodeAccessRebuild $node_access_rebuild) {
+  final public function __construct(array $configuration, $plugin_id, $plugin_definition, RouteBuilderInterface $route_builder, NodeAccessRebuild $node_access_rebuild) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->routeBuilder = $route_builder;
     $this->nodeAccessRebuild = $node_access_rebuild;

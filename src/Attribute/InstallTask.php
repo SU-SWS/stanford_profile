@@ -15,12 +15,12 @@ final class InstallTask extends AttributeBase {
   /**
    * Constructs a new InstallTask instance.
    *
-   * @codeCoverageIgnore
-   *
    * @param string $id
    *   The plugin ID.
    * @param string[] $dependencies
    *   List of dependent install task ids.
+   *
+   * @codeCoverageIgnore
    */
   public function __construct(
     public readonly string $id,

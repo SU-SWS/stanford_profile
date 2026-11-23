@@ -7,6 +7,7 @@ use Faker\Factory;
  * Test opportunity content type.
  */
 #[CodeceptionAttribute\Group('opportunity')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class OpportunityCest {
 
   /**
@@ -23,6 +24,9 @@ class OpportunityCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Opportunity tags set on the edit form should display on the page.
+   */
   public function testContentType(FunctionalTester $I) {
     [
       $parent_1,
@@ -70,15 +74,16 @@ class OpportunityCest {
     $I->canSee($child_2_2->label());
   }
 
+  /**
+   * Filtered opportunities list should filter opportunities by their tags.
+   */
   #[CodeceptionAttribute\Group('opportunity-filters')]
   public function testFilteringOpportunities(FunctionalTester $I) {
     [
-      $parent_1,
-      $parent_2,
-      $child_1_1,
-      $child_2_1,
-      $child_1_2,
-      $child_2_2,
+      0 => $parent_1,
+      2 => $child_1_1,
+      3 => $child_2_1,
+      4 => $child_1_2,
     ] = $this->buildTaxonomyTerms($I);
     $opportunity = $I->createEntity([
       'type' => 'stanford_opportunity',
@@ -120,6 +125,9 @@ class OpportunityCest {
     $I->canSee($opportunity->label());
   }
 
+  /**
+   * Create two parent opportunity tag terms with two children each.
+   */
   protected function buildTaxonomyTerms(FunctionalTester $I) {
     $parent_1 = $I->createEntity([
       'vid' => 'opportunity_tag_filters',

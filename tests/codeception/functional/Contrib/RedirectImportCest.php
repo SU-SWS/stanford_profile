@@ -3,14 +3,16 @@
 use Codeception\Attribute as CodeceptionAttribute;
 
 /**
- * Class RedirectImportCest.
+ * Tests importing redirects from a CSV file.
  */
 #[CodeceptionAttribute\Group('contrib')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class RedirectImportCest {
 
   /**
    * Cleanup.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after() {
     if (file_exists(codecept_data_dir('/redirects.csv'))) {
       unlink(codecept_data_dir('/redirects.csv'));

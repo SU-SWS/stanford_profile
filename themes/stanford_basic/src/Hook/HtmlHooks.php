@@ -14,6 +14,9 @@ use Drupal\Core\Path\PathMatcherInterface;
 use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\path_alias\AliasManagerInterface;
 
+/**
+ * Adds page, section and theme setting variables to the html template.
+ */
 class HtmlHooks {
 
   public function __construct(
@@ -52,7 +55,7 @@ class HtmlHooks {
       if (!empty($alias)) {
         $name = str_replace('/', '-', $alias);
         $variables['attributes']['class'][] = 'page-' . $name;
-        [$section,] = explode('/', $alias, 2);
+        [$section] = explode('/', $alias, 2);
         if (!empty($section)) {
           $variables['attributes']['class'][] = 'section-' . $section;
         }

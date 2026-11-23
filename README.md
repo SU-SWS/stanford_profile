@@ -28,6 +28,21 @@ Configuration
 
 Nothing special needed.
 
+Development
+---
+
+`.devcontainer` runs this profile in a dev container (GitHub Codespaces, or VS Code with the Dev Containers
+extension), with PHP 8.4, Apache and MySQL 8.0. When the container is created, `.devcontainer/build-site.sh`
+builds a Drupal site around this repository with stanford-caravan's CI scripts (the same build the tests use)
+and installs the profile:
+
+- The site is at `/var/www/site/drupal`, served on port 80. Its `web/profiles/custom/stanford_profile` links to
+  this repository, so changes here show up on the site.
+- Log in as `sws` / `sws`, or run `drush uli`. `drush` is on the PATH.
+- Run `.devcontainer/build-site.sh` again to rebuild the site from scratch. It replaces the site and its
+  database. `CARAVAN_REF` and `CORE_VERSION` choose the stanford-caravan branch and the Drupal core version.
+- Codespaces secrets `SSH_PRIVATE_KEY` and `GITCONFIG` (base64 encoded) are optional; `post-start.sh` installs them.
+
 Releases
 ---
 

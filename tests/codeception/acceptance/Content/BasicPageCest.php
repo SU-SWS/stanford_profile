@@ -5,19 +5,22 @@ use Codeception\Example;
 use Faker\Factory;
 
 /**
- * Class BasicPageCest.
+ * Tests for the basic page content type.
  */
 #[CodeceptionAttribute\Group('content')]
 #[CodeceptionAttribute\Group('basic_page')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class BasicPageCest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Generator
    */
   protected $faker;
 
   /**
-   * Test Constructor
+   * Test Constructor.
    */
   public function __construct() {
     $this->faker = Factory::create();
@@ -40,7 +43,7 @@ class BasicPageCest {
 
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', "$node_title Item");
-    // The label on the menu parent changes in D9 vs D8
+    // The label on the menu parent changes in D9 vs D8.
     $I->selectOption('Parent item', 'main:');
     $I->uncheckOption('Generate automatic URL alias');
     $alias = preg_replace('/[^a-z0-9]/', '-', strtolower($this->faker->words(3, TRUE)));
@@ -83,7 +86,7 @@ class BasicPageCest {
 
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', $node_title);
-    // The label on the menu parent changes in D9 vs D8
+    // The label on the menu parent changes in D9 vs D8.
     $I->selectOption('Parent item', 'main:');
     $I->click('Save');
     $I->canSee($node_title, 'h1');
@@ -127,7 +130,7 @@ class BasicPageCest {
   }
 
   /**
-   * There should be Page Metadata fields
+   * There should be Page Metadata fields.
    */
   public function testPageDescription(AcceptanceTester $I) {
     $title = $this->faker->words(3, TRUE);
@@ -254,7 +257,7 @@ class BasicPageCest {
   }
 
   /**
-   * Validate the Spacer Paragraph type exists
+   * Validate the Spacer Paragraph type exists.
    */
   public function testSpacerParagraph(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
@@ -359,6 +362,9 @@ class BasicPageCest {
     $I->assertEquals($values['page_description'], $I->grabAttributeFrom('meta[name="description"]', 'content'), 'Metadata "description" should match.');
   }
 
+  /**
+   * Test a basic page appears in site search results with its updated date.
+   */
   #[CodeceptionAttribute\Group('search-results')]
   public function testSearchResult(AcceptanceTester $I) {
     $text = 'Two things are infinite: the universe and human stupidity; and I\'m not sure about the universe.';
@@ -386,11 +392,17 @@ class BasicPageCest {
     $I->canSee('Last Updated: ' . $date_string);
   }
 
+  /**
+   * Get the site's default timezone.
+   */
   protected static function getTimezone() {
     return \Drupal::config('system.date')
       ->get('timezone.default') ?: @date_default_timezone_get();
   }
 
+  /**
+   * Test layout paragraph background color, margin and padding options.
+   */
   #[CodeceptionAttribute\Examples('f7ecde', NULL, NULL, NULL)]
   #[CodeceptionAttribute\Examples('dad7cb', NULL, 'none', 'none')]
   #[CodeceptionAttribute\Examples('f0e5ef', 'none', NULL, 'more')]
@@ -456,9 +468,12 @@ class BasicPageCest {
     }
   }
 
+  /**
+   * Test the basic page body field displays on the page.
+   */
   #[CodeceptionAttribute\Group('body')]
   public function testBodyField(AcceptanceTester $I) {
-    $body_text = '<p>'. implode('</p><p>', $this->faker->paragraphs()) . '</p>';
+    $body_text = '<p>' . implode('</p><p>', $this->faker->paragraphs()) . '</p>';
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->words(3, TRUE),

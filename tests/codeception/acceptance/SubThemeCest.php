@@ -5,10 +5,11 @@ use Drupal\Core\Serialization\Yaml;
 use Faker\Factory;
 
 /**
- * Class SubThemeCest.
+ * Tests for enabling stanford_basic subthemes.
  */
 #[CodeceptionAttribute\Group('no-parallel')]
 #[CodeceptionAttribute\Group('subthemes')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class SubThemeCest {
 
   /**
@@ -33,6 +34,8 @@ class SubThemeCest {
   protected $faker;
 
   /**
+   * Machine name of the theme active before the tests.
+   *
    * @var string
    */
   protected $originalTheme = 'stanford_basic';
@@ -53,6 +56,7 @@ class SubThemeCest {
    * @param \AcceptanceTester $I
    *   Tester.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _before(AcceptanceTester $I) {
     $this->originalTheme = \Drupal::config('system.theme')->get('default');
     $this->createTheme();
@@ -64,6 +68,7 @@ class SubThemeCest {
    * @param \AcceptanceTester $I
    *   Tester.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     $I->runDrush('config:set system.theme default ' . $this->originalTheme . ' -y');
     try {
@@ -135,8 +140,7 @@ class SubThemeCest {
   }
 
   /**
-   * Enable the minimally branded subtheme and the config should reflect the
-   * changes done. Test the changes are there.
+   * Enable the minimally branded subtheme and check its config and display.
    */
   #[CodeceptionAttribute\Group('minimal-theme')]
   public function testMinimalSubtheme(AcceptanceTester $I) {
@@ -163,7 +167,7 @@ class SubThemeCest {
     if (!file_exists("{$this->themePath}/{$this->themeName}.info.yml")) {
       mkdir($this->themePath, 0777, TRUE);
       $info = file_get_contents(\Drupal::service('extension.list.theme')
-          ->getPath('stanford_basic') . '/stanford_basic.info.yml');
+        ->getPath('stanford_basic') . '/stanford_basic.info.yml');
       $stanford_basic_info = Yaml::decode($info);
       $info = [
         'name' => $this->themeName,

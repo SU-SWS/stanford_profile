@@ -74,8 +74,7 @@ class BreadcrumbHooksTest extends UnitTestCase {
   }
 
   /**
-   * When there is a current route object, the resolved page title is
-   * appended to the breadcrumb array.
+   * Tests that the current page title is appended to the breadcrumb.
    */
   public function testPreprocessBreadcrumbWithRouteObject(): void {
     $route = new Route('/some/path');

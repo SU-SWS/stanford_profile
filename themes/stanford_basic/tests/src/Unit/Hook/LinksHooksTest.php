@@ -43,8 +43,10 @@ class LinksHooksTest extends UnitTestCase {
   }
 
   /**
-   * When there is no print link at all, nothing happens and no services
-   * are queried.
+   * Tests that nothing happens without a print link.
+   *
+   * When there is no print link at all, nothing happens and no services are
+   * queried.
    */
   public function testPreprocessLinksEntityPrintableSkipsWhenNoPrintLink(): void {
     $this->entityTypeManager->expects($this->never())->method('getStorage');
@@ -56,6 +58,8 @@ class LinksHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests the print link on a stanford_media node.
+   *
    * The print link gets rel="nofollow" and, for a stanford_media node, the
    * title is changed to "Read Transcript".
    */
@@ -87,8 +91,10 @@ class LinksHooksTest extends UnitTestCase {
   }
 
   /**
-   * Nodes of other bundles keep their original title, but the print link
-   * still gets rel="nofollow".
+   * Tests the print link on nodes of other bundles.
+   *
+   * Nodes of other bundles keep their original title, but the print link still
+   * gets rel="nofollow".
    */
   public function testPreprocessLinksEntityPrintableLeavesTitleForOtherBundles(): void {
     $url = $this->createMock(Url::class);
@@ -118,6 +124,8 @@ class LinksHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests the print link when the referenced node no longer exists.
+   *
    * When the referenced entity no longer exists, the null-safe operator
    * prevents a bundle() call and the title is left untouched.
    */

@@ -9,7 +9,7 @@ use Drupal\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
- * Class ProfileConnectSectionTest
+ * Class ProfileConnectSectionTest.
  */
 #[Group('stanford_profile')]
 class ProfileHelpSectionTest extends UnitTestCase {

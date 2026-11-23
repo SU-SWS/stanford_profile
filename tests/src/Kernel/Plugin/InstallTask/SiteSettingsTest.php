@@ -3,7 +3,6 @@
 namespace Drupal\Tests\stanford_profile\Kernel\Plugin\InstallTask;
 
 use Drupal\config_pages\Entity\ConfigPagesType;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
@@ -20,7 +19,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
- * Class SiteSettingsTest.
+ * Tests the site settings install task.
  */
 #[Group('stanford_profile')]
 #[RunTestsInSeparateProcesses]
@@ -184,22 +183,10 @@ class SiteSettingsTest extends KernelTestBase {
    */
   protected function runInstallTask($throw_guzzle_exception = NULL) {
     $this->container->set('http_client', $this->getMockGuzzle($throw_guzzle_exception));
+    $this->container->set('logger.channel.stanford_profile', $this->createMock(LoggerChannelInterface::class));
     $plugin = TestSiteSettings::create($this->container, [], '', []);
     $install_state['forms']['install_configure_form']['site_name'] = 'foo bar';
     $plugin->runTask($install_state);
-  }
-
-  /**
-   * Get a mocked logger factory service.
-   *
-   * @return \PHPUnit\Framework\MockObject\MockObject
-   *   Mock logger service.
-   */
-  protected function getMockLogger() {
-    $logger_channel = $this->createMock(LoggerChannelInterface::class);
-    $logger_factory = $this->createMock(LoggerChannelFactoryInterface::class);
-    $logger_factory->method('get')->willReturn($logger_channel);
-    return $logger_factory;
   }
 
   /**

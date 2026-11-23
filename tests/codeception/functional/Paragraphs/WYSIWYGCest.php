@@ -4,10 +4,11 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class WYSIWYGCest.
+ * Tests the WYSIWYG paragraph's HTML filtering and media embeds.
  */
 #[CodeceptionAttribute\Group('paragraphs')]
 #[CodeceptionAttribute\Group('wysiwyg')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class WYSIWYGCest {
 
   /**
@@ -32,7 +33,7 @@ class WYSIWYGCest {
     $I->logInWithRole('administrator');
     $I->amOnPage($node->toUrl()->toString());
 
-    # Stripped Tags
+    // Stripped Tags.
     $I->canSee("alert('testme')");
 
     $I->cantSeeElement('.system-main-block iframe');
@@ -46,7 +47,7 @@ class WYSIWYGCest {
     $I->cantSeeElement('.system-main-block legend');
     $I->cantSeeElement('.system-main-block address');
 
-    # Headers
+    // Headers.
     $I->cantSee('Level 01 heading', 'h1');
     $I->canSee('Level 02 Heading', 'h2');
     $I->canSee('Level 03 Heading', 'h3');
@@ -54,7 +55,7 @@ class WYSIWYGCest {
     $I->canSee('Level 05 Heading', 'h5');
     $I->cantSeeElement('h6');
 
-    # Text Tags
+    // Text Tags.
     $I->canSee('A small paragraph', 'p');
     $I->canSee('Normal Link', 'a');
     $I->canSee('Button', 'a.su-button');
@@ -69,13 +70,13 @@ class WYSIWYGCest {
     $I->canSeeNumberOfElements('dt', 2);
     $I->canSeeNumberOfElements('dd', 2);
 
-    # List Tags
+    // List Tags.
     $I->canSee('This is a list', 'ul li');
     $I->canSee('child list items', 'ul ul li');
     $I->canSee('Ordered list item', 'ol li');
     $I->canSee('Child ordered list item', 'ol ol li');
 
-    # Table Tags
+    // Table Tags.
     $I->canSeeElement('table');
     $I->canSeeNumberOfElements('caption', 1);
     $I->canSeeNumberOfElements('caption', 1);
@@ -340,8 +341,11 @@ class WYSIWYGCest {
     $I->canSee('alt text', '#cboxTitle');
   }
 
+  /**
+   * Embed code added through the media library should render on the page.
+   */
   #[CodeceptionAttribute\Group('embed-code')]
-  public function testEmbedCode(FunctionalTester $I){
+  public function testEmbedCode(FunctionalTester $I) {
     $node = $this->getNodeWithParagraph($I);
     $user = $I->createUserWithRoles(['site_manager', 'su_site_embedder']);
     $I->logInAs($user->getAccountName());

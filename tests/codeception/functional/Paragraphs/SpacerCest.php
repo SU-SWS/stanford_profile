@@ -4,10 +4,11 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class SpacerCest.
+ * Tests the spacer paragraph and its size options.
  */
 #[CodeceptionAttribute\Group('paragraphs')]
 #[CodeceptionAttribute\Group('spacer')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class SpacerCest {
 
   /**
@@ -25,8 +26,7 @@ class SpacerCest {
   }
 
   /**
-   * The spacer paragraph has one custom field, to set the size of the bottom
-   * margin.
+   * The spacer paragraph's size field should change its bottom margin.
    */
   public function testSpacerParagraph(FunctionalTester $I) {
     $paragraph = $I->createEntity([

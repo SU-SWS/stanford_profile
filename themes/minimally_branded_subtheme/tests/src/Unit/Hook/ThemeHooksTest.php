@@ -39,7 +39,7 @@ class ThemeHooksTest extends UnitTestCase {
   }
 
   /**
-   * preprocessHtml() adds the path to the stanford_basic theme.
+   * Tests that preprocessHtml() adds the path to the stanford_basic theme.
    */
   public function testPreprocessHtmlAddsStanfordBasicPath(): void {
     $this->themeExtensionList->method('getPath')
@@ -53,8 +53,10 @@ class ThemeHooksTest extends UnitTestCase {
   }
 
   /**
-   * The block__stanford_basic_search suggestion is added when the block
-   * element id matches minimally_branded_subtheme_search.
+   * Tests that the search block gets the stanford_basic search suggestion.
+   *
+   * The block__stanford_basic_search suggestion is added when the block element
+   * id matches minimally_branded_subtheme_search.
    */
   public function testThemeSuggestionsBlockAlterAddsSuggestionForSearchBlock(): void {
     $suggestions = [];
@@ -94,6 +96,8 @@ class ThemeHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that empty variables leave the suggestions untouched.
+   *
    * A completely empty $variables array (no 'elements' key at all) does not
    * cause any errors and leaves suggestions untouched.
    */

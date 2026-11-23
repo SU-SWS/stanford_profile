@@ -7,6 +7,7 @@ use Faker\Factory;
  * Test the news functionality.
  */
 #[CodeceptionAttribute\Group('content')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class PersonCest {
 
   /**
@@ -58,8 +59,7 @@ class PersonCest {
   }
 
   /**
-   * Test that content that gets created has the right url, header, and shows
-   * up in the all view.
+   * Test a new person has the right URL and header and appears in lists.
    */
   public function testCreatePerson(AcceptanceTester $I) {
     $term = $I->createEntity([
@@ -91,7 +91,7 @@ class PersonCest {
   /**
    * Test that the XML sitemap and metatag configuration is set.
    */
-  public function testXMLMetaDataRevisions(AcceptanceTester $I) {
+  public function testXmlMetaDataRevisions(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
 
     // Revision Delete is enabled.

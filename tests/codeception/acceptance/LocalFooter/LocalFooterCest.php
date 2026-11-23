@@ -4,9 +4,10 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class LocalFooterCest.
+ * Tests for the local footer config page and its display.
  */
 #[CodeceptionAttribute\Group('local-footer')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class LocalFooterCest {
 
   /**
@@ -23,6 +24,7 @@ class LocalFooterCest {
   /**
    * Tidy up after oneself.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(AcceptanceTester $I) {
     $config_page = \Drupal::entityTypeManager()
       ->getStorage('config_pages')
@@ -32,6 +34,9 @@ class LocalFooterCest {
     }
   }
 
+  /**
+   * Test the footer login link points back to the current page.
+   */
   #[CodeceptionAttribute\Group('login-link')]
   public function testLoginLinkDestination(AcceptanceTester $I) {
     $link_text = $this->faker->word();

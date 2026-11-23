@@ -8,6 +8,7 @@ use Faker\Factory;
  */
 #[CodeceptionAttribute\Group('paragraphs')]
 #[CodeceptionAttribute\Group('card')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class StanfordCardCest {
 
   /**

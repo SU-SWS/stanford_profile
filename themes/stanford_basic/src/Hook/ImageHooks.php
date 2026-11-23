@@ -6,6 +6,9 @@ namespace Drupal\stanford_basic\Hook;
 
 use Drupal\Core\Hook\Attribute\Hook;
 
+/**
+ * Marks images without alt text as decorative.
+ */
 class ImageHooks {
 
   /**

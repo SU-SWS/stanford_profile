@@ -9,12 +9,17 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Path\PathMatcherInterface;
 
 /**
+ * Adds node classes, libraries and image styles to node templates.
+ *
  * @codeCoverageIgnore
  */
 class StanfordBasicNodeHooks {
 
   public function __construct(protected PathMatcherInterface $pathMatcher) {}
 
+  /**
+   * Adds bundle libraries and CSS classes to node templates.
+   */
   #[Hook('preprocess_node')]
   public function preprocessNode(&$variables) {
     $node_bundle = $variables['node']->bundle();
@@ -33,6 +38,9 @@ class StanfordBasicNodeHooks {
     }
   }
 
+  /**
+   * Adds extra top spacing on a bannerless front page that starts with text.
+   */
   #[Hook('preprocess_node__stanford_page')]
   public function preprocessPage(&$variables) {
     if (
@@ -52,12 +60,16 @@ class StanfordBasicNodeHooks {
     }
   }
 
+  /**
+   * Preprocesses news node templates; currently makes no changes.
+   */
   #[Hook('preprocess_node__stanford_news')]
   public function preprocessNews(&$variables) {
-    /** @var \Drupal\node\NodeInterface $node */
-    $node = $variables['node'];
   }
 
+  /**
+   * Uses a square image style for spotlight news featured media.
+   */
   #[Hook('preprocess_field__su_news_featured_media')]
   public function preprocessNewsImageField(&$variables) {
     /** @var \Drupal\node\NodeInterface $node */

@@ -4,14 +4,26 @@ declare(strict_types=1);
 
 namespace Drupal\stanford_profile_admin_theme\Hook;
 
+use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Routing\RouteObjectInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
+ * Builds component variables for paragraph templates in the admin theme.
+ *
  * @codeCoverageIgnore
  */
 class StanfordProfileAdminParagraphHooks {
 
+  public function __construct(
+    protected RequestStack $requestStack,
+    protected TitleResolverInterface $titleResolver,
+  ) {}
+
+  /**
+   * Builds hero component variables from the banner behavior settings.
+   */
   #[Hook('preprocess_paragraph__stanford_banner')]
   public function preprocessParagraphStanfordBanner(&$variables) {
     /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
@@ -29,6 +41,9 @@ class StanfordProfileAdminParagraphHooks {
     ];
   }
 
+  /**
+   * Builds card component variables from the card style settings.
+   */
   #[Hook('preprocess_paragraph__stanford_card')]
   public function preprocessParagraphStanfordCard(&$variables) {
     /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
@@ -45,17 +60,22 @@ class StanfordProfileAdminParagraphHooks {
     ];
   }
 
+  /**
+   * Adds the current page title to page title banner paragraphs.
+   */
   #[Hook('preprocess_paragraph__stanford_page_title_banner')]
   public function preprocessParagraphStanfordPageTitleBanner(&$variables) {
-    $request = \Drupal::request();
-    $route = $request->attributes->get(RouteObjectInterface::ROUTE_OBJECT);
+    $request = $this->requestStack->getCurrentRequest();
+    $route = $request?->attributes->get(RouteObjectInterface::ROUTE_OBJECT);
 
-    $page_title = $route ? \Drupal::service('title_resolver')
-      ->getTitle($request, $route) : NULL;
+    $page_title = $route ? $this->titleResolver->getTitle($request, $route) : NULL;
 
     $variables['page_title'] = $page_title;
   }
 
+  /**
+   * Builds stat card component variables from the paragraph colors.
+   */
   #[Hook('preprocess_paragraph__stanford_stat_card')]
   public function preprocessParagraphStanfordStatCard(&$variables) {
     /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */

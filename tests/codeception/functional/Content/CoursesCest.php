@@ -4,7 +4,6 @@ namespace Content;
 
 use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
-use FunctionalTester;
 
 /**
  * Test course content type.
@@ -26,7 +25,10 @@ class CoursesCest {
     $this->faker = Factory::create();
   }
 
-  public function testContentType(FunctionalTester $I) {
+  /**
+   * Site manager can tag a course with nested course filter terms.
+   */
+  public function testContentType(\FunctionalTester $I) {
     [
       $parent_1,
       $parent_2,
@@ -67,15 +69,16 @@ class CoursesCest {
     $I->canSee($node->label(), 'h1');
   }
 
+  /**
+   * Filtered courses list should filter courses by their tags.
+   */
   #[CodeceptionAttribute\Group('course-filters')]
-  public function testFilteringCourse(FunctionalTester $I) {
+  public function testFilteringCourse(\FunctionalTester $I) {
     [
-      $parent_1,
-      $parent_2,
-      $child_1_1,
-      $child_2_1,
-      $child_1_2,
-      $child_2_2,
+      0 => $parent_1,
+      2 => $child_1_1,
+      3 => $child_2_1,
+      4 => $child_1_2,
     ] = $this->buildTaxonomyTerms($I);
     $course = $I->createEntity([
       'type' => 'stanford_course',
@@ -117,7 +120,10 @@ class CoursesCest {
     $I->canSee($course->label());
   }
 
-  protected function buildTaxonomyTerms(FunctionalTester $I) {
+  /**
+   * Create two parent course filter terms with two children each.
+   */
+  protected function buildTaxonomyTerms(\FunctionalTester $I) {
     $parent_1 = $I->createEntity([
       'vid' => 'course_filters',
       'name' => $this->faker->words(2, TRUE),

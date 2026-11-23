@@ -7,6 +7,9 @@ namespace Drupal\stanford_basic\Hook;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\Url;
 
+/**
+ * Adds template suggestions and the active item to book navigation.
+ */
 class BookHooks {
 
   /**

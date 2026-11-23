@@ -7,22 +7,25 @@ use Faker\Factory;
  * Test the Course functionality.
  */
 #[CodeceptionAttribute\Group('content')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class CoursesCest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Generator
    */
   protected $faker;
 
   /**
-   * Test Constructor
+   * Test Constructor.
    */
   public function __construct() {
     $this->faker = Factory::create();
   }
 
   /**
-   * Test for view pages and taxonomy functionality
+   * Test for view pages and taxonomy functionality.
    */
   public function testViewPagesExist(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
@@ -61,7 +64,7 @@ class CoursesCest {
   }
 
   /**
-   * Test rabbit hole settings and field locking
+   * Test rabbit hole settings and field locking.
    */
   public function testRabbitHoleRedirects(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
@@ -83,7 +86,7 @@ class CoursesCest {
    * Create a Course Node.
    *
    * @param AcceptanceTester $I
-   *   Codeception AcceptanceTester
+   *   Codeception AcceptanceTester.
    * @param string $content
    *   A key/value array for field names and content.
    *
@@ -117,9 +120,7 @@ class CoursesCest {
    * Creates a new course quarters term.
    *
    * @param AcceptanceTester $I
-   *   Codeception AcceptanceTester
-   * @param string $name
-   *   The name of the term.
+   *   Codeception AcceptanceTester.
    *
    * @return \Drupal\taxonomy\TermInterface
    *   A taxonomy term.
@@ -135,7 +136,7 @@ class CoursesCest {
    * Creates a new course subjects term.
    *
    * @param AcceptanceTester $I
-   *   Codeception AcceptanceTester
+   *   Codeception AcceptanceTester.
    *
    * @return \Drupal\taxonomy\TermInterface
    *   A taxonomy term.
@@ -151,7 +152,7 @@ class CoursesCest {
    * Creates a new course tags term.
    *
    * @param AcceptanceTester $I
-   *   Codeception AcceptanceTester
+   *   Codeception AcceptanceTester.
    *
    * @return \Drupal\taxonomy\TermInterface
    *   A taxonomy term.

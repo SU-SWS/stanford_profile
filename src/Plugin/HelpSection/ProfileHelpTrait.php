@@ -6,7 +6,7 @@ use Drupal\Core\Link;
 use Drupal\Core\Url;
 
 /**
- * Trait ProfileHelpTrait.
+ * Provides a helper for building link markup in profile help sections.
  *
  * @package Drupal\stanford_profile\Plugin\HelpSection
  */

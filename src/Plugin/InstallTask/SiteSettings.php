@@ -4,7 +4,7 @@ namespace Drupal\stanford_profile\Plugin\InstallTask;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Password\PasswordGeneratorInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Site\Settings;
@@ -80,21 +80,21 @@ class SiteSettings extends InstallTaskBase implements ContainerFactoryPluginInte
       $container->get('externalauth.authmap'),
       $container->get('password_generator'),
       $container->get('state'),
-      $container->get('logger.factory')
+      $container->get('logger.channel.stanford_profile')
     );
   }
 
   /**
    * {@inheritDoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap, PasswordGeneratorInterface $password_generator, StateInterface $state, LoggerChannelFactoryInterface $logger_factory) {
+  final public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, ClientInterface $client, AuthmapInterface $authmap, PasswordGeneratorInterface $password_generator, StateInterface $state, LoggerChannelInterface $logger) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
     $this->client = $client;
     $this->authmap = $authmap;
     $this->passwordGenerator = $password_generator;
     $this->state = $state;
-    $this->logger = $logger_factory->get('stanford_profile');
+    $this->logger = $logger;
   }
 
   /**

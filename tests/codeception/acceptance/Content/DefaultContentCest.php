@@ -3,9 +3,10 @@
 use Codeception\Attribute as CodeceptionAttribute;
 
 /**
- * Class DefaultContentCest.
+ * Tests for the content and media installed by default.
  */
 #[CodeceptionAttribute\Group('content')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class DefaultContentCest {
 
   /**

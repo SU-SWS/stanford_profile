@@ -4,10 +4,11 @@ use Codeception\Attribute as CodeceptionAttribute;
 use Faker\Factory;
 
 /**
- * Class MediaWithCaptionCest.
+ * Tests for the media with caption paragraph type.
  */
 #[CodeceptionAttribute\Group('paragraphs')]
 #[CodeceptionAttribute\Group('media_caption')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class MediaWithCaptionCest {
 
   /**

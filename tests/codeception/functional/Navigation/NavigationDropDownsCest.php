@@ -7,6 +7,7 @@ use Faker\Factory;
  * Test for the lockup settings.
  */
 #[CodeceptionAttribute\Group('navigation')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class NavigationDropDownsCest {
 
   /**
@@ -26,6 +27,7 @@ class NavigationDropDownsCest {
   /**
    * Cleanup after test.
    */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _after(FunctionalTester $I) {
     \Drupal::entityTypeManager()
       ->getStorage('config_pages')
@@ -95,7 +97,7 @@ class NavigationDropDownsCest {
     $I->click('Menu settings');
     $I->checkOption('Provide a menu link');
     $I->fillField('Menu link title', $node_title);
-    // The label on the menu parent changes in D9 vs D8
+    // The label on the menu parent changes in D9 vs D8.
     $I->selectOption('.menu-link-form .select-wrapper--level-0 select', '<main>');
     $I->selectOption('.menu-link-form .select-wrapper--level-1 select', $parent_menu_title);
     $I->waitForText("Change the weight of the links within the $parent_menu_title menu");

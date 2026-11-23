@@ -74,6 +74,8 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
+   * Resets the AlgoliaHooks static settings cache.
+   *
    * Resets AlgoliaHooks' internal static cache property so results from one
    * test do not leak into another, since BlockHooks::preprocessBlock()
    * indirectly calls AlgoliaHooks::getAlgoliaSettings().
@@ -100,8 +102,10 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
-   * The base and derivative plugin id css classes are always added,
-   * regardless of the specific plugin.
+   * Tests that plugin id classes are always added.
+   *
+   * The base and derivative plugin id css classes are always added, regardless
+   * of the specific plugin.
    */
   public function testPreprocessBlockAddsCssClassesForPluginIds(): void {
     $container = new ContainerBuilder();
@@ -115,8 +119,10 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
-   * When the plugin is not the main menu block, the config_pages.loader
-   * service is never used, even if it exists.
+   * Tests that config pages are not loaded for blocks other than main menu.
+   *
+   * When the plugin is not the main menu block, the config_pages.loader service
+   * is never used, even if it exists.
    */
   public function testPreprocessBlockNonMainMenuBlockSkipsMenuIslandLogic(): void {
     $configPages = $this->createMock(ConfigPagesLoaderServiceInterface::class);
@@ -125,6 +131,7 @@ class BlockHooksTest extends UnitTestCase {
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $configPages);
     \Drupal::setContainer($container);
+    $this->hooks = new BlockHooks($this->entityTypeManager, $this->menuTree, $this->themeSettingsProvider, $configPages);
 
     $variables = $this->baseVariables('system_menu_block:footer');
     $this->hooks->preprocessBlock($variables);
@@ -133,6 +140,8 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
+   * Tests that the menu island is skipped without config_pages.loader.
+   *
    * When the plugin is the main menu block but config_pages.loader is not
    * available, the menu island logic is skipped entirely.
    */
@@ -150,8 +159,10 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
-   * When the main menu block is present, config_pages.loader is available,
-   * but the new menu setting is off, the menu island logic is skipped.
+   * Tests that the menu island is skipped when the new menu is disabled.
+   *
+   * When the main menu block is present, config_pages.loader is available, but
+   * the new menu setting is off, the menu island logic is skipped.
    */
   public function testPreprocessBlockMainMenuBlockWithNewMenuDisabled(): void {
     $configPages = $this->createMock(ConfigPagesLoaderServiceInterface::class);
@@ -162,6 +173,7 @@ class BlockHooksTest extends UnitTestCase {
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $configPages);
     \Drupal::setContainer($container);
+    $this->hooks = new BlockHooks($this->entityTypeManager, $this->menuTree, $this->themeSettingsProvider, $configPages);
 
     $this->menuTree->expects($this->never())->method('load');
 
@@ -197,9 +209,11 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
-   * When the main menu block is present, config_pages.loader is available,
-   * and the new menu setting is on, the decoupled menu island attachments
-   * and recursively-built menu tree links are added.
+   * Tests that the decoupled menu island is attached when enabled.
+   *
+   * When the main menu block is present, config_pages.loader is available, and
+   * the new menu setting is on, the decoupled menu island attachments and
+   * recursively-built menu tree links are added.
    */
   public function testPreprocessBlockMainMenuBlockWithNewMenuEnabled(): void {
     $configPages = $this->createMock(ConfigPagesLoaderServiceInterface::class);
@@ -210,6 +224,7 @@ class BlockHooksTest extends UnitTestCase {
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $configPages);
     \Drupal::setContainer($container);
+    $this->hooks = new BlockHooks($this->entityTypeManager, $this->menuTree, $this->themeSettingsProvider, $configPages);
 
     $child = $this->buildMenuLinkTreeElement('Child Link', 5);
     $disabledChild = $this->buildMenuLinkTreeElement('Disabled Link', 1, enabled: FALSE);
@@ -243,8 +258,7 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
-   * On the algolia search results block, if algolia settings are configured
-   * (truthy), the content is removed.
+   * Tests that search results content is removed when Algolia is configured.
    */
   public function testPreprocessBlockAlgoliaSearchResultsWithSettingsConfigured(): void {
     $configPages = $this->createMock(ConfigPagesLoaderServiceInterface::class);
@@ -263,6 +277,7 @@ class BlockHooksTest extends UnitTestCase {
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $configPages);
     \Drupal::setContainer($container);
+    $this->hooks = new BlockHooks($this->entityTypeManager, $this->menuTree, $this->themeSettingsProvider, $configPages);
 
     $variables = $this->baseVariables('views_exposed_filter_block:search-results');
     $this->hooks->preprocessBlock($variables);
@@ -271,8 +286,7 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
-   * On the algolia search results block, if algolia settings are not
-   * configured (falsy), the content is left intact.
+   * Tests that search results content is kept when Algolia is not configured.
    */
   public function testPreprocessBlockAlgoliaSearchResultsWithoutSettingsConfigured(): void {
     $configPages = $this->createMock(ConfigPagesLoaderServiceInterface::class);
@@ -283,6 +297,7 @@ class BlockHooksTest extends UnitTestCase {
     $container = new ContainerBuilder();
     $container->set('config_pages.loader', $configPages);
     \Drupal::setContainer($container);
+    $this->hooks = new BlockHooks($this->entityTypeManager, $this->menuTree, $this->themeSettingsProvider, $configPages);
 
     $variables = $this->baseVariables('views_exposed_filter_block:search-results');
     $this->hooks->preprocessBlock($variables);
@@ -366,8 +381,10 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
-   * When the taxonomy_menu entity type exists but no taxonomy menu matches
-   * the derivative plugin id (menu name), nothing happens.
+   * Tests that nothing happens when no taxonomy menu matches the block.
+   *
+   * When the taxonomy_menu entity type exists but no taxonomy menu matches the
+   * derivative plugin id (menu name), nothing happens.
    */
   public function testThemeSuggestionsBlockAlterWithNoMatchingTaxonomyMenu(): void {
     $storage = $this->createMock(EntityStorageInterface::class);
@@ -411,8 +428,7 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
-   * The branding block preprocess hook passes through the logo and lockup
-   * theme settings.
+   * Tests that the branding block passes through logo and lockup settings.
    */
   public function testPreprocessBlockSystemBrandingBlockWithLockupSet(): void {
     $this->themeSettingsProvider->method('getSetting')
@@ -452,8 +468,10 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
-   * changeCharacters() replaces non-alphanumeric/whitespace characters with a
-   * dash, and returns an empty string for empty input.
+   * Tests that changeCharacters() replaces special characters with dashes.
+   *
+   * Non-alphanumeric/whitespace characters are replaced with a dash, and an
+   * empty string is returned for empty input.
    */
   public function testChangeCharacters(): void {
     $method = new \ReflectionMethod(BlockHooks::class, 'changeCharacters');
@@ -464,7 +482,7 @@ class BlockHooksTest extends UnitTestCase {
   }
 
   /**
-   * getMenuTreeLinks() returns an empty array for an empty tree.
+   * Tests that getMenuTreeLinks() returns an empty array for an empty tree.
    */
   public function testGetMenuTreeLinksWithEmptyTree(): void {
     $method = new \ReflectionMethod(BlockHooks::class, 'getMenuTreeLinks');

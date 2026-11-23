@@ -7,22 +7,25 @@ use Faker\Factory;
  * Tests for various media form functionality.
  */
 #[CodeceptionAttribute\Group('media')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class MediaFormsCest {
 
   /**
+   * Faker service.
+   *
    * @var \Faker\Generator
    */
   protected $faker;
 
   /**
-   * Test Constructor
+   * Test Constructor.
    */
   public function __construct() {
     $this->faker = Factory::create();
   }
 
   /**
-   * Test embeddables form alters
+   * Test embeddables form alters.
    */
   public function testFormAlters(AcceptanceTester $I) {
     $support_url = 'https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=83daed294f4143009a9a97411310c70a';

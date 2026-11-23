@@ -8,6 +8,7 @@ use Faker\Factory;
  * Test the news functionality.
  */
 #[CodeceptionAttribute\Group('content')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class NewsCest {
 
   /**
@@ -100,13 +101,12 @@ class NewsCest {
   }
 
   /**
-   * Test that only two of three new news nodes show up in the more news view
-   * on the node page.
+   * Test the more news view on a news page shows two of three new nodes.
    */
   public function testMoreNewsView(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
 
-    $first_news = $I->createEntity([
+    $I->createEntity([
       'type' => 'stanford_news',
       'title' => $this->faker->words(3, TRUE),
     ]);
@@ -114,7 +114,7 @@ class NewsCest {
       'type' => 'stanford_news',
       'title' => $this->faker->words(3, TRUE),
     ]);
-    $third_news = $I->createEntity([
+    $I->createEntity([
       'type' => 'stanford_news',
       'title' => $this->faker->words(3, TRUE),
     ]);
@@ -126,7 +126,7 @@ class NewsCest {
   /**
    * Test that the XML sitemap and metatag configuration is set.
    */
-  public function testXMLMetaDataRevisions(AcceptanceTester $I) {
+  public function testXmlMetaDataRevisions(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
 
     // Revision Delete is enabled.
@@ -259,6 +259,9 @@ class NewsCest {
     $I->assertEquals($values['featured_image_alt'], $I->grabAttributeFrom('meta[name="twitter:image:alt"]', 'content'), 'Metadata "twitter:image:alt" should match.');
   }
 
+  /**
+   * Test the news body and dek fields display on the page.
+   */
   #[CodeceptionAttribute\Group('body')]
   public function testBodyField(AcceptanceTester $I) {
     $dek = substr($this->faker->sentences(20, TRUE), 0, 499);
@@ -276,6 +279,9 @@ class NewsCest {
     $I->canSee($dek);
   }
 
+  /**
+   * Test related news shows on the person page referenced by the news.
+   */
   #[CodeceptionAttribute\Group('related-news')]
   public function testRelatedNewsPerson(AcceptanceTester $I) {
     $person = $I->createEntity([
@@ -311,8 +317,7 @@ class NewsCest {
   }
 
   /**
-   * Test that news variants display correct fields and can be populated with
-   * contributor roles.
+   * Test contributors can see and fill in the news variant fields.
    */
   #[CodeceptionAttribute\Group('news_variant')]
   public function testNewsVariantFieldsDisplay(AcceptanceTester $I) {
@@ -320,11 +325,11 @@ class NewsCest {
     $I->amOnPage('/node/add/stanford_news');
     $I->canSeeResponseCodeIs(200);
 
-    // Verify contributor role can see the Variant field
+    // Verify contributor role can see the Variant field.
     $I->canSee('Variant');
     $I->canSeeElement('[name="layout_selection"]');
 
-    // Generate test data using faker
+    // Generate test data using faker.
     $testData = [
       'Dek' => $this->faker->sentence(),
       'Byline' => $this->faker->name(),
@@ -332,7 +337,7 @@ class NewsCest {
       'Quote' => $this->faker->sentence(),
     ];
 
-    // Fill in required title field
+    // Fill in required title field.
     $I->fillField('Headline / Name', $this->faker->words(3, TRUE));
 
     // Verify fields are initially empty using canSeeInField()
@@ -341,25 +346,25 @@ class NewsCest {
     $I->canSeeInField('Banner Caption', '');
     $I->canSeeInField('Quote / Big Text', '');
 
-    // Fill in the fields
+    // Fill in the fields.
     $I->fillField('Dek', $testData['Dek']);
     $I->fillField('Byline', $testData['Byline']);
     $I->fillField('Banner Caption', $testData['Banner Caption']);
     $I->fillField('Quote / Big Text', $testData['Quote']);
 
-    // Save the node
+    // Save the node.
     $I->click('Save');
     $I->canSeeResponseCodeIs(200);
     $I->canSee('has been created');
 
-    // Verify the information is reflected on the page
+    // Verify the information is reflected on the page.
     $I->canSee($testData['Dek']);
     $I->canSee($testData['Byline']);
     $I->canSee($testData['Banner Caption']);
   }
 
   /**
-   * Test that roles with layout selection permission can select spotlight variant.
+   * Test that roles with layout selection can choose the spotlight variant.
    */
   #[CodeceptionAttribute\Group('news_variant')]
   #[CodeceptionAttribute\Examples(role: 'contributor')]
@@ -370,33 +375,32 @@ class NewsCest {
     $I->amOnPage('/node/add/stanford_news');
     $I->canSeeResponseCodeIs(200);
 
-    // Verify Variant field is visible and accessible
+    // Verify Variant field is visible and accessible.
     $I->canSee('Variant');
     $I->canSeeElement('[name="layout_selection"]');
 
-    // Fill in required title
+    // Fill in required title.
     $title = $this->faker->words(3, TRUE);
     $I->fillField('Headline / Name', $title);
 
-    // Select Spotlight variant
+    // Select Spotlight variant.
     $I->selectOption('Variant', 'Spotlight');
 
-    // Fill in spotlight-specific field
+    // Fill in spotlight-specific field.
     $quote = $this->faker->sentence();
     $I->fillField('Quote / Big Text', $quote);
 
-    // Save the node
+    // Save the node.
     $I->click('Save');
     $I->canSeeResponseCodeIs(200);
     $I->canSee('has been created');
 
-    // Verify the spotlight label is displayed
+    // Verify the spotlight label is displayed.
     $I->canSee('Spotlight', '.su-spotlight-label p');
   }
 
   /**
    * Test that Related Spotlights filters by matching taxonomy terms.
-   *
    */
   #[CodeceptionAttribute\Group('news_variant')]
   public function testRelatedSpotlightsFiltersByTaxonomy(AcceptanceTester $I) {
@@ -462,9 +466,9 @@ class NewsCest {
 
     // Visit spotlight A1 - should show other nodes with term A.
     $I->amOnPage($spotlight_a1->toUrl()->toString());
-    // Make sure there's an h2
+    // Make sure there's an h2.
     $I->see('More Spotlights', 'h2');
-    // Make sure the links are h3s
+    // Make sure the links are h3s.
     $I->seeLink($spotlight_a2->label());
     $I->see($spotlight_a2->label(), 'h3');
     $I->seeLink($spotlight_a3->label());
@@ -479,7 +483,7 @@ class NewsCest {
   }
 
   /**
-   * Test spotlight label displayed correctly on the news spotlight variant page.
+   * Test the spotlight label displays on a news spotlight variant page.
    */
   #[CodeceptionAttribute\Group('news_variant')]
   #[CodeceptionAttribute\Group('spotlight_page')]
@@ -495,10 +499,13 @@ class NewsCest {
     // Visit the spotlight page.
     $I->amOnPage($spotlight->toUrl()->toString());
 
-    // Verify the spotlight label exists
+    // Verify the spotlight label exists.
     $I->canSee('Spotlight', '.su-spotlight-label p');
   }
 
+  /**
+   * Test news with an unpublished topic term keeps it selected on edit.
+   */
   #[CodeceptionAttribute\Group('unpublished-terms')]
   public function testUnpublishedTerms(AcceptanceTester $I) {
     $term = $I->createEntity([

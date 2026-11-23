@@ -12,6 +12,8 @@ use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Url;
 
 /**
+ * Adds login and lockup variables to the local footer config page.
+ *
  * @codeCoverageIgnore
  */
 class StanfordBasicConfigPageHooks {
@@ -20,9 +22,12 @@ class StanfordBasicConfigPageHooks {
     protected ConfigFactoryInterface $configFactory,
     protected PathMatcherInterface $pathMatcher,
     protected RedirectDestinationInterface $redirectDestination,
-    protected AccountProxyInterface $account
+    protected AccountProxyInterface $account,
   ) {}
 
+  /**
+   * Adds the login link and site name to the local footer.
+   */
   #[Hook('preprocess_config_pages__stanford_local_footer')]
   public function preprocessConfigPagesLocalFooter(&$variables) {
     $redirectDestination = preg_replace('/\?.*$/', '', $this->redirectDestination->get());

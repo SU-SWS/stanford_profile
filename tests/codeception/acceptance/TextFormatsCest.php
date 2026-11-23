@@ -3,9 +3,10 @@
 use Codeception\Attribute as CodeceptionAttribute;
 
 /**
- * Class TextFormatsCest.
+ * Tests for the text format configuration.
  */
 #[CodeceptionAttribute\Group('text_formats')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class TextFormatsCest {
 
   /**

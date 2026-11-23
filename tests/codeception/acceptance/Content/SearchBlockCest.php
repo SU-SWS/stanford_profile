@@ -8,6 +8,7 @@ use Faker\Factory;
  * Test for custom block types.
  */
 #[CodeceptionAttribute\Group('block')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class SearchBlockCest {
 
   /**
@@ -17,6 +18,10 @@ class SearchBlockCest {
     $this->faker = Factory::create();
   }
 
+  /**
+   * Delete the basic site settings config page before each test.
+   */
+  // phpcs:ignore Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
   public function _before() {
     if ($cp = ConfigPages::load('stanford_basic_site_settings')) {
       $cp->delete();
@@ -64,7 +69,7 @@ class SearchBlockCest {
     $node = $I->createEntity([
       'type' => 'stanford_page',
       'title' => $this->faker->words(3, TRUE),
-      'body' => ['value' => $body_text, 'format' => 'stanford_html']
+      'body' => ['value' => $body_text, 'format' => 'stanford_html'],
     ]);
 
     $search_keys = implode(' ', array_slice(explode(' ', $body_text), 0, 4));

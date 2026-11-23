@@ -8,9 +8,12 @@ use Faker\Factory;
  */
 #[CodeceptionAttribute\Group('contrib')]
 #[CodeceptionAttribute\Group('vbo')]
+// phpcs:ignore DrupalPractice.General.ClassName.ClassPrefix
 class ViewsBulkEditCest {
 
   /**
+   * Nodes created for the bulk edit tests.
+   *
    * @var \Drupal\node\NodeInterface[]
    */
   protected $nodes;
